@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ProjectVpcArgs', 'ProjectVpc']
 
@@ -63,6 +63,82 @@ class ProjectVpcArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class _ProjectVpcState:
+    def __init__(__self__, *,
+                 cloud_name: Optional[pulumi.Input[str]] = None,
+                 network_cidr: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ProjectVpc resources.
+        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
+               in. See the Service resource for additional information.
+        :param pulumi.Input[str] network_cidr: defines the network CIDR of the VPC.
+        :param pulumi.Input[str] project: defines the project the VPC belongs to.
+        :param pulumi.Input[str] state: ia a computed property that tells the current state of the VPC. This property cannot be
+               set, only read.
+        """
+        if cloud_name is not None:
+            pulumi.set(__self__, "cloud_name", cloud_name)
+        if network_cidr is not None:
+            pulumi.set(__self__, "network_cidr", network_cidr)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="cloudName")
+    def cloud_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        defines where the cloud provider and region where the service is hosted
+        in. See the Service resource for additional information.
+        """
+        return pulumi.get(self, "cloud_name")
+
+    @cloud_name.setter
+    def cloud_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_name", value)
+
+    @property
+    @pulumi.getter(name="networkCidr")
+    def network_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        defines the network CIDR of the VPC.
+        """
+        return pulumi.get(self, "network_cidr")
+
+    @network_cidr.setter
+    def network_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_cidr", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        defines the project the VPC belongs to.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        ia a computed property that tells the current state of the VPC. This property cannot be
+        set, only read.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 class ProjectVpc(pulumi.CustomResource):
@@ -159,18 +235,18 @@ class ProjectVpc(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProjectVpcArgs.__new__(ProjectVpcArgs)
 
             if cloud_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cloud_name'")
-            __props__['cloud_name'] = cloud_name
+            __props__.__dict__["cloud_name"] = cloud_name
             if network_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'network_cidr'")
-            __props__['network_cidr'] = network_cidr
+            __props__.__dict__["network_cidr"] = network_cidr
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
-            __props__['state'] = None
+            __props__.__dict__["project"] = project
+            __props__.__dict__["state"] = None
         super(ProjectVpc, __self__).__init__(
             'aiven:index/projectVpc:ProjectVpc',
             resource_name,
@@ -201,12 +277,12 @@ class ProjectVpc(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ProjectVpcState.__new__(_ProjectVpcState)
 
-        __props__["cloud_name"] = cloud_name
-        __props__["network_cidr"] = network_cidr
-        __props__["project"] = project
-        __props__["state"] = state
+        __props__.__dict__["cloud_name"] = cloud_name
+        __props__.__dict__["network_cidr"] = network_cidr
+        __props__.__dict__["project"] = project
+        __props__.__dict__["state"] = state
         return ProjectVpc(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -242,10 +318,4 @@ class ProjectVpc(pulumi.CustomResource):
         set, only read.
         """
         return pulumi.get(self, "state")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

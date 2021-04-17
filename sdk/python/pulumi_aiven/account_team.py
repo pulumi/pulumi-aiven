@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['AccountTeamArgs', 'AccountTeam']
 
@@ -67,6 +67,94 @@ class AccountTeamArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        time of last update.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+
+@pulumi.input_type
+class _AccountTeamState:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 team_id: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccountTeam resources.
+        :param pulumi.Input[str] account_id: is a unique account id.
+        :param pulumi.Input[str] create_time: time of creation.
+        :param pulumi.Input[str] name: defines an account team name.
+        :param pulumi.Input[str] team_id: is an auto-generated unique account team id.
+        :param pulumi.Input[str] update_time: time of last update.
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if team_id is not None:
+            pulumi.set(__self__, "team_id", team_id)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a unique account id.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        time of creation.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        defines an account team name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        is an auto-generated unique account team id.
+        """
+        return pulumi.get(self, "team_id")
+
+    @team_id.setter
+    def team_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team_id", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -153,15 +241,15 @@ class AccountTeam(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccountTeamArgs.__new__(AccountTeamArgs)
 
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
-            __props__['account_id'] = account_id
-            __props__['create_time'] = create_time
-            __props__['name'] = name
-            __props__['update_time'] = update_time
-            __props__['team_id'] = None
+            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["create_time"] = create_time
+            __props__.__dict__["name"] = name
+            __props__.__dict__["update_time"] = update_time
+            __props__.__dict__["team_id"] = None
         super(AccountTeam, __self__).__init__(
             'aiven:index/accountTeam:AccountTeam',
             resource_name,
@@ -192,13 +280,13 @@ class AccountTeam(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccountTeamState.__new__(_AccountTeamState)
 
-        __props__["account_id"] = account_id
-        __props__["create_time"] = create_time
-        __props__["name"] = name
-        __props__["team_id"] = team_id
-        __props__["update_time"] = update_time
+        __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["name"] = name
+        __props__.__dict__["team_id"] = team_id
+        __props__.__dict__["update_time"] = update_time
         return AccountTeam(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -240,10 +328,4 @@ class AccountTeam(pulumi.CustomResource):
         time of last update.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

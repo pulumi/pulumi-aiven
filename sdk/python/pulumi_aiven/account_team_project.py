@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['AccountTeamProjectArgs', 'AccountTeamProject']
 
@@ -67,6 +67,80 @@ class AccountTeamProjectArgs:
     @project_name.setter
     def project_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_name", value)
+
+    @property
+    @pulumi.getter(name="teamType")
+    def team_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        is an account team project type, can one of the following values: `admin`, 
+        `developer`, `operator` and `read_only`.
+        """
+        return pulumi.get(self, "team_type")
+
+    @team_type.setter
+    def team_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team_type", value)
+
+
+@pulumi.input_type
+class _AccountTeamProjectState:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
+                 team_id: Optional[pulumi.Input[str]] = None,
+                 team_type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccountTeamProject resources.
+        :param pulumi.Input[str] account_id: is a unique account id.
+        :param pulumi.Input[str] project_name: is a project name of already existing project.
+        :param pulumi.Input[str] team_id: is an account team id.
+        :param pulumi.Input[str] team_type: is an account team project type, can one of the following values: `admin`, 
+               `developer`, `operator` and `read_only`.
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if project_name is not None:
+            pulumi.set(__self__, "project_name", project_name)
+        if team_id is not None:
+            pulumi.set(__self__, "team_id", team_id)
+        if team_type is not None:
+            pulumi.set(__self__, "team_type", team_type)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a unique account id.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a project name of already existing project.
+        """
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_name", value)
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        is an account team id.
+        """
+        return pulumi.get(self, "team_id")
+
+    @team_id.setter
+    def team_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team_id", value)
 
     @property
     @pulumi.getter(name="teamType")
@@ -163,16 +237,16 @@ class AccountTeamProject(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccountTeamProjectArgs.__new__(AccountTeamProjectArgs)
 
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
-            __props__['account_id'] = account_id
-            __props__['project_name'] = project_name
+            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["project_name"] = project_name
             if team_id is None and not opts.urn:
                 raise TypeError("Missing required property 'team_id'")
-            __props__['team_id'] = team_id
-            __props__['team_type'] = team_type
+            __props__.__dict__["team_id"] = team_id
+            __props__.__dict__["team_type"] = team_type
         super(AccountTeamProject, __self__).__init__(
             'aiven:index/accountTeamProject:AccountTeamProject',
             resource_name,
@@ -202,12 +276,12 @@ class AccountTeamProject(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccountTeamProjectState.__new__(_AccountTeamProjectState)
 
-        __props__["account_id"] = account_id
-        __props__["project_name"] = project_name
-        __props__["team_id"] = team_id
-        __props__["team_type"] = team_type
+        __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["project_name"] = project_name
+        __props__.__dict__["team_id"] = team_id
+        __props__.__dict__["team_type"] = team_type
         return AccountTeamProject(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -242,10 +316,4 @@ class AccountTeamProject(pulumi.CustomResource):
         `developer`, `operator` and `read_only`.
         """
         return pulumi.get(self, "team_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

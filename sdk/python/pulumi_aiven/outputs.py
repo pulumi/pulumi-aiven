@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 
 __all__ = [
@@ -471,12 +471,36 @@ class CassandraCassandra(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CassandraCassandraUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "migrateSstableloader":
+            suggest = "migrate_sstableloader"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CassandraCassandraUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CassandraCassandraUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CassandraCassandraUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cassandra: Optional['outputs.CassandraCassandraUserConfigCassandra'] = None,
                  ip_filters: Optional[Sequence[str]] = None,
@@ -565,12 +589,28 @@ class CassandraCassandraUserConfig(dict):
         """
         return pulumi.get(self, "service_to_fork_from")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CassandraCassandraUserConfigCassandra(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchSizeFailThresholdInKb":
+            suggest = "batch_size_fail_threshold_in_kb"
+        elif key == "batchSizeWarnThresholdInKb":
+            suggest = "batch_size_warn_threshold_in_kb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CassandraCassandraUserConfigCassandra. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CassandraCassandraUserConfigCassandra.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CassandraCassandraUserConfigCassandra.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  batch_size_fail_threshold_in_kb: Optional[str] = None,
                  batch_size_warn_threshold_in_kb: Optional[str] = None):
@@ -605,9 +645,6 @@ class CassandraCassandraUserConfigCassandra(dict):
         """
         return pulumi.get(self, "batch_size_warn_threshold_in_kb")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CassandraCassandraUserConfigPrivateAccess(dict):
@@ -628,9 +665,6 @@ class CassandraCassandraUserConfigPrivateAccess(dict):
         for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "prometheus")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -653,12 +687,26 @@ class CassandraCassandraUserConfigPublicAccess(dict):
         """
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CassandraComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaAuthenticationMethod":
+            suggest = "kafka_authentication_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CassandraComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CassandraComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CassandraComponent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component: Optional[str] = None,
                  host: Optional[str] = None,
@@ -717,12 +765,28 @@ class CassandraComponent(dict):
     def usage(self) -> Optional[str]:
         return pulumi.get(self, "usage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CassandraServiceIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "sourceServiceName":
+            suggest = "source_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CassandraServiceIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CassandraServiceIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CassandraServiceIntegration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):
@@ -738,9 +802,6 @@ class CassandraServiceIntegration(dict):
     @pulumi.getter(name="sourceServiceName")
     def source_service_name(self) -> str:
         return pulumi.get(self, "source_service_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -761,9 +822,6 @@ class ElasticSearchAclAcl(dict):
     def username(self) -> str:
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElasticSearchAclAclRule(dict):
@@ -783,12 +841,26 @@ class ElasticSearchAclAclRule(dict):
     def permission(self) -> str:
         return pulumi.get(self, "permission")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElasticSearchComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaAuthenticationMethod":
+            suggest = "kafka_authentication_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElasticSearchComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElasticSearchComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElasticSearchComponent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component: Optional[str] = None,
                  host: Optional[str] = None,
@@ -847,12 +919,26 @@ class ElasticSearchComponent(dict):
     def usage(self) -> Optional[str]:
         return pulumi.get(self, "usage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElasticSearchElasticsearch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kibanaUri":
+            suggest = "kibana_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElasticSearchElasticsearch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElasticSearchElasticsearch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElasticSearchElasticsearch.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kibana_uri: Optional[str] = None):
         """
@@ -869,12 +955,50 @@ class ElasticSearchElasticsearch(dict):
         """
         return pulumi.get(self, "kibana_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElasticSearchElasticsearchUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customDomain":
+            suggest = "custom_domain"
+        elif key == "disableReplicationFactorAdjustment":
+            suggest = "disable_replication_factor_adjustment"
+        elif key == "elasticsearchVersion":
+            suggest = "elasticsearch_version"
+        elif key == "indexPatterns":
+            suggest = "index_patterns"
+        elif key == "indexTemplate":
+            suggest = "index_template"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "maxIndexCount":
+            suggest = "max_index_count"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "recoveryBasebackupName":
+            suggest = "recovery_basebackup_name"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElasticSearchElasticsearchUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElasticSearchElasticsearchUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElasticSearchElasticsearchUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
                  disable_replication_factor_adjustment: Optional[str] = None,
@@ -1077,12 +1201,74 @@ class ElasticSearchElasticsearchUserConfig(dict):
         """
         return pulumi.get(self, "service_to_fork_from")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionAutoCreateIndexEnabled":
+            suggest = "action_auto_create_index_enabled"
+        elif key == "actionDestructiveRequiresName":
+            suggest = "action_destructive_requires_name"
+        elif key == "clusterMaxShardsPerNode":
+            suggest = "cluster_max_shards_per_node"
+        elif key == "httpMaxContentLength":
+            suggest = "http_max_content_length"
+        elif key == "httpMaxHeaderSize":
+            suggest = "http_max_header_size"
+        elif key == "httpMaxInitialLineLength":
+            suggest = "http_max_initial_line_length"
+        elif key == "indicesFielddataCacheSize":
+            suggest = "indices_fielddata_cache_size"
+        elif key == "indicesMemoryIndexBufferSize":
+            suggest = "indices_memory_index_buffer_size"
+        elif key == "indicesQueriesCacheSize":
+            suggest = "indices_queries_cache_size"
+        elif key == "indicesQueryBoolMaxClauseCount":
+            suggest = "indices_query_bool_max_clause_count"
+        elif key == "reindexRemoteWhitelists":
+            suggest = "reindex_remote_whitelists"
+        elif key == "searchMaxBuckets":
+            suggest = "search_max_buckets"
+        elif key == "threadPoolAnalyzeQueueSize":
+            suggest = "thread_pool_analyze_queue_size"
+        elif key == "threadPoolAnalyzeSize":
+            suggest = "thread_pool_analyze_size"
+        elif key == "threadPoolForceMergeSize":
+            suggest = "thread_pool_force_merge_size"
+        elif key == "threadPoolGetQueueSize":
+            suggest = "thread_pool_get_queue_size"
+        elif key == "threadPoolGetSize":
+            suggest = "thread_pool_get_size"
+        elif key == "threadPoolIndexQueueSize":
+            suggest = "thread_pool_index_queue_size"
+        elif key == "threadPoolIndexSize":
+            suggest = "thread_pool_index_size"
+        elif key == "threadPoolSearchQueueSize":
+            suggest = "thread_pool_search_queue_size"
+        elif key == "threadPoolSearchSize":
+            suggest = "thread_pool_search_size"
+        elif key == "threadPoolSearchThrottledQueueSize":
+            suggest = "thread_pool_search_throttled_queue_size"
+        elif key == "threadPoolSearchThrottledSize":
+            suggest = "thread_pool_search_throttled_size"
+        elif key == "threadPoolWriteQueueSize":
+            suggest = "thread_pool_write_queue_size"
+        elif key == "threadPoolWriteSize":
+            suggest = "thread_pool_write_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElasticSearchElasticsearchUserConfigElasticsearch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElasticSearchElasticsearchUserConfigElasticsearch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElasticSearchElasticsearchUserConfigElasticsearch.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action_auto_create_index_enabled: Optional[str] = None,
                  action_destructive_requires_name: Optional[str] = None,
@@ -1459,12 +1645,28 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
         """
         return pulumi.get(self, "thread_pool_write_size")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElasticSearchElasticsearchUserConfigIndexPattern(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxIndexCount":
+            suggest = "max_index_count"
+        elif key == "sortingAlgorithm":
+            suggest = "sorting_algorithm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElasticSearchElasticsearchUserConfigIndexPattern. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElasticSearchElasticsearchUserConfigIndexPattern.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElasticSearchElasticsearchUserConfigIndexPattern.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_index_count: Optional[str] = None,
                  pattern: Optional[str] = None,
@@ -1507,12 +1709,30 @@ class ElasticSearchElasticsearchUserConfigIndexPattern(dict):
         """
         return pulumi.get(self, "sorting_algorithm")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElasticSearchElasticsearchUserConfigIndexTemplate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mappingNestedObjectsLimit":
+            suggest = "mapping_nested_objects_limit"
+        elif key == "numberOfReplicas":
+            suggest = "number_of_replicas"
+        elif key == "numberOfShards":
+            suggest = "number_of_shards"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElasticSearchElasticsearchUserConfigIndexTemplate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElasticSearchElasticsearchUserConfigIndexTemplate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElasticSearchElasticsearchUserConfigIndexTemplate.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mapping_nested_objects_limit: Optional[str] = None,
                  number_of_replicas: Optional[str] = None,
@@ -1557,12 +1777,28 @@ class ElasticSearchElasticsearchUserConfigIndexTemplate(dict):
         """
         return pulumi.get(self, "number_of_shards")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElasticSearchElasticsearchUserConfigKibana(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "elasticsearchRequestTimeout":
+            suggest = "elasticsearch_request_timeout"
+        elif key == "maxOldSpaceSize":
+            suggest = "max_old_space_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElasticSearchElasticsearchUserConfigKibana. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElasticSearchElasticsearchUserConfigKibana.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElasticSearchElasticsearchUserConfigKibana.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  elasticsearch_request_timeout: Optional[str] = None,
                  enabled: Optional[str] = None,
@@ -1608,9 +1844,6 @@ class ElasticSearchElasticsearchUserConfigKibana(dict):
         the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
         """
         return pulumi.get(self, "max_old_space_size")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1661,9 +1894,6 @@ class ElasticSearchElasticsearchUserConfigPrivateAccess(dict):
         """
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElasticSearchElasticsearchUserConfigPrivatelinkAccess(dict):
@@ -1698,9 +1928,6 @@ class ElasticSearchElasticsearchUserConfigPrivatelinkAccess(dict):
         service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "kibana")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1751,12 +1978,28 @@ class ElasticSearchElasticsearchUserConfigPublicAccess(dict):
         """
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElasticSearchServiceIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "sourceServiceName":
+            suggest = "source_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElasticSearchServiceIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElasticSearchServiceIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElasticSearchServiceIntegration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):
@@ -1773,12 +2016,26 @@ class ElasticSearchServiceIntegration(dict):
     def source_service_name(self) -> str:
         return pulumi.get(self, "source_service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GrafanaComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaAuthenticationMethod":
+            suggest = "kafka_authentication_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafanaComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafanaComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafanaComponent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component: Optional[str] = None,
                  host: Optional[str] = None,
@@ -1847,21 +2104,92 @@ class GrafanaComponent(dict):
     def usage(self) -> Optional[str]:
         return pulumi.get(self, "usage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GrafanaGrafana(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GrafanaGrafanaUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alertingEnabled":
+            suggest = "alerting_enabled"
+        elif key == "alertingErrorOrTimeout":
+            suggest = "alerting_error_or_timeout"
+        elif key == "alertingNodataOrNullvalues":
+            suggest = "alerting_nodata_or_nullvalues"
+        elif key == "allowEmbedding":
+            suggest = "allow_embedding"
+        elif key == "authBasicEnabled":
+            suggest = "auth_basic_enabled"
+        elif key == "authGenericOauth":
+            suggest = "auth_generic_oauth"
+        elif key == "authGithub":
+            suggest = "auth_github"
+        elif key == "authGitlab":
+            suggest = "auth_gitlab"
+        elif key == "authGoogle":
+            suggest = "auth_google"
+        elif key == "cookieSamesite":
+            suggest = "cookie_samesite"
+        elif key == "customDomain":
+            suggest = "custom_domain"
+        elif key == "dashboardsMinRefreshInterval":
+            suggest = "dashboards_min_refresh_interval"
+        elif key == "dashboardsVersionsToKeep":
+            suggest = "dashboards_versions_to_keep"
+        elif key == "dataproxySendUserHeader":
+            suggest = "dataproxy_send_user_header"
+        elif key == "dataproxyTimeout":
+            suggest = "dataproxy_timeout"
+        elif key == "disableGravatar":
+            suggest = "disable_gravatar"
+        elif key == "editorsCanAdmin":
+            suggest = "editors_can_admin"
+        elif key == "externalImageStorage":
+            suggest = "external_image_storage"
+        elif key == "googleAnalyticsUaId":
+            suggest = "google_analytics_ua_id"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "metricsEnabled":
+            suggest = "metrics_enabled"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "recoveryBasebackupName":
+            suggest = "recovery_basebackup_name"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+        elif key == "smtpServer":
+            suggest = "smtp_server"
+        elif key == "userAutoAssignOrg":
+            suggest = "user_auto_assign_org"
+        elif key == "userAutoAssignOrgRole":
+            suggest = "user_auto_assign_org_role"
+        elif key == "viewersCanEdit":
+            suggest = "viewers_can_edit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafanaGrafanaUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafanaGrafanaUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafanaGrafanaUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alerting_enabled: Optional[str] = None,
                  alerting_error_or_timeout: Optional[str] = None,
@@ -2252,12 +2580,40 @@ class GrafanaGrafanaUserConfig(dict):
         """
         return pulumi.get(self, "viewers_can_edit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GrafanaGrafanaUserConfigAuthGenericOauth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowSignUp":
+            suggest = "allow_sign_up"
+        elif key == "allowedDomains":
+            suggest = "allowed_domains"
+        elif key == "allowedOrganizations":
+            suggest = "allowed_organizations"
+        elif key == "apiUrl":
+            suggest = "api_url"
+        elif key == "authUrl":
+            suggest = "auth_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "tokenUrl":
+            suggest = "token_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafanaGrafanaUserConfigAuthGenericOauth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafanaGrafanaUserConfigAuthGenericOauth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafanaGrafanaUserConfigAuthGenericOauth.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_sign_up: Optional[str] = None,
                  allowed_domains: Optional[Sequence[str]] = None,
@@ -2382,12 +2738,34 @@ class GrafanaGrafanaUserConfigAuthGenericOauth(dict):
         """
         return pulumi.get(self, "token_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GrafanaGrafanaUserConfigAuthGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowSignUp":
+            suggest = "allow_sign_up"
+        elif key == "allowedOrganizations":
+            suggest = "allowed_organizations"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "teamIds":
+            suggest = "team_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafanaGrafanaUserConfigAuthGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafanaGrafanaUserConfigAuthGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafanaGrafanaUserConfigAuthGithub.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_sign_up: Optional[str] = None,
                  allowed_organizations: Optional[Sequence[str]] = None,
@@ -2452,12 +2830,38 @@ class GrafanaGrafanaUserConfigAuthGithub(dict):
         """
         return pulumi.get(self, "team_ids")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GrafanaGrafanaUserConfigAuthGitlab(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowSignUp":
+            suggest = "allow_sign_up"
+        elif key == "allowedGroups":
+            suggest = "allowed_groups"
+        elif key == "apiUrl":
+            suggest = "api_url"
+        elif key == "authUrl":
+            suggest = "auth_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "tokenUrl":
+            suggest = "token_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafanaGrafanaUserConfigAuthGitlab. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafanaGrafanaUserConfigAuthGitlab.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafanaGrafanaUserConfigAuthGitlab.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_sign_up: Optional[str] = None,
                  allowed_groups: Optional[Sequence[str]] = None,
@@ -2546,12 +2950,32 @@ class GrafanaGrafanaUserConfigAuthGitlab(dict):
         """
         return pulumi.get(self, "token_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GrafanaGrafanaUserConfigAuthGoogle(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowSignUp":
+            suggest = "allow_sign_up"
+        elif key == "allowedDomains":
+            suggest = "allowed_domains"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafanaGrafanaUserConfigAuthGoogle. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafanaGrafanaUserConfigAuthGoogle.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafanaGrafanaUserConfigAuthGoogle.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_sign_up: Optional[str] = None,
                  allowed_domains: Optional[Sequence[str]] = None,
@@ -2604,12 +3028,30 @@ class GrafanaGrafanaUserConfigAuthGoogle(dict):
         """
         return pulumi.get(self, "client_secret")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GrafanaGrafanaUserConfigExternalImageStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKey":
+            suggest = "access_key"
+        elif key == "bucketUrl":
+            suggest = "bucket_url"
+        elif key == "secretKey":
+            suggest = "secret_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafanaGrafanaUserConfigExternalImageStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafanaGrafanaUserConfigExternalImageStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafanaGrafanaUserConfigExternalImageStorage.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_key: Optional[str] = None,
                  bucket_url: Optional[str] = None,
@@ -2664,9 +3106,6 @@ class GrafanaGrafanaUserConfigExternalImageStorage(dict):
         """
         return pulumi.get(self, "secret_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GrafanaGrafanaUserConfigPrivateAccess(dict):
@@ -2687,9 +3126,6 @@ class GrafanaGrafanaUserConfigPrivateAccess(dict):
         are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "grafana")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2712,9 +3148,6 @@ class GrafanaGrafanaUserConfigPrivatelinkAccess(dict):
         """
         return pulumi.get(self, "grafana")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GrafanaGrafanaUserConfigPublicAccess(dict):
@@ -2736,12 +3169,32 @@ class GrafanaGrafanaUserConfigPublicAccess(dict):
         """
         return pulumi.get(self, "grafana")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GrafanaGrafanaUserConfigSmtpServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fromAddress":
+            suggest = "from_address"
+        elif key == "fromName":
+            suggest = "from_name"
+        elif key == "skipVerify":
+            suggest = "skip_verify"
+        elif key == "starttlsPolicy":
+            suggest = "starttls_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafanaGrafanaUserConfigSmtpServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafanaGrafanaUserConfigSmtpServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafanaGrafanaUserConfigSmtpServer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  from_address: Optional[str] = None,
                  from_name: Optional[str] = None,
@@ -2844,12 +3297,28 @@ class GrafanaGrafanaUserConfigSmtpServer(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GrafanaServiceIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "sourceServiceName":
+            suggest = "source_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafanaServiceIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafanaServiceIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafanaServiceIntegration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):
@@ -2866,12 +3335,26 @@ class GrafanaServiceIntegration(dict):
     def source_service_name(self) -> str:
         return pulumi.get(self, "source_service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InfluxDbComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaAuthenticationMethod":
+            suggest = "kafka_authentication_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfluxDbComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfluxDbComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfluxDbComponent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component: Optional[str] = None,
                  host: Optional[str] = None,
@@ -2930,12 +3413,26 @@ class InfluxDbComponent(dict):
     def usage(self) -> Optional[str]:
         return pulumi.get(self, "usage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InfluxDbInfluxdb(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseName":
+            suggest = "database_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfluxDbInfluxdb. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfluxDbInfluxdb.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfluxDbInfluxdb.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  database_name: Optional[str] = None):
         if database_name is not None:
@@ -2946,12 +3443,40 @@ class InfluxDbInfluxdb(dict):
     def database_name(self) -> Optional[str]:
         return pulumi.get(self, "database_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InfluxDbInfluxdbUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customDomain":
+            suggest = "custom_domain"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "recoveryBasebackupName":
+            suggest = "recovery_basebackup_name"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfluxDbInfluxdbUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfluxDbInfluxdbUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfluxDbInfluxdbUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
                  influxdb: Optional['outputs.InfluxDbInfluxdbUserConfigInfluxdb'] = None,
@@ -3068,12 +3593,34 @@ class InfluxDbInfluxdbUserConfig(dict):
         """
         return pulumi.get(self, "service_to_fork_from")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InfluxDbInfluxdbUserConfigInfluxdb(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logQueriesAfter":
+            suggest = "log_queries_after"
+        elif key == "maxRowLimit":
+            suggest = "max_row_limit"
+        elif key == "maxSelectBuckets":
+            suggest = "max_select_buckets"
+        elif key == "maxSelectPoint":
+            suggest = "max_select_point"
+        elif key == "queryTimeout":
+            suggest = "query_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfluxDbInfluxdbUserConfigInfluxdb. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfluxDbInfluxdbUserConfigInfluxdb.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfluxDbInfluxdbUserConfigInfluxdb.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  log_queries_after: Optional[str] = None,
                  max_row_limit: Optional[str] = None,
@@ -3150,9 +3697,6 @@ class InfluxDbInfluxdbUserConfigInfluxdb(dict):
         """
         return pulumi.get(self, "query_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InfluxDbInfluxdbUserConfigPrivateAccess(dict):
@@ -3171,9 +3715,6 @@ class InfluxDbInfluxdbUserConfigPrivateAccess(dict):
         influxdb.conf configuration values
         """
         return pulumi.get(self, "influxdb")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3194,9 +3735,6 @@ class InfluxDbInfluxdbUserConfigPrivatelinkAccess(dict):
         """
         return pulumi.get(self, "influxdb")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InfluxDbInfluxdbUserConfigPublicAccess(dict):
@@ -3216,12 +3754,28 @@ class InfluxDbInfluxdbUserConfigPublicAccess(dict):
         """
         return pulumi.get(self, "influxdb")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InfluxDbServiceIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "sourceServiceName":
+            suggest = "source_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfluxDbServiceIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfluxDbServiceIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfluxDbServiceIntegration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):
@@ -3238,12 +3792,26 @@ class InfluxDbServiceIntegration(dict):
     def source_service_name(self) -> str:
         return pulumi.get(self, "source_service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaAuthenticationMethod":
+            suggest = "kafka_authentication_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaComponent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component: Optional[str] = None,
                  host: Optional[str] = None,
@@ -3301,13 +3869,27 @@ class KafkaComponent(dict):
     @pulumi.getter
     def usage(self) -> Optional[str]:
         return pulumi.get(self, "usage")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class KafkaConnectComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaAuthenticationMethod":
+            suggest = "kafka_authentication_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaConnectComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaConnectComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaConnectComponent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component: Optional[str] = None,
                  host: Optional[str] = None,
@@ -3365,9 +3947,6 @@ class KafkaConnectComponent(dict):
     @pulumi.getter
     def usage(self) -> Optional[str]:
         return pulumi.get(self, "usage")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3375,12 +3954,34 @@ class KafkaConnectKafkaConnect(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaConnectKafkaConnectUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "kafkaConnect":
+            suggest = "kafka_connect"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "publicAccess":
+            suggest = "public_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaConnectKafkaConnectUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaConnectKafkaConnectUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaConnectKafkaConnectUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_filters: Optional[Sequence[str]] = None,
                  kafka_connect: Optional['outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect'] = None,
@@ -3447,12 +4048,46 @@ class KafkaConnectKafkaConnectUserConfig(dict):
         """
         return pulumi.get(self, "public_access")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorClientConfigOverridePolicy":
+            suggest = "connector_client_config_override_policy"
+        elif key == "consumerAutoOffsetReset":
+            suggest = "consumer_auto_offset_reset"
+        elif key == "consumerFetchMaxBytes":
+            suggest = "consumer_fetch_max_bytes"
+        elif key == "consumerIsolationLevel":
+            suggest = "consumer_isolation_level"
+        elif key == "consumerMaxPartitionFetchBytes":
+            suggest = "consumer_max_partition_fetch_bytes"
+        elif key == "consumerMaxPollIntervalMs":
+            suggest = "consumer_max_poll_interval_ms"
+        elif key == "consumerMaxPollRecords":
+            suggest = "consumer_max_poll_records"
+        elif key == "offsetFlushIntervalMs":
+            suggest = "offset_flush_interval_ms"
+        elif key == "offsetFlushTimeoutMs":
+            suggest = "offset_flush_timeout_ms"
+        elif key == "producerMaxRequestSize":
+            suggest = "producer_max_request_size"
+        elif key == "sessionTimeoutMs":
+            suggest = "session_timeout_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaConnectKafkaConnectUserConfigKafkaConnect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaConnectKafkaConnectUserConfigKafkaConnect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaConnectKafkaConnectUserConfigKafkaConnect.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[str] = None,
                  consumer_auto_offset_reset: Optional[str] = None,
@@ -3617,12 +4252,26 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
         """
         return pulumi.get(self, "session_timeout_ms")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaConnectKafkaConnectUserConfigPrivateAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaConnect":
+            suggest = "kafka_connect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaConnectKafkaConnectUserConfigPrivateAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaConnectKafkaConnectUserConfigPrivateAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaConnectKafkaConnectUserConfigPrivateAccess.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kafka_connect: Optional[str] = None,
                  prometheus: Optional[str] = None):
@@ -3655,12 +4304,26 @@ class KafkaConnectKafkaConnectUserConfigPrivateAccess(dict):
         """
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaConnectKafkaConnectUserConfigPrivatelinkAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaConnect":
+            suggest = "kafka_connect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaConnectKafkaConnectUserConfigPrivatelinkAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaConnectKafkaConnectUserConfigPrivatelinkAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaConnectKafkaConnectUserConfigPrivatelinkAccess.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kafka_connect: Optional[str] = None):
         """
@@ -3679,12 +4342,26 @@ class KafkaConnectKafkaConnectUserConfigPrivatelinkAccess(dict):
         """
         return pulumi.get(self, "kafka_connect")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaConnectKafkaConnectUserConfigPublicAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaConnect":
+            suggest = "kafka_connect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaConnectKafkaConnectUserConfigPublicAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaConnectKafkaConnectUserConfigPublicAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaConnectKafkaConnectUserConfigPublicAccess.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kafka_connect: Optional[str] = None,
                  prometheus: Optional[str] = None):
@@ -3717,12 +4394,28 @@ class KafkaConnectKafkaConnectUserConfigPublicAccess(dict):
         """
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaConnectServiceIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "sourceServiceName":
+            suggest = "source_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaConnectServiceIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaConnectServiceIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaConnectServiceIntegration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):
@@ -3738,9 +4431,6 @@ class KafkaConnectServiceIntegration(dict):
     @pulumi.getter(name="sourceServiceName")
     def source_service_name(self) -> str:
         return pulumi.get(self, "source_service_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3771,12 +4461,34 @@ class KafkaConnectorTask(dict):
         """
         return pulumi.get(self, "task")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaKafka(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessCert":
+            suggest = "access_cert"
+        elif key == "accessKey":
+            suggest = "access_key"
+        elif key == "connectUri":
+            suggest = "connect_uri"
+        elif key == "restUri":
+            suggest = "rest_uri"
+        elif key == "schemaRegistryUri":
+            suggest = "schema_registry_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafka. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafka.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafka.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_cert: Optional[str] = None,
                  access_key: Optional[str] = None,
@@ -3841,12 +4553,50 @@ class KafkaKafka(dict):
         """
         return pulumi.get(self, "schema_registry_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaKafkaUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customDomain":
+            suggest = "custom_domain"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "kafkaAuthenticationMethods":
+            suggest = "kafka_authentication_methods"
+        elif key == "kafkaConnect":
+            suggest = "kafka_connect"
+        elif key == "kafkaConnectConfig":
+            suggest = "kafka_connect_config"
+        elif key == "kafkaRest":
+            suggest = "kafka_rest"
+        elif key == "kafkaRestConfig":
+            suggest = "kafka_rest_config"
+        elif key == "kafkaVersion":
+            suggest = "kafka_version"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "schemaRegistry":
+            suggest = "schema_registry"
+        elif key == "schemaRegistryConfig":
+            suggest = "schema_registry_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafkaUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafkaUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafkaUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
                  ip_filters: Optional[Sequence[str]] = None,
@@ -4019,12 +4769,102 @@ class KafkaKafkaUserConfig(dict):
         """
         return pulumi.get(self, "schema_registry_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaKafkaUserConfigKafka(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoCreateTopicsEnable":
+            suggest = "auto_create_topics_enable"
+        elif key == "compressionType":
+            suggest = "compression_type"
+        elif key == "connectionsMaxIdleMs":
+            suggest = "connections_max_idle_ms"
+        elif key == "defaultReplicationFactor":
+            suggest = "default_replication_factor"
+        elif key == "groupInitialRebalanceDelayMs":
+            suggest = "group_initial_rebalance_delay_ms"
+        elif key == "groupMaxSessionTimeoutMs":
+            suggest = "group_max_session_timeout_ms"
+        elif key == "groupMinSessionTimeoutMs":
+            suggest = "group_min_session_timeout_ms"
+        elif key == "logCleanerDeleteRetentionMs":
+            suggest = "log_cleaner_delete_retention_ms"
+        elif key == "logCleanerMaxCompactionLagMs":
+            suggest = "log_cleaner_max_compaction_lag_ms"
+        elif key == "logCleanerMinCleanableRatio":
+            suggest = "log_cleaner_min_cleanable_ratio"
+        elif key == "logCleanerMinCompactionLagMs":
+            suggest = "log_cleaner_min_compaction_lag_ms"
+        elif key == "logCleanupPolicy":
+            suggest = "log_cleanup_policy"
+        elif key == "logFlushIntervalMessages":
+            suggest = "log_flush_interval_messages"
+        elif key == "logFlushIntervalMs":
+            suggest = "log_flush_interval_ms"
+        elif key == "logIndexIntervalBytes":
+            suggest = "log_index_interval_bytes"
+        elif key == "logIndexSizeMaxBytes":
+            suggest = "log_index_size_max_bytes"
+        elif key == "logMessageDownconversionEnable":
+            suggest = "log_message_downconversion_enable"
+        elif key == "logMessageTimestampDifferenceMaxMs":
+            suggest = "log_message_timestamp_difference_max_ms"
+        elif key == "logMessageTimestampType":
+            suggest = "log_message_timestamp_type"
+        elif key == "logPreallocate":
+            suggest = "log_preallocate"
+        elif key == "logRetentionBytes":
+            suggest = "log_retention_bytes"
+        elif key == "logRetentionHours":
+            suggest = "log_retention_hours"
+        elif key == "logRetentionMs":
+            suggest = "log_retention_ms"
+        elif key == "logRollJitterMs":
+            suggest = "log_roll_jitter_ms"
+        elif key == "logRollMs":
+            suggest = "log_roll_ms"
+        elif key == "logSegmentBytes":
+            suggest = "log_segment_bytes"
+        elif key == "logSegmentDeleteDelayMs":
+            suggest = "log_segment_delete_delay_ms"
+        elif key == "maxConnectionsPerIp":
+            suggest = "max_connections_per_ip"
+        elif key == "maxIncrementalFetchSessionCacheSlots":
+            suggest = "max_incremental_fetch_session_cache_slots"
+        elif key == "messageMaxBytes":
+            suggest = "message_max_bytes"
+        elif key == "minInsyncReplicas":
+            suggest = "min_insync_replicas"
+        elif key == "numPartitions":
+            suggest = "num_partitions"
+        elif key == "offsetsRetentionMinutes":
+            suggest = "offsets_retention_minutes"
+        elif key == "producerPurgatoryPurgeIntervalRequests":
+            suggest = "producer_purgatory_purge_interval_requests"
+        elif key == "replicaFetchMaxBytes":
+            suggest = "replica_fetch_max_bytes"
+        elif key == "replicaFetchResponseMaxBytes":
+            suggest = "replica_fetch_response_max_bytes"
+        elif key == "socketRequestMaxBytes":
+            suggest = "socket_request_max_bytes"
+        elif key == "transactionRemoveExpiredTransactionCleanupIntervalMs":
+            suggest = "transaction_remove_expired_transaction_cleanup_interval_ms"
+        elif key == "transactionStateLogSegmentBytes":
+            suggest = "transaction_state_log_segment_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafkaUserConfigKafka. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafkaUserConfigKafka.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafkaUserConfigKafka.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_create_topics_enable: Optional[str] = None,
                  compression_type: Optional[str] = None,
@@ -4577,9 +5417,6 @@ class KafkaKafkaUserConfigKafka(dict):
         """
         return pulumi.get(self, "transaction_state_log_segment_bytes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaKafkaUserConfigKafkaAuthenticationMethods(dict):
@@ -4611,12 +5448,46 @@ class KafkaKafkaUserConfigKafkaAuthenticationMethods(dict):
         """
         return pulumi.get(self, "sasl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaKafkaUserConfigKafkaConnectConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorClientConfigOverridePolicy":
+            suggest = "connector_client_config_override_policy"
+        elif key == "consumerAutoOffsetReset":
+            suggest = "consumer_auto_offset_reset"
+        elif key == "consumerFetchMaxBytes":
+            suggest = "consumer_fetch_max_bytes"
+        elif key == "consumerIsolationLevel":
+            suggest = "consumer_isolation_level"
+        elif key == "consumerMaxPartitionFetchBytes":
+            suggest = "consumer_max_partition_fetch_bytes"
+        elif key == "consumerMaxPollIntervalMs":
+            suggest = "consumer_max_poll_interval_ms"
+        elif key == "consumerMaxPollRecords":
+            suggest = "consumer_max_poll_records"
+        elif key == "offsetFlushIntervalMs":
+            suggest = "offset_flush_interval_ms"
+        elif key == "offsetFlushTimeoutMs":
+            suggest = "offset_flush_timeout_ms"
+        elif key == "producerMaxRequestSize":
+            suggest = "producer_max_request_size"
+        elif key == "sessionTimeoutMs":
+            suggest = "session_timeout_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafkaUserConfigKafkaConnectConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafkaUserConfigKafkaConnectConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafkaUserConfigKafkaConnectConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[str] = None,
                  consumer_auto_offset_reset: Optional[str] = None,
@@ -4783,12 +5654,36 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
         """
         return pulumi.get(self, "session_timeout_ms")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaKafkaUserConfigKafkaRestConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumerEnableAutoCommit":
+            suggest = "consumer_enable_auto_commit"
+        elif key == "consumerRequestMaxBytes":
+            suggest = "consumer_request_max_bytes"
+        elif key == "consumerRequestTimeoutMs":
+            suggest = "consumer_request_timeout_ms"
+        elif key == "producerAcks":
+            suggest = "producer_acks"
+        elif key == "producerLingerMs":
+            suggest = "producer_linger_ms"
+        elif key == "simpleconsumerPoolSizeMax":
+            suggest = "simpleconsumer_pool_size_max"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafkaUserConfigKafkaRestConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafkaUserConfigKafkaRestConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafkaUserConfigKafkaRestConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  consumer_enable_auto_commit: Optional[str] = None,
                  consumer_request_max_bytes: Optional[str] = None,
@@ -4877,9 +5772,6 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
         """
         return pulumi.get(self, "simpleconsumer_pool_size_max")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaKafkaUserConfigPrivateAccess(dict):
@@ -4901,12 +5793,30 @@ class KafkaKafkaUserConfigPrivateAccess(dict):
         """
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaKafkaUserConfigPrivatelinkAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaConnect":
+            suggest = "kafka_connect"
+        elif key == "kafkaRest":
+            suggest = "kafka_rest"
+        elif key == "schemaRegistry":
+            suggest = "schema_registry"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafkaUserConfigPrivatelinkAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafkaUserConfigPrivatelinkAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafkaUserConfigPrivatelinkAccess.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kafka: Optional[str] = None,
                  kafka_connect: Optional[str] = None,
@@ -4959,12 +5869,30 @@ class KafkaKafkaUserConfigPrivatelinkAccess(dict):
         """
         return pulumi.get(self, "schema_registry")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaKafkaUserConfigPublicAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaConnect":
+            suggest = "kafka_connect"
+        elif key == "kafkaRest":
+            suggest = "kafka_rest"
+        elif key == "schemaRegistry":
+            suggest = "schema_registry"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafkaUserConfigPublicAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafkaUserConfigPublicAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafkaUserConfigPublicAccess.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kafka: Optional[str] = None,
                  kafka_connect: Optional[str] = None,
@@ -5031,12 +5959,28 @@ class KafkaKafkaUserConfigPublicAccess(dict):
         """
         return pulumi.get(self, "schema_registry")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaKafkaUserConfigSchemaRegistryConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "leaderEligibility":
+            suggest = "leader_eligibility"
+        elif key == "topicName":
+            suggest = "topic_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafkaUserConfigSchemaRegistryConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafkaUserConfigSchemaRegistryConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafkaUserConfigSchemaRegistryConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  leader_eligibility: Optional[str] = None,
                  topic_name: Optional[str] = None):
@@ -5081,12 +6025,26 @@ class KafkaKafkaUserConfigSchemaRegistryConfig(dict):
         """
         return pulumi.get(self, "topic_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaMirrorMakerComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaAuthenticationMethod":
+            suggest = "kafka_authentication_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaMirrorMakerComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaMirrorMakerComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaMirrorMakerComponent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component: Optional[str] = None,
                  host: Optional[str] = None,
@@ -5145,21 +6103,34 @@ class KafkaMirrorMakerComponent(dict):
     def usage(self) -> Optional[str]:
         return pulumi.get(self, "usage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaMirrorMakerKafkaMirrormaker(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "kafkaMirrormaker":
+            suggest = "kafka_mirrormaker"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaMirrorMakerKafkaMirrormakerUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaMirrorMakerKafkaMirrormakerUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaMirrorMakerKafkaMirrormakerUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_filters: Optional[Sequence[str]] = None,
                  kafka_mirrormaker: Optional['outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker'] = None):
@@ -5188,12 +6159,40 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
         """
         return pulumi.get(self, "kafka_mirrormaker")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emitCheckpointsEnabled":
+            suggest = "emit_checkpoints_enabled"
+        elif key == "emitCheckpointsIntervalSeconds":
+            suggest = "emit_checkpoints_interval_seconds"
+        elif key == "refreshGroupsEnabled":
+            suggest = "refresh_groups_enabled"
+        elif key == "refreshGroupsIntervalSeconds":
+            suggest = "refresh_groups_interval_seconds"
+        elif key == "refreshTopicsEnabled":
+            suggest = "refresh_topics_enabled"
+        elif key == "refreshTopicsIntervalSeconds":
+            suggest = "refresh_topics_interval_seconds"
+        elif key == "syncGroupOffsetsEnabled":
+            suggest = "sync_group_offsets_enabled"
+        elif key == "syncGroupOffsetsIntervalSeconds":
+            suggest = "sync_group_offsets_interval_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  emit_checkpoints_enabled: Optional[str] = None,
                  emit_checkpoints_interval_seconds: Optional[str] = None,
@@ -5294,12 +6293,28 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
         """
         return pulumi.get(self, "sync_group_offsets_interval_seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaMirrorMakerServiceIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "sourceServiceName":
+            suggest = "source_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaMirrorMakerServiceIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaMirrorMakerServiceIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaMirrorMakerServiceIntegration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):
@@ -5315,13 +6330,29 @@ class KafkaMirrorMakerServiceIntegration(dict):
     @pulumi.getter(name="sourceServiceName")
     def source_service_name(self) -> str:
         return pulumi.get(self, "source_service_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class KafkaServiceIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "sourceServiceName":
+            suggest = "source_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaServiceIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaServiceIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaServiceIntegration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):
@@ -5338,12 +6369,70 @@ class KafkaServiceIntegration(dict):
     def source_service_name(self) -> str:
         return pulumi.get(self, "source_service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaTopicConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cleanupPolicy":
+            suggest = "cleanup_policy"
+        elif key == "compressionType":
+            suggest = "compression_type"
+        elif key == "deleteRetentionMs":
+            suggest = "delete_retention_ms"
+        elif key == "fileDeleteDelayMs":
+            suggest = "file_delete_delay_ms"
+        elif key == "flushMessages":
+            suggest = "flush_messages"
+        elif key == "flushMs":
+            suggest = "flush_ms"
+        elif key == "indexIntervalBytes":
+            suggest = "index_interval_bytes"
+        elif key == "maxCompactionLagMs":
+            suggest = "max_compaction_lag_ms"
+        elif key == "maxMessageBytes":
+            suggest = "max_message_bytes"
+        elif key == "messageDownconversionEnable":
+            suggest = "message_downconversion_enable"
+        elif key == "messageFormatVersion":
+            suggest = "message_format_version"
+        elif key == "messageTimestampDifferenceMaxMs":
+            suggest = "message_timestamp_difference_max_ms"
+        elif key == "messageTimestampType":
+            suggest = "message_timestamp_type"
+        elif key == "minCleanableDirtyRatio":
+            suggest = "min_cleanable_dirty_ratio"
+        elif key == "minCompactionLagMs":
+            suggest = "min_compaction_lag_ms"
+        elif key == "minInsyncReplicas":
+            suggest = "min_insync_replicas"
+        elif key == "retentionBytes":
+            suggest = "retention_bytes"
+        elif key == "retentionMs":
+            suggest = "retention_ms"
+        elif key == "segmentBytes":
+            suggest = "segment_bytes"
+        elif key == "segmentIndexBytes":
+            suggest = "segment_index_bytes"
+        elif key == "segmentJitterMs":
+            suggest = "segment_jitter_ms"
+        elif key == "segmentMs":
+            suggest = "segment_ms"
+        elif key == "uncleanLeaderElectionEnable":
+            suggest = "unclean_leader_election_enable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaTopicConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaTopicConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaTopicConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cleanup_policy: Optional[str] = None,
                  compression_type: Optional[str] = None,
@@ -5636,9 +6725,6 @@ class KafkaTopicConfig(dict):
         """
         return pulumi.get(self, "unclean_leader_election_enable")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KafkaTopicTag(dict):
@@ -5659,12 +6745,26 @@ class KafkaTopicTag(dict):
     def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3AggregatorComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaAuthenticationMethod":
+            suggest = "kafka_authentication_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in M3AggregatorComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        M3AggregatorComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        M3AggregatorComponent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component: Optional[str] = None,
                  host: Optional[str] = None,
@@ -5723,21 +6823,38 @@ class M3AggregatorComponent(dict):
     def usage(self) -> Optional[str]:
         return pulumi.get(self, "usage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3AggregatorM3aggregator(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3AggregatorM3aggregatorUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customDomain":
+            suggest = "custom_domain"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "m3Version":
+            suggest = "m3_version"
+        elif key == "m3aggregatorVersion":
+            suggest = "m3aggregator_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in M3AggregatorM3aggregatorUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        M3AggregatorM3aggregatorUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        M3AggregatorM3aggregatorUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
                  ip_filters: Optional[Sequence[str]] = None,
@@ -5786,12 +6903,28 @@ class M3AggregatorM3aggregatorUserConfig(dict):
         """
         return pulumi.get(self, "m3aggregator_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3AggregatorServiceIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "sourceServiceName":
+            suggest = "source_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in M3AggregatorServiceIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        M3AggregatorServiceIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        M3AggregatorServiceIntegration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):
@@ -5808,12 +6941,26 @@ class M3AggregatorServiceIntegration(dict):
     def source_service_name(self) -> str:
         return pulumi.get(self, "source_service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3DbComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaAuthenticationMethod":
+            suggest = "kafka_authentication_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in M3DbComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        M3DbComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        M3DbComponent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component: Optional[str] = None,
                  host: Optional[str] = None,
@@ -5872,21 +7019,48 @@ class M3DbComponent(dict):
     def usage(self) -> Optional[str]:
         return pulumi.get(self, "usage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3DbM3db(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3DbM3dbUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customDomain":
+            suggest = "custom_domain"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "m3Version":
+            suggest = "m3_version"
+        elif key == "m3coordinatorEnableGraphiteCarbonIngest":
+            suggest = "m3coordinator_enable_graphite_carbon_ingest"
+        elif key == "m3dbVersion":
+            suggest = "m3db_version"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in M3DbM3dbUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        M3DbM3dbUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        M3DbM3dbUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
                  ip_filters: Optional[Sequence[str]] = None,
@@ -6043,12 +7217,32 @@ class M3DbM3dbUserConfig(dict):
         """
         return pulumi.get(self, "service_to_fork_from")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3DbM3dbUserConfigLimits(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "globalDatapoints":
+            suggest = "global_datapoints"
+        elif key == "queryDatapoints":
+            suggest = "query_datapoints"
+        elif key == "queryRequireExhaustive":
+            suggest = "query_require_exhaustive"
+        elif key == "querySeries":
+            suggest = "query_series"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in M3DbM3dbUserConfigLimits. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        M3DbM3dbUserConfigLimits.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        M3DbM3dbUserConfigLimits.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  global_datapoints: Optional[str] = None,
                  query_datapoints: Optional[str] = None,
@@ -6102,9 +7296,6 @@ class M3DbM3dbUserConfigLimits(dict):
         The maximum number of series fetched in single query
         """
         return pulumi.get(self, "query_series")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -6161,12 +7352,30 @@ class M3DbM3dbUserConfigNamespace(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3DbM3dbUserConfigNamespaceOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retentionOptions":
+            suggest = "retention_options"
+        elif key == "snapshotEnabled":
+            suggest = "snapshot_enabled"
+        elif key == "writesToCommitlog":
+            suggest = "writes_to_commitlog"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in M3DbM3dbUserConfigNamespaceOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        M3DbM3dbUserConfigNamespaceOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        M3DbM3dbUserConfigNamespaceOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  retention_options: Optional['outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions'] = None,
                  snapshot_enabled: Optional[str] = None,
@@ -6211,12 +7420,34 @@ class M3DbM3dbUserConfigNamespaceOptions(dict):
         """
         return pulumi.get(self, "writes_to_commitlog")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3DbM3dbUserConfigNamespaceOptionsRetentionOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockDataExpiryDuration":
+            suggest = "block_data_expiry_duration"
+        elif key == "blocksizeDuration":
+            suggest = "blocksize_duration"
+        elif key == "bufferFutureDuration":
+            suggest = "buffer_future_duration"
+        elif key == "bufferPastDuration":
+            suggest = "buffer_past_duration"
+        elif key == "retentionPeriodDuration":
+            suggest = "retention_period_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in M3DbM3dbUserConfigNamespaceOptionsRetentionOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        M3DbM3dbUserConfigNamespaceOptionsRetentionOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        M3DbM3dbUserConfigNamespaceOptionsRetentionOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  block_data_expiry_duration: Optional[str] = None,
                  blocksize_duration: Optional[str] = None,
@@ -6289,9 +7520,6 @@ class M3DbM3dbUserConfigNamespaceOptionsRetentionOptions(dict):
         """
         return pulumi.get(self, "retention_period_duration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3DbM3dbUserConfigPrivateAccess(dict):
@@ -6312,9 +7540,6 @@ class M3DbM3dbUserConfigPrivateAccess(dict):
         for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "m3coordinator")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -6337,9 +7562,6 @@ class M3DbM3dbUserConfigPublicAccess(dict):
         """
         return pulumi.get(self, "m3coordinator")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3DbM3dbUserConfigRules(dict):
@@ -6352,9 +7574,6 @@ class M3DbM3dbUserConfigRules(dict):
     @pulumi.getter
     def mappings(self) -> Optional[Sequence['outputs.M3DbM3dbUserConfigRulesMapping']]:
         return pulumi.get(self, "mappings")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -6427,9 +7646,6 @@ class M3DbM3dbUserConfigRulesMapping(dict):
         """
         return pulumi.get(self, "tags")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3DbM3dbUserConfigRulesMappingTag(dict):
@@ -6461,12 +7677,28 @@ class M3DbM3dbUserConfigRulesMappingTag(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class M3DbServiceIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "sourceServiceName":
+            suggest = "source_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in M3DbServiceIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        M3DbServiceIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        M3DbServiceIntegration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):
@@ -6483,12 +7715,26 @@ class M3DbServiceIntegration(dict):
     def source_service_name(self) -> str:
         return pulumi.get(self, "source_service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MySqlComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaAuthenticationMethod":
+            suggest = "kafka_authentication_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MySqlComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MySqlComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MySqlComponent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component: Optional[str] = None,
                  host: Optional[str] = None,
@@ -6561,21 +7807,54 @@ class MySqlComponent(dict):
     def usage(self) -> Optional[str]:
         return pulumi.get(self, "usage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MySqlMysql(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MySqlMysqlUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminPassword":
+            suggest = "admin_password"
+        elif key == "adminUsername":
+            suggest = "admin_username"
+        elif key == "backupHour":
+            suggest = "backup_hour"
+        elif key == "backupMinute":
+            suggest = "backup_minute"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "mysqlVersion":
+            suggest = "mysql_version"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "recoveryTargetTime":
+            suggest = "recovery_target_time"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MySqlMysqlUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MySqlMysqlUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MySqlMysqlUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  admin_password: Optional[str] = None,
                  admin_username: Optional[str] = None,
@@ -6764,12 +8043,26 @@ class MySqlMysqlUserConfig(dict):
         """
         return pulumi.get(self, "service_to_fork_from")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MySqlMysqlUserConfigMigration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreDbs":
+            suggest = "ignore_dbs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MySqlMysqlUserConfigMigration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MySqlMysqlUserConfigMigration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MySqlMysqlUserConfigMigration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dbname: Optional[str] = None,
                  host: Optional[str] = None,
@@ -6860,12 +8153,70 @@ class MySqlMysqlUserConfigMigration(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MySqlMysqlUserConfigMysql(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectTimeout":
+            suggest = "connect_timeout"
+        elif key == "defaultTimeZone":
+            suggest = "default_time_zone"
+        elif key == "groupConcatMaxLen":
+            suggest = "group_concat_max_len"
+        elif key == "informationSchemaStatsExpiry":
+            suggest = "information_schema_stats_expiry"
+        elif key == "innodbFtMinTokenSize":
+            suggest = "innodb_ft_min_token_size"
+        elif key == "innodbFtServerStopwordTable":
+            suggest = "innodb_ft_server_stopword_table"
+        elif key == "innodbLockWaitTimeout":
+            suggest = "innodb_lock_wait_timeout"
+        elif key == "innodbLogBufferSize":
+            suggest = "innodb_log_buffer_size"
+        elif key == "innodbOnlineAlterLogMaxSize":
+            suggest = "innodb_online_alter_log_max_size"
+        elif key == "innodbPrintAllDeadlocks":
+            suggest = "innodb_print_all_deadlocks"
+        elif key == "innodbRollbackOnTimeout":
+            suggest = "innodb_rollback_on_timeout"
+        elif key == "interactiveTimeout":
+            suggest = "interactive_timeout"
+        elif key == "longQueryTime":
+            suggest = "long_query_time"
+        elif key == "maxAllowedPacket":
+            suggest = "max_allowed_packet"
+        elif key == "maxHeapTableSize":
+            suggest = "max_heap_table_size"
+        elif key == "netReadTimeout":
+            suggest = "net_read_timeout"
+        elif key == "netWriteTimeout":
+            suggest = "net_write_timeout"
+        elif key == "slowQueryLog":
+            suggest = "slow_query_log"
+        elif key == "sortBufferSize":
+            suggest = "sort_buffer_size"
+        elif key == "sqlMode":
+            suggest = "sql_mode"
+        elif key == "sqlRequirePrimaryKey":
+            suggest = "sql_require_primary_key"
+        elif key == "tmpTableSize":
+            suggest = "tmp_table_size"
+        elif key == "waitTimeout":
+            suggest = "wait_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MySqlMysqlUserConfigMysql. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MySqlMysqlUserConfigMysql.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MySqlMysqlUserConfigMysql.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connect_timeout: Optional[str] = None,
                  default_time_zone: Optional[str] = None,
@@ -7198,9 +8549,6 @@ class MySqlMysqlUserConfigMysql(dict):
         """
         return pulumi.get(self, "wait_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MySqlMysqlUserConfigPrivateAccess(dict):
@@ -7236,9 +8584,6 @@ class MySqlMysqlUserConfigPrivateAccess(dict):
         """
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MySqlMysqlUserConfigPrivatelinkAccess(dict):
@@ -7259,9 +8604,6 @@ class MySqlMysqlUserConfigPrivatelinkAccess(dict):
         nodes that are in a project VPC or another type of private network
         """
         return pulumi.get(self, "mysql")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -7298,12 +8640,28 @@ class MySqlMysqlUserConfigPublicAccess(dict):
         """
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MySqlServiceIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "sourceServiceName":
+            suggest = "source_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MySqlServiceIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MySqlServiceIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MySqlServiceIntegration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):
@@ -7320,12 +8678,26 @@ class MySqlServiceIntegration(dict):
     def source_service_name(self) -> str:
         return pulumi.get(self, "source_service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PgComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaAuthenticationMethod":
+            suggest = "kafka_authentication_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PgComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PgComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PgComponent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component: Optional[str] = None,
                  host: Optional[str] = None,
@@ -7398,12 +8770,26 @@ class PgComponent(dict):
     def usage(self) -> Optional[str]:
         return pulumi.get(self, "usage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PgPg(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "replicaUri":
+            suggest = "replica_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PgPg. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PgPg.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PgPg.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dbname: Optional[str] = None,
                  host: Optional[str] = None,
@@ -7504,12 +8890,58 @@ class PgPg(dict):
         """
         return pulumi.get(self, "user")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PgPgUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminPassword":
+            suggest = "admin_password"
+        elif key == "adminUsername":
+            suggest = "admin_username"
+        elif key == "backupHour":
+            suggest = "backup_hour"
+        elif key == "backupMinute":
+            suggest = "backup_minute"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "pgReadReplica":
+            suggest = "pg_read_replica"
+        elif key == "pgServiceToForkFrom":
+            suggest = "pg_service_to_fork_from"
+        elif key == "pgVersion":
+            suggest = "pg_version"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "recoveryTargetTime":
+            suggest = "recovery_target_time"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+        elif key == "sharedBuffersPercentage":
+            suggest = "shared_buffers_percentage"
+        elif key == "synchronousReplication":
+            suggest = "synchronous_replication"
+        elif key == "workMem":
+            suggest = "work_mem"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PgPgUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PgPgUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PgPgUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  admin_password: Optional[str] = None,
                  admin_username: Optional[str] = None,
@@ -7818,12 +9250,26 @@ class PgPgUserConfig(dict):
         """
         return pulumi.get(self, "work_mem")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PgPgUserConfigMigration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreDbs":
+            suggest = "ignore_dbs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PgPgUserConfigMigration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PgPgUserConfigMigration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PgPgUserConfigMigration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dbname: Optional[str] = None,
                  host: Optional[str] = None,
@@ -7914,12 +9360,98 @@ class PgPgUserConfigMigration(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PgPgUserConfigPg(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autovacuumAnalyzeScaleFactor":
+            suggest = "autovacuum_analyze_scale_factor"
+        elif key == "autovacuumAnalyzeThreshold":
+            suggest = "autovacuum_analyze_threshold"
+        elif key == "autovacuumFreezeMaxAge":
+            suggest = "autovacuum_freeze_max_age"
+        elif key == "autovacuumMaxWorkers":
+            suggest = "autovacuum_max_workers"
+        elif key == "autovacuumNaptime":
+            suggest = "autovacuum_naptime"
+        elif key == "autovacuumVacuumCostDelay":
+            suggest = "autovacuum_vacuum_cost_delay"
+        elif key == "autovacuumVacuumCostLimit":
+            suggest = "autovacuum_vacuum_cost_limit"
+        elif key == "autovacuumVacuumScaleFactor":
+            suggest = "autovacuum_vacuum_scale_factor"
+        elif key == "autovacuumVacuumThreshold":
+            suggest = "autovacuum_vacuum_threshold"
+        elif key == "deadlockTimeout":
+            suggest = "deadlock_timeout"
+        elif key == "idleInTransactionSessionTimeout":
+            suggest = "idle_in_transaction_session_timeout"
+        elif key == "logAutovacuumMinDuration":
+            suggest = "log_autovacuum_min_duration"
+        elif key == "logErrorVerbosity":
+            suggest = "log_error_verbosity"
+        elif key == "logLinePrefix":
+            suggest = "log_line_prefix"
+        elif key == "logMinDurationStatement":
+            suggest = "log_min_duration_statement"
+        elif key == "maxFilesPerProcess":
+            suggest = "max_files_per_process"
+        elif key == "maxLocksPerTransaction":
+            suggest = "max_locks_per_transaction"
+        elif key == "maxLogicalReplicationWorkers":
+            suggest = "max_logical_replication_workers"
+        elif key == "maxParallelWorkers":
+            suggest = "max_parallel_workers"
+        elif key == "maxParallelWorkersPerGather":
+            suggest = "max_parallel_workers_per_gather"
+        elif key == "maxPredLocksPerTransaction":
+            suggest = "max_pred_locks_per_transaction"
+        elif key == "maxPreparedTransactions":
+            suggest = "max_prepared_transactions"
+        elif key == "maxReplicationSlots":
+            suggest = "max_replication_slots"
+        elif key == "maxStackDepth":
+            suggest = "max_stack_depth"
+        elif key == "maxStandbyArchiveDelay":
+            suggest = "max_standby_archive_delay"
+        elif key == "maxStandbyStreamingDelay":
+            suggest = "max_standby_streaming_delay"
+        elif key == "maxWalSenders":
+            suggest = "max_wal_senders"
+        elif key == "maxWorkerProcesses":
+            suggest = "max_worker_processes"
+        elif key == "pgPartmanBgwDotInterval":
+            suggest = "pg_partman_bgw_dot_interval"
+        elif key == "pgPartmanBgwDotRole":
+            suggest = "pg_partman_bgw_dot_role"
+        elif key == "pgStatStatementsDotTrack":
+            suggest = "pg_stat_statements_dot_track"
+        elif key == "tempFileLimit":
+            suggest = "temp_file_limit"
+        elif key == "trackActivityQuerySize":
+            suggest = "track_activity_query_size"
+        elif key == "trackCommitTimestamp":
+            suggest = "track_commit_timestamp"
+        elif key == "trackFunctions":
+            suggest = "track_functions"
+        elif key == "walSenderTimeout":
+            suggest = "wal_sender_timeout"
+        elif key == "walWriterDelay":
+            suggest = "wal_writer_delay"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PgPgUserConfigPg. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PgPgUserConfigPg.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PgPgUserConfigPg.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  autovacuum_analyze_scale_factor: Optional[str] = None,
                  autovacuum_analyze_threshold: Optional[str] = None,
@@ -8452,12 +9984,42 @@ class PgPgUserConfigPg(dict):
         """
         return pulumi.get(self, "wal_writer_delay")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PgPgUserConfigPgbouncer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autodbIdleTimeout":
+            suggest = "autodb_idle_timeout"
+        elif key == "autodbMaxDbConnections":
+            suggest = "autodb_max_db_connections"
+        elif key == "autodbPoolMode":
+            suggest = "autodb_pool_mode"
+        elif key == "autodbPoolSize":
+            suggest = "autodb_pool_size"
+        elif key == "ignoreStartupParameters":
+            suggest = "ignore_startup_parameters"
+        elif key == "minPoolSize":
+            suggest = "min_pool_size"
+        elif key == "serverIdleTimeout":
+            suggest = "server_idle_timeout"
+        elif key == "serverLifetime":
+            suggest = "server_lifetime"
+        elif key == "serverResetQueryAlways":
+            suggest = "server_reset_query_always"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PgPgUserConfigPgbouncer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PgPgUserConfigPgbouncer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PgPgUserConfigPgbouncer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  autodb_idle_timeout: Optional[str] = None,
                  autodb_max_db_connections: Optional[str] = None,
@@ -8584,12 +10146,26 @@ class PgPgUserConfigPgbouncer(dict):
         """
         return pulumi.get(self, "server_reset_query_always")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PgPgUserConfigPglookout(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxFailoverReplicationTimeLag":
+            suggest = "max_failover_replication_time_lag"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PgPgUserConfigPglookout. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PgPgUserConfigPglookout.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PgPgUserConfigPglookout.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_failover_replication_time_lag: Optional[str] = None):
         """
@@ -8607,9 +10183,6 @@ class PgPgUserConfigPglookout(dict):
         triggering database failover to standby
         """
         return pulumi.get(self, "max_failover_replication_time_lag")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -8656,9 +10229,6 @@ class PgPgUserConfigPrivateAccess(dict):
         """
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PgPgUserConfigPrivatelinkAccess(dict):
@@ -8689,9 +10259,6 @@ class PgPgUserConfigPrivatelinkAccess(dict):
         Enable pgbouncer.
         """
         return pulumi.get(self, "pgbouncer")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -8738,12 +10305,26 @@ class PgPgUserConfigPublicAccess(dict):
         """
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PgPgUserConfigTimescaledb(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBackgroundWorkers":
+            suggest = "max_background_workers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PgPgUserConfigTimescaledb. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PgPgUserConfigTimescaledb.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PgPgUserConfigTimescaledb.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_background_workers: Optional[str] = None):
         """
@@ -8764,12 +10345,28 @@ class PgPgUserConfigTimescaledb(dict):
         """
         return pulumi.get(self, "max_background_workers")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PgServiceIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "sourceServiceName":
+            suggest = "source_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PgServiceIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PgServiceIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PgServiceIntegration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):
@@ -8786,12 +10383,26 @@ class PgServiceIntegration(dict):
     def source_service_name(self) -> str:
         return pulumi.get(self, "source_service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RedisComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaAuthenticationMethod":
+            suggest = "kafka_authentication_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RedisComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RedisComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RedisComponent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component: Optional[str] = None,
                  host: Optional[str] = None,
@@ -8864,21 +10475,58 @@ class RedisComponent(dict):
     def usage(self) -> Optional[str]:
         return pulumi.get(self, "usage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RedisRedis(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RedisRedisUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "recoveryBasebackupName":
+            suggest = "recovery_basebackup_name"
+        elif key == "redisIoThreads":
+            suggest = "redis_io_threads"
+        elif key == "redisLfuDecayTime":
+            suggest = "redis_lfu_decay_time"
+        elif key == "redisLfuLogFactor":
+            suggest = "redis_lfu_log_factor"
+        elif key == "redisMaxmemoryPolicy":
+            suggest = "redis_maxmemory_policy"
+        elif key == "redisNotifyKeyspaceEvents":
+            suggest = "redis_notify_keyspace_events"
+        elif key == "redisSsl":
+            suggest = "redis_ssl"
+        elif key == "redisTimeout":
+            suggest = "redis_timeout"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RedisRedisUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RedisRedisUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RedisRedisUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.RedisRedisUserConfigMigration'] = None,
@@ -9065,12 +10713,26 @@ class RedisRedisUserConfig(dict):
     def service_to_fork_from(self) -> Optional[str]:
         return pulumi.get(self, "service_to_fork_from")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RedisRedisUserConfigMigration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreDbs":
+            suggest = "ignore_dbs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RedisRedisUserConfigMigration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RedisRedisUserConfigMigration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RedisRedisUserConfigMigration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dbname: Optional[str] = None,
                  host: Optional[str] = None,
@@ -9161,9 +10823,6 @@ class RedisRedisUserConfigMigration(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RedisRedisUserConfigPrivateAccess(dict):
@@ -9199,9 +10858,6 @@ class RedisRedisUserConfigPrivateAccess(dict):
         """
         return pulumi.get(self, "redis")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RedisRedisUserConfigPrivatelinkAccess(dict):
@@ -9222,9 +10878,6 @@ class RedisRedisUserConfigPrivatelinkAccess(dict):
         nodes that are in a project VPC or another type of private network
         """
         return pulumi.get(self, "redis")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -9261,12 +10914,28 @@ class RedisRedisUserConfigPublicAccess(dict):
         """
         return pulumi.get(self, "redis")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RedisServiceIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "sourceServiceName":
+            suggest = "source_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RedisServiceIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RedisServiceIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RedisServiceIntegration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):
@@ -9283,21 +10952,42 @@ class RedisServiceIntegration(dict):
     def source_service_name(self) -> str:
         return pulumi.get(self, "source_service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceCassandra(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceCassandraUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "migrateSstableloader":
+            suggest = "migrate_sstableloader"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceCassandraUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceCassandraUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceCassandraUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cassandra: Optional['outputs.ServiceCassandraUserConfigCassandra'] = None,
                  ip_filters: Optional[Sequence[str]] = None,
@@ -9356,12 +11046,28 @@ class ServiceCassandraUserConfig(dict):
     def service_to_fork_from(self) -> Optional[str]:
         return pulumi.get(self, "service_to_fork_from")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceCassandraUserConfigCassandra(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchSizeFailThresholdInKb":
+            suggest = "batch_size_fail_threshold_in_kb"
+        elif key == "batchSizeWarnThresholdInKb":
+            suggest = "batch_size_warn_threshold_in_kb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceCassandraUserConfigCassandra. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceCassandraUserConfigCassandra.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceCassandraUserConfigCassandra.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  batch_size_fail_threshold_in_kb: Optional[str] = None,
                  batch_size_warn_threshold_in_kb: Optional[str] = None):
@@ -9380,9 +11086,6 @@ class ServiceCassandraUserConfigCassandra(dict):
     def batch_size_warn_threshold_in_kb(self) -> Optional[str]:
         return pulumi.get(self, "batch_size_warn_threshold_in_kb")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceCassandraUserConfigPrivateAccess(dict):
@@ -9395,9 +11098,6 @@ class ServiceCassandraUserConfigPrivateAccess(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
         return pulumi.get(self, "prometheus")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -9412,12 +11112,26 @@ class ServiceCassandraUserConfigPublicAccess(dict):
     def prometheus(self) -> Optional[str]:
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaAuthenticationMethod":
+            suggest = "kafka_authentication_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceComponent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component: Optional[str] = None,
                  host: Optional[str] = None,
@@ -9476,12 +11190,26 @@ class ServiceComponent(dict):
     def usage(self) -> Optional[str]:
         return pulumi.get(self, "usage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceElasticsearch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kibanaUri":
+            suggest = "kibana_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceElasticsearch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceElasticsearch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceElasticsearch.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kibana_uri: Optional[str] = None):
         if kibana_uri is not None:
@@ -9492,12 +11220,50 @@ class ServiceElasticsearch(dict):
     def kibana_uri(self) -> Optional[str]:
         return pulumi.get(self, "kibana_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceElasticsearchUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customDomain":
+            suggest = "custom_domain"
+        elif key == "disableReplicationFactorAdjustment":
+            suggest = "disable_replication_factor_adjustment"
+        elif key == "elasticsearchVersion":
+            suggest = "elasticsearch_version"
+        elif key == "indexPatterns":
+            suggest = "index_patterns"
+        elif key == "indexTemplate":
+            suggest = "index_template"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "maxIndexCount":
+            suggest = "max_index_count"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "recoveryBasebackupName":
+            suggest = "recovery_basebackup_name"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceElasticsearchUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceElasticsearchUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceElasticsearchUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
                  disable_replication_factor_adjustment: Optional[str] = None,
@@ -9620,12 +11386,74 @@ class ServiceElasticsearchUserConfig(dict):
     def service_to_fork_from(self) -> Optional[str]:
         return pulumi.get(self, "service_to_fork_from")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceElasticsearchUserConfigElasticsearch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionAutoCreateIndexEnabled":
+            suggest = "action_auto_create_index_enabled"
+        elif key == "actionDestructiveRequiresName":
+            suggest = "action_destructive_requires_name"
+        elif key == "clusterMaxShardsPerNode":
+            suggest = "cluster_max_shards_per_node"
+        elif key == "httpMaxContentLength":
+            suggest = "http_max_content_length"
+        elif key == "httpMaxHeaderSize":
+            suggest = "http_max_header_size"
+        elif key == "httpMaxInitialLineLength":
+            suggest = "http_max_initial_line_length"
+        elif key == "indicesFielddataCacheSize":
+            suggest = "indices_fielddata_cache_size"
+        elif key == "indicesMemoryIndexBufferSize":
+            suggest = "indices_memory_index_buffer_size"
+        elif key == "indicesQueriesCacheSize":
+            suggest = "indices_queries_cache_size"
+        elif key == "indicesQueryBoolMaxClauseCount":
+            suggest = "indices_query_bool_max_clause_count"
+        elif key == "reindexRemoteWhitelists":
+            suggest = "reindex_remote_whitelists"
+        elif key == "searchMaxBuckets":
+            suggest = "search_max_buckets"
+        elif key == "threadPoolAnalyzeQueueSize":
+            suggest = "thread_pool_analyze_queue_size"
+        elif key == "threadPoolAnalyzeSize":
+            suggest = "thread_pool_analyze_size"
+        elif key == "threadPoolForceMergeSize":
+            suggest = "thread_pool_force_merge_size"
+        elif key == "threadPoolGetQueueSize":
+            suggest = "thread_pool_get_queue_size"
+        elif key == "threadPoolGetSize":
+            suggest = "thread_pool_get_size"
+        elif key == "threadPoolIndexQueueSize":
+            suggest = "thread_pool_index_queue_size"
+        elif key == "threadPoolIndexSize":
+            suggest = "thread_pool_index_size"
+        elif key == "threadPoolSearchQueueSize":
+            suggest = "thread_pool_search_queue_size"
+        elif key == "threadPoolSearchSize":
+            suggest = "thread_pool_search_size"
+        elif key == "threadPoolSearchThrottledQueueSize":
+            suggest = "thread_pool_search_throttled_queue_size"
+        elif key == "threadPoolSearchThrottledSize":
+            suggest = "thread_pool_search_throttled_size"
+        elif key == "threadPoolWriteQueueSize":
+            suggest = "thread_pool_write_queue_size"
+        elif key == "threadPoolWriteSize":
+            suggest = "thread_pool_write_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceElasticsearchUserConfigElasticsearch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceElasticsearchUserConfigElasticsearch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceElasticsearchUserConfigElasticsearch.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action_auto_create_index_enabled: Optional[str] = None,
                  action_destructive_requires_name: Optional[str] = None,
@@ -9828,12 +11656,28 @@ class ServiceElasticsearchUserConfigElasticsearch(dict):
     def thread_pool_write_size(self) -> Optional[str]:
         return pulumi.get(self, "thread_pool_write_size")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceElasticsearchUserConfigIndexPattern(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxIndexCount":
+            suggest = "max_index_count"
+        elif key == "sortingAlgorithm":
+            suggest = "sorting_algorithm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceElasticsearchUserConfigIndexPattern. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceElasticsearchUserConfigIndexPattern.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceElasticsearchUserConfigIndexPattern.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_index_count: Optional[str] = None,
                  pattern: Optional[str] = None,
@@ -9860,12 +11704,30 @@ class ServiceElasticsearchUserConfigIndexPattern(dict):
     def sorting_algorithm(self) -> Optional[str]:
         return pulumi.get(self, "sorting_algorithm")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceElasticsearchUserConfigIndexTemplate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mappingNestedObjectsLimit":
+            suggest = "mapping_nested_objects_limit"
+        elif key == "numberOfReplicas":
+            suggest = "number_of_replicas"
+        elif key == "numberOfShards":
+            suggest = "number_of_shards"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceElasticsearchUserConfigIndexTemplate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceElasticsearchUserConfigIndexTemplate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceElasticsearchUserConfigIndexTemplate.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mapping_nested_objects_limit: Optional[str] = None,
                  number_of_replicas: Optional[str] = None,
@@ -9892,12 +11754,28 @@ class ServiceElasticsearchUserConfigIndexTemplate(dict):
     def number_of_shards(self) -> Optional[str]:
         return pulumi.get(self, "number_of_shards")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceElasticsearchUserConfigKibana(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "elasticsearchRequestTimeout":
+            suggest = "elasticsearch_request_timeout"
+        elif key == "maxOldSpaceSize":
+            suggest = "max_old_space_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceElasticsearchUserConfigKibana. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceElasticsearchUserConfigKibana.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceElasticsearchUserConfigKibana.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  elasticsearch_request_timeout: Optional[str] = None,
                  enabled: Optional[str] = None,
@@ -9923,9 +11801,6 @@ class ServiceElasticsearchUserConfigKibana(dict):
     @pulumi.getter(name="maxOldSpaceSize")
     def max_old_space_size(self) -> Optional[str]:
         return pulumi.get(self, "max_old_space_size")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -9956,9 +11831,6 @@ class ServiceElasticsearchUserConfigPrivateAccess(dict):
     def prometheus(self) -> Optional[str]:
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceElasticsearchUserConfigPrivatelinkAccess(dict):
@@ -9979,9 +11851,6 @@ class ServiceElasticsearchUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def kibana(self) -> Optional[str]:
         return pulumi.get(self, "kibana")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -10012,21 +11881,92 @@ class ServiceElasticsearchUserConfigPublicAccess(dict):
     def prometheus(self) -> Optional[str]:
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceGrafana(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceGrafanaUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alertingEnabled":
+            suggest = "alerting_enabled"
+        elif key == "alertingErrorOrTimeout":
+            suggest = "alerting_error_or_timeout"
+        elif key == "alertingNodataOrNullvalues":
+            suggest = "alerting_nodata_or_nullvalues"
+        elif key == "allowEmbedding":
+            suggest = "allow_embedding"
+        elif key == "authBasicEnabled":
+            suggest = "auth_basic_enabled"
+        elif key == "authGenericOauth":
+            suggest = "auth_generic_oauth"
+        elif key == "authGithub":
+            suggest = "auth_github"
+        elif key == "authGitlab":
+            suggest = "auth_gitlab"
+        elif key == "authGoogle":
+            suggest = "auth_google"
+        elif key == "cookieSamesite":
+            suggest = "cookie_samesite"
+        elif key == "customDomain":
+            suggest = "custom_domain"
+        elif key == "dashboardsMinRefreshInterval":
+            suggest = "dashboards_min_refresh_interval"
+        elif key == "dashboardsVersionsToKeep":
+            suggest = "dashboards_versions_to_keep"
+        elif key == "dataproxySendUserHeader":
+            suggest = "dataproxy_send_user_header"
+        elif key == "dataproxyTimeout":
+            suggest = "dataproxy_timeout"
+        elif key == "disableGravatar":
+            suggest = "disable_gravatar"
+        elif key == "editorsCanAdmin":
+            suggest = "editors_can_admin"
+        elif key == "externalImageStorage":
+            suggest = "external_image_storage"
+        elif key == "googleAnalyticsUaId":
+            suggest = "google_analytics_ua_id"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "metricsEnabled":
+            suggest = "metrics_enabled"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "recoveryBasebackupName":
+            suggest = "recovery_basebackup_name"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+        elif key == "smtpServer":
+            suggest = "smtp_server"
+        elif key == "userAutoAssignOrg":
+            suggest = "user_auto_assign_org"
+        elif key == "userAutoAssignOrgRole":
+            suggest = "user_auto_assign_org_role"
+        elif key == "viewersCanEdit":
+            suggest = "viewers_can_edit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceGrafanaUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceGrafanaUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceGrafanaUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alerting_enabled: Optional[str] = None,
                  alerting_error_or_timeout: Optional[str] = None,
@@ -10277,12 +12217,40 @@ class ServiceGrafanaUserConfig(dict):
     def viewers_can_edit(self) -> Optional[str]:
         return pulumi.get(self, "viewers_can_edit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceGrafanaUserConfigAuthGenericOauth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowSignUp":
+            suggest = "allow_sign_up"
+        elif key == "allowedDomains":
+            suggest = "allowed_domains"
+        elif key == "allowedOrganizations":
+            suggest = "allowed_organizations"
+        elif key == "apiUrl":
+            suggest = "api_url"
+        elif key == "authUrl":
+            suggest = "auth_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "tokenUrl":
+            suggest = "token_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceGrafanaUserConfigAuthGenericOauth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceGrafanaUserConfigAuthGenericOauth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceGrafanaUserConfigAuthGenericOauth.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_sign_up: Optional[str] = None,
                  allowed_domains: Optional[Sequence[str]] = None,
@@ -10365,12 +12333,34 @@ class ServiceGrafanaUserConfigAuthGenericOauth(dict):
     def token_url(self) -> Optional[str]:
         return pulumi.get(self, "token_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceGrafanaUserConfigAuthGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowSignUp":
+            suggest = "allow_sign_up"
+        elif key == "allowedOrganizations":
+            suggest = "allowed_organizations"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "teamIds":
+            suggest = "team_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceGrafanaUserConfigAuthGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceGrafanaUserConfigAuthGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceGrafanaUserConfigAuthGithub.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_sign_up: Optional[str] = None,
                  allowed_organizations: Optional[Sequence[str]] = None,
@@ -10413,12 +12403,38 @@ class ServiceGrafanaUserConfigAuthGithub(dict):
     def team_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "team_ids")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceGrafanaUserConfigAuthGitlab(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowSignUp":
+            suggest = "allow_sign_up"
+        elif key == "allowedGroups":
+            suggest = "allowed_groups"
+        elif key == "apiUrl":
+            suggest = "api_url"
+        elif key == "authUrl":
+            suggest = "auth_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "tokenUrl":
+            suggest = "token_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceGrafanaUserConfigAuthGitlab. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceGrafanaUserConfigAuthGitlab.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceGrafanaUserConfigAuthGitlab.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_sign_up: Optional[str] = None,
                  allowed_groups: Optional[Sequence[str]] = None,
@@ -10477,12 +12493,32 @@ class ServiceGrafanaUserConfigAuthGitlab(dict):
     def token_url(self) -> Optional[str]:
         return pulumi.get(self, "token_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceGrafanaUserConfigAuthGoogle(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowSignUp":
+            suggest = "allow_sign_up"
+        elif key == "allowedDomains":
+            suggest = "allowed_domains"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceGrafanaUserConfigAuthGoogle. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceGrafanaUserConfigAuthGoogle.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceGrafanaUserConfigAuthGoogle.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_sign_up: Optional[str] = None,
                  allowed_domains: Optional[Sequence[str]] = None,
@@ -10517,12 +12553,30 @@ class ServiceGrafanaUserConfigAuthGoogle(dict):
     def client_secret(self) -> Optional[str]:
         return pulumi.get(self, "client_secret")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceGrafanaUserConfigExternalImageStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKey":
+            suggest = "access_key"
+        elif key == "bucketUrl":
+            suggest = "bucket_url"
+        elif key == "secretKey":
+            suggest = "secret_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceGrafanaUserConfigExternalImageStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceGrafanaUserConfigExternalImageStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceGrafanaUserConfigExternalImageStorage.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_key: Optional[str] = None,
                  bucket_url: Optional[str] = None,
@@ -10557,9 +12611,6 @@ class ServiceGrafanaUserConfigExternalImageStorage(dict):
     def secret_key(self) -> Optional[str]:
         return pulumi.get(self, "secret_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceGrafanaUserConfigPrivateAccess(dict):
@@ -10572,9 +12623,6 @@ class ServiceGrafanaUserConfigPrivateAccess(dict):
     @pulumi.getter
     def grafana(self) -> Optional[str]:
         return pulumi.get(self, "grafana")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -10589,9 +12637,6 @@ class ServiceGrafanaUserConfigPrivatelinkAccess(dict):
     def grafana(self) -> Optional[str]:
         return pulumi.get(self, "grafana")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceGrafanaUserConfigPublicAccess(dict):
@@ -10605,12 +12650,32 @@ class ServiceGrafanaUserConfigPublicAccess(dict):
     def grafana(self) -> Optional[str]:
         return pulumi.get(self, "grafana")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceGrafanaUserConfigSmtpServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fromAddress":
+            suggest = "from_address"
+        elif key == "fromName":
+            suggest = "from_name"
+        elif key == "skipVerify":
+            suggest = "skip_verify"
+        elif key == "starttlsPolicy":
+            suggest = "starttls_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceGrafanaUserConfigSmtpServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceGrafanaUserConfigSmtpServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceGrafanaUserConfigSmtpServer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  from_address: Optional[str] = None,
                  from_name: Optional[str] = None,
@@ -10677,12 +12742,26 @@ class ServiceGrafanaUserConfigSmtpServer(dict):
     def username(self) -> Optional[str]:
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceInfluxdb(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseName":
+            suggest = "database_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceInfluxdb. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceInfluxdb.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceInfluxdb.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  database_name: Optional[str] = None):
         if database_name is not None:
@@ -10693,12 +12772,40 @@ class ServiceInfluxdb(dict):
     def database_name(self) -> Optional[str]:
         return pulumi.get(self, "database_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceInfluxdbUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customDomain":
+            suggest = "custom_domain"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "recoveryBasebackupName":
+            suggest = "recovery_basebackup_name"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceInfluxdbUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceInfluxdbUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceInfluxdbUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
                  influxdb: Optional['outputs.ServiceInfluxdbUserConfigInfluxdb'] = None,
@@ -10773,12 +12880,34 @@ class ServiceInfluxdbUserConfig(dict):
     def service_to_fork_from(self) -> Optional[str]:
         return pulumi.get(self, "service_to_fork_from")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceInfluxdbUserConfigInfluxdb(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logQueriesAfter":
+            suggest = "log_queries_after"
+        elif key == "maxRowLimit":
+            suggest = "max_row_limit"
+        elif key == "maxSelectBuckets":
+            suggest = "max_select_buckets"
+        elif key == "maxSelectPoint":
+            suggest = "max_select_point"
+        elif key == "queryTimeout":
+            suggest = "query_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceInfluxdbUserConfigInfluxdb. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceInfluxdbUserConfigInfluxdb.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceInfluxdbUserConfigInfluxdb.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  log_queries_after: Optional[str] = None,
                  max_row_limit: Optional[str] = None,
@@ -10821,9 +12950,6 @@ class ServiceInfluxdbUserConfigInfluxdb(dict):
     def query_timeout(self) -> Optional[str]:
         return pulumi.get(self, "query_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceInfluxdbUserConfigPrivateAccess(dict):
@@ -10836,9 +12962,6 @@ class ServiceInfluxdbUserConfigPrivateAccess(dict):
     @pulumi.getter
     def influxdb(self) -> Optional[str]:
         return pulumi.get(self, "influxdb")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -10853,9 +12976,6 @@ class ServiceInfluxdbUserConfigPrivatelinkAccess(dict):
     def influxdb(self) -> Optional[str]:
         return pulumi.get(self, "influxdb")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceInfluxdbUserConfigPublicAccess(dict):
@@ -10869,21 +12989,42 @@ class ServiceInfluxdbUserConfigPublicAccess(dict):
     def influxdb(self) -> Optional[str]:
         return pulumi.get(self, "influxdb")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationDashboardUserConfig(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationDatadogUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datadogTags":
+            suggest = "datadog_tags"
+        elif key == "excludeConsumerGroups":
+            suggest = "exclude_consumer_groups"
+        elif key == "excludeTopics":
+            suggest = "exclude_topics"
+        elif key == "includeConsumerGroups":
+            suggest = "include_consumer_groups"
+        elif key == "includeTopics":
+            suggest = "include_topics"
+        elif key == "kafkaCustomMetrics":
+            suggest = "kafka_custom_metrics"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationDatadogUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationDatadogUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationDatadogUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  datadog_tags: Optional[Sequence['outputs.ServiceIntegrationDatadogUserConfigDatadogTag']] = None,
                  exclude_consumer_groups: Optional[Sequence[str]] = None,
@@ -10934,9 +13075,6 @@ class ServiceIntegrationDatadogUserConfig(dict):
     def kafka_custom_metrics(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "kafka_custom_metrics")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationDatadogUserConfigDatadogTag(dict):
@@ -10958,12 +13096,32 @@ class ServiceIntegrationDatadogUserConfigDatadogTag(dict):
     def tag(self) -> Optional[str]:
         return pulumi.get(self, "tag")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationEndpointDatadogUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datadogApiKey":
+            suggest = "datadog_api_key"
+        elif key == "datadogTags":
+            suggest = "datadog_tags"
+        elif key == "disableConsumerStats":
+            suggest = "disable_consumer_stats"
+        elif key == "maxPartitionContexts":
+            suggest = "max_partition_contexts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointDatadogUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationEndpointDatadogUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationEndpointDatadogUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  datadog_api_key: Optional[str] = None,
                  datadog_tags: Optional[Sequence['outputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag']] = None,
@@ -11006,9 +13164,6 @@ class ServiceIntegrationEndpointDatadogUserConfig(dict):
     def site(self) -> Optional[str]:
         return pulumi.get(self, "site")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationEndpointDatadogUserConfigDatadogTag(dict):
@@ -11030,12 +13185,30 @@ class ServiceIntegrationEndpointDatadogUserConfigDatadogTag(dict):
     def tag(self) -> Optional[str]:
         return pulumi.get(self, "tag")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKey":
+            suggest = "access_key"
+        elif key == "logGroupName":
+            suggest = "log_group_name"
+        elif key == "secretKey":
+            suggest = "secret_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_key: Optional[str] = None,
                  log_group_name: Optional[str] = None,
@@ -11070,12 +13243,28 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig(dict):
     def secret_key(self) -> Optional[str]:
         return pulumi.get(self, "secret_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKey":
+            suggest = "access_key"
+        elif key == "secretKey":
+            suggest = "secret_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_key: Optional[str] = None,
                  namespace: Optional[str] = None,
@@ -11110,12 +13299,28 @@ class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig(dict):
     def secret_key(self) -> Optional[str]:
         return pulumi.get(self, "secret_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "indexDaysMax":
+            suggest = "index_days_max"
+        elif key == "indexPrefix":
+            suggest = "index_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ca: Optional[str] = None,
                  index_days_max: Optional[str] = None,
@@ -11158,12 +13363,30 @@ class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig(dict):
     def url(self) -> Optional[str]:
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logId":
+            suggest = "log_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "serviceAccountCredentials":
+            suggest = "service_account_credentials"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  log_id: Optional[str] = None,
                  project_id: Optional[str] = None,
@@ -11190,12 +13413,42 @@ class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig(dict):
     def service_account_credentials(self) -> Optional[str]:
         return pulumi.get(self, "service_account_credentials")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationEndpointExternalKafkaUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootstrapServers":
+            suggest = "bootstrap_servers"
+        elif key == "saslMechanism":
+            suggest = "sasl_mechanism"
+        elif key == "saslPlainPassword":
+            suggest = "sasl_plain_password"
+        elif key == "saslPlainUsername":
+            suggest = "sasl_plain_username"
+        elif key == "securityProtocol":
+            suggest = "security_protocol"
+        elif key == "sslCaCert":
+            suggest = "ssl_ca_cert"
+        elif key == "sslClientCert":
+            suggest = "ssl_client_cert"
+        elif key == "sslClientKey":
+            suggest = "ssl_client_key"
+        elif key == "sslEndpointIdentificationAlgorithm":
+            suggest = "ssl_endpoint_identification_algorithm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointExternalKafkaUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationEndpointExternalKafkaUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationEndpointExternalKafkaUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bootstrap_servers: Optional[str] = None,
                  sasl_mechanism: Optional[str] = None,
@@ -11270,12 +13523,28 @@ class ServiceIntegrationEndpointExternalKafkaUserConfig(dict):
     def ssl_endpoint_identification_algorithm(self) -> Optional[str]:
         return pulumi.get(self, "ssl_endpoint_identification_algorithm")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicAuthPassword":
+            suggest = "basic_auth_password"
+        elif key == "basicAuthUsername":
+            suggest = "basic_auth_username"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointExternalSchemaRegistryUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationEndpointExternalSchemaRegistryUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationEndpointExternalSchemaRegistryUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication: Optional[str] = None,
                  basic_auth_password: Optional[str] = None,
@@ -11310,12 +13579,28 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig(dict):
     def url(self) -> Optional[str]:
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationEndpointJolokiaUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicAuthPassword":
+            suggest = "basic_auth_password"
+        elif key == "basicAuthUsername":
+            suggest = "basic_auth_username"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointJolokiaUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationEndpointJolokiaUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationEndpointJolokiaUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  basic_auth_password: Optional[str] = None,
                  basic_auth_username: Optional[str] = None):
@@ -11333,13 +13618,29 @@ class ServiceIntegrationEndpointJolokiaUserConfig(dict):
     @pulumi.getter(name="basicAuthUsername")
     def basic_auth_username(self) -> Optional[str]:
         return pulumi.get(self, "basic_auth_username")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class ServiceIntegrationEndpointPrometheusUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicAuthPassword":
+            suggest = "basic_auth_password"
+        elif key == "basicAuthUsername":
+            suggest = "basic_auth_username"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointPrometheusUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationEndpointPrometheusUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationEndpointPrometheusUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  basic_auth_password: Optional[str] = None,
                  basic_auth_username: Optional[str] = None):
@@ -11357,9 +13658,6 @@ class ServiceIntegrationEndpointPrometheusUserConfig(dict):
     @pulumi.getter(name="basicAuthUsername")
     def basic_auth_username(self) -> Optional[str]:
         return pulumi.get(self, "basic_auth_username")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -11438,12 +13736,30 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
     def tls(self) -> Optional[str]:
         return pulumi.get(self, "tls")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationEndpointSignalfxUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enabledMetrics":
+            suggest = "enabled_metrics"
+        elif key == "signalfxApiKey":
+            suggest = "signalfx_api_key"
+        elif key == "signalfxRealm":
+            suggest = "signalfx_realm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointSignalfxUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationEndpointSignalfxUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationEndpointSignalfxUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enabled_metrics: Optional[Sequence[str]] = None,
                  signalfx_api_key: Optional[str] = None,
@@ -11470,17 +13786,11 @@ class ServiceIntegrationEndpointSignalfxUserConfig(dict):
     def signalfx_realm(self) -> Optional[str]:
         return pulumi.get(self, "signalfx_realm")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationExternalAwsCloudwatchLogsUserConfig(dict):
     def __init__(__self__):
         pass
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -11488,17 +13798,11 @@ class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationExternalElasticsearchLogsUserConfig(dict):
     def __init__(__self__):
         pass
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -11506,12 +13810,26 @@ class ServiceIntegrationExternalGoogleCloudLoggingUserConfig(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationKafkaConnectUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaConnect":
+            suggest = "kafka_connect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationKafkaConnectUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationKafkaConnectUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationKafkaConnectUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kafka_connect: Optional['outputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnect'] = None):
         if kafka_connect is not None:
@@ -11522,12 +13840,32 @@ class ServiceIntegrationKafkaConnectUserConfig(dict):
     def kafka_connect(self) -> Optional['outputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnect']:
         return pulumi.get(self, "kafka_connect")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationKafkaConnectUserConfigKafkaConnect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configStorageTopic":
+            suggest = "config_storage_topic"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "offsetStorageTopic":
+            suggest = "offset_storage_topic"
+        elif key == "statusStorageTopic":
+            suggest = "status_storage_topic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationKafkaConnectUserConfigKafkaConnect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationKafkaConnectUserConfigKafkaConnect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationKafkaConnectUserConfigKafkaConnect.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  config_storage_topic: Optional[str] = None,
                  group_id: Optional[str] = None,
@@ -11562,12 +13900,26 @@ class ServiceIntegrationKafkaConnectUserConfigKafkaConnect(dict):
     def status_storage_topic(self) -> Optional[str]:
         return pulumi.get(self, "status_storage_topic")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationKafkaLogsUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaTopic":
+            suggest = "kafka_topic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationKafkaLogsUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationKafkaLogsUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationKafkaLogsUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kafka_topic: Optional[str] = None):
         if kafka_topic is not None:
@@ -11578,12 +13930,26 @@ class ServiceIntegrationKafkaLogsUserConfig(dict):
     def kafka_topic(self) -> Optional[str]:
         return pulumi.get(self, "kafka_topic")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationKafkaMirrormakerUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterAlias":
+            suggest = "cluster_alias"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationKafkaMirrormakerUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationKafkaMirrormakerUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationKafkaMirrormakerUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_alias: Optional[str] = None):
         if cluster_alias is not None:
@@ -11594,12 +13960,28 @@ class ServiceIntegrationKafkaMirrormakerUserConfig(dict):
     def cluster_alias(self) -> Optional[str]:
         return pulumi.get(self, "cluster_alias")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationLogsUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "elasticsearchIndexDaysMax":
+            suggest = "elasticsearch_index_days_max"
+        elif key == "elasticsearchIndexPrefix":
+            suggest = "elasticsearch_index_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationLogsUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationLogsUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationLogsUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  elasticsearch_index_days_max: Optional[str] = None,
                  elasticsearch_index_prefix: Optional[str] = None):
@@ -11618,17 +14000,11 @@ class ServiceIntegrationLogsUserConfig(dict):
     def elasticsearch_index_prefix(self) -> Optional[str]:
         return pulumi.get(self, "elasticsearch_index_prefix")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationM3aggregatorUserConfig(dict):
     def __init__(__self__):
         pass
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -11636,12 +14012,30 @@ class ServiceIntegrationM3coordinatorUserConfig(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationMetricsUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retentionDays":
+            suggest = "retention_days"
+        elif key == "roUsername":
+            suggest = "ro_username"
+        elif key == "sourceMysql":
+            suggest = "source_mysql"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationMetricsUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationMetricsUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationMetricsUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  database: Optional[str] = None,
                  retention_days: Optional[str] = None,
@@ -11684,9 +14078,6 @@ class ServiceIntegrationMetricsUserConfig(dict):
     def username(self) -> Optional[str]:
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationMetricsUserConfigSourceMysql(dict):
@@ -11700,12 +14091,52 @@ class ServiceIntegrationMetricsUserConfigSourceMysql(dict):
     def telegraf(self) -> Optional['outputs.ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf']:
         return pulumi.get(self, "telegraf")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gatherEventWaits":
+            suggest = "gather_event_waits"
+        elif key == "gatherFileEventsStats":
+            suggest = "gather_file_events_stats"
+        elif key == "gatherIndexIoWaits":
+            suggest = "gather_index_io_waits"
+        elif key == "gatherInfoSchemaAutoInc":
+            suggest = "gather_info_schema_auto_inc"
+        elif key == "gatherInnodbMetrics":
+            suggest = "gather_innodb_metrics"
+        elif key == "gatherPerfEventsStatements":
+            suggest = "gather_perf_events_statements"
+        elif key == "gatherProcessList":
+            suggest = "gather_process_list"
+        elif key == "gatherSlaveStatus":
+            suggest = "gather_slave_status"
+        elif key == "gatherTableIoWaits":
+            suggest = "gather_table_io_waits"
+        elif key == "gatherTableLockWaits":
+            suggest = "gather_table_lock_waits"
+        elif key == "gatherTableSchema":
+            suggest = "gather_table_schema"
+        elif key == "perfEventsStatementsDigestTextLimit":
+            suggest = "perf_events_statements_digest_text_limit"
+        elif key == "perfEventsStatementsLimit":
+            suggest = "perf_events_statements_limit"
+        elif key == "perfEventsStatementsTimeLimit":
+            suggest = "perf_events_statements_time_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gather_event_waits: Optional[str] = None,
                  gather_file_events_stats: Optional[str] = None,
@@ -11820,12 +14251,26 @@ class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf(dict):
     def perf_events_statements_time_limit(self) -> Optional[str]:
         return pulumi.get(self, "perf_events_statements_time_limit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationMirrormakerUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mirrormakerWhitelist":
+            suggest = "mirrormaker_whitelist"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationMirrormakerUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationMirrormakerUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationMirrormakerUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mirrormaker_whitelist: Optional[str] = None):
         if mirrormaker_whitelist is not None:
@@ -11836,12 +14281,26 @@ class ServiceIntegrationMirrormakerUserConfig(dict):
     def mirrormaker_whitelist(self) -> Optional[str]:
         return pulumi.get(self, "mirrormaker_whitelist")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationPrometheusUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceMysql":
+            suggest = "source_mysql"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationPrometheusUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationPrometheusUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationPrometheusUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  source_mysql: Optional['outputs.ServiceIntegrationPrometheusUserConfigSourceMysql'] = None):
         if source_mysql is not None:
@@ -11851,9 +14310,6 @@ class ServiceIntegrationPrometheusUserConfig(dict):
     @pulumi.getter(name="sourceMysql")
     def source_mysql(self) -> Optional['outputs.ServiceIntegrationPrometheusUserConfigSourceMysql']:
         return pulumi.get(self, "source_mysql")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -11868,12 +14324,52 @@ class ServiceIntegrationPrometheusUserConfigSourceMysql(dict):
     def telegraf(self) -> Optional['outputs.ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf']:
         return pulumi.get(self, "telegraf")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gatherEventWaits":
+            suggest = "gather_event_waits"
+        elif key == "gatherFileEventsStats":
+            suggest = "gather_file_events_stats"
+        elif key == "gatherIndexIoWaits":
+            suggest = "gather_index_io_waits"
+        elif key == "gatherInfoSchemaAutoInc":
+            suggest = "gather_info_schema_auto_inc"
+        elif key == "gatherInnodbMetrics":
+            suggest = "gather_innodb_metrics"
+        elif key == "gatherPerfEventsStatements":
+            suggest = "gather_perf_events_statements"
+        elif key == "gatherProcessList":
+            suggest = "gather_process_list"
+        elif key == "gatherSlaveStatus":
+            suggest = "gather_slave_status"
+        elif key == "gatherTableIoWaits":
+            suggest = "gather_table_io_waits"
+        elif key == "gatherTableLockWaits":
+            suggest = "gather_table_lock_waits"
+        elif key == "gatherTableSchema":
+            suggest = "gather_table_schema"
+        elif key == "perfEventsStatementsDigestTextLimit":
+            suggest = "perf_events_statements_digest_text_limit"
+        elif key == "perfEventsStatementsLimit":
+            suggest = "perf_events_statements_limit"
+        elif key == "perfEventsStatementsTimeLimit":
+            suggest = "perf_events_statements_time_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gather_event_waits: Optional[str] = None,
                  gather_file_events_stats: Optional[str] = None,
@@ -11988,17 +14484,11 @@ class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf(dict):
     def perf_events_statements_time_limit(self) -> Optional[str]:
         return pulumi.get(self, "perf_events_statements_time_limit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationReadReplicaUserConfig(dict):
     def __init__(__self__):
         pass
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -12006,17 +14496,11 @@ class ServiceIntegrationRsyslogUserConfig(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceIntegrationSchemaRegistryProxyUserConfig(dict):
     def __init__(__self__):
         pass
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -12024,12 +14508,34 @@ class ServiceIntegrationSignalfxUserConfig(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafka(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessCert":
+            suggest = "access_cert"
+        elif key == "accessKey":
+            suggest = "access_key"
+        elif key == "connectUri":
+            suggest = "connect_uri"
+        elif key == "restUri":
+            suggest = "rest_uri"
+        elif key == "schemaRegistryUri":
+            suggest = "schema_registry_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafka. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafka.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafka.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_cert: Optional[str] = None,
                  access_key: Optional[str] = None,
@@ -12072,21 +14578,40 @@ class ServiceKafka(dict):
     def schema_registry_uri(self) -> Optional[str]:
         return pulumi.get(self, "schema_registry_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaConnect(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaConnectUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "kafkaConnect":
+            suggest = "kafka_connect"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "publicAccess":
+            suggest = "public_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaConnectUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaConnectUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaConnectUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_filters: Optional[Sequence[str]] = None,
                  kafka_connect: Optional['outputs.ServiceKafkaConnectUserConfigKafkaConnect'] = None,
@@ -12129,12 +14654,46 @@ class ServiceKafkaConnectUserConfig(dict):
     def public_access(self) -> Optional['outputs.ServiceKafkaConnectUserConfigPublicAccess']:
         return pulumi.get(self, "public_access")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaConnectUserConfigKafkaConnect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorClientConfigOverridePolicy":
+            suggest = "connector_client_config_override_policy"
+        elif key == "consumerAutoOffsetReset":
+            suggest = "consumer_auto_offset_reset"
+        elif key == "consumerFetchMaxBytes":
+            suggest = "consumer_fetch_max_bytes"
+        elif key == "consumerIsolationLevel":
+            suggest = "consumer_isolation_level"
+        elif key == "consumerMaxPartitionFetchBytes":
+            suggest = "consumer_max_partition_fetch_bytes"
+        elif key == "consumerMaxPollIntervalMs":
+            suggest = "consumer_max_poll_interval_ms"
+        elif key == "consumerMaxPollRecords":
+            suggest = "consumer_max_poll_records"
+        elif key == "offsetFlushIntervalMs":
+            suggest = "offset_flush_interval_ms"
+        elif key == "offsetFlushTimeoutMs":
+            suggest = "offset_flush_timeout_ms"
+        elif key == "producerMaxRequestSize":
+            suggest = "producer_max_request_size"
+        elif key == "sessionTimeoutMs":
+            suggest = "session_timeout_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaConnectUserConfigKafkaConnect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaConnectUserConfigKafkaConnect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaConnectUserConfigKafkaConnect.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[str] = None,
                  consumer_auto_offset_reset: Optional[str] = None,
@@ -12225,12 +14784,26 @@ class ServiceKafkaConnectUserConfigKafkaConnect(dict):
     def session_timeout_ms(self) -> Optional[str]:
         return pulumi.get(self, "session_timeout_ms")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaConnectUserConfigPrivateAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaConnect":
+            suggest = "kafka_connect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaConnectUserConfigPrivateAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaConnectUserConfigPrivateAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaConnectUserConfigPrivateAccess.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kafka_connect: Optional[str] = None,
                  prometheus: Optional[str] = None):
@@ -12249,12 +14822,26 @@ class ServiceKafkaConnectUserConfigPrivateAccess(dict):
     def prometheus(self) -> Optional[str]:
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaConnectUserConfigPrivatelinkAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaConnect":
+            suggest = "kafka_connect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaConnectUserConfigPrivatelinkAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaConnectUserConfigPrivatelinkAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaConnectUserConfigPrivatelinkAccess.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kafka_connect: Optional[str] = None):
         if kafka_connect is not None:
@@ -12265,12 +14852,26 @@ class ServiceKafkaConnectUserConfigPrivatelinkAccess(dict):
     def kafka_connect(self) -> Optional[str]:
         return pulumi.get(self, "kafka_connect")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaConnectUserConfigPublicAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaConnect":
+            suggest = "kafka_connect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaConnectUserConfigPublicAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaConnectUserConfigPublicAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaConnectUserConfigPublicAccess.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kafka_connect: Optional[str] = None,
                  prometheus: Optional[str] = None):
@@ -12289,21 +14890,34 @@ class ServiceKafkaConnectUserConfigPublicAccess(dict):
     def prometheus(self) -> Optional[str]:
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaMirrormaker(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaMirrormakerUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "kafkaMirrormaker":
+            suggest = "kafka_mirrormaker"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaMirrormakerUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaMirrormakerUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaMirrormakerUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_filters: Optional[Sequence[str]] = None,
                  kafka_mirrormaker: Optional['outputs.ServiceKafkaMirrormakerUserConfigKafkaMirrormaker'] = None):
@@ -12322,12 +14936,40 @@ class ServiceKafkaMirrormakerUserConfig(dict):
     def kafka_mirrormaker(self) -> Optional['outputs.ServiceKafkaMirrormakerUserConfigKafkaMirrormaker']:
         return pulumi.get(self, "kafka_mirrormaker")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emitCheckpointsEnabled":
+            suggest = "emit_checkpoints_enabled"
+        elif key == "emitCheckpointsIntervalSeconds":
+            suggest = "emit_checkpoints_interval_seconds"
+        elif key == "refreshGroupsEnabled":
+            suggest = "refresh_groups_enabled"
+        elif key == "refreshGroupsIntervalSeconds":
+            suggest = "refresh_groups_interval_seconds"
+        elif key == "refreshTopicsEnabled":
+            suggest = "refresh_topics_enabled"
+        elif key == "refreshTopicsIntervalSeconds":
+            suggest = "refresh_topics_interval_seconds"
+        elif key == "syncGroupOffsetsEnabled":
+            suggest = "sync_group_offsets_enabled"
+        elif key == "syncGroupOffsetsIntervalSeconds":
+            suggest = "sync_group_offsets_interval_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaMirrormakerUserConfigKafkaMirrormaker. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaMirrormakerUserConfigKafkaMirrormaker.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaMirrormakerUserConfigKafkaMirrormaker.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  emit_checkpoints_enabled: Optional[str] = None,
                  emit_checkpoints_interval_seconds: Optional[str] = None,
@@ -12394,12 +15036,50 @@ class ServiceKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     def sync_group_offsets_interval_seconds(self) -> Optional[str]:
         return pulumi.get(self, "sync_group_offsets_interval_seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customDomain":
+            suggest = "custom_domain"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "kafkaAuthenticationMethods":
+            suggest = "kafka_authentication_methods"
+        elif key == "kafkaConnect":
+            suggest = "kafka_connect"
+        elif key == "kafkaConnectConfig":
+            suggest = "kafka_connect_config"
+        elif key == "kafkaRest":
+            suggest = "kafka_rest"
+        elif key == "kafkaRestConfig":
+            suggest = "kafka_rest_config"
+        elif key == "kafkaVersion":
+            suggest = "kafka_version"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "schemaRegistry":
+            suggest = "schema_registry"
+        elif key == "schemaRegistryConfig":
+            suggest = "schema_registry_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
                  ip_filters: Optional[Sequence[str]] = None,
@@ -12514,12 +15194,102 @@ class ServiceKafkaUserConfig(dict):
     def schema_registry_config(self) -> Optional['outputs.ServiceKafkaUserConfigSchemaRegistryConfig']:
         return pulumi.get(self, "schema_registry_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaUserConfigKafka(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoCreateTopicsEnable":
+            suggest = "auto_create_topics_enable"
+        elif key == "compressionType":
+            suggest = "compression_type"
+        elif key == "connectionsMaxIdleMs":
+            suggest = "connections_max_idle_ms"
+        elif key == "defaultReplicationFactor":
+            suggest = "default_replication_factor"
+        elif key == "groupInitialRebalanceDelayMs":
+            suggest = "group_initial_rebalance_delay_ms"
+        elif key == "groupMaxSessionTimeoutMs":
+            suggest = "group_max_session_timeout_ms"
+        elif key == "groupMinSessionTimeoutMs":
+            suggest = "group_min_session_timeout_ms"
+        elif key == "logCleanerDeleteRetentionMs":
+            suggest = "log_cleaner_delete_retention_ms"
+        elif key == "logCleanerMaxCompactionLagMs":
+            suggest = "log_cleaner_max_compaction_lag_ms"
+        elif key == "logCleanerMinCleanableRatio":
+            suggest = "log_cleaner_min_cleanable_ratio"
+        elif key == "logCleanerMinCompactionLagMs":
+            suggest = "log_cleaner_min_compaction_lag_ms"
+        elif key == "logCleanupPolicy":
+            suggest = "log_cleanup_policy"
+        elif key == "logFlushIntervalMessages":
+            suggest = "log_flush_interval_messages"
+        elif key == "logFlushIntervalMs":
+            suggest = "log_flush_interval_ms"
+        elif key == "logIndexIntervalBytes":
+            suggest = "log_index_interval_bytes"
+        elif key == "logIndexSizeMaxBytes":
+            suggest = "log_index_size_max_bytes"
+        elif key == "logMessageDownconversionEnable":
+            suggest = "log_message_downconversion_enable"
+        elif key == "logMessageTimestampDifferenceMaxMs":
+            suggest = "log_message_timestamp_difference_max_ms"
+        elif key == "logMessageTimestampType":
+            suggest = "log_message_timestamp_type"
+        elif key == "logPreallocate":
+            suggest = "log_preallocate"
+        elif key == "logRetentionBytes":
+            suggest = "log_retention_bytes"
+        elif key == "logRetentionHours":
+            suggest = "log_retention_hours"
+        elif key == "logRetentionMs":
+            suggest = "log_retention_ms"
+        elif key == "logRollJitterMs":
+            suggest = "log_roll_jitter_ms"
+        elif key == "logRollMs":
+            suggest = "log_roll_ms"
+        elif key == "logSegmentBytes":
+            suggest = "log_segment_bytes"
+        elif key == "logSegmentDeleteDelayMs":
+            suggest = "log_segment_delete_delay_ms"
+        elif key == "maxConnectionsPerIp":
+            suggest = "max_connections_per_ip"
+        elif key == "maxIncrementalFetchSessionCacheSlots":
+            suggest = "max_incremental_fetch_session_cache_slots"
+        elif key == "messageMaxBytes":
+            suggest = "message_max_bytes"
+        elif key == "minInsyncReplicas":
+            suggest = "min_insync_replicas"
+        elif key == "numPartitions":
+            suggest = "num_partitions"
+        elif key == "offsetsRetentionMinutes":
+            suggest = "offsets_retention_minutes"
+        elif key == "producerPurgatoryPurgeIntervalRequests":
+            suggest = "producer_purgatory_purge_interval_requests"
+        elif key == "replicaFetchMaxBytes":
+            suggest = "replica_fetch_max_bytes"
+        elif key == "replicaFetchResponseMaxBytes":
+            suggest = "replica_fetch_response_max_bytes"
+        elif key == "socketRequestMaxBytes":
+            suggest = "socket_request_max_bytes"
+        elif key == "transactionRemoveExpiredTransactionCleanupIntervalMs":
+            suggest = "transaction_remove_expired_transaction_cleanup_interval_ms"
+        elif key == "transactionStateLogSegmentBytes":
+            suggest = "transaction_state_log_segment_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaUserConfigKafka. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaUserConfigKafka.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaUserConfigKafka.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_create_topics_enable: Optional[str] = None,
                  compression_type: Optional[str] = None,
@@ -12834,9 +15604,6 @@ class ServiceKafkaUserConfigKafka(dict):
     def transaction_state_log_segment_bytes(self) -> Optional[str]:
         return pulumi.get(self, "transaction_state_log_segment_bytes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaUserConfigKafkaAuthenticationMethods(dict):
@@ -12858,12 +15625,46 @@ class ServiceKafkaUserConfigKafkaAuthenticationMethods(dict):
     def sasl(self) -> Optional[str]:
         return pulumi.get(self, "sasl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaUserConfigKafkaConnectConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorClientConfigOverridePolicy":
+            suggest = "connector_client_config_override_policy"
+        elif key == "consumerAutoOffsetReset":
+            suggest = "consumer_auto_offset_reset"
+        elif key == "consumerFetchMaxBytes":
+            suggest = "consumer_fetch_max_bytes"
+        elif key == "consumerIsolationLevel":
+            suggest = "consumer_isolation_level"
+        elif key == "consumerMaxPartitionFetchBytes":
+            suggest = "consumer_max_partition_fetch_bytes"
+        elif key == "consumerMaxPollIntervalMs":
+            suggest = "consumer_max_poll_interval_ms"
+        elif key == "consumerMaxPollRecords":
+            suggest = "consumer_max_poll_records"
+        elif key == "offsetFlushIntervalMs":
+            suggest = "offset_flush_interval_ms"
+        elif key == "offsetFlushTimeoutMs":
+            suggest = "offset_flush_timeout_ms"
+        elif key == "producerMaxRequestSize":
+            suggest = "producer_max_request_size"
+        elif key == "sessionTimeoutMs":
+            suggest = "session_timeout_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaUserConfigKafkaConnectConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaUserConfigKafkaConnectConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaUserConfigKafkaConnectConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connector_client_config_override_policy: Optional[str] = None,
                  consumer_auto_offset_reset: Optional[str] = None,
@@ -12954,12 +15755,36 @@ class ServiceKafkaUserConfigKafkaConnectConfig(dict):
     def session_timeout_ms(self) -> Optional[str]:
         return pulumi.get(self, "session_timeout_ms")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaUserConfigKafkaRestConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumerEnableAutoCommit":
+            suggest = "consumer_enable_auto_commit"
+        elif key == "consumerRequestMaxBytes":
+            suggest = "consumer_request_max_bytes"
+        elif key == "consumerRequestTimeoutMs":
+            suggest = "consumer_request_timeout_ms"
+        elif key == "producerAcks":
+            suggest = "producer_acks"
+        elif key == "producerLingerMs":
+            suggest = "producer_linger_ms"
+        elif key == "simpleconsumerPoolSizeMax":
+            suggest = "simpleconsumer_pool_size_max"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaUserConfigKafkaRestConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaUserConfigKafkaRestConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaUserConfigKafkaRestConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  consumer_enable_auto_commit: Optional[str] = None,
                  consumer_request_max_bytes: Optional[str] = None,
@@ -13010,9 +15835,6 @@ class ServiceKafkaUserConfigKafkaRestConfig(dict):
     def simpleconsumer_pool_size_max(self) -> Optional[str]:
         return pulumi.get(self, "simpleconsumer_pool_size_max")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaUserConfigPrivateAccess(dict):
@@ -13026,12 +15848,30 @@ class ServiceKafkaUserConfigPrivateAccess(dict):
     def prometheus(self) -> Optional[str]:
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaUserConfigPrivatelinkAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaConnect":
+            suggest = "kafka_connect"
+        elif key == "kafkaRest":
+            suggest = "kafka_rest"
+        elif key == "schemaRegistry":
+            suggest = "schema_registry"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaUserConfigPrivatelinkAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaUserConfigPrivatelinkAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaUserConfigPrivatelinkAccess.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kafka: Optional[str] = None,
                  kafka_connect: Optional[str] = None,
@@ -13066,12 +15906,30 @@ class ServiceKafkaUserConfigPrivatelinkAccess(dict):
     def schema_registry(self) -> Optional[str]:
         return pulumi.get(self, "schema_registry")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaUserConfigPublicAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kafkaConnect":
+            suggest = "kafka_connect"
+        elif key == "kafkaRest":
+            suggest = "kafka_rest"
+        elif key == "schemaRegistry":
+            suggest = "schema_registry"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaUserConfigPublicAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaUserConfigPublicAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaUserConfigPublicAccess.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kafka: Optional[str] = None,
                  kafka_connect: Optional[str] = None,
@@ -13114,12 +15972,28 @@ class ServiceKafkaUserConfigPublicAccess(dict):
     def schema_registry(self) -> Optional[str]:
         return pulumi.get(self, "schema_registry")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceKafkaUserConfigSchemaRegistryConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "leaderEligibility":
+            suggest = "leader_eligibility"
+        elif key == "topicName":
+            suggest = "topic_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceKafkaUserConfigSchemaRegistryConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceKafkaUserConfigSchemaRegistryConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceKafkaUserConfigSchemaRegistryConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  leader_eligibility: Optional[str] = None,
                  topic_name: Optional[str] = None):
@@ -13138,21 +16012,54 @@ class ServiceKafkaUserConfigSchemaRegistryConfig(dict):
     def topic_name(self) -> Optional[str]:
         return pulumi.get(self, "topic_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceMysql(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceMysqlUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminPassword":
+            suggest = "admin_password"
+        elif key == "adminUsername":
+            suggest = "admin_username"
+        elif key == "backupHour":
+            suggest = "backup_hour"
+        elif key == "backupMinute":
+            suggest = "backup_minute"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "mysqlVersion":
+            suggest = "mysql_version"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "recoveryTargetTime":
+            suggest = "recovery_target_time"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMysqlUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMysqlUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMysqlUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  admin_password: Optional[str] = None,
                  admin_username: Optional[str] = None,
@@ -13267,12 +16174,26 @@ class ServiceMysqlUserConfig(dict):
     def service_to_fork_from(self) -> Optional[str]:
         return pulumi.get(self, "service_to_fork_from")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceMysqlUserConfigMigration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreDbs":
+            suggest = "ignore_dbs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMysqlUserConfigMigration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMysqlUserConfigMigration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMysqlUserConfigMigration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dbname: Optional[str] = None,
                  host: Optional[str] = None,
@@ -13331,12 +16252,70 @@ class ServiceMysqlUserConfigMigration(dict):
     def username(self) -> Optional[str]:
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceMysqlUserConfigMysql(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectTimeout":
+            suggest = "connect_timeout"
+        elif key == "defaultTimeZone":
+            suggest = "default_time_zone"
+        elif key == "groupConcatMaxLen":
+            suggest = "group_concat_max_len"
+        elif key == "informationSchemaStatsExpiry":
+            suggest = "information_schema_stats_expiry"
+        elif key == "innodbFtMinTokenSize":
+            suggest = "innodb_ft_min_token_size"
+        elif key == "innodbFtServerStopwordTable":
+            suggest = "innodb_ft_server_stopword_table"
+        elif key == "innodbLockWaitTimeout":
+            suggest = "innodb_lock_wait_timeout"
+        elif key == "innodbLogBufferSize":
+            suggest = "innodb_log_buffer_size"
+        elif key == "innodbOnlineAlterLogMaxSize":
+            suggest = "innodb_online_alter_log_max_size"
+        elif key == "innodbPrintAllDeadlocks":
+            suggest = "innodb_print_all_deadlocks"
+        elif key == "innodbRollbackOnTimeout":
+            suggest = "innodb_rollback_on_timeout"
+        elif key == "interactiveTimeout":
+            suggest = "interactive_timeout"
+        elif key == "longQueryTime":
+            suggest = "long_query_time"
+        elif key == "maxAllowedPacket":
+            suggest = "max_allowed_packet"
+        elif key == "maxHeapTableSize":
+            suggest = "max_heap_table_size"
+        elif key == "netReadTimeout":
+            suggest = "net_read_timeout"
+        elif key == "netWriteTimeout":
+            suggest = "net_write_timeout"
+        elif key == "slowQueryLog":
+            suggest = "slow_query_log"
+        elif key == "sortBufferSize":
+            suggest = "sort_buffer_size"
+        elif key == "sqlMode":
+            suggest = "sql_mode"
+        elif key == "sqlRequirePrimaryKey":
+            suggest = "sql_require_primary_key"
+        elif key == "tmpTableSize":
+            suggest = "tmp_table_size"
+        elif key == "waitTimeout":
+            suggest = "wait_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMysqlUserConfigMysql. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMysqlUserConfigMysql.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMysqlUserConfigMysql.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connect_timeout: Optional[str] = None,
                  default_time_zone: Optional[str] = None,
@@ -13523,9 +16502,6 @@ class ServiceMysqlUserConfigMysql(dict):
     def wait_timeout(self) -> Optional[str]:
         return pulumi.get(self, "wait_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceMysqlUserConfigPrivateAccess(dict):
@@ -13547,9 +16523,6 @@ class ServiceMysqlUserConfigPrivateAccess(dict):
     def prometheus(self) -> Optional[str]:
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceMysqlUserConfigPrivatelinkAccess(dict):
@@ -13562,9 +16535,6 @@ class ServiceMysqlUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def mysql(self) -> Optional[str]:
         return pulumi.get(self, "mysql")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -13587,12 +16557,26 @@ class ServiceMysqlUserConfigPublicAccess(dict):
     def prometheus(self) -> Optional[str]:
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePg(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "replicaUri":
+            suggest = "replica_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePg. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePg.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePg.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dbname: Optional[str] = None,
                  host: Optional[str] = None,
@@ -13659,12 +16643,58 @@ class ServicePg(dict):
     def user(self) -> Optional[str]:
         return pulumi.get(self, "user")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePgUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminPassword":
+            suggest = "admin_password"
+        elif key == "adminUsername":
+            suggest = "admin_username"
+        elif key == "backupHour":
+            suggest = "backup_hour"
+        elif key == "backupMinute":
+            suggest = "backup_minute"
+        elif key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "pgReadReplica":
+            suggest = "pg_read_replica"
+        elif key == "pgServiceToForkFrom":
+            suggest = "pg_service_to_fork_from"
+        elif key == "pgVersion":
+            suggest = "pg_version"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "recoveryTargetTime":
+            suggest = "recovery_target_time"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+        elif key == "sharedBuffersPercentage":
+            suggest = "shared_buffers_percentage"
+        elif key == "synchronousReplication":
+            suggest = "synchronous_replication"
+        elif key == "workMem":
+            suggest = "work_mem"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePgUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePgUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePgUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  admin_password: Optional[str] = None,
                  admin_username: Optional[str] = None,
@@ -13851,12 +16881,26 @@ class ServicePgUserConfig(dict):
     def work_mem(self) -> Optional[str]:
         return pulumi.get(self, "work_mem")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePgUserConfigMigration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreDbs":
+            suggest = "ignore_dbs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePgUserConfigMigration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePgUserConfigMigration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePgUserConfigMigration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dbname: Optional[str] = None,
                  host: Optional[str] = None,
@@ -13915,12 +16959,98 @@ class ServicePgUserConfigMigration(dict):
     def username(self) -> Optional[str]:
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePgUserConfigPg(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autovacuumAnalyzeScaleFactor":
+            suggest = "autovacuum_analyze_scale_factor"
+        elif key == "autovacuumAnalyzeThreshold":
+            suggest = "autovacuum_analyze_threshold"
+        elif key == "autovacuumFreezeMaxAge":
+            suggest = "autovacuum_freeze_max_age"
+        elif key == "autovacuumMaxWorkers":
+            suggest = "autovacuum_max_workers"
+        elif key == "autovacuumNaptime":
+            suggest = "autovacuum_naptime"
+        elif key == "autovacuumVacuumCostDelay":
+            suggest = "autovacuum_vacuum_cost_delay"
+        elif key == "autovacuumVacuumCostLimit":
+            suggest = "autovacuum_vacuum_cost_limit"
+        elif key == "autovacuumVacuumScaleFactor":
+            suggest = "autovacuum_vacuum_scale_factor"
+        elif key == "autovacuumVacuumThreshold":
+            suggest = "autovacuum_vacuum_threshold"
+        elif key == "deadlockTimeout":
+            suggest = "deadlock_timeout"
+        elif key == "idleInTransactionSessionTimeout":
+            suggest = "idle_in_transaction_session_timeout"
+        elif key == "logAutovacuumMinDuration":
+            suggest = "log_autovacuum_min_duration"
+        elif key == "logErrorVerbosity":
+            suggest = "log_error_verbosity"
+        elif key == "logLinePrefix":
+            suggest = "log_line_prefix"
+        elif key == "logMinDurationStatement":
+            suggest = "log_min_duration_statement"
+        elif key == "maxFilesPerProcess":
+            suggest = "max_files_per_process"
+        elif key == "maxLocksPerTransaction":
+            suggest = "max_locks_per_transaction"
+        elif key == "maxLogicalReplicationWorkers":
+            suggest = "max_logical_replication_workers"
+        elif key == "maxParallelWorkers":
+            suggest = "max_parallel_workers"
+        elif key == "maxParallelWorkersPerGather":
+            suggest = "max_parallel_workers_per_gather"
+        elif key == "maxPredLocksPerTransaction":
+            suggest = "max_pred_locks_per_transaction"
+        elif key == "maxPreparedTransactions":
+            suggest = "max_prepared_transactions"
+        elif key == "maxReplicationSlots":
+            suggest = "max_replication_slots"
+        elif key == "maxStackDepth":
+            suggest = "max_stack_depth"
+        elif key == "maxStandbyArchiveDelay":
+            suggest = "max_standby_archive_delay"
+        elif key == "maxStandbyStreamingDelay":
+            suggest = "max_standby_streaming_delay"
+        elif key == "maxWalSenders":
+            suggest = "max_wal_senders"
+        elif key == "maxWorkerProcesses":
+            suggest = "max_worker_processes"
+        elif key == "pgPartmanBgwInterval":
+            suggest = "pg_partman_bgw_interval"
+        elif key == "pgPartmanBgwRole":
+            suggest = "pg_partman_bgw_role"
+        elif key == "pgStatStatementsTrack":
+            suggest = "pg_stat_statements_track"
+        elif key == "tempFileLimit":
+            suggest = "temp_file_limit"
+        elif key == "trackActivityQuerySize":
+            suggest = "track_activity_query_size"
+        elif key == "trackCommitTimestamp":
+            suggest = "track_commit_timestamp"
+        elif key == "trackFunctions":
+            suggest = "track_functions"
+        elif key == "walSenderTimeout":
+            suggest = "wal_sender_timeout"
+        elif key == "walWriterDelay":
+            suggest = "wal_writer_delay"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePgUserConfigPg. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePgUserConfigPg.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePgUserConfigPg.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  autovacuum_analyze_scale_factor: Optional[str] = None,
                  autovacuum_analyze_threshold: Optional[str] = None,
@@ -14235,12 +17365,42 @@ class ServicePgUserConfigPg(dict):
     def wal_writer_delay(self) -> Optional[str]:
         return pulumi.get(self, "wal_writer_delay")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePgUserConfigPgbouncer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autodbIdleTimeout":
+            suggest = "autodb_idle_timeout"
+        elif key == "autodbMaxDbConnections":
+            suggest = "autodb_max_db_connections"
+        elif key == "autodbPoolMode":
+            suggest = "autodb_pool_mode"
+        elif key == "autodbPoolSize":
+            suggest = "autodb_pool_size"
+        elif key == "ignoreStartupParameters":
+            suggest = "ignore_startup_parameters"
+        elif key == "minPoolSize":
+            suggest = "min_pool_size"
+        elif key == "serverIdleTimeout":
+            suggest = "server_idle_timeout"
+        elif key == "serverLifetime":
+            suggest = "server_lifetime"
+        elif key == "serverResetQueryAlways":
+            suggest = "server_reset_query_always"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePgUserConfigPgbouncer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePgUserConfigPgbouncer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePgUserConfigPgbouncer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  autodb_idle_timeout: Optional[str] = None,
                  autodb_max_db_connections: Optional[str] = None,
@@ -14315,12 +17475,26 @@ class ServicePgUserConfigPgbouncer(dict):
     def server_reset_query_always(self) -> Optional[str]:
         return pulumi.get(self, "server_reset_query_always")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePgUserConfigPglookout(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxFailoverReplicationTimeLag":
+            suggest = "max_failover_replication_time_lag"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePgUserConfigPglookout. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePgUserConfigPglookout.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePgUserConfigPglookout.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_failover_replication_time_lag: Optional[str] = None):
         if max_failover_replication_time_lag is not None:
@@ -14330,9 +17504,6 @@ class ServicePgUserConfigPglookout(dict):
     @pulumi.getter(name="maxFailoverReplicationTimeLag")
     def max_failover_replication_time_lag(self) -> Optional[str]:
         return pulumi.get(self, "max_failover_replication_time_lag")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -14363,9 +17534,6 @@ class ServicePgUserConfigPrivateAccess(dict):
     def prometheus(self) -> Optional[str]:
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePgUserConfigPrivatelinkAccess(dict):
@@ -14386,9 +17554,6 @@ class ServicePgUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[str]:
         return pulumi.get(self, "pgbouncer")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -14419,12 +17584,26 @@ class ServicePgUserConfigPublicAccess(dict):
     def prometheus(self) -> Optional[str]:
         return pulumi.get(self, "prometheus")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePgUserConfigTimescaledb(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBackgroundWorkers":
+            suggest = "max_background_workers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePgUserConfigTimescaledb. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePgUserConfigTimescaledb.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePgUserConfigTimescaledb.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_background_workers: Optional[str] = None):
         if max_background_workers is not None:
@@ -14435,21 +17614,58 @@ class ServicePgUserConfigTimescaledb(dict):
     def max_background_workers(self) -> Optional[str]:
         return pulumi.get(self, "max_background_workers")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceRedis(dict):
     def __init__(__self__):
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceRedisUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipFilters":
+            suggest = "ip_filters"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
+        elif key == "projectToForkFrom":
+            suggest = "project_to_fork_from"
+        elif key == "publicAccess":
+            suggest = "public_access"
+        elif key == "recoveryBasebackupName":
+            suggest = "recovery_basebackup_name"
+        elif key == "redisIoThreads":
+            suggest = "redis_io_threads"
+        elif key == "redisLfuDecayTime":
+            suggest = "redis_lfu_decay_time"
+        elif key == "redisLfuLogFactor":
+            suggest = "redis_lfu_log_factor"
+        elif key == "redisMaxmemoryPolicy":
+            suggest = "redis_maxmemory_policy"
+        elif key == "redisNotifyKeyspaceEvents":
+            suggest = "redis_notify_keyspace_events"
+        elif key == "redisSsl":
+            suggest = "redis_ssl"
+        elif key == "redisTimeout":
+            suggest = "redis_timeout"
+        elif key == "serviceToForkFrom":
+            suggest = "service_to_fork_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceRedisUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceRedisUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceRedisUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.ServiceRedisUserConfigMigration'] = None,
@@ -14572,12 +17788,26 @@ class ServiceRedisUserConfig(dict):
     def service_to_fork_from(self) -> Optional[str]:
         return pulumi.get(self, "service_to_fork_from")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceRedisUserConfigMigration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreDbs":
+            suggest = "ignore_dbs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceRedisUserConfigMigration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceRedisUserConfigMigration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceRedisUserConfigMigration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dbname: Optional[str] = None,
                  host: Optional[str] = None,
@@ -14636,9 +17866,6 @@ class ServiceRedisUserConfigMigration(dict):
     def username(self) -> Optional[str]:
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceRedisUserConfigPrivateAccess(dict):
@@ -14660,9 +17887,6 @@ class ServiceRedisUserConfigPrivateAccess(dict):
     def redis(self) -> Optional[str]:
         return pulumi.get(self, "redis")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceRedisUserConfigPrivatelinkAccess(dict):
@@ -14675,9 +17899,6 @@ class ServiceRedisUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def redis(self) -> Optional[str]:
         return pulumi.get(self, "redis")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -14700,12 +17921,28 @@ class ServiceRedisUserConfigPublicAccess(dict):
     def redis(self) -> Optional[str]:
         return pulumi.get(self, "redis")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceServiceIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "sourceServiceName":
+            suggest = "source_service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceServiceIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceServiceIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceServiceIntegration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):
@@ -14721,9 +17958,6 @@ class ServiceServiceIntegration(dict):
     @pulumi.getter(name="sourceServiceName")
     def source_service_name(self) -> str:
         return pulumi.get(self, "source_service_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

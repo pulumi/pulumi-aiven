@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -233,6 +233,232 @@ class KafkaTopicArgs:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.input_type
+class _KafkaTopicState:
+    def __init__(__self__, *,
+                 cleanup_policy: Optional[pulumi.Input[str]] = None,
+                 config: Optional[pulumi.Input['KafkaTopicConfigArgs']] = None,
+                 minimum_in_sync_replicas: Optional[pulumi.Input[int]] = None,
+                 partitions: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 replication: Optional[pulumi.Input[int]] = None,
+                 retention_bytes: Optional[pulumi.Input[int]] = None,
+                 retention_hours: Optional[pulumi.Input[int]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]] = None,
+                 termination_protection: Optional[pulumi.Input[bool]] = None,
+                 topic_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering KafkaTopic resources.
+        :param pulumi.Input[str] cleanup_policy: cleanup.policy value, can be `create`, `delete` or `compact,delete`
+        :param pulumi.Input['KafkaTopicConfigArgs'] config: Kafka topic configuration
+        :param pulumi.Input[int] minimum_in_sync_replicas: Minimum required nodes in-sync replicas 
+               (ISR) to produce to a partition.
+        :param pulumi.Input[int] partitions: Number of partitions to create in the topic.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the topic belongs to.
+               They should be defined using reference as shown above to set up dependencies correctly.
+               These properties cannot be changed once the service is created. Doing so will result in
+               the topic being deleted and new one created instead.
+        :param pulumi.Input[int] replication: Replication factor for the topic.
+        :param pulumi.Input[int] retention_bytes: retention.bytes value
+        :param pulumi.Input[int] retention_hours: Retention period in hours, if -1 it is infinite.
+        :param pulumi.Input[str] service_name: Service to link the kafka topic to
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Kafka Topic tag
+        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
+               enable this for any production Kafka topic containing critical data.
+        :param pulumi.Input[str] topic_name: is the actual name of the topic account. This propery cannot be changed
+               once the service is created. Doing so will result in the topic being deleted and new one
+               created instead.
+        """
+        if cleanup_policy is not None:
+            warnings.warn("""use config.cleanup_policy instead""", DeprecationWarning)
+            pulumi.log.warn("""cleanup_policy is deprecated: use config.cleanup_policy instead""")
+        if cleanup_policy is not None:
+            pulumi.set(__self__, "cleanup_policy", cleanup_policy)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if minimum_in_sync_replicas is not None:
+            warnings.warn("""use config.min_insync_replicas instead""", DeprecationWarning)
+            pulumi.log.warn("""minimum_in_sync_replicas is deprecated: use config.min_insync_replicas instead""")
+        if minimum_in_sync_replicas is not None:
+            pulumi.set(__self__, "minimum_in_sync_replicas", minimum_in_sync_replicas)
+        if partitions is not None:
+            pulumi.set(__self__, "partitions", partitions)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if replication is not None:
+            pulumi.set(__self__, "replication", replication)
+        if retention_bytes is not None:
+            warnings.warn("""use config.retention_bytes instead""", DeprecationWarning)
+            pulumi.log.warn("""retention_bytes is deprecated: use config.retention_bytes instead""")
+        if retention_bytes is not None:
+            pulumi.set(__self__, "retention_bytes", retention_bytes)
+        if retention_hours is not None:
+            warnings.warn("""use config.retention_ms instead""", DeprecationWarning)
+            pulumi.log.warn("""retention_hours is deprecated: use config.retention_ms instead""")
+        if retention_hours is not None:
+            pulumi.set(__self__, "retention_hours", retention_hours)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if termination_protection is not None:
+            pulumi.set(__self__, "termination_protection", termination_protection)
+        if topic_name is not None:
+            pulumi.set(__self__, "topic_name", topic_name)
+
+    @property
+    @pulumi.getter(name="cleanupPolicy")
+    def cleanup_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        cleanup.policy value, can be `create`, `delete` or `compact,delete`
+        """
+        return pulumi.get(self, "cleanup_policy")
+
+    @cleanup_policy.setter
+    def cleanup_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cleanup_policy", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['KafkaTopicConfigArgs']]:
+        """
+        Kafka topic configuration
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['KafkaTopicConfigArgs']]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="minimumInSyncReplicas")
+    def minimum_in_sync_replicas(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum required nodes in-sync replicas 
+        (ISR) to produce to a partition.
+        """
+        return pulumi.get(self, "minimum_in_sync_replicas")
+
+    @minimum_in_sync_replicas.setter
+    def minimum_in_sync_replicas(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minimum_in_sync_replicas", value)
+
+    @property
+    @pulumi.getter
+    def partitions(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of partitions to create in the topic.
+        """
+        return pulumi.get(self, "partitions")
+
+    @partitions.setter
+    def partitions(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "partitions", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        and `service_name` - (Required) define the project and service the topic belongs to.
+        They should be defined using reference as shown above to set up dependencies correctly.
+        These properties cannot be changed once the service is created. Doing so will result in
+        the topic being deleted and new one created instead.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def replication(self) -> Optional[pulumi.Input[int]]:
+        """
+        Replication factor for the topic.
+        """
+        return pulumi.get(self, "replication")
+
+    @replication.setter
+    def replication(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "replication", value)
+
+    @property
+    @pulumi.getter(name="retentionBytes")
+    def retention_bytes(self) -> Optional[pulumi.Input[int]]:
+        """
+        retention.bytes value
+        """
+        return pulumi.get(self, "retention_bytes")
+
+    @retention_bytes.setter
+    def retention_bytes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_bytes", value)
+
+    @property
+    @pulumi.getter(name="retentionHours")
+    def retention_hours(self) -> Optional[pulumi.Input[int]]:
+        """
+        Retention period in hours, if -1 it is infinite.
+        """
+        return pulumi.get(self, "retention_hours")
+
+    @retention_hours.setter
+    def retention_hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_hours", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service to link the kafka topic to
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]:
+        """
+        Kafka Topic tag
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
+        enable this for any production Kafka topic containing critical data.
+        """
+        return pulumi.get(self, "termination_protection")
+
+    @termination_protection.setter
+    def termination_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "termination_protection", value)
+
+    @property
+    @pulumi.getter(name="topicName")
+    def topic_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        is the actual name of the topic account. This propery cannot be changed
+        once the service is created. Doing so will result in the topic being deleted and new one
+        created instead.
+        """
+        return pulumi.get(self, "topic_name")
+
+    @topic_name.setter
+    def topic_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic_name", value)
+
+
 class KafkaTopic(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -330,42 +556,42 @@ class KafkaTopic(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = KafkaTopicArgs.__new__(KafkaTopicArgs)
 
             if cleanup_policy is not None and not opts.urn:
                 warnings.warn("""use config.cleanup_policy instead""", DeprecationWarning)
                 pulumi.log.warn("""cleanup_policy is deprecated: use config.cleanup_policy instead""")
-            __props__['cleanup_policy'] = cleanup_policy
-            __props__['config'] = config
+            __props__.__dict__["cleanup_policy"] = cleanup_policy
+            __props__.__dict__["config"] = config
             if minimum_in_sync_replicas is not None and not opts.urn:
                 warnings.warn("""use config.min_insync_replicas instead""", DeprecationWarning)
                 pulumi.log.warn("""minimum_in_sync_replicas is deprecated: use config.min_insync_replicas instead""")
-            __props__['minimum_in_sync_replicas'] = minimum_in_sync_replicas
+            __props__.__dict__["minimum_in_sync_replicas"] = minimum_in_sync_replicas
             if partitions is None and not opts.urn:
                 raise TypeError("Missing required property 'partitions'")
-            __props__['partitions'] = partitions
+            __props__.__dict__["partitions"] = partitions
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if replication is None and not opts.urn:
                 raise TypeError("Missing required property 'replication'")
-            __props__['replication'] = replication
+            __props__.__dict__["replication"] = replication
             if retention_bytes is not None and not opts.urn:
                 warnings.warn("""use config.retention_bytes instead""", DeprecationWarning)
                 pulumi.log.warn("""retention_bytes is deprecated: use config.retention_bytes instead""")
-            __props__['retention_bytes'] = retention_bytes
+            __props__.__dict__["retention_bytes"] = retention_bytes
             if retention_hours is not None and not opts.urn:
                 warnings.warn("""use config.retention_ms instead""", DeprecationWarning)
                 pulumi.log.warn("""retention_hours is deprecated: use config.retention_ms instead""")
-            __props__['retention_hours'] = retention_hours
+            __props__.__dict__["retention_hours"] = retention_hours
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
-            __props__['service_name'] = service_name
-            __props__['tags'] = tags
-            __props__['termination_protection'] = termination_protection
+            __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["termination_protection"] = termination_protection
             if topic_name is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_name'")
-            __props__['topic_name'] = topic_name
+            __props__.__dict__["topic_name"] = topic_name
         super(KafkaTopic, __self__).__init__(
             'aiven:index/kafkaTopic:KafkaTopic',
             resource_name,
@@ -417,20 +643,20 @@ class KafkaTopic(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _KafkaTopicState.__new__(_KafkaTopicState)
 
-        __props__["cleanup_policy"] = cleanup_policy
-        __props__["config"] = config
-        __props__["minimum_in_sync_replicas"] = minimum_in_sync_replicas
-        __props__["partitions"] = partitions
-        __props__["project"] = project
-        __props__["replication"] = replication
-        __props__["retention_bytes"] = retention_bytes
-        __props__["retention_hours"] = retention_hours
-        __props__["service_name"] = service_name
-        __props__["tags"] = tags
-        __props__["termination_protection"] = termination_protection
-        __props__["topic_name"] = topic_name
+        __props__.__dict__["cleanup_policy"] = cleanup_policy
+        __props__.__dict__["config"] = config
+        __props__.__dict__["minimum_in_sync_replicas"] = minimum_in_sync_replicas
+        __props__.__dict__["partitions"] = partitions
+        __props__.__dict__["project"] = project
+        __props__.__dict__["replication"] = replication
+        __props__.__dict__["retention_bytes"] = retention_bytes
+        __props__.__dict__["retention_hours"] = retention_hours
+        __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["termination_protection"] = termination_protection
+        __props__.__dict__["topic_name"] = topic_name
         return KafkaTopic(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -535,10 +761,4 @@ class KafkaTopic(pulumi.CustomResource):
         created instead.
         """
         return pulumi.get(self, "topic_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

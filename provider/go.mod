@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-aiven/provider/v3
+module github.com/pulumi/pulumi-aiven/provider/v4
 
 go 1.16
 
@@ -12,6 +12,6 @@ replace (
 require (
 	github.com/aiven/terraform-provider-aiven v1.3.1
 	github.com/hashicorp/terraform-plugin-sdk v1.14.0 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/v2 v2.23.0
-	github.com/pulumi/pulumi/sdk/v2 v2.24.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.0.0-beta.1
+	github.com/pulumi/pulumi/sdk/v3 v3.0.0-beta.2
 )
