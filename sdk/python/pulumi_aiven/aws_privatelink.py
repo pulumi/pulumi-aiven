@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['AwsPrivatelinkArgs', 'AwsPrivatelink']
 
@@ -68,6 +68,102 @@ class AwsPrivatelinkArgs:
 
     @service_name.setter
     def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+
+@pulumi.input_type
+class _AwsPrivatelinkState:
+    def __init__(__self__, *,
+                 aws_service_id: Optional[pulumi.Input[str]] = None,
+                 aws_service_name: Optional[pulumi.Input[str]] = None,
+                 principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AwsPrivatelink resources.
+        :param pulumi.Input[str] aws_service_id: AWS service ID.
+        :param pulumi.Input[str] aws_service_name: AWS service name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: list of allowed principals
+        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency between the project
+               and the service, refer to the project as shown in the above example. Project cannot be changed later without
+               destroying and re-creating the service.
+        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed later without
+               destroying and re-creating the service so name should be picked based on intended service usage rather than current
+               attributes.
+        """
+        if aws_service_id is not None:
+            pulumi.set(__self__, "aws_service_id", aws_service_id)
+        if aws_service_name is not None:
+            pulumi.set(__self__, "aws_service_name", aws_service_name)
+        if principals is not None:
+            pulumi.set(__self__, "principals", principals)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter(name="awsServiceId")
+    def aws_service_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS service ID.
+        """
+        return pulumi.get(self, "aws_service_id")
+
+    @aws_service_id.setter
+    def aws_service_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_service_id", value)
+
+    @property
+    @pulumi.getter(name="awsServiceName")
+    def aws_service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS service name.
+        """
+        return pulumi.get(self, "aws_service_name")
+
+    @aws_service_name.setter
+    def aws_service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_service_name", value)
+
+    @property
+    @pulumi.getter
+    def principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        list of allowed principals
+        """
+        return pulumi.get(self, "principals")
+
+    @principals.setter
+    def principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "principals", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        identifies the project the service belongs to. To set up proper dependency between the project
+        and the service, refer to the project as shown in the above example. Project cannot be changed later without
+        destroying and re-creating the service.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        specifies the actual name of the service. The name cannot be changed later without
+        destroying and re-creating the service so name should be picked based on intended service usage rather than current
+        attributes.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_name", value)
 
 
@@ -168,19 +264,19 @@ class AwsPrivatelink(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AwsPrivatelinkArgs.__new__(AwsPrivatelinkArgs)
 
             if principals is None and not opts.urn:
                 raise TypeError("Missing required property 'principals'")
-            __props__['principals'] = principals
+            __props__.__dict__["principals"] = principals
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
-            __props__['service_name'] = service_name
-            __props__['aws_service_id'] = None
-            __props__['aws_service_name'] = None
+            __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["aws_service_id"] = None
+            __props__.__dict__["aws_service_name"] = None
         super(AwsPrivatelink, __self__).__init__(
             'aiven:index/awsPrivatelink:AwsPrivatelink',
             resource_name,
@@ -215,13 +311,13 @@ class AwsPrivatelink(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AwsPrivatelinkState.__new__(_AwsPrivatelinkState)
 
-        __props__["aws_service_id"] = aws_service_id
-        __props__["aws_service_name"] = aws_service_name
-        __props__["principals"] = principals
-        __props__["project"] = project
-        __props__["service_name"] = service_name
+        __props__.__dict__["aws_service_id"] = aws_service_id
+        __props__.__dict__["aws_service_name"] = aws_service_name
+        __props__.__dict__["principals"] = principals
+        __props__.__dict__["project"] = project
+        __props__.__dict__["service_name"] = service_name
         return AwsPrivatelink(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -267,10 +363,4 @@ class AwsPrivatelink(pulumi.CustomResource):
         attributes.
         """
         return pulumi.get(self, "service_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

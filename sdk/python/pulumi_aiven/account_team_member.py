@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['AccountTeamMemberArgs', 'AccountTeamMember']
 
@@ -117,6 +117,116 @@ class AccountTeamMemberArgs:
         pulumi.set(self, "invited_by_user_email", value)
 
 
+@pulumi.input_type
+class _AccountTeamMemberState:
+    def __init__(__self__, *,
+                 accepted: Optional[pulumi.Input[bool]] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 invited_by_user_email: Optional[pulumi.Input[str]] = None,
+                 team_id: Optional[pulumi.Input[str]] = None,
+                 user_email: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccountTeamMember resources.
+        :param pulumi.Input[bool] accepted: is a boolean flag that determines whether an invitation was accepted or not by the user. 
+               `false` value means that the invitation was sent to the user but not yet accepted.
+               `true` means that the user accepted the invitation and now a member of an account team.
+        :param pulumi.Input[str] account_id: is a unique account id.
+        :param pulumi.Input[str] create_time: time of creation.
+        :param pulumi.Input[str] invited_by_user_email: team invited by user email.
+        :param pulumi.Input[str] team_id: is an account team id.
+        :param pulumi.Input[str] user_email: is a user email address that first will be invited, and after accepting an invitation,
+               he or she becomes a member of a team.
+        """
+        if accepted is not None:
+            pulumi.set(__self__, "accepted", accepted)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if invited_by_user_email is not None:
+            pulumi.set(__self__, "invited_by_user_email", invited_by_user_email)
+        if team_id is not None:
+            pulumi.set(__self__, "team_id", team_id)
+        if user_email is not None:
+            pulumi.set(__self__, "user_email", user_email)
+
+    @property
+    @pulumi.getter
+    def accepted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        is a boolean flag that determines whether an invitation was accepted or not by the user. 
+        `false` value means that the invitation was sent to the user but not yet accepted.
+        `true` means that the user accepted the invitation and now a member of an account team.
+        """
+        return pulumi.get(self, "accepted")
+
+    @accepted.setter
+    def accepted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "accepted", value)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a unique account id.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        time of creation.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="invitedByUserEmail")
+    def invited_by_user_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        team invited by user email.
+        """
+        return pulumi.get(self, "invited_by_user_email")
+
+    @invited_by_user_email.setter
+    def invited_by_user_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "invited_by_user_email", value)
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        is an account team id.
+        """
+        return pulumi.get(self, "team_id")
+
+    @team_id.setter
+    def team_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team_id", value)
+
+    @property
+    @pulumi.getter(name="userEmail")
+    def user_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a user email address that first will be invited, and after accepting an invitation,
+        he or she becomes a member of a team.
+        """
+        return pulumi.get(self, "user_email")
+
+    @user_email.setter
+    def user_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_email", value)
+
+
 class AccountTeamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -210,20 +320,20 @@ class AccountTeamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccountTeamMemberArgs.__new__(AccountTeamMemberArgs)
 
-            __props__['accepted'] = accepted
+            __props__.__dict__["accepted"] = accepted
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
-            __props__['account_id'] = account_id
-            __props__['create_time'] = create_time
-            __props__['invited_by_user_email'] = invited_by_user_email
+            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["create_time"] = create_time
+            __props__.__dict__["invited_by_user_email"] = invited_by_user_email
             if team_id is None and not opts.urn:
                 raise TypeError("Missing required property 'team_id'")
-            __props__['team_id'] = team_id
+            __props__.__dict__["team_id"] = team_id
             if user_email is None and not opts.urn:
                 raise TypeError("Missing required property 'user_email'")
-            __props__['user_email'] = user_email
+            __props__.__dict__["user_email"] = user_email
         super(AccountTeamMember, __self__).__init__(
             'aiven:index/accountTeamMember:AccountTeamMember',
             resource_name,
@@ -259,14 +369,14 @@ class AccountTeamMember(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccountTeamMemberState.__new__(_AccountTeamMemberState)
 
-        __props__["accepted"] = accepted
-        __props__["account_id"] = account_id
-        __props__["create_time"] = create_time
-        __props__["invited_by_user_email"] = invited_by_user_email
-        __props__["team_id"] = team_id
-        __props__["user_email"] = user_email
+        __props__.__dict__["accepted"] = accepted
+        __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["invited_by_user_email"] = invited_by_user_email
+        __props__.__dict__["team_id"] = team_id
+        __props__.__dict__["user_email"] = user_email
         return AccountTeamMember(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -319,10 +429,4 @@ class AccountTeamMember(pulumi.CustomResource):
         he or she becomes a member of a team.
         """
         return pulumi.get(self, "user_email")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['MirrorMakerReplicationFlowArgs', 'MirrorMakerReplicationFlow']
 
@@ -100,6 +100,128 @@ class MirrorMakerReplicationFlowArgs:
 
     @target_cluster.setter
     def target_cluster(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_cluster", value)
+
+    @property
+    @pulumi.getter
+    def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        is a list of topics and/or regular expressions to replicate.
+        """
+        return pulumi.get(self, "topics")
+
+    @topics.setter
+    def topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "topics", value)
+
+    @property
+    @pulumi.getter(name="topicsBlacklists")
+    def topics_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        is a list of topics and/or regular expressions to not replicate.
+        """
+        return pulumi.get(self, "topics_blacklists")
+
+    @topics_blacklists.setter
+    def topics_blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "topics_blacklists", value)
+
+
+@pulumi.input_type
+class _MirrorMakerReplicationFlowState:
+    def __init__(__self__, *,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 source_cluster: Optional[pulumi.Input[str]] = None,
+                 target_cluster: Optional[pulumi.Input[str]] = None,
+                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.
+        :param pulumi.Input[bool] enable: enable of disable replication flows for a MirrorMaker service
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+               Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] service_name: Service to link the kafka topic to
+        :param pulumi.Input[str] source_cluster: is a source cluster alias.
+        :param pulumi.Input[str] target_cluster: is a target cluster alias.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: is a list of topics and/or regular expressions to replicate.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if source_cluster is not None:
+            pulumi.set(__self__, "source_cluster", source_cluster)
+        if target_cluster is not None:
+            pulumi.set(__self__, "target_cluster", target_cluster)
+        if topics is not None:
+            pulumi.set(__self__, "topics", topics)
+        if topics_blacklists is not None:
+            pulumi.set(__self__, "topics_blacklists", topics_blacklists)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        enable of disable replication flows for a MirrorMaker service
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+        Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service to link the kafka topic to
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter(name="sourceCluster")
+    def source_cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a source cluster alias.
+        """
+        return pulumi.get(self, "source_cluster")
+
+    @source_cluster.setter
+    def source_cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_cluster", value)
+
+    @property
+    @pulumi.getter(name="targetCluster")
+    def target_cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a target cluster alias.
+        """
+        return pulumi.get(self, "target_cluster")
+
+    @target_cluster.setter
+    def target_cluster(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_cluster", value)
 
     @property
@@ -251,25 +373,25 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = MirrorMakerReplicationFlowArgs.__new__(MirrorMakerReplicationFlowArgs)
 
             if enable is None and not opts.urn:
                 raise TypeError("Missing required property 'enable'")
-            __props__['enable'] = enable
+            __props__.__dict__["enable"] = enable
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
-            __props__['service_name'] = service_name
+            __props__.__dict__["service_name"] = service_name
             if source_cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'source_cluster'")
-            __props__['source_cluster'] = source_cluster
+            __props__.__dict__["source_cluster"] = source_cluster
             if target_cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'target_cluster'")
-            __props__['target_cluster'] = target_cluster
-            __props__['topics'] = topics
-            __props__['topics_blacklists'] = topics_blacklists
+            __props__.__dict__["target_cluster"] = target_cluster
+            __props__.__dict__["topics"] = topics
+            __props__.__dict__["topics_blacklists"] = topics_blacklists
         super(MirrorMakerReplicationFlow, __self__).__init__(
             'aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow',
             resource_name,
@@ -305,15 +427,15 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _MirrorMakerReplicationFlowState.__new__(_MirrorMakerReplicationFlowState)
 
-        __props__["enable"] = enable
-        __props__["project"] = project
-        __props__["service_name"] = service_name
-        __props__["source_cluster"] = source_cluster
-        __props__["target_cluster"] = target_cluster
-        __props__["topics"] = topics
-        __props__["topics_blacklists"] = topics_blacklists
+        __props__.__dict__["enable"] = enable
+        __props__.__dict__["project"] = project
+        __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["source_cluster"] = source_cluster
+        __props__.__dict__["target_cluster"] = target_cluster
+        __props__.__dict__["topics"] = topics
+        __props__.__dict__["topics_blacklists"] = topics_blacklists
         return MirrorMakerReplicationFlow(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -372,10 +494,4 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         is a list of topics and/or regular expressions to not replicate.
         """
         return pulumi.get(self, "topics_blacklists")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

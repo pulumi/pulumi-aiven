@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['KafkaSchemaConfigurationArgs', 'KafkaSchemaConfiguration']
 
@@ -72,6 +72,74 @@ class KafkaSchemaConfigurationArgs:
 
     @service_name.setter
     def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+
+@pulumi.input_type
+class _KafkaSchemaConfigurationState:
+    def __init__(__self__, *,
+                 compatibility_level: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering KafkaSchemaConfiguration resources.
+        :param pulumi.Input[str] compatibility_level: is the Global Kafka Schema configuration compatibility level when defined 
+               for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+               compatibility level can be overridden for a specific subject when used in `KafkaSchema`
+               resource. If the compatibility level not specified for the individual subject by default,
+               it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+               `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+               They should be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] service_name: Service to link the Kafka Schemas Configuration to
+        """
+        if compatibility_level is not None:
+            pulumi.set(__self__, "compatibility_level", compatibility_level)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter(name="compatibilityLevel")
+    def compatibility_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        is the Global Kafka Schema configuration compatibility level when defined 
+        for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+        compatibility level can be overridden for a specific subject when used in `KafkaSchema`
+        resource. If the compatibility level not specified for the individual subject by default,
+        it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+        `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        """
+        return pulumi.get(self, "compatibility_level")
+
+    @compatibility_level.setter
+    def compatibility_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compatibility_level", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+        They should be defined using reference as shown above to set up dependencies correctly.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service to link the Kafka Schemas Configuration to
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_name", value)
 
 
@@ -174,17 +242,17 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = KafkaSchemaConfigurationArgs.__new__(KafkaSchemaConfigurationArgs)
 
             if compatibility_level is None and not opts.urn:
                 raise TypeError("Missing required property 'compatibility_level'")
-            __props__['compatibility_level'] = compatibility_level
+            __props__.__dict__["compatibility_level"] = compatibility_level
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
-            __props__['service_name'] = service_name
+            __props__.__dict__["service_name"] = service_name
         super(KafkaSchemaConfiguration, __self__).__init__(
             'aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration',
             resource_name,
@@ -217,11 +285,11 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _KafkaSchemaConfigurationState.__new__(_KafkaSchemaConfigurationState)
 
-        __props__["compatibility_level"] = compatibility_level
-        __props__["project"] = project
-        __props__["service_name"] = service_name
+        __props__.__dict__["compatibility_level"] = compatibility_level
+        __props__.__dict__["project"] = project
+        __props__.__dict__["service_name"] = service_name
         return KafkaSchemaConfiguration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -253,10 +321,4 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
         Service to link the Kafka Schemas Configuration to
         """
         return pulumi.get(self, "service_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

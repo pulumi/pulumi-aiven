@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['DatabaseArgs', 'Database']
 
@@ -100,6 +100,114 @@ class DatabaseArgs:
     @lc_ctype.setter
     def lc_ctype(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "lc_ctype", value)
+
+    @property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
+        recommended to enable this for any production databases containing critical data.
+        """
+        return pulumi.get(self, "termination_protection")
+
+    @termination_protection.setter
+    def termination_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "termination_protection", value)
+
+
+@pulumi.input_type
+class _DatabaseState:
+    def __init__(__self__, *,
+                 database_name: Optional[pulumi.Input[str]] = None,
+                 lc_collate: Optional[pulumi.Input[str]] = None,
+                 lc_ctype: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 termination_protection: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering Database resources.
+        :param pulumi.Input[str] database_name: is the actual name of the database.
+        :param pulumi.Input[str] lc_collate: default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+        :param pulumi.Input[str] lc_ctype: default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the database belongs to.
+               They should be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] service_name: Service to link the database to
+        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
+               recommended to enable this for any production databases containing critical data.
+        """
+        if database_name is not None:
+            pulumi.set(__self__, "database_name", database_name)
+        if lc_collate is not None:
+            pulumi.set(__self__, "lc_collate", lc_collate)
+        if lc_ctype is not None:
+            pulumi.set(__self__, "lc_ctype", lc_ctype)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if termination_protection is not None:
+            pulumi.set(__self__, "termination_protection", termination_protection)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        is the actual name of the database.
+        """
+        return pulumi.get(self, "database_name")
+
+    @database_name.setter
+    def database_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_name", value)
+
+    @property
+    @pulumi.getter(name="lcCollate")
+    def lc_collate(self) -> Optional[pulumi.Input[str]]:
+        """
+        default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+        """
+        return pulumi.get(self, "lc_collate")
+
+    @lc_collate.setter
+    def lc_collate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lc_collate", value)
+
+    @property
+    @pulumi.getter(name="lcCtype")
+    def lc_ctype(self) -> Optional[pulumi.Input[str]]:
+        """
+        default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+        """
+        return pulumi.get(self, "lc_ctype")
+
+    @lc_ctype.setter
+    def lc_ctype(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lc_ctype", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        and `service_name` - (Required) define the project and service the database belongs to.
+        They should be defined using reference as shown above to set up dependencies correctly.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service to link the database to
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
 
     @property
     @pulumi.getter(name="terminationProtection")
@@ -219,20 +327,20 @@ class Database(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
             if database_name is None and not opts.urn:
                 raise TypeError("Missing required property 'database_name'")
-            __props__['database_name'] = database_name
-            __props__['lc_collate'] = lc_collate
-            __props__['lc_ctype'] = lc_ctype
+            __props__.__dict__["database_name"] = database_name
+            __props__.__dict__["lc_collate"] = lc_collate
+            __props__.__dict__["lc_ctype"] = lc_ctype
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
-            __props__['service_name'] = service_name
-            __props__['termination_protection'] = termination_protection
+            __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["termination_protection"] = termination_protection
         super(Database, __self__).__init__(
             'aiven:index/database:Database',
             resource_name,
@@ -267,14 +375,14 @@ class Database(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DatabaseState.__new__(_DatabaseState)
 
-        __props__["database_name"] = database_name
-        __props__["lc_collate"] = lc_collate
-        __props__["lc_ctype"] = lc_ctype
-        __props__["project"] = project
-        __props__["service_name"] = service_name
-        __props__["termination_protection"] = termination_protection
+        __props__.__dict__["database_name"] = database_name
+        __props__.__dict__["lc_collate"] = lc_collate
+        __props__.__dict__["lc_ctype"] = lc_ctype
+        __props__.__dict__["project"] = project
+        __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["termination_protection"] = termination_protection
         return Database(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -326,10 +434,4 @@ class Database(pulumi.CustomResource):
         recommended to enable this for any production databases containing critical data.
         """
         return pulumi.get(self, "termination_protection")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

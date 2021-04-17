@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ProjectArgs', 'Project']
 
@@ -312,6 +312,364 @@ class ProjectArgs:
         pulumi.set(self, "vat_id", value)
 
 
+@pulumi.input_type
+class _ProjectState:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 available_credits: Optional[pulumi.Input[str]] = None,
+                 billing_address: Optional[pulumi.Input[str]] = None,
+                 billing_currency: Optional[pulumi.Input[str]] = None,
+                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 billing_extra_text: Optional[pulumi.Input[str]] = None,
+                 billing_group: Optional[pulumi.Input[str]] = None,
+                 ca_cert: Optional[pulumi.Input[str]] = None,
+                 card_id: Optional[pulumi.Input[str]] = None,
+                 copy_from_project: Optional[pulumi.Input[str]] = None,
+                 country: Optional[pulumi.Input[str]] = None,
+                 country_code: Optional[pulumi.Input[str]] = None,
+                 default_cloud: Optional[pulumi.Input[str]] = None,
+                 estimated_balance: Optional[pulumi.Input[str]] = None,
+                 payment_method: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vat_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Project resources.
+        :param pulumi.Input[str] account_id: is an optional property to link a project to already an existing account by 
+               using account ID.
+        :param pulumi.Input[str] available_credits: is a computed property returning the amount of platform credits available to
+               the project. This could be your free trial or other promotional credits.
+        :param pulumi.Input[str] billing_address: Billing name and address of the project
+        :param pulumi.Input[str] billing_currency: Billing currency
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails of the project
+        :param pulumi.Input[str] billing_extra_text: Extra text to be included in all project invoices, e.g. purchase order or cost center number
+        :param pulumi.Input[str] billing_group: Billing group Id
+        :param pulumi.Input[str] ca_cert: is a computed property that can be used to read the CA certificate of the
+               project. This is required for configuring clients that connect to certain services like
+               Kafka. This value cannot be set, only read.
+        :param pulumi.Input[str] card_id: is either the full card UUID or the last 4 digits of the card. As the full
+               UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+               the card. This can be omitted if `copy_from_project` is used to copy billing info from
+               another project.
+        :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and
+               some other project attributes like technical contacts from. This is mostly relevant when
+               an existing project has billing type set to invoice and that needs to be copied over to a
+               new project. (Setting billing is otherwise not allowed over the API.) This only has
+               effect when the project is created.
+        :param pulumi.Input[str] country: Billing country
+        :param pulumi.Input[str] country_code: Billing country code of the project
+        :param pulumi.Input[str] default_cloud: defines the default cloud provider and region where services are
+               hosted. This can be changed freely after the project is created. This will not affect existing
+               services.
+        :param pulumi.Input[str] estimated_balance: is a computed property returning the current accumulated bill for this 
+               project in the current billing period.
+        :param pulumi.Input[str] payment_method: is a computed property returning the method of invoicing used for payments for
+               this project, e.g. "card".
+        :param pulumi.Input[str] project: defines the name of the project. Name must be globally unique (between all
+               Aiven customers) and cannot be changed later without destroying and re-creating the
+               project, including all sub-resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: defines the email addresses that will receive alerts about 
+               upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+               this up-to-date to be aware of any potential issues with your project.
+        :param pulumi.Input[str] vat_id: EU VAT Identification Number
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if available_credits is not None:
+            pulumi.set(__self__, "available_credits", available_credits)
+        if billing_address is not None:
+            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
+            pulumi.log.warn("""billing_address is deprecated: Please use aiven_billing_group resource to set this value.""")
+        if billing_address is not None:
+            pulumi.set(__self__, "billing_address", billing_address)
+        if billing_currency is not None:
+            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
+            pulumi.log.warn("""billing_currency is deprecated: Please use aiven_billing_group resource to set this value.""")
+        if billing_currency is not None:
+            pulumi.set(__self__, "billing_currency", billing_currency)
+        if billing_emails is not None:
+            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
+            pulumi.log.warn("""billing_emails is deprecated: Please use aiven_billing_group resource to set this value.""")
+        if billing_emails is not None:
+            pulumi.set(__self__, "billing_emails", billing_emails)
+        if billing_extra_text is not None:
+            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
+            pulumi.log.warn("""billing_extra_text is deprecated: Please use aiven_billing_group resource to set this value.""")
+        if billing_extra_text is not None:
+            pulumi.set(__self__, "billing_extra_text", billing_extra_text)
+        if billing_group is not None:
+            pulumi.set(__self__, "billing_group", billing_group)
+        if ca_cert is not None:
+            pulumi.set(__self__, "ca_cert", ca_cert)
+        if card_id is not None:
+            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
+            pulumi.log.warn("""card_id is deprecated: Please use aiven_billing_group resource to set this value.""")
+        if card_id is not None:
+            pulumi.set(__self__, "card_id", card_id)
+        if copy_from_project is not None:
+            pulumi.set(__self__, "copy_from_project", copy_from_project)
+        if country is not None:
+            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
+            pulumi.log.warn("""country is deprecated: Please use aiven_billing_group resource to set this value.""")
+        if country is not None:
+            pulumi.set(__self__, "country", country)
+        if country_code is not None:
+            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
+            pulumi.log.warn("""country_code is deprecated: Please use aiven_billing_group resource to set this value.""")
+        if country_code is not None:
+            pulumi.set(__self__, "country_code", country_code)
+        if default_cloud is not None:
+            pulumi.set(__self__, "default_cloud", default_cloud)
+        if estimated_balance is not None:
+            pulumi.set(__self__, "estimated_balance", estimated_balance)
+        if payment_method is not None:
+            pulumi.set(__self__, "payment_method", payment_method)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if technical_emails is not None:
+            pulumi.set(__self__, "technical_emails", technical_emails)
+        if vat_id is not None:
+            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
+            pulumi.log.warn("""vat_id is deprecated: Please use aiven_billing_group resource to set this value.""")
+        if vat_id is not None:
+            pulumi.set(__self__, "vat_id", vat_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        is an optional property to link a project to already an existing account by 
+        using account ID.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="availableCredits")
+    def available_credits(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a computed property returning the amount of platform credits available to
+        the project. This could be your free trial or other promotional credits.
+        """
+        return pulumi.get(self, "available_credits")
+
+    @available_credits.setter
+    def available_credits(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "available_credits", value)
+
+    @property
+    @pulumi.getter(name="billingAddress")
+    def billing_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        Billing name and address of the project
+        """
+        return pulumi.get(self, "billing_address")
+
+    @billing_address.setter
+    def billing_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_address", value)
+
+    @property
+    @pulumi.getter(name="billingCurrency")
+    def billing_currency(self) -> Optional[pulumi.Input[str]]:
+        """
+        Billing currency
+        """
+        return pulumi.get(self, "billing_currency")
+
+    @billing_currency.setter
+    def billing_currency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_currency", value)
+
+    @property
+    @pulumi.getter(name="billingEmails")
+    def billing_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Billing contact emails of the project
+        """
+        return pulumi.get(self, "billing_emails")
+
+    @billing_emails.setter
+    def billing_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "billing_emails", value)
+
+    @property
+    @pulumi.getter(name="billingExtraText")
+    def billing_extra_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Extra text to be included in all project invoices, e.g. purchase order or cost center number
+        """
+        return pulumi.get(self, "billing_extra_text")
+
+    @billing_extra_text.setter
+    def billing_extra_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_extra_text", value)
+
+    @property
+    @pulumi.getter(name="billingGroup")
+    def billing_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Billing group Id
+        """
+        return pulumi.get(self, "billing_group")
+
+    @billing_group.setter
+    def billing_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_group", value)
+
+    @property
+    @pulumi.getter(name="caCert")
+    def ca_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a computed property that can be used to read the CA certificate of the
+        project. This is required for configuring clients that connect to certain services like
+        Kafka. This value cannot be set, only read.
+        """
+        return pulumi.get(self, "ca_cert")
+
+    @ca_cert.setter
+    def ca_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_cert", value)
+
+    @property
+    @pulumi.getter(name="cardId")
+    def card_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        is either the full card UUID or the last 4 digits of the card. As the full
+        UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+        the card. This can be omitted if `copy_from_project` is used to copy billing info from
+        another project.
+        """
+        return pulumi.get(self, "card_id")
+
+    @card_id.setter
+    def card_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "card_id", value)
+
+    @property
+    @pulumi.getter(name="copyFromProject")
+    def copy_from_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        is the name of another project used to copy billing information and
+        some other project attributes like technical contacts from. This is mostly relevant when
+        an existing project has billing type set to invoice and that needs to be copied over to a
+        new project. (Setting billing is otherwise not allowed over the API.) This only has
+        effect when the project is created.
+        """
+        return pulumi.get(self, "copy_from_project")
+
+    @copy_from_project.setter
+    def copy_from_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "copy_from_project", value)
+
+    @property
+    @pulumi.getter
+    def country(self) -> Optional[pulumi.Input[str]]:
+        """
+        Billing country
+        """
+        return pulumi.get(self, "country")
+
+    @country.setter
+    def country(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "country", value)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Billing country code of the project
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "country_code", value)
+
+    @property
+    @pulumi.getter(name="defaultCloud")
+    def default_cloud(self) -> Optional[pulumi.Input[str]]:
+        """
+        defines the default cloud provider and region where services are
+        hosted. This can be changed freely after the project is created. This will not affect existing
+        services.
+        """
+        return pulumi.get(self, "default_cloud")
+
+    @default_cloud.setter
+    def default_cloud(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_cloud", value)
+
+    @property
+    @pulumi.getter(name="estimatedBalance")
+    def estimated_balance(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a computed property returning the current accumulated bill for this 
+        project in the current billing period.
+        """
+        return pulumi.get(self, "estimated_balance")
+
+    @estimated_balance.setter
+    def estimated_balance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "estimated_balance", value)
+
+    @property
+    @pulumi.getter(name="paymentMethod")
+    def payment_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        is a computed property returning the method of invoicing used for payments for
+        this project, e.g. "card".
+        """
+        return pulumi.get(self, "payment_method")
+
+    @payment_method.setter
+    def payment_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_method", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        defines the name of the project. Name must be globally unique (between all
+        Aiven customers) and cannot be changed later without destroying and re-creating the
+        project, including all sub-resources.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="technicalEmails")
+    def technical_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        defines the email addresses that will receive alerts about 
+        upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+        this up-to-date to be aware of any potential issues with your project.
+        """
+        return pulumi.get(self, "technical_emails")
+
+    @technical_emails.setter
+    def technical_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "technical_emails", value)
+
+    @property
+    @pulumi.getter(name="vatId")
+    def vat_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        EU VAT Identification Number
+        """
+        return pulumi.get(self, "vat_id")
+
+    @vat_id.setter
+    def vat_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vat_id", value)
+
+
 class Project(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -434,49 +792,49 @@ class Project(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProjectArgs.__new__(ProjectArgs)
 
-            __props__['account_id'] = account_id
-            __props__['available_credits'] = available_credits
+            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["available_credits"] = available_credits
             if billing_address is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
                 pulumi.log.warn("""billing_address is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__['billing_address'] = billing_address
+            __props__.__dict__["billing_address"] = billing_address
             if billing_currency is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
                 pulumi.log.warn("""billing_currency is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__['billing_currency'] = billing_currency
+            __props__.__dict__["billing_currency"] = billing_currency
             if billing_emails is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
                 pulumi.log.warn("""billing_emails is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__['billing_emails'] = billing_emails
+            __props__.__dict__["billing_emails"] = billing_emails
             if billing_extra_text is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
                 pulumi.log.warn("""billing_extra_text is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__['billing_extra_text'] = billing_extra_text
-            __props__['billing_group'] = billing_group
-            __props__['ca_cert'] = ca_cert
+            __props__.__dict__["billing_extra_text"] = billing_extra_text
+            __props__.__dict__["billing_group"] = billing_group
+            __props__.__dict__["ca_cert"] = ca_cert
             if card_id is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
                 pulumi.log.warn("""card_id is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__['card_id'] = card_id
-            __props__['copy_from_project'] = copy_from_project
+            __props__.__dict__["card_id"] = card_id
+            __props__.__dict__["copy_from_project"] = copy_from_project
             if country_code is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
                 pulumi.log.warn("""country_code is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__['country_code'] = country_code
-            __props__['default_cloud'] = default_cloud
+            __props__.__dict__["country_code"] = country_code
+            __props__.__dict__["default_cloud"] = default_cloud
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
-            __props__['technical_emails'] = technical_emails
+            __props__.__dict__["project"] = project
+            __props__.__dict__["technical_emails"] = technical_emails
             if vat_id is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
                 pulumi.log.warn("""vat_id is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__['vat_id'] = vat_id
-            __props__['country'] = None
-            __props__['estimated_balance'] = None
-            __props__['payment_method'] = None
+            __props__.__dict__["vat_id"] = vat_id
+            __props__.__dict__["country"] = None
+            __props__.__dict__["estimated_balance"] = None
+            __props__.__dict__["payment_method"] = None
         super(Project, __self__).__init__(
             'aiven:index/project:Project',
             resource_name,
@@ -552,26 +910,26 @@ class Project(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ProjectState.__new__(_ProjectState)
 
-        __props__["account_id"] = account_id
-        __props__["available_credits"] = available_credits
-        __props__["billing_address"] = billing_address
-        __props__["billing_currency"] = billing_currency
-        __props__["billing_emails"] = billing_emails
-        __props__["billing_extra_text"] = billing_extra_text
-        __props__["billing_group"] = billing_group
-        __props__["ca_cert"] = ca_cert
-        __props__["card_id"] = card_id
-        __props__["copy_from_project"] = copy_from_project
-        __props__["country"] = country
-        __props__["country_code"] = country_code
-        __props__["default_cloud"] = default_cloud
-        __props__["estimated_balance"] = estimated_balance
-        __props__["payment_method"] = payment_method
-        __props__["project"] = project
-        __props__["technical_emails"] = technical_emails
-        __props__["vat_id"] = vat_id
+        __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["available_credits"] = available_credits
+        __props__.__dict__["billing_address"] = billing_address
+        __props__.__dict__["billing_currency"] = billing_currency
+        __props__.__dict__["billing_emails"] = billing_emails
+        __props__.__dict__["billing_extra_text"] = billing_extra_text
+        __props__.__dict__["billing_group"] = billing_group
+        __props__.__dict__["ca_cert"] = ca_cert
+        __props__.__dict__["card_id"] = card_id
+        __props__.__dict__["copy_from_project"] = copy_from_project
+        __props__.__dict__["country"] = country
+        __props__.__dict__["country_code"] = country_code
+        __props__.__dict__["default_cloud"] = default_cloud
+        __props__.__dict__["estimated_balance"] = estimated_balance
+        __props__.__dict__["payment_method"] = payment_method
+        __props__.__dict__["project"] = project
+        __props__.__dict__["technical_emails"] = technical_emails
+        __props__.__dict__["vat_id"] = vat_id
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -736,10 +1094,4 @@ class Project(pulumi.CustomResource):
         EU VAT Identification Number
         """
         return pulumi.get(self, "vat_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

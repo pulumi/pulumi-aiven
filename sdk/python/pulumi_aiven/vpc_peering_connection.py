@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['VpcPeeringConnectionArgs', 'VpcPeeringConnection']
 
@@ -129,6 +129,182 @@ class VpcPeeringConnectionArgs:
         pulumi.set(self, "peer_resource_group", value)
 
 
+@pulumi.input_type
+class _VpcPeeringConnectionState:
+    def __init__(__self__, *,
+                 peer_azure_app_id: Optional[pulumi.Input[str]] = None,
+                 peer_azure_tenant_id: Optional[pulumi.Input[str]] = None,
+                 peer_cloud_account: Optional[pulumi.Input[str]] = None,
+                 peer_region: Optional[pulumi.Input[str]] = None,
+                 peer_resource_group: Optional[pulumi.Input[str]] = None,
+                 peer_vpc: Optional[pulumi.Input[str]] = None,
+                 peering_connection_id: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering VpcPeeringConnection resources.
+        :param pulumi.Input[str] peer_azure_app_id: an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
+        :param pulumi.Input[str] peer_azure_tenant_id: an Azure tenant id in UUID4 form.
+        :param pulumi.Input[str] peer_cloud_account: defines the identifier of the cloud account the VPC is being
+               peered with.
+        :param pulumi.Input[str] peer_region: defines the region of the remote VPC if it is not in the same region as Aiven VPC.
+        :param pulumi.Input[str] peer_resource_group: an Azure resource group name of the peered VPC.
+        :param pulumi.Input[str] peer_vpc: defines the identifier or name of the remote VPC.
+        :param pulumi.Input[str] peering_connection_id: a cloud provider identifier for the peering connection if available.
+        :param pulumi.Input[str] state: is the state of the peering connection. This property is computed by Aiven 
+               therefore cannot be set, only read. Where state can be one of: `APPROVED`,
+               `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
+               `INVALID_SPECIFICATION`.
+        :param pulumi.Input[Mapping[str, Any]] state_info: state-specific help or error information.
+        :param pulumi.Input[str] vpc_id: is the Aiven VPC the peering connection is associated with.
+        """
+        if peer_azure_app_id is not None:
+            pulumi.set(__self__, "peer_azure_app_id", peer_azure_app_id)
+        if peer_azure_tenant_id is not None:
+            pulumi.set(__self__, "peer_azure_tenant_id", peer_azure_tenant_id)
+        if peer_cloud_account is not None:
+            pulumi.set(__self__, "peer_cloud_account", peer_cloud_account)
+        if peer_region is not None:
+            pulumi.set(__self__, "peer_region", peer_region)
+        if peer_resource_group is not None:
+            pulumi.set(__self__, "peer_resource_group", peer_resource_group)
+        if peer_vpc is not None:
+            pulumi.set(__self__, "peer_vpc", peer_vpc)
+        if peering_connection_id is not None:
+            pulumi.set(__self__, "peering_connection_id", peering_connection_id)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if state_info is not None:
+            pulumi.set(__self__, "state_info", state_info)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="peerAzureAppId")
+    def peer_azure_app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
+        """
+        return pulumi.get(self, "peer_azure_app_id")
+
+    @peer_azure_app_id.setter
+    def peer_azure_app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_azure_app_id", value)
+
+    @property
+    @pulumi.getter(name="peerAzureTenantId")
+    def peer_azure_tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        an Azure tenant id in UUID4 form.
+        """
+        return pulumi.get(self, "peer_azure_tenant_id")
+
+    @peer_azure_tenant_id.setter
+    def peer_azure_tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_azure_tenant_id", value)
+
+    @property
+    @pulumi.getter(name="peerCloudAccount")
+    def peer_cloud_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        defines the identifier of the cloud account the VPC is being
+        peered with.
+        """
+        return pulumi.get(self, "peer_cloud_account")
+
+    @peer_cloud_account.setter
+    def peer_cloud_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_cloud_account", value)
+
+    @property
+    @pulumi.getter(name="peerRegion")
+    def peer_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        defines the region of the remote VPC if it is not in the same region as Aiven VPC.
+        """
+        return pulumi.get(self, "peer_region")
+
+    @peer_region.setter
+    def peer_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_region", value)
+
+    @property
+    @pulumi.getter(name="peerResourceGroup")
+    def peer_resource_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        an Azure resource group name of the peered VPC.
+        """
+        return pulumi.get(self, "peer_resource_group")
+
+    @peer_resource_group.setter
+    def peer_resource_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_resource_group", value)
+
+    @property
+    @pulumi.getter(name="peerVpc")
+    def peer_vpc(self) -> Optional[pulumi.Input[str]]:
+        """
+        defines the identifier or name of the remote VPC.
+        """
+        return pulumi.get(self, "peer_vpc")
+
+    @peer_vpc.setter
+    def peer_vpc(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_vpc", value)
+
+    @property
+    @pulumi.getter(name="peeringConnectionId")
+    def peering_connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        a cloud provider identifier for the peering connection if available.
+        """
+        return pulumi.get(self, "peering_connection_id")
+
+    @peering_connection_id.setter
+    def peering_connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peering_connection_id", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        is the state of the peering connection. This property is computed by Aiven 
+        therefore cannot be set, only read. Where state can be one of: `APPROVED`,
+        `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
+        `INVALID_SPECIFICATION`.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="stateInfo")
+    def state_info(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        state-specific help or error information.
+        """
+        return pulumi.get(self, "state_info")
+
+    @state_info.setter
+    def state_info(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "state_info", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        is the Aiven VPC the peering connection is associated with.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+
 class VpcPeeringConnection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -237,24 +413,24 @@ class VpcPeeringConnection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VpcPeeringConnectionArgs.__new__(VpcPeeringConnectionArgs)
 
-            __props__['peer_azure_app_id'] = peer_azure_app_id
-            __props__['peer_azure_tenant_id'] = peer_azure_tenant_id
+            __props__.__dict__["peer_azure_app_id"] = peer_azure_app_id
+            __props__.__dict__["peer_azure_tenant_id"] = peer_azure_tenant_id
             if peer_cloud_account is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_cloud_account'")
-            __props__['peer_cloud_account'] = peer_cloud_account
-            __props__['peer_region'] = peer_region
-            __props__['peer_resource_group'] = peer_resource_group
+            __props__.__dict__["peer_cloud_account"] = peer_cloud_account
+            __props__.__dict__["peer_region"] = peer_region
+            __props__.__dict__["peer_resource_group"] = peer_resource_group
             if peer_vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_vpc'")
-            __props__['peer_vpc'] = peer_vpc
+            __props__.__dict__["peer_vpc"] = peer_vpc
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
-            __props__['peering_connection_id'] = None
-            __props__['state'] = None
-            __props__['state_info'] = None
+            __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["peering_connection_id"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["state_info"] = None
         super(VpcPeeringConnection, __self__).__init__(
             'aiven:index/vpcPeeringConnection:VpcPeeringConnection',
             resource_name,
@@ -299,18 +475,18 @@ class VpcPeeringConnection(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VpcPeeringConnectionState.__new__(_VpcPeeringConnectionState)
 
-        __props__["peer_azure_app_id"] = peer_azure_app_id
-        __props__["peer_azure_tenant_id"] = peer_azure_tenant_id
-        __props__["peer_cloud_account"] = peer_cloud_account
-        __props__["peer_region"] = peer_region
-        __props__["peer_resource_group"] = peer_resource_group
-        __props__["peer_vpc"] = peer_vpc
-        __props__["peering_connection_id"] = peering_connection_id
-        __props__["state"] = state
-        __props__["state_info"] = state_info
-        __props__["vpc_id"] = vpc_id
+        __props__.__dict__["peer_azure_app_id"] = peer_azure_app_id
+        __props__.__dict__["peer_azure_tenant_id"] = peer_azure_tenant_id
+        __props__.__dict__["peer_cloud_account"] = peer_cloud_account
+        __props__.__dict__["peer_region"] = peer_region
+        __props__.__dict__["peer_resource_group"] = peer_resource_group
+        __props__.__dict__["peer_vpc"] = peer_vpc
+        __props__.__dict__["peering_connection_id"] = peering_connection_id
+        __props__.__dict__["state"] = state
+        __props__.__dict__["state_info"] = state_info
+        __props__.__dict__["vpc_id"] = vpc_id
         return VpcPeeringConnection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -396,10 +572,4 @@ class VpcPeeringConnection(pulumi.CustomResource):
         is the Aiven VPC the peering connection is associated with.
         """
         return pulumi.get(self, "vpc_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
