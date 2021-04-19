@@ -516,9 +516,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
                  prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']]] = None,
                  rsyslog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']]] = None,
                  signalfx_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointSignalfxUserConfigArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         ## # Service Integration Endpoint Resource
 
@@ -613,15 +611,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
                  prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']]] = None,
                  rsyslog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']]] = None,
                  signalfx_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointSignalfxUserConfigArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
