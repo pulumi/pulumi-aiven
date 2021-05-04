@@ -57,7 +57,8 @@ namespace Pulumi.Aiven
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// is the mode the pool operates in (session, transaction, statement).
+        /// is the mode the pool operates in (session, transaction, statement). The
+        /// default value for this is `transaction`.
         /// </summary>
         [Output("poolMode")]
         public Output<string?> PoolMode { get; private set; } = null!;
@@ -71,7 +72,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// is the number of connections the pool may create towards the backend
         /// server. This does not affect the number of incoming connections, which is always a much
-        /// larger number.
+        /// larger number. The default value for this is 10.
         /// </summary>
         [Output("poolSize")]
         public Output<int?> PoolSize { get; private set; } = null!;
@@ -152,7 +153,8 @@ namespace Pulumi.Aiven
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// is the mode the pool operates in (session, transaction, statement).
+        /// is the mode the pool operates in (session, transaction, statement). The
+        /// default value for this is `transaction`.
         /// </summary>
         [Input("poolMode")]
         public Input<string>? PoolMode { get; set; }
@@ -166,7 +168,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// is the number of connections the pool may create towards the backend
         /// server. This does not affect the number of incoming connections, which is always a much
-        /// larger number.
+        /// larger number. The default value for this is 10.
         /// </summary>
         [Input("poolSize")]
         public Input<int>? PoolSize { get; set; }
@@ -215,7 +217,8 @@ namespace Pulumi.Aiven
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// is the mode the pool operates in (session, transaction, statement).
+        /// is the mode the pool operates in (session, transaction, statement). The
+        /// default value for this is `transaction`.
         /// </summary>
         [Input("poolMode")]
         public Input<string>? PoolMode { get; set; }
@@ -229,7 +232,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// is the number of connections the pool may create towards the backend
         /// server. This does not affect the number of incoming connections, which is always a much
-        /// larger number.
+        /// larger number. The default value for this is 10.
         /// </summary>
         [Input("poolSize")]
         public Input<int>? PoolSize { get; set; }

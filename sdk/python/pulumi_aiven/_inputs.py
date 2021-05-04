@@ -173,6 +173,8 @@ __all__ = [
     'ServiceIntegrationEndpointSignalfxUserConfigArgs',
     'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs',
     'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs',
+    'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs',
+    'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs',
     'ServiceIntegrationExternalElasticsearchLogsUserConfigArgs',
     'ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs',
     'ServiceIntegrationKafkaConnectUserConfigArgs',
@@ -400,6 +402,8 @@ __all__ = [
     'GetServiceIntegrationEndpointSignalfxUserConfigArgs',
     'GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs',
     'GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs',
+    'GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs',
+    'GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs',
     'GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs',
     'GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs',
     'GetServiceIntegrationKafkaConnectUserConfigArgs',
@@ -6355,16 +6359,19 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
                  sync_group_offsets_enabled: Optional[pulumi.Input[str]] = None,
                  sync_group_offsets_interval_seconds: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] emit_checkpoints_enabled: Whether to periodically write the translated offsets 
+        :param pulumi.Input[str] emit_checkpoints_enabled: Whether to periodically write the translated offsets
                of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
                as long as no active consumers in that group are connected to the target cluster.
-        :param pulumi.Input[str] refresh_groups_enabled: Whether to periodically check for new consumer groups. 
+        :param pulumi.Input[str] refresh_groups_enabled: Whether to periodically check for new consumer groups.
                Defaults to 'true'.
-        :param pulumi.Input[str] refresh_groups_interval_seconds: Whether to periodically check for new topics and 
+        :param pulumi.Input[str] refresh_groups_interval_seconds: Frequency of consumer group refresh in seconds.
+               Defaults to 600 seconds (10 minutes).
+        :param pulumi.Input[str] refresh_topics_enabled: Whether to periodically check for new topics and
                partitions. Defaults to 'true'.
-        :param pulumi.Input[str] refresh_topics_interval_seconds: Frequency of topic and partitions refresh in 
+        :param pulumi.Input[str] refresh_topics_interval_seconds: Frequency of topic and partitions refresh in
                seconds. Defaults to 600 seconds (10 minutes).
-        :param pulumi.Input[str] sync_group_offsets_interval_seconds: Frequency at which consumer group offsets 
+        :param pulumi.Input[str] sync_group_offsets_enabled: Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. Defaults to 'false'.
+        :param pulumi.Input[str] sync_group_offsets_interval_seconds: Frequency at which consumer group offsets
                are synced (default: 60, every minute).
         """
         if emit_checkpoints_enabled is not None:
@@ -6388,7 +6395,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     @pulumi.getter(name="emitCheckpointsEnabled")
     def emit_checkpoints_enabled(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to periodically write the translated offsets 
+        Whether to periodically write the translated offsets
         of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
         as long as no active consumers in that group are connected to the target cluster.
         """
@@ -6411,7 +6418,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     @pulumi.getter(name="refreshGroupsEnabled")
     def refresh_groups_enabled(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to periodically check for new consumer groups. 
+        Whether to periodically check for new consumer groups.
         Defaults to 'true'.
         """
         return pulumi.get(self, "refresh_groups_enabled")
@@ -6424,8 +6431,8 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     @pulumi.getter(name="refreshGroupsIntervalSeconds")
     def refresh_groups_interval_seconds(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to periodically check for new topics and 
-        partitions. Defaults to 'true'.
+        Frequency of consumer group refresh in seconds.
+        Defaults to 600 seconds (10 minutes).
         """
         return pulumi.get(self, "refresh_groups_interval_seconds")
 
@@ -6436,6 +6443,10 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     @property
     @pulumi.getter(name="refreshTopicsEnabled")
     def refresh_topics_enabled(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to periodically check for new topics and
+        partitions. Defaults to 'true'.
+        """
         return pulumi.get(self, "refresh_topics_enabled")
 
     @refresh_topics_enabled.setter
@@ -6446,7 +6457,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     @pulumi.getter(name="refreshTopicsIntervalSeconds")
     def refresh_topics_interval_seconds(self) -> Optional[pulumi.Input[str]]:
         """
-        Frequency of topic and partitions refresh in 
+        Frequency of topic and partitions refresh in
         seconds. Defaults to 600 seconds (10 minutes).
         """
         return pulumi.get(self, "refresh_topics_interval_seconds")
@@ -6458,6 +6469,9 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     @property
     @pulumi.getter(name="syncGroupOffsetsEnabled")
     def sync_group_offsets_enabled(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. Defaults to 'false'.
+        """
         return pulumi.get(self, "sync_group_offsets_enabled")
 
     @sync_group_offsets_enabled.setter
@@ -6468,7 +6482,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
     def sync_group_offsets_interval_seconds(self) -> Optional[pulumi.Input[str]]:
         """
-        Frequency at which consumer group offsets 
+        Frequency at which consumer group offsets
         are synced (default: 60, every minute).
         """
         return pulumi.get(self, "sync_group_offsets_interval_seconds")
@@ -8080,6 +8094,7 @@ class MySqlMysqlUserConfigArgs:
                  admin_username: Optional[pulumi.Input[str]] = None,
                  backup_hour: Optional[pulumi.Input[str]] = None,
                  backup_minute: Optional[pulumi.Input[str]] = None,
+                 binlog_retention_period: Optional[pulumi.Input[str]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  migration: Optional[pulumi.Input['MySqlMysqlUserConfigMigrationArgs']] = None,
                  mysql: Optional[pulumi.Input['MySqlMysqlUserConfigMysqlArgs']] = None,
@@ -8099,6 +8114,9 @@ class MySqlMysqlUserConfigArgs:
                New backup is only started if previous backup has already completed.
         :param pulumi.Input[str] backup_minute: The minute of an hour when backup for the service is started. 
                New backup is only started if previous backup has already completed.
+        :param pulumi.Input[str] binlog_retention_period: The minimum amount of time in seconds to keep binlog entries 
+               before deletion. This may be extended for services that require binlog entries for longer than the
+               default for example if using the MySQL Debezium Kafka connector.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param pulumi.Input['MySqlMysqlUserConfigMigrationArgs'] migration: Migrate data from existing server
         :param pulumi.Input['MySqlMysqlUserConfigMysqlArgs'] mysql: Allow clients to connect to mysql from the public internet for service 
@@ -8122,6 +8140,8 @@ class MySqlMysqlUserConfigArgs:
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if binlog_retention_period is not None:
+            pulumi.set(__self__, "binlog_retention_period", binlog_retention_period)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -8194,6 +8214,20 @@ class MySqlMysqlUserConfigArgs:
     @backup_minute.setter
     def backup_minute(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "backup_minute", value)
+
+    @property
+    @pulumi.getter(name="binlogRetentionPeriod")
+    def binlog_retention_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum amount of time in seconds to keep binlog entries 
+        before deletion. This may be extended for services that require binlog entries for longer than the
+        default for example if using the MySQL Debezium Kafka connector.
+        """
+        return pulumi.get(self, "binlog_retention_period")
+
+    @binlog_retention_period.setter
+    def binlog_retention_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "binlog_retention_period", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -8872,15 +8906,20 @@ class MySqlMysqlUserConfigMysqlArgs:
 class MySqlMysqlUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
                  mysql: Optional[pulumi.Input[str]] = None,
+                 mysqlx: Optional[pulumi.Input[str]] = None,
                  prometheus: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] mysql: Allow clients to connect to mysql from the public internet for service 
+               nodes that are in a project VPC or another type of private network
+        :param pulumi.Input[str] mysqlx: Allow clients to connect to mysqlx from the public internet for service 
                nodes that are in a project VPC or another type of private network
         :param pulumi.Input[str] prometheus: Allow clients to connect to prometheus from the public internet 
                for service nodes that are in a project VPC or another type of private network
         """
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysqlx is not None:
+            pulumi.set(__self__, "mysqlx", mysqlx)
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
@@ -8896,6 +8935,19 @@ class MySqlMysqlUserConfigPrivateAccessArgs:
     @mysql.setter
     def mysql(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mysql", value)
+
+    @property
+    @pulumi.getter
+    def mysqlx(self) -> Optional[pulumi.Input[str]]:
+        """
+        Allow clients to connect to mysqlx from the public internet for service 
+        nodes that are in a project VPC or another type of private network
+        """
+        return pulumi.get(self, "mysqlx")
+
+    @mysqlx.setter
+    def mysqlx(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mysqlx", value)
 
     @property
     @pulumi.getter
@@ -8914,13 +8966,18 @@ class MySqlMysqlUserConfigPrivateAccessArgs:
 @pulumi.input_type
 class MySqlMysqlUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 mysql: Optional[pulumi.Input[str]] = None):
+                 mysql: Optional[pulumi.Input[str]] = None,
+                 mysqlx: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] mysql: Allow clients to connect to mysql from the public internet for service 
+               nodes that are in a project VPC or another type of private network
+        :param pulumi.Input[str] mysqlx: Allow clients to connect to mysqlx from the public internet for service 
                nodes that are in a project VPC or another type of private network
         """
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysqlx is not None:
+            pulumi.set(__self__, "mysqlx", mysqlx)
 
     @property
     @pulumi.getter
@@ -8935,20 +8992,38 @@ class MySqlMysqlUserConfigPrivatelinkAccessArgs:
     def mysql(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mysql", value)
 
+    @property
+    @pulumi.getter
+    def mysqlx(self) -> Optional[pulumi.Input[str]]:
+        """
+        Allow clients to connect to mysqlx from the public internet for service 
+        nodes that are in a project VPC or another type of private network
+        """
+        return pulumi.get(self, "mysqlx")
+
+    @mysqlx.setter
+    def mysqlx(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mysqlx", value)
+
 
 @pulumi.input_type
 class MySqlMysqlUserConfigPublicAccessArgs:
     def __init__(__self__, *,
                  mysql: Optional[pulumi.Input[str]] = None,
+                 mysqlx: Optional[pulumi.Input[str]] = None,
                  prometheus: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] mysql: Allow clients to connect to mysql from the public internet for service 
+               nodes that are in a project VPC or another type of private network
+        :param pulumi.Input[str] mysqlx: Allow clients to connect to mysqlx from the public internet for service 
                nodes that are in a project VPC or another type of private network
         :param pulumi.Input[str] prometheus: Allow clients to connect to prometheus from the public internet 
                for service nodes that are in a project VPC or another type of private network
         """
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysqlx is not None:
+            pulumi.set(__self__, "mysqlx", mysqlx)
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
@@ -8964,6 +9039,19 @@ class MySqlMysqlUserConfigPublicAccessArgs:
     @mysql.setter
     def mysql(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mysql", value)
+
+    @property
+    @pulumi.getter
+    def mysqlx(self) -> Optional[pulumi.Input[str]]:
+        """
+        Allow clients to connect to mysqlx from the public internet for service 
+        nodes that are in a project VPC or another type of private network
+        """
+        return pulumi.get(self, "mysqlx")
+
+    @mysqlx.setter
+    def mysqlx(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mysqlx", value)
 
     @property
     @pulumi.getter
@@ -9808,6 +9896,7 @@ class PgPgUserConfigPgArgs:
                  track_activity_query_size: Optional[pulumi.Input[str]] = None,
                  track_commit_timestamp: Optional[pulumi.Input[str]] = None,
                  track_functions: Optional[pulumi.Input[str]] = None,
+                 track_io_timing: Optional[pulumi.Input[str]] = None,
                  wal_sender_timeout: Optional[pulumi.Input[str]] = None,
                  wal_writer_delay: Optional[pulumi.Input[str]] = None):
         """
@@ -9879,6 +9968,9 @@ class PgPgUserConfigPgArgs:
                executing command for each active session.
         :param pulumi.Input[str] track_commit_timestamp: Record commit time of transactions
         :param pulumi.Input[str] track_functions: Enables tracking of function call counts and time used.
+        :param pulumi.Input[str] track_io_timing: Enables timing of database I/O calls. This parameter is off by default, 
+               because it will repeatedly query the operating system for the current time, which may cause significant
+               overhead on some platforms.
         :param pulumi.Input[str] wal_sender_timeout: Terminate replication connections that are inactive for longer than 
                this amount of time, in milliseconds.
         :param pulumi.Input[str] wal_writer_delay: WAL flush interval in milliseconds. Note that setting this value 
@@ -9958,6 +10050,8 @@ class PgPgUserConfigPgArgs:
             pulumi.set(__self__, "track_commit_timestamp", track_commit_timestamp)
         if track_functions is not None:
             pulumi.set(__self__, "track_functions", track_functions)
+        if track_io_timing is not None:
+            pulumi.set(__self__, "track_io_timing", track_io_timing)
         if wal_sender_timeout is not None:
             pulumi.set(__self__, "wal_sender_timeout", wal_sender_timeout)
         if wal_writer_delay is not None:
@@ -10431,6 +10525,20 @@ class PgPgUserConfigPgArgs:
     @track_functions.setter
     def track_functions(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "track_functions", value)
+
+    @property
+    @pulumi.getter(name="trackIoTiming")
+    def track_io_timing(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enables timing of database I/O calls. This parameter is off by default, 
+        because it will repeatedly query the operating system for the current time, which may cause significant
+        overhead on some platforms.
+        """
+        return pulumi.get(self, "track_io_timing")
+
+    @track_io_timing.setter
+    def track_io_timing(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "track_io_timing", value)
 
     @property
     @pulumi.getter(name="walSenderTimeout")
@@ -13641,7 +13749,8 @@ class ServiceIntegrationDatadogUserConfigArgs:
                  exclude_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_consumer_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 kafka_custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 kafka_custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_jmx_metrics: Optional[pulumi.Input[str]] = None):
         if datadog_tags is not None:
             pulumi.set(__self__, "datadog_tags", datadog_tags)
         if exclude_consumer_groups is not None:
@@ -13654,6 +13763,8 @@ class ServiceIntegrationDatadogUserConfigArgs:
             pulumi.set(__self__, "include_topics", include_topics)
         if kafka_custom_metrics is not None:
             pulumi.set(__self__, "kafka_custom_metrics", kafka_custom_metrics)
+        if max_jmx_metrics is not None:
+            pulumi.set(__self__, "max_jmx_metrics", max_jmx_metrics)
 
     @property
     @pulumi.getter(name="datadogTags")
@@ -13708,6 +13819,15 @@ class ServiceIntegrationDatadogUserConfigArgs:
     @kafka_custom_metrics.setter
     def kafka_custom_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "kafka_custom_metrics", value)
+
+    @property
+    @pulumi.getter(name="maxJmxMetrics")
+    def max_jmx_metrics(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "max_jmx_metrics")
+
+    @max_jmx_metrics.setter
+    def max_jmx_metrics(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_jmx_metrics", value)
 
 
 @pulumi.input_type
@@ -14431,8 +14551,89 @@ class ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs:
 
 @pulumi.input_type
 class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs:
-    def __init__(__self__):
-        pass
+    def __init__(__self__, *,
+                 dropped_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]]] = None,
+                 extra_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]]] = None):
+        if dropped_metrics is not None:
+            pulumi.set(__self__, "dropped_metrics", dropped_metrics)
+        if extra_metrics is not None:
+            pulumi.set(__self__, "extra_metrics", extra_metrics)
+
+    @property
+    @pulumi.getter(name="droppedMetrics")
+    def dropped_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]]]:
+        return pulumi.get(self, "dropped_metrics")
+
+    @dropped_metrics.setter
+    def dropped_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]]]):
+        pulumi.set(self, "dropped_metrics", value)
+
+    @property
+    @pulumi.getter(name="extraMetrics")
+    def extra_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]]]:
+        return pulumi.get(self, "extra_metrics")
+
+    @extra_metrics.setter
+    def extra_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]]]):
+        pulumi.set(self, "extra_metrics", value)
+
+
+@pulumi.input_type
+class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs:
+    def __init__(__self__, *,
+                 field: Optional[pulumi.Input[str]] = None,
+                 metric: Optional[pulumi.Input[str]] = None):
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter
+    def metric(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric", value)
+
+
+@pulumi.input_type
+class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs:
+    def __init__(__self__, *,
+                 field: Optional[pulumi.Input[str]] = None,
+                 metric: Optional[pulumi.Input[str]] = None):
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter
+    def metric(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric", value)
 
 
 @pulumi.input_type
@@ -16645,6 +16846,7 @@ class ServiceMysqlUserConfigArgs:
                  admin_username: Optional[pulumi.Input[str]] = None,
                  backup_hour: Optional[pulumi.Input[str]] = None,
                  backup_minute: Optional[pulumi.Input[str]] = None,
+                 binlog_retention_period: Optional[pulumi.Input[str]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  migration: Optional[pulumi.Input['ServiceMysqlUserConfigMigrationArgs']] = None,
                  mysql: Optional[pulumi.Input['ServiceMysqlUserConfigMysqlArgs']] = None,
@@ -16663,6 +16865,8 @@ class ServiceMysqlUserConfigArgs:
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if binlog_retention_period is not None:
+            pulumi.set(__self__, "binlog_retention_period", binlog_retention_period)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -16719,6 +16923,15 @@ class ServiceMysqlUserConfigArgs:
     @backup_minute.setter
     def backup_minute(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "backup_minute", value)
+
+    @property
+    @pulumi.getter(name="binlogRetentionPeriod")
+    def binlog_retention_period(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "binlog_retention_period")
+
+    @binlog_retention_period.setter
+    def binlog_retention_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "binlog_retention_period", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -17185,9 +17398,12 @@ class ServiceMysqlUserConfigMysqlArgs:
 class ServiceMysqlUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
                  mysql: Optional[pulumi.Input[str]] = None,
+                 mysqlx: Optional[pulumi.Input[str]] = None,
                  prometheus: Optional[pulumi.Input[str]] = None):
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysqlx is not None:
+            pulumi.set(__self__, "mysqlx", mysqlx)
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
@@ -17199,6 +17415,15 @@ class ServiceMysqlUserConfigPrivateAccessArgs:
     @mysql.setter
     def mysql(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mysql", value)
+
+    @property
+    @pulumi.getter
+    def mysqlx(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mysqlx")
+
+    @mysqlx.setter
+    def mysqlx(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mysqlx", value)
 
     @property
     @pulumi.getter
@@ -17213,9 +17438,12 @@ class ServiceMysqlUserConfigPrivateAccessArgs:
 @pulumi.input_type
 class ServiceMysqlUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 mysql: Optional[pulumi.Input[str]] = None):
+                 mysql: Optional[pulumi.Input[str]] = None,
+                 mysqlx: Optional[pulumi.Input[str]] = None):
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysqlx is not None:
+            pulumi.set(__self__, "mysqlx", mysqlx)
 
     @property
     @pulumi.getter
@@ -17226,14 +17454,26 @@ class ServiceMysqlUserConfigPrivatelinkAccessArgs:
     def mysql(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mysql", value)
 
+    @property
+    @pulumi.getter
+    def mysqlx(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mysqlx")
+
+    @mysqlx.setter
+    def mysqlx(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mysqlx", value)
+
 
 @pulumi.input_type
 class ServiceMysqlUserConfigPublicAccessArgs:
     def __init__(__self__, *,
                  mysql: Optional[pulumi.Input[str]] = None,
+                 mysqlx: Optional[pulumi.Input[str]] = None,
                  prometheus: Optional[pulumi.Input[str]] = None):
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysqlx is not None:
+            pulumi.set(__self__, "mysqlx", mysqlx)
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
@@ -17245,6 +17485,15 @@ class ServiceMysqlUserConfigPublicAccessArgs:
     @mysql.setter
     def mysql(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mysql", value)
+
+    @property
+    @pulumi.getter
+    def mysqlx(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mysqlx")
+
+    @mysqlx.setter
+    def mysqlx(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mysqlx", value)
 
     @property
     @pulumi.getter
@@ -17767,6 +18016,7 @@ class ServicePgUserConfigPgArgs:
                  track_activity_query_size: Optional[pulumi.Input[str]] = None,
                  track_commit_timestamp: Optional[pulumi.Input[str]] = None,
                  track_functions: Optional[pulumi.Input[str]] = None,
+                 track_io_timing: Optional[pulumi.Input[str]] = None,
                  wal_sender_timeout: Optional[pulumi.Input[str]] = None,
                  wal_writer_delay: Optional[pulumi.Input[str]] = None):
         if autovacuum_analyze_scale_factor is not None:
@@ -17843,6 +18093,8 @@ class ServicePgUserConfigPgArgs:
             pulumi.set(__self__, "track_commit_timestamp", track_commit_timestamp)
         if track_functions is not None:
             pulumi.set(__self__, "track_functions", track_functions)
+        if track_io_timing is not None:
+            pulumi.set(__self__, "track_io_timing", track_io_timing)
         if wal_sender_timeout is not None:
             pulumi.set(__self__, "wal_sender_timeout", wal_sender_timeout)
         if wal_writer_delay is not None:
@@ -18180,6 +18432,15 @@ class ServicePgUserConfigPgArgs:
     @track_functions.setter
     def track_functions(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "track_functions", value)
+
+    @property
+    @pulumi.getter(name="trackIoTiming")
+    def track_io_timing(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "track_io_timing")
+
+    @track_io_timing.setter
+    def track_io_timing(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "track_io_timing", value)
 
     @property
     @pulumi.getter(name="walSenderTimeout")
@@ -26348,6 +26609,7 @@ class GetMySqlMysqlUserConfigArgs:
                  admin_username: Optional[str] = None,
                  backup_hour: Optional[str] = None,
                  backup_minute: Optional[str] = None,
+                 binlog_retention_period: Optional[str] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['GetMySqlMysqlUserConfigMigrationArgs'] = None,
                  mysql: Optional['GetMySqlMysqlUserConfigMysqlArgs'] = None,
@@ -26367,6 +26629,9 @@ class GetMySqlMysqlUserConfigArgs:
                New backup is only started if previous backup has already completed.
         :param str backup_minute: The minute of an hour when backup for the service is started. 
                New backup is only started if previous backup has already completed.
+        :param str binlog_retention_period: The minimum amount of time in seconds to keep binlog entries
+               before deletion. This may be extended for services that require binlog entries for longer than the
+               default for example if using the MySQL Debezium Kafka connector.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param 'GetMySqlMysqlUserConfigMigrationArgs' migration: Migrate data from existing server
         :param 'GetMySqlMysqlUserConfigMysqlArgs' mysql: MySQL specific server provided values.
@@ -26389,6 +26654,8 @@ class GetMySqlMysqlUserConfigArgs:
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if binlog_retention_period is not None:
+            pulumi.set(__self__, "binlog_retention_period", binlog_retention_period)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -26461,6 +26728,20 @@ class GetMySqlMysqlUserConfigArgs:
     @backup_minute.setter
     def backup_minute(self, value: Optional[str]):
         pulumi.set(self, "backup_minute", value)
+
+    @property
+    @pulumi.getter(name="binlogRetentionPeriod")
+    def binlog_retention_period(self) -> Optional[str]:
+        """
+        The minimum amount of time in seconds to keep binlog entries
+        before deletion. This may be extended for services that require binlog entries for longer than the
+        default for example if using the MySQL Debezium Kafka connector.
+        """
+        return pulumi.get(self, "binlog_retention_period")
+
+    @binlog_retention_period.setter
+    def binlog_retention_period(self, value: Optional[str]):
+        pulumi.set(self, "binlog_retention_period", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -27138,14 +27419,19 @@ class GetMySqlMysqlUserConfigMysqlArgs:
 class GetMySqlMysqlUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
                  mysql: Optional[str] = None,
+                 mysqlx: Optional[str] = None,
                  prometheus: Optional[str] = None):
         """
         :param str mysql: MySQL specific server provided values.
+        :param str mysqlx: (Optional) Allow clients to connect to mysqlx from the public internet for service
+               nodes that are in a project VPC or another type of private network
         :param str prometheus: Allow clients to connect to prometheus from the public internet 
                for service nodes that are in a project VPC or another type of private network
         """
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysqlx is not None:
+            pulumi.set(__self__, "mysqlx", mysqlx)
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
@@ -27160,6 +27446,19 @@ class GetMySqlMysqlUserConfigPrivateAccessArgs:
     @mysql.setter
     def mysql(self, value: Optional[str]):
         pulumi.set(self, "mysql", value)
+
+    @property
+    @pulumi.getter
+    def mysqlx(self) -> Optional[str]:
+        """
+        (Optional) Allow clients to connect to mysqlx from the public internet for service
+        nodes that are in a project VPC or another type of private network
+        """
+        return pulumi.get(self, "mysqlx")
+
+    @mysqlx.setter
+    def mysqlx(self, value: Optional[str]):
+        pulumi.set(self, "mysqlx", value)
 
     @property
     @pulumi.getter
@@ -27178,12 +27477,17 @@ class GetMySqlMysqlUserConfigPrivateAccessArgs:
 @pulumi.input_type
 class GetMySqlMysqlUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 mysql: Optional[str] = None):
+                 mysql: Optional[str] = None,
+                 mysqlx: Optional[str] = None):
         """
         :param str mysql: MySQL specific server provided values.
+        :param str mysqlx: (Optional) Allow clients to connect to mysqlx from the public internet for service
+               nodes that are in a project VPC or another type of private network
         """
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysqlx is not None:
+            pulumi.set(__self__, "mysqlx", mysqlx)
 
     @property
     @pulumi.getter
@@ -27197,19 +27501,37 @@ class GetMySqlMysqlUserConfigPrivatelinkAccessArgs:
     def mysql(self, value: Optional[str]):
         pulumi.set(self, "mysql", value)
 
+    @property
+    @pulumi.getter
+    def mysqlx(self) -> Optional[str]:
+        """
+        (Optional) Allow clients to connect to mysqlx from the public internet for service
+        nodes that are in a project VPC or another type of private network
+        """
+        return pulumi.get(self, "mysqlx")
+
+    @mysqlx.setter
+    def mysqlx(self, value: Optional[str]):
+        pulumi.set(self, "mysqlx", value)
+
 
 @pulumi.input_type
 class GetMySqlMysqlUserConfigPublicAccessArgs:
     def __init__(__self__, *,
                  mysql: Optional[str] = None,
+                 mysqlx: Optional[str] = None,
                  prometheus: Optional[str] = None):
         """
         :param str mysql: MySQL specific server provided values.
+        :param str mysqlx: (Optional) Allow clients to connect to mysqlx from the public internet for service
+               nodes that are in a project VPC or another type of private network
         :param str prometheus: Allow clients to connect to prometheus from the public internet 
                for service nodes that are in a project VPC or another type of private network
         """
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysqlx is not None:
+            pulumi.set(__self__, "mysqlx", mysqlx)
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
@@ -27224,6 +27546,19 @@ class GetMySqlMysqlUserConfigPublicAccessArgs:
     @mysql.setter
     def mysql(self, value: Optional[str]):
         pulumi.set(self, "mysql", value)
+
+    @property
+    @pulumi.getter
+    def mysqlx(self) -> Optional[str]:
+        """
+        (Optional) Allow clients to connect to mysqlx from the public internet for service
+        nodes that are in a project VPC or another type of private network
+        """
+        return pulumi.get(self, "mysqlx")
+
+    @mysqlx.setter
+    def mysqlx(self, value: Optional[str]):
+        pulumi.set(self, "mysqlx", value)
 
     @property
     @pulumi.getter
@@ -28053,6 +28388,7 @@ class GetPgPgUserConfigPgArgs:
                  track_activity_query_size: Optional[str] = None,
                  track_commit_timestamp: Optional[str] = None,
                  track_functions: Optional[str] = None,
+                 track_io_timing: Optional[str] = None,
                  wal_sender_timeout: Optional[str] = None,
                  wal_writer_delay: Optional[str] = None):
         """
@@ -28124,6 +28460,9 @@ class GetPgPgUserConfigPgArgs:
                executing command for each active session.
         :param str track_commit_timestamp: Record commit time of transactions
         :param str track_functions: Enables tracking of function call counts and time used.
+        :param str track_io_timing: Enables timing of database I/O calls. This parameter is off by default,
+               because it will repeatedly query the operating system for the current time, which may cause
+               significant overhead on some platforms.
         :param str wal_sender_timeout: Terminate replication connections that are inactive for longer than 
                this amount of time, in milliseconds.
         :param str wal_writer_delay: WAL flush interval in milliseconds. Note that setting this value 
@@ -28203,6 +28542,8 @@ class GetPgPgUserConfigPgArgs:
             pulumi.set(__self__, "track_commit_timestamp", track_commit_timestamp)
         if track_functions is not None:
             pulumi.set(__self__, "track_functions", track_functions)
+        if track_io_timing is not None:
+            pulumi.set(__self__, "track_io_timing", track_io_timing)
         if wal_sender_timeout is not None:
             pulumi.set(__self__, "wal_sender_timeout", wal_sender_timeout)
         if wal_writer_delay is not None:
@@ -28676,6 +29017,20 @@ class GetPgPgUserConfigPgArgs:
     @track_functions.setter
     def track_functions(self, value: Optional[str]):
         pulumi.set(self, "track_functions", value)
+
+    @property
+    @pulumi.getter(name="trackIoTiming")
+    def track_io_timing(self) -> Optional[str]:
+        """
+        Enables timing of database I/O calls. This parameter is off by default,
+        because it will repeatedly query the operating system for the current time, which may cause
+        significant overhead on some platforms.
+        """
+        return pulumi.get(self, "track_io_timing")
+
+    @track_io_timing.setter
+    def track_io_timing(self, value: Optional[str]):
+        pulumi.set(self, "track_io_timing", value)
 
     @property
     @pulumi.getter(name="walSenderTimeout")
@@ -31864,7 +32219,8 @@ class GetServiceIntegrationDatadogUserConfigArgs:
                  exclude_topics: Optional[Sequence[str]] = None,
                  include_consumer_groups: Optional[Sequence[str]] = None,
                  include_topics: Optional[Sequence[str]] = None,
-                 kafka_custom_metrics: Optional[Sequence[str]] = None):
+                 kafka_custom_metrics: Optional[Sequence[str]] = None,
+                 max_jmx_metrics: Optional[str] = None):
         if datadog_tags is not None:
             pulumi.set(__self__, "datadog_tags", datadog_tags)
         if exclude_consumer_groups is not None:
@@ -31877,6 +32233,8 @@ class GetServiceIntegrationDatadogUserConfigArgs:
             pulumi.set(__self__, "include_topics", include_topics)
         if kafka_custom_metrics is not None:
             pulumi.set(__self__, "kafka_custom_metrics", kafka_custom_metrics)
+        if max_jmx_metrics is not None:
+            pulumi.set(__self__, "max_jmx_metrics", max_jmx_metrics)
 
     @property
     @pulumi.getter(name="datadogTags")
@@ -31931,6 +32289,15 @@ class GetServiceIntegrationDatadogUserConfigArgs:
     @kafka_custom_metrics.setter
     def kafka_custom_metrics(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "kafka_custom_metrics", value)
+
+    @property
+    @pulumi.getter(name="maxJmxMetrics")
+    def max_jmx_metrics(self) -> Optional[str]:
+        return pulumi.get(self, "max_jmx_metrics")
+
+    @max_jmx_metrics.setter
+    def max_jmx_metrics(self, value: Optional[str]):
+        pulumi.set(self, "max_jmx_metrics", value)
 
 
 @pulumi.input_type
@@ -32654,8 +33021,89 @@ class GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs:
 
 @pulumi.input_type
 class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs:
-    def __init__(__self__):
-        pass
+    def __init__(__self__, *,
+                 dropped_metrics: Optional[Sequence['GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']] = None,
+                 extra_metrics: Optional[Sequence['GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']] = None):
+        if dropped_metrics is not None:
+            pulumi.set(__self__, "dropped_metrics", dropped_metrics)
+        if extra_metrics is not None:
+            pulumi.set(__self__, "extra_metrics", extra_metrics)
+
+    @property
+    @pulumi.getter(name="droppedMetrics")
+    def dropped_metrics(self) -> Optional[Sequence['GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]:
+        return pulumi.get(self, "dropped_metrics")
+
+    @dropped_metrics.setter
+    def dropped_metrics(self, value: Optional[Sequence['GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]):
+        pulumi.set(self, "dropped_metrics", value)
+
+    @property
+    @pulumi.getter(name="extraMetrics")
+    def extra_metrics(self) -> Optional[Sequence['GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]:
+        return pulumi.get(self, "extra_metrics")
+
+    @extra_metrics.setter
+    def extra_metrics(self, value: Optional[Sequence['GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]):
+        pulumi.set(self, "extra_metrics", value)
+
+
+@pulumi.input_type
+class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs:
+    def __init__(__self__, *,
+                 field: Optional[str] = None,
+                 metric: Optional[str] = None):
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[str]:
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[str]):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter
+    def metric(self) -> Optional[str]:
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: Optional[str]):
+        pulumi.set(self, "metric", value)
+
+
+@pulumi.input_type
+class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs:
+    def __init__(__self__, *,
+                 field: Optional[str] = None,
+                 metric: Optional[str] = None):
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[str]:
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[str]):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter
+    def metric(self) -> Optional[str]:
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: Optional[str]):
+        pulumi.set(self, "metric", value)
 
 
 @pulumi.input_type
@@ -34863,6 +35311,7 @@ class GetServiceMysqlUserConfigArgs:
                  admin_username: Optional[str] = None,
                  backup_hour: Optional[str] = None,
                  backup_minute: Optional[str] = None,
+                 binlog_retention_period: Optional[str] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['GetServiceMysqlUserConfigMigrationArgs'] = None,
                  mysql: Optional['GetServiceMysqlUserConfigMysqlArgs'] = None,
@@ -34881,6 +35330,8 @@ class GetServiceMysqlUserConfigArgs:
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if binlog_retention_period is not None:
+            pulumi.set(__self__, "binlog_retention_period", binlog_retention_period)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -34937,6 +35388,15 @@ class GetServiceMysqlUserConfigArgs:
     @backup_minute.setter
     def backup_minute(self, value: Optional[str]):
         pulumi.set(self, "backup_minute", value)
+
+    @property
+    @pulumi.getter(name="binlogRetentionPeriod")
+    def binlog_retention_period(self) -> Optional[str]:
+        return pulumi.get(self, "binlog_retention_period")
+
+    @binlog_retention_period.setter
+    def binlog_retention_period(self, value: Optional[str]):
+        pulumi.set(self, "binlog_retention_period", value)
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -35403,9 +35863,12 @@ class GetServiceMysqlUserConfigMysqlArgs:
 class GetServiceMysqlUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
                  mysql: Optional[str] = None,
+                 mysqlx: Optional[str] = None,
                  prometheus: Optional[str] = None):
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysqlx is not None:
+            pulumi.set(__self__, "mysqlx", mysqlx)
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
@@ -35417,6 +35880,15 @@ class GetServiceMysqlUserConfigPrivateAccessArgs:
     @mysql.setter
     def mysql(self, value: Optional[str]):
         pulumi.set(self, "mysql", value)
+
+    @property
+    @pulumi.getter
+    def mysqlx(self) -> Optional[str]:
+        return pulumi.get(self, "mysqlx")
+
+    @mysqlx.setter
+    def mysqlx(self, value: Optional[str]):
+        pulumi.set(self, "mysqlx", value)
 
     @property
     @pulumi.getter
@@ -35431,9 +35903,12 @@ class GetServiceMysqlUserConfigPrivateAccessArgs:
 @pulumi.input_type
 class GetServiceMysqlUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 mysql: Optional[str] = None):
+                 mysql: Optional[str] = None,
+                 mysqlx: Optional[str] = None):
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysqlx is not None:
+            pulumi.set(__self__, "mysqlx", mysqlx)
 
     @property
     @pulumi.getter
@@ -35444,14 +35919,26 @@ class GetServiceMysqlUserConfigPrivatelinkAccessArgs:
     def mysql(self, value: Optional[str]):
         pulumi.set(self, "mysql", value)
 
+    @property
+    @pulumi.getter
+    def mysqlx(self) -> Optional[str]:
+        return pulumi.get(self, "mysqlx")
+
+    @mysqlx.setter
+    def mysqlx(self, value: Optional[str]):
+        pulumi.set(self, "mysqlx", value)
+
 
 @pulumi.input_type
 class GetServiceMysqlUserConfigPublicAccessArgs:
     def __init__(__self__, *,
                  mysql: Optional[str] = None,
+                 mysqlx: Optional[str] = None,
                  prometheus: Optional[str] = None):
         if mysql is not None:
             pulumi.set(__self__, "mysql", mysql)
+        if mysqlx is not None:
+            pulumi.set(__self__, "mysqlx", mysqlx)
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
@@ -35463,6 +35950,15 @@ class GetServiceMysqlUserConfigPublicAccessArgs:
     @mysql.setter
     def mysql(self, value: Optional[str]):
         pulumi.set(self, "mysql", value)
+
+    @property
+    @pulumi.getter
+    def mysqlx(self) -> Optional[str]:
+        return pulumi.get(self, "mysqlx")
+
+    @mysqlx.setter
+    def mysqlx(self, value: Optional[str]):
+        pulumi.set(self, "mysqlx", value)
 
     @property
     @pulumi.getter
@@ -35977,6 +36473,7 @@ class GetServicePgUserConfigPgArgs:
                  track_activity_query_size: Optional[str] = None,
                  track_commit_timestamp: Optional[str] = None,
                  track_functions: Optional[str] = None,
+                 track_io_timing: Optional[str] = None,
                  wal_sender_timeout: Optional[str] = None,
                  wal_writer_delay: Optional[str] = None):
         if autovacuum_analyze_scale_factor is not None:
@@ -36053,6 +36550,8 @@ class GetServicePgUserConfigPgArgs:
             pulumi.set(__self__, "track_commit_timestamp", track_commit_timestamp)
         if track_functions is not None:
             pulumi.set(__self__, "track_functions", track_functions)
+        if track_io_timing is not None:
+            pulumi.set(__self__, "track_io_timing", track_io_timing)
         if wal_sender_timeout is not None:
             pulumi.set(__self__, "wal_sender_timeout", wal_sender_timeout)
         if wal_writer_delay is not None:
@@ -36390,6 +36889,15 @@ class GetServicePgUserConfigPgArgs:
     @track_functions.setter
     def track_functions(self, value: Optional[str]):
         pulumi.set(self, "track_functions", value)
+
+    @property
+    @pulumi.getter(name="trackIoTiming")
+    def track_io_timing(self) -> Optional[str]:
+        return pulumi.get(self, "track_io_timing")
+
+    @track_io_timing.setter
+    def track_io_timing(self, value: Optional[str]):
+        pulumi.set(self, "track_io_timing", value)
 
     @property
     @pulumi.getter(name="walSenderTimeout")

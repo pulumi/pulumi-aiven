@@ -18,11 +18,20 @@ namespace Pulumi.Aiven.Outputs
         /// nodes that are in a project VPC or another type of private network
         /// </summary>
         public readonly string? Mysql;
+        /// <summary>
+        /// Allow clients to connect to mysqlx from the public internet for service 
+        /// nodes that are in a project VPC or another type of private network
+        /// </summary>
+        public readonly string? Mysqlx;
 
         [OutputConstructor]
-        private MySqlMysqlUserConfigPrivatelinkAccess(string? mysql)
+        private MySqlMysqlUserConfigPrivatelinkAccess(
+            string? mysql,
+
+            string? mysqlx)
         {
             Mysql = mysql;
+            Mysqlx = mysqlx;
         }
     }
 }

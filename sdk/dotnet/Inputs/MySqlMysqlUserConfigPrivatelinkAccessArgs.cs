@@ -19,6 +19,13 @@ namespace Pulumi.Aiven.Inputs
         [Input("mysql")]
         public Input<string>? Mysql { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to mysqlx from the public internet for service 
+        /// nodes that are in a project VPC or another type of private network
+        /// </summary>
+        [Input("mysqlx")]
+        public Input<string>? Mysqlx { get; set; }
+
         public MySqlMysqlUserConfigPrivatelinkAccessArgs()
         {
         }

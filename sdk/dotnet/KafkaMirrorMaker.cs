@@ -77,21 +77,21 @@ namespace Pulumi.Aiven
         public Output<Outputs.KafkaMirrorMakerKafkaMirrormaker> KafkaMirrormaker { get; private set; } = null!;
 
         /// <summary>
-        /// defines Kafka MirrorMaker 2 specific additional configuration options. 
+        /// defines Kafka MirrorMaker 2 specific additional configuration options.
         /// The following configuration options available:
         /// </summary>
         [Output("kafkaMirrormakerUserConfig")]
         public Output<Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfig?> KafkaMirrormakerUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// day of week when maintenance operations should be performed. 
+        /// day of week when maintenance operations should be performed.
         /// On monday, tuesday, wednesday, etc.
         /// </summary>
         [Output("maintenanceWindowDow")]
         public Output<string?> MaintenanceWindowDow { get; private set; } = null!;
 
         /// <summary>
-        /// time of day when maintenance operations should be performed. 
+        /// time of day when maintenance operations should be performed.
         /// UTC time in HH:mm:ss format.
         /// </summary>
         [Output("maintenanceWindowTime")]
@@ -260,21 +260,21 @@ namespace Pulumi.Aiven
         public Input<Inputs.KafkaMirrorMakerKafkaMirrormakerArgs>? KafkaMirrormaker { get; set; }
 
         /// <summary>
-        /// defines Kafka MirrorMaker 2 specific additional configuration options. 
+        /// defines Kafka MirrorMaker 2 specific additional configuration options.
         /// The following configuration options available:
         /// </summary>
         [Input("kafkaMirrormakerUserConfig")]
         public Input<Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigArgs>? KafkaMirrormakerUserConfig { get; set; }
 
         /// <summary>
-        /// day of week when maintenance operations should be performed. 
+        /// day of week when maintenance operations should be performed.
         /// On monday, tuesday, wednesday, etc.
         /// </summary>
         [Input("maintenanceWindowDow")]
         public Input<string>? MaintenanceWindowDow { get; set; }
 
         /// <summary>
-        /// time of day when maintenance operations should be performed. 
+        /// time of day when maintenance operations should be performed.
         /// UTC time in HH:mm:ss format.
         /// </summary>
         [Input("maintenanceWindowTime")]
@@ -380,21 +380,21 @@ namespace Pulumi.Aiven
         public Input<Inputs.KafkaMirrorMakerKafkaMirrormakerGetArgs>? KafkaMirrormaker { get; set; }
 
         /// <summary>
-        /// defines Kafka MirrorMaker 2 specific additional configuration options. 
+        /// defines Kafka MirrorMaker 2 specific additional configuration options.
         /// The following configuration options available:
         /// </summary>
         [Input("kafkaMirrormakerUserConfig")]
         public Input<Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigGetArgs>? KafkaMirrormakerUserConfig { get; set; }
 
         /// <summary>
-        /// day of week when maintenance operations should be performed. 
+        /// day of week when maintenance operations should be performed.
         /// On monday, tuesday, wednesday, etc.
         /// </summary>
         [Input("maintenanceWindowDow")]
         public Input<string>? MaintenanceWindowDow { get; set; }
 
         /// <summary>
-        /// time of day when maintenance operations should be performed. 
+        /// time of day when maintenance operations should be performed.
         /// UTC time in HH:mm:ss format.
         /// </summary>
         [Input("maintenanceWindowTime")]

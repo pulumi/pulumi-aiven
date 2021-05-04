@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to periodically write the translated offsets 
+        /// Whether to periodically write the translated offsets
         /// of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
         /// as long as no active consumers in that group are connected to the target cluster.
         /// </summary>
@@ -24,34 +24,41 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? EmitCheckpointsIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Whether to periodically check for new consumer groups. 
+        /// Whether to periodically check for new consumer groups.
         /// Defaults to 'true'.
         /// </summary>
         [Input("refreshGroupsEnabled")]
         public Input<string>? RefreshGroupsEnabled { get; set; }
 
         /// <summary>
-        /// Whether to periodically check for new topics and 
-        /// partitions. Defaults to 'true'.
+        /// Frequency of consumer group refresh in seconds.
+        /// Defaults to 600 seconds (10 minutes).
         /// </summary>
         [Input("refreshGroupsIntervalSeconds")]
         public Input<string>? RefreshGroupsIntervalSeconds { get; set; }
 
+        /// <summary>
+        /// Whether to periodically check for new topics and
+        /// partitions. Defaults to 'true'.
+        /// </summary>
         [Input("refreshTopicsEnabled")]
         public Input<string>? RefreshTopicsEnabled { get; set; }
 
         /// <summary>
-        /// Frequency of topic and partitions refresh in 
+        /// Frequency of topic and partitions refresh in
         /// seconds. Defaults to 600 seconds (10 minutes).
         /// </summary>
         [Input("refreshTopicsIntervalSeconds")]
         public Input<string>? RefreshTopicsIntervalSeconds { get; set; }
 
+        /// <summary>
+        /// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. Defaults to 'false'.
+        /// </summary>
         [Input("syncGroupOffsetsEnabled")]
         public Input<string>? SyncGroupOffsetsEnabled { get; set; }
 
         /// <summary>
-        /// Frequency at which consumer group offsets 
+        /// Frequency at which consumer group offsets
         /// are synced (default: 60, every minute).
         /// </summary>
         [Input("syncGroupOffsetsIntervalSeconds")]

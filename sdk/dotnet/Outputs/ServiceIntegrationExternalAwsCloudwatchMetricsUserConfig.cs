@@ -13,9 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig
     {
+        public readonly ImmutableArray<Outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric> DroppedMetrics;
+        public readonly ImmutableArray<Outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric> ExtraMetrics;
+
         [OutputConstructor]
-        private ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig()
+        private ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig(
+            ImmutableArray<Outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric> droppedMetrics,
+
+            ImmutableArray<Outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric> extraMetrics)
         {
+            DroppedMetrics = droppedMetrics;
+            ExtraMetrics = extraMetrics;
         }
     }
 }

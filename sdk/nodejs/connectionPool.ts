@@ -65,7 +65,8 @@ export class ConnectionPool extends pulumi.CustomResource {
      */
     public readonly databaseName!: pulumi.Output<string>;
     /**
-     * is the mode the pool operates in (session, transaction, statement).
+     * is the mode the pool operates in (session, transaction, statement). The
+     * default value for this is `transaction`.
      */
     public readonly poolMode!: pulumi.Output<string | undefined>;
     /**
@@ -75,7 +76,7 @@ export class ConnectionPool extends pulumi.CustomResource {
     /**
      * is the number of connections the pool may create towards the backend
      * server. This does not affect the number of incoming connections, which is always a much
-     * larger number.
+     * larger number. The default value for this is 10.
      */
     public readonly poolSize!: pulumi.Output<number | undefined>;
     /**
@@ -164,7 +165,8 @@ export interface ConnectionPoolState {
      */
     readonly databaseName?: pulumi.Input<string>;
     /**
-     * is the mode the pool operates in (session, transaction, statement).
+     * is the mode the pool operates in (session, transaction, statement). The
+     * default value for this is `transaction`.
      */
     readonly poolMode?: pulumi.Input<string>;
     /**
@@ -174,7 +176,7 @@ export interface ConnectionPoolState {
     /**
      * is the number of connections the pool may create towards the backend
      * server. This does not affect the number of incoming connections, which is always a much
-     * larger number.
+     * larger number. The default value for this is 10.
      */
     readonly poolSize?: pulumi.Input<number>;
     /**
@@ -205,7 +207,8 @@ export interface ConnectionPoolArgs {
      */
     readonly databaseName: pulumi.Input<string>;
     /**
-     * is the mode the pool operates in (session, transaction, statement).
+     * is the mode the pool operates in (session, transaction, statement). The
+     * default value for this is `transaction`.
      */
     readonly poolMode?: pulumi.Input<string>;
     /**
@@ -215,7 +218,7 @@ export interface ConnectionPoolArgs {
     /**
      * is the number of connections the pool may create towards the backend
      * server. This does not affect the number of incoming connections, which is always a much
-     * larger number.
+     * larger number. The default value for this is 10.
      */
     readonly poolSize?: pulumi.Input<number>;
     /**

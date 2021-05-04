@@ -11,19 +11,19 @@ namespace Pulumi.Aiven.Outputs
 {
 
     [OutputType]
-    public sealed class ServiceMysqlUserConfigPrivatelinkAccess
+    public sealed class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricResult
     {
-        public readonly string? Mysql;
-        public readonly string? Mysqlx;
+        public readonly string? Field;
+        public readonly string? Metric;
 
         [OutputConstructor]
-        private ServiceMysqlUserConfigPrivatelinkAccess(
-            string? mysql,
+        private GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricResult(
+            string? field,
 
-            string? mysqlx)
+            string? metric)
         {
-            Mysql = mysql;
-            Mysqlx = mysqlx;
+            Field = field;
+            Metric = metric;
         }
     }
 }

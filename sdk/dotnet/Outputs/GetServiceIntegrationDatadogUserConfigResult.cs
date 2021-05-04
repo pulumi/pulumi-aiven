@@ -19,6 +19,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IncludeConsumerGroups;
         public readonly ImmutableArray<string> IncludeTopics;
         public readonly ImmutableArray<string> KafkaCustomMetrics;
+        public readonly string? MaxJmxMetrics;
 
         [OutputConstructor]
         private GetServiceIntegrationDatadogUserConfigResult(
@@ -32,7 +33,9 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> includeTopics,
 
-            ImmutableArray<string> kafkaCustomMetrics)
+            ImmutableArray<string> kafkaCustomMetrics,
+
+            string? maxJmxMetrics)
         {
             DatadogTags = datadogTags;
             ExcludeConsumerGroups = excludeConsumerGroups;
@@ -40,6 +43,7 @@ namespace Pulumi.Aiven.Outputs
             IncludeConsumerGroups = includeConsumerGroups;
             IncludeTopics = includeTopics;
             KafkaCustomMetrics = kafkaCustomMetrics;
+            MaxJmxMetrics = maxJmxMetrics;
         }
     }
 }

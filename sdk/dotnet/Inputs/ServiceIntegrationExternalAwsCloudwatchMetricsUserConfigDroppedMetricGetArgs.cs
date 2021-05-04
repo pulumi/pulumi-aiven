@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceMysqlUserConfigPrivatelinkAccessArgs : Pulumi.InvokeArgs
+    public sealed class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricGetArgs : Pulumi.ResourceArgs
     {
-        [Input("mysql")]
-        public string? Mysql { get; set; }
+        [Input("field")]
+        public Input<string>? Field { get; set; }
 
-        [Input("mysqlx")]
-        public string? Mysqlx { get; set; }
+        [Input("metric")]
+        public Input<string>? Metric { get; set; }
 
-        public GetServiceMysqlUserConfigPrivatelinkAccessArgs()
+        public ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricGetArgs()
         {
         }
     }

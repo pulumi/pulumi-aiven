@@ -15,6 +15,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("mysql")]
         public Input<string>? Mysql { get; set; }
 
+        [Input("mysqlx")]
+        public Input<string>? Mysqlx { get; set; }
+
         [Input("prometheus")]
         public Input<string>? Prometheus { get; set; }
 

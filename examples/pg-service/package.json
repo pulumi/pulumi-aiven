@@ -7,12 +7,11 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@pulumi/pulumi": "^3.0.0-alpha.0",
-    "@pulumi/random": "^4.0.0-alpha.0"
+    "@pulumi/pulumi": "^3.0.0",
+    "@pulumi/random": "^4.0.0"
   },
   "devDependencies": {
-    "@types/node": "^8.0.26",
-    "typescript": "^3.0.0"
+    "@types/node": "^10.0.0"
   },
   "license": "MIT"
 }

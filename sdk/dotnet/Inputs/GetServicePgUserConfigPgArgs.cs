@@ -123,6 +123,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("trackFunctions")]
         public string? TrackFunctions { get; set; }
 
+        [Input("trackIoTiming")]
+        public string? TrackIoTiming { get; set; }
+
         [Input("walSenderTimeout")]
         public string? WalSenderTimeout { get; set; }
 

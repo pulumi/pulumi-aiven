@@ -79,17 +79,17 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
      */
     public readonly kafkaMirrormaker!: pulumi.Output<outputs.KafkaMirrorMakerKafkaMirrormaker>;
     /**
-     * defines Kafka MirrorMaker 2 specific additional configuration options. 
+     * defines Kafka MirrorMaker 2 specific additional configuration options.
      * The following configuration options available:
      */
     public readonly kafkaMirrormakerUserConfig!: pulumi.Output<outputs.KafkaMirrorMakerKafkaMirrormakerUserConfig | undefined>;
     /**
-     * day of week when maintenance operations should be performed. 
+     * day of week when maintenance operations should be performed.
      * On monday, tuesday, wednesday, etc.
      */
     public readonly maintenanceWindowDow!: pulumi.Output<string | undefined>;
     /**
-     * time of day when maintenance operations should be performed. 
+     * time of day when maintenance operations should be performed.
      * UTC time in HH:mm:ss format.
      */
     public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
@@ -256,17 +256,17 @@ export interface KafkaMirrorMakerState {
      */
     readonly kafkaMirrormaker?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormaker>;
     /**
-     * defines Kafka MirrorMaker 2 specific additional configuration options. 
+     * defines Kafka MirrorMaker 2 specific additional configuration options.
      * The following configuration options available:
      */
     readonly kafkaMirrormakerUserConfig?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfig>;
     /**
-     * day of week when maintenance operations should be performed. 
+     * day of week when maintenance operations should be performed.
      * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: pulumi.Input<string>;
     /**
-     * time of day when maintenance operations should be performed. 
+     * time of day when maintenance operations should be performed.
      * UTC time in HH:mm:ss format.
      */
     readonly maintenanceWindowTime?: pulumi.Input<string>;
@@ -363,17 +363,17 @@ export interface KafkaMirrorMakerArgs {
      */
     readonly kafkaMirrormaker?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormaker>;
     /**
-     * defines Kafka MirrorMaker 2 specific additional configuration options. 
+     * defines Kafka MirrorMaker 2 specific additional configuration options.
      * The following configuration options available:
      */
     readonly kafkaMirrormakerUserConfig?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfig>;
     /**
-     * day of week when maintenance operations should be performed. 
+     * day of week when maintenance operations should be performed.
      * On monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow?: pulumi.Input<string>;
     /**
-     * time of day when maintenance operations should be performed. 
+     * time of day when maintenance operations should be performed.
      * UTC time in HH:mm:ss format.
      */
     readonly maintenanceWindowTime?: pulumi.Input<string>;
