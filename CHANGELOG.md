@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.1.12 of the Aiven Terraform Provider
+* Upgrade to v2.1.13 of the Aiven Terraform Provider
 
 ---
 
