@@ -187,6 +187,12 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? TrackFunctions;
         /// <summary>
+        /// Enables timing of database I/O calls. This parameter is off by default, 
+        /// because it will repeatedly query the operating system for the current time, which may cause significant
+        /// overhead on some platforms.
+        /// </summary>
+        public readonly string? TrackIoTiming;
+        /// <summary>
         /// Terminate replication connections that are inactive for longer than 
         /// this amount of time, in milliseconds.
         /// </summary>
@@ -273,6 +279,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? trackFunctions,
 
+            string? trackIoTiming,
+
             string? walSenderTimeout,
 
             string? walWriterDelay)
@@ -314,6 +322,7 @@ namespace Pulumi.Aiven.Outputs
             TrackActivityQuerySize = trackActivityQuerySize;
             TrackCommitTimestamp = trackCommitTimestamp;
             TrackFunctions = trackFunctions;
+            TrackIoTiming = trackIoTiming;
             WalSenderTimeout = walSenderTimeout;
             WalWriterDelay = walWriterDelay;
         }

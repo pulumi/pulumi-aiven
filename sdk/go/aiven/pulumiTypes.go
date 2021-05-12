@@ -13114,14 +13114,17 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker struct {
 	// Whether to periodically check for new consumer groups.
 	// Defaults to 'true'.
 	RefreshGroupsEnabled *string `pulumi:"refreshGroupsEnabled"`
+	// Frequency of consumer group refresh in seconds.
+	// Defaults to 600 seconds (10 minutes).
+	RefreshGroupsIntervalSeconds *string `pulumi:"refreshGroupsIntervalSeconds"`
 	// Whether to periodically check for new topics and
 	// partitions. Defaults to 'true'.
-	RefreshGroupsIntervalSeconds *string `pulumi:"refreshGroupsIntervalSeconds"`
-	RefreshTopicsEnabled         *string `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsEnabled *string `pulumi:"refreshTopicsEnabled"`
 	// Frequency of topic and partitions refresh in
 	// seconds. Defaults to 600 seconds (10 minutes).
 	RefreshTopicsIntervalSeconds *string `pulumi:"refreshTopicsIntervalSeconds"`
-	SyncGroupOffsetsEnabled      *string `pulumi:"syncGroupOffsetsEnabled"`
+	// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. Defaults to 'false'.
+	SyncGroupOffsetsEnabled *string `pulumi:"syncGroupOffsetsEnabled"`
 	// Frequency at which consumer group offsets
 	// are synced (default: 60, every minute).
 	SyncGroupOffsetsIntervalSeconds *string `pulumi:"syncGroupOffsetsIntervalSeconds"`
@@ -13147,14 +13150,17 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
 	// Whether to periodically check for new consumer groups.
 	// Defaults to 'true'.
 	RefreshGroupsEnabled pulumi.StringPtrInput `pulumi:"refreshGroupsEnabled"`
+	// Frequency of consumer group refresh in seconds.
+	// Defaults to 600 seconds (10 minutes).
+	RefreshGroupsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshGroupsIntervalSeconds"`
 	// Whether to periodically check for new topics and
 	// partitions. Defaults to 'true'.
-	RefreshGroupsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshGroupsIntervalSeconds"`
-	RefreshTopicsEnabled         pulumi.StringPtrInput `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsEnabled pulumi.StringPtrInput `pulumi:"refreshTopicsEnabled"`
 	// Frequency of topic and partitions refresh in
 	// seconds. Defaults to 600 seconds (10 minutes).
 	RefreshTopicsIntervalSeconds pulumi.StringPtrInput `pulumi:"refreshTopicsIntervalSeconds"`
-	SyncGroupOffsetsEnabled      pulumi.StringPtrInput `pulumi:"syncGroupOffsetsEnabled"`
+	// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. Defaults to 'false'.
+	SyncGroupOffsetsEnabled pulumi.StringPtrInput `pulumi:"syncGroupOffsetsEnabled"`
 	// Frequency at which consumer group offsets
 	// are synced (default: 60, every minute).
 	SyncGroupOffsetsIntervalSeconds pulumi.StringPtrInput `pulumi:"syncGroupOffsetsIntervalSeconds"`
@@ -13260,14 +13266,16 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) Refres
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to periodically check for new topics and
-// partitions. Defaults to 'true'.
+// Frequency of consumer group refresh in seconds.
+// Defaults to 600 seconds (10 minutes).
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		return v.RefreshGroupsIntervalSeconds
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to periodically check for new topics and
+// partitions. Defaults to 'true'.
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshTopicsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		return v.RefreshTopicsEnabled
@@ -13282,6 +13290,7 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) Refres
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. Defaults to 'false'.
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) SyncGroupOffsetsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		return v.SyncGroupOffsetsEnabled
@@ -13348,8 +13357,8 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Ref
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to periodically check for new topics and
-// partitions. Defaults to 'true'.
+// Frequency of consumer group refresh in seconds.
+// Defaults to 600 seconds (10 minutes).
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshGroupsIntervalSeconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		if v == nil {
@@ -13359,6 +13368,8 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Ref
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to periodically check for new topics and
+// partitions. Defaults to 'true'.
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshTopicsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		if v == nil {
@@ -13379,6 +13390,7 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Ref
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. Defaults to 'false'.
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) SyncGroupOffsetsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
 		if v == nil {
@@ -17120,6 +17132,10 @@ type MySqlMysqlUserConfig struct {
 	// The minute of an hour when backup for the service is started.
 	// New backup is only started if previous backup has already completed.
 	BackupMinute *string `pulumi:"backupMinute"`
+	// The minimum amount of time in seconds to keep binlog entries
+	// before deletion. This may be extended for services that require binlog entries for longer than the
+	// default for example if using the MySQL Debezium Kafka connector.
+	BinlogRetentionPeriod *string `pulumi:"binlogRetentionPeriod"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 	IpFilters []string `pulumi:"ipFilters"`
 	// Migrate data from existing server
@@ -17170,6 +17186,10 @@ type MySqlMysqlUserConfigArgs struct {
 	// The minute of an hour when backup for the service is started.
 	// New backup is only started if previous backup has already completed.
 	BackupMinute pulumi.StringPtrInput `pulumi:"backupMinute"`
+	// The minimum amount of time in seconds to keep binlog entries
+	// before deletion. This may be extended for services that require binlog entries for longer than the
+	// default for example if using the MySQL Debezium Kafka connector.
+	BinlogRetentionPeriod pulumi.StringPtrInput `pulumi:"binlogRetentionPeriod"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Migrate data from existing server
@@ -17297,6 +17317,13 @@ func (o MySqlMysqlUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
+// The minimum amount of time in seconds to keep binlog entries
+// before deletion. This may be extended for services that require binlog entries for longer than the
+// default for example if using the MySQL Debezium Kafka connector.
+func (o MySqlMysqlUserConfigOutput) BinlogRetentionPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.BinlogRetentionPeriod }).(pulumi.StringPtrOutput)
+}
+
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 func (o MySqlMysqlUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
@@ -17410,6 +17437,18 @@ func (o MySqlMysqlUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.BackupMinute
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum amount of time in seconds to keep binlog entries
+// before deletion. This may be extended for services that require binlog entries for longer than the
+// default for example if using the MySQL Debezium Kafka connector.
+func (o MySqlMysqlUserConfigPtrOutput) BinlogRetentionPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BinlogRetentionPeriod
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18423,6 +18462,9 @@ type MySqlMysqlUserConfigPrivateAccess struct {
 	// Allow clients to connect to mysql from the public internet for service
 	// nodes that are in a project VPC or another type of private network
 	Mysql *string `pulumi:"mysql"`
+	// Allow clients to connect to mysqlx from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysqlx *string `pulumi:"mysqlx"`
 	// Allow clients to connect to prometheus from the public internet
 	// for service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
@@ -18443,6 +18485,9 @@ type MySqlMysqlUserConfigPrivateAccessArgs struct {
 	// Allow clients to connect to mysql from the public internet for service
 	// nodes that are in a project VPC or another type of private network
 	Mysql pulumi.StringPtrInput `pulumi:"mysql"`
+	// Allow clients to connect to mysqlx from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysqlx pulumi.StringPtrInput `pulumi:"mysqlx"`
 	// Allow clients to connect to prometheus from the public internet
 	// for service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -18531,6 +18576,12 @@ func (o MySqlMysqlUserConfigPrivateAccessOutput) Mysql() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v MySqlMysqlUserConfigPrivateAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to mysqlx from the public internet for service
+// nodes that are in a project VPC or another type of private network
+func (o MySqlMysqlUserConfigPrivateAccessOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfigPrivateAccess) *string { return v.Mysqlx }).(pulumi.StringPtrOutput)
+}
+
 // Allow clients to connect to prometheus from the public internet
 // for service nodes that are in a project VPC or another type of private network
 func (o MySqlMysqlUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
@@ -18566,6 +18617,17 @@ func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to mysqlx from the public internet for service
+// nodes that are in a project VPC or another type of private network
+func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
+	}).(pulumi.StringPtrOutput)
+}
+
 // Allow clients to connect to prometheus from the public internet
 // for service nodes that are in a project VPC or another type of private network
 func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
@@ -18581,6 +18643,9 @@ type MySqlMysqlUserConfigPrivatelinkAccess struct {
 	// Allow clients to connect to mysql from the public internet for service
 	// nodes that are in a project VPC or another type of private network
 	Mysql *string `pulumi:"mysql"`
+	// Allow clients to connect to mysqlx from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysqlx *string `pulumi:"mysqlx"`
 }
 
 // MySqlMysqlUserConfigPrivatelinkAccessInput is an input type that accepts MySqlMysqlUserConfigPrivatelinkAccessArgs and MySqlMysqlUserConfigPrivatelinkAccessOutput values.
@@ -18598,6 +18663,9 @@ type MySqlMysqlUserConfigPrivatelinkAccessArgs struct {
 	// Allow clients to connect to mysql from the public internet for service
 	// nodes that are in a project VPC or another type of private network
 	Mysql pulumi.StringPtrInput `pulumi:"mysql"`
+	// Allow clients to connect to mysqlx from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysqlx pulumi.StringPtrInput `pulumi:"mysqlx"`
 }
 
 func (MySqlMysqlUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
@@ -18683,6 +18751,12 @@ func (o MySqlMysqlUserConfigPrivatelinkAccessOutput) Mysql() pulumi.StringPtrOut
 	return o.ApplyT(func(v MySqlMysqlUserConfigPrivatelinkAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to mysqlx from the public internet for service
+// nodes that are in a project VPC or another type of private network
+func (o MySqlMysqlUserConfigPrivatelinkAccessOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfigPrivatelinkAccess) *string { return v.Mysqlx }).(pulumi.StringPtrOutput)
+}
+
 type MySqlMysqlUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
 
 func (MySqlMysqlUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
@@ -18712,10 +18786,24 @@ func (o MySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Mysql() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to mysqlx from the public internet for service
+// nodes that are in a project VPC or another type of private network
+func (o MySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
+	}).(pulumi.StringPtrOutput)
+}
+
 type MySqlMysqlUserConfigPublicAccess struct {
 	// Allow clients to connect to mysql from the public internet for service
 	// nodes that are in a project VPC or another type of private network
 	Mysql *string `pulumi:"mysql"`
+	// Allow clients to connect to mysqlx from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysqlx *string `pulumi:"mysqlx"`
 	// Allow clients to connect to prometheus from the public internet
 	// for service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
@@ -18736,6 +18824,9 @@ type MySqlMysqlUserConfigPublicAccessArgs struct {
 	// Allow clients to connect to mysql from the public internet for service
 	// nodes that are in a project VPC or another type of private network
 	Mysql pulumi.StringPtrInput `pulumi:"mysql"`
+	// Allow clients to connect to mysqlx from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysqlx pulumi.StringPtrInput `pulumi:"mysqlx"`
 	// Allow clients to connect to prometheus from the public internet
 	// for service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -18824,6 +18915,12 @@ func (o MySqlMysqlUserConfigPublicAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigPublicAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+// Allow clients to connect to mysqlx from the public internet for service
+// nodes that are in a project VPC or another type of private network
+func (o MySqlMysqlUserConfigPublicAccessOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfigPublicAccess) *string { return v.Mysqlx }).(pulumi.StringPtrOutput)
+}
+
 // Allow clients to connect to prometheus from the public internet
 // for service nodes that are in a project VPC or another type of private network
 func (o MySqlMysqlUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
@@ -18856,6 +18953,17 @@ func (o MySqlMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.Mysql
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allow clients to connect to mysqlx from the public internet for service
+// nodes that are in a project VPC or another type of private network
+func (o MySqlMysqlUserConfigPublicAccessPtrOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20333,6 +20441,10 @@ type PgPgUserConfigPg struct {
 	TrackCommitTimestamp *string `pulumi:"trackCommitTimestamp"`
 	// Enables tracking of function call counts and time used.
 	TrackFunctions *string `pulumi:"trackFunctions"`
+	// Enables timing of database I/O calls. This parameter is off by default,
+	// because it will repeatedly query the operating system for the current time, which may cause significant
+	// overhead on some platforms.
+	TrackIoTiming *string `pulumi:"trackIoTiming"`
 	// Terminate replication connections that are inactive for longer than
 	// this amount of time, in milliseconds.
 	WalSenderTimeout *string `pulumi:"walSenderTimeout"`
@@ -20458,6 +20570,10 @@ type PgPgUserConfigPgArgs struct {
 	TrackCommitTimestamp pulumi.StringPtrInput `pulumi:"trackCommitTimestamp"`
 	// Enables tracking of function call counts and time used.
 	TrackFunctions pulumi.StringPtrInput `pulumi:"trackFunctions"`
+	// Enables timing of database I/O calls. This parameter is off by default,
+	// because it will repeatedly query the operating system for the current time, which may cause significant
+	// overhead on some platforms.
+	TrackIoTiming pulumi.StringPtrInput `pulumi:"trackIoTiming"`
 	// Terminate replication connections that are inactive for longer than
 	// this amount of time, in milliseconds.
 	WalSenderTimeout pulumi.StringPtrInput `pulumi:"walSenderTimeout"`
@@ -20757,6 +20873,13 @@ func (o PgPgUserConfigPgOutput) TrackCommitTimestamp() pulumi.StringPtrOutput {
 // Enables tracking of function call counts and time used.
 func (o PgPgUserConfigPgOutput) TrackFunctions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.TrackFunctions }).(pulumi.StringPtrOutput)
+}
+
+// Enables timing of database I/O calls. This parameter is off by default,
+// because it will repeatedly query the operating system for the current time, which may cause significant
+// overhead on some platforms.
+func (o PgPgUserConfigPgOutput) TrackIoTiming() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.TrackIoTiming }).(pulumi.StringPtrOutput)
 }
 
 // Terminate replication connections that are inactive for longer than
@@ -21187,6 +21310,18 @@ func (o PgPgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.TrackFunctions
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enables timing of database I/O calls. This parameter is off by default,
+// because it will repeatedly query the operating system for the current time, which may cause significant
+// overhead on some platforms.
+func (o PgPgUserConfigPgPtrOutput) TrackIoTiming() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrackIoTiming
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29916,6 +30051,7 @@ type ServiceIntegrationDatadogUserConfig struct {
 	IncludeConsumerGroups []string                                        `pulumi:"includeConsumerGroups"`
 	IncludeTopics         []string                                        `pulumi:"includeTopics"`
 	KafkaCustomMetrics    []string                                        `pulumi:"kafkaCustomMetrics"`
+	MaxJmxMetrics         *string                                         `pulumi:"maxJmxMetrics"`
 }
 
 // ServiceIntegrationDatadogUserConfigInput is an input type that accepts ServiceIntegrationDatadogUserConfigArgs and ServiceIntegrationDatadogUserConfigOutput values.
@@ -29936,6 +30072,7 @@ type ServiceIntegrationDatadogUserConfigArgs struct {
 	IncludeConsumerGroups pulumi.StringArrayInput                                 `pulumi:"includeConsumerGroups"`
 	IncludeTopics         pulumi.StringArrayInput                                 `pulumi:"includeTopics"`
 	KafkaCustomMetrics    pulumi.StringArrayInput                                 `pulumi:"kafkaCustomMetrics"`
+	MaxJmxMetrics         pulumi.StringPtrInput                                   `pulumi:"maxJmxMetrics"`
 }
 
 func (ServiceIntegrationDatadogUserConfigArgs) ElementType() reflect.Type {
@@ -30040,6 +30177,10 @@ func (o ServiceIntegrationDatadogUserConfigOutput) KafkaCustomMetrics() pulumi.S
 	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) []string { return v.KafkaCustomMetrics }).(pulumi.StringArrayOutput)
 }
 
+func (o ServiceIntegrationDatadogUserConfigOutput) MaxJmxMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) *string { return v.MaxJmxMetrics }).(pulumi.StringPtrOutput)
+}
+
 type ServiceIntegrationDatadogUserConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceIntegrationDatadogUserConfigPtrOutput) ElementType() reflect.Type {
@@ -30110,6 +30251,15 @@ func (o ServiceIntegrationDatadogUserConfigPtrOutput) KafkaCustomMetrics() pulum
 		}
 		return v.KafkaCustomMetrics
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceIntegrationDatadogUserConfigPtrOutput) MaxJmxMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxJmxMetrics
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceIntegrationDatadogUserConfigDatadogTag struct {
@@ -32426,6 +32576,8 @@ func (o ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput) Elem() S
 }
 
 type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig struct {
+	DroppedMetrics []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric `pulumi:"droppedMetrics"`
+	ExtraMetrics   []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric   `pulumi:"extraMetrics"`
 }
 
 // ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput is an input type that accepts ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs and ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput values.
@@ -32440,6 +32592,8 @@ type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput interface {
 }
 
 type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs struct {
+	DroppedMetrics ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput `pulumi:"droppedMetrics"`
+	ExtraMetrics   ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput   `pulumi:"extraMetrics"`
 }
 
 func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ElementType() reflect.Type {
@@ -32518,6 +32672,17 @@ func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ToServic
 		return &v
 	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput)
 }
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) DroppedMetrics() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+		return v.DroppedMetrics
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput)
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ExtraMetrics() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+		return v.ExtraMetrics
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput)
+}
 
 type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput struct{ *pulumi.OutputState }
 
@@ -32537,6 +32702,224 @@ func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput) Elem(
 	return o.ApplyT(func(v *ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
 		return *v
 	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput)
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput) DroppedMetrics() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+		if v == nil {
+			return nil
+		}
+		return v.DroppedMetrics
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput)
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput) ExtraMetrics() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+		if v == nil {
+			return nil
+		}
+		return v.ExtraMetrics
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric struct {
+	Field  *string `pulumi:"field"`
+	Metric *string `pulumi:"metric"`
+}
+
+// ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput is an input type that accepts ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs and ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput` via:
+//
+//          ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs{...}
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs struct {
+	Field  pulumi.StringPtrInput `pulumi:"field"`
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+}
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput)
+}
+
+// ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput is an input type that accepts ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray and ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput` via:
+//
+//          ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray{ ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs{...} }
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) Index(i pulumi.IntInput) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+		return vs[0].([]ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)[vs[1].(int)]
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric struct {
+	Field  *string `pulumi:"field"`
+	Metric *string `pulumi:"metric"`
+}
+
+// ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput is an input type that accepts ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs and ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput` via:
+//
+//          ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs{...}
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs struct {
+	Field  pulumi.StringPtrInput `pulumi:"field"`
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+}
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput)
+}
+
+// ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput is an input type that accepts ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray and ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput values.
+// You can construct a concrete instance of `ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput` via:
+//
+//          ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray{ ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs{...} }
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput interface {
+	pulumi.Input
+
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput
+	ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray []ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return i.ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ToServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(ctx context.Context) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o
+}
+
+func (o ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) Index(i pulumi.IntInput) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+		return vs[0].([]ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)[vs[1].(int)]
+	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput)
 }
 
 type ServiceIntegrationExternalElasticsearchLogsUserConfig struct {
@@ -39577,20 +39960,21 @@ func (o ServiceMysqlPtrOutput) Elem() ServiceMysqlOutput {
 }
 
 type ServiceMysqlUserConfig struct {
-	AdminPassword      *string                                  `pulumi:"adminPassword"`
-	AdminUsername      *string                                  `pulumi:"adminUsername"`
-	BackupHour         *string                                  `pulumi:"backupHour"`
-	BackupMinute       *string                                  `pulumi:"backupMinute"`
-	IpFilters          []string                                 `pulumi:"ipFilters"`
-	Migration          *ServiceMysqlUserConfigMigration         `pulumi:"migration"`
-	Mysql              *ServiceMysqlUserConfigMysql             `pulumi:"mysql"`
-	MysqlVersion       *string                                  `pulumi:"mysqlVersion"`
-	PrivateAccess      *ServiceMysqlUserConfigPrivateAccess     `pulumi:"privateAccess"`
-	PrivatelinkAccess  *ServiceMysqlUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom  *string                                  `pulumi:"projectToForkFrom"`
-	PublicAccess       *ServiceMysqlUserConfigPublicAccess      `pulumi:"publicAccess"`
-	RecoveryTargetTime *string                                  `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom  *string                                  `pulumi:"serviceToForkFrom"`
+	AdminPassword         *string                                  `pulumi:"adminPassword"`
+	AdminUsername         *string                                  `pulumi:"adminUsername"`
+	BackupHour            *string                                  `pulumi:"backupHour"`
+	BackupMinute          *string                                  `pulumi:"backupMinute"`
+	BinlogRetentionPeriod *string                                  `pulumi:"binlogRetentionPeriod"`
+	IpFilters             []string                                 `pulumi:"ipFilters"`
+	Migration             *ServiceMysqlUserConfigMigration         `pulumi:"migration"`
+	Mysql                 *ServiceMysqlUserConfigMysql             `pulumi:"mysql"`
+	MysqlVersion          *string                                  `pulumi:"mysqlVersion"`
+	PrivateAccess         *ServiceMysqlUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	PrivatelinkAccess     *ServiceMysqlUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom     *string                                  `pulumi:"projectToForkFrom"`
+	PublicAccess          *ServiceMysqlUserConfigPublicAccess      `pulumi:"publicAccess"`
+	RecoveryTargetTime    *string                                  `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom     *string                                  `pulumi:"serviceToForkFrom"`
 }
 
 // ServiceMysqlUserConfigInput is an input type that accepts ServiceMysqlUserConfigArgs and ServiceMysqlUserConfigOutput values.
@@ -39605,20 +39989,21 @@ type ServiceMysqlUserConfigInput interface {
 }
 
 type ServiceMysqlUserConfigArgs struct {
-	AdminPassword      pulumi.StringPtrInput                           `pulumi:"adminPassword"`
-	AdminUsername      pulumi.StringPtrInput                           `pulumi:"adminUsername"`
-	BackupHour         pulumi.StringPtrInput                           `pulumi:"backupHour"`
-	BackupMinute       pulumi.StringPtrInput                           `pulumi:"backupMinute"`
-	IpFilters          pulumi.StringArrayInput                         `pulumi:"ipFilters"`
-	Migration          ServiceMysqlUserConfigMigrationPtrInput         `pulumi:"migration"`
-	Mysql              ServiceMysqlUserConfigMysqlPtrInput             `pulumi:"mysql"`
-	MysqlVersion       pulumi.StringPtrInput                           `pulumi:"mysqlVersion"`
-	PrivateAccess      ServiceMysqlUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
-	PrivatelinkAccess  ServiceMysqlUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom  pulumi.StringPtrInput                           `pulumi:"projectToForkFrom"`
-	PublicAccess       ServiceMysqlUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
-	RecoveryTargetTime pulumi.StringPtrInput                           `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom  pulumi.StringPtrInput                           `pulumi:"serviceToForkFrom"`
+	AdminPassword         pulumi.StringPtrInput                           `pulumi:"adminPassword"`
+	AdminUsername         pulumi.StringPtrInput                           `pulumi:"adminUsername"`
+	BackupHour            pulumi.StringPtrInput                           `pulumi:"backupHour"`
+	BackupMinute          pulumi.StringPtrInput                           `pulumi:"backupMinute"`
+	BinlogRetentionPeriod pulumi.StringPtrInput                           `pulumi:"binlogRetentionPeriod"`
+	IpFilters             pulumi.StringArrayInput                         `pulumi:"ipFilters"`
+	Migration             ServiceMysqlUserConfigMigrationPtrInput         `pulumi:"migration"`
+	Mysql                 ServiceMysqlUserConfigMysqlPtrInput             `pulumi:"mysql"`
+	MysqlVersion          pulumi.StringPtrInput                           `pulumi:"mysqlVersion"`
+	PrivateAccess         ServiceMysqlUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	PrivatelinkAccess     ServiceMysqlUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom     pulumi.StringPtrInput                           `pulumi:"projectToForkFrom"`
+	PublicAccess          ServiceMysqlUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	RecoveryTargetTime    pulumi.StringPtrInput                           `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom     pulumi.StringPtrInput                           `pulumi:"serviceToForkFrom"`
 }
 
 func (ServiceMysqlUserConfigArgs) ElementType() reflect.Type {
@@ -39713,6 +40098,10 @@ func (o ServiceMysqlUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMysqlUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceMysqlUserConfigOutput) BinlogRetentionPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfig) *string { return v.BinlogRetentionPeriod }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceMysqlUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceMysqlUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
@@ -39804,6 +40193,15 @@ func (o ServiceMysqlUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.BackupMinute
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceMysqlUserConfigPtrOutput) BinlogRetentionPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BinlogRetentionPeriod
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40571,6 +40969,7 @@ func (o ServiceMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.StringPtrOutp
 
 type ServiceMysqlUserConfigPrivateAccess struct {
 	Mysql      *string `pulumi:"mysql"`
+	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -40587,6 +40986,7 @@ type ServiceMysqlUserConfigPrivateAccessInput interface {
 
 type ServiceMysqlUserConfigPrivateAccessArgs struct {
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
+	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -40670,6 +41070,10 @@ func (o ServiceMysqlUserConfigPrivateAccessOutput) Mysql() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ServiceMysqlUserConfigPrivateAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceMysqlUserConfigPrivateAccessOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigPrivateAccess) *string { return v.Mysqlx }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceMysqlUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMysqlUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -40701,6 +41105,15 @@ func (o ServiceMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceMysqlUserConfigPrivateAccessPtrOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMysqlUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -40711,7 +41124,8 @@ func (o ServiceMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.String
 }
 
 type ServiceMysqlUserConfigPrivatelinkAccess struct {
-	Mysql *string `pulumi:"mysql"`
+	Mysql  *string `pulumi:"mysql"`
+	Mysqlx *string `pulumi:"mysqlx"`
 }
 
 // ServiceMysqlUserConfigPrivatelinkAccessInput is an input type that accepts ServiceMysqlUserConfigPrivatelinkAccessArgs and ServiceMysqlUserConfigPrivatelinkAccessOutput values.
@@ -40726,7 +41140,8 @@ type ServiceMysqlUserConfigPrivatelinkAccessInput interface {
 }
 
 type ServiceMysqlUserConfigPrivatelinkAccessArgs struct {
-	Mysql pulumi.StringPtrInput `pulumi:"mysql"`
+	Mysql  pulumi.StringPtrInput `pulumi:"mysql"`
+	Mysqlx pulumi.StringPtrInput `pulumi:"mysqlx"`
 }
 
 func (ServiceMysqlUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
@@ -40809,6 +41224,10 @@ func (o ServiceMysqlUserConfigPrivatelinkAccessOutput) Mysql() pulumi.StringPtrO
 	return o.ApplyT(func(v ServiceMysqlUserConfigPrivatelinkAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceMysqlUserConfigPrivatelinkAccessOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigPrivatelinkAccess) *string { return v.Mysqlx }).(pulumi.StringPtrOutput)
+}
+
 type ServiceMysqlUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceMysqlUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
@@ -40836,8 +41255,18 @@ func (o ServiceMysqlUserConfigPrivatelinkAccessPtrOutput) Mysql() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceMysqlUserConfigPrivatelinkAccessPtrOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceMysqlUserConfigPublicAccess struct {
 	Mysql      *string `pulumi:"mysql"`
+	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -40854,6 +41283,7 @@ type ServiceMysqlUserConfigPublicAccessInput interface {
 
 type ServiceMysqlUserConfigPublicAccessArgs struct {
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
+	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -40937,6 +41367,10 @@ func (o ServiceMysqlUserConfigPublicAccessOutput) Mysql() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ServiceMysqlUserConfigPublicAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+func (o ServiceMysqlUserConfigPublicAccessOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMysqlUserConfigPublicAccess) *string { return v.Mysqlx }).(pulumi.StringPtrOutput)
+}
+
 func (o ServiceMysqlUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMysqlUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -40965,6 +41399,15 @@ func (o ServiceMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtrOut
 			return nil
 		}
 		return v.Mysql
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceMysqlUserConfigPublicAccessPtrOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMysqlUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -41918,6 +42361,7 @@ type ServicePgUserConfigPg struct {
 	TrackActivityQuerySize          *string `pulumi:"trackActivityQuerySize"`
 	TrackCommitTimestamp            *string `pulumi:"trackCommitTimestamp"`
 	TrackFunctions                  *string `pulumi:"trackFunctions"`
+	TrackIoTiming                   *string `pulumi:"trackIoTiming"`
 	WalSenderTimeout                *string `pulumi:"walSenderTimeout"`
 	WalWriterDelay                  *string `pulumi:"walWriterDelay"`
 }
@@ -41971,6 +42415,7 @@ type ServicePgUserConfigPgArgs struct {
 	TrackActivityQuerySize          pulumi.StringPtrInput `pulumi:"trackActivityQuerySize"`
 	TrackCommitTimestamp            pulumi.StringPtrInput `pulumi:"trackCommitTimestamp"`
 	TrackFunctions                  pulumi.StringPtrInput `pulumi:"trackFunctions"`
+	TrackIoTiming                   pulumi.StringPtrInput `pulumi:"trackIoTiming"`
 	WalSenderTimeout                pulumi.StringPtrInput `pulumi:"walSenderTimeout"`
 	WalWriterDelay                  pulumi.StringPtrInput `pulumi:"walWriterDelay"`
 }
@@ -42197,6 +42642,10 @@ func (o ServicePgUserConfigPgOutput) TrackCommitTimestamp() pulumi.StringPtrOutp
 
 func (o ServicePgUserConfigPgOutput) TrackFunctions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.TrackFunctions }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgOutput) TrackIoTiming() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePgUserConfigPg) *string { return v.TrackIoTiming }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicePgUserConfigPgOutput) WalSenderTimeout() pulumi.StringPtrOutput {
@@ -42555,6 +43004,15 @@ func (o ServicePgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.TrackFunctions
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePgUserConfigPgPtrOutput) TrackIoTiming() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrackIoTiming
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -59107,6 +59565,10 @@ type GetMySqlMysqlUserConfig struct {
 	// The minute of an hour when backup for the service is started.
 	// New backup is only started if previous backup has already completed.
 	BackupMinute *string `pulumi:"backupMinute"`
+	// The minimum amount of time in seconds to keep binlog entries
+	// before deletion. This may be extended for services that require binlog entries for longer than the
+	// default for example if using the MySQL Debezium Kafka connector.
+	BinlogRetentionPeriod *string `pulumi:"binlogRetentionPeriod"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 	IpFilters []string `pulumi:"ipFilters"`
 	// Migrate data from existing server
@@ -59156,6 +59618,10 @@ type GetMySqlMysqlUserConfigArgs struct {
 	// The minute of an hour when backup for the service is started.
 	// New backup is only started if previous backup has already completed.
 	BackupMinute pulumi.StringPtrInput `pulumi:"backupMinute"`
+	// The minimum amount of time in seconds to keep binlog entries
+	// before deletion. This may be extended for services that require binlog entries for longer than the
+	// default for example if using the MySQL Debezium Kafka connector.
+	BinlogRetentionPeriod pulumi.StringPtrInput `pulumi:"binlogRetentionPeriod"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// Migrate data from existing server
@@ -59229,6 +59695,13 @@ func (o GetMySqlMysqlUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
 // New backup is only started if previous backup has already completed.
 func (o GetMySqlMysqlUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
+}
+
+// The minimum amount of time in seconds to keep binlog entries
+// before deletion. This may be extended for services that require binlog entries for longer than the
+// default for example if using the MySQL Debezium Kafka connector.
+func (o GetMySqlMysqlUserConfigOutput) BinlogRetentionPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.BinlogRetentionPeriod }).(pulumi.StringPtrOutput)
 }
 
 // Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
@@ -60189,6 +60662,9 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.StringPtrOut
 type GetMySqlMysqlUserConfigPrivateAccess struct {
 	// MySQL specific server provided values.
 	Mysql *string `pulumi:"mysql"`
+	// (Optional) Allow clients to connect to mysqlx from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysqlx *string `pulumi:"mysqlx"`
 	// Allow clients to connect to prometheus from the public internet
 	// for service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
@@ -60208,6 +60684,9 @@ type GetMySqlMysqlUserConfigPrivateAccessInput interface {
 type GetMySqlMysqlUserConfigPrivateAccessArgs struct {
 	// MySQL specific server provided values.
 	Mysql pulumi.StringPtrInput `pulumi:"mysql"`
+	// (Optional) Allow clients to connect to mysqlx from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysqlx pulumi.StringPtrInput `pulumi:"mysqlx"`
 	// Allow clients to connect to prometheus from the public internet
 	// for service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -60295,6 +60774,12 @@ func (o GetMySqlMysqlUserConfigPrivateAccessOutput) Mysql() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivateAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+// (Optional) Allow clients to connect to mysqlx from the public internet for service
+// nodes that are in a project VPC or another type of private network
+func (o GetMySqlMysqlUserConfigPrivateAccessOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivateAccess) *string { return v.Mysqlx }).(pulumi.StringPtrOutput)
+}
+
 // Allow clients to connect to prometheus from the public internet
 // for service nodes that are in a project VPC or another type of private network
 func (o GetMySqlMysqlUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
@@ -60329,6 +60814,17 @@ func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Optional) Allow clients to connect to mysqlx from the public internet for service
+// nodes that are in a project VPC or another type of private network
+func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
+	}).(pulumi.StringPtrOutput)
+}
+
 // Allow clients to connect to prometheus from the public internet
 // for service nodes that are in a project VPC or another type of private network
 func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
@@ -60343,6 +60839,9 @@ func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.Strin
 type GetMySqlMysqlUserConfigPrivatelinkAccess struct {
 	// MySQL specific server provided values.
 	Mysql *string `pulumi:"mysql"`
+	// (Optional) Allow clients to connect to mysqlx from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysqlx *string `pulumi:"mysqlx"`
 }
 
 // GetMySqlMysqlUserConfigPrivatelinkAccessInput is an input type that accepts GetMySqlMysqlUserConfigPrivatelinkAccessArgs and GetMySqlMysqlUserConfigPrivatelinkAccessOutput values.
@@ -60359,6 +60858,9 @@ type GetMySqlMysqlUserConfigPrivatelinkAccessInput interface {
 type GetMySqlMysqlUserConfigPrivatelinkAccessArgs struct {
 	// MySQL specific server provided values.
 	Mysql pulumi.StringPtrInput `pulumi:"mysql"`
+	// (Optional) Allow clients to connect to mysqlx from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysqlx pulumi.StringPtrInput `pulumi:"mysqlx"`
 }
 
 func (GetMySqlMysqlUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
@@ -60443,6 +60945,12 @@ func (o GetMySqlMysqlUserConfigPrivatelinkAccessOutput) Mysql() pulumi.StringPtr
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivatelinkAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+// (Optional) Allow clients to connect to mysqlx from the public internet for service
+// nodes that are in a project VPC or another type of private network
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivatelinkAccess) *string { return v.Mysqlx }).(pulumi.StringPtrOutput)
+}
+
 type GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
 
 func (GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
@@ -60471,9 +60979,23 @@ func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Mysql() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Optional) Allow clients to connect to mysqlx from the public internet for service
+// nodes that are in a project VPC or another type of private network
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetMySqlMysqlUserConfigPublicAccess struct {
 	// MySQL specific server provided values.
 	Mysql *string `pulumi:"mysql"`
+	// (Optional) Allow clients to connect to mysqlx from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysqlx *string `pulumi:"mysqlx"`
 	// Allow clients to connect to prometheus from the public internet
 	// for service nodes that are in a project VPC or another type of private network
 	Prometheus *string `pulumi:"prometheus"`
@@ -60493,6 +61015,9 @@ type GetMySqlMysqlUserConfigPublicAccessInput interface {
 type GetMySqlMysqlUserConfigPublicAccessArgs struct {
 	// MySQL specific server provided values.
 	Mysql pulumi.StringPtrInput `pulumi:"mysql"`
+	// (Optional) Allow clients to connect to mysqlx from the public internet for service
+	// nodes that are in a project VPC or another type of private network
+	Mysqlx pulumi.StringPtrInput `pulumi:"mysqlx"`
 	// Allow clients to connect to prometheus from the public internet
 	// for service nodes that are in a project VPC or another type of private network
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -60580,6 +61105,12 @@ func (o GetMySqlMysqlUserConfigPublicAccessOutput) Mysql() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigPublicAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+// (Optional) Allow clients to connect to mysqlx from the public internet for service
+// nodes that are in a project VPC or another type of private network
+func (o GetMySqlMysqlUserConfigPublicAccessOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigPublicAccess) *string { return v.Mysqlx }).(pulumi.StringPtrOutput)
+}
+
 // Allow clients to connect to prometheus from the public internet
 // for service nodes that are in a project VPC or another type of private network
 func (o GetMySqlMysqlUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
@@ -60611,6 +61142,17 @@ func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtrOu
 			return nil
 		}
 		return v.Mysql
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional) Allow clients to connect to mysqlx from the public internet for service
+// nodes that are in a project VPC or another type of private network
+func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -61626,6 +62168,10 @@ type GetPgPgUserConfigPg struct {
 	TrackCommitTimestamp *string `pulumi:"trackCommitTimestamp"`
 	// Enables tracking of function call counts and time used.
 	TrackFunctions *string `pulumi:"trackFunctions"`
+	// Enables timing of database I/O calls. This parameter is off by default,
+	// because it will repeatedly query the operating system for the current time, which may cause
+	// significant overhead on some platforms.
+	TrackIoTiming *string `pulumi:"trackIoTiming"`
 	// Terminate replication connections that are inactive for longer than
 	// this amount of time, in milliseconds.
 	WalSenderTimeout *string `pulumi:"walSenderTimeout"`
@@ -61751,6 +62297,10 @@ type GetPgPgUserConfigPgArgs struct {
 	TrackCommitTimestamp pulumi.StringPtrInput `pulumi:"trackCommitTimestamp"`
 	// Enables tracking of function call counts and time used.
 	TrackFunctions pulumi.StringPtrInput `pulumi:"trackFunctions"`
+	// Enables timing of database I/O calls. This parameter is off by default,
+	// because it will repeatedly query the operating system for the current time, which may cause
+	// significant overhead on some platforms.
+	TrackIoTiming pulumi.StringPtrInput `pulumi:"trackIoTiming"`
 	// Terminate replication connections that are inactive for longer than
 	// this amount of time, in milliseconds.
 	WalSenderTimeout pulumi.StringPtrInput `pulumi:"walSenderTimeout"`
@@ -62050,6 +62600,13 @@ func (o GetPgPgUserConfigPgOutput) TrackCommitTimestamp() pulumi.StringPtrOutput
 // Enables tracking of function call counts and time used.
 func (o GetPgPgUserConfigPgOutput) TrackFunctions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.TrackFunctions }).(pulumi.StringPtrOutput)
+}
+
+// Enables timing of database I/O calls. This parameter is off by default,
+// because it will repeatedly query the operating system for the current time, which may cause
+// significant overhead on some platforms.
+func (o GetPgPgUserConfigPgOutput) TrackIoTiming() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.TrackIoTiming }).(pulumi.StringPtrOutput)
 }
 
 // Terminate replication connections that are inactive for longer than
@@ -62480,6 +63037,18 @@ func (o GetPgPgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.TrackFunctions
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enables timing of database I/O calls. This parameter is off by default,
+// because it will repeatedly query the operating system for the current time, which may cause
+// significant overhead on some platforms.
+func (o GetPgPgUserConfigPgPtrOutput) TrackIoTiming() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrackIoTiming
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -69733,6 +70302,7 @@ type GetServiceIntegrationDatadogUserConfig struct {
 	IncludeConsumerGroups []string                                           `pulumi:"includeConsumerGroups"`
 	IncludeTopics         []string                                           `pulumi:"includeTopics"`
 	KafkaCustomMetrics    []string                                           `pulumi:"kafkaCustomMetrics"`
+	MaxJmxMetrics         *string                                            `pulumi:"maxJmxMetrics"`
 }
 
 // GetServiceIntegrationDatadogUserConfigInput is an input type that accepts GetServiceIntegrationDatadogUserConfigArgs and GetServiceIntegrationDatadogUserConfigOutput values.
@@ -69753,6 +70323,7 @@ type GetServiceIntegrationDatadogUserConfigArgs struct {
 	IncludeConsumerGroups pulumi.StringArrayInput                                    `pulumi:"includeConsumerGroups"`
 	IncludeTopics         pulumi.StringArrayInput                                    `pulumi:"includeTopics"`
 	KafkaCustomMetrics    pulumi.StringArrayInput                                    `pulumi:"kafkaCustomMetrics"`
+	MaxJmxMetrics         pulumi.StringPtrInput                                      `pulumi:"maxJmxMetrics"`
 }
 
 func (GetServiceIntegrationDatadogUserConfigArgs) ElementType() reflect.Type {
@@ -69805,6 +70376,10 @@ func (o GetServiceIntegrationDatadogUserConfigOutput) IncludeTopics() pulumi.Str
 
 func (o GetServiceIntegrationDatadogUserConfigOutput) KafkaCustomMetrics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.KafkaCustomMetrics }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOutput) MaxJmxMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) *string { return v.MaxJmxMetrics }).(pulumi.StringPtrOutput)
 }
 
 type GetServiceIntegrationDatadogUserConfigDatadogTag struct {
@@ -70844,6 +71419,8 @@ func (o GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput) ToGetSer
 }
 
 type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig struct {
+	DroppedMetrics []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric `pulumi:"droppedMetrics"`
+	ExtraMetrics   []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric   `pulumi:"extraMetrics"`
 }
 
 // GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput values.
@@ -70858,6 +71435,8 @@ type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput interface 
 }
 
 type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs struct {
+	DroppedMetrics GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput `pulumi:"droppedMetrics"`
+	ExtraMetrics   GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput   `pulumi:"extraMetrics"`
 }
 
 func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ElementType() reflect.Type {
@@ -70884,6 +71463,224 @@ func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ToGet
 
 func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
 	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) DroppedMetrics() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+		return v.DroppedMetrics
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput)
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ExtraMetrics() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+		return v.ExtraMetrics
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric struct {
+	Field  *string `pulumi:"field"`
+	Metric *string `pulumi:"metric"`
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput` via:
+//
+//          GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs{...}
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs struct {
+	Field  pulumi.StringPtrInput `pulumi:"field"`
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+}
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput)
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput` via:
+//
+//          GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray{ GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs{...} }
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric) *string {
+		return v.Field
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric) *string {
+		return v.Metric
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+		return vs[0].([]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)[vs[1].(int)]
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric struct {
+	Field  *string `pulumi:"field"`
+	Metric *string `pulumi:"metric"`
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput` via:
+//
+//          GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs{...}
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs struct {
+	Field  pulumi.StringPtrInput `pulumi:"field"`
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+}
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput)
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput` via:
+//
+//          GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray{ GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs{...} }
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric) *string {
+		return v.Metric
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+		return vs[0].([]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)[vs[1].(int)]
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput)
 }
 
 type GetServiceIntegrationExternalElasticsearchLogsUserConfig struct {
@@ -76093,20 +76890,21 @@ func (o GetServiceMysqlOutput) ToGetServiceMysqlOutputWithContext(ctx context.Co
 }
 
 type GetServiceMysqlUserConfig struct {
-	AdminPassword      *string                                     `pulumi:"adminPassword"`
-	AdminUsername      *string                                     `pulumi:"adminUsername"`
-	BackupHour         *string                                     `pulumi:"backupHour"`
-	BackupMinute       *string                                     `pulumi:"backupMinute"`
-	IpFilters          []string                                    `pulumi:"ipFilters"`
-	Migration          *GetServiceMysqlUserConfigMigration         `pulumi:"migration"`
-	Mysql              *GetServiceMysqlUserConfigMysql             `pulumi:"mysql"`
-	MysqlVersion       *string                                     `pulumi:"mysqlVersion"`
-	PrivateAccess      *GetServiceMysqlUserConfigPrivateAccess     `pulumi:"privateAccess"`
-	PrivatelinkAccess  *GetServiceMysqlUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom  *string                                     `pulumi:"projectToForkFrom"`
-	PublicAccess       *GetServiceMysqlUserConfigPublicAccess      `pulumi:"publicAccess"`
-	RecoveryTargetTime *string                                     `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom  *string                                     `pulumi:"serviceToForkFrom"`
+	AdminPassword         *string                                     `pulumi:"adminPassword"`
+	AdminUsername         *string                                     `pulumi:"adminUsername"`
+	BackupHour            *string                                     `pulumi:"backupHour"`
+	BackupMinute          *string                                     `pulumi:"backupMinute"`
+	BinlogRetentionPeriod *string                                     `pulumi:"binlogRetentionPeriod"`
+	IpFilters             []string                                    `pulumi:"ipFilters"`
+	Migration             *GetServiceMysqlUserConfigMigration         `pulumi:"migration"`
+	Mysql                 *GetServiceMysqlUserConfigMysql             `pulumi:"mysql"`
+	MysqlVersion          *string                                     `pulumi:"mysqlVersion"`
+	PrivateAccess         *GetServiceMysqlUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	PrivatelinkAccess     *GetServiceMysqlUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom     *string                                     `pulumi:"projectToForkFrom"`
+	PublicAccess          *GetServiceMysqlUserConfigPublicAccess      `pulumi:"publicAccess"`
+	RecoveryTargetTime    *string                                     `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom     *string                                     `pulumi:"serviceToForkFrom"`
 }
 
 // GetServiceMysqlUserConfigInput is an input type that accepts GetServiceMysqlUserConfigArgs and GetServiceMysqlUserConfigOutput values.
@@ -76121,20 +76919,21 @@ type GetServiceMysqlUserConfigInput interface {
 }
 
 type GetServiceMysqlUserConfigArgs struct {
-	AdminPassword      pulumi.StringPtrInput                              `pulumi:"adminPassword"`
-	AdminUsername      pulumi.StringPtrInput                              `pulumi:"adminUsername"`
-	BackupHour         pulumi.StringPtrInput                              `pulumi:"backupHour"`
-	BackupMinute       pulumi.StringPtrInput                              `pulumi:"backupMinute"`
-	IpFilters          pulumi.StringArrayInput                            `pulumi:"ipFilters"`
-	Migration          GetServiceMysqlUserConfigMigrationPtrInput         `pulumi:"migration"`
-	Mysql              GetServiceMysqlUserConfigMysqlPtrInput             `pulumi:"mysql"`
-	MysqlVersion       pulumi.StringPtrInput                              `pulumi:"mysqlVersion"`
-	PrivateAccess      GetServiceMysqlUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
-	PrivatelinkAccess  GetServiceMysqlUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom  pulumi.StringPtrInput                              `pulumi:"projectToForkFrom"`
-	PublicAccess       GetServiceMysqlUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
-	RecoveryTargetTime pulumi.StringPtrInput                              `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom  pulumi.StringPtrInput                              `pulumi:"serviceToForkFrom"`
+	AdminPassword         pulumi.StringPtrInput                              `pulumi:"adminPassword"`
+	AdminUsername         pulumi.StringPtrInput                              `pulumi:"adminUsername"`
+	BackupHour            pulumi.StringPtrInput                              `pulumi:"backupHour"`
+	BackupMinute          pulumi.StringPtrInput                              `pulumi:"backupMinute"`
+	BinlogRetentionPeriod pulumi.StringPtrInput                              `pulumi:"binlogRetentionPeriod"`
+	IpFilters             pulumi.StringArrayInput                            `pulumi:"ipFilters"`
+	Migration             GetServiceMysqlUserConfigMigrationPtrInput         `pulumi:"migration"`
+	Mysql                 GetServiceMysqlUserConfigMysqlPtrInput             `pulumi:"mysql"`
+	MysqlVersion          pulumi.StringPtrInput                              `pulumi:"mysqlVersion"`
+	PrivateAccess         GetServiceMysqlUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	PrivatelinkAccess     GetServiceMysqlUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom     pulumi.StringPtrInput                              `pulumi:"projectToForkFrom"`
+	PublicAccess          GetServiceMysqlUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	RecoveryTargetTime    pulumi.StringPtrInput                              `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom     pulumi.StringPtrInput                              `pulumi:"serviceToForkFrom"`
 }
 
 func (GetServiceMysqlUserConfigArgs) ElementType() reflect.Type {
@@ -76177,6 +76976,10 @@ func (o GetServiceMysqlUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
 
 func (o GetServiceMysqlUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMysqlUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMysqlUserConfigOutput) BinlogRetentionPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfig) *string { return v.BinlogRetentionPeriod }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceMysqlUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
@@ -76895,6 +77698,7 @@ func (o GetServiceMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.StringPtrO
 
 type GetServiceMysqlUserConfigPrivateAccess struct {
 	Mysql      *string `pulumi:"mysql"`
+	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -76911,6 +77715,7 @@ type GetServiceMysqlUserConfigPrivateAccessInput interface {
 
 type GetServiceMysqlUserConfigPrivateAccessArgs struct {
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
+	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -76994,6 +77799,10 @@ func (o GetServiceMysqlUserConfigPrivateAccessOutput) Mysql() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetServiceMysqlUserConfigPrivateAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceMysqlUserConfigPrivateAccessOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigPrivateAccess) *string { return v.Mysqlx }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceMysqlUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMysqlUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -77025,6 +77834,15 @@ func (o GetServiceMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceMysqlUserConfigPrivateAccessPtrOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigPrivateAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetServiceMysqlUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -77035,7 +77853,8 @@ func (o GetServiceMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.Str
 }
 
 type GetServiceMysqlUserConfigPrivatelinkAccess struct {
-	Mysql *string `pulumi:"mysql"`
+	Mysql  *string `pulumi:"mysql"`
+	Mysqlx *string `pulumi:"mysqlx"`
 }
 
 // GetServiceMysqlUserConfigPrivatelinkAccessInput is an input type that accepts GetServiceMysqlUserConfigPrivatelinkAccessArgs and GetServiceMysqlUserConfigPrivatelinkAccessOutput values.
@@ -77050,7 +77869,8 @@ type GetServiceMysqlUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetServiceMysqlUserConfigPrivatelinkAccessArgs struct {
-	Mysql pulumi.StringPtrInput `pulumi:"mysql"`
+	Mysql  pulumi.StringPtrInput `pulumi:"mysql"`
+	Mysqlx pulumi.StringPtrInput `pulumi:"mysqlx"`
 }
 
 func (GetServiceMysqlUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
@@ -77133,6 +77953,10 @@ func (o GetServiceMysqlUserConfigPrivatelinkAccessOutput) Mysql() pulumi.StringP
 	return o.ApplyT(func(v GetServiceMysqlUserConfigPrivatelinkAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceMysqlUserConfigPrivatelinkAccessOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigPrivatelinkAccess) *string { return v.Mysqlx }).(pulumi.StringPtrOutput)
+}
+
 type GetServiceMysqlUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
 
 func (GetServiceMysqlUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
@@ -77162,8 +77986,18 @@ func (o GetServiceMysqlUserConfigPrivatelinkAccessPtrOutput) Mysql() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceMysqlUserConfigPrivatelinkAccessPtrOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigPrivatelinkAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetServiceMysqlUserConfigPublicAccess struct {
 	Mysql      *string `pulumi:"mysql"`
+	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
 }
 
@@ -77180,6 +78014,7 @@ type GetServiceMysqlUserConfigPublicAccessInput interface {
 
 type GetServiceMysqlUserConfigPublicAccessArgs struct {
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
+	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
 
@@ -77263,6 +78098,10 @@ func (o GetServiceMysqlUserConfigPublicAccessOutput) Mysql() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetServiceMysqlUserConfigPublicAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceMysqlUserConfigPublicAccessOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMysqlUserConfigPublicAccess) *string { return v.Mysqlx }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceMysqlUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMysqlUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
@@ -77291,6 +78130,15 @@ func (o GetServiceMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtr
 			return nil
 		}
 		return v.Mysql
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMysqlUserConfigPublicAccessPtrOutput) Mysqlx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceMysqlUserConfigPublicAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -77829,6 +78677,7 @@ type GetServicePgUserConfigPg struct {
 	TrackActivityQuerySize          *string `pulumi:"trackActivityQuerySize"`
 	TrackCommitTimestamp            *string `pulumi:"trackCommitTimestamp"`
 	TrackFunctions                  *string `pulumi:"trackFunctions"`
+	TrackIoTiming                   *string `pulumi:"trackIoTiming"`
 	WalSenderTimeout                *string `pulumi:"walSenderTimeout"`
 	WalWriterDelay                  *string `pulumi:"walWriterDelay"`
 }
@@ -77882,6 +78731,7 @@ type GetServicePgUserConfigPgArgs struct {
 	TrackActivityQuerySize          pulumi.StringPtrInput `pulumi:"trackActivityQuerySize"`
 	TrackCommitTimestamp            pulumi.StringPtrInput `pulumi:"trackCommitTimestamp"`
 	TrackFunctions                  pulumi.StringPtrInput `pulumi:"trackFunctions"`
+	TrackIoTiming                   pulumi.StringPtrInput `pulumi:"trackIoTiming"`
 	WalSenderTimeout                pulumi.StringPtrInput `pulumi:"walSenderTimeout"`
 	WalWriterDelay                  pulumi.StringPtrInput `pulumi:"walWriterDelay"`
 }
@@ -78108,6 +78958,10 @@ func (o GetServicePgUserConfigPgOutput) TrackCommitTimestamp() pulumi.StringPtrO
 
 func (o GetServicePgUserConfigPgOutput) TrackFunctions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.TrackFunctions }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgOutput) TrackIoTiming() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePgUserConfigPg) *string { return v.TrackIoTiming }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicePgUserConfigPgOutput) WalSenderTimeout() pulumi.StringPtrOutput {
@@ -78466,6 +79320,15 @@ func (o GetServicePgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.TrackFunctions
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetServicePgUserConfigPgPtrOutput) TrackIoTiming() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrackIoTiming
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -80671,6 +81534,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationExternalElasticsearchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput{})
@@ -81077,6 +81944,10 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointSignalfxUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationExternalGoogleCloudLoggingUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigOutput{})

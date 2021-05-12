@@ -40,6 +40,14 @@ namespace Pulumi.Aiven.Inputs
         [Input("backupMinute")]
         public string? BackupMinute { get; set; }
 
+        /// <summary>
+        /// The minimum amount of time in seconds to keep binlog entries
+        /// before deletion. This may be extended for services that require binlog entries for longer than the
+        /// default for example if using the MySQL Debezium Kafka connector.
+        /// </summary>
+        [Input("binlogRetentionPeriod")]
+        public string? BinlogRetentionPeriod { get; set; }
+
         [Input("ipFilters")]
         private List<string>? _ipFilters;
 

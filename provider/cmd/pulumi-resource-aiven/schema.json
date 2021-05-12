@@ -3501,7 +3501,7 @@
             "properties": {
                 "emitCheckpointsEnabled": {
                     "type": "string",
-                    "description": "Whether to periodically write the translated offsets \nof replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,\nas long as no active consumers in that group are connected to the target cluster.\n",
+                    "description": "Whether to periodically write the translated offsets\nof replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,\nas long as no active consumers in that group are connected to the target cluster.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3518,7 +3518,7 @@
                 },
                 "refreshGroupsEnabled": {
                     "type": "string",
-                    "description": "Whether to periodically check for new consumer groups. \nDefaults to 'true'.\n",
+                    "description": "Whether to periodically check for new consumer groups.\nDefaults to 'true'.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3527,7 +3527,7 @@
                 },
                 "refreshGroupsIntervalSeconds": {
                     "type": "string",
-                    "description": "Whether to periodically check for new topics and \npartitions. Defaults to 'true'.\n",
+                    "description": "Frequency of consumer group refresh in seconds.\nDefaults to 600 seconds (10 minutes).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3536,6 +3536,7 @@
                 },
                 "refreshTopicsEnabled": {
                     "type": "string",
+                    "description": "Whether to periodically check for new topics and\npartitions. Defaults to 'true'.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3544,7 +3545,7 @@
                 },
                 "refreshTopicsIntervalSeconds": {
                     "type": "string",
-                    "description": "Frequency of topic and partitions refresh in \nseconds. Defaults to 600 seconds (10 minutes).\n",
+                    "description": "Frequency of topic and partitions refresh in\nseconds. Defaults to 600 seconds (10 minutes).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3553,6 +3554,7 @@
                 },
                 "syncGroupOffsetsEnabled": {
                     "type": "string",
+                    "description": "Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. Defaults to 'false'.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3561,7 +3563,7 @@
                 },
                 "syncGroupOffsetsIntervalSeconds": {
                     "type": "string",
-                    "description": "Frequency at which consumer group offsets \nare synced (default: 60, every minute).\n",
+                    "description": "Frequency at which consumer group offsets\nare synced (default: 60, every minute).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4636,6 +4638,15 @@
                         }
                     }
                 },
+                "binlogRetentionPeriod": {
+                    "type": "string",
+                    "description": "The minimum amount of time in seconds to keep binlog entries \nbefore deletion. This may be extended for services that require binlog entries for longer than the\ndefault for example if using the MySQL Debezium Kafka connector.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -5023,6 +5034,15 @@
                         }
                     }
                 },
+                "mysqlx": {
+                    "type": "string",
+                    "description": "Allow clients to connect to mysqlx from the public internet for service \nnodes that are in a project VPC or another type of private network\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "prometheus": {
                     "type": "string",
                     "description": "Allow clients to connect to prometheus from the public internet \nfor service nodes that are in a project VPC or another type of private network\n",
@@ -5045,6 +5065,15 @@
                             "mapCase": false
                         }
                     }
+                },
+                "mysqlx": {
+                    "type": "string",
+                    "description": "Allow clients to connect to mysqlx from the public internet for service \nnodes that are in a project VPC or another type of private network\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -5054,6 +5083,15 @@
                 "mysql": {
                     "type": "string",
                     "description": "Allow clients to connect to mysql from the public internet for service \nnodes that are in a project VPC or another type of private network\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mysqlx": {
+                    "type": "string",
+                    "description": "Allow clients to connect to mysqlx from the public internet for service \nnodes that are in a project VPC or another type of private network\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5874,6 +5912,15 @@
                 "trackFunctions": {
                     "type": "string",
                     "description": "Enables tracking of function call counts and time used.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "trackIoTiming": {
+                    "type": "string",
+                    "description": "Enables timing of database I/O calls. This parameter is off by default, \nbecause it will repeatedly query the operating system for the current time, which may cause significant\noverhead on some platforms.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8124,6 +8171,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "maxJmxMetrics": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -8635,6 +8690,72 @@
             "type": "object"
         },
         "aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig": {
+            "properties": {
+                "droppedMetrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "extraMetrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric": {
+            "properties": {
+                "field": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "metric": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric": {
+            "properties": {
+                "field": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "metric": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
             "type": "object"
         },
         "aiven:index/ServiceIntegrationExternalElasticsearchLogsUserConfig:ServiceIntegrationExternalElasticsearchLogsUserConfig": {
@@ -10197,6 +10318,14 @@
                         }
                     }
                 },
+                "binlogRetentionPeriod": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -10543,6 +10672,14 @@
                         }
                     }
                 },
+                "mysqlx": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "prometheus": {
                     "type": "string",
                     "language": {
@@ -10563,6 +10700,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "mysqlx": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -10570,6 +10715,14 @@
         "aiven:index/ServiceMysqlUserConfigPublicAccess:ServiceMysqlUserConfigPublicAccess": {
             "properties": {
                 "mysql": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mysqlx": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -11215,6 +11368,14 @@
                     }
                 },
                 "trackFunctions": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "trackIoTiming": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -16322,6 +16483,15 @@
                         }
                     }
                 },
+                "binlogRetentionPeriod": {
+                    "type": "string",
+                    "description": "The minimum amount of time in seconds to keep binlog entries\nbefore deletion. This may be extended for services that require binlog entries for longer than the\ndefault for example if using the MySQL Debezium Kafka connector.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -16709,6 +16879,15 @@
                         }
                     }
                 },
+                "mysqlx": {
+                    "type": "string",
+                    "description": "(Optional) Allow clients to connect to mysqlx from the public internet for service\nnodes that are in a project VPC or another type of private network\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "prometheus": {
                     "type": "string",
                     "description": "Allow clients to connect to prometheus from the public internet \nfor service nodes that are in a project VPC or another type of private network\n",
@@ -16731,6 +16910,15 @@
                             "mapCase": false
                         }
                     }
+                },
+                "mysqlx": {
+                    "type": "string",
+                    "description": "(Optional) Allow clients to connect to mysqlx from the public internet for service\nnodes that are in a project VPC or another type of private network\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -16740,6 +16928,15 @@
                 "mysql": {
                     "type": "string",
                     "description": "MySQL specific server provided values.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mysqlx": {
+                    "type": "string",
+                    "description": "(Optional) Allow clients to connect to mysqlx from the public internet for service\nnodes that are in a project VPC or another type of private network\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -17562,6 +17759,15 @@
                 "trackFunctions": {
                     "type": "string",
                     "description": "Enables tracking of function call counts and time used.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "trackIoTiming": {
+                    "type": "string",
+                    "description": "Enables timing of database I/O calls. This parameter is off by default,\nbecause it will repeatedly query the operating system for the current time, which may cause\nsignificant overhead on some platforms.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19816,6 +20022,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "maxJmxMetrics": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -20327,6 +20541,72 @@
             "type": "object"
         },
         "aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig": {
+            "properties": {
+                "droppedMetrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "extraMetrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric": {
+            "properties": {
+                "field": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "metric": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric": {
+            "properties": {
+                "field": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "metric": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
             "type": "object"
         },
         "aiven:index/getServiceIntegrationExternalElasticsearchLogsUserConfig:getServiceIntegrationExternalElasticsearchLogsUserConfig": {
@@ -21890,6 +22170,14 @@
                         }
                     }
                 },
+                "binlogRetentionPeriod": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ipFilters": {
                     "type": "array",
                     "items": {
@@ -22236,6 +22524,14 @@
                         }
                     }
                 },
+                "mysqlx": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "prometheus": {
                     "type": "string",
                     "language": {
@@ -22256,6 +22552,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "mysqlx": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -22263,6 +22567,14 @@
         "aiven:index/getServiceMysqlUserConfigPublicAccess:getServiceMysqlUserConfigPublicAccess": {
             "properties": {
                 "mysql": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mysqlx": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -22909,6 +23221,14 @@
                     }
                 },
                 "trackFunctions": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "trackIoTiming": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -23999,6 +24319,7 @@
             }
         },
         "aiven:index/billingGroup:BillingGroup": {
+            "description": "## # Billing Group Resource\n\nThe Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst bybg1 = new aiven.BillingGroup(\"bybg1\", {\n    billingCurrency: \"USD\",\n    vatId: \"123ABC\",\n});\nconst pr1 = new aiven.Project(\"pr1\", {\n    project: \"pr1\",\n    billingGroup: bybg1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nbybg1 = aiven.BillingGroup(\"bybg1\",\n    billing_currency=\"USD\",\n    vat_id=\"123ABC\")\npr1 = aiven.Project(\"pr1\",\n    project=\"pr1\",\n    billing_group=bybg1.id)\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bybg1 = new Aiven.BillingGroup(\"bybg1\", new Aiven.BillingGroupArgs\n        {\n            BillingCurrency = \"USD\",\n            VatId = \"123ABC\",\n        });\n        var pr1 = new Aiven.Project(\"pr1\", new Aiven.ProjectArgs\n        {\n            Project = \"pr1\",\n            BillingGroup = bybg1.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbybg1, err := aiven.NewBillingGroup(ctx, \"bybg1\", \u0026aiven.BillingGroupArgs{\n\t\t\tBillingCurrency: pulumi.String(\"USD\"),\n\t\t\tVatId:           pulumi.String(\"123ABC\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewProject(ctx, \"pr1\", \u0026aiven.ProjectArgs{\n\t\t\tProject:      pulumi.String(\"pr1\"),\n\t\t\tBillingGroup: bybg1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -24456,7 +24777,7 @@
                 },
                 "poolMode": {
                     "type": "string",
-                    "description": "is the mode the pool operates in (session, transaction, statement).\n"
+                    "description": "is the mode the pool operates in (session, transaction, statement). The\ndefault value for this is `transaction`.\n"
                 },
                 "poolName": {
                     "type": "string",
@@ -24464,7 +24785,7 @@
                 },
                 "poolSize": {
                     "type": "integer",
-                    "description": "is the number of connections the pool may create towards the backend\nserver. This does not affect the number of incoming connections, which is always a much\nlarger number.\n"
+                    "description": "is the number of connections the pool may create towards the backend\nserver. This does not affect the number of incoming connections, which is always a much\nlarger number. The default value for this is 10.\n"
                 },
                 "project": {
                     "type": "string",
@@ -24494,7 +24815,7 @@
                 },
                 "poolMode": {
                     "type": "string",
-                    "description": "is the mode the pool operates in (session, transaction, statement).\n"
+                    "description": "is the mode the pool operates in (session, transaction, statement). The\ndefault value for this is `transaction`.\n"
                 },
                 "poolName": {
                     "type": "string",
@@ -24502,7 +24823,7 @@
                 },
                 "poolSize": {
                     "type": "integer",
-                    "description": "is the number of connections the pool may create towards the backend\nserver. This does not affect the number of incoming connections, which is always a much\nlarger number.\n"
+                    "description": "is the number of connections the pool may create towards the backend\nserver. This does not affect the number of incoming connections, which is always a much\nlarger number. The default value for this is 10.\n"
                 },
                 "project": {
                     "type": "string",
@@ -24537,7 +24858,7 @@
                     },
                     "poolMode": {
                         "type": "string",
-                        "description": "is the mode the pool operates in (session, transaction, statement).\n"
+                        "description": "is the mode the pool operates in (session, transaction, statement). The\ndefault value for this is `transaction`.\n"
                     },
                     "poolName": {
                         "type": "string",
@@ -24545,7 +24866,7 @@
                     },
                     "poolSize": {
                         "type": "integer",
-                        "description": "is the number of connections the pool may create towards the backend\nserver. This does not affect the number of incoming connections, which is always a much\nlarger number.\n"
+                        "description": "is the number of connections the pool may create towards the backend\nserver. This does not affect the number of incoming connections, which is always a much\nlarger number. The default value for this is 10.\n"
                     },
                     "project": {
                         "type": "string",
@@ -26268,15 +26589,15 @@
                 },
                 "kafkaMirrormakerUserConfig": {
                     "$ref": "#/types/aiven:index/KafkaMirrorMakerKafkaMirrormakerUserConfig:KafkaMirrorMakerKafkaMirrormakerUserConfig",
-                    "description": "defines Kafka MirrorMaker 2 specific additional configuration options. \nThe following configuration options available:\n"
+                    "description": "defines Kafka MirrorMaker 2 specific additional configuration options.\nThe following configuration options available:\n"
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
-                    "description": "day of week when maintenance operations should be performed. \nOn monday, tuesday, wednesday, etc.\n"
+                    "description": "day of week when maintenance operations should be performed.\nOn monday, tuesday, wednesday, etc.\n"
                 },
                 "maintenanceWindowTime": {
                     "type": "string",
-                    "description": "time of day when maintenance operations should be performed. \nUTC time in HH:mm:ss format.\n"
+                    "description": "time of day when maintenance operations should be performed.\nUTC time in HH:mm:ss format.\n"
                 },
                 "plan": {
                     "type": "string",
@@ -26358,15 +26679,15 @@
                 },
                 "kafkaMirrormakerUserConfig": {
                     "$ref": "#/types/aiven:index/KafkaMirrorMakerKafkaMirrormakerUserConfig:KafkaMirrorMakerKafkaMirrormakerUserConfig",
-                    "description": "defines Kafka MirrorMaker 2 specific additional configuration options. \nThe following configuration options available:\n"
+                    "description": "defines Kafka MirrorMaker 2 specific additional configuration options.\nThe following configuration options available:\n"
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
-                    "description": "day of week when maintenance operations should be performed. \nOn monday, tuesday, wednesday, etc.\n"
+                    "description": "day of week when maintenance operations should be performed.\nOn monday, tuesday, wednesday, etc.\n"
                 },
                 "maintenanceWindowTime": {
                     "type": "string",
-                    "description": "time of day when maintenance operations should be performed. \nUTC time in HH:mm:ss format.\n"
+                    "description": "time of day when maintenance operations should be performed.\nUTC time in HH:mm:ss format.\n"
                 },
                 "plan": {
                     "type": "string",
@@ -26420,15 +26741,15 @@
                     },
                     "kafkaMirrormakerUserConfig": {
                         "$ref": "#/types/aiven:index/KafkaMirrorMakerKafkaMirrormakerUserConfig:KafkaMirrorMakerKafkaMirrormakerUserConfig",
-                        "description": "defines Kafka MirrorMaker 2 specific additional configuration options. \nThe following configuration options available:\n"
+                        "description": "defines Kafka MirrorMaker 2 specific additional configuration options.\nThe following configuration options available:\n"
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
-                        "description": "day of week when maintenance operations should be performed. \nOn monday, tuesday, wednesday, etc.\n"
+                        "description": "day of week when maintenance operations should be performed.\nOn monday, tuesday, wednesday, etc.\n"
                     },
                     "maintenanceWindowTime": {
                         "type": "string",
-                        "description": "time of day when maintenance operations should be performed. \nUTC time in HH:mm:ss format.\n"
+                        "description": "time of day when maintenance operations should be performed.\nUTC time in HH:mm:ss format.\n"
                     },
                     "plan": {
                         "type": "string",
@@ -34983,7 +35304,7 @@
                 "aiven": "Aiven"
             },
             "packageReferences": {
-                "Pulumi": "3.*-*",
+                "Pulumi": "3.*",
                 "System.Collections.Immutable": "1.6.0"
             }
         },
@@ -34994,7 +35315,7 @@
         "nodejs": {
             "compatibility": "tfbridge20",
             "dependencies": {
-                "@pulumi/pulumi": "^3.0.0-alpha.0"
+                "@pulumi/pulumi": "^3.0.0"
             },
             "devDependencies": {
                 "@types/mime": "^2.0.0",
@@ -35010,7 +35331,7 @@
             "compatibility": "tfbridge20",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aiven/terraform-provider-aiven)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-aiven` repo](https://github.com/pulumi/pulumi-aiven/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`aiven/terraform-provider-aiven` repo](https://github.com/aiven/terraform-provider-aiven/issues).",
             "requires": {
-                "pulumi": "\u003e=3.0.0a1,\u003c4.0.0"
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }
         }
     }

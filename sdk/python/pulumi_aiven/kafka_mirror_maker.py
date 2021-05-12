@@ -42,11 +42,11 @@ class KafkaMirrorMakerArgs:
                like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
                [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input['KafkaMirrorMakerKafkaMirrormakerArgs'] kafka_mirrormaker: Kafka MirrorMaker configuration values
-        :param pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: defines Kafka MirrorMaker 2 specific additional configuration options. 
+        :param pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: defines Kafka MirrorMaker 2 specific additional configuration options.
                The following configuration options available:
-        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
+        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed.
                On monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
+        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed.
                UTC time in HH:mm:ss format.
         :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
                be changed after creation, though there are some restrictions when going to a smaller
@@ -152,7 +152,7 @@ class KafkaMirrorMakerArgs:
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
     def kafka_mirrormaker_user_config(self) -> Optional[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigArgs']]:
         """
-        defines Kafka MirrorMaker 2 specific additional configuration options. 
+        defines Kafka MirrorMaker 2 specific additional configuration options.
         The following configuration options available:
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
@@ -165,7 +165,7 @@ class KafkaMirrorMakerArgs:
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> Optional[pulumi.Input[str]]:
         """
-        day of week when maintenance operations should be performed. 
+        day of week when maintenance operations should be performed.
         On monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
@@ -178,7 +178,7 @@ class KafkaMirrorMakerArgs:
     @pulumi.getter(name="maintenanceWindowTime")
     def maintenance_window_time(self) -> Optional[pulumi.Input[str]]:
         """
-        time of day when maintenance operations should be performed. 
+        time of day when maintenance operations should be performed.
         UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")
@@ -285,11 +285,11 @@ class _KafkaMirrorMakerState:
                [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input['KafkaMirrorMakerComponentArgs']]] components: Service component information objects
         :param pulumi.Input['KafkaMirrorMakerKafkaMirrormakerArgs'] kafka_mirrormaker: Kafka MirrorMaker configuration values
-        :param pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: defines Kafka MirrorMaker 2 specific additional configuration options. 
+        :param pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: defines Kafka MirrorMaker 2 specific additional configuration options.
                The following configuration options available:
-        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
+        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed.
                On monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
+        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed.
                UTC time in HH:mm:ss format.
         :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
                be changed after creation, though there are some restrictions when going to a smaller
@@ -410,7 +410,7 @@ class _KafkaMirrorMakerState:
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
     def kafka_mirrormaker_user_config(self) -> Optional[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigArgs']]:
         """
-        defines Kafka MirrorMaker 2 specific additional configuration options. 
+        defines Kafka MirrorMaker 2 specific additional configuration options.
         The following configuration options available:
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
@@ -423,7 +423,7 @@ class _KafkaMirrorMakerState:
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> Optional[pulumi.Input[str]]:
         """
-        day of week when maintenance operations should be performed. 
+        day of week when maintenance operations should be performed.
         On monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
@@ -436,7 +436,7 @@ class _KafkaMirrorMakerState:
     @pulumi.getter(name="maintenanceWindowTime")
     def maintenance_window_time(self) -> Optional[pulumi.Input[str]]:
         """
-        time of day when maintenance operations should be performed. 
+        time of day when maintenance operations should be performed.
         UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")
@@ -675,11 +675,11 @@ class KafkaMirrorMaker(pulumi.CustomResource):
                like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
                [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[pulumi.InputType['KafkaMirrorMakerKafkaMirrormakerArgs']] kafka_mirrormaker: Kafka MirrorMaker configuration values
-        :param pulumi.Input[pulumi.InputType['KafkaMirrorMakerKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: defines Kafka MirrorMaker 2 specific additional configuration options. 
+        :param pulumi.Input[pulumi.InputType['KafkaMirrorMakerKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: defines Kafka MirrorMaker 2 specific additional configuration options.
                The following configuration options available:
-        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
+        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed.
                On monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
+        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed.
                UTC time in HH:mm:ss format.
         :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
                be changed after creation, though there are some restrictions when going to a smaller
@@ -846,11 +846,11 @@ class KafkaMirrorMaker(pulumi.CustomResource):
                [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaMirrorMakerComponentArgs']]]] components: Service component information objects
         :param pulumi.Input[pulumi.InputType['KafkaMirrorMakerKafkaMirrormakerArgs']] kafka_mirrormaker: Kafka MirrorMaker configuration values
-        :param pulumi.Input[pulumi.InputType['KafkaMirrorMakerKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: defines Kafka MirrorMaker 2 specific additional configuration options. 
+        :param pulumi.Input[pulumi.InputType['KafkaMirrorMakerKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: defines Kafka MirrorMaker 2 specific additional configuration options.
                The following configuration options available:
-        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
+        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed.
                On monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
+        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed.
                UTC time in HH:mm:ss format.
         :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
                be changed after creation, though there are some restrictions when going to a smaller
@@ -945,7 +945,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
     def kafka_mirrormaker_user_config(self) -> pulumi.Output[Optional['outputs.KafkaMirrorMakerKafkaMirrormakerUserConfig']]:
         """
-        defines Kafka MirrorMaker 2 specific additional configuration options. 
+        defines Kafka MirrorMaker 2 specific additional configuration options.
         The following configuration options available:
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
@@ -954,7 +954,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> pulumi.Output[Optional[str]]:
         """
-        day of week when maintenance operations should be performed. 
+        day of week when maintenance operations should be performed.
         On monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
@@ -963,7 +963,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
     @pulumi.getter(name="maintenanceWindowTime")
     def maintenance_window_time(self) -> pulumi.Output[Optional[str]]:
         """
-        time of day when maintenance operations should be performed. 
+        time of day when maintenance operations should be performed.
         UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")

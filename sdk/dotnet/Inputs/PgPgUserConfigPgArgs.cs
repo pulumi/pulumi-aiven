@@ -260,6 +260,14 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? TrackFunctions { get; set; }
 
         /// <summary>
+        /// Enables timing of database I/O calls. This parameter is off by default, 
+        /// because it will repeatedly query the operating system for the current time, which may cause significant
+        /// overhead on some platforms.
+        /// </summary>
+        [Input("trackIoTiming")]
+        public Input<string>? TrackIoTiming { get; set; }
+
+        /// <summary>
         /// Terminate replication connections that are inactive for longer than 
         /// this amount of time, in milliseconds.
         /// </summary>

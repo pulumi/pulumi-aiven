@@ -50,6 +50,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? TrackActivityQuerySize;
         public readonly string? TrackCommitTimestamp;
         public readonly string? TrackFunctions;
+        public readonly string? TrackIoTiming;
         public readonly string? WalSenderTimeout;
         public readonly string? WalWriterDelay;
 
@@ -129,6 +130,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? trackFunctions,
 
+            string? trackIoTiming,
+
             string? walSenderTimeout,
 
             string? walWriterDelay)
@@ -170,6 +173,7 @@ namespace Pulumi.Aiven.Outputs
             TrackActivityQuerySize = trackActivityQuerySize;
             TrackCommitTimestamp = trackCommitTimestamp;
             TrackFunctions = trackFunctions;
+            TrackIoTiming = trackIoTiming;
             WalSenderTimeout = walSenderTimeout;
             WalWriterDelay = walWriterDelay;
         }

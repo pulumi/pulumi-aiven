@@ -462,7 +462,24 @@ class BillingGroup(pulumi.CustomResource):
                  zip_code: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a BillingGroup resource with the given unique name, props, and options.
+        ## # Billing Group Resource
+
+        The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        bybg1 = aiven.BillingGroup("bybg1",
+            billing_currency="USD",
+            vat_id="123ABC")
+        pr1 = aiven.Project("pr1",
+            project="pr1",
+            billing_group=bybg1.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account id
@@ -486,7 +503,24 @@ class BillingGroup(pulumi.CustomResource):
                  args: Optional[BillingGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a BillingGroup resource with the given unique name, props, and options.
+        ## # Billing Group Resource
+
+        The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        bybg1 = aiven.BillingGroup("bybg1",
+            billing_currency="USD",
+            vat_id="123ABC")
+        pr1 = aiven.Project("pr1",
+            project="pr1",
+            billing_group=bybg1.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param BillingGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

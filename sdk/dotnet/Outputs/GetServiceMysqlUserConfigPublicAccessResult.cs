@@ -14,15 +14,19 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceMysqlUserConfigPublicAccessResult
     {
         public readonly string? Mysql;
+        public readonly string? Mysqlx;
         public readonly string? Prometheus;
 
         [OutputConstructor]
         private GetServiceMysqlUserConfigPublicAccessResult(
             string? mysql,
 
+            string? mysqlx,
+
             string? prometheus)
         {
             Mysql = mysql;
+            Mysqlx = mysqlx;
             Prometheus = prometheus;
         }
     }

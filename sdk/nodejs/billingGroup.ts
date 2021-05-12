@@ -4,6 +4,27 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## # Billing Group Resource
+ *
+ * The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const bybg1 = new aiven.BillingGroup("bybg1", {
+ *     billingCurrency: "USD",
+ *     vatId: "123ABC",
+ * });
+ * const pr1 = new aiven.Project("pr1", {
+ *     project: "pr1",
+ *     billingGroup: bybg1.id,
+ * });
+ * ```
+ */
 export class BillingGroup extends pulumi.CustomResource {
     /**
      * Get an existing BillingGroup resource's state with the given name, ID, and optional extra

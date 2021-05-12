@@ -9,6 +9,36 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// ## # Billing Group Resource
+    /// 
+    /// The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bybg1 = new Aiven.BillingGroup("bybg1", new Aiven.BillingGroupArgs
+    ///         {
+    ///             BillingCurrency = "USD",
+    ///             VatId = "123ABC",
+    ///         });
+    ///         var pr1 = new Aiven.Project("pr1", new Aiven.ProjectArgs
+    ///         {
+    ///             Project = "pr1",
+    ///             BillingGroup = bybg1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [AivenResourceType("aiven:index/billingGroup:BillingGroup")]
     public partial class BillingGroup : Pulumi.CustomResource
     {

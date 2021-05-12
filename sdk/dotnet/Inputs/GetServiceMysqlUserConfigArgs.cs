@@ -24,6 +24,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("backupMinute")]
         public string? BackupMinute { get; set; }
 
+        [Input("binlogRetentionPeriod")]
+        public string? BinlogRetentionPeriod { get; set; }
+
         [Input("ipFilters")]
         private List<string>? _ipFilters;
         public List<string> IpFilters

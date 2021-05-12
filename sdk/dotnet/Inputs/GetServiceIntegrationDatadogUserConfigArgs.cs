@@ -60,6 +60,9 @@ namespace Pulumi.Aiven.Inputs
             set => _kafkaCustomMetrics = value;
         }
 
+        [Input("maxJmxMetrics")]
+        public string? MaxJmxMetrics { get; set; }
+
         public GetServiceIntegrationDatadogUserConfigArgs()
         {
         }

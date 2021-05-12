@@ -34,6 +34,12 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? BackupMinute;
         /// <summary>
+        /// The minimum amount of time in seconds to keep binlog entries 
+        /// before deletion. This may be extended for services that require binlog entries for longer than the
+        /// default for example if using the MySQL Debezium Kafka connector.
+        /// </summary>
+        public readonly string? BinlogRetentionPeriod;
+        /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
@@ -88,6 +94,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? backupMinute,
 
+            string? binlogRetentionPeriod,
+
             ImmutableArray<string> ipFilters,
 
             Outputs.MySqlMysqlUserConfigMigration? migration,
@@ -112,6 +120,7 @@ namespace Pulumi.Aiven.Outputs
             AdminUsername = adminUsername;
             BackupHour = backupHour;
             BackupMinute = backupMinute;
+            BinlogRetentionPeriod = binlogRetentionPeriod;
             IpFilters = ipFilters;
             Migration = migration;
             Mysql = mysql;

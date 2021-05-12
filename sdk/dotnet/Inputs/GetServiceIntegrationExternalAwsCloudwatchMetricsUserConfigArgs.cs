@@ -12,6 +12,22 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs : Pulumi.InvokeArgs
     {
+        [Input("droppedMetrics")]
+        private List<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs>? _droppedMetrics;
+        public List<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs> DroppedMetrics
+        {
+            get => _droppedMetrics ?? (_droppedMetrics = new List<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs>());
+            set => _droppedMetrics = value;
+        }
+
+        [Input("extraMetrics")]
+        private List<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs>? _extraMetrics;
+        public List<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs> ExtraMetrics
+        {
+            get => _extraMetrics ?? (_extraMetrics = new List<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs>());
+            set => _extraMetrics = value;
+        }
+
         public GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs()
         {
         }

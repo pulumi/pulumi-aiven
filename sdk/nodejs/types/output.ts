@@ -2364,6 +2364,12 @@ export interface GetMySqlMysqlUserConfig {
      */
     backupMinute?: string;
     /**
+     * The minimum amount of time in seconds to keep binlog entries
+     * before deletion. This may be extended for services that require binlog entries for longer than the
+     * default for example if using the MySQL Debezium Kafka connector.
+     */
+    binlogRetentionPeriod?: string;
+    /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilters?: string[];
@@ -2567,6 +2573,11 @@ export interface GetMySqlMysqlUserConfigPrivateAccess {
      */
     mysql?: string;
     /**
+     * (Optional) Allow clients to connect to mysqlx from the public internet for service
+     * nodes that are in a project VPC or another type of private network
+     */
+    mysqlx?: string;
+    /**
      * Allow clients to connect to prometheus from the public internet 
      * for service nodes that are in a project VPC or another type of private network
      */
@@ -2578,6 +2589,11 @@ export interface GetMySqlMysqlUserConfigPrivatelinkAccess {
      * MySQL specific server provided values.
      */
     mysql?: string;
+    /**
+     * (Optional) Allow clients to connect to mysqlx from the public internet for service
+     * nodes that are in a project VPC or another type of private network
+     */
+    mysqlx?: string;
 }
 
 export interface GetMySqlMysqlUserConfigPublicAccess {
@@ -2585,6 +2601,11 @@ export interface GetMySqlMysqlUserConfigPublicAccess {
      * MySQL specific server provided values.
      */
     mysql?: string;
+    /**
+     * (Optional) Allow clients to connect to mysqlx from the public internet for service
+     * nodes that are in a project VPC or another type of private network
+     */
+    mysqlx?: string;
     /**
      * Allow clients to connect to prometheus from the public internet 
      * for service nodes that are in a project VPC or another type of private network
@@ -2966,6 +2987,12 @@ export interface GetPgPgUserConfigPg {
      * Enables tracking of function call counts and time used.
      */
     trackFunctions?: string;
+    /**
+     * Enables timing of database I/O calls. This parameter is off by default,
+     * because it will repeatedly query the operating system for the current time, which may cause
+     * significant overhead on some platforms.
+     */
+    trackIoTiming?: string;
     /**
      * Terminate replication connections that are inactive for longer than 
      * this amount of time, in milliseconds.
@@ -3513,6 +3540,7 @@ export interface GetServiceIntegrationDatadogUserConfig {
     includeConsumerGroups?: string[];
     includeTopics?: string[];
     kafkaCustomMetrics?: string[];
+    maxJmxMetrics?: string;
 }
 
 export interface GetServiceIntegrationDatadogUserConfigDatadogTag {
@@ -3612,6 +3640,18 @@ export interface GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
 }
 
 export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
+    droppedMetrics?: outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric[];
+    extraMetrics?: outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric[];
+}
+
+export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+    field?: string;
+    metric?: string;
+}
+
+export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+    field?: string;
+    metric?: string;
 }
 
 export interface GetServiceIntegrationExternalElasticsearchLogsUserConfig {
@@ -3905,6 +3945,7 @@ export interface GetServiceMysqlUserConfig {
     adminUsername?: string;
     backupHour?: string;
     backupMinute?: string;
+    binlogRetentionPeriod?: string;
     ipFilters?: string[];
     migration?: outputs.GetServiceMysqlUserConfigMigration;
     mysql?: outputs.GetServiceMysqlUserConfigMysql;
@@ -3955,15 +3996,18 @@ export interface GetServiceMysqlUserConfigMysql {
 
 export interface GetServiceMysqlUserConfigPrivateAccess {
     mysql?: string;
+    mysqlx?: string;
     prometheus?: string;
 }
 
 export interface GetServiceMysqlUserConfigPrivatelinkAccess {
     mysql?: string;
+    mysqlx?: string;
 }
 
 export interface GetServiceMysqlUserConfigPublicAccess {
     mysql?: string;
+    mysqlx?: string;
     prometheus?: string;
 }
 
@@ -4052,6 +4096,7 @@ export interface GetServicePgUserConfigPg {
     trackActivityQuerySize?: string;
     trackCommitTimestamp?: string;
     trackFunctions?: string;
+    trackIoTiming?: string;
     walSenderTimeout?: string;
     walWriterDelay?: string;
 }
@@ -5244,31 +5289,38 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
     /**
-     * Whether to periodically write the translated offsets 
+     * Whether to periodically write the translated offsets
      * of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
      * as long as no active consumers in that group are connected to the target cluster.
      */
     emitCheckpointsEnabled?: string;
     emitCheckpointsIntervalSeconds?: string;
     /**
-     * Whether to periodically check for new consumer groups. 
+     * Whether to periodically check for new consumer groups.
      * Defaults to 'true'.
      */
     refreshGroupsEnabled?: string;
     /**
-     * Whether to periodically check for new topics and 
-     * partitions. Defaults to 'true'.
+     * Frequency of consumer group refresh in seconds.
+     * Defaults to 600 seconds (10 minutes).
      */
     refreshGroupsIntervalSeconds?: string;
+    /**
+     * Whether to periodically check for new topics and
+     * partitions. Defaults to 'true'.
+     */
     refreshTopicsEnabled?: string;
     /**
-     * Frequency of topic and partitions refresh in 
+     * Frequency of topic and partitions refresh in
      * seconds. Defaults to 600 seconds (10 minutes).
      */
     refreshTopicsIntervalSeconds?: string;
+    /**
+     * Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. Defaults to 'false'.
+     */
     syncGroupOffsetsEnabled?: string;
     /**
-     * Frequency at which consumer group offsets 
+     * Frequency at which consumer group offsets
      * are synced (default: 60, every minute).
      */
     syncGroupOffsetsIntervalSeconds?: string;
@@ -5677,6 +5729,12 @@ export interface MySqlMysqlUserConfig {
      */
     backupMinute?: string;
     /**
+     * The minimum amount of time in seconds to keep binlog entries 
+     * before deletion. This may be extended for services that require binlog entries for longer than the
+     * default for example if using the MySQL Debezium Kafka connector.
+     */
+    binlogRetentionPeriod?: string;
+    /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilters?: string[];
@@ -5882,6 +5940,11 @@ export interface MySqlMysqlUserConfigPrivateAccess {
      */
     mysql?: string;
     /**
+     * Allow clients to connect to mysqlx from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
+    mysqlx?: string;
+    /**
      * Allow clients to connect to prometheus from the public internet 
      * for service nodes that are in a project VPC or another type of private network
      */
@@ -5894,6 +5957,11 @@ export interface MySqlMysqlUserConfigPrivatelinkAccess {
      * nodes that are in a project VPC or another type of private network
      */
     mysql?: string;
+    /**
+     * Allow clients to connect to mysqlx from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
+    mysqlx?: string;
 }
 
 export interface MySqlMysqlUserConfigPublicAccess {
@@ -5902,6 +5970,11 @@ export interface MySqlMysqlUserConfigPublicAccess {
      * nodes that are in a project VPC or another type of private network
      */
     mysql?: string;
+    /**
+     * Allow clients to connect to mysqlx from the public internet for service 
+     * nodes that are in a project VPC or another type of private network
+     */
+    mysqlx?: string;
     /**
      * Allow clients to connect to prometheus from the public internet 
      * for service nodes that are in a project VPC or another type of private network
@@ -6283,6 +6356,12 @@ export interface PgPgUserConfigPg {
      * Enables tracking of function call counts and time used.
      */
     trackFunctions?: string;
+    /**
+     * Enables timing of database I/O calls. This parameter is off by default, 
+     * because it will repeatedly query the operating system for the current time, which may cause significant
+     * overhead on some platforms.
+     */
+    trackIoTiming?: string;
     /**
      * Terminate replication connections that are inactive for longer than 
      * this amount of time, in milliseconds.
@@ -6833,6 +6912,7 @@ export interface ServiceIntegrationDatadogUserConfig {
     includeConsumerGroups?: string[];
     includeTopics?: string[];
     kafkaCustomMetrics?: string[];
+    maxJmxMetrics?: string;
 }
 
 export interface ServiceIntegrationDatadogUserConfigDatadogTag {
@@ -6932,6 +7012,18 @@ export interface ServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
+    droppedMetrics?: outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric[];
+    extraMetrics?: outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric[];
+}
+
+export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+    field?: string;
+    metric?: string;
+}
+
+export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+    field?: string;
+    metric?: string;
 }
 
 export interface ServiceIntegrationExternalElasticsearchLogsUserConfig {
@@ -7225,6 +7317,7 @@ export interface ServiceMysqlUserConfig {
     adminUsername?: string;
     backupHour?: string;
     backupMinute?: string;
+    binlogRetentionPeriod?: string;
     ipFilters?: string[];
     migration?: outputs.ServiceMysqlUserConfigMigration;
     mysql?: outputs.ServiceMysqlUserConfigMysql;
@@ -7275,15 +7368,18 @@ export interface ServiceMysqlUserConfigMysql {
 
 export interface ServiceMysqlUserConfigPrivateAccess {
     mysql?: string;
+    mysqlx?: string;
     prometheus?: string;
 }
 
 export interface ServiceMysqlUserConfigPrivatelinkAccess {
     mysql?: string;
+    mysqlx?: string;
 }
 
 export interface ServiceMysqlUserConfigPublicAccess {
     mysql?: string;
+    mysqlx?: string;
     prometheus?: string;
 }
 
@@ -7372,6 +7468,7 @@ export interface ServicePgUserConfigPg {
     trackActivityQuerySize?: string;
     trackCommitTimestamp?: string;
     trackFunctions?: string;
+    trackIoTiming?: string;
     walSenderTimeout?: string;
     walWriterDelay?: string;
 }
