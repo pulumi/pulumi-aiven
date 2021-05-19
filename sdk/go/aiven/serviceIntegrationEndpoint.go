@@ -28,12 +28,12 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.NewServiceIntegrationEndpoint(ctx, "myendpoint", &aiven.ServiceIntegrationEndpointArgs{
+// 			Project:      pulumi.Any(aiven_project.Myproject.Project),
+// 			EndpointName: pulumi.String("<ENDPOINT_NAME>"),
+// 			EndpointType: pulumi.String("datadog"),
 // 			DatadogUserConfig: &aiven.ServiceIntegrationEndpointDatadogUserConfigArgs{
 // 				DatadogApiKey: pulumi.String("<DATADOG_API_KEY>"),
 // 			},
-// 			EndpointName: pulumi.String("<ENDPOINT_NAME>"),
-// 			EndpointType: pulumi.String("datadog"),
-// 			Project:      pulumi.Any(aiven_project.Myproject.Project),
 // 		})
 // 		if err != nil {
 // 			return err

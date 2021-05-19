@@ -30,8 +30,8 @@ namespace Pulumi.Aiven
         ///     {
         ///         var myvpc = Output.Create(Aiven.GetProjectVpc.InvokeAsync(new Aiven.GetProjectVpcArgs
         ///         {
-        ///             CloudName = "google-europe-west1",
         ///             Project = aiven_project.Myproject.Project,
+        ///             CloudName = "google-europe-west1",
         ///         }));
         ///     }
         /// 

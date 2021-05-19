@@ -101,8 +101,8 @@ def get_project_vpc(cloud_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    myvpc = aiven.get_project_vpc(cloud_name="google-europe-west1",
-        project=aiven_project["myproject"]["project"])
+    myvpc = aiven.get_project_vpc(project=aiven_project["myproject"]["project"],
+        cloud_name="google-europe-west1")
     ```
 
 

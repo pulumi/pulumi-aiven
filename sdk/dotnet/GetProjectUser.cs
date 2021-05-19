@@ -30,8 +30,8 @@ namespace Pulumi.Aiven
         ///     {
         ///         var mytestuser = Output.Create(Aiven.GetProjectUser.InvokeAsync(new Aiven.GetProjectUserArgs
         ///         {
-        ///             Email = "john.doe@example.com",
         ///             Project = aiven_project.Myproject.Project,
+        ///             Email = "john.doe@example.com",
         ///         }));
         ///     }
         /// 

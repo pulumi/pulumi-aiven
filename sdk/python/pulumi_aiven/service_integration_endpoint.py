@@ -529,12 +529,12 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         myendpoint = aiven.ServiceIntegrationEndpoint("myendpoint",
-            datadog_user_config=aiven.ServiceIntegrationEndpointDatadogUserConfigArgs(
-                datadog_api_key="<DATADOG_API_KEY>",
-            ),
+            project=aiven_project["myproject"]["project"],
             endpoint_name="<ENDPOINT_NAME>",
             endpoint_type="datadog",
-            project=aiven_project["myproject"]["project"])
+            datadog_user_config=aiven.ServiceIntegrationEndpointDatadogUserConfigArgs(
+                datadog_api_key="<DATADOG_API_KEY>",
+            ))
         ```
 
         :param str resource_name: The name of the resource.
@@ -574,12 +574,12 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         myendpoint = aiven.ServiceIntegrationEndpoint("myendpoint",
-            datadog_user_config=aiven.ServiceIntegrationEndpointDatadogUserConfigArgs(
-                datadog_api_key="<DATADOG_API_KEY>",
-            ),
+            project=aiven_project["myproject"]["project"],
             endpoint_name="<ENDPOINT_NAME>",
             endpoint_type="datadog",
-            project=aiven_project["myproject"]["project"])
+            datadog_user_config=aiven.ServiceIntegrationEndpointDatadogUserConfigArgs(
+                datadog_api_key="<DATADOG_API_KEY>",
+            ))
         ```
 
         :param str resource_name: The name of the resource.

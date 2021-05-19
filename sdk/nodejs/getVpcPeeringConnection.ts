@@ -17,11 +17,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mypeeringconnection = aiven_project_vpc_myvpc.id.apply(id => aiven.getVpcPeeringConnection({
+ * const mypeeringconnection = aiven.getVpcPeeringConnection({
+ *     vpcId: aiven_project_vpc.myvpc.id,
  *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
  *     peerVpc: "<PEER_VPC_ID/NAME>",
- *     vpcId: id,
- * }, { async: true }));
+ * });
  * ```
  */
 export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcPeeringConnectionResult> {

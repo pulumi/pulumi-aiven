@@ -16,12 +16,13 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const myvpc = new aiven.ProjectVpc("myvpc", {
+ *     project: aiven_project.myproject.project,
  *     cloudName: "google-europe-west1",
  *     networkCidr: "192.168.0.1/24",
- *     project: aiven_project_myproject.project,
- * }, { timeouts: {
- *     create: "5m",
- * } });
+ *     timeouts: [{
+ *         create: "5m",
+ *     }],
+ * });
  * ```
  */
 export class ProjectVpc extends pulumi.CustomResource {

@@ -230,47 +230,6 @@ class KafkaSchema(pulumi.CustomResource):
 
         The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        kafka_schema1 = aiven.KafkaSchema("kafka-schema1",
-            project=aiven_project["kafka-schemas-project1"]["project"],
-            service_name=aiven_service["kafka-service1"]["service_name"],
-            subject_name="kafka-schema1",
-            compatibility_level="FORWARD",
-            schema=\"\"\"    {
-               "doc": "example",
-               "fields": [{
-                   "default": 5,
-                   "doc": "my test number",
-                   "name": "test",
-                   "namespace": "test",
-                   "type": "int"
-               }],
-               "name": "example",
-               "namespace": "example",
-               "type": "record"
-            }
-        \"\"\")
-        ```
-
-        You can also load the schema from an external file:
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        kafka_schema2 = aiven.KafkaSchema("kafka-schema2",
-            project=aiven_project["kafka-schemas-project1"]["project"],
-            service_name=aiven_service["kafka-service1"]["service_name"],
-            subject_name="kafka-schema2",
-            compatibility_level="FORWARD",
-            schema=(lambda path: open(path).read())(f"{path['module']}/external_schema.avsc"))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compatibility_level: configuration compatibility level overrides specific subject
@@ -293,47 +252,6 @@ class KafkaSchema(pulumi.CustomResource):
         ## # Kafka Schema Resource
 
         The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        kafka_schema1 = aiven.KafkaSchema("kafka-schema1",
-            project=aiven_project["kafka-schemas-project1"]["project"],
-            service_name=aiven_service["kafka-service1"]["service_name"],
-            subject_name="kafka-schema1",
-            compatibility_level="FORWARD",
-            schema=\"\"\"    {
-               "doc": "example",
-               "fields": [{
-                   "default": 5,
-                   "doc": "my test number",
-                   "name": "test",
-                   "namespace": "test",
-                   "type": "int"
-               }],
-               "name": "example",
-               "namespace": "example",
-               "type": "record"
-            }
-        \"\"\")
-        ```
-
-        You can also load the schema from an external file:
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        kafka_schema2 = aiven.KafkaSchema("kafka-schema2",
-            project=aiven_project["kafka-schemas-project1"]["project"],
-            service_name=aiven_service["kafka-service1"]["service_name"],
-            subject_name="kafka-schema2",
-            compatibility_level="FORWARD",
-            schema=(lambda path: open(path).read())(f"{path['module']}/external_schema.avsc"))
-        ```
 
         :param str resource_name: The name of the resource.
         :param KafkaSchemaArgs args: The arguments to use to populate this resource's properties.

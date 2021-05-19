@@ -35,9 +35,9 @@ namespace Pulumi.Aiven
         ///     {
         ///         var myintegration = Output.Create(Aiven.GetServiceIntegration.InvokeAsync(new Aiven.GetServiceIntegrationArgs
         ///         {
+        ///             Project = aiven_project.Myproject.Project,
         ///             DestinationServiceName = "&lt;DESTINATION_SERVICE_NAME&gt;",
         ///             IntegrationType = "datadog",
-        ///             Project = aiven_project.Myproject.Project,
         ///             SourceServiceName = "&lt;SOURCE_SERVICE_NAME&gt;",
         ///         }));
         ///     }

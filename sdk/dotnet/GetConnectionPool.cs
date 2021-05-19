@@ -30,9 +30,9 @@ namespace Pulumi.Aiven
         ///     {
         ///         var mytestpool = Output.Create(Aiven.GetConnectionPool.InvokeAsync(new Aiven.GetConnectionPoolArgs
         ///         {
-        ///             PoolName = "mypool",
         ///             Project = aiven_project.Myproject.Project,
         ///             ServiceName = aiven_service.Myservice.Service_name,
+        ///             PoolName = "mypool",
         ///         }));
         ///     }
         /// 

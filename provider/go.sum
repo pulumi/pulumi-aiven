@@ -129,6 +129,8 @@ github.com/aiven/aiven-go-client v1.5.12-0.20210305134925-ea695c89983b h1:lTaR4H
 github.com/aiven/aiven-go-client v1.5.12-0.20210305134925-ea695c89983b/go.mod h1:3+OtpccynSr5xvSGfn96jVM9dBUAr52HXlaZJi/Mz5o=
 github.com/aiven/aiven-go-client v1.5.12-0.20210401064156-3594908646c8 h1:1i/zJa7DlGYnCCqNrLOF7qwyEaLOSekqkwUvXfsZNY8=
 github.com/aiven/aiven-go-client v1.5.12-0.20210401064156-3594908646c8/go.mod h1:3+OtpccynSr5xvSGfn96jVM9dBUAr52HXlaZJi/Mz5o=
+github.com/aiven/aiven-go-client v1.5.12-0.20210517061416-95d0d6f8c2f6 h1:Jse9IKtgFRBluwv+tdg2hJ2IrrNGC8V3DIyVbyyoGyA=
+github.com/aiven/aiven-go-client v1.5.12-0.20210517061416-95d0d6f8c2f6/go.mod h1:3+OtpccynSr5xvSGfn96jVM9dBUAr52HXlaZJi/Mz5o=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7 h1:uSoVVbwJiQipAclBbw+8quDsfcvFjOpI5iCf4p/cqCs=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7/go.mod h1:6zEj6s6u/ghQa61ZWa/C2Aw3RkjiTBOix7dkqa1VLIs=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc h1:cAKDfWh5VpdgMhJosfJnn5/FoN2SRZ4p7fJNX58YPaU=
@@ -737,6 +739,8 @@ github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210504171052-f3722ec60f74
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210504171052-f3722ec60f74/go.mod h1:4cYLyxnot3S1FynOzggr5ATKgMDlddOKxidZiguJ1RI=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210511114056-cba290b22d09 h1:YWCS8OUPNCI+xmCQSiZwyK5CSr8RXiKnF8pAaSE1UHo=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210511114056-cba290b22d09/go.mod h1:4cYLyxnot3S1FynOzggr5ATKgMDlddOKxidZiguJ1RI=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210519082957-cd6082132a81 h1:EhhIzqtGBdBsUxD+TZAi2+ETq27uolVHlBv/TtK7ajE=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210519082957-cd6082132a81/go.mod h1:2S9W4XzIev2NqQZWk2LailxGNua+VPbIi9LlgRnXvXw=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af h1:gu+uRPtBe88sKxUCEXRoeCvVG90TJmwhiqRpvdhQFng=
@@ -797,6 +801,8 @@ github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81P
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 github.com/stretchr/testify v1.6.1 h1:hDPOHmpOpP40lSULcqw7IrRb/u7w6RpDC9399XyoNd0=
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
+github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
+github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/terraform-providers/terraform-provider-archive v1.3.0 h1:8WzDXMwTdTd4Z7KAUjnYwopk1DgGJ/DLH0xowJ8h+/8=
 github.com/terraform-providers/terraform-provider-archive v1.3.0/go.mod h1:7oAwNW55F65KauS++/XmAnrXhLfQRTYt549eYs4zU0w=
 github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18CydtTJJwzkZGkHYX3LWzIoQpYQuBdyw=

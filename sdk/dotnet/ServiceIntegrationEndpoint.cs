@@ -26,13 +26,13 @@ namespace Pulumi.Aiven
     ///     {
     ///         var myendpoint = new Aiven.ServiceIntegrationEndpoint("myendpoint", new Aiven.ServiceIntegrationEndpointArgs
     ///         {
+    ///             Project = aiven_project.Myproject.Project,
+    ///             EndpointName = "&lt;ENDPOINT_NAME&gt;",
+    ///             EndpointType = "datadog",
     ///             DatadogUserConfig = new Aiven.Inputs.ServiceIntegrationEndpointDatadogUserConfigArgs
     ///             {
     ///                 DatadogApiKey = "&lt;DATADOG_API_KEY&gt;",
     ///             },
-    ///             EndpointName = "&lt;ENDPOINT_NAME&gt;",
-    ///             EndpointType = "datadog",
-    ///             Project = aiven_project.Myproject.Project,
     ///         });
     ///     }
     /// 

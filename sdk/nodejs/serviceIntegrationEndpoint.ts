@@ -17,12 +17,12 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const myendpoint = new aiven.ServiceIntegrationEndpoint("myendpoint", {
+ *     project: aiven_project.myproject.project,
+ *     endpointName: "<ENDPOINT_NAME>",
+ *     endpointType: "datadog",
  *     datadogUserConfig: {
  *         datadogApiKey: "<DATADOG_API_KEY>",
  *     },
- *     endpointName: "<ENDPOINT_NAME>",
- *     endpointType: "datadog",
- *     project: aiven_project_myproject.project,
  * });
  * ```
  */

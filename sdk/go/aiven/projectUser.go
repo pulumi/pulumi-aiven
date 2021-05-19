@@ -28,9 +28,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.NewProjectUser(ctx, "mytestuser", &aiven.ProjectUserArgs{
+// 			Project:    pulumi.Any(aiven_project.Myproject.Project),
 // 			Email:      pulumi.String("john.doe@example.com"),
 // 			MemberType: pulumi.String("admin"),
-// 			Project:    pulumi.Any(aiven_project.Myproject.Project),
 // 		})
 // 		if err != nil {
 // 			return err

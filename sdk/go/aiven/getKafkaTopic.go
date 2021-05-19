@@ -26,16 +26,16 @@ import (
 // 		opt0 := 3
 // 		opt1 := 1
 // 		_, err := aiven.LookupKafkaTopic(ctx, &aiven.LookupKafkaTopicArgs{
-// 			Config: aiven.GetKafkaTopicConfig{
-// 				CleanupPolicy:               "compact",
-// 				FlushMs:                     "10",
-// 				UncleanLeaderElectionEnable: "true",
-// 			},
-// 			Partitions:  &opt0,
 // 			Project:     aiven_project.Myproject.Project,
-// 			Replication: &opt1,
 // 			ServiceName: aiven_service.Myservice.Service_name,
 // 			TopicName:   "<TOPIC_NAME>",
+// 			Partitions:  &opt0,
+// 			Replication: &opt1,
+// 			Config: aiven.GetKafkaTopicConfig{
+// 				FlushMs:                     "10",
+// 				UncleanLeaderElectionEnable: "true",
+// 				CleanupPolicy:               "compact",
+// 			},
 // 		}, nil)
 // 		if err != nil {
 // 			return err

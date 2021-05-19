@@ -26,7 +26,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.LookupElasticSearchAcl(ctx, &aiven.LookupElasticSearchAclArgs{
 // 			Project:     aiven_project.Es - project.Project,
-// 			ServiceName: aiven_service.Es.Service_name,
+// 			ServiceName: aiven_elasticsearch.Es.Service_name,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

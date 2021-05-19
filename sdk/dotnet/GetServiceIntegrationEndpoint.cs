@@ -31,8 +31,8 @@ namespace Pulumi.Aiven
         ///     {
         ///         var myendpoint = Output.Create(Aiven.GetServiceIntegrationEndpoint.InvokeAsync(new Aiven.GetServiceIntegrationEndpointArgs
         ///         {
-        ///             EndpointName = "&lt;ENDPOINT_NAME&gt;",
         ///             Project = aiven_project.Myproject.Project,
+        ///             EndpointName = "&lt;ENDPOINT_NAME&gt;",
         ///         }));
         ///     }
         /// 

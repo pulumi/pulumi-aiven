@@ -105,10 +105,10 @@ def get_kafka_acl(permission: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytestacl = aiven.get_kafka_acl(permission="admin",
-        project=aiven_project["myproject"]["project"],
+    mytestacl = aiven.get_kafka_acl(project=aiven_project["myproject"]["project"],
         service_name=aiven_service["myservice"]["service_name"],
         topic="<TOPIC_NAME_PATTERN>",
+        permission="admin",
         username="<USERNAME_PATTERN>")
     ```
 

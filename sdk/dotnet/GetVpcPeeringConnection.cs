@@ -31,9 +31,9 @@ namespace Pulumi.Aiven
         ///     {
         ///         var mypeeringconnection = Output.Create(Aiven.GetVpcPeeringConnection.InvokeAsync(new Aiven.GetVpcPeeringConnectionArgs
         ///         {
+        ///             VpcId = aiven_project_vpc.Myvpc.Id,
         ///             PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
         ///             PeerVpc = "&lt;PEER_VPC_ID/NAME&gt;",
-        ///             VpcId = aiven_project_vpc.Myvpc.Id,
         ///         }));
         ///     }
         /// 

@@ -247,9 +247,9 @@ class Database(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mydatabase = aiven.Database("mydatabase",
-            database_name="<DATABASE_NAME>",
             project=aiven_project["myproject"]["project"],
-            service_name=aiven_service["myservice"]["service_name"])
+            service_name=aiven_service["myservice"]["service_name"],
+            database_name="<DATABASE_NAME>")
         ```
 
         :param str resource_name: The name of the resource.
@@ -281,9 +281,9 @@ class Database(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mydatabase = aiven.Database("mydatabase",
-            database_name="<DATABASE_NAME>",
             project=aiven_project["myproject"]["project"],
-            service_name=aiven_service["myservice"]["service_name"])
+            service_name=aiven_service["myservice"]["service_name"],
+            database_name="<DATABASE_NAME>")
         ```
 
         :param str resource_name: The name of the resource.

@@ -18,14 +18,14 @@ import * as utilities from "./utilities";
  *
  * const kafka_es_con1 = new aiven.KafkaConnector("kafka-es-con1", {
  *     project: aiven_project["kafka-con-project1"].project,
- *     serviceName: aiven_service["kafka-service1"].service_name,
+ *     serviceName: aiven_kafka["kafka-service1"].service_name,
  *     connectorName: "kafka-es-con1",
  *     config: {
  *         topics: aiven_kafka_topic["kafka-topic1"].topic_name,
  *         "connector.class": "io.aiven.connect.elasticsearch.ElasticsearchSinkConnector",
  *         "type.name": "es-connector",
  *         name: "kafka-es-con1",
- *         "connection.url": aiven_service["es-service1"].service_uri,
+ *         "connection.url": aiven_elasticsearch["es-service1"].service_uri,
  *     },
  * });
  * ```

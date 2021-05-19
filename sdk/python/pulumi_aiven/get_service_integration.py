@@ -311,9 +311,9 @@ def get_service_integration(dashboard_user_config: Optional[pulumi.InputType['Ge
     import pulumi
     import pulumi_aiven as aiven
 
-    myintegration = aiven.get_service_integration(destination_service_name="<DESTINATION_SERVICE_NAME>",
+    myintegration = aiven.get_service_integration(project=aiven_project["myproject"]["project"],
+        destination_service_name="<DESTINATION_SERVICE_NAME>",
         integration_type="datadog",
-        project=aiven_project["myproject"]["project"],
         source_service_name="<SOURCE_SERVICE_NAME>")
     ```
 

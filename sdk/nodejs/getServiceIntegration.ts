@@ -21,12 +21,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const myintegration = aiven_project_myproject.project.apply(project => aiven.getServiceIntegration({
+ * const myintegration = aiven.getServiceIntegration({
+ *     project: aiven_project.myproject.project,
  *     destinationServiceName: "<DESTINATION_SERVICE_NAME>",
  *     integrationType: "datadog",
- *     project: project,
  *     sourceServiceName: "<SOURCE_SERVICE_NAME>",
- * }, { async: true }));
+ * });
  * ```
  */
 export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIntegrationResult> {

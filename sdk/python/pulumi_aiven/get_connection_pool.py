@@ -154,9 +154,9 @@ def get_connection_pool(connection_uri: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytestpool = aiven.get_connection_pool(pool_name="mypool",
-        project=aiven_project["myproject"]["project"],
-        service_name=aiven_service["myservice"]["service_name"])
+    mytestpool = aiven.get_connection_pool(project=aiven_project["myproject"]["project"],
+        service_name=aiven_service["myservice"]["service_name"],
+        pool_name="mypool")
     ```
 
 

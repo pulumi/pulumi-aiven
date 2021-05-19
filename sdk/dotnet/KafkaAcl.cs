@@ -26,10 +26,10 @@ namespace Pulumi.Aiven
     ///     {
     ///         var mytestacl = new Aiven.KafkaAcl("mytestacl", new Aiven.KafkaAclArgs
     ///         {
-    ///             Permission = "admin",
     ///             Project = aiven_project.Myproject.Project,
-    ///             ServiceName = aiven_service.Myservice.Service_name,
+    ///             ServiceName = aiven_kafka.Myservice.Service_name,
     ///             Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+    ///             Permission = "admin",
     ///             Username = "&lt;USERNAME_PATTERN&gt;",
     ///         });
     ///     }

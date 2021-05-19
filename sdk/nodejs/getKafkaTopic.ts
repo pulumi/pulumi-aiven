@@ -16,18 +16,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mytesttopic = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) => aiven.getKafkaTopic({
- *     config: {
- *         cleanupPolicy: "compact",
- *         flushMs: "10",
- *         uncleanLeaderElectionEnable: "true",
- *     },
- *     partitions: 3,
- *     project: project,
- *     replication: 1,
- *     serviceName: serviceName,
+ * const mytesttopic = aiven.getKafkaTopic({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_service.myservice.service_name,
  *     topicName: "<TOPIC_NAME>",
- * }, { async: true }));
+ *     partitions: 3,
+ *     replication: 1,
+ *     config: {
+ *         flushMs: 10,
+ *         uncleanLeaderElectionEnable: true,
+ *         cleanupPolicy: "compact",
+ *     },
+ * });
  * ```
  */
 export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicResult> {

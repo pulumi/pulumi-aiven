@@ -16,11 +16,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mydatabase = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) => aiven.getDatabase({
+ * const mydatabase = aiven.getDatabase({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_service.myservice.service_name,
  *     databaseName: "<DATABASE_NAME>",
- *     project: project,
- *     serviceName: serviceName,
- * }, { async: true }));
+ * });
  * ```
  */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {

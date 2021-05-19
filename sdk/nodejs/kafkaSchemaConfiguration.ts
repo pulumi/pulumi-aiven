@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const config = new aiven.KafkaSchemaConfiguration("config", {
  *     project: aiven_project["kafka-schemas-project1"].project,
- *     serviceName: aiven_service["kafka-service1"].service_name,
+ *     serviceName: aiven_kafka["kafka-service1"].service_name,
  *     compatibilityLevel: "BACKWARD",
  * });
  * ```

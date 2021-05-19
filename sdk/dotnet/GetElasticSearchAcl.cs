@@ -32,7 +32,7 @@ namespace Pulumi.Aiven
         ///         var es_acls = Output.Create(Aiven.GetElasticSearchAcl.InvokeAsync(new Aiven.GetElasticSearchAclArgs
         ///         {
         ///             Project = aiven_project.Es_project.Project,
-        ///             ServiceName = aiven_service.Es.Service_name,
+        ///             ServiceName = aiven_elasticsearch.Es.Service_name,
         ///         }));
         ///     }
         /// 

@@ -29,7 +29,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.NewKafkaSchemaConfiguration(ctx, "config", &aiven.KafkaSchemaConfigurationArgs{
 // 			Project:            pulumi.Any(aiven_project.Kafka - schemas - project1.Project),
-// 			ServiceName:        pulumi.Any(aiven_service.Kafka - service1.Service_name),
+// 			ServiceName:        pulumi.Any(aiven_kafka.Kafka - service1.Service_name),
 // 			CompatibilityLevel: pulumi.String("BACKWARD"),
 // 		})
 // 		if err != nil {

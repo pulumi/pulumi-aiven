@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
     ///         var config = new Aiven.KafkaSchemaConfiguration("config", new Aiven.KafkaSchemaConfigurationArgs
     ///         {
     ///             Project = aiven_project.Kafka_schemas_project1.Project,
-    ///             ServiceName = aiven_service.Kafka_service1.Service_name,
+    ///             ServiceName = aiven_kafka.Kafka_service1.Service_name,
     ///             CompatibilityLevel = "BACKWARD",
     ///         });
     ///     }

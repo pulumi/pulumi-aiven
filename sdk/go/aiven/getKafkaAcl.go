@@ -25,10 +25,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.LookupKafkaAcl(ctx, &aiven.LookupKafkaAclArgs{
-// 			Permission:  "admin",
 // 			Project:     aiven_project.Myproject.Project,
 // 			ServiceName: aiven_service.Myservice.Service_name,
 // 			Topic:       "<TOPIC_NAME_PATTERN>",
+// 			Permission:  "admin",
 // 			Username:    "<USERNAME_PATTERN>",
 // 		}, nil)
 // 		if err != nil {

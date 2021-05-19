@@ -323,19 +323,6 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
         The VPC Peering Connection resource allows the creation and management of Aiven VPC Peering Connections.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        mypeeringconnection = aiven.VpcPeeringConnection("mypeeringconnection",
-            peer_cloud_account="<PEER_ACCOUNT_ID>",
-            peer_region="<PEER_REGION>",
-            peer_vpc="<PEER_VPC_ID/NAME>",
-            vpc_id=aiven_project_vpc["myvpc"]["id"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] peer_azure_app_id: an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
@@ -357,19 +344,6 @@ class VpcPeeringConnection(pulumi.CustomResource):
         ## # VPC Peering Connection Resource
 
         The VPC Peering Connection resource allows the creation and management of Aiven VPC Peering Connections.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        mypeeringconnection = aiven.VpcPeeringConnection("mypeeringconnection",
-            peer_cloud_account="<PEER_ACCOUNT_ID>",
-            peer_region="<PEER_REGION>",
-            peer_vpc="<PEER_VPC_ID/NAME>",
-            vpc_id=aiven_project_vpc["myvpc"]["id"])
-        ```
 
         :param str resource_name: The name of the resource.
         :param VpcPeeringConnectionArgs args: The arguments to use to populate this resource's properties.

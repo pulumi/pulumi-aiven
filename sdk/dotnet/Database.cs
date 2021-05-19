@@ -26,9 +26,9 @@ namespace Pulumi.Aiven
     ///     {
     ///         var mydatabase = new Aiven.Database("mydatabase", new Aiven.DatabaseArgs
     ///         {
-    ///             DatabaseName = "&lt;DATABASE_NAME&gt;",
     ///             Project = aiven_project.Myproject.Project,
     ///             ServiceName = aiven_service.Myservice.Service_name,
+    ///             DatabaseName = "&lt;DATABASE_NAME&gt;",
     ///         });
     ///     }
     /// 
