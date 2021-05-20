@@ -47,7 +47,7 @@ To use from .NET, install using `dotnet add package`:
 
 The following configuration points are available:
 
-- `aiven:apiToken` - (Optional) This is the API token to interact with your Aiven account. May be set via the `AIVEN_API_TOKEN` environment variable.
+- `aiven:apiToken` - (Optional) This is the API token to interact with your Aiven account. May be set via the `AIVEN_TOKEN` environment variable.
 
 ## Reference
 
