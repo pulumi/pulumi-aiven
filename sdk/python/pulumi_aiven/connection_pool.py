@@ -320,13 +320,14 @@ class ConnectionPool(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mytestpool = aiven.ConnectionPool("mytestpool",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_service["myservice"]["service_name"],
             database_name=aiven_database["mydatabase"]["database_name"],
             pool_mode="transaction",
             pool_name="mypool",
             pool_size=10,
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_service["myservice"]["service_name"],
-            username=aiven_service_user["myserviceuser"]["username"])
+            username=aiven_service_user["myserviceuser"]["username"],
+            opts=pulumi.ResourceOptions(depends_on=[aiven_database["mydatabase"]]))
         ```
 
         :param str resource_name: The name of the resource.
@@ -365,13 +366,14 @@ class ConnectionPool(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mytestpool = aiven.ConnectionPool("mytestpool",
+            project=aiven_project["myproject"]["project"],
+            service_name=aiven_service["myservice"]["service_name"],
             database_name=aiven_database["mydatabase"]["database_name"],
             pool_mode="transaction",
             pool_name="mypool",
             pool_size=10,
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_service["myservice"]["service_name"],
-            username=aiven_service_user["myserviceuser"]["username"])
+            username=aiven_service_user["myserviceuser"]["username"],
+            opts=pulumi.ResourceOptions(depends_on=[aiven_database["mydatabase"]]))
         ```
 
         :param str resource_name: The name of the resource.

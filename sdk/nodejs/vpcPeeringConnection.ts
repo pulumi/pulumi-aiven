@@ -16,13 +16,14 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mypeeringconnection = new aiven.VpcPeeringConnection("mypeeringconnection", {
+ *     vpcId: aiven_project_vpc.myvpc.id,
  *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
- *     peerRegion: "<PEER_REGION>",
  *     peerVpc: "<PEER_VPC_ID/NAME>",
- *     vpcId: aiven_project_vpc_myvpc.id,
- * }, { timeouts: {
- *     create: "10m",
- * } });
+ *     peerRegion: "<PEER_REGION>",
+ *     timeouts: [{
+ *         create: "10m",
+ *     }],
+ * });
  * ```
  */
 export class VpcPeeringConnection extends pulumi.CustomResource {

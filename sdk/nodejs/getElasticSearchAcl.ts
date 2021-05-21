@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * const es-acls = aiven.getElasticSearchAcl({
  *     project: aiven_project["es-project"].project,
- *     serviceName: aiven_service.es.service_name,
+ *     serviceName: aiven_elasticsearch.es.service_name,
  * });
  * ```
  */

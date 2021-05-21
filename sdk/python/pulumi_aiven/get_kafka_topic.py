@@ -197,16 +197,16 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytesttopic = aiven.get_kafka_topic(config=aiven.GetKafkaTopicConfigArgs(
-            cleanup_policy="compact",
+    mytesttopic = aiven.get_kafka_topic(project=aiven_project["myproject"]["project"],
+        service_name=aiven_service["myservice"]["service_name"],
+        topic_name="<TOPIC_NAME>",
+        partitions=3,
+        replication=1,
+        config=aiven.GetKafkaTopicConfigArgs(
             flush_ms="10",
             unclean_leader_election_enable="true",
-        ),
-        partitions=3,
-        project=aiven_project["myproject"]["project"],
-        replication=1,
-        service_name=aiven_service["myservice"]["service_name"],
-        topic_name="<TOPIC_NAME>")
+            cleanup_policy="compact",
+        ))
     ```
 
 

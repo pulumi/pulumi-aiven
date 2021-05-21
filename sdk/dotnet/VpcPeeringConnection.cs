@@ -13,28 +13,6 @@ namespace Pulumi.Aiven
     /// ## # VPC Peering Connection Resource
     /// 
     /// The VPC Peering Connection resource allows the creation and management of Aiven VPC Peering Connections.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var mypeeringconnection = new Aiven.VpcPeeringConnection("mypeeringconnection", new Aiven.VpcPeeringConnectionArgs
-    ///         {
-    ///             PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
-    ///             PeerRegion = "&lt;PEER_REGION&gt;",
-    ///             PeerVpc = "&lt;PEER_VPC_ID/NAME&gt;",
-    ///             VpcId = aiven_project_vpc.Myvpc.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/vpcPeeringConnection:VpcPeeringConnection")]
     public partial class VpcPeeringConnection : Pulumi.CustomResource

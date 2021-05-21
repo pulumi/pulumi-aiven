@@ -26,13 +26,19 @@ namespace Pulumi.Aiven
     ///     {
     ///         var mytestpool = new Aiven.ConnectionPool("mytestpool", new Aiven.ConnectionPoolArgs
     ///         {
+    ///             Project = aiven_project.Myproject.Project,
+    ///             ServiceName = aiven_service.Myservice.Service_name,
     ///             DatabaseName = aiven_database.Mydatabase.Database_name,
     ///             PoolMode = "transaction",
     ///             PoolName = "mypool",
     ///             PoolSize = 10,
-    ///             Project = aiven_project.Myproject.Project,
-    ///             ServiceName = aiven_service.Myservice.Service_name,
     ///             Username = aiven_service_user.Myserviceuser.Username,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 aiven_database.Mydatabase,
+    ///             },
     ///         });
     ///     }
     /// 

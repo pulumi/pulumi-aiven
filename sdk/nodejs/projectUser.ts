@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mytestuser = new aiven.ProjectUser("mytestuser", {
+ *     project: aiven_project.myproject.project,
  *     email: "john.doe@example.com",
  *     memberType: "admin",
- *     project: aiven_project_myproject.project,
  * });
  * ```
  */

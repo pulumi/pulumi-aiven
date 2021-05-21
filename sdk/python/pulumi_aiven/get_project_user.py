@@ -103,8 +103,8 @@ def get_project_user(accepted: Optional[bool] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytestuser = aiven.get_project_user(email="john.doe@example.com",
-        project=aiven_project["myproject"]["project"])
+    mytestuser = aiven.get_project_user(project=aiven_project["myproject"]["project"],
+        email="john.doe@example.com")
     ```
 
 

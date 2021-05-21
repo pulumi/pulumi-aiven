@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
     ///         var kafka_es_con1 = new Aiven.KafkaConnector("kafka-es-con1", new Aiven.KafkaConnectorArgs
     ///         {
     ///             Project = aiven_project.Kafka_con_project1.Project,
-    ///             ServiceName = aiven_service.Kafka_service1.Service_name,
+    ///             ServiceName = aiven_kafka.Kafka_service1.Service_name,
     ///             ConnectorName = "kafka-es-con1",
     ///             Config = 
     ///             {
@@ -35,7 +35,7 @@ namespace Pulumi.Aiven
     ///                 { "connector.class", "io.aiven.connect.elasticsearch.ElasticsearchSinkConnector" },
     ///                 { "type.name", "es-connector" },
     ///                 { "name", "kafka-es-con1" },
-    ///                 { "connection.url", aiven_service.Es_service1.Service_uri },
+    ///                 { "connection.url", aiven_elasticsearch.Es_service1.Service_uri },
     ///             },
     ///         });
     ///     }

@@ -30,17 +30,17 @@ namespace Pulumi.Aiven
         ///     {
         ///         var mytesttopic = Output.Create(Aiven.GetKafkaTopic.InvokeAsync(new Aiven.GetKafkaTopicArgs
         ///         {
-        ///             Config = new Aiven.Inputs.GetKafkaTopicConfigArgs
-        ///             {
-        ///                 CleanupPolicy = "compact",
-        ///                 FlushMs = "10",
-        ///                 UncleanLeaderElectionEnable = "true",
-        ///             },
-        ///             Partitions = 3,
         ///             Project = aiven_project.Myproject.Project,
-        ///             Replication = 1,
         ///             ServiceName = aiven_service.Myservice.Service_name,
         ///             TopicName = "&lt;TOPIC_NAME&gt;",
+        ///             Partitions = 3,
+        ///             Replication = 1,
+        ///             Config = new Aiven.Inputs.GetKafkaTopicConfigArgs
+        ///             {
+        ///                 FlushMs = "10",
+        ///                 UncleanLeaderElectionEnable = "true",
+        ///                 CleanupPolicy = "compact",
+        ///             },
         ///         }));
         ///     }
         /// 

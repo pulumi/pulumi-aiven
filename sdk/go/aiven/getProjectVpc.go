@@ -24,8 +24,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.LookupProjectVpc(ctx, &aiven.LookupProjectVpcArgs{
-// 			CloudName: "google-europe-west1",
 // 			Project:   aiven_project.Myproject.Project,
+// 			CloudName: "google-europe-west1",
 // 		}, nil)
 // 		if err != nil {
 // 			return err

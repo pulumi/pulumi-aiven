@@ -16,10 +16,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const myvpc = aiven_project_myproject.project.apply(project => aiven.getProjectVpc({
+ * const myvpc = aiven.getProjectVpc({
+ *     project: aiven_project.myproject.project,
  *     cloudName: "google-europe-west1",
- *     project: project,
- * }, { async: true }));
+ * });
  * ```
  */
 export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectVpcResult> {

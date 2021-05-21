@@ -14,32 +14,6 @@ import (
 // ## # VPC Peering Connection Resource
 //
 // The VPC Peering Connection resource allows the creation and management of Aiven VPC Peering Connections.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewVpcPeeringConnection(ctx, "mypeeringconnection", &aiven.VpcPeeringConnectionArgs{
-// 			PeerCloudAccount: pulumi.String("<PEER_ACCOUNT_ID>"),
-// 			PeerRegion:       pulumi.String("<PEER_REGION>"),
-// 			PeerVpc:          pulumi.String("<PEER_VPC_ID/NAME>"),
-// 			VpcId:            pulumi.Any(aiven_project_vpc.Myvpc.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type VpcPeeringConnection struct {
 	pulumi.CustomResourceState
 

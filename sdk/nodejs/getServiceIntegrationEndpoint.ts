@@ -17,10 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const myendpoint = aiven_project_myproject.project.apply(project => aiven.getServiceIntegrationEndpoint({
+ * const myendpoint = aiven.getServiceIntegrationEndpoint({
+ *     project: aiven_project.myproject.project,
  *     endpointName: "<ENDPOINT_NAME>",
- *     project: project,
- * }, { async: true }));
+ * });
  * ```
  */
 export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIntegrationEndpointResult> {

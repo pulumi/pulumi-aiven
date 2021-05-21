@@ -116,7 +116,7 @@ def get_elastic_search_acl(acls: Optional[Sequence[pulumi.InputType['GetElasticS
     import pulumi_aiven as aiven
 
     es_acls = aiven.get_elastic_search_acl(project=aiven_project["es-project"]["project"],
-        service_name=aiven_service["es"]["service_name"])
+        service_name=aiven_elasticsearch["es"]["service_name"])
     ```
 
 

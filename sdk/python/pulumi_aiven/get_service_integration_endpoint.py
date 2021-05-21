@@ -211,8 +211,8 @@ def get_service_integration_endpoint(datadog_user_config: Optional[pulumi.InputT
     import pulumi
     import pulumi_aiven as aiven
 
-    myendpoint = aiven.get_service_integration_endpoint(endpoint_name="<ENDPOINT_NAME>",
-        project=aiven_project["myproject"]["project"])
+    myendpoint = aiven.get_service_integration_endpoint(project=aiven_project["myproject"]["project"],
+        endpoint_name="<ENDPOINT_NAME>")
     ```
 
 

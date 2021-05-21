@@ -179,9 +179,9 @@ def get_vpc_peering_connection(peer_azure_app_id: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mypeeringconnection = aiven.get_vpc_peering_connection(peer_cloud_account="<PEER_ACCOUNT_ID>",
-        peer_vpc="<PEER_VPC_ID/NAME>",
-        vpc_id=aiven_project_vpc["myvpc"]["id"])
+    mypeeringconnection = aiven.get_vpc_peering_connection(vpc_id=aiven_project_vpc["myvpc"]["id"],
+        peer_cloud_account="<PEER_ACCOUNT_ID>",
+        peer_vpc="<PEER_VPC_ID/NAME>")
     ```
 
 

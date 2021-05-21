@@ -16,10 +16,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mytestuser = aiven_project_myproject.project.apply(project => aiven.getProjectUser({
+ * const mytestuser = aiven.getProjectUser({
+ *     project: aiven_project.myproject.project,
  *     email: "john.doe@example.com",
- *     project: project,
- * }, { async: true }));
+ * });
  * ```
  */
 export function getProjectUser(args: GetProjectUserArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectUserResult> {

@@ -155,18 +155,6 @@ class ProjectVpc(pulumi.CustomResource):
 
         The Project VPC resource allows the creation and management of Aiven Project VPCs.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        myvpc = aiven.ProjectVpc("myvpc",
-            cloud_name="google-europe-west1",
-            network_cidr="192.168.0.1/24",
-            project=aiven_project["myproject"]["project"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
@@ -184,18 +172,6 @@ class ProjectVpc(pulumi.CustomResource):
         ## # Project VPC Resource
 
         The Project VPC resource allows the creation and management of Aiven Project VPCs.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aiven as aiven
-
-        myvpc = aiven.ProjectVpc("myvpc",
-            cloud_name="google-europe-west1",
-            network_cidr="192.168.0.1/24",
-            project=aiven_project["myproject"]["project"])
-        ```
 
         :param str resource_name: The name of the resource.
         :param ProjectVpcArgs args: The arguments to use to populate this resource's properties.

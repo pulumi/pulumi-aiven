@@ -31,10 +31,10 @@ namespace Pulumi.Aiven
         ///     {
         ///         var mytestacl = Output.Create(Aiven.GetKafkaAcl.InvokeAsync(new Aiven.GetKafkaAclArgs
         ///         {
-        ///             Permission = "admin",
         ///             Project = aiven_project.Myproject.Project,
         ///             ServiceName = aiven_service.Myservice.Service_name,
         ///             Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+        ///             Permission = "admin",
         ///             Username = "&lt;USERNAME_PATTERN&gt;",
         ///         }));
         ///     }

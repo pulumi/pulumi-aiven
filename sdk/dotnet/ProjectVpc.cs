@@ -13,27 +13,6 @@ namespace Pulumi.Aiven
     /// ## # Project VPC Resource
     /// 
     /// The Project VPC resource allows the creation and management of Aiven Project VPCs.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myvpc = new Aiven.ProjectVpc("myvpc", new Aiven.ProjectVpcArgs
-    ///         {
-    ///             CloudName = "google-europe-west1",
-    ///             NetworkCidr = "192.168.0.1/24",
-    ///             Project = aiven_project.Myproject.Project,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/projectVpc:ProjectVpc")]
     public partial class ProjectVpc : Pulumi.CustomResource

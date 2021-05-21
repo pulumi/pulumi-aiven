@@ -162,9 +162,9 @@ class ProjectUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mytestuser = aiven.ProjectUser("mytestuser",
+            project=aiven_project["myproject"]["project"],
             email="john.doe@example.com",
-            member_type="admin",
-            project=aiven_project["myproject"]["project"])
+            member_type="admin")
         ```
 
         :param str resource_name: The name of the resource.
@@ -191,9 +191,9 @@ class ProjectUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mytestuser = aiven.ProjectUser("mytestuser",
+            project=aiven_project["myproject"]["project"],
             email="john.doe@example.com",
-            member_type="admin",
-            project=aiven_project["myproject"]["project"])
+            member_type="admin")
         ```
 
         :param str resource_name: The name of the resource.

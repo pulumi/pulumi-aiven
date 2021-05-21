@@ -29,14 +29,14 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aiven.NewKafkaConnector(ctx, "kafka_es_con1", &aiven.KafkaConnectorArgs{
 // 			Project:       pulumi.Any(aiven_project.Kafka - con - project1.Project),
-// 			ServiceName:   pulumi.Any(aiven_service.Kafka - service1.Service_name),
+// 			ServiceName:   pulumi.Any(aiven_kafka.Kafka - service1.Service_name),
 // 			ConnectorName: pulumi.String("kafka-es-con1"),
 // 			Config: pulumi.StringMap{
 // 				"topics":          pulumi.Any(aiven_kafka_topic.Kafka - topic1.Topic_name),
 // 				"connector.class": pulumi.String("io.aiven.connect.elasticsearch.ElasticsearchSinkConnector"),
 // 				"type.name":       pulumi.String("es-connector"),
 // 				"name":            pulumi.String("kafka-es-con1"),
-// 				"connection.url":  pulumi.Any(aiven_service.Es - service1.Service_uri),
+// 				"connection.url":  pulumi.Any(aiven_elasticsearch.Es - service1.Service_uri),
 // 			},
 // 		})
 // 		if err != nil {

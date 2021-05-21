@@ -30,9 +30,9 @@ namespace Pulumi.Aiven
         ///     {
         ///         var mydatabase = Output.Create(Aiven.GetDatabase.InvokeAsync(new Aiven.GetDatabaseArgs
         ///         {
-        ///             DatabaseName = "&lt;DATABASE_NAME&gt;",
         ///             Project = aiven_project.Myproject.Project,
         ///             ServiceName = aiven_service.Myservice.Service_name,
+        ///             DatabaseName = "&lt;DATABASE_NAME&gt;",
         ///         }));
         ///     }
         /// 

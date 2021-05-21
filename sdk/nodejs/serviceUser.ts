@@ -16,8 +16,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const myserviceuser = new aiven.ServiceUser("myserviceuser", {
- *     project: aiven_project_myproject.project,
- *     serviceName: aiven_service_myservice.serviceName,
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_service.myservice.service_name,
  *     username: "<USERNAME>",
  * });
  * ```

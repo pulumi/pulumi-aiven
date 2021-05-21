@@ -16,11 +16,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mytestpool = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) => aiven.getConnectionPool({
+ * const mytestpool = aiven.getConnectionPool({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_service.myservice.service_name,
  *     poolName: "mypool",
- *     project: project,
- *     serviceName: serviceName,
- * }, { async: true }));
+ * });
  * ```
  */
 export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionPoolResult> {

@@ -17,13 +17,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mytestacl = pulumi.all([aiven_project_myproject.project, aiven_service_myservice.serviceName]).apply(([project, serviceName]) => aiven.getKafkaAcl({
- *     permission: "admin",
- *     project: project,
- *     serviceName: serviceName,
+ * const mytestacl = aiven.getKafkaAcl({
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_service.myservice.service_name,
  *     topic: "<TOPIC_NAME_PATTERN>",
+ *     permission: "admin",
  *     username: "<USERNAME_PATTERN>",
- * }, { async: true }));
+ * });
  * ```
  */
 export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaAclResult> {

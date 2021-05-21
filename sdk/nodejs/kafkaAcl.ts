@@ -16,10 +16,10 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mytestacl = new aiven.KafkaAcl("mytestacl", {
- *     permission: "admin",
- *     project: aiven_project_myproject.project,
- *     serviceName: aiven_service_myservice.serviceName,
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_kafka.myservice.service_name,
  *     topic: "<TOPIC_NAME_PATTERN>",
+ *     permission: "admin",
  *     username: "<USERNAME_PATTERN>",
  * });
  * ```
