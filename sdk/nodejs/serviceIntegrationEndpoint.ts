@@ -186,65 +186,65 @@ export interface ServiceIntegrationEndpointState {
     /**
      * Datadog specific user configurable settings
      */
-    readonly datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfig>;
+    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfig>;
     /**
      * Integration endpoint specific backend configuration
      */
-    readonly endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * is the name of the endpoint. This value has no effect beyond being used
      * to identify different integration endpoints.
      */
-    readonly endpointName?: pulumi.Input<string>;
+    endpointName?: pulumi.Input<string>;
     /**
      * is the type of the external service this endpoint is associated with.
      * By the time of writing the only available option is `datadog`.
      */
-    readonly endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string>;
     /**
      * external AWS CloudWatch Logs specific user configurable settings
      */
-    readonly externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>;
+    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>;
     /**
      * External AWS cloudwatch mertrics specific user configurable settings
      */
-    readonly externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>;
+    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>;
     /**
      * external elasticsearch specific user configurable settings
      */
-    readonly externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
+    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
     /**
      * external Google Cloud Logginig specific user configurable settings
      */
-    readonly externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>;
+    externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>;
     /**
      * external Kafka specific user configurable settings
      */
-    readonly externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
+    externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
     /**
      * External schema registry specific user configurable settings
      */
-    readonly externalSchemaRegistryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig>;
+    externalSchemaRegistryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig>;
     /**
      * Jolokia specific user configurable settings
      */
-    readonly jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
+    jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
     /**
      * defines the project the endpoint is associated with.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Prometheus specific user configurable settings
      */
-    readonly prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointPrometheusUserConfig>;
+    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointPrometheusUserConfig>;
     /**
      * rsyslog specific user configurable settings
      */
-    readonly rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig>;
+    rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig>;
     /**
      * Signalfx specific user configurable settings
      */
-    readonly signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointSignalfxUserConfig>;
+    signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointSignalfxUserConfig>;
 }
 
 /**
@@ -254,59 +254,59 @@ export interface ServiceIntegrationEndpointArgs {
     /**
      * Datadog specific user configurable settings
      */
-    readonly datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfig>;
+    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfig>;
     /**
      * is the name of the endpoint. This value has no effect beyond being used
      * to identify different integration endpoints.
      */
-    readonly endpointName: pulumi.Input<string>;
+    endpointName: pulumi.Input<string>;
     /**
      * is the type of the external service this endpoint is associated with.
      * By the time of writing the only available option is `datadog`.
      */
-    readonly endpointType: pulumi.Input<string>;
+    endpointType: pulumi.Input<string>;
     /**
      * external AWS CloudWatch Logs specific user configurable settings
      */
-    readonly externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>;
+    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>;
     /**
      * External AWS cloudwatch mertrics specific user configurable settings
      */
-    readonly externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>;
+    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>;
     /**
      * external elasticsearch specific user configurable settings
      */
-    readonly externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
+    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
     /**
      * external Google Cloud Logginig specific user configurable settings
      */
-    readonly externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>;
+    externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>;
     /**
      * external Kafka specific user configurable settings
      */
-    readonly externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
+    externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
     /**
      * External schema registry specific user configurable settings
      */
-    readonly externalSchemaRegistryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig>;
+    externalSchemaRegistryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig>;
     /**
      * Jolokia specific user configurable settings
      */
-    readonly jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
+    jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
     /**
      * defines the project the endpoint is associated with.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Prometheus specific user configurable settings
      */
-    readonly prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointPrometheusUserConfig>;
+    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointPrometheusUserConfig>;
     /**
      * rsyslog specific user configurable settings
      */
-    readonly rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig>;
+    rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig>;
     /**
      * Signalfx specific user configurable settings
      */
-    readonly signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointSignalfxUserConfig>;
+    signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointSignalfxUserConfig>;
 }

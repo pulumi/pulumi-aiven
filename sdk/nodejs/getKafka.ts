@@ -67,28 +67,28 @@ export interface GetKafkaArgs {
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
      * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
-    readonly cloudName?: string;
-    readonly components?: inputs.GetKafkaComponent[];
-    readonly defaultAcl?: boolean;
+    cloudName?: string;
+    components?: inputs.GetKafkaComponent[];
+    defaultAcl?: boolean;
     /**
      * Kafka server provided values:
      */
-    readonly kafka?: inputs.GetKafkaKafka;
+    kafka?: inputs.GetKafkaKafka;
     /**
      * defines Kafka specific additional configuration options. The following 
      * configuration options available:
      */
-    readonly kafkaUserConfig?: inputs.GetKafkaKafkaUserConfig;
+    kafkaUserConfig?: inputs.GetKafkaKafkaUserConfig;
     /**
      * day of week when maintenance operations should be performed. 
      * On monday, tuesday, wednesday, etc.
      */
-    readonly maintenanceWindowDow?: string;
+    maintenanceWindowDow?: string;
     /**
      * time of day when maintenance operations should be performed. 
      * UTC time in HH:mm:ss format.
      */
-    readonly maintenanceWindowTime?: string;
+    maintenanceWindowTime?: string;
     /**
      * defines what kind of computing resources are allocated for the service. It can
      * be changed after creation, though there are some restrictions when going to a smaller
@@ -99,13 +99,13 @@ export interface GetKafkaArgs {
      * and amount of disk space varies but naming is based on memory). The exact options can be
      * seen from the Aiven web console's Create Service dialog.
      */
-    readonly plan?: string;
+    plan?: string;
     /**
      * identifies the project the service belongs to. To set up proper dependency
      * between the project and the service, refer to the project as shown in the above example.
      * Project cannot be changed later without destroying and re-creating the service.
      */
-    readonly project: string;
+    project: string;
     /**
      * optionally specifies the VPC the service should run in. If the value
      * is not set the service is not run inside a VPC. When set, the value should be given as a
@@ -114,39 +114,39 @@ export interface GetKafkaArgs {
      * creation but doing so triggers migration to new servers so the operation can take
      * significant amount of time to complete if the service has a lot of data.
      */
-    readonly projectVpcId?: string;
+    projectVpcId?: string;
     /**
      * Kafka hostname.
      */
-    readonly serviceHost?: string;
-    readonly serviceIntegrations?: inputs.GetKafkaServiceIntegration[];
+    serviceHost?: string;
+    serviceIntegrations?: inputs.GetKafkaServiceIntegration[];
     /**
      * specifies the actual name of the service. The name cannot be changed
      * later without destroying and re-creating the service so name should be picked based on
      * intended service usage rather than current attributes.
      */
-    readonly serviceName: string;
+    serviceName: string;
     /**
      * Password used for connecting to the Kafka service, if applicable.
      */
-    readonly servicePassword?: string;
+    servicePassword?: string;
     /**
      * Kafka port.
      */
-    readonly servicePort?: number;
-    readonly serviceType?: string;
+    servicePort?: number;
+    serviceType?: string;
     /**
      * URI for connecting to the Kafka service.
      */
-    readonly serviceUri?: string;
+    serviceUri?: string;
     /**
      * Username used for connecting to the Kafka service, if applicable.
      */
-    readonly serviceUsername?: string;
+    serviceUsername?: string;
     /**
      * Service state.
      */
-    readonly state?: string;
+    state?: string;
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
@@ -154,7 +154,7 @@ export interface GetKafkaArgs {
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
-    readonly terminationProtection?: boolean;
+    terminationProtection?: boolean;
 }
 
 /**

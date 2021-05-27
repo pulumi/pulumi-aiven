@@ -247,30 +247,30 @@ export interface M3DbState {
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
      * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
-    readonly cloudName?: pulumi.Input<string>;
+    cloudName?: pulumi.Input<string>;
     /**
      * Service component information objects
      */
-    readonly components?: pulumi.Input<pulumi.Input<inputs.M3DbComponent>[]>;
+    components?: pulumi.Input<pulumi.Input<inputs.M3DbComponent>[]>;
     /**
      * M3 specific server provided values.
      */
-    readonly m3db?: pulumi.Input<inputs.M3DbM3db>;
+    m3db?: pulumi.Input<inputs.M3DbM3db>;
     /**
      * defines M3 specific additional configuration options. The following 
      * configuration options available:
      */
-    readonly m3dbUserConfig?: pulumi.Input<inputs.M3DbM3dbUserConfig>;
+    m3dbUserConfig?: pulumi.Input<inputs.M3DbM3dbUserConfig>;
     /**
      * day of week when maintenance operations should be performed. 
      * On monday, tuesday, wednesday, etc.
      */
-    readonly maintenanceWindowDow?: pulumi.Input<string>;
+    maintenanceWindowDow?: pulumi.Input<string>;
     /**
      * time of day when maintenance operations should be performed. 
      * UTC time in HH:mm:ss format.
      */
-    readonly maintenanceWindowTime?: pulumi.Input<string>;
+    maintenanceWindowTime?: pulumi.Input<string>;
     /**
      * defines what kind of computing resources are allocated for the service. It can
      * be changed after creation, though there are some restrictions when going to a smaller
@@ -281,13 +281,13 @@ export interface M3DbState {
      * and amount of disk space varies but naming is based on memory). The exact options can be
      * seen from the Aiven web console's Create Service dialog.
      */
-    readonly plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string>;
     /**
      * identifies the project the service belongs to. To set up proper dependency
      * between the project and the service, refer to the project as shown in the above example.
      * Project cannot be changed later without destroying and re-creating the service.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * optionally specifies the VPC the service should run in. If the value
      * is not set the service is not run inside a VPC. When set, the value should be given as a
@@ -296,45 +296,45 @@ export interface M3DbState {
      * creation but doing so triggers migration to new servers so the operation can take
      * significant amount of time to complete if the service has a lot of data.
      */
-    readonly projectVpcId?: pulumi.Input<string>;
+    projectVpcId?: pulumi.Input<string>;
     /**
      * M3 hostname.
      */
-    readonly serviceHost?: pulumi.Input<string>;
+    serviceHost?: pulumi.Input<string>;
     /**
      * Service integrations to specify when creating a service. Not applied after initial service creation
      */
-    readonly serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.M3DbServiceIntegration>[]>;
+    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.M3DbServiceIntegration>[]>;
     /**
      * specifies the actual name of the service. The name cannot be changed
      * later without destroying and re-creating the service so name should be picked based on
      * intended service usage rather than current attributes.
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * Password used for connecting to the M3 service, if applicable.
      */
-    readonly servicePassword?: pulumi.Input<string>;
+    servicePassword?: pulumi.Input<string>;
     /**
      * M3 port.
      */
-    readonly servicePort?: pulumi.Input<number>;
+    servicePort?: pulumi.Input<number>;
     /**
      * Aiven internal service type code
      */
-    readonly serviceType?: pulumi.Input<string>;
+    serviceType?: pulumi.Input<string>;
     /**
      * URI for connecting to the M3 service.
      */
-    readonly serviceUri?: pulumi.Input<string>;
+    serviceUri?: pulumi.Input<string>;
     /**
      * Username used for connecting to the M3 service, if applicable.
      */
-    readonly serviceUsername?: pulumi.Input<string>;
+    serviceUsername?: pulumi.Input<string>;
     /**
      * Service state.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
@@ -342,7 +342,7 @@ export interface M3DbState {
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
-    readonly terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean>;
 }
 
 /**
@@ -358,26 +358,26 @@ export interface M3DbArgs {
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
      * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
-    readonly cloudName?: pulumi.Input<string>;
+    cloudName?: pulumi.Input<string>;
     /**
      * M3 specific server provided values.
      */
-    readonly m3db?: pulumi.Input<inputs.M3DbM3db>;
+    m3db?: pulumi.Input<inputs.M3DbM3db>;
     /**
      * defines M3 specific additional configuration options. The following 
      * configuration options available:
      */
-    readonly m3dbUserConfig?: pulumi.Input<inputs.M3DbM3dbUserConfig>;
+    m3dbUserConfig?: pulumi.Input<inputs.M3DbM3dbUserConfig>;
     /**
      * day of week when maintenance operations should be performed. 
      * On monday, tuesday, wednesday, etc.
      */
-    readonly maintenanceWindowDow?: pulumi.Input<string>;
+    maintenanceWindowDow?: pulumi.Input<string>;
     /**
      * time of day when maintenance operations should be performed. 
      * UTC time in HH:mm:ss format.
      */
-    readonly maintenanceWindowTime?: pulumi.Input<string>;
+    maintenanceWindowTime?: pulumi.Input<string>;
     /**
      * defines what kind of computing resources are allocated for the service. It can
      * be changed after creation, though there are some restrictions when going to a smaller
@@ -388,13 +388,13 @@ export interface M3DbArgs {
      * and amount of disk space varies but naming is based on memory). The exact options can be
      * seen from the Aiven web console's Create Service dialog.
      */
-    readonly plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string>;
     /**
      * identifies the project the service belongs to. To set up proper dependency
      * between the project and the service, refer to the project as shown in the above example.
      * Project cannot be changed later without destroying and re-creating the service.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * optionally specifies the VPC the service should run in. If the value
      * is not set the service is not run inside a VPC. When set, the value should be given as a
@@ -403,17 +403,17 @@ export interface M3DbArgs {
      * creation but doing so triggers migration to new servers so the operation can take
      * significant amount of time to complete if the service has a lot of data.
      */
-    readonly projectVpcId?: pulumi.Input<string>;
+    projectVpcId?: pulumi.Input<string>;
     /**
      * Service integrations to specify when creating a service. Not applied after initial service creation
      */
-    readonly serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.M3DbServiceIntegration>[]>;
+    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.M3DbServiceIntegration>[]>;
     /**
      * specifies the actual name of the service. The name cannot be changed
      * later without destroying and re-creating the service so name should be picked based on
      * intended service usage rather than current attributes.
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
@@ -421,5 +421,5 @@ export interface M3DbArgs {
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
-    readonly terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean>;
 }

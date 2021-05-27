@@ -37,28 +37,28 @@ export interface GetAccountTeamMemberArgs {
      * `false` value means that the invitation was sent to the user but not yet accepted.
      * `true` means that the user accepted the invitation and is now a member of an account team.
      */
-    readonly accepted?: boolean;
+    accepted?: boolean;
     /**
      * is a unique account id.
      */
-    readonly accountId: string;
+    accountId: string;
     /**
      * time of creation.
      */
-    readonly createTime?: string;
+    createTime?: string;
     /**
      * team invited by user email.
      */
-    readonly invitedByUserEmail?: string;
+    invitedByUserEmail?: string;
     /**
      * is an account team id.
      */
-    readonly teamId: string;
+    teamId: string;
     /**
      * is a user email address that first will be invited, and after accepting an invitation,
      * he or she becomes a member of a team.
      */
-    readonly userEmail: string;
+    userEmail: string;
 }
 
 /**

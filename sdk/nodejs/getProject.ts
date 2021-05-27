@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const myproject = pulumi.output(aiven.getProject({
  *     project: "<PROJECT_NAME>",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
@@ -59,30 +59,30 @@ export interface GetProjectArgs {
      * is an optional property to link a project to already an existing account by 
      * using account ID.
      */
-    readonly accountId?: string;
+    accountId?: string;
     /**
      * is a computed property returning the amount of platform credits available to
      * the project. This could be your free trial or other promotional credits.
      */
-    readonly availableCredits?: string;
-    readonly billingAddress?: string;
-    readonly billingCurrency?: string;
-    readonly billingEmails?: string[];
-    readonly billingExtraText?: string;
-    readonly billingGroup?: string;
+    availableCredits?: string;
+    billingAddress?: string;
+    billingCurrency?: string;
+    billingEmails?: string[];
+    billingExtraText?: string;
+    billingGroup?: string;
     /**
      * is a computed property that can be used to read the CA certificate of the
      * project. This is required for configuring clients that connect to certain services like
      * Kafka. This value cannot be set, only read.
      */
-    readonly caCert?: string;
+    caCert?: string;
     /**
      * is either the full card UUID or the last 4 digits of the card. As the full
      * UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
      * the card. This can be omitted if `copyFromProject` is used to copy billing info from
      * another project.
      */
-    readonly cardId?: string;
+    cardId?: string;
     /**
      * is the name of another project used to copy billing information and
      * some other project attributes like technical contacts from. This is mostly relevant when
@@ -90,38 +90,38 @@ export interface GetProjectArgs {
      * new project. (Setting billing is otherwise not allowed over the API.) This only has
      * effect when the project is created.
      */
-    readonly copyFromProject?: string;
-    readonly country?: string;
-    readonly countryCode?: string;
+    copyFromProject?: string;
+    country?: string;
+    countryCode?: string;
     /**
      * defines the default cloud provider and region where services are
      * hosted. This can be changed freely after the project is created. This will not affect existing
      * services.
      */
-    readonly defaultCloud?: string;
+    defaultCloud?: string;
     /**
      * is a computed property returning the current accumulated bill for this
      * project in the current billing period.
      */
-    readonly estimatedBalance?: string;
+    estimatedBalance?: string;
     /**
      * is a computed property returning the method of invoicing used for payments for
      * this project, e.g. "card".
      */
-    readonly paymentMethod?: string;
+    paymentMethod?: string;
     /**
      * defines the name of the project. Name must be globally unique (between all
      * Aiven customers) and cannot be changed later without destroying and re-creating the
      * project, including all sub-resources.
      */
-    readonly project: string;
+    project: string;
     /**
      * defines the email addresses that will receive alerts about
      * upcoming maintenance updates or warnings about service instability. It is a good practice to keep
      * this up-to-date to be aware of any potential issues with your project.
      */
-    readonly technicalEmails?: string[];
-    readonly vatId?: string;
+    technicalEmails?: string[];
+    vatId?: string;
 }
 
 /**

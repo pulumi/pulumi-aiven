@@ -51,26 +51,26 @@ export interface GetTransitGatewayVpcAttachmentArgs {
     /**
      * AWS account ID of the peered VPC.
      */
-    readonly peerCloudAccount: string;
+    peerCloudAccount: string;
     /**
      * AWS region of the peered VPC (if not in the same region as Aiven VPC).
      */
-    readonly peerRegion?: string;
+    peerRegion?: string;
     /**
      * Transit gateway ID
      */
-    readonly peerVpc: string;
-    readonly peeringConnectionId?: string;
-    readonly state?: string;
-    readonly stateInfo?: {[key: string]: any};
+    peerVpc: string;
+    peeringConnectionId?: string;
+    state?: string;
+    stateInfo?: {[key: string]: any};
     /**
      * List of private IPv4 ranges to route through the peering connection.
      */
-    readonly userPeerNetworkCidrs?: string[];
+    userPeerNetworkCidrs?: string[];
     /**
      * is the Aiven VPC the peering connection is associated with.
      */
-    readonly vpcId: string;
+    vpcId: string;
 }
 
 /**

@@ -51,23 +51,23 @@ export interface GetKafkaAclArgs {
      * is the level of permission the matching users are given to the matching
      * topics (admin, read, readwrite, write).
      */
-    readonly permission: string;
+    permission: string;
     /**
      * and `serviceName` - (Required) define the project and service the ACL belongs to.
      * They should be defined using reference as shown above to set up dependencies correctly.
      * These properties cannot be changed once the service is created. Doing so will result in
      * the topic being deleted and new one created instead.
      */
-    readonly project: string;
-    readonly serviceName: string;
+    project: string;
+    serviceName: string;
     /**
      * is a topic name pattern the ACL entry matches to.
      */
-    readonly topic: string;
+    topic: string;
     /**
      * is a username pattern the ACL entry matches to.
      */
-    readonly username: string;
+    username: string;
 }
 
 /**

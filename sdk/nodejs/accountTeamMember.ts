@@ -124,28 +124,28 @@ export interface AccountTeamMemberState {
      * `false` value means that the invitation was sent to the user but not yet accepted.
      * `true` means that the user accepted the invitation and now a member of an account team.
      */
-    readonly accepted?: pulumi.Input<boolean>;
+    accepted?: pulumi.Input<boolean>;
     /**
      * is a unique account id.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * time of creation.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * team invited by user email.
      */
-    readonly invitedByUserEmail?: pulumi.Input<string>;
+    invitedByUserEmail?: pulumi.Input<string>;
     /**
      * is an account team id.
      */
-    readonly teamId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string>;
     /**
      * is a user email address that first will be invited, and after accepting an invitation,
      * he or she becomes a member of a team.
      */
-    readonly userEmail?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string>;
 }
 
 /**
@@ -157,26 +157,26 @@ export interface AccountTeamMemberArgs {
      * `false` value means that the invitation was sent to the user but not yet accepted.
      * `true` means that the user accepted the invitation and now a member of an account team.
      */
-    readonly accepted?: pulumi.Input<boolean>;
+    accepted?: pulumi.Input<boolean>;
     /**
      * is a unique account id.
      */
-    readonly accountId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * time of creation.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * team invited by user email.
      */
-    readonly invitedByUserEmail?: pulumi.Input<string>;
+    invitedByUserEmail?: pulumi.Input<string>;
     /**
      * is an account team id.
      */
-    readonly teamId: pulumi.Input<string>;
+    teamId: pulumi.Input<string>;
     /**
      * is a user email address that first will be invited, and after accepting an invitation,
      * he or she becomes a member of a team.
      */
-    readonly userEmail: pulumi.Input<string>;
+    userEmail: pulumi.Input<string>;
 }

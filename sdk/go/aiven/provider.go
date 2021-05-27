@@ -17,6 +17,9 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	// Aiven Authentication Token
+	ApiToken pulumi.StringOutput `pulumi:"apiToken"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.

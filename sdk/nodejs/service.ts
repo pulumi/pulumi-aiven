@@ -295,151 +295,151 @@ export interface ServiceState {
     /**
      * Cassandra specific server provided values
      */
-    readonly cassandra?: pulumi.Input<inputs.ServiceCassandra>;
+    cassandra?: pulumi.Input<inputs.ServiceCassandra>;
     /**
      * Cassandra specific user configurable settings
      */
-    readonly cassandraUserConfig?: pulumi.Input<inputs.ServiceCassandraUserConfig>;
+    cassandraUserConfig?: pulumi.Input<inputs.ServiceCassandraUserConfig>;
     /**
      * Cloud the service runs in
      */
-    readonly cloudName?: pulumi.Input<string>;
+    cloudName?: pulumi.Input<string>;
     /**
      * Service component information objects
      */
-    readonly components?: pulumi.Input<pulumi.Input<inputs.ServiceComponent>[]>;
+    components?: pulumi.Input<pulumi.Input<inputs.ServiceComponent>[]>;
     /**
      * Elasticsearch specific server provided values
      */
-    readonly elasticsearch?: pulumi.Input<inputs.ServiceElasticsearch>;
+    elasticsearch?: pulumi.Input<inputs.ServiceElasticsearch>;
     /**
      * Elasticsearch specific user configurable settings
      */
-    readonly elasticsearchUserConfig?: pulumi.Input<inputs.ServiceElasticsearchUserConfig>;
+    elasticsearchUserConfig?: pulumi.Input<inputs.ServiceElasticsearchUserConfig>;
     /**
      * Grafana specific server provided values
      */
-    readonly grafana?: pulumi.Input<inputs.ServiceGrafana>;
+    grafana?: pulumi.Input<inputs.ServiceGrafana>;
     /**
      * Grafana specific user configurable settings
      */
-    readonly grafanaUserConfig?: pulumi.Input<inputs.ServiceGrafanaUserConfig>;
+    grafanaUserConfig?: pulumi.Input<inputs.ServiceGrafanaUserConfig>;
     /**
      * InfluxDB specific server provided values
      */
-    readonly influxdb?: pulumi.Input<inputs.ServiceInfluxdb>;
+    influxdb?: pulumi.Input<inputs.ServiceInfluxdb>;
     /**
      * InfluxDB specific user configurable settings
      */
-    readonly influxdbUserConfig?: pulumi.Input<inputs.ServiceInfluxdbUserConfig>;
+    influxdbUserConfig?: pulumi.Input<inputs.ServiceInfluxdbUserConfig>;
     /**
      * Kafka specific server provided values
      */
-    readonly kafka?: pulumi.Input<inputs.ServiceKafka>;
+    kafka?: pulumi.Input<inputs.ServiceKafka>;
     /**
      * Kafka Connect specific server provided values
      */
-    readonly kafkaConnect?: pulumi.Input<inputs.ServiceKafkaConnect>;
+    kafkaConnect?: pulumi.Input<inputs.ServiceKafkaConnect>;
     /**
      * Kafka Connect specific user configurable settings
      */
-    readonly kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceKafkaConnectUserConfig>;
+    kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceKafkaConnectUserConfig>;
     /**
      * Kafka MirrorMaker 2 specific server provided values
      */
-    readonly kafkaMirrormaker?: pulumi.Input<inputs.ServiceKafkaMirrormaker>;
+    kafkaMirrormaker?: pulumi.Input<inputs.ServiceKafkaMirrormaker>;
     /**
      * Kafka MirrorMaker 2 specific user configurable settings
      */
-    readonly kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceKafkaMirrormakerUserConfig>;
+    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceKafkaMirrormakerUserConfig>;
     /**
      * Kafka specific user configurable settings
      */
-    readonly kafkaUserConfig?: pulumi.Input<inputs.ServiceKafkaUserConfig>;
+    kafkaUserConfig?: pulumi.Input<inputs.ServiceKafkaUserConfig>;
     /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
-    readonly maintenanceWindowDow?: pulumi.Input<string>;
+    maintenanceWindowDow?: pulumi.Input<string>;
     /**
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */
-    readonly maintenanceWindowTime?: pulumi.Input<string>;
+    maintenanceWindowTime?: pulumi.Input<string>;
     /**
      * MySQL specific server provided values
      */
-    readonly mysql?: pulumi.Input<inputs.ServiceMysql>;
+    mysql?: pulumi.Input<inputs.ServiceMysql>;
     /**
      * MySQL specific user configurable settings
      */
-    readonly mysqlUserConfig?: pulumi.Input<inputs.ServiceMysqlUserConfig>;
+    mysqlUserConfig?: pulumi.Input<inputs.ServiceMysqlUserConfig>;
     /**
      * PostgreSQL specific server provided values
      */
-    readonly pg?: pulumi.Input<inputs.ServicePg>;
+    pg?: pulumi.Input<inputs.ServicePg>;
     /**
      * PostgreSQL specific user configurable settings
      */
-    readonly pgUserConfig?: pulumi.Input<inputs.ServicePgUserConfig>;
+    pgUserConfig?: pulumi.Input<inputs.ServicePgUserConfig>;
     /**
      * Subscription plan
      */
-    readonly plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string>;
     /**
      * Target project
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Identifier of the VPC the service should be in, if any
      */
-    readonly projectVpcId?: pulumi.Input<string>;
+    projectVpcId?: pulumi.Input<string>;
     /**
      * Redis specific server provided values
      */
-    readonly redis?: pulumi.Input<inputs.ServiceRedis>;
+    redis?: pulumi.Input<inputs.ServiceRedis>;
     /**
      * Redis specific user configurable settings
      */
-    readonly redisUserConfig?: pulumi.Input<inputs.ServiceRedisUserConfig>;
+    redisUserConfig?: pulumi.Input<inputs.ServiceRedisUserConfig>;
     /**
      * Service hostname
      */
-    readonly serviceHost?: pulumi.Input<string>;
+    serviceHost?: pulumi.Input<string>;
     /**
      * Service integrations to specify when creating a service. Not applied after initial service creation
      */
-    readonly serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.ServiceServiceIntegration>[]>;
+    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.ServiceServiceIntegration>[]>;
     /**
      * Service name
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * Password used for connecting to the service, if applicable
      */
-    readonly servicePassword?: pulumi.Input<string>;
+    servicePassword?: pulumi.Input<string>;
     /**
      * Service port
      */
-    readonly servicePort?: pulumi.Input<number>;
+    servicePort?: pulumi.Input<number>;
     /**
      * Service type code
      */
-    readonly serviceType?: pulumi.Input<string>;
+    serviceType?: pulumi.Input<string>;
     /**
      * URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
      */
-    readonly serviceUri?: pulumi.Input<string>;
+    serviceUri?: pulumi.Input<string>;
     /**
      * Username used for connecting to the service, if applicable
      */
-    readonly serviceUsername?: pulumi.Input<string>;
+    serviceUsername?: pulumi.Input<string>;
     /**
      * Service state
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * Prevent service from being deleted. It is recommended to have this enabled for all services.
      */
-    readonly terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean>;
 }
 
 /**
@@ -449,121 +449,121 @@ export interface ServiceArgs {
     /**
      * Cassandra specific server provided values
      */
-    readonly cassandra?: pulumi.Input<inputs.ServiceCassandra>;
+    cassandra?: pulumi.Input<inputs.ServiceCassandra>;
     /**
      * Cassandra specific user configurable settings
      */
-    readonly cassandraUserConfig?: pulumi.Input<inputs.ServiceCassandraUserConfig>;
+    cassandraUserConfig?: pulumi.Input<inputs.ServiceCassandraUserConfig>;
     /**
      * Cloud the service runs in
      */
-    readonly cloudName?: pulumi.Input<string>;
+    cloudName?: pulumi.Input<string>;
     /**
      * Elasticsearch specific server provided values
      */
-    readonly elasticsearch?: pulumi.Input<inputs.ServiceElasticsearch>;
+    elasticsearch?: pulumi.Input<inputs.ServiceElasticsearch>;
     /**
      * Elasticsearch specific user configurable settings
      */
-    readonly elasticsearchUserConfig?: pulumi.Input<inputs.ServiceElasticsearchUserConfig>;
+    elasticsearchUserConfig?: pulumi.Input<inputs.ServiceElasticsearchUserConfig>;
     /**
      * Grafana specific server provided values
      */
-    readonly grafana?: pulumi.Input<inputs.ServiceGrafana>;
+    grafana?: pulumi.Input<inputs.ServiceGrafana>;
     /**
      * Grafana specific user configurable settings
      */
-    readonly grafanaUserConfig?: pulumi.Input<inputs.ServiceGrafanaUserConfig>;
+    grafanaUserConfig?: pulumi.Input<inputs.ServiceGrafanaUserConfig>;
     /**
      * InfluxDB specific server provided values
      */
-    readonly influxdb?: pulumi.Input<inputs.ServiceInfluxdb>;
+    influxdb?: pulumi.Input<inputs.ServiceInfluxdb>;
     /**
      * InfluxDB specific user configurable settings
      */
-    readonly influxdbUserConfig?: pulumi.Input<inputs.ServiceInfluxdbUserConfig>;
+    influxdbUserConfig?: pulumi.Input<inputs.ServiceInfluxdbUserConfig>;
     /**
      * Kafka specific server provided values
      */
-    readonly kafka?: pulumi.Input<inputs.ServiceKafka>;
+    kafka?: pulumi.Input<inputs.ServiceKafka>;
     /**
      * Kafka Connect specific server provided values
      */
-    readonly kafkaConnect?: pulumi.Input<inputs.ServiceKafkaConnect>;
+    kafkaConnect?: pulumi.Input<inputs.ServiceKafkaConnect>;
     /**
      * Kafka Connect specific user configurable settings
      */
-    readonly kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceKafkaConnectUserConfig>;
+    kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceKafkaConnectUserConfig>;
     /**
      * Kafka MirrorMaker 2 specific server provided values
      */
-    readonly kafkaMirrormaker?: pulumi.Input<inputs.ServiceKafkaMirrormaker>;
+    kafkaMirrormaker?: pulumi.Input<inputs.ServiceKafkaMirrormaker>;
     /**
      * Kafka MirrorMaker 2 specific user configurable settings
      */
-    readonly kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceKafkaMirrormakerUserConfig>;
+    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceKafkaMirrormakerUserConfig>;
     /**
      * Kafka specific user configurable settings
      */
-    readonly kafkaUserConfig?: pulumi.Input<inputs.ServiceKafkaUserConfig>;
+    kafkaUserConfig?: pulumi.Input<inputs.ServiceKafkaUserConfig>;
     /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
-    readonly maintenanceWindowDow?: pulumi.Input<string>;
+    maintenanceWindowDow?: pulumi.Input<string>;
     /**
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */
-    readonly maintenanceWindowTime?: pulumi.Input<string>;
+    maintenanceWindowTime?: pulumi.Input<string>;
     /**
      * MySQL specific server provided values
      */
-    readonly mysql?: pulumi.Input<inputs.ServiceMysql>;
+    mysql?: pulumi.Input<inputs.ServiceMysql>;
     /**
      * MySQL specific user configurable settings
      */
-    readonly mysqlUserConfig?: pulumi.Input<inputs.ServiceMysqlUserConfig>;
+    mysqlUserConfig?: pulumi.Input<inputs.ServiceMysqlUserConfig>;
     /**
      * PostgreSQL specific server provided values
      */
-    readonly pg?: pulumi.Input<inputs.ServicePg>;
+    pg?: pulumi.Input<inputs.ServicePg>;
     /**
      * PostgreSQL specific user configurable settings
      */
-    readonly pgUserConfig?: pulumi.Input<inputs.ServicePgUserConfig>;
+    pgUserConfig?: pulumi.Input<inputs.ServicePgUserConfig>;
     /**
      * Subscription plan
      */
-    readonly plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string>;
     /**
      * Target project
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Identifier of the VPC the service should be in, if any
      */
-    readonly projectVpcId?: pulumi.Input<string>;
+    projectVpcId?: pulumi.Input<string>;
     /**
      * Redis specific server provided values
      */
-    readonly redis?: pulumi.Input<inputs.ServiceRedis>;
+    redis?: pulumi.Input<inputs.ServiceRedis>;
     /**
      * Redis specific user configurable settings
      */
-    readonly redisUserConfig?: pulumi.Input<inputs.ServiceRedisUserConfig>;
+    redisUserConfig?: pulumi.Input<inputs.ServiceRedisUserConfig>;
     /**
      * Service integrations to specify when creating a service. Not applied after initial service creation
      */
-    readonly serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.ServiceServiceIntegration>[]>;
+    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.ServiceServiceIntegration>[]>;
     /**
      * Service name
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
     /**
      * Service type code
      */
-    readonly serviceType: pulumi.Input<string>;
+    serviceType: pulumi.Input<string>;
     /**
      * Prevent service from being deleted. It is recommended to have this enabled for all services.
      */
-    readonly terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean>;
 }

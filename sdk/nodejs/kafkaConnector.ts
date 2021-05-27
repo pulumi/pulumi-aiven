@@ -176,48 +176,48 @@ export interface KafkaConnectorState {
     /**
      * Kafka Connector configuration parameters
      */
-    readonly config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Kafka connector name
      */
-    readonly connectorName?: pulumi.Input<string>;
+    connectorName?: pulumi.Input<string>;
     /**
      * Kafka connector author.
      */
-    readonly pluginAuthor?: pulumi.Input<string>;
+    pluginAuthor?: pulumi.Input<string>;
     /**
      * Kafka connector Java class.
      */
-    readonly pluginClass?: pulumi.Input<string>;
+    pluginClass?: pulumi.Input<string>;
     /**
      * Kafka connector documentation URL.
      */
-    readonly pluginDocUrl?: pulumi.Input<string>;
+    pluginDocUrl?: pulumi.Input<string>;
     /**
      * Kafka connector title.
      */
-    readonly pluginTitle?: pulumi.Input<string>;
+    pluginTitle?: pulumi.Input<string>;
     /**
      * Kafka connector type.
      */
-    readonly pluginType?: pulumi.Input<string>;
+    pluginType?: pulumi.Input<string>;
     /**
      * Kafka connector version.
      */
-    readonly pluginVersion?: pulumi.Input<string>;
+    pluginVersion?: pulumi.Input<string>;
     /**
      * Project to link the kafka connector to
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Service to link the kafka connector to
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * List of tasks of a connector, each element contains `connector` 
      * (Related connector name) and `task` (Task id / number).
      */
-    readonly tasks?: pulumi.Input<pulumi.Input<inputs.KafkaConnectorTask>[]>;
+    tasks?: pulumi.Input<pulumi.Input<inputs.KafkaConnectorTask>[]>;
 }
 
 /**
@@ -227,17 +227,17 @@ export interface KafkaConnectorArgs {
     /**
      * Kafka Connector configuration parameters
      */
-    readonly config: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Kafka connector name
      */
-    readonly connectorName: pulumi.Input<string>;
+    connectorName: pulumi.Input<string>;
     /**
      * Project to link the kafka connector to
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Service to link the kafka connector to
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
 }

@@ -159,48 +159,48 @@ export interface ServiceUserState {
     /**
      * is the access certificate of the user (not applicable for all services).
      */
-    readonly accessCert?: pulumi.Input<string>;
+    accessCert?: pulumi.Input<string>;
     /**
      * is the access key of the user (not applicable for all services).
      */
-    readonly accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     /**
      * Authentication details
      */
-    readonly authentication?: pulumi.Input<string>;
+    authentication?: pulumi.Input<string>;
     /**
      * Password of the user
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
      * using reference as shown above to set up dependencies correctly.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Redis specific field, defines command category rules.
      */
-    readonly redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
+    redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Redis specific field, defines rules for individual commands.
      */
-    readonly redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
+    redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Redis specific field, defines key access rules.
      */
-    readonly redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Service to link the user to
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * tells whether the user is primary account or regular account.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * is the actual name of the user account.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -210,34 +210,34 @@ export interface ServiceUserArgs {
     /**
      * Authentication details
      */
-    readonly authentication?: pulumi.Input<string>;
+    authentication?: pulumi.Input<string>;
     /**
      * Password of the user
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
      * using reference as shown above to set up dependencies correctly.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Redis specific field, defines command category rules.
      */
-    readonly redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
+    redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Redis specific field, defines rules for individual commands.
      */
-    readonly redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
+    redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Redis specific field, defines key access rules.
      */
-    readonly redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Service to link the user to
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
     /**
      * is the actual name of the user account.
      */
-    readonly username: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }

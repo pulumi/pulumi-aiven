@@ -44,23 +44,23 @@ export function getElasticSearchAcl(args: GetElasticSearchAclArgs, opts?: pulumi
  * A collection of arguments for invoking getElasticSearchAcl.
  */
 export interface GetElasticSearchAclArgs {
-    readonly acls?: inputs.GetElasticSearchAclAcl[];
+    acls?: inputs.GetElasticSearchAclAcl[];
     /**
      * enables or disables Elasticsearch ACLs.
      */
-    readonly enabled?: boolean;
+    enabled?: boolean;
     /**
      * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
      * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
      * these APIs as long as all operations only target indexes they have been granted access to.
      */
-    readonly extendedAcl?: boolean;
+    extendedAcl?: boolean;
     /**
      * and `serviceName` - (Required) define the project and service the ACL belongs to. 
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly project: string;
-    readonly serviceName: string;
+    project: string;
+    serviceName: string;
 }
 
 /**

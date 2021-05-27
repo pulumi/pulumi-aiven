@@ -51,39 +51,39 @@ export interface GetConnectionPoolArgs {
      * is a computed property that tells the URI for connecting to the pool.
      * This value cannot be set, only read.
      */
-    readonly connectionUri?: string;
+    connectionUri?: string;
     /**
      * is the name of the database the pool connects to. This should be
      * defined using reference as shown above to set up dependencies correctly.
      */
-    readonly databaseName?: string;
+    databaseName?: string;
     /**
      * is the mode the pool operates in (session, transaction, statement).
      */
-    readonly poolMode?: string;
+    poolMode?: string;
     /**
      * is the name of the pool.
      */
-    readonly poolName: string;
+    poolName: string;
     /**
      * is the number of connections the pool may create towards the backend
      * server. This does not affect the number of incoming connections, which is always a much
      * larger number.
      */
-    readonly poolSize?: number;
+    poolSize?: number;
     /**
      * and `serviceName` - (Required) define the project and service the connection pool
      * belongs to. They should be defined using reference as shown above to set up dependencies
      * correctly. These properties cannot be changed once the service is created. Doing so will
      * result in the connection pool being deleted and new one created instead.
      */
-    readonly project: string;
-    readonly serviceName: string;
+    project: string;
+    serviceName: string;
     /**
      * is the name of the service user used to connect to the database. This should
      * be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly username?: string;
+    username?: string;
 }
 
 /**

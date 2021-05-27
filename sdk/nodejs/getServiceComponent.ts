@@ -62,19 +62,19 @@ export interface GetServiceComponentArgs {
      * Elasticsearch, `kafkaConnect`, `kafkaRest` and `schemaRegistry` for Kafka, and
      * `pgbouncer` for PostgreSQL. Most service types also support `prometheus`.
      */
-    readonly component: string;
+    component: string;
     /**
      * is Kafka authentication method. This is a value specific 
      * to the 'kafka' service components. And has the following available options: `certificate`
      * and `sasl`. If not set by the user only entries with empty `kafkaAuthenticationMethod`
      * will be selected.
      */
-    readonly kafkaAuthenticationMethod?: string;
+    kafkaAuthenticationMethod?: string;
     /**
      * and `serviceName` - (Required) define the project and service the service component
      * belongs to.
      */
-    readonly project: string;
+    project: string;
     /**
      * is network access route. The route may be one of `dynamic`, `public`, and `private`. 
      * Usually, you'll want to use `dynamic`, which for services that are not in a private network
@@ -83,15 +83,15 @@ export interface GetServiceComponentArgs {
      * enabled the `public` route type can be used to get the public DNS name of the service. The
      * `private` option should typically not be used.
      */
-    readonly route?: string;
-    readonly serviceName?: string;
+    route?: string;
+    serviceName?: string;
     /**
      * whether the endpoint is encrypted or accepts plaintext. By default endpoints are
      * always encrypted and this property is only included for service components they may
      * disable encryption. If not set by the user only entries with empty `ssl` or `ssl` set
      * to true will be selected.
      */
-    readonly ssl?: boolean;
+    ssl?: boolean;
     /**
      * is DNS usage name, and can be one of `primary`, `replica` or `syncing`. `replica` 
      * is used by services that have separate master and standby roles for which it identifies
@@ -100,7 +100,7 @@ export interface GetServiceComponentArgs {
      * example a PostgreSQL node that is streaming WAL segments from backup or current master
      * but hasn't yet fully caught up.
      */
-    readonly usage?: string;
+    usage?: string;
 }
 
 /**

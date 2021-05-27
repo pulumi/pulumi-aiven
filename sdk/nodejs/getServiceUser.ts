@@ -55,42 +55,42 @@ export interface GetServiceUserArgs {
     /**
      * is the access certificate of the user (not applicable for all services).
      */
-    readonly accessCert?: string;
+    accessCert?: string;
     /**
      * is the access key of the user (not applicable for all services).
      */
-    readonly accessKey?: string;
-    readonly authentication?: string;
+    accessKey?: string;
+    authentication?: string;
     /**
      * is the password of the user (not applicable for all services).
      */
-    readonly password?: string;
+    password?: string;
     /**
      * and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
      * using reference as shown above to set up dependencies correctly.
      */
-    readonly project: string;
+    project: string;
     /**
      * Redis specific field, defines command category rules.
      */
-    readonly redisAclCategories?: string[];
+    redisAclCategories?: string[];
     /**
      * Redis specific field, defines rules for individual commands.
      */
-    readonly redisAclCommands?: string[];
+    redisAclCommands?: string[];
     /**
      * Redis specific field, defines key access rules.
      */
-    readonly redisAclKeys?: string[];
-    readonly serviceName: string;
+    redisAclKeys?: string[];
+    serviceName: string;
     /**
      * tells whether the user is primary account or regular account.
      */
-    readonly type?: string;
+    type?: string;
     /**
      * is the actual name of the user account.
      */
-    readonly username: string;
+    username: string;
 }
 
 /**

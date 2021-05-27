@@ -48,22 +48,22 @@ export interface GetDatabaseArgs {
     /**
      * is the actual name of the database.
      */
-    readonly databaseName: string;
+    databaseName: string;
     /**
      * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
      */
-    readonly lcCollate?: string;
+    lcCollate?: string;
     /**
      * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
      */
-    readonly lcCtype?: string;
+    lcCtype?: string;
     /**
      * and `serviceName` - (Required) define the project and service the database belongs to.
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly project: string;
-    readonly serviceName: string;
-    readonly terminationProtection?: boolean;
+    project: string;
+    serviceName: string;
+    terminationProtection?: boolean;
 }
 
 /**

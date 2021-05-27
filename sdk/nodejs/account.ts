@@ -113,27 +113,27 @@ export interface AccountState {
     /**
      * is an auto-generated unique account id.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * time of creation.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * defines an account name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * is an owner team id.
      */
-    readonly ownerTeamId?: pulumi.Input<string>;
+    ownerTeamId?: pulumi.Input<string>;
     /**
      * is a tenant id.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * time of last update.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
 }
 
 /**
@@ -143,21 +143,21 @@ export interface AccountArgs {
     /**
      * time of creation.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * defines an account name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * is an owner team id.
      */
-    readonly ownerTeamId?: pulumi.Input<string>;
+    ownerTeamId?: pulumi.Input<string>;
     /**
      * is a tenant id.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * time of last update.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
 }

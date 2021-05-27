@@ -23715,6 +23715,15 @@
     },
     "provider": {
         "description": "The provider type for the aiven package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "apiToken": {
+                "type": "string",
+                "description": "Aiven Authentication Token\n"
+            }
+        },
+        "required": [
+            "apiToken"
+        ],
         "inputProperties": {
             "apiToken": {
                 "type": "string",
@@ -30380,7 +30389,7 @@
     },
     "functions": {
         "aiven:index/getAccount:getAccount": {
-            "description": "## # Account Data Source\n\nThe Account data source provides information about the existing Aiven Account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst account1 = pulumi.output(aiven.getAccount({\n    name: \"\u003cACCOUNT_NAME\u003e\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\naccount1 = aiven.get_account(name=\"\u003cACCOUNT_NAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var account1 = Output.Create(Aiven.GetAccount.InvokeAsync(new Aiven.GetAccountArgs\n        {\n            Name = \"\u003cACCOUNT_NAME\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupAccount(ctx, \u0026aiven.LookupAccountArgs{\n\t\t\tName: \"\u003cACCOUNT_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # Account Data Source\n\nThe Account data source provides information about the existing Aiven Account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst account1 = pulumi.output(aiven.getAccount({\n    name: \"\u003cACCOUNT_NAME\u003e\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\naccount1 = aiven.get_account(name=\"\u003cACCOUNT_NAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var account1 = Output.Create(Aiven.GetAccount.InvokeAsync(new Aiven.GetAccountArgs\n        {\n            Name = \"\u003cACCOUNT_NAME\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupAccount(ctx, \u0026aiven.LookupAccountArgs{\n\t\t\tName: \"\u003cACCOUNT_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getAccount.\n",
                 "properties": {
@@ -33785,7 +33794,7 @@
             }
         },
         "aiven:index/getProject:getProject": {
-            "description": "## # Project Data Source\n\nThe Project data source provides information about the existing Aiven Project.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myproject = pulumi.output(aiven.getProject({\n    project: \"\u003cPROJECT_NAME\u003e\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyproject = aiven.get_project(project=\"\u003cPROJECT_NAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myproject = Output.Create(Aiven.GetProject.InvokeAsync(new Aiven.GetProjectArgs\n        {\n            Project = \"\u003cPROJECT_NAME\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupProject(ctx, \u0026aiven.LookupProjectArgs{\n\t\t\tProject: \"\u003cPROJECT_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # Project Data Source\n\nThe Project data source provides information about the existing Aiven Project.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myproject = pulumi.output(aiven.getProject({\n    project: \"\u003cPROJECT_NAME\u003e\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyproject = aiven.get_project(project=\"\u003cPROJECT_NAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myproject = Output.Create(Aiven.GetProject.InvokeAsync(new Aiven.GetProjectArgs\n        {\n            Project = \"\u003cPROJECT_NAME\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupProject(ctx, \u0026aiven.LookupProjectArgs{\n\t\t\tProject: \"\u003cPROJECT_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getProject.\n",
                 "properties": {

@@ -124,27 +124,27 @@ export interface AwsPrivatelinkState {
     /**
      * AWS service ID.
      */
-    readonly awsServiceId?: pulumi.Input<string>;
+    awsServiceId?: pulumi.Input<string>;
     /**
      * AWS service name.
      */
-    readonly awsServiceName?: pulumi.Input<string>;
+    awsServiceName?: pulumi.Input<string>;
     /**
      * list of allowed principals
      */
-    readonly principals?: pulumi.Input<pulumi.Input<string>[]>;
+    principals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * identifies the project the service belongs to. To set up proper dependency between the project
      * and the service, refer to the project as shown in the above example. Project cannot be changed later without
      * destroying and re-creating the service.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * specifies the actual name of the service. The name cannot be changed later without
      * destroying and re-creating the service so name should be picked based on intended service usage rather than current
      * attributes.
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
 }
 
 /**
@@ -154,17 +154,17 @@ export interface AwsPrivatelinkArgs {
     /**
      * list of allowed principals
      */
-    readonly principals: pulumi.Input<pulumi.Input<string>[]>;
+    principals: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * identifies the project the service belongs to. To set up proper dependency between the project
      * and the service, refer to the project as shown in the above example. Project cannot be changed later without
      * destroying and re-creating the service.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * specifies the actual name of the service. The name cannot be changed later without
      * destroying and re-creating the service so name should be picked based on intended service usage rather than current
      * attributes.
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
 }

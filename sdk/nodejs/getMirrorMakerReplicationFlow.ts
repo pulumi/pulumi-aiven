@@ -51,29 +51,29 @@ export interface GetMirrorMakerReplicationFlowArgs {
     /**
      * enable of disable replication flows for a MirrorMaker service
      */
-    readonly enable?: boolean;
+    enable?: boolean;
     /**
      * and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication 
      * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly project: string;
-    readonly serviceName: string;
+    project: string;
+    serviceName: string;
     /**
      * is a source cluster alias.
      */
-    readonly sourceCluster: string;
+    sourceCluster: string;
     /**
      * is a target cluster alias.
      */
-    readonly targetCluster: string;
+    targetCluster: string;
     /**
      * is a list of topics and/or regular expressions to replicate.
      */
-    readonly topics?: string[];
+    topics?: string[];
     /**
      * is a list of topics and/or regular expressions to not replicate.
      */
-    readonly topicsBlacklists?: string[];
+    topicsBlacklists?: string[];
 }
 
 /**

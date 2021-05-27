@@ -25,6 +25,10 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * Aiven Authentication Token
+     */
+    public readonly apiToken!: pulumi.Output<string>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -56,5 +60,5 @@ export interface ProviderArgs {
     /**
      * Aiven Authentication Token
      */
-    readonly apiToken: pulumi.Input<string>;
+    apiToken: pulumi.Input<string>;
 }

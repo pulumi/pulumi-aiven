@@ -55,39 +55,39 @@ export function getKafkaConnector(args: GetKafkaConnectorArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getKafkaConnector.
  */
 export interface GetKafkaConnectorArgs {
-    readonly config?: {[key: string]: string};
-    readonly connectorName: string;
+    config?: {[key: string]: string};
+    connectorName: string;
     /**
      * Kafka connector author.
      */
-    readonly pluginAuthor?: string;
+    pluginAuthor?: string;
     /**
      * Kafka connector Java class.
      */
-    readonly pluginClass?: string;
+    pluginClass?: string;
     /**
      * Kafka connector documentation URL.
      */
-    readonly pluginDocUrl?: string;
+    pluginDocUrl?: string;
     /**
      * Kafka connector title.
      */
-    readonly pluginTitle?: string;
+    pluginTitle?: string;
     /**
      * Kafka connector type.
      */
-    readonly pluginType?: string;
+    pluginType?: string;
     /**
      * Kafka connector version.
      */
-    readonly pluginVersion?: string;
-    readonly project: string;
-    readonly serviceName: string;
+    pluginVersion?: string;
+    project: string;
+    serviceName: string;
     /**
      * List of tasks of a connector, each element contains `connector` 
      * (Related connector name) and `task` (Task id / number).
      */
-    readonly tasks?: inputs.GetKafkaConnectorTask[];
+    tasks?: inputs.GetKafkaConnectorTask[];
 }
 
 /**

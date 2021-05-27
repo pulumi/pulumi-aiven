@@ -34,23 +34,23 @@ export interface GetAccountTeamArgs {
     /**
      * is a unique account id.
      */
-    readonly accountId: string;
+    accountId: string;
     /**
      * time of creation.
      */
-    readonly createTime?: string;
+    createTime?: string;
     /**
      * defines an account team name.
      */
-    readonly name: string;
+    name: string;
     /**
      * is an auto-generated unique account team id.
      */
-    readonly teamId?: string;
+    teamId?: string;
     /**
      * time of last update.
      */
-    readonly updateTime?: string;
+    updateTime?: string;
 }
 
 /**

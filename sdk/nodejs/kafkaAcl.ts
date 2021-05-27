@@ -133,26 +133,26 @@ export interface KafkaAclState {
      * is the level of permission the matching users are given to the matching
      * topics (admin, read, readwrite, write).
      */
-    readonly permission?: pulumi.Input<string>;
+    permission?: pulumi.Input<string>;
     /**
      * and `serviceName` - (Required) define the project and service the ACL belongs to.
      * They should be defined using reference as shown above to set up dependencies correctly.
      * These properties cannot be changed once the service is created. Doing so will result in
      * the topic being deleted and new one created instead.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Service to link the Kafka ACL to
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * is a topic name pattern the ACL entry matches to.
      */
-    readonly topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string>;
     /**
      * is a username pattern the ACL entry matches to.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -163,24 +163,24 @@ export interface KafkaAclArgs {
      * is the level of permission the matching users are given to the matching
      * topics (admin, read, readwrite, write).
      */
-    readonly permission: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
     /**
      * and `serviceName` - (Required) define the project and service the ACL belongs to.
      * They should be defined using reference as shown above to set up dependencies correctly.
      * These properties cannot be changed once the service is created. Doing so will result in
      * the topic being deleted and new one created instead.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Service to link the Kafka ACL to
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
     /**
      * is a topic name pattern the ACL entry matches to.
      */
-    readonly topic: pulumi.Input<string>;
+    topic: pulumi.Input<string>;
     /**
      * is a username pattern the ACL entry matches to.
      */
-    readonly username: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }

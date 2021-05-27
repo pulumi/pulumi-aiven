@@ -119,16 +119,16 @@ export interface KafkaSchemaConfigurationState {
      * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
      * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
      */
-    readonly compatibilityLevel?: pulumi.Input<string>;
+    compatibilityLevel?: pulumi.Input<string>;
     /**
      * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Service to link the Kafka Schemas Configuration to
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
 }
 
 /**
@@ -143,14 +143,14 @@ export interface KafkaSchemaConfigurationArgs {
      * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
      * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
      */
-    readonly compatibilityLevel: pulumi.Input<string>;
+    compatibilityLevel: pulumi.Input<string>;
     /**
      * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Service to link the Kafka Schemas Configuration to
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
 }

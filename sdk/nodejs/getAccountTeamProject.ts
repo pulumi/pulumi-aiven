@@ -33,20 +33,20 @@ export interface GetAccountTeamProjectArgs {
     /**
      * is a unique account id.
      */
-    readonly accountId: string;
+    accountId: string;
     /**
      * is a project name of already existing project.
      */
-    readonly projectName: string;
+    projectName: string;
     /**
      * is an account team id.
      */
-    readonly teamId: string;
+    teamId: string;
     /**
      * is an account team project type, can one of the following values: `admin`, 
      * `developer`, `operator` and `readOnly`.
      */
-    readonly teamType?: string;
+    teamType?: string;
 }
 
 /**

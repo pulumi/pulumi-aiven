@@ -245,30 +245,30 @@ export interface InfluxDbState {
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
      * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
-    readonly cloudName?: pulumi.Input<string>;
+    cloudName?: pulumi.Input<string>;
     /**
      * Service component information objects
      */
-    readonly components?: pulumi.Input<pulumi.Input<inputs.InfluxDbComponent>[]>;
+    components?: pulumi.Input<pulumi.Input<inputs.InfluxDbComponent>[]>;
     /**
      * influxdb.conf configuration values
      */
-    readonly influxdb?: pulumi.Input<inputs.InfluxDbInfluxdb>;
+    influxdb?: pulumi.Input<inputs.InfluxDbInfluxdb>;
     /**
      * defines InfluxDB specific additional configuration options. The following 
      * configuration options available:
      */
-    readonly influxdbUserConfig?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfig>;
+    influxdbUserConfig?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfig>;
     /**
      * day of week when maintenance operations should be performed. 
      * On monday, tuesday, wednesday, etc.
      */
-    readonly maintenanceWindowDow?: pulumi.Input<string>;
+    maintenanceWindowDow?: pulumi.Input<string>;
     /**
      * time of day when maintenance operations should be performed. 
      * UTC time in HH:mm:ss format.
      */
-    readonly maintenanceWindowTime?: pulumi.Input<string>;
+    maintenanceWindowTime?: pulumi.Input<string>;
     /**
      * defines what kind of computing resources are allocated for the service. It can
      * be changed after creation, though there are some restrictions when going to a smaller
@@ -279,13 +279,13 @@ export interface InfluxDbState {
      * and amount of disk space varies but naming is based on memory). The exact options can be
      * seen from the Aiven web console's Create Service dialog.
      */
-    readonly plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string>;
     /**
      * identifies the project the service belongs to. To set up proper dependency
      * between the project and the service, refer to the project as shown in the above example.
      * Project cannot be changed later without destroying and re-creating the service.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * optionally specifies the VPC the service should run in. If the value
      * is not set the service is not run inside a VPC. When set, the value should be given as a
@@ -294,45 +294,45 @@ export interface InfluxDbState {
      * creation but doing so triggers migration to new servers so the operation can take
      * significant amount of time to complete if the service has a lot of data.
      */
-    readonly projectVpcId?: pulumi.Input<string>;
+    projectVpcId?: pulumi.Input<string>;
     /**
      * InfluxDB hostname.
      */
-    readonly serviceHost?: pulumi.Input<string>;
+    serviceHost?: pulumi.Input<string>;
     /**
      * Service integrations to specify when creating a service. Not applied after initial service creation
      */
-    readonly serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.InfluxDbServiceIntegration>[]>;
+    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.InfluxDbServiceIntegration>[]>;
     /**
      * specifies the actual name of the service. The name cannot be changed
      * later without destroying and re-creating the service so name should be picked based on
      * intended service usage rather than current attributes.
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * Password used for connecting to the InfluxDB service, if applicable.
      */
-    readonly servicePassword?: pulumi.Input<string>;
+    servicePassword?: pulumi.Input<string>;
     /**
      * InfluxDB port.
      */
-    readonly servicePort?: pulumi.Input<number>;
+    servicePort?: pulumi.Input<number>;
     /**
      * Aiven internal service type code
      */
-    readonly serviceType?: pulumi.Input<string>;
+    serviceType?: pulumi.Input<string>;
     /**
      * URI for connecting to the InfluxDB service.
      */
-    readonly serviceUri?: pulumi.Input<string>;
+    serviceUri?: pulumi.Input<string>;
     /**
      * Username used for connecting to the InfluxDB service, if applicable.
      */
-    readonly serviceUsername?: pulumi.Input<string>;
+    serviceUsername?: pulumi.Input<string>;
     /**
      * Service state.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
@@ -340,7 +340,7 @@ export interface InfluxDbState {
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
-    readonly terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean>;
 }
 
 /**
@@ -356,26 +356,26 @@ export interface InfluxDbArgs {
      * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
      * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
-    readonly cloudName?: pulumi.Input<string>;
+    cloudName?: pulumi.Input<string>;
     /**
      * influxdb.conf configuration values
      */
-    readonly influxdb?: pulumi.Input<inputs.InfluxDbInfluxdb>;
+    influxdb?: pulumi.Input<inputs.InfluxDbInfluxdb>;
     /**
      * defines InfluxDB specific additional configuration options. The following 
      * configuration options available:
      */
-    readonly influxdbUserConfig?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfig>;
+    influxdbUserConfig?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfig>;
     /**
      * day of week when maintenance operations should be performed. 
      * On monday, tuesday, wednesday, etc.
      */
-    readonly maintenanceWindowDow?: pulumi.Input<string>;
+    maintenanceWindowDow?: pulumi.Input<string>;
     /**
      * time of day when maintenance operations should be performed. 
      * UTC time in HH:mm:ss format.
      */
-    readonly maintenanceWindowTime?: pulumi.Input<string>;
+    maintenanceWindowTime?: pulumi.Input<string>;
     /**
      * defines what kind of computing resources are allocated for the service. It can
      * be changed after creation, though there are some restrictions when going to a smaller
@@ -386,13 +386,13 @@ export interface InfluxDbArgs {
      * and amount of disk space varies but naming is based on memory). The exact options can be
      * seen from the Aiven web console's Create Service dialog.
      */
-    readonly plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string>;
     /**
      * identifies the project the service belongs to. To set up proper dependency
      * between the project and the service, refer to the project as shown in the above example.
      * Project cannot be changed later without destroying and re-creating the service.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * optionally specifies the VPC the service should run in. If the value
      * is not set the service is not run inside a VPC. When set, the value should be given as a
@@ -401,17 +401,17 @@ export interface InfluxDbArgs {
      * creation but doing so triggers migration to new servers so the operation can take
      * significant amount of time to complete if the service has a lot of data.
      */
-    readonly projectVpcId?: pulumi.Input<string>;
+    projectVpcId?: pulumi.Input<string>;
     /**
      * Service integrations to specify when creating a service. Not applied after initial service creation
      */
-    readonly serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.InfluxDbServiceIntegration>[]>;
+    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.InfluxDbServiceIntegration>[]>;
     /**
      * specifies the actual name of the service. The name cannot be changed
      * later without destroying and re-creating the service so name should be picked based on
      * intended service usage rather than current attributes.
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
     /**
      * prevents the service from being deleted. It is recommended to
      * set this to `true` for all production services to prevent unintentional service
@@ -419,5 +419,5 @@ export interface InfluxDbArgs {
      * with backups much of the content can at least be restored from backup in case accidental
      * deletion is done.
      */
-    readonly terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean>;
 }

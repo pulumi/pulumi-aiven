@@ -46,20 +46,20 @@ export interface GetProjectVpcArgs {
      * defines where the cloud provider and region where the service is hosted
      * in. See the Service resource for additional information.
      */
-    readonly cloudName: string;
+    cloudName: string;
     /**
      * defines the network CIDR of the VPC.
      */
-    readonly networkCidr?: string;
+    networkCidr?: string;
     /**
      * defines the project the VPC belongs to.
      */
-    readonly project: string;
+    project: string;
     /**
      * ia a computed property that tells the current state of the VPC. This property cannot be
      * set, only read.
      */
-    readonly state?: string;
+    state?: string;
 }
 
 /**
