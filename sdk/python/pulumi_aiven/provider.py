@@ -99,3 +99,11 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="apiToken")
+    def api_token(self) -> pulumi.Output[str]:
+        """
+        Aiven Authentication Token
+        """
+        return pulumi.get(self, "api_token")
+

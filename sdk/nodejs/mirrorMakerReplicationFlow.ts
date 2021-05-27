@@ -148,32 +148,32 @@ export interface MirrorMakerReplicationFlowState {
     /**
      * enable of disable replication flows for a MirrorMaker service
      */
-    readonly enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean>;
     /**
      * and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication 
      * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Service to link the kafka topic to
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * is a source cluster alias.
      */
-    readonly sourceCluster?: pulumi.Input<string>;
+    sourceCluster?: pulumi.Input<string>;
     /**
      * is a target cluster alias.
      */
-    readonly targetCluster?: pulumi.Input<string>;
+    targetCluster?: pulumi.Input<string>;
     /**
      * is a list of topics and/or regular expressions to replicate.
      */
-    readonly topics?: pulumi.Input<pulumi.Input<string>[]>;
+    topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * is a list of topics and/or regular expressions to not replicate.
      */
-    readonly topicsBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    topicsBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -183,30 +183,30 @@ export interface MirrorMakerReplicationFlowArgs {
     /**
      * enable of disable replication flows for a MirrorMaker service
      */
-    readonly enable: pulumi.Input<boolean>;
+    enable: pulumi.Input<boolean>;
     /**
      * and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication 
      * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Service to link the kafka topic to
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
     /**
      * is a source cluster alias.
      */
-    readonly sourceCluster: pulumi.Input<string>;
+    sourceCluster: pulumi.Input<string>;
     /**
      * is a target cluster alias.
      */
-    readonly targetCluster: pulumi.Input<string>;
+    targetCluster: pulumi.Input<string>;
     /**
      * is a list of topics and/or regular expressions to replicate.
      */
-    readonly topics?: pulumi.Input<pulumi.Input<string>[]>;
+    topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * is a list of topics and/or regular expressions to not replicate.
      */
-    readonly topicsBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    topicsBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
 }

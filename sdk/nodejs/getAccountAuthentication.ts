@@ -41,51 +41,51 @@ export interface GetAccountAuthenticationArgs {
     /**
      * is a unique account id.
      */
-    readonly accountId: string;
+    accountId: string;
     /**
      * account authentication id.
      */
-    readonly authenticationId?: string;
+    authenticationId?: string;
     /**
      * time of creation.
      */
-    readonly createTime?: string;
+    createTime?: string;
     /**
      * defines an authentication method enabled or not.
      */
-    readonly enabled?: boolean;
+    enabled?: boolean;
     /**
      * is an account authentication name.
      */
-    readonly name: string;
+    name: string;
     /**
      * is a SAML Assertion Consumer Service URL.
      */
-    readonly samlAcsUrl?: string;
+    samlAcsUrl?: string;
     /**
      * is a SAML Certificate.
      */
-    readonly samlCertificate?: string;
+    samlCertificate?: string;
     /**
      * is a SAML Entity ID.
      */
-    readonly samlEntityId?: string;
+    samlEntityId?: string;
     /**
      * is a SAML Idp URL.
      */
-    readonly samlIdpUrl?: string;
+    samlIdpUrl?: string;
     /**
      * is a SAML Metadata URL.
      */
-    readonly samlMetadataUrl?: string;
+    samlMetadataUrl?: string;
     /**
      * is an account authentication type, can be one of `internal` and `saml`.
      */
-    readonly type?: string;
+    type?: string;
     /**
      * time of last update.
      */
-    readonly updateTime?: string;
+    updateTime?: string;
 }
 
 /**

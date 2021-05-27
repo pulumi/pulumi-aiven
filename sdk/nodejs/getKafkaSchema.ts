@@ -51,22 +51,22 @@ export interface GetKafkaSchemaArgs {
      * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
      * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
      */
-    readonly compatibilityLevel?: string;
+    compatibilityLevel?: string;
     /**
      * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly project: string;
+    project: string;
     /**
      * is Kafka Schema configuration should be a valid Avro Schema JSON format.
      */
-    readonly schema?: string;
-    readonly serviceName: string;
+    schema?: string;
+    serviceName: string;
     /**
      * is Kafka Schema subject name.
      */
-    readonly subjectName: string;
-    readonly version?: number;
+    subjectName: string;
+    version?: number;
 }
 
 /**

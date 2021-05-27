@@ -168,64 +168,64 @@ export interface KafkaTopicState {
      *
      * @deprecated use config.cleanup_policy instead
      */
-    readonly cleanupPolicy?: pulumi.Input<string>;
+    cleanupPolicy?: pulumi.Input<string>;
     /**
      * Kafka topic configuration
      */
-    readonly config?: pulumi.Input<inputs.KafkaTopicConfig>;
+    config?: pulumi.Input<inputs.KafkaTopicConfig>;
     /**
      * Minimum required nodes in-sync replicas 
      * (ISR) to produce to a partition.
      *
      * @deprecated use config.min_insync_replicas instead
      */
-    readonly minimumInSyncReplicas?: pulumi.Input<number>;
+    minimumInSyncReplicas?: pulumi.Input<number>;
     /**
      * Number of partitions to create in the topic.
      */
-    readonly partitions?: pulumi.Input<number>;
+    partitions?: pulumi.Input<number>;
     /**
      * and `serviceName` - (Required) define the project and service the topic belongs to.
      * They should be defined using reference as shown above to set up dependencies correctly.
      * These properties cannot be changed once the service is created. Doing so will result in
      * the topic being deleted and new one created instead.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Replication factor for the topic.
      */
-    readonly replication?: pulumi.Input<number>;
+    replication?: pulumi.Input<number>;
     /**
      * retention.bytes value
      *
      * @deprecated use config.retention_bytes instead
      */
-    readonly retentionBytes?: pulumi.Input<number>;
+    retentionBytes?: pulumi.Input<number>;
     /**
      * Retention period in hours, if -1 it is infinite.
      *
      * @deprecated use config.retention_ms instead
      */
-    readonly retentionHours?: pulumi.Input<number>;
+    retentionHours?: pulumi.Input<number>;
     /**
      * Service to link the kafka topic to
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * Kafka Topic tag
      */
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
     /**
      * It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
      * enable this for any production Kafka topic containing critical data.
      */
-    readonly terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean>;
     /**
      * is the actual name of the topic account. This propery cannot be changed
      * once the service is created. Doing so will result in the topic being deleted and new one
      * created instead.
      */
-    readonly topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string>;
 }
 
 /**
@@ -237,62 +237,62 @@ export interface KafkaTopicArgs {
      *
      * @deprecated use config.cleanup_policy instead
      */
-    readonly cleanupPolicy?: pulumi.Input<string>;
+    cleanupPolicy?: pulumi.Input<string>;
     /**
      * Kafka topic configuration
      */
-    readonly config?: pulumi.Input<inputs.KafkaTopicConfig>;
+    config?: pulumi.Input<inputs.KafkaTopicConfig>;
     /**
      * Minimum required nodes in-sync replicas 
      * (ISR) to produce to a partition.
      *
      * @deprecated use config.min_insync_replicas instead
      */
-    readonly minimumInSyncReplicas?: pulumi.Input<number>;
+    minimumInSyncReplicas?: pulumi.Input<number>;
     /**
      * Number of partitions to create in the topic.
      */
-    readonly partitions: pulumi.Input<number>;
+    partitions: pulumi.Input<number>;
     /**
      * and `serviceName` - (Required) define the project and service the topic belongs to.
      * They should be defined using reference as shown above to set up dependencies correctly.
      * These properties cannot be changed once the service is created. Doing so will result in
      * the topic being deleted and new one created instead.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Replication factor for the topic.
      */
-    readonly replication: pulumi.Input<number>;
+    replication: pulumi.Input<number>;
     /**
      * retention.bytes value
      *
      * @deprecated use config.retention_bytes instead
      */
-    readonly retentionBytes?: pulumi.Input<number>;
+    retentionBytes?: pulumi.Input<number>;
     /**
      * Retention period in hours, if -1 it is infinite.
      *
      * @deprecated use config.retention_ms instead
      */
-    readonly retentionHours?: pulumi.Input<number>;
+    retentionHours?: pulumi.Input<number>;
     /**
      * Service to link the kafka topic to
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
     /**
      * Kafka Topic tag
      */
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
     /**
      * It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
      * enable this for any production Kafka topic containing critical data.
      */
-    readonly terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean>;
     /**
      * is the actual name of the topic account. This propery cannot be changed
      * once the service is created. Doing so will result in the topic being deleted and new one
      * created instead.
      */
-    readonly topicName: pulumi.Input<string>;
+    topicName: pulumi.Input<string>;
 }

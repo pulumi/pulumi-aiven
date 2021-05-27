@@ -70,44 +70,44 @@ export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pu
  * A collection of arguments for invoking getServiceIntegration.
  */
 export interface GetServiceIntegrationArgs {
-    readonly dashboardUserConfig?: inputs.GetServiceIntegrationDashboardUserConfig;
-    readonly datadogUserConfig?: inputs.GetServiceIntegrationDatadogUserConfig;
-    readonly destinationEndpointId?: string;
+    dashboardUserConfig?: inputs.GetServiceIntegrationDashboardUserConfig;
+    datadogUserConfig?: inputs.GetServiceIntegrationDatadogUserConfig;
+    destinationEndpointId?: string;
     /**
      * identifies the target side of the integration.
      */
-    readonly destinationServiceName: string;
-    readonly externalAwsCloudwatchLogsUserConfig?: inputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig;
-    readonly externalAwsCloudwatchMetricsUserConfig?: inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig;
-    readonly externalElasticsearchLogsUserConfig?: inputs.GetServiceIntegrationExternalElasticsearchLogsUserConfig;
-    readonly externalGoogleCloudLoggingUserConfig?: inputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfig;
+    destinationServiceName: string;
+    externalAwsCloudwatchLogsUserConfig?: inputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig;
+    externalAwsCloudwatchMetricsUserConfig?: inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig;
+    externalElasticsearchLogsUserConfig?: inputs.GetServiceIntegrationExternalElasticsearchLogsUserConfig;
+    externalGoogleCloudLoggingUserConfig?: inputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfig;
     /**
      * identifies the type of integration that is set up. Possible values include `dashboard`
      * , `datadog`, `logs`, `metrics` and `mirrormaker`.
      */
-    readonly integrationType: string;
-    readonly kafkaConnectUserConfig?: inputs.GetServiceIntegrationKafkaConnectUserConfig;
-    readonly kafkaLogsUserConfig?: inputs.GetServiceIntegrationKafkaLogsUserConfig;
-    readonly kafkaMirrormakerUserConfig?: inputs.GetServiceIntegrationKafkaMirrormakerUserConfig;
-    readonly logsUserConfig?: inputs.GetServiceIntegrationLogsUserConfig;
-    readonly m3aggregatorUserConfig?: inputs.GetServiceIntegrationM3aggregatorUserConfig;
-    readonly m3coordinatorUserConfig?: inputs.GetServiceIntegrationM3coordinatorUserConfig;
-    readonly metricsUserConfig?: inputs.GetServiceIntegrationMetricsUserConfig;
-    readonly mirrormakerUserConfig?: inputs.GetServiceIntegrationMirrormakerUserConfig;
+    integrationType: string;
+    kafkaConnectUserConfig?: inputs.GetServiceIntegrationKafkaConnectUserConfig;
+    kafkaLogsUserConfig?: inputs.GetServiceIntegrationKafkaLogsUserConfig;
+    kafkaMirrormakerUserConfig?: inputs.GetServiceIntegrationKafkaMirrormakerUserConfig;
+    logsUserConfig?: inputs.GetServiceIntegrationLogsUserConfig;
+    m3aggregatorUserConfig?: inputs.GetServiceIntegrationM3aggregatorUserConfig;
+    m3coordinatorUserConfig?: inputs.GetServiceIntegrationM3coordinatorUserConfig;
+    metricsUserConfig?: inputs.GetServiceIntegrationMetricsUserConfig;
+    mirrormakerUserConfig?: inputs.GetServiceIntegrationMirrormakerUserConfig;
     /**
      * defines the project the integration belongs to.
      */
-    readonly project: string;
-    readonly prometheusUserConfig?: inputs.GetServiceIntegrationPrometheusUserConfig;
-    readonly readReplicaUserConfig?: inputs.GetServiceIntegrationReadReplicaUserConfig;
-    readonly rsyslogUserConfig?: inputs.GetServiceIntegrationRsyslogUserConfig;
-    readonly schemaRegistryProxyUserConfig?: inputs.GetServiceIntegrationSchemaRegistryProxyUserConfig;
-    readonly signalfxUserConfig?: inputs.GetServiceIntegrationSignalfxUserConfig;
-    readonly sourceEndpointId?: string;
+    project: string;
+    prometheusUserConfig?: inputs.GetServiceIntegrationPrometheusUserConfig;
+    readReplicaUserConfig?: inputs.GetServiceIntegrationReadReplicaUserConfig;
+    rsyslogUserConfig?: inputs.GetServiceIntegrationRsyslogUserConfig;
+    schemaRegistryProxyUserConfig?: inputs.GetServiceIntegrationSchemaRegistryProxyUserConfig;
+    signalfxUserConfig?: inputs.GetServiceIntegrationSignalfxUserConfig;
+    sourceEndpointId?: string;
     /**
      * identifies the source side of the integration.
      */
-    readonly sourceServiceName: string;
+    sourceServiceName: string;
 }
 
 /**

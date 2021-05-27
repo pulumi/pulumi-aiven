@@ -215,46 +215,46 @@ export interface ProjectState {
      * is an optional property to link a project to already an existing account by 
      * using account ID.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * is a computed property returning the amount of platform credits available to
      * the project. This could be your free trial or other promotional credits.
      */
-    readonly availableCredits?: pulumi.Input<string>;
+    availableCredits?: pulumi.Input<string>;
     /**
      * Billing name and address of the project
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly billingAddress?: pulumi.Input<string>;
+    billingAddress?: pulumi.Input<string>;
     /**
      * Billing currency
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly billingCurrency?: pulumi.Input<string>;
+    billingCurrency?: pulumi.Input<string>;
     /**
      * Billing contact emails of the project
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Extra text to be included in all project invoices, e.g. purchase order or cost center number
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly billingExtraText?: pulumi.Input<string>;
+    billingExtraText?: pulumi.Input<string>;
     /**
      * Billing group Id
      */
-    readonly billingGroup?: pulumi.Input<string>;
+    billingGroup?: pulumi.Input<string>;
     /**
      * is a computed property that can be used to read the CA certificate of the
      * project. This is required for configuring clients that connect to certain services like
      * Kafka. This value cannot be set, only read.
      */
-    readonly caCert?: pulumi.Input<string>;
+    caCert?: pulumi.Input<string>;
     /**
      * is either the full card UUID or the last 4 digits of the card. As the full
      * UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
@@ -263,7 +263,7 @@ export interface ProjectState {
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly cardId?: pulumi.Input<string>;
+    cardId?: pulumi.Input<string>;
     /**
      * is the name of another project used to copy billing information and
      * some other project attributes like technical contacts from. This is mostly relevant when
@@ -271,53 +271,53 @@ export interface ProjectState {
      * new project. (Setting billing is otherwise not allowed over the API.) This only has
      * effect when the project is created.
      */
-    readonly copyFromProject?: pulumi.Input<string>;
+    copyFromProject?: pulumi.Input<string>;
     /**
      * Billing country
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly country?: pulumi.Input<string>;
+    country?: pulumi.Input<string>;
     /**
      * Billing country code of the project
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string>;
     /**
      * defines the default cloud provider and region where services are
      * hosted. This can be changed freely after the project is created. This will not affect existing
      * services.
      */
-    readonly defaultCloud?: pulumi.Input<string>;
+    defaultCloud?: pulumi.Input<string>;
     /**
      * is a computed property returning the current accumulated bill for this 
      * project in the current billing period.
      */
-    readonly estimatedBalance?: pulumi.Input<string>;
+    estimatedBalance?: pulumi.Input<string>;
     /**
      * is a computed property returning the method of invoicing used for payments for
      * this project, e.g. "card".
      */
-    readonly paymentMethod?: pulumi.Input<string>;
+    paymentMethod?: pulumi.Input<string>;
     /**
      * defines the name of the project. Name must be globally unique (between all
      * Aiven customers) and cannot be changed later without destroying and re-creating the
      * project, including all sub-resources.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * defines the email addresses that will receive alerts about 
      * upcoming maintenance updates or warnings about service instability. It is a good practice to keep
      * this up-to-date to be aware of any potential issues with your project.
      */
-    readonly technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * EU VAT Identification Number
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly vatId?: pulumi.Input<string>;
+    vatId?: pulumi.Input<string>;
 }
 
 /**
@@ -328,46 +328,46 @@ export interface ProjectArgs {
      * is an optional property to link a project to already an existing account by 
      * using account ID.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * is a computed property returning the amount of platform credits available to
      * the project. This could be your free trial or other promotional credits.
      */
-    readonly availableCredits?: pulumi.Input<string>;
+    availableCredits?: pulumi.Input<string>;
     /**
      * Billing name and address of the project
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly billingAddress?: pulumi.Input<string>;
+    billingAddress?: pulumi.Input<string>;
     /**
      * Billing currency
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly billingCurrency?: pulumi.Input<string>;
+    billingCurrency?: pulumi.Input<string>;
     /**
      * Billing contact emails of the project
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Extra text to be included in all project invoices, e.g. purchase order or cost center number
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly billingExtraText?: pulumi.Input<string>;
+    billingExtraText?: pulumi.Input<string>;
     /**
      * Billing group Id
      */
-    readonly billingGroup?: pulumi.Input<string>;
+    billingGroup?: pulumi.Input<string>;
     /**
      * is a computed property that can be used to read the CA certificate of the
      * project. This is required for configuring clients that connect to certain services like
      * Kafka. This value cannot be set, only read.
      */
-    readonly caCert?: pulumi.Input<string>;
+    caCert?: pulumi.Input<string>;
     /**
      * is either the full card UUID or the last 4 digits of the card. As the full
      * UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
@@ -376,7 +376,7 @@ export interface ProjectArgs {
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly cardId?: pulumi.Input<string>;
+    cardId?: pulumi.Input<string>;
     /**
      * is the name of another project used to copy billing information and
      * some other project attributes like technical contacts from. This is mostly relevant when
@@ -384,35 +384,35 @@ export interface ProjectArgs {
      * new project. (Setting billing is otherwise not allowed over the API.) This only has
      * effect when the project is created.
      */
-    readonly copyFromProject?: pulumi.Input<string>;
+    copyFromProject?: pulumi.Input<string>;
     /**
      * Billing country code of the project
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string>;
     /**
      * defines the default cloud provider and region where services are
      * hosted. This can be changed freely after the project is created. This will not affect existing
      * services.
      */
-    readonly defaultCloud?: pulumi.Input<string>;
+    defaultCloud?: pulumi.Input<string>;
     /**
      * defines the name of the project. Name must be globally unique (between all
      * Aiven customers) and cannot be changed later without destroying and re-creating the
      * project, including all sub-resources.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * defines the email addresses that will receive alerts about 
      * upcoming maintenance updates or warnings about service instability. It is a good practice to keep
      * this up-to-date to be aware of any potential issues with your project.
      */
-    readonly technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * EU VAT Identification Number
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
      */
-    readonly vatId?: pulumi.Input<string>;
+    vatId?: pulumi.Input<string>;
 }

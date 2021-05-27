@@ -61,47 +61,47 @@ export interface GetKafkaTopicArgs {
     /**
      * cleanup.policy value, can be `create`, `delete` or `compact,delete`
      */
-    readonly cleanupPolicy?: string;
+    cleanupPolicy?: string;
     /**
      * Kafka topic configuration
      */
-    readonly config?: inputs.GetKafkaTopicConfig;
+    config?: inputs.GetKafkaTopicConfig;
     /**
      * Minimum required nodes in-sync replicas (ISR) to produce to a partition.
      */
-    readonly minimumInSyncReplicas?: number;
+    minimumInSyncReplicas?: number;
     /**
      * Number of partitions to create in the topic.
      */
-    readonly partitions?: number;
+    partitions?: number;
     /**
      * and `serviceName` - (Required) define the project and service the topic belongs to.
      * They should be defined using reference as shown above to set up dependencies correctly.
      * These properties cannot be changed once the service is created. Doing so will result in
      * the topic being deleted and new one created instead.
      */
-    readonly project: string;
+    project: string;
     /**
      * Replication factor for the topic.
      */
-    readonly replication?: number;
+    replication?: number;
     /**
      * retention.bytes value
      */
-    readonly retentionBytes?: number;
+    retentionBytes?: number;
     /**
      * Retention period in hours, if -1 it is infinite.
      */
-    readonly retentionHours?: number;
-    readonly serviceName: string;
-    readonly tags?: inputs.GetKafkaTopicTag[];
-    readonly terminationProtection?: boolean;
+    retentionHours?: number;
+    serviceName: string;
+    tags?: inputs.GetKafkaTopicTag[];
+    terminationProtection?: boolean;
     /**
      * is the actual name of the topic account. This propery cannot be changed
      * once the service is created. Doing so will result in the topic being deleted and new one
      * created instead.
      */
-    readonly topicName: string;
+    topicName: string;
 }
 
 /**

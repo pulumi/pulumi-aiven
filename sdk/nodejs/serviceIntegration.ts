@@ -255,112 +255,112 @@ export interface ServiceIntegrationState {
     /**
      * Dashboard specific user configurable settings
      */
-    readonly dashboardUserConfig?: pulumi.Input<inputs.ServiceIntegrationDashboardUserConfig>;
+    dashboardUserConfig?: pulumi.Input<inputs.ServiceIntegrationDashboardUserConfig>;
     /**
      * Dashboard specific user configurable settings
      */
-    readonly datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig>;
+    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig>;
     /**
      * or `destinationServiceName` - (Required) identifies the target side of the integration.
      * Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
      * e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the
      * reference syntax described above to set up the dependency correctly.
      */
-    readonly destinationEndpointId?: pulumi.Input<string>;
+    destinationEndpointId?: pulumi.Input<string>;
     /**
      * Destination service for the integration (if any)
      */
-    readonly destinationServiceName?: pulumi.Input<string>;
+    destinationServiceName?: pulumi.Input<string>;
     /**
      * External AWS Cloudwatch logs specific user configurable settings
      */
-    readonly externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig>;
+    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig>;
     /**
      * External AWS cloudwatch metrics specific user configurable settings
      */
-    readonly externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig>;
+    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig>;
     /**
      * External Elasticsearch logs specific user configurable settings
      */
-    readonly externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalElasticsearchLogsUserConfig>;
+    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalElasticsearchLogsUserConfig>;
     /**
      * External Google Cloud Logging specific user configurable settings
      */
-    readonly externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig>;
+    externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig>;
     /**
      * identifies the type of integration that is set up. Possible values include `dashboard`
      * , `datadog`, `logs`, `metrics`, `kafkaConnect`, `externalGoogleCloudLogging`, `externalElasticsearchLogs`
      * `externalAwsCloudwatchLogs`, `readReplica`, `rsyslog`, `signalfx`, `kafkaLogs`, `m3aggregator`,
      * `m3coordinator`, `prometheus`, `schemaRegistryProxy` and `kafkaMirrormaker`.
      */
-    readonly integrationType?: pulumi.Input<string>;
+    integrationType?: pulumi.Input<string>;
     /**
      * Kafka Connect specific user configurable settings
      */
-    readonly kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfig>;
+    kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfig>;
     /**
      * Kafka Logs specific user configurable settings
      */
-    readonly kafkaLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaLogsUserConfig>;
+    kafkaLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaLogsUserConfig>;
     /**
      * Mirrormaker 2 integration specific user configurable settings
      */
-    readonly kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfig>;
+    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfig>;
     /**
      * Log integration specific user configurable settings
      */
-    readonly logsUserConfig?: pulumi.Input<inputs.ServiceIntegrationLogsUserConfig>;
+    logsUserConfig?: pulumi.Input<inputs.ServiceIntegrationLogsUserConfig>;
     /**
      * M3 aggregator specific user configurable settings
      */
-    readonly m3aggregatorUserConfig?: pulumi.Input<inputs.ServiceIntegrationM3aggregatorUserConfig>;
+    m3aggregatorUserConfig?: pulumi.Input<inputs.ServiceIntegrationM3aggregatorUserConfig>;
     /**
      * M3 coordinator specific user configurable settings
      */
-    readonly m3coordinatorUserConfig?: pulumi.Input<inputs.ServiceIntegrationM3coordinatorUserConfig>;
+    m3coordinatorUserConfig?: pulumi.Input<inputs.ServiceIntegrationM3coordinatorUserConfig>;
     /**
      * Metrics specific user configurable settings
      */
-    readonly metricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfig>;
+    metricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfig>;
     /**
      * Mirrormaker 1 integration specific user configurable settings
      */
-    readonly mirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationMirrormakerUserConfig>;
+    mirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationMirrormakerUserConfig>;
     /**
      * defines the project the integration belongs to.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Prometheus coordinator specific user configurable settings
      */
-    readonly prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig>;
+    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig>;
     /**
      * PG Read replica specific user configurable settings
      */
-    readonly readReplicaUserConfig?: pulumi.Input<inputs.ServiceIntegrationReadReplicaUserConfig>;
+    readReplicaUserConfig?: pulumi.Input<inputs.ServiceIntegrationReadReplicaUserConfig>;
     /**
      * RSyslog specific user configurable settings
      */
-    readonly rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationRsyslogUserConfig>;
+    rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationRsyslogUserConfig>;
     /**
      * Schema registry proxy specific user configurable settings
      */
-    readonly schemaRegistryProxyUserConfig?: pulumi.Input<inputs.ServiceIntegrationSchemaRegistryProxyUserConfig>;
+    schemaRegistryProxyUserConfig?: pulumi.Input<inputs.ServiceIntegrationSchemaRegistryProxyUserConfig>;
     /**
      * Signalfx specific user configurable settings
      */
-    readonly signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationSignalfxUserConfig>;
+    signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationSignalfxUserConfig>;
     /**
      * or `sourceServiceName` - (Optional) identifies the source side of the integration. Only either
      * endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
      * e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the
      * reference syntax described above to set up the dependency correctly.
      */
-    readonly sourceEndpointId?: pulumi.Input<string>;
+    sourceEndpointId?: pulumi.Input<string>;
     /**
      * Source service for the integration (if any)
      */
-    readonly sourceServiceName?: pulumi.Input<string>;
+    sourceServiceName?: pulumi.Input<string>;
 }
 
 /**
@@ -370,110 +370,110 @@ export interface ServiceIntegrationArgs {
     /**
      * Dashboard specific user configurable settings
      */
-    readonly dashboardUserConfig?: pulumi.Input<inputs.ServiceIntegrationDashboardUserConfig>;
+    dashboardUserConfig?: pulumi.Input<inputs.ServiceIntegrationDashboardUserConfig>;
     /**
      * Dashboard specific user configurable settings
      */
-    readonly datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig>;
+    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig>;
     /**
      * or `destinationServiceName` - (Required) identifies the target side of the integration.
      * Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
      * e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the
      * reference syntax described above to set up the dependency correctly.
      */
-    readonly destinationEndpointId?: pulumi.Input<string>;
+    destinationEndpointId?: pulumi.Input<string>;
     /**
      * Destination service for the integration (if any)
      */
-    readonly destinationServiceName?: pulumi.Input<string>;
+    destinationServiceName?: pulumi.Input<string>;
     /**
      * External AWS Cloudwatch logs specific user configurable settings
      */
-    readonly externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig>;
+    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig>;
     /**
      * External AWS cloudwatch metrics specific user configurable settings
      */
-    readonly externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig>;
+    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig>;
     /**
      * External Elasticsearch logs specific user configurable settings
      */
-    readonly externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalElasticsearchLogsUserConfig>;
+    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalElasticsearchLogsUserConfig>;
     /**
      * External Google Cloud Logging specific user configurable settings
      */
-    readonly externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig>;
+    externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig>;
     /**
      * identifies the type of integration that is set up. Possible values include `dashboard`
      * , `datadog`, `logs`, `metrics`, `kafkaConnect`, `externalGoogleCloudLogging`, `externalElasticsearchLogs`
      * `externalAwsCloudwatchLogs`, `readReplica`, `rsyslog`, `signalfx`, `kafkaLogs`, `m3aggregator`,
      * `m3coordinator`, `prometheus`, `schemaRegistryProxy` and `kafkaMirrormaker`.
      */
-    readonly integrationType: pulumi.Input<string>;
+    integrationType: pulumi.Input<string>;
     /**
      * Kafka Connect specific user configurable settings
      */
-    readonly kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfig>;
+    kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfig>;
     /**
      * Kafka Logs specific user configurable settings
      */
-    readonly kafkaLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaLogsUserConfig>;
+    kafkaLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaLogsUserConfig>;
     /**
      * Mirrormaker 2 integration specific user configurable settings
      */
-    readonly kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfig>;
+    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfig>;
     /**
      * Log integration specific user configurable settings
      */
-    readonly logsUserConfig?: pulumi.Input<inputs.ServiceIntegrationLogsUserConfig>;
+    logsUserConfig?: pulumi.Input<inputs.ServiceIntegrationLogsUserConfig>;
     /**
      * M3 aggregator specific user configurable settings
      */
-    readonly m3aggregatorUserConfig?: pulumi.Input<inputs.ServiceIntegrationM3aggregatorUserConfig>;
+    m3aggregatorUserConfig?: pulumi.Input<inputs.ServiceIntegrationM3aggregatorUserConfig>;
     /**
      * M3 coordinator specific user configurable settings
      */
-    readonly m3coordinatorUserConfig?: pulumi.Input<inputs.ServiceIntegrationM3coordinatorUserConfig>;
+    m3coordinatorUserConfig?: pulumi.Input<inputs.ServiceIntegrationM3coordinatorUserConfig>;
     /**
      * Metrics specific user configurable settings
      */
-    readonly metricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfig>;
+    metricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfig>;
     /**
      * Mirrormaker 1 integration specific user configurable settings
      */
-    readonly mirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationMirrormakerUserConfig>;
+    mirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationMirrormakerUserConfig>;
     /**
      * defines the project the integration belongs to.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Prometheus coordinator specific user configurable settings
      */
-    readonly prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig>;
+    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig>;
     /**
      * PG Read replica specific user configurable settings
      */
-    readonly readReplicaUserConfig?: pulumi.Input<inputs.ServiceIntegrationReadReplicaUserConfig>;
+    readReplicaUserConfig?: pulumi.Input<inputs.ServiceIntegrationReadReplicaUserConfig>;
     /**
      * RSyslog specific user configurable settings
      */
-    readonly rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationRsyslogUserConfig>;
+    rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationRsyslogUserConfig>;
     /**
      * Schema registry proxy specific user configurable settings
      */
-    readonly schemaRegistryProxyUserConfig?: pulumi.Input<inputs.ServiceIntegrationSchemaRegistryProxyUserConfig>;
+    schemaRegistryProxyUserConfig?: pulumi.Input<inputs.ServiceIntegrationSchemaRegistryProxyUserConfig>;
     /**
      * Signalfx specific user configurable settings
      */
-    readonly signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationSignalfxUserConfig>;
+    signalfxUserConfig?: pulumi.Input<inputs.ServiceIntegrationSignalfxUserConfig>;
     /**
      * or `sourceServiceName` - (Optional) identifies the source side of the integration. Only either
      * endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
      * e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the
      * reference syntax described above to set up the dependency correctly.
      */
-    readonly sourceEndpointId?: pulumi.Input<string>;
+    sourceEndpointId?: pulumi.Input<string>;
     /**
      * Source service for the integration (if any)
      */
-    readonly sourceServiceName?: pulumi.Input<string>;
+    sourceServiceName?: pulumi.Input<string>;
 }

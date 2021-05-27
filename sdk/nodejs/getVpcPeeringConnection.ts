@@ -53,47 +53,47 @@ export interface GetVpcPeeringConnectionArgs {
     /**
      * an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
      */
-    readonly peerAzureAppId?: string;
+    peerAzureAppId?: string;
     /**
      * an Azure tenant id in UUID4 form.
      */
-    readonly peerAzureTenantId?: string;
+    peerAzureTenantId?: string;
     /**
      * defines the identifier of the cloud account the VPC is being
      * peered with.
      */
-    readonly peerCloudAccount: string;
+    peerCloudAccount: string;
     /**
      * defines the region of the remote VPC if it is not in the same region as Aiven VPC.
      */
-    readonly peerRegion?: string;
+    peerRegion?: string;
     /**
      * an Azure resource group name of the peered VPC.
      */
-    readonly peerResourceGroup?: string;
+    peerResourceGroup?: string;
     /**
      * defines the identifier or name of the remote VPC.
      */
-    readonly peerVpc: string;
+    peerVpc: string;
     /**
      * a cloud provider identifier for the peering connection if available.
      */
-    readonly peeringConnectionId?: string;
+    peeringConnectionId?: string;
     /**
      * is the state of the peering connection. This property is computed by Aiven 
      * therefore cannot be set, only read. Where state can be one of: `APPROVED`,
      * `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
      * `INVALID_SPECIFICATION`.
      */
-    readonly state?: string;
+    state?: string;
     /**
      * state-specific help or error information.
      */
-    readonly stateInfo?: {[key: string]: any};
+    stateInfo?: {[key: string]: any};
     /**
      * is the Aiven VPC the peering connection is associated with.
      */
-    readonly vpcId: string;
+    vpcId: string;
 }
 
 /**

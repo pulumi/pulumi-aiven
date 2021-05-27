@@ -54,32 +54,32 @@ export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpoin
  * A collection of arguments for invoking getServiceIntegrationEndpoint.
  */
 export interface GetServiceIntegrationEndpointArgs {
-    readonly datadogUserConfig?: inputs.GetServiceIntegrationEndpointDatadogUserConfig;
-    readonly endpointConfig?: {[key: string]: string};
+    datadogUserConfig?: inputs.GetServiceIntegrationEndpointDatadogUserConfig;
+    endpointConfig?: {[key: string]: string};
     /**
      * is the name of the endpoint. This value has no effect beyond being used
      * to identify different integration endpoints.
      */
-    readonly endpointName: string;
+    endpointName: string;
     /**
      * is the type of the external service this endpoint is associated with.
      * By the time of writing the only available option is `datadog`.
      */
-    readonly endpointType?: string;
-    readonly externalAwsCloudwatchLogsUserConfig?: inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
-    readonly externalAwsCloudwatchMetricsUserConfig?: inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
-    readonly externalElasticsearchLogsUserConfig?: inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
-    readonly externalGoogleCloudLoggingUserConfig?: inputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
-    readonly externalKafkaUserConfig?: inputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;
-    readonly externalSchemaRegistryUserConfig?: inputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
-    readonly jolokiaUserConfig?: inputs.GetServiceIntegrationEndpointJolokiaUserConfig;
+    endpointType?: string;
+    externalAwsCloudwatchLogsUserConfig?: inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
+    externalAwsCloudwatchMetricsUserConfig?: inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
+    externalElasticsearchLogsUserConfig?: inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
+    externalGoogleCloudLoggingUserConfig?: inputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
+    externalKafkaUserConfig?: inputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;
+    externalSchemaRegistryUserConfig?: inputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
+    jolokiaUserConfig?: inputs.GetServiceIntegrationEndpointJolokiaUserConfig;
     /**
      * defines the project the endpoint is associated with.
      */
-    readonly project: string;
-    readonly prometheusUserConfig?: inputs.GetServiceIntegrationEndpointPrometheusUserConfig;
-    readonly rsyslogUserConfig?: inputs.GetServiceIntegrationEndpointRsyslogUserConfig;
-    readonly signalfxUserConfig?: inputs.GetServiceIntegrationEndpointSignalfxUserConfig;
+    project: string;
+    prometheusUserConfig?: inputs.GetServiceIntegrationEndpointPrometheusUserConfig;
+    rsyslogUserConfig?: inputs.GetServiceIntegrationEndpointRsyslogUserConfig;
+    signalfxUserConfig?: inputs.GetServiceIntegrationEndpointSignalfxUserConfig;
 }
 
 /**

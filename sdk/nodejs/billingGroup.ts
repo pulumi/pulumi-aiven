@@ -162,55 +162,55 @@ export interface BillingGroupState {
     /**
      * Account id
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Address lines
      */
-    readonly addressLines?: pulumi.Input<pulumi.Input<string>[]>;
+    addressLines?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Billing currency
      */
-    readonly billingCurrency?: pulumi.Input<string>;
+    billingCurrency?: pulumi.Input<string>;
     /**
      * Billing contact emails
      */
-    readonly billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Billing extra text
      */
-    readonly billingExtraText?: pulumi.Input<string>;
+    billingExtraText?: pulumi.Input<string>;
     /**
      * Credit card id
      */
-    readonly cardId?: pulumi.Input<string>;
+    cardId?: pulumi.Input<string>;
     /**
      * City
      */
-    readonly city?: pulumi.Input<string>;
+    city?: pulumi.Input<string>;
     /**
      * Company name
      */
-    readonly company?: pulumi.Input<string>;
+    company?: pulumi.Input<string>;
     /**
      * Country code
      */
-    readonly countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string>;
     /**
      * Billing Group name
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * State
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * VAT id
      */
-    readonly vatId?: pulumi.Input<string>;
+    vatId?: pulumi.Input<string>;
     /**
      * Zip Code
      */
-    readonly zipCode?: pulumi.Input<string>;
+    zipCode?: pulumi.Input<string>;
 }
 
 /**
@@ -220,53 +220,53 @@ export interface BillingGroupArgs {
     /**
      * Account id
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Address lines
      */
-    readonly addressLines?: pulumi.Input<pulumi.Input<string>[]>;
+    addressLines?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Billing currency
      */
-    readonly billingCurrency?: pulumi.Input<string>;
+    billingCurrency?: pulumi.Input<string>;
     /**
      * Billing contact emails
      */
-    readonly billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Billing extra text
      */
-    readonly billingExtraText?: pulumi.Input<string>;
+    billingExtraText?: pulumi.Input<string>;
     /**
      * Credit card id
      */
-    readonly cardId?: pulumi.Input<string>;
+    cardId?: pulumi.Input<string>;
     /**
      * City
      */
-    readonly city?: pulumi.Input<string>;
+    city?: pulumi.Input<string>;
     /**
      * Company name
      */
-    readonly company?: pulumi.Input<string>;
+    company?: pulumi.Input<string>;
     /**
      * Country code
      */
-    readonly countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string>;
     /**
      * Billing Group name
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * State
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * VAT id
      */
-    readonly vatId?: pulumi.Input<string>;
+    vatId?: pulumi.Input<string>;
     /**
      * Zip Code
      */
-    readonly zipCode?: pulumi.Input<string>;
+    zipCode?: pulumi.Input<string>;
 }

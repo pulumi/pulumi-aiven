@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const account1 = pulumi.output(aiven.getAccount({
  *     name: "<ACCOUNT_NAME>",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
@@ -46,27 +46,27 @@ export interface GetAccountArgs {
     /**
      * is an auto-generated unique account id.
      */
-    readonly accountId?: string;
+    accountId?: string;
     /**
      * time of creation.
      */
-    readonly createTime?: string;
+    createTime?: string;
     /**
      * defines an account name.
      */
-    readonly name: string;
+    name: string;
     /**
      * is an owner team id.
      */
-    readonly ownerTeamId?: string;
+    ownerTeamId?: string;
     /**
      * is a tenant id.
      */
-    readonly tenantId?: string;
+    tenantId?: string;
     /**
      * time of last update.
      */
-    readonly updateTime?: string;
+    updateTime?: string;
 }
 
 /**

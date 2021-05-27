@@ -120,20 +120,20 @@ export interface ProjectVpcState {
      * defines where the cloud provider and region where the service is hosted
      * in. See the Service resource for additional information.
      */
-    readonly cloudName?: pulumi.Input<string>;
+    cloudName?: pulumi.Input<string>;
     /**
      * defines the network CIDR of the VPC.
      */
-    readonly networkCidr?: pulumi.Input<string>;
+    networkCidr?: pulumi.Input<string>;
     /**
      * defines the project the VPC belongs to.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * ia a computed property that tells the current state of the VPC. This property cannot be
      * set, only read.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
 }
 
 /**
@@ -144,13 +144,13 @@ export interface ProjectVpcArgs {
      * defines where the cloud provider and region where the service is hosted
      * in. See the Service resource for additional information.
      */
-    readonly cloudName: pulumi.Input<string>;
+    cloudName: pulumi.Input<string>;
     /**
      * defines the network CIDR of the VPC.
      */
-    readonly networkCidr: pulumi.Input<string>;
+    networkCidr: pulumi.Input<string>;
     /**
      * defines the project the VPC belongs to.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

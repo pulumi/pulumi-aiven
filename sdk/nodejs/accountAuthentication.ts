@@ -146,51 +146,51 @@ export interface AccountAuthenticationState {
     /**
      * is a unique account id.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * account authentication id.
      */
-    readonly authenticationId?: pulumi.Input<string>;
+    authenticationId?: pulumi.Input<string>;
     /**
      * time of creation.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * defines an authentication method enabled or not.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * is an account authentication name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * is a SAML Assertion Consumer Service URL.
      */
-    readonly samlAcsUrl?: pulumi.Input<string>;
+    samlAcsUrl?: pulumi.Input<string>;
     /**
      * is a SAML Certificate.
      */
-    readonly samlCertificate?: pulumi.Input<string>;
+    samlCertificate?: pulumi.Input<string>;
     /**
      * is a SAML Entity ID.
      */
-    readonly samlEntityId?: pulumi.Input<string>;
+    samlEntityId?: pulumi.Input<string>;
     /**
      * is a SAML Idp URL.
      */
-    readonly samlIdpUrl?: pulumi.Input<string>;
+    samlIdpUrl?: pulumi.Input<string>;
     /**
      * is a SAML Metadata URL.
      */
-    readonly samlMetadataUrl?: pulumi.Input<string>;
+    samlMetadataUrl?: pulumi.Input<string>;
     /**
      * is an account authentication type, can be one of `internal` and `saml`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * time of last update.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
 }
 
 /**
@@ -200,49 +200,49 @@ export interface AccountAuthenticationArgs {
     /**
      * is a unique account id.
      */
-    readonly accountId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * account authentication id.
      */
-    readonly authenticationId?: pulumi.Input<string>;
+    authenticationId?: pulumi.Input<string>;
     /**
      * time of creation.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * defines an authentication method enabled or not.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * is an account authentication name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * is a SAML Assertion Consumer Service URL.
      */
-    readonly samlAcsUrl?: pulumi.Input<string>;
+    samlAcsUrl?: pulumi.Input<string>;
     /**
      * is a SAML Certificate.
      */
-    readonly samlCertificate?: pulumi.Input<string>;
+    samlCertificate?: pulumi.Input<string>;
     /**
      * is a SAML Entity ID.
      */
-    readonly samlEntityId?: pulumi.Input<string>;
+    samlEntityId?: pulumi.Input<string>;
     /**
      * is a SAML Idp URL.
      */
-    readonly samlIdpUrl?: pulumi.Input<string>;
+    samlIdpUrl?: pulumi.Input<string>;
     /**
      * is a SAML Metadata URL.
      */
-    readonly samlMetadataUrl?: pulumi.Input<string>;
+    samlMetadataUrl?: pulumi.Input<string>;
     /**
      * is an account authentication type, can be one of `internal` and `saml`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * time of last update.
      */
-    readonly updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
 }

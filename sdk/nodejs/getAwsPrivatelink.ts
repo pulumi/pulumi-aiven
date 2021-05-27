@@ -46,27 +46,27 @@ export interface GetAwsPrivatelinkArgs {
     /**
      * AWS service ID.
      */
-    readonly awsServiceId?: string;
+    awsServiceId?: string;
     /**
      * AWS service name.
      */
-    readonly awsServiceName?: string;
+    awsServiceName?: string;
     /**
      * list of allowed principals
      */
-    readonly principals?: string[];
+    principals?: string[];
     /**
      * identifies the project the service belongs to. To set up proper dependency between the project
      * and the service, refer to the project as shown in the above example. Project cannot be changed later without
      * destroying and re-creating the service.
      */
-    readonly project: string;
+    project: string;
     /**
      * specifies the actual name of the service. The name cannot be changed later without
      * destroying and re-creating the service so name should be picked based on intended service usage rather than current
      * attributes.
      */
-    readonly serviceName: string;
+    serviceName: string;
 }
 
 /**

@@ -151,26 +151,26 @@ export interface ElasticSearchAclState {
     /**
      * List of Elasticsearch ACLs
      */
-    readonly acls?: pulumi.Input<pulumi.Input<inputs.ElasticSearchAclAcl>[]>;
+    acls?: pulumi.Input<pulumi.Input<inputs.ElasticSearchAclAcl>[]>;
     /**
      * enables of disables Elasticsearch ACL's.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
      * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
      * these APIs as long as all operations only target indexes they have been granted access to.
      */
-    readonly extendedAcl?: pulumi.Input<boolean>;
+    extendedAcl?: pulumi.Input<boolean>;
     /**
      * and `serviceName` - (Required) define the project and service the ACL belongs to. 
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Service to link the Elasticsearch ACLs to
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
 }
 
 /**
@@ -180,24 +180,24 @@ export interface ElasticSearchAclArgs {
     /**
      * List of Elasticsearch ACLs
      */
-    readonly acls?: pulumi.Input<pulumi.Input<inputs.ElasticSearchAclAcl>[]>;
+    acls?: pulumi.Input<pulumi.Input<inputs.ElasticSearchAclAcl>[]>;
     /**
      * enables of disables Elasticsearch ACL's.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
      * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
      * these APIs as long as all operations only target indexes they have been granted access to.
      */
-    readonly extendedAcl?: pulumi.Input<boolean>;
+    extendedAcl?: pulumi.Input<boolean>;
     /**
      * and `serviceName` - (Required) define the project and service the ACL belongs to. 
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Service to link the Elasticsearch ACLs to
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
 }

@@ -48,19 +48,19 @@ export interface GetProjectUserArgs {
      * actual membership is only created once the user accepts the invitation. This property
      * cannot be set, only read.
      */
-    readonly accepted?: boolean;
+    accepted?: boolean;
     /**
      * identifies the email address of the user.
      */
-    readonly email: string;
+    email: string;
     /**
      * (Required) defines the access level the user has to the project.
      */
-    readonly memberType?: string;
+    memberType?: string;
     /**
      * defines the project the user is a member of.
      */
-    readonly project: string;
+    project: string;
 }
 
 /**

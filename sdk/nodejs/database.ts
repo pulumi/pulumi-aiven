@@ -128,29 +128,29 @@ export interface DatabaseState {
     /**
      * is the actual name of the database.
      */
-    readonly databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string>;
     /**
      * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
      */
-    readonly lcCollate?: pulumi.Input<string>;
+    lcCollate?: pulumi.Input<string>;
     /**
      * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
      */
-    readonly lcCtype?: pulumi.Input<string>;
+    lcCtype?: pulumi.Input<string>;
     /**
      * and `serviceName` - (Required) define the project and service the database belongs to.
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Service to link the database to
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
      * recommended to enable this for any production databases containing critical data.
      */
-    readonly terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean>;
 }
 
 /**
@@ -160,27 +160,27 @@ export interface DatabaseArgs {
     /**
      * is the actual name of the database.
      */
-    readonly databaseName: pulumi.Input<string>;
+    databaseName: pulumi.Input<string>;
     /**
      * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
      */
-    readonly lcCollate?: pulumi.Input<string>;
+    lcCollate?: pulumi.Input<string>;
     /**
      * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
      */
-    readonly lcCtype?: pulumi.Input<string>;
+    lcCtype?: pulumi.Input<string>;
     /**
      * and `serviceName` - (Required) define the project and service the database belongs to.
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Service to link the database to
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
     /**
      * It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
      * recommended to enable this for any production databases containing critical data.
      */
-    readonly terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean>;
 }

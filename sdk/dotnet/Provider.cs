@@ -19,6 +19,13 @@ namespace Pulumi.Aiven
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// Aiven Authentication Token
+        /// </summary>
+        [Output("apiToken")]
+        public Output<string> ApiToken { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

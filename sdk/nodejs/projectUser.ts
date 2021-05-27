@@ -120,19 +120,19 @@ export interface ProjectUserState {
      * actual membership is only created once the user accepts the invitation. This property
      * cannot be set, only read.
      */
-    readonly accepted?: pulumi.Input<boolean>;
+    accepted?: pulumi.Input<boolean>;
     /**
      * identifies the email address of the user.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * defines the access level the user has to the project.
      */
-    readonly memberType?: pulumi.Input<string>;
+    memberType?: pulumi.Input<string>;
     /**
      * defines the project the user is a member of.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -142,13 +142,13 @@ export interface ProjectUserArgs {
     /**
      * identifies the email address of the user.
      */
-    readonly email: pulumi.Input<string>;
+    email: pulumi.Input<string>;
     /**
      * defines the access level the user has to the project.
      */
-    readonly memberType: pulumi.Input<string>;
+    memberType: pulumi.Input<string>;
     /**
      * defines the project the user is a member of.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

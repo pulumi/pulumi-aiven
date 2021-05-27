@@ -53,16 +53,16 @@ export interface GetKafkaSchemaConfigurationArgs {
      * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
      * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
      */
-    readonly compatibilityLevel?: string;
+    compatibilityLevel?: string;
     /**
      * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
      * They should be defined using reference as shown above to set up dependencies correctly.
      */
-    readonly project: string;
-    readonly schema?: string;
-    readonly serviceName: string;
-    readonly subjectName?: string;
-    readonly version?: number;
+    project: string;
+    schema?: string;
+    serviceName: string;
+    subjectName?: string;
+    version?: number;
 }
 
 /**
