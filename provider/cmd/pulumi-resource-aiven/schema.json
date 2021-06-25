@@ -24554,7 +24554,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -24649,7 +24649,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -24716,7 +24716,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -25020,7 +25020,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -25110,7 +25110,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -25172,7 +25172,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -25356,7 +25356,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -25451,7 +25451,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -25518,7 +25518,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -25607,7 +25607,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -25697,7 +25697,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -25759,7 +25759,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -25857,7 +25857,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -25956,7 +25956,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -26027,7 +26027,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -26208,7 +26208,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -26303,7 +26303,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -26370,7 +26370,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -26610,7 +26610,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -26700,7 +26700,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -26762,7 +26762,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -27195,7 +27195,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -27285,7 +27285,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -27347,7 +27347,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -27436,7 +27436,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -27526,7 +27526,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -27588,7 +27588,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -27806,7 +27806,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -27896,7 +27896,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -27958,7 +27958,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -28051,7 +28051,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -28146,7 +28146,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -28213,7 +28213,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -28714,7 +28714,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -28809,7 +28809,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                    "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                 },
                 "project": {
                     "type": "string",
@@ -28876,7 +28876,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -29738,7 +29738,7 @@
             }
         },
         "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint": {
-            "description": "## # Service Integration Endpoint Resource\n\nThe Service Integration Endpoint resource allows the creation and management of Aiven Service Integration Endpoints.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myendpoint = new aiven.ServiceIntegrationEndpoint(\"myendpoint\", {\n    project: aiven_project.myproject.project,\n    endpointName: \"\u003cENDPOINT_NAME\u003e\",\n    endpointType: \"datadog\",\n    datadogUserConfig: {\n        datadogApiKey: \"\u003cDATADOG_API_KEY\u003e\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyendpoint = aiven.ServiceIntegrationEndpoint(\"myendpoint\",\n    project=aiven_project[\"myproject\"][\"project\"],\n    endpoint_name=\"\u003cENDPOINT_NAME\u003e\",\n    endpoint_type=\"datadog\",\n    datadog_user_config=aiven.ServiceIntegrationEndpointDatadogUserConfigArgs(\n        datadog_api_key=\"\u003cDATADOG_API_KEY\u003e\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myendpoint = new Aiven.ServiceIntegrationEndpoint(\"myendpoint\", new Aiven.ServiceIntegrationEndpointArgs\n        {\n            Project = aiven_project.Myproject.Project,\n            EndpointName = \"\u003cENDPOINT_NAME\u003e\",\n            EndpointType = \"datadog\",\n            DatadogUserConfig = new Aiven.Inputs.ServiceIntegrationEndpointDatadogUserConfigArgs\n            {\n                DatadogApiKey = \"\u003cDATADOG_API_KEY\u003e\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewServiceIntegrationEndpoint(ctx, \"myendpoint\", \u0026aiven.ServiceIntegrationEndpointArgs{\n\t\t\tProject:      pulumi.Any(aiven_project.Myproject.Project),\n\t\t\tEndpointName: pulumi.String(\"\u003cENDPOINT_NAME\u003e\"),\n\t\t\tEndpointType: pulumi.String(\"datadog\"),\n\t\t\tDatadogUserConfig: \u0026aiven.ServiceIntegrationEndpointDatadogUserConfigArgs{\n\t\t\t\tDatadogApiKey: pulumi.String(\"\u003cDATADOG_API_KEY\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # Service Integration Endpoint Resource\n\nThe Service Integration Endpoint resource allows the creation and management of Aiven Service Integration Endpoints.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst myendpoint = new aiven.ServiceIntegrationEndpoint(\"myendpoint\", {\n    project: aiven_project.myproject.project,\n    endpointName: \"\u003cENDPOINT_NAME\u003e\",\n    endpointType: \"datadog\",\n    datadogUserConfig: {\n        datadogApiKey: \"\u003cDATADOG_API_KEY\u003e\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmyendpoint = aiven.ServiceIntegrationEndpoint(\"myendpoint\",\n    project=aiven_project[\"myproject\"][\"project\"],\n    endpoint_name=\"\u003cENDPOINT_NAME\u003e\",\n    endpoint_type=\"datadog\",\n    datadog_user_config=aiven.ServiceIntegrationEndpointDatadogUserConfigArgs(\n        datadog_api_key=\"\u003cDATADOG_API_KEY\u003e\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myendpoint = new Aiven.ServiceIntegrationEndpoint(\"myendpoint\", new Aiven.ServiceIntegrationEndpointArgs\n        {\n            Project = aiven_project.Myproject.Project,\n            EndpointName = \"\u003cENDPOINT_NAME\u003e\",\n            EndpointType = \"datadog\",\n            DatadogUserConfig = new Aiven.Inputs.ServiceIntegrationEndpointDatadogUserConfigArgs\n            {\n                DatadogApiKey = \"\u003cDATADOG_API_KEY\u003e\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewServiceIntegrationEndpoint(ctx, \"myendpoint\", \u0026aiven.ServiceIntegrationEndpointArgs{\n\t\t\tProject:      pulumi.Any(aiven_project.Myproject.Project),\n\t\t\tEndpointName: pulumi.String(\"\u003cENDPOINT_NAME\u003e\"),\n\t\t\tEndpointType: pulumi.String(\"datadog\"),\n\t\t\tDatadogUserConfig: \u0026aiven.ServiceIntegrationEndpointDatadogUserConfigArgs{\n\t\t\t\tDatadogApiKey: pulumi.String(\"\u003cDATADOG_API_KEY\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Prometheus Integration Endpoint\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst prometheusIntegration = new aiven.ServiceIntegrationEndpoint(\"prometheusIntegration\", {\n    project: aiven_project.myproject.project,\n    endpointName: \"\u003cENDPOINT_NAME\u003e\",\n    endpointType: \"prometheus\",\n    prometheusUserConfig: {\n        basicAuthUsername: \"\u003cUSERNAME\u003e\",\n        basicAuthPassword: \"\u003cPASSWORD\u003e\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nprometheus_integration = aiven.ServiceIntegrationEndpoint(\"prometheusIntegration\",\n    project=aiven_project[\"myproject\"][\"project\"],\n    endpoint_name=\"\u003cENDPOINT_NAME\u003e\",\n    endpoint_type=\"prometheus\",\n    prometheus_user_config=aiven.ServiceIntegrationEndpointPrometheusUserConfigArgs(\n        basic_auth_username=\"\u003cUSERNAME\u003e\",\n        basic_auth_password=\"\u003cPASSWORD\u003e\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var prometheusIntegration = new Aiven.ServiceIntegrationEndpoint(\"prometheusIntegration\", new Aiven.ServiceIntegrationEndpointArgs\n        {\n            Project = aiven_project.Myproject.Project,\n            EndpointName = \"\u003cENDPOINT_NAME\u003e\",\n            EndpointType = \"prometheus\",\n            PrometheusUserConfig = new Aiven.Inputs.ServiceIntegrationEndpointPrometheusUserConfigArgs\n            {\n                BasicAuthUsername = \"\u003cUSERNAME\u003e\",\n                BasicAuthPassword = \"\u003cPASSWORD\u003e\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewServiceIntegrationEndpoint(ctx, \"prometheusIntegration\", \u0026aiven.ServiceIntegrationEndpointArgs{\n\t\t\tProject:      pulumi.Any(aiven_project.Myproject.Project),\n\t\t\tEndpointName: pulumi.String(\"\u003cENDPOINT_NAME\u003e\"),\n\t\t\tEndpointType: pulumi.String(\"prometheus\"),\n\t\t\tPrometheusUserConfig: \u0026aiven.ServiceIntegrationEndpointPrometheusUserConfigArgs{\n\t\t\t\tBasicAuthUsername: pulumi.String(\"\u003cUSERNAME\u003e\"),\n\t\t\t\tBasicAuthPassword: pulumi.String(\"\u003cPASSWORD\u003e\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "datadogUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointDatadogUserConfig:ServiceIntegrationEndpointDatadogUserConfig",
@@ -29757,7 +29757,7 @@
                 },
                 "endpointType": {
                     "type": "string",
-                    "description": "is the type of the external service this endpoint is associated with.\nBy the time of writing the only available option is `datadog`.\n"
+                    "description": "is the type of the external service this endpoint is associated with.\nAvailable options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.\n"
                 },
                 "externalAwsCloudwatchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig",
@@ -29821,7 +29821,7 @@
                 },
                 "endpointType": {
                     "type": "string",
-                    "description": "is the type of the external service this endpoint is associated with.\nBy the time of writing the only available option is `datadog`.\n"
+                    "description": "is the type of the external service this endpoint is associated with.\nAvailable options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.\n"
                 },
                 "externalAwsCloudwatchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig",
@@ -29893,7 +29893,7 @@
                     },
                     "endpointType": {
                         "type": "string",
-                        "description": "is the type of the external service this endpoint is associated with.\nBy the time of writing the only available option is `datadog`.\n"
+                        "description": "is the type of the external service this endpoint is associated with.\nAvailable options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.\n"
                     },
                     "externalAwsCloudwatchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig",
@@ -30908,7 +30908,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -31001,7 +31001,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string"
@@ -31264,7 +31264,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -31357,7 +31357,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string"
@@ -31526,7 +31526,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -31619,7 +31619,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string"
@@ -31719,7 +31719,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -31812,7 +31812,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string"
@@ -31915,7 +31915,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -32011,7 +32011,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string"
@@ -32179,7 +32179,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -32272,7 +32272,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string"
@@ -32501,7 +32501,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -32594,7 +32594,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string"
@@ -32959,7 +32959,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -33052,7 +33052,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string"
@@ -33152,7 +33152,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -33245,7 +33245,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string"
@@ -33440,7 +33440,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -33533,7 +33533,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string"
@@ -33633,7 +33633,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -33726,7 +33726,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string"
@@ -34106,7 +34106,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string",
@@ -34199,7 +34199,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The exact options can be\nseen from the Aiven web console's Create Service dialog.\n"
+                        "description": "defines what kind of computing resources are allocated for the service. It can\nbe changed after creation, though there are some restrictions when going to a smaller\nplan such as the new plan must have sufficient amount of disk space to store all current\ndata and switching to a plan with fewer nodes might not be supported. The basic plan\nnames are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is\n(roughly) the amount of memory on each node (also other attributes like number of CPUs\nand amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
                         "type": "string"
@@ -35313,8 +35313,7 @@
                 "aiven": "Aiven"
             },
             "packageReferences": {
-                "Pulumi": "3.*",
-                "System.Collections.Immutable": "1.6.0"
+                "Pulumi": "3.*"
             }
         },
         "go": {

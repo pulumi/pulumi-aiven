@@ -83,8 +83,7 @@ type MySql struct {
 	// data and switching to a plan with fewer nodes might not be supported. The basic plan
 	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
 	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-	// and amount of disk space varies but naming is based on memory). The exact options can be
-	// seen from the Aiven web console's Create Service dialog.
+	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrOutput `pulumi:"plan"`
 	// identifies the project the service belongs to. To set up proper dependency
 	// between the project and the service, refer to the project as shown in the above example.
@@ -191,8 +190,7 @@ type mySqlState struct {
 	// data and switching to a plan with fewer nodes might not be supported. The basic plan
 	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
 	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-	// and amount of disk space varies but naming is based on memory). The exact options can be
-	// seen from the Aiven web console's Create Service dialog.
+	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
 	// identifies the project the service belongs to. To set up proper dependency
 	// between the project and the service, refer to the project as shown in the above example.
@@ -265,8 +263,7 @@ type MySqlState struct {
 	// data and switching to a plan with fewer nodes might not be supported. The basic plan
 	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
 	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-	// and amount of disk space varies but naming is based on memory). The exact options can be
-	// seen from the Aiven web console's Create Service dialog.
+	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
 	// identifies the project the service belongs to. To set up proper dependency
 	// between the project and the service, refer to the project as shown in the above example.
@@ -341,8 +338,7 @@ type mySqlArgs struct {
 	// data and switching to a plan with fewer nodes might not be supported. The basic plan
 	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
 	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-	// and amount of disk space varies but naming is based on memory). The exact options can be
-	// seen from the Aiven web console's Create Service dialog.
+	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
 	// identifies the project the service belongs to. To set up proper dependency
 	// between the project and the service, refer to the project as shown in the above example.
@@ -400,8 +396,7 @@ type MySqlArgs struct {
 	// data and switching to a plan with fewer nodes might not be supported. The basic plan
 	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
 	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-	// and amount of disk space varies but naming is based on memory). The exact options can be
-	// seen from the Aiven web console's Create Service dialog.
+	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
 	// identifies the project the service belongs to. To set up proper dependency
 	// between the project and the service, refer to the project as shown in the above example.

@@ -42,6 +42,34 @@ import (
 // 	})
 // }
 // ```
+// ### Prometheus Integration Endpoint
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.NewServiceIntegrationEndpoint(ctx, "prometheusIntegration", &aiven.ServiceIntegrationEndpointArgs{
+// 			Project:      pulumi.Any(aiven_project.Myproject.Project),
+// 			EndpointName: pulumi.String("<ENDPOINT_NAME>"),
+// 			EndpointType: pulumi.String("prometheus"),
+// 			PrometheusUserConfig: &aiven.ServiceIntegrationEndpointPrometheusUserConfigArgs{
+// 				BasicAuthUsername: pulumi.String("<USERNAME>"),
+// 				BasicAuthPassword: pulumi.String("<PASSWORD>"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ServiceIntegrationEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -53,7 +81,7 @@ type ServiceIntegrationEndpoint struct {
 	// to identify different integration endpoints.
 	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
 	// is the type of the external service this endpoint is associated with.
-	// By the time of writing the only available option is `datadog`.
+	// Available options are `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchLogsUserConfig"`
@@ -125,7 +153,7 @@ type serviceIntegrationEndpointState struct {
 	// to identify different integration endpoints.
 	EndpointName *string `pulumi:"endpointName"`
 	// is the type of the external service this endpoint is associated with.
-	// By the time of writing the only available option is `datadog`.
+	// Available options are `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
 	EndpointType *string `pulumi:"endpointType"`
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
@@ -160,7 +188,7 @@ type ServiceIntegrationEndpointState struct {
 	// to identify different integration endpoints.
 	EndpointName pulumi.StringPtrInput
 	// is the type of the external service this endpoint is associated with.
-	// By the time of writing the only available option is `datadog`.
+	// Available options are `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
 	EndpointType pulumi.StringPtrInput
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput
@@ -197,7 +225,7 @@ type serviceIntegrationEndpointArgs struct {
 	// to identify different integration endpoints.
 	EndpointName string `pulumi:"endpointName"`
 	// is the type of the external service this endpoint is associated with.
-	// By the time of writing the only available option is `datadog`.
+	// Available options are `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
 	EndpointType string `pulumi:"endpointType"`
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
@@ -231,7 +259,7 @@ type ServiceIntegrationEndpointArgs struct {
 	// to identify different integration endpoints.
 	EndpointName pulumi.StringInput
 	// is the type of the external service this endpoint is associated with.
-	// By the time of writing the only available option is `datadog`.
+	// Available options are `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
 	EndpointType pulumi.StringInput
 	// external AWS CloudWatch Logs specific user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput

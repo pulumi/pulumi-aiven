@@ -54,8 +54,7 @@ class KafkaMirrorMakerArgs:
                data and switching to a plan with fewer nodes might not be supported. The basic plan
                names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
                (roughly) the amount of memory on each node (also other attributes like number of CPUs
-               and amount of disk space varies but naming is based on memory). The exact options can be
-               seen from the Aiven web console's Create Service dialog.
+               and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project_vpc_id: optionally specifies the VPC the service should run in. If the value
                is not set the service is not run inside a VPC. When set, the value should be given as a
                reference as shown above to set up dependencies correctly and the VPC must be in the same
@@ -197,8 +196,7 @@ class KafkaMirrorMakerArgs:
         data and switching to a plan with fewer nodes might not be supported. The basic plan
         names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
         (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        and amount of disk space varies but naming is based on memory). The exact options can be
-        seen from the Aiven web console's Create Service dialog.
+        and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -297,8 +295,7 @@ class _KafkaMirrorMakerState:
                data and switching to a plan with fewer nodes might not be supported. The basic plan
                names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
                (roughly) the amount of memory on each node (also other attributes like number of CPUs
-               and amount of disk space varies but naming is based on memory). The exact options can be
-               seen from the Aiven web console's Create Service dialog.
+               and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
                between the project and the service, refer to the project as shown in the above example.
                Project cannot be changed later without destroying and re-creating the service.
@@ -455,8 +452,7 @@ class _KafkaMirrorMakerState:
         data and switching to a plan with fewer nodes might not be supported. The basic plan
         names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
         (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        and amount of disk space varies but naming is based on memory). The exact options can be
-        seen from the Aiven web console's Create Service dialog.
+        and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -687,8 +683,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
                data and switching to a plan with fewer nodes might not be supported. The basic plan
                names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
                (roughly) the amount of memory on each node (also other attributes like number of CPUs
-               and amount of disk space varies but naming is based on memory). The exact options can be
-               seen from the Aiven web console's Create Service dialog.
+               and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
                between the project and the service, refer to the project as shown in the above example.
                Project cannot be changed later without destroying and re-creating the service.
@@ -858,8 +853,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
                data and switching to a plan with fewer nodes might not be supported. The basic plan
                names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
                (roughly) the amount of memory on each node (also other attributes like number of CPUs
-               and amount of disk space varies but naming is based on memory). The exact options can be
-               seen from the Aiven web console's Create Service dialog.
+               and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
                between the project and the service, refer to the project as shown in the above example.
                Project cannot be changed later without destroying and re-creating the service.
@@ -978,8 +972,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
         data and switching to a plan with fewer nodes might not be supported. The basic plan
         names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
         (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        and amount of disk space varies but naming is based on memory). The exact options can be
-        seen from the Aiven web console's Create Service dialog.
+        and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 

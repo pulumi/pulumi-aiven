@@ -34,7 +34,7 @@ class ServiceIntegrationEndpointArgs:
         :param pulumi.Input[str] endpoint_name: is the name of the endpoint. This value has no effect beyond being used
                to identify different integration endpoints.
         :param pulumi.Input[str] endpoint_type: is the type of the external service this endpoint is associated with.
-               By the time of writing the only available option is `datadog`.
+               Available options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
         :param pulumi.Input[str] project: defines the project the endpoint is associated with.
         :param pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigArgs'] datadog_user_config: Datadog specific user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: external AWS CloudWatch Logs specific user configurable settings
@@ -92,7 +92,7 @@ class ServiceIntegrationEndpointArgs:
     def endpoint_type(self) -> pulumi.Input[str]:
         """
         is the type of the external service this endpoint is associated with.
-        By the time of writing the only available option is `datadog`.
+        Available options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -270,7 +270,7 @@ class _ServiceIntegrationEndpointState:
         :param pulumi.Input[str] endpoint_name: is the name of the endpoint. This value has no effect beyond being used
                to identify different integration endpoints.
         :param pulumi.Input[str] endpoint_type: is the type of the external service this endpoint is associated with.
-               By the time of writing the only available option is `datadog`.
+               Available options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
         :param pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: external AWS CloudWatch Logs specific user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: External AWS cloudwatch mertrics specific user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
@@ -356,7 +356,7 @@ class _ServiceIntegrationEndpointState:
     def endpoint_type(self) -> Optional[pulumi.Input[str]]:
         """
         is the type of the external service this endpoint is associated with.
-        By the time of writing the only available option is `datadog`.
+        Available options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -536,6 +536,21 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
                 datadog_api_key="<DATADOG_API_KEY>",
             ))
         ```
+        ### Prometheus Integration Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        prometheus_integration = aiven.ServiceIntegrationEndpoint("prometheusIntegration",
+            project=aiven_project["myproject"]["project"],
+            endpoint_name="<ENDPOINT_NAME>",
+            endpoint_type="prometheus",
+            prometheus_user_config=aiven.ServiceIntegrationEndpointPrometheusUserConfigArgs(
+                basic_auth_username="<USERNAME>",
+                basic_auth_password="<PASSWORD>",
+            ))
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -543,7 +558,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint_name: is the name of the endpoint. This value has no effect beyond being used
                to identify different integration endpoints.
         :param pulumi.Input[str] endpoint_type: is the type of the external service this endpoint is associated with.
-               By the time of writing the only available option is `datadog`.
+               Available options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: external AWS CloudWatch Logs specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: External AWS cloudwatch mertrics specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
@@ -579,6 +594,21 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
             endpoint_type="datadog",
             datadog_user_config=aiven.ServiceIntegrationEndpointDatadogUserConfigArgs(
                 datadog_api_key="<DATADOG_API_KEY>",
+            ))
+        ```
+        ### Prometheus Integration Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        prometheus_integration = aiven.ServiceIntegrationEndpoint("prometheusIntegration",
+            project=aiven_project["myproject"]["project"],
+            endpoint_name="<ENDPOINT_NAME>",
+            endpoint_type="prometheus",
+            prometheus_user_config=aiven.ServiceIntegrationEndpointPrometheusUserConfigArgs(
+                basic_auth_username="<USERNAME>",
+                basic_auth_password="<PASSWORD>",
             ))
         ```
 
@@ -681,7 +711,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint_name: is the name of the endpoint. This value has no effect beyond being used
                to identify different integration endpoints.
         :param pulumi.Input[str] endpoint_type: is the type of the external service this endpoint is associated with.
-               By the time of writing the only available option is `datadog`.
+               Available options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: external AWS CloudWatch Logs specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: External AWS cloudwatch mertrics specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: external elasticsearch specific user configurable settings
@@ -745,7 +775,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
     def endpoint_type(self) -> pulumi.Output[str]:
         """
         is the type of the external service this endpoint is associated with.
-        By the time of writing the only available option is `datadog`.
+        Available options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
         """
         return pulumi.get(self, "endpoint_type")
 
