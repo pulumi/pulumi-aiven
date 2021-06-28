@@ -25,6 +25,22 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * ### Prometheus Integration Endpoint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const prometheusIntegration = new aiven.ServiceIntegrationEndpoint("prometheusIntegration", {
+ *     project: aiven_project.myproject.project,
+ *     endpointName: "<ENDPOINT_NAME>",
+ *     endpointType: "prometheus",
+ *     prometheusUserConfig: {
+ *         basicAuthUsername: "<USERNAME>",
+ *         basicAuthPassword: "<PASSWORD>",
+ *     },
+ * });
+ * ```
  */
 export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
     /**
@@ -69,7 +85,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
     public readonly endpointName!: pulumi.Output<string>;
     /**
      * is the type of the external service this endpoint is associated with.
-     * By the time of writing the only available option is `datadog`.
+     * Available options are `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
      */
     public readonly endpointType!: pulumi.Output<string>;
     /**
@@ -198,7 +214,7 @@ export interface ServiceIntegrationEndpointState {
     endpointName?: pulumi.Input<string>;
     /**
      * is the type of the external service this endpoint is associated with.
-     * By the time of writing the only available option is `datadog`.
+     * Available options are `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
      */
     endpointType?: pulumi.Input<string>;
     /**
@@ -262,7 +278,7 @@ export interface ServiceIntegrationEndpointArgs {
     endpointName: pulumi.Input<string>;
     /**
      * is the type of the external service this endpoint is associated with.
-     * By the time of writing the only available option is `datadog`.
+     * Available options are `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
      */
     endpointType: pulumi.Input<string>;
     /**

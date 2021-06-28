@@ -97,8 +97,7 @@ export class M3Aggregator extends pulumi.CustomResource {
      * data and switching to a plan with fewer nodes might not be supported. The basic plan
      * names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
      * (roughly) the amount of memory on each node (also other attributes like number of CPUs
-     * and amount of disk space varies but naming is based on memory). The exact options can be
-     * seen from the Aiven web console's Create Service dialog.
+     * and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */
     public readonly plan!: pulumi.Output<string | undefined>;
     /**
@@ -274,8 +273,7 @@ export interface M3AggregatorState {
      * data and switching to a plan with fewer nodes might not be supported. The basic plan
      * names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
      * (roughly) the amount of memory on each node (also other attributes like number of CPUs
-     * and amount of disk space varies but naming is based on memory). The exact options can be
-     * seen from the Aiven web console's Create Service dialog.
+     * and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */
     plan?: pulumi.Input<string>;
     /**
@@ -381,8 +379,7 @@ export interface M3AggregatorArgs {
      * data and switching to a plan with fewer nodes might not be supported. The basic plan
      * names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
      * (roughly) the amount of memory on each node (also other attributes like number of CPUs
-     * and amount of disk space varies but naming is based on memory). The exact options can be
-     * seen from the Aiven web console's Create Service dialog.
+     * and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */
     plan?: pulumi.Input<string>;
     /**

@@ -38,6 +38,31 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// ### Prometheus Integration Endpoint
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var prometheusIntegration = new Aiven.ServiceIntegrationEndpoint("prometheusIntegration", new Aiven.ServiceIntegrationEndpointArgs
+    ///         {
+    ///             Project = aiven_project.Myproject.Project,
+    ///             EndpointName = "&lt;ENDPOINT_NAME&gt;",
+    ///             EndpointType = "prometheus",
+    ///             PrometheusUserConfig = new Aiven.Inputs.ServiceIntegrationEndpointPrometheusUserConfigArgs
+    ///             {
+    ///                 BasicAuthUsername = "&lt;USERNAME&gt;",
+    ///                 BasicAuthPassword = "&lt;PASSWORD&gt;",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint")]
     public partial class ServiceIntegrationEndpoint : Pulumi.CustomResource
@@ -63,7 +88,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// is the type of the external service this endpoint is associated with.
-        /// By the time of writing the only available option is `datadog`.
+        /// Available options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
@@ -195,7 +220,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// is the type of the external service this endpoint is associated with.
-        /// By the time of writing the only available option is `datadog`.
+        /// Available options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
@@ -300,7 +325,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// is the type of the external service this endpoint is associated with.
-        /// By the time of writing the only available option is `datadog`.
+        /// Available options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
