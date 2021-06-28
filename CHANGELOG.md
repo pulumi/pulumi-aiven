@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.1.15 of the Aiven Terraform Provider
+_(none)_
 
 ---
+
+## 4.1.1 (2021-06-28)
+* Upgrade to v2.1.15 of the Aiven Terraform Provider
 
 ## 4.1.0 (2021-05-27)
 * Upgrade to v3.2.1 of the pulumi-terraform-bridge
