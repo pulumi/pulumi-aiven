@@ -139,6 +139,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly technicalEmails!: pulumi.Output<string[] | undefined>;
     /**
+     * Use the same billing group that is used in source project.
+     */
+    public readonly useSourceProjectBillingGroup!: pulumi.Output<boolean | undefined>;
+    /**
      * EU VAT Identification Number
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
@@ -175,6 +179,7 @@ export class Project extends pulumi.CustomResource {
             inputs["paymentMethod"] = state ? state.paymentMethod : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["technicalEmails"] = state ? state.technicalEmails : undefined;
+            inputs["useSourceProjectBillingGroup"] = state ? state.useSourceProjectBillingGroup : undefined;
             inputs["vatId"] = state ? state.vatId : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
@@ -195,6 +200,7 @@ export class Project extends pulumi.CustomResource {
             inputs["defaultCloud"] = args ? args.defaultCloud : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["technicalEmails"] = args ? args.technicalEmails : undefined;
+            inputs["useSourceProjectBillingGroup"] = args ? args.useSourceProjectBillingGroup : undefined;
             inputs["vatId"] = args ? args.vatId : undefined;
             inputs["country"] = undefined /*out*/;
             inputs["estimatedBalance"] = undefined /*out*/;
@@ -313,6 +319,10 @@ export interface ProjectState {
      */
     technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Use the same billing group that is used in source project.
+     */
+    useSourceProjectBillingGroup?: pulumi.Input<boolean>;
+    /**
      * EU VAT Identification Number
      *
      * @deprecated Please use aiven_billing_group resource to set this value.
@@ -409,6 +419,10 @@ export interface ProjectArgs {
      * this up-to-date to be aware of any potential issues with your project.
      */
     technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Use the same billing group that is used in source project.
+     */
+    useSourceProjectBillingGroup?: pulumi.Input<boolean>;
     /**
      * EU VAT Identification Number
      *

@@ -157,6 +157,9 @@ namespace Pulumi.Aiven
             set => _technicalEmails = value;
         }
 
+        [Input("useSourceProjectBillingGroup")]
+        public bool? UseSourceProjectBillingGroup { get; set; }
+
         [Input("vatId")]
         public string? VatId { get; set; }
 
@@ -234,6 +237,7 @@ namespace Pulumi.Aiven
         /// this up-to-date to be aware of any potential issues with your project.
         /// </summary>
         public readonly ImmutableArray<string> TechnicalEmails;
+        public readonly bool? UseSourceProjectBillingGroup;
         public readonly string? VatId;
 
         [OutputConstructor]
@@ -274,6 +278,8 @@ namespace Pulumi.Aiven
 
             ImmutableArray<string> technicalEmails,
 
+            bool? useSourceProjectBillingGroup,
+
             string? vatId)
         {
             AccountId = accountId;
@@ -294,6 +300,7 @@ namespace Pulumi.Aiven
             PaymentMethod = paymentMethod;
             Project = project;
             TechnicalEmails = technicalEmails;
+            UseSourceProjectBillingGroup = useSourceProjectBillingGroup;
             VatId = vatId;
         }
     }

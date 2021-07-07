@@ -84,6 +84,8 @@ type Project struct {
 	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
 	// this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayOutput `pulumi:"technicalEmails"`
+	// Use the same billing group that is used in source project.
+	UseSourceProjectBillingGroup pulumi.BoolPtrOutput `pulumi:"useSourceProjectBillingGroup"`
 	// EU VAT Identification Number
 	//
 	// Deprecated: Please use aiven_billing_group resource to set this value.
@@ -189,6 +191,8 @@ type projectState struct {
 	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
 	// this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
+	// Use the same billing group that is used in source project.
+	UseSourceProjectBillingGroup *bool `pulumi:"useSourceProjectBillingGroup"`
 	// EU VAT Identification Number
 	//
 	// Deprecated: Please use aiven_billing_group resource to set this value.
@@ -263,6 +267,8 @@ type ProjectState struct {
 	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
 	// this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayInput
+	// Use the same billing group that is used in source project.
+	UseSourceProjectBillingGroup pulumi.BoolPtrInput
 	// EU VAT Identification Number
 	//
 	// Deprecated: Please use aiven_billing_group resource to set this value.
@@ -331,6 +337,8 @@ type projectArgs struct {
 	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
 	// this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
+	// Use the same billing group that is used in source project.
+	UseSourceProjectBillingGroup *bool `pulumi:"useSourceProjectBillingGroup"`
 	// EU VAT Identification Number
 	//
 	// Deprecated: Please use aiven_billing_group resource to set this value.
@@ -396,6 +404,8 @@ type ProjectArgs struct {
 	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
 	// this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayInput
+	// Use the same billing group that is used in source project.
+	UseSourceProjectBillingGroup pulumi.BoolPtrInput
 	// EU VAT Identification Number
 	//
 	// Deprecated: Please use aiven_billing_group resource to set this value.

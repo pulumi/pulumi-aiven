@@ -47,6 +47,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
         "paymentMethod": args.paymentMethod,
         "project": args.project,
         "technicalEmails": args.technicalEmails,
+        "useSourceProjectBillingGroup": args.useSourceProjectBillingGroup,
         "vatId": args.vatId,
     }, opts);
 }
@@ -121,6 +122,7 @@ export interface GetProjectArgs {
      * this up-to-date to be aware of any potential issues with your project.
      */
     technicalEmails?: string[];
+    useSourceProjectBillingGroup?: boolean;
     vatId?: string;
 }
 
@@ -193,5 +195,6 @@ export interface GetProjectResult {
      * this up-to-date to be aware of any potential issues with your project.
      */
     readonly technicalEmails?: string[];
+    readonly useSourceProjectBillingGroup?: boolean;
     readonly vatId?: string;
 }

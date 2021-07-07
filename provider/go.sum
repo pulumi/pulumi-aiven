@@ -131,6 +131,8 @@ github.com/aiven/aiven-go-client v1.5.12-0.20210401064156-3594908646c8 h1:1i/zJa
 github.com/aiven/aiven-go-client v1.5.12-0.20210401064156-3594908646c8/go.mod h1:3+OtpccynSr5xvSGfn96jVM9dBUAr52HXlaZJi/Mz5o=
 github.com/aiven/aiven-go-client v1.5.12-0.20210517061416-95d0d6f8c2f6 h1:Jse9IKtgFRBluwv+tdg2hJ2IrrNGC8V3DIyVbyyoGyA=
 github.com/aiven/aiven-go-client v1.5.12-0.20210517061416-95d0d6f8c2f6/go.mod h1:3+OtpccynSr5xvSGfn96jVM9dBUAr52HXlaZJi/Mz5o=
+github.com/aiven/aiven-go-client v1.5.12-0.20210630063319-4c322ec6920a h1:aeOCvUszd2Yw36cLvoHQMrErnG4qy67xc18LjmXkBTo=
+github.com/aiven/aiven-go-client v1.5.12-0.20210630063319-4c322ec6920a/go.mod h1:3+OtpccynSr5xvSGfn96jVM9dBUAr52HXlaZJi/Mz5o=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7 h1:uSoVVbwJiQipAclBbw+8quDsfcvFjOpI5iCf4p/cqCs=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7/go.mod h1:6zEj6s6u/ghQa61ZWa/C2Aw3RkjiTBOix7dkqa1VLIs=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc h1:cAKDfWh5VpdgMhJosfJnn5/FoN2SRZ4p7fJNX58YPaU=
@@ -750,6 +752,8 @@ github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210519082957-cd6082132a81
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210519082957-cd6082132a81/go.mod h1:2S9W4XzIev2NqQZWk2LailxGNua+VPbIi9LlgRnXvXw=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210625125716-cd360ee821ce h1:NE3JlsigciFHnRRneVVqFqh5WdMnmT9nD4daoVTCbwA=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210625125716-cd360ee821ce/go.mod h1:2S9W4XzIev2NqQZWk2LailxGNua+VPbIi9LlgRnXvXw=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210707204449-37768df1804d h1:lKkFXGgyIdUe3IxnQtpu+JwJid96r7eDMDDtAv3M2Fg=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210707204449-37768df1804d/go.mod h1:ZDB0w7zmkIX+pP/6zJGC8b99kxW6DnXF+bByBd4LAWs=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af h1:gu+uRPtBe88sKxUCEXRoeCvVG90TJmwhiqRpvdhQFng=
