@@ -40,6 +40,7 @@ export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOpt
         "password": args.password,
         "project": args.project,
         "redisAclCategories": args.redisAclCategories,
+        "redisAclChannels": args.redisAclChannels,
         "redisAclCommands": args.redisAclCommands,
         "redisAclKeys": args.redisAclKeys,
         "serviceName": args.serviceName,
@@ -74,6 +75,7 @@ export interface GetServiceUserArgs {
      * Redis specific field, defines command category rules.
      */
     redisAclCategories?: string[];
+    redisAclChannels?: string[];
     /**
      * Redis specific field, defines rules for individual commands.
      */
@@ -119,6 +121,7 @@ export interface GetServiceUserResult {
      * Redis specific field, defines command category rules.
      */
     readonly redisAclCategories?: string[];
+    readonly redisAclChannels?: string[];
     /**
      * Redis specific field, defines rules for individual commands.
      */

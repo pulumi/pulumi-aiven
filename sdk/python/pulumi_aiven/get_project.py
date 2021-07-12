@@ -19,7 +19,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, account_id=None, available_credits=None, billing_address=None, billing_currency=None, billing_emails=None, billing_extra_text=None, billing_group=None, ca_cert=None, card_id=None, copy_from_project=None, country=None, country_code=None, default_cloud=None, estimated_balance=None, id=None, payment_method=None, project=None, technical_emails=None, vat_id=None):
+    def __init__(__self__, account_id=None, available_credits=None, billing_address=None, billing_currency=None, billing_emails=None, billing_extra_text=None, billing_group=None, ca_cert=None, card_id=None, copy_from_project=None, country=None, country_code=None, default_cloud=None, estimated_balance=None, id=None, payment_method=None, project=None, technical_emails=None, use_source_project_billing_group=None, vat_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -74,6 +74,9 @@ class GetProjectResult:
         if technical_emails and not isinstance(technical_emails, list):
             raise TypeError("Expected argument 'technical_emails' to be a list")
         pulumi.set(__self__, "technical_emails", technical_emails)
+        if use_source_project_billing_group and not isinstance(use_source_project_billing_group, bool):
+            raise TypeError("Expected argument 'use_source_project_billing_group' to be a bool")
+        pulumi.set(__self__, "use_source_project_billing_group", use_source_project_billing_group)
         if vat_id and not isinstance(vat_id, str):
             raise TypeError("Expected argument 'vat_id' to be a str")
         pulumi.set(__self__, "vat_id", vat_id)
@@ -216,6 +219,11 @@ class GetProjectResult:
         return pulumi.get(self, "technical_emails")
 
     @property
+    @pulumi.getter(name="useSourceProjectBillingGroup")
+    def use_source_project_billing_group(self) -> Optional[bool]:
+        return pulumi.get(self, "use_source_project_billing_group")
+
+    @property
     @pulumi.getter(name="vatId")
     def vat_id(self) -> Optional[str]:
         return pulumi.get(self, "vat_id")
@@ -245,6 +253,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             payment_method=self.payment_method,
             project=self.project,
             technical_emails=self.technical_emails,
+            use_source_project_billing_group=self.use_source_project_billing_group,
             vat_id=self.vat_id)
 
 
@@ -265,6 +274,7 @@ def get_project(account_id: Optional[str] = None,
                 payment_method: Optional[str] = None,
                 project: Optional[str] = None,
                 technical_emails: Optional[Sequence[str]] = None,
+                use_source_project_billing_group: Optional[bool] = None,
                 vat_id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
@@ -330,6 +340,7 @@ def get_project(account_id: Optional[str] = None,
     __args__['paymentMethod'] = payment_method
     __args__['project'] = project
     __args__['technicalEmails'] = technical_emails
+    __args__['useSourceProjectBillingGroup'] = use_source_project_billing_group
     __args__['vatId'] = vat_id
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -356,4 +367,5 @@ def get_project(account_id: Optional[str] = None,
         payment_method=__ret__.payment_method,
         project=__ret__.project,
         technical_emails=__ret__.technical_emails,
+        use_source_project_billing_group=__ret__.use_source_project_billing_group,
         vat_id=__ret__.vat_id)

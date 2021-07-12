@@ -57,6 +57,8 @@ type ServiceUser struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Redis specific field, defines command category rules.
 	RedisAclCategories pulumi.StringArrayOutput `pulumi:"redisAclCategories"`
+	// Permitted pub/sub channel patterns
+	RedisAclChannels pulumi.StringArrayOutput `pulumi:"redisAclChannels"`
 	// Redis specific field, defines rules for individual commands.
 	RedisAclCommands pulumi.StringArrayOutput `pulumi:"redisAclCommands"`
 	// Redis specific field, defines key access rules.
@@ -120,6 +122,8 @@ type serviceUserState struct {
 	Project *string `pulumi:"project"`
 	// Redis specific field, defines command category rules.
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
+	// Permitted pub/sub channel patterns
+	RedisAclChannels []string `pulumi:"redisAclChannels"`
 	// Redis specific field, defines rules for individual commands.
 	RedisAclCommands []string `pulumi:"redisAclCommands"`
 	// Redis specific field, defines key access rules.
@@ -146,6 +150,8 @@ type ServiceUserState struct {
 	Project pulumi.StringPtrInput
 	// Redis specific field, defines command category rules.
 	RedisAclCategories pulumi.StringArrayInput
+	// Permitted pub/sub channel patterns
+	RedisAclChannels pulumi.StringArrayInput
 	// Redis specific field, defines rules for individual commands.
 	RedisAclCommands pulumi.StringArrayInput
 	// Redis specific field, defines key access rules.
@@ -172,6 +178,8 @@ type serviceUserArgs struct {
 	Project string `pulumi:"project"`
 	// Redis specific field, defines command category rules.
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
+	// Permitted pub/sub channel patterns
+	RedisAclChannels []string `pulumi:"redisAclChannels"`
 	// Redis specific field, defines rules for individual commands.
 	RedisAclCommands []string `pulumi:"redisAclCommands"`
 	// Redis specific field, defines key access rules.
@@ -193,6 +201,8 @@ type ServiceUserArgs struct {
 	Project pulumi.StringInput
 	// Redis specific field, defines command category rules.
 	RedisAclCategories pulumi.StringArrayInput
+	// Permitted pub/sub channel patterns
+	RedisAclChannels pulumi.StringArrayInput
 	// Redis specific field, defines rules for individual commands.
 	RedisAclCommands pulumi.StringArrayInput
 	// Redis specific field, defines key access rules.

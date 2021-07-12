@@ -27,6 +27,7 @@ class ProjectArgs:
                  country_code: Optional[pulumi.Input[str]] = None,
                  default_cloud: Optional[pulumi.Input[str]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
                  vat_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Project resource.
@@ -61,6 +62,7 @@ class ProjectArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: defines the email addresses that will receive alerts about 
                upcoming maintenance updates or warnings about service instability. It is a good practice to keep
                this up-to-date to be aware of any potential issues with your project.
+        :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
         :param pulumi.Input[str] vat_id: EU VAT Identification Number
         """
         pulumi.set(__self__, "project", project)
@@ -108,6 +110,8 @@ class ProjectArgs:
             pulumi.set(__self__, "default_cloud", default_cloud)
         if technical_emails is not None:
             pulumi.set(__self__, "technical_emails", technical_emails)
+        if use_source_project_billing_group is not None:
+            pulumi.set(__self__, "use_source_project_billing_group", use_source_project_billing_group)
         if vat_id is not None:
             warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
             pulumi.log.warn("""vat_id is deprecated: Please use aiven_billing_group resource to set this value.""")
@@ -300,6 +304,18 @@ class ProjectArgs:
         pulumi.set(self, "technical_emails", value)
 
     @property
+    @pulumi.getter(name="useSourceProjectBillingGroup")
+    def use_source_project_billing_group(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use the same billing group that is used in source project.
+        """
+        return pulumi.get(self, "use_source_project_billing_group")
+
+    @use_source_project_billing_group.setter
+    def use_source_project_billing_group(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_source_project_billing_group", value)
+
+    @property
     @pulumi.getter(name="vatId")
     def vat_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -332,6 +348,7 @@ class _ProjectState:
                  payment_method: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
                  vat_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Project resources.
@@ -371,6 +388,7 @@ class _ProjectState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: defines the email addresses that will receive alerts about 
                upcoming maintenance updates or warnings about service instability. It is a good practice to keep
                this up-to-date to be aware of any potential issues with your project.
+        :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
         :param pulumi.Input[str] vat_id: EU VAT Identification Number
         """
         if account_id is not None:
@@ -428,6 +446,8 @@ class _ProjectState:
             pulumi.set(__self__, "project", project)
         if technical_emails is not None:
             pulumi.set(__self__, "technical_emails", technical_emails)
+        if use_source_project_billing_group is not None:
+            pulumi.set(__self__, "use_source_project_billing_group", use_source_project_billing_group)
         if vat_id is not None:
             warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
             pulumi.log.warn("""vat_id is deprecated: Please use aiven_billing_group resource to set this value.""")
@@ -658,6 +678,18 @@ class _ProjectState:
         pulumi.set(self, "technical_emails", value)
 
     @property
+    @pulumi.getter(name="useSourceProjectBillingGroup")
+    def use_source_project_billing_group(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use the same billing group that is used in source project.
+        """
+        return pulumi.get(self, "use_source_project_billing_group")
+
+    @use_source_project_billing_group.setter
+    def use_source_project_billing_group(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_source_project_billing_group", value)
+
+    @property
     @pulumi.getter(name="vatId")
     def vat_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -689,6 +721,7 @@ class Project(pulumi.CustomResource):
                  default_cloud: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
                  vat_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -729,6 +762,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: defines the email addresses that will receive alerts about 
                upcoming maintenance updates or warnings about service instability. It is a good practice to keep
                this up-to-date to be aware of any potential issues with your project.
+        :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
         :param pulumi.Input[str] vat_id: EU VAT Identification Number
         """
         ...
@@ -771,6 +805,7 @@ class Project(pulumi.CustomResource):
                  default_cloud: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
                  vat_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -818,6 +853,7 @@ class Project(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["technical_emails"] = technical_emails
+            __props__.__dict__["use_source_project_billing_group"] = use_source_project_billing_group
             if vat_id is not None and not opts.urn:
                 warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
                 pulumi.log.warn("""vat_id is deprecated: Please use aiven_billing_group resource to set this value.""")
@@ -852,6 +888,7 @@ class Project(pulumi.CustomResource):
             payment_method: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
             vat_id: Optional[pulumi.Input[str]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
@@ -896,6 +933,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: defines the email addresses that will receive alerts about 
                upcoming maintenance updates or warnings about service instability. It is a good practice to keep
                this up-to-date to be aware of any potential issues with your project.
+        :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
         :param pulumi.Input[str] vat_id: EU VAT Identification Number
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -919,6 +957,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["payment_method"] = payment_method
         __props__.__dict__["project"] = project
         __props__.__dict__["technical_emails"] = technical_emails
+        __props__.__dict__["use_source_project_billing_group"] = use_source_project_billing_group
         __props__.__dict__["vat_id"] = vat_id
         return Project(resource_name, opts=opts, __props__=__props__)
 
@@ -1076,6 +1115,14 @@ class Project(pulumi.CustomResource):
         this up-to-date to be aware of any potential issues with your project.
         """
         return pulumi.get(self, "technical_emails")
+
+    @property
+    @pulumi.getter(name="useSourceProjectBillingGroup")
+    def use_source_project_billing_group(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Use the same billing group that is used in source project.
+        """
+        return pulumi.get(self, "use_source_project_billing_group")
 
     @property
     @pulumi.getter(name="vatId")

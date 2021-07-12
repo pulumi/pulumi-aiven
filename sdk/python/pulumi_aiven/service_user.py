@@ -19,6 +19,7 @@ class ServiceUserArgs:
                  authentication: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  redis_acl_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 redis_acl_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  redis_acl_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  redis_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -30,6 +31,7 @@ class ServiceUserArgs:
         :param pulumi.Input[str] authentication: Authentication details
         :param pulumi.Input[str] password: Password of the user
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Redis specific field, defines command category rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_channels: Permitted pub/sub channel patterns
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Redis specific field, defines rules for individual commands.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Redis specific field, defines key access rules.
         """
@@ -42,6 +44,8 @@ class ServiceUserArgs:
             pulumi.set(__self__, "password", password)
         if redis_acl_categories is not None:
             pulumi.set(__self__, "redis_acl_categories", redis_acl_categories)
+        if redis_acl_channels is not None:
+            pulumi.set(__self__, "redis_acl_channels", redis_acl_channels)
         if redis_acl_commands is not None:
             pulumi.set(__self__, "redis_acl_commands", redis_acl_commands)
         if redis_acl_keys is not None:
@@ -121,6 +125,18 @@ class ServiceUserArgs:
         pulumi.set(self, "redis_acl_categories", value)
 
     @property
+    @pulumi.getter(name="redisAclChannels")
+    def redis_acl_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Permitted pub/sub channel patterns
+        """
+        return pulumi.get(self, "redis_acl_channels")
+
+    @redis_acl_channels.setter
+    def redis_acl_channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "redis_acl_channels", value)
+
+    @property
     @pulumi.getter(name="redisAclCommands")
     def redis_acl_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -154,6 +170,7 @@ class _ServiceUserState:
                  password: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redis_acl_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 redis_acl_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  redis_acl_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  redis_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -168,6 +185,7 @@ class _ServiceUserState:
         :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the user belongs to. They should be defined
                using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Redis specific field, defines command category rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_channels: Permitted pub/sub channel patterns
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Redis specific field, defines rules for individual commands.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Redis specific field, defines key access rules.
         :param pulumi.Input[str] service_name: Service to link the user to
@@ -186,6 +204,8 @@ class _ServiceUserState:
             pulumi.set(__self__, "project", project)
         if redis_acl_categories is not None:
             pulumi.set(__self__, "redis_acl_categories", redis_acl_categories)
+        if redis_acl_channels is not None:
+            pulumi.set(__self__, "redis_acl_channels", redis_acl_channels)
         if redis_acl_commands is not None:
             pulumi.set(__self__, "redis_acl_commands", redis_acl_commands)
         if redis_acl_keys is not None:
@@ -271,6 +291,18 @@ class _ServiceUserState:
         pulumi.set(self, "redis_acl_categories", value)
 
     @property
+    @pulumi.getter(name="redisAclChannels")
+    def redis_acl_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Permitted pub/sub channel patterns
+        """
+        return pulumi.get(self, "redis_acl_channels")
+
+    @redis_acl_channels.setter
+    def redis_acl_channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "redis_acl_channels", value)
+
+    @property
     @pulumi.getter(name="redisAclCommands")
     def redis_acl_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -340,6 +372,7 @@ class ServiceUser(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redis_acl_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 redis_acl_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  redis_acl_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  redis_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -371,6 +404,7 @@ class ServiceUser(pulumi.CustomResource):
         :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the user belongs to. They should be defined
                using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Redis specific field, defines command category rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_channels: Permitted pub/sub channel patterns
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Redis specific field, defines rules for individual commands.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Redis specific field, defines key access rules.
         :param pulumi.Input[str] service_name: Service to link the user to
@@ -420,6 +454,7 @@ class ServiceUser(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redis_acl_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 redis_acl_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  redis_acl_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  redis_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -442,6 +477,7 @@ class ServiceUser(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["redis_acl_categories"] = redis_acl_categories
+            __props__.__dict__["redis_acl_channels"] = redis_acl_channels
             __props__.__dict__["redis_acl_commands"] = redis_acl_commands
             __props__.__dict__["redis_acl_keys"] = redis_acl_keys
             if service_name is None and not opts.urn:
@@ -469,6 +505,7 @@ class ServiceUser(pulumi.CustomResource):
             password: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             redis_acl_categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            redis_acl_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             redis_acl_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             redis_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
@@ -488,6 +525,7 @@ class ServiceUser(pulumi.CustomResource):
         :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the user belongs to. They should be defined
                using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Redis specific field, defines command category rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_channels: Permitted pub/sub channel patterns
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Redis specific field, defines rules for individual commands.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Redis specific field, defines key access rules.
         :param pulumi.Input[str] service_name: Service to link the user to
@@ -504,6 +542,7 @@ class ServiceUser(pulumi.CustomResource):
         __props__.__dict__["password"] = password
         __props__.__dict__["project"] = project
         __props__.__dict__["redis_acl_categories"] = redis_acl_categories
+        __props__.__dict__["redis_acl_channels"] = redis_acl_channels
         __props__.__dict__["redis_acl_commands"] = redis_acl_commands
         __props__.__dict__["redis_acl_keys"] = redis_acl_keys
         __props__.__dict__["service_name"] = service_name
@@ -559,6 +598,14 @@ class ServiceUser(pulumi.CustomResource):
         Redis specific field, defines command category rules.
         """
         return pulumi.get(self, "redis_acl_categories")
+
+    @property
+    @pulumi.getter(name="redisAclChannels")
+    def redis_acl_channels(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Permitted pub/sub channel patterns
+        """
+        return pulumi.get(self, "redis_acl_channels")
 
     @property
     @pulumi.getter(name="redisAclCommands")

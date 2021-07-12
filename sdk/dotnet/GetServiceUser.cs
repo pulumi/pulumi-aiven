@@ -90,6 +90,14 @@ namespace Pulumi.Aiven
             set => _redisAclCategories = value;
         }
 
+        [Input("redisAclChannels")]
+        private List<string>? _redisAclChannels;
+        public List<string> RedisAclChannels
+        {
+            get => _redisAclChannels ?? (_redisAclChannels = new List<string>());
+            set => _redisAclChannels = value;
+        }
+
         [Input("redisAclCommands")]
         private List<string>? _redisAclCommands;
 
@@ -160,6 +168,7 @@ namespace Pulumi.Aiven
         /// Redis specific field, defines command category rules.
         /// </summary>
         public readonly ImmutableArray<string> RedisAclCategories;
+        public readonly ImmutableArray<string> RedisAclChannels;
         /// <summary>
         /// Redis specific field, defines rules for individual commands.
         /// </summary>
@@ -191,6 +200,8 @@ namespace Pulumi.Aiven
 
             ImmutableArray<string> redisAclCategories,
 
+            ImmutableArray<string> redisAclChannels,
+
             ImmutableArray<string> redisAclCommands,
 
             ImmutableArray<string> redisAclKeys,
@@ -208,6 +219,7 @@ namespace Pulumi.Aiven
             Password = password;
             Project = project;
             RedisAclCategories = redisAclCategories;
+            RedisAclChannels = redisAclChannels;
             RedisAclCommands = redisAclCommands;
             RedisAclKeys = redisAclKeys;
             ServiceName = serviceName;

@@ -78,6 +78,12 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> RedisAclCategories { get; private set; } = null!;
 
         /// <summary>
+        /// Permitted pub/sub channel patterns
+        /// </summary>
+        [Output("redisAclChannels")]
+        public Output<ImmutableArray<string>> RedisAclChannels { get; private set; } = null!;
+
+        /// <summary>
         /// Redis specific field, defines rules for individual commands.
         /// </summary>
         [Output("redisAclCommands")]
@@ -184,6 +190,18 @@ namespace Pulumi.Aiven
             set => _redisAclCategories = value;
         }
 
+        [Input("redisAclChannels")]
+        private InputList<string>? _redisAclChannels;
+
+        /// <summary>
+        /// Permitted pub/sub channel patterns
+        /// </summary>
+        public InputList<string> RedisAclChannels
+        {
+            get => _redisAclChannels ?? (_redisAclChannels = new InputList<string>());
+            set => _redisAclChannels = value;
+        }
+
         [Input("redisAclCommands")]
         private InputList<string>? _redisAclCommands;
 
@@ -268,6 +286,18 @@ namespace Pulumi.Aiven
         {
             get => _redisAclCategories ?? (_redisAclCategories = new InputList<string>());
             set => _redisAclCategories = value;
+        }
+
+        [Input("redisAclChannels")]
+        private InputList<string>? _redisAclChannels;
+
+        /// <summary>
+        /// Permitted pub/sub channel patterns
+        /// </summary>
+        public InputList<string> RedisAclChannels
+        {
+            get => _redisAclChannels ?? (_redisAclChannels = new InputList<string>());
+            set => _redisAclChannels = value;
         }
 
         [Input("redisAclCommands")]

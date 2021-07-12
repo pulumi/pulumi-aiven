@@ -89,8 +89,9 @@ type LookupProjectArgs struct {
 	// defines the email addresses that will receive alerts about
 	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
 	// this up-to-date to be aware of any potential issues with your project.
-	TechnicalEmails []string `pulumi:"technicalEmails"`
-	VatId           *string  `pulumi:"vatId"`
+	TechnicalEmails              []string `pulumi:"technicalEmails"`
+	UseSourceProjectBillingGroup *bool    `pulumi:"useSourceProjectBillingGroup"`
+	VatId                        *string  `pulumi:"vatId"`
 }
 
 // A collection of values returned by getProject.
@@ -139,6 +140,7 @@ type LookupProjectResult struct {
 	// defines the email addresses that will receive alerts about
 	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
 	// this up-to-date to be aware of any potential issues with your project.
-	TechnicalEmails []string `pulumi:"technicalEmails"`
-	VatId           *string  `pulumi:"vatId"`
+	TechnicalEmails              []string `pulumi:"technicalEmails"`
+	UseSourceProjectBillingGroup *bool    `pulumi:"useSourceProjectBillingGroup"`
+	VatId                        *string  `pulumi:"vatId"`
 }

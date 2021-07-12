@@ -28359,6 +28359,10 @@
                     },
                     "description": "defines the email addresses that will receive alerts about \nupcoming maintenance updates or warnings about service instability. It is a good practice to keep\nthis up-to-date to be aware of any potential issues with your project.\n"
                 },
+                "useSourceProjectBillingGroup": {
+                    "type": "boolean",
+                    "description": "Use the same billing group that is used in source project.\n"
+                },
                 "vatId": {
                     "type": "string",
                     "description": "EU VAT Identification Number\n",
@@ -28446,6 +28450,10 @@
                         "type": "string"
                     },
                     "description": "defines the email addresses that will receive alerts about \nupcoming maintenance updates or warnings about service instability. It is a good practice to keep\nthis up-to-date to be aware of any potential issues with your project.\n"
+                },
+                "useSourceProjectBillingGroup": {
+                    "type": "boolean",
+                    "description": "Use the same billing group that is used in source project.\n"
                 },
                 "vatId": {
                     "type": "string",
@@ -28544,6 +28552,10 @@
                             "type": "string"
                         },
                         "description": "defines the email addresses that will receive alerts about \nupcoming maintenance updates or warnings about service instability. It is a good practice to keep\nthis up-to-date to be aware of any potential issues with your project.\n"
+                    },
+                    "useSourceProjectBillingGroup": {
+                        "type": "boolean",
+                        "description": "Use the same billing group that is used in source project.\n"
                     },
                     "vatId": {
                         "type": "string",
@@ -29973,6 +29985,13 @@
                     },
                     "description": "Redis specific field, defines command category rules.\n"
                 },
+                "redisAclChannels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Permitted pub/sub channel patterns\n"
+                },
                 "redisAclCommands": {
                     "type": "array",
                     "items": {
@@ -30028,6 +30047,13 @@
                         "type": "string"
                     },
                     "description": "Redis specific field, defines command category rules.\n"
+                },
+                "redisAclChannels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Permitted pub/sub channel patterns\n"
                 },
                 "redisAclCommands": {
                     "type": "array",
@@ -30086,6 +30112,13 @@
                             "type": "string"
                         },
                         "description": "Redis specific field, defines command category rules.\n"
+                    },
+                    "redisAclChannels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Permitted pub/sub channel patterns\n"
                     },
                     "redisAclCommands": {
                         "type": "array",
@@ -33865,6 +33898,9 @@
                         },
                         "description": "defines the email addresses that will receive alerts about\nupcoming maintenance updates or warnings about service instability. It is a good practice to keep\nthis up-to-date to be aware of any potential issues with your project.\n"
                     },
+                    "useSourceProjectBillingGroup": {
+                        "type": "boolean"
+                    },
                     "vatId": {
                         "type": "string"
                     }
@@ -33946,6 +33982,9 @@
                             "type": "string"
                         },
                         "description": "defines the email addresses that will receive alerts about\nupcoming maintenance updates or warnings about service instability. It is a good practice to keep\nthis up-to-date to be aware of any potential issues with your project.\n"
+                    },
+                    "useSourceProjectBillingGroup": {
+                        "type": "boolean"
                     },
                     "vatId": {
                         "type": "string"
@@ -34986,6 +35025,12 @@
                         },
                         "description": "Redis specific field, defines command category rules.\n"
                     },
+                    "redisAclChannels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "redisAclCommands": {
                         "type": "array",
                         "items": {
@@ -35050,6 +35095,12 @@
                             "type": "string"
                         },
                         "description": "Redis specific field, defines command category rules.\n"
+                    },
+                    "redisAclChannels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "redisAclCommands": {
                         "type": "array",

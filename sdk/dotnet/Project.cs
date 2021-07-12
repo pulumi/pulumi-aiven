@@ -139,6 +139,12 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> TechnicalEmails { get; private set; } = null!;
 
         /// <summary>
+        /// Use the same billing group that is used in source project.
+        /// </summary>
+        [Output("useSourceProjectBillingGroup")]
+        public Output<bool?> UseSourceProjectBillingGroup { get; private set; } = null!;
+
+        /// <summary>
         /// EU VAT Identification Number
         /// </summary>
         [Output("vatId")]
@@ -305,6 +311,12 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
+        /// Use the same billing group that is used in source project.
+        /// </summary>
+        [Input("useSourceProjectBillingGroup")]
+        public Input<bool>? UseSourceProjectBillingGroup { get; set; }
+
+        /// <summary>
         /// EU VAT Identification Number
         /// </summary>
         [Input("vatId")]
@@ -450,6 +462,12 @@ namespace Pulumi.Aiven
             get => _technicalEmails ?? (_technicalEmails = new InputList<string>());
             set => _technicalEmails = value;
         }
+
+        /// <summary>
+        /// Use the same billing group that is used in source project.
+        /// </summary>
+        [Input("useSourceProjectBillingGroup")]
+        public Input<bool>? UseSourceProjectBillingGroup { get; set; }
 
         /// <summary>
         /// EU VAT Identification Number
