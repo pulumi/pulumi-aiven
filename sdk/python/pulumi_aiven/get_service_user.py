@@ -19,7 +19,7 @@ class GetServiceUserResult:
     """
     A collection of values returned by getServiceUser.
     """
-    def __init__(__self__, access_cert=None, access_key=None, authentication=None, id=None, password=None, project=None, redis_acl_categories=None, redis_acl_commands=None, redis_acl_keys=None, service_name=None, type=None, username=None):
+    def __init__(__self__, access_cert=None, access_key=None, authentication=None, id=None, password=None, project=None, redis_acl_categories=None, redis_acl_channels=None, redis_acl_commands=None, redis_acl_keys=None, service_name=None, type=None, username=None):
         if access_cert and not isinstance(access_cert, str):
             raise TypeError("Expected argument 'access_cert' to be a str")
         pulumi.set(__self__, "access_cert", access_cert)
@@ -41,6 +41,9 @@ class GetServiceUserResult:
         if redis_acl_categories and not isinstance(redis_acl_categories, list):
             raise TypeError("Expected argument 'redis_acl_categories' to be a list")
         pulumi.set(__self__, "redis_acl_categories", redis_acl_categories)
+        if redis_acl_channels and not isinstance(redis_acl_channels, list):
+            raise TypeError("Expected argument 'redis_acl_channels' to be a list")
+        pulumi.set(__self__, "redis_acl_channels", redis_acl_channels)
         if redis_acl_commands and not isinstance(redis_acl_commands, list):
             raise TypeError("Expected argument 'redis_acl_commands' to be a list")
         pulumi.set(__self__, "redis_acl_commands", redis_acl_commands)
@@ -108,6 +111,11 @@ class GetServiceUserResult:
         return pulumi.get(self, "redis_acl_categories")
 
     @property
+    @pulumi.getter(name="redisAclChannels")
+    def redis_acl_channels(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "redis_acl_channels")
+
+    @property
     @pulumi.getter(name="redisAclCommands")
     def redis_acl_commands(self) -> Optional[Sequence[str]]:
         """
@@ -155,6 +163,7 @@ class AwaitableGetServiceUserResult(GetServiceUserResult):
             password=self.password,
             project=self.project,
             redis_acl_categories=self.redis_acl_categories,
+            redis_acl_channels=self.redis_acl_channels,
             redis_acl_commands=self.redis_acl_commands,
             redis_acl_keys=self.redis_acl_keys,
             service_name=self.service_name,
@@ -168,6 +177,7 @@ def get_service_user(access_cert: Optional[str] = None,
                      password: Optional[str] = None,
                      project: Optional[str] = None,
                      redis_acl_categories: Optional[Sequence[str]] = None,
+                     redis_acl_channels: Optional[Sequence[str]] = None,
                      redis_acl_commands: Optional[Sequence[str]] = None,
                      redis_acl_keys: Optional[Sequence[str]] = None,
                      service_name: Optional[str] = None,
@@ -211,6 +221,7 @@ def get_service_user(access_cert: Optional[str] = None,
     __args__['password'] = password
     __args__['project'] = project
     __args__['redisAclCategories'] = redis_acl_categories
+    __args__['redisAclChannels'] = redis_acl_channels
     __args__['redisAclCommands'] = redis_acl_commands
     __args__['redisAclKeys'] = redis_acl_keys
     __args__['serviceName'] = service_name
@@ -230,6 +241,7 @@ def get_service_user(access_cert: Optional[str] = None,
         password=__ret__.password,
         project=__ret__.project,
         redis_acl_categories=__ret__.redis_acl_categories,
+        redis_acl_channels=__ret__.redis_acl_channels,
         redis_acl_commands=__ret__.redis_acl_commands,
         redis_acl_keys=__ret__.redis_acl_keys,
         service_name=__ret__.service_name,

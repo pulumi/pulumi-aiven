@@ -78,6 +78,10 @@ export class ServiceUser extends pulumi.CustomResource {
      */
     public readonly redisAclCategories!: pulumi.Output<string[] | undefined>;
     /**
+     * Permitted pub/sub channel patterns
+     */
+    public readonly redisAclChannels!: pulumi.Output<string[] | undefined>;
+    /**
      * Redis specific field, defines rules for individual commands.
      */
     public readonly redisAclCommands!: pulumi.Output<string[] | undefined>;
@@ -117,6 +121,7 @@ export class ServiceUser extends pulumi.CustomResource {
             inputs["password"] = state ? state.password : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["redisAclCategories"] = state ? state.redisAclCategories : undefined;
+            inputs["redisAclChannels"] = state ? state.redisAclChannels : undefined;
             inputs["redisAclCommands"] = state ? state.redisAclCommands : undefined;
             inputs["redisAclKeys"] = state ? state.redisAclKeys : undefined;
             inputs["serviceName"] = state ? state.serviceName : undefined;
@@ -137,6 +142,7 @@ export class ServiceUser extends pulumi.CustomResource {
             inputs["password"] = args ? args.password : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["redisAclCategories"] = args ? args.redisAclCategories : undefined;
+            inputs["redisAclChannels"] = args ? args.redisAclChannels : undefined;
             inputs["redisAclCommands"] = args ? args.redisAclCommands : undefined;
             inputs["redisAclKeys"] = args ? args.redisAclKeys : undefined;
             inputs["serviceName"] = args ? args.serviceName : undefined;
@@ -182,6 +188,10 @@ export interface ServiceUserState {
      */
     redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Permitted pub/sub channel patterns
+     */
+    redisAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Redis specific field, defines rules for individual commands.
      */
     redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
@@ -224,6 +234,10 @@ export interface ServiceUserArgs {
      * Redis specific field, defines command category rules.
      */
     redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Permitted pub/sub channel patterns
+     */
+    redisAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Redis specific field, defines rules for individual commands.
      */

@@ -29985,6 +29985,13 @@
                     },
                     "description": "Redis specific field, defines command category rules.\n"
                 },
+                "redisAclChannels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Permitted pub/sub channel patterns\n"
+                },
                 "redisAclCommands": {
                     "type": "array",
                     "items": {
@@ -30040,6 +30047,13 @@
                         "type": "string"
                     },
                     "description": "Redis specific field, defines command category rules.\n"
+                },
+                "redisAclChannels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Permitted pub/sub channel patterns\n"
                 },
                 "redisAclCommands": {
                     "type": "array",
@@ -30098,6 +30112,13 @@
                             "type": "string"
                         },
                         "description": "Redis specific field, defines command category rules.\n"
+                    },
+                    "redisAclChannels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Permitted pub/sub channel patterns\n"
                     },
                     "redisAclCommands": {
                         "type": "array",
@@ -35004,6 +35025,12 @@
                         },
                         "description": "Redis specific field, defines command category rules.\n"
                     },
+                    "redisAclChannels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "redisAclCommands": {
                         "type": "array",
                         "items": {
@@ -35068,6 +35095,12 @@
                             "type": "string"
                         },
                         "description": "Redis specific field, defines command category rules.\n"
+                    },
+                    "redisAclChannels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "redisAclCommands": {
                         "type": "array",

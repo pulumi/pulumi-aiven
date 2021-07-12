@@ -60,6 +60,7 @@ type LookupServiceUserArgs struct {
 	Project string `pulumi:"project"`
 	// Redis specific field, defines command category rules.
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
+	RedisAclChannels   []string `pulumi:"redisAclChannels"`
 	// Redis specific field, defines rules for individual commands.
 	RedisAclCommands []string `pulumi:"redisAclCommands"`
 	// Redis specific field, defines key access rules.
@@ -85,6 +86,7 @@ type LookupServiceUserResult struct {
 	Project  string `pulumi:"project"`
 	// Redis specific field, defines command category rules.
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
+	RedisAclChannels   []string `pulumi:"redisAclChannels"`
 	// Redis specific field, defines rules for individual commands.
 	RedisAclCommands []string `pulumi:"redisAclCommands"`
 	// Redis specific field, defines key access rules.
