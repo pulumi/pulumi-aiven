@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-aiven/provider/v4
 go 1.16
 
 replace (
-	github.com/aiven/terraform-provider-aiven => github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210811122346-c551e582db14
+	github.com/aiven/terraform-provider-aiven => github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210901152230-2c850876ec59
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20201218231525-9cca98608a5e
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0

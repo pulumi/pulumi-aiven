@@ -720,6 +720,8 @@ github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210712104613-622e13ae9ff9
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210712104613-622e13ae9ff9/go.mod h1:/LSuglUHufFw+uD9TpodNVsjn3bV8YZBsylgzaGO288=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210811122346-c551e582db14 h1:cfYo4sDnZZufoD5upJMm2ONfSWbrSRjl7NK60NNak9k=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210811122346-c551e582db14/go.mod h1:KPd0n3Q+XT72Ntywp7UiLrIuPfjYO84x/iB/7e3IEQE=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210901152230-2c850876ec59 h1:sLAOaxm23AlPlfqAzUDO2WOcL65mFHKEhGG2dd0sT00=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210901152230-2c850876ec59/go.mod h1:KPd0n3Q+XT72Ntywp7UiLrIuPfjYO84x/iB/7e3IEQE=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af h1:gu+uRPtBe88sKxUCEXRoeCvVG90TJmwhiqRpvdhQFng=
