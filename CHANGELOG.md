@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.1.19 of the Aiven Terraform Provider
+_(none)_
 
 ---
+
+## 4.1.4 (2021-09-03)
+* Upgrade to v2.1.19 of the Aiven Terraform Provider
 
 ## 4.1.3 (2021-08-12)
 * Upgrade to v2.1.18 of the Aiven Terraform Provider
