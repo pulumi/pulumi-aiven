@@ -21,7 +21,7 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, cassandra=None, cassandra_user_config=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, id=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
+    def __init__(__self__, cassandra=None, cassandra_user_config=None, cloud_name=None, components=None, elasticsearch=None, elasticsearch_user_config=None, grafana=None, grafana_user_config=None, id=None, influxdb=None, influxdb_user_config=None, kafka=None, kafka_connect=None, kafka_connect_user_config=None, kafka_mirrormaker=None, kafka_mirrormaker_user_config=None, kafka_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, mysql=None, mysql_user_config=None, opensearch=None, opensearch_user_config=None, pg=None, pg_user_config=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_config=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
         if cassandra and not isinstance(cassandra, dict):
             raise TypeError("Expected argument 'cassandra' to be a dict")
         pulumi.set(__self__, "cassandra", cassandra)
@@ -85,6 +85,12 @@ class GetServiceResult:
         if mysql_user_config and not isinstance(mysql_user_config, dict):
             raise TypeError("Expected argument 'mysql_user_config' to be a dict")
         pulumi.set(__self__, "mysql_user_config", mysql_user_config)
+        if opensearch and not isinstance(opensearch, dict):
+            raise TypeError("Expected argument 'opensearch' to be a dict")
+        pulumi.set(__self__, "opensearch", opensearch)
+        if opensearch_user_config and not isinstance(opensearch_user_config, dict):
+            raise TypeError("Expected argument 'opensearch_user_config' to be a dict")
+        pulumi.set(__self__, "opensearch_user_config", opensearch_user_config)
         if pg and not isinstance(pg, dict):
             raise TypeError("Expected argument 'pg' to be a dict")
         pulumi.set(__self__, "pg", pg)
@@ -247,6 +253,16 @@ class GetServiceResult:
 
     @property
     @pulumi.getter
+    def opensearch(self) -> 'outputs.GetServiceOpensearchResult':
+        return pulumi.get(self, "opensearch")
+
+    @property
+    @pulumi.getter(name="opensearchUserConfig")
+    def opensearch_user_config(self) -> Optional['outputs.GetServiceOpensearchUserConfigResult']:
+        return pulumi.get(self, "opensearch_user_config")
+
+    @property
+    @pulumi.getter
     def pg(self) -> 'outputs.GetServicePgResult':
         return pulumi.get(self, "pg")
 
@@ -358,6 +374,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             maintenance_window_time=self.maintenance_window_time,
             mysql=self.mysql,
             mysql_user_config=self.mysql_user_config,
+            opensearch=self.opensearch,
+            opensearch_user_config=self.opensearch_user_config,
             pg=self.pg,
             pg_user_config=self.pg_user_config,
             plan=self.plan,
@@ -397,6 +415,8 @@ def get_service(cassandra: Optional[pulumi.InputType['GetServiceCassandraArgs']]
                 maintenance_window_time: Optional[str] = None,
                 mysql: Optional[pulumi.InputType['GetServiceMysqlArgs']] = None,
                 mysql_user_config: Optional[pulumi.InputType['GetServiceMysqlUserConfigArgs']] = None,
+                opensearch: Optional[pulumi.InputType['GetServiceOpensearchArgs']] = None,
+                opensearch_user_config: Optional[pulumi.InputType['GetServiceOpensearchUserConfigArgs']] = None,
                 pg: Optional[pulumi.InputType['GetServicePgArgs']] = None,
                 pg_user_config: Optional[pulumi.InputType['GetServicePgUserConfigArgs']] = None,
                 plan: Optional[str] = None,
@@ -439,6 +459,8 @@ def get_service(cassandra: Optional[pulumi.InputType['GetServiceCassandraArgs']]
     __args__['maintenanceWindowTime'] = maintenance_window_time
     __args__['mysql'] = mysql
     __args__['mysqlUserConfig'] = mysql_user_config
+    __args__['opensearch'] = opensearch
+    __args__['opensearchUserConfig'] = opensearch_user_config
     __args__['pg'] = pg
     __args__['pgUserConfig'] = pg_user_config
     __args__['plan'] = plan
@@ -484,6 +506,8 @@ def get_service(cassandra: Optional[pulumi.InputType['GetServiceCassandraArgs']]
         maintenance_window_time=__ret__.maintenance_window_time,
         mysql=__ret__.mysql,
         mysql_user_config=__ret__.mysql_user_config,
+        opensearch=__ret__.opensearch,
+        opensearch_user_config=__ret__.opensearch_user_config,
         pg=__ret__.pg,
         pg_user_config=__ret__.pg_user_config,
         plan=__ret__.plan,

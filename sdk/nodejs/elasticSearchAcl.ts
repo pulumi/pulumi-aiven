@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 /**
  * ## # Elasticsearch ACL Resource
  *
+ * ** This resource is deprecated, please use `aiven.ElasticSearchAclConfig` and `aiven.ElasticSearchAclRule` **
+ *
  * The Elasticsearch ACL resource allows the creation and management of ACLs
  * for an Aiven Elasticsearch service.
  *

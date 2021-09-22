@@ -18,11 +18,17 @@ namespace Pulumi.Aiven.Inputs
         [Input("alertingErrorOrTimeout")]
         public Input<string>? AlertingErrorOrTimeout { get; set; }
 
+        [Input("alertingMaxAnnotationsToKeep")]
+        public Input<string>? AlertingMaxAnnotationsToKeep { get; set; }
+
         [Input("alertingNodataOrNullvalues")]
         public Input<string>? AlertingNodataOrNullvalues { get; set; }
 
         [Input("allowEmbedding")]
         public Input<string>? AllowEmbedding { get; set; }
+
+        [Input("authAzuread")]
+        public Input<Inputs.ServiceGrafanaUserConfigAuthAzureadGetArgs>? AuthAzuread { get; set; }
 
         [Input("authBasicEnabled")]
         public Input<string>? AuthBasicEnabled { get; set; }
@@ -56,6 +62,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("dataproxyTimeout")]
         public Input<string>? DataproxyTimeout { get; set; }
+
+        [Input("dateFormats")]
+        public Input<Inputs.ServiceGrafanaUserConfigDateFormatsGetArgs>? DateFormats { get; set; }
 
         [Input("disableGravatar")]
         public Input<string>? DisableGravatar { get; set; }
@@ -100,6 +109,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("smtpServer")]
         public Input<Inputs.ServiceGrafanaUserConfigSmtpServerGetArgs>? SmtpServer { get; set; }
+
+        [Input("staticIps")]
+        public Input<string>? StaticIps { get; set; }
 
         [Input("userAutoAssignOrg")]
         public Input<string>? UserAutoAssignOrg { get; set; }

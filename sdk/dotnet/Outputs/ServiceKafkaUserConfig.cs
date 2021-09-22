@@ -27,6 +27,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.ServiceKafkaUserConfigPublicAccess? PublicAccess;
         public readonly string? SchemaRegistry;
         public readonly Outputs.ServiceKafkaUserConfigSchemaRegistryConfig? SchemaRegistryConfig;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private ServiceKafkaUserConfig(
@@ -56,7 +57,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? schemaRegistry,
 
-            Outputs.ServiceKafkaUserConfigSchemaRegistryConfig? schemaRegistryConfig)
+            Outputs.ServiceKafkaUserConfigSchemaRegistryConfig? schemaRegistryConfig,
+
+            string? staticIps)
         {
             CustomDomain = customDomain;
             IpFilters = ipFilters;
@@ -72,6 +75,7 @@ namespace Pulumi.Aiven.Outputs
             PublicAccess = publicAccess;
             SchemaRegistry = schemaRegistry;
             SchemaRegistryConfig = schemaRegistryConfig;
+            StaticIps = staticIps;
         }
     }
 }

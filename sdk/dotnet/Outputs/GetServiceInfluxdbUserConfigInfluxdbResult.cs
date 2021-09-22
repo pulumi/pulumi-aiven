@@ -14,6 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceInfluxdbUserConfigInfluxdbResult
     {
         public readonly string? LogQueriesAfter;
+        public readonly string? MaxConnectionLimit;
         public readonly string? MaxRowLimit;
         public readonly string? MaxSelectBuckets;
         public readonly string? MaxSelectPoint;
@@ -22,6 +23,8 @@ namespace Pulumi.Aiven.Outputs
         [OutputConstructor]
         private GetServiceInfluxdbUserConfigInfluxdbResult(
             string? logQueriesAfter,
+
+            string? maxConnectionLimit,
 
             string? maxRowLimit,
 
@@ -32,6 +35,7 @@ namespace Pulumi.Aiven.Outputs
             string? queryTimeout)
         {
             LogQueriesAfter = logQueriesAfter;
+            MaxConnectionLimit = maxConnectionLimit;
             MaxRowLimit = maxRowLimit;
             MaxSelectBuckets = maxSelectBuckets;
             MaxSelectPoint = maxSelectPoint;

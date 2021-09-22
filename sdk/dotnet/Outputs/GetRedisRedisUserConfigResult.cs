@@ -42,6 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// Name of the basebackup to restore in forked service
         /// </summary>
         public readonly string? RecoveryBasebackupName;
+        public readonly string? RedisAclChannelsDefault;
         /// <summary>
         /// Redis IO thread count
         /// * `redis_lfu_decay_time"` - LFU maxmemory-policy counter decay time in minutes
@@ -61,6 +62,9 @@ namespace Pulumi.Aiven.Outputs
         /// Set notify-keyspace-events option
         /// </summary>
         public readonly string? RedisNotifyKeyspaceEvents;
+        public readonly string? RedisNumberOfDatabases;
+        public readonly string? RedisPersistence;
+        public readonly string? RedisPubsubClientOutputBufferLimit;
         /// <summary>
         /// Require SSL to access Redis
         /// </summary>
@@ -72,6 +76,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RedisTimeout;
         public readonly string? ServiceToForkFrom;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private GetRedisRedisUserConfigResult(
@@ -89,6 +94,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
+            string? redisAclChannelsDefault,
+
             string? redisIoThreads,
 
             string? redisLfuDecayTime,
@@ -99,11 +106,19 @@ namespace Pulumi.Aiven.Outputs
 
             string? redisNotifyKeyspaceEvents,
 
+            string? redisNumberOfDatabases,
+
+            string? redisPersistence,
+
+            string? redisPubsubClientOutputBufferLimit,
+
             string? redisSsl,
 
             string? redisTimeout,
 
-            string? serviceToForkFrom)
+            string? serviceToForkFrom,
+
+            string? staticIps)
         {
             IpFilters = ipFilters;
             Migration = migration;
@@ -112,14 +127,19 @@ namespace Pulumi.Aiven.Outputs
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
+            RedisAclChannelsDefault = redisAclChannelsDefault;
             RedisIoThreads = redisIoThreads;
             RedisLfuDecayTime = redisLfuDecayTime;
             RedisLfuLogFactor = redisLfuLogFactor;
             RedisMaxmemoryPolicy = redisMaxmemoryPolicy;
             RedisNotifyKeyspaceEvents = redisNotifyKeyspaceEvents;
+            RedisNumberOfDatabases = redisNumberOfDatabases;
+            RedisPersistence = redisPersistence;
+            RedisPubsubClientOutputBufferLimit = redisPubsubClientOutputBufferLimit;
             RedisSsl = redisSsl;
             RedisTimeout = redisTimeout;
             ServiceToForkFrom = serviceToForkFrom;
+            StaticIps = staticIps;
         }
     }
 }

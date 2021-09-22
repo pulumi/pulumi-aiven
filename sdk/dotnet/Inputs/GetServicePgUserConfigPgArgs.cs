@@ -39,6 +39,18 @@ namespace Pulumi.Aiven.Inputs
         [Input("autovacuumVacuumThreshold")]
         public string? AutovacuumVacuumThreshold { get; set; }
 
+        [Input("bgwriterDelay")]
+        public string? BgwriterDelay { get; set; }
+
+        [Input("bgwriterFlushAfter")]
+        public string? BgwriterFlushAfter { get; set; }
+
+        [Input("bgwriterLruMaxpages")]
+        public string? BgwriterLruMaxpages { get; set; }
+
+        [Input("bgwriterLruMultiplier")]
+        public string? BgwriterLruMultiplier { get; set; }
+
         [Input("deadlockTimeout")]
         public string? DeadlockTimeout { get; set; }
 

@@ -20,14 +20,19 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.ServiceRedisUserConfigPublicAccess? PublicAccess;
         public readonly string? RecoveryBasebackupName;
+        public readonly string? RedisAclChannelsDefault;
         public readonly string? RedisIoThreads;
         public readonly string? RedisLfuDecayTime;
         public readonly string? RedisLfuLogFactor;
         public readonly string? RedisMaxmemoryPolicy;
         public readonly string? RedisNotifyKeyspaceEvents;
+        public readonly string? RedisNumberOfDatabases;
+        public readonly string? RedisPersistence;
+        public readonly string? RedisPubsubClientOutputBufferLimit;
         public readonly string? RedisSsl;
         public readonly string? RedisTimeout;
         public readonly string? ServiceToForkFrom;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private ServiceRedisUserConfig(
@@ -45,6 +50,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
+            string? redisAclChannelsDefault,
+
             string? redisIoThreads,
 
             string? redisLfuDecayTime,
@@ -55,11 +62,19 @@ namespace Pulumi.Aiven.Outputs
 
             string? redisNotifyKeyspaceEvents,
 
+            string? redisNumberOfDatabases,
+
+            string? redisPersistence,
+
+            string? redisPubsubClientOutputBufferLimit,
+
             string? redisSsl,
 
             string? redisTimeout,
 
-            string? serviceToForkFrom)
+            string? serviceToForkFrom,
+
+            string? staticIps)
         {
             IpFilters = ipFilters;
             Migration = migration;
@@ -68,14 +83,19 @@ namespace Pulumi.Aiven.Outputs
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
+            RedisAclChannelsDefault = redisAclChannelsDefault;
             RedisIoThreads = redisIoThreads;
             RedisLfuDecayTime = redisLfuDecayTime;
             RedisLfuLogFactor = redisLfuLogFactor;
             RedisMaxmemoryPolicy = redisMaxmemoryPolicy;
             RedisNotifyKeyspaceEvents = redisNotifyKeyspaceEvents;
+            RedisNumberOfDatabases = redisNumberOfDatabases;
+            RedisPersistence = redisPersistence;
+            RedisPubsubClientOutputBufferLimit = redisPubsubClientOutputBufferLimit;
             RedisSsl = redisSsl;
             RedisTimeout = redisTimeout;
             ServiceToForkFrom = serviceToForkFrom;
+            StaticIps = staticIps;
         }
     }
 }

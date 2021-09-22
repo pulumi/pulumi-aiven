@@ -74,6 +74,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("serviceToForkFrom")]
         public string? ServiceToForkFrom { get; set; }
 
+        [Input("staticIps")]
+        public string? StaticIps { get; set; }
+
         public GetInfluxDbInfluxdbUserConfigArgs()
         {
         }

@@ -19,6 +19,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("logQueriesAfter")]
         public Input<string>? LogQueriesAfter { get; set; }
 
+        [Input("maxConnectionLimit")]
+        public Input<string>? MaxConnectionLimit { get; set; }
+
         /// <summary>
         /// The maximum number of rows returned in a non-chunked query. 
         /// Setting this to 0 (the default) allows an unlimited number to be returned.

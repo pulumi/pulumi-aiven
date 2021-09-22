@@ -34,6 +34,7 @@ namespace Pulumi.Aiven.Outputs
         /// Allow access to selected service ports from the public Internet.
         /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? PublicAccess;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private KafkaConnectKafkaConnectUserConfig(
@@ -45,13 +46,16 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess? privatelinkAccess,
 
-            Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? publicAccess)
+            Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? publicAccess,
+
+            string? staticIps)
         {
             IpFilters = ipFilters;
             KafkaConnect = kafkaConnect;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;
+            StaticIps = staticIps;
         }
     }
 }

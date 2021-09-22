@@ -15,15 +15,19 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.ServiceKafkaMirrormakerUserConfigKafkaMirrormaker? KafkaMirrormaker;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private ServiceKafkaMirrormakerUserConfig(
             ImmutableArray<string> ipFilters,
 
-            Outputs.ServiceKafkaMirrormakerUserConfigKafkaMirrormaker? kafkaMirrormaker)
+            Outputs.ServiceKafkaMirrormakerUserConfigKafkaMirrormaker? kafkaMirrormaker,
+
+            string? staticIps)
         {
             IpFilters = ipFilters;
             KafkaMirrormaker = kafkaMirrormaker;
+            StaticIps = staticIps;
         }
     }
 }

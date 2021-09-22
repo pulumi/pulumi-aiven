@@ -48,6 +48,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("interactiveTimeout")]
         public string? InteractiveTimeout { get; set; }
 
+        [Input("internalTmpMemStorageEngine")]
+        public string? InternalTmpMemStorageEngine { get; set; }
+
         [Input("longQueryTime")]
         public string? LongQueryTime { get; set; }
 

@@ -190,6 +190,11 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_m3aggregator":                   {Tok: makeResource(mainMod, "M3Aggregator")},
 			"aiven_m3db":                           {Tok: makeResource(mainMod, "M3Db")},
 			"aiven_aws_privatelink":                {Tok: makeResource(mainMod, "AwsPrivatelink")},
+			"aiven_elasticsearch_acl_config":       {Tok: makeResource(mainMod, "ElasticSearchAclConfig")},
+			"aiven_elasticsearch_acl_rule":         {Tok: makeResource(mainMod, "ElasticSearchAclRule")},
+			"aiven_opensearch":                     {Tok: makeResource(mainMod, "OpenSearch")},
+			"aiven_opensearch_acl_config":          {Tok: makeResource(mainMod, "OpenSearchAclConfig")},
+			"aiven_opensearch_acl_rule":            {Tok: makeResource(mainMod, "OpenSearchAclRule")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"aiven_account":                      {Tok: makeDataSource(mainMod, "getAccount")},
@@ -254,6 +259,11 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_m3aggregator":                   {Tok: makeDataSource(mainMod, "getM3Aggregator")},
 			"aiven_m3db":                           {Tok: makeDataSource(mainMod, "getM3Db")},
 			"aiven_aws_privatelink":                {Tok: makeDataSource(mainMod, "getAwsPrivatelink")},
+			"aiven_elasticsearch_acl_config":       {Tok: makeDataSource(mainMod, "getElasticSearchAclConfig")},
+			"aiven_elasticsearch_acl_rule":         {Tok: makeDataSource(mainMod, "getElasticSearchAclRule")},
+			"aiven_opensearch":                     {Tok: makeDataSource(mainMod, "getOpenSearch")},
+			"aiven_opensearch_acl_config":          {Tok: makeDataSource(mainMod, "getOpenSearchAclConfig")},
+			"aiven_opensearch_acl_rule":            {Tok: makeDataSource(mainMod, "getOpenSearchAclRule")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

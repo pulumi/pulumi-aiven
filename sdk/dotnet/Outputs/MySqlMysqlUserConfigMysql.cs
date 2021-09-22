@@ -73,6 +73,7 @@ namespace Pulumi.Aiven.Outputs
         /// activity on an interactive connection before closing it.
         /// </summary>
         public readonly string? InteractiveTimeout;
+        public readonly string? InternalTmpMemStorageEngine;
         /// <summary>
         /// The slow_query_logs work as SQL statements that take 
         /// more than long_query_time seconds to execute. Default is 10s
@@ -158,6 +159,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? interactiveTimeout,
 
+            string? internalTmpMemStorageEngine,
+
             string? longQueryTime,
 
             string? maxAllowedPacket,
@@ -192,6 +195,7 @@ namespace Pulumi.Aiven.Outputs
             InnodbPrintAllDeadlocks = innodbPrintAllDeadlocks;
             InnodbRollbackOnTimeout = innodbRollbackOnTimeout;
             InteractiveTimeout = interactiveTimeout;
+            InternalTmpMemStorageEngine = internalTmpMemStorageEngine;
             LongQueryTime = longQueryTime;
             MaxAllowedPacket = maxAllowedPacket;
             MaxHeapTableSize = maxHeapTableSize;

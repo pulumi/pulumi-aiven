@@ -212,6 +212,8 @@ class ElasticSearchAcl(pulumi.CustomResource):
         """
         ## # Elasticsearch ACL Resource
 
+        ** This resource is deprecated, please use `ElasticSearchAclConfig` and `ElasticSearchAclRule` **
+
         The Elasticsearch ACL resource allows the creation and management of ACLs
         for an Aiven Elasticsearch service.
 
@@ -275,6 +277,8 @@ class ElasticSearchAcl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## # Elasticsearch ACL Resource
+
+        ** This resource is deprecated, please use `ElasticSearchAclConfig` and `ElasticSearchAclRule` **
 
         The Elasticsearch ACL resource allows the creation and management of ACLs
         for an Aiven Elasticsearch service.

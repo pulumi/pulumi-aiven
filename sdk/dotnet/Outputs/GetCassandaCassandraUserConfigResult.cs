@@ -17,6 +17,7 @@ namespace Pulumi.Aiven.Outputs
         /// Cassandra specific server provided values.
         /// </summary>
         public readonly Outputs.GetCassandaCassandraUserConfigCassandraResult? Cassandra;
+        public readonly string? CassandraVersion;
         /// <summary>
         /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
@@ -40,10 +41,13 @@ namespace Pulumi.Aiven.Outputs
         /// when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private GetCassandaCassandraUserConfigResult(
             Outputs.GetCassandaCassandraUserConfigCassandraResult? cassandra,
+
+            string? cassandraVersion,
 
             ImmutableArray<string> ipFilters,
 
@@ -55,15 +59,19 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetCassandaCassandraUserConfigPublicAccessResult? publicAccess,
 
-            string? serviceToForkFrom)
+            string? serviceToForkFrom,
+
+            string? staticIps)
         {
             Cassandra = cassandra;
+            CassandraVersion = cassandraVersion;
             IpFilters = ipFilters;
             MigrateSstableloader = migrateSstableloader;
             PrivateAccess = privateAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             ServiceToForkFrom = serviceToForkFrom;
+            StaticIps = staticIps;
         }
     }
 }

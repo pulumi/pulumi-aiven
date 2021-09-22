@@ -47,6 +47,7 @@ namespace Pulumi.Aiven.Outputs
         /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        public readonly string? KeepIndexRefreshInterval;
         /// <summary>
         /// Allow clients to connect to kibana from the public internet for 
         /// service nodes that are in a project VPC or another type of private network.
@@ -56,6 +57,7 @@ namespace Pulumi.Aiven.Outputs
         /// Maximum number of indexes to keep before deleting the oldest one.
         /// </summary>
         public readonly string? MaxIndexCount;
+        public readonly string? OpensearchVersion;
         /// <summary>
         /// Allow access to selected service ports from private networks.
         /// </summary>
@@ -82,6 +84,7 @@ namespace Pulumi.Aiven.Outputs
         /// only when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private ElasticSearchElasticsearchUserConfig(
@@ -99,9 +102,13 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
+            string? keepIndexRefreshInterval,
+
             Outputs.ElasticSearchElasticsearchUserConfigKibana? kibana,
 
             string? maxIndexCount,
+
+            string? opensearchVersion,
 
             Outputs.ElasticSearchElasticsearchUserConfigPrivateAccess? privateAccess,
 
@@ -113,7 +120,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
-            string? serviceToForkFrom)
+            string? serviceToForkFrom,
+
+            string? staticIps)
         {
             CustomDomain = customDomain;
             DisableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
@@ -122,14 +131,17 @@ namespace Pulumi.Aiven.Outputs
             IndexPatterns = indexPatterns;
             IndexTemplate = indexTemplate;
             IpFilters = ipFilters;
+            KeepIndexRefreshInterval = keepIndexRefreshInterval;
             Kibana = kibana;
             MaxIndexCount = maxIndexCount;
+            OpensearchVersion = opensearchVersion;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
             ServiceToForkFrom = serviceToForkFrom;
+            StaticIps = staticIps;
         }
     }
 }

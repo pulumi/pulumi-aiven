@@ -142,6 +142,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("sharedBuffersPercentage")]
         public string? SharedBuffersPercentage { get; set; }
 
+        [Input("staticIps")]
+        public string? StaticIps { get; set; }
+
         /// <summary>
         /// Synchronous replication type. Note that the service plan 
         /// also needs to support synchronous replication.

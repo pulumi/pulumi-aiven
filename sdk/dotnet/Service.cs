@@ -133,6 +133,18 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceMysqlUserConfig?> MysqlUserConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Opensearch specific server provided values
+        /// </summary>
+        [Output("opensearch")]
+        public Output<Outputs.ServiceOpensearch> Opensearch { get; private set; } = null!;
+
+        /// <summary>
+        /// Opensearch specific user configurable settings
+        /// </summary>
+        [Output("opensearchUserConfig")]
+        public Output<Outputs.ServiceOpensearchUserConfig?> OpensearchUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// PostgreSQL specific server provided values
         /// </summary>
         [Output("pg")]
@@ -395,6 +407,18 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceMysqlUserConfigArgs>? MysqlUserConfig { get; set; }
 
         /// <summary>
+        /// Opensearch specific server provided values
+        /// </summary>
+        [Input("opensearch")]
+        public Input<Inputs.ServiceOpensearchArgs>? Opensearch { get; set; }
+
+        /// <summary>
+        /// Opensearch specific user configurable settings
+        /// </summary>
+        [Input("opensearchUserConfig")]
+        public Input<Inputs.ServiceOpensearchUserConfigArgs>? OpensearchUserConfig { get; set; }
+
+        /// <summary>
         /// PostgreSQL specific server provided values
         /// </summary>
         [Input("pg")]
@@ -598,6 +622,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("mysqlUserConfig")]
         public Input<Inputs.ServiceMysqlUserConfigGetArgs>? MysqlUserConfig { get; set; }
+
+        /// <summary>
+        /// Opensearch specific server provided values
+        /// </summary>
+        [Input("opensearch")]
+        public Input<Inputs.ServiceOpensearchGetArgs>? Opensearch { get; set; }
+
+        /// <summary>
+        /// Opensearch specific user configurable settings
+        /// </summary>
+        [Input("opensearchUserConfig")]
+        public Input<Inputs.ServiceOpensearchUserConfigGetArgs>? OpensearchUserConfig { get; set; }
 
         /// <summary>
         /// PostgreSQL specific server provided values

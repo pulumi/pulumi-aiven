@@ -71,6 +71,9 @@ namespace Pulumi.Aiven.Inputs
             set => _ipFilters = value;
         }
 
+        [Input("keepIndexRefreshInterval")]
+        public string? KeepIndexRefreshInterval { get; set; }
+
         /// <summary>
         /// Allow clients to connect to kibana from the public internet for 
         /// service nodes that are in a project VPC or another type of private network.
@@ -83,6 +86,9 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("maxIndexCount")]
         public string? MaxIndexCount { get; set; }
+
+        [Input("opensearchVersion")]
+        public string? OpensearchVersion { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from private networks.
@@ -121,6 +127,9 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("serviceToForkFrom")]
         public string? ServiceToForkFrom { get; set; }
+
+        [Input("staticIps")]
+        public string? StaticIps { get; set; }
 
         public GetElasticSearchElasticsearchUserConfigArgs()
         {

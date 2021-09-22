@@ -59,6 +59,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("schemaRegistryConfig")]
         public Inputs.GetServiceKafkaUserConfigSchemaRegistryConfigArgs? SchemaRegistryConfig { get; set; }
 
+        [Input("staticIps")]
+        public string? StaticIps { get; set; }
+
         public GetServiceKafkaUserConfigArgs()
         {
         }

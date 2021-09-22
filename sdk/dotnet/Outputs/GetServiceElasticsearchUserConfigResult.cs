@@ -20,14 +20,17 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<Outputs.GetServiceElasticsearchUserConfigIndexPatternResult> IndexPatterns;
         public readonly Outputs.GetServiceElasticsearchUserConfigIndexTemplateResult? IndexTemplate;
         public readonly ImmutableArray<string> IpFilters;
+        public readonly string? KeepIndexRefreshInterval;
         public readonly Outputs.GetServiceElasticsearchUserConfigKibanaResult? Kibana;
         public readonly string? MaxIndexCount;
+        public readonly string? OpensearchVersion;
         public readonly Outputs.GetServiceElasticsearchUserConfigPrivateAccessResult? PrivateAccess;
         public readonly Outputs.GetServiceElasticsearchUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.GetServiceElasticsearchUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryBasebackupName;
         public readonly string? ServiceToForkFrom;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private GetServiceElasticsearchUserConfigResult(
@@ -45,9 +48,13 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> ipFilters,
 
+            string? keepIndexRefreshInterval,
+
             Outputs.GetServiceElasticsearchUserConfigKibanaResult? kibana,
 
             string? maxIndexCount,
+
+            string? opensearchVersion,
 
             Outputs.GetServiceElasticsearchUserConfigPrivateAccessResult? privateAccess,
 
@@ -59,7 +66,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
-            string? serviceToForkFrom)
+            string? serviceToForkFrom,
+
+            string? staticIps)
         {
             CustomDomain = customDomain;
             DisableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
@@ -68,14 +77,17 @@ namespace Pulumi.Aiven.Outputs
             IndexPatterns = indexPatterns;
             IndexTemplate = indexTemplate;
             IpFilters = ipFilters;
+            KeepIndexRefreshInterval = keepIndexRefreshInterval;
             Kibana = kibana;
             MaxIndexCount = maxIndexCount;
+            OpensearchVersion = opensearchVersion;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
             ServiceToForkFrom = serviceToForkFrom;
+            StaticIps = staticIps;
         }
     }
 }

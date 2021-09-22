@@ -83,6 +83,7 @@ namespace Pulumi.Aiven.Outputs
         /// a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private MySqlMysqlUserConfig(
@@ -114,7 +115,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryTargetTime,
 
-            string? serviceToForkFrom)
+            string? serviceToForkFrom,
+
+            string? staticIps)
         {
             AdminPassword = adminPassword;
             AdminUsername = adminUsername;
@@ -131,6 +134,7 @@ namespace Pulumi.Aiven.Outputs
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;
             ServiceToForkFrom = serviceToForkFrom;
+            StaticIps = staticIps;
         }
     }
 }

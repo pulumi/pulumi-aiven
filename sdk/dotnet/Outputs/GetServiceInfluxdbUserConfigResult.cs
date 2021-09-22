@@ -22,6 +22,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetServiceInfluxdbUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryBasebackupName;
         public readonly string? ServiceToForkFrom;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private GetServiceInfluxdbUserConfigResult(
@@ -41,7 +42,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
-            string? serviceToForkFrom)
+            string? serviceToForkFrom,
+
+            string? staticIps)
         {
             CustomDomain = customDomain;
             Influxdb = influxdb;
@@ -52,6 +55,7 @@ namespace Pulumi.Aiven.Outputs
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
             ServiceToForkFrom = serviceToForkFrom;
+            StaticIps = staticIps;
         }
     }
 }

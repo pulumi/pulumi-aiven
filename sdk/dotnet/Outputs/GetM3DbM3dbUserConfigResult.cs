@@ -64,6 +64,7 @@ namespace Pulumi.Aiven.Outputs
         /// when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private GetM3DbM3dbUserConfigResult(
@@ -89,7 +90,9 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetM3DbM3dbUserConfigRulesResult? rules,
 
-            string? serviceToForkFrom)
+            string? serviceToForkFrom,
+
+            string? staticIps)
         {
             CustomDomain = customDomain;
             IpFilters = ipFilters;
@@ -103,6 +106,7 @@ namespace Pulumi.Aiven.Outputs
             PublicAccess = publicAccess;
             Rules = rules;
             ServiceToForkFrom = serviceToForkFrom;
+            StaticIps = staticIps;
         }
     }
 }

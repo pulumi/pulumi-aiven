@@ -21,6 +21,8 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? RefreshTopicsIntervalSeconds;
         public readonly string? SyncGroupOffsetsEnabled;
         public readonly string? SyncGroupOffsetsIntervalSeconds;
+        public readonly string? SyncTopicConfigsEnabled;
+        public readonly string? TasksMaxPerCpu;
 
         [OutputConstructor]
         private ServiceKafkaMirrormakerUserConfigKafkaMirrormaker(
@@ -38,7 +40,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? syncGroupOffsetsEnabled,
 
-            string? syncGroupOffsetsIntervalSeconds)
+            string? syncGroupOffsetsIntervalSeconds,
+
+            string? syncTopicConfigsEnabled,
+
+            string? tasksMaxPerCpu)
         {
             EmitCheckpointsEnabled = emitCheckpointsEnabled;
             EmitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
@@ -48,6 +54,8 @@ namespace Pulumi.Aiven.Outputs
             RefreshTopicsIntervalSeconds = refreshTopicsIntervalSeconds;
             SyncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
             SyncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
+            SyncTopicConfigsEnabled = syncTopicConfigsEnabled;
+            TasksMaxPerCpu = tasksMaxPerCpu;
         }
     }
 }

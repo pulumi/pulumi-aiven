@@ -37,6 +37,8 @@ class ServiceArgs:
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input['ServiceMysqlArgs']] = None,
                  mysql_user_config: Optional[pulumi.Input['ServiceMysqlUserConfigArgs']] = None,
+                 opensearch: Optional[pulumi.Input['ServiceOpensearchArgs']] = None,
+                 opensearch_user_config: Optional[pulumi.Input['ServiceOpensearchUserConfigArgs']] = None,
                  pg: Optional[pulumi.Input['ServicePgArgs']] = None,
                  pg_user_config: Optional[pulumi.Input['ServicePgUserConfigArgs']] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -69,6 +71,8 @@ class ServiceArgs:
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input['ServiceMysqlArgs'] mysql: MySQL specific server provided values
         :param pulumi.Input['ServiceMysqlUserConfigArgs'] mysql_user_config: MySQL specific user configurable settings
+        :param pulumi.Input['ServiceOpensearchArgs'] opensearch: Opensearch specific server provided values
+        :param pulumi.Input['ServiceOpensearchUserConfigArgs'] opensearch_user_config: Opensearch specific user configurable settings
         :param pulumi.Input['ServicePgArgs'] pg: PostgreSQL specific server provided values
         :param pulumi.Input['ServicePgUserConfigArgs'] pg_user_config: PostgreSQL specific user configurable settings
         :param pulumi.Input[str] plan: Subscription plan
@@ -119,6 +123,10 @@ class ServiceArgs:
             pulumi.set(__self__, "mysql", mysql)
         if mysql_user_config is not None:
             pulumi.set(__self__, "mysql_user_config", mysql_user_config)
+        if opensearch is not None:
+            pulumi.set(__self__, "opensearch", opensearch)
+        if opensearch_user_config is not None:
+            pulumi.set(__self__, "opensearch_user_config", opensearch_user_config)
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pg_user_config is not None:
@@ -402,6 +410,30 @@ class ServiceArgs:
 
     @property
     @pulumi.getter
+    def opensearch(self) -> Optional[pulumi.Input['ServiceOpensearchArgs']]:
+        """
+        Opensearch specific server provided values
+        """
+        return pulumi.get(self, "opensearch")
+
+    @opensearch.setter
+    def opensearch(self, value: Optional[pulumi.Input['ServiceOpensearchArgs']]):
+        pulumi.set(self, "opensearch", value)
+
+    @property
+    @pulumi.getter(name="opensearchUserConfig")
+    def opensearch_user_config(self) -> Optional[pulumi.Input['ServiceOpensearchUserConfigArgs']]:
+        """
+        Opensearch specific user configurable settings
+        """
+        return pulumi.get(self, "opensearch_user_config")
+
+    @opensearch_user_config.setter
+    def opensearch_user_config(self, value: Optional[pulumi.Input['ServiceOpensearchUserConfigArgs']]):
+        pulumi.set(self, "opensearch_user_config", value)
+
+    @property
+    @pulumi.getter
     def pg(self) -> Optional[pulumi.Input['ServicePgArgs']]:
         """
         PostgreSQL specific server provided values
@@ -520,6 +552,8 @@ class _ServiceState:
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input['ServiceMysqlArgs']] = None,
                  mysql_user_config: Optional[pulumi.Input['ServiceMysqlUserConfigArgs']] = None,
+                 opensearch: Optional[pulumi.Input['ServiceOpensearchArgs']] = None,
+                 opensearch_user_config: Optional[pulumi.Input['ServiceOpensearchUserConfigArgs']] = None,
                  pg: Optional[pulumi.Input['ServicePgArgs']] = None,
                  pg_user_config: Optional[pulumi.Input['ServicePgUserConfigArgs']] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -559,6 +593,8 @@ class _ServiceState:
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input['ServiceMysqlArgs'] mysql: MySQL specific server provided values
         :param pulumi.Input['ServiceMysqlUserConfigArgs'] mysql_user_config: MySQL specific user configurable settings
+        :param pulumi.Input['ServiceOpensearchArgs'] opensearch: Opensearch specific server provided values
+        :param pulumi.Input['ServiceOpensearchUserConfigArgs'] opensearch_user_config: Opensearch specific user configurable settings
         :param pulumi.Input['ServicePgArgs'] pg: PostgreSQL specific server provided values
         :param pulumi.Input['ServicePgUserConfigArgs'] pg_user_config: PostgreSQL specific user configurable settings
         :param pulumi.Input[str] plan: Subscription plan
@@ -617,6 +653,10 @@ class _ServiceState:
             pulumi.set(__self__, "mysql", mysql)
         if mysql_user_config is not None:
             pulumi.set(__self__, "mysql_user_config", mysql_user_config)
+        if opensearch is not None:
+            pulumi.set(__self__, "opensearch", opensearch)
+        if opensearch_user_config is not None:
+            pulumi.set(__self__, "opensearch_user_config", opensearch_user_config)
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
         if pg_user_config is not None:
@@ -894,6 +934,30 @@ class _ServiceState:
 
     @property
     @pulumi.getter
+    def opensearch(self) -> Optional[pulumi.Input['ServiceOpensearchArgs']]:
+        """
+        Opensearch specific server provided values
+        """
+        return pulumi.get(self, "opensearch")
+
+    @opensearch.setter
+    def opensearch(self, value: Optional[pulumi.Input['ServiceOpensearchArgs']]):
+        pulumi.set(self, "opensearch", value)
+
+    @property
+    @pulumi.getter(name="opensearchUserConfig")
+    def opensearch_user_config(self) -> Optional[pulumi.Input['ServiceOpensearchUserConfigArgs']]:
+        """
+        Opensearch specific user configurable settings
+        """
+        return pulumi.get(self, "opensearch_user_config")
+
+    @opensearch_user_config.setter
+    def opensearch_user_config(self, value: Optional[pulumi.Input['ServiceOpensearchUserConfigArgs']]):
+        pulumi.set(self, "opensearch_user_config", value)
+
+    @property
+    @pulumi.getter
     def pg(self) -> Optional[pulumi.Input['ServicePgArgs']]:
         """
         PostgreSQL specific server provided values
@@ -1121,6 +1185,8 @@ class Service(pulumi.CustomResource):
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlArgs']]] = None,
                  mysql_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']]] = None,
+                 opensearch: Optional[pulumi.Input[pulumi.InputType['ServiceOpensearchArgs']]] = None,
+                 opensearch_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceOpensearchUserConfigArgs']]] = None,
                  pg: Optional[pulumi.Input[pulumi.InputType['ServicePgArgs']]] = None,
                  pg_user_config: Optional[pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -1156,6 +1222,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[pulumi.InputType['ServiceMysqlArgs']] mysql: MySQL specific server provided values
         :param pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']] mysql_user_config: MySQL specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceOpensearchArgs']] opensearch: Opensearch specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceOpensearchUserConfigArgs']] opensearch_user_config: Opensearch specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServicePgArgs']] pg: PostgreSQL specific server provided values
         :param pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']] pg_user_config: PostgreSQL specific user configurable settings
         :param pulumi.Input[str] plan: Subscription plan
@@ -1210,6 +1278,8 @@ class Service(pulumi.CustomResource):
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlArgs']]] = None,
                  mysql_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']]] = None,
+                 opensearch: Optional[pulumi.Input[pulumi.InputType['ServiceOpensearchArgs']]] = None,
+                 opensearch_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceOpensearchUserConfigArgs']]] = None,
                  pg: Optional[pulumi.Input[pulumi.InputType['ServicePgArgs']]] = None,
                  pg_user_config: Optional[pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -1252,6 +1322,8 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
             __props__.__dict__["mysql"] = mysql
             __props__.__dict__["mysql_user_config"] = mysql_user_config
+            __props__.__dict__["opensearch"] = opensearch
+            __props__.__dict__["opensearch_user_config"] = opensearch_user_config
             __props__.__dict__["pg"] = pg
             __props__.__dict__["pg_user_config"] = pg_user_config
             __props__.__dict__["plan"] = plan
@@ -1306,6 +1378,8 @@ class Service(pulumi.CustomResource):
             maintenance_window_time: Optional[pulumi.Input[str]] = None,
             mysql: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlArgs']]] = None,
             mysql_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']]] = None,
+            opensearch: Optional[pulumi.Input[pulumi.InputType['ServiceOpensearchArgs']]] = None,
+            opensearch_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceOpensearchUserConfigArgs']]] = None,
             pg: Optional[pulumi.Input[pulumi.InputType['ServicePgArgs']]] = None,
             pg_user_config: Optional[pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']]] = None,
             plan: Optional[pulumi.Input[str]] = None,
@@ -1350,6 +1424,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[pulumi.InputType['ServiceMysqlArgs']] mysql: MySQL specific server provided values
         :param pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']] mysql_user_config: MySQL specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceOpensearchArgs']] opensearch: Opensearch specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceOpensearchUserConfigArgs']] opensearch_user_config: Opensearch specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServicePgArgs']] pg: PostgreSQL specific server provided values
         :param pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']] pg_user_config: PostgreSQL specific user configurable settings
         :param pulumi.Input[str] plan: Subscription plan
@@ -1392,6 +1468,8 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["maintenance_window_time"] = maintenance_window_time
         __props__.__dict__["mysql"] = mysql
         __props__.__dict__["mysql_user_config"] = mysql_user_config
+        __props__.__dict__["opensearch"] = opensearch
+        __props__.__dict__["opensearch_user_config"] = opensearch_user_config
         __props__.__dict__["pg"] = pg
         __props__.__dict__["pg_user_config"] = pg_user_config
         __props__.__dict__["plan"] = plan
@@ -1570,6 +1648,22 @@ class Service(pulumi.CustomResource):
         MySQL specific user configurable settings
         """
         return pulumi.get(self, "mysql_user_config")
+
+    @property
+    @pulumi.getter
+    def opensearch(self) -> pulumi.Output['outputs.ServiceOpensearch']:
+        """
+        Opensearch specific server provided values
+        """
+        return pulumi.get(self, "opensearch")
+
+    @property
+    @pulumi.getter(name="opensearchUserConfig")
+    def opensearch_user_config(self) -> pulumi.Output[Optional['outputs.ServiceOpensearchUserConfig']]:
+        """
+        Opensearch specific user configurable settings
+        """
+        return pulumi.get(self, "opensearch_user_config")
 
     @property
     @pulumi.getter

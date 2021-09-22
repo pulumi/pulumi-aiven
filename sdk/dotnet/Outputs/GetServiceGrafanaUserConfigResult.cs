@@ -15,8 +15,10 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? AlertingEnabled;
         public readonly string? AlertingErrorOrTimeout;
+        public readonly string? AlertingMaxAnnotationsToKeep;
         public readonly string? AlertingNodataOrNullvalues;
         public readonly string? AllowEmbedding;
+        public readonly Outputs.GetServiceGrafanaUserConfigAuthAzureadResult? AuthAzuread;
         public readonly string? AuthBasicEnabled;
         public readonly Outputs.GetServiceGrafanaUserConfigAuthGenericOauthResult? AuthGenericOauth;
         public readonly Outputs.GetServiceGrafanaUserConfigAuthGithubResult? AuthGithub;
@@ -28,6 +30,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? DashboardsVersionsToKeep;
         public readonly string? DataproxySendUserHeader;
         public readonly string? DataproxyTimeout;
+        public readonly Outputs.GetServiceGrafanaUserConfigDateFormatsResult? DateFormats;
         public readonly string? DisableGravatar;
         public readonly string? EditorsCanAdmin;
         public readonly Outputs.GetServiceGrafanaUserConfigExternalImageStorageResult? ExternalImageStorage;
@@ -41,6 +44,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? RecoveryBasebackupName;
         public readonly string? ServiceToForkFrom;
         public readonly Outputs.GetServiceGrafanaUserConfigSmtpServerResult? SmtpServer;
+        public readonly string? StaticIps;
         public readonly string? UserAutoAssignOrg;
         public readonly string? UserAutoAssignOrgRole;
         public readonly string? ViewersCanEdit;
@@ -51,9 +55,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? alertingErrorOrTimeout,
 
+            string? alertingMaxAnnotationsToKeep,
+
             string? alertingNodataOrNullvalues,
 
             string? allowEmbedding,
+
+            Outputs.GetServiceGrafanaUserConfigAuthAzureadResult? authAzuread,
 
             string? authBasicEnabled,
 
@@ -76,6 +84,8 @@ namespace Pulumi.Aiven.Outputs
             string? dataproxySendUserHeader,
 
             string? dataproxyTimeout,
+
+            Outputs.GetServiceGrafanaUserConfigDateFormatsResult? dateFormats,
 
             string? disableGravatar,
 
@@ -103,6 +113,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetServiceGrafanaUserConfigSmtpServerResult? smtpServer,
 
+            string? staticIps,
+
             string? userAutoAssignOrg,
 
             string? userAutoAssignOrgRole,
@@ -111,8 +123,10 @@ namespace Pulumi.Aiven.Outputs
         {
             AlertingEnabled = alertingEnabled;
             AlertingErrorOrTimeout = alertingErrorOrTimeout;
+            AlertingMaxAnnotationsToKeep = alertingMaxAnnotationsToKeep;
             AlertingNodataOrNullvalues = alertingNodataOrNullvalues;
             AllowEmbedding = allowEmbedding;
+            AuthAzuread = authAzuread;
             AuthBasicEnabled = authBasicEnabled;
             AuthGenericOauth = authGenericOauth;
             AuthGithub = authGithub;
@@ -124,6 +138,7 @@ namespace Pulumi.Aiven.Outputs
             DashboardsVersionsToKeep = dashboardsVersionsToKeep;
             DataproxySendUserHeader = dataproxySendUserHeader;
             DataproxyTimeout = dataproxyTimeout;
+            DateFormats = dateFormats;
             DisableGravatar = disableGravatar;
             EditorsCanAdmin = editorsCanAdmin;
             ExternalImageStorage = externalImageStorage;
@@ -137,6 +152,7 @@ namespace Pulumi.Aiven.Outputs
             RecoveryBasebackupName = recoveryBasebackupName;
             ServiceToForkFrom = serviceToForkFrom;
             SmtpServer = smtpServer;
+            StaticIps = staticIps;
             UserAutoAssignOrg = userAutoAssignOrg;
             UserAutoAssignOrgRole = userAutoAssignOrgRole;
             ViewersCanEdit = viewersCanEdit;

@@ -24,6 +24,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("alertingErrorOrTimeout")]
         public Input<string>? AlertingErrorOrTimeout { get; set; }
 
+        [Input("alertingMaxAnnotationsToKeep")]
+        public Input<string>? AlertingMaxAnnotationsToKeep { get; set; }
+
         /// <summary>
         /// Default value for 'no data or null values' for
         /// new alerting rules
@@ -37,6 +40,9 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("allowEmbedding")]
         public Input<string>? AllowEmbedding { get; set; }
+
+        [Input("authAzuread")]
+        public Input<Inputs.GrafanaGrafanaUserConfigAuthAzureadArgs>? AuthAzuread { get; set; }
 
         /// <summary>
         /// Enable or disable basic authentication form, used by Grafana 
@@ -106,6 +112,9 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("dataproxyTimeout")]
         public Input<string>? DataproxyTimeout { get; set; }
+
+        [Input("dateFormats")]
+        public Input<Inputs.GrafanaGrafanaUserConfigDateFormatsArgs>? DateFormats { get; set; }
 
         /// <summary>
         /// Set to true to disable gravatar. Defaults to false 
@@ -190,6 +199,9 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("smtpServer")]
         public Input<Inputs.GrafanaGrafanaUserConfigSmtpServerArgs>? SmtpServer { get; set; }
+
+        [Input("staticIps")]
+        public Input<string>? StaticIps { get; set; }
 
         /// <summary>
         /// Auto-assign new users on signup to main organization. 

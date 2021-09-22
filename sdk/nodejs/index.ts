@@ -17,6 +17,8 @@ export * from "./connectionPool";
 export * from "./database";
 export * from "./elasticSearch";
 export * from "./elasticSearchAcl";
+export * from "./elasticSearchAclConfig";
+export * from "./elasticSearchAclRule";
 export * from "./getAccount";
 export * from "./getAccountAuthentication";
 export * from "./getAccountTeam";
@@ -28,6 +30,8 @@ export * from "./getConnectionPool";
 export * from "./getDatabase";
 export * from "./getElasticSearch";
 export * from "./getElasticSearchAcl";
+export * from "./getElasticSearchAclConfig";
+export * from "./getElasticSearchAclRule";
 export * from "./getGrafana";
 export * from "./getInfluxDb";
 export * from "./getKafka";
@@ -42,6 +46,9 @@ export * from "./getM3Aggregator";
 export * from "./getM3Db";
 export * from "./getMirrorMakerReplicationFlow";
 export * from "./getMySql";
+export * from "./getOpenSearch";
+export * from "./getOpenSearchAclConfig";
+export * from "./getOpenSearchAclRule";
 export * from "./getPg";
 export * from "./getProject";
 export * from "./getProjectUser";
@@ -68,6 +75,9 @@ export * from "./m3aggregator";
 export * from "./m3db";
 export * from "./mirrorMakerReplicationFlow";
 export * from "./mySql";
+export * from "./openSearch";
+export * from "./openSearchAclConfig";
+export * from "./openSearchAclRule";
 export * from "./pg";
 export * from "./project";
 export * from "./projectUser";
@@ -103,6 +113,8 @@ import { ConnectionPool } from "./connectionPool";
 import { Database } from "./database";
 import { ElasticSearch } from "./elasticSearch";
 import { ElasticSearchAcl } from "./elasticSearchAcl";
+import { ElasticSearchAclConfig } from "./elasticSearchAclConfig";
+import { ElasticSearchAclRule } from "./elasticSearchAclRule";
 import { Grafana } from "./grafana";
 import { InfluxDb } from "./influxDb";
 import { Kafka } from "./kafka";
@@ -117,6 +129,9 @@ import { M3Aggregator } from "./m3aggregator";
 import { M3Db } from "./m3db";
 import { MirrorMakerReplicationFlow } from "./mirrorMakerReplicationFlow";
 import { MySql } from "./mySql";
+import { OpenSearch } from "./openSearch";
+import { OpenSearchAclConfig } from "./openSearchAclConfig";
+import { OpenSearchAclRule } from "./openSearchAclRule";
 import { Pg } from "./pg";
 import { Project } from "./project";
 import { ProjectUser } from "./projectUser";
@@ -157,6 +172,10 @@ const _module = {
                 return new ElasticSearch(name, <any>undefined, { urn })
             case "aiven:index/elasticSearchAcl:ElasticSearchAcl":
                 return new ElasticSearchAcl(name, <any>undefined, { urn })
+            case "aiven:index/elasticSearchAclConfig:ElasticSearchAclConfig":
+                return new ElasticSearchAclConfig(name, <any>undefined, { urn })
+            case "aiven:index/elasticSearchAclRule:ElasticSearchAclRule":
+                return new ElasticSearchAclRule(name, <any>undefined, { urn })
             case "aiven:index/grafana:Grafana":
                 return new Grafana(name, <any>undefined, { urn })
             case "aiven:index/influxDb:InfluxDb":
@@ -185,6 +204,12 @@ const _module = {
                 return new MirrorMakerReplicationFlow(name, <any>undefined, { urn })
             case "aiven:index/mySql:MySql":
                 return new MySql(name, <any>undefined, { urn })
+            case "aiven:index/openSearch:OpenSearch":
+                return new OpenSearch(name, <any>undefined, { urn })
+            case "aiven:index/openSearchAclConfig:OpenSearchAclConfig":
+                return new OpenSearchAclConfig(name, <any>undefined, { urn })
+            case "aiven:index/openSearchAclRule:OpenSearchAclRule":
+                return new OpenSearchAclRule(name, <any>undefined, { urn })
             case "aiven:index/pg:Pg":
                 return new Pg(name, <any>undefined, { urn })
             case "aiven:index/project:Project":
@@ -224,6 +249,8 @@ pulumi.runtime.registerResourceModule("aiven", "index/connectionPool", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/database", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/elasticSearch", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/elasticSearchAcl", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/elasticSearchAclConfig", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/elasticSearchAclRule", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/grafana", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/influxDb", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafka", _module)
@@ -238,6 +265,9 @@ pulumi.runtime.registerResourceModule("aiven", "index/m3Aggregator", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/m3Db", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/mirrorMakerReplicationFlow", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/mySql", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/openSearch", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/openSearchAclConfig", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/openSearchAclRule", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/pg", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/project", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/projectUser", _module)

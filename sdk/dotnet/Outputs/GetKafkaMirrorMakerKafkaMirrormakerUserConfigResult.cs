@@ -21,15 +21,19 @@ namespace Pulumi.Aiven.Outputs
         /// Kafka MirrorMaker 2 specific server provided values.
         /// </summary>
         public readonly Outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult? KafkaMirrormaker;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(
             ImmutableArray<string> ipFilters,
 
-            Outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult? kafkaMirrormaker)
+            Outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult? kafkaMirrormaker,
+
+            string? staticIps)
         {
             IpFilters = ipFilters;
             KafkaMirrormaker = kafkaMirrormaker;
+            StaticIps = staticIps;
         }
     }
 }
