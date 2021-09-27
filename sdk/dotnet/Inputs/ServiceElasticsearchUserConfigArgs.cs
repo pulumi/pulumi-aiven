@@ -43,11 +43,17 @@ namespace Pulumi.Aiven.Inputs
             set => _ipFilters = value;
         }
 
+        [Input("keepIndexRefreshInterval")]
+        public Input<string>? KeepIndexRefreshInterval { get; set; }
+
         [Input("kibana")]
         public Input<Inputs.ServiceElasticsearchUserConfigKibanaArgs>? Kibana { get; set; }
 
         [Input("maxIndexCount")]
         public Input<string>? MaxIndexCount { get; set; }
+
+        [Input("opensearchVersion")]
+        public Input<string>? OpensearchVersion { get; set; }
 
         [Input("privateAccess")]
         public Input<Inputs.ServiceElasticsearchUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
@@ -66,6 +72,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
+
+        [Input("staticIps")]
+        public Input<string>? StaticIps { get; set; }
 
         public ServiceElasticsearchUserConfigArgs()
         {

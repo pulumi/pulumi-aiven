@@ -38,6 +38,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
 
+        [Input("redisAclChannelsDefault")]
+        public Input<string>? RedisAclChannelsDefault { get; set; }
+
         [Input("redisIoThreads")]
         public Input<string>? RedisIoThreads { get; set; }
 
@@ -53,6 +56,15 @@ namespace Pulumi.Aiven.Inputs
         [Input("redisNotifyKeyspaceEvents")]
         public Input<string>? RedisNotifyKeyspaceEvents { get; set; }
 
+        [Input("redisNumberOfDatabases")]
+        public Input<string>? RedisNumberOfDatabases { get; set; }
+
+        [Input("redisPersistence")]
+        public Input<string>? RedisPersistence { get; set; }
+
+        [Input("redisPubsubClientOutputBufferLimit")]
+        public Input<string>? RedisPubsubClientOutputBufferLimit { get; set; }
+
         [Input("redisSsl")]
         public Input<string>? RedisSsl { get; set; }
 
@@ -61,6 +73,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
+
+        [Input("staticIps")]
+        public Input<string>? StaticIps { get; set; }
 
         public ServiceRedisUserConfigGetArgs()
         {

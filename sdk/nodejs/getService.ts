@@ -34,6 +34,8 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
         "maintenanceWindowTime": args.maintenanceWindowTime,
         "mysql": args.mysql,
         "mysqlUserConfig": args.mysqlUserConfig,
+        "opensearch": args.opensearch,
+        "opensearchUserConfig": args.opensearchUserConfig,
         "pg": args.pg,
         "pgUserConfig": args.pgUserConfig,
         "plan": args.plan,
@@ -78,6 +80,8 @@ export interface GetServiceArgs {
     maintenanceWindowTime?: string;
     mysql?: inputs.GetServiceMysql;
     mysqlUserConfig?: inputs.GetServiceMysqlUserConfig;
+    opensearch?: inputs.GetServiceOpensearch;
+    opensearchUserConfig?: inputs.GetServiceOpensearchUserConfig;
     pg?: inputs.GetServicePg;
     pgUserConfig?: inputs.GetServicePgUserConfig;
     plan?: string;
@@ -125,6 +129,8 @@ export interface GetServiceResult {
     readonly maintenanceWindowTime?: string;
     readonly mysql: outputs.GetServiceMysql;
     readonly mysqlUserConfig?: outputs.GetServiceMysqlUserConfig;
+    readonly opensearch: outputs.GetServiceOpensearch;
+    readonly opensearchUserConfig?: outputs.GetServiceOpensearchUserConfig;
     readonly pg: outputs.GetServicePg;
     readonly pgUserConfig?: outputs.GetServicePgUserConfig;
     readonly plan?: string;

@@ -83,6 +83,12 @@ namespace Pulumi.Aiven
         [Input("mysqlUserConfig")]
         public Inputs.GetServiceMysqlUserConfigArgs? MysqlUserConfig { get; set; }
 
+        [Input("opensearch")]
+        public Inputs.GetServiceOpensearchArgs? Opensearch { get; set; }
+
+        [Input("opensearchUserConfig")]
+        public Inputs.GetServiceOpensearchUserConfigArgs? OpensearchUserConfig { get; set; }
+
         [Input("pg")]
         public Inputs.GetServicePgArgs? Pg { get; set; }
 
@@ -172,6 +178,8 @@ namespace Pulumi.Aiven
         public readonly string? MaintenanceWindowTime;
         public readonly Outputs.GetServiceMysqlResult Mysql;
         public readonly Outputs.GetServiceMysqlUserConfigResult? MysqlUserConfig;
+        public readonly Outputs.GetServiceOpensearchResult Opensearch;
+        public readonly Outputs.GetServiceOpensearchUserConfigResult? OpensearchUserConfig;
         public readonly Outputs.GetServicePgResult Pg;
         public readonly Outputs.GetServicePgUserConfigResult? PgUserConfig;
         public readonly string? Plan;
@@ -234,6 +242,10 @@ namespace Pulumi.Aiven
 
             Outputs.GetServiceMysqlUserConfigResult? mysqlUserConfig,
 
+            Outputs.GetServiceOpensearchResult opensearch,
+
+            Outputs.GetServiceOpensearchUserConfigResult? opensearchUserConfig,
+
             Outputs.GetServicePgResult pg,
 
             Outputs.GetServicePgUserConfigResult? pgUserConfig,
@@ -289,6 +301,8 @@ namespace Pulumi.Aiven
             MaintenanceWindowTime = maintenanceWindowTime;
             Mysql = mysql;
             MysqlUserConfig = mysqlUserConfig;
+            Opensearch = opensearch;
+            OpensearchUserConfig = opensearchUserConfig;
             Pg = pg;
             PgUserConfig = pgUserConfig;
             Plan = plan;

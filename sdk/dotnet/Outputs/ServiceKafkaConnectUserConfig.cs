@@ -18,6 +18,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.ServiceKafkaConnectUserConfigPrivateAccess? PrivateAccess;
         public readonly Outputs.ServiceKafkaConnectUserConfigPrivatelinkAccess? PrivatelinkAccess;
         public readonly Outputs.ServiceKafkaConnectUserConfigPublicAccess? PublicAccess;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private ServiceKafkaConnectUserConfig(
@@ -29,13 +30,16 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.ServiceKafkaConnectUserConfigPrivatelinkAccess? privatelinkAccess,
 
-            Outputs.ServiceKafkaConnectUserConfigPublicAccess? publicAccess)
+            Outputs.ServiceKafkaConnectUserConfigPublicAccess? publicAccess,
+
+            string? staticIps)
         {
             IpFilters = ipFilters;
             KafkaConnect = kafkaConnect;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;
+            StaticIps = staticIps;
         }
     }
 }

@@ -42,6 +42,8 @@ namespace Pulumi.Aiven.Outputs
         /// are synced (default: 60, every minute).
         /// </summary>
         public readonly string? SyncGroupOffsetsIntervalSeconds;
+        public readonly string? SyncTopicConfigsEnabled;
+        public readonly string? TasksMaxPerCpu;
 
         [OutputConstructor]
         private GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult(
@@ -59,7 +61,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? syncGroupOffsetsEnabled,
 
-            string? syncGroupOffsetsIntervalSeconds)
+            string? syncGroupOffsetsIntervalSeconds,
+
+            string? syncTopicConfigsEnabled,
+
+            string? tasksMaxPerCpu)
         {
             EmitCheckpointsEnabled = emitCheckpointsEnabled;
             EmitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
@@ -69,6 +75,8 @@ namespace Pulumi.Aiven.Outputs
             RefreshTopicsIntervalSeconds = refreshTopicsIntervalSeconds;
             SyncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
             SyncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
+            SyncTopicConfigsEnabled = syncTopicConfigsEnabled;
+            TasksMaxPerCpu = tasksMaxPerCpu;
         }
     }
 }

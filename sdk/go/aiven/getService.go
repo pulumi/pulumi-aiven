@@ -38,6 +38,8 @@ type LookupServiceArgs struct {
 	MaintenanceWindowTime      *string                               `pulumi:"maintenanceWindowTime"`
 	Mysql                      *GetServiceMysql                      `pulumi:"mysql"`
 	MysqlUserConfig            *GetServiceMysqlUserConfig            `pulumi:"mysqlUserConfig"`
+	Opensearch                 *GetServiceOpensearch                 `pulumi:"opensearch"`
+	OpensearchUserConfig       *GetServiceOpensearchUserConfig       `pulumi:"opensearchUserConfig"`
 	Pg                         *GetServicePg                         `pulumi:"pg"`
 	PgUserConfig               *GetServicePgUserConfig               `pulumi:"pgUserConfig"`
 	Plan                       *string                               `pulumi:"plan"`
@@ -81,6 +83,8 @@ type LookupServiceResult struct {
 	MaintenanceWindowTime      *string                               `pulumi:"maintenanceWindowTime"`
 	Mysql                      GetServiceMysql                       `pulumi:"mysql"`
 	MysqlUserConfig            *GetServiceMysqlUserConfig            `pulumi:"mysqlUserConfig"`
+	Opensearch                 GetServiceOpensearch                  `pulumi:"opensearch"`
+	OpensearchUserConfig       *GetServiceOpensearchUserConfig       `pulumi:"opensearchUserConfig"`
 	Pg                         GetServicePg                          `pulumi:"pg"`
 	PgUserConfig               *GetServicePgUserConfig               `pulumi:"pgUserConfig"`
 	Plan                       *string                               `pulumi:"plan"`

@@ -30,6 +30,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("kafkaMirrormaker")]
         public Input<Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs>? KafkaMirrormaker { get; set; }
 
+        [Input("staticIps")]
+        public Input<string>? StaticIps { get; set; }
+
         public KafkaMirrorMakerKafkaMirrormakerUserConfigArgs()
         {
         }

@@ -17,6 +17,8 @@ from .connection_pool import *
 from .database import *
 from .elastic_search import *
 from .elastic_search_acl import *
+from .elastic_search_acl_config import *
+from .elastic_search_acl_rule import *
 from .get_account import *
 from .get_account_authentication import *
 from .get_account_team import *
@@ -28,6 +30,8 @@ from .get_connection_pool import *
 from .get_database import *
 from .get_elastic_search import *
 from .get_elastic_search_acl import *
+from .get_elastic_search_acl_config import *
+from .get_elastic_search_acl_rule import *
 from .get_grafana import *
 from .get_influx_db import *
 from .get_kafka import *
@@ -42,6 +46,9 @@ from .get_m3_aggregator import *
 from .get_m3_db import *
 from .get_mirror_maker_replication_flow import *
 from .get_my_sql import *
+from .get_open_search import *
+from .get_open_search_acl_config import *
+from .get_open_search_acl_rule import *
 from .get_pg import *
 from .get_project import *
 from .get_project_user import *
@@ -68,6 +75,9 @@ from .m3_aggregator import *
 from .m3_db import *
 from .mirror_maker_replication_flow import *
 from .my_sql import *
+from .open_search import *
+from .open_search_acl_config import *
+from .open_search_acl_rule import *
 from .pg import *
 from .project import *
 from .project_user import *
@@ -190,6 +200,22 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
+  "mod": "index/elasticSearchAclConfig",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/elasticSearchAclConfig:ElasticSearchAclConfig": "ElasticSearchAclConfig"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/elasticSearchAclRule",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/elasticSearchAclRule:ElasticSearchAclRule": "ElasticSearchAclRule"
+  }
+ },
+ {
+  "pkg": "aiven",
   "mod": "index/grafana",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -298,6 +324,30 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/mySql:MySql": "MySql"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/openSearch",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/openSearch:OpenSearch": "OpenSearch"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/openSearchAclConfig",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/openSearchAclConfig:OpenSearchAclConfig": "OpenSearchAclConfig"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/openSearchAclRule",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/openSearchAclRule:OpenSearchAclRule": "OpenSearchAclRule"
   }
  },
  {

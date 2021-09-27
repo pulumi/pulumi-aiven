@@ -39,6 +39,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("m3aggregatorVersion")]
         public string? M3aggregatorVersion { get; set; }
 
+        [Input("staticIps")]
+        public string? StaticIps { get; set; }
+
         public GetM3AggregatorM3aggregatorUserConfigArgs()
         {
         }

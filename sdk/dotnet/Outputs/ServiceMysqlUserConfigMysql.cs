@@ -25,6 +25,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? InnodbPrintAllDeadlocks;
         public readonly string? InnodbRollbackOnTimeout;
         public readonly string? InteractiveTimeout;
+        public readonly string? InternalTmpMemStorageEngine;
         public readonly string? LongQueryTime;
         public readonly string? MaxAllowedPacket;
         public readonly string? MaxHeapTableSize;
@@ -63,6 +64,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? interactiveTimeout,
 
+            string? internalTmpMemStorageEngine,
+
             string? longQueryTime,
 
             string? maxAllowedPacket,
@@ -97,6 +100,7 @@ namespace Pulumi.Aiven.Outputs
             InnodbPrintAllDeadlocks = innodbPrintAllDeadlocks;
             InnodbRollbackOnTimeout = innodbRollbackOnTimeout;
             InteractiveTimeout = interactiveTimeout;
+            InternalTmpMemStorageEngine = internalTmpMemStorageEngine;
             LongQueryTime = longQueryTime;
             MaxAllowedPacket = maxAllowedPacket;
             MaxHeapTableSize = maxHeapTableSize;

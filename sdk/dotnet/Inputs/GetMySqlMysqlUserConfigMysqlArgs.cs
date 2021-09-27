@@ -96,6 +96,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("interactiveTimeout")]
         public string? InteractiveTimeout { get; set; }
 
+        [Input("internalTmpMemStorageEngine")]
+        public string? InternalTmpMemStorageEngine { get; set; }
+
         /// <summary>
         /// The slow_query_logs work as SQL statements that take
         /// more than long_query_time seconds to execute. Default is 10s

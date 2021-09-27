@@ -18,6 +18,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("cassandra")]
         public Inputs.GetCassandaCassandraUserConfigCassandraArgs? Cassandra { get; set; }
 
+        [Input("cassandraVersion")]
+        public string? CassandraVersion { get; set; }
+
         [Input("ipFilters")]
         private List<string>? _ipFilters;
 
@@ -58,6 +61,9 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("serviceToForkFrom")]
         public string? ServiceToForkFrom { get; set; }
+
+        [Input("staticIps")]
+        public string? StaticIps { get; set; }
 
         public GetCassandaCassandraUserConfigArgs()
         {

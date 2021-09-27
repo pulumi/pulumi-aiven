@@ -26,6 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// M3 major version
         /// </summary>
         public readonly string? M3aggregatorVersion;
+        public readonly string? StaticIps;
 
         [OutputConstructor]
         private M3AggregatorM3aggregatorUserConfig(
@@ -35,12 +36,15 @@ namespace Pulumi.Aiven.Outputs
 
             string? m3Version,
 
-            string? m3aggregatorVersion)
+            string? m3aggregatorVersion,
+
+            string? staticIps)
         {
             CustomDomain = customDomain;
             IpFilters = ipFilters;
             M3Version = m3Version;
             M3aggregatorVersion = m3aggregatorVersion;
+            StaticIps = staticIps;
         }
     }
 }

@@ -74,6 +74,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("sharedBuffersPercentage")]
         public Input<string>? SharedBuffersPercentage { get; set; }
 
+        [Input("staticIps")]
+        public Input<string>? StaticIps { get; set; }
+
         [Input("synchronousReplication")]
         public Input<string>? SynchronousReplication { get; set; }
 

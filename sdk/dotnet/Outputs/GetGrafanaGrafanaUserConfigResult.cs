@@ -21,6 +21,7 @@ namespace Pulumi.Aiven.Outputs
         /// Default error or timeout setting for new alerting rules
         /// </summary>
         public readonly string? AlertingErrorOrTimeout;
+        public readonly string? AlertingMaxAnnotationsToKeep;
         /// <summary>
         /// Default value for 'no data or null values' for
         /// new alerting rules
@@ -31,6 +32,7 @@ namespace Pulumi.Aiven.Outputs
         /// tags. Disabled by default to limit impact of clickjacking
         /// </summary>
         public readonly string? AllowEmbedding;
+        public readonly Outputs.GetGrafanaGrafanaUserConfigAuthAzureadResult? AuthAzuread;
         /// <summary>
         /// Enable or disable basic authentication form, used by Grafana 
         /// built-in login.
@@ -78,6 +80,7 @@ namespace Pulumi.Aiven.Outputs
         /// Timeout for data proxy requests in seconds.
         /// </summary>
         public readonly string? DataproxyTimeout;
+        public readonly Outputs.GetGrafanaGrafanaUserConfigDateFormatsResult? DateFormats;
         /// <summary>
         /// Set to true to disable gravatar. Defaults to false 
         /// (gravatar is enabled).
@@ -130,6 +133,7 @@ namespace Pulumi.Aiven.Outputs
         /// SMTP server settings.
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigSmtpServerResult? SmtpServer;
+        public readonly string? StaticIps;
         /// <summary>
         /// Auto-assign new users on signup to main organization. 
         /// Defaults to false.
@@ -150,9 +154,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? alertingErrorOrTimeout,
 
+            string? alertingMaxAnnotationsToKeep,
+
             string? alertingNodataOrNullvalues,
 
             string? allowEmbedding,
+
+            Outputs.GetGrafanaGrafanaUserConfigAuthAzureadResult? authAzuread,
 
             string? authBasicEnabled,
 
@@ -175,6 +183,8 @@ namespace Pulumi.Aiven.Outputs
             string? dataproxySendUserHeader,
 
             string? dataproxyTimeout,
+
+            Outputs.GetGrafanaGrafanaUserConfigDateFormatsResult? dateFormats,
 
             string? disableGravatar,
 
@@ -202,6 +212,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetGrafanaGrafanaUserConfigSmtpServerResult? smtpServer,
 
+            string? staticIps,
+
             string? userAutoAssignOrg,
 
             string? userAutoAssignOrgRole,
@@ -210,8 +222,10 @@ namespace Pulumi.Aiven.Outputs
         {
             AlertingEnabled = alertingEnabled;
             AlertingErrorOrTimeout = alertingErrorOrTimeout;
+            AlertingMaxAnnotationsToKeep = alertingMaxAnnotationsToKeep;
             AlertingNodataOrNullvalues = alertingNodataOrNullvalues;
             AllowEmbedding = allowEmbedding;
+            AuthAzuread = authAzuread;
             AuthBasicEnabled = authBasicEnabled;
             AuthGenericOauth = authGenericOauth;
             AuthGithub = authGithub;
@@ -223,6 +237,7 @@ namespace Pulumi.Aiven.Outputs
             DashboardsVersionsToKeep = dashboardsVersionsToKeep;
             DataproxySendUserHeader = dataproxySendUserHeader;
             DataproxyTimeout = dataproxyTimeout;
+            DateFormats = dateFormats;
             DisableGravatar = disableGravatar;
             EditorsCanAdmin = editorsCanAdmin;
             ExternalImageStorage = externalImageStorage;
@@ -236,6 +251,7 @@ namespace Pulumi.Aiven.Outputs
             RecoveryBasebackupName = recoveryBasebackupName;
             ServiceToForkFrom = serviceToForkFrom;
             SmtpServer = smtpServer;
+            StaticIps = staticIps;
             UserAutoAssignOrg = userAutoAssignOrg;
             UserAutoAssignOrgRole = userAutoAssignOrgRole;
             ViewersCanEdit = viewersCanEdit;

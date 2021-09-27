@@ -64,6 +64,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("syncGroupOffsetsIntervalSeconds")]
         public Input<string>? SyncGroupOffsetsIntervalSeconds { get; set; }
 
+        [Input("syncTopicConfigsEnabled")]
+        public Input<string>? SyncTopicConfigsEnabled { get; set; }
+
+        [Input("tasksMaxPerCpu")]
+        public Input<string>? TasksMaxPerCpu { get; set; }
+
         public KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs()
         {
         }

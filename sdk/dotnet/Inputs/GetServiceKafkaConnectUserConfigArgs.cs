@@ -32,6 +32,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("publicAccess")]
         public Inputs.GetServiceKafkaConnectUserConfigPublicAccessArgs? PublicAccess { get; set; }
 
+        [Input("staticIps")]
+        public string? StaticIps { get; set; }
+
         public GetServiceKafkaConnectUserConfigArgs()
         {
         }

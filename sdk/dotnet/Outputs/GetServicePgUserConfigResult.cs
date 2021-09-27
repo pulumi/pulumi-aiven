@@ -32,6 +32,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? RecoveryTargetTime;
         public readonly string? ServiceToForkFrom;
         public readonly string? SharedBuffersPercentage;
+        public readonly string? StaticIps;
         public readonly string? SynchronousReplication;
         public readonly Outputs.GetServicePgUserConfigTimescaledbResult? Timescaledb;
         public readonly string? Variant;
@@ -77,6 +78,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? sharedBuffersPercentage,
 
+            string? staticIps,
+
             string? synchronousReplication,
 
             Outputs.GetServicePgUserConfigTimescaledbResult? timescaledb,
@@ -104,6 +107,7 @@ namespace Pulumi.Aiven.Outputs
             RecoveryTargetTime = recoveryTargetTime;
             ServiceToForkFrom = serviceToForkFrom;
             SharedBuffersPercentage = sharedBuffersPercentage;
+            StaticIps = staticIps;
             SynchronousReplication = synchronousReplication;
             Timescaledb = timescaledb;
             Variant = variant;

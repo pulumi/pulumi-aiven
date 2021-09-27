@@ -44,6 +44,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ElasticSearch{}
 	case "aiven:index/elasticSearchAcl:ElasticSearchAcl":
 		r = &ElasticSearchAcl{}
+	case "aiven:index/elasticSearchAclConfig:ElasticSearchAclConfig":
+		r = &ElasticSearchAclConfig{}
+	case "aiven:index/elasticSearchAclRule:ElasticSearchAclRule":
+		r = &ElasticSearchAclRule{}
 	case "aiven:index/grafana:Grafana":
 		r = &Grafana{}
 	case "aiven:index/influxDb:InfluxDb":
@@ -72,6 +76,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MirrorMakerReplicationFlow{}
 	case "aiven:index/mySql:MySql":
 		r = &MySql{}
+	case "aiven:index/openSearch:OpenSearch":
+		r = &OpenSearch{}
+	case "aiven:index/openSearchAclConfig:OpenSearchAclConfig":
+		r = &OpenSearchAclConfig{}
+	case "aiven:index/openSearchAclRule:OpenSearchAclRule":
+		r = &OpenSearchAclRule{}
 	case "aiven:index/pg:Pg":
 		r = &Pg{}
 	case "aiven:index/project:Project":
@@ -187,6 +197,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
+		"index/elasticSearchAclConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/elasticSearchAclRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
 		"index/grafana",
 		&module{version},
 	)
@@ -253,6 +273,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/mySql",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/openSearch",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/openSearchAclConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/openSearchAclRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

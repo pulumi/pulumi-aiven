@@ -12,6 +12,7 @@ export interface CassandraCassandraUserConfig {
      * Cassandra configuration values
      */
     cassandra?: pulumi.Input<inputs.CassandraCassandraUserConfigCassandra>;
+    cassandraVersion?: pulumi.Input<string>;
     /**
      * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
@@ -35,6 +36,7 @@ export interface CassandraCassandraUserConfig {
      * when a new service is being created.
      */
     serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface CassandraCassandraUserConfigCassandra {
@@ -144,6 +146,7 @@ export interface ElasticSearchElasticsearchUserConfig {
      * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    keepIndexRefreshInterval?: pulumi.Input<string>;
     /**
      * Allow clients to connect to kibana from the public internet for 
      * service nodes that are in a project VPC or another type of private network.
@@ -153,6 +156,7 @@ export interface ElasticSearchElasticsearchUserConfig {
      * Maximum number of indexes to keep before deleting the oldest one.
      */
     maxIndexCount?: pulumi.Input<string>;
+    opensearchVersion?: pulumi.Input<string>;
     /**
      * Allow access to selected service ports from private networks.
      */
@@ -179,6 +183,7 @@ export interface ElasticSearchElasticsearchUserConfig {
      * only when a new service is being created.
      */
     serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface ElasticSearchElasticsearchUserConfigElasticsearch {
@@ -433,6 +438,7 @@ export interface GetCassandaCassandraUserConfig {
      * Cassandra specific server provided values.
      */
     cassandra?: inputs.GetCassandaCassandraUserConfigCassandra;
+    cassandraVersion?: string;
     /**
      * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
@@ -456,6 +462,7 @@ export interface GetCassandaCassandraUserConfig {
      * when a new service is being created.
      */
     serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetCassandaCassandraUserConfigCassandra {
@@ -564,6 +571,7 @@ export interface GetElasticSearchElasticsearchUserConfig {
      * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilters?: string[];
+    keepIndexRefreshInterval?: string;
     /**
      * Allow clients to connect to kibana from the public internet for 
      * service nodes that are in a project VPC or another type of private network.
@@ -573,6 +581,7 @@ export interface GetElasticSearchElasticsearchUserConfig {
      * Maximum number of indexes to keep before deleting the oldest one.
      */
     maxIndexCount?: string;
+    opensearchVersion?: string;
     /**
      * Allow access to selected service ports from private networks.
      */
@@ -599,6 +608,7 @@ export interface GetElasticSearchElasticsearchUserConfig {
      * only when a new service is being created.
      */
     serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigElasticsearch {
@@ -870,6 +880,7 @@ export interface GetGrafanaGrafanaUserConfig {
      * Default error or timeout setting for new alerting rules
      */
     alertingErrorOrTimeout?: string;
+    alertingMaxAnnotationsToKeep?: string;
     /**
      * Default value for 'no data or null values' for
      * new alerting rules
@@ -880,6 +891,7 @@ export interface GetGrafanaGrafanaUserConfig {
      * tags. Disabled by default to limit impact of clickjacking
      */
     allowEmbedding?: string;
+    authAzuread?: inputs.GetGrafanaGrafanaUserConfigAuthAzuread;
     /**
      * Enable or disable basic authentication form, used by Grafana 
      * built-in login.
@@ -927,6 +939,7 @@ export interface GetGrafanaGrafanaUserConfig {
      * Timeout for data proxy requests in seconds.
      */
     dataproxyTimeout?: string;
+    dateFormats?: inputs.GetGrafanaGrafanaUserConfigDateFormats;
     /**
      * Set to true to disable gravatar. Defaults to false 
      * (gravatar is enabled).
@@ -979,6 +992,7 @@ export interface GetGrafanaGrafanaUserConfig {
      * SMTP server settings.
      */
     smtpServer?: inputs.GetGrafanaGrafanaUserConfigSmtpServer;
+    staticIps?: string;
     /**
      * Auto-assign new users on signup to main organization. 
      * Defaults to false.
@@ -992,6 +1006,37 @@ export interface GetGrafanaGrafanaUserConfig {
      * Users with view-only permission can edit but not save dashboards.
      */
     viewersCanEdit?: string;
+}
+
+export interface GetGrafanaGrafanaUserConfigAuthAzuread {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
+    allowSignUp?: string;
+    /**
+     * Allowed domain
+     */
+    allowedDomains?: string[];
+    /**
+     * Require users to belong to one of given groups
+     */
+    allowedGroups?: string[];
+    /**
+     * Authorization URL. This only needs to be set when using self hosted GitLab
+     */
+    authUrl?: string;
+    /**
+     * Client ID from provider
+     */
+    clientId?: string;
+    /**
+     * Client secret from provider
+     */
+    clientSecret?: string;
+    /**
+     * Token URL. This only needs to be set when using self hosted GitLab
+     */
+    tokenUrl?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
@@ -1108,6 +1153,17 @@ export interface GetGrafanaGrafanaUserConfigAuthGoogle {
      * Client secret from provider
      */
     clientSecret?: string;
+}
+
+export interface GetGrafanaGrafanaUserConfigDateFormats {
+    defaultTimezone?: string;
+    fullDate?: string;
+    intervalDay?: string;
+    intervalHour?: string;
+    intervalMinute?: string;
+    intervalMonth?: string;
+    intervalSecond?: string;
+    intervalYear?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigExternalImageStorage {
@@ -1245,6 +1301,7 @@ export interface GetInfluxDbInfluxdbUserConfig {
      * only when a new service is being created.
      */
     serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigInfluxdb {
@@ -1253,6 +1310,7 @@ export interface GetInfluxDbInfluxdbUserConfigInfluxdb {
      * logged as a slow query. Setting this to 0 (the default) will never log slow queries.
      */
     logQueriesAfter?: string;
+    maxConnectionLimit?: string;
     /**
      * The maximum number of rows returned in a non-chunked query. 
      * Setting this to 0 (the default) allows an unlimited number to be returned.
@@ -1343,6 +1401,7 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
      */
     privatelinkAccess?: inputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
     publicAccess?: inputs.GetKafkaConnectKafkaConnectUserConfigPublicAccess;
+    staticIps?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
@@ -1529,6 +1588,7 @@ export interface GetKafkaKafkaUserConfig {
      * Schema Registry configuration
      */
     schemaRegistryConfig?: inputs.GetKafkaKafkaUserConfigSchemaRegistryConfig;
+    staticIps?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafka {
@@ -1927,6 +1987,7 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
      * Kafka MirrorMaker 2 specific server provided values.
      */
     kafkaMirrormaker?: inputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
+    staticIps?: string;
 }
 
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
@@ -1959,6 +2020,8 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      * are synced (default: 60, every minute).
      */
     syncGroupOffsetsIntervalSeconds?: string;
+    syncTopicConfigsEnabled?: string;
+    tasksMaxPerCpu?: string;
 }
 
 export interface GetKafkaMirrorMakerServiceIntegration {
@@ -2102,6 +2165,7 @@ export interface GetM3AggregatorM3aggregatorUserConfig {
      * M3 major version
      */
     m3aggregatorVersion?: string;
+    staticIps?: string;
 }
 
 export interface GetM3AggregatorServiceIntegration {
@@ -2174,6 +2238,7 @@ export interface GetM3DbM3dbUserConfig {
      * when a new service is being created.
      */
     serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetM3DbM3dbUserConfigLimits {
@@ -2412,6 +2477,7 @@ export interface GetMySqlMysqlUserConfig {
      * a new service is being created.
      */
     serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetMySqlMysqlUserConfigMigration {
@@ -2507,6 +2573,7 @@ export interface GetMySqlMysqlUserConfigMysql {
      * activity on an interactive connection before closing it.
      */
     interactiveTimeout?: string;
+    internalTmpMemStorageEngine?: string;
     /**
      * The slowQueryLogs work as SQL statements that take
      * more than longQueryTime seconds to execute. Default is 10s
@@ -2614,6 +2681,321 @@ export interface GetMySqlMysqlUserConfigPublicAccess {
 }
 
 export interface GetMySqlServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetOpenSearchComponent {
+    component?: string;
+    host?: string;
+    kafkaAuthenticationMethod?: string;
+    port?: number;
+    route?: string;
+    ssl?: boolean;
+    usage?: string;
+}
+
+export interface GetOpenSearchOpensearch {
+    /**
+     * URI for Opensearch dashboards frontend.
+     */
+    opensearchDashboardsUri?: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
+    customDomain?: string;
+    /**
+     * Disable automatic replication factor adjustment for multi-node services.
+     * By default, Aiven ensures all indexes are replicated at least to two nodes. Note: setting this to true increases a
+     * risk of data loss in case of virtual machine failure.
+     */
+    disableReplicationFactorAdjustment?: string;
+    /**
+     * Glob pattern and number of indexes matching that pattern to be kept.
+     */
+    indexPatterns?: inputs.GetOpenSearchOpensearchUserConfigIndexPattern[];
+    /**
+     * Template settings for all new indexe.
+     */
+    indexTemplate?: inputs.GetOpenSearchOpensearchUserConfigIndexTemplate;
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
+    ipFilters?: string[];
+    keepIndexRefreshInterval?: string;
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one.
+     */
+    maxIndexCount?: string;
+    /**
+     * Allow clients to connect to opensearch from the public internet for service nodes that are in a
+     * project VPC or another type of private network.
+     */
+    opensearch?: inputs.GetOpenSearchOpensearchUserConfigOpensearch;
+    /**
+     * Allow clients to connect to opensearchDashboards from the public internet for
+     * service nodes that are in a project VPC or another type of private network.
+     */
+    opensearchDashboards?: inputs.GetOpenSearchOpensearchUserConfigOpensearchDashboards;
+    /**
+     * Opensearch major version.
+     */
+    opensearchVersion?: string;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
+    privateAccess?: inputs.GetOpenSearchOpensearchUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: inputs.GetOpenSearchOpensearchUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service
+     * is being created.
+     */
+    projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
+    publicAccess?: inputs.GetOpenSearchOpensearchUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
+    recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being
+     * created.
+     */
+    serviceToForkFrom?: string;
+    staticIps?: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfigIndexPattern {
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one.
+     */
+    maxIndexCount?: string;
+    /**
+     * Must consist of alpha-numeric characters, dashes, underscores, dots and glob characters (* and ?)
+     */
+    pattern?: string;
+    /**
+     * Deletion sorting algorithm
+     */
+    sortingAlgorithm?: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfigIndexTemplate {
+    /**
+     * The maximum number of nested JSON objects that a single document can contain
+     * across all nested types. This limit helps to prevent out of memory errors when a document contains too many
+     * nested objects. Default is 10000.
+     */
+    mappingNestedObjectsLimit?: string;
+    /**
+     * The number of replicas each primary shard has.
+     */
+    numberOfReplicas?: string;
+    /**
+     * The number of primary shards that an index should have.
+     */
+    numberOfShards?: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearch {
+    /**
+     * Explicitly allow or block automatic creation of indices. Defaults to true
+     */
+    actionAutoCreateIndexEnabled?: string;
+    /**
+     * Require explicit index names when deleting
+     */
+    actionDestructiveRequiresName?: string;
+    /**
+     * Controls the number of shards allowed in the cluster per data node
+     */
+    clusterMaxShardsPerNode?: string;
+    /**
+     * Maximum content length for HTTP requests to the Opensearch HTTP API, in bytes.
+     */
+    httpMaxContentLength?: string;
+    /**
+     * The max size of allowed headers, in bytes.
+     */
+    httpMaxHeaderSize?: string;
+    /**
+     * The max length of an HTTP URL, in bytes.
+     */
+    httpMaxInitialLineLength?: string;
+    /**
+     * Relative amount. Maximum amount of heap memory used for field data cache.
+     * This is an expert setting; decreasing the value too much will increase overhead of loading field data; too
+     * much memory used for field data cache will decrease amount of heap available for other operations.
+     */
+    indicesFielddataCacheSize?: string;
+    /**
+     * Percentage value. Default is 10%. Total amount of heap used for indexing
+     * buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too
+     * high value will increase indexing performance but causes performance issues for query performance.
+     */
+    indicesMemoryIndexBufferSize?: string;
+    /**
+     * Percentage value. Default is 10%. Maximum amount of heap used for query cache.
+     * This is an expert setting. Too low value will decrease query performance and increase performance for other
+     * operations; too high value will cause issues with other Opensearch functionality.
+     */
+    indicesQueriesCacheSize?: string;
+    /**
+     * Maximum number of clauses Lucene BooleanQuery can have. The default
+     * value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches
+     * first before increasing this value.
+     */
+    indicesQueryBoolMaxClauseCount?: string;
+    /**
+     * Whitelisted addresses for reindexing. Changing this value will cause all
+     * Opensearch instances to restart.
+     */
+    reindexRemoteWhitelists?: string[];
+    /**
+     * Maximum number of aggregation buckets allowed in a single response. Opensearch default
+     * value is used when this is not defined.
+     */
+    searchMaxBuckets?: string;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
+    threadPoolAnalyzeQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may
+     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
+     * value.
+     */
+    threadPoolAnalyzeSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this
+     * may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
+     * value.
+     */
+    threadPoolForceMergeSize?: string;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
+    threadPoolGetQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have
+     * maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     */
+    threadPoolGetSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may
+     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
+     * value.
+     */
+    threadPoolIndexSize?: string;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
+    threadPoolSearchQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may
+     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
+     * value.
+     */
+    threadPoolSearchSize?: string;
+    /**
+     * Size for the thread pool queue. See documentation for exact
+     * details.
+     */
+    threadPoolSearchThrottledQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note
+     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
+     * maximum value.
+     */
+    threadPoolSearchThrottledSize?: string;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
+    threadPoolWriteQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may
+     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
+     * value.
+     */
+    threadPoolWriteSize?: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchDashboards {
+    /**
+     * Enable or disable Opensearch dashboards.
+     */
+    enabled?: string;
+    /**
+     * Limits the maximum amount of memory (in MiB) the Opensearch dashboards process can use.
+     * This sets the maxOldSpaceSize option of the nodejs running the Opensearch dashboards. Note: the memory
+     * reserved by Opensearch dashboards is not available for Opensearch.
+     */
+    maxOldSpaceSize?: string;
+    /**
+     * Timeout in milliseconds for requests made by Opensearch dashboards towards
+     * Opensearch.
+     */
+    opensearchRequestTimeout?: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to opensearch from the public internet for service nodes that are in a
+     * project VPC or another type of private network.
+     */
+    opensearch?: string;
+    /**
+     * Allow clients to connect to opensearchDashboards from the public internet for
+     * service nodes that are in a project VPC or another type of private network.
+     */
+    opensearchDashboards?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a
+     * project VPC or another type of private network.
+     */
+    prometheus?: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
+    /**
+     * Allow clients to connect to opensearch from the public internet for service nodes that are in a
+     * project VPC or another type of private network.
+     */
+    opensearch?: string;
+    /**
+     * Allow clients to connect to opensearchDashboards from the public internet for
+     * service nodes that are in a project VPC or another type of private network.
+     */
+    opensearchDashboards?: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to opensearch from the public internet for service nodes that are in a
+     * project VPC or another type of private network.
+     */
+    opensearch?: string;
+    /**
+     * Allow clients to connect to opensearchDashboards from the public internet for
+     * service nodes that are in a project VPC or another type of private network.
+     */
+    opensearchDashboards?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a
+     * project VPC or another type of private network.
+     */
+    prometheus?: string;
+}
+
+export interface GetOpenSearchServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
 }
@@ -2759,6 +3141,7 @@ export interface GetPgPgUserConfig {
      * the sharedBuffers configuration value. The absolute maximum is 12 GB.
      */
     sharedBuffersPercentage?: string;
+    staticIps?: string;
     /**
      * Synchronous replication type. Note that the service plan 
      * also needs to support synchronous replication.
@@ -2865,6 +3248,10 @@ export interface GetPgPgUserConfigPg {
      * needed to trigger a VACUUM in any one table. The default is 50 tuples
      */
     autovacuumVacuumThreshold?: string;
+    bgwriterDelay?: string;
+    bgwriterFlushAfter?: string;
+    bgwriterLruMaxpages?: string;
+    bgwriterLruMultiplier?: string;
     /**
      * this is the amount of time, in milliseconds, to wait on a lock before 
      * checking to see if there is a deadlock condition.
@@ -3168,6 +3555,7 @@ export interface GetRedisRedisUserConfig {
      * Name of the basebackup to restore in forked service
      */
     recoveryBasebackupName?: string;
+    redisAclChannelsDefault?: string;
     /**
      * Redis IO thread count
      * * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
@@ -3187,6 +3575,9 @@ export interface GetRedisRedisUserConfig {
      * Set notify-keyspace-events option
      */
     redisNotifyKeyspaceEvents?: string;
+    redisNumberOfDatabases?: string;
+    redisPersistence?: string;
+    redisPubsubClientOutputBufferLimit?: string;
     /**
      * Require SSL to access Redis
      */
@@ -3198,6 +3589,7 @@ export interface GetRedisRedisUserConfig {
      */
     redisTimeout?: string;
     serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetRedisRedisUserConfigMigration {
@@ -3273,12 +3665,14 @@ export interface GetServiceCassandra {
 
 export interface GetServiceCassandraUserConfig {
     cassandra?: inputs.GetServiceCassandraUserConfigCassandra;
+    cassandraVersion?: string;
     ipFilters?: string[];
     migrateSstableloader?: string;
     privateAccess?: inputs.GetServiceCassandraUserConfigPrivateAccess;
     projectToForkFrom?: string;
     publicAccess?: inputs.GetServiceCassandraUserConfigPublicAccess;
     serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetServiceCassandraUserConfigCassandra {
@@ -3316,14 +3710,17 @@ export interface GetServiceElasticsearchUserConfig {
     indexPatterns?: inputs.GetServiceElasticsearchUserConfigIndexPattern[];
     indexTemplate?: inputs.GetServiceElasticsearchUserConfigIndexTemplate;
     ipFilters?: string[];
+    keepIndexRefreshInterval?: string;
     kibana?: inputs.GetServiceElasticsearchUserConfigKibana;
     maxIndexCount?: string;
+    opensearchVersion?: string;
     privateAccess?: inputs.GetServiceElasticsearchUserConfigPrivateAccess;
     privatelinkAccess?: inputs.GetServiceElasticsearchUserConfigPrivatelinkAccess;
     projectToForkFrom?: string;
     publicAccess?: inputs.GetServiceElasticsearchUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigElasticsearch {
@@ -3395,8 +3792,10 @@ export interface GetServiceGrafana {
 export interface GetServiceGrafanaUserConfig {
     alertingEnabled?: string;
     alertingErrorOrTimeout?: string;
+    alertingMaxAnnotationsToKeep?: string;
     alertingNodataOrNullvalues?: string;
     allowEmbedding?: string;
+    authAzuread?: inputs.GetServiceGrafanaUserConfigAuthAzuread;
     authBasicEnabled?: string;
     authGenericOauth?: inputs.GetServiceGrafanaUserConfigAuthGenericOauth;
     authGithub?: inputs.GetServiceGrafanaUserConfigAuthGithub;
@@ -3408,6 +3807,7 @@ export interface GetServiceGrafanaUserConfig {
     dashboardsVersionsToKeep?: string;
     dataproxySendUserHeader?: string;
     dataproxyTimeout?: string;
+    dateFormats?: inputs.GetServiceGrafanaUserConfigDateFormats;
     disableGravatar?: string;
     editorsCanAdmin?: string;
     externalImageStorage?: inputs.GetServiceGrafanaUserConfigExternalImageStorage;
@@ -3421,9 +3821,20 @@ export interface GetServiceGrafanaUserConfig {
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
     smtpServer?: inputs.GetServiceGrafanaUserConfigSmtpServer;
+    staticIps?: string;
     userAutoAssignOrg?: string;
     userAutoAssignOrgRole?: string;
     viewersCanEdit?: string;
+}
+
+export interface GetServiceGrafanaUserConfigAuthAzuread {
+    allowSignUp?: string;
+    allowedDomains?: string[];
+    allowedGroups?: string[];
+    authUrl?: string;
+    clientId?: string;
+    clientSecret?: string;
+    tokenUrl?: string;
 }
 
 export interface GetServiceGrafanaUserConfigAuthGenericOauth {
@@ -3462,6 +3873,17 @@ export interface GetServiceGrafanaUserConfigAuthGoogle {
     allowedDomains?: string[];
     clientId?: string;
     clientSecret?: string;
+}
+
+export interface GetServiceGrafanaUserConfigDateFormats {
+    defaultTimezone?: string;
+    fullDate?: string;
+    intervalDay?: string;
+    intervalHour?: string;
+    intervalMinute?: string;
+    intervalMonth?: string;
+    intervalSecond?: string;
+    intervalYear?: string;
 }
 
 export interface GetServiceGrafanaUserConfigExternalImageStorage {
@@ -3508,10 +3930,12 @@ export interface GetServiceInfluxdbUserConfig {
     publicAccess?: inputs.GetServiceInfluxdbUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetServiceInfluxdbUserConfigInfluxdb {
     logQueriesAfter?: string;
+    maxConnectionLimit?: string;
     maxRowLimit?: string;
     maxSelectBuckets?: string;
     maxSelectPoint?: string;
@@ -3777,6 +4201,7 @@ export interface GetServiceKafkaConnectUserConfig {
     privateAccess?: inputs.GetServiceKafkaConnectUserConfigPrivateAccess;
     privatelinkAccess?: inputs.GetServiceKafkaConnectUserConfigPrivatelinkAccess;
     publicAccess?: inputs.GetServiceKafkaConnectUserConfigPublicAccess;
+    staticIps?: string;
 }
 
 export interface GetServiceKafkaConnectUserConfigKafkaConnect {
@@ -3813,6 +4238,7 @@ export interface GetServiceKafkaMirrormaker {
 export interface GetServiceKafkaMirrormakerUserConfig {
     ipFilters?: string[];
     kafkaMirrormaker?: inputs.GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker;
+    staticIps?: string;
 }
 
 export interface GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
@@ -3824,6 +4250,8 @@ export interface GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
     refreshTopicsIntervalSeconds?: string;
     syncGroupOffsetsEnabled?: string;
     syncGroupOffsetsIntervalSeconds?: string;
+    syncTopicConfigsEnabled?: string;
+    tasksMaxPerCpu?: string;
 }
 
 export interface GetServiceKafkaUserConfig {
@@ -3841,6 +4269,7 @@ export interface GetServiceKafkaUserConfig {
     publicAccess?: inputs.GetServiceKafkaUserConfigPublicAccess;
     schemaRegistry?: string;
     schemaRegistryConfig?: inputs.GetServiceKafkaUserConfigSchemaRegistryConfig;
+    staticIps?: string;
 }
 
 export interface GetServiceKafkaUserConfigKafka {
@@ -3956,6 +4385,7 @@ export interface GetServiceMysqlUserConfig {
     publicAccess?: inputs.GetServiceMysqlUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetServiceMysqlUserConfigMigration {
@@ -3981,6 +4411,7 @@ export interface GetServiceMysqlUserConfigMysql {
     innodbPrintAllDeadlocks?: string;
     innodbRollbackOnTimeout?: string;
     interactiveTimeout?: string;
+    internalTmpMemStorageEngine?: string;
     longQueryTime?: string;
     maxAllowedPacket?: string;
     maxHeapTableSize?: string;
@@ -4008,6 +4439,92 @@ export interface GetServiceMysqlUserConfigPrivatelinkAccess {
 export interface GetServiceMysqlUserConfigPublicAccess {
     mysql?: string;
     mysqlx?: string;
+    prometheus?: string;
+}
+
+export interface GetServiceOpensearch {
+    opensearchDashboardsUri?: string;
+}
+
+export interface GetServiceOpensearchUserConfig {
+    customDomain?: string;
+    disableReplicationFactorAdjustment?: string;
+    indexPatterns?: inputs.GetServiceOpensearchUserConfigIndexPattern[];
+    indexTemplate?: inputs.GetServiceOpensearchUserConfigIndexTemplate;
+    ipFilters?: string[];
+    keepIndexRefreshInterval?: string;
+    maxIndexCount?: string;
+    opensearch?: inputs.GetServiceOpensearchUserConfigOpensearch;
+    opensearchDashboards?: inputs.GetServiceOpensearchUserConfigOpensearchDashboards;
+    opensearchVersion?: string;
+    privateAccess?: inputs.GetServiceOpensearchUserConfigPrivateAccess;
+    privatelinkAccess?: inputs.GetServiceOpensearchUserConfigPrivatelinkAccess;
+    projectToForkFrom?: string;
+    publicAccess?: inputs.GetServiceOpensearchUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
+    serviceToForkFrom?: string;
+    staticIps?: string;
+}
+
+export interface GetServiceOpensearchUserConfigIndexPattern {
+    maxIndexCount?: string;
+    pattern?: string;
+    sortingAlgorithm?: string;
+}
+
+export interface GetServiceOpensearchUserConfigIndexTemplate {
+    mappingNestedObjectsLimit?: string;
+    numberOfReplicas?: string;
+    numberOfShards?: string;
+}
+
+export interface GetServiceOpensearchUserConfigOpensearch {
+    actionAutoCreateIndexEnabled?: string;
+    actionDestructiveRequiresName?: string;
+    clusterMaxShardsPerNode?: string;
+    httpMaxContentLength?: string;
+    httpMaxHeaderSize?: string;
+    httpMaxInitialLineLength?: string;
+    indicesFielddataCacheSize?: string;
+    indicesMemoryIndexBufferSize?: string;
+    indicesQueriesCacheSize?: string;
+    indicesQueryBoolMaxClauseCount?: string;
+    reindexRemoteWhitelists?: string[];
+    searchMaxBuckets?: string;
+    threadPoolAnalyzeQueueSize?: string;
+    threadPoolAnalyzeSize?: string;
+    threadPoolForceMergeSize?: string;
+    threadPoolGetQueueSize?: string;
+    threadPoolGetSize?: string;
+    threadPoolIndexSize?: string;
+    threadPoolSearchQueueSize?: string;
+    threadPoolSearchSize?: string;
+    threadPoolSearchThrottledQueueSize?: string;
+    threadPoolSearchThrottledSize?: string;
+    threadPoolWriteQueueSize?: string;
+    threadPoolWriteSize?: string;
+}
+
+export interface GetServiceOpensearchUserConfigOpensearchDashboards {
+    enabled?: string;
+    maxOldSpaceSize?: string;
+    opensearchRequestTimeout?: string;
+}
+
+export interface GetServiceOpensearchUserConfigPrivateAccess {
+    opensearch?: string;
+    opensearchDashboards?: string;
+    prometheus?: string;
+}
+
+export interface GetServiceOpensearchUserConfigPrivatelinkAccess {
+    opensearch?: string;
+    opensearchDashboards?: string;
+}
+
+export interface GetServiceOpensearchUserConfigPublicAccess {
+    opensearch?: string;
+    opensearchDashboards?: string;
     prometheus?: string;
 }
 
@@ -4042,6 +4559,7 @@ export interface GetServicePgUserConfig {
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
     sharedBuffersPercentage?: string;
+    staticIps?: string;
     synchronousReplication?: string;
     timescaledb?: inputs.GetServicePgUserConfigTimescaledb;
     variant?: string;
@@ -4068,6 +4586,10 @@ export interface GetServicePgUserConfigPg {
     autovacuumVacuumCostLimit?: string;
     autovacuumVacuumScaleFactor?: string;
     autovacuumVacuumThreshold?: string;
+    bgwriterDelay?: string;
+    bgwriterFlushAfter?: string;
+    bgwriterLruMaxpages?: string;
+    bgwriterLruMultiplier?: string;
     deadlockTimeout?: string;
     idleInTransactionSessionTimeout?: string;
     jit?: string;
@@ -4149,14 +4671,19 @@ export interface GetServiceRedisUserConfig {
     projectToForkFrom?: string;
     publicAccess?: inputs.GetServiceRedisUserConfigPublicAccess;
     recoveryBasebackupName?: string;
+    redisAclChannelsDefault?: string;
     redisIoThreads?: string;
     redisLfuDecayTime?: string;
     redisLfuLogFactor?: string;
     redisMaxmemoryPolicy?: string;
     redisNotifyKeyspaceEvents?: string;
+    redisNumberOfDatabases?: string;
+    redisPersistence?: string;
+    redisPubsubClientOutputBufferLimit?: string;
     redisSsl?: string;
     redisTimeout?: string;
     serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetServiceRedisUserConfigMigration {
@@ -4216,6 +4743,7 @@ export interface GrafanaGrafanaUserConfig {
      * Default error or timeout setting for new alerting rules
      */
     alertingErrorOrTimeout?: pulumi.Input<string>;
+    alertingMaxAnnotationsToKeep?: pulumi.Input<string>;
     /**
      * Default value for 'no data or null values' for
      * new alerting rules
@@ -4226,6 +4754,7 @@ export interface GrafanaGrafanaUserConfig {
      * tags. Disabled by default to limit impact of clickjacking
      */
     allowEmbedding?: pulumi.Input<string>;
+    authAzuread?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthAzuread>;
     /**
      * Enable or disable basic authentication form, used by Grafana 
      * built-in login.
@@ -4273,6 +4802,7 @@ export interface GrafanaGrafanaUserConfig {
      * Timeout for data proxy requests in seconds.
      */
     dataproxyTimeout?: pulumi.Input<string>;
+    dateFormats?: pulumi.Input<inputs.GrafanaGrafanaUserConfigDateFormats>;
     /**
      * Set to true to disable gravatar. Defaults to false 
      * (gravatar is enabled).
@@ -4325,6 +4855,7 @@ export interface GrafanaGrafanaUserConfig {
      * SMTP server settings.
      */
     smtpServer?: pulumi.Input<inputs.GrafanaGrafanaUserConfigSmtpServer>;
+    staticIps?: pulumi.Input<string>;
     /**
      * Auto-assign new users on signup to main organization. 
      * Defaults to false.
@@ -4338,6 +4869,37 @@ export interface GrafanaGrafanaUserConfig {
      * Users with view-only permission can edit but not save dashboards.
      */
     viewersCanEdit?: pulumi.Input<string>;
+}
+
+export interface GrafanaGrafanaUserConfigAuthAzuread {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
+    allowSignUp?: pulumi.Input<string>;
+    /**
+     * Allowed domain
+     */
+    allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Require users to belong to one of given groups
+     */
+    allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Authorization URL. This only needs to be set when using self hosted GitLab
+     */
+    authUrl?: pulumi.Input<string>;
+    /**
+     * Client ID from provider
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * Client secret from provider
+     */
+    clientSecret?: pulumi.Input<string>;
+    /**
+     * Token URL. This only needs to be set when using self hosted GitLab
+     */
+    tokenUrl?: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGenericOauth {
@@ -4454,6 +5016,17 @@ export interface GrafanaGrafanaUserConfigAuthGoogle {
      * Client secret from provider
      */
     clientSecret?: pulumi.Input<string>;
+}
+
+export interface GrafanaGrafanaUserConfigDateFormats {
+    defaultTimezone?: pulumi.Input<string>;
+    fullDate?: pulumi.Input<string>;
+    intervalDay?: pulumi.Input<string>;
+    intervalHour?: pulumi.Input<string>;
+    intervalMinute?: pulumi.Input<string>;
+    intervalMonth?: pulumi.Input<string>;
+    intervalSecond?: pulumi.Input<string>;
+    intervalYear?: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigExternalImageStorage {
@@ -4594,6 +5167,7 @@ export interface InfluxDbInfluxdbUserConfig {
      * only when a new service is being created.
      */
     serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface InfluxDbInfluxdbUserConfigInfluxdb {
@@ -4602,6 +5176,7 @@ export interface InfluxDbInfluxdbUserConfigInfluxdb {
      * logged as a slow query. Setting this to 0 (the default) will never log slow queries.
      */
     logQueriesAfter?: pulumi.Input<string>;
+    maxConnectionLimit?: pulumi.Input<string>;
     /**
      * The maximum number of rows returned in a non-chunked query. 
      * Setting this to 0 (the default) allows an unlimited number to be returned.
@@ -4696,6 +5271,7 @@ export interface KafkaConnectKafkaConnectUserConfig {
      * Allow access to selected service ports from the public Internet.
      */
     publicAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPublicAccess>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
@@ -4887,6 +5463,7 @@ export interface KafkaKafkaUserConfig {
      * Schema Registry configuration
      */
     schemaRegistryConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigSchemaRegistryConfig>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface KafkaKafkaUserConfigKafka {
@@ -5285,6 +5862,7 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
      * Kafka MirrorMaker configuration values
      */
     kafkaMirrormaker?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
@@ -5324,6 +5902,8 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      * are synced (default: 60, every minute).
      */
     syncGroupOffsetsIntervalSeconds?: pulumi.Input<string>;
+    syncTopicConfigsEnabled?: pulumi.Input<string>;
+    tasksMaxPerCpu?: pulumi.Input<string>;
 }
 
 export interface KafkaMirrorMakerServiceIntegration {
@@ -5467,6 +6047,7 @@ export interface M3AggregatorM3aggregatorUserConfig {
      * M3 major version
      */
     m3aggregatorVersion?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface M3AggregatorServiceIntegration {
@@ -5539,6 +6120,7 @@ export interface M3DbM3dbUserConfig {
      * when a new service is being created.
      */
     serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface M3DbM3dbUserConfigLimits {
@@ -5778,6 +6360,7 @@ export interface MySqlMysqlUserConfig {
      * a new service is being created.
      */
     serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface MySqlMysqlUserConfigMigration {
@@ -5873,6 +6456,7 @@ export interface MySqlMysqlUserConfigMysql {
      * activity on an interactive connection before closing it.
      */
     interactiveTimeout?: pulumi.Input<string>;
+    internalTmpMemStorageEngine?: pulumi.Input<string>;
     /**
      * The slowQueryLogs work as SQL statements that take 
      * more than longQueryTime seconds to execute. Default is 10s
@@ -5983,6 +6567,329 @@ export interface MySqlMysqlUserConfigPublicAccess {
 }
 
 export interface MySqlServiceIntegration {
+    integrationType: pulumi.Input<string>;
+    sourceServiceName: pulumi.Input<string>;
+}
+
+export interface OpenSearchComponent {
+    component?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
+    kafkaAuthenticationMethod?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    route?: pulumi.Input<string>;
+    ssl?: pulumi.Input<boolean>;
+    usage?: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearch {
+    /**
+     * URI for Opensearch dashboards frontend.
+     */
+    opensearchDashboardsUri?: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
+    customDomain?: pulumi.Input<string>;
+    /**
+     * Disable automatic replication factor adjustment for
+     * multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: setting
+     * this to true increases a risk of data loss in case of virtual machine failure.
+     */
+    disableReplicationFactorAdjustment?: pulumi.Input<string>;
+    /**
+     * Glob pattern and number of indexes matching that pattern to be kept.
+     */
+    indexPatterns?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearchUserConfigIndexPattern>[]>;
+    /**
+     * Template settings for all new indexe.
+     */
+    indexTemplate?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigIndexTemplate>;
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    keepIndexRefreshInterval?: pulumi.Input<string>;
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one.
+     */
+    maxIndexCount?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to opensearch from the public internet for service nodes
+     * that are in a project VPC or another type of private network.
+     */
+    opensearch?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearch>;
+    /**
+     * Allow clients to connect to opensearchDashboards from the public
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
+    opensearchDashboards?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchDashboards>;
+    /**
+     * Opensearch major version.
+     */
+    opensearchVersion?: pulumi.Input<string>;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
+    privateAccess?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigPrivatelinkAccess>;
+    /**
+     * Name of another project to fork a service from. This has effect only when a
+     * new service is being created.
+     */
+    projectToForkFrom?: pulumi.Input<string>;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
+    publicAccess?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigPublicAccess>;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
+    recoveryBasebackupName?: pulumi.Input<string>;
+    /**
+     * Name of another service to fork from. This has effect only when a new service
+     * is being created.
+     */
+    serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigIndexPattern {
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one.
+     */
+    maxIndexCount?: pulumi.Input<string>;
+    /**
+     * Must consist of alpha-numeric characters, dashes, underscores, dots and glob
+     * characters (* and ?)
+     */
+    pattern?: pulumi.Input<string>;
+    /**
+     * Deletion sorting algorithm
+     */
+    sortingAlgorithm?: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigIndexTemplate {
+    /**
+     * The maximum number of nested JSON objects that a single document
+     * can contain across all nested types. This limit helps to prevent out of memory errors when a document contains
+     * too many nested objects. Default is 10000.
+     */
+    mappingNestedObjectsLimit?: pulumi.Input<string>;
+    /**
+     * The number of replicas each primary shard has.
+     */
+    numberOfReplicas?: pulumi.Input<string>;
+    /**
+     * The number of primary shards that an index should have.
+     */
+    numberOfShards?: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearch {
+    /**
+     * Explicitly allow or block automatic creation of indices.
+     * Defaults to true
+     */
+    actionAutoCreateIndexEnabled?: pulumi.Input<string>;
+    /**
+     * Require explicit index names when deleting
+     */
+    actionDestructiveRequiresName?: pulumi.Input<string>;
+    /**
+     * Controls the number of shards allowed in the cluster per data node.
+     */
+    clusterMaxShardsPerNode?: pulumi.Input<string>;
+    /**
+     * Maximum content length for HTTP requests to the Opensearch HTTP API, in
+     * bytes.
+     */
+    httpMaxContentLength?: pulumi.Input<string>;
+    /**
+     * The max size of allowed headers, in bytes.
+     */
+    httpMaxHeaderSize?: pulumi.Input<string>;
+    /**
+     * The max length of an HTTP URL, in bytes.
+     */
+    httpMaxInitialLineLength?: pulumi.Input<string>;
+    /**
+     * Relative amount. Maximum amount of heap memory used for field data
+     * cache. This is an expert setting; decreasing the value too much will increase overhead of loading field data;
+     * too much memory used for field data cache will decrease amount of heap available for other operations.
+     */
+    indicesFielddataCacheSize?: pulumi.Input<string>;
+    /**
+     * Percentage value. Default is 10%. Total amount of heap used
+     * for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down
+     * indexing; too high value will increase indexing performance but causes performance issues for query
+     * performance.
+     */
+    indicesMemoryIndexBufferSize?: pulumi.Input<string>;
+    /**
+     * Percentage value. Default is 10%. Maximum amount of heap used for
+     * query cache. This is an expert setting. Too low value will decrease query performance and increase performance
+     * for other operations; too high value will cause issues with other Opensearch functionality.
+     */
+    indicesQueriesCacheSize?: pulumi.Input<string>;
+    /**
+     * Maximum number of clauses Lucene BooleanQuery can have. The
+     * default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other
+     * approaches first before increasing this value.
+     */
+    indicesQueryBoolMaxClauseCount?: pulumi.Input<string>;
+    /**
+     * Whitelisted addresses for reindexing. Changing this value will cause
+     * all Opensearch instances to restart.
+     */
+    reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Maximum number of aggregation buckets allowed in a single response.
+     * Opensearch default value is used when this is not defined.
+     */
+    searchMaxBuckets?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool queue. See documentation for exact
+     * details.
+     */
+    threadPoolAnalyzeQueueSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note
+     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
+     * maximum value.
+     */
+    threadPoolAnalyzeSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do
+     * note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
+     * maximum value.
+     */
+    threadPoolForceMergeSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
+    threadPoolGetQueueSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note
+     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
+     * maximum value.
+     */
+    threadPoolGetSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note
+     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
+     * maximum value.
+     */
+    threadPoolIndexSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool queue. See documentation for exact
+     * details.
+     */
+    threadPoolSearchQueueSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note
+     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
+     * maximum value.
+     */
+    threadPoolSearchSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool queue. See documentation for
+     * exact details.
+     */
+    threadPoolSearchThrottledQueueSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See documentation for exact
+     * details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to
+     * higher than maximum value.
+     */
+    threadPoolSearchThrottledSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool queue. See documentation for exact
+     * details.
+     */
+    threadPoolWriteQueueSize?: pulumi.Input<string>;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note
+     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
+     * maximum value.
+     */
+    threadPoolWriteSize?: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
+    /**
+     * Enable or disable opensearch_dashboards.
+     */
+    enabled?: pulumi.Input<string>;
+    /**
+     * Limits the maximum amount of memory (in MiB) the Opensearch dashboards
+     * process can use. This sets the maxOldSpaceSize option of the nodejs running the Opensearch dashboards.
+     * Note: the memory reserved by Opensearch dashboards is not available for Opensearch.
+     */
+    maxOldSpaceSize?: pulumi.Input<string>;
+    /**
+     * Timeout in milliseconds for requests made by opensearchDashboards
+     * towards Opensearch.
+     */
+    opensearchRequestTimeout?: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to opensearch from the public internet for service nodes
+     * that are in a project VPC or another type of private network.
+     */
+    opensearch?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to opensearchDashboards from the public
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
+    opensearchDashboards?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes
+     * that are in a project VPC or another type of private network.
+     */
+    prometheus?: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
+    /**
+     * Allow clients to connect to opensearch from the public internet for service nodes
+     * that are in a project VPC or another type of private network.
+     */
+    opensearch?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to opensearchDashboards from the public
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
+    opensearchDashboards?: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to opensearch from the public internet for service nodes
+     * that are in a project VPC or another type of private network.
+     */
+    opensearch?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to opensearchDashboards from the public
+     * internet for service nodes that are in a project VPC or another type of private network.
+     */
+    opensearchDashboards?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes
+     * that are in a project VPC or another type of private network.
+     */
+    prometheus?: pulumi.Input<string>;
+}
+
+export interface OpenSearchServiceIntegration {
     integrationType: pulumi.Input<string>;
     sourceServiceName: pulumi.Input<string>;
 }
@@ -6128,6 +7035,7 @@ export interface PgPgUserConfig {
      * the sharedBuffers configuration value. The absolute maximum is 12 GB.
      */
     sharedBuffersPercentage?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
     /**
      * Synchronous replication type. Note that the service plan 
      * also needs to support synchronous replication.
@@ -6234,6 +7142,10 @@ export interface PgPgUserConfigPg {
      * needed to trigger a VACUUM in any one table. The default is 50 tuples
      */
     autovacuumVacuumThreshold?: pulumi.Input<string>;
+    bgwriterDelay?: pulumi.Input<string>;
+    bgwriterFlushAfter?: pulumi.Input<string>;
+    bgwriterLruMaxpages?: pulumi.Input<string>;
+    bgwriterLruMultiplier?: pulumi.Input<string>;
     /**
      * this is the amount of time, in milliseconds, to wait on a lock before 
      * checking to see if there is a deadlock condition.
@@ -6537,6 +7449,7 @@ export interface RedisRedisUserConfig {
      * Name of the basebackup to restore in forked service
      */
     recoveryBasebackupName?: pulumi.Input<string>;
+    redisAclChannelsDefault?: pulumi.Input<string>;
     /**
      * Redis IO thread count
      * * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
@@ -6556,6 +7469,9 @@ export interface RedisRedisUserConfig {
      * Set notify-keyspace-events option
      */
     redisNotifyKeyspaceEvents?: pulumi.Input<string>;
+    redisNumberOfDatabases?: pulumi.Input<string>;
+    redisPersistence?: pulumi.Input<string>;
+    redisPubsubClientOutputBufferLimit?: pulumi.Input<string>;
     /**
      * Require SSL to access Redis
      */
@@ -6567,6 +7483,7 @@ export interface RedisRedisUserConfig {
      */
     redisTimeout?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface RedisRedisUserConfigMigration {
@@ -6645,12 +7562,14 @@ export interface ServiceCassandra {
 
 export interface ServiceCassandraUserConfig {
     cassandra?: pulumi.Input<inputs.ServiceCassandraUserConfigCassandra>;
+    cassandraVersion?: pulumi.Input<string>;
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     migrateSstableloader?: pulumi.Input<string>;
     privateAccess?: pulumi.Input<inputs.ServiceCassandraUserConfigPrivateAccess>;
     projectToForkFrom?: pulumi.Input<string>;
     publicAccess?: pulumi.Input<inputs.ServiceCassandraUserConfigPublicAccess>;
     serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface ServiceCassandraUserConfigCassandra {
@@ -6688,14 +7607,17 @@ export interface ServiceElasticsearchUserConfig {
     indexPatterns?: pulumi.Input<pulumi.Input<inputs.ServiceElasticsearchUserConfigIndexPattern>[]>;
     indexTemplate?: pulumi.Input<inputs.ServiceElasticsearchUserConfigIndexTemplate>;
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    keepIndexRefreshInterval?: pulumi.Input<string>;
     kibana?: pulumi.Input<inputs.ServiceElasticsearchUserConfigKibana>;
     maxIndexCount?: pulumi.Input<string>;
+    opensearchVersion?: pulumi.Input<string>;
     privateAccess?: pulumi.Input<inputs.ServiceElasticsearchUserConfigPrivateAccess>;
     privatelinkAccess?: pulumi.Input<inputs.ServiceElasticsearchUserConfigPrivatelinkAccess>;
     projectToForkFrom?: pulumi.Input<string>;
     publicAccess?: pulumi.Input<inputs.ServiceElasticsearchUserConfigPublicAccess>;
     recoveryBasebackupName?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface ServiceElasticsearchUserConfigElasticsearch {
@@ -6767,8 +7689,10 @@ export interface ServiceGrafana {
 export interface ServiceGrafanaUserConfig {
     alertingEnabled?: pulumi.Input<string>;
     alertingErrorOrTimeout?: pulumi.Input<string>;
+    alertingMaxAnnotationsToKeep?: pulumi.Input<string>;
     alertingNodataOrNullvalues?: pulumi.Input<string>;
     allowEmbedding?: pulumi.Input<string>;
+    authAzuread?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthAzuread>;
     authBasicEnabled?: pulumi.Input<string>;
     authGenericOauth?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthGenericOauth>;
     authGithub?: pulumi.Input<inputs.ServiceGrafanaUserConfigAuthGithub>;
@@ -6780,6 +7704,7 @@ export interface ServiceGrafanaUserConfig {
     dashboardsVersionsToKeep?: pulumi.Input<string>;
     dataproxySendUserHeader?: pulumi.Input<string>;
     dataproxyTimeout?: pulumi.Input<string>;
+    dateFormats?: pulumi.Input<inputs.ServiceGrafanaUserConfigDateFormats>;
     disableGravatar?: pulumi.Input<string>;
     editorsCanAdmin?: pulumi.Input<string>;
     externalImageStorage?: pulumi.Input<inputs.ServiceGrafanaUserConfigExternalImageStorage>;
@@ -6793,9 +7718,20 @@ export interface ServiceGrafanaUserConfig {
     recoveryBasebackupName?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
     smtpServer?: pulumi.Input<inputs.ServiceGrafanaUserConfigSmtpServer>;
+    staticIps?: pulumi.Input<string>;
     userAutoAssignOrg?: pulumi.Input<string>;
     userAutoAssignOrgRole?: pulumi.Input<string>;
     viewersCanEdit?: pulumi.Input<string>;
+}
+
+export interface ServiceGrafanaUserConfigAuthAzuread {
+    allowSignUp?: pulumi.Input<string>;
+    allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    authUrl?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
+    tokenUrl?: pulumi.Input<string>;
 }
 
 export interface ServiceGrafanaUserConfigAuthGenericOauth {
@@ -6834,6 +7770,17 @@ export interface ServiceGrafanaUserConfigAuthGoogle {
     allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
     clientId?: pulumi.Input<string>;
     clientSecret?: pulumi.Input<string>;
+}
+
+export interface ServiceGrafanaUserConfigDateFormats {
+    defaultTimezone?: pulumi.Input<string>;
+    fullDate?: pulumi.Input<string>;
+    intervalDay?: pulumi.Input<string>;
+    intervalHour?: pulumi.Input<string>;
+    intervalMinute?: pulumi.Input<string>;
+    intervalMonth?: pulumi.Input<string>;
+    intervalSecond?: pulumi.Input<string>;
+    intervalYear?: pulumi.Input<string>;
 }
 
 export interface ServiceGrafanaUserConfigExternalImageStorage {
@@ -6880,10 +7827,12 @@ export interface ServiceInfluxdbUserConfig {
     publicAccess?: pulumi.Input<inputs.ServiceInfluxdbUserConfigPublicAccess>;
     recoveryBasebackupName?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface ServiceInfluxdbUserConfigInfluxdb {
     logQueriesAfter?: pulumi.Input<string>;
+    maxConnectionLimit?: pulumi.Input<string>;
     maxRowLimit?: pulumi.Input<string>;
     maxSelectBuckets?: pulumi.Input<string>;
     maxSelectPoint?: pulumi.Input<string>;
@@ -7149,6 +8098,7 @@ export interface ServiceKafkaConnectUserConfig {
     privateAccess?: pulumi.Input<inputs.ServiceKafkaConnectUserConfigPrivateAccess>;
     privatelinkAccess?: pulumi.Input<inputs.ServiceKafkaConnectUserConfigPrivatelinkAccess>;
     publicAccess?: pulumi.Input<inputs.ServiceKafkaConnectUserConfigPublicAccess>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaConnectUserConfigKafkaConnect {
@@ -7185,6 +8135,7 @@ export interface ServiceKafkaMirrormaker {
 export interface ServiceKafkaMirrormakerUserConfig {
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     kafkaMirrormaker?: pulumi.Input<inputs.ServiceKafkaMirrormakerUserConfigKafkaMirrormaker>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
@@ -7196,6 +8147,8 @@ export interface ServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
     refreshTopicsIntervalSeconds?: pulumi.Input<string>;
     syncGroupOffsetsEnabled?: pulumi.Input<string>;
     syncGroupOffsetsIntervalSeconds?: pulumi.Input<string>;
+    syncTopicConfigsEnabled?: pulumi.Input<string>;
+    tasksMaxPerCpu?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaUserConfig {
@@ -7213,6 +8166,7 @@ export interface ServiceKafkaUserConfig {
     publicAccess?: pulumi.Input<inputs.ServiceKafkaUserConfigPublicAccess>;
     schemaRegistry?: pulumi.Input<string>;
     schemaRegistryConfig?: pulumi.Input<inputs.ServiceKafkaUserConfigSchemaRegistryConfig>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaUserConfigKafka {
@@ -7328,6 +8282,7 @@ export interface ServiceMysqlUserConfig {
     publicAccess?: pulumi.Input<inputs.ServiceMysqlUserConfigPublicAccess>;
     recoveryTargetTime?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface ServiceMysqlUserConfigMigration {
@@ -7353,6 +8308,7 @@ export interface ServiceMysqlUserConfigMysql {
     innodbPrintAllDeadlocks?: pulumi.Input<string>;
     innodbRollbackOnTimeout?: pulumi.Input<string>;
     interactiveTimeout?: pulumi.Input<string>;
+    internalTmpMemStorageEngine?: pulumi.Input<string>;
     longQueryTime?: pulumi.Input<string>;
     maxAllowedPacket?: pulumi.Input<string>;
     maxHeapTableSize?: pulumi.Input<string>;
@@ -7380,6 +8336,92 @@ export interface ServiceMysqlUserConfigPrivatelinkAccess {
 export interface ServiceMysqlUserConfigPublicAccess {
     mysql?: pulumi.Input<string>;
     mysqlx?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
+}
+
+export interface ServiceOpensearch {
+    opensearchDashboardsUri?: pulumi.Input<string>;
+}
+
+export interface ServiceOpensearchUserConfig {
+    customDomain?: pulumi.Input<string>;
+    disableReplicationFactorAdjustment?: pulumi.Input<string>;
+    indexPatterns?: pulumi.Input<pulumi.Input<inputs.ServiceOpensearchUserConfigIndexPattern>[]>;
+    indexTemplate?: pulumi.Input<inputs.ServiceOpensearchUserConfigIndexTemplate>;
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    keepIndexRefreshInterval?: pulumi.Input<string>;
+    maxIndexCount?: pulumi.Input<string>;
+    opensearch?: pulumi.Input<inputs.ServiceOpensearchUserConfigOpensearch>;
+    opensearchDashboards?: pulumi.Input<inputs.ServiceOpensearchUserConfigOpensearchDashboards>;
+    opensearchVersion?: pulumi.Input<string>;
+    privateAccess?: pulumi.Input<inputs.ServiceOpensearchUserConfigPrivateAccess>;
+    privatelinkAccess?: pulumi.Input<inputs.ServiceOpensearchUserConfigPrivatelinkAccess>;
+    projectToForkFrom?: pulumi.Input<string>;
+    publicAccess?: pulumi.Input<inputs.ServiceOpensearchUserConfigPublicAccess>;
+    recoveryBasebackupName?: pulumi.Input<string>;
+    serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
+}
+
+export interface ServiceOpensearchUserConfigIndexPattern {
+    maxIndexCount?: pulumi.Input<string>;
+    pattern?: pulumi.Input<string>;
+    sortingAlgorithm?: pulumi.Input<string>;
+}
+
+export interface ServiceOpensearchUserConfigIndexTemplate {
+    mappingNestedObjectsLimit?: pulumi.Input<string>;
+    numberOfReplicas?: pulumi.Input<string>;
+    numberOfShards?: pulumi.Input<string>;
+}
+
+export interface ServiceOpensearchUserConfigOpensearch {
+    actionAutoCreateIndexEnabled?: pulumi.Input<string>;
+    actionDestructiveRequiresName?: pulumi.Input<string>;
+    clusterMaxShardsPerNode?: pulumi.Input<string>;
+    httpMaxContentLength?: pulumi.Input<string>;
+    httpMaxHeaderSize?: pulumi.Input<string>;
+    httpMaxInitialLineLength?: pulumi.Input<string>;
+    indicesFielddataCacheSize?: pulumi.Input<string>;
+    indicesMemoryIndexBufferSize?: pulumi.Input<string>;
+    indicesQueriesCacheSize?: pulumi.Input<string>;
+    indicesQueryBoolMaxClauseCount?: pulumi.Input<string>;
+    reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    searchMaxBuckets?: pulumi.Input<string>;
+    threadPoolAnalyzeQueueSize?: pulumi.Input<string>;
+    threadPoolAnalyzeSize?: pulumi.Input<string>;
+    threadPoolForceMergeSize?: pulumi.Input<string>;
+    threadPoolGetQueueSize?: pulumi.Input<string>;
+    threadPoolGetSize?: pulumi.Input<string>;
+    threadPoolIndexSize?: pulumi.Input<string>;
+    threadPoolSearchQueueSize?: pulumi.Input<string>;
+    threadPoolSearchSize?: pulumi.Input<string>;
+    threadPoolSearchThrottledQueueSize?: pulumi.Input<string>;
+    threadPoolSearchThrottledSize?: pulumi.Input<string>;
+    threadPoolWriteQueueSize?: pulumi.Input<string>;
+    threadPoolWriteSize?: pulumi.Input<string>;
+}
+
+export interface ServiceOpensearchUserConfigOpensearchDashboards {
+    enabled?: pulumi.Input<string>;
+    maxOldSpaceSize?: pulumi.Input<string>;
+    opensearchRequestTimeout?: pulumi.Input<string>;
+}
+
+export interface ServiceOpensearchUserConfigPrivateAccess {
+    opensearch?: pulumi.Input<string>;
+    opensearchDashboards?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
+}
+
+export interface ServiceOpensearchUserConfigPrivatelinkAccess {
+    opensearch?: pulumi.Input<string>;
+    opensearchDashboards?: pulumi.Input<string>;
+}
+
+export interface ServiceOpensearchUserConfigPublicAccess {
+    opensearch?: pulumi.Input<string>;
+    opensearchDashboards?: pulumi.Input<string>;
     prometheus?: pulumi.Input<string>;
 }
 
@@ -7414,6 +8456,7 @@ export interface ServicePgUserConfig {
     recoveryTargetTime?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
     sharedBuffersPercentage?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
     synchronousReplication?: pulumi.Input<string>;
     timescaledb?: pulumi.Input<inputs.ServicePgUserConfigTimescaledb>;
     variant?: pulumi.Input<string>;
@@ -7440,6 +8483,10 @@ export interface ServicePgUserConfigPg {
     autovacuumVacuumCostLimit?: pulumi.Input<string>;
     autovacuumVacuumScaleFactor?: pulumi.Input<string>;
     autovacuumVacuumThreshold?: pulumi.Input<string>;
+    bgwriterDelay?: pulumi.Input<string>;
+    bgwriterFlushAfter?: pulumi.Input<string>;
+    bgwriterLruMaxpages?: pulumi.Input<string>;
+    bgwriterLruMultiplier?: pulumi.Input<string>;
     deadlockTimeout?: pulumi.Input<string>;
     idleInTransactionSessionTimeout?: pulumi.Input<string>;
     jit?: pulumi.Input<string>;
@@ -7521,14 +8568,19 @@ export interface ServiceRedisUserConfig {
     projectToForkFrom?: pulumi.Input<string>;
     publicAccess?: pulumi.Input<inputs.ServiceRedisUserConfigPublicAccess>;
     recoveryBasebackupName?: pulumi.Input<string>;
+    redisAclChannelsDefault?: pulumi.Input<string>;
     redisIoThreads?: pulumi.Input<string>;
     redisLfuDecayTime?: pulumi.Input<string>;
     redisLfuLogFactor?: pulumi.Input<string>;
     redisMaxmemoryPolicy?: pulumi.Input<string>;
     redisNotifyKeyspaceEvents?: pulumi.Input<string>;
+    redisNumberOfDatabases?: pulumi.Input<string>;
+    redisPersistence?: pulumi.Input<string>;
+    redisPubsubClientOutputBufferLimit?: pulumi.Input<string>;
     redisSsl?: pulumi.Input<string>;
     redisTimeout?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface ServiceRedisUserConfigMigration {

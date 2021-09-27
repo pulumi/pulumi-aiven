@@ -22,6 +22,10 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? AutovacuumVacuumCostLimit;
         public readonly string? AutovacuumVacuumScaleFactor;
         public readonly string? AutovacuumVacuumThreshold;
+        public readonly string? BgwriterDelay;
+        public readonly string? BgwriterFlushAfter;
+        public readonly string? BgwriterLruMaxpages;
+        public readonly string? BgwriterLruMultiplier;
         public readonly string? DeadlockTimeout;
         public readonly string? IdleInTransactionSessionTimeout;
         public readonly string? Jit;
@@ -73,6 +77,14 @@ namespace Pulumi.Aiven.Outputs
             string? autovacuumVacuumScaleFactor,
 
             string? autovacuumVacuumThreshold,
+
+            string? bgwriterDelay,
+
+            string? bgwriterFlushAfter,
+
+            string? bgwriterLruMaxpages,
+
+            string? bgwriterLruMultiplier,
 
             string? deadlockTimeout,
 
@@ -145,6 +157,10 @@ namespace Pulumi.Aiven.Outputs
             AutovacuumVacuumCostLimit = autovacuumVacuumCostLimit;
             AutovacuumVacuumScaleFactor = autovacuumVacuumScaleFactor;
             AutovacuumVacuumThreshold = autovacuumVacuumThreshold;
+            BgwriterDelay = bgwriterDelay;
+            BgwriterFlushAfter = bgwriterFlushAfter;
+            BgwriterLruMaxpages = bgwriterLruMaxpages;
+            BgwriterLruMultiplier = bgwriterLruMultiplier;
             DeadlockTimeout = deadlockTimeout;
             IdleInTransactionSessionTimeout = idleInTransactionSessionTimeout;
             Jit = jit;

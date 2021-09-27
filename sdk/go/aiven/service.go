@@ -54,6 +54,10 @@ type Service struct {
 	Mysql ServiceMysqlOutput `pulumi:"mysql"`
 	// MySQL specific user configurable settings
 	MysqlUserConfig ServiceMysqlUserConfigPtrOutput `pulumi:"mysqlUserConfig"`
+	// Opensearch specific server provided values
+	Opensearch ServiceOpensearchOutput `pulumi:"opensearch"`
+	// Opensearch specific user configurable settings
+	OpensearchUserConfig ServiceOpensearchUserConfigPtrOutput `pulumi:"opensearchUserConfig"`
 	// PostgreSQL specific server provided values
 	Pg ServicePgOutput `pulumi:"pg"`
 	// PostgreSQL specific user configurable settings
@@ -168,6 +172,10 @@ type serviceState struct {
 	Mysql *ServiceMysql `pulumi:"mysql"`
 	// MySQL specific user configurable settings
 	MysqlUserConfig *ServiceMysqlUserConfig `pulumi:"mysqlUserConfig"`
+	// Opensearch specific server provided values
+	Opensearch *ServiceOpensearch `pulumi:"opensearch"`
+	// Opensearch specific user configurable settings
+	OpensearchUserConfig *ServiceOpensearchUserConfig `pulumi:"opensearchUserConfig"`
 	// PostgreSQL specific server provided values
 	Pg *ServicePg `pulumi:"pg"`
 	// PostgreSQL specific user configurable settings
@@ -245,6 +253,10 @@ type ServiceState struct {
 	Mysql ServiceMysqlPtrInput
 	// MySQL specific user configurable settings
 	MysqlUserConfig ServiceMysqlUserConfigPtrInput
+	// Opensearch specific server provided values
+	Opensearch ServiceOpensearchPtrInput
+	// Opensearch specific user configurable settings
+	OpensearchUserConfig ServiceOpensearchUserConfigPtrInput
 	// PostgreSQL specific server provided values
 	Pg ServicePgPtrInput
 	// PostgreSQL specific user configurable settings
@@ -324,6 +336,10 @@ type serviceArgs struct {
 	Mysql *ServiceMysql `pulumi:"mysql"`
 	// MySQL specific user configurable settings
 	MysqlUserConfig *ServiceMysqlUserConfig `pulumi:"mysqlUserConfig"`
+	// Opensearch specific server provided values
+	Opensearch *ServiceOpensearch `pulumi:"opensearch"`
+	// Opensearch specific user configurable settings
+	OpensearchUserConfig *ServiceOpensearchUserConfig `pulumi:"opensearchUserConfig"`
 	// PostgreSQL specific server provided values
 	Pg *ServicePg `pulumi:"pg"`
 	// PostgreSQL specific user configurable settings
@@ -388,6 +404,10 @@ type ServiceArgs struct {
 	Mysql ServiceMysqlPtrInput
 	// MySQL specific user configurable settings
 	MysqlUserConfig ServiceMysqlUserConfigPtrInput
+	// Opensearch specific server provided values
+	Opensearch ServiceOpensearchPtrInput
+	// Opensearch specific user configurable settings
+	OpensearchUserConfig ServiceOpensearchUserConfigPtrInput
 	// PostgreSQL specific server provided values
 	Pg ServicePgPtrInput
 	// PostgreSQL specific user configurable settings

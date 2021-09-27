@@ -64,6 +64,10 @@ namespace Pulumi.Aiven.Outputs
         /// needed to trigger a VACUUM in any one table. The default is 50 tuples
         /// </summary>
         public readonly string? AutovacuumVacuumThreshold;
+        public readonly string? BgwriterDelay;
+        public readonly string? BgwriterFlushAfter;
+        public readonly string? BgwriterLruMaxpages;
+        public readonly string? BgwriterLruMultiplier;
         /// <summary>
         /// this is the amount of time, in milliseconds, to wait on a lock before 
         /// checking to see if there is a deadlock condition.
@@ -223,6 +227,14 @@ namespace Pulumi.Aiven.Outputs
 
             string? autovacuumVacuumThreshold,
 
+            string? bgwriterDelay,
+
+            string? bgwriterFlushAfter,
+
+            string? bgwriterLruMaxpages,
+
+            string? bgwriterLruMultiplier,
+
             string? deadlockTimeout,
 
             string? idleInTransactionSessionTimeout,
@@ -294,6 +306,10 @@ namespace Pulumi.Aiven.Outputs
             AutovacuumVacuumCostLimit = autovacuumVacuumCostLimit;
             AutovacuumVacuumScaleFactor = autovacuumVacuumScaleFactor;
             AutovacuumVacuumThreshold = autovacuumVacuumThreshold;
+            BgwriterDelay = bgwriterDelay;
+            BgwriterFlushAfter = bgwriterFlushAfter;
+            BgwriterLruMaxpages = bgwriterLruMaxpages;
+            BgwriterLruMultiplier = bgwriterLruMultiplier;
             DeadlockTimeout = deadlockTimeout;
             IdleInTransactionSessionTimeout = idleInTransactionSessionTimeout;
             Jit = jit;

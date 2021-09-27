@@ -18,6 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// logged as a slow query. Setting this to 0 (the default) will never log slow queries.
         /// </summary>
         public readonly string? LogQueriesAfter;
+        public readonly string? MaxConnectionLimit;
         /// <summary>
         /// The maximum number of rows returned in a non-chunked query. 
         /// Setting this to 0 (the default) allows an unlimited number to be returned.
@@ -44,6 +45,8 @@ namespace Pulumi.Aiven.Outputs
         private InfluxDbInfluxdbUserConfigInfluxdb(
             string? logQueriesAfter,
 
+            string? maxConnectionLimit,
+
             string? maxRowLimit,
 
             string? maxSelectBuckets,
@@ -53,6 +56,7 @@ namespace Pulumi.Aiven.Outputs
             string? queryTimeout)
         {
             LogQueriesAfter = logQueriesAfter;
+            MaxConnectionLimit = maxConnectionLimit;
             MaxRowLimit = maxRowLimit;
             MaxSelectBuckets = maxSelectBuckets;
             MaxSelectPoint = maxSelectPoint;

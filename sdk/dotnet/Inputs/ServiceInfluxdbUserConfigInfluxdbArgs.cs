@@ -15,6 +15,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("logQueriesAfter")]
         public Input<string>? LogQueriesAfter { get; set; }
 
+        [Input("maxConnectionLimit")]
+        public Input<string>? MaxConnectionLimit { get; set; }
+
         [Input("maxRowLimit")]
         public Input<string>? MaxRowLimit { get; set; }
 

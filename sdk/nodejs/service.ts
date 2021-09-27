@@ -114,6 +114,14 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly mysqlUserConfig!: pulumi.Output<outputs.ServiceMysqlUserConfig | undefined>;
     /**
+     * Opensearch specific server provided values
+     */
+    public readonly opensearch!: pulumi.Output<outputs.ServiceOpensearch>;
+    /**
+     * Opensearch specific user configurable settings
+     */
+    public readonly opensearchUserConfig!: pulumi.Output<outputs.ServiceOpensearchUserConfig | undefined>;
+    /**
      * PostgreSQL specific server provided values
      */
     public readonly pg!: pulumi.Output<outputs.ServicePg>;
@@ -215,6 +223,8 @@ export class Service extends pulumi.CustomResource {
             inputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
             inputs["mysql"] = state ? state.mysql : undefined;
             inputs["mysqlUserConfig"] = state ? state.mysqlUserConfig : undefined;
+            inputs["opensearch"] = state ? state.opensearch : undefined;
+            inputs["opensearchUserConfig"] = state ? state.opensearchUserConfig : undefined;
             inputs["pg"] = state ? state.pg : undefined;
             inputs["pgUserConfig"] = state ? state.pgUserConfig : undefined;
             inputs["plan"] = state ? state.plan : undefined;
@@ -262,6 +272,8 @@ export class Service extends pulumi.CustomResource {
             inputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
             inputs["mysql"] = args ? args.mysql : undefined;
             inputs["mysqlUserConfig"] = args ? args.mysqlUserConfig : undefined;
+            inputs["opensearch"] = args ? args.opensearch : undefined;
+            inputs["opensearchUserConfig"] = args ? args.opensearchUserConfig : undefined;
             inputs["pg"] = args ? args.pg : undefined;
             inputs["pgUserConfig"] = args ? args.pgUserConfig : undefined;
             inputs["plan"] = args ? args.plan : undefined;
@@ -372,6 +384,14 @@ export interface ServiceState {
      * MySQL specific user configurable settings
      */
     mysqlUserConfig?: pulumi.Input<inputs.ServiceMysqlUserConfig>;
+    /**
+     * Opensearch specific server provided values
+     */
+    opensearch?: pulumi.Input<inputs.ServiceOpensearch>;
+    /**
+     * Opensearch specific user configurable settings
+     */
+    opensearchUserConfig?: pulumi.Input<inputs.ServiceOpensearchUserConfig>;
     /**
      * PostgreSQL specific server provided values
      */
@@ -522,6 +542,14 @@ export interface ServiceArgs {
      * MySQL specific user configurable settings
      */
     mysqlUserConfig?: pulumi.Input<inputs.ServiceMysqlUserConfig>;
+    /**
+     * Opensearch specific server provided values
+     */
+    opensearch?: pulumi.Input<inputs.ServiceOpensearch>;
+    /**
+     * Opensearch specific user configurable settings
+     */
+    opensearchUserConfig?: pulumi.Input<inputs.ServiceOpensearchUserConfig>;
     /**
      * PostgreSQL specific server provided values
      */

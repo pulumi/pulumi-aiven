@@ -81,6 +81,18 @@ namespace Pulumi.Aiven.Inputs
         [Input("autovacuumVacuumThreshold")]
         public Input<string>? AutovacuumVacuumThreshold { get; set; }
 
+        [Input("bgwriterDelay")]
+        public Input<string>? BgwriterDelay { get; set; }
+
+        [Input("bgwriterFlushAfter")]
+        public Input<string>? BgwriterFlushAfter { get; set; }
+
+        [Input("bgwriterLruMaxpages")]
+        public Input<string>? BgwriterLruMaxpages { get; set; }
+
+        [Input("bgwriterLruMultiplier")]
+        public Input<string>? BgwriterLruMultiplier { get; set; }
+
         /// <summary>
         /// this is the amount of time, in milliseconds, to wait on a lock before 
         /// checking to see if there is a deadlock condition.
