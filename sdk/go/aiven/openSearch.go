@@ -37,8 +37,8 @@ import (
 // 			OpensearchUserConfig: &aiven.OpenSearchOpensearchUserConfigArgs{
 // 				OpensearchVersion: pulumi.String("1"),
 // 				OpensearchDashboards: &aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{
-// 					Enabled:                            pulumi.String("true"),
-// 					OpensearchDashboardsRequestTimeout: pulumi.Float64(30000),
+// 					Enabled:                  pulumi.String("true"),
+// 					OpensearchRequestTimeout: pulumi.String("30000"),
 // 				},
 // 				PublicAccess: &aiven.OpenSearchOpensearchUserConfigPublicAccessArgs{
 // 					Opensearch:           pulumi.String("true"),

@@ -34,10 +34,14 @@ export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlo
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", {
+        "emitHeartbeatsEnabled": args.emitHeartbeatsEnabled,
         "enable": args.enable,
         "project": args.project,
+        "replicationPolicyClass": args.replicationPolicyClass,
         "serviceName": args.serviceName,
         "sourceCluster": args.sourceCluster,
+        "syncGroupOffsetsEnabled": args.syncGroupOffsetsEnabled,
+        "syncGroupOffsetsIntervalSeconds": args.syncGroupOffsetsIntervalSeconds,
         "targetCluster": args.targetCluster,
         "topics": args.topics,
         "topicsBlacklists": args.topicsBlacklists,
@@ -48,6 +52,7 @@ export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlo
  * A collection of arguments for invoking getMirrorMakerReplicationFlow.
  */
 export interface GetMirrorMakerReplicationFlowArgs {
+    emitHeartbeatsEnabled?: boolean;
     /**
      * enable of disable replication flows for a MirrorMaker service
      */
@@ -57,11 +62,14 @@ export interface GetMirrorMakerReplicationFlowArgs {
      * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
      */
     project: string;
+    replicationPolicyClass?: string;
     serviceName: string;
     /**
      * is a source cluster alias.
      */
     sourceCluster: string;
+    syncGroupOffsetsEnabled?: boolean;
+    syncGroupOffsetsIntervalSeconds?: number;
     /**
      * is a target cluster alias.
      */
@@ -80,6 +88,7 @@ export interface GetMirrorMakerReplicationFlowArgs {
  * A collection of values returned by getMirrorMakerReplicationFlow.
  */
 export interface GetMirrorMakerReplicationFlowResult {
+    readonly emitHeartbeatsEnabled?: boolean;
     /**
      * enable of disable replication flows for a MirrorMaker service
      */
@@ -89,8 +98,11 @@ export interface GetMirrorMakerReplicationFlowResult {
      */
     readonly id: string;
     readonly project: string;
+    readonly replicationPolicyClass?: string;
     readonly serviceName: string;
     readonly sourceCluster: string;
+    readonly syncGroupOffsetsEnabled?: boolean;
+    readonly syncGroupOffsetsIntervalSeconds?: number;
     readonly targetCluster: string;
     /**
      * is a list of topics and/or regular expressions to replicate.

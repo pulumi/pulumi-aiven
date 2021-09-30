@@ -28747,8 +28747,7 @@
                 "databaseName",
                 "poolName",
                 "project",
-                "serviceName",
-                "username"
+                "serviceName"
             ],
             "inputProperties": {
                 "databaseName": {
@@ -28784,8 +28783,7 @@
                 "databaseName",
                 "poolName",
                 "project",
-                "serviceName",
-                "username"
+                "serviceName"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ConnectionPool resources.\n",
@@ -31737,6 +31735,10 @@
         "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow": {
             "description": "## # MirrorMaker 2 Replication Flow Resource\n\nThe MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 \nReplication Flows on Aiven Cloud.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst f1 = new aiven.MirrorMakerReplicationFlow(\"f1\", {\n    project: aiven_project[\"kafka-mm-project1\"].project,\n    serviceName: aiven_service.mm.service_name,\n    sourceCluster: aiven_service.source.service_name,\n    targetCluster: aiven_service.target.service_name,\n    enable: true,\n    topics: [\".*\"],\n    topicsBlacklists: [\n        \".*[\\\\-\\\\.]internal\",\n        \".*\\\\.replica\",\n        \"__.*\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nf1 = aiven.MirrorMakerReplicationFlow(\"f1\",\n    project=aiven_project[\"kafka-mm-project1\"][\"project\"],\n    service_name=aiven_service[\"mm\"][\"service_name\"],\n    source_cluster=aiven_service[\"source\"][\"service_name\"],\n    target_cluster=aiven_service[\"target\"][\"service_name\"],\n    enable=True,\n    topics=[\".*\"],\n    topics_blacklists=[\n        \".*[\\\\-\\\\.]internal\",\n        \".*\\\\.replica\",\n        \"__.*\",\n    ])\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var f1 = new Aiven.MirrorMakerReplicationFlow(\"f1\", new Aiven.MirrorMakerReplicationFlowArgs\n        {\n            Project = aiven_project.Kafka_mm_project1.Project,\n            ServiceName = aiven_service.Mm.Service_name,\n            SourceCluster = aiven_service.Source.Service_name,\n            TargetCluster = aiven_service.Target.Service_name,\n            Enable = true,\n            Topics = \n            {\n                \".*\",\n            },\n            TopicsBlacklists = \n            {\n                \".*[\\\\-\\\\.]internal\",\n                \".*\\\\.replica\",\n                \"__.*\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewMirrorMakerReplicationFlow(ctx, \"f1\", \u0026aiven.MirrorMakerReplicationFlowArgs{\n\t\t\tProject:       pulumi.Any(aiven_project.Kafka - mm - project1.Project),\n\t\t\tServiceName:   pulumi.Any(aiven_service.Mm.Service_name),\n\t\t\tSourceCluster: pulumi.Any(aiven_service.Source.Service_name),\n\t\t\tTargetCluster: pulumi.Any(aiven_service.Target.Service_name),\n\t\t\tEnable:        pulumi.Bool(true),\n\t\t\tTopics: pulumi.StringArray{\n\t\t\t\tpulumi.String(\".*\"),\n\t\t\t},\n\t\t\tTopicsBlacklists: pulumi.StringArray{\n\t\t\t\tpulumi.String(\".*[\\\\-\\\\.]internal\"),\n\t\t\t\tpulumi.String(\".*\\\\.replica\"),\n\t\t\t\tpulumi.String(\"__.*\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "emitHeartbeatsEnabled": {
+                    "type": "boolean",
+                    "description": "Emit heartbeats enabled\n"
+                },
                 "enable": {
                     "type": "boolean",
                     "description": "enable of disable replication flows for a MirrorMaker service\n"
@@ -31745,6 +31747,10 @@
                     "type": "string",
                     "description": "and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication \nFlow belongs to. They should be defined using reference as shown above to set up dependencies correctly.\n"
                 },
+                "replicationPolicyClass": {
+                    "type": "string",
+                    "description": "Replication policy class\n"
+                },
                 "serviceName": {
                     "type": "string",
                     "description": "Service to link the kafka topic to\n"
@@ -31752,6 +31758,14 @@
                 "sourceCluster": {
                     "type": "string",
                     "description": "is a source cluster alias.\n"
+                },
+                "syncGroupOffsetsEnabled": {
+                    "type": "boolean",
+                    "description": "Sync consumer group offsets\n"
+                },
+                "syncGroupOffsetsIntervalSeconds": {
+                    "type": "integer",
+                    "description": "Frequency of consumer group offset sync\n"
                 },
                 "targetCluster": {
                     "type": "string",
@@ -31780,6 +31794,10 @@
                 "targetCluster"
             ],
             "inputProperties": {
+                "emitHeartbeatsEnabled": {
+                    "type": "boolean",
+                    "description": "Emit heartbeats enabled\n"
+                },
                 "enable": {
                     "type": "boolean",
                     "description": "enable of disable replication flows for a MirrorMaker service\n"
@@ -31788,6 +31806,10 @@
                     "type": "string",
                     "description": "and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication \nFlow belongs to. They should be defined using reference as shown above to set up dependencies correctly.\n"
                 },
+                "replicationPolicyClass": {
+                    "type": "string",
+                    "description": "Replication policy class\n"
+                },
                 "serviceName": {
                     "type": "string",
                     "description": "Service to link the kafka topic to\n"
@@ -31795,6 +31817,14 @@
                 "sourceCluster": {
                     "type": "string",
                     "description": "is a source cluster alias.\n"
+                },
+                "syncGroupOffsetsEnabled": {
+                    "type": "boolean",
+                    "description": "Sync consumer group offsets\n"
+                },
+                "syncGroupOffsetsIntervalSeconds": {
+                    "type": "integer",
+                    "description": "Frequency of consumer group offset sync\n"
                 },
                 "targetCluster": {
                     "type": "string",
@@ -31825,6 +31855,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.\n",
                 "properties": {
+                    "emitHeartbeatsEnabled": {
+                        "type": "boolean",
+                        "description": "Emit heartbeats enabled\n"
+                    },
                     "enable": {
                         "type": "boolean",
                         "description": "enable of disable replication flows for a MirrorMaker service\n"
@@ -31833,6 +31867,10 @@
                         "type": "string",
                         "description": "and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication \nFlow belongs to. They should be defined using reference as shown above to set up dependencies correctly.\n"
                     },
+                    "replicationPolicyClass": {
+                        "type": "string",
+                        "description": "Replication policy class\n"
+                    },
                     "serviceName": {
                         "type": "string",
                         "description": "Service to link the kafka topic to\n"
@@ -31840,6 +31878,14 @@
                     "sourceCluster": {
                         "type": "string",
                         "description": "is a source cluster alias.\n"
+                    },
+                    "syncGroupOffsetsEnabled": {
+                        "type": "boolean",
+                        "description": "Sync consumer group offsets\n"
+                    },
+                    "syncGroupOffsetsIntervalSeconds": {
+                        "type": "integer",
+                        "description": "Frequency of consumer group offset sync\n"
                     },
                     "targetCluster": {
                         "type": "string",
@@ -32105,7 +32151,7 @@
             }
         },
         "aiven:index/openSearch:OpenSearch": {
-            "description": "## # Opensearch Resource\n\nThe Opensearch resource allows the creation and management of Aiven Opensearch services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst os1 = new aiven.OpenSearch(\"os1\", {\n    project: data.aiven_project.pr1.project,\n    cloudName: \"google-europe-west1\",\n    plan: \"startup-4\",\n    serviceName: \"my-os1\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n    opensearchUserConfig: {\n        opensearchVersion: 1,\n        opensearchDashboards: {\n            enabled: true,\n            opensearchDashboardsRequestTimeout: 30000,\n        },\n        publicAccess: {\n            opensearch: true,\n            opensearchDashboards: true,\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nos1 = aiven.OpenSearch(\"os1\",\n    project=data[\"aiven_project\"][\"pr1\"][\"project\"],\n    cloud_name=\"google-europe-west1\",\n    plan=\"startup-4\",\n    service_name=\"my-os1\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\",\n    opensearch_user_config=aiven.OpenSearchOpensearchUserConfigArgs(\n        opensearch_version=\"1\",\n        opensearch_dashboards=aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(\n            enabled=\"true\",\n            opensearch_dashboards_request_timeout=30000,\n        ),\n        public_access=aiven.OpenSearchOpensearchUserConfigPublicAccessArgs(\n            opensearch=\"true\",\n            opensearch_dashboards=\"true\",\n        ),\n    ))\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var os1 = new Aiven.OpenSearch(\"os1\", new Aiven.OpenSearchArgs\n        {\n            Project = data.Aiven_project.Pr1.Project,\n            CloudName = \"google-europe-west1\",\n            Plan = \"startup-4\",\n            ServiceName = \"my-os1\",\n            MaintenanceWindowDow = \"monday\",\n            MaintenanceWindowTime = \"10:00:00\",\n            OpensearchUserConfig = new Aiven.Inputs.OpenSearchOpensearchUserConfigArgs\n            {\n                OpensearchVersion = \"1\",\n                OpensearchDashboards = new Aiven.Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs\n                {\n                    Enabled = \"true\",\n                    OpensearchDashboardsRequestTimeout = 30000,\n                },\n                PublicAccess = new Aiven.Inputs.OpenSearchOpensearchUserConfigPublicAccessArgs\n                {\n                    Opensearch = \"true\",\n                    OpensearchDashboards = \"true\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOpenSearch(ctx, \"os1\", \u0026aiven.OpenSearchArgs{\n\t\t\tProject:               pulumi.Any(data.Aiven_project.Pr1.Project),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"startup-4\"),\n\t\t\tServiceName:           pulumi.String(\"my-os1\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t\tOpensearchUserConfig: \u0026aiven.OpenSearchOpensearchUserConfigArgs{\n\t\t\t\tOpensearchVersion: pulumi.String(\"1\"),\n\t\t\t\tOpensearchDashboards: \u0026aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{\n\t\t\t\t\tEnabled:                            pulumi.String(\"true\"),\n\t\t\t\t\tOpensearchDashboardsRequestTimeout: pulumi.Float64(30000),\n\t\t\t\t},\n\t\t\t\tPublicAccess: \u0026aiven.OpenSearchOpensearchUserConfigPublicAccessArgs{\n\t\t\t\t\tOpensearch:           pulumi.String(\"true\"),\n\t\t\t\t\tOpensearchDashboards: pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "## # Opensearch Resource\n\nThe Opensearch resource allows the creation and management of Aiven Opensearch services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst os1 = new aiven.OpenSearch(\"os1\", {\n    project: data.aiven_project.pr1.project,\n    cloudName: \"google-europe-west1\",\n    plan: \"startup-4\",\n    serviceName: \"my-os1\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n    opensearchUserConfig: {\n        opensearchVersion: 1,\n        opensearchDashboards: {\n            enabled: true,\n            opensearchRequestTimeout: 30000,\n        },\n        publicAccess: {\n            opensearch: true,\n            opensearchDashboards: true,\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nos1 = aiven.OpenSearch(\"os1\",\n    project=data[\"aiven_project\"][\"pr1\"][\"project\"],\n    cloud_name=\"google-europe-west1\",\n    plan=\"startup-4\",\n    service_name=\"my-os1\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\",\n    opensearch_user_config=aiven.OpenSearchOpensearchUserConfigArgs(\n        opensearch_version=\"1\",\n        opensearch_dashboards=aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(\n            enabled=\"true\",\n            opensearch_request_timeout=\"30000\",\n        ),\n        public_access=aiven.OpenSearchOpensearchUserConfigPublicAccessArgs(\n            opensearch=\"true\",\n            opensearch_dashboards=\"true\",\n        ),\n    ))\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var os1 = new Aiven.OpenSearch(\"os1\", new Aiven.OpenSearchArgs\n        {\n            Project = data.Aiven_project.Pr1.Project,\n            CloudName = \"google-europe-west1\",\n            Plan = \"startup-4\",\n            ServiceName = \"my-os1\",\n            MaintenanceWindowDow = \"monday\",\n            MaintenanceWindowTime = \"10:00:00\",\n            OpensearchUserConfig = new Aiven.Inputs.OpenSearchOpensearchUserConfigArgs\n            {\n                OpensearchVersion = \"1\",\n                OpensearchDashboards = new Aiven.Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs\n                {\n                    Enabled = \"true\",\n                    OpensearchRequestTimeout = \"30000\",\n                },\n                PublicAccess = new Aiven.Inputs.OpenSearchOpensearchUserConfigPublicAccessArgs\n                {\n                    Opensearch = \"true\",\n                    OpensearchDashboards = \"true\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOpenSearch(ctx, \"os1\", \u0026aiven.OpenSearchArgs{\n\t\t\tProject:               pulumi.Any(data.Aiven_project.Pr1.Project),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"startup-4\"),\n\t\t\tServiceName:           pulumi.String(\"my-os1\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t\tOpensearchUserConfig: \u0026aiven.OpenSearchOpensearchUserConfigArgs{\n\t\t\t\tOpensearchVersion: pulumi.String(\"1\"),\n\t\t\t\tOpensearchDashboards: \u0026aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{\n\t\t\t\t\tEnabled:                  pulumi.String(\"true\"),\n\t\t\t\t\tOpensearchRequestTimeout: pulumi.String(\"30000\"),\n\t\t\t\t},\n\t\t\t\tPublicAccess: \u0026aiven.OpenSearchOpensearchUserConfigPublicAccessArgs{\n\t\t\t\t\tOpensearch:           pulumi.String(\"true\"),\n\t\t\t\t\tOpensearchDashboards: pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "cloudName": {
                     "type": "string",
@@ -37975,6 +38021,9 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getMirrorMakerReplicationFlow.\n",
                 "properties": {
+                    "emitHeartbeatsEnabled": {
+                        "type": "boolean"
+                    },
                     "enable": {
                         "type": "boolean",
                         "description": "enable of disable replication flows for a MirrorMaker service\n"
@@ -37983,12 +38032,21 @@
                         "type": "string",
                         "description": "and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication \nFlow belongs to. They should be defined using reference as shown above to set up dependencies correctly.\n"
                     },
+                    "replicationPolicyClass": {
+                        "type": "string"
+                    },
                     "serviceName": {
                         "type": "string"
                     },
                     "sourceCluster": {
                         "type": "string",
                         "description": "is a source cluster alias.\n"
+                    },
+                    "syncGroupOffsetsEnabled": {
+                        "type": "boolean"
+                    },
+                    "syncGroupOffsetsIntervalSeconds": {
+                        "type": "integer"
                     },
                     "targetCluster": {
                         "type": "string",
@@ -38020,6 +38078,9 @@
             "outputs": {
                 "description": "A collection of values returned by getMirrorMakerReplicationFlow.\n",
                 "properties": {
+                    "emitHeartbeatsEnabled": {
+                        "type": "boolean"
+                    },
                     "enable": {
                         "type": "boolean",
                         "description": "enable of disable replication flows for a MirrorMaker service\n"
@@ -38031,11 +38092,20 @@
                     "project": {
                         "type": "string"
                     },
+                    "replicationPolicyClass": {
+                        "type": "string"
+                    },
                     "serviceName": {
                         "type": "string"
                     },
                     "sourceCluster": {
                         "type": "string"
+                    },
+                    "syncGroupOffsetsEnabled": {
+                        "type": "boolean"
+                    },
+                    "syncGroupOffsetsIntervalSeconds": {
+                        "type": "integer"
                     },
                     "targetCluster": {
                         "type": "string"

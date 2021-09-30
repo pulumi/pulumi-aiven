@@ -96,7 +96,7 @@ export class ConnectionPool extends pulumi.CustomResource {
      * is the name of the service user used to connect to the database. This should
      * be defined using reference as shown above to set up dependencies correctly.
      */
-    public readonly username!: pulumi.Output<string>;
+    public readonly username!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ConnectionPool resource with the given unique name, arguments, and options.
@@ -132,9 +132,6 @@ export class ConnectionPool extends pulumi.CustomResource {
             }
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
-            }
-            if ((!args || args.username === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'username'");
             }
             inputs["databaseName"] = args ? args.databaseName : undefined;
             inputs["poolMode"] = args ? args.poolMode : undefined;
@@ -238,5 +235,5 @@ export interface ConnectionPoolArgs {
      * is the name of the service user used to connect to the database. This should
      * be defined using reference as shown above to set up dependencies correctly.
      */
-    username: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }

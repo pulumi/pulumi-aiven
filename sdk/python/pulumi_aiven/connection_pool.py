@@ -17,9 +17,9 @@ class ConnectionPoolArgs:
                  pool_name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  service_name: pulumi.Input[str],
-                 username: pulumi.Input[str],
                  pool_mode: Optional[pulumi.Input[str]] = None,
-                 pool_size: Optional[pulumi.Input[int]] = None):
+                 pool_size: Optional[pulumi.Input[int]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConnectionPool resource.
         :param pulumi.Input[str] database_name: is the name of the database the pool connects to. This should be
@@ -30,23 +30,24 @@ class ConnectionPoolArgs:
                correctly. These properties cannot be changed once the service is created. Doing so will
                result in the connection pool being deleted and new one created instead.
         :param pulumi.Input[str] service_name: Service to link the connection pool to
-        :param pulumi.Input[str] username: is the name of the service user used to connect to the database. This should
-               be defined using reference as shown above to set up dependencies correctly.
         :param pulumi.Input[str] pool_mode: is the mode the pool operates in (session, transaction, statement). The
                default value for this is `transaction`.
         :param pulumi.Input[int] pool_size: is the number of connections the pool may create towards the backend
                server. This does not affect the number of incoming connections, which is always a much
                larger number. The default value for this is 10.
+        :param pulumi.Input[str] username: is the name of the service user used to connect to the database. This should
+               be defined using reference as shown above to set up dependencies correctly.
         """
         pulumi.set(__self__, "database_name", database_name)
         pulumi.set(__self__, "pool_name", pool_name)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "username", username)
         if pool_mode is not None:
             pulumi.set(__self__, "pool_mode", pool_mode)
         if pool_size is not None:
             pulumi.set(__self__, "pool_size", pool_size)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="databaseName")
@@ -101,19 +102,6 @@ class ConnectionPoolArgs:
         pulumi.set(self, "service_name", value)
 
     @property
-    @pulumi.getter
-    def username(self) -> pulumi.Input[str]:
-        """
-        is the name of the service user used to connect to the database. This should
-        be defined using reference as shown above to set up dependencies correctly.
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: pulumi.Input[str]):
-        pulumi.set(self, "username", value)
-
-    @property
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> Optional[pulumi.Input[str]]:
         """
@@ -139,6 +127,19 @@ class ConnectionPoolArgs:
     @pool_size.setter
     def pool_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "pool_size", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        is the name of the service user used to connect to the database. This should
+        be defined using reference as shown above to set up dependencies correctly.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
@@ -424,8 +425,6 @@ class ConnectionPool(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
-            if username is None and not opts.urn:
-                raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
             __props__.__dict__["connection_uri"] = None
         super(ConnectionPool, __self__).__init__(
@@ -551,7 +550,7 @@ class ConnectionPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> pulumi.Output[str]:
+    def username(self) -> pulumi.Output[Optional[str]]:
         """
         is the name of the service user used to connect to the database. This should
         be defined using reference as shown above to set up dependencies correctly.

@@ -130,6 +130,8 @@ github.com/aiven/aiven-go-client v1.5.13 h1:2rcC4tY4YbX2TWWFI7c7VA5qhowB0B/GfZfY
 github.com/aiven/aiven-go-client v1.5.13/go.mod h1:3+OtpccynSr5xvSGfn96jVM9dBUAr52HXlaZJi/Mz5o=
 github.com/aiven/aiven-go-client v1.6.1 h1:/zNc2igFqaKWfwxMqGoBUsi6WlkLTCwkKgVABYAoJXk=
 github.com/aiven/aiven-go-client v1.6.1/go.mod h1:3+OtpccynSr5xvSGfn96jVM9dBUAr52HXlaZJi/Mz5o=
+github.com/aiven/aiven-go-client v1.6.3-0.20210924095802-31d1edc2db9a h1:Z4MYG+4gHasb9OzadS+VQQUSqQM4zVtwmYaxsIixrk8=
+github.com/aiven/aiven-go-client v1.6.3-0.20210924095802-31d1edc2db9a/go.mod h1:3+OtpccynSr5xvSGfn96jVM9dBUAr52HXlaZJi/Mz5o=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7 h1:uSoVVbwJiQipAclBbw+8quDsfcvFjOpI5iCf4p/cqCs=
 github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7/go.mod h1:6zEj6s6u/ghQa61ZWa/C2Aw3RkjiTBOix7dkqa1VLIs=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc h1:cAKDfWh5VpdgMhJosfJnn5/FoN2SRZ4p7fJNX58YPaU=
@@ -726,6 +728,8 @@ github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210901152230-2c850876ec59
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210901152230-2c850876ec59/go.mod h1:KPd0n3Q+XT72Ntywp7UiLrIuPfjYO84x/iB/7e3IEQE=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210922125935-5a1d045c4c4b h1:LIF5f2cr+KKOTzxS2ZWwF0+1sFeVI/Bz5taIBWX5nPg=
 github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210922125935-5a1d045c4c4b/go.mod h1:BX3Lr0hWc9pEtGGj6B8zP2rTMx6FVhwTZ/H5ns7Yse8=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210930131305-7a1b580535db h1:2Bo7FQix5N1H1Ki3D88Q4JFpTMeRhu/WiBlfEyfQOnk=
+github.com/pulumi/terraform-provider-aiven v1.0.18-0.20210930131305-7a1b580535db/go.mod h1:/L7EuTZp28nKAGJzCeBXc9oQSj++PzxPBsF2HravWC0=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af h1:gu+uRPtBe88sKxUCEXRoeCvVG90TJmwhiqRpvdhQFng=

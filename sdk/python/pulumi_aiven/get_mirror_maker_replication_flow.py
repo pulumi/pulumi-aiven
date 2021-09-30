@@ -19,7 +19,10 @@ class GetMirrorMakerReplicationFlowResult:
     """
     A collection of values returned by getMirrorMakerReplicationFlow.
     """
-    def __init__(__self__, enable=None, id=None, project=None, service_name=None, source_cluster=None, target_cluster=None, topics=None, topics_blacklists=None):
+    def __init__(__self__, emit_heartbeats_enabled=None, enable=None, id=None, project=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, topics=None, topics_blacklists=None):
+        if emit_heartbeats_enabled and not isinstance(emit_heartbeats_enabled, bool):
+            raise TypeError("Expected argument 'emit_heartbeats_enabled' to be a bool")
+        pulumi.set(__self__, "emit_heartbeats_enabled", emit_heartbeats_enabled)
         if enable and not isinstance(enable, bool):
             raise TypeError("Expected argument 'enable' to be a bool")
         pulumi.set(__self__, "enable", enable)
@@ -29,12 +32,21 @@ class GetMirrorMakerReplicationFlowResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if replication_policy_class and not isinstance(replication_policy_class, str):
+            raise TypeError("Expected argument 'replication_policy_class' to be a str")
+        pulumi.set(__self__, "replication_policy_class", replication_policy_class)
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
         if source_cluster and not isinstance(source_cluster, str):
             raise TypeError("Expected argument 'source_cluster' to be a str")
         pulumi.set(__self__, "source_cluster", source_cluster)
+        if sync_group_offsets_enabled and not isinstance(sync_group_offsets_enabled, bool):
+            raise TypeError("Expected argument 'sync_group_offsets_enabled' to be a bool")
+        pulumi.set(__self__, "sync_group_offsets_enabled", sync_group_offsets_enabled)
+        if sync_group_offsets_interval_seconds and not isinstance(sync_group_offsets_interval_seconds, int):
+            raise TypeError("Expected argument 'sync_group_offsets_interval_seconds' to be a int")
+        pulumi.set(__self__, "sync_group_offsets_interval_seconds", sync_group_offsets_interval_seconds)
         if target_cluster and not isinstance(target_cluster, str):
             raise TypeError("Expected argument 'target_cluster' to be a str")
         pulumi.set(__self__, "target_cluster", target_cluster)
@@ -44,6 +56,11 @@ class GetMirrorMakerReplicationFlowResult:
         if topics_blacklists and not isinstance(topics_blacklists, list):
             raise TypeError("Expected argument 'topics_blacklists' to be a list")
         pulumi.set(__self__, "topics_blacklists", topics_blacklists)
+
+    @property
+    @pulumi.getter(name="emitHeartbeatsEnabled")
+    def emit_heartbeats_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "emit_heartbeats_enabled")
 
     @property
     @pulumi.getter
@@ -67,6 +84,11 @@ class GetMirrorMakerReplicationFlowResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="replicationPolicyClass")
+    def replication_policy_class(self) -> Optional[str]:
+        return pulumi.get(self, "replication_policy_class")
+
+    @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         return pulumi.get(self, "service_name")
@@ -75,6 +97,16 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="sourceCluster")
     def source_cluster(self) -> str:
         return pulumi.get(self, "source_cluster")
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsEnabled")
+    def sync_group_offsets_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "sync_group_offsets_enabled")
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
+    def sync_group_offsets_interval_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "sync_group_offsets_interval_seconds")
 
     @property
     @pulumi.getter(name="targetCluster")
@@ -104,20 +136,28 @@ class AwaitableGetMirrorMakerReplicationFlowResult(GetMirrorMakerReplicationFlow
         if False:
             yield self
         return GetMirrorMakerReplicationFlowResult(
+            emit_heartbeats_enabled=self.emit_heartbeats_enabled,
             enable=self.enable,
             id=self.id,
             project=self.project,
+            replication_policy_class=self.replication_policy_class,
             service_name=self.service_name,
             source_cluster=self.source_cluster,
+            sync_group_offsets_enabled=self.sync_group_offsets_enabled,
+            sync_group_offsets_interval_seconds=self.sync_group_offsets_interval_seconds,
             target_cluster=self.target_cluster,
             topics=self.topics,
             topics_blacklists=self.topics_blacklists)
 
 
-def get_mirror_maker_replication_flow(enable: Optional[bool] = None,
+def get_mirror_maker_replication_flow(emit_heartbeats_enabled: Optional[bool] = None,
+                                      enable: Optional[bool] = None,
                                       project: Optional[str] = None,
+                                      replication_policy_class: Optional[str] = None,
                                       service_name: Optional[str] = None,
                                       source_cluster: Optional[str] = None,
+                                      sync_group_offsets_enabled: Optional[bool] = None,
+                                      sync_group_offsets_interval_seconds: Optional[int] = None,
                                       target_cluster: Optional[str] = None,
                                       topics: Optional[Sequence[str]] = None,
                                       topics_blacklists: Optional[Sequence[str]] = None,
@@ -150,10 +190,14 @@ def get_mirror_maker_replication_flow(enable: Optional[bool] = None,
     :param Sequence[str] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
     """
     __args__ = dict()
+    __args__['emitHeartbeatsEnabled'] = emit_heartbeats_enabled
     __args__['enable'] = enable
     __args__['project'] = project
+    __args__['replicationPolicyClass'] = replication_policy_class
     __args__['serviceName'] = service_name
     __args__['sourceCluster'] = source_cluster
+    __args__['syncGroupOffsetsEnabled'] = sync_group_offsets_enabled
+    __args__['syncGroupOffsetsIntervalSeconds'] = sync_group_offsets_interval_seconds
     __args__['targetCluster'] = target_cluster
     __args__['topics'] = topics
     __args__['topicsBlacklists'] = topics_blacklists
@@ -164,11 +208,15 @@ def get_mirror_maker_replication_flow(enable: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow', __args__, opts=opts, typ=GetMirrorMakerReplicationFlowResult).value
 
     return AwaitableGetMirrorMakerReplicationFlowResult(
+        emit_heartbeats_enabled=__ret__.emit_heartbeats_enabled,
         enable=__ret__.enable,
         id=__ret__.id,
         project=__ret__.project,
+        replication_policy_class=__ret__.replication_policy_class,
         service_name=__ret__.service_name,
         source_cluster=__ret__.source_cluster,
+        sync_group_offsets_enabled=__ret__.sync_group_offsets_enabled,
+        sync_group_offsets_interval_seconds=__ret__.sync_group_offsets_interval_seconds,
         target_cluster=__ret__.target_cluster,
         topics=__ret__.topics,
         topics_blacklists=__ret__.topics_blacklists)
