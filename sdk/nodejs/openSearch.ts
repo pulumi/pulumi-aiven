@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *         opensearchVersion: 1,
  *         opensearchDashboards: {
  *             enabled: true,
- *             opensearchDashboardsRequestTimeout: 30000,
+ *             opensearchRequestTimeout: 30000,
  *         },
  *         publicAccess: {
  *             opensearch: true,

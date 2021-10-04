@@ -52,6 +52,12 @@ namespace Pulumi.Aiven
     public partial class MirrorMakerReplicationFlow : Pulumi.CustomResource
     {
         /// <summary>
+        /// Emit heartbeats enabled
+        /// </summary>
+        [Output("emitHeartbeatsEnabled")]
+        public Output<bool?> EmitHeartbeatsEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// enable of disable replication flows for a MirrorMaker service
         /// </summary>
         [Output("enable")]
@@ -65,6 +71,12 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Replication policy class
+        /// </summary>
+        [Output("replicationPolicyClass")]
+        public Output<string?> ReplicationPolicyClass { get; private set; } = null!;
+
+        /// <summary>
         /// Service to link the kafka topic to
         /// </summary>
         [Output("serviceName")]
@@ -75,6 +87,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("sourceCluster")]
         public Output<string> SourceCluster { get; private set; } = null!;
+
+        /// <summary>
+        /// Sync consumer group offsets
+        /// </summary>
+        [Output("syncGroupOffsetsEnabled")]
+        public Output<bool?> SyncGroupOffsetsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Frequency of consumer group offset sync
+        /// </summary>
+        [Output("syncGroupOffsetsIntervalSeconds")]
+        public Output<int?> SyncGroupOffsetsIntervalSeconds { get; private set; } = null!;
 
         /// <summary>
         /// is a target cluster alias.
@@ -141,6 +165,12 @@ namespace Pulumi.Aiven
     public sealed class MirrorMakerReplicationFlowArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Emit heartbeats enabled
+        /// </summary>
+        [Input("emitHeartbeatsEnabled")]
+        public Input<bool>? EmitHeartbeatsEnabled { get; set; }
+
+        /// <summary>
         /// enable of disable replication flows for a MirrorMaker service
         /// </summary>
         [Input("enable", required: true)]
@@ -154,6 +184,12 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
+        /// Replication policy class
+        /// </summary>
+        [Input("replicationPolicyClass")]
+        public Input<string>? ReplicationPolicyClass { get; set; }
+
+        /// <summary>
         /// Service to link the kafka topic to
         /// </summary>
         [Input("serviceName", required: true)]
@@ -164,6 +200,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("sourceCluster", required: true)]
         public Input<string> SourceCluster { get; set; } = null!;
+
+        /// <summary>
+        /// Sync consumer group offsets
+        /// </summary>
+        [Input("syncGroupOffsetsEnabled")]
+        public Input<bool>? SyncGroupOffsetsEnabled { get; set; }
+
+        /// <summary>
+        /// Frequency of consumer group offset sync
+        /// </summary>
+        [Input("syncGroupOffsetsIntervalSeconds")]
+        public Input<int>? SyncGroupOffsetsIntervalSeconds { get; set; }
 
         /// <summary>
         /// is a target cluster alias.
@@ -203,6 +251,12 @@ namespace Pulumi.Aiven
     public sealed class MirrorMakerReplicationFlowState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Emit heartbeats enabled
+        /// </summary>
+        [Input("emitHeartbeatsEnabled")]
+        public Input<bool>? EmitHeartbeatsEnabled { get; set; }
+
+        /// <summary>
         /// enable of disable replication flows for a MirrorMaker service
         /// </summary>
         [Input("enable")]
@@ -216,6 +270,12 @@ namespace Pulumi.Aiven
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Replication policy class
+        /// </summary>
+        [Input("replicationPolicyClass")]
+        public Input<string>? ReplicationPolicyClass { get; set; }
+
+        /// <summary>
         /// Service to link the kafka topic to
         /// </summary>
         [Input("serviceName")]
@@ -226,6 +286,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("sourceCluster")]
         public Input<string>? SourceCluster { get; set; }
+
+        /// <summary>
+        /// Sync consumer group offsets
+        /// </summary>
+        [Input("syncGroupOffsetsEnabled")]
+        public Input<bool>? SyncGroupOffsetsEnabled { get; set; }
+
+        /// <summary>
+        /// Frequency of consumer group offset sync
+        /// </summary>
+        [Input("syncGroupOffsetsIntervalSeconds")]
+        public Input<int>? SyncGroupOffsetsIntervalSeconds { get; set; }
 
         /// <summary>
         /// is a target cluster alias.

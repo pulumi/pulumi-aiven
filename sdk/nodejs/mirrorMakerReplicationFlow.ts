@@ -60,6 +60,10 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
     }
 
     /**
+     * Emit heartbeats enabled
+     */
+    public readonly emitHeartbeatsEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * enable of disable replication flows for a MirrorMaker service
      */
     public readonly enable!: pulumi.Output<boolean>;
@@ -69,6 +73,10 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Replication policy class
+     */
+    public readonly replicationPolicyClass!: pulumi.Output<string | undefined>;
+    /**
      * Service to link the kafka topic to
      */
     public readonly serviceName!: pulumi.Output<string>;
@@ -76,6 +84,14 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
      * is a source cluster alias.
      */
     public readonly sourceCluster!: pulumi.Output<string>;
+    /**
+     * Sync consumer group offsets
+     */
+    public readonly syncGroupOffsetsEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Frequency of consumer group offset sync
+     */
+    public readonly syncGroupOffsetsIntervalSeconds!: pulumi.Output<number | undefined>;
     /**
      * is a target cluster alias.
      */
@@ -102,10 +118,14 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MirrorMakerReplicationFlowState | undefined;
+            inputs["emitHeartbeatsEnabled"] = state ? state.emitHeartbeatsEnabled : undefined;
             inputs["enable"] = state ? state.enable : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["replicationPolicyClass"] = state ? state.replicationPolicyClass : undefined;
             inputs["serviceName"] = state ? state.serviceName : undefined;
             inputs["sourceCluster"] = state ? state.sourceCluster : undefined;
+            inputs["syncGroupOffsetsEnabled"] = state ? state.syncGroupOffsetsEnabled : undefined;
+            inputs["syncGroupOffsetsIntervalSeconds"] = state ? state.syncGroupOffsetsIntervalSeconds : undefined;
             inputs["targetCluster"] = state ? state.targetCluster : undefined;
             inputs["topics"] = state ? state.topics : undefined;
             inputs["topicsBlacklists"] = state ? state.topicsBlacklists : undefined;
@@ -126,10 +146,14 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             if ((!args || args.targetCluster === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetCluster'");
             }
+            inputs["emitHeartbeatsEnabled"] = args ? args.emitHeartbeatsEnabled : undefined;
             inputs["enable"] = args ? args.enable : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["replicationPolicyClass"] = args ? args.replicationPolicyClass : undefined;
             inputs["serviceName"] = args ? args.serviceName : undefined;
             inputs["sourceCluster"] = args ? args.sourceCluster : undefined;
+            inputs["syncGroupOffsetsEnabled"] = args ? args.syncGroupOffsetsEnabled : undefined;
+            inputs["syncGroupOffsetsIntervalSeconds"] = args ? args.syncGroupOffsetsIntervalSeconds : undefined;
             inputs["targetCluster"] = args ? args.targetCluster : undefined;
             inputs["topics"] = args ? args.topics : undefined;
             inputs["topicsBlacklists"] = args ? args.topicsBlacklists : undefined;
@@ -146,6 +170,10 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
  */
 export interface MirrorMakerReplicationFlowState {
     /**
+     * Emit heartbeats enabled
+     */
+    emitHeartbeatsEnabled?: pulumi.Input<boolean>;
+    /**
      * enable of disable replication flows for a MirrorMaker service
      */
     enable?: pulumi.Input<boolean>;
@@ -155,6 +183,10 @@ export interface MirrorMakerReplicationFlowState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Replication policy class
+     */
+    replicationPolicyClass?: pulumi.Input<string>;
+    /**
      * Service to link the kafka topic to
      */
     serviceName?: pulumi.Input<string>;
@@ -162,6 +194,14 @@ export interface MirrorMakerReplicationFlowState {
      * is a source cluster alias.
      */
     sourceCluster?: pulumi.Input<string>;
+    /**
+     * Sync consumer group offsets
+     */
+    syncGroupOffsetsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Frequency of consumer group offset sync
+     */
+    syncGroupOffsetsIntervalSeconds?: pulumi.Input<number>;
     /**
      * is a target cluster alias.
      */
@@ -181,6 +221,10 @@ export interface MirrorMakerReplicationFlowState {
  */
 export interface MirrorMakerReplicationFlowArgs {
     /**
+     * Emit heartbeats enabled
+     */
+    emitHeartbeatsEnabled?: pulumi.Input<boolean>;
+    /**
      * enable of disable replication flows for a MirrorMaker service
      */
     enable: pulumi.Input<boolean>;
@@ -190,6 +234,10 @@ export interface MirrorMakerReplicationFlowArgs {
      */
     project: pulumi.Input<string>;
     /**
+     * Replication policy class
+     */
+    replicationPolicyClass?: pulumi.Input<string>;
+    /**
      * Service to link the kafka topic to
      */
     serviceName: pulumi.Input<string>;
@@ -197,6 +245,14 @@ export interface MirrorMakerReplicationFlowArgs {
      * is a source cluster alias.
      */
     sourceCluster: pulumi.Input<string>;
+    /**
+     * Sync consumer group offsets
+     */
+    syncGroupOffsetsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Frequency of consumer group offset sync
+     */
+    syncGroupOffsetsIntervalSeconds?: pulumi.Input<number>;
     /**
      * is a target cluster alias.
      */

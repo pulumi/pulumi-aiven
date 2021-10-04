@@ -18,6 +18,10 @@ class MirrorMakerReplicationFlowArgs:
                  service_name: pulumi.Input[str],
                  source_cluster: pulumi.Input[str],
                  target_cluster: pulumi.Input[str],
+                 emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
+                 replication_policy_class: Optional[pulumi.Input[str]] = None,
+                 sync_group_offsets_enabled: Optional[pulumi.Input[bool]] = None,
+                 sync_group_offsets_interval_seconds: Optional[pulumi.Input[int]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -28,6 +32,10 @@ class MirrorMakerReplicationFlowArgs:
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
         :param pulumi.Input[str] source_cluster: is a source cluster alias.
         :param pulumi.Input[str] target_cluster: is a target cluster alias.
+        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled
+        :param pulumi.Input[str] replication_policy_class: Replication policy class
+        :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets
+        :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: is a list of topics and/or regular expressions to replicate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
         """
@@ -36,6 +44,14 @@ class MirrorMakerReplicationFlowArgs:
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "source_cluster", source_cluster)
         pulumi.set(__self__, "target_cluster", target_cluster)
+        if emit_heartbeats_enabled is not None:
+            pulumi.set(__self__, "emit_heartbeats_enabled", emit_heartbeats_enabled)
+        if replication_policy_class is not None:
+            pulumi.set(__self__, "replication_policy_class", replication_policy_class)
+        if sync_group_offsets_enabled is not None:
+            pulumi.set(__self__, "sync_group_offsets_enabled", sync_group_offsets_enabled)
+        if sync_group_offsets_interval_seconds is not None:
+            pulumi.set(__self__, "sync_group_offsets_interval_seconds", sync_group_offsets_interval_seconds)
         if topics is not None:
             pulumi.set(__self__, "topics", topics)
         if topics_blacklists is not None:
@@ -103,6 +119,54 @@ class MirrorMakerReplicationFlowArgs:
         pulumi.set(self, "target_cluster", value)
 
     @property
+    @pulumi.getter(name="emitHeartbeatsEnabled")
+    def emit_heartbeats_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Emit heartbeats enabled
+        """
+        return pulumi.get(self, "emit_heartbeats_enabled")
+
+    @emit_heartbeats_enabled.setter
+    def emit_heartbeats_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "emit_heartbeats_enabled", value)
+
+    @property
+    @pulumi.getter(name="replicationPolicyClass")
+    def replication_policy_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        Replication policy class
+        """
+        return pulumi.get(self, "replication_policy_class")
+
+    @replication_policy_class.setter
+    def replication_policy_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replication_policy_class", value)
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsEnabled")
+    def sync_group_offsets_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sync consumer group offsets
+        """
+        return pulumi.get(self, "sync_group_offsets_enabled")
+
+    @sync_group_offsets_enabled.setter
+    def sync_group_offsets_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sync_group_offsets_enabled", value)
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
+    def sync_group_offsets_interval_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Frequency of consumer group offset sync
+        """
+        return pulumi.get(self, "sync_group_offsets_interval_seconds")
+
+    @sync_group_offsets_interval_seconds.setter
+    def sync_group_offsets_interval_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "sync_group_offsets_interval_seconds", value)
+
+    @property
     @pulumi.getter
     def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -130,38 +194,66 @@ class MirrorMakerReplicationFlowArgs:
 @pulumi.input_type
 class _MirrorMakerReplicationFlowState:
     def __init__(__self__, *,
+                 emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replication_policy_class: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  source_cluster: Optional[pulumi.Input[str]] = None,
+                 sync_group_offsets_enabled: Optional[pulumi.Input[bool]] = None,
+                 sync_group_offsets_interval_seconds: Optional[pulumi.Input[int]] = None,
                  target_cluster: Optional[pulumi.Input[str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.
+        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled
         :param pulumi.Input[bool] enable: enable of disable replication flows for a MirrorMaker service
         :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
                Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] replication_policy_class: Replication policy class
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
         :param pulumi.Input[str] source_cluster: is a source cluster alias.
+        :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets
+        :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync
         :param pulumi.Input[str] target_cluster: is a target cluster alias.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: is a list of topics and/or regular expressions to replicate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
         """
+        if emit_heartbeats_enabled is not None:
+            pulumi.set(__self__, "emit_heartbeats_enabled", emit_heartbeats_enabled)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if replication_policy_class is not None:
+            pulumi.set(__self__, "replication_policy_class", replication_policy_class)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
         if source_cluster is not None:
             pulumi.set(__self__, "source_cluster", source_cluster)
+        if sync_group_offsets_enabled is not None:
+            pulumi.set(__self__, "sync_group_offsets_enabled", sync_group_offsets_enabled)
+        if sync_group_offsets_interval_seconds is not None:
+            pulumi.set(__self__, "sync_group_offsets_interval_seconds", sync_group_offsets_interval_seconds)
         if target_cluster is not None:
             pulumi.set(__self__, "target_cluster", target_cluster)
         if topics is not None:
             pulumi.set(__self__, "topics", topics)
         if topics_blacklists is not None:
             pulumi.set(__self__, "topics_blacklists", topics_blacklists)
+
+    @property
+    @pulumi.getter(name="emitHeartbeatsEnabled")
+    def emit_heartbeats_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Emit heartbeats enabled
+        """
+        return pulumi.get(self, "emit_heartbeats_enabled")
+
+    @emit_heartbeats_enabled.setter
+    def emit_heartbeats_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "emit_heartbeats_enabled", value)
 
     @property
     @pulumi.getter
@@ -189,6 +281,18 @@ class _MirrorMakerReplicationFlowState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="replicationPolicyClass")
+    def replication_policy_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        Replication policy class
+        """
+        return pulumi.get(self, "replication_policy_class")
+
+    @replication_policy_class.setter
+    def replication_policy_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replication_policy_class", value)
+
+    @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -211,6 +315,30 @@ class _MirrorMakerReplicationFlowState:
     @source_cluster.setter
     def source_cluster(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_cluster", value)
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsEnabled")
+    def sync_group_offsets_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sync consumer group offsets
+        """
+        return pulumi.get(self, "sync_group_offsets_enabled")
+
+    @sync_group_offsets_enabled.setter
+    def sync_group_offsets_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sync_group_offsets_enabled", value)
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
+    def sync_group_offsets_interval_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Frequency of consumer group offset sync
+        """
+        return pulumi.get(self, "sync_group_offsets_interval_seconds")
+
+    @sync_group_offsets_interval_seconds.setter
+    def sync_group_offsets_interval_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "sync_group_offsets_interval_seconds", value)
 
     @property
     @pulumi.getter(name="targetCluster")
@@ -254,10 +382,14 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replication_policy_class: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  source_cluster: Optional[pulumi.Input[str]] = None,
+                 sync_group_offsets_enabled: Optional[pulumi.Input[bool]] = None,
+                 sync_group_offsets_interval_seconds: Optional[pulumi.Input[int]] = None,
                  target_cluster: Optional[pulumi.Input[str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -290,11 +422,15 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled
         :param pulumi.Input[bool] enable: enable of disable replication flows for a MirrorMaker service
         :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
                Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] replication_policy_class: Replication policy class
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
         :param pulumi.Input[str] source_cluster: is a source cluster alias.
+        :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets
+        :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync
         :param pulumi.Input[str] target_cluster: is a target cluster alias.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: is a list of topics and/or regular expressions to replicate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
@@ -346,10 +482,14 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replication_policy_class: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  source_cluster: Optional[pulumi.Input[str]] = None,
+                 sync_group_offsets_enabled: Optional[pulumi.Input[bool]] = None,
+                 sync_group_offsets_interval_seconds: Optional[pulumi.Input[int]] = None,
                  target_cluster: Optional[pulumi.Input[str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -365,18 +505,22 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MirrorMakerReplicationFlowArgs.__new__(MirrorMakerReplicationFlowArgs)
 
+            __props__.__dict__["emit_heartbeats_enabled"] = emit_heartbeats_enabled
             if enable is None and not opts.urn:
                 raise TypeError("Missing required property 'enable'")
             __props__.__dict__["enable"] = enable
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["replication_policy_class"] = replication_policy_class
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             if source_cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'source_cluster'")
             __props__.__dict__["source_cluster"] = source_cluster
+            __props__.__dict__["sync_group_offsets_enabled"] = sync_group_offsets_enabled
+            __props__.__dict__["sync_group_offsets_interval_seconds"] = sync_group_offsets_interval_seconds
             if target_cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'target_cluster'")
             __props__.__dict__["target_cluster"] = target_cluster
@@ -392,10 +536,14 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            replication_policy_class: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             source_cluster: Optional[pulumi.Input[str]] = None,
+            sync_group_offsets_enabled: Optional[pulumi.Input[bool]] = None,
+            sync_group_offsets_interval_seconds: Optional[pulumi.Input[int]] = None,
             target_cluster: Optional[pulumi.Input[str]] = None,
             topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'MirrorMakerReplicationFlow':
@@ -406,11 +554,15 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled
         :param pulumi.Input[bool] enable: enable of disable replication flows for a MirrorMaker service
         :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
                Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        :param pulumi.Input[str] replication_policy_class: Replication policy class
         :param pulumi.Input[str] service_name: Service to link the kafka topic to
         :param pulumi.Input[str] source_cluster: is a source cluster alias.
+        :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets
+        :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync
         :param pulumi.Input[str] target_cluster: is a target cluster alias.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: is a list of topics and/or regular expressions to replicate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
@@ -419,14 +571,26 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
         __props__ = _MirrorMakerReplicationFlowState.__new__(_MirrorMakerReplicationFlowState)
 
+        __props__.__dict__["emit_heartbeats_enabled"] = emit_heartbeats_enabled
         __props__.__dict__["enable"] = enable
         __props__.__dict__["project"] = project
+        __props__.__dict__["replication_policy_class"] = replication_policy_class
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["source_cluster"] = source_cluster
+        __props__.__dict__["sync_group_offsets_enabled"] = sync_group_offsets_enabled
+        __props__.__dict__["sync_group_offsets_interval_seconds"] = sync_group_offsets_interval_seconds
         __props__.__dict__["target_cluster"] = target_cluster
         __props__.__dict__["topics"] = topics
         __props__.__dict__["topics_blacklists"] = topics_blacklists
         return MirrorMakerReplicationFlow(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="emitHeartbeatsEnabled")
+    def emit_heartbeats_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Emit heartbeats enabled
+        """
+        return pulumi.get(self, "emit_heartbeats_enabled")
 
     @property
     @pulumi.getter
@@ -446,6 +610,14 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="replicationPolicyClass")
+    def replication_policy_class(self) -> pulumi.Output[Optional[str]]:
+        """
+        Replication policy class
+        """
+        return pulumi.get(self, "replication_policy_class")
+
+    @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
@@ -460,6 +632,22 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         is a source cluster alias.
         """
         return pulumi.get(self, "source_cluster")
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsEnabled")
+    def sync_group_offsets_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Sync consumer group offsets
+        """
+        return pulumi.get(self, "sync_group_offsets_enabled")
+
+    @property
+    @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
+    def sync_group_offsets_interval_seconds(self) -> pulumi.Output[Optional[int]]:
+        """
+        Frequency of consumer group offset sync
+        """
+        return pulumi.get(self, "sync_group_offsets_interval_seconds")
 
     @property
     @pulumi.getter(name="targetCluster")

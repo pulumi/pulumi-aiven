@@ -50,6 +50,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetMirrorMakerReplicationFlowArgs : Pulumi.InvokeArgs
     {
+        [Input("emitHeartbeatsEnabled")]
+        public bool? EmitHeartbeatsEnabled { get; set; }
+
         /// <summary>
         /// enable of disable replication flows for a MirrorMaker service
         /// </summary>
@@ -63,6 +66,9 @@ namespace Pulumi.Aiven
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        [Input("replicationPolicyClass")]
+        public string? ReplicationPolicyClass { get; set; }
+
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -71,6 +77,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("sourceCluster", required: true)]
         public string SourceCluster { get; set; } = null!;
+
+        [Input("syncGroupOffsetsEnabled")]
+        public bool? SyncGroupOffsetsEnabled { get; set; }
+
+        [Input("syncGroupOffsetsIntervalSeconds")]
+        public int? SyncGroupOffsetsIntervalSeconds { get; set; }
 
         /// <summary>
         /// is a target cluster alias.
@@ -111,6 +123,7 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetMirrorMakerReplicationFlowResult
     {
+        public readonly bool? EmitHeartbeatsEnabled;
         /// <summary>
         /// enable of disable replication flows for a MirrorMaker service
         /// </summary>
@@ -120,8 +133,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         public readonly string Project;
+        public readonly string? ReplicationPolicyClass;
         public readonly string ServiceName;
         public readonly string SourceCluster;
+        public readonly bool? SyncGroupOffsetsEnabled;
+        public readonly int? SyncGroupOffsetsIntervalSeconds;
         public readonly string TargetCluster;
         /// <summary>
         /// is a list of topics and/or regular expressions to replicate.
@@ -134,15 +150,23 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetMirrorMakerReplicationFlowResult(
+            bool? emitHeartbeatsEnabled,
+
             bool? enable,
 
             string id,
 
             string project,
 
+            string? replicationPolicyClass,
+
             string serviceName,
 
             string sourceCluster,
+
+            bool? syncGroupOffsetsEnabled,
+
+            int? syncGroupOffsetsIntervalSeconds,
 
             string targetCluster,
 
@@ -150,11 +174,15 @@ namespace Pulumi.Aiven
 
             ImmutableArray<string> topicsBlacklists)
         {
+            EmitHeartbeatsEnabled = emitHeartbeatsEnabled;
             Enable = enable;
             Id = id;
             Project = project;
+            ReplicationPolicyClass = replicationPolicyClass;
             ServiceName = serviceName;
             SourceCluster = sourceCluster;
+            SyncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
+            SyncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
             TargetCluster = targetCluster;
             Topics = topics;
             TopicsBlacklists = topicsBlacklists;

@@ -48,14 +48,18 @@ func LookupMirrorMakerReplicationFlow(ctx *pulumi.Context, args *LookupMirrorMak
 
 // A collection of arguments for invoking getMirrorMakerReplicationFlow.
 type LookupMirrorMakerReplicationFlowArgs struct {
+	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
 	// enable of disable replication flows for a MirrorMaker service
 	Enable *bool `pulumi:"enable"`
 	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
 	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
-	Project     string `pulumi:"project"`
-	ServiceName string `pulumi:"serviceName"`
+	Project                string  `pulumi:"project"`
+	ReplicationPolicyClass *string `pulumi:"replicationPolicyClass"`
+	ServiceName            string  `pulumi:"serviceName"`
 	// is a source cluster alias.
-	SourceCluster string `pulumi:"sourceCluster"`
+	SourceCluster                   string `pulumi:"sourceCluster"`
+	SyncGroupOffsetsEnabled         *bool  `pulumi:"syncGroupOffsetsEnabled"`
+	SyncGroupOffsetsIntervalSeconds *int   `pulumi:"syncGroupOffsetsIntervalSeconds"`
 	// is a target cluster alias.
 	TargetCluster string `pulumi:"targetCluster"`
 	// is a list of topics and/or regular expressions to replicate.
@@ -66,14 +70,18 @@ type LookupMirrorMakerReplicationFlowArgs struct {
 
 // A collection of values returned by getMirrorMakerReplicationFlow.
 type LookupMirrorMakerReplicationFlowResult struct {
+	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
 	// enable of disable replication flows for a MirrorMaker service
 	Enable *bool `pulumi:"enable"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string `pulumi:"id"`
-	Project       string `pulumi:"project"`
-	ServiceName   string `pulumi:"serviceName"`
-	SourceCluster string `pulumi:"sourceCluster"`
-	TargetCluster string `pulumi:"targetCluster"`
+	Id                              string  `pulumi:"id"`
+	Project                         string  `pulumi:"project"`
+	ReplicationPolicyClass          *string `pulumi:"replicationPolicyClass"`
+	ServiceName                     string  `pulumi:"serviceName"`
+	SourceCluster                   string  `pulumi:"sourceCluster"`
+	SyncGroupOffsetsEnabled         *bool   `pulumi:"syncGroupOffsetsEnabled"`
+	SyncGroupOffsetsIntervalSeconds *int    `pulumi:"syncGroupOffsetsIntervalSeconds"`
+	TargetCluster                   string  `pulumi:"targetCluster"`
 	// is a list of topics and/or regular expressions to replicate.
 	Topics []string `pulumi:"topics"`
 	// is a list of topics and/or regular expressions to not replicate.

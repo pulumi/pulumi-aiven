@@ -53,15 +53,23 @@ import (
 type MirrorMakerReplicationFlow struct {
 	pulumi.CustomResourceState
 
+	// Emit heartbeats enabled
+	EmitHeartbeatsEnabled pulumi.BoolPtrOutput `pulumi:"emitHeartbeatsEnabled"`
 	// enable of disable replication flows for a MirrorMaker service
 	Enable pulumi.BoolOutput `pulumi:"enable"`
 	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
 	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Replication policy class
+	ReplicationPolicyClass pulumi.StringPtrOutput `pulumi:"replicationPolicyClass"`
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// is a source cluster alias.
 	SourceCluster pulumi.StringOutput `pulumi:"sourceCluster"`
+	// Sync consumer group offsets
+	SyncGroupOffsetsEnabled pulumi.BoolPtrOutput `pulumi:"syncGroupOffsetsEnabled"`
+	// Frequency of consumer group offset sync
+	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrOutput `pulumi:"syncGroupOffsetsIntervalSeconds"`
 	// is a target cluster alias.
 	TargetCluster pulumi.StringOutput `pulumi:"targetCluster"`
 	// is a list of topics and/or regular expressions to replicate.
@@ -114,15 +122,23 @@ func GetMirrorMakerReplicationFlow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.
 type mirrorMakerReplicationFlowState struct {
+	// Emit heartbeats enabled
+	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
 	// enable of disable replication flows for a MirrorMaker service
 	Enable *bool `pulumi:"enable"`
 	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
 	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
 	Project *string `pulumi:"project"`
+	// Replication policy class
+	ReplicationPolicyClass *string `pulumi:"replicationPolicyClass"`
 	// Service to link the kafka topic to
 	ServiceName *string `pulumi:"serviceName"`
 	// is a source cluster alias.
 	SourceCluster *string `pulumi:"sourceCluster"`
+	// Sync consumer group offsets
+	SyncGroupOffsetsEnabled *bool `pulumi:"syncGroupOffsetsEnabled"`
+	// Frequency of consumer group offset sync
+	SyncGroupOffsetsIntervalSeconds *int `pulumi:"syncGroupOffsetsIntervalSeconds"`
 	// is a target cluster alias.
 	TargetCluster *string `pulumi:"targetCluster"`
 	// is a list of topics and/or regular expressions to replicate.
@@ -132,15 +148,23 @@ type mirrorMakerReplicationFlowState struct {
 }
 
 type MirrorMakerReplicationFlowState struct {
+	// Emit heartbeats enabled
+	EmitHeartbeatsEnabled pulumi.BoolPtrInput
 	// enable of disable replication flows for a MirrorMaker service
 	Enable pulumi.BoolPtrInput
 	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
 	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringPtrInput
+	// Replication policy class
+	ReplicationPolicyClass pulumi.StringPtrInput
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringPtrInput
 	// is a source cluster alias.
 	SourceCluster pulumi.StringPtrInput
+	// Sync consumer group offsets
+	SyncGroupOffsetsEnabled pulumi.BoolPtrInput
+	// Frequency of consumer group offset sync
+	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrInput
 	// is a target cluster alias.
 	TargetCluster pulumi.StringPtrInput
 	// is a list of topics and/or regular expressions to replicate.
@@ -154,15 +178,23 @@ func (MirrorMakerReplicationFlowState) ElementType() reflect.Type {
 }
 
 type mirrorMakerReplicationFlowArgs struct {
+	// Emit heartbeats enabled
+	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
 	// enable of disable replication flows for a MirrorMaker service
 	Enable bool `pulumi:"enable"`
 	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
 	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
 	Project string `pulumi:"project"`
+	// Replication policy class
+	ReplicationPolicyClass *string `pulumi:"replicationPolicyClass"`
 	// Service to link the kafka topic to
 	ServiceName string `pulumi:"serviceName"`
 	// is a source cluster alias.
 	SourceCluster string `pulumi:"sourceCluster"`
+	// Sync consumer group offsets
+	SyncGroupOffsetsEnabled *bool `pulumi:"syncGroupOffsetsEnabled"`
+	// Frequency of consumer group offset sync
+	SyncGroupOffsetsIntervalSeconds *int `pulumi:"syncGroupOffsetsIntervalSeconds"`
 	// is a target cluster alias.
 	TargetCluster string `pulumi:"targetCluster"`
 	// is a list of topics and/or regular expressions to replicate.
@@ -173,15 +205,23 @@ type mirrorMakerReplicationFlowArgs struct {
 
 // The set of arguments for constructing a MirrorMakerReplicationFlow resource.
 type MirrorMakerReplicationFlowArgs struct {
+	// Emit heartbeats enabled
+	EmitHeartbeatsEnabled pulumi.BoolPtrInput
 	// enable of disable replication flows for a MirrorMaker service
 	Enable pulumi.BoolInput
 	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
 	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
 	Project pulumi.StringInput
+	// Replication policy class
+	ReplicationPolicyClass pulumi.StringPtrInput
 	// Service to link the kafka topic to
 	ServiceName pulumi.StringInput
 	// is a source cluster alias.
 	SourceCluster pulumi.StringInput
+	// Sync consumer group offsets
+	SyncGroupOffsetsEnabled pulumi.BoolPtrInput
+	// Frequency of consumer group offset sync
+	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrInput
 	// is a target cluster alias.
 	TargetCluster pulumi.StringInput
 	// is a list of topics and/or regular expressions to replicate.

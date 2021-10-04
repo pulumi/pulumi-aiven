@@ -72,7 +72,7 @@ type ConnectionPool struct {
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// is the name of the service user used to connect to the database. This should
 	// be defined using reference as shown above to set up dependencies correctly.
-	Username pulumi.StringOutput `pulumi:"username"`
+	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
 
 // NewConnectionPool registers a new resource with the given unique name, arguments, and options.
@@ -93,9 +93,6 @@ func NewConnectionPool(ctx *pulumi.Context,
 	}
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
-	}
-	if args.Username == nil {
-		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	var resource ConnectionPool
 	err := ctx.RegisterResource("aiven:index/connectionPool:ConnectionPool", name, args, &resource, opts...)
@@ -200,7 +197,7 @@ type connectionPoolArgs struct {
 	ServiceName string `pulumi:"serviceName"`
 	// is the name of the service user used to connect to the database. This should
 	// be defined using reference as shown above to set up dependencies correctly.
-	Username string `pulumi:"username"`
+	Username *string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a ConnectionPool resource.
@@ -226,7 +223,7 @@ type ConnectionPoolArgs struct {
 	ServiceName pulumi.StringInput
 	// is the name of the service user used to connect to the database. This should
 	// be defined using reference as shown above to set up dependencies correctly.
-	Username pulumi.StringInput
+	Username pulumi.StringPtrInput
 }
 
 func (ConnectionPoolArgs) ElementType() reflect.Type {

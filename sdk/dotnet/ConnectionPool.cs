@@ -103,7 +103,7 @@ namespace Pulumi.Aiven
         /// be defined using reference as shown above to set up dependencies correctly.
         /// </summary>
         [Output("username")]
-        public Output<string> Username { get; private set; } = null!;
+        public Output<string?> Username { get; private set; } = null!;
 
 
         /// <summary>
@@ -198,8 +198,8 @@ namespace Pulumi.Aiven
         /// is the name of the service user used to connect to the database. This should
         /// be defined using reference as shown above to set up dependencies correctly.
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public ConnectionPoolArgs()
         {

@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
     ///                 OpensearchDashboards = new Aiven.Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs
     ///                 {
     ///                     Enabled = "true",
-    ///                     OpensearchDashboardsRequestTimeout = 30000,
+    ///                     OpensearchRequestTimeout = "30000",
     ///                 },
     ///                 PublicAccess = new Aiven.Inputs.OpenSearchOpensearchUserConfigPublicAccessArgs
     ///                 {
