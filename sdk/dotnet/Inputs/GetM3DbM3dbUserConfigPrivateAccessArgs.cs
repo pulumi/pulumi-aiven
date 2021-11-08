@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetM3DbM3dbUserConfigPrivateAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetM3DbM3dbUserConfigPrivateAccessInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allow clients to connect to m3coordinator from the public internet 
         /// for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("m3coordinator")]
-        public string? M3coordinator { get; set; }
+        public Input<string>? M3coordinator { get; set; }
 
-        public GetM3DbM3dbUserConfigPrivateAccessArgs()
+        public GetM3DbM3dbUserConfigPrivateAccessInputArgs()
         {
         }
     }

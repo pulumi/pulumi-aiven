@@ -688,7 +688,7 @@ class Kafka(pulumi.CustomResource):
             maintenance_window_time="10:00:00",
             kafka_user_config=aiven.KafkaKafkaUserConfigArgs(
                 kafka_rest="true",
-                kafka_connect=True,
+                kafka_connect="true",
                 schema_registry="true",
                 kafka_version="2.4",
                 kafka=aiven.KafkaKafkaUserConfigKafkaArgs(
@@ -697,7 +697,7 @@ class Kafka(pulumi.CustomResource):
                 ),
                 public_access=aiven.KafkaKafkaUserConfigPublicAccessArgs(
                     kafka_rest="true",
-                    kafka_connect=True,
+                    kafka_connect="true",
                 ),
             ))
         ```
@@ -771,7 +771,7 @@ class Kafka(pulumi.CustomResource):
             maintenance_window_time="10:00:00",
             kafka_user_config=aiven.KafkaKafkaUserConfigArgs(
                 kafka_rest="true",
-                kafka_connect=True,
+                kafka_connect="true",
                 schema_registry="true",
                 kafka_version="2.4",
                 kafka=aiven.KafkaKafkaUserConfigKafkaArgs(
@@ -780,7 +780,7 @@ class Kafka(pulumi.CustomResource):
                 ),
                 public_access=aiven.KafkaKafkaUserConfigPublicAccessArgs(
                     kafka_rest="true",
-                    kafka_connect=True,
+                    kafka_connect="true",
                 ),
             ))
         ```

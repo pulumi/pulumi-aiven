@@ -10,28 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetKafkaKafkaUserConfigKafkaRestConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaKafkaUserConfigKafkaRestConfigInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true the consumer's offset will be periodically 
         /// committed to Kafka in the background
         /// </summary>
         [Input("consumerEnableAutoCommit")]
-        public string? ConsumerEnableAutoCommit { get; set; }
+        public Input<string>? ConsumerEnableAutoCommit { get; set; }
 
         /// <summary>
         /// Maximum number of bytes in unencoded message keys and 
         /// values by a single request
         /// </summary>
         [Input("consumerRequestMaxBytes")]
-        public string? ConsumerRequestMaxBytes { get; set; }
+        public Input<string>? ConsumerRequestMaxBytes { get; set; }
 
         /// <summary>
         /// The maximum total time to wait for messages for a 
         /// request if the maximum number of messages has not yet been reached
         /// </summary>
         [Input("consumerRequestTimeoutMs")]
-        public string? ConsumerRequestTimeoutMs { get; set; }
+        public Input<string>? ConsumerRequestTimeoutMs { get; set; }
 
         /// <summary>
         /// The number of acknowledgments the producer requires the leader to 
@@ -39,22 +39,22 @@ namespace Pulumi.Aiven.Inputs
         /// for the full set of in-sync replicas to acknowledge the record.
         /// </summary>
         [Input("producerAcks")]
-        public string? ProducerAcks { get; set; }
+        public Input<string>? ProducerAcks { get; set; }
 
         /// <summary>
         /// Wait for up to the given delay to allow batching records together
         /// </summary>
         [Input("producerLingerMs")]
-        public string? ProducerLingerMs { get; set; }
+        public Input<string>? ProducerLingerMs { get; set; }
 
         /// <summary>
         /// Maximum number of SimpleConsumers that can be 
         /// instantiated per broker.
         /// </summary>
         [Input("simpleconsumerPoolSizeMax")]
-        public string? SimpleconsumerPoolSizeMax { get; set; }
+        public Input<string>? SimpleconsumerPoolSizeMax { get; set; }
 
-        public GetKafkaKafkaUserConfigKafkaRestConfigArgs()
+        public GetKafkaKafkaUserConfigKafkaRestConfigInputArgs()
         {
         }
     }

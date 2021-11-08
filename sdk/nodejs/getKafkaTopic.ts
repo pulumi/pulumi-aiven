@@ -146,3 +146,57 @@ export interface GetKafkaTopicResult {
     readonly terminationProtection?: boolean;
     readonly topicName: string;
 }
+
+export function getKafkaTopicOutput(args: GetKafkaTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaTopicResult> {
+    return pulumi.output(args).apply(a => getKafkaTopic(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKafkaTopic.
+ */
+export interface GetKafkaTopicOutputArgs {
+    /**
+     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
+     */
+    cleanupPolicy?: pulumi.Input<string>;
+    /**
+     * Kafka topic configuration
+     */
+    config?: pulumi.Input<inputs.GetKafkaTopicConfigArgs>;
+    /**
+     * Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+     */
+    minimumInSyncReplicas?: pulumi.Input<number>;
+    /**
+     * Number of partitions to create in the topic.
+     */
+    partitions?: pulumi.Input<number>;
+    /**
+     * and `serviceName` - (Required) define the project and service the topic belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     * These properties cannot be changed once the service is created. Doing so will result in
+     * the topic being deleted and new one created instead.
+     */
+    project: pulumi.Input<string>;
+    /**
+     * Replication factor for the topic.
+     */
+    replication?: pulumi.Input<number>;
+    /**
+     * retention.bytes value
+     */
+    retentionBytes?: pulumi.Input<number>;
+    /**
+     * Retention period in hours, if -1 it is infinite.
+     */
+    retentionHours?: pulumi.Input<number>;
+    serviceName: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.GetKafkaTopicTagArgs>[]>;
+    terminationProtection?: pulumi.Input<boolean>;
+    /**
+     * is the actual name of the topic account. This propery cannot be changed
+     * once the service is created. Doing so will result in the topic being deleted and new one
+     * created instead.
+     */
+    topicName: pulumi.Input<string>;
+}

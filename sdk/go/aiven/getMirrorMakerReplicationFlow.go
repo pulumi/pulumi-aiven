@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupMirrorMakerReplicationFlow(ctx, &aiven.LookupMirrorMakerReplicationFlowArgs{
+// 		_, err := aiven.LookupMirrorMakerReplicationFlow(ctx, &GetMirrorMakerReplicationFlowArgs{
 // 			Project:       aiven_project.Kafka - mm - project1.Project,
 // 			ServiceName:   aiven_service.Mm.Service_name,
 // 			SourceCluster: aiven_service.Source.Service_name,
@@ -86,4 +89,110 @@ type LookupMirrorMakerReplicationFlowResult struct {
 	Topics []string `pulumi:"topics"`
 	// is a list of topics and/or regular expressions to not replicate.
 	TopicsBlacklists []string `pulumi:"topicsBlacklists"`
+}
+
+func LookupMirrorMakerReplicationFlowOutput(ctx *pulumi.Context, args LookupMirrorMakerReplicationFlowOutputArgs, opts ...pulumi.InvokeOption) LookupMirrorMakerReplicationFlowResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupMirrorMakerReplicationFlowResult, error) {
+			args := v.(LookupMirrorMakerReplicationFlowArgs)
+			r, err := LookupMirrorMakerReplicationFlow(ctx, &args, opts...)
+			return *r, err
+		}).(LookupMirrorMakerReplicationFlowResultOutput)
+}
+
+// A collection of arguments for invoking getMirrorMakerReplicationFlow.
+type LookupMirrorMakerReplicationFlowOutputArgs struct {
+	EmitHeartbeatsEnabled pulumi.BoolPtrInput `pulumi:"emitHeartbeatsEnabled"`
+	// enable of disable replication flows for a MirrorMaker service
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication
+	// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+	Project                pulumi.StringInput    `pulumi:"project"`
+	ReplicationPolicyClass pulumi.StringPtrInput `pulumi:"replicationPolicyClass"`
+	ServiceName            pulumi.StringInput    `pulumi:"serviceName"`
+	// is a source cluster alias.
+	SourceCluster                   pulumi.StringInput  `pulumi:"sourceCluster"`
+	SyncGroupOffsetsEnabled         pulumi.BoolPtrInput `pulumi:"syncGroupOffsetsEnabled"`
+	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrInput  `pulumi:"syncGroupOffsetsIntervalSeconds"`
+	// is a target cluster alias.
+	TargetCluster pulumi.StringInput `pulumi:"targetCluster"`
+	// is a list of topics and/or regular expressions to replicate.
+	Topics pulumi.StringArrayInput `pulumi:"topics"`
+	// is a list of topics and/or regular expressions to not replicate.
+	TopicsBlacklists pulumi.StringArrayInput `pulumi:"topicsBlacklists"`
+}
+
+func (LookupMirrorMakerReplicationFlowOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMirrorMakerReplicationFlowArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMirrorMakerReplicationFlow.
+type LookupMirrorMakerReplicationFlowResultOutput struct{ *pulumi.OutputState }
+
+func (LookupMirrorMakerReplicationFlowResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMirrorMakerReplicationFlowResult)(nil)).Elem()
+}
+
+func (o LookupMirrorMakerReplicationFlowResultOutput) ToLookupMirrorMakerReplicationFlowResultOutput() LookupMirrorMakerReplicationFlowResultOutput {
+	return o
+}
+
+func (o LookupMirrorMakerReplicationFlowResultOutput) ToLookupMirrorMakerReplicationFlowResultOutputWithContext(ctx context.Context) LookupMirrorMakerReplicationFlowResultOutput {
+	return o
+}
+
+func (o LookupMirrorMakerReplicationFlowResultOutput) EmitHeartbeatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) *bool { return v.EmitHeartbeatsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// enable of disable replication flows for a MirrorMaker service
+func (o LookupMirrorMakerReplicationFlowResultOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupMirrorMakerReplicationFlowResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupMirrorMakerReplicationFlowResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupMirrorMakerReplicationFlowResultOutput) ReplicationPolicyClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) *string { return v.ReplicationPolicyClass }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupMirrorMakerReplicationFlowResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupMirrorMakerReplicationFlowResultOutput) SourceCluster() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.SourceCluster }).(pulumi.StringOutput)
+}
+
+func (o LookupMirrorMakerReplicationFlowResultOutput) SyncGroupOffsetsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) *bool { return v.SyncGroupOffsetsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o LookupMirrorMakerReplicationFlowResultOutput) SyncGroupOffsetsIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) *int { return v.SyncGroupOffsetsIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o LookupMirrorMakerReplicationFlowResultOutput) TargetCluster() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.TargetCluster }).(pulumi.StringOutput)
+}
+
+// is a list of topics and/or regular expressions to replicate.
+func (o LookupMirrorMakerReplicationFlowResultOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) []string { return v.Topics }).(pulumi.StringArrayOutput)
+}
+
+// is a list of topics and/or regular expressions to not replicate.
+func (o LookupMirrorMakerReplicationFlowResultOutput) TopicsBlacklists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) []string { return v.TopicsBlacklists }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupMirrorMakerReplicationFlowResultOutput{})
 }

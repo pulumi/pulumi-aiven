@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetKafkaSchemaResult> InvokeAsync(GetKafkaSchemaArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Kafka Schema Data Source
+        /// 
+        /// The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var kafka_schema1 = Output.Create(Aiven.GetKafkaSchema.InvokeAsync(new Aiven.GetKafkaSchemaArgs
+        ///         {
+        ///             Project = aiven_project.Kafka_schemas_project1.Project,
+        ///             ServiceName = aiven_service.Kafka_service1.Service_name,
+        ///             SubjectName = "kafka-schema1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKafkaSchemaResult> Invoke(GetKafkaSchemaInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +117,47 @@ namespace Pulumi.Aiven
         public int? Version { get; set; }
 
         public GetKafkaSchemaArgs()
+        {
+        }
+    }
+
+    public sealed class GetKafkaSchemaInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// configuration compatibility level overrides specific subject
+        /// resource. If the compatibility level not specified for the individual subject by default,
+        /// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+        /// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        /// </summary>
+        [Input("compatibilityLevel")]
+        public Input<string>? CompatibilityLevel { get; set; }
+
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        /// <summary>
+        /// is Kafka Schema configuration should be a valid Avro Schema JSON format.
+        /// </summary>
+        [Input("schema")]
+        public Input<string>? Schema { get; set; }
+
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        /// <summary>
+        /// is Kafka Schema subject name.
+        /// </summary>
+        [Input("subjectName", required: true)]
+        public Input<string> SubjectName { get; set; } = null!;
+
+        [Input("version")]
+        public Input<int>? Version { get; set; }
+
+        public GetKafkaSchemaInvokeArgs()
         {
         }
     }

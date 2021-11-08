@@ -10,73 +10,73 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceElasticsearchUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceElasticsearchUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("customDomain")]
-        public string? CustomDomain { get; set; }
+        public Input<string>? CustomDomain { get; set; }
 
         [Input("disableReplicationFactorAdjustment")]
-        public string? DisableReplicationFactorAdjustment { get; set; }
+        public Input<string>? DisableReplicationFactorAdjustment { get; set; }
 
         [Input("elasticsearch")]
-        public Inputs.GetServiceElasticsearchUserConfigElasticsearchArgs? Elasticsearch { get; set; }
+        public Input<Inputs.GetServiceElasticsearchUserConfigElasticsearchInputArgs>? Elasticsearch { get; set; }
 
         [Input("elasticsearchVersion")]
-        public string? ElasticsearchVersion { get; set; }
+        public Input<string>? ElasticsearchVersion { get; set; }
 
         [Input("indexPatterns")]
-        private List<Inputs.GetServiceElasticsearchUserConfigIndexPatternArgs>? _indexPatterns;
-        public List<Inputs.GetServiceElasticsearchUserConfigIndexPatternArgs> IndexPatterns
+        private InputList<Inputs.GetServiceElasticsearchUserConfigIndexPatternInputArgs>? _indexPatterns;
+        public InputList<Inputs.GetServiceElasticsearchUserConfigIndexPatternInputArgs> IndexPatterns
         {
-            get => _indexPatterns ?? (_indexPatterns = new List<Inputs.GetServiceElasticsearchUserConfigIndexPatternArgs>());
+            get => _indexPatterns ?? (_indexPatterns = new InputList<Inputs.GetServiceElasticsearchUserConfigIndexPatternInputArgs>());
             set => _indexPatterns = value;
         }
 
         [Input("indexTemplate")]
-        public Inputs.GetServiceElasticsearchUserConfigIndexTemplateArgs? IndexTemplate { get; set; }
+        public Input<Inputs.GetServiceElasticsearchUserConfigIndexTemplateInputArgs>? IndexTemplate { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
-        public List<string> IpFilters
+        private InputList<string>? _ipFilters;
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
         [Input("keepIndexRefreshInterval")]
-        public string? KeepIndexRefreshInterval { get; set; }
+        public Input<string>? KeepIndexRefreshInterval { get; set; }
 
         [Input("kibana")]
-        public Inputs.GetServiceElasticsearchUserConfigKibanaArgs? Kibana { get; set; }
+        public Input<Inputs.GetServiceElasticsearchUserConfigKibanaInputArgs>? Kibana { get; set; }
 
         [Input("maxIndexCount")]
-        public string? MaxIndexCount { get; set; }
+        public Input<string>? MaxIndexCount { get; set; }
 
         [Input("opensearchVersion")]
-        public string? OpensearchVersion { get; set; }
+        public Input<string>? OpensearchVersion { get; set; }
 
         [Input("privateAccess")]
-        public Inputs.GetServiceElasticsearchUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetServiceElasticsearchUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         [Input("privatelinkAccess")]
-        public Inputs.GetServiceElasticsearchUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+        public Input<Inputs.GetServiceElasticsearchUserConfigPrivatelinkAccessInputArgs>? PrivatelinkAccess { get; set; }
 
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         [Input("publicAccess")]
-        public Inputs.GetServiceElasticsearchUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetServiceElasticsearchUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         [Input("recoveryBasebackupName")]
-        public string? RecoveryBasebackupName { get; set; }
+        public Input<string>? RecoveryBasebackupName { get; set; }
 
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetServiceElasticsearchUserConfigArgs()
+        public GetServiceElasticsearchUserConfigInputArgs()
         {
         }
     }

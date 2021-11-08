@@ -12,6 +12,7 @@ __all__ = [
     'GetAccountTeamProjectResult',
     'AwaitableGetAccountTeamProjectResult',
     'get_account_team_project',
+    'get_account_team_project_output',
 ]
 
 @pulumi.output_type
@@ -116,3 +117,24 @@ def get_account_team_project(account_id: Optional[str] = None,
         project_name=__ret__.project_name,
         team_id=__ret__.team_id,
         team_type=__ret__.team_type)
+
+
+@_utilities.lift_output_func(get_account_team_project)
+def get_account_team_project_output(account_id: Optional[pulumi.Input[str]] = None,
+                                    project_name: Optional[pulumi.Input[str]] = None,
+                                    team_id: Optional[pulumi.Input[str]] = None,
+                                    team_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountTeamProjectResult]:
+    """
+    ## # Account Team Project Data Source
+
+    The Account Team Project data source provides information about the existing Account Team Project.
+
+
+    :param str account_id: is a unique account id.
+    :param str project_name: is a project name of already existing project.
+    :param str team_id: is an account team id.
+    :param str team_type: is an account team project type, can one of the following values: `admin`, 
+           `developer`, `operator` and `read_only`.
+    """
+    ...

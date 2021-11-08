@@ -10,27 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceInfluxdbUserConfigInfluxdbArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceInfluxdbUserConfigInfluxdbInputArgs : Pulumi.ResourceArgs
     {
         [Input("logQueriesAfter")]
-        public string? LogQueriesAfter { get; set; }
+        public Input<string>? LogQueriesAfter { get; set; }
 
         [Input("maxConnectionLimit")]
-        public string? MaxConnectionLimit { get; set; }
+        public Input<string>? MaxConnectionLimit { get; set; }
 
         [Input("maxRowLimit")]
-        public string? MaxRowLimit { get; set; }
+        public Input<string>? MaxRowLimit { get; set; }
 
         [Input("maxSelectBuckets")]
-        public string? MaxSelectBuckets { get; set; }
+        public Input<string>? MaxSelectBuckets { get; set; }
 
         [Input("maxSelectPoint")]
-        public string? MaxSelectPoint { get; set; }
+        public Input<string>? MaxSelectPoint { get; set; }
 
         [Input("queryTimeout")]
-        public string? QueryTimeout { get; set; }
+        public Input<string>? QueryTimeout { get; set; }
 
-        public GetServiceInfluxdbUserConfigInfluxdbArgs()
+        public GetServiceInfluxdbUserConfigInfluxdbInputArgs()
         {
         }
     }

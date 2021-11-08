@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationPrometheusUserConfigSourceMysqlInputArgs : Pulumi.ResourceArgs
     {
         [Input("telegraf")]
-        public Inputs.GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs? Telegraf { get; set; }
+        public Input<Inputs.GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafInputArgs>? Telegraf { get; set; }
 
-        public GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs()
+        public GetServiceIntegrationPrometheusUserConfigSourceMysqlInputArgs()
         {
         }
     }

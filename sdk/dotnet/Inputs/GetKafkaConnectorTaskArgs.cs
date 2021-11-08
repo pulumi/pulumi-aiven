@@ -10,19 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetKafkaConnectorTaskArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaConnectorTaskInputArgs : Pulumi.ResourceArgs
     {
         [Input("connector", required: true)]
-        public string Connector { get; set; } = null!;
+        public Input<string> Connector { get; set; } = null!;
 
         /// <summary>
         /// List of tasks of a connector, each element contains `connector` 
         /// (Related connector name) and `task` (Task id / number).
         /// </summary>
         [Input("task", required: true)]
-        public int Task { get; set; }
+        public Input<int> Task { get; set; } = null!;
 
-        public GetKafkaConnectorTaskArgs()
+        public GetKafkaConnectorTaskInputArgs()
         {
         }
     }

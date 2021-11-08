@@ -10,39 +10,39 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerInputArgs : Pulumi.ResourceArgs
     {
         [Input("emitCheckpointsEnabled")]
-        public string? EmitCheckpointsEnabled { get; set; }
+        public Input<string>? EmitCheckpointsEnabled { get; set; }
 
         [Input("emitCheckpointsIntervalSeconds")]
-        public string? EmitCheckpointsIntervalSeconds { get; set; }
+        public Input<string>? EmitCheckpointsIntervalSeconds { get; set; }
 
         [Input("refreshGroupsEnabled")]
-        public string? RefreshGroupsEnabled { get; set; }
+        public Input<string>? RefreshGroupsEnabled { get; set; }
 
         [Input("refreshGroupsIntervalSeconds")]
-        public string? RefreshGroupsIntervalSeconds { get; set; }
+        public Input<string>? RefreshGroupsIntervalSeconds { get; set; }
 
         [Input("refreshTopicsEnabled")]
-        public string? RefreshTopicsEnabled { get; set; }
+        public Input<string>? RefreshTopicsEnabled { get; set; }
 
         [Input("refreshTopicsIntervalSeconds")]
-        public string? RefreshTopicsIntervalSeconds { get; set; }
+        public Input<string>? RefreshTopicsIntervalSeconds { get; set; }
 
         [Input("syncGroupOffsetsEnabled")]
-        public string? SyncGroupOffsetsEnabled { get; set; }
+        public Input<string>? SyncGroupOffsetsEnabled { get; set; }
 
         [Input("syncGroupOffsetsIntervalSeconds")]
-        public string? SyncGroupOffsetsIntervalSeconds { get; set; }
+        public Input<string>? SyncGroupOffsetsIntervalSeconds { get; set; }
 
         [Input("syncTopicConfigsEnabled")]
-        public string? SyncTopicConfigsEnabled { get; set; }
+        public Input<string>? SyncTopicConfigsEnabled { get; set; }
 
         [Input("tasksMaxPerCpu")]
-        public string? TasksMaxPerCpu { get; set; }
+        public Input<string>? TasksMaxPerCpu { get; set; }
 
-        public GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs()
+        public GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerInputArgs()
         {
         }
     }

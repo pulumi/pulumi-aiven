@@ -10,33 +10,33 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServicePgArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePgInputArgs : Pulumi.ResourceArgs
     {
         [Input("dbname", required: true)]
-        public string Dbname { get; set; } = null!;
+        public Input<string> Dbname { get; set; } = null!;
 
         [Input("host", required: true)]
-        public string Host { get; set; } = null!;
+        public Input<string> Host { get; set; } = null!;
 
         [Input("password", required: true)]
-        public string Password { get; set; } = null!;
+        public Input<string> Password { get; set; } = null!;
 
         [Input("port", required: true)]
-        public int Port { get; set; }
+        public Input<int> Port { get; set; } = null!;
 
         [Input("replicaUri", required: true)]
-        public string ReplicaUri { get; set; } = null!;
+        public Input<string> ReplicaUri { get; set; } = null!;
 
         [Input("sslmode", required: true)]
-        public string Sslmode { get; set; } = null!;
+        public Input<string> Sslmode { get; set; } = null!;
 
         [Input("uri", required: true)]
-        public string Uri { get; set; } = null!;
+        public Input<string> Uri { get; set; } = null!;
 
         [Input("user", required: true)]
-        public string User { get; set; } = null!;
+        public Input<string> User { get; set; } = null!;
 
-        public GetServicePgArgs()
+        public GetServicePgInputArgs()
         {
         }
     }

@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetOpenSearchOpensearchUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetOpenSearchOpensearchUserConfigInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         /// </summary>
         [Input("customDomain")]
-        public string? CustomDomain { get; set; }
+        public Input<string>? CustomDomain { get; set; }
 
         /// <summary>
         /// Disable automatic replication factor adjustment for multi-node services.
@@ -24,17 +24,17 @@ namespace Pulumi.Aiven.Inputs
         /// risk of data loss in case of virtual machine failure.
         /// </summary>
         [Input("disableReplicationFactorAdjustment")]
-        public string? DisableReplicationFactorAdjustment { get; set; }
+        public Input<string>? DisableReplicationFactorAdjustment { get; set; }
 
         [Input("indexPatterns")]
-        private List<Inputs.GetOpenSearchOpensearchUserConfigIndexPatternArgs>? _indexPatterns;
+        private InputList<Inputs.GetOpenSearchOpensearchUserConfigIndexPatternInputArgs>? _indexPatterns;
 
         /// <summary>
         /// Glob pattern and number of indexes matching that pattern to be kept.
         /// </summary>
-        public List<Inputs.GetOpenSearchOpensearchUserConfigIndexPatternArgs> IndexPatterns
+        public InputList<Inputs.GetOpenSearchOpensearchUserConfigIndexPatternInputArgs> IndexPatterns
         {
-            get => _indexPatterns ?? (_indexPatterns = new List<Inputs.GetOpenSearchOpensearchUserConfigIndexPatternArgs>());
+            get => _indexPatterns ?? (_indexPatterns = new InputList<Inputs.GetOpenSearchOpensearchUserConfigIndexPatternInputArgs>());
             set => _indexPatterns = value;
         }
 
@@ -42,91 +42,91 @@ namespace Pulumi.Aiven.Inputs
         /// Template settings for all new indexe.
         /// </summary>
         [Input("indexTemplate")]
-        public Inputs.GetOpenSearchOpensearchUserConfigIndexTemplateArgs? IndexTemplate { get; set; }
+        public Input<Inputs.GetOpenSearchOpensearchUserConfigIndexTemplateInputArgs>? IndexTemplate { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
+        private InputList<string>? _ipFilters;
 
         /// <summary>
         /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
-        public List<string> IpFilters
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
         [Input("keepIndexRefreshInterval")]
-        public string? KeepIndexRefreshInterval { get; set; }
+        public Input<string>? KeepIndexRefreshInterval { get; set; }
 
         /// <summary>
         /// Maximum number of indexes to keep before deleting the oldest one.
         /// </summary>
         [Input("maxIndexCount")]
-        public string? MaxIndexCount { get; set; }
+        public Input<string>? MaxIndexCount { get; set; }
 
         /// <summary>
         /// Allow clients to connect to opensearch from the public internet for service nodes that are in a
         /// project VPC or another type of private network.
         /// </summary>
         [Input("opensearch")]
-        public Inputs.GetOpenSearchOpensearchUserConfigOpensearchArgs? Opensearch { get; set; }
+        public Input<Inputs.GetOpenSearchOpensearchUserConfigOpensearchInputArgs>? Opensearch { get; set; }
 
         /// <summary>
         /// Allow clients to connect to opensearch_dashboards from the public internet for
         /// service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("opensearchDashboards")]
-        public Inputs.GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs? OpensearchDashboards { get; set; }
+        public Input<Inputs.GetOpenSearchOpensearchUserConfigOpensearchDashboardsInputArgs>? OpensearchDashboards { get; set; }
 
         /// <summary>
         /// Opensearch major version.
         /// </summary>
         [Input("opensearchVersion")]
-        public string? OpensearchVersion { get; set; }
+        public Input<string>? OpensearchVersion { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from private networks.
         /// </summary>
         [Input("privateAccess")]
-        public Inputs.GetOpenSearchOpensearchUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetOpenSearchOpensearchUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         /// <summary>
         /// Allow access to selected service components through Privatelink
         /// </summary>
         [Input("privatelinkAccess")]
-        public Inputs.GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+        public Input<Inputs.GetOpenSearchOpensearchUserConfigPrivatelinkAccessInputArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
         /// Name of another project to fork a service from. This has effect only when a new service
         /// is being created.
         /// </summary>
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from the public Internet.
         /// </summary>
         [Input("publicAccess")]
-        public Inputs.GetOpenSearchOpensearchUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetOpenSearchOpensearchUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         /// <summary>
         /// Name of the basebackup to restore in forked service.
         /// </summary>
         [Input("recoveryBasebackupName")]
-        public string? RecoveryBasebackupName { get; set; }
+        public Input<string>? RecoveryBasebackupName { get; set; }
 
         /// <summary>
         /// Name of another service to fork from. This has effect only when a new service is being
         /// created.
         /// </summary>
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetOpenSearchOpensearchUserConfigArgs()
+        public GetOpenSearchOpensearchUserConfigInputArgs()
         {
         }
     }

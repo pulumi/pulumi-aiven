@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetElasticSearchAclResult> InvokeAsync(GetElasticSearchAclArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetElasticSearchAclResult>("aiven:index/getElasticSearchAcl:getElasticSearchAcl", args ?? new GetElasticSearchAclArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Elasticsearch ACL Data Source
+        /// 
+        /// The Elasticsearch ACL data source provides information about the existing Aiven Elasticsearch ACL 
+        /// for Elasticsearch service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var es_acls = Output.Create(Aiven.GetElasticSearchAcl.InvokeAsync(new Aiven.GetElasticSearchAclArgs
+        ///         {
+        ///             Project = aiven_project.Es_project.Project,
+        ///             ServiceName = aiven_elasticsearch.Es.Service_name,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetElasticSearchAclResult> Invoke(GetElasticSearchAclInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetElasticSearchAclResult>("aiven:index/getElasticSearchAcl:getElasticSearchAcl", args ?? new GetElasticSearchAclInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +115,45 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         public GetElasticSearchAclArgs()
+        {
+        }
+    }
+
+    public sealed class GetElasticSearchAclInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("acls")]
+        private InputList<Inputs.GetElasticSearchAclAclInputArgs>? _acls;
+        public InputList<Inputs.GetElasticSearchAclAclInputArgs> Acls
+        {
+            get => _acls ?? (_acls = new InputList<Inputs.GetElasticSearchAclAclInputArgs>());
+            set => _acls = value;
+        }
+
+        /// <summary>
+        /// enables or disables Elasticsearch ACLs.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+        /// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+        /// these APIs as long as all operations only target indexes they have been granted access to.
+        /// </summary>
+        [Input("extendedAcl")]
+        public Input<bool>? ExtendedAcl { get; set; }
+
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the ACL belongs to. 
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        public GetElasticSearchAclInvokeArgs()
         {
         }
     }

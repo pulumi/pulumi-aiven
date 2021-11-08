@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,6 +43,38 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetProjectUserResult> InvokeAsync(GetProjectUserArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectUserResult>("aiven:index/getProjectUser:getProjectUser", args ?? new GetProjectUserArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Project User Data Source
+        /// 
+        /// The Project User data source provides information about the existing Aiven Project User.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mytestuser = Output.Create(Aiven.GetProjectUser.InvokeAsync(new Aiven.GetProjectUserArgs
+        ///         {
+        ///             Project = aiven_project.Myproject.Project,
+        ///             Email = "john.doe@example.com",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetProjectUserResult> Invoke(GetProjectUserInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProjectUserResult>("aiven:index/getProjectUser:getProjectUser", args ?? new GetProjectUserInvokeArgs(), options.WithVersion());
     }
 
 
@@ -75,6 +108,40 @@ namespace Pulumi.Aiven
         public string Project { get; set; } = null!;
 
         public GetProjectUserArgs()
+        {
+        }
+    }
+
+    public sealed class GetProjectUserInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// is a computed property tells whether the user has accepted the request to join
+        /// the project; adding user to a project sends an invitation to the target user and the
+        /// actual membership is only created once the user accepts the invitation. This property
+        /// cannot be set, only read.
+        /// </summary>
+        [Input("accepted")]
+        public Input<bool>? Accepted { get; set; }
+
+        /// <summary>
+        /// identifies the email address of the user.
+        /// </summary>
+        [Input("email", required: true)]
+        public Input<string> Email { get; set; } = null!;
+
+        /// <summary>
+        /// (Required) defines the access level the user has to the project.
+        /// </summary>
+        [Input("memberType")]
+        public Input<string>? MemberType { get; set; }
+
+        /// <summary>
+        /// defines the project the user is a member of.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        public GetProjectUserInvokeArgs()
         {
         }
     }

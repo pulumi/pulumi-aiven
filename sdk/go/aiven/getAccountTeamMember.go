@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,4 +56,89 @@ type LookupAccountTeamMemberResult struct {
 	InvitedByUserEmail string `pulumi:"invitedByUserEmail"`
 	TeamId             string `pulumi:"teamId"`
 	UserEmail          string `pulumi:"userEmail"`
+}
+
+func LookupAccountTeamMemberOutput(ctx *pulumi.Context, args LookupAccountTeamMemberOutputArgs, opts ...pulumi.InvokeOption) LookupAccountTeamMemberResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAccountTeamMemberResult, error) {
+			args := v.(LookupAccountTeamMemberArgs)
+			r, err := LookupAccountTeamMember(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAccountTeamMemberResultOutput)
+}
+
+// A collection of arguments for invoking getAccountTeamMember.
+type LookupAccountTeamMemberOutputArgs struct {
+	// is a boolean flag that determines whether an invitation was accepted or not by the user.
+	// `false` value means that the invitation was sent to the user but not yet accepted.
+	// `true` means that the user accepted the invitation and is now a member of an account team.
+	Accepted pulumi.BoolPtrInput `pulumi:"accepted"`
+	// is a unique account id.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// time of creation.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// team invited by user email.
+	InvitedByUserEmail pulumi.StringPtrInput `pulumi:"invitedByUserEmail"`
+	// is an account team id.
+	TeamId pulumi.StringInput `pulumi:"teamId"`
+	// is a user email address that first will be invited, and after accepting an invitation,
+	// he or she becomes a member of a team.
+	UserEmail pulumi.StringInput `pulumi:"userEmail"`
+}
+
+func (LookupAccountTeamMemberOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountTeamMemberArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccountTeamMember.
+type LookupAccountTeamMemberResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAccountTeamMemberResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountTeamMemberResult)(nil)).Elem()
+}
+
+func (o LookupAccountTeamMemberResultOutput) ToLookupAccountTeamMemberResultOutput() LookupAccountTeamMemberResultOutput {
+	return o
+}
+
+func (o LookupAccountTeamMemberResultOutput) ToLookupAccountTeamMemberResultOutputWithContext(ctx context.Context) LookupAccountTeamMemberResultOutput {
+	return o
+}
+
+// is a boolean flag that determines whether an invitation was accepted or not by the user.
+// `false` value means that the invitation was sent to the user but not yet accepted.
+// `true` means that the user accepted the invitation and is now a member of an account team.
+func (o LookupAccountTeamMemberResultOutput) Accepted() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAccountTeamMemberResult) bool { return v.Accepted }).(pulumi.BoolOutput)
+}
+
+func (o LookupAccountTeamMemberResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// time of creation.
+func (o LookupAccountTeamMemberResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAccountTeamMemberResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// team invited by user email.
+func (o LookupAccountTeamMemberResultOutput) InvitedByUserEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.InvitedByUserEmail }).(pulumi.StringOutput)
+}
+
+func (o LookupAccountTeamMemberResultOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.TeamId }).(pulumi.StringOutput)
+}
+
+func (o LookupAccountTeamMemberResultOutput) UserEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.UserEmail }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAccountTeamMemberResultOutput{})
 }

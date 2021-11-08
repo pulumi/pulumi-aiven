@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetElasticSearchElasticsearchArgs : Pulumi.InvokeArgs
+    public sealed class GetElasticSearchElasticsearchInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// URI for Kibana frontend.
         /// </summary>
         [Input("kibanaUri", required: true)]
-        public string KibanaUri { get; set; } = null!;
+        public Input<string> KibanaUri { get; set; } = null!;
 
-        public GetElasticSearchElasticsearchArgs()
+        public GetElasticSearchElasticsearchInputArgs()
         {
         }
     }

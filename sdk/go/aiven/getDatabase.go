@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupDatabase(ctx, &aiven.LookupDatabaseArgs{
+// 		_, err := aiven.LookupDatabase(ctx, &GetDatabaseArgs{
 // 			Project:      aiven_project.Myproject.Project,
 // 			ServiceName:  aiven_service.Myservice.Service_name,
 // 			DatabaseName: "<DATABASE_NAME>",
@@ -71,4 +74,82 @@ type LookupDatabaseResult struct {
 	Project               string  `pulumi:"project"`
 	ServiceName           string  `pulumi:"serviceName"`
 	TerminationProtection *bool   `pulumi:"terminationProtection"`
+}
+
+func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDatabaseResult, error) {
+			args := v.(LookupDatabaseArgs)
+			r, err := LookupDatabase(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDatabaseResultOutput)
+}
+
+// A collection of arguments for invoking getDatabase.
+type LookupDatabaseOutputArgs struct {
+	// is the actual name of the database.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+	LcCollate pulumi.StringPtrInput `pulumi:"lcCollate"`
+	// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+	LcCtype pulumi.StringPtrInput `pulumi:"lcCtype"`
+	// and `serviceName` - (Required) define the project and service the database belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	Project               pulumi.StringInput  `pulumi:"project"`
+	ServiceName           pulumi.StringInput  `pulumi:"serviceName"`
+	TerminationProtection pulumi.BoolPtrInput `pulumi:"terminationProtection"`
+}
+
+func (LookupDatabaseOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatabaseArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDatabase.
+type LookupDatabaseResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDatabaseResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatabaseResult)(nil)).Elem()
+}
+
+func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutput() LookupDatabaseResultOutput {
+	return o
+}
+
+func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutputWithContext(ctx context.Context) LookupDatabaseResultOutput {
+	return o
+}
+
+func (o LookupDatabaseResultOutput) DatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.DatabaseName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDatabaseResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+func (o LookupDatabaseResultOutput) LcCollate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) *string { return v.LcCollate }).(pulumi.StringPtrOutput)
+}
+
+// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+func (o LookupDatabaseResultOutput) LcCtype() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) *string { return v.LcCtype }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupDatabaseResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseResultOutput) TerminationProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) *bool { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDatabaseResultOutput{})
 }

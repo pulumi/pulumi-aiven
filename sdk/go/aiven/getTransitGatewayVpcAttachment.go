@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupTransitGatewayVpcAttachment(ctx, &aiven.LookupTransitGatewayVpcAttachmentArgs{
+// 		_, err := aiven.LookupTransitGatewayVpcAttachment(ctx, &GetTransitGatewayVpcAttachmentArgs{
 // 			VpcId:            aiven_project_vpc.Bar.Id,
 // 			PeerCloudAccount: "<PEER_ACCOUNT_ID>",
 // 			PeerVpc:          "google-project1",
@@ -76,4 +79,92 @@ type LookupTransitGatewayVpcAttachmentResult struct {
 	// List of private IPv4 ranges to route through the peering connection.
 	UserPeerNetworkCidrs []string `pulumi:"userPeerNetworkCidrs"`
 	VpcId                string   `pulumi:"vpcId"`
+}
+
+func LookupTransitGatewayVpcAttachmentOutput(ctx *pulumi.Context, args LookupTransitGatewayVpcAttachmentOutputArgs, opts ...pulumi.InvokeOption) LookupTransitGatewayVpcAttachmentResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTransitGatewayVpcAttachmentResult, error) {
+			args := v.(LookupTransitGatewayVpcAttachmentArgs)
+			r, err := LookupTransitGatewayVpcAttachment(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTransitGatewayVpcAttachmentResultOutput)
+}
+
+// A collection of arguments for invoking getTransitGatewayVpcAttachment.
+type LookupTransitGatewayVpcAttachmentOutputArgs struct {
+	// AWS account ID of the peered VPC.
+	PeerCloudAccount pulumi.StringInput `pulumi:"peerCloudAccount"`
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC).
+	PeerRegion pulumi.StringPtrInput `pulumi:"peerRegion"`
+	// Transit gateway ID
+	PeerVpc             pulumi.StringInput    `pulumi:"peerVpc"`
+	PeeringConnectionId pulumi.StringPtrInput `pulumi:"peeringConnectionId"`
+	State               pulumi.StringPtrInput `pulumi:"state"`
+	StateInfo           pulumi.MapInput       `pulumi:"stateInfo"`
+	// List of private IPv4 ranges to route through the peering connection.
+	UserPeerNetworkCidrs pulumi.StringArrayInput `pulumi:"userPeerNetworkCidrs"`
+	// is the Aiven VPC the peering connection is associated with.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (LookupTransitGatewayVpcAttachmentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTransitGatewayVpcAttachmentArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTransitGatewayVpcAttachment.
+type LookupTransitGatewayVpcAttachmentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTransitGatewayVpcAttachmentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTransitGatewayVpcAttachmentResult)(nil)).Elem()
+}
+
+func (o LookupTransitGatewayVpcAttachmentResultOutput) ToLookupTransitGatewayVpcAttachmentResultOutput() LookupTransitGatewayVpcAttachmentResultOutput {
+	return o
+}
+
+func (o LookupTransitGatewayVpcAttachmentResultOutput) ToLookupTransitGatewayVpcAttachmentResultOutputWithContext(ctx context.Context) LookupTransitGatewayVpcAttachmentResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupTransitGatewayVpcAttachmentResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupTransitGatewayVpcAttachmentResultOutput) PeerCloudAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) string { return v.PeerCloudAccount }).(pulumi.StringOutput)
+}
+
+// AWS region of the peered VPC (if not in the same region as Aiven VPC).
+func (o LookupTransitGatewayVpcAttachmentResultOutput) PeerRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) *string { return v.PeerRegion }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupTransitGatewayVpcAttachmentResultOutput) PeerVpc() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) string { return v.PeerVpc }).(pulumi.StringOutput)
+}
+
+func (o LookupTransitGatewayVpcAttachmentResultOutput) PeeringConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) string { return v.PeeringConnectionId }).(pulumi.StringOutput)
+}
+
+func (o LookupTransitGatewayVpcAttachmentResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupTransitGatewayVpcAttachmentResultOutput) StateInfo() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) map[string]interface{} { return v.StateInfo }).(pulumi.MapOutput)
+}
+
+// List of private IPv4 ranges to route through the peering connection.
+func (o LookupTransitGatewayVpcAttachmentResultOutput) UserPeerNetworkCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) []string { return v.UserPeerNetworkCidrs }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupTransitGatewayVpcAttachmentResultOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTransitGatewayVpcAttachmentResultOutput{})
 }

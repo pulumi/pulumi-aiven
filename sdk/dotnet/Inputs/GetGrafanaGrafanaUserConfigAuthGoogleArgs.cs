@@ -10,23 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetGrafanaGrafanaUserConfigAuthGoogleArgs : Pulumi.InvokeArgs
+    public sealed class GetGrafanaGrafanaUserConfigAuthGoogleInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Automatically sign-up users on successful sign-in
         /// </summary>
         [Input("allowSignUp")]
-        public string? AllowSignUp { get; set; }
+        public Input<string>? AllowSignUp { get; set; }
 
         [Input("allowedDomains")]
-        private List<string>? _allowedDomains;
+        private InputList<string>? _allowedDomains;
 
         /// <summary>
         /// Allowed domain
         /// </summary>
-        public List<string> AllowedDomains
+        public InputList<string> AllowedDomains
         {
-            get => _allowedDomains ?? (_allowedDomains = new List<string>());
+            get => _allowedDomains ?? (_allowedDomains = new InputList<string>());
             set => _allowedDomains = value;
         }
 
@@ -34,15 +34,15 @@ namespace Pulumi.Aiven.Inputs
         /// Client ID from provider
         /// </summary>
         [Input("clientId")]
-        public string? ClientId { get; set; }
+        public Input<string>? ClientId { get; set; }
 
         /// <summary>
         /// Client secret from provider
         /// </summary>
         [Input("clientSecret")]
-        public string? ClientSecret { get; set; }
+        public Input<string>? ClientSecret { get; set; }
 
-        public GetGrafanaGrafanaUserConfigAuthGoogleArgs()
+        public GetGrafanaGrafanaUserConfigAuthGoogleInputArgs()
         {
         }
     }

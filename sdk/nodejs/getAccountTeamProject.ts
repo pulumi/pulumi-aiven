@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -65,4 +64,31 @@ export interface GetAccountTeamProjectResult {
      * `developer`, `operator` and `readOnly`.
      */
     readonly teamType?: string;
+}
+
+export function getAccountTeamProjectOutput(args: GetAccountTeamProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountTeamProjectResult> {
+    return pulumi.output(args).apply(a => getAccountTeamProject(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccountTeamProject.
+ */
+export interface GetAccountTeamProjectOutputArgs {
+    /**
+     * is a unique account id.
+     */
+    accountId: pulumi.Input<string>;
+    /**
+     * is a project name of already existing project.
+     */
+    projectName: pulumi.Input<string>;
+    /**
+     * is an account team id.
+     */
+    teamId: pulumi.Input<string>;
+    /**
+     * is an account team project type, can one of the following values: `admin`, 
+     * `developer`, `operator` and `readOnly`.
+     */
+    teamType?: pulumi.Input<string>;
 }

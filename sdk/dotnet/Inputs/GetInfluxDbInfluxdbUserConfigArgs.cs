@@ -10,29 +10,29 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetInfluxDbInfluxdbUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetInfluxDbInfluxdbUserConfigInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
         /// </summary>
         [Input("customDomain")]
-        public string? CustomDomain { get; set; }
+        public Input<string>? CustomDomain { get; set; }
 
         /// <summary>
         /// InfluxDB specific server provided values.
         /// </summary>
         [Input("influxdb")]
-        public Inputs.GetInfluxDbInfluxdbUserConfigInfluxdbArgs? Influxdb { get; set; }
+        public Input<Inputs.GetInfluxDbInfluxdbUserConfigInfluxdbInputArgs>? Influxdb { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
+        private InputList<string>? _ipFilters;
 
         /// <summary>
         /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
-        public List<string> IpFilters
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
@@ -40,44 +40,44 @@ namespace Pulumi.Aiven.Inputs
         /// Allow access to selected service ports from private networks
         /// </summary>
         [Input("privateAccess")]
-        public Inputs.GetInfluxDbInfluxdbUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetInfluxDbInfluxdbUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         /// <summary>
         /// Allow access to selected service components through Privatelink
         /// </summary>
         [Input("privatelinkAccess")]
-        public Inputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+        public Input<Inputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccessInputArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
         /// Name of another project to fork a service from. This has
         /// effect only when a new service is being created.
         /// </summary>
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
-        public Inputs.GetInfluxDbInfluxdbUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetInfluxDbInfluxdbUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         /// <summary>
         /// Name of the basebackup to restore in forked service
         /// </summary>
         [Input("recoveryBasebackupName")]
-        public string? RecoveryBasebackupName { get; set; }
+        public Input<string>? RecoveryBasebackupName { get; set; }
 
         /// <summary>
         /// Name of another service to fork from. This has effect 
         /// only when a new service is being created.
         /// </summary>
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetInfluxDbInfluxdbUserConfigArgs()
+        public GetInfluxDbInfluxdbUserConfigInputArgs()
         {
         }
     }

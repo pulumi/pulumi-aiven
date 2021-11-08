@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -87,4 +86,32 @@ export interface GetKafkaSchemaConfigurationResult {
     readonly serviceName: string;
     readonly subjectName?: string;
     readonly version: number;
+}
+
+export function getKafkaSchemaConfigurationOutput(args: GetKafkaSchemaConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaConfigurationResult> {
+    return pulumi.output(args).apply(a => getKafkaSchemaConfiguration(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKafkaSchemaConfiguration.
+ */
+export interface GetKafkaSchemaConfigurationOutputArgs {
+    /**
+     * is the Global Kafka Schema configuration compatibility level when defined 
+     * for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+     * compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
+     * resource. If the compatibility level not specified for the individual subject by default,
+     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+     */
+    compatibilityLevel?: pulumi.Input<string>;
+    /**
+     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     */
+    project: pulumi.Input<string>;
+    schema?: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
+    subjectName?: pulumi.Input<string>;
+    version?: pulumi.Input<number>;
 }

@@ -256,7 +256,7 @@ type AccountAuthenticationArrayInput interface {
 type AccountAuthenticationArray []AccountAuthenticationInput
 
 func (AccountAuthenticationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccountAuthentication)(nil))
+	return reflect.TypeOf((*[]*AccountAuthentication)(nil)).Elem()
 }
 
 func (i AccountAuthenticationArray) ToAccountAuthenticationArrayOutput() AccountAuthenticationArrayOutput {
@@ -281,7 +281,7 @@ type AccountAuthenticationMapInput interface {
 type AccountAuthenticationMap map[string]AccountAuthenticationInput
 
 func (AccountAuthenticationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccountAuthentication)(nil))
+	return reflect.TypeOf((*map[string]*AccountAuthentication)(nil)).Elem()
 }
 
 func (i AccountAuthenticationMap) ToAccountAuthenticationMapOutput() AccountAuthenticationMapOutput {
@@ -292,9 +292,7 @@ func (i AccountAuthenticationMap) ToAccountAuthenticationMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationMapOutput)
 }
 
-type AccountAuthenticationOutput struct {
-	*pulumi.OutputState
-}
+type AccountAuthenticationOutput struct{ *pulumi.OutputState }
 
 func (AccountAuthenticationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccountAuthentication)(nil))
@@ -313,14 +311,12 @@ func (o AccountAuthenticationOutput) ToAccountAuthenticationPtrOutput() AccountA
 }
 
 func (o AccountAuthenticationOutput) ToAccountAuthenticationPtrOutputWithContext(ctx context.Context) AccountAuthenticationPtrOutput {
-	return o.ApplyT(func(v AccountAuthentication) *AccountAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountAuthentication) *AccountAuthentication {
 		return &v
 	}).(AccountAuthenticationPtrOutput)
 }
 
-type AccountAuthenticationPtrOutput struct {
-	*pulumi.OutputState
-}
+type AccountAuthenticationPtrOutput struct{ *pulumi.OutputState }
 
 func (AccountAuthenticationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccountAuthentication)(nil))
@@ -332,6 +328,16 @@ func (o AccountAuthenticationPtrOutput) ToAccountAuthenticationPtrOutput() Accou
 
 func (o AccountAuthenticationPtrOutput) ToAccountAuthenticationPtrOutputWithContext(ctx context.Context) AccountAuthenticationPtrOutput {
 	return o
+}
+
+func (o AccountAuthenticationPtrOutput) Elem() AccountAuthenticationOutput {
+	return o.ApplyT(func(v *AccountAuthentication) AccountAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret AccountAuthentication
+		return ret
+	}).(AccountAuthenticationOutput)
 }
 
 type AccountAuthenticationArrayOutput struct{ *pulumi.OutputState }
@@ -375,6 +381,10 @@ func (o AccountAuthenticationMapOutput) MapIndex(k pulumi.StringInput) AccountAu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationInput)(nil)).Elem(), &AccountAuthentication{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationPtrInput)(nil)).Elem(), &AccountAuthentication{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationArrayInput)(nil)).Elem(), AccountAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationMapInput)(nil)).Elem(), AccountAuthenticationMap{})
 	pulumi.RegisterOutputType(AccountAuthenticationOutput{})
 	pulumi.RegisterOutputType(AccountAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(AccountAuthenticationArrayOutput{})

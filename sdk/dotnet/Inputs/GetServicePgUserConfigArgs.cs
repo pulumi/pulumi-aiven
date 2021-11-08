@@ -10,86 +10,86 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServicePgUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePgUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("adminPassword")]
-        public string? AdminPassword { get; set; }
+        public Input<string>? AdminPassword { get; set; }
 
         [Input("adminUsername")]
-        public string? AdminUsername { get; set; }
+        public Input<string>? AdminUsername { get; set; }
 
         [Input("backupHour")]
-        public string? BackupHour { get; set; }
+        public Input<string>? BackupHour { get; set; }
 
         [Input("backupMinute")]
-        public string? BackupMinute { get; set; }
+        public Input<string>? BackupMinute { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
-        public List<string> IpFilters
+        private InputList<string>? _ipFilters;
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
         [Input("migration")]
-        public Inputs.GetServicePgUserConfigMigrationArgs? Migration { get; set; }
+        public Input<Inputs.GetServicePgUserConfigMigrationInputArgs>? Migration { get; set; }
 
         [Input("pg")]
-        public Inputs.GetServicePgUserConfigPgArgs? Pg { get; set; }
+        public Input<Inputs.GetServicePgUserConfigPgInputArgs>? Pg { get; set; }
 
         [Input("pgReadReplica")]
-        public string? PgReadReplica { get; set; }
+        public Input<string>? PgReadReplica { get; set; }
 
         [Input("pgServiceToForkFrom")]
-        public string? PgServiceToForkFrom { get; set; }
+        public Input<string>? PgServiceToForkFrom { get; set; }
 
         [Input("pgVersion")]
-        public string? PgVersion { get; set; }
+        public Input<string>? PgVersion { get; set; }
 
         [Input("pgbouncer")]
-        public Inputs.GetServicePgUserConfigPgbouncerArgs? Pgbouncer { get; set; }
+        public Input<Inputs.GetServicePgUserConfigPgbouncerInputArgs>? Pgbouncer { get; set; }
 
         [Input("pglookout")]
-        public Inputs.GetServicePgUserConfigPglookoutArgs? Pglookout { get; set; }
+        public Input<Inputs.GetServicePgUserConfigPglookoutInputArgs>? Pglookout { get; set; }
 
         [Input("privateAccess")]
-        public Inputs.GetServicePgUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetServicePgUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         [Input("privatelinkAccess")]
-        public Inputs.GetServicePgUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+        public Input<Inputs.GetServicePgUserConfigPrivatelinkAccessInputArgs>? PrivatelinkAccess { get; set; }
 
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         [Input("publicAccess")]
-        public Inputs.GetServicePgUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetServicePgUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         [Input("recoveryTargetTime")]
-        public string? RecoveryTargetTime { get; set; }
+        public Input<string>? RecoveryTargetTime { get; set; }
 
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("sharedBuffersPercentage")]
-        public string? SharedBuffersPercentage { get; set; }
+        public Input<string>? SharedBuffersPercentage { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
         [Input("synchronousReplication")]
-        public string? SynchronousReplication { get; set; }
+        public Input<string>? SynchronousReplication { get; set; }
 
         [Input("timescaledb")]
-        public Inputs.GetServicePgUserConfigTimescaledbArgs? Timescaledb { get; set; }
+        public Input<Inputs.GetServicePgUserConfigTimescaledbInputArgs>? Timescaledb { get; set; }
 
         [Input("variant")]
-        public string? Variant { get; set; }
+        public Input<string>? Variant { get; set; }
 
         [Input("workMem")]
-        public string? WorkMem { get; set; }
+        public Input<string>? WorkMem { get; set; }
 
-        public GetServicePgUserConfigArgs()
+        public GetServicePgUserConfigInputArgs()
         {
         }
     }

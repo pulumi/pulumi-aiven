@@ -10,33 +10,33 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetM3DbM3dbUserConfigNamespaceArgs : Pulumi.InvokeArgs
+    public sealed class GetM3DbM3dbUserConfigNamespaceInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the namespace
         /// </summary>
         [Input("name")]
-        public string? Name { get; set; }
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Namespace options
         /// </summary>
         [Input("options")]
-        public Inputs.GetM3DbM3dbUserConfigNamespaceOptionsArgs? Options { get; set; }
+        public Input<Inputs.GetM3DbM3dbUserConfigNamespaceOptionsInputArgs>? Options { get; set; }
 
         /// <summary>
         /// The resolution for an aggregated namespace
         /// </summary>
         [Input("resolution")]
-        public string? Resolution { get; set; }
+        public Input<string>? Resolution { get; set; }
 
         /// <summary>
         /// The type of aggregation (aggregated/unaggregated)
         /// </summary>
         [Input("type")]
-        public string? Type { get; set; }
+        public Input<string>? Type { get; set; }
 
-        public GetM3DbM3dbUserConfigNamespaceArgs()
+        public GetM3DbM3dbUserConfigNamespaceInputArgs()
         {
         }
     }

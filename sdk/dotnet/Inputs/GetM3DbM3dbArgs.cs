@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetM3DbM3dbArgs : Pulumi.InvokeArgs
+    public sealed class GetM3DbM3dbInputArgs : Pulumi.ResourceArgs
     {
-        public GetM3DbM3dbArgs()
+        public GetM3DbM3dbInputArgs()
         {
         }
     }

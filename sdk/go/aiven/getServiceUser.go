@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupServiceUser(ctx, &aiven.LookupServiceUserArgs{
+// 		_, err := aiven.LookupServiceUser(ctx, &GetServiceUserArgs{
 // 			Project:     aiven_project.Myproject.Project,
 // 			ServiceName: aiven_service.Myservice.Service_name,
 // 			Username:    "<USERNAME>",
@@ -95,4 +98,122 @@ type LookupServiceUserResult struct {
 	// tells whether the user is primary account or regular account.
 	Type     string `pulumi:"type"`
 	Username string `pulumi:"username"`
+}
+
+func LookupServiceUserOutput(ctx *pulumi.Context, args LookupServiceUserOutputArgs, opts ...pulumi.InvokeOption) LookupServiceUserResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupServiceUserResult, error) {
+			args := v.(LookupServiceUserArgs)
+			r, err := LookupServiceUser(ctx, &args, opts...)
+			return *r, err
+		}).(LookupServiceUserResultOutput)
+}
+
+// A collection of arguments for invoking getServiceUser.
+type LookupServiceUserOutputArgs struct {
+	// is the access certificate of the user (not applicable for all services).
+	AccessCert pulumi.StringPtrInput `pulumi:"accessCert"`
+	// is the access key of the user (not applicable for all services).
+	AccessKey      pulumi.StringPtrInput `pulumi:"accessKey"`
+	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
+	// is the password of the user (not applicable for all services).
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
+	// using reference as shown above to set up dependencies correctly.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Redis specific field, defines command category rules.
+	RedisAclCategories pulumi.StringArrayInput `pulumi:"redisAclCategories"`
+	RedisAclChannels   pulumi.StringArrayInput `pulumi:"redisAclChannels"`
+	// Redis specific field, defines rules for individual commands.
+	RedisAclCommands pulumi.StringArrayInput `pulumi:"redisAclCommands"`
+	// Redis specific field, defines key access rules.
+	RedisAclKeys pulumi.StringArrayInput `pulumi:"redisAclKeys"`
+	ServiceName  pulumi.StringInput      `pulumi:"serviceName"`
+	// tells whether the user is primary account or regular account.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// is the actual name of the user account.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (LookupServiceUserOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceUserArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getServiceUser.
+type LookupServiceUserResultOutput struct{ *pulumi.OutputState }
+
+func (LookupServiceUserResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceUserResult)(nil)).Elem()
+}
+
+func (o LookupServiceUserResultOutput) ToLookupServiceUserResultOutput() LookupServiceUserResultOutput {
+	return o
+}
+
+func (o LookupServiceUserResultOutput) ToLookupServiceUserResultOutputWithContext(ctx context.Context) LookupServiceUserResultOutput {
+	return o
+}
+
+// is the access certificate of the user (not applicable for all services).
+func (o LookupServiceUserResultOutput) AccessCert() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceUserResult) string { return v.AccessCert }).(pulumi.StringOutput)
+}
+
+// is the access key of the user (not applicable for all services).
+func (o LookupServiceUserResultOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceUserResult) string { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceUserResultOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceUserResult) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupServiceUserResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// is the password of the user (not applicable for all services).
+func (o LookupServiceUserResultOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceUserResult) string { return v.Password }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceUserResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceUserResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Redis specific field, defines command category rules.
+func (o LookupServiceUserResultOutput) RedisAclCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServiceUserResult) []string { return v.RedisAclCategories }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupServiceUserResultOutput) RedisAclChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServiceUserResult) []string { return v.RedisAclChannels }).(pulumi.StringArrayOutput)
+}
+
+// Redis specific field, defines rules for individual commands.
+func (o LookupServiceUserResultOutput) RedisAclCommands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServiceUserResult) []string { return v.RedisAclCommands }).(pulumi.StringArrayOutput)
+}
+
+// Redis specific field, defines key access rules.
+func (o LookupServiceUserResultOutput) RedisAclKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServiceUserResult) []string { return v.RedisAclKeys }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupServiceUserResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// tells whether the user is primary account or regular account.
+func (o LookupServiceUserResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceUserResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceUserResultOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceUserResult) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupServiceUserResultOutput{})
 }

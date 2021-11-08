@@ -10,43 +10,43 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetOpenSearchOpensearchUserConfigOpensearchArgs : Pulumi.InvokeArgs
+    public sealed class GetOpenSearchOpensearchUserConfigOpensearchInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Explicitly allow or block automatic creation of indices. Defaults to true
         /// </summary>
         [Input("actionAutoCreateIndexEnabled")]
-        public string? ActionAutoCreateIndexEnabled { get; set; }
+        public Input<string>? ActionAutoCreateIndexEnabled { get; set; }
 
         /// <summary>
         /// Require explicit index names when deleting
         /// </summary>
         [Input("actionDestructiveRequiresName")]
-        public string? ActionDestructiveRequiresName { get; set; }
+        public Input<string>? ActionDestructiveRequiresName { get; set; }
 
         /// <summary>
         /// Controls the number of shards allowed in the cluster per data node
         /// </summary>
         [Input("clusterMaxShardsPerNode")]
-        public string? ClusterMaxShardsPerNode { get; set; }
+        public Input<string>? ClusterMaxShardsPerNode { get; set; }
 
         /// <summary>
         /// Maximum content length for HTTP requests to the Opensearch HTTP API, in bytes.
         /// </summary>
         [Input("httpMaxContentLength")]
-        public string? HttpMaxContentLength { get; set; }
+        public Input<string>? HttpMaxContentLength { get; set; }
 
         /// <summary>
         /// The max size of allowed headers, in bytes.
         /// </summary>
         [Input("httpMaxHeaderSize")]
-        public string? HttpMaxHeaderSize { get; set; }
+        public Input<string>? HttpMaxHeaderSize { get; set; }
 
         /// <summary>
         /// The max length of an HTTP URL, in bytes.
         /// </summary>
         [Input("httpMaxInitialLineLength")]
-        public string? HttpMaxInitialLineLength { get; set; }
+        public Input<string>? HttpMaxInitialLineLength { get; set; }
 
         /// <summary>
         /// Relative amount. Maximum amount of heap memory used for field data cache.
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven.Inputs
         /// much memory used for field data cache will decrease amount of heap available for other operations.
         /// </summary>
         [Input("indicesFielddataCacheSize")]
-        public string? IndicesFielddataCacheSize { get; set; }
+        public Input<string>? IndicesFielddataCacheSize { get; set; }
 
         /// <summary>
         /// Percentage value. Default is 10%. Total amount of heap used for indexing
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Inputs
         /// high value will increase indexing performance but causes performance issues for query performance.
         /// </summary>
         [Input("indicesMemoryIndexBufferSize")]
-        public string? IndicesMemoryIndexBufferSize { get; set; }
+        public Input<string>? IndicesMemoryIndexBufferSize { get; set; }
 
         /// <summary>
         /// Percentage value. Default is 10%. Maximum amount of heap used for query cache.
@@ -70,7 +70,7 @@ namespace Pulumi.Aiven.Inputs
         /// operations; too high value will cause issues with other Opensearch functionality.
         /// </summary>
         [Input("indicesQueriesCacheSize")]
-        public string? IndicesQueriesCacheSize { get; set; }
+        public Input<string>? IndicesQueriesCacheSize { get; set; }
 
         /// <summary>
         /// Maximum number of clauses Lucene BooleanQuery can have. The default
@@ -78,18 +78,18 @@ namespace Pulumi.Aiven.Inputs
         /// first before increasing this value.
         /// </summary>
         [Input("indicesQueryBoolMaxClauseCount")]
-        public string? IndicesQueryBoolMaxClauseCount { get; set; }
+        public Input<string>? IndicesQueryBoolMaxClauseCount { get; set; }
 
         [Input("reindexRemoteWhitelists")]
-        private List<string>? _reindexRemoteWhitelists;
+        private InputList<string>? _reindexRemoteWhitelists;
 
         /// <summary>
         /// Whitelisted addresses for reindexing. Changing this value will cause all
         /// Opensearch instances to restart.
         /// </summary>
-        public List<string> ReindexRemoteWhitelists
+        public InputList<string> ReindexRemoteWhitelists
         {
-            get => _reindexRemoteWhitelists ?? (_reindexRemoteWhitelists = new List<string>());
+            get => _reindexRemoteWhitelists ?? (_reindexRemoteWhitelists = new InputList<string>());
             set => _reindexRemoteWhitelists = value;
         }
 
@@ -98,13 +98,13 @@ namespace Pulumi.Aiven.Inputs
         /// value is used when this is not defined.
         /// </summary>
         [Input("searchMaxBuckets")]
-        public string? SearchMaxBuckets { get; set; }
+        public Input<string>? SearchMaxBuckets { get; set; }
 
         /// <summary>
         /// Size for the thread pool queue. See documentation for exact details.
         /// </summary>
         [Input("threadPoolAnalyzeQueueSize")]
-        public string? ThreadPoolAnalyzeQueueSize { get; set; }
+        public Input<string>? ThreadPoolAnalyzeQueueSize { get; set; }
 
         /// <summary>
         /// Size for the thread pool. See documentation for exact details. Do note this may
@@ -112,7 +112,7 @@ namespace Pulumi.Aiven.Inputs
         /// value.
         /// </summary>
         [Input("threadPoolAnalyzeSize")]
-        public string? ThreadPoolAnalyzeSize { get; set; }
+        public Input<string>? ThreadPoolAnalyzeSize { get; set; }
 
         /// <summary>
         /// Size for the thread pool. See documentation for exact details. Do note this
@@ -120,20 +120,20 @@ namespace Pulumi.Aiven.Inputs
         /// value.
         /// </summary>
         [Input("threadPoolForceMergeSize")]
-        public string? ThreadPoolForceMergeSize { get; set; }
+        public Input<string>? ThreadPoolForceMergeSize { get; set; }
 
         /// <summary>
         /// Size for the thread pool queue. See documentation for exact details.
         /// </summary>
         [Input("threadPoolGetQueueSize")]
-        public string? ThreadPoolGetQueueSize { get; set; }
+        public Input<string>? ThreadPoolGetQueueSize { get; set; }
 
         /// <summary>
         /// Size for the thread pool. See documentation for exact details. Do note this may have
         /// maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         /// </summary>
         [Input("threadPoolGetSize")]
-        public string? ThreadPoolGetSize { get; set; }
+        public Input<string>? ThreadPoolGetSize { get; set; }
 
         /// <summary>
         /// Size for the thread pool. See documentation for exact details. Do note this may
@@ -141,13 +141,13 @@ namespace Pulumi.Aiven.Inputs
         /// value.
         /// </summary>
         [Input("threadPoolIndexSize")]
-        public string? ThreadPoolIndexSize { get; set; }
+        public Input<string>? ThreadPoolIndexSize { get; set; }
 
         /// <summary>
         /// Size for the thread pool queue. See documentation for exact details.
         /// </summary>
         [Input("threadPoolSearchQueueSize")]
-        public string? ThreadPoolSearchQueueSize { get; set; }
+        public Input<string>? ThreadPoolSearchQueueSize { get; set; }
 
         /// <summary>
         /// Size for the thread pool. See documentation for exact details. Do note this may
@@ -155,14 +155,14 @@ namespace Pulumi.Aiven.Inputs
         /// value.
         /// </summary>
         [Input("threadPoolSearchSize")]
-        public string? ThreadPoolSearchSize { get; set; }
+        public Input<string>? ThreadPoolSearchSize { get; set; }
 
         /// <summary>
         /// Size for the thread pool queue. See documentation for exact
         /// details.
         /// </summary>
         [Input("threadPoolSearchThrottledQueueSize")]
-        public string? ThreadPoolSearchThrottledQueueSize { get; set; }
+        public Input<string>? ThreadPoolSearchThrottledQueueSize { get; set; }
 
         /// <summary>
         /// Size for the thread pool. See documentation for exact details. Do note
@@ -170,13 +170,13 @@ namespace Pulumi.Aiven.Inputs
         /// maximum value.
         /// </summary>
         [Input("threadPoolSearchThrottledSize")]
-        public string? ThreadPoolSearchThrottledSize { get; set; }
+        public Input<string>? ThreadPoolSearchThrottledSize { get; set; }
 
         /// <summary>
         /// Size for the thread pool queue. See documentation for exact details.
         /// </summary>
         [Input("threadPoolWriteQueueSize")]
-        public string? ThreadPoolWriteQueueSize { get; set; }
+        public Input<string>? ThreadPoolWriteQueueSize { get; set; }
 
         /// <summary>
         /// Size for the thread pool. See documentation for exact details. Do note this may
@@ -184,9 +184,9 @@ namespace Pulumi.Aiven.Inputs
         /// value.
         /// </summary>
         [Input("threadPoolWriteSize")]
-        public string? ThreadPoolWriteSize { get; set; }
+        public Input<string>? ThreadPoolWriteSize { get; set; }
 
-        public GetOpenSearchOpensearchUserConfigOpensearchArgs()
+        public GetOpenSearchOpensearchUserConfigOpensearchInputArgs()
         {
         }
     }

@@ -10,44 +10,44 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceInfluxdbUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceInfluxdbUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("customDomain")]
-        public string? CustomDomain { get; set; }
+        public Input<string>? CustomDomain { get; set; }
 
         [Input("influxdb")]
-        public Inputs.GetServiceInfluxdbUserConfigInfluxdbArgs? Influxdb { get; set; }
+        public Input<Inputs.GetServiceInfluxdbUserConfigInfluxdbInputArgs>? Influxdb { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
-        public List<string> IpFilters
+        private InputList<string>? _ipFilters;
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
         [Input("privateAccess")]
-        public Inputs.GetServiceInfluxdbUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetServiceInfluxdbUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         [Input("privatelinkAccess")]
-        public Inputs.GetServiceInfluxdbUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+        public Input<Inputs.GetServiceInfluxdbUserConfigPrivatelinkAccessInputArgs>? PrivatelinkAccess { get; set; }
 
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         [Input("publicAccess")]
-        public Inputs.GetServiceInfluxdbUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetServiceInfluxdbUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         [Input("recoveryBasebackupName")]
-        public string? RecoveryBasebackupName { get; set; }
+        public Input<string>? RecoveryBasebackupName { get; set; }
 
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetServiceInfluxdbUserConfigArgs()
+        public GetServiceInfluxdbUserConfigInputArgs()
         {
         }
     }

@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationMirrormakerUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationMirrormakerUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("mirrormakerWhitelist")]
-        public string? MirrormakerWhitelist { get; set; }
+        public Input<string>? MirrormakerWhitelist { get; set; }
 
-        public GetServiceIntegrationMirrormakerUserConfigArgs()
+        public GetServiceIntegrationMirrormakerUserConfigInputArgs()
         {
         }
     }

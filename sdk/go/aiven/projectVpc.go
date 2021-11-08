@@ -183,7 +183,7 @@ type ProjectVpcArrayInput interface {
 type ProjectVpcArray []ProjectVpcInput
 
 func (ProjectVpcArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ProjectVpc)(nil))
+	return reflect.TypeOf((*[]*ProjectVpc)(nil)).Elem()
 }
 
 func (i ProjectVpcArray) ToProjectVpcArrayOutput() ProjectVpcArrayOutput {
@@ -208,7 +208,7 @@ type ProjectVpcMapInput interface {
 type ProjectVpcMap map[string]ProjectVpcInput
 
 func (ProjectVpcMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ProjectVpc)(nil))
+	return reflect.TypeOf((*map[string]*ProjectVpc)(nil)).Elem()
 }
 
 func (i ProjectVpcMap) ToProjectVpcMapOutput() ProjectVpcMapOutput {
@@ -219,9 +219,7 @@ func (i ProjectVpcMap) ToProjectVpcMapOutputWithContext(ctx context.Context) Pro
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcMapOutput)
 }
 
-type ProjectVpcOutput struct {
-	*pulumi.OutputState
-}
+type ProjectVpcOutput struct{ *pulumi.OutputState }
 
 func (ProjectVpcOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectVpc)(nil))
@@ -240,14 +238,12 @@ func (o ProjectVpcOutput) ToProjectVpcPtrOutput() ProjectVpcPtrOutput {
 }
 
 func (o ProjectVpcOutput) ToProjectVpcPtrOutputWithContext(ctx context.Context) ProjectVpcPtrOutput {
-	return o.ApplyT(func(v ProjectVpc) *ProjectVpc {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectVpc) *ProjectVpc {
 		return &v
 	}).(ProjectVpcPtrOutput)
 }
 
-type ProjectVpcPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectVpcPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectVpcPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectVpc)(nil))
@@ -259,6 +255,16 @@ func (o ProjectVpcPtrOutput) ToProjectVpcPtrOutput() ProjectVpcPtrOutput {
 
 func (o ProjectVpcPtrOutput) ToProjectVpcPtrOutputWithContext(ctx context.Context) ProjectVpcPtrOutput {
 	return o
+}
+
+func (o ProjectVpcPtrOutput) Elem() ProjectVpcOutput {
+	return o.ApplyT(func(v *ProjectVpc) ProjectVpc {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectVpc
+		return ret
+	}).(ProjectVpcOutput)
 }
 
 type ProjectVpcArrayOutput struct{ *pulumi.OutputState }
@@ -302,6 +308,10 @@ func (o ProjectVpcMapOutput) MapIndex(k pulumi.StringInput) ProjectVpcOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectVpcInput)(nil)).Elem(), &ProjectVpc{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectVpcPtrInput)(nil)).Elem(), &ProjectVpc{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectVpcArrayInput)(nil)).Elem(), ProjectVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectVpcMapInput)(nil)).Elem(), ProjectVpcMap{})
 	pulumi.RegisterOutputType(ProjectVpcOutput{})
 	pulumi.RegisterOutputType(ProjectVpcPtrOutput{})
 	pulumi.RegisterOutputType(ProjectVpcArrayOutput{})

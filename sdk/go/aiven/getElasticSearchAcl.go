@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupElasticSearchAcl(ctx, &aiven.LookupElasticSearchAclArgs{
+// 		_, err := aiven.LookupElasticSearchAcl(ctx, &GetElasticSearchAclArgs{
 // 			Project:     aiven_project.Es - project.Project,
 // 			ServiceName: aiven_elasticsearch.Es.Service_name,
 // 		}, nil)
@@ -72,4 +75,80 @@ type LookupElasticSearchAclResult struct {
 	Id          string `pulumi:"id"`
 	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
+}
+
+func LookupElasticSearchAclOutput(ctx *pulumi.Context, args LookupElasticSearchAclOutputArgs, opts ...pulumi.InvokeOption) LookupElasticSearchAclResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupElasticSearchAclResult, error) {
+			args := v.(LookupElasticSearchAclArgs)
+			r, err := LookupElasticSearchAcl(ctx, &args, opts...)
+			return *r, err
+		}).(LookupElasticSearchAclResultOutput)
+}
+
+// A collection of arguments for invoking getElasticSearchAcl.
+type LookupElasticSearchAclOutputArgs struct {
+	Acls GetElasticSearchAclAclArrayInput `pulumi:"acls"`
+	// enables or disables Elasticsearch ACLs.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
+	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+	// these APIs as long as all operations only target indexes they have been granted access to.
+	ExtendedAcl pulumi.BoolPtrInput `pulumi:"extendedAcl"`
+	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	Project     pulumi.StringInput `pulumi:"project"`
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (LookupElasticSearchAclOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupElasticSearchAclArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getElasticSearchAcl.
+type LookupElasticSearchAclResultOutput struct{ *pulumi.OutputState }
+
+func (LookupElasticSearchAclResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupElasticSearchAclResult)(nil)).Elem()
+}
+
+func (o LookupElasticSearchAclResultOutput) ToLookupElasticSearchAclResultOutput() LookupElasticSearchAclResultOutput {
+	return o
+}
+
+func (o LookupElasticSearchAclResultOutput) ToLookupElasticSearchAclResultOutputWithContext(ctx context.Context) LookupElasticSearchAclResultOutput {
+	return o
+}
+
+func (o LookupElasticSearchAclResultOutput) Acls() GetElasticSearchAclAclArrayOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclResult) []GetElasticSearchAclAcl { return v.Acls }).(GetElasticSearchAclAclArrayOutput)
+}
+
+// enables or disables Elasticsearch ACLs.
+func (o LookupElasticSearchAclResultOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
+// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+// these APIs as long as all operations only target indexes they have been granted access to.
+func (o LookupElasticSearchAclResultOutput) ExtendedAcl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclResult) *bool { return v.ExtendedAcl }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupElasticSearchAclResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupElasticSearchAclResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupElasticSearchAclResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupElasticSearchAclResultOutput{})
 }

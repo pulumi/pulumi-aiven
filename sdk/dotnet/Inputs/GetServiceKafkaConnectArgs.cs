@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceKafkaConnectArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceKafkaConnectInputArgs : Pulumi.ResourceArgs
     {
-        public GetServiceKafkaConnectArgs()
+        public GetServiceKafkaConnectInputArgs()
         {
         }
     }

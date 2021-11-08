@@ -10,20 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetElasticSearchAclAclArgs : Pulumi.InvokeArgs
+    public sealed class GetElasticSearchAclAclInputArgs : Pulumi.ResourceArgs
     {
         [Input("rules", required: true)]
-        private List<Inputs.GetElasticSearchAclAclRuleArgs>? _rules;
-        public List<Inputs.GetElasticSearchAclAclRuleArgs> Rules
+        private InputList<Inputs.GetElasticSearchAclAclRuleInputArgs>? _rules;
+        public InputList<Inputs.GetElasticSearchAclAclRuleInputArgs> Rules
         {
-            get => _rules ?? (_rules = new List<Inputs.GetElasticSearchAclAclRuleArgs>());
+            get => _rules ?? (_rules = new InputList<Inputs.GetElasticSearchAclAclRuleInputArgs>());
             set => _rules = value;
         }
 
         [Input("username", required: true)]
-        public string Username { get; set; } = null!;
+        public Input<string> Username { get; set; } = null!;
 
-        public GetElasticSearchAclAclArgs()
+        public GetElasticSearchAclAclInputArgs()
         {
         }
     }

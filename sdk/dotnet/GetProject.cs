@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -41,6 +42,37 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("aiven:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Project Data Source
+        /// 
+        /// The Project data source provides information about the existing Aiven Project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myproject = Output.Create(Aiven.GetProject.InvokeAsync(new Aiven.GetProjectArgs
+        ///         {
+        ///             Project = "&lt;PROJECT_NAME&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProjectResult>("aiven:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithVersion());
     }
 
 
@@ -164,6 +196,130 @@ namespace Pulumi.Aiven
         public string? VatId { get; set; }
 
         public GetProjectArgs()
+        {
+        }
+    }
+
+    public sealed class GetProjectInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// is an optional property to link a project to already an existing account by 
+        /// using account ID.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// is a computed property returning the amount of platform credits available to
+        /// the project. This could be your free trial or other promotional credits.
+        /// </summary>
+        [Input("availableCredits")]
+        public Input<string>? AvailableCredits { get; set; }
+
+        [Input("billingAddress")]
+        public Input<string>? BillingAddress { get; set; }
+
+        [Input("billingCurrency")]
+        public Input<string>? BillingCurrency { get; set; }
+
+        [Input("billingEmails")]
+        private InputList<string>? _billingEmails;
+        public InputList<string> BillingEmails
+        {
+            get => _billingEmails ?? (_billingEmails = new InputList<string>());
+            set => _billingEmails = value;
+        }
+
+        [Input("billingExtraText")]
+        public Input<string>? BillingExtraText { get; set; }
+
+        [Input("billingGroup")]
+        public Input<string>? BillingGroup { get; set; }
+
+        /// <summary>
+        /// is a computed property that can be used to read the CA certificate of the
+        /// project. This is required for configuring clients that connect to certain services like
+        /// Kafka. This value cannot be set, only read.
+        /// </summary>
+        [Input("caCert")]
+        public Input<string>? CaCert { get; set; }
+
+        /// <summary>
+        /// is either the full card UUID or the last 4 digits of the card. As the full
+        /// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+        /// the card. This can be omitted if `copy_from_project` is used to copy billing info from
+        /// another project.
+        /// </summary>
+        [Input("cardId")]
+        public Input<string>? CardId { get; set; }
+
+        /// <summary>
+        /// is the name of another project used to copy billing information and
+        /// some other project attributes like technical contacts from. This is mostly relevant when
+        /// an existing project has billing type set to invoice and that needs to be copied over to a
+        /// new project. (Setting billing is otherwise not allowed over the API.) This only has
+        /// effect when the project is created.
+        /// </summary>
+        [Input("copyFromProject")]
+        public Input<string>? CopyFromProject { get; set; }
+
+        [Input("country")]
+        public Input<string>? Country { get; set; }
+
+        [Input("countryCode")]
+        public Input<string>? CountryCode { get; set; }
+
+        /// <summary>
+        /// defines the default cloud provider and region where services are
+        /// hosted. This can be changed freely after the project is created. This will not affect existing
+        /// services.
+        /// </summary>
+        [Input("defaultCloud")]
+        public Input<string>? DefaultCloud { get; set; }
+
+        /// <summary>
+        /// is a computed property returning the current accumulated bill for this
+        /// project in the current billing period.
+        /// </summary>
+        [Input("estimatedBalance")]
+        public Input<string>? EstimatedBalance { get; set; }
+
+        /// <summary>
+        /// is a computed property returning the method of invoicing used for payments for
+        /// this project, e.g. "card".
+        /// </summary>
+        [Input("paymentMethod")]
+        public Input<string>? PaymentMethod { get; set; }
+
+        /// <summary>
+        /// defines the name of the project. Name must be globally unique (between all
+        /// Aiven customers) and cannot be changed later without destroying and re-creating the
+        /// project, including all sub-resources.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        [Input("technicalEmails")]
+        private InputList<string>? _technicalEmails;
+
+        /// <summary>
+        /// defines the email addresses that will receive alerts about
+        /// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+        /// this up-to-date to be aware of any potential issues with your project.
+        /// </summary>
+        public InputList<string> TechnicalEmails
+        {
+            get => _technicalEmails ?? (_technicalEmails = new InputList<string>());
+            set => _technicalEmails = value;
+        }
+
+        [Input("useSourceProjectBillingGroup")]
+        public Input<bool>? UseSourceProjectBillingGroup { get; set; }
+
+        [Input("vatId")]
+        public Input<string>? VatId { get; set; }
+
+        public GetProjectInvokeArgs()
         {
         }
     }

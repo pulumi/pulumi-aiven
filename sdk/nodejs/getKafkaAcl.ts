@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -83,4 +82,35 @@ export interface GetKafkaAclResult {
     readonly serviceName: string;
     readonly topic: string;
     readonly username: string;
+}
+
+export function getKafkaAclOutput(args: GetKafkaAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaAclResult> {
+    return pulumi.output(args).apply(a => getKafkaAcl(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKafkaAcl.
+ */
+export interface GetKafkaAclOutputArgs {
+    /**
+     * is the level of permission the matching users are given to the matching
+     * topics (admin, read, readwrite, write).
+     */
+    permission: pulumi.Input<string>;
+    /**
+     * and `serviceName` - (Required) define the project and service the ACL belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     * These properties cannot be changed once the service is created. Doing so will result in
+     * the topic being deleted and new one created instead.
+     */
+    project: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
+    /**
+     * is a topic name pattern the ACL entry matches to.
+     */
+    topic: pulumi.Input<string>;
+    /**
+     * is a username pattern the ACL entry matches to.
+     */
+    username: pulumi.Input<string>;
 }

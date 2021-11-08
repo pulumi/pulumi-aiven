@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceCassandraUserConfigCassandraArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceCassandraUserConfigCassandraInputArgs : Pulumi.ResourceArgs
     {
         [Input("batchSizeFailThresholdInKb")]
-        public string? BatchSizeFailThresholdInKb { get; set; }
+        public Input<string>? BatchSizeFailThresholdInKb { get; set; }
 
         [Input("batchSizeWarnThresholdInKb")]
-        public string? BatchSizeWarnThresholdInKb { get; set; }
+        public Input<string>? BatchSizeWarnThresholdInKb { get; set; }
 
-        public GetServiceCassandraUserConfigCassandraArgs()
+        public GetServiceCassandraUserConfigCassandraInputArgs()
         {
         }
     }

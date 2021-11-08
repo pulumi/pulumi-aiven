@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceGrafanaUserConfigExternalImageStorageArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceGrafanaUserConfigExternalImageStorageInputArgs : Pulumi.ResourceArgs
     {
         [Input("accessKey")]
-        public string? AccessKey { get; set; }
+        public Input<string>? AccessKey { get; set; }
 
         [Input("bucketUrl")]
-        public string? BucketUrl { get; set; }
+        public Input<string>? BucketUrl { get; set; }
 
         [Input("provider")]
-        public string? Provider { get; set; }
+        public Input<string>? Provider { get; set; }
 
         [Input("secretKey")]
-        public string? SecretKey { get; set; }
+        public Input<string>? SecretKey { get; set; }
 
-        public GetServiceGrafanaUserConfigExternalImageStorageArgs()
+        public GetServiceGrafanaUserConfigExternalImageStorageInputArgs()
         {
         }
     }

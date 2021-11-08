@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupOpenSearch(ctx, &aiven.LookupOpenSearchArgs{
+// 		_, err := aiven.LookupOpenSearch(ctx, &GetOpenSearchArgs{
 // 			Project:     data.Aiven_project.Pr1.Project,
 // 			ServiceName: "my-os1",
 // 		}, nil)
@@ -167,4 +170,218 @@ type LookupOpenSearchResult struct {
 	// topics but for services with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
+}
+
+func LookupOpenSearchOutput(ctx *pulumi.Context, args LookupOpenSearchOutputArgs, opts ...pulumi.InvokeOption) LookupOpenSearchResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupOpenSearchResult, error) {
+			args := v.(LookupOpenSearchArgs)
+			r, err := LookupOpenSearch(ctx, &args, opts...)
+			return *r, err
+		}).(LookupOpenSearchResultOutput)
+}
+
+// A collection of arguments for invoking getOpenSearch.
+type LookupOpenSearchOutputArgs struct {
+	// defines where the cloud provider and region where the service is hosted in. This can be changed freely
+	// after service is created. Changing the value will trigger a potentially lengthy migration process for the service.
+	// Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are
+	// documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	CloudName  pulumi.StringPtrInput            `pulumi:"cloudName"`
+	Components GetOpenSearchComponentArrayInput `pulumi:"components"`
+	// day of week when maintenance operations should be performed. On monday, tuesday, wednesday,
+	// etc.
+	MaintenanceWindowDow pulumi.StringPtrInput `pulumi:"maintenanceWindowDow"`
+	// time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	MaintenanceWindowTime pulumi.StringPtrInput `pulumi:"maintenanceWindowTime"`
+	// Allow clients to connect to opensearch from the public internet for service nodes that are in a
+	// project VPC or another type of private network.
+	Opensearch GetOpenSearchOpensearchPtrInput `pulumi:"opensearch"`
+	// defines Opensearch specific additional configuration options. The following configuration
+	// options available:
+	OpensearchUserConfig GetOpenSearchOpensearchUserConfigPtrInput `pulumi:"opensearchUserConfig"`
+	// defines what kind of computing resources are allocated for the service. It can be changed after creation,
+	// though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of
+	// disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies
+	// but naming is based on memory). The available options can be seem from
+	// the [Aiven pricing page](https://aiven.io/pricing).
+	Plan pulumi.StringPtrInput `pulumi:"plan"`
+	// identifies the project the service belongs to. To set up proper dependency between the project
+	// and the service, refer to the project as shown in the above example. Project cannot be changed later without
+	// destroying and re-creating the service.
+	Project pulumi.StringInput `pulumi:"project"`
+	// optionally specifies the VPC the service should run in. If the value is not set the service is not
+	// run inside a VPC. When set, the value should be given as a reference as shown above to set up dependencies correctly
+	// and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC
+	// after creation but doing so triggers migration to new servers so the operation can take significant amount of time to
+	// complete if the service has a lot of data.
+	ProjectVpcId pulumi.StringPtrInput `pulumi:"projectVpcId"`
+	// Opensearch hostname.
+	ServiceHost         pulumi.StringPtrInput                     `pulumi:"serviceHost"`
+	ServiceIntegrations GetOpenSearchServiceIntegrationArrayInput `pulumi:"serviceIntegrations"`
+	// specifies the actual name of the service. The name cannot be changed later without
+	// destroying and re-creating the service so name should be picked based on intended service usage rather than current
+	// attributes.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Password used for connecting to the Opensearch service, if applicable.
+	ServicePassword pulumi.StringPtrInput `pulumi:"servicePassword"`
+	// Opensearch port.
+	ServicePort pulumi.IntPtrInput    `pulumi:"servicePort"`
+	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
+	// URI for connecting to the Opensearch service.
+	ServiceUri pulumi.StringPtrInput `pulumi:"serviceUri"`
+	// Username used for connecting to the Opensearch service, if applicable.
+	ServiceUsername pulumi.StringPtrInput `pulumi:"serviceUsername"`
+	// Service state.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// prevents the service from being deleted. It is recommended to set this to `true` for all
+	// production services to prevent unintentional service deletion. This does not shield against deleting databases or
+	// topics but for services with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
+	TerminationProtection pulumi.BoolPtrInput `pulumi:"terminationProtection"`
+}
+
+func (LookupOpenSearchOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOpenSearchArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getOpenSearch.
+type LookupOpenSearchResultOutput struct{ *pulumi.OutputState }
+
+func (LookupOpenSearchResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOpenSearchResult)(nil)).Elem()
+}
+
+func (o LookupOpenSearchResultOutput) ToLookupOpenSearchResultOutput() LookupOpenSearchResultOutput {
+	return o
+}
+
+func (o LookupOpenSearchResultOutput) ToLookupOpenSearchResultOutputWithContext(ctx context.Context) LookupOpenSearchResultOutput {
+	return o
+}
+
+// defines where the cloud provider and region where the service is hosted in. This can be changed freely
+// after service is created. Changing the value will trigger a potentially lengthy migration process for the service.
+// Format is cloud provider name
+// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are
+// documented on each Cloud provider's own support articles,
+// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+func (o LookupOpenSearchResultOutput) CloudName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) *string { return v.CloudName }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupOpenSearchResultOutput) Components() GetOpenSearchComponentArrayOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) []GetOpenSearchComponent { return v.Components }).(GetOpenSearchComponentArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupOpenSearchResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// day of week when maintenance operations should be performed. On monday, tuesday, wednesday,
+// etc.
+func (o LookupOpenSearchResultOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) *string { return v.MaintenanceWindowDow }).(pulumi.StringPtrOutput)
+}
+
+// time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+func (o LookupOpenSearchResultOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) *string { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
+}
+
+// Allow clients to connect to opensearch from the public internet for service nodes that are in a
+// project VPC or another type of private network.
+func (o LookupOpenSearchResultOutput) Opensearch() GetOpenSearchOpensearchOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) GetOpenSearchOpensearch { return v.Opensearch }).(GetOpenSearchOpensearchOutput)
+}
+
+// defines Opensearch specific additional configuration options. The following configuration
+// options available:
+func (o LookupOpenSearchResultOutput) OpensearchUserConfig() GetOpenSearchOpensearchUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) *GetOpenSearchOpensearchUserConfig { return v.OpensearchUserConfig }).(GetOpenSearchOpensearchUserConfigPtrOutput)
+}
+
+// defines what kind of computing resources are allocated for the service. It can be changed after creation,
+// though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of
+// disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan
+// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+// (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies
+// but naming is based on memory). The available options can be seem from
+// the [Aiven pricing page](https://aiven.io/pricing).
+func (o LookupOpenSearchResultOutput) Plan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) *string { return v.Plan }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupOpenSearchResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// optionally specifies the VPC the service should run in. If the value is not set the service is not
+// run inside a VPC. When set, the value should be given as a reference as shown above to set up dependencies correctly
+// and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC
+// after creation but doing so triggers migration to new servers so the operation can take significant amount of time to
+// complete if the service has a lot of data.
+func (o LookupOpenSearchResultOutput) ProjectVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) *string { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+}
+
+// Opensearch hostname.
+func (o LookupOpenSearchResultOutput) ServiceHost() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) string { return v.ServiceHost }).(pulumi.StringOutput)
+}
+
+func (o LookupOpenSearchResultOutput) ServiceIntegrations() GetOpenSearchServiceIntegrationArrayOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) []GetOpenSearchServiceIntegration { return v.ServiceIntegrations }).(GetOpenSearchServiceIntegrationArrayOutput)
+}
+
+func (o LookupOpenSearchResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Password used for connecting to the Opensearch service, if applicable.
+func (o LookupOpenSearchResultOutput) ServicePassword() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) string { return v.ServicePassword }).(pulumi.StringOutput)
+}
+
+// Opensearch port.
+func (o LookupOpenSearchResultOutput) ServicePort() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) int { return v.ServicePort }).(pulumi.IntOutput)
+}
+
+func (o LookupOpenSearchResultOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// URI for connecting to the Opensearch service.
+func (o LookupOpenSearchResultOutput) ServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) string { return v.ServiceUri }).(pulumi.StringOutput)
+}
+
+// Username used for connecting to the Opensearch service, if applicable.
+func (o LookupOpenSearchResultOutput) ServiceUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) string { return v.ServiceUsername }).(pulumi.StringOutput)
+}
+
+// Service state.
+func (o LookupOpenSearchResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// prevents the service from being deleted. It is recommended to set this to `true` for all
+// production services to prevent unintentional service deletion. This does not shield against deleting databases or
+// topics but for services with backups much of the content can at least be restored from backup in case accidental
+// deletion is done.
+func (o LookupOpenSearchResultOutput) TerminationProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupOpenSearchResult) *bool { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupOpenSearchResultOutput{})
 }

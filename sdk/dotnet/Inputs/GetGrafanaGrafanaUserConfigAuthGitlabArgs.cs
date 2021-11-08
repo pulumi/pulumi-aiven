@@ -10,23 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetGrafanaGrafanaUserConfigAuthGitlabArgs : Pulumi.InvokeArgs
+    public sealed class GetGrafanaGrafanaUserConfigAuthGitlabInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Automatically sign-up users on successful sign-in
         /// </summary>
         [Input("allowSignUp")]
-        public string? AllowSignUp { get; set; }
+        public Input<string>? AllowSignUp { get; set; }
 
         [Input("allowedGroups")]
-        private List<string>? _allowedGroups;
+        private InputList<string>? _allowedGroups;
 
         /// <summary>
         /// Require users to belong to one of given groups
         /// </summary>
-        public List<string> AllowedGroups
+        public InputList<string> AllowedGroups
         {
-            get => _allowedGroups ?? (_allowedGroups = new List<string>());
+            get => _allowedGroups ?? (_allowedGroups = new InputList<string>());
             set => _allowedGroups = value;
         }
 
@@ -34,33 +34,33 @@ namespace Pulumi.Aiven.Inputs
         /// API URL. This only needs to be set when using self hosted GitLab
         /// </summary>
         [Input("apiUrl")]
-        public string? ApiUrl { get; set; }
+        public Input<string>? ApiUrl { get; set; }
 
         /// <summary>
         /// Authorization URL. This only needs to be set when using self hosted GitLab
         /// </summary>
         [Input("authUrl")]
-        public string? AuthUrl { get; set; }
+        public Input<string>? AuthUrl { get; set; }
 
         /// <summary>
         /// Client ID from provider
         /// </summary>
         [Input("clientId")]
-        public string? ClientId { get; set; }
+        public Input<string>? ClientId { get; set; }
 
         /// <summary>
         /// Client secret from provider
         /// </summary>
         [Input("clientSecret")]
-        public string? ClientSecret { get; set; }
+        public Input<string>? ClientSecret { get; set; }
 
         /// <summary>
         /// Token URL. This only needs to be set when using self hosted GitLab
         /// </summary>
         [Input("tokenUrl")]
-        public string? TokenUrl { get; set; }
+        public Input<string>? TokenUrl { get; set; }
 
-        public GetGrafanaGrafanaUserConfigAuthGitlabArgs()
+        public GetGrafanaGrafanaUserConfigAuthGitlabInputArgs()
         {
         }
     }

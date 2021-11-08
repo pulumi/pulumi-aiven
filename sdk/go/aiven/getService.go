@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ type LookupServiceArgs struct {
 	Cassandra                  *GetServiceCassandra                  `pulumi:"cassandra"`
 	CassandraUserConfig        *GetServiceCassandraUserConfig        `pulumi:"cassandraUserConfig"`
 	CloudName                  *string                               `pulumi:"cloudName"`
-	Components                 []GetServiceComponentType             `pulumi:"components"`
+	Components                 []GetServiceComponent                 `pulumi:"components"`
 	Elasticsearch              *GetServiceElasticsearch              `pulumi:"elasticsearch"`
 	ElasticsearchUserConfig    *GetServiceElasticsearchUserConfig    `pulumi:"elasticsearchUserConfig"`
 	Grafana                    *GetServiceGrafana                    `pulumi:"grafana"`
@@ -64,7 +67,7 @@ type LookupServiceResult struct {
 	Cassandra               GetServiceCassandra                `pulumi:"cassandra"`
 	CassandraUserConfig     *GetServiceCassandraUserConfig     `pulumi:"cassandraUserConfig"`
 	CloudName               *string                            `pulumi:"cloudName"`
-	Components              []GetServiceComponentType          `pulumi:"components"`
+	Components              []GetServiceComponent              `pulumi:"components"`
 	Elasticsearch           GetServiceElasticsearch            `pulumi:"elasticsearch"`
 	ElasticsearchUserConfig *GetServiceElasticsearchUserConfig `pulumi:"elasticsearchUserConfig"`
 	Grafana                 GetServiceGrafana                  `pulumi:"grafana"`
@@ -102,4 +105,240 @@ type LookupServiceResult struct {
 	ServiceUsername            string                                `pulumi:"serviceUsername"`
 	State                      string                                `pulumi:"state"`
 	TerminationProtection      *bool                                 `pulumi:"terminationProtection"`
+}
+
+func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupServiceResult, error) {
+			args := v.(LookupServiceArgs)
+			r, err := LookupService(ctx, &args, opts...)
+			return *r, err
+		}).(LookupServiceResultOutput)
+}
+
+// A collection of arguments for invoking getService.
+type LookupServiceOutputArgs struct {
+	Cassandra                  GetServiceCassandraPtrInput                  `pulumi:"cassandra"`
+	CassandraUserConfig        GetServiceCassandraUserConfigPtrInput        `pulumi:"cassandraUserConfig"`
+	CloudName                  pulumi.StringPtrInput                        `pulumi:"cloudName"`
+	Components                 GetServiceComponentArrayInput                `pulumi:"components"`
+	Elasticsearch              GetServiceElasticsearchPtrInput              `pulumi:"elasticsearch"`
+	ElasticsearchUserConfig    GetServiceElasticsearchUserConfigPtrInput    `pulumi:"elasticsearchUserConfig"`
+	Grafana                    GetServiceGrafanaPtrInput                    `pulumi:"grafana"`
+	GrafanaUserConfig          GetServiceGrafanaUserConfigPtrInput          `pulumi:"grafanaUserConfig"`
+	Influxdb                   GetServiceInfluxdbPtrInput                   `pulumi:"influxdb"`
+	InfluxdbUserConfig         GetServiceInfluxdbUserConfigPtrInput         `pulumi:"influxdbUserConfig"`
+	Kafka                      GetServiceKafkaPtrInput                      `pulumi:"kafka"`
+	KafkaConnect               GetServiceKafkaConnectPtrInput               `pulumi:"kafkaConnect"`
+	KafkaConnectUserConfig     GetServiceKafkaConnectUserConfigPtrInput     `pulumi:"kafkaConnectUserConfig"`
+	KafkaMirrormaker           GetServiceKafkaMirrormakerPtrInput           `pulumi:"kafkaMirrormaker"`
+	KafkaMirrormakerUserConfig GetServiceKafkaMirrormakerUserConfigPtrInput `pulumi:"kafkaMirrormakerUserConfig"`
+	KafkaUserConfig            GetServiceKafkaUserConfigPtrInput            `pulumi:"kafkaUserConfig"`
+	MaintenanceWindowDow       pulumi.StringPtrInput                        `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowTime      pulumi.StringPtrInput                        `pulumi:"maintenanceWindowTime"`
+	Mysql                      GetServiceMysqlPtrInput                      `pulumi:"mysql"`
+	MysqlUserConfig            GetServiceMysqlUserConfigPtrInput            `pulumi:"mysqlUserConfig"`
+	Opensearch                 GetServiceOpensearchPtrInput                 `pulumi:"opensearch"`
+	OpensearchUserConfig       GetServiceOpensearchUserConfigPtrInput       `pulumi:"opensearchUserConfig"`
+	Pg                         GetServicePgPtrInput                         `pulumi:"pg"`
+	PgUserConfig               GetServicePgUserConfigPtrInput               `pulumi:"pgUserConfig"`
+	Plan                       pulumi.StringPtrInput                        `pulumi:"plan"`
+	Project                    pulumi.StringInput                           `pulumi:"project"`
+	ProjectVpcId               pulumi.StringPtrInput                        `pulumi:"projectVpcId"`
+	Redis                      GetServiceRedisPtrInput                      `pulumi:"redis"`
+	RedisUserConfig            GetServiceRedisUserConfigPtrInput            `pulumi:"redisUserConfig"`
+	ServiceHost                pulumi.StringPtrInput                        `pulumi:"serviceHost"`
+	ServiceIntegrations        GetServiceServiceIntegrationArrayInput       `pulumi:"serviceIntegrations"`
+	ServiceName                pulumi.StringInput                           `pulumi:"serviceName"`
+	ServicePassword            pulumi.StringPtrInput                        `pulumi:"servicePassword"`
+	ServicePort                pulumi.IntPtrInput                           `pulumi:"servicePort"`
+	ServiceType                pulumi.StringPtrInput                        `pulumi:"serviceType"`
+	ServiceUri                 pulumi.StringPtrInput                        `pulumi:"serviceUri"`
+	ServiceUsername            pulumi.StringPtrInput                        `pulumi:"serviceUsername"`
+	State                      pulumi.StringPtrInput                        `pulumi:"state"`
+	TerminationProtection      pulumi.BoolPtrInput                          `pulumi:"terminationProtection"`
+}
+
+func (LookupServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getService.
+type LookupServiceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceResult)(nil)).Elem()
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutput() LookupServiceResultOutput {
+	return o
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx context.Context) LookupServiceResultOutput {
+	return o
+}
+
+func (o LookupServiceResultOutput) Cassandra() GetServiceCassandraOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServiceCassandra { return v.Cassandra }).(GetServiceCassandraOutput)
+}
+
+func (o LookupServiceResultOutput) CassandraUserConfig() GetServiceCassandraUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *GetServiceCassandraUserConfig { return v.CassandraUserConfig }).(GetServiceCassandraUserConfigPtrOutput)
+}
+
+func (o LookupServiceResultOutput) CloudName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *string { return v.CloudName }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServiceResultOutput) Components() GetServiceComponentArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceComponent { return v.Components }).(GetServiceComponentArrayOutput)
+}
+
+func (o LookupServiceResultOutput) Elasticsearch() GetServiceElasticsearchOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServiceElasticsearch { return v.Elasticsearch }).(GetServiceElasticsearchOutput)
+}
+
+func (o LookupServiceResultOutput) ElasticsearchUserConfig() GetServiceElasticsearchUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *GetServiceElasticsearchUserConfig { return v.ElasticsearchUserConfig }).(GetServiceElasticsearchUserConfigPtrOutput)
+}
+
+func (o LookupServiceResultOutput) Grafana() GetServiceGrafanaOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServiceGrafana { return v.Grafana }).(GetServiceGrafanaOutput)
+}
+
+func (o LookupServiceResultOutput) GrafanaUserConfig() GetServiceGrafanaUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *GetServiceGrafanaUserConfig { return v.GrafanaUserConfig }).(GetServiceGrafanaUserConfigPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) Influxdb() GetServiceInfluxdbOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServiceInfluxdb { return v.Influxdb }).(GetServiceInfluxdbOutput)
+}
+
+func (o LookupServiceResultOutput) InfluxdbUserConfig() GetServiceInfluxdbUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *GetServiceInfluxdbUserConfig { return v.InfluxdbUserConfig }).(GetServiceInfluxdbUserConfigPtrOutput)
+}
+
+func (o LookupServiceResultOutput) Kafka() GetServiceKafkaOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServiceKafka { return v.Kafka }).(GetServiceKafkaOutput)
+}
+
+func (o LookupServiceResultOutput) KafkaConnect() GetServiceKafkaConnectOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServiceKafkaConnect { return v.KafkaConnect }).(GetServiceKafkaConnectOutput)
+}
+
+func (o LookupServiceResultOutput) KafkaConnectUserConfig() GetServiceKafkaConnectUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *GetServiceKafkaConnectUserConfig { return v.KafkaConnectUserConfig }).(GetServiceKafkaConnectUserConfigPtrOutput)
+}
+
+func (o LookupServiceResultOutput) KafkaMirrormaker() GetServiceKafkaMirrormakerOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServiceKafkaMirrormaker { return v.KafkaMirrormaker }).(GetServiceKafkaMirrormakerOutput)
+}
+
+func (o LookupServiceResultOutput) KafkaMirrormakerUserConfig() GetServiceKafkaMirrormakerUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *GetServiceKafkaMirrormakerUserConfig { return v.KafkaMirrormakerUserConfig }).(GetServiceKafkaMirrormakerUserConfigPtrOutput)
+}
+
+func (o LookupServiceResultOutput) KafkaUserConfig() GetServiceKafkaUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *GetServiceKafkaUserConfig { return v.KafkaUserConfig }).(GetServiceKafkaUserConfigPtrOutput)
+}
+
+func (o LookupServiceResultOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *string { return v.MaintenanceWindowDow }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServiceResultOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *string { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServiceResultOutput) Mysql() GetServiceMysqlOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServiceMysql { return v.Mysql }).(GetServiceMysqlOutput)
+}
+
+func (o LookupServiceResultOutput) MysqlUserConfig() GetServiceMysqlUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *GetServiceMysqlUserConfig { return v.MysqlUserConfig }).(GetServiceMysqlUserConfigPtrOutput)
+}
+
+func (o LookupServiceResultOutput) Opensearch() GetServiceOpensearchOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServiceOpensearch { return v.Opensearch }).(GetServiceOpensearchOutput)
+}
+
+func (o LookupServiceResultOutput) OpensearchUserConfig() GetServiceOpensearchUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *GetServiceOpensearchUserConfig { return v.OpensearchUserConfig }).(GetServiceOpensearchUserConfigPtrOutput)
+}
+
+func (o LookupServiceResultOutput) Pg() GetServicePgOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServicePg { return v.Pg }).(GetServicePgOutput)
+}
+
+func (o LookupServiceResultOutput) PgUserConfig() GetServicePgUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *GetServicePgUserConfig { return v.PgUserConfig }).(GetServicePgUserConfigPtrOutput)
+}
+
+func (o LookupServiceResultOutput) Plan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *string { return v.Plan }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServiceResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) ProjectVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *string { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServiceResultOutput) Redis() GetServiceRedisOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServiceRedis { return v.Redis }).(GetServiceRedisOutput)
+}
+
+func (o LookupServiceResultOutput) RedisUserConfig() GetServiceRedisUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *GetServiceRedisUserConfig { return v.RedisUserConfig }).(GetServiceRedisUserConfigPtrOutput)
+}
+
+func (o LookupServiceResultOutput) ServiceHost() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ServiceHost }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) ServiceIntegrations() GetServiceServiceIntegrationArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceServiceIntegration { return v.ServiceIntegrations }).(GetServiceServiceIntegrationArrayOutput)
+}
+
+func (o LookupServiceResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) ServicePassword() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ServicePassword }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) ServicePort() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServiceResult) int { return v.ServicePort }).(pulumi.IntOutput)
+}
+
+func (o LookupServiceResultOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *string { return v.ServiceType }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServiceResultOutput) ServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ServiceUri }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) ServiceUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ServiceUsername }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) TerminationProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *bool { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupServiceResultOutput{})
 }

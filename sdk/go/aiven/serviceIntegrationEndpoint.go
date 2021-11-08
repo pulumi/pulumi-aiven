@@ -31,7 +31,7 @@ import (
 // 			Project:      pulumi.Any(aiven_project.Myproject.Project),
 // 			EndpointName: pulumi.String("<ENDPOINT_NAME>"),
 // 			EndpointType: pulumi.String("datadog"),
-// 			DatadogUserConfig: &aiven.ServiceIntegrationEndpointDatadogUserConfigArgs{
+// 			DatadogUserConfig: &ServiceIntegrationEndpointDatadogUserConfigArgs{
 // 				DatadogApiKey: pulumi.String("<DATADOG_API_KEY>"),
 // 			},
 // 		})
@@ -58,7 +58,7 @@ import (
 // 			Project:      pulumi.Any(aiven_project.Myproject.Project),
 // 			EndpointName: pulumi.String("<ENDPOINT_NAME>"),
 // 			EndpointType: pulumi.String("prometheus"),
-// 			PrometheusUserConfig: &aiven.ServiceIntegrationEndpointPrometheusUserConfigArgs{
+// 			PrometheusUserConfig: &ServiceIntegrationEndpointPrometheusUserConfigArgs{
 // 				BasicAuthUsername: pulumi.String("<USERNAME>"),
 // 				BasicAuthPassword: pulumi.String("<PASSWORD>"),
 // 			},
@@ -351,7 +351,7 @@ type ServiceIntegrationEndpointArrayInput interface {
 type ServiceIntegrationEndpointArray []ServiceIntegrationEndpointInput
 
 func (ServiceIntegrationEndpointArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServiceIntegrationEndpoint)(nil))
+	return reflect.TypeOf((*[]*ServiceIntegrationEndpoint)(nil)).Elem()
 }
 
 func (i ServiceIntegrationEndpointArray) ToServiceIntegrationEndpointArrayOutput() ServiceIntegrationEndpointArrayOutput {
@@ -376,7 +376,7 @@ type ServiceIntegrationEndpointMapInput interface {
 type ServiceIntegrationEndpointMap map[string]ServiceIntegrationEndpointInput
 
 func (ServiceIntegrationEndpointMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServiceIntegrationEndpoint)(nil))
+	return reflect.TypeOf((*map[string]*ServiceIntegrationEndpoint)(nil)).Elem()
 }
 
 func (i ServiceIntegrationEndpointMap) ToServiceIntegrationEndpointMapOutput() ServiceIntegrationEndpointMapOutput {
@@ -387,9 +387,7 @@ func (i ServiceIntegrationEndpointMap) ToServiceIntegrationEndpointMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationEndpointMapOutput)
 }
 
-type ServiceIntegrationEndpointOutput struct {
-	*pulumi.OutputState
-}
+type ServiceIntegrationEndpointOutput struct{ *pulumi.OutputState }
 
 func (ServiceIntegrationEndpointOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceIntegrationEndpoint)(nil))
@@ -408,14 +406,12 @@ func (o ServiceIntegrationEndpointOutput) ToServiceIntegrationEndpointPtrOutput(
 }
 
 func (o ServiceIntegrationEndpointOutput) ToServiceIntegrationEndpointPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointPtrOutput {
-	return o.ApplyT(func(v ServiceIntegrationEndpoint) *ServiceIntegrationEndpoint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIntegrationEndpoint) *ServiceIntegrationEndpoint {
 		return &v
 	}).(ServiceIntegrationEndpointPtrOutput)
 }
 
-type ServiceIntegrationEndpointPtrOutput struct {
-	*pulumi.OutputState
-}
+type ServiceIntegrationEndpointPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceIntegrationEndpointPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceIntegrationEndpoint)(nil))
@@ -427,6 +423,16 @@ func (o ServiceIntegrationEndpointPtrOutput) ToServiceIntegrationEndpointPtrOutp
 
 func (o ServiceIntegrationEndpointPtrOutput) ToServiceIntegrationEndpointPtrOutputWithContext(ctx context.Context) ServiceIntegrationEndpointPtrOutput {
 	return o
+}
+
+func (o ServiceIntegrationEndpointPtrOutput) Elem() ServiceIntegrationEndpointOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceIntegrationEndpoint
+		return ret
+	}).(ServiceIntegrationEndpointOutput)
 }
 
 type ServiceIntegrationEndpointArrayOutput struct{ *pulumi.OutputState }
@@ -470,6 +476,10 @@ func (o ServiceIntegrationEndpointMapOutput) MapIndex(k pulumi.StringInput) Serv
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointInput)(nil)).Elem(), &ServiceIntegrationEndpoint{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointPtrInput)(nil)).Elem(), &ServiceIntegrationEndpoint{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointArrayInput)(nil)).Elem(), ServiceIntegrationEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationEndpointMapInput)(nil)).Elem(), ServiceIntegrationEndpointMap{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationEndpointArrayOutput{})

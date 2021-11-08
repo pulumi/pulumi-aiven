@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,4 +35,65 @@ type LookupElasticSearchAclConfigResult struct {
 	Id          string `pulumi:"id"`
 	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
+}
+
+func LookupElasticSearchAclConfigOutput(ctx *pulumi.Context, args LookupElasticSearchAclConfigOutputArgs, opts ...pulumi.InvokeOption) LookupElasticSearchAclConfigResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupElasticSearchAclConfigResult, error) {
+			args := v.(LookupElasticSearchAclConfigArgs)
+			r, err := LookupElasticSearchAclConfig(ctx, &args, opts...)
+			return *r, err
+		}).(LookupElasticSearchAclConfigResultOutput)
+}
+
+// A collection of arguments for invoking getElasticSearchAclConfig.
+type LookupElasticSearchAclConfigOutputArgs struct {
+	Enabled     pulumi.BoolPtrInput `pulumi:"enabled"`
+	ExtendedAcl pulumi.BoolPtrInput `pulumi:"extendedAcl"`
+	Project     pulumi.StringInput  `pulumi:"project"`
+	ServiceName pulumi.StringInput  `pulumi:"serviceName"`
+}
+
+func (LookupElasticSearchAclConfigOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupElasticSearchAclConfigArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getElasticSearchAclConfig.
+type LookupElasticSearchAclConfigResultOutput struct{ *pulumi.OutputState }
+
+func (LookupElasticSearchAclConfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupElasticSearchAclConfigResult)(nil)).Elem()
+}
+
+func (o LookupElasticSearchAclConfigResultOutput) ToLookupElasticSearchAclConfigResultOutput() LookupElasticSearchAclConfigResultOutput {
+	return o
+}
+
+func (o LookupElasticSearchAclConfigResultOutput) ToLookupElasticSearchAclConfigResultOutputWithContext(ctx context.Context) LookupElasticSearchAclConfigResultOutput {
+	return o
+}
+
+func (o LookupElasticSearchAclConfigResultOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclConfigResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o LookupElasticSearchAclConfigResultOutput) ExtendedAcl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclConfigResult) *bool { return v.ExtendedAcl }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupElasticSearchAclConfigResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclConfigResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupElasticSearchAclConfigResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclConfigResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupElasticSearchAclConfigResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclConfigResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupElasticSearchAclConfigResultOutput{})
 }

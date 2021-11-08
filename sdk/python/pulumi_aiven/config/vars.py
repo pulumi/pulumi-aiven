@@ -8,14 +8,16 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'api_token',
-]
+import types
 
 __config__ = pulumi.Config('aiven')
 
-api_token = __config__.get('apiToken')
-"""
-Aiven Authentication Token
-"""
+
+class _ExportableConfig(types.ModuleType):
+    @property
+    def api_token(self) -> Optional[str]:
+        """
+        Aiven Authentication Token
+        """
+        return __config__.get('apiToken')
 

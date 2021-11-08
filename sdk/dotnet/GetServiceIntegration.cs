@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -49,6 +50,45 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetServiceIntegrationResult> InvokeAsync(GetServiceIntegrationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Service Integration Data Source
+        /// 
+        /// The Service Integration data source provides information about the existing Aiven Service Integration.
+        /// 
+        /// Service Integration defines an integration between two Aiven services or between Aiven service and an external
+        /// integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,
+        /// getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
+        /// Elasticsearch, etc.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myintegration = Output.Create(Aiven.GetServiceIntegration.InvokeAsync(new Aiven.GetServiceIntegrationArgs
+        ///         {
+        ///             Project = aiven_project.Myproject.Project,
+        ///             DestinationServiceName = "&lt;DESTINATION_SERVICE_NAME&gt;",
+        ///             IntegrationType = "datadog",
+        ///             SourceServiceName = "&lt;SOURCE_SERVICE_NAME&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetServiceIntegrationResult> Invoke(GetServiceIntegrationInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationInvokeArgs(), options.WithVersion());
     }
 
 
@@ -143,6 +183,101 @@ namespace Pulumi.Aiven
         public string SourceServiceName { get; set; } = null!;
 
         public GetServiceIntegrationArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceIntegrationInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("dashboardUserConfig")]
+        public Input<Inputs.GetServiceIntegrationDashboardUserConfigInputArgs>? DashboardUserConfig { get; set; }
+
+        [Input("datadogUserConfig")]
+        public Input<Inputs.GetServiceIntegrationDatadogUserConfigInputArgs>? DatadogUserConfig { get; set; }
+
+        [Input("destinationEndpointId")]
+        public Input<string>? DestinationEndpointId { get; set; }
+
+        /// <summary>
+        /// identifies the target side of the integration.
+        /// </summary>
+        [Input("destinationServiceName", required: true)]
+        public Input<string> DestinationServiceName { get; set; } = null!;
+
+        [Input("externalAwsCloudwatchLogsUserConfig")]
+        public Input<Inputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigInputArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
+
+        [Input("externalAwsCloudwatchMetricsUserConfig")]
+        public Input<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInputArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
+
+        [Input("externalElasticsearchLogsUserConfig")]
+        public Input<Inputs.GetServiceIntegrationExternalElasticsearchLogsUserConfigInputArgs>? ExternalElasticsearchLogsUserConfig { get; set; }
+
+        [Input("externalGoogleCloudLoggingUserConfig")]
+        public Input<Inputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfigInputArgs>? ExternalGoogleCloudLoggingUserConfig { get; set; }
+
+        /// <summary>
+        /// identifies the type of integration that is set up. Possible values include `dashboard`
+        /// , `datadog`, `logs`, `metrics` and `mirrormaker`.
+        /// </summary>
+        [Input("integrationType", required: true)]
+        public Input<string> IntegrationType { get; set; } = null!;
+
+        [Input("kafkaConnectUserConfig")]
+        public Input<Inputs.GetServiceIntegrationKafkaConnectUserConfigInputArgs>? KafkaConnectUserConfig { get; set; }
+
+        [Input("kafkaLogsUserConfig")]
+        public Input<Inputs.GetServiceIntegrationKafkaLogsUserConfigInputArgs>? KafkaLogsUserConfig { get; set; }
+
+        [Input("kafkaMirrormakerUserConfig")]
+        public Input<Inputs.GetServiceIntegrationKafkaMirrormakerUserConfigInputArgs>? KafkaMirrormakerUserConfig { get; set; }
+
+        [Input("logsUserConfig")]
+        public Input<Inputs.GetServiceIntegrationLogsUserConfigInputArgs>? LogsUserConfig { get; set; }
+
+        [Input("m3aggregatorUserConfig")]
+        public Input<Inputs.GetServiceIntegrationM3aggregatorUserConfigInputArgs>? M3aggregatorUserConfig { get; set; }
+
+        [Input("m3coordinatorUserConfig")]
+        public Input<Inputs.GetServiceIntegrationM3coordinatorUserConfigInputArgs>? M3coordinatorUserConfig { get; set; }
+
+        [Input("metricsUserConfig")]
+        public Input<Inputs.GetServiceIntegrationMetricsUserConfigInputArgs>? MetricsUserConfig { get; set; }
+
+        [Input("mirrormakerUserConfig")]
+        public Input<Inputs.GetServiceIntegrationMirrormakerUserConfigInputArgs>? MirrormakerUserConfig { get; set; }
+
+        /// <summary>
+        /// defines the project the integration belongs to.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        [Input("prometheusUserConfig")]
+        public Input<Inputs.GetServiceIntegrationPrometheusUserConfigInputArgs>? PrometheusUserConfig { get; set; }
+
+        [Input("readReplicaUserConfig")]
+        public Input<Inputs.GetServiceIntegrationReadReplicaUserConfigInputArgs>? ReadReplicaUserConfig { get; set; }
+
+        [Input("rsyslogUserConfig")]
+        public Input<Inputs.GetServiceIntegrationRsyslogUserConfigInputArgs>? RsyslogUserConfig { get; set; }
+
+        [Input("schemaRegistryProxyUserConfig")]
+        public Input<Inputs.GetServiceIntegrationSchemaRegistryProxyUserConfigInputArgs>? SchemaRegistryProxyUserConfig { get; set; }
+
+        [Input("signalfxUserConfig")]
+        public Input<Inputs.GetServiceIntegrationSignalfxUserConfigInputArgs>? SignalfxUserConfig { get; set; }
+
+        [Input("sourceEndpointId")]
+        public Input<string>? SourceEndpointId { get; set; }
+
+        /// <summary>
+        /// identifies the source side of the integration.
+        /// </summary>
+        [Input("sourceServiceName", required: true)]
+        public Input<string> SourceServiceName { get; set; } = null!;
+
+        public GetServiceIntegrationInvokeArgs()
         {
         }
     }

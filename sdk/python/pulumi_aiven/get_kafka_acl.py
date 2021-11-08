@@ -12,6 +12,7 @@ __all__ = [
     'GetKafkaAclResult',
     'AwaitableGetKafkaAclResult',
     'get_kafka_acl',
+    'get_kafka_acl_output',
 ]
 
 @pulumi.output_type
@@ -141,3 +142,42 @@ def get_kafka_acl(permission: Optional[str] = None,
         service_name=__ret__.service_name,
         topic=__ret__.topic,
         username=__ret__.username)
+
+
+@_utilities.lift_output_func(get_kafka_acl)
+def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
+                         project: Optional[pulumi.Input[str]] = None,
+                         service_name: Optional[pulumi.Input[str]] = None,
+                         topic: Optional[pulumi.Input[str]] = None,
+                         username: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaAclResult]:
+    """
+    ## # Kafka ACL Data Source
+
+    The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL
+    for a Kafka service.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytestacl = aiven.get_kafka_acl(project=aiven_project["myproject"]["project"],
+        service_name=aiven_service["myservice"]["service_name"],
+        topic="<TOPIC_NAME_PATTERN>",
+        permission="admin",
+        username="<USERNAME_PATTERN>")
+    ```
+
+
+    :param str permission: is the level of permission the matching users are given to the matching
+           topics (admin, read, readwrite, write).
+    :param str project: and `service_name` - (Required) define the project and service the ACL belongs to.
+           They should be defined using reference as shown above to set up dependencies correctly.
+           These properties cannot be changed once the service is created. Doing so will result in
+           the topic being deleted and new one created instead.
+    :param str topic: is a topic name pattern the ACL entry matches to.
+    :param str username: is a username pattern the ACL entry matches to.
+    """
+    ...

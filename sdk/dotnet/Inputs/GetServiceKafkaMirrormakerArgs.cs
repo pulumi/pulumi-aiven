@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceKafkaMirrormakerArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceKafkaMirrormakerInputArgs : Pulumi.ResourceArgs
     {
-        public GetServiceKafkaMirrormakerArgs()
+        public GetServiceKafkaMirrormakerInputArgs()
         {
         }
     }

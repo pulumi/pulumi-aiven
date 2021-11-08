@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetInfluxDbInfluxdbArgs : Pulumi.InvokeArgs
+    public sealed class GetInfluxDbInfluxdbInputArgs : Pulumi.ResourceArgs
     {
         [Input("databaseName", required: true)]
-        public string DatabaseName { get; set; } = null!;
+        public Input<string> DatabaseName { get; set; } = null!;
 
-        public GetInfluxDbInfluxdbArgs()
+        public GetInfluxDbInfluxdbInputArgs()
         {
         }
     }

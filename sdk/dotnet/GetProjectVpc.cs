@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,6 +43,38 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetProjectVpcResult> InvokeAsync(GetProjectVpcArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectVpcResult>("aiven:index/getProjectVpc:getProjectVpc", args ?? new GetProjectVpcArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Project VPC Data Source
+        /// 
+        /// The Project VPC data source provides information about the existing Aiven Project VPC.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myvpc = Output.Create(Aiven.GetProjectVpc.InvokeAsync(new Aiven.GetProjectVpcArgs
+        ///         {
+        ///             Project = aiven_project.Myproject.Project,
+        ///             CloudName = "google-europe-west1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetProjectVpcResult> Invoke(GetProjectVpcInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProjectVpcResult>("aiven:index/getProjectVpc:getProjectVpc", args ?? new GetProjectVpcInvokeArgs(), options.WithVersion());
     }
 
 
@@ -74,6 +107,39 @@ namespace Pulumi.Aiven
         public string? State { get; set; }
 
         public GetProjectVpcArgs()
+        {
+        }
+    }
+
+    public sealed class GetProjectVpcInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// defines where the cloud provider and region where the service is hosted
+        /// in. See the Service resource for additional information.
+        /// </summary>
+        [Input("cloudName", required: true)]
+        public Input<string> CloudName { get; set; } = null!;
+
+        /// <summary>
+        /// defines the network CIDR of the VPC.
+        /// </summary>
+        [Input("networkCidr")]
+        public Input<string>? NetworkCidr { get; set; }
+
+        /// <summary>
+        /// defines the project the VPC belongs to.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        /// <summary>
+        /// ia a computed property that tells the current state of the VPC. This property cannot be
+        /// set, only read.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        public GetProjectVpcInvokeArgs()
         {
         }
     }

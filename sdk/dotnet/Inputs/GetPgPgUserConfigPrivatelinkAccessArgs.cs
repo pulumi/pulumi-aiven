@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetPgPgUserConfigPrivatelinkAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetPgPgUserConfigPrivatelinkAccessInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// PostgreSQL specific server provided values.
         /// </summary>
         [Input("pg")]
-        public string? Pg { get; set; }
+        public Input<string>? Pg { get; set; }
 
         /// <summary>
         /// Enable pgbouncer.
         /// </summary>
         [Input("pgbouncer")]
-        public string? Pgbouncer { get; set; }
+        public Input<string>? Pgbouncer { get; set; }
 
-        public GetPgPgUserConfigPrivatelinkAccessArgs()
+        public GetPgPgUserConfigPrivatelinkAccessInputArgs()
         {
         }
     }

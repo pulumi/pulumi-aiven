@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Aiven
     {
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("aiven:index/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());
+
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("aiven:index/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -146,6 +150,140 @@ namespace Pulumi.Aiven
         public bool? TerminationProtection { get; set; }
 
         public GetServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("cassandra")]
+        public Input<Inputs.GetServiceCassandraInputArgs>? Cassandra { get; set; }
+
+        [Input("cassandraUserConfig")]
+        public Input<Inputs.GetServiceCassandraUserConfigInputArgs>? CassandraUserConfig { get; set; }
+
+        [Input("cloudName")]
+        public Input<string>? CloudName { get; set; }
+
+        [Input("components")]
+        private InputList<Inputs.GetServiceComponentInputArgs>? _components;
+        public InputList<Inputs.GetServiceComponentInputArgs> Components
+        {
+            get => _components ?? (_components = new InputList<Inputs.GetServiceComponentInputArgs>());
+            set => _components = value;
+        }
+
+        [Input("elasticsearch")]
+        public Input<Inputs.GetServiceElasticsearchInputArgs>? Elasticsearch { get; set; }
+
+        [Input("elasticsearchUserConfig")]
+        public Input<Inputs.GetServiceElasticsearchUserConfigInputArgs>? ElasticsearchUserConfig { get; set; }
+
+        [Input("grafana")]
+        public Input<Inputs.GetServiceGrafanaInputArgs>? Grafana { get; set; }
+
+        [Input("grafanaUserConfig")]
+        public Input<Inputs.GetServiceGrafanaUserConfigInputArgs>? GrafanaUserConfig { get; set; }
+
+        [Input("influxdb")]
+        public Input<Inputs.GetServiceInfluxdbInputArgs>? Influxdb { get; set; }
+
+        [Input("influxdbUserConfig")]
+        public Input<Inputs.GetServiceInfluxdbUserConfigInputArgs>? InfluxdbUserConfig { get; set; }
+
+        [Input("kafka")]
+        public Input<Inputs.GetServiceKafkaInputArgs>? Kafka { get; set; }
+
+        [Input("kafkaConnect")]
+        public Input<Inputs.GetServiceKafkaConnectInputArgs>? KafkaConnect { get; set; }
+
+        [Input("kafkaConnectUserConfig")]
+        public Input<Inputs.GetServiceKafkaConnectUserConfigInputArgs>? KafkaConnectUserConfig { get; set; }
+
+        [Input("kafkaMirrormaker")]
+        public Input<Inputs.GetServiceKafkaMirrormakerInputArgs>? KafkaMirrormaker { get; set; }
+
+        [Input("kafkaMirrormakerUserConfig")]
+        public Input<Inputs.GetServiceKafkaMirrormakerUserConfigInputArgs>? KafkaMirrormakerUserConfig { get; set; }
+
+        [Input("kafkaUserConfig")]
+        public Input<Inputs.GetServiceKafkaUserConfigInputArgs>? KafkaUserConfig { get; set; }
+
+        [Input("maintenanceWindowDow")]
+        public Input<string>? MaintenanceWindowDow { get; set; }
+
+        [Input("maintenanceWindowTime")]
+        public Input<string>? MaintenanceWindowTime { get; set; }
+
+        [Input("mysql")]
+        public Input<Inputs.GetServiceMysqlInputArgs>? Mysql { get; set; }
+
+        [Input("mysqlUserConfig")]
+        public Input<Inputs.GetServiceMysqlUserConfigInputArgs>? MysqlUserConfig { get; set; }
+
+        [Input("opensearch")]
+        public Input<Inputs.GetServiceOpensearchInputArgs>? Opensearch { get; set; }
+
+        [Input("opensearchUserConfig")]
+        public Input<Inputs.GetServiceOpensearchUserConfigInputArgs>? OpensearchUserConfig { get; set; }
+
+        [Input("pg")]
+        public Input<Inputs.GetServicePgInputArgs>? Pg { get; set; }
+
+        [Input("pgUserConfig")]
+        public Input<Inputs.GetServicePgUserConfigInputArgs>? PgUserConfig { get; set; }
+
+        [Input("plan")]
+        public Input<string>? Plan { get; set; }
+
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        [Input("projectVpcId")]
+        public Input<string>? ProjectVpcId { get; set; }
+
+        [Input("redis")]
+        public Input<Inputs.GetServiceRedisInputArgs>? Redis { get; set; }
+
+        [Input("redisUserConfig")]
+        public Input<Inputs.GetServiceRedisUserConfigInputArgs>? RedisUserConfig { get; set; }
+
+        [Input("serviceHost")]
+        public Input<string>? ServiceHost { get; set; }
+
+        [Input("serviceIntegrations")]
+        private InputList<Inputs.GetServiceServiceIntegrationInputArgs>? _serviceIntegrations;
+        public InputList<Inputs.GetServiceServiceIntegrationInputArgs> ServiceIntegrations
+        {
+            get => _serviceIntegrations ?? (_serviceIntegrations = new InputList<Inputs.GetServiceServiceIntegrationInputArgs>());
+            set => _serviceIntegrations = value;
+        }
+
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("servicePassword")]
+        public Input<string>? ServicePassword { get; set; }
+
+        [Input("servicePort")]
+        public Input<int>? ServicePort { get; set; }
+
+        [Input("serviceType")]
+        public Input<string>? ServiceType { get; set; }
+
+        [Input("serviceUri")]
+        public Input<string>? ServiceUri { get; set; }
+
+        [Input("serviceUsername")]
+        public Input<string>? ServiceUsername { get; set; }
+
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        [Input("terminationProtection")]
+        public Input<bool>? TerminationProtection { get; set; }
+
+        public GetServiceInvokeArgs()
         {
         }
     }

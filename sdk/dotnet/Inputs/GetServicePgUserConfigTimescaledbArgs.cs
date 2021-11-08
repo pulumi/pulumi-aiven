@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServicePgUserConfigTimescaledbArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePgUserConfigTimescaledbInputArgs : Pulumi.ResourceArgs
     {
         [Input("maxBackgroundWorkers")]
-        public string? MaxBackgroundWorkers { get; set; }
+        public Input<string>? MaxBackgroundWorkers { get; set; }
 
-        public GetServicePgUserConfigTimescaledbArgs()
+        public GetServicePgUserConfigTimescaledbInputArgs()
         {
         }
     }

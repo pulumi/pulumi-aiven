@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupConnectionPool(ctx, &aiven.LookupConnectionPoolArgs{
+// 		_, err := aiven.LookupConnectionPool(ctx, &GetConnectionPoolArgs{
 // 			Project:     aiven_project.Myproject.Project,
 // 			ServiceName: aiven_service.Myservice.Service_name,
 // 			PoolName:    "mypool",
@@ -93,4 +96,110 @@ type LookupConnectionPoolResult struct {
 	// is the name of the service user used to connect to the database. This should
 	// be defined using reference as shown above to set up dependencies correctly.
 	Username *string `pulumi:"username"`
+}
+
+func LookupConnectionPoolOutput(ctx *pulumi.Context, args LookupConnectionPoolOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionPoolResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupConnectionPoolResult, error) {
+			args := v.(LookupConnectionPoolArgs)
+			r, err := LookupConnectionPool(ctx, &args, opts...)
+			return *r, err
+		}).(LookupConnectionPoolResultOutput)
+}
+
+// A collection of arguments for invoking getConnectionPool.
+type LookupConnectionPoolOutputArgs struct {
+	// is a computed property that tells the URI for connecting to the pool.
+	// This value cannot be set, only read.
+	ConnectionUri pulumi.StringPtrInput `pulumi:"connectionUri"`
+	// is the name of the database the pool connects to. This should be
+	// defined using reference as shown above to set up dependencies correctly.
+	DatabaseName pulumi.StringPtrInput `pulumi:"databaseName"`
+	// is the mode the pool operates in (session, transaction, statement).
+	PoolMode pulumi.StringPtrInput `pulumi:"poolMode"`
+	// is the name of the pool.
+	PoolName pulumi.StringInput `pulumi:"poolName"`
+	// is the number of connections the pool may create towards the backend
+	// server. This does not affect the number of incoming connections, which is always a much
+	// larger number.
+	PoolSize pulumi.IntPtrInput `pulumi:"poolSize"`
+	// and `serviceName` - (Required) define the project and service the connection pool
+	// belongs to. They should be defined using reference as shown above to set up dependencies
+	// correctly. These properties cannot be changed once the service is created. Doing so will
+	// result in the connection pool being deleted and new one created instead.
+	Project     pulumi.StringInput `pulumi:"project"`
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// is the name of the service user used to connect to the database. This should
+	// be defined using reference as shown above to set up dependencies correctly.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (LookupConnectionPoolOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConnectionPoolArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getConnectionPool.
+type LookupConnectionPoolResultOutput struct{ *pulumi.OutputState }
+
+func (LookupConnectionPoolResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConnectionPoolResult)(nil)).Elem()
+}
+
+func (o LookupConnectionPoolResultOutput) ToLookupConnectionPoolResultOutput() LookupConnectionPoolResultOutput {
+	return o
+}
+
+func (o LookupConnectionPoolResultOutput) ToLookupConnectionPoolResultOutputWithContext(ctx context.Context) LookupConnectionPoolResultOutput {
+	return o
+}
+
+// is a computed property that tells the URI for connecting to the pool.
+// This value cannot be set, only read.
+func (o LookupConnectionPoolResultOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.ConnectionUri }).(pulumi.StringOutput)
+}
+
+// is the name of the database the pool connects to. This should be
+// defined using reference as shown above to set up dependencies correctly.
+func (o LookupConnectionPoolResultOutput) DatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupConnectionPoolResult) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupConnectionPoolResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// is the mode the pool operates in (session, transaction, statement).
+func (o LookupConnectionPoolResultOutput) PoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupConnectionPoolResult) *string { return v.PoolMode }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupConnectionPoolResultOutput) PoolName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.PoolName }).(pulumi.StringOutput)
+}
+
+// is the number of connections the pool may create towards the backend
+// server. This does not affect the number of incoming connections, which is always a much
+// larger number.
+func (o LookupConnectionPoolResultOutput) PoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupConnectionPoolResult) *int { return v.PoolSize }).(pulumi.IntPtrOutput)
+}
+
+func (o LookupConnectionPoolResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupConnectionPoolResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// is the name of the service user used to connect to the database. This should
+// be defined using reference as shown above to set up dependencies correctly.
+func (o LookupConnectionPoolResultOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupConnectionPoolResult) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupConnectionPoolResultOutput{})
 }

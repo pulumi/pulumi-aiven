@@ -10,51 +10,51 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafInputArgs : Pulumi.ResourceArgs
     {
         [Input("gatherEventWaits")]
-        public string? GatherEventWaits { get; set; }
+        public Input<string>? GatherEventWaits { get; set; }
 
         [Input("gatherFileEventsStats")]
-        public string? GatherFileEventsStats { get; set; }
+        public Input<string>? GatherFileEventsStats { get; set; }
 
         [Input("gatherIndexIoWaits")]
-        public string? GatherIndexIoWaits { get; set; }
+        public Input<string>? GatherIndexIoWaits { get; set; }
 
         [Input("gatherInfoSchemaAutoInc")]
-        public string? GatherInfoSchemaAutoInc { get; set; }
+        public Input<string>? GatherInfoSchemaAutoInc { get; set; }
 
         [Input("gatherInnodbMetrics")]
-        public string? GatherInnodbMetrics { get; set; }
+        public Input<string>? GatherInnodbMetrics { get; set; }
 
         [Input("gatherPerfEventsStatements")]
-        public string? GatherPerfEventsStatements { get; set; }
+        public Input<string>? GatherPerfEventsStatements { get; set; }
 
         [Input("gatherProcessList")]
-        public string? GatherProcessList { get; set; }
+        public Input<string>? GatherProcessList { get; set; }
 
         [Input("gatherSlaveStatus")]
-        public string? GatherSlaveStatus { get; set; }
+        public Input<string>? GatherSlaveStatus { get; set; }
 
         [Input("gatherTableIoWaits")]
-        public string? GatherTableIoWaits { get; set; }
+        public Input<string>? GatherTableIoWaits { get; set; }
 
         [Input("gatherTableLockWaits")]
-        public string? GatherTableLockWaits { get; set; }
+        public Input<string>? GatherTableLockWaits { get; set; }
 
         [Input("gatherTableSchema")]
-        public string? GatherTableSchema { get; set; }
+        public Input<string>? GatherTableSchema { get; set; }
 
         [Input("perfEventsStatementsDigestTextLimit")]
-        public string? PerfEventsStatementsDigestTextLimit { get; set; }
+        public Input<string>? PerfEventsStatementsDigestTextLimit { get; set; }
 
         [Input("perfEventsStatementsLimit")]
-        public string? PerfEventsStatementsLimit { get; set; }
+        public Input<string>? PerfEventsStatementsLimit { get; set; }
 
         [Input("perfEventsStatementsTimeLimit")]
-        public string? PerfEventsStatementsTimeLimit { get; set; }
+        public Input<string>? PerfEventsStatementsTimeLimit { get; set; }
 
-        public GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs()
+        public GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafInputArgs()
         {
         }
     }

@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetKafkaKafkaUserConfigKafkaArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaKafkaUserConfigKafkaInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable auto creation of topics
         /// </summary>
         [Input("autoCreateTopicsEnable")]
-        public string? AutoCreateTopicsEnable { get; set; }
+        public Input<string>? AutoCreateTopicsEnable { get; set; }
 
         /// <summary>
         /// Specify the final compression type for a given topic. This 
@@ -25,20 +25,20 @@ namespace Pulumi.Aiven.Inputs
         /// which means retain the original compression codec set by the producer.
         /// </summary>
         [Input("compressionType")]
-        public string? CompressionType { get; set; }
+        public Input<string>? CompressionType { get; set; }
 
         /// <summary>
         /// Idle connections timeout: the server socket processor 
         /// threads close the connections that idle for longer than this.
         /// </summary>
         [Input("connectionsMaxIdleMs")]
-        public string? ConnectionsMaxIdleMs { get; set; }
+        public Input<string>? ConnectionsMaxIdleMs { get; set; }
 
         /// <summary>
         /// Replication factor for autocreated topics
         /// </summary>
         [Input("defaultReplicationFactor")]
-        public string? DefaultReplicationFactor { get; set; }
+        public Input<string>? DefaultReplicationFactor { get; set; }
 
         /// <summary>
         /// The amount of time, in milliseconds, the group
@@ -48,7 +48,7 @@ namespace Pulumi.Aiven.Inputs
         /// this to 0 in order to not delay test execution time.
         /// </summary>
         [Input("groupInitialRebalanceDelayMs")]
-        public string? GroupInitialRebalanceDelayMs { get; set; }
+        public Input<string>? GroupInitialRebalanceDelayMs { get; set; }
 
         /// <summary>
         /// The maximum allowed session timeout for registered 
@@ -56,7 +56,7 @@ namespace Pulumi.Aiven.Inputs
         /// at the cost of a longer time to detect failures.
         /// </summary>
         [Input("groupMaxSessionTimeoutMs")]
-        public string? GroupMaxSessionTimeoutMs { get; set; }
+        public Input<string>? GroupMaxSessionTimeoutMs { get; set; }
 
         /// <summary>
         /// The minimum allowed session timeout for registered 
@@ -64,17 +64,17 @@ namespace Pulumi.Aiven.Inputs
         /// at the cost of a longer time to detect failures.
         /// </summary>
         [Input("groupMinSessionTimeoutMs")]
-        public string? GroupMinSessionTimeoutMs { get; set; }
+        public Input<string>? GroupMinSessionTimeoutMs { get; set; }
 
         [Input("logCleanerDeleteRetentionMs")]
-        public string? LogCleanerDeleteRetentionMs { get; set; }
+        public Input<string>? LogCleanerDeleteRetentionMs { get; set; }
 
         /// <summary>
         /// The maximum amount of time message will 
         /// remain uncompacted. Only applicable for logs that are being compacted
         /// </summary>
         [Input("logCleanerMaxCompactionLagMs")]
-        public string? LogCleanerMaxCompactionLagMs { get; set; }
+        public Input<string>? LogCleanerMaxCompactionLagMs { get; set; }
 
         /// <summary>
         /// Controls log compactor frequency. Larger 
@@ -83,85 +83,85 @@ namespace Pulumi.Aiven.Inputs
         /// high value for this option.
         /// </summary>
         [Input("logCleanerMinCleanableRatio")]
-        public string? LogCleanerMinCleanableRatio { get; set; }
+        public Input<string>? LogCleanerMinCleanableRatio { get; set; }
 
         /// <summary>
         /// The minimum time a message will remain 
         /// uncompacted in the log. Only applicable for logs that are being compacted.
         /// </summary>
         [Input("logCleanerMinCompactionLagMs")]
-        public string? LogCleanerMinCompactionLagMs { get; set; }
+        public Input<string>? LogCleanerMinCompactionLagMs { get; set; }
 
         /// <summary>
         /// The default cleanup policy for segments beyond the retention window.
         /// </summary>
         [Input("logCleanupPolicy")]
-        public string? LogCleanupPolicy { get; set; }
+        public Input<string>? LogCleanupPolicy { get; set; }
 
         /// <summary>
         /// The number of messages accumulated on a log partition 
         /// before messages are flushed to disk.
         /// </summary>
         [Input("logFlushIntervalMessages")]
-        public string? LogFlushIntervalMessages { get; set; }
+        public Input<string>? LogFlushIntervalMessages { get; set; }
 
         /// <summary>
         /// The maximum time in ms that a message in any topic is kept 
         /// in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
         /// </summary>
         [Input("logFlushIntervalMs")]
-        public string? LogFlushIntervalMs { get; set; }
+        public Input<string>? LogFlushIntervalMs { get; set; }
 
         /// <summary>
         /// The interval with which Kafka adds an entry to the offset index.
         /// </summary>
         [Input("logIndexIntervalBytes")]
-        public string? LogIndexIntervalBytes { get; set; }
+        public Input<string>? LogIndexIntervalBytes { get; set; }
 
         /// <summary>
         /// The maximum size in bytes of the offset index.
         /// </summary>
         [Input("logIndexSizeMaxBytes")]
-        public string? LogIndexSizeMaxBytes { get; set; }
+        public Input<string>? LogIndexSizeMaxBytes { get; set; }
 
         /// <summary>
         /// This configuration controls whether down-conversion 
         /// of message formats is enabled to satisfy consume requests.
         /// </summary>
         [Input("logMessageDownconversionEnable")]
-        public string? LogMessageDownconversionEnable { get; set; }
+        public Input<string>? LogMessageDownconversionEnable { get; set; }
 
         /// <summary>
         /// The maximum difference allowed between 
         /// the timestamp when a broker receives a message and the timestamp specified in the message
         /// </summary>
         [Input("logMessageTimestampDifferenceMaxMs")]
-        public string? LogMessageTimestampDifferenceMaxMs { get; set; }
+        public Input<string>? LogMessageTimestampDifferenceMaxMs { get; set; }
 
         /// <summary>
         /// Define whether the timestamp in the message is 
         /// message create time or log append time.
         /// </summary>
         [Input("logMessageTimestampType")]
-        public string? LogMessageTimestampType { get; set; }
+        public Input<string>? LogMessageTimestampType { get; set; }
 
         /// <summary>
         /// Should pre allocate file when create new segment?
         /// </summary>
         [Input("logPreallocate")]
-        public string? LogPreallocate { get; set; }
+        public Input<string>? LogPreallocate { get; set; }
 
         /// <summary>
         /// The maximum size of the log before deleting messages
         /// </summary>
         [Input("logRetentionBytes")]
-        public string? LogRetentionBytes { get; set; }
+        public Input<string>? LogRetentionBytes { get; set; }
 
         /// <summary>
         /// The number of hours to keep a log file before deleting it.
         /// </summary>
         [Input("logRetentionHours")]
-        public string? LogRetentionHours { get; set; }
+        public Input<string>? LogRetentionHours { get; set; }
 
         /// <summary>
         /// The number of milliseconds to keep a log file before deleting it 
@@ -169,53 +169,53 @@ namespace Pulumi.Aiven.Inputs
         /// time limit is applied.
         /// </summary>
         [Input("logRetentionMs")]
-        public string? LogRetentionMs { get; set; }
+        public Input<string>? LogRetentionMs { get; set; }
 
         /// <summary>
         /// The maximum jitter to subtract from logRollTimeMillis 
         /// (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
         /// </summary>
         [Input("logRollJitterMs")]
-        public string? LogRollJitterMs { get; set; }
+        public Input<string>? LogRollJitterMs { get; set; }
 
         /// <summary>
         /// The maximum time before a new log segment is rolled out (in milliseconds).
         /// </summary>
         [Input("logRollMs")]
-        public string? LogRollMs { get; set; }
+        public Input<string>? LogRollMs { get; set; }
 
         /// <summary>
         /// The maximum size of a single log file
         /// </summary>
         [Input("logSegmentBytes")]
-        public string? LogSegmentBytes { get; set; }
+        public Input<string>? LogSegmentBytes { get; set; }
 
         /// <summary>
         /// The amount of time to wait before deleting a file 
         /// from the filesystem.
         /// </summary>
         [Input("logSegmentDeleteDelayMs")]
-        public string? LogSegmentDeleteDelayMs { get; set; }
+        public Input<string>? LogSegmentDeleteDelayMs { get; set; }
 
         /// <summary>
         /// The maximum number of connections allowed from each ip 
         /// address (defaults to 2147483647).
         /// </summary>
         [Input("maxConnectionsPerIp")]
-        public string? MaxConnectionsPerIp { get; set; }
+        public Input<string>? MaxConnectionsPerIp { get; set; }
 
         /// <summary>
         /// The maximum number of incremental fetch 
         /// sessions that the broker will maintain.
         /// </summary>
         [Input("maxIncrementalFetchSessionCacheSlots")]
-        public string? MaxIncrementalFetchSessionCacheSlots { get; set; }
+        public Input<string>? MaxIncrementalFetchSessionCacheSlots { get; set; }
 
         /// <summary>
         /// The maximum size of message that the server can receive.
         /// </summary>
         [Input("messageMaxBytes")]
-        public string? MessageMaxBytes { get; set; }
+        public Input<string>? MessageMaxBytes { get; set; }
 
         /// <summary>
         /// When a producer sets acks to 'all' (or '-1'), 
@@ -223,26 +223,26 @@ namespace Pulumi.Aiven.Inputs
         /// the write to be considered successful.
         /// </summary>
         [Input("minInsyncReplicas")]
-        public string? MinInsyncReplicas { get; set; }
+        public Input<string>? MinInsyncReplicas { get; set; }
 
         /// <summary>
         /// Number of partitions for autocreated topics
         /// </summary>
         [Input("numPartitions")]
-        public string? NumPartitions { get; set; }
+        public Input<string>? NumPartitions { get; set; }
 
         /// <summary>
         /// Log retention window in minutes for offsets topic.
         /// </summary>
         [Input("offsetsRetentionMinutes")]
-        public string? OffsetsRetentionMinutes { get; set; }
+        public Input<string>? OffsetsRetentionMinutes { get; set; }
 
         /// <summary>
         /// The purge interval (in number of 
         /// requests) of the producer request purgatory(defaults to 1000).
         /// </summary>
         [Input("producerPurgatoryPurgeIntervalRequests")]
-        public string? ProducerPurgatoryPurgeIntervalRequests { get; set; }
+        public Input<string>? ProducerPurgatoryPurgeIntervalRequests { get; set; }
 
         /// <summary>
         /// The number of bytes of messages to attempt to fetch 
@@ -251,7 +251,7 @@ namespace Pulumi.Aiven.Inputs
         /// will still be returned to ensure that progress can be made.
         /// </summary>
         [Input("replicaFetchMaxBytes")]
-        public string? ReplicaFetchMaxBytes { get; set; }
+        public Input<string>? ReplicaFetchMaxBytes { get; set; }
 
         /// <summary>
         /// Maximum bytes expected for the entire fetch 
@@ -260,14 +260,14 @@ namespace Pulumi.Aiven.Inputs
         /// still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
         /// </summary>
         [Input("replicaFetchResponseMaxBytes")]
-        public string? ReplicaFetchResponseMaxBytes { get; set; }
+        public Input<string>? ReplicaFetchResponseMaxBytes { get; set; }
 
         /// <summary>
         /// The maximum number of bytes in a socket request 
         /// (defaults to 104857600).
         /// </summary>
         [Input("socketRequestMaxBytes")]
-        public string? SocketRequestMaxBytes { get; set; }
+        public Input<string>? SocketRequestMaxBytes { get; set; }
 
         /// <summary>
         /// The interval at which 
@@ -275,7 +275,7 @@ namespace Pulumi.Aiven.Inputs
         /// to 3600000 (1 hour)).
         /// </summary>
         [Input("transactionRemoveExpiredTransactionCleanupIntervalMs")]
-        public string? TransactionRemoveExpiredTransactionCleanupIntervalMs { get; set; }
+        public Input<string>? TransactionRemoveExpiredTransactionCleanupIntervalMs { get; set; }
 
         /// <summary>
         /// The transaction topic segment bytes should 
@@ -283,9 +283,9 @@ namespace Pulumi.Aiven.Inputs
         /// to 104857600 (100 mebibytes)).
         /// </summary>
         [Input("transactionStateLogSegmentBytes")]
-        public string? TransactionStateLogSegmentBytes { get; set; }
+        public Input<string>? TransactionStateLogSegmentBytes { get; set; }
 
-        public GetKafkaKafkaUserConfigKafkaArgs()
+        public GetKafkaKafkaUserConfigKafkaInputArgs()
         {
         }
     }

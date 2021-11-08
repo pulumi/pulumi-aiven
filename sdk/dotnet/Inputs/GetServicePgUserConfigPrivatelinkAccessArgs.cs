@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServicePgUserConfigPrivatelinkAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePgUserConfigPrivatelinkAccessInputArgs : Pulumi.ResourceArgs
     {
         [Input("pg")]
-        public string? Pg { get; set; }
+        public Input<string>? Pg { get; set; }
 
         [Input("pgbouncer")]
-        public string? Pgbouncer { get; set; }
+        public Input<string>? Pgbouncer { get; set; }
 
-        public GetServicePgUserConfigPrivatelinkAccessArgs()
+        public GetServicePgUserConfigPrivatelinkAccessInputArgs()
         {
         }
     }

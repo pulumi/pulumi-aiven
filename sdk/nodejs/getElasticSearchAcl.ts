@@ -85,3 +85,30 @@ export interface GetElasticSearchAclResult {
     readonly project: string;
     readonly serviceName: string;
 }
+
+export function getElasticSearchAclOutput(args: GetElasticSearchAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetElasticSearchAclResult> {
+    return pulumi.output(args).apply(a => getElasticSearchAcl(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getElasticSearchAcl.
+ */
+export interface GetElasticSearchAclOutputArgs {
+    acls?: pulumi.Input<pulumi.Input<inputs.GetElasticSearchAclAclArgs>[]>;
+    /**
+     * enables or disables Elasticsearch ACLs.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+     * these APIs as long as all operations only target indexes they have been granted access to.
+     */
+    extendedAcl?: pulumi.Input<boolean>;
+    /**
+     * and `serviceName` - (Required) define the project and service the ACL belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     */
+    project: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
+}

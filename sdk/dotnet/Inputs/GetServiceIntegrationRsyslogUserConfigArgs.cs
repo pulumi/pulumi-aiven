@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationRsyslogUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationRsyslogUserConfigInputArgs : Pulumi.ResourceArgs
     {
-        public GetServiceIntegrationRsyslogUserConfigArgs()
+        public GetServiceIntegrationRsyslogUserConfigInputArgs()
         {
         }
     }

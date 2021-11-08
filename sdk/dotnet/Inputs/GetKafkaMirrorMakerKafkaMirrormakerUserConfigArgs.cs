@@ -10,17 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaMirrorMakerKafkaMirrormakerUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
+        private InputList<string>? _ipFilters;
 
         /// <summary>
         /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
-        public List<string> IpFilters
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
@@ -28,12 +28,12 @@ namespace Pulumi.Aiven.Inputs
         /// Kafka MirrorMaker 2 specific server provided values.
         /// </summary>
         [Input("kafkaMirrormaker")]
-        public Inputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs? KafkaMirrormaker { get; set; }
+        public Input<Inputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInputArgs>? KafkaMirrormaker { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs()
+        public GetKafkaMirrorMakerKafkaMirrormakerUserConfigInputArgs()
         {
         }
     }

@@ -279,7 +279,7 @@ type ServiceUserArrayInput interface {
 type ServiceUserArray []ServiceUserInput
 
 func (ServiceUserArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServiceUser)(nil))
+	return reflect.TypeOf((*[]*ServiceUser)(nil)).Elem()
 }
 
 func (i ServiceUserArray) ToServiceUserArrayOutput() ServiceUserArrayOutput {
@@ -304,7 +304,7 @@ type ServiceUserMapInput interface {
 type ServiceUserMap map[string]ServiceUserInput
 
 func (ServiceUserMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServiceUser)(nil))
+	return reflect.TypeOf((*map[string]*ServiceUser)(nil)).Elem()
 }
 
 func (i ServiceUserMap) ToServiceUserMapOutput() ServiceUserMapOutput {
@@ -315,9 +315,7 @@ func (i ServiceUserMap) ToServiceUserMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceUserMapOutput)
 }
 
-type ServiceUserOutput struct {
-	*pulumi.OutputState
-}
+type ServiceUserOutput struct{ *pulumi.OutputState }
 
 func (ServiceUserOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceUser)(nil))
@@ -336,14 +334,12 @@ func (o ServiceUserOutput) ToServiceUserPtrOutput() ServiceUserPtrOutput {
 }
 
 func (o ServiceUserOutput) ToServiceUserPtrOutputWithContext(ctx context.Context) ServiceUserPtrOutput {
-	return o.ApplyT(func(v ServiceUser) *ServiceUser {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceUser) *ServiceUser {
 		return &v
 	}).(ServiceUserPtrOutput)
 }
 
-type ServiceUserPtrOutput struct {
-	*pulumi.OutputState
-}
+type ServiceUserPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceUserPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceUser)(nil))
@@ -355,6 +351,16 @@ func (o ServiceUserPtrOutput) ToServiceUserPtrOutput() ServiceUserPtrOutput {
 
 func (o ServiceUserPtrOutput) ToServiceUserPtrOutputWithContext(ctx context.Context) ServiceUserPtrOutput {
 	return o
+}
+
+func (o ServiceUserPtrOutput) Elem() ServiceUserOutput {
+	return o.ApplyT(func(v *ServiceUser) ServiceUser {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceUser
+		return ret
+	}).(ServiceUserOutput)
 }
 
 type ServiceUserArrayOutput struct{ *pulumi.OutputState }
@@ -398,6 +404,10 @@ func (o ServiceUserMapOutput) MapIndex(k pulumi.StringInput) ServiceUserOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceUserInput)(nil)).Elem(), &ServiceUser{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceUserPtrInput)(nil)).Elem(), &ServiceUser{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceUserArrayInput)(nil)).Elem(), ServiceUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceUserMapInput)(nil)).Elem(), ServiceUserMap{})
 	pulumi.RegisterOutputType(ServiceUserOutput{})
 	pulumi.RegisterOutputType(ServiceUserPtrOutput{})
 	pulumi.RegisterOutputType(ServiceUserArrayOutput{})

@@ -248,3 +248,108 @@ export interface GetPgResult {
      */
     readonly terminationProtection?: boolean;
 }
+
+export function getPgOutput(args: GetPgOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPgResult> {
+    return pulumi.output(args).apply(a => getPg(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPg.
+ */
+export interface GetPgOutputArgs {
+    /**
+     * defines where the cloud provider and region where the service is hosted
+     * in. This can be changed freely after service is created. Changing the value will trigger
+     * a potentially lengthy migration process for the service. Format is cloud provider name
+     * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+     * specific region name. These are documented on each Cloud provider's own support articles,
+     * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+     * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+     */
+    cloudName?: pulumi.Input<string>;
+    components?: pulumi.Input<pulumi.Input<inputs.GetPgComponentArgs>[]>;
+    /**
+     * day of week when maintenance operations should be performed. 
+     * On monday, tuesday, wednesday, etc.
+     */
+    maintenanceWindowDow?: pulumi.Input<string>;
+    /**
+     * time of day when maintenance operations should be performed. 
+     * UTC time in HH:mm:ss format.
+     */
+    maintenanceWindowTime?: pulumi.Input<string>;
+    /**
+     * PostgreSQL specific server provided values.
+     */
+    pg?: pulumi.Input<inputs.GetPgPgArgs>;
+    /**
+     * defines PostgreSQL specific additional configuration options. The following 
+     * configuration options available:
+     */
+    pgUserConfig?: pulumi.Input<inputs.GetPgPgUserConfigArgs>;
+    /**
+     * defines what kind of computing resources are allocated for the service. It can
+     * be changed after creation, though there are some restrictions when going to a smaller
+     * plan such as the new plan must have sufficient amount of disk space to store all current
+     * data and switching to a plan with fewer nodes might not be supported. The basic plan
+     * names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+     * (roughly) the amount of memory on each node (also other attributes like number of CPUs
+     * and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     */
+    plan?: pulumi.Input<string>;
+    /**
+     * identifies the project the service belongs to. To set up proper dependency
+     * between the project and the service, refer to the project as shown in the above example.
+     * Project cannot be changed later without destroying and re-creating the service.
+     */
+    project: pulumi.Input<string>;
+    /**
+     * optionally specifies the VPC the service should run in. If the value
+     * is not set the service is not run inside a VPC. When set, the value should be given as a
+     * reference as shown above to set up dependencies correctly and the VPC must be in the same
+     * cloud and region as the service itself. Project can be freely moved to and from VPC after
+     * creation but doing so triggers migration to new servers so the operation can take
+     * significant amount of time to complete if the service has a lot of data.
+     */
+    projectVpcId?: pulumi.Input<string>;
+    /**
+     * PostgreSQL hostname.
+     */
+    serviceHost?: pulumi.Input<string>;
+    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.GetPgServiceIntegrationArgs>[]>;
+    /**
+     * specifies the actual name of the service. The name cannot be changed
+     * later without destroying and re-creating the service so name should be picked based on
+     * intended service usage rather than current attributes.
+     */
+    serviceName: pulumi.Input<string>;
+    /**
+     * Password used for connecting to the PostgreSQL service, if applicable.
+     */
+    servicePassword?: pulumi.Input<string>;
+    /**
+     * PostgreSQL port.
+     */
+    servicePort?: pulumi.Input<number>;
+    serviceType?: pulumi.Input<string>;
+    /**
+     * URI for connecting to the PostgreSQL service.
+     */
+    serviceUri?: pulumi.Input<string>;
+    /**
+     * Username used for connecting to the PostgreSQL service, if applicable.
+     */
+    serviceUsername?: pulumi.Input<string>;
+    /**
+     * Service state.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * prevents the service from being deleted. It is recommended to
+     * set this to `true` for all production services to prevent unintentional service
+     * deletion. This does not shield against deleting databases or topics but for services
+     * with backups much of the content can at least be restored from backup in case accidental
+     * deletion is done.
+     */
+    terminationProtection?: pulumi.Input<boolean>;
+}

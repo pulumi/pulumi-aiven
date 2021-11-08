@@ -242,7 +242,7 @@ type KafkaAclArrayInput interface {
 type KafkaAclArray []KafkaAclInput
 
 func (KafkaAclArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*KafkaAcl)(nil))
+	return reflect.TypeOf((*[]*KafkaAcl)(nil)).Elem()
 }
 
 func (i KafkaAclArray) ToKafkaAclArrayOutput() KafkaAclArrayOutput {
@@ -267,7 +267,7 @@ type KafkaAclMapInput interface {
 type KafkaAclMap map[string]KafkaAclInput
 
 func (KafkaAclMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*KafkaAcl)(nil))
+	return reflect.TypeOf((*map[string]*KafkaAcl)(nil)).Elem()
 }
 
 func (i KafkaAclMap) ToKafkaAclMapOutput() KafkaAclMapOutput {
@@ -278,9 +278,7 @@ func (i KafkaAclMap) ToKafkaAclMapOutputWithContext(ctx context.Context) KafkaAc
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaAclMapOutput)
 }
 
-type KafkaAclOutput struct {
-	*pulumi.OutputState
-}
+type KafkaAclOutput struct{ *pulumi.OutputState }
 
 func (KafkaAclOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KafkaAcl)(nil))
@@ -299,14 +297,12 @@ func (o KafkaAclOutput) ToKafkaAclPtrOutput() KafkaAclPtrOutput {
 }
 
 func (o KafkaAclOutput) ToKafkaAclPtrOutputWithContext(ctx context.Context) KafkaAclPtrOutput {
-	return o.ApplyT(func(v KafkaAcl) *KafkaAcl {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaAcl) *KafkaAcl {
 		return &v
 	}).(KafkaAclPtrOutput)
 }
 
-type KafkaAclPtrOutput struct {
-	*pulumi.OutputState
-}
+type KafkaAclPtrOutput struct{ *pulumi.OutputState }
 
 func (KafkaAclPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KafkaAcl)(nil))
@@ -318,6 +314,16 @@ func (o KafkaAclPtrOutput) ToKafkaAclPtrOutput() KafkaAclPtrOutput {
 
 func (o KafkaAclPtrOutput) ToKafkaAclPtrOutputWithContext(ctx context.Context) KafkaAclPtrOutput {
 	return o
+}
+
+func (o KafkaAclPtrOutput) Elem() KafkaAclOutput {
+	return o.ApplyT(func(v *KafkaAcl) KafkaAcl {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaAcl
+		return ret
+	}).(KafkaAclOutput)
 }
 
 type KafkaAclArrayOutput struct{ *pulumi.OutputState }
@@ -361,6 +367,10 @@ func (o KafkaAclMapOutput) MapIndex(k pulumi.StringInput) KafkaAclOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaAclInput)(nil)).Elem(), &KafkaAcl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaAclPtrInput)(nil)).Elem(), &KafkaAcl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaAclArrayInput)(nil)).Elem(), KafkaAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaAclMapInput)(nil)).Elem(), KafkaAclMap{})
 	pulumi.RegisterOutputType(KafkaAclOutput{})
 	pulumi.RegisterOutputType(KafkaAclPtrOutput{})
 	pulumi.RegisterOutputType(KafkaAclArrayOutput{})

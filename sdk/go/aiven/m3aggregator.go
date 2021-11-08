@@ -34,7 +34,7 @@ import (
 // 			ServiceName:           pulumi.String("my-m3a"),
 // 			MaintenanceWindowDow:  pulumi.String("monday"),
 // 			MaintenanceWindowTime: pulumi.String("10:00:00"),
-// 			M3aggregatorUserConfig: &aiven.M3AggregatorM3aggregatorUserConfigArgs{
+// 			M3aggregatorUserConfig: &M3AggregatorM3aggregatorUserConfigArgs{
 // 				M3aggregatorVersion: pulumi.String("0.15"),
 // 			},
 // 		})
@@ -465,7 +465,7 @@ type M3AggregatorArrayInput interface {
 type M3AggregatorArray []M3AggregatorInput
 
 func (M3AggregatorArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*M3Aggregator)(nil))
+	return reflect.TypeOf((*[]*M3Aggregator)(nil)).Elem()
 }
 
 func (i M3AggregatorArray) ToM3AggregatorArrayOutput() M3AggregatorArrayOutput {
@@ -490,7 +490,7 @@ type M3AggregatorMapInput interface {
 type M3AggregatorMap map[string]M3AggregatorInput
 
 func (M3AggregatorMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*M3Aggregator)(nil))
+	return reflect.TypeOf((*map[string]*M3Aggregator)(nil)).Elem()
 }
 
 func (i M3AggregatorMap) ToM3AggregatorMapOutput() M3AggregatorMapOutput {
@@ -501,9 +501,7 @@ func (i M3AggregatorMap) ToM3AggregatorMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(M3AggregatorMapOutput)
 }
 
-type M3AggregatorOutput struct {
-	*pulumi.OutputState
-}
+type M3AggregatorOutput struct{ *pulumi.OutputState }
 
 func (M3AggregatorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*M3Aggregator)(nil))
@@ -522,14 +520,12 @@ func (o M3AggregatorOutput) ToM3AggregatorPtrOutput() M3AggregatorPtrOutput {
 }
 
 func (o M3AggregatorOutput) ToM3AggregatorPtrOutputWithContext(ctx context.Context) M3AggregatorPtrOutput {
-	return o.ApplyT(func(v M3Aggregator) *M3Aggregator {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v M3Aggregator) *M3Aggregator {
 		return &v
 	}).(M3AggregatorPtrOutput)
 }
 
-type M3AggregatorPtrOutput struct {
-	*pulumi.OutputState
-}
+type M3AggregatorPtrOutput struct{ *pulumi.OutputState }
 
 func (M3AggregatorPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**M3Aggregator)(nil))
@@ -541,6 +537,16 @@ func (o M3AggregatorPtrOutput) ToM3AggregatorPtrOutput() M3AggregatorPtrOutput {
 
 func (o M3AggregatorPtrOutput) ToM3AggregatorPtrOutputWithContext(ctx context.Context) M3AggregatorPtrOutput {
 	return o
+}
+
+func (o M3AggregatorPtrOutput) Elem() M3AggregatorOutput {
+	return o.ApplyT(func(v *M3Aggregator) M3Aggregator {
+		if v != nil {
+			return *v
+		}
+		var ret M3Aggregator
+		return ret
+	}).(M3AggregatorOutput)
 }
 
 type M3AggregatorArrayOutput struct{ *pulumi.OutputState }
@@ -584,6 +590,10 @@ func (o M3AggregatorMapOutput) MapIndex(k pulumi.StringInput) M3AggregatorOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*M3AggregatorInput)(nil)).Elem(), &M3Aggregator{})
+	pulumi.RegisterInputType(reflect.TypeOf((*M3AggregatorPtrInput)(nil)).Elem(), &M3Aggregator{})
+	pulumi.RegisterInputType(reflect.TypeOf((*M3AggregatorArrayInput)(nil)).Elem(), M3AggregatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*M3AggregatorMapInput)(nil)).Elem(), M3AggregatorMap{})
 	pulumi.RegisterOutputType(M3AggregatorOutput{})
 	pulumi.RegisterOutputType(M3AggregatorPtrOutput{})
 	pulumi.RegisterOutputType(M3AggregatorArrayOutput{})

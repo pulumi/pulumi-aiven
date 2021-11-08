@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupAwsPrivatelink(ctx, &aiven.LookupAwsPrivatelinkArgs{
+// 		_, err := aiven.LookupAwsPrivatelink(ctx, &GetAwsPrivatelinkArgs{
 // 			Project:     data.Aiven_project.Foo.Project,
 // 			ServiceName: aiven_kafka.Bar.Service_name,
 // 		}, nil)
@@ -73,4 +76,82 @@ type LookupAwsPrivatelinkResult struct {
 	Principals  []string `pulumi:"principals"`
 	Project     string   `pulumi:"project"`
 	ServiceName string   `pulumi:"serviceName"`
+}
+
+func LookupAwsPrivatelinkOutput(ctx *pulumi.Context, args LookupAwsPrivatelinkOutputArgs, opts ...pulumi.InvokeOption) LookupAwsPrivatelinkResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAwsPrivatelinkResult, error) {
+			args := v.(LookupAwsPrivatelinkArgs)
+			r, err := LookupAwsPrivatelink(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAwsPrivatelinkResultOutput)
+}
+
+// A collection of arguments for invoking getAwsPrivatelink.
+type LookupAwsPrivatelinkOutputArgs struct {
+	// AWS service ID.
+	AwsServiceId pulumi.StringPtrInput `pulumi:"awsServiceId"`
+	// AWS service name.
+	AwsServiceName pulumi.StringPtrInput `pulumi:"awsServiceName"`
+	// list of allowed principals
+	Principals pulumi.StringArrayInput `pulumi:"principals"`
+	// identifies the project the service belongs to. To set up proper dependency between the project
+	// and the service, refer to the project as shown in the above example. Project cannot be changed later without
+	// destroying and re-creating the service.
+	Project pulumi.StringInput `pulumi:"project"`
+	// specifies the actual name of the service. The name cannot be changed later without
+	// destroying and re-creating the service so name should be picked based on intended service usage rather than current
+	// attributes.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (LookupAwsPrivatelinkOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAwsPrivatelinkArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAwsPrivatelink.
+type LookupAwsPrivatelinkResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAwsPrivatelinkResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAwsPrivatelinkResult)(nil)).Elem()
+}
+
+func (o LookupAwsPrivatelinkResultOutput) ToLookupAwsPrivatelinkResultOutput() LookupAwsPrivatelinkResultOutput {
+	return o
+}
+
+func (o LookupAwsPrivatelinkResultOutput) ToLookupAwsPrivatelinkResultOutputWithContext(ctx context.Context) LookupAwsPrivatelinkResultOutput {
+	return o
+}
+
+// AWS service ID.
+func (o LookupAwsPrivatelinkResultOutput) AwsServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAwsPrivatelinkResult) string { return v.AwsServiceId }).(pulumi.StringOutput)
+}
+
+// AWS service name.
+func (o LookupAwsPrivatelinkResultOutput) AwsServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAwsPrivatelinkResult) string { return v.AwsServiceName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAwsPrivatelinkResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAwsPrivatelinkResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// list of allowed principals
+func (o LookupAwsPrivatelinkResultOutput) Principals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAwsPrivatelinkResult) []string { return v.Principals }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupAwsPrivatelinkResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAwsPrivatelinkResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupAwsPrivatelinkResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAwsPrivatelinkResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAwsPrivatelinkResultOutput{})
 }

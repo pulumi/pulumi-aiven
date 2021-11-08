@@ -9,4 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven.Inputs
 {
+
+    public sealed class MySqlComponentArgs : Pulumi.ResourceArgs
+    {
+        [Input("component")]
+        public Input<string>? Component { get; set; }
+
+        /// <summary>
+        /// Hostname or IP address of the server where to migrate data from
+        /// </summary>
+        [Input("host")]
+        public Input<string>? Host { get; set; }
+
+        [Input("kafkaAuthenticationMethod")]
+        public Input<string>? KafkaAuthenticationMethod { get; set; }
+
+        /// <summary>
+        /// Port number of the server where to migrate data from
+        /// </summary>
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
+        [Input("route")]
+        public Input<string>? Route { get; set; }
+
+        /// <summary>
+        /// The server where to migrate data from is secured with SSL
+        /// </summary>
+        [Input("ssl")]
+        public Input<bool>? Ssl { get; set; }
+
+        [Input("usage")]
+        public Input<string>? Usage { get; set; }
+
+        public MySqlComponentArgs()
+        {
+        }
+    }
 }

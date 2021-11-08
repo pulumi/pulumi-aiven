@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetPgPgUserConfigTimescaledbArgs : Pulumi.InvokeArgs
+    public sealed class GetPgPgUserConfigTimescaledbInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of background workers for timescaledb 
@@ -18,9 +18,9 @@ namespace Pulumi.Aiven.Inputs
         /// total number of concurrent background workers you want running at any given point in time.
         /// </summary>
         [Input("maxBackgroundWorkers")]
-        public string? MaxBackgroundWorkers { get; set; }
+        public Input<string>? MaxBackgroundWorkers { get; set; }
 
-        public GetPgPgUserConfigTimescaledbArgs()
+        public GetPgPgUserConfigTimescaledbInputArgs()
         {
         }
     }

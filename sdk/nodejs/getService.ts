@@ -149,3 +149,52 @@ export interface GetServiceResult {
     readonly state: string;
     readonly terminationProtection?: boolean;
 }
+
+export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getService.
+ */
+export interface GetServiceOutputArgs {
+    cassandra?: pulumi.Input<inputs.GetServiceCassandraArgs>;
+    cassandraUserConfig?: pulumi.Input<inputs.GetServiceCassandraUserConfigArgs>;
+    cloudName?: pulumi.Input<string>;
+    components?: pulumi.Input<pulumi.Input<inputs.GetServiceComponentArgs>[]>;
+    elasticsearch?: pulumi.Input<inputs.GetServiceElasticsearchArgs>;
+    elasticsearchUserConfig?: pulumi.Input<inputs.GetServiceElasticsearchUserConfigArgs>;
+    grafana?: pulumi.Input<inputs.GetServiceGrafanaArgs>;
+    grafanaUserConfig?: pulumi.Input<inputs.GetServiceGrafanaUserConfigArgs>;
+    influxdb?: pulumi.Input<inputs.GetServiceInfluxdbArgs>;
+    influxdbUserConfig?: pulumi.Input<inputs.GetServiceInfluxdbUserConfigArgs>;
+    kafka?: pulumi.Input<inputs.GetServiceKafkaArgs>;
+    kafkaConnect?: pulumi.Input<inputs.GetServiceKafkaConnectArgs>;
+    kafkaConnectUserConfig?: pulumi.Input<inputs.GetServiceKafkaConnectUserConfigArgs>;
+    kafkaMirrormaker?: pulumi.Input<inputs.GetServiceKafkaMirrormakerArgs>;
+    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.GetServiceKafkaMirrormakerUserConfigArgs>;
+    kafkaUserConfig?: pulumi.Input<inputs.GetServiceKafkaUserConfigArgs>;
+    maintenanceWindowDow?: pulumi.Input<string>;
+    maintenanceWindowTime?: pulumi.Input<string>;
+    mysql?: pulumi.Input<inputs.GetServiceMysqlArgs>;
+    mysqlUserConfig?: pulumi.Input<inputs.GetServiceMysqlUserConfigArgs>;
+    opensearch?: pulumi.Input<inputs.GetServiceOpensearchArgs>;
+    opensearchUserConfig?: pulumi.Input<inputs.GetServiceOpensearchUserConfigArgs>;
+    pg?: pulumi.Input<inputs.GetServicePgArgs>;
+    pgUserConfig?: pulumi.Input<inputs.GetServicePgUserConfigArgs>;
+    plan?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    projectVpcId?: pulumi.Input<string>;
+    redis?: pulumi.Input<inputs.GetServiceRedisArgs>;
+    redisUserConfig?: pulumi.Input<inputs.GetServiceRedisUserConfigArgs>;
+    serviceHost?: pulumi.Input<string>;
+    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.GetServiceServiceIntegrationArgs>[]>;
+    serviceName: pulumi.Input<string>;
+    servicePassword?: pulumi.Input<string>;
+    servicePort?: pulumi.Input<number>;
+    serviceType?: pulumi.Input<string>;
+    serviceUri?: pulumi.Input<string>;
+    serviceUsername?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
+    terminationProtection?: pulumi.Input<boolean>;
+}

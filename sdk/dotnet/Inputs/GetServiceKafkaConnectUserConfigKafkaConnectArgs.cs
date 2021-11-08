@@ -10,42 +10,42 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceKafkaConnectUserConfigKafkaConnectArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceKafkaConnectUserConfigKafkaConnectInputArgs : Pulumi.ResourceArgs
     {
         [Input("connectorClientConfigOverridePolicy")]
-        public string? ConnectorClientConfigOverridePolicy { get; set; }
+        public Input<string>? ConnectorClientConfigOverridePolicy { get; set; }
 
         [Input("consumerAutoOffsetReset")]
-        public string? ConsumerAutoOffsetReset { get; set; }
+        public Input<string>? ConsumerAutoOffsetReset { get; set; }
 
         [Input("consumerFetchMaxBytes")]
-        public string? ConsumerFetchMaxBytes { get; set; }
+        public Input<string>? ConsumerFetchMaxBytes { get; set; }
 
         [Input("consumerIsolationLevel")]
-        public string? ConsumerIsolationLevel { get; set; }
+        public Input<string>? ConsumerIsolationLevel { get; set; }
 
         [Input("consumerMaxPartitionFetchBytes")]
-        public string? ConsumerMaxPartitionFetchBytes { get; set; }
+        public Input<string>? ConsumerMaxPartitionFetchBytes { get; set; }
 
         [Input("consumerMaxPollIntervalMs")]
-        public string? ConsumerMaxPollIntervalMs { get; set; }
+        public Input<string>? ConsumerMaxPollIntervalMs { get; set; }
 
         [Input("consumerMaxPollRecords")]
-        public string? ConsumerMaxPollRecords { get; set; }
+        public Input<string>? ConsumerMaxPollRecords { get; set; }
 
         [Input("offsetFlushIntervalMs")]
-        public string? OffsetFlushIntervalMs { get; set; }
+        public Input<string>? OffsetFlushIntervalMs { get; set; }
 
         [Input("offsetFlushTimeoutMs")]
-        public string? OffsetFlushTimeoutMs { get; set; }
+        public Input<string>? OffsetFlushTimeoutMs { get; set; }
 
         [Input("producerMaxRequestSize")]
-        public string? ProducerMaxRequestSize { get; set; }
+        public Input<string>? ProducerMaxRequestSize { get; set; }
 
         [Input("sessionTimeoutMs")]
-        public string? SessionTimeoutMs { get; set; }
+        public Input<string>? SessionTimeoutMs { get; set; }
 
-        public GetServiceKafkaConnectUserConfigKafkaConnectArgs()
+        public GetServiceKafkaConnectUserConfigKafkaConnectInputArgs()
         {
         }
     }

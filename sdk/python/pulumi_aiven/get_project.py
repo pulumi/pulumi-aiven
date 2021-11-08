@@ -12,6 +12,7 @@ __all__ = [
     'GetProjectResult',
     'AwaitableGetProjectResult',
     'get_project',
+    'get_project_output',
 ]
 
 @pulumi.output_type
@@ -369,3 +370,72 @@ def get_project(account_id: Optional[str] = None,
         technical_emails=__ret__.technical_emails,
         use_source_project_billing_group=__ret__.use_source_project_billing_group,
         vat_id=__ret__.vat_id)
+
+
+@_utilities.lift_output_func(get_project)
+def get_project_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       available_credits: Optional[pulumi.Input[Optional[str]]] = None,
+                       billing_address: Optional[pulumi.Input[Optional[str]]] = None,
+                       billing_currency: Optional[pulumi.Input[Optional[str]]] = None,
+                       billing_emails: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       billing_extra_text: Optional[pulumi.Input[Optional[str]]] = None,
+                       billing_group: Optional[pulumi.Input[Optional[str]]] = None,
+                       ca_cert: Optional[pulumi.Input[Optional[str]]] = None,
+                       card_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       copy_from_project: Optional[pulumi.Input[Optional[str]]] = None,
+                       country: Optional[pulumi.Input[Optional[str]]] = None,
+                       country_code: Optional[pulumi.Input[Optional[str]]] = None,
+                       default_cloud: Optional[pulumi.Input[Optional[str]]] = None,
+                       estimated_balance: Optional[pulumi.Input[Optional[str]]] = None,
+                       payment_method: Optional[pulumi.Input[Optional[str]]] = None,
+                       project: Optional[pulumi.Input[str]] = None,
+                       technical_emails: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       use_source_project_billing_group: Optional[pulumi.Input[Optional[bool]]] = None,
+                       vat_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
+    """
+    ## # Project Data Source
+
+    The Project data source provides information about the existing Aiven Project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myproject = aiven.get_project(project="<PROJECT_NAME>")
+    ```
+
+
+    :param str account_id: is an optional property to link a project to already an existing account by 
+           using account ID.
+    :param str available_credits: is a computed property returning the amount of platform credits available to
+           the project. This could be your free trial or other promotional credits.
+    :param str ca_cert: is a computed property that can be used to read the CA certificate of the
+           project. This is required for configuring clients that connect to certain services like
+           Kafka. This value cannot be set, only read.
+    :param str card_id: is either the full card UUID or the last 4 digits of the card. As the full
+           UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+           the card. This can be omitted if `copy_from_project` is used to copy billing info from
+           another project.
+    :param str copy_from_project: is the name of another project used to copy billing information and
+           some other project attributes like technical contacts from. This is mostly relevant when
+           an existing project has billing type set to invoice and that needs to be copied over to a
+           new project. (Setting billing is otherwise not allowed over the API.) This only has
+           effect when the project is created.
+    :param str default_cloud: defines the default cloud provider and region where services are
+           hosted. This can be changed freely after the project is created. This will not affect existing
+           services.
+    :param str estimated_balance: is a computed property returning the current accumulated bill for this
+           project in the current billing period.
+    :param str payment_method: is a computed property returning the method of invoicing used for payments for
+           this project, e.g. "card".
+    :param str project: defines the name of the project. Name must be globally unique (between all
+           Aiven customers) and cannot be changed later without destroying and re-creating the
+           project, including all sub-resources.
+    :param Sequence[str] technical_emails: defines the email addresses that will receive alerts about
+           upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+           this up-to-date to be aware of any potential issues with your project.
+    """
+    ...

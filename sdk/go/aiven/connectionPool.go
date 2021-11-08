@@ -292,7 +292,7 @@ type ConnectionPoolArrayInput interface {
 type ConnectionPoolArray []ConnectionPoolInput
 
 func (ConnectionPoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ConnectionPool)(nil))
+	return reflect.TypeOf((*[]*ConnectionPool)(nil)).Elem()
 }
 
 func (i ConnectionPoolArray) ToConnectionPoolArrayOutput() ConnectionPoolArrayOutput {
@@ -317,7 +317,7 @@ type ConnectionPoolMapInput interface {
 type ConnectionPoolMap map[string]ConnectionPoolInput
 
 func (ConnectionPoolMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ConnectionPool)(nil))
+	return reflect.TypeOf((*map[string]*ConnectionPool)(nil)).Elem()
 }
 
 func (i ConnectionPoolMap) ToConnectionPoolMapOutput() ConnectionPoolMapOutput {
@@ -328,9 +328,7 @@ func (i ConnectionPoolMap) ToConnectionPoolMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPoolMapOutput)
 }
 
-type ConnectionPoolOutput struct {
-	*pulumi.OutputState
-}
+type ConnectionPoolOutput struct{ *pulumi.OutputState }
 
 func (ConnectionPoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConnectionPool)(nil))
@@ -349,14 +347,12 @@ func (o ConnectionPoolOutput) ToConnectionPoolPtrOutput() ConnectionPoolPtrOutpu
 }
 
 func (o ConnectionPoolOutput) ToConnectionPoolPtrOutputWithContext(ctx context.Context) ConnectionPoolPtrOutput {
-	return o.ApplyT(func(v ConnectionPool) *ConnectionPool {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionPool) *ConnectionPool {
 		return &v
 	}).(ConnectionPoolPtrOutput)
 }
 
-type ConnectionPoolPtrOutput struct {
-	*pulumi.OutputState
-}
+type ConnectionPoolPtrOutput struct{ *pulumi.OutputState }
 
 func (ConnectionPoolPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ConnectionPool)(nil))
@@ -368,6 +364,16 @@ func (o ConnectionPoolPtrOutput) ToConnectionPoolPtrOutput() ConnectionPoolPtrOu
 
 func (o ConnectionPoolPtrOutput) ToConnectionPoolPtrOutputWithContext(ctx context.Context) ConnectionPoolPtrOutput {
 	return o
+}
+
+func (o ConnectionPoolPtrOutput) Elem() ConnectionPoolOutput {
+	return o.ApplyT(func(v *ConnectionPool) ConnectionPool {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionPool
+		return ret
+	}).(ConnectionPoolOutput)
 }
 
 type ConnectionPoolArrayOutput struct{ *pulumi.OutputState }
@@ -411,6 +417,10 @@ func (o ConnectionPoolMapOutput) MapIndex(k pulumi.StringInput) ConnectionPoolOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPoolInput)(nil)).Elem(), &ConnectionPool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPoolPtrInput)(nil)).Elem(), &ConnectionPool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPoolArrayInput)(nil)).Elem(), ConnectionPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPoolMapInput)(nil)).Elem(), ConnectionPoolMap{})
 	pulumi.RegisterOutputType(ConnectionPoolOutput{})
 	pulumi.RegisterOutputType(ConnectionPoolPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionPoolArrayOutput{})

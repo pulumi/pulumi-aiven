@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -18,6 +19,14 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetAccountTeamMemberResult> InvokeAsync(GetAccountTeamMemberArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamMemberResult>("aiven:index/getAccountTeamMember:getAccountTeamMember", args ?? new GetAccountTeamMemberArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Account Team Member Data Source
+        /// 
+        /// The Account Team Member data source provides information about the existing Aiven Account Team Member.
+        /// </summary>
+        public static Output<GetAccountTeamMemberResult> Invoke(GetAccountTeamMemberInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccountTeamMemberResult>("aiven:index/getAccountTeamMember:getAccountTeamMember", args ?? new GetAccountTeamMemberInvokeArgs(), options.WithVersion());
     }
 
 
@@ -63,6 +72,52 @@ namespace Pulumi.Aiven
         public string UserEmail { get; set; } = null!;
 
         public GetAccountTeamMemberArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccountTeamMemberInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// is a boolean flag that determines whether an invitation was accepted or not by the user. 
+        /// `false` value means that the invitation was sent to the user but not yet accepted.
+        /// `true` means that the user accepted the invitation and is now a member of an account team.
+        /// </summary>
+        [Input("accepted")]
+        public Input<bool>? Accepted { get; set; }
+
+        /// <summary>
+        /// is a unique account id.
+        /// </summary>
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// time of creation.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// team invited by user email.
+        /// </summary>
+        [Input("invitedByUserEmail")]
+        public Input<string>? InvitedByUserEmail { get; set; }
+
+        /// <summary>
+        /// is an account team id.
+        /// </summary>
+        [Input("teamId", required: true)]
+        public Input<string> TeamId { get; set; } = null!;
+
+        /// <summary>
+        /// is a user email address that first will be invited, and after accepting an invitation,
+        /// he or she becomes a member of a team.
+        /// </summary>
+        [Input("userEmail", required: true)]
+        public Input<string> UserEmail { get; set; } = null!;
+
+        public GetAccountTeamMemberInvokeArgs()
         {
         }
     }

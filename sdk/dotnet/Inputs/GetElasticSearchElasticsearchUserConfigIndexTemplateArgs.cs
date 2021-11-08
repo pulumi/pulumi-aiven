@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetElasticSearchElasticsearchUserConfigIndexTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetElasticSearchElasticsearchUserConfigIndexTemplateInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number of nested JSON objects that
@@ -18,21 +18,21 @@ namespace Pulumi.Aiven.Inputs
         /// memory errors when a document contains too many nested objects. Default is 10000.
         /// </summary>
         [Input("mappingNestedObjectsLimit")]
-        public string? MappingNestedObjectsLimit { get; set; }
+        public Input<string>? MappingNestedObjectsLimit { get; set; }
 
         /// <summary>
         /// The number of replicas each primary shard has.
         /// </summary>
         [Input("numberOfReplicas")]
-        public string? NumberOfReplicas { get; set; }
+        public Input<string>? NumberOfReplicas { get; set; }
 
         /// <summary>
         /// The number of primary shards that an index should have.
         /// </summary>
         [Input("numberOfShards")]
-        public string? NumberOfShards { get; set; }
+        public Input<string>? NumberOfShards { get; set; }
 
-        public GetElasticSearchElasticsearchUserConfigIndexTemplateArgs()
+        public GetElasticSearchElasticsearchUserConfigIndexTemplateInputArgs()
         {
         }
     }

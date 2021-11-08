@@ -14,6 +14,7 @@ __all__ = [
     'GetServiceResult',
     'AwaitableGetServiceResult',
     'get_service',
+    'get_service_output',
 ]
 
 @pulumi.output_type
@@ -525,3 +526,50 @@ def get_service(cassandra: Optional[pulumi.InputType['GetServiceCassandraArgs']]
         service_username=__ret__.service_username,
         state=__ret__.state,
         termination_protection=__ret__.termination_protection)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_output(cassandra: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceCassandraArgs']]]] = None,
+                       cassandra_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceCassandraUserConfigArgs']]]] = None,
+                       cloud_name: Optional[pulumi.Input[Optional[str]]] = None,
+                       components: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServiceComponentArgs']]]]] = None,
+                       elasticsearch: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceElasticsearchArgs']]]] = None,
+                       elasticsearch_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceElasticsearchUserConfigArgs']]]] = None,
+                       grafana: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceGrafanaArgs']]]] = None,
+                       grafana_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceGrafanaUserConfigArgs']]]] = None,
+                       influxdb: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceInfluxdbArgs']]]] = None,
+                       influxdb_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceInfluxdbUserConfigArgs']]]] = None,
+                       kafka: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceKafkaArgs']]]] = None,
+                       kafka_connect: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceKafkaConnectArgs']]]] = None,
+                       kafka_connect_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceKafkaConnectUserConfigArgs']]]] = None,
+                       kafka_mirrormaker: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceKafkaMirrormakerArgs']]]] = None,
+                       kafka_mirrormaker_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceKafkaMirrormakerUserConfigArgs']]]] = None,
+                       kafka_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceKafkaUserConfigArgs']]]] = None,
+                       maintenance_window_dow: Optional[pulumi.Input[Optional[str]]] = None,
+                       maintenance_window_time: Optional[pulumi.Input[Optional[str]]] = None,
+                       mysql: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceMysqlArgs']]]] = None,
+                       mysql_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceMysqlUserConfigArgs']]]] = None,
+                       opensearch: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceOpensearchArgs']]]] = None,
+                       opensearch_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceOpensearchUserConfigArgs']]]] = None,
+                       pg: Optional[pulumi.Input[Optional[pulumi.InputType['GetServicePgArgs']]]] = None,
+                       pg_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServicePgUserConfigArgs']]]] = None,
+                       plan: Optional[pulumi.Input[Optional[str]]] = None,
+                       project: Optional[pulumi.Input[str]] = None,
+                       project_vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       redis: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceRedisArgs']]]] = None,
+                       redis_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceRedisUserConfigArgs']]]] = None,
+                       service_host: Optional[pulumi.Input[Optional[str]]] = None,
+                       service_integrations: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServiceServiceIntegrationArgs']]]]] = None,
+                       service_name: Optional[pulumi.Input[str]] = None,
+                       service_password: Optional[pulumi.Input[Optional[str]]] = None,
+                       service_port: Optional[pulumi.Input[Optional[int]]] = None,
+                       service_type: Optional[pulumi.Input[Optional[str]]] = None,
+                       service_uri: Optional[pulumi.Input[Optional[str]]] = None,
+                       service_username: Optional[pulumi.Input[Optional[str]]] = None,
+                       state: Optional[pulumi.Input[Optional[str]]] = None,
+                       termination_protection: Optional[pulumi.Input[Optional[bool]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

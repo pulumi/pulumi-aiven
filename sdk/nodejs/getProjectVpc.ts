@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -81,4 +80,32 @@ export interface GetProjectVpcResult {
      * set, only read.
      */
     readonly state: string;
+}
+
+export function getProjectVpcOutput(args: GetProjectVpcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectVpcResult> {
+    return pulumi.output(args).apply(a => getProjectVpc(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProjectVpc.
+ */
+export interface GetProjectVpcOutputArgs {
+    /**
+     * defines where the cloud provider and region where the service is hosted
+     * in. See the Service resource for additional information.
+     */
+    cloudName: pulumi.Input<string>;
+    /**
+     * defines the network CIDR of the VPC.
+     */
+    networkCidr?: pulumi.Input<string>;
+    /**
+     * defines the project the VPC belongs to.
+     */
+    project: pulumi.Input<string>;
+    /**
+     * ia a computed property that tells the current state of the VPC. This property cannot be
+     * set, only read.
+     */
+    state?: pulumi.Input<string>;
 }

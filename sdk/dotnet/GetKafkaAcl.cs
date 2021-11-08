@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -46,6 +47,42 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetKafkaAclResult> InvokeAsync(GetKafkaAclArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Kafka ACL Data Source
+        /// 
+        /// The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL 
+        /// for a Kafka service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mytestacl = Output.Create(Aiven.GetKafkaAcl.InvokeAsync(new Aiven.GetKafkaAclArgs
+        ///         {
+        ///             Project = aiven_project.Myproject.Project,
+        ///             ServiceName = aiven_service.Myservice.Service_name,
+        ///             Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+        ///             Permission = "admin",
+        ///             Username = "&lt;USERNAME_PATTERN&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKafkaAclResult> Invoke(GetKafkaAclInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +120,44 @@ namespace Pulumi.Aiven
         public string Username { get; set; } = null!;
 
         public GetKafkaAclArgs()
+        {
+        }
+    }
+
+    public sealed class GetKafkaAclInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// is the level of permission the matching users are given to the matching
+        /// topics (admin, read, readwrite, write).
+        /// </summary>
+        [Input("permission", required: true)]
+        public Input<string> Permission { get; set; } = null!;
+
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the ACL belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// These properties cannot be changed once the service is created. Doing so will result in
+        /// the topic being deleted and new one created instead.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        /// <summary>
+        /// is a topic name pattern the ACL entry matches to.
+        /// </summary>
+        [Input("topic", required: true)]
+        public Input<string> Topic { get; set; } = null!;
+
+        /// <summary>
+        /// is a username pattern the ACL entry matches to.
+        /// </summary>
+        [Input("username", required: true)]
+        public Input<string> Username { get; set; } = null!;
+
+        public GetKafkaAclInvokeArgs()
         {
         }
     }

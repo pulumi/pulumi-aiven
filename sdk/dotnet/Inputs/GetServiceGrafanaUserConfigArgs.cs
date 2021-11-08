@@ -10,119 +10,119 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceGrafanaUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceGrafanaUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("alertingEnabled")]
-        public string? AlertingEnabled { get; set; }
+        public Input<string>? AlertingEnabled { get; set; }
 
         [Input("alertingErrorOrTimeout")]
-        public string? AlertingErrorOrTimeout { get; set; }
+        public Input<string>? AlertingErrorOrTimeout { get; set; }
 
         [Input("alertingMaxAnnotationsToKeep")]
-        public string? AlertingMaxAnnotationsToKeep { get; set; }
+        public Input<string>? AlertingMaxAnnotationsToKeep { get; set; }
 
         [Input("alertingNodataOrNullvalues")]
-        public string? AlertingNodataOrNullvalues { get; set; }
+        public Input<string>? AlertingNodataOrNullvalues { get; set; }
 
         [Input("allowEmbedding")]
-        public string? AllowEmbedding { get; set; }
+        public Input<string>? AllowEmbedding { get; set; }
 
         [Input("authAzuread")]
-        public Inputs.GetServiceGrafanaUserConfigAuthAzureadArgs? AuthAzuread { get; set; }
+        public Input<Inputs.GetServiceGrafanaUserConfigAuthAzureadInputArgs>? AuthAzuread { get; set; }
 
         [Input("authBasicEnabled")]
-        public string? AuthBasicEnabled { get; set; }
+        public Input<string>? AuthBasicEnabled { get; set; }
 
         [Input("authGenericOauth")]
-        public Inputs.GetServiceGrafanaUserConfigAuthGenericOauthArgs? AuthGenericOauth { get; set; }
+        public Input<Inputs.GetServiceGrafanaUserConfigAuthGenericOauthInputArgs>? AuthGenericOauth { get; set; }
 
         [Input("authGithub")]
-        public Inputs.GetServiceGrafanaUserConfigAuthGithubArgs? AuthGithub { get; set; }
+        public Input<Inputs.GetServiceGrafanaUserConfigAuthGithubInputArgs>? AuthGithub { get; set; }
 
         [Input("authGitlab")]
-        public Inputs.GetServiceGrafanaUserConfigAuthGitlabArgs? AuthGitlab { get; set; }
+        public Input<Inputs.GetServiceGrafanaUserConfigAuthGitlabInputArgs>? AuthGitlab { get; set; }
 
         [Input("authGoogle")]
-        public Inputs.GetServiceGrafanaUserConfigAuthGoogleArgs? AuthGoogle { get; set; }
+        public Input<Inputs.GetServiceGrafanaUserConfigAuthGoogleInputArgs>? AuthGoogle { get; set; }
 
         [Input("cookieSamesite")]
-        public string? CookieSamesite { get; set; }
+        public Input<string>? CookieSamesite { get; set; }
 
         [Input("customDomain")]
-        public string? CustomDomain { get; set; }
+        public Input<string>? CustomDomain { get; set; }
 
         [Input("dashboardsMinRefreshInterval")]
-        public string? DashboardsMinRefreshInterval { get; set; }
+        public Input<string>? DashboardsMinRefreshInterval { get; set; }
 
         [Input("dashboardsVersionsToKeep")]
-        public string? DashboardsVersionsToKeep { get; set; }
+        public Input<string>? DashboardsVersionsToKeep { get; set; }
 
         [Input("dataproxySendUserHeader")]
-        public string? DataproxySendUserHeader { get; set; }
+        public Input<string>? DataproxySendUserHeader { get; set; }
 
         [Input("dataproxyTimeout")]
-        public string? DataproxyTimeout { get; set; }
+        public Input<string>? DataproxyTimeout { get; set; }
 
         [Input("dateFormats")]
-        public Inputs.GetServiceGrafanaUserConfigDateFormatsArgs? DateFormats { get; set; }
+        public Input<Inputs.GetServiceGrafanaUserConfigDateFormatsInputArgs>? DateFormats { get; set; }
 
         [Input("disableGravatar")]
-        public string? DisableGravatar { get; set; }
+        public Input<string>? DisableGravatar { get; set; }
 
         [Input("editorsCanAdmin")]
-        public string? EditorsCanAdmin { get; set; }
+        public Input<string>? EditorsCanAdmin { get; set; }
 
         [Input("externalImageStorage")]
-        public Inputs.GetServiceGrafanaUserConfigExternalImageStorageArgs? ExternalImageStorage { get; set; }
+        public Input<Inputs.GetServiceGrafanaUserConfigExternalImageStorageInputArgs>? ExternalImageStorage { get; set; }
 
         [Input("googleAnalyticsUaId")]
-        public string? GoogleAnalyticsUaId { get; set; }
+        public Input<string>? GoogleAnalyticsUaId { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
-        public List<string> IpFilters
+        private InputList<string>? _ipFilters;
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
         [Input("metricsEnabled")]
-        public string? MetricsEnabled { get; set; }
+        public Input<string>? MetricsEnabled { get; set; }
 
         [Input("privateAccess")]
-        public Inputs.GetServiceGrafanaUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetServiceGrafanaUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         [Input("privatelinkAccess")]
-        public Inputs.GetServiceGrafanaUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+        public Input<Inputs.GetServiceGrafanaUserConfigPrivatelinkAccessInputArgs>? PrivatelinkAccess { get; set; }
 
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         [Input("publicAccess")]
-        public Inputs.GetServiceGrafanaUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetServiceGrafanaUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         [Input("recoveryBasebackupName")]
-        public string? RecoveryBasebackupName { get; set; }
+        public Input<string>? RecoveryBasebackupName { get; set; }
 
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("smtpServer")]
-        public Inputs.GetServiceGrafanaUserConfigSmtpServerArgs? SmtpServer { get; set; }
+        public Input<Inputs.GetServiceGrafanaUserConfigSmtpServerInputArgs>? SmtpServer { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
         [Input("userAutoAssignOrg")]
-        public string? UserAutoAssignOrg { get; set; }
+        public Input<string>? UserAutoAssignOrg { get; set; }
 
         [Input("userAutoAssignOrgRole")]
-        public string? UserAutoAssignOrgRole { get; set; }
+        public Input<string>? UserAutoAssignOrgRole { get; set; }
 
         [Input("viewersCanEdit")]
-        public string? ViewersCanEdit { get; set; }
+        public Input<string>? ViewersCanEdit { get; set; }
 
-        public GetServiceGrafanaUserConfigArgs()
+        public GetServiceGrafanaUserConfigInputArgs()
         {
         }
     }

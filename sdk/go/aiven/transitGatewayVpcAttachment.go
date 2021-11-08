@@ -243,7 +243,7 @@ type TransitGatewayVpcAttachmentArrayInput interface {
 type TransitGatewayVpcAttachmentArray []TransitGatewayVpcAttachmentInput
 
 func (TransitGatewayVpcAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TransitGatewayVpcAttachment)(nil))
+	return reflect.TypeOf((*[]*TransitGatewayVpcAttachment)(nil)).Elem()
 }
 
 func (i TransitGatewayVpcAttachmentArray) ToTransitGatewayVpcAttachmentArrayOutput() TransitGatewayVpcAttachmentArrayOutput {
@@ -268,7 +268,7 @@ type TransitGatewayVpcAttachmentMapInput interface {
 type TransitGatewayVpcAttachmentMap map[string]TransitGatewayVpcAttachmentInput
 
 func (TransitGatewayVpcAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TransitGatewayVpcAttachment)(nil))
+	return reflect.TypeOf((*map[string]*TransitGatewayVpcAttachment)(nil)).Elem()
 }
 
 func (i TransitGatewayVpcAttachmentMap) ToTransitGatewayVpcAttachmentMapOutput() TransitGatewayVpcAttachmentMapOutput {
@@ -279,9 +279,7 @@ func (i TransitGatewayVpcAttachmentMap) ToTransitGatewayVpcAttachmentMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayVpcAttachmentMapOutput)
 }
 
-type TransitGatewayVpcAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type TransitGatewayVpcAttachmentOutput struct{ *pulumi.OutputState }
 
 func (TransitGatewayVpcAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransitGatewayVpcAttachment)(nil))
@@ -300,14 +298,12 @@ func (o TransitGatewayVpcAttachmentOutput) ToTransitGatewayVpcAttachmentPtrOutpu
 }
 
 func (o TransitGatewayVpcAttachmentOutput) ToTransitGatewayVpcAttachmentPtrOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentPtrOutput {
-	return o.ApplyT(func(v TransitGatewayVpcAttachment) *TransitGatewayVpcAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransitGatewayVpcAttachment) *TransitGatewayVpcAttachment {
 		return &v
 	}).(TransitGatewayVpcAttachmentPtrOutput)
 }
 
-type TransitGatewayVpcAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type TransitGatewayVpcAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (TransitGatewayVpcAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransitGatewayVpcAttachment)(nil))
@@ -319,6 +315,16 @@ func (o TransitGatewayVpcAttachmentPtrOutput) ToTransitGatewayVpcAttachmentPtrOu
 
 func (o TransitGatewayVpcAttachmentPtrOutput) ToTransitGatewayVpcAttachmentPtrOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentPtrOutput {
 	return o
+}
+
+func (o TransitGatewayVpcAttachmentPtrOutput) Elem() TransitGatewayVpcAttachmentOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachment) TransitGatewayVpcAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret TransitGatewayVpcAttachment
+		return ret
+	}).(TransitGatewayVpcAttachmentOutput)
 }
 
 type TransitGatewayVpcAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -362,6 +368,10 @@ func (o TransitGatewayVpcAttachmentMapOutput) MapIndex(k pulumi.StringInput) Tra
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitGatewayVpcAttachmentInput)(nil)).Elem(), &TransitGatewayVpcAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitGatewayVpcAttachmentPtrInput)(nil)).Elem(), &TransitGatewayVpcAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitGatewayVpcAttachmentArrayInput)(nil)).Elem(), TransitGatewayVpcAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitGatewayVpcAttachmentMapInput)(nil)).Elem(), TransitGatewayVpcAttachmentMap{})
 	pulumi.RegisterOutputType(TransitGatewayVpcAttachmentOutput{})
 	pulumi.RegisterOutputType(TransitGatewayVpcAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(TransitGatewayVpcAttachmentArrayOutput{})

@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs : Pulumi.InvokeArgs
+    public sealed class GetOpenSearchOpensearchUserConfigOpensearchDashboardsInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable or disable Opensearch dashboards.
         /// </summary>
         [Input("enabled")]
-        public string? Enabled { get; set; }
+        public Input<string>? Enabled { get; set; }
 
         /// <summary>
         /// Limits the maximum amount of memory (in MiB) the Opensearch dashboards process can use.
@@ -24,16 +24,16 @@ namespace Pulumi.Aiven.Inputs
         /// reserved by Opensearch dashboards is not available for Opensearch.
         /// </summary>
         [Input("maxOldSpaceSize")]
-        public string? MaxOldSpaceSize { get; set; }
+        public Input<string>? MaxOldSpaceSize { get; set; }
 
         /// <summary>
         /// Timeout in milliseconds for requests made by Opensearch dashboards towards
         /// Opensearch.
         /// </summary>
         [Input("opensearchRequestTimeout")]
-        public string? OpensearchRequestTimeout { get; set; }
+        public Input<string>? OpensearchRequestTimeout { get; set; }
 
-        public GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs()
+        public GetOpenSearchOpensearchUserConfigOpensearchDashboardsInputArgs()
         {
         }
     }

@@ -35,28 +35,28 @@ import (
 // 			ServiceName: pulumi.Any(aiven_service.Es.Service_name),
 // 			Enabled:     pulumi.Bool(true),
 // 			ExtendedAcl: pulumi.Bool(false),
-// 			Acls: aiven.ElasticSearchAclAclArray{
-// 				&aiven.ElasticSearchAclAclArgs{
+// 			Acls: ElasticSearchAclAclArray{
+// 				&ElasticSearchAclAclArgs{
 // 					Username: pulumi.Any(aiven_service_user.Es - user.Username),
-// 					Rules: aiven.ElasticSearchAclAclRuleArray{
-// 						&aiven.ElasticSearchAclAclRuleArgs{
+// 					Rules: ElasticSearchAclAclRuleArray{
+// 						&ElasticSearchAclAclRuleArgs{
 // 							Index:      pulumi.String("_*"),
 // 							Permission: pulumi.String("admin"),
 // 						},
-// 						&aiven.ElasticSearchAclAclRuleArgs{
+// 						&ElasticSearchAclAclRuleArgs{
 // 							Index:      pulumi.String("*"),
 // 							Permission: pulumi.String("admin"),
 // 						},
 // 					},
 // 				},
-// 				&aiven.ElasticSearchAclAclArgs{
+// 				&ElasticSearchAclAclArgs{
 // 					Username: pulumi.String("avnadmin"),
-// 					Rules: aiven.ElasticSearchAclAclRuleArray{
-// 						&aiven.ElasticSearchAclAclRuleArgs{
+// 					Rules: ElasticSearchAclAclRuleArray{
+// 						&ElasticSearchAclAclRuleArgs{
 // 							Index:      pulumi.String("_*"),
 // 							Permission: pulumi.String("read"),
 // 						},
-// 						&aiven.ElasticSearchAclAclRuleArgs{
+// 						&ElasticSearchAclAclRuleArgs{
 // 							Index:      pulumi.String("*"),
 // 							Permission: pulumi.String("read"),
 // 						},
@@ -258,7 +258,7 @@ type ElasticSearchAclArrayInput interface {
 type ElasticSearchAclArray []ElasticSearchAclInput
 
 func (ElasticSearchAclArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ElasticSearchAcl)(nil))
+	return reflect.TypeOf((*[]*ElasticSearchAcl)(nil)).Elem()
 }
 
 func (i ElasticSearchAclArray) ToElasticSearchAclArrayOutput() ElasticSearchAclArrayOutput {
@@ -283,7 +283,7 @@ type ElasticSearchAclMapInput interface {
 type ElasticSearchAclMap map[string]ElasticSearchAclInput
 
 func (ElasticSearchAclMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ElasticSearchAcl)(nil))
+	return reflect.TypeOf((*map[string]*ElasticSearchAcl)(nil)).Elem()
 }
 
 func (i ElasticSearchAclMap) ToElasticSearchAclMapOutput() ElasticSearchAclMapOutput {
@@ -294,9 +294,7 @@ func (i ElasticSearchAclMap) ToElasticSearchAclMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchAclMapOutput)
 }
 
-type ElasticSearchAclOutput struct {
-	*pulumi.OutputState
-}
+type ElasticSearchAclOutput struct{ *pulumi.OutputState }
 
 func (ElasticSearchAclOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElasticSearchAcl)(nil))
@@ -315,14 +313,12 @@ func (o ElasticSearchAclOutput) ToElasticSearchAclPtrOutput() ElasticSearchAclPt
 }
 
 func (o ElasticSearchAclOutput) ToElasticSearchAclPtrOutputWithContext(ctx context.Context) ElasticSearchAclPtrOutput {
-	return o.ApplyT(func(v ElasticSearchAcl) *ElasticSearchAcl {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticSearchAcl) *ElasticSearchAcl {
 		return &v
 	}).(ElasticSearchAclPtrOutput)
 }
 
-type ElasticSearchAclPtrOutput struct {
-	*pulumi.OutputState
-}
+type ElasticSearchAclPtrOutput struct{ *pulumi.OutputState }
 
 func (ElasticSearchAclPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElasticSearchAcl)(nil))
@@ -334,6 +330,16 @@ func (o ElasticSearchAclPtrOutput) ToElasticSearchAclPtrOutput() ElasticSearchAc
 
 func (o ElasticSearchAclPtrOutput) ToElasticSearchAclPtrOutputWithContext(ctx context.Context) ElasticSearchAclPtrOutput {
 	return o
+}
+
+func (o ElasticSearchAclPtrOutput) Elem() ElasticSearchAclOutput {
+	return o.ApplyT(func(v *ElasticSearchAcl) ElasticSearchAcl {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSearchAcl
+		return ret
+	}).(ElasticSearchAclOutput)
 }
 
 type ElasticSearchAclArrayOutput struct{ *pulumi.OutputState }
@@ -377,6 +383,10 @@ func (o ElasticSearchAclMapOutput) MapIndex(k pulumi.StringInput) ElasticSearchA
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchAclInput)(nil)).Elem(), &ElasticSearchAcl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchAclPtrInput)(nil)).Elem(), &ElasticSearchAcl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchAclArrayInput)(nil)).Elem(), ElasticSearchAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchAclMapInput)(nil)).Elem(), ElasticSearchAclMap{})
 	pulumi.RegisterOutputType(ElasticSearchAclOutput{})
 	pulumi.RegisterOutputType(ElasticSearchAclPtrOutput{})
 	pulumi.RegisterOutputType(ElasticSearchAclArrayOutput{})

@@ -14,6 +14,7 @@ __all__ = [
     'GetElasticSearchAclResult',
     'AwaitableGetElasticSearchAclResult',
     'get_elastic_search_acl',
+    'get_elastic_search_acl_output',
 ]
 
 @pulumi.output_type
@@ -146,3 +147,37 @@ def get_elastic_search_acl(acls: Optional[Sequence[pulumi.InputType['GetElasticS
         id=__ret__.id,
         project=__ret__.project,
         service_name=__ret__.service_name)
+
+
+@_utilities.lift_output_func(get_elastic_search_acl)
+def get_elastic_search_acl_output(acls: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetElasticSearchAclAclArgs']]]]] = None,
+                                  enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                                  extended_acl: Optional[pulumi.Input[Optional[bool]]] = None,
+                                  project: Optional[pulumi.Input[str]] = None,
+                                  service_name: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetElasticSearchAclResult]:
+    """
+    ## # Elasticsearch ACL Data Source
+
+    The Elasticsearch ACL data source provides information about the existing Aiven Elasticsearch ACL
+    for Elasticsearch service.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    es_acls = aiven.get_elastic_search_acl(project=aiven_project["es-project"]["project"],
+        service_name=aiven_elasticsearch["es"]["service_name"])
+    ```
+
+
+    :param bool enabled: enables or disables Elasticsearch ACLs.
+    :param bool extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
+           (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
+           these APIs as long as all operations only target indexes they have been granted access to.
+    :param str project: and `service_name` - (Required) define the project and service the ACL belongs to. 
+           They should be defined using reference as shown above to set up dependencies correctly.
+    """
+    ...

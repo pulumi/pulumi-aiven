@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetCassandaCassandraArgs : Pulumi.InvokeArgs
+    public sealed class GetCassandaCassandraInputArgs : Pulumi.ResourceArgs
     {
-        public GetCassandaCassandraArgs()
+        public GetCassandaCassandraInputArgs()
         {
         }
     }

@@ -34,13 +34,13 @@ import (
 // 			ServiceName:           pulumi.String("my-mysql1"),
 // 			MaintenanceWindowDow:  pulumi.String("monday"),
 // 			MaintenanceWindowTime: pulumi.String("10:00:00"),
-// 			MysqlUserConfig: &aiven.MySqlMysqlUserConfigArgs{
+// 			MysqlUserConfig: &MySqlMysqlUserConfigArgs{
 // 				MysqlVersion: pulumi.String("8"),
-// 				Mysql: &aiven.MySqlMysqlUserConfigMysqlArgs{
+// 				Mysql: &MySqlMysqlUserConfigMysqlArgs{
 // 					SqlMode:              pulumi.String("ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE"),
 // 					SqlRequirePrimaryKey: pulumi.String("true"),
 // 				},
-// 				PublicAccess: &aiven.MySqlMysqlUserConfigPublicAccessArgs{
+// 				PublicAccess: &MySqlMysqlUserConfigPublicAccessArgs{
 // 					Mysql: pulumi.String("true"),
 // 				},
 // 			},
@@ -492,7 +492,7 @@ type MySqlArrayInput interface {
 type MySqlArray []MySqlInput
 
 func (MySqlArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MySql)(nil))
+	return reflect.TypeOf((*[]*MySql)(nil)).Elem()
 }
 
 func (i MySqlArray) ToMySqlArrayOutput() MySqlArrayOutput {
@@ -517,7 +517,7 @@ type MySqlMapInput interface {
 type MySqlMap map[string]MySqlInput
 
 func (MySqlMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MySql)(nil))
+	return reflect.TypeOf((*map[string]*MySql)(nil)).Elem()
 }
 
 func (i MySqlMap) ToMySqlMapOutput() MySqlMapOutput {
@@ -528,9 +528,7 @@ func (i MySqlMap) ToMySqlMapOutputWithContext(ctx context.Context) MySqlMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(MySqlMapOutput)
 }
 
-type MySqlOutput struct {
-	*pulumi.OutputState
-}
+type MySqlOutput struct{ *pulumi.OutputState }
 
 func (MySqlOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MySql)(nil))
@@ -549,14 +547,12 @@ func (o MySqlOutput) ToMySqlPtrOutput() MySqlPtrOutput {
 }
 
 func (o MySqlOutput) ToMySqlPtrOutputWithContext(ctx context.Context) MySqlPtrOutput {
-	return o.ApplyT(func(v MySql) *MySql {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MySql) *MySql {
 		return &v
 	}).(MySqlPtrOutput)
 }
 
-type MySqlPtrOutput struct {
-	*pulumi.OutputState
-}
+type MySqlPtrOutput struct{ *pulumi.OutputState }
 
 func (MySqlPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MySql)(nil))
@@ -568,6 +564,16 @@ func (o MySqlPtrOutput) ToMySqlPtrOutput() MySqlPtrOutput {
 
 func (o MySqlPtrOutput) ToMySqlPtrOutputWithContext(ctx context.Context) MySqlPtrOutput {
 	return o
+}
+
+func (o MySqlPtrOutput) Elem() MySqlOutput {
+	return o.ApplyT(func(v *MySql) MySql {
+		if v != nil {
+			return *v
+		}
+		var ret MySql
+		return ret
+	}).(MySqlOutput)
 }
 
 type MySqlArrayOutput struct{ *pulumi.OutputState }
@@ -611,6 +617,10 @@ func (o MySqlMapOutput) MapIndex(k pulumi.StringInput) MySqlOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MySqlInput)(nil)).Elem(), &MySql{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MySqlPtrInput)(nil)).Elem(), &MySql{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MySqlArrayInput)(nil)).Elem(), MySqlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MySqlMapInput)(nil)).Elem(), MySqlMap{})
 	pulumi.RegisterOutputType(MySqlOutput{})
 	pulumi.RegisterOutputType(MySqlPtrOutput{})
 	pulumi.RegisterOutputType(MySqlArrayOutput{})

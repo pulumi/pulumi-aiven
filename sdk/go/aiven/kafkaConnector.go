@@ -267,7 +267,7 @@ type KafkaConnectorArrayInput interface {
 type KafkaConnectorArray []KafkaConnectorInput
 
 func (KafkaConnectorArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*KafkaConnector)(nil))
+	return reflect.TypeOf((*[]*KafkaConnector)(nil)).Elem()
 }
 
 func (i KafkaConnectorArray) ToKafkaConnectorArrayOutput() KafkaConnectorArrayOutput {
@@ -292,7 +292,7 @@ type KafkaConnectorMapInput interface {
 type KafkaConnectorMap map[string]KafkaConnectorInput
 
 func (KafkaConnectorMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*KafkaConnector)(nil))
+	return reflect.TypeOf((*map[string]*KafkaConnector)(nil)).Elem()
 }
 
 func (i KafkaConnectorMap) ToKafkaConnectorMapOutput() KafkaConnectorMapOutput {
@@ -303,9 +303,7 @@ func (i KafkaConnectorMap) ToKafkaConnectorMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectorMapOutput)
 }
 
-type KafkaConnectorOutput struct {
-	*pulumi.OutputState
-}
+type KafkaConnectorOutput struct{ *pulumi.OutputState }
 
 func (KafkaConnectorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KafkaConnector)(nil))
@@ -324,14 +322,12 @@ func (o KafkaConnectorOutput) ToKafkaConnectorPtrOutput() KafkaConnectorPtrOutpu
 }
 
 func (o KafkaConnectorOutput) ToKafkaConnectorPtrOutputWithContext(ctx context.Context) KafkaConnectorPtrOutput {
-	return o.ApplyT(func(v KafkaConnector) *KafkaConnector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaConnector) *KafkaConnector {
 		return &v
 	}).(KafkaConnectorPtrOutput)
 }
 
-type KafkaConnectorPtrOutput struct {
-	*pulumi.OutputState
-}
+type KafkaConnectorPtrOutput struct{ *pulumi.OutputState }
 
 func (KafkaConnectorPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KafkaConnector)(nil))
@@ -343,6 +339,16 @@ func (o KafkaConnectorPtrOutput) ToKafkaConnectorPtrOutput() KafkaConnectorPtrOu
 
 func (o KafkaConnectorPtrOutput) ToKafkaConnectorPtrOutputWithContext(ctx context.Context) KafkaConnectorPtrOutput {
 	return o
+}
+
+func (o KafkaConnectorPtrOutput) Elem() KafkaConnectorOutput {
+	return o.ApplyT(func(v *KafkaConnector) KafkaConnector {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaConnector
+		return ret
+	}).(KafkaConnectorOutput)
 }
 
 type KafkaConnectorArrayOutput struct{ *pulumi.OutputState }
@@ -386,6 +392,10 @@ func (o KafkaConnectorMapOutput) MapIndex(k pulumi.StringInput) KafkaConnectorOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectorInput)(nil)).Elem(), &KafkaConnector{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectorPtrInput)(nil)).Elem(), &KafkaConnector{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectorArrayInput)(nil)).Elem(), KafkaConnectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectorMapInput)(nil)).Elem(), KafkaConnectorMap{})
 	pulumi.RegisterOutputType(KafkaConnectorOutput{})
 	pulumi.RegisterOutputType(KafkaConnectorPtrOutput{})
 	pulumi.RegisterOutputType(KafkaConnectorArrayOutput{})

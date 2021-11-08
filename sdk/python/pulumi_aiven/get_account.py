@@ -12,6 +12,7 @@ __all__ = [
     'GetAccountResult',
     'AwaitableGetAccountResult',
     'get_account',
+    'get_account_output',
 ]
 
 @pulumi.output_type
@@ -161,3 +162,36 @@ def get_account(account_id: Optional[str] = None,
         owner_team_id=__ret__.owner_team_id,
         tenant_id=__ret__.tenant_id,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_account)
+def get_account_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       create_time: Optional[pulumi.Input[Optional[str]]] = None,
+                       name: Optional[pulumi.Input[str]] = None,
+                       owner_team_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       update_time: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+    """
+    ## # Account Data Source
+
+    The Account data source provides information about the existing Aiven Account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    account1 = aiven.get_account(name="<ACCOUNT_NAME>")
+    ```
+
+
+    :param str account_id: is an auto-generated unique account id.
+    :param str create_time: time of creation.
+    :param str name: defines an account name.
+    :param str owner_team_id: is an owner team id.
+    :param str tenant_id: is a tenant id.
+    :param str update_time: time of last update.
+    """
+    ...

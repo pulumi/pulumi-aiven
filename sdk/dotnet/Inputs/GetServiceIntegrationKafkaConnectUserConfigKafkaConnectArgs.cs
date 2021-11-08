@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInputArgs : Pulumi.ResourceArgs
     {
         [Input("configStorageTopic")]
-        public string? ConfigStorageTopic { get; set; }
+        public Input<string>? ConfigStorageTopic { get; set; }
 
         [Input("groupId")]
-        public string? GroupId { get; set; }
+        public Input<string>? GroupId { get; set; }
 
         [Input("offsetStorageTopic")]
-        public string? OffsetStorageTopic { get; set; }
+        public Input<string>? OffsetStorageTopic { get; set; }
 
         [Input("statusStorageTopic")]
-        public string? StatusStorageTopic { get; set; }
+        public Input<string>? StatusStorageTopic { get; set; }
 
-        public GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs()
+        public GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInputArgs()
         {
         }
     }

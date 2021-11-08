@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupVpcPeeringConnection(ctx, &aiven.LookupVpcPeeringConnectionArgs{
+// 		_, err := aiven.LookupVpcPeeringConnection(ctx, &GetVpcPeeringConnectionArgs{
 // 			VpcId:            aiven_project_vpc.Myvpc.Id,
 // 			PeerCloudAccount: "<PEER_ACCOUNT_ID>",
 // 			PeerVpc:          "<PEER_VPC_ID/NAME>",
@@ -97,4 +100,119 @@ type LookupVpcPeeringConnectionResult struct {
 	// state-specific help or error information.
 	StateInfo map[string]interface{} `pulumi:"stateInfo"`
 	VpcId     string                 `pulumi:"vpcId"`
+}
+
+func LookupVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupVpcPeeringConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupVpcPeeringConnectionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupVpcPeeringConnectionResult, error) {
+			args := v.(LookupVpcPeeringConnectionArgs)
+			r, err := LookupVpcPeeringConnection(ctx, &args, opts...)
+			return *r, err
+		}).(LookupVpcPeeringConnectionResultOutput)
+}
+
+// A collection of arguments for invoking getVpcPeeringConnection.
+type LookupVpcPeeringConnectionOutputArgs struct {
+	// an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
+	PeerAzureAppId pulumi.StringPtrInput `pulumi:"peerAzureAppId"`
+	// an Azure tenant id in UUID4 form.
+	PeerAzureTenantId pulumi.StringPtrInput `pulumi:"peerAzureTenantId"`
+	// defines the identifier of the cloud account the VPC is being
+	// peered with.
+	PeerCloudAccount pulumi.StringInput `pulumi:"peerCloudAccount"`
+	// defines the region of the remote VPC if it is not in the same region as Aiven VPC.
+	PeerRegion pulumi.StringPtrInput `pulumi:"peerRegion"`
+	// an Azure resource group name of the peered VPC.
+	PeerResourceGroup pulumi.StringPtrInput `pulumi:"peerResourceGroup"`
+	// defines the identifier or name of the remote VPC.
+	PeerVpc pulumi.StringInput `pulumi:"peerVpc"`
+	// a cloud provider identifier for the peering connection if available.
+	PeeringConnectionId pulumi.StringPtrInput `pulumi:"peeringConnectionId"`
+	// is the state of the peering connection. This property is computed by Aiven
+	// therefore cannot be set, only read. Where state can be one of: `APPROVED`,
+	// `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
+	// `INVALID_SPECIFICATION`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// state-specific help or error information.
+	StateInfo pulumi.MapInput `pulumi:"stateInfo"`
+	// is the Aiven VPC the peering connection is associated with.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (LookupVpcPeeringConnectionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcPeeringConnectionArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVpcPeeringConnection.
+type LookupVpcPeeringConnectionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVpcPeeringConnectionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcPeeringConnectionResult)(nil)).Elem()
+}
+
+func (o LookupVpcPeeringConnectionResultOutput) ToLookupVpcPeeringConnectionResultOutput() LookupVpcPeeringConnectionResultOutput {
+	return o
+}
+
+func (o LookupVpcPeeringConnectionResultOutput) ToLookupVpcPeeringConnectionResultOutputWithContext(ctx context.Context) LookupVpcPeeringConnectionResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupVpcPeeringConnectionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcPeeringConnectionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
+func (o LookupVpcPeeringConnectionResultOutput) PeerAzureAppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVpcPeeringConnectionResult) *string { return v.PeerAzureAppId }).(pulumi.StringPtrOutput)
+}
+
+// an Azure tenant id in UUID4 form.
+func (o LookupVpcPeeringConnectionResultOutput) PeerAzureTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVpcPeeringConnectionResult) *string { return v.PeerAzureTenantId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupVpcPeeringConnectionResultOutput) PeerCloudAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcPeeringConnectionResult) string { return v.PeerCloudAccount }).(pulumi.StringOutput)
+}
+
+// defines the region of the remote VPC if it is not in the same region as Aiven VPC.
+func (o LookupVpcPeeringConnectionResultOutput) PeerRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVpcPeeringConnectionResult) *string { return v.PeerRegion }).(pulumi.StringPtrOutput)
+}
+
+// an Azure resource group name of the peered VPC.
+func (o LookupVpcPeeringConnectionResultOutput) PeerResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVpcPeeringConnectionResult) *string { return v.PeerResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupVpcPeeringConnectionResultOutput) PeerVpc() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcPeeringConnectionResult) string { return v.PeerVpc }).(pulumi.StringOutput)
+}
+
+// a cloud provider identifier for the peering connection if available.
+func (o LookupVpcPeeringConnectionResultOutput) PeeringConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcPeeringConnectionResult) string { return v.PeeringConnectionId }).(pulumi.StringOutput)
+}
+
+// is the state of the peering connection. This property is computed by Aiven
+// therefore cannot be set, only read. Where state can be one of: `APPROVED`,
+// `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
+// `INVALID_SPECIFICATION`.
+func (o LookupVpcPeeringConnectionResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcPeeringConnectionResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// state-specific help or error information.
+func (o LookupVpcPeeringConnectionResultOutput) StateInfo() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupVpcPeeringConnectionResult) map[string]interface{} { return v.StateInfo }).(pulumi.MapOutput)
+}
+
+func (o LookupVpcPeeringConnectionResultOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcPeeringConnectionResult) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVpcPeeringConnectionResultOutput{})
 }

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 export function getElasticSearchAclConfig(args: GetElasticSearchAclConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticSearchAclConfigResult> {
@@ -43,4 +42,18 @@ export interface GetElasticSearchAclConfigResult {
     readonly id: string;
     readonly project: string;
     readonly serviceName: string;
+}
+
+export function getElasticSearchAclConfigOutput(args: GetElasticSearchAclConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetElasticSearchAclConfigResult> {
+    return pulumi.output(args).apply(a => getElasticSearchAclConfig(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getElasticSearchAclConfig.
+ */
+export interface GetElasticSearchAclConfigOutputArgs {
+    enabled?: pulumi.Input<boolean>;
+    extendedAcl?: pulumi.Input<boolean>;
+    project: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
 }

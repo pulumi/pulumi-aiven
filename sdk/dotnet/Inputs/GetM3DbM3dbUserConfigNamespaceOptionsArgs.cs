@@ -10,29 +10,29 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetM3DbM3dbUserConfigNamespaceOptionsArgs : Pulumi.InvokeArgs
+    public sealed class GetM3DbM3dbUserConfigNamespaceOptionsInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Retention options
         /// </summary>
         [Input("retentionOptions")]
-        public Inputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs? RetentionOptions { get; set; }
+        public Input<Inputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInputArgs>? RetentionOptions { get; set; }
 
         /// <summary>
         /// Controls whether M3DB will create snapshot files for 
         /// this namespace
         /// </summary>
         [Input("snapshotEnabled")]
-        public string? SnapshotEnabled { get; set; }
+        public Input<string>? SnapshotEnabled { get; set; }
 
         /// <summary>
         /// Controls whether M3DB will include writes to this 
         /// namespace in the commitlog.
         /// </summary>
         [Input("writesToCommitlog")]
-        public string? WritesToCommitlog { get; set; }
+        public Input<string>? WritesToCommitlog { get; set; }
 
-        public GetM3DbM3dbUserConfigNamespaceOptionsArgs()
+        public GetM3DbM3dbUserConfigNamespaceOptionsInputArgs()
         {
         }
     }

@@ -10,36 +10,36 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationEndpointRsyslogUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationEndpointRsyslogUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("ca")]
-        public string? Ca { get; set; }
+        public Input<string>? Ca { get; set; }
 
         [Input("cert")]
-        public string? Cert { get; set; }
+        public Input<string>? Cert { get; set; }
 
         [Input("format")]
-        public string? Format { get; set; }
+        public Input<string>? Format { get; set; }
 
         [Input("key")]
-        public string? Key { get; set; }
+        public Input<string>? Key { get; set; }
 
         [Input("logline")]
-        public string? Logline { get; set; }
+        public Input<string>? Logline { get; set; }
 
         [Input("port")]
-        public string? Port { get; set; }
+        public Input<string>? Port { get; set; }
 
         [Input("sd")]
-        public string? Sd { get; set; }
+        public Input<string>? Sd { get; set; }
 
         [Input("server")]
-        public string? Server { get; set; }
+        public Input<string>? Server { get; set; }
 
         [Input("tls")]
-        public string? Tls { get; set; }
+        public Input<string>? Tls { get; set; }
 
-        public GetServiceIntegrationEndpointRsyslogUserConfigArgs()
+        public GetServiceIntegrationEndpointRsyslogUserConfigInputArgs()
         {
         }
     }

@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetElasticSearchAclAclRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetElasticSearchAclAclRuleInputArgs : Pulumi.ResourceArgs
     {
         [Input("index", required: true)]
-        public string Index { get; set; } = null!;
+        public Input<string> Index { get; set; } = null!;
 
         [Input("permission", required: true)]
-        public string Permission { get; set; } = null!;
+        public Input<string> Permission { get; set; } = null!;
 
-        public GetElasticSearchAclAclRuleArgs()
+        public GetElasticSearchAclAclRuleInputArgs()
         {
         }
     }

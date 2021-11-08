@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationLogsUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationLogsUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("elasticsearchIndexDaysMax")]
-        public string? ElasticsearchIndexDaysMax { get; set; }
+        public Input<string>? ElasticsearchIndexDaysMax { get; set; }
 
         [Input("elasticsearchIndexPrefix")]
-        public string? ElasticsearchIndexPrefix { get; set; }
+        public Input<string>? ElasticsearchIndexPrefix { get; set; }
 
-        public GetServiceIntegrationLogsUserConfigArgs()
+        public GetServiceIntegrationLogsUserConfigInputArgs()
         {
         }
     }

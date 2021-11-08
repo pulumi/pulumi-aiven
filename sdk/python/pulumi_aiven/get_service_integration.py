@@ -14,6 +14,7 @@ __all__ = [
     'GetServiceIntegrationResult',
     'AwaitableGetServiceIntegrationResult',
     'get_service_integration',
+    'get_service_integration_output',
 ]
 
 @pulumi.output_type
@@ -383,3 +384,62 @@ def get_service_integration(dashboard_user_config: Optional[pulumi.InputType['Ge
         signalfx_user_config=__ret__.signalfx_user_config,
         source_endpoint_id=__ret__.source_endpoint_id,
         source_service_name=__ret__.source_service_name)
+
+
+@_utilities.lift_output_func(get_service_integration)
+def get_service_integration_output(dashboard_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationDashboardUserConfigArgs']]]] = None,
+                                   datadog_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationDatadogUserConfigArgs']]]] = None,
+                                   destination_endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                   destination_service_name: Optional[pulumi.Input[str]] = None,
+                                   external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]]] = None,
+                                   external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]]] = None,
+                                   external_elasticsearch_logs_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]]] = None,
+                                   external_google_cloud_logging_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']]]] = None,
+                                   integration_type: Optional[pulumi.Input[str]] = None,
+                                   kafka_connect_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationKafkaConnectUserConfigArgs']]]] = None,
+                                   kafka_logs_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationKafkaLogsUserConfigArgs']]]] = None,
+                                   kafka_mirrormaker_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationKafkaMirrormakerUserConfigArgs']]]] = None,
+                                   logs_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationLogsUserConfigArgs']]]] = None,
+                                   m3aggregator_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationM3aggregatorUserConfigArgs']]]] = None,
+                                   m3coordinator_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationM3coordinatorUserConfigArgs']]]] = None,
+                                   metrics_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationMetricsUserConfigArgs']]]] = None,
+                                   mirrormaker_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationMirrormakerUserConfigArgs']]]] = None,
+                                   project: Optional[pulumi.Input[str]] = None,
+                                   prometheus_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationPrometheusUserConfigArgs']]]] = None,
+                                   read_replica_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationReadReplicaUserConfigArgs']]]] = None,
+                                   rsyslog_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationRsyslogUserConfigArgs']]]] = None,
+                                   schema_registry_proxy_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationSchemaRegistryProxyUserConfigArgs']]]] = None,
+                                   signalfx_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationSignalfxUserConfigArgs']]]] = None,
+                                   source_endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                   source_service_name: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIntegrationResult]:
+    """
+    ## # Service Integration Data Source
+
+    The Service Integration data source provides information about the existing Aiven Service Integration.
+
+    Service Integration defines an integration between two Aiven services or between Aiven service and an external
+    integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,
+    getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
+    Elasticsearch, etc.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myintegration = aiven.get_service_integration(project=aiven_project["myproject"]["project"],
+        destination_service_name="<DESTINATION_SERVICE_NAME>",
+        integration_type="datadog",
+        source_service_name="<SOURCE_SERVICE_NAME>")
+    ```
+
+
+    :param str destination_service_name: identifies the target side of the integration.
+    :param str integration_type: identifies the type of integration that is set up. Possible values include `dashboard`
+           , `datadog`, `logs`, `metrics` and `mirrormaker`.
+    :param str project: defines the project the integration belongs to.
+    :param str source_service_name: identifies the source side of the integration.
+    """
+    ...

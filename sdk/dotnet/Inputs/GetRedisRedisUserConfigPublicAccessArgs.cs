@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetRedisRedisUserConfigPublicAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetRedisRedisUserConfigPublicAccessInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allow clients to connect to prometheus from the public internet 
         /// for service nodes that are in a project VPC or another type of private network
         /// </summary>
         [Input("prometheus")]
-        public string? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
         /// <summary>
         /// Redis specific server provided values.
         /// </summary>
         [Input("redis")]
-        public string? Redis { get; set; }
+        public Input<string>? Redis { get; set; }
 
-        public GetRedisRedisUserConfigPublicAccessArgs()
+        public GetRedisRedisUserConfigPublicAccessInputArgs()
         {
         }
     }

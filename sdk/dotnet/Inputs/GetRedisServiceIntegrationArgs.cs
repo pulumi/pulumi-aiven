@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetRedisServiceIntegrationArgs : Pulumi.InvokeArgs
+    public sealed class GetRedisServiceIntegrationInputArgs : Pulumi.ResourceArgs
     {
         [Input("integrationType", required: true)]
-        public string IntegrationType { get; set; } = null!;
+        public Input<string> IntegrationType { get; set; } = null!;
 
         [Input("sourceServiceName", required: true)]
-        public string SourceServiceName { get; set; } = null!;
+        public Input<string> SourceServiceName { get; set; } = null!;
 
-        public GetRedisServiceIntegrationArgs()
+        public GetRedisServiceIntegrationInputArgs()
         {
         }
     }

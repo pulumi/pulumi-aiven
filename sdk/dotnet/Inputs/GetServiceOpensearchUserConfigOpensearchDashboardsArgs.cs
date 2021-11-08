@@ -10,18 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceOpensearchUserConfigOpensearchDashboardsArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceOpensearchUserConfigOpensearchDashboardsInputArgs : Pulumi.ResourceArgs
     {
         [Input("enabled")]
-        public string? Enabled { get; set; }
+        public Input<string>? Enabled { get; set; }
 
         [Input("maxOldSpaceSize")]
-        public string? MaxOldSpaceSize { get; set; }
+        public Input<string>? MaxOldSpaceSize { get; set; }
 
         [Input("opensearchRequestTimeout")]
-        public string? OpensearchRequestTimeout { get; set; }
+        public Input<string>? OpensearchRequestTimeout { get; set; }
 
-        public GetServiceOpensearchUserConfigOpensearchDashboardsArgs()
+        public GetServiceOpensearchUserConfigOpensearchDashboardsInputArgs()
         {
         }
     }

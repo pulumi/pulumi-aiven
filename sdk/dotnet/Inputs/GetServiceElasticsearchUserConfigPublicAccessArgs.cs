@@ -10,18 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceElasticsearchUserConfigPublicAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceElasticsearchUserConfigPublicAccessInputArgs : Pulumi.ResourceArgs
     {
         [Input("elasticsearch")]
-        public string? Elasticsearch { get; set; }
+        public Input<string>? Elasticsearch { get; set; }
 
         [Input("kibana")]
-        public string? Kibana { get; set; }
+        public Input<string>? Kibana { get; set; }
 
         [Input("prometheus")]
-        public string? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
-        public GetServiceElasticsearchUserConfigPublicAccessArgs()
+        public GetServiceElasticsearchUserConfigPublicAccessInputArgs()
         {
         }
     }

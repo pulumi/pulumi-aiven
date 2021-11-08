@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupKafkaAcl(ctx, &aiven.LookupKafkaAclArgs{
+// 		_, err := aiven.LookupKafkaAcl(ctx, &GetKafkaAclArgs{
 // 			Project:     aiven_project.Myproject.Project,
 // 			ServiceName: aiven_service.Myservice.Service_name,
 // 			Topic:       "<TOPIC_NAME_PATTERN>",
@@ -73,4 +76,78 @@ type LookupKafkaAclResult struct {
 	ServiceName string `pulumi:"serviceName"`
 	Topic       string `pulumi:"topic"`
 	Username    string `pulumi:"username"`
+}
+
+func LookupKafkaAclOutput(ctx *pulumi.Context, args LookupKafkaAclOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaAclResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKafkaAclResult, error) {
+			args := v.(LookupKafkaAclArgs)
+			r, err := LookupKafkaAcl(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKafkaAclResultOutput)
+}
+
+// A collection of arguments for invoking getKafkaAcl.
+type LookupKafkaAclOutputArgs struct {
+	// is the level of permission the matching users are given to the matching
+	// topics (admin, read, readwrite, write).
+	Permission pulumi.StringInput `pulumi:"permission"`
+	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
+	Project     pulumi.StringInput `pulumi:"project"`
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// is a topic name pattern the ACL entry matches to.
+	Topic pulumi.StringInput `pulumi:"topic"`
+	// is a username pattern the ACL entry matches to.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (LookupKafkaAclOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKafkaAclArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKafkaAcl.
+type LookupKafkaAclResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKafkaAclResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKafkaAclResult)(nil)).Elem()
+}
+
+func (o LookupKafkaAclResultOutput) ToLookupKafkaAclResultOutput() LookupKafkaAclResultOutput {
+	return o
+}
+
+func (o LookupKafkaAclResultOutput) ToLookupKafkaAclResultOutputWithContext(ctx context.Context) LookupKafkaAclResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupKafkaAclResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupKafkaAclResultOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+func (o LookupKafkaAclResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupKafkaAclResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupKafkaAclResultOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+func (o LookupKafkaAclResultOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKafkaAclResultOutput{})
 }

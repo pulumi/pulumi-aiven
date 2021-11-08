@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationKafkaMirrormakerUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationKafkaMirrormakerUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("clusterAlias")]
-        public string? ClusterAlias { get; set; }
+        public Input<string>? ClusterAlias { get; set; }
 
-        public GetServiceIntegrationKafkaMirrormakerUserConfigArgs()
+        public GetServiceIntegrationKafkaMirrormakerUserConfigInputArgs()
         {
         }
     }

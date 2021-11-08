@@ -10,23 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationEndpointSignalfxUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationEndpointSignalfxUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("enabledMetrics")]
-        private List<string>? _enabledMetrics;
-        public List<string> EnabledMetrics
+        private InputList<string>? _enabledMetrics;
+        public InputList<string> EnabledMetrics
         {
-            get => _enabledMetrics ?? (_enabledMetrics = new List<string>());
+            get => _enabledMetrics ?? (_enabledMetrics = new InputList<string>());
             set => _enabledMetrics = value;
         }
 
         [Input("signalfxApiKey")]
-        public string? SignalfxApiKey { get; set; }
+        public Input<string>? SignalfxApiKey { get; set; }
 
         [Input("signalfxRealm")]
-        public string? SignalfxRealm { get; set; }
+        public Input<string>? SignalfxRealm { get; set; }
 
-        public GetServiceIntegrationEndpointSignalfxUserConfigArgs()
+        public GetServiceIntegrationEndpointSignalfxUserConfigInputArgs()
         {
         }
     }

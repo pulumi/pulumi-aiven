@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceGrafanaUserConfigPrivatelinkAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceGrafanaUserConfigPrivatelinkAccessInputArgs : Pulumi.ResourceArgs
     {
         [Input("grafana")]
-        public string? Grafana { get; set; }
+        public Input<string>? Grafana { get; set; }
 
-        public GetServiceGrafanaUserConfigPrivatelinkAccessArgs()
+        public GetServiceGrafanaUserConfigPrivatelinkAccessInputArgs()
         {
         }
     }

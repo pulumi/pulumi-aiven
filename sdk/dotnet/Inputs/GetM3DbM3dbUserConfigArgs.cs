@@ -10,23 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetM3DbM3dbUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetM3DbM3dbUserConfigInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         /// </summary>
         [Input("customDomain")]
-        public string? CustomDomain { get; set; }
+        public Input<string>? CustomDomain { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
+        private InputList<string>? _ipFilters;
 
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
-        public List<string> IpFilters
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
@@ -34,10 +34,10 @@ namespace Pulumi.Aiven.Inputs
         /// M3 limits
         /// </summary>
         [Input("limits")]
-        public Inputs.GetM3DbM3dbUserConfigLimitsArgs? Limits { get; set; }
+        public Input<Inputs.GetM3DbM3dbUserConfigLimitsInputArgs>? Limits { get; set; }
 
         [Input("m3Version")]
-        public string? M3Version { get; set; }
+        public Input<string>? M3Version { get; set; }
 
         /// <summary>
         /// Enables access to Graphite Carbon 
@@ -45,23 +45,23 @@ namespace Pulumi.Aiven.Inputs
         /// metrics are written to aggregated namespaces only.
         /// </summary>
         [Input("m3coordinatorEnableGraphiteCarbonIngest")]
-        public string? M3coordinatorEnableGraphiteCarbonIngest { get; set; }
+        public Input<string>? M3coordinatorEnableGraphiteCarbonIngest { get; set; }
 
         /// <summary>
         /// M3 major version
         /// </summary>
         [Input("m3dbVersion")]
-        public string? M3dbVersion { get; set; }
+        public Input<string>? M3dbVersion { get; set; }
 
         [Input("namespaces")]
-        private List<Inputs.GetM3DbM3dbUserConfigNamespaceArgs>? _namespaces;
+        private InputList<Inputs.GetM3DbM3dbUserConfigNamespaceInputArgs>? _namespaces;
 
         /// <summary>
         /// List of M3 namespaces
         /// </summary>
-        public List<Inputs.GetM3DbM3dbUserConfigNamespaceArgs> Namespaces
+        public InputList<Inputs.GetM3DbM3dbUserConfigNamespaceInputArgs> Namespaces
         {
-            get => _namespaces ?? (_namespaces = new List<Inputs.GetM3DbM3dbUserConfigNamespaceArgs>());
+            get => _namespaces ?? (_namespaces = new InputList<Inputs.GetM3DbM3dbUserConfigNamespaceInputArgs>());
             set => _namespaces = value;
         }
 
@@ -69,20 +69,20 @@ namespace Pulumi.Aiven.Inputs
         /// Allow access to selected service ports from private networks.
         /// </summary>
         [Input("privateAccess")]
-        public Inputs.GetM3DbM3dbUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetM3DbM3dbUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         /// <summary>
         /// Name of another project to fork a service from. This has
         /// effect only when a new service is being created.
         /// </summary>
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from the public Internet.
         /// </summary>
         [Input("publicAccess")]
-        public Inputs.GetM3DbM3dbUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetM3DbM3dbUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         /// <summary>
         /// Mapping rules allow more granular use of aggregation, not simply sending
@@ -90,19 +90,19 @@ namespace Pulumi.Aiven.Inputs
         /// rules will be sent to it and nothing else.
         /// </summary>
         [Input("rules")]
-        public Inputs.GetM3DbM3dbUserConfigRulesArgs? Rules { get; set; }
+        public Input<Inputs.GetM3DbM3dbUserConfigRulesInputArgs>? Rules { get; set; }
 
         /// <summary>
         /// Name of another service to fork from. This has effect only 
         /// when a new service is being created.
         /// </summary>
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetM3DbM3dbUserConfigArgs()
+        public GetM3DbM3dbUserConfigInputArgs()
         {
         }
     }

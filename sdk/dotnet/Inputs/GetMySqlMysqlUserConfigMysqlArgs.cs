@@ -10,143 +10,143 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetMySqlMysqlUserConfigMysqlArgs : Pulumi.InvokeArgs
+    public sealed class GetMySqlMysqlUserConfigMysqlInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of seconds that the mysqld server waits for a 
         /// connect packet before responding with Bad handshake
         /// </summary>
         [Input("connectTimeout")]
-        public string? ConnectTimeout { get; set; }
+        public Input<string>? ConnectTimeout { get; set; }
 
         /// <summary>
         /// Default server time zone as an offset from UTC 
         /// (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
         /// </summary>
         [Input("defaultTimeZone")]
-        public string? DefaultTimeZone { get; set; }
+        public Input<string>? DefaultTimeZone { get; set; }
 
         /// <summary>
         /// The maximum permitted result length in bytes for 
         /// the GROUP_CONCAT() function.
         /// </summary>
         [Input("groupConcatMaxLen")]
-        public string? GroupConcatMaxLen { get; set; }
+        public Input<string>? GroupConcatMaxLen { get; set; }
 
         /// <summary>
         /// The time, in seconds, before cached 
         /// statistics expire
         /// </summary>
         [Input("informationSchemaStatsExpiry")]
-        public string? InformationSchemaStatsExpiry { get; set; }
+        public Input<string>? InformationSchemaStatsExpiry { get; set; }
 
         /// <summary>
         /// Minimum length of words that are stored in 
         /// an InnoDB FULLTEXT index.
         /// </summary>
         [Input("innodbFtMinTokenSize")]
-        public string? InnodbFtMinTokenSize { get; set; }
+        public Input<string>? InnodbFtMinTokenSize { get; set; }
 
         /// <summary>
         /// This option is used to specify your 
         /// own InnoDB FULLTEXT index stopword list for all InnoDB tables.
         /// </summary>
         [Input("innodbFtServerStopwordTable")]
-        public string? InnodbFtServerStopwordTable { get; set; }
+        public Input<string>? InnodbFtServerStopwordTable { get; set; }
 
         /// <summary>
         /// The length of time in seconds an InnoDB 
         /// transaction waits for a row lock before giving up.
         /// </summary>
         [Input("innodbLockWaitTimeout")]
-        public string? InnodbLockWaitTimeout { get; set; }
+        public Input<string>? InnodbLockWaitTimeout { get; set; }
 
         /// <summary>
         /// The size in bytes of the buffer that InnoDB 
         /// uses to write to the log files on disk.
         /// </summary>
         [Input("innodbLogBufferSize")]
-        public string? InnodbLogBufferSize { get; set; }
+        public Input<string>? InnodbLogBufferSize { get; set; }
 
         /// <summary>
         /// The upper limit in bytes on the 
         /// size of the temporary log files used during online DDL operations for InnoDB tables.
         /// </summary>
         [Input("innodbOnlineAlterLogMaxSize")]
-        public string? InnodbOnlineAlterLogMaxSize { get; set; }
+        public Input<string>? InnodbOnlineAlterLogMaxSize { get; set; }
 
         /// <summary>
         /// When enabled, information about all 
         /// deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
         /// </summary>
         [Input("innodbPrintAllDeadlocks")]
-        public string? InnodbPrintAllDeadlocks { get; set; }
+        public Input<string>? InnodbPrintAllDeadlocks { get; set; }
 
         /// <summary>
         /// When enabled a transaction timeout 
         /// causes InnoDB to abort and roll back the entire transaction.
         /// </summary>
         [Input("innodbRollbackOnTimeout")]
-        public string? InnodbRollbackOnTimeout { get; set; }
+        public Input<string>? InnodbRollbackOnTimeout { get; set; }
 
         /// <summary>
         /// The number of seconds the server waits for 
         /// activity on an interactive connection before closing it.
         /// </summary>
         [Input("interactiveTimeout")]
-        public string? InteractiveTimeout { get; set; }
+        public Input<string>? InteractiveTimeout { get; set; }
 
         [Input("internalTmpMemStorageEngine")]
-        public string? InternalTmpMemStorageEngine { get; set; }
+        public Input<string>? InternalTmpMemStorageEngine { get; set; }
 
         /// <summary>
         /// The slow_query_logs work as SQL statements that take
         /// more than long_query_time seconds to execute. Default is 10s
         /// </summary>
         [Input("longQueryTime")]
-        public string? LongQueryTime { get; set; }
+        public Input<string>? LongQueryTime { get; set; }
 
         /// <summary>
         /// Size of the largest message in bytes that can 
         /// be received by the server. Default is 67108864 (64M)
         /// </summary>
         [Input("maxAllowedPacket")]
-        public string? MaxAllowedPacket { get; set; }
+        public Input<string>? MaxAllowedPacket { get; set; }
 
         /// <summary>
         /// Limits the size of internal in-memory tables. 
         /// Also set tmp_table_size. Default is 16777216 (16M)
         /// </summary>
         [Input("maxHeapTableSize")]
-        public string? MaxHeapTableSize { get; set; }
+        public Input<string>? MaxHeapTableSize { get; set; }
 
         /// <summary>
         /// The number of seconds to wait for more data from 
         /// a connection before aborting the read.
         /// </summary>
         [Input("netReadTimeout")]
-        public string? NetReadTimeout { get; set; }
+        public Input<string>? NetReadTimeout { get; set; }
 
         /// <summary>
         /// The number of seconds to wait for a block to be 
         /// written to a connection before aborting the write.
         /// </summary>
         [Input("netWriteTimeout")]
-        public string? NetWriteTimeout { get; set; }
+        public Input<string>? NetWriteTimeout { get; set; }
 
         /// <summary>
         /// Slow query log enables capturing of slow queries.
         /// Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off
         /// </summary>
         [Input("slowQueryLog")]
-        public string? SlowQueryLog { get; set; }
+        public Input<string>? SlowQueryLog { get; set; }
 
         /// <summary>
         /// Sort buffer size in bytes for ORDER BY optimization. 
         /// Default is 262144 (256K)
         /// </summary>
         [Input("sortBufferSize")]
-        public string? SortBufferSize { get; set; }
+        public Input<string>? SortBufferSize { get; set; }
 
         /// <summary>
         /// Global SQL mode. Set to empty to use MySQL server defaults. 
@@ -154,7 +154,7 @@ namespace Pulumi.Aiven.Inputs
         /// SQL standard compliant) will be assigned.
         /// </summary>
         [Input("sqlMode")]
-        public string? SqlMode { get; set; }
+        public Input<string>? SqlMode { get; set; }
 
         /// <summary>
         /// Require primary key to be defined for new 
@@ -163,23 +163,23 @@ namespace Pulumi.Aiven.Inputs
         /// is missing them.
         /// </summary>
         [Input("sqlRequirePrimaryKey")]
-        public string? SqlRequirePrimaryKey { get; set; }
+        public Input<string>? SqlRequirePrimaryKey { get; set; }
 
         /// <summary>
         /// Limits the size of internal in-memory tables. Also set 
         /// max_heap_table_size. Default is 16777216 (16M)
         /// </summary>
         [Input("tmpTableSize")]
-        public string? TmpTableSize { get; set; }
+        public Input<string>? TmpTableSize { get; set; }
 
         /// <summary>
         /// The number of seconds the server waits for activity on 
         /// a noninteractive connection before closing it.
         /// </summary>
         [Input("waitTimeout")]
-        public string? WaitTimeout { get; set; }
+        public Input<string>? WaitTimeout { get; set; }
 
-        public GetMySqlMysqlUserConfigMysqlArgs()
+        public GetMySqlMysqlUserConfigMysqlInputArgs()
         {
         }
     }

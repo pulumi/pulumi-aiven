@@ -12,6 +12,7 @@ __all__ = [
     'GetAccountTeamMemberResult',
     'AwaitableGetAccountTeamMemberResult',
     'get_account_team_member',
+    'get_account_team_member_output',
 ]
 
 @pulumi.output_type
@@ -151,3 +152,30 @@ def get_account_team_member(accepted: Optional[bool] = None,
         invited_by_user_email=__ret__.invited_by_user_email,
         team_id=__ret__.team_id,
         user_email=__ret__.user_email)
+
+
+@_utilities.lift_output_func(get_account_team_member)
+def get_account_team_member_output(accepted: Optional[pulumi.Input[Optional[bool]]] = None,
+                                   account_id: Optional[pulumi.Input[str]] = None,
+                                   create_time: Optional[pulumi.Input[Optional[str]]] = None,
+                                   invited_by_user_email: Optional[pulumi.Input[Optional[str]]] = None,
+                                   team_id: Optional[pulumi.Input[str]] = None,
+                                   user_email: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountTeamMemberResult]:
+    """
+    ## # Account Team Member Data Source
+
+    The Account Team Member data source provides information about the existing Aiven Account Team Member.
+
+
+    :param bool accepted: is a boolean flag that determines whether an invitation was accepted or not by the user. 
+           `false` value means that the invitation was sent to the user but not yet accepted.
+           `true` means that the user accepted the invitation and is now a member of an account team.
+    :param str account_id: is a unique account id.
+    :param str create_time: time of creation.
+    :param str invited_by_user_email: team invited by user email.
+    :param str team_id: is an account team id.
+    :param str user_email: is a user email address that first will be invited, and after accepting an invitation,
+           he or she becomes a member of a team.
+    """
+    ...

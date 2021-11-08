@@ -10,17 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetM3DbM3dbUserConfigRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetM3DbM3dbUserConfigRulesInputArgs : Pulumi.ResourceArgs
     {
         [Input("mappings")]
-        private List<Inputs.GetM3DbM3dbUserConfigRulesMappingArgs>? _mappings;
-        public List<Inputs.GetM3DbM3dbUserConfigRulesMappingArgs> Mappings
+        private InputList<Inputs.GetM3DbM3dbUserConfigRulesMappingInputArgs>? _mappings;
+        public InputList<Inputs.GetM3DbM3dbUserConfigRulesMappingInputArgs> Mappings
         {
-            get => _mappings ?? (_mappings = new List<Inputs.GetM3DbM3dbUserConfigRulesMappingArgs>());
+            get => _mappings ?? (_mappings = new InputList<Inputs.GetM3DbM3dbUserConfigRulesMappingInputArgs>());
             set => _mappings = value;
         }
 
-        public GetM3DbM3dbUserConfigRulesArgs()
+        public GetM3DbM3dbUserConfigRulesInputArgs()
         {
         }
     }

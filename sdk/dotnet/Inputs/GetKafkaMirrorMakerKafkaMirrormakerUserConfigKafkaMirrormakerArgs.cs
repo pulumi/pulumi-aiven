@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to periodically write the translated offsets
@@ -18,52 +18,52 @@ namespace Pulumi.Aiven.Inputs
         /// as long as no active consumers in that group are connected to the target cluster.
         /// </summary>
         [Input("emitCheckpointsEnabled")]
-        public string? EmitCheckpointsEnabled { get; set; }
+        public Input<string>? EmitCheckpointsEnabled { get; set; }
 
         [Input("emitCheckpointsIntervalSeconds")]
-        public string? EmitCheckpointsIntervalSeconds { get; set; }
+        public Input<string>? EmitCheckpointsIntervalSeconds { get; set; }
 
         /// <summary>
         /// Whether to periodically check for new consumer groups. 
         /// Defaults to 'true'.
         /// </summary>
         [Input("refreshGroupsEnabled")]
-        public string? RefreshGroupsEnabled { get; set; }
+        public Input<string>? RefreshGroupsEnabled { get; set; }
 
         /// <summary>
         /// Whether to periodically check for new topics and 
         /// partitions. Defaults to 'true'.
         /// </summary>
         [Input("refreshGroupsIntervalSeconds")]
-        public string? RefreshGroupsIntervalSeconds { get; set; }
+        public Input<string>? RefreshGroupsIntervalSeconds { get; set; }
 
         [Input("refreshTopicsEnabled")]
-        public string? RefreshTopicsEnabled { get; set; }
+        public Input<string>? RefreshTopicsEnabled { get; set; }
 
         /// <summary>
         /// Frequency of topic and partitions refresh in 
         /// seconds. Defaults to 600 seconds (10 minutes).
         /// </summary>
         [Input("refreshTopicsIntervalSeconds")]
-        public string? RefreshTopicsIntervalSeconds { get; set; }
+        public Input<string>? RefreshTopicsIntervalSeconds { get; set; }
 
         [Input("syncGroupOffsetsEnabled")]
-        public string? SyncGroupOffsetsEnabled { get; set; }
+        public Input<string>? SyncGroupOffsetsEnabled { get; set; }
 
         /// <summary>
         /// Frequency at which consumer group offsets
         /// are synced (default: 60, every minute).
         /// </summary>
         [Input("syncGroupOffsetsIntervalSeconds")]
-        public string? SyncGroupOffsetsIntervalSeconds { get; set; }
+        public Input<string>? SyncGroupOffsetsIntervalSeconds { get; set; }
 
         [Input("syncTopicConfigsEnabled")]
-        public string? SyncTopicConfigsEnabled { get; set; }
+        public Input<string>? SyncTopicConfigsEnabled { get; set; }
 
         [Input("tasksMaxPerCpu")]
-        public string? TasksMaxPerCpu { get; set; }
+        public Input<string>? TasksMaxPerCpu { get; set; }
 
-        public GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs()
+        public GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInputArgs()
         {
         }
     }

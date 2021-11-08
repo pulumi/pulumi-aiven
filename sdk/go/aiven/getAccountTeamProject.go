@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,4 +45,72 @@ type LookupAccountTeamProjectResult struct {
 	// is an account team project type, can one of the following values: `admin`,
 	// `developer`, `operator` and `readOnly`.
 	TeamType *string `pulumi:"teamType"`
+}
+
+func LookupAccountTeamProjectOutput(ctx *pulumi.Context, args LookupAccountTeamProjectOutputArgs, opts ...pulumi.InvokeOption) LookupAccountTeamProjectResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAccountTeamProjectResult, error) {
+			args := v.(LookupAccountTeamProjectArgs)
+			r, err := LookupAccountTeamProject(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAccountTeamProjectResultOutput)
+}
+
+// A collection of arguments for invoking getAccountTeamProject.
+type LookupAccountTeamProjectOutputArgs struct {
+	// is a unique account id.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// is a project name of already existing project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// is an account team id.
+	TeamId pulumi.StringInput `pulumi:"teamId"`
+	// is an account team project type, can one of the following values: `admin`,
+	// `developer`, `operator` and `readOnly`.
+	TeamType pulumi.StringPtrInput `pulumi:"teamType"`
+}
+
+func (LookupAccountTeamProjectOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountTeamProjectArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccountTeamProject.
+type LookupAccountTeamProjectResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAccountTeamProjectResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountTeamProjectResult)(nil)).Elem()
+}
+
+func (o LookupAccountTeamProjectResultOutput) ToLookupAccountTeamProjectResultOutput() LookupAccountTeamProjectResultOutput {
+	return o
+}
+
+func (o LookupAccountTeamProjectResultOutput) ToLookupAccountTeamProjectResultOutputWithContext(ctx context.Context) LookupAccountTeamProjectResultOutput {
+	return o
+}
+
+func (o LookupAccountTeamProjectResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountTeamProjectResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAccountTeamProjectResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountTeamProjectResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupAccountTeamProjectResultOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountTeamProjectResult) string { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+func (o LookupAccountTeamProjectResultOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountTeamProjectResult) string { return v.TeamId }).(pulumi.StringOutput)
+}
+
+// is an account team project type, can one of the following values: `admin`,
+// `developer`, `operator` and `readOnly`.
+func (o LookupAccountTeamProjectResultOutput) TeamType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountTeamProjectResult) *string { return v.TeamType }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAccountTeamProjectResultOutput{})
 }

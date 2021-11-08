@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceKafkaUserConfigPrivateAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceKafkaUserConfigPrivateAccessInputArgs : Pulumi.ResourceArgs
     {
         [Input("prometheus")]
-        public string? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
-        public GetServiceKafkaUserConfigPrivateAccessArgs()
+        public GetServiceKafkaUserConfigPrivateAccessInputArgs()
         {
         }
     }

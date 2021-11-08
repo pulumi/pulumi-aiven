@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -92,4 +91,36 @@ export interface GetKafkaSchemaResult {
     readonly serviceName: string;
     readonly subjectName: string;
     readonly version: number;
+}
+
+export function getKafkaSchemaOutput(args: GetKafkaSchemaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaResult> {
+    return pulumi.output(args).apply(a => getKafkaSchema(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKafkaSchema.
+ */
+export interface GetKafkaSchemaOutputArgs {
+    /**
+     * configuration compatibility level overrides specific subject
+     * resource. If the compatibility level not specified for the individual subject by default,
+     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+     */
+    compatibilityLevel?: pulumi.Input<string>;
+    /**
+     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     */
+    project: pulumi.Input<string>;
+    /**
+     * is Kafka Schema configuration should be a valid Avro Schema JSON format.
+     */
+    schema?: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
+    /**
+     * is Kafka Schema subject name.
+     */
+    subjectName: pulumi.Input<string>;
+    version?: pulumi.Input<number>;
 }

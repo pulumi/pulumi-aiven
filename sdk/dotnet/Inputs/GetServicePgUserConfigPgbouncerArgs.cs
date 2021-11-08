@@ -10,41 +10,41 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServicePgUserConfigPgbouncerArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePgUserConfigPgbouncerInputArgs : Pulumi.ResourceArgs
     {
         [Input("autodbIdleTimeout")]
-        public string? AutodbIdleTimeout { get; set; }
+        public Input<string>? AutodbIdleTimeout { get; set; }
 
         [Input("autodbMaxDbConnections")]
-        public string? AutodbMaxDbConnections { get; set; }
+        public Input<string>? AutodbMaxDbConnections { get; set; }
 
         [Input("autodbPoolMode")]
-        public string? AutodbPoolMode { get; set; }
+        public Input<string>? AutodbPoolMode { get; set; }
 
         [Input("autodbPoolSize")]
-        public string? AutodbPoolSize { get; set; }
+        public Input<string>? AutodbPoolSize { get; set; }
 
         [Input("ignoreStartupParameters")]
-        private List<string>? _ignoreStartupParameters;
-        public List<string> IgnoreStartupParameters
+        private InputList<string>? _ignoreStartupParameters;
+        public InputList<string> IgnoreStartupParameters
         {
-            get => _ignoreStartupParameters ?? (_ignoreStartupParameters = new List<string>());
+            get => _ignoreStartupParameters ?? (_ignoreStartupParameters = new InputList<string>());
             set => _ignoreStartupParameters = value;
         }
 
         [Input("minPoolSize")]
-        public string? MinPoolSize { get; set; }
+        public Input<string>? MinPoolSize { get; set; }
 
         [Input("serverIdleTimeout")]
-        public string? ServerIdleTimeout { get; set; }
+        public Input<string>? ServerIdleTimeout { get; set; }
 
         [Input("serverLifetime")]
-        public string? ServerLifetime { get; set; }
+        public Input<string>? ServerLifetime { get; set; }
 
         [Input("serverResetQueryAlways")]
-        public string? ServerResetQueryAlways { get; set; }
+        public Input<string>? ServerResetQueryAlways { get; set; }
 
-        public GetServicePgUserConfigPgbouncerArgs()
+        public GetServicePgUserConfigPgbouncerInputArgs()
         {
         }
     }

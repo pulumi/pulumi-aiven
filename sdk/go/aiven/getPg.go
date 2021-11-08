@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupPg(ctx, &aiven.LookupPgArgs{
+// 		_, err := aiven.LookupPg(ctx, &GetPgArgs{
 // 			Project:     data.Aiven_project.Pr1.Project,
 // 			ServiceName: "my-pg1",
 // 		}, nil)
@@ -171,4 +174,222 @@ type LookupPgResult struct {
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
+}
+
+func LookupPgOutput(ctx *pulumi.Context, args LookupPgOutputArgs, opts ...pulumi.InvokeOption) LookupPgResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupPgResult, error) {
+			args := v.(LookupPgArgs)
+			r, err := LookupPg(ctx, &args, opts...)
+			return *r, err
+		}).(LookupPgResultOutput)
+}
+
+// A collection of arguments for invoking getPg.
+type LookupPgOutputArgs struct {
+	// defines where the cloud provider and region where the service is hosted
+	// in. This can be changed freely after service is created. Changing the value will trigger
+	// a potentially lengthy migration process for the service. Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+	// specific region name. These are documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	CloudName  pulumi.StringPtrInput    `pulumi:"cloudName"`
+	Components GetPgComponentArrayInput `pulumi:"components"`
+	// day of week when maintenance operations should be performed.
+	// On monday, tuesday, wednesday, etc.
+	MaintenanceWindowDow pulumi.StringPtrInput `pulumi:"maintenanceWindowDow"`
+	// time of day when maintenance operations should be performed.
+	// UTC time in HH:mm:ss format.
+	MaintenanceWindowTime pulumi.StringPtrInput `pulumi:"maintenanceWindowTime"`
+	// PostgreSQL specific server provided values.
+	Pg GetPgPgPtrInput `pulumi:"pg"`
+	// defines PostgreSQL specific additional configuration options. The following
+	// configuration options available:
+	PgUserConfig GetPgPgUserConfigPtrInput `pulumi:"pgUserConfig"`
+	// defines what kind of computing resources are allocated for the service. It can
+	// be changed after creation, though there are some restrictions when going to a smaller
+	// plan such as the new plan must have sufficient amount of disk space to store all current
+	// data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	Plan pulumi.StringPtrInput `pulumi:"plan"`
+	// identifies the project the service belongs to. To set up proper dependency
+	// between the project and the service, refer to the project as shown in the above example.
+	// Project cannot be changed later without destroying and re-creating the service.
+	Project pulumi.StringInput `pulumi:"project"`
+	// optionally specifies the VPC the service should run in. If the value
+	// is not set the service is not run inside a VPC. When set, the value should be given as a
+	// reference as shown above to set up dependencies correctly and the VPC must be in the same
+	// cloud and region as the service itself. Project can be freely moved to and from VPC after
+	// creation but doing so triggers migration to new servers so the operation can take
+	// significant amount of time to complete if the service has a lot of data.
+	ProjectVpcId pulumi.StringPtrInput `pulumi:"projectVpcId"`
+	// PostgreSQL hostname.
+	ServiceHost         pulumi.StringPtrInput             `pulumi:"serviceHost"`
+	ServiceIntegrations GetPgServiceIntegrationArrayInput `pulumi:"serviceIntegrations"`
+	// specifies the actual name of the service. The name cannot be changed
+	// later without destroying and re-creating the service so name should be picked based on
+	// intended service usage rather than current attributes.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Password used for connecting to the PostgreSQL service, if applicable.
+	ServicePassword pulumi.StringPtrInput `pulumi:"servicePassword"`
+	// PostgreSQL port.
+	ServicePort pulumi.IntPtrInput    `pulumi:"servicePort"`
+	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
+	// URI for connecting to the PostgreSQL service.
+	ServiceUri pulumi.StringPtrInput `pulumi:"serviceUri"`
+	// Username used for connecting to the PostgreSQL service, if applicable.
+	ServiceUsername pulumi.StringPtrInput `pulumi:"serviceUsername"`
+	// Service state.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// prevents the service from being deleted. It is recommended to
+	// set this to `true` for all production services to prevent unintentional service
+	// deletion. This does not shield against deleting databases or topics but for services
+	// with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
+	TerminationProtection pulumi.BoolPtrInput `pulumi:"terminationProtection"`
+}
+
+func (LookupPgOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPgArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getPg.
+type LookupPgResultOutput struct{ *pulumi.OutputState }
+
+func (LookupPgResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPgResult)(nil)).Elem()
+}
+
+func (o LookupPgResultOutput) ToLookupPgResultOutput() LookupPgResultOutput {
+	return o
+}
+
+func (o LookupPgResultOutput) ToLookupPgResultOutputWithContext(ctx context.Context) LookupPgResultOutput {
+	return o
+}
+
+// defines where the cloud provider and region where the service is hosted
+// in. This can be changed freely after service is created. Changing the value will trigger
+// a potentially lengthy migration process for the service. Format is cloud provider name
+// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+// specific region name. These are documented on each Cloud provider's own support articles,
+// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+func (o LookupPgResultOutput) CloudName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPgResult) *string { return v.CloudName }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupPgResultOutput) Components() GetPgComponentArrayOutput {
+	return o.ApplyT(func(v LookupPgResult) []GetPgComponent { return v.Components }).(GetPgComponentArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupPgResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPgResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// day of week when maintenance operations should be performed.
+// On monday, tuesday, wednesday, etc.
+func (o LookupPgResultOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPgResult) *string { return v.MaintenanceWindowDow }).(pulumi.StringPtrOutput)
+}
+
+// time of day when maintenance operations should be performed.
+// UTC time in HH:mm:ss format.
+func (o LookupPgResultOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPgResult) *string { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL specific server provided values.
+func (o LookupPgResultOutput) Pg() GetPgPgOutput {
+	return o.ApplyT(func(v LookupPgResult) GetPgPg { return v.Pg }).(GetPgPgOutput)
+}
+
+// defines PostgreSQL specific additional configuration options. The following
+// configuration options available:
+func (o LookupPgResultOutput) PgUserConfig() GetPgPgUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupPgResult) *GetPgPgUserConfig { return v.PgUserConfig }).(GetPgPgUserConfigPtrOutput)
+}
+
+// defines what kind of computing resources are allocated for the service. It can
+// be changed after creation, though there are some restrictions when going to a smaller
+// plan such as the new plan must have sufficient amount of disk space to store all current
+// data and switching to a plan with fewer nodes might not be supported. The basic plan
+// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+func (o LookupPgResultOutput) Plan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPgResult) *string { return v.Plan }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupPgResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPgResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// optionally specifies the VPC the service should run in. If the value
+// is not set the service is not run inside a VPC. When set, the value should be given as a
+// reference as shown above to set up dependencies correctly and the VPC must be in the same
+// cloud and region as the service itself. Project can be freely moved to and from VPC after
+// creation but doing so triggers migration to new servers so the operation can take
+// significant amount of time to complete if the service has a lot of data.
+func (o LookupPgResultOutput) ProjectVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPgResult) *string { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL hostname.
+func (o LookupPgResultOutput) ServiceHost() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPgResult) string { return v.ServiceHost }).(pulumi.StringOutput)
+}
+
+func (o LookupPgResultOutput) ServiceIntegrations() GetPgServiceIntegrationArrayOutput {
+	return o.ApplyT(func(v LookupPgResult) []GetPgServiceIntegration { return v.ServiceIntegrations }).(GetPgServiceIntegrationArrayOutput)
+}
+
+func (o LookupPgResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPgResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Password used for connecting to the PostgreSQL service, if applicable.
+func (o LookupPgResultOutput) ServicePassword() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPgResult) string { return v.ServicePassword }).(pulumi.StringOutput)
+}
+
+// PostgreSQL port.
+func (o LookupPgResultOutput) ServicePort() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupPgResult) int { return v.ServicePort }).(pulumi.IntOutput)
+}
+
+func (o LookupPgResultOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPgResult) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// URI for connecting to the PostgreSQL service.
+func (o LookupPgResultOutput) ServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPgResult) string { return v.ServiceUri }).(pulumi.StringOutput)
+}
+
+// Username used for connecting to the PostgreSQL service, if applicable.
+func (o LookupPgResultOutput) ServiceUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPgResult) string { return v.ServiceUsername }).(pulumi.StringOutput)
+}
+
+// Service state.
+func (o LookupPgResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPgResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// prevents the service from being deleted. It is recommended to
+// set this to `true` for all production services to prevent unintentional service
+// deletion. This does not shield against deleting databases or topics but for services
+// with backups much of the content can at least be restored from backup in case accidental
+// deletion is done.
+func (o LookupPgResultOutput) TerminationProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupPgResult) *bool { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupPgResultOutput{})
 }

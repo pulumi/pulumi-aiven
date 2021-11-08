@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -138,4 +137,58 @@ export interface GetVpcPeeringConnectionResult {
      */
     readonly stateInfo: {[key: string]: any};
     readonly vpcId: string;
+}
+
+export function getVpcPeeringConnectionOutput(args: GetVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcPeeringConnectionResult> {
+    return pulumi.output(args).apply(a => getVpcPeeringConnection(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcPeeringConnection.
+ */
+export interface GetVpcPeeringConnectionOutputArgs {
+    /**
+     * an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
+     */
+    peerAzureAppId?: pulumi.Input<string>;
+    /**
+     * an Azure tenant id in UUID4 form.
+     */
+    peerAzureTenantId?: pulumi.Input<string>;
+    /**
+     * defines the identifier of the cloud account the VPC is being
+     * peered with.
+     */
+    peerCloudAccount: pulumi.Input<string>;
+    /**
+     * defines the region of the remote VPC if it is not in the same region as Aiven VPC.
+     */
+    peerRegion?: pulumi.Input<string>;
+    /**
+     * an Azure resource group name of the peered VPC.
+     */
+    peerResourceGroup?: pulumi.Input<string>;
+    /**
+     * defines the identifier or name of the remote VPC.
+     */
+    peerVpc: pulumi.Input<string>;
+    /**
+     * a cloud provider identifier for the peering connection if available.
+     */
+    peeringConnectionId?: pulumi.Input<string>;
+    /**
+     * is the state of the peering connection. This property is computed by Aiven 
+     * therefore cannot be set, only read. Where state can be one of: `APPROVED`,
+     * `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
+     * `INVALID_SPECIFICATION`.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * state-specific help or error information.
+     */
+    stateInfo?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * is the Aiven VPC the peering connection is associated with.
+     */
+    vpcId: pulumi.Input<string>;
 }

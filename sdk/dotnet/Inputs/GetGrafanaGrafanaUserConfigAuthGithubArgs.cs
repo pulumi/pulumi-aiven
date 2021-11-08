@@ -10,23 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetGrafanaGrafanaUserConfigAuthGithubArgs : Pulumi.InvokeArgs
+    public sealed class GetGrafanaGrafanaUserConfigAuthGithubInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Automatically sign-up users on successful sign-in
         /// </summary>
         [Input("allowSignUp")]
-        public string? AllowSignUp { get; set; }
+        public Input<string>? AllowSignUp { get; set; }
 
         [Input("allowedOrganizations")]
-        private List<string>? _allowedOrganizations;
+        private InputList<string>? _allowedOrganizations;
 
         /// <summary>
         /// Must consist of alpha-numeric characters and dashes"
         /// </summary>
-        public List<string> AllowedOrganizations
+        public InputList<string> AllowedOrganizations
         {
-            get => _allowedOrganizations ?? (_allowedOrganizations = new List<string>());
+            get => _allowedOrganizations ?? (_allowedOrganizations = new InputList<string>());
             set => _allowedOrganizations = value;
         }
 
@@ -34,27 +34,27 @@ namespace Pulumi.Aiven.Inputs
         /// Client ID from provider
         /// </summary>
         [Input("clientId")]
-        public string? ClientId { get; set; }
+        public Input<string>? ClientId { get; set; }
 
         /// <summary>
         /// Client secret from provider
         /// </summary>
         [Input("clientSecret")]
-        public string? ClientSecret { get; set; }
+        public Input<string>? ClientSecret { get; set; }
 
         [Input("teamIds")]
-        private List<string>? _teamIds;
+        private InputList<string>? _teamIds;
 
         /// <summary>
         /// Require users to belong to one of given team IDs
         /// </summary>
-        public List<string> TeamIds
+        public InputList<string> TeamIds
         {
-            get => _teamIds ?? (_teamIds = new List<string>());
+            get => _teamIds ?? (_teamIds = new InputList<string>());
             set => _teamIds = value;
         }
 
-        public GetGrafanaGrafanaUserConfigAuthGithubArgs()
+        public GetGrafanaGrafanaUserConfigAuthGithubInputArgs()
         {
         }
     }

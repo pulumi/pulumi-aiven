@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -144,4 +143,62 @@ export interface GetAccountAuthenticationResult {
      * time of last update.
      */
     readonly updateTime: string;
+}
+
+export function getAccountAuthenticationOutput(args: GetAccountAuthenticationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAuthenticationResult> {
+    return pulumi.output(args).apply(a => getAccountAuthentication(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccountAuthentication.
+ */
+export interface GetAccountAuthenticationOutputArgs {
+    /**
+     * is a unique account id.
+     */
+    accountId: pulumi.Input<string>;
+    /**
+     * account authentication id.
+     */
+    authenticationId?: pulumi.Input<string>;
+    /**
+     * time of creation.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * defines an authentication method enabled or not.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * is an account authentication name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * is a SAML Assertion Consumer Service URL.
+     */
+    samlAcsUrl?: pulumi.Input<string>;
+    /**
+     * is a SAML Certificate.
+     */
+    samlCertificate?: pulumi.Input<string>;
+    /**
+     * is a SAML Entity ID.
+     */
+    samlEntityId?: pulumi.Input<string>;
+    /**
+     * is a SAML Idp URL.
+     */
+    samlIdpUrl?: pulumi.Input<string>;
+    /**
+     * is a SAML Metadata URL.
+     */
+    samlMetadataUrl?: pulumi.Input<string>;
+    /**
+     * is an account authentication type, can be one of `internal` and `saml`.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * time of last update.
+     */
+    updateTime?: pulumi.Input<string>;
 }

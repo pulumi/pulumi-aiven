@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupServiceIntegration(ctx, &aiven.LookupServiceIntegrationArgs{
+// 		_, err := aiven.LookupServiceIntegration(ctx, &GetServiceIntegrationArgs{
 // 			Project:                aiven_project.Myproject.Project,
 // 			DestinationServiceName: "<DESTINATION_SERVICE_NAME>",
 // 			IntegrationType:        "datadog",
@@ -113,4 +116,211 @@ type LookupServiceIntegrationResult struct {
 	SignalfxUserConfig            *GetServiceIntegrationSignalfxUserConfig            `pulumi:"signalfxUserConfig"`
 	SourceEndpointId              *string                                             `pulumi:"sourceEndpointId"`
 	SourceServiceName             string                                              `pulumi:"sourceServiceName"`
+}
+
+func LookupServiceIntegrationOutput(ctx *pulumi.Context, args LookupServiceIntegrationOutputArgs, opts ...pulumi.InvokeOption) LookupServiceIntegrationResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupServiceIntegrationResult, error) {
+			args := v.(LookupServiceIntegrationArgs)
+			r, err := LookupServiceIntegration(ctx, &args, opts...)
+			return *r, err
+		}).(LookupServiceIntegrationResultOutput)
+}
+
+// A collection of arguments for invoking getServiceIntegration.
+type LookupServiceIntegrationOutputArgs struct {
+	DashboardUserConfig   GetServiceIntegrationDashboardUserConfigPtrInput `pulumi:"dashboardUserConfig"`
+	DatadogUserConfig     GetServiceIntegrationDatadogUserConfigPtrInput   `pulumi:"datadogUserConfig"`
+	DestinationEndpointId pulumi.StringPtrInput                            `pulumi:"destinationEndpointId"`
+	// identifies the target side of the integration.
+	DestinationServiceName                 pulumi.StringInput                                                  `pulumi:"destinationServiceName"`
+	ExternalAwsCloudwatchLogsUserConfig    GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrInput    `pulumi:"externalAwsCloudwatchLogsUserConfig"`
+	ExternalAwsCloudwatchMetricsUserConfig GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrInput `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
+	ExternalElasticsearchLogsUserConfig    GetServiceIntegrationExternalElasticsearchLogsUserConfigPtrInput    `pulumi:"externalElasticsearchLogsUserConfig"`
+	ExternalGoogleCloudLoggingUserConfig   GetServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrInput   `pulumi:"externalGoogleCloudLoggingUserConfig"`
+	// identifies the type of integration that is set up. Possible values include `dashboard`
+	// , `datadog`, `logs`, `metrics` and `mirrormaker`.
+	IntegrationType            pulumi.StringInput                                      `pulumi:"integrationType"`
+	KafkaConnectUserConfig     GetServiceIntegrationKafkaConnectUserConfigPtrInput     `pulumi:"kafkaConnectUserConfig"`
+	KafkaLogsUserConfig        GetServiceIntegrationKafkaLogsUserConfigPtrInput        `pulumi:"kafkaLogsUserConfig"`
+	KafkaMirrormakerUserConfig GetServiceIntegrationKafkaMirrormakerUserConfigPtrInput `pulumi:"kafkaMirrormakerUserConfig"`
+	LogsUserConfig             GetServiceIntegrationLogsUserConfigPtrInput             `pulumi:"logsUserConfig"`
+	M3aggregatorUserConfig     GetServiceIntegrationM3aggregatorUserConfigPtrInput     `pulumi:"m3aggregatorUserConfig"`
+	M3coordinatorUserConfig    GetServiceIntegrationM3coordinatorUserConfigPtrInput    `pulumi:"m3coordinatorUserConfig"`
+	MetricsUserConfig          GetServiceIntegrationMetricsUserConfigPtrInput          `pulumi:"metricsUserConfig"`
+	MirrormakerUserConfig      GetServiceIntegrationMirrormakerUserConfigPtrInput      `pulumi:"mirrormakerUserConfig"`
+	// defines the project the integration belongs to.
+	Project                       pulumi.StringInput                                         `pulumi:"project"`
+	PrometheusUserConfig          GetServiceIntegrationPrometheusUserConfigPtrInput          `pulumi:"prometheusUserConfig"`
+	ReadReplicaUserConfig         GetServiceIntegrationReadReplicaUserConfigPtrInput         `pulumi:"readReplicaUserConfig"`
+	RsyslogUserConfig             GetServiceIntegrationRsyslogUserConfigPtrInput             `pulumi:"rsyslogUserConfig"`
+	SchemaRegistryProxyUserConfig GetServiceIntegrationSchemaRegistryProxyUserConfigPtrInput `pulumi:"schemaRegistryProxyUserConfig"`
+	SignalfxUserConfig            GetServiceIntegrationSignalfxUserConfigPtrInput            `pulumi:"signalfxUserConfig"`
+	SourceEndpointId              pulumi.StringPtrInput                                      `pulumi:"sourceEndpointId"`
+	// identifies the source side of the integration.
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (LookupServiceIntegrationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceIntegrationArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getServiceIntegration.
+type LookupServiceIntegrationResultOutput struct{ *pulumi.OutputState }
+
+func (LookupServiceIntegrationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceIntegrationResult)(nil)).Elem()
+}
+
+func (o LookupServiceIntegrationResultOutput) ToLookupServiceIntegrationResultOutput() LookupServiceIntegrationResultOutput {
+	return o
+}
+
+func (o LookupServiceIntegrationResultOutput) ToLookupServiceIntegrationResultOutputWithContext(ctx context.Context) LookupServiceIntegrationResultOutput {
+	return o
+}
+
+func (o LookupServiceIntegrationResultOutput) DashboardUserConfig() GetServiceIntegrationDashboardUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationDashboardUserConfig {
+		return v.DashboardUserConfig
+	}).(GetServiceIntegrationDashboardUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) DatadogUserConfig() GetServiceIntegrationDatadogUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationDatadogUserConfig {
+		return v.DatadogUserConfig
+	}).(GetServiceIntegrationDatadogUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) DestinationEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *string { return v.DestinationEndpointId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) DestinationServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.DestinationServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) ExternalAwsCloudwatchLogsUserConfig() GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+		return v.ExternalAwsCloudwatchLogsUserConfig
+	}).(GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) ExternalAwsCloudwatchMetricsUserConfig() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
+		return v.ExternalAwsCloudwatchMetricsUserConfig
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) ExternalElasticsearchLogsUserConfig() GetServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationExternalElasticsearchLogsUserConfig {
+		return v.ExternalElasticsearchLogsUserConfig
+	}).(GetServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) ExternalGoogleCloudLoggingUserConfig() GetServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationExternalGoogleCloudLoggingUserConfig {
+		return v.ExternalGoogleCloudLoggingUserConfig
+	}).(GetServiceIntegrationExternalGoogleCloudLoggingUserConfigPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupServiceIntegrationResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) KafkaConnectUserConfig() GetServiceIntegrationKafkaConnectUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationKafkaConnectUserConfig {
+		return v.KafkaConnectUserConfig
+	}).(GetServiceIntegrationKafkaConnectUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) KafkaLogsUserConfig() GetServiceIntegrationKafkaLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationKafkaLogsUserConfig {
+		return v.KafkaLogsUserConfig
+	}).(GetServiceIntegrationKafkaLogsUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) KafkaMirrormakerUserConfig() GetServiceIntegrationKafkaMirrormakerUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationKafkaMirrormakerUserConfig {
+		return v.KafkaMirrormakerUserConfig
+	}).(GetServiceIntegrationKafkaMirrormakerUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) LogsUserConfig() GetServiceIntegrationLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationLogsUserConfig { return v.LogsUserConfig }).(GetServiceIntegrationLogsUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) M3aggregatorUserConfig() GetServiceIntegrationM3aggregatorUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationM3aggregatorUserConfig {
+		return v.M3aggregatorUserConfig
+	}).(GetServiceIntegrationM3aggregatorUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) M3coordinatorUserConfig() GetServiceIntegrationM3coordinatorUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationM3coordinatorUserConfig {
+		return v.M3coordinatorUserConfig
+	}).(GetServiceIntegrationM3coordinatorUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) MetricsUserConfig() GetServiceIntegrationMetricsUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationMetricsUserConfig {
+		return v.MetricsUserConfig
+	}).(GetServiceIntegrationMetricsUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) MirrormakerUserConfig() GetServiceIntegrationMirrormakerUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationMirrormakerUserConfig {
+		return v.MirrormakerUserConfig
+	}).(GetServiceIntegrationMirrormakerUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) PrometheusUserConfig() GetServiceIntegrationPrometheusUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationPrometheusUserConfig {
+		return v.PrometheusUserConfig
+	}).(GetServiceIntegrationPrometheusUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) ReadReplicaUserConfig() GetServiceIntegrationReadReplicaUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationReadReplicaUserConfig {
+		return v.ReadReplicaUserConfig
+	}).(GetServiceIntegrationReadReplicaUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) RsyslogUserConfig() GetServiceIntegrationRsyslogUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationRsyslogUserConfig {
+		return v.RsyslogUserConfig
+	}).(GetServiceIntegrationRsyslogUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) SchemaRegistryProxyUserConfig() GetServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationSchemaRegistryProxyUserConfig {
+		return v.SchemaRegistryProxyUserConfig
+	}).(GetServiceIntegrationSchemaRegistryProxyUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) SignalfxUserConfig() GetServiceIntegrationSignalfxUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *GetServiceIntegrationSignalfxUserConfig {
+		return v.SignalfxUserConfig
+	}).(GetServiceIntegrationSignalfxUserConfigPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) SourceEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) *string { return v.SourceEndpointId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServiceIntegrationResultOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupServiceIntegrationResultOutput{})
 }

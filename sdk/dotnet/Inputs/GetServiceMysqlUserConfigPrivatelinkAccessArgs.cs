@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceMysqlUserConfigPrivatelinkAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceMysqlUserConfigPrivatelinkAccessInputArgs : Pulumi.ResourceArgs
     {
         [Input("mysql")]
-        public string? Mysql { get; set; }
+        public Input<string>? Mysql { get; set; }
 
         [Input("mysqlx")]
-        public string? Mysqlx { get; set; }
+        public Input<string>? Mysqlx { get; set; }
 
-        public GetServiceMysqlUserConfigPrivatelinkAccessArgs()
+        public GetServiceMysqlUserConfigPrivatelinkAccessInputArgs()
         {
         }
     }

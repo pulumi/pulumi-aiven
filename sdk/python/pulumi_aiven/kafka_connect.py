@@ -658,11 +658,11 @@ class KafkaConnect(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             kafka_connect_user_config=aiven.KafkaConnectKafkaConnectUserConfigArgs(
-                kafka_connect={
-                    "consumerIsolationLevel": "read_committed",
-                },
+                kafka_connect=aiven.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs(
+                    consumer_isolation_level="read_committed",
+                ),
                 public_access=aiven.KafkaConnectKafkaConnectUserConfigPublicAccessArgs(
-                    kafka_connect=True,
+                    kafka_connect="true",
                 ),
             ))
         ```
@@ -735,11 +735,11 @@ class KafkaConnect(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             kafka_connect_user_config=aiven.KafkaConnectKafkaConnectUserConfigArgs(
-                kafka_connect={
-                    "consumerIsolationLevel": "read_committed",
-                },
+                kafka_connect=aiven.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs(
+                    consumer_isolation_level="read_committed",
+                ),
                 public_access=aiven.KafkaConnectKafkaConnectUserConfigPublicAccessArgs(
-                    kafka_connect=True,
+                    kafka_connect="true",
                 ),
             ))
         ```

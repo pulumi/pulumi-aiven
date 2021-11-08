@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetKafkaTopicTagArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaTopicTagInputArgs : Pulumi.ResourceArgs
     {
         [Input("key", required: true)]
-        public string Key { get; set; } = null!;
+        public Input<string> Key { get; set; } = null!;
 
         [Input("value")]
-        public string? Value { get; set; }
+        public Input<string>? Value { get; set; }
 
-        public GetKafkaTopicTagArgs()
+        public GetKafkaTopicTagInputArgs()
         {
         }
     }

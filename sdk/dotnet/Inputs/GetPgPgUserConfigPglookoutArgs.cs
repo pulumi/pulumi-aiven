@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetPgPgUserConfigPglookoutArgs : Pulumi.InvokeArgs
+    public sealed class GetPgPgUserConfigPglookoutInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of seconds of master unavailability before 
         /// triggering database failover to standby
         /// </summary>
         [Input("maxFailoverReplicationTimeLag")]
-        public string? MaxFailoverReplicationTimeLag { get; set; }
+        public Input<string>? MaxFailoverReplicationTimeLag { get; set; }
 
-        public GetPgPgUserConfigPglookoutArgs()
+        public GetPgPgUserConfigPglookoutInputArgs()
         {
         }
     }

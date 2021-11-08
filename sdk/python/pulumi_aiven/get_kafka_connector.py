@@ -14,6 +14,7 @@ __all__ = [
     'GetKafkaConnectorResult',
     'AwaitableGetKafkaConnectorResult',
     'get_kafka_connector',
+    'get_kafka_connector_output',
 ]
 
 @pulumi.output_type
@@ -239,3 +240,50 @@ def get_kafka_connector(config: Optional[Mapping[str, str]] = None,
         project=__ret__.project,
         service_name=__ret__.service_name,
         tasks=__ret__.tasks)
+
+
+@_utilities.lift_output_func(get_kafka_connector)
+def get_kafka_connector_output(config: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                               connector_name: Optional[pulumi.Input[str]] = None,
+                               plugin_author: Optional[pulumi.Input[Optional[str]]] = None,
+                               plugin_class: Optional[pulumi.Input[Optional[str]]] = None,
+                               plugin_doc_url: Optional[pulumi.Input[Optional[str]]] = None,
+                               plugin_title: Optional[pulumi.Input[Optional[str]]] = None,
+                               plugin_type: Optional[pulumi.Input[Optional[str]]] = None,
+                               plugin_version: Optional[pulumi.Input[Optional[str]]] = None,
+                               project: Optional[pulumi.Input[str]] = None,
+                               service_name: Optional[pulumi.Input[str]] = None,
+                               tasks: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKafkaConnectorTaskArgs']]]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaConnectorResult]:
+    """
+    ## # Kafka connector Data Source
+
+    The Kafka connector data source provides information about the existing Aiven Kafka connector.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    kafka_es_con1 = aiven.get_kafka_connector(project=aiven_project["kafka-con-project1"]["project"],
+        service_name=aiven_service["kafka-service1"]["service_name"],
+        connector_name="kafka-es-con1")
+    ```
+
+    * `project` and `service_name`- (Required) define the project and service the Kafka Connectors belongs to.
+    They should be defined using reference as shown above to set up dependencies correctly.
+
+    * `connector_name`- (Required) is the Kafka connector name.
+
+
+    :param str plugin_author: Kafka connector author.
+    :param str plugin_class: Kafka connector Java class.
+    :param str plugin_doc_url: Kafka connector documentation URL.
+    :param str plugin_title: Kafka connector title.
+    :param str plugin_type: Kafka connector type.
+    :param str plugin_version: Kafka connector version.
+    :param Sequence[pulumi.InputType['GetKafkaConnectorTaskArgs']] tasks: List of tasks of a connector, each element contains `connector` 
+           (Related connector name) and `task` (Task id / number).
+    """
+    ...

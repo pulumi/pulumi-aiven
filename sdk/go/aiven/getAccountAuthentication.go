@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,4 +78,129 @@ type LookupAccountAuthenticationResult struct {
 	Type *string `pulumi:"type"`
 	// time of last update.
 	UpdateTime string `pulumi:"updateTime"`
+}
+
+func LookupAccountAuthenticationOutput(ctx *pulumi.Context, args LookupAccountAuthenticationOutputArgs, opts ...pulumi.InvokeOption) LookupAccountAuthenticationResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAccountAuthenticationResult, error) {
+			args := v.(LookupAccountAuthenticationArgs)
+			r, err := LookupAccountAuthentication(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAccountAuthenticationResultOutput)
+}
+
+// A collection of arguments for invoking getAccountAuthentication.
+type LookupAccountAuthenticationOutputArgs struct {
+	// is a unique account id.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// account authentication id.
+	AuthenticationId pulumi.StringPtrInput `pulumi:"authenticationId"`
+	// time of creation.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// defines an authentication method enabled or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// is an account authentication name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// is a SAML Assertion Consumer Service URL.
+	SamlAcsUrl pulumi.StringPtrInput `pulumi:"samlAcsUrl"`
+	// is a SAML Certificate.
+	SamlCertificate pulumi.StringPtrInput `pulumi:"samlCertificate"`
+	// is a SAML Entity ID.
+	SamlEntityId pulumi.StringPtrInput `pulumi:"samlEntityId"`
+	// is a SAML Idp URL.
+	SamlIdpUrl pulumi.StringPtrInput `pulumi:"samlIdpUrl"`
+	// is a SAML Metadata URL.
+	SamlMetadataUrl pulumi.StringPtrInput `pulumi:"samlMetadataUrl"`
+	// is an account authentication type, can be one of `internal` and `saml`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// time of last update.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (LookupAccountAuthenticationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountAuthenticationArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccountAuthentication.
+type LookupAccountAuthenticationResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAccountAuthenticationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountAuthenticationResult)(nil)).Elem()
+}
+
+func (o LookupAccountAuthenticationResultOutput) ToLookupAccountAuthenticationResultOutput() LookupAccountAuthenticationResultOutput {
+	return o
+}
+
+func (o LookupAccountAuthenticationResultOutput) ToLookupAccountAuthenticationResultOutputWithContext(ctx context.Context) LookupAccountAuthenticationResultOutput {
+	return o
+}
+
+// is a unique account id.
+func (o LookupAccountAuthenticationResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// account authentication id.
+func (o LookupAccountAuthenticationResultOutput) AuthenticationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.AuthenticationId }).(pulumi.StringOutput)
+}
+
+// time of creation.
+func (o LookupAccountAuthenticationResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// defines an authentication method enabled or not.
+func (o LookupAccountAuthenticationResultOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAccountAuthenticationResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// is an account authentication name.
+func (o LookupAccountAuthenticationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// is a SAML Assertion Consumer Service URL.
+func (o LookupAccountAuthenticationResultOutput) SamlAcsUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlAcsUrl }).(pulumi.StringOutput)
+}
+
+// is a SAML Certificate.
+func (o LookupAccountAuthenticationResultOutput) SamlCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) *string { return v.SamlCertificate }).(pulumi.StringPtrOutput)
+}
+
+// is a SAML Entity ID.
+func (o LookupAccountAuthenticationResultOutput) SamlEntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) *string { return v.SamlEntityId }).(pulumi.StringPtrOutput)
+}
+
+// is a SAML Idp URL.
+func (o LookupAccountAuthenticationResultOutput) SamlIdpUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) *string { return v.SamlIdpUrl }).(pulumi.StringPtrOutput)
+}
+
+// is a SAML Metadata URL.
+func (o LookupAccountAuthenticationResultOutput) SamlMetadataUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlMetadataUrl }).(pulumi.StringOutput)
+}
+
+// is an account authentication type, can be one of `internal` and `saml`.
+func (o LookupAccountAuthenticationResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// time of last update.
+func (o LookupAccountAuthenticationResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAccountAuthenticationResultOutput{})
 }

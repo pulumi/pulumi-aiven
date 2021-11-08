@@ -12,6 +12,7 @@ __all__ = [
     'GetTransitGatewayVpcAttachmentResult',
     'AwaitableGetTransitGatewayVpcAttachmentResult',
     'get_transit_gateway_vpc_attachment',
+    'get_transit_gateway_vpc_attachment_output',
 ]
 
 @pulumi.output_type
@@ -178,3 +179,40 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
         state_info=__ret__.state_info,
         user_peer_network_cidrs=__ret__.user_peer_network_cidrs,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_transit_gateway_vpc_attachment)
+def get_transit_gateway_vpc_attachment_output(peer_cloud_account: Optional[pulumi.Input[str]] = None,
+                                              peer_region: Optional[pulumi.Input[Optional[str]]] = None,
+                                              peer_vpc: Optional[pulumi.Input[str]] = None,
+                                              peering_connection_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                              state: Optional[pulumi.Input[Optional[str]]] = None,
+                                              state_info: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                              user_peer_network_cidrs: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                              vpc_id: Optional[pulumi.Input[str]] = None,
+                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitGatewayVpcAttachmentResult]:
+    """
+    ## # Transit Gateway VPC Attachment Data Source
+
+    The Transit Gateway VPC Attachment resource allows the creation and management Transit
+    Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    attachment = aiven.get_transit_gateway_vpc_attachment(vpc_id=aiven_project_vpc["bar"]["id"],
+        peer_cloud_account="<PEER_ACCOUNT_ID>",
+        peer_vpc="google-project1")
+    ```
+
+
+    :param str peer_cloud_account: AWS account ID of the peered VPC.
+    :param str peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC).
+    :param str peer_vpc: Transit gateway ID
+    :param Sequence[str] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection.
+    :param str vpc_id: is the Aiven VPC the peering connection is associated with.
+    """
+    ...

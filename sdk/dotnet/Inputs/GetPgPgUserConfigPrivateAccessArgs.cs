@@ -10,28 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetPgPgUserConfigPrivateAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetPgPgUserConfigPrivateAccessInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// PostgreSQL specific server provided values.
         /// </summary>
         [Input("pg")]
-        public string? Pg { get; set; }
+        public Input<string>? Pg { get; set; }
 
         /// <summary>
         /// Enable pgbouncer.
         /// </summary>
         [Input("pgbouncer")]
-        public string? Pgbouncer { get; set; }
+        public Input<string>? Pgbouncer { get; set; }
 
         /// <summary>
         /// Allow clients to connect to prometheus from the public internet for 
         /// service nodes that are in a project VPC or another type of private network
         /// </summary>
         [Input("prometheus")]
-        public string? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
-        public GetPgPgUserConfigPrivateAccessArgs()
+        public GetPgPgUserConfigPrivateAccessInputArgs()
         {
         }
     }

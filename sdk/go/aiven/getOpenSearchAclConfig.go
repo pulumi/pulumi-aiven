@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,4 +35,65 @@ type LookupOpenSearchAclConfigResult struct {
 	Id          string `pulumi:"id"`
 	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
+}
+
+func LookupOpenSearchAclConfigOutput(ctx *pulumi.Context, args LookupOpenSearchAclConfigOutputArgs, opts ...pulumi.InvokeOption) LookupOpenSearchAclConfigResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupOpenSearchAclConfigResult, error) {
+			args := v.(LookupOpenSearchAclConfigArgs)
+			r, err := LookupOpenSearchAclConfig(ctx, &args, opts...)
+			return *r, err
+		}).(LookupOpenSearchAclConfigResultOutput)
+}
+
+// A collection of arguments for invoking getOpenSearchAclConfig.
+type LookupOpenSearchAclConfigOutputArgs struct {
+	Enabled     pulumi.BoolPtrInput `pulumi:"enabled"`
+	ExtendedAcl pulumi.BoolPtrInput `pulumi:"extendedAcl"`
+	Project     pulumi.StringInput  `pulumi:"project"`
+	ServiceName pulumi.StringInput  `pulumi:"serviceName"`
+}
+
+func (LookupOpenSearchAclConfigOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOpenSearchAclConfigArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getOpenSearchAclConfig.
+type LookupOpenSearchAclConfigResultOutput struct{ *pulumi.OutputState }
+
+func (LookupOpenSearchAclConfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOpenSearchAclConfigResult)(nil)).Elem()
+}
+
+func (o LookupOpenSearchAclConfigResultOutput) ToLookupOpenSearchAclConfigResultOutput() LookupOpenSearchAclConfigResultOutput {
+	return o
+}
+
+func (o LookupOpenSearchAclConfigResultOutput) ToLookupOpenSearchAclConfigResultOutputWithContext(ctx context.Context) LookupOpenSearchAclConfigResultOutput {
+	return o
+}
+
+func (o LookupOpenSearchAclConfigResultOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupOpenSearchAclConfigResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o LookupOpenSearchAclConfigResultOutput) ExtendedAcl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupOpenSearchAclConfigResult) *bool { return v.ExtendedAcl }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupOpenSearchAclConfigResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchAclConfigResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupOpenSearchAclConfigResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchAclConfigResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupOpenSearchAclConfigResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchAclConfigResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupOpenSearchAclConfigResultOutput{})
 }

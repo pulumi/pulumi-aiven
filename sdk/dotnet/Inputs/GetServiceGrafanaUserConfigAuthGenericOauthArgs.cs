@@ -10,54 +10,54 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceGrafanaUserConfigAuthGenericOauthArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceGrafanaUserConfigAuthGenericOauthInputArgs : Pulumi.ResourceArgs
     {
         [Input("allowSignUp")]
-        public string? AllowSignUp { get; set; }
+        public Input<string>? AllowSignUp { get; set; }
 
         [Input("allowedDomains")]
-        private List<string>? _allowedDomains;
-        public List<string> AllowedDomains
+        private InputList<string>? _allowedDomains;
+        public InputList<string> AllowedDomains
         {
-            get => _allowedDomains ?? (_allowedDomains = new List<string>());
+            get => _allowedDomains ?? (_allowedDomains = new InputList<string>());
             set => _allowedDomains = value;
         }
 
         [Input("allowedOrganizations")]
-        private List<string>? _allowedOrganizations;
-        public List<string> AllowedOrganizations
+        private InputList<string>? _allowedOrganizations;
+        public InputList<string> AllowedOrganizations
         {
-            get => _allowedOrganizations ?? (_allowedOrganizations = new List<string>());
+            get => _allowedOrganizations ?? (_allowedOrganizations = new InputList<string>());
             set => _allowedOrganizations = value;
         }
 
         [Input("apiUrl")]
-        public string? ApiUrl { get; set; }
+        public Input<string>? ApiUrl { get; set; }
 
         [Input("authUrl")]
-        public string? AuthUrl { get; set; }
+        public Input<string>? AuthUrl { get; set; }
 
         [Input("clientId")]
-        public string? ClientId { get; set; }
+        public Input<string>? ClientId { get; set; }
 
         [Input("clientSecret")]
-        public string? ClientSecret { get; set; }
+        public Input<string>? ClientSecret { get; set; }
 
         [Input("name")]
-        public string? Name { get; set; }
+        public Input<string>? Name { get; set; }
 
         [Input("scopes")]
-        private List<string>? _scopes;
-        public List<string> Scopes
+        private InputList<string>? _scopes;
+        public InputList<string> Scopes
         {
-            get => _scopes ?? (_scopes = new List<string>());
+            get => _scopes ?? (_scopes = new InputList<string>());
             set => _scopes = value;
         }
 
         [Input("tokenUrl")]
-        public string? TokenUrl { get; set; }
+        public Input<string>? TokenUrl { get; set; }
 
-        public GetServiceGrafanaUserConfigAuthGenericOauthArgs()
+        public GetServiceGrafanaUserConfigAuthGenericOauthInputArgs()
         {
         }
     }

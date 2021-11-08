@@ -12,6 +12,7 @@ __all__ = [
     'GetAccountAuthenticationResult',
     'AwaitableGetAccountAuthenticationResult',
     'get_account_authentication',
+    'get_account_authentication_output',
 ]
 
 @pulumi.output_type
@@ -251,3 +252,39 @@ def get_account_authentication(account_id: Optional[str] = None,
         saml_metadata_url=__ret__.saml_metadata_url,
         type=__ret__.type,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_account_authentication)
+def get_account_authentication_output(account_id: Optional[pulumi.Input[str]] = None,
+                                      authentication_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      create_time: Optional[pulumi.Input[Optional[str]]] = None,
+                                      enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                                      name: Optional[pulumi.Input[str]] = None,
+                                      saml_acs_url: Optional[pulumi.Input[Optional[str]]] = None,
+                                      saml_certificate: Optional[pulumi.Input[Optional[str]]] = None,
+                                      saml_entity_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      saml_idp_url: Optional[pulumi.Input[Optional[str]]] = None,
+                                      saml_metadata_url: Optional[pulumi.Input[Optional[str]]] = None,
+                                      type: Optional[pulumi.Input[Optional[str]]] = None,
+                                      update_time: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAuthenticationResult]:
+    """
+    ## # Account Authentication Data Source
+
+    The Account Authentication data source provides information about the existing Aiven Account Authentication.
+
+
+    :param str account_id: is a unique account id.
+    :param str authentication_id: account authentication id.
+    :param str create_time: time of creation.
+    :param bool enabled: defines an authentication method enabled or not.
+    :param str name: is an account authentication name.
+    :param str saml_acs_url: is a SAML Assertion Consumer Service URL.
+    :param str saml_certificate: is a SAML Certificate.
+    :param str saml_entity_id: is a SAML Entity ID.
+    :param str saml_idp_url: is a SAML Idp URL.
+    :param str saml_metadata_url: is a SAML Metadata URL.
+    :param str type: is an account authentication type, can be one of `internal` and `saml`.
+    :param str update_time: time of last update.
+    """
+    ...

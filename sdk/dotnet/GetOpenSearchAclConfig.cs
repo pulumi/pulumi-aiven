@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Aiven
     {
         public static Task<GetOpenSearchAclConfigResult> InvokeAsync(GetOpenSearchAclConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchAclConfigResult>("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args ?? new GetOpenSearchAclConfigArgs(), options.WithVersion());
+
+        public static Output<GetOpenSearchAclConfigResult> Invoke(GetOpenSearchAclConfigInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOpenSearchAclConfigResult>("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args ?? new GetOpenSearchAclConfigInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +35,25 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         public GetOpenSearchAclConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetOpenSearchAclConfigInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        [Input("extendedAcl")]
+        public Input<bool>? ExtendedAcl { get; set; }
+
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        public GetOpenSearchAclConfigInvokeArgs()
         {
         }
     }

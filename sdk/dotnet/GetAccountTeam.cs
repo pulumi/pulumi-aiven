@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -18,6 +19,14 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetAccountTeamResult> InvokeAsync(GetAccountTeamArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamResult>("aiven:index/getAccountTeam:getAccountTeam", args ?? new GetAccountTeamArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Account Team Data Source
+        /// 
+        /// The Account Team data source provides information about the existing Account Team.
+        /// </summary>
+        public static Output<GetAccountTeamResult> Invoke(GetAccountTeamInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccountTeamResult>("aiven:index/getAccountTeam:getAccountTeam", args ?? new GetAccountTeamInvokeArgs(), options.WithVersion());
     }
 
 
@@ -54,6 +63,43 @@ namespace Pulumi.Aiven
         public string? UpdateTime { get; set; }
 
         public GetAccountTeamArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccountTeamInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// is a unique account id.
+        /// </summary>
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// time of creation.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// defines an account team name.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// is an auto-generated unique account team id.
+        /// </summary>
+        [Input("teamId")]
+        public Input<string>? TeamId { get; set; }
+
+        /// <summary>
+        /// time of last update.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
+
+        public GetAccountTeamInvokeArgs()
         {
         }
     }

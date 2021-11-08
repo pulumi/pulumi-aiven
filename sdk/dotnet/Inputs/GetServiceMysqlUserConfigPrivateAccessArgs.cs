@@ -10,18 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceMysqlUserConfigPrivateAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceMysqlUserConfigPrivateAccessInputArgs : Pulumi.ResourceArgs
     {
         [Input("mysql")]
-        public string? Mysql { get; set; }
+        public Input<string>? Mysql { get; set; }
 
         [Input("mysqlx")]
-        public string? Mysqlx { get; set; }
+        public Input<string>? Mysqlx { get; set; }
 
         [Input("prometheus")]
-        public string? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
-        public GetServiceMysqlUserConfigPrivateAccessArgs()
+        public GetServiceMysqlUserConfigPrivateAccessInputArgs()
         {
         }
     }
