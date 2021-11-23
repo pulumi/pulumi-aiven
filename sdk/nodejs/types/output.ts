@@ -434,64 +434,27 @@ export interface GetCassandaCassandra {
 }
 
 export interface GetCassandaCassandraUserConfig {
-    /**
-     * Cassandra specific server provided values.
-     */
     cassandra?: outputs.GetCassandaCassandraUserConfigCassandra;
     cassandraVersion?: string;
-    /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
     ipFilters?: string[];
-    /**
-     * sets the service into migration mode enabling the sstableloader 
-     * utility to be used to upload Cassandra data files. Available only on service create.
-     */
     migrateSstableloader?: string;
-    /**
-     * Allow access to selected service ports from private networks.
-     */
     privateAccess?: outputs.GetCassandaCassandraUserConfigPrivateAccess;
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.GetCassandaCassandraUserConfigPublicAccess;
-    /**
-     * Name of another service to fork from. This has effect only 
-     * when a new service is being created.
-     */
     serviceToForkFrom?: string;
     staticIps?: string;
 }
 
 export interface GetCassandaCassandraUserConfigCassandra {
-    /**
-     * Fail any multiple-partition batch exceeding this value.
-     * 50kb (10x warn threshold) by default.
-     */
     batchSizeFailThresholdInKb?: string;
-    /**
-     * Log a warning message on any multiple-partition
-     * batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing
-     * the size of this thresholdas it can lead to node instability.
-     */
     batchSizeWarnThresholdInKb?: string;
 }
 
 export interface GetCassandaCassandraUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
 export interface GetCassandaCassandraUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
@@ -506,6 +469,86 @@ export interface GetCassandaComponent {
 }
 
 export interface GetCassandaServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetCassandraCassandra {
+}
+
+export interface GetCassandraCassandraUserConfig {
+    /**
+     * Cassandra specific server provided values.
+     */
+    cassandra?: outputs.GetCassandraCassandraUserConfigCassandra;
+    cassandraVersion?: string;
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
+    ipFilters?: string[];
+    /**
+     * sets the service into migration mode enabling the sstableloader 
+     * utility to be used to upload Cassandra data files. Available only on service create.
+     */
+    migrateSstableloader?: string;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
+    privateAccess?: outputs.GetCassandraCassandraUserConfigPrivateAccess;
+    projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: outputs.GetCassandraCassandraUserConfigPublicAccess;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
+    serviceToForkFrom?: string;
+    staticIps?: string;
+}
+
+export interface GetCassandraCassandraUserConfigCassandra {
+    /**
+     * Fail any multiple-partition batch exceeding this value.
+     * 50kb (10x warn threshold) by default.
+     */
+    batchSizeFailThresholdInKb?: string;
+    /**
+     * Log a warning message on any multiple-partition
+     * batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing
+     * the size of this thresholdas it can lead to node instability.
+     */
+    batchSizeWarnThresholdInKb?: string;
+}
+
+export interface GetCassandraCassandraUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
+    prometheus?: string;
+}
+
+export interface GetCassandraCassandraUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
+    prometheus?: string;
+}
+
+export interface GetCassandraComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GetCassandraServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
 }
@@ -8611,4 +8654,3 @@ export interface ServiceServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
 }
-

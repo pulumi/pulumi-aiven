@@ -13831,7 +13831,6 @@
             "properties": {
                 "cassandra": {
                     "$ref": "#/types/aiven:index/getCassandaCassandraUserConfigCassandra:getCassandaCassandraUserConfigCassandra",
-                    "description": "Cassandra specific server provided values.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13851,7 +13850,6 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13860,7 +13858,6 @@
                 },
                 "migrateSstableloader": {
                     "type": "string",
-                    "description": "sets the service into migration mode enabling the sstableloader \nutility to be used to upload Cassandra data files. Available only on service create.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13869,7 +13866,6 @@
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getCassandaCassandraUserConfigPrivateAccess:getCassandaCassandraUserConfigPrivateAccess",
-                    "description": "Allow access to selected service ports from private networks.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13886,7 +13882,6 @@
                 },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getCassandaCassandraUserConfigPublicAccess:getCassandaCassandraUserConfigPublicAccess",
-                    "description": "Allow access to selected service ports from the public Internet\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13895,7 +13890,6 @@
                 },
                 "serviceToForkFrom": {
                     "type": "string",
-                    "description": "Name of another service to fork from. This has effect only \nwhen a new service is being created.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13917,7 +13911,6 @@
             "properties": {
                 "batchSizeFailThresholdInKb": {
                     "type": "string",
-                    "description": "Fail any multiple-partition batch exceeding this value.\n50kb (10x warn threshold) by default.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13926,7 +13919,6 @@
                 },
                 "batchSizeWarnThresholdInKb": {
                     "type": "string",
-                    "description": "Log a warning message on any multiple-partition\nbatch size exceeding this value.5kb per batch by default.Caution should be taken on increasing\nthe size of this thresholdas it can lead to node instability.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13940,7 +13932,6 @@
             "properties": {
                 "prometheus": {
                     "type": "string",
-                    "description": "Allow clients to connect to prometheus from the public internet \nfor service nodes that are in a project VPC or another type of private network.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -13954,7 +13945,6 @@
             "properties": {
                 "prometheus": {
                     "type": "string",
-                    "description": "Allow clients to connect to prometheus from the public internet \nfor service nodes that are in a project VPC or another type of private network.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14040,6 +14030,246 @@
             }
         },
         "aiven:index/getCassandaServiceIntegration:getCassandaServiceIntegration": {
+            "properties": {
+                "integrationType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceServiceName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "integrationType",
+                "sourceServiceName"
+            ]
+        },
+        "aiven:index/getCassandraCassandra:getCassandraCassandra": {
+            "type": "object"
+        },
+        "aiven:index/getCassandraCassandraUserConfig:getCassandraCassandraUserConfig": {
+            "properties": {
+                "cassandra": {
+                    "$ref": "#/types/aiven:index/getCassandraCassandraUserConfigCassandra:getCassandraCassandraUserConfigCassandra",
+                    "description": "Cassandra specific server provided values.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cassandraVersion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ipFilters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "migrateSstableloader": {
+                    "type": "string",
+                    "description": "sets the service into migration mode enabling the sstableloader \nutility to be used to upload Cassandra data files. Available only on service create.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privateAccess": {
+                    "$ref": "#/types/aiven:index/getCassandraCassandraUserConfigPrivateAccess:getCassandraCassandraUserConfigPrivateAccess",
+                    "description": "Allow access to selected service ports from private networks.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectToForkFrom": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "publicAccess": {
+                    "$ref": "#/types/aiven:index/getCassandraCassandraUserConfigPublicAccess:getCassandraCassandraUserConfigPublicAccess",
+                    "description": "Allow access to selected service ports from the public Internet\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serviceToForkFrom": {
+                    "type": "string",
+                    "description": "Name of another service to fork from. This has effect only \nwhen a new service is being created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "staticIps": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getCassandraCassandraUserConfigCassandra:getCassandraCassandraUserConfigCassandra": {
+            "properties": {
+                "batchSizeFailThresholdInKb": {
+                    "type": "string",
+                    "description": "Fail any multiple-partition batch exceeding this value.\n50kb (10x warn threshold) by default.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "batchSizeWarnThresholdInKb": {
+                    "type": "string",
+                    "description": "Log a warning message on any multiple-partition\nbatch size exceeding this value.5kb per batch by default.Caution should be taken on increasing\nthe size of this thresholdas it can lead to node instability.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getCassandraCassandraUserConfigPrivateAccess:getCassandraCassandraUserConfigPrivateAccess": {
+            "properties": {
+                "prometheus": {
+                    "type": "string",
+                    "description": "Allow clients to connect to prometheus from the public internet \nfor service nodes that are in a project VPC or another type of private network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getCassandraCassandraUserConfigPublicAccess:getCassandraCassandraUserConfigPublicAccess": {
+            "properties": {
+                "prometheus": {
+                    "type": "string",
+                    "description": "Allow clients to connect to prometheus from the public internet \nfor service nodes that are in a project VPC or another type of private network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getCassandraComponent:getCassandraComponent": {
+            "properties": {
+                "component": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kafkaAuthenticationMethod": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "route": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ssl": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usage": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "component",
+                "host",
+                "kafkaAuthenticationMethod",
+                "port",
+                "route",
+                "ssl",
+                "usage"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getCassandraServiceIntegration:getCassandraServiceIntegration": {
             "properties": {
                 "integrationType": {
                     "type": "string",
@@ -35466,16 +35696,179 @@
             }
         },
         "aiven:index/getCassanda:getCassanda": {
-            "description": "## # Cassandra Data Source\n\nThe Cassandra data source provides information about the existing Aiven Cassandra service.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst bar = aiven.getCassanda({\n    project: data.aiven_project.foo.project,\n    serviceName: `test-acc-sr-%s`,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nbar = aiven.get_cassanda(project=data[\"aiven_project\"][\"foo\"][\"project\"],\n    service_name=\"test-acc-sr-%s\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bar = Output.Create(Aiven.GetCassanda.InvokeAsync(new Aiven.GetCassandaArgs\n        {\n            Project = data.Aiven_project.Foo.Project,\n            ServiceName = \"test-acc-sr-%s\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.GetCassanda(ctx, \u0026GetCassandaArgs{\n\t\t\tProject:     data.Aiven_project.Foo.Project,\n\t\t\tServiceName: fmt.Sprintf(\"%v%v%v\", \"test-acc-sr-\", \"%\", \"s\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getCassanda.\n",
                 "properties": {
                     "cassandra": {
-                        "$ref": "#/types/aiven:index/getCassandaCassandra:getCassandaCassandra",
+                        "$ref": "#/types/aiven:index/getCassandaCassandra:getCassandaCassandra"
+                    },
+                    "cassandraUserConfig": {
+                        "$ref": "#/types/aiven:index/getCassandaCassandraUserConfig:getCassandaCassandraUserConfig"
+                    },
+                    "cloudName": {
+                        "type": "string"
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getCassandaComponent:getCassandaComponent"
+                        }
+                    },
+                    "maintenanceWindowDow": {
+                        "type": "string"
+                    },
+                    "maintenanceWindowTime": {
+                        "type": "string"
+                    },
+                    "plan": {
+                        "type": "string"
+                    },
+                    "project": {
+                        "type": "string"
+                    },
+                    "projectVpcId": {
+                        "type": "string"
+                    },
+                    "serviceHost": {
+                        "type": "string"
+                    },
+                    "serviceIntegrations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getCassandaServiceIntegration:getCassandaServiceIntegration"
+                        }
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    },
+                    "servicePassword": {
+                        "type": "string"
+                    },
+                    "servicePort": {
+                        "type": "integer"
+                    },
+                    "serviceType": {
+                        "type": "string"
+                    },
+                    "serviceUri": {
+                        "type": "string"
+                    },
+                    "serviceUsername": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "terminationProtection": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "project",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getCassanda.\n",
+                "properties": {
+                    "cassandra": {
+                        "$ref": "#/types/aiven:index/getCassandaCassandra:getCassandaCassandra"
+                    },
+                    "cassandraUserConfig": {
+                        "$ref": "#/types/aiven:index/getCassandaCassandraUserConfig:getCassandaCassandraUserConfig"
+                    },
+                    "cloudName": {
+                        "type": "string"
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getCassandaComponent:getCassandaComponent"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "maintenanceWindowDow": {
+                        "type": "string"
+                    },
+                    "maintenanceWindowTime": {
+                        "type": "string"
+                    },
+                    "plan": {
+                        "type": "string"
+                    },
+                    "project": {
+                        "type": "string"
+                    },
+                    "projectVpcId": {
+                        "type": "string"
+                    },
+                    "serviceHost": {
+                        "type": "string"
+                    },
+                    "serviceIntegrations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getCassandaServiceIntegration:getCassandaServiceIntegration"
+                        }
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    },
+                    "servicePassword": {
+                        "type": "string"
+                    },
+                    "servicePort": {
+                        "type": "integer"
+                    },
+                    "serviceType": {
+                        "type": "string"
+                    },
+                    "serviceUri": {
+                        "type": "string"
+                    },
+                    "serviceUsername": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "terminationProtection": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cassandra",
+                    "components",
+                    "project",
+                    "serviceHost",
+                    "serviceName",
+                    "servicePassword",
+                    "servicePort",
+                    "serviceType",
+                    "serviceUri",
+                    "serviceUsername",
+                    "state",
+                    "id"
+                ]
+            },
+            "deprecationMessage": "aiven.getCassanda has been deprecated in favor of aiven.getCassandra"
+        },
+        "aiven:index/getCassandra:getCassandra": {
+            "description": "## # Cassandra Data Source\n\nThe Cassandra data source provides information about the existing Aiven Cassandra service.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst bar = aiven.getCassandra({\n    project: data.aiven_project.foo.project,\n    serviceName: `test-acc-sr-%s`,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nbar = aiven.get_cassandra(project=data[\"aiven_project\"][\"foo\"][\"project\"],\n    service_name=\"test-acc-sr-%s\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bar = Output.Create(Aiven.GetCassandra.InvokeAsync(new Aiven.GetCassandraArgs\n        {\n            Project = data.Aiven_project.Foo.Project,\n            ServiceName = \"test-acc-sr-%s\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupCassandra(ctx, \u0026GetCassandraArgs{\n\t\t\tProject:     data.Aiven_project.Foo.Project,\n\t\t\tServiceName: fmt.Sprintf(\"%v%v%v\", \"test-acc-sr-\", \"%\", \"s\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getCassandra.\n",
+                "properties": {
+                    "cassandra": {
+                        "$ref": "#/types/aiven:index/getCassandraCassandra:getCassandraCassandra",
                         "description": "Cassandra specific server provided values.\n"
                     },
                     "cassandraUserConfig": {
-                        "$ref": "#/types/aiven:index/getCassandaCassandraUserConfig:getCassandaCassandraUserConfig",
+                        "$ref": "#/types/aiven:index/getCassandraCassandraUserConfig:getCassandraCassandraUserConfig",
                         "description": "defines Cassandra specific additional configuration options. \nThe following configuration options available:\n"
                     },
                     "cloudName": {
@@ -35485,7 +35878,7 @@
                     "components": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aiven:index/getCassandaComponent:getCassandaComponent"
+                            "$ref": "#/types/aiven:index/getCassandraComponent:getCassandraComponent"
                         }
                     },
                     "maintenanceWindowDow": {
@@ -35515,7 +35908,7 @@
                     "serviceIntegrations": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aiven:index/getCassandaServiceIntegration:getCassandaServiceIntegration"
+                            "$ref": "#/types/aiven:index/getCassandraServiceIntegration:getCassandraServiceIntegration"
                         }
                     },
                     "serviceName": {
@@ -35557,14 +35950,14 @@
                 ]
             },
             "outputs": {
-                "description": "A collection of values returned by getCassanda.\n",
+                "description": "A collection of values returned by getCassandra.\n",
                 "properties": {
                     "cassandra": {
-                        "$ref": "#/types/aiven:index/getCassandaCassandra:getCassandaCassandra",
+                        "$ref": "#/types/aiven:index/getCassandraCassandra:getCassandraCassandra",
                         "description": "Cassandra specific server provided values.\n"
                     },
                     "cassandraUserConfig": {
-                        "$ref": "#/types/aiven:index/getCassandaCassandraUserConfig:getCassandaCassandraUserConfig",
+                        "$ref": "#/types/aiven:index/getCassandraCassandraUserConfig:getCassandraCassandraUserConfig",
                         "description": "defines Cassandra specific additional configuration options. \nThe following configuration options available:\n"
                     },
                     "cloudName": {
@@ -35574,7 +35967,7 @@
                     "components": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aiven:index/getCassandaComponent:getCassandaComponent"
+                            "$ref": "#/types/aiven:index/getCassandraComponent:getCassandraComponent"
                         }
                     },
                     "id": {
@@ -35607,7 +36000,7 @@
                     "serviceIntegrations": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aiven:index/getCassandaServiceIntegration:getCassandaServiceIntegration"
+                            "$ref": "#/types/aiven:index/getCassandraServiceIntegration:getCassandraServiceIntegration"
                         }
                     },
                     "serviceName": {

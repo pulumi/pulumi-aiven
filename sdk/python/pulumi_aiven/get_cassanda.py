@@ -17,6 +17,8 @@ __all__ = [
     'get_cassanda_output',
 ]
 
+warnings.warn("""aiven.getCassanda has been deprecated in favor of aiven.getCassandra""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCassandaResult:
     """
@@ -87,32 +89,16 @@ class GetCassandaResult:
     @property
     @pulumi.getter
     def cassandra(self) -> 'outputs.GetCassandaCassandraResult':
-        """
-        Cassandra specific server provided values.
-        """
         return pulumi.get(self, "cassandra")
 
     @property
     @pulumi.getter(name="cassandraUserConfig")
     def cassandra_user_config(self) -> Optional['outputs.GetCassandaCassandraUserConfigResult']:
-        """
-        defines Cassandra specific additional configuration options. 
-        The following configuration options available:
-        """
         return pulumi.get(self, "cassandra_user_config")
 
     @property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[str]:
-        """
-        defines the cloud provider and region where the service is hosted. 
-        This can be changed freely after service is created. Changing the value will trigger
-        a potentially lengthy migration process for the service. Format is cloud provider name
-        (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        specific region name. These are documented on each Cloud provider's own support articles,
-        like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        """
         return pulumi.get(self, "cloud_name")
 
     @property
@@ -131,33 +117,16 @@ class GetCassandaResult:
     @property
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> Optional[str]:
-        """
-        day of week when maintenance operations should be performed. 
-        On monday, tuesday, wednesday, etc.
-        """
         return pulumi.get(self, "maintenance_window_dow")
 
     @property
     @pulumi.getter(name="maintenanceWindowTime")
     def maintenance_window_time(self) -> Optional[str]:
-        """
-        time of day when maintenance operations should be performed. 
-        UTC time in HH:mm:ss format.
-        """
         return pulumi.get(self, "maintenance_window_time")
 
     @property
     @pulumi.getter
     def plan(self) -> Optional[str]:
-        """
-        defines what kind of computing resources are allocated for the service. It can
-        be changed after creation, though there are some restrictions when going to a smaller
-        plan such as the new plan must have sufficient amount of disk space to store all current
-        data and switching to a plan with fewer nodes might not be supported. The basic plan
-        names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        """
         return pulumi.get(self, "plan")
 
     @property
@@ -168,22 +137,11 @@ class GetCassandaResult:
     @property
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> Optional[str]:
-        """
-        optionally specifies the VPC the service should run in. If the value
-        is not set the service is not run inside a VPC. When set, the value should be given as a
-        reference as shown above to set up dependencies correctly and the VPC must be in the same
-        cloud and region as the service itself. Project can be freely moved to and from VPC after
-        creation but doing so triggers migration to new servers so the operation can take
-        significant amount of time to complete if the service has a lot of data.
-        """
         return pulumi.get(self, "project_vpc_id")
 
     @property
     @pulumi.getter(name="serviceHost")
     def service_host(self) -> str:
-        """
-        Cassandra hostname.
-        """
         return pulumi.get(self, "service_host")
 
     @property
@@ -199,17 +157,11 @@ class GetCassandaResult:
     @property
     @pulumi.getter(name="servicePassword")
     def service_password(self) -> str:
-        """
-        Password used for connecting to the Cassandra service, if applicable.
-        """
         return pulumi.get(self, "service_password")
 
     @property
     @pulumi.getter(name="servicePort")
     def service_port(self) -> int:
-        """
-        Cassandra port.
-        """
         return pulumi.get(self, "service_port")
 
     @property
@@ -220,37 +172,21 @@ class GetCassandaResult:
     @property
     @pulumi.getter(name="serviceUri")
     def service_uri(self) -> str:
-        """
-        URI for connecting to the Cassandra service.
-        """
         return pulumi.get(self, "service_uri")
 
     @property
     @pulumi.getter(name="serviceUsername")
     def service_username(self) -> str:
-        """
-        Username used for connecting to the Cassandra service, if applicable.
-        """
         return pulumi.get(self, "service_username")
 
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        Service state.
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[bool]:
-        """
-        prevents the service from being deleted. It is recommended to
-        set this to `true` for all production services to prevent unintentional service
-        deletion. This does not shield against deleting databases or topics but for services
-        with backups much of the content can at least be restored from backup in case accidental
-        deletion is done.
-        """
         return pulumi.get(self, "termination_protection")
 
 
@@ -303,66 +239,9 @@ def get_cassanda(cassandra: Optional[pulumi.InputType['GetCassandaCassandraArgs'
                  termination_protection: Optional[bool] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCassandaResult:
     """
-    ## # Cassandra Data Source
-
-    The Cassandra data source provides information about the existing Aiven Cassandra service.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    bar = aiven.get_cassanda(project=data["aiven_project"]["foo"]["project"],
-        service_name="test-acc-sr-%s")
-    ```
-
-
-    :param pulumi.InputType['GetCassandaCassandraArgs'] cassandra: Cassandra specific server provided values.
-    :param pulumi.InputType['GetCassandaCassandraUserConfigArgs'] cassandra_user_config: defines Cassandra specific additional configuration options. 
-           The following configuration options available:
-    :param str cloud_name: defines the cloud provider and region where the service is hosted. 
-           This can be changed freely after service is created. Changing the value will trigger
-           a potentially lengthy migration process for the service. Format is cloud provider name
-           (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-           specific region name. These are documented on each Cloud provider's own support articles,
-           like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-           [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-    :param str maintenance_window_dow: day of week when maintenance operations should be performed. 
-           On monday, tuesday, wednesday, etc.
-    :param str maintenance_window_time: time of day when maintenance operations should be performed. 
-           UTC time in HH:mm:ss format.
-    :param str plan: defines what kind of computing resources are allocated for the service. It can
-           be changed after creation, though there are some restrictions when going to a smaller
-           plan such as the new plan must have sufficient amount of disk space to store all current
-           data and switching to a plan with fewer nodes might not be supported. The basic plan
-           names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-           (roughly) the amount of memory on each node (also other attributes like number of CPUs
-           and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-    :param str project: identifies the project the service belongs to. To set up proper dependency
-           between the project and the service, refer to the project as shown in the above example.
-           Project cannot be changed later without destroying and re-creating the service.
-    :param str project_vpc_id: optionally specifies the VPC the service should run in. If the value
-           is not set the service is not run inside a VPC. When set, the value should be given as a
-           reference as shown above to set up dependencies correctly and the VPC must be in the same
-           cloud and region as the service itself. Project can be freely moved to and from VPC after
-           creation but doing so triggers migration to new servers so the operation can take
-           significant amount of time to complete if the service has a lot of data.
-    :param str service_host: Cassandra hostname.
-    :param str service_name: specifies the actual name of the service. The name cannot be changed
-           later without destroying and re-creating the service so name should be picked based on
-           intended service usage rather than current attributes.
-    :param str service_password: Password used for connecting to the Cassandra service, if applicable.
-    :param int service_port: Cassandra port.
-    :param str service_uri: URI for connecting to the Cassandra service.
-    :param str service_username: Username used for connecting to the Cassandra service, if applicable.
-    :param str state: Service state.
-    :param bool termination_protection: prevents the service from being deleted. It is recommended to
-           set this to `true` for all production services to prevent unintentional service
-           deletion. This does not shield against deleting databases or topics but for services
-           with backups much of the content can at least be restored from backup in case accidental
-           deletion is done.
+    Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_cassanda is deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra""")
     __args__ = dict()
     __args__['cassandra'] = cassandra
     __args__['cassandraUserConfig'] = cassandra_user_config
@@ -434,64 +313,7 @@ def get_cassanda_output(cassandra: Optional[pulumi.Input[Optional[pulumi.InputTy
                         termination_protection: Optional[pulumi.Input[Optional[bool]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCassandaResult]:
     """
-    ## # Cassandra Data Source
-
-    The Cassandra data source provides information about the existing Aiven Cassandra service.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    bar = aiven.get_cassanda(project=data["aiven_project"]["foo"]["project"],
-        service_name="test-acc-sr-%s")
-    ```
-
-
-    :param pulumi.InputType['GetCassandaCassandraArgs'] cassandra: Cassandra specific server provided values.
-    :param pulumi.InputType['GetCassandaCassandraUserConfigArgs'] cassandra_user_config: defines Cassandra specific additional configuration options. 
-           The following configuration options available:
-    :param str cloud_name: defines the cloud provider and region where the service is hosted. 
-           This can be changed freely after service is created. Changing the value will trigger
-           a potentially lengthy migration process for the service. Format is cloud provider name
-           (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-           specific region name. These are documented on each Cloud provider's own support articles,
-           like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-           [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-    :param str maintenance_window_dow: day of week when maintenance operations should be performed. 
-           On monday, tuesday, wednesday, etc.
-    :param str maintenance_window_time: time of day when maintenance operations should be performed. 
-           UTC time in HH:mm:ss format.
-    :param str plan: defines what kind of computing resources are allocated for the service. It can
-           be changed after creation, though there are some restrictions when going to a smaller
-           plan such as the new plan must have sufficient amount of disk space to store all current
-           data and switching to a plan with fewer nodes might not be supported. The basic plan
-           names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-           (roughly) the amount of memory on each node (also other attributes like number of CPUs
-           and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-    :param str project: identifies the project the service belongs to. To set up proper dependency
-           between the project and the service, refer to the project as shown in the above example.
-           Project cannot be changed later without destroying and re-creating the service.
-    :param str project_vpc_id: optionally specifies the VPC the service should run in. If the value
-           is not set the service is not run inside a VPC. When set, the value should be given as a
-           reference as shown above to set up dependencies correctly and the VPC must be in the same
-           cloud and region as the service itself. Project can be freely moved to and from VPC after
-           creation but doing so triggers migration to new servers so the operation can take
-           significant amount of time to complete if the service has a lot of data.
-    :param str service_host: Cassandra hostname.
-    :param str service_name: specifies the actual name of the service. The name cannot be changed
-           later without destroying and re-creating the service so name should be picked based on
-           intended service usage rather than current attributes.
-    :param str service_password: Password used for connecting to the Cassandra service, if applicable.
-    :param int service_port: Cassandra port.
-    :param str service_uri: URI for connecting to the Cassandra service.
-    :param str service_username: Username used for connecting to the Cassandra service, if applicable.
-    :param str state: Service state.
-    :param bool termination_protection: prevents the service from being deleted. It is recommended to
-           set this to `true` for all production services to prevent unintentional service
-           deletion. This does not shield against deleting databases or topics but for services
-           with backups much of the content can at least be restored from backup in case accidental
-           deletion is done.
+    Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_cassanda is deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra""")
     ...

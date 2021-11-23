@@ -202,7 +202,6 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_account_team_member":          {Tok: makeDataSource(mainMod, "getAccountTeamMember")},
 			"aiven_account_team_project":         {Tok: makeDataSource(mainMod, "getAccountTeamProject")},
 			"aiven_account_authentication":       {Tok: makeDataSource(mainMod, "getAccountAuthentication")},
-			"aiven_cassandra":                    {Tok: makeDataSource(mainMod, "getCassanda")},
 			"aiven_connection_pool":              {Tok: makeDataSource(mainMod, "getConnectionPool")},
 			"aiven_database":                     {Tok: makeDataSource(mainMod, "getDatabase")},
 			"aiven_elasticsearch":                {Tok: makeDataSource(mainMod, "getElasticSearch")},
@@ -298,6 +297,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 	}
+
+	prov.RenameDataSource("aiven_cassandra", makeDataSource(mainMod, "getCassanda"),
+		makeDataSource(mainMod, "getCassandra"), mainMod, mainMod, nil)
 
 	prov.SetAutonaming(255, "-")
 

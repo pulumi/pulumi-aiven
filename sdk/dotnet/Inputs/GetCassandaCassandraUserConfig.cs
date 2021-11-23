@@ -12,9 +12,6 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetCassandaCassandraUserConfigArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Cassandra specific server provided values.
-        /// </summary>
         [Input("cassandra")]
         public Inputs.GetCassandaCassandraUserConfigCassandraArgs? Cassandra { get; set; }
 
@@ -23,42 +20,24 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilters")]
         private List<string>? _ipFilters;
-
-        /// <summary>
-        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        /// </summary>
         public List<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new List<string>());
             set => _ipFilters = value;
         }
 
-        /// <summary>
-        /// sets the service into migration mode enabling the sstableloader 
-        /// utility to be used to upload Cassandra data files. Available only on service create.
-        /// </summary>
         [Input("migrateSstableloader")]
         public string? MigrateSstableloader { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service ports from private networks.
-        /// </summary>
         [Input("privateAccess")]
         public Inputs.GetCassandaCassandraUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
 
         [Input("projectToForkFrom")]
         public string? ProjectToForkFrom { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         [Input("publicAccess")]
         public Inputs.GetCassandaCassandraUserConfigPublicAccessArgs? PublicAccess { get; set; }
 
-        /// <summary>
-        /// Name of another service to fork from. This has effect only 
-        /// when a new service is being created.
-        /// </summary>
         [Input("serviceToForkFrom")]
         public string? ServiceToForkFrom { get; set; }
 

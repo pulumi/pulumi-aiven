@@ -26,6 +26,7 @@ export * from "./getAccountTeamMember";
 export * from "./getAccountTeamProject";
 export * from "./getAwsPrivatelink";
 export * from "./getCassanda";
+export * from "./getCassandra";
 export * from "./getConnectionPool";
 export * from "./getDatabase";
 export * from "./getElasticSearch";
