@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetRedisRedisUserConfigPrivatelinkAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetRedisRedisUserConfigPrivatelinkAccessInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Redis specific server provided values.
         /// </summary>
         [Input("redis")]
-        public string? Redis { get; set; }
+        public Input<string>? Redis { get; set; }
 
-        public GetRedisRedisUserConfigPrivatelinkAccessArgs()
+        public GetRedisRedisUserConfigPrivatelinkAccessInputArgs()
         {
         }
     }

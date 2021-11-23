@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,4 +37,70 @@ type LookupOpenSearchAclRuleResult struct {
 	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
 	Username    string `pulumi:"username"`
+}
+
+func LookupOpenSearchAclRuleOutput(ctx *pulumi.Context, args LookupOpenSearchAclRuleOutputArgs, opts ...pulumi.InvokeOption) LookupOpenSearchAclRuleResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupOpenSearchAclRuleResult, error) {
+			args := v.(LookupOpenSearchAclRuleArgs)
+			r, err := LookupOpenSearchAclRule(ctx, &args, opts...)
+			return *r, err
+		}).(LookupOpenSearchAclRuleResultOutput)
+}
+
+// A collection of arguments for invoking getOpenSearchAclRule.
+type LookupOpenSearchAclRuleOutputArgs struct {
+	Index       pulumi.StringInput `pulumi:"index"`
+	Permission  pulumi.StringInput `pulumi:"permission"`
+	Project     pulumi.StringInput `pulumi:"project"`
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	Username    pulumi.StringInput `pulumi:"username"`
+}
+
+func (LookupOpenSearchAclRuleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOpenSearchAclRuleArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getOpenSearchAclRule.
+type LookupOpenSearchAclRuleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupOpenSearchAclRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOpenSearchAclRuleResult)(nil)).Elem()
+}
+
+func (o LookupOpenSearchAclRuleResultOutput) ToLookupOpenSearchAclRuleResultOutput() LookupOpenSearchAclRuleResultOutput {
+	return o
+}
+
+func (o LookupOpenSearchAclRuleResultOutput) ToLookupOpenSearchAclRuleResultOutputWithContext(ctx context.Context) LookupOpenSearchAclRuleResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupOpenSearchAclRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchAclRuleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupOpenSearchAclRuleResultOutput) Index() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchAclRuleResult) string { return v.Index }).(pulumi.StringOutput)
+}
+
+func (o LookupOpenSearchAclRuleResultOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchAclRuleResult) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+func (o LookupOpenSearchAclRuleResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchAclRuleResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupOpenSearchAclRuleResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchAclRuleResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupOpenSearchAclRuleResultOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenSearchAclRuleResult) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupOpenSearchAclRuleResultOutput{})
 }

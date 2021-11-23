@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetKafkaKafkaUserConfigSchemaRegistryConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaKafkaUserConfigSchemaRegistryConfigInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, Karapace / Schema Registry on the service nodes can 
@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         /// Defaults to 'true'.
         /// </summary>
         [Input("leaderEligibility")]
-        public string? LeaderEligibility { get; set; }
+        public Input<string>? LeaderEligibility { get; set; }
 
         /// <summary>
         /// The durable single partition topic that acts as the durable log for the 
@@ -30,9 +30,9 @@ namespace Pulumi.Aiven.Inputs
         /// Defaults to '_schemas'.
         /// </summary>
         [Input("topicName")]
-        public string? TopicName { get; set; }
+        public Input<string>? TopicName { get; set; }
 
-        public GetKafkaKafkaUserConfigSchemaRegistryConfigArgs()
+        public GetKafkaKafkaUserConfigSchemaRegistryConfigInputArgs()
         {
         }
     }

@@ -10,14 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetElasticSearchElasticsearchUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetElasticSearchElasticsearchUserConfigInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Serve the web frontend using a custom CNAME pointing to the 
         /// Aiven DNS name.
         /// </summary>
         [Input("customDomain")]
-        public string? CustomDomain { get; set; }
+        public Input<string>? CustomDomain { get; set; }
 
         /// <summary>
         /// Disable automatic replication factor 
@@ -26,30 +26,30 @@ namespace Pulumi.Aiven.Inputs
         /// virtual machine failure.
         /// </summary>
         [Input("disableReplicationFactorAdjustment")]
-        public string? DisableReplicationFactorAdjustment { get; set; }
+        public Input<string>? DisableReplicationFactorAdjustment { get; set; }
 
         /// <summary>
         /// Elasticsearch specific server provided values.
         /// </summary>
         [Input("elasticsearch")]
-        public Inputs.GetElasticSearchElasticsearchUserConfigElasticsearchArgs? Elasticsearch { get; set; }
+        public Input<Inputs.GetElasticSearchElasticsearchUserConfigElasticsearchInputArgs>? Elasticsearch { get; set; }
 
         /// <summary>
         /// Elasticsearch major version.
         /// </summary>
         [Input("elasticsearchVersion")]
-        public string? ElasticsearchVersion { get; set; }
+        public Input<string>? ElasticsearchVersion { get; set; }
 
         [Input("indexPatterns")]
-        private List<Inputs.GetElasticSearchElasticsearchUserConfigIndexPatternArgs>? _indexPatterns;
+        private InputList<Inputs.GetElasticSearchElasticsearchUserConfigIndexPatternInputArgs>? _indexPatterns;
 
         /// <summary>
         /// Glob pattern and number of indexes matching that pattern to 
         /// be kept.
         /// </summary>
-        public List<Inputs.GetElasticSearchElasticsearchUserConfigIndexPatternArgs> IndexPatterns
+        public InputList<Inputs.GetElasticSearchElasticsearchUserConfigIndexPatternInputArgs> IndexPatterns
         {
-            get => _indexPatterns ?? (_indexPatterns = new List<Inputs.GetElasticSearchElasticsearchUserConfigIndexPatternArgs>());
+            get => _indexPatterns ?? (_indexPatterns = new InputList<Inputs.GetElasticSearchElasticsearchUserConfigIndexPatternInputArgs>());
             set => _indexPatterns = value;
         }
 
@@ -57,81 +57,81 @@ namespace Pulumi.Aiven.Inputs
         /// Template settings for all new indexe.
         /// </summary>
         [Input("indexTemplate")]
-        public Inputs.GetElasticSearchElasticsearchUserConfigIndexTemplateArgs? IndexTemplate { get; set; }
+        public Input<Inputs.GetElasticSearchElasticsearchUserConfigIndexTemplateInputArgs>? IndexTemplate { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
+        private InputList<string>? _ipFilters;
 
         /// <summary>
         /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
-        public List<string> IpFilters
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
         [Input("keepIndexRefreshInterval")]
-        public string? KeepIndexRefreshInterval { get; set; }
+        public Input<string>? KeepIndexRefreshInterval { get; set; }
 
         /// <summary>
         /// Allow clients to connect to kibana from the public internet for 
         /// service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("kibana")]
-        public Inputs.GetElasticSearchElasticsearchUserConfigKibanaArgs? Kibana { get; set; }
+        public Input<Inputs.GetElasticSearchElasticsearchUserConfigKibanaInputArgs>? Kibana { get; set; }
 
         /// <summary>
         /// Maximum number of indexes to keep before deleting the oldest one.
         /// </summary>
         [Input("maxIndexCount")]
-        public string? MaxIndexCount { get; set; }
+        public Input<string>? MaxIndexCount { get; set; }
 
         [Input("opensearchVersion")]
-        public string? OpensearchVersion { get; set; }
+        public Input<string>? OpensearchVersion { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from private networks.
         /// </summary>
         [Input("privateAccess")]
-        public Inputs.GetElasticSearchElasticsearchUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetElasticSearchElasticsearchUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         /// <summary>
         /// Allow access to selected service components through Privatelink
         /// </summary>
         [Input("privatelinkAccess")]
-        public Inputs.GetElasticSearchElasticsearchUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+        public Input<Inputs.GetElasticSearchElasticsearchUserConfigPrivatelinkAccessInputArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
         /// Name of another project to fork a service from. This has
         /// effect only when a new service is being created.
         /// </summary>
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from the public Internet.
         /// </summary>
         [Input("publicAccess")]
-        public Inputs.GetElasticSearchElasticsearchUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetElasticSearchElasticsearchUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         /// <summary>
         /// Name of the basebackup to restore in forked service.
         /// </summary>
         [Input("recoveryBasebackupName")]
-        public string? RecoveryBasebackupName { get; set; }
+        public Input<string>? RecoveryBasebackupName { get; set; }
 
         /// <summary>
         /// Name of another service to fork from. This has effect 
         /// only when a new service is being created.
         /// </summary>
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetElasticSearchElasticsearchUserConfigArgs()
+        public GetElasticSearchElasticsearchUserConfigInputArgs()
         {
         }
     }

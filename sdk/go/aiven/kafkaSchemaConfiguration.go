@@ -224,7 +224,7 @@ type KafkaSchemaConfigurationArrayInput interface {
 type KafkaSchemaConfigurationArray []KafkaSchemaConfigurationInput
 
 func (KafkaSchemaConfigurationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*KafkaSchemaConfiguration)(nil))
+	return reflect.TypeOf((*[]*KafkaSchemaConfiguration)(nil)).Elem()
 }
 
 func (i KafkaSchemaConfigurationArray) ToKafkaSchemaConfigurationArrayOutput() KafkaSchemaConfigurationArrayOutput {
@@ -249,7 +249,7 @@ type KafkaSchemaConfigurationMapInput interface {
 type KafkaSchemaConfigurationMap map[string]KafkaSchemaConfigurationInput
 
 func (KafkaSchemaConfigurationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*KafkaSchemaConfiguration)(nil))
+	return reflect.TypeOf((*map[string]*KafkaSchemaConfiguration)(nil)).Elem()
 }
 
 func (i KafkaSchemaConfigurationMap) ToKafkaSchemaConfigurationMapOutput() KafkaSchemaConfigurationMapOutput {
@@ -260,9 +260,7 @@ func (i KafkaSchemaConfigurationMap) ToKafkaSchemaConfigurationMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSchemaConfigurationMapOutput)
 }
 
-type KafkaSchemaConfigurationOutput struct {
-	*pulumi.OutputState
-}
+type KafkaSchemaConfigurationOutput struct{ *pulumi.OutputState }
 
 func (KafkaSchemaConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KafkaSchemaConfiguration)(nil))
@@ -281,14 +279,12 @@ func (o KafkaSchemaConfigurationOutput) ToKafkaSchemaConfigurationPtrOutput() Ka
 }
 
 func (o KafkaSchemaConfigurationOutput) ToKafkaSchemaConfigurationPtrOutputWithContext(ctx context.Context) KafkaSchemaConfigurationPtrOutput {
-	return o.ApplyT(func(v KafkaSchemaConfiguration) *KafkaSchemaConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaSchemaConfiguration) *KafkaSchemaConfiguration {
 		return &v
 	}).(KafkaSchemaConfigurationPtrOutput)
 }
 
-type KafkaSchemaConfigurationPtrOutput struct {
-	*pulumi.OutputState
-}
+type KafkaSchemaConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (KafkaSchemaConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KafkaSchemaConfiguration)(nil))
@@ -300,6 +296,16 @@ func (o KafkaSchemaConfigurationPtrOutput) ToKafkaSchemaConfigurationPtrOutput()
 
 func (o KafkaSchemaConfigurationPtrOutput) ToKafkaSchemaConfigurationPtrOutputWithContext(ctx context.Context) KafkaSchemaConfigurationPtrOutput {
 	return o
+}
+
+func (o KafkaSchemaConfigurationPtrOutput) Elem() KafkaSchemaConfigurationOutput {
+	return o.ApplyT(func(v *KafkaSchemaConfiguration) KafkaSchemaConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaSchemaConfiguration
+		return ret
+	}).(KafkaSchemaConfigurationOutput)
 }
 
 type KafkaSchemaConfigurationArrayOutput struct{ *pulumi.OutputState }
@@ -343,6 +349,10 @@ func (o KafkaSchemaConfigurationMapOutput) MapIndex(k pulumi.StringInput) KafkaS
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaSchemaConfigurationInput)(nil)).Elem(), &KafkaSchemaConfiguration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaSchemaConfigurationPtrInput)(nil)).Elem(), &KafkaSchemaConfiguration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaSchemaConfigurationArrayInput)(nil)).Elem(), KafkaSchemaConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaSchemaConfigurationMapInput)(nil)).Elem(), KafkaSchemaConfigurationMap{})
 	pulumi.RegisterOutputType(KafkaSchemaConfigurationOutput{})
 	pulumi.RegisterOutputType(KafkaSchemaConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(KafkaSchemaConfigurationArrayOutput{})

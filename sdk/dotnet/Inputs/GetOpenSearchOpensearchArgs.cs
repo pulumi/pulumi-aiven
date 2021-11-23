@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetOpenSearchOpensearchArgs : Pulumi.InvokeArgs
+    public sealed class GetOpenSearchOpensearchInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// URI for Opensearch dashboards frontend.
         /// </summary>
         [Input("opensearchDashboardsUri", required: true)]
-        public string OpensearchDashboardsUri { get; set; } = null!;
+        public Input<string> OpensearchDashboardsUri { get; set; } = null!;
 
-        public GetOpenSearchOpensearchArgs()
+        public GetOpenSearchOpensearchInputArgs()
         {
         }
     }

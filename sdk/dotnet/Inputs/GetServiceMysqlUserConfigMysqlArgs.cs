@@ -10,81 +10,81 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceMysqlUserConfigMysqlArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceMysqlUserConfigMysqlInputArgs : Pulumi.ResourceArgs
     {
         [Input("connectTimeout")]
-        public string? ConnectTimeout { get; set; }
+        public Input<string>? ConnectTimeout { get; set; }
 
         [Input("defaultTimeZone")]
-        public string? DefaultTimeZone { get; set; }
+        public Input<string>? DefaultTimeZone { get; set; }
 
         [Input("groupConcatMaxLen")]
-        public string? GroupConcatMaxLen { get; set; }
+        public Input<string>? GroupConcatMaxLen { get; set; }
 
         [Input("informationSchemaStatsExpiry")]
-        public string? InformationSchemaStatsExpiry { get; set; }
+        public Input<string>? InformationSchemaStatsExpiry { get; set; }
 
         [Input("innodbFtMinTokenSize")]
-        public string? InnodbFtMinTokenSize { get; set; }
+        public Input<string>? InnodbFtMinTokenSize { get; set; }
 
         [Input("innodbFtServerStopwordTable")]
-        public string? InnodbFtServerStopwordTable { get; set; }
+        public Input<string>? InnodbFtServerStopwordTable { get; set; }
 
         [Input("innodbLockWaitTimeout")]
-        public string? InnodbLockWaitTimeout { get; set; }
+        public Input<string>? InnodbLockWaitTimeout { get; set; }
 
         [Input("innodbLogBufferSize")]
-        public string? InnodbLogBufferSize { get; set; }
+        public Input<string>? InnodbLogBufferSize { get; set; }
 
         [Input("innodbOnlineAlterLogMaxSize")]
-        public string? InnodbOnlineAlterLogMaxSize { get; set; }
+        public Input<string>? InnodbOnlineAlterLogMaxSize { get; set; }
 
         [Input("innodbPrintAllDeadlocks")]
-        public string? InnodbPrintAllDeadlocks { get; set; }
+        public Input<string>? InnodbPrintAllDeadlocks { get; set; }
 
         [Input("innodbRollbackOnTimeout")]
-        public string? InnodbRollbackOnTimeout { get; set; }
+        public Input<string>? InnodbRollbackOnTimeout { get; set; }
 
         [Input("interactiveTimeout")]
-        public string? InteractiveTimeout { get; set; }
+        public Input<string>? InteractiveTimeout { get; set; }
 
         [Input("internalTmpMemStorageEngine")]
-        public string? InternalTmpMemStorageEngine { get; set; }
+        public Input<string>? InternalTmpMemStorageEngine { get; set; }
 
         [Input("longQueryTime")]
-        public string? LongQueryTime { get; set; }
+        public Input<string>? LongQueryTime { get; set; }
 
         [Input("maxAllowedPacket")]
-        public string? MaxAllowedPacket { get; set; }
+        public Input<string>? MaxAllowedPacket { get; set; }
 
         [Input("maxHeapTableSize")]
-        public string? MaxHeapTableSize { get; set; }
+        public Input<string>? MaxHeapTableSize { get; set; }
 
         [Input("netReadTimeout")]
-        public string? NetReadTimeout { get; set; }
+        public Input<string>? NetReadTimeout { get; set; }
 
         [Input("netWriteTimeout")]
-        public string? NetWriteTimeout { get; set; }
+        public Input<string>? NetWriteTimeout { get; set; }
 
         [Input("slowQueryLog")]
-        public string? SlowQueryLog { get; set; }
+        public Input<string>? SlowQueryLog { get; set; }
 
         [Input("sortBufferSize")]
-        public string? SortBufferSize { get; set; }
+        public Input<string>? SortBufferSize { get; set; }
 
         [Input("sqlMode")]
-        public string? SqlMode { get; set; }
+        public Input<string>? SqlMode { get; set; }
 
         [Input("sqlRequirePrimaryKey")]
-        public string? SqlRequirePrimaryKey { get; set; }
+        public Input<string>? SqlRequirePrimaryKey { get; set; }
 
         [Input("tmpTableSize")]
-        public string? TmpTableSize { get; set; }
+        public Input<string>? TmpTableSize { get; set; }
 
         [Input("waitTimeout")]
-        public string? WaitTimeout { get; set; }
+        public Input<string>? WaitTimeout { get; set; }
 
-        public GetServiceMysqlUserConfigMysqlArgs()
+        public GetServiceMysqlUserConfigMysqlInputArgs()
         {
         }
     }

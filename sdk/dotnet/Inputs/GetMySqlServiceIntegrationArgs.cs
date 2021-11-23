@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetMySqlServiceIntegrationArgs : Pulumi.InvokeArgs
+    public sealed class GetMySqlServiceIntegrationInputArgs : Pulumi.ResourceArgs
     {
         [Input("integrationType", required: true)]
-        public string IntegrationType { get; set; } = null!;
+        public Input<string> IntegrationType { get; set; } = null!;
 
         [Input("sourceServiceName", required: true)]
-        public string SourceServiceName { get; set; } = null!;
+        public Input<string> SourceServiceName { get; set; } = null!;
 
-        public GetMySqlServiceIntegrationArgs()
+        public GetMySqlServiceIntegrationInputArgs()
         {
         }
     }

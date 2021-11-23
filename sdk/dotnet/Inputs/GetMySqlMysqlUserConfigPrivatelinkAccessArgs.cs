@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetMySqlMysqlUserConfigPrivatelinkAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetMySqlMysqlUserConfigPrivatelinkAccessInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// MySQL specific server provided values.
         /// </summary>
         [Input("mysql")]
-        public string? Mysql { get; set; }
+        public Input<string>? Mysql { get; set; }
 
         /// <summary>
         /// (Optional) Allow clients to connect to mysqlx from the public internet for service
         /// nodes that are in a project VPC or another type of private network
         /// </summary>
         [Input("mysqlx")]
-        public string? Mysqlx { get; set; }
+        public Input<string>? Mysqlx { get; set; }
 
-        public GetMySqlMysqlUserConfigPrivatelinkAccessArgs()
+        public GetMySqlMysqlUserConfigPrivatelinkAccessInputArgs()
         {
         }
     }

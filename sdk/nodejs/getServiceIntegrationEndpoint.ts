@@ -110,3 +110,39 @@ export interface GetServiceIntegrationEndpointResult {
     readonly rsyslogUserConfig?: outputs.GetServiceIntegrationEndpointRsyslogUserConfig;
     readonly signalfxUserConfig?: outputs.GetServiceIntegrationEndpointSignalfxUserConfig;
 }
+
+export function getServiceIntegrationEndpointOutput(args: GetServiceIntegrationEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIntegrationEndpointResult> {
+    return pulumi.output(args).apply(a => getServiceIntegrationEndpoint(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServiceIntegrationEndpoint.
+ */
+export interface GetServiceIntegrationEndpointOutputArgs {
+    datadogUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointDatadogUserConfigArgs>;
+    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * is the name of the endpoint. This value has no effect beyond being used
+     * to identify different integration endpoints.
+     */
+    endpointName: pulumi.Input<string>;
+    /**
+     * is the type of the external service this endpoint is associated with.
+     * By the time of writing the only available option is `datadog`.
+     */
+    endpointType?: pulumi.Input<string>;
+    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs>;
+    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs>;
+    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs>;
+    externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs>;
+    externalKafkaUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointExternalKafkaUserConfigArgs>;
+    externalSchemaRegistryUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs>;
+    jolokiaUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointJolokiaUserConfigArgs>;
+    /**
+     * defines the project the endpoint is associated with.
+     */
+    project: pulumi.Input<string>;
+    prometheusUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointPrometheusUserConfigArgs>;
+    rsyslogUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointRsyslogUserConfigArgs>;
+    signalfxUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointSignalfxUserConfigArgs>;
+}

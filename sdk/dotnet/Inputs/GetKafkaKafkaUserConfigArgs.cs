@@ -10,23 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetKafkaKafkaUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaKafkaUserConfigInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         /// </summary>
         [Input("customDomain")]
-        public string? CustomDomain { get; set; }
+        public Input<string>? CustomDomain { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
+        private InputList<string>? _ipFilters;
 
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
-        public List<string> IpFilters
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
@@ -34,78 +34,78 @@ namespace Pulumi.Aiven.Inputs
         /// Kafka server provided values:
         /// </summary>
         [Input("kafka")]
-        public Inputs.GetKafkaKafkaUserConfigKafkaArgs? Kafka { get; set; }
+        public Input<Inputs.GetKafkaKafkaUserConfigKafkaInputArgs>? Kafka { get; set; }
 
         /// <summary>
         /// Kafka authentication methods
         /// </summary>
         [Input("kafkaAuthenticationMethods")]
-        public Inputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs? KafkaAuthenticationMethods { get; set; }
+        public Input<Inputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethodsInputArgs>? KafkaAuthenticationMethods { get; set; }
 
         /// <summary>
         /// Enable kafka_connect
         /// </summary>
         [Input("kafkaConnect")]
-        public string? KafkaConnect { get; set; }
+        public Input<string>? KafkaConnect { get; set; }
 
         /// <summary>
         /// Kafka Connect configuration values
         /// </summary>
         [Input("kafkaConnectConfig")]
-        public Inputs.GetKafkaKafkaUserConfigKafkaConnectConfigArgs? KafkaConnectConfig { get; set; }
+        public Input<Inputs.GetKafkaKafkaUserConfigKafkaConnectConfigInputArgs>? KafkaConnectConfig { get; set; }
 
         /// <summary>
         /// Enable kafka_rest
         /// </summary>
         [Input("kafkaRest")]
-        public string? KafkaRest { get; set; }
+        public Input<string>? KafkaRest { get; set; }
 
         /// <summary>
         /// Kafka-REST configuration
         /// </summary>
         [Input("kafkaRestConfig")]
-        public Inputs.GetKafkaKafkaUserConfigKafkaRestConfigArgs? KafkaRestConfig { get; set; }
+        public Input<Inputs.GetKafkaKafkaUserConfigKafkaRestConfigInputArgs>? KafkaRestConfig { get; set; }
 
         /// <summary>
         /// Kafka major version
         /// </summary>
         [Input("kafkaVersion")]
-        public string? KafkaVersion { get; set; }
+        public Input<string>? KafkaVersion { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from private networks
         /// </summary>
         [Input("privateAccess")]
-        public Inputs.GetKafkaKafkaUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetKafkaKafkaUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         /// <summary>
         /// Allow access to selected service components through Privatelink
         /// </summary>
         [Input("privatelinkAccess")]
-        public Inputs.GetKafkaKafkaUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+        public Input<Inputs.GetKafkaKafkaUserConfigPrivatelinkAccessInputArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
-        public Inputs.GetKafkaKafkaUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetKafkaKafkaUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         /// <summary>
         /// Enable schema_registry
         /// </summary>
         [Input("schemaRegistry")]
-        public string? SchemaRegistry { get; set; }
+        public Input<string>? SchemaRegistry { get; set; }
 
         /// <summary>
         /// Schema Registry configuration
         /// </summary>
         [Input("schemaRegistryConfig")]
-        public Inputs.GetKafkaKafkaUserConfigSchemaRegistryConfigArgs? SchemaRegistryConfig { get; set; }
+        public Input<Inputs.GetKafkaKafkaUserConfigSchemaRegistryConfigInputArgs>? SchemaRegistryConfig { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetKafkaKafkaUserConfigArgs()
+        public GetKafkaKafkaUserConfigInputArgs()
         {
         }
     }

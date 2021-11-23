@@ -10,36 +10,36 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationEndpointExternalKafkaUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationEndpointExternalKafkaUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("bootstrapServers")]
-        public string? BootstrapServers { get; set; }
+        public Input<string>? BootstrapServers { get; set; }
 
         [Input("saslMechanism")]
-        public string? SaslMechanism { get; set; }
+        public Input<string>? SaslMechanism { get; set; }
 
         [Input("saslPlainPassword")]
-        public string? SaslPlainPassword { get; set; }
+        public Input<string>? SaslPlainPassword { get; set; }
 
         [Input("saslPlainUsername")]
-        public string? SaslPlainUsername { get; set; }
+        public Input<string>? SaslPlainUsername { get; set; }
 
         [Input("securityProtocol")]
-        public string? SecurityProtocol { get; set; }
+        public Input<string>? SecurityProtocol { get; set; }
 
         [Input("sslCaCert")]
-        public string? SslCaCert { get; set; }
+        public Input<string>? SslCaCert { get; set; }
 
         [Input("sslClientCert")]
-        public string? SslClientCert { get; set; }
+        public Input<string>? SslClientCert { get; set; }
 
         [Input("sslClientKey")]
-        public string? SslClientKey { get; set; }
+        public Input<string>? SslClientKey { get; set; }
 
         [Input("sslEndpointIdentificationAlgorithm")]
-        public string? SslEndpointIdentificationAlgorithm { get; set; }
+        public Input<string>? SslEndpointIdentificationAlgorithm { get; set; }
 
-        public GetServiceIntegrationEndpointExternalKafkaUserConfigArgs()
+        public GetServiceIntegrationEndpointExternalKafkaUserConfigInputArgs()
         {
         }
     }

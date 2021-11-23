@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceCassandraUserConfigPrivateAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceCassandraUserConfigPrivateAccessInputArgs : Pulumi.ResourceArgs
     {
         [Input("prometheus")]
-        public string? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
-        public GetServiceCassandraUserConfigPrivateAccessArgs()
+        public GetServiceCassandraUserConfigPrivateAccessInputArgs()
         {
         }
     }

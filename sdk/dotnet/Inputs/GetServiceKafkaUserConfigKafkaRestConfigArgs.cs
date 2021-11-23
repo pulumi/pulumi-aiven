@@ -10,27 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceKafkaUserConfigKafkaRestConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceKafkaUserConfigKafkaRestConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("consumerEnableAutoCommit")]
-        public string? ConsumerEnableAutoCommit { get; set; }
+        public Input<string>? ConsumerEnableAutoCommit { get; set; }
 
         [Input("consumerRequestMaxBytes")]
-        public string? ConsumerRequestMaxBytes { get; set; }
+        public Input<string>? ConsumerRequestMaxBytes { get; set; }
 
         [Input("consumerRequestTimeoutMs")]
-        public string? ConsumerRequestTimeoutMs { get; set; }
+        public Input<string>? ConsumerRequestTimeoutMs { get; set; }
 
         [Input("producerAcks")]
-        public string? ProducerAcks { get; set; }
+        public Input<string>? ProducerAcks { get; set; }
 
         [Input("producerLingerMs")]
-        public string? ProducerLingerMs { get; set; }
+        public Input<string>? ProducerLingerMs { get; set; }
 
         [Input("simpleconsumerPoolSizeMax")]
-        public string? SimpleconsumerPoolSizeMax { get; set; }
+        public Input<string>? SimpleconsumerPoolSizeMax { get; set; }
 
-        public GetServiceKafkaUserConfigKafkaRestConfigArgs()
+        public GetServiceKafkaUserConfigKafkaRestConfigInputArgs()
         {
         }
     }

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -84,4 +83,33 @@ export interface GetProjectUserResult {
      */
     readonly memberType?: string;
     readonly project: string;
+}
+
+export function getProjectUserOutput(args: GetProjectUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectUserResult> {
+    return pulumi.output(args).apply(a => getProjectUser(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProjectUser.
+ */
+export interface GetProjectUserOutputArgs {
+    /**
+     * is a computed property tells whether the user has accepted the request to join
+     * the project; adding user to a project sends an invitation to the target user and the
+     * actual membership is only created once the user accepts the invitation. This property
+     * cannot be set, only read.
+     */
+    accepted?: pulumi.Input<boolean>;
+    /**
+     * identifies the email address of the user.
+     */
+    email: pulumi.Input<string>;
+    /**
+     * (Required) defines the access level the user has to the project.
+     */
+    memberType?: pulumi.Input<string>;
+    /**
+     * defines the project the user is a member of.
+     */
+    project: pulumi.Input<string>;
 }

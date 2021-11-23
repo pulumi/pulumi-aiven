@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupProjectUser(ctx, &aiven.LookupProjectUserArgs{
+// 		_, err := aiven.LookupProjectUser(ctx, &GetProjectUserArgs{
 // 			Project: aiven_project.Myproject.Project,
 // 			Email:   "john.doe@example.com",
 // 		}, nil)
@@ -71,4 +74,77 @@ type LookupProjectUserResult struct {
 	// (Required) defines the access level the user has to the project.
 	MemberType *string `pulumi:"memberType"`
 	Project    string  `pulumi:"project"`
+}
+
+func LookupProjectUserOutput(ctx *pulumi.Context, args LookupProjectUserOutputArgs, opts ...pulumi.InvokeOption) LookupProjectUserResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupProjectUserResult, error) {
+			args := v.(LookupProjectUserArgs)
+			r, err := LookupProjectUser(ctx, &args, opts...)
+			return *r, err
+		}).(LookupProjectUserResultOutput)
+}
+
+// A collection of arguments for invoking getProjectUser.
+type LookupProjectUserOutputArgs struct {
+	// is a computed property tells whether the user has accepted the request to join
+	// the project; adding user to a project sends an invitation to the target user and the
+	// actual membership is only created once the user accepts the invitation. This property
+	// cannot be set, only read.
+	Accepted pulumi.BoolPtrInput `pulumi:"accepted"`
+	// identifies the email address of the user.
+	Email pulumi.StringInput `pulumi:"email"`
+	// (Required) defines the access level the user has to the project.
+	MemberType pulumi.StringPtrInput `pulumi:"memberType"`
+	// defines the project the user is a member of.
+	Project pulumi.StringInput `pulumi:"project"`
+}
+
+func (LookupProjectUserOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectUserArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProjectUser.
+type LookupProjectUserResultOutput struct{ *pulumi.OutputState }
+
+func (LookupProjectUserResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectUserResult)(nil)).Elem()
+}
+
+func (o LookupProjectUserResultOutput) ToLookupProjectUserResultOutput() LookupProjectUserResultOutput {
+	return o
+}
+
+func (o LookupProjectUserResultOutput) ToLookupProjectUserResultOutputWithContext(ctx context.Context) LookupProjectUserResultOutput {
+	return o
+}
+
+// is a computed property tells whether the user has accepted the request to join
+// the project; adding user to a project sends an invitation to the target user and the
+// actual membership is only created once the user accepts the invitation. This property
+// cannot be set, only read.
+func (o LookupProjectUserResultOutput) Accepted() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectUserResult) bool { return v.Accepted }).(pulumi.BoolOutput)
+}
+
+func (o LookupProjectUserResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectUserResult) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupProjectUserResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Required) defines the access level the user has to the project.
+func (o LookupProjectUserResultOutput) MemberType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectUserResult) *string { return v.MemberType }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupProjectUserResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectUserResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupProjectUserResultOutput{})
 }

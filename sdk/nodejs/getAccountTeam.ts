@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -75,4 +74,34 @@ export interface GetAccountTeamResult {
      * time of last update.
      */
     readonly updateTime: string;
+}
+
+export function getAccountTeamOutput(args: GetAccountTeamOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountTeamResult> {
+    return pulumi.output(args).apply(a => getAccountTeam(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccountTeam.
+ */
+export interface GetAccountTeamOutputArgs {
+    /**
+     * is a unique account id.
+     */
+    accountId: pulumi.Input<string>;
+    /**
+     * time of creation.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * defines an account team name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * is an auto-generated unique account team id.
+     */
+    teamId?: pulumi.Input<string>;
+    /**
+     * time of last update.
+     */
+    updateTime?: pulumi.Input<string>;
 }

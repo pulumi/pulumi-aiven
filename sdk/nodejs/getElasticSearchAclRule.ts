@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 export function getElasticSearchAclRule(args: GetElasticSearchAclRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticSearchAclRuleResult> {
@@ -46,4 +45,19 @@ export interface GetElasticSearchAclRuleResult {
     readonly project: string;
     readonly serviceName: string;
     readonly username: string;
+}
+
+export function getElasticSearchAclRuleOutput(args: GetElasticSearchAclRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetElasticSearchAclRuleResult> {
+    return pulumi.output(args).apply(a => getElasticSearchAclRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getElasticSearchAclRule.
+ */
+export interface GetElasticSearchAclRuleOutputArgs {
+    index: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }

@@ -200,7 +200,7 @@ type OpenSearchAclRuleArrayInput interface {
 type OpenSearchAclRuleArray []OpenSearchAclRuleInput
 
 func (OpenSearchAclRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*OpenSearchAclRule)(nil))
+	return reflect.TypeOf((*[]*OpenSearchAclRule)(nil)).Elem()
 }
 
 func (i OpenSearchAclRuleArray) ToOpenSearchAclRuleArrayOutput() OpenSearchAclRuleArrayOutput {
@@ -225,7 +225,7 @@ type OpenSearchAclRuleMapInput interface {
 type OpenSearchAclRuleMap map[string]OpenSearchAclRuleInput
 
 func (OpenSearchAclRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*OpenSearchAclRule)(nil))
+	return reflect.TypeOf((*map[string]*OpenSearchAclRule)(nil)).Elem()
 }
 
 func (i OpenSearchAclRuleMap) ToOpenSearchAclRuleMapOutput() OpenSearchAclRuleMapOutput {
@@ -236,9 +236,7 @@ func (i OpenSearchAclRuleMap) ToOpenSearchAclRuleMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchAclRuleMapOutput)
 }
 
-type OpenSearchAclRuleOutput struct {
-	*pulumi.OutputState
-}
+type OpenSearchAclRuleOutput struct{ *pulumi.OutputState }
 
 func (OpenSearchAclRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OpenSearchAclRule)(nil))
@@ -257,14 +255,12 @@ func (o OpenSearchAclRuleOutput) ToOpenSearchAclRulePtrOutput() OpenSearchAclRul
 }
 
 func (o OpenSearchAclRuleOutput) ToOpenSearchAclRulePtrOutputWithContext(ctx context.Context) OpenSearchAclRulePtrOutput {
-	return o.ApplyT(func(v OpenSearchAclRule) *OpenSearchAclRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenSearchAclRule) *OpenSearchAclRule {
 		return &v
 	}).(OpenSearchAclRulePtrOutput)
 }
 
-type OpenSearchAclRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type OpenSearchAclRulePtrOutput struct{ *pulumi.OutputState }
 
 func (OpenSearchAclRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OpenSearchAclRule)(nil))
@@ -276,6 +272,16 @@ func (o OpenSearchAclRulePtrOutput) ToOpenSearchAclRulePtrOutput() OpenSearchAcl
 
 func (o OpenSearchAclRulePtrOutput) ToOpenSearchAclRulePtrOutputWithContext(ctx context.Context) OpenSearchAclRulePtrOutput {
 	return o
+}
+
+func (o OpenSearchAclRulePtrOutput) Elem() OpenSearchAclRuleOutput {
+	return o.ApplyT(func(v *OpenSearchAclRule) OpenSearchAclRule {
+		if v != nil {
+			return *v
+		}
+		var ret OpenSearchAclRule
+		return ret
+	}).(OpenSearchAclRuleOutput)
 }
 
 type OpenSearchAclRuleArrayOutput struct{ *pulumi.OutputState }
@@ -319,6 +325,10 @@ func (o OpenSearchAclRuleMapOutput) MapIndex(k pulumi.StringInput) OpenSearchAcl
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchAclRuleInput)(nil)).Elem(), &OpenSearchAclRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchAclRulePtrInput)(nil)).Elem(), &OpenSearchAclRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchAclRuleArrayInput)(nil)).Elem(), OpenSearchAclRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchAclRuleMapInput)(nil)).Elem(), OpenSearchAclRuleMap{})
 	pulumi.RegisterOutputType(OpenSearchAclRuleOutput{})
 	pulumi.RegisterOutputType(OpenSearchAclRulePtrOutput{})
 	pulumi.RegisterOutputType(OpenSearchAclRuleArrayOutput{})

@@ -10,18 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceElasticsearchUserConfigIndexPatternArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceElasticsearchUserConfigIndexPatternInputArgs : Pulumi.ResourceArgs
     {
         [Input("maxIndexCount")]
-        public string? MaxIndexCount { get; set; }
+        public Input<string>? MaxIndexCount { get; set; }
 
         [Input("pattern")]
-        public string? Pattern { get; set; }
+        public Input<string>? Pattern { get; set; }
 
         [Input("sortingAlgorithm")]
-        public string? SortingAlgorithm { get; set; }
+        public Input<string>? SortingAlgorithm { get; set; }
 
-        public GetServiceElasticsearchUserConfigIndexPatternArgs()
+        public GetServiceElasticsearchUserConfigIndexPatternInputArgs()
         {
         }
     }

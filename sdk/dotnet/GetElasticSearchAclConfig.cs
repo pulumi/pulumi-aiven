@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Aiven
     {
         public static Task<GetElasticSearchAclConfigResult> InvokeAsync(GetElasticSearchAclConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetElasticSearchAclConfigResult>("aiven:index/getElasticSearchAclConfig:getElasticSearchAclConfig", args ?? new GetElasticSearchAclConfigArgs(), options.WithVersion());
+
+        public static Output<GetElasticSearchAclConfigResult> Invoke(GetElasticSearchAclConfigInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetElasticSearchAclConfigResult>("aiven:index/getElasticSearchAclConfig:getElasticSearchAclConfig", args ?? new GetElasticSearchAclConfigInvokeArgs(), options.WithVersion());
     }
 
 
@@ -31,6 +35,25 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         public GetElasticSearchAclConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetElasticSearchAclConfigInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        [Input("extendedAcl")]
+        public Input<bool>? ExtendedAcl { get; set; }
+
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        public GetElasticSearchAclConfigInvokeArgs()
         {
         }
     }

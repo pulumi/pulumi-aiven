@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("authentication")]
-        public string? Authentication { get; set; }
+        public Input<string>? Authentication { get; set; }
 
         [Input("basicAuthPassword")]
-        public string? BasicAuthPassword { get; set; }
+        public Input<string>? BasicAuthPassword { get; set; }
 
         [Input("basicAuthUsername")]
-        public string? BasicAuthUsername { get; set; }
+        public Input<string>? BasicAuthUsername { get; set; }
 
         [Input("url")]
-        public string? Url { get; set; }
+        public Input<string>? Url { get; set; }
 
-        public GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs()
+        public GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInputArgs()
         {
         }
     }

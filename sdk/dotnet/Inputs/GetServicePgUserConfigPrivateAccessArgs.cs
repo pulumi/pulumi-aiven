@@ -10,18 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServicePgUserConfigPrivateAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePgUserConfigPrivateAccessInputArgs : Pulumi.ResourceArgs
     {
         [Input("pg")]
-        public string? Pg { get; set; }
+        public Input<string>? Pg { get; set; }
 
         [Input("pgbouncer")]
-        public string? Pgbouncer { get; set; }
+        public Input<string>? Pgbouncer { get; set; }
 
         [Input("prometheus")]
-        public string? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
-        public GetServicePgUserConfigPrivateAccessArgs()
+        public GetServicePgUserConfigPrivateAccessInputArgs()
         {
         }
     }

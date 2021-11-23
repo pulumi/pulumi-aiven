@@ -10,18 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceOpensearchUserConfigIndexTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceOpensearchUserConfigIndexTemplateInputArgs : Pulumi.ResourceArgs
     {
         [Input("mappingNestedObjectsLimit")]
-        public string? MappingNestedObjectsLimit { get; set; }
+        public Input<string>? MappingNestedObjectsLimit { get; set; }
 
         [Input("numberOfReplicas")]
-        public string? NumberOfReplicas { get; set; }
+        public Input<string>? NumberOfReplicas { get; set; }
 
         [Input("numberOfShards")]
-        public string? NumberOfShards { get; set; }
+        public Input<string>? NumberOfShards { get; set; }
 
-        public GetServiceOpensearchUserConfigIndexTemplateArgs()
+        public GetServiceOpensearchUserConfigIndexTemplateInputArgs()
         {
         }
     }

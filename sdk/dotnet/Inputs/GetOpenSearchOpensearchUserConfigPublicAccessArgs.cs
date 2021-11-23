@@ -10,30 +10,30 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetOpenSearchOpensearchUserConfigPublicAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetOpenSearchOpensearchUserConfigPublicAccessInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allow clients to connect to opensearch from the public internet for service nodes that are in a
         /// project VPC or another type of private network.
         /// </summary>
         [Input("opensearch")]
-        public string? Opensearch { get; set; }
+        public Input<string>? Opensearch { get; set; }
 
         /// <summary>
         /// Allow clients to connect to opensearch_dashboards from the public internet for
         /// service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("opensearchDashboards")]
-        public string? OpensearchDashboards { get; set; }
+        public Input<string>? OpensearchDashboards { get; set; }
 
         /// <summary>
         /// Allow clients to connect to prometheus from the public internet for service nodes that are in a
         /// project VPC or another type of private network.
         /// </summary>
         [Input("prometheus")]
-        public string? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
-        public GetOpenSearchOpensearchUserConfigPublicAccessArgs()
+        public GetOpenSearchOpensearchUserConfigPublicAccessInputArgs()
         {
         }
     }

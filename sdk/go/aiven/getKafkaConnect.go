@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupKafkaConnect(ctx, &aiven.LookupKafkaConnectArgs{
+// 		_, err := aiven.LookupKafkaConnect(ctx, &GetKafkaConnectArgs{
 // 			Project:     data.Aiven_project.Pr1.Project,
 // 			ServiceName: "my-kc1",
 // 		}, nil)
@@ -171,4 +174,224 @@ type LookupKafkaConnectResult struct {
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
+}
+
+func LookupKafkaConnectOutput(ctx *pulumi.Context, args LookupKafkaConnectOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaConnectResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKafkaConnectResult, error) {
+			args := v.(LookupKafkaConnectArgs)
+			r, err := LookupKafkaConnect(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKafkaConnectResultOutput)
+}
+
+// A collection of arguments for invoking getKafkaConnect.
+type LookupKafkaConnectOutputArgs struct {
+	// defines where the cloud provider and region where the service is hosted
+	// in. This can be changed freely after service is created. Changing the value will trigger
+	// a potentially lengthy migration process for the service. Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+	// specific region name. These are documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	CloudName  pulumi.StringPtrInput              `pulumi:"cloudName"`
+	Components GetKafkaConnectComponentArrayInput `pulumi:"components"`
+	// Kafka Connect specific server provided values.
+	KafkaConnect GetKafkaConnectKafkaConnectPtrInput `pulumi:"kafkaConnect"`
+	// defines Kafka Connect specific additional configuration options.
+	// The following configuration options available:
+	KafkaConnectUserConfig GetKafkaConnectKafkaConnectUserConfigPtrInput `pulumi:"kafkaConnectUserConfig"`
+	// day of week when maintenance operations should be performed.
+	// On monday, tuesday, wednesday, etc.
+	MaintenanceWindowDow pulumi.StringPtrInput `pulumi:"maintenanceWindowDow"`
+	// time of day when maintenance operations should be performed.
+	// UTC time in HH:mm:ss format.
+	MaintenanceWindowTime pulumi.StringPtrInput `pulumi:"maintenanceWindowTime"`
+	// defines what kind of computing resources are allocated for the service. It can
+	// be changed after creation, though there are some restrictions when going to a smaller
+	// plan such as the new plan must have sufficient amount of disk space to store all current
+	// data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	Plan pulumi.StringPtrInput `pulumi:"plan"`
+	// identifies the project the service belongs to. To set up proper dependency
+	// between the project and the service, refer to the project as shown in the above example.
+	// Project cannot be changed later without destroying and re-creating the service.
+	Project pulumi.StringInput `pulumi:"project"`
+	// optionally specifies the VPC the service should run in. If the value
+	// is not set the service is not run inside a VPC. When set, the value should be given as a
+	// reference as shown above to set up dependencies correctly and the VPC must be in the same
+	// cloud and region as the service itself. Project can be freely moved to and from VPC after
+	// creation but doing so triggers migration to new servers so the operation can take
+	// significant amount of time to complete if the service has a lot of data.
+	ProjectVpcId pulumi.StringPtrInput `pulumi:"projectVpcId"`
+	// Kafka Connect hostname.
+	ServiceHost         pulumi.StringPtrInput                       `pulumi:"serviceHost"`
+	ServiceIntegrations GetKafkaConnectServiceIntegrationArrayInput `pulumi:"serviceIntegrations"`
+	// specifies the actual name of the service. The name cannot be changed
+	// later without destroying and re-creating the service so name should be picked based on
+	// intended service usage rather than current attributes.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Password used for connecting to the Kafka Connect service, if applicable.
+	ServicePassword pulumi.StringPtrInput `pulumi:"servicePassword"`
+	// Kafka Connect port.
+	ServicePort pulumi.IntPtrInput    `pulumi:"servicePort"`
+	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
+	// URI for connecting to the Kafka Connect service.
+	ServiceUri pulumi.StringPtrInput `pulumi:"serviceUri"`
+	// Username used for connecting to the Kafka Connect service, if applicable.
+	ServiceUsername pulumi.StringPtrInput `pulumi:"serviceUsername"`
+	// Service state.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// prevents the service from being deleted. It is recommended to
+	// set this to `true` for all production services to prevent unintentional service
+	// deletion. This does not shield against deleting databases or topics but for services
+	// with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
+	TerminationProtection pulumi.BoolPtrInput `pulumi:"terminationProtection"`
+}
+
+func (LookupKafkaConnectOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKafkaConnectArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKafkaConnect.
+type LookupKafkaConnectResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKafkaConnectResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKafkaConnectResult)(nil)).Elem()
+}
+
+func (o LookupKafkaConnectResultOutput) ToLookupKafkaConnectResultOutput() LookupKafkaConnectResultOutput {
+	return o
+}
+
+func (o LookupKafkaConnectResultOutput) ToLookupKafkaConnectResultOutputWithContext(ctx context.Context) LookupKafkaConnectResultOutput {
+	return o
+}
+
+// defines where the cloud provider and region where the service is hosted
+// in. This can be changed freely after service is created. Changing the value will trigger
+// a potentially lengthy migration process for the service. Format is cloud provider name
+// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+// specific region name. These are documented on each Cloud provider's own support articles,
+// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+func (o LookupKafkaConnectResultOutput) CloudName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) *string { return v.CloudName }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupKafkaConnectResultOutput) Components() GetKafkaConnectComponentArrayOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) []GetKafkaConnectComponent { return v.Components }).(GetKafkaConnectComponentArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupKafkaConnectResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Kafka Connect specific server provided values.
+func (o LookupKafkaConnectResultOutput) KafkaConnect() GetKafkaConnectKafkaConnectOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) GetKafkaConnectKafkaConnect { return v.KafkaConnect }).(GetKafkaConnectKafkaConnectOutput)
+}
+
+// defines Kafka Connect specific additional configuration options.
+// The following configuration options available:
+func (o LookupKafkaConnectResultOutput) KafkaConnectUserConfig() GetKafkaConnectKafkaConnectUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) *GetKafkaConnectKafkaConnectUserConfig {
+		return v.KafkaConnectUserConfig
+	}).(GetKafkaConnectKafkaConnectUserConfigPtrOutput)
+}
+
+// day of week when maintenance operations should be performed.
+// On monday, tuesday, wednesday, etc.
+func (o LookupKafkaConnectResultOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) *string { return v.MaintenanceWindowDow }).(pulumi.StringPtrOutput)
+}
+
+// time of day when maintenance operations should be performed.
+// UTC time in HH:mm:ss format.
+func (o LookupKafkaConnectResultOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) *string { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
+}
+
+// defines what kind of computing resources are allocated for the service. It can
+// be changed after creation, though there are some restrictions when going to a smaller
+// plan such as the new plan must have sufficient amount of disk space to store all current
+// data and switching to a plan with fewer nodes might not be supported. The basic plan
+// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+func (o LookupKafkaConnectResultOutput) Plan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) *string { return v.Plan }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupKafkaConnectResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// optionally specifies the VPC the service should run in. If the value
+// is not set the service is not run inside a VPC. When set, the value should be given as a
+// reference as shown above to set up dependencies correctly and the VPC must be in the same
+// cloud and region as the service itself. Project can be freely moved to and from VPC after
+// creation but doing so triggers migration to new servers so the operation can take
+// significant amount of time to complete if the service has a lot of data.
+func (o LookupKafkaConnectResultOutput) ProjectVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) *string { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Connect hostname.
+func (o LookupKafkaConnectResultOutput) ServiceHost() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) string { return v.ServiceHost }).(pulumi.StringOutput)
+}
+
+func (o LookupKafkaConnectResultOutput) ServiceIntegrations() GetKafkaConnectServiceIntegrationArrayOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) []GetKafkaConnectServiceIntegration { return v.ServiceIntegrations }).(GetKafkaConnectServiceIntegrationArrayOutput)
+}
+
+func (o LookupKafkaConnectResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Password used for connecting to the Kafka Connect service, if applicable.
+func (o LookupKafkaConnectResultOutput) ServicePassword() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) string { return v.ServicePassword }).(pulumi.StringOutput)
+}
+
+// Kafka Connect port.
+func (o LookupKafkaConnectResultOutput) ServicePort() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) int { return v.ServicePort }).(pulumi.IntOutput)
+}
+
+func (o LookupKafkaConnectResultOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// URI for connecting to the Kafka Connect service.
+func (o LookupKafkaConnectResultOutput) ServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) string { return v.ServiceUri }).(pulumi.StringOutput)
+}
+
+// Username used for connecting to the Kafka Connect service, if applicable.
+func (o LookupKafkaConnectResultOutput) ServiceUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) string { return v.ServiceUsername }).(pulumi.StringOutput)
+}
+
+// Service state.
+func (o LookupKafkaConnectResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// prevents the service from being deleted. It is recommended to
+// set this to `true` for all production services to prevent unintentional service
+// deletion. This does not shield against deleting databases or topics but for services
+// with backups much of the content can at least be restored from backup in case accidental
+// deletion is done.
+func (o LookupKafkaConnectResultOutput) TerminationProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupKafkaConnectResult) *bool { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKafkaConnectResultOutput{})
 }

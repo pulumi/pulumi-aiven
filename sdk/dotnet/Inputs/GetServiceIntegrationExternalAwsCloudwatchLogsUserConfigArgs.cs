@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigInputArgs : Pulumi.ResourceArgs
     {
-        public GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs()
+        public GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigInputArgs()
         {
         }
     }

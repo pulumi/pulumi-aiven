@@ -12,6 +12,7 @@ __all__ = [
     'GetMirrorMakerReplicationFlowResult',
     'AwaitableGetMirrorMakerReplicationFlowResult',
     'get_mirror_maker_replication_flow',
+    'get_mirror_maker_replication_flow_output',
 ]
 
 @pulumi.output_type
@@ -220,3 +221,46 @@ def get_mirror_maker_replication_flow(emit_heartbeats_enabled: Optional[bool] = 
         target_cluster=__ret__.target_cluster,
         topics=__ret__.topics,
         topics_blacklists=__ret__.topics_blacklists)
+
+
+@_utilities.lift_output_func(get_mirror_maker_replication_flow)
+def get_mirror_maker_replication_flow_output(emit_heartbeats_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                                             enable: Optional[pulumi.Input[Optional[bool]]] = None,
+                                             project: Optional[pulumi.Input[str]] = None,
+                                             replication_policy_class: Optional[pulumi.Input[Optional[str]]] = None,
+                                             service_name: Optional[pulumi.Input[str]] = None,
+                                             source_cluster: Optional[pulumi.Input[str]] = None,
+                                             sync_group_offsets_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                                             sync_group_offsets_interval_seconds: Optional[pulumi.Input[Optional[int]]] = None,
+                                             target_cluster: Optional[pulumi.Input[str]] = None,
+                                             topics: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                             topics_blacklists: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMirrorMakerReplicationFlowResult]:
+    """
+    ## # MirrorMaker 2 Replication Flow Data Source
+
+    The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2
+    Replication Flow on Aiven Cloud.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    f1 = aiven.get_mirror_maker_replication_flow(project=aiven_project["kafka-mm-project1"]["project"],
+        service_name=aiven_service["mm"]["service_name"],
+        source_cluster=aiven_service["source"]["service_name"],
+        target_cluster=aiven_service["target"]["service_name"])
+    ```
+
+
+    :param bool enable: enable of disable replication flows for a MirrorMaker service
+    :param str project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+           Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+    :param str source_cluster: is a source cluster alias.
+    :param str target_cluster: is a target cluster alias.
+    :param Sequence[str] topics: is a list of topics and/or regular expressions to replicate.
+    :param Sequence[str] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
+    """
+    ...

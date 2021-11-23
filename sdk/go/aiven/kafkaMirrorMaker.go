@@ -32,11 +32,11 @@ import (
 // 			CloudName:   pulumi.String("google-europe-west1"),
 // 			Plan:        pulumi.String("startup-4"),
 // 			ServiceName: pulumi.String("my-mm1"),
-// 			KafkaMirrormakerUserConfig: &aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigArgs{
+// 			KafkaMirrormakerUserConfig: &KafkaMirrorMakerKafkaMirrormakerUserConfigArgs{
 // 				IpFilters: pulumi.StringArray{
 // 					pulumi.String("0.0.0.0/0"),
 // 				},
-// 				KafkaMirrormaker: &aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{
+// 				KafkaMirrormaker: &KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{
 // 					RefreshGroupsIntervalSeconds: pulumi.String("600"),
 // 					RefreshTopicsEnabled:         pulumi.String("true"),
 // 					RefreshTopicsIntervalSeconds: pulumi.String("600"),
@@ -470,7 +470,7 @@ type KafkaMirrorMakerArrayInput interface {
 type KafkaMirrorMakerArray []KafkaMirrorMakerInput
 
 func (KafkaMirrorMakerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*KafkaMirrorMaker)(nil))
+	return reflect.TypeOf((*[]*KafkaMirrorMaker)(nil)).Elem()
 }
 
 func (i KafkaMirrorMakerArray) ToKafkaMirrorMakerArrayOutput() KafkaMirrorMakerArrayOutput {
@@ -495,7 +495,7 @@ type KafkaMirrorMakerMapInput interface {
 type KafkaMirrorMakerMap map[string]KafkaMirrorMakerInput
 
 func (KafkaMirrorMakerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*KafkaMirrorMaker)(nil))
+	return reflect.TypeOf((*map[string]*KafkaMirrorMaker)(nil)).Elem()
 }
 
 func (i KafkaMirrorMakerMap) ToKafkaMirrorMakerMapOutput() KafkaMirrorMakerMapOutput {
@@ -506,9 +506,7 @@ func (i KafkaMirrorMakerMap) ToKafkaMirrorMakerMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaMirrorMakerMapOutput)
 }
 
-type KafkaMirrorMakerOutput struct {
-	*pulumi.OutputState
-}
+type KafkaMirrorMakerOutput struct{ *pulumi.OutputState }
 
 func (KafkaMirrorMakerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KafkaMirrorMaker)(nil))
@@ -527,14 +525,12 @@ func (o KafkaMirrorMakerOutput) ToKafkaMirrorMakerPtrOutput() KafkaMirrorMakerPt
 }
 
 func (o KafkaMirrorMakerOutput) ToKafkaMirrorMakerPtrOutputWithContext(ctx context.Context) KafkaMirrorMakerPtrOutput {
-	return o.ApplyT(func(v KafkaMirrorMaker) *KafkaMirrorMaker {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaMirrorMaker) *KafkaMirrorMaker {
 		return &v
 	}).(KafkaMirrorMakerPtrOutput)
 }
 
-type KafkaMirrorMakerPtrOutput struct {
-	*pulumi.OutputState
-}
+type KafkaMirrorMakerPtrOutput struct{ *pulumi.OutputState }
 
 func (KafkaMirrorMakerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KafkaMirrorMaker)(nil))
@@ -546,6 +542,16 @@ func (o KafkaMirrorMakerPtrOutput) ToKafkaMirrorMakerPtrOutput() KafkaMirrorMake
 
 func (o KafkaMirrorMakerPtrOutput) ToKafkaMirrorMakerPtrOutputWithContext(ctx context.Context) KafkaMirrorMakerPtrOutput {
 	return o
+}
+
+func (o KafkaMirrorMakerPtrOutput) Elem() KafkaMirrorMakerOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) KafkaMirrorMaker {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaMirrorMaker
+		return ret
+	}).(KafkaMirrorMakerOutput)
 }
 
 type KafkaMirrorMakerArrayOutput struct{ *pulumi.OutputState }
@@ -589,6 +595,10 @@ func (o KafkaMirrorMakerMapOutput) MapIndex(k pulumi.StringInput) KafkaMirrorMak
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaMirrorMakerInput)(nil)).Elem(), &KafkaMirrorMaker{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaMirrorMakerPtrInput)(nil)).Elem(), &KafkaMirrorMaker{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaMirrorMakerArrayInput)(nil)).Elem(), KafkaMirrorMakerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaMirrorMakerMapInput)(nil)).Elem(), KafkaMirrorMakerMap{})
 	pulumi.RegisterOutputType(KafkaMirrorMakerOutput{})
 	pulumi.RegisterOutputType(KafkaMirrorMakerPtrOutput{})
 	pulumi.RegisterOutputType(KafkaMirrorMakerArrayOutput{})

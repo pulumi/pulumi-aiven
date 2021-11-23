@@ -12,6 +12,7 @@ __all__ = [
     'GetVpcPeeringConnectionResult',
     'AwaitableGetVpcPeeringConnectionResult',
     'get_vpc_peering_connection',
+    'get_vpc_peering_connection_output',
 ]
 
 @pulumi.output_type
@@ -229,3 +230,51 @@ def get_vpc_peering_connection(peer_azure_app_id: Optional[str] = None,
         state=__ret__.state,
         state_info=__ret__.state_info,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_vpc_peering_connection)
+def get_vpc_peering_connection_output(peer_azure_app_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      peer_azure_tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      peer_cloud_account: Optional[pulumi.Input[str]] = None,
+                                      peer_region: Optional[pulumi.Input[Optional[str]]] = None,
+                                      peer_resource_group: Optional[pulumi.Input[Optional[str]]] = None,
+                                      peer_vpc: Optional[pulumi.Input[str]] = None,
+                                      peering_connection_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      state: Optional[pulumi.Input[Optional[str]]] = None,
+                                      state_info: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                      vpc_id: Optional[pulumi.Input[str]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcPeeringConnectionResult]:
+    """
+    ## # VPC Peering Connection Data Source
+
+    The VPC Peering Connection data source provides information about the existing Aiven
+    VPC Peering Connection.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mypeeringconnection = aiven.get_vpc_peering_connection(vpc_id=aiven_project_vpc["myvpc"]["id"],
+        peer_cloud_account="<PEER_ACCOUNT_ID>",
+        peer_vpc="<PEER_VPC_ID/NAME>")
+    ```
+
+
+    :param str peer_azure_app_id: an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
+    :param str peer_azure_tenant_id: an Azure tenant id in UUID4 form.
+    :param str peer_cloud_account: defines the identifier of the cloud account the VPC is being
+           peered with.
+    :param str peer_region: defines the region of the remote VPC if it is not in the same region as Aiven VPC.
+    :param str peer_resource_group: an Azure resource group name of the peered VPC.
+    :param str peer_vpc: defines the identifier or name of the remote VPC.
+    :param str peering_connection_id: a cloud provider identifier for the peering connection if available.
+    :param str state: is the state of the peering connection. This property is computed by Aiven 
+           therefore cannot be set, only read. Where state can be one of: `APPROVED`,
+           `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
+           `INVALID_SPECIFICATION`.
+    :param Mapping[str, Any] state_info: state-specific help or error information.
+    :param str vpc_id: is the Aiven VPC the peering connection is associated with.
+    """
+    ...

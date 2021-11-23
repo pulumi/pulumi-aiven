@@ -10,52 +10,52 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetMySqlMysqlUserConfigMigrationArgs : Pulumi.InvokeArgs
+    public sealed class GetMySqlMysqlUserConfigMigrationInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Database name for bootstrapping the initial connection
         /// </summary>
         [Input("dbname")]
-        public string? Dbname { get; set; }
+        public Input<string>? Dbname { get; set; }
 
         /// <summary>
         /// Hostname or IP address of the server where to migrate data from
         /// </summary>
         [Input("host")]
-        public string? Host { get; set; }
+        public Input<string>? Host { get; set; }
 
         /// <summary>
         /// Comma-separated list of databases, which should be ignored
         /// during migration (supported by MySQL only at the moment)
         /// </summary>
         [Input("ignoreDbs")]
-        public string? IgnoreDbs { get; set; }
+        public Input<string>? IgnoreDbs { get; set; }
 
         /// <summary>
         /// Password for authentication with the server where to migrate data from
         /// </summary>
         [Input("password")]
-        public string? Password { get; set; }
+        public Input<string>? Password { get; set; }
 
         /// <summary>
         /// Port number of the server where to migrate data from
         /// </summary>
         [Input("port")]
-        public string? Port { get; set; }
+        public Input<string>? Port { get; set; }
 
         /// <summary>
         /// The server where to migrate data from is secured with SSL
         /// </summary>
         [Input("ssl")]
-        public string? Ssl { get; set; }
+        public Input<string>? Ssl { get; set; }
 
         /// <summary>
         /// User name for authentication with the server where to migrate data from
         /// </summary>
         [Input("username")]
-        public string? Username { get; set; }
+        public Input<string>? Username { get; set; }
 
-        public GetMySqlMysqlUserConfigMigrationArgs()
+        public GetMySqlMysqlUserConfigMigrationInputArgs()
         {
         }
     }

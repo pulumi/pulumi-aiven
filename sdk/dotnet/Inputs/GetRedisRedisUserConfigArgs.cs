@@ -10,17 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetRedisRedisUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetRedisRedisUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
+        private InputList<string>? _ipFilters;
 
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
-        public List<string> IpFilters
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
@@ -28,85 +28,85 @@ namespace Pulumi.Aiven.Inputs
         /// Migrate data from existing server
         /// </summary>
         [Input("migration")]
-        public Inputs.GetRedisRedisUserConfigMigrationArgs? Migration { get; set; }
+        public Input<Inputs.GetRedisRedisUserConfigMigrationInputArgs>? Migration { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from private networks
         /// </summary>
         [Input("privateAccess")]
-        public Inputs.GetRedisRedisUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetRedisRedisUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         /// <summary>
         /// Allow access to selected service components through Privatelink
         /// </summary>
         [Input("privatelinkAccess")]
-        public Inputs.GetRedisRedisUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+        public Input<Inputs.GetRedisRedisUserConfigPrivatelinkAccessInputArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
         /// Name of another project to fork a service from. This has
         /// effect only when a new service is being created.
         /// </summary>
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
-        public Inputs.GetRedisRedisUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetRedisRedisUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         /// <summary>
         /// Name of the basebackup to restore in forked service
         /// </summary>
         [Input("recoveryBasebackupName")]
-        public string? RecoveryBasebackupName { get; set; }
+        public Input<string>? RecoveryBasebackupName { get; set; }
 
         [Input("redisAclChannelsDefault")]
-        public string? RedisAclChannelsDefault { get; set; }
+        public Input<string>? RedisAclChannelsDefault { get; set; }
 
         /// <summary>
         /// Redis IO thread count
         /// * `redis_lfu_decay_time"` - LFU maxmemory-policy counter decay time in minutes
         /// </summary>
         [Input("redisIoThreads")]
-        public string? RedisIoThreads { get; set; }
+        public Input<string>? RedisIoThreads { get; set; }
 
         [Input("redisLfuDecayTime")]
-        public string? RedisLfuDecayTime { get; set; }
+        public Input<string>? RedisLfuDecayTime { get; set; }
 
         /// <summary>
         /// Counter logarithm factor for volatile-lfu and allkeys-lfu 
         /// maxmemory-policies
         /// </summary>
         [Input("redisLfuLogFactor")]
-        public string? RedisLfuLogFactor { get; set; }
+        public Input<string>? RedisLfuLogFactor { get; set; }
 
         /// <summary>
         /// Redis maxmemory-policy
         /// </summary>
         [Input("redisMaxmemoryPolicy")]
-        public string? RedisMaxmemoryPolicy { get; set; }
+        public Input<string>? RedisMaxmemoryPolicy { get; set; }
 
         /// <summary>
         /// Set notify-keyspace-events option
         /// </summary>
         [Input("redisNotifyKeyspaceEvents")]
-        public string? RedisNotifyKeyspaceEvents { get; set; }
+        public Input<string>? RedisNotifyKeyspaceEvents { get; set; }
 
         [Input("redisNumberOfDatabases")]
-        public string? RedisNumberOfDatabases { get; set; }
+        public Input<string>? RedisNumberOfDatabases { get; set; }
 
         [Input("redisPersistence")]
-        public string? RedisPersistence { get; set; }
+        public Input<string>? RedisPersistence { get; set; }
 
         [Input("redisPubsubClientOutputBufferLimit")]
-        public string? RedisPubsubClientOutputBufferLimit { get; set; }
+        public Input<string>? RedisPubsubClientOutputBufferLimit { get; set; }
 
         /// <summary>
         /// Require SSL to access Redis
         /// </summary>
         [Input("redisSsl")]
-        public string? RedisSsl { get; set; }
+        public Input<string>? RedisSsl { get; set; }
 
         /// <summary>
         /// Redis idle connection timeout
@@ -114,15 +114,15 @@ namespace Pulumi.Aiven.Inputs
         /// when a new service is being created.
         /// </summary>
         [Input("redisTimeout")]
-        public string? RedisTimeout { get; set; }
+        public Input<string>? RedisTimeout { get; set; }
 
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetRedisRedisUserConfigArgs()
+        public GetRedisRedisUserConfigInputArgs()
         {
         }
     }

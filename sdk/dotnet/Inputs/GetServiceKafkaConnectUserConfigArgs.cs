@@ -10,32 +10,32 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceKafkaConnectUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceKafkaConnectUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
-        public List<string> IpFilters
+        private InputList<string>? _ipFilters;
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
         [Input("kafkaConnect")]
-        public Inputs.GetServiceKafkaConnectUserConfigKafkaConnectArgs? KafkaConnect { get; set; }
+        public Input<Inputs.GetServiceKafkaConnectUserConfigKafkaConnectInputArgs>? KafkaConnect { get; set; }
 
         [Input("privateAccess")]
-        public Inputs.GetServiceKafkaConnectUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetServiceKafkaConnectUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         [Input("privatelinkAccess")]
-        public Inputs.GetServiceKafkaConnectUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+        public Input<Inputs.GetServiceKafkaConnectUserConfigPrivatelinkAccessInputArgs>? PrivatelinkAccess { get; set; }
 
         [Input("publicAccess")]
-        public Inputs.GetServiceKafkaConnectUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetServiceKafkaConnectUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetServiceKafkaConnectUserConfigArgs()
+        public GetServiceKafkaConnectUserConfigInputArgs()
         {
         }
     }

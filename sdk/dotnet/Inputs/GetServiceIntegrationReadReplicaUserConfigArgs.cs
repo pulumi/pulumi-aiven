@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationReadReplicaUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationReadReplicaUserConfigInputArgs : Pulumi.ResourceArgs
     {
-        public GetServiceIntegrationReadReplicaUserConfigArgs()
+        public GetServiceIntegrationReadReplicaUserConfigInputArgs()
         {
         }
     }

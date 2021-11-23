@@ -34,13 +34,13 @@ import (
 // 			ServiceName:           pulumi.String("my-es1"),
 // 			MaintenanceWindowDow:  pulumi.String("monday"),
 // 			MaintenanceWindowTime: pulumi.String("10:00:00"),
-// 			ElasticsearchUserConfig: &aiven.ElasticSearchElasticsearchUserConfigArgs{
+// 			ElasticsearchUserConfig: &ElasticSearchElasticsearchUserConfigArgs{
 // 				ElasticsearchVersion: pulumi.String("7"),
-// 				Kibana: &aiven.ElasticSearchElasticsearchUserConfigKibanaArgs{
+// 				Kibana: &ElasticSearchElasticsearchUserConfigKibanaArgs{
 // 					Enabled:                     pulumi.String("true"),
 // 					ElasticsearchRequestTimeout: pulumi.String("30000"),
 // 				},
-// 				PublicAccess: &aiven.ElasticSearchElasticsearchUserConfigPublicAccessArgs{
+// 				PublicAccess: &ElasticSearchElasticsearchUserConfigPublicAccessArgs{
 // 					Elasticsearch: pulumi.String("true"),
 // 					Kibana:        pulumi.String("true"),
 // 				},
@@ -478,7 +478,7 @@ type ElasticSearchArrayInput interface {
 type ElasticSearchArray []ElasticSearchInput
 
 func (ElasticSearchArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ElasticSearch)(nil))
+	return reflect.TypeOf((*[]*ElasticSearch)(nil)).Elem()
 }
 
 func (i ElasticSearchArray) ToElasticSearchArrayOutput() ElasticSearchArrayOutput {
@@ -503,7 +503,7 @@ type ElasticSearchMapInput interface {
 type ElasticSearchMap map[string]ElasticSearchInput
 
 func (ElasticSearchMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ElasticSearch)(nil))
+	return reflect.TypeOf((*map[string]*ElasticSearch)(nil)).Elem()
 }
 
 func (i ElasticSearchMap) ToElasticSearchMapOutput() ElasticSearchMapOutput {
@@ -514,9 +514,7 @@ func (i ElasticSearchMap) ToElasticSearchMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchMapOutput)
 }
 
-type ElasticSearchOutput struct {
-	*pulumi.OutputState
-}
+type ElasticSearchOutput struct{ *pulumi.OutputState }
 
 func (ElasticSearchOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElasticSearch)(nil))
@@ -535,14 +533,12 @@ func (o ElasticSearchOutput) ToElasticSearchPtrOutput() ElasticSearchPtrOutput {
 }
 
 func (o ElasticSearchOutput) ToElasticSearchPtrOutputWithContext(ctx context.Context) ElasticSearchPtrOutput {
-	return o.ApplyT(func(v ElasticSearch) *ElasticSearch {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticSearch) *ElasticSearch {
 		return &v
 	}).(ElasticSearchPtrOutput)
 }
 
-type ElasticSearchPtrOutput struct {
-	*pulumi.OutputState
-}
+type ElasticSearchPtrOutput struct{ *pulumi.OutputState }
 
 func (ElasticSearchPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElasticSearch)(nil))
@@ -554,6 +550,16 @@ func (o ElasticSearchPtrOutput) ToElasticSearchPtrOutput() ElasticSearchPtrOutpu
 
 func (o ElasticSearchPtrOutput) ToElasticSearchPtrOutputWithContext(ctx context.Context) ElasticSearchPtrOutput {
 	return o
+}
+
+func (o ElasticSearchPtrOutput) Elem() ElasticSearchOutput {
+	return o.ApplyT(func(v *ElasticSearch) ElasticSearch {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticSearch
+		return ret
+	}).(ElasticSearchOutput)
 }
 
 type ElasticSearchArrayOutput struct{ *pulumi.OutputState }
@@ -597,6 +603,10 @@ func (o ElasticSearchMapOutput) MapIndex(k pulumi.StringInput) ElasticSearchOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchInput)(nil)).Elem(), &ElasticSearch{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchPtrInput)(nil)).Elem(), &ElasticSearch{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchArrayInput)(nil)).Elem(), ElasticSearchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchMapInput)(nil)).Elem(), ElasticSearchMap{})
 	pulumi.RegisterOutputType(ElasticSearchOutput{})
 	pulumi.RegisterOutputType(ElasticSearchPtrOutput{})
 	pulumi.RegisterOutputType(ElasticSearchArrayOutput{})

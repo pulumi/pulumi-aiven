@@ -10,26 +10,26 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetCassandaCassandraUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetCassandaCassandraUserConfigInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cassandra specific server provided values.
         /// </summary>
         [Input("cassandra")]
-        public Inputs.GetCassandaCassandraUserConfigCassandraArgs? Cassandra { get; set; }
+        public Input<Inputs.GetCassandaCassandraUserConfigCassandraInputArgs>? Cassandra { get; set; }
 
         [Input("cassandraVersion")]
-        public string? CassandraVersion { get; set; }
+        public Input<string>? CassandraVersion { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
+        private InputList<string>? _ipFilters;
 
         /// <summary>
         /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
-        public List<string> IpFilters
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
@@ -38,34 +38,34 @@ namespace Pulumi.Aiven.Inputs
         /// utility to be used to upload Cassandra data files. Available only on service create.
         /// </summary>
         [Input("migrateSstableloader")]
-        public string? MigrateSstableloader { get; set; }
+        public Input<string>? MigrateSstableloader { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from private networks.
         /// </summary>
         [Input("privateAccess")]
-        public Inputs.GetCassandaCassandraUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetCassandaCassandraUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
-        public Inputs.GetCassandaCassandraUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetCassandaCassandraUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         /// <summary>
         /// Name of another service to fork from. This has effect only 
         /// when a new service is being created.
         /// </summary>
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetCassandaCassandraUserConfigArgs()
+        public GetCassandaCassandraUserConfigInputArgs()
         {
         }
     }

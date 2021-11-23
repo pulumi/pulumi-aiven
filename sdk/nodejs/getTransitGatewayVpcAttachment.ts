@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -95,4 +94,37 @@ export interface GetTransitGatewayVpcAttachmentResult {
      */
     readonly userPeerNetworkCidrs?: string[];
     readonly vpcId: string;
+}
+
+export function getTransitGatewayVpcAttachmentOutput(args: GetTransitGatewayVpcAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitGatewayVpcAttachmentResult> {
+    return pulumi.output(args).apply(a => getTransitGatewayVpcAttachment(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTransitGatewayVpcAttachment.
+ */
+export interface GetTransitGatewayVpcAttachmentOutputArgs {
+    /**
+     * AWS account ID of the peered VPC.
+     */
+    peerCloudAccount: pulumi.Input<string>;
+    /**
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC).
+     */
+    peerRegion?: pulumi.Input<string>;
+    /**
+     * Transit gateway ID
+     */
+    peerVpc: pulumi.Input<string>;
+    peeringConnectionId?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
+    stateInfo?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * List of private IPv4 ranges to route through the peering connection.
+     */
+    userPeerNetworkCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * is the Aiven VPC the peering connection is associated with.
+     */
+    vpcId: pulumi.Input<string>;
 }

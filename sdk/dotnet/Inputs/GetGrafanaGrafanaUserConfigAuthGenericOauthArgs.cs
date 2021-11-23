@@ -10,35 +10,35 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetGrafanaGrafanaUserConfigAuthGenericOauthArgs : Pulumi.InvokeArgs
+    public sealed class GetGrafanaGrafanaUserConfigAuthGenericOauthInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Automatically sign-up users on successful sign-in
         /// </summary>
         [Input("allowSignUp")]
-        public string? AllowSignUp { get; set; }
+        public Input<string>? AllowSignUp { get; set; }
 
         [Input("allowedDomains")]
-        private List<string>? _allowedDomains;
+        private InputList<string>? _allowedDomains;
 
         /// <summary>
         /// Allowed domain
         /// </summary>
-        public List<string> AllowedDomains
+        public InputList<string> AllowedDomains
         {
-            get => _allowedDomains ?? (_allowedDomains = new List<string>());
+            get => _allowedDomains ?? (_allowedDomains = new InputList<string>());
             set => _allowedDomains = value;
         }
 
         [Input("allowedOrganizations")]
-        private List<string>? _allowedOrganizations;
+        private InputList<string>? _allowedOrganizations;
 
         /// <summary>
         /// Must consist of alpha-numeric characters and dashes"
         /// </summary>
-        public List<string> AllowedOrganizations
+        public InputList<string> AllowedOrganizations
         {
-            get => _allowedOrganizations ?? (_allowedOrganizations = new List<string>());
+            get => _allowedOrganizations ?? (_allowedOrganizations = new InputList<string>());
             set => _allowedOrganizations = value;
         }
 
@@ -46,41 +46,41 @@ namespace Pulumi.Aiven.Inputs
         /// API URL. This only needs to be set when using self hosted GitLab
         /// </summary>
         [Input("apiUrl")]
-        public string? ApiUrl { get; set; }
+        public Input<string>? ApiUrl { get; set; }
 
         /// <summary>
         /// Authorization URL. This only needs to be set when using self hosted GitLab
         /// </summary>
         [Input("authUrl")]
-        public string? AuthUrl { get; set; }
+        public Input<string>? AuthUrl { get; set; }
 
         /// <summary>
         /// Client ID from provider
         /// </summary>
         [Input("clientId")]
-        public string? ClientId { get; set; }
+        public Input<string>? ClientId { get; set; }
 
         /// <summary>
         /// Client secret from provider
         /// </summary>
         [Input("clientSecret")]
-        public string? ClientSecret { get; set; }
+        public Input<string>? ClientSecret { get; set; }
 
         /// <summary>
         /// Name of the OAuth integration
         /// </summary>
         [Input("name")]
-        public string? Name { get; set; }
+        public Input<string>? Name { get; set; }
 
         [Input("scopes")]
-        private List<string>? _scopes;
+        private InputList<string>? _scopes;
 
         /// <summary>
         /// Scope must be non-empty string without whitespace
         /// </summary>
-        public List<string> Scopes
+        public InputList<string> Scopes
         {
-            get => _scopes ?? (_scopes = new List<string>());
+            get => _scopes ?? (_scopes = new InputList<string>());
             set => _scopes = value;
         }
 
@@ -88,9 +88,9 @@ namespace Pulumi.Aiven.Inputs
         /// Token URL. This only needs to be set when using self hosted GitLab
         /// </summary>
         [Input("tokenUrl")]
-        public string? TokenUrl { get; set; }
+        public Input<string>? TokenUrl { get; set; }
 
-        public GetGrafanaGrafanaUserConfigAuthGenericOauthArgs()
+        public GetGrafanaGrafanaUserConfigAuthGenericOauthInputArgs()
         {
         }
     }

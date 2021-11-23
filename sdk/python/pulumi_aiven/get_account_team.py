@@ -12,6 +12,7 @@ __all__ = [
     'GetAccountTeamResult',
     'AwaitableGetAccountTeamResult',
     'get_account_team',
+    'get_account_team_output',
 ]
 
 @pulumi.output_type
@@ -133,3 +134,25 @@ def get_account_team(account_id: Optional[str] = None,
         name=__ret__.name,
         team_id=__ret__.team_id,
         update_time=__ret__.update_time)
+
+
+@_utilities.lift_output_func(get_account_team)
+def get_account_team_output(account_id: Optional[pulumi.Input[str]] = None,
+                            create_time: Optional[pulumi.Input[Optional[str]]] = None,
+                            name: Optional[pulumi.Input[str]] = None,
+                            team_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            update_time: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountTeamResult]:
+    """
+    ## # Account Team Data Source
+
+    The Account Team data source provides information about the existing Account Team.
+
+
+    :param str account_id: is a unique account id.
+    :param str create_time: time of creation.
+    :param str name: defines an account team name.
+    :param str team_id: is an auto-generated unique account team id.
+    :param str update_time: time of last update.
+    """
+    ...

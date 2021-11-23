@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -112,4 +111,44 @@ export interface GetMirrorMakerReplicationFlowResult {
      * is a list of topics and/or regular expressions to not replicate.
      */
     readonly topicsBlacklists?: string[];
+}
+
+export function getMirrorMakerReplicationFlowOutput(args: GetMirrorMakerReplicationFlowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMirrorMakerReplicationFlowResult> {
+    return pulumi.output(args).apply(a => getMirrorMakerReplicationFlow(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMirrorMakerReplicationFlow.
+ */
+export interface GetMirrorMakerReplicationFlowOutputArgs {
+    emitHeartbeatsEnabled?: pulumi.Input<boolean>;
+    /**
+     * enable of disable replication flows for a MirrorMaker service
+     */
+    enable?: pulumi.Input<boolean>;
+    /**
+     * and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication 
+     * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+     */
+    project: pulumi.Input<string>;
+    replicationPolicyClass?: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
+    /**
+     * is a source cluster alias.
+     */
+    sourceCluster: pulumi.Input<string>;
+    syncGroupOffsetsEnabled?: pulumi.Input<boolean>;
+    syncGroupOffsetsIntervalSeconds?: pulumi.Input<number>;
+    /**
+     * is a target cluster alias.
+     */
+    targetCluster: pulumi.Input<string>;
+    /**
+     * is a list of topics and/or regular expressions to replicate.
+     */
+    topics?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * is a list of topics and/or regular expressions to not replicate.
+     */
+    topicsBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
 }

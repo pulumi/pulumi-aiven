@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetPgServiceIntegrationArgs : Pulumi.InvokeArgs
+    public sealed class GetPgServiceIntegrationInputArgs : Pulumi.ResourceArgs
     {
         [Input("integrationType", required: true)]
-        public string IntegrationType { get; set; } = null!;
+        public Input<string> IntegrationType { get; set; } = null!;
 
         [Input("sourceServiceName", required: true)]
-        public string SourceServiceName { get; set; } = null!;
+        public Input<string> SourceServiceName { get; set; } = null!;
 
-        public GetPgServiceIntegrationArgs()
+        public GetPgServiceIntegrationInputArgs()
         {
         }
     }

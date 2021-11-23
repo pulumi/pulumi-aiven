@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetGrafanaGrafanaArgs : Pulumi.InvokeArgs
+    public sealed class GetGrafanaGrafanaInputArgs : Pulumi.ResourceArgs
     {
-        public GetGrafanaGrafanaArgs()
+        public GetGrafanaGrafanaInputArgs()
         {
         }
     }

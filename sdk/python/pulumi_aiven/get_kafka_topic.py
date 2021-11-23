@@ -14,6 +14,7 @@ __all__ = [
     'GetKafkaTopicResult',
     'AwaitableGetKafkaTopicResult',
     'get_kafka_topic',
+    'get_kafka_topic_output',
 ]
 
 @pulumi.output_type
@@ -258,3 +259,59 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
         tags=__ret__.tags,
         termination_protection=__ret__.termination_protection,
         topic_name=__ret__.topic_name)
+
+
+@_utilities.lift_output_func(get_kafka_topic)
+def get_kafka_topic_output(cleanup_policy: Optional[pulumi.Input[Optional[str]]] = None,
+                           config: Optional[pulumi.Input[Optional[pulumi.InputType['GetKafkaTopicConfigArgs']]]] = None,
+                           minimum_in_sync_replicas: Optional[pulumi.Input[Optional[int]]] = None,
+                           partitions: Optional[pulumi.Input[Optional[int]]] = None,
+                           project: Optional[pulumi.Input[str]] = None,
+                           replication: Optional[pulumi.Input[Optional[int]]] = None,
+                           retention_bytes: Optional[pulumi.Input[Optional[int]]] = None,
+                           retention_hours: Optional[pulumi.Input[Optional[int]]] = None,
+                           service_name: Optional[pulumi.Input[str]] = None,
+                           tags: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKafkaTopicTagArgs']]]]] = None,
+                           termination_protection: Optional[pulumi.Input[Optional[bool]]] = None,
+                           topic_name: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaTopicResult]:
+    """
+    ## # Kafka Topic Data Source
+
+    The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytesttopic = aiven.get_kafka_topic(project=aiven_project["myproject"]["project"],
+        service_name=aiven_service["myservice"]["service_name"],
+        topic_name="<TOPIC_NAME>",
+        partitions=3,
+        replication=1,
+        config=aiven.GetKafkaTopicConfigArgs(
+            flush_ms="10",
+            unclean_leader_election_enable="true",
+            cleanup_policy="compact",
+        ))
+    ```
+
+
+    :param str cleanup_policy: cleanup.policy value, can be `create`, `delete` or `compact,delete`
+    :param pulumi.InputType['GetKafkaTopicConfigArgs'] config: Kafka topic configuration
+    :param int minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+    :param int partitions: Number of partitions to create in the topic.
+    :param str project: and `service_name` - (Required) define the project and service the topic belongs to.
+           They should be defined using reference as shown above to set up dependencies correctly.
+           These properties cannot be changed once the service is created. Doing so will result in
+           the topic being deleted and new one created instead.
+    :param int replication: Replication factor for the topic.
+    :param int retention_bytes: retention.bytes value
+    :param int retention_hours: Retention period in hours, if -1 it is infinite.
+    :param str topic_name: is the actual name of the topic account. This propery cannot be changed
+           once the service is created. Doing so will result in the topic being deleted and new one
+           created instead.
+    """
+    ...

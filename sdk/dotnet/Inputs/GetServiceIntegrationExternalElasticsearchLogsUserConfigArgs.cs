@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationExternalElasticsearchLogsUserConfigInputArgs : Pulumi.ResourceArgs
     {
-        public GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs()
+        public GetServiceIntegrationExternalElasticsearchLogsUserConfigInputArgs()
         {
         }
     }

@@ -12,6 +12,7 @@ __all__ = [
     'GetElasticSearchAclConfigResult',
     'AwaitableGetElasticSearchAclConfigResult',
     'get_elastic_search_acl_config',
+    'get_elastic_search_acl_config_output',
 ]
 
 @pulumi.output_type
@@ -103,3 +104,15 @@ def get_elastic_search_acl_config(enabled: Optional[bool] = None,
         id=__ret__.id,
         project=__ret__.project,
         service_name=__ret__.service_name)
+
+
+@_utilities.lift_output_func(get_elastic_search_acl_config)
+def get_elastic_search_acl_config_output(enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                                         extended_acl: Optional[pulumi.Input[Optional[bool]]] = None,
+                                         project: Optional[pulumi.Input[str]] = None,
+                                         service_name: Optional[pulumi.Input[str]] = None,
+                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetElasticSearchAclConfigResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

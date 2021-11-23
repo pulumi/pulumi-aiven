@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -140,4 +139,61 @@ export interface GetServiceComponentResult {
      * but hasn't yet fully caught up.
      */
     readonly usage?: string;
+}
+
+export function getServiceComponentOutput(args: GetServiceComponentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceComponentResult> {
+    return pulumi.output(args).apply(a => getServiceComponent(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServiceComponent.
+ */
+export interface GetServiceComponentOutputArgs {
+    /**
+     * is a service component name. Component may match the name of the service 
+     * (`cassandra`, `elasticsearch`, `grafana`, `influxdb`, `kafka`, `kafkaConnect`, `mysql`,
+     * `pg` and `redis`), in which case the connection info of the service itself is returned.
+     * Some service types support additional service specific components like `kibana` for
+     * Elasticsearch, `kafkaConnect`, `kafkaRest` and `schemaRegistry` for Kafka, and
+     * `pgbouncer` for PostgreSQL. Most service types also support `prometheus`.
+     */
+    component: pulumi.Input<string>;
+    /**
+     * is Kafka authentication method. This is a value specific 
+     * to the 'kafka' service components. And has the following available options: `certificate`
+     * and `sasl`. If not set by the user only entries with empty `kafkaAuthenticationMethod`
+     * will be selected.
+     */
+    kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * and `serviceName` - (Required) define the project and service the service component
+     * belongs to.
+     */
+    project: pulumi.Input<string>;
+    /**
+     * is network access route. The route may be one of `dynamic`, `public`, and `private`. 
+     * Usually, you'll want to use `dynamic`, which for services that are not in a private network
+     * identifies the regular public DNS name of the service and for services in a private network
+     * the private DNS name. If the service is in a private network but has also public access
+     * enabled the `public` route type can be used to get the public DNS name of the service. The
+     * `private` option should typically not be used.
+     */
+    route?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
+    /**
+     * whether the endpoint is encrypted or accepts plaintext. By default endpoints are
+     * always encrypted and this property is only included for service components they may
+     * disable encryption. If not set by the user only entries with empty `ssl` or `ssl` set
+     * to true will be selected.
+     */
+    ssl?: pulumi.Input<boolean>;
+    /**
+     * is DNS usage name, and can be one of `primary`, `replica` or `syncing`. `replica` 
+     * is used by services that have separate master and standby roles for which it identifies
+     * the `replica` DNS name. `syncing` is used by limited set of services to expose nodes
+     * before they have finished restoring state but may already be partially available, for
+     * example a PostgreSQL node that is streaming WAL segments from backup or current master
+     * but hasn't yet fully caught up.
+     */
+    usage?: pulumi.Input<string>;
 }

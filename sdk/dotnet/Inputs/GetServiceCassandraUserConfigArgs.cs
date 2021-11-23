@@ -10,41 +10,41 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceCassandraUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceCassandraUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("cassandra")]
-        public Inputs.GetServiceCassandraUserConfigCassandraArgs? Cassandra { get; set; }
+        public Input<Inputs.GetServiceCassandraUserConfigCassandraInputArgs>? Cassandra { get; set; }
 
         [Input("cassandraVersion")]
-        public string? CassandraVersion { get; set; }
+        public Input<string>? CassandraVersion { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
-        public List<string> IpFilters
+        private InputList<string>? _ipFilters;
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
         [Input("migrateSstableloader")]
-        public string? MigrateSstableloader { get; set; }
+        public Input<string>? MigrateSstableloader { get; set; }
 
         [Input("privateAccess")]
-        public Inputs.GetServiceCassandraUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetServiceCassandraUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         [Input("publicAccess")]
-        public Inputs.GetServiceCassandraUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetServiceCassandraUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetServiceCassandraUserConfigArgs()
+        public GetServiceCassandraUserConfigInputArgs()
         {
         }
     }

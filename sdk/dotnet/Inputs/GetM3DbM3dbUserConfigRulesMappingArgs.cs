@@ -10,17 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetM3DbM3dbUserConfigRulesMappingArgs : Pulumi.InvokeArgs
+    public sealed class GetM3DbM3dbUserConfigRulesMappingInputArgs : Pulumi.ResourceArgs
     {
         [Input("aggregations")]
-        private List<string>? _aggregations;
+        private InputList<string>? _aggregations;
 
         /// <summary>
         /// List of aggregations to be applied
         /// </summary>
-        public List<string> Aggregations
+        public InputList<string> Aggregations
         {
-            get => _aggregations ?? (_aggregations = new List<string>());
+            get => _aggregations ?? (_aggregations = new InputList<string>());
             set => _aggregations = value;
         }
 
@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         /// Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
         /// </summary>
         [Input("drop")]
-        public string? Drop { get; set; }
+        public Input<string>? Drop { get; set; }
 
         /// <summary>
         /// The metrics to be used with this particular rule; Matching metric names with wildcards (using
@@ -36,27 +36,27 @@ namespace Pulumi.Aiven.Inputs
         /// can be used at start of value for negation, and multiple filters can be supplied using space as separator.
         /// </summary>
         [Input("filter")]
-        public string? Filter { get; set; }
+        public Input<string>? Filter { get; set; }
 
         /// <summary>
         /// The name of the namespace
         /// </summary>
         [Input("name")]
-        public string? Name { get; set; }
+        public Input<string>? Name { get; set; }
 
         [Input("tags")]
-        private List<Inputs.GetM3DbM3dbUserConfigRulesMappingTagArgs>? _tags;
+        private InputList<Inputs.GetM3DbM3dbUserConfigRulesMappingTagInputArgs>? _tags;
 
         /// <summary>
         /// List of tags to be appended to matching metrics.
         /// </summary>
-        public List<Inputs.GetM3DbM3dbUserConfigRulesMappingTagArgs> Tags
+        public InputList<Inputs.GetM3DbM3dbUserConfigRulesMappingTagInputArgs> Tags
         {
-            get => _tags ?? (_tags = new List<Inputs.GetM3DbM3dbUserConfigRulesMappingTagArgs>());
+            get => _tags ?? (_tags = new InputList<Inputs.GetM3DbM3dbUserConfigRulesMappingTagInputArgs>());
             set => _tags = value;
         }
 
-        public GetM3DbM3dbUserConfigRulesMappingArgs()
+        public GetM3DbM3dbUserConfigRulesMappingInputArgs()
         {
         }
     }

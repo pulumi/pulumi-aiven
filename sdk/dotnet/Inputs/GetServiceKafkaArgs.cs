@@ -10,24 +10,24 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceKafkaArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceKafkaInputArgs : Pulumi.ResourceArgs
     {
         [Input("accessCert", required: true)]
-        public string AccessCert { get; set; } = null!;
+        public Input<string> AccessCert { get; set; } = null!;
 
         [Input("accessKey", required: true)]
-        public string AccessKey { get; set; } = null!;
+        public Input<string> AccessKey { get; set; } = null!;
 
         [Input("connectUri", required: true)]
-        public string ConnectUri { get; set; } = null!;
+        public Input<string> ConnectUri { get; set; } = null!;
 
         [Input("restUri", required: true)]
-        public string RestUri { get; set; } = null!;
+        public Input<string> RestUri { get; set; } = null!;
 
         [Input("schemaRegistryUri", required: true)]
-        public string SchemaRegistryUri { get; set; } = null!;
+        public Input<string> SchemaRegistryUri { get; set; } = null!;
 
-        public GetServiceKafkaArgs()
+        public GetServiceKafkaInputArgs()
         {
         }
     }

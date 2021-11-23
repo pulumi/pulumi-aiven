@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,6 +43,38 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetAwsPrivatelinkResult> InvokeAsync(GetAwsPrivatelinkArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAwsPrivatelinkResult>("aiven:index/getAwsPrivatelink:getAwsPrivatelink", args ?? new GetAwsPrivatelinkArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # AWS Privatelink Data Source
+        /// 
+        /// The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Aiven.GetAwsPrivatelink.InvokeAsync(new Aiven.GetAwsPrivatelinkArgs
+        ///         {
+        ///             Project = data.Aiven_project.Foo.Project,
+        ///             ServiceName = aiven_kafka.Bar.Service_name,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAwsPrivatelinkResult> Invoke(GetAwsPrivatelinkInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAwsPrivatelinkResult>("aiven:index/getAwsPrivatelink:getAwsPrivatelink", args ?? new GetAwsPrivatelinkInvokeArgs(), options.WithVersion());
     }
 
 
@@ -88,6 +121,53 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         public GetAwsPrivatelinkArgs()
+        {
+        }
+    }
+
+    public sealed class GetAwsPrivatelinkInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// AWS service ID.
+        /// </summary>
+        [Input("awsServiceId")]
+        public Input<string>? AwsServiceId { get; set; }
+
+        /// <summary>
+        /// AWS service name.
+        /// </summary>
+        [Input("awsServiceName")]
+        public Input<string>? AwsServiceName { get; set; }
+
+        [Input("principals")]
+        private InputList<string>? _principals;
+
+        /// <summary>
+        /// list of allowed principals
+        /// </summary>
+        public InputList<string> Principals
+        {
+            get => _principals ?? (_principals = new InputList<string>());
+            set => _principals = value;
+        }
+
+        /// <summary>
+        /// identifies the project the service belongs to. To set up proper dependency between the project
+        /// and the service, refer to the project as shown in the above example. Project cannot be changed later without
+        /// destroying and re-creating the service.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        /// <summary>
+        /// specifies the actual name of the service. The name cannot be changed later without
+        /// destroying and re-creating the service so name should be picked based on intended service usage rather than current
+        /// attributes.
+        /// </summary>
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        public GetAwsPrivatelinkInvokeArgs()
         {
         }
     }

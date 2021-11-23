@@ -10,27 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetOpenSearchOpensearchUserConfigIndexPatternArgs : Pulumi.InvokeArgs
+    public sealed class GetOpenSearchOpensearchUserConfigIndexPatternInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum number of indexes to keep before deleting the oldest one.
         /// </summary>
         [Input("maxIndexCount")]
-        public string? MaxIndexCount { get; set; }
+        public Input<string>? MaxIndexCount { get; set; }
 
         /// <summary>
         /// Must consist of alpha-numeric characters, dashes, underscores, dots and glob characters (* and ?)
         /// </summary>
         [Input("pattern")]
-        public string? Pattern { get; set; }
+        public Input<string>? Pattern { get; set; }
 
         /// <summary>
         /// Deletion sorting algorithm
         /// </summary>
         [Input("sortingAlgorithm")]
-        public string? SortingAlgorithm { get; set; }
+        public Input<string>? SortingAlgorithm { get; set; }
 
-        public GetOpenSearchOpensearchUserConfigIndexPatternArgs()
+        public GetOpenSearchOpensearchUserConfigIndexPatternInputArgs()
         {
         }
     }

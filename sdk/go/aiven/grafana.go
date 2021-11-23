@@ -34,9 +34,9 @@ import (
 // 			ServiceName:           pulumi.String("my-gr1"),
 // 			MaintenanceWindowDow:  pulumi.String("monday"),
 // 			MaintenanceWindowTime: pulumi.String("10:00:00"),
-// 			GrafanaUserConfig: &aiven.GrafanaGrafanaUserConfigArgs{
+// 			GrafanaUserConfig: &GrafanaGrafanaUserConfigArgs{
 // 				AlertingEnabled: pulumi.String("true"),
-// 				PublicAccess: &aiven.GrafanaGrafanaUserConfigPublicAccessArgs{
+// 				PublicAccess: &GrafanaGrafanaUserConfigPublicAccessArgs{
 // 					Grafana: pulumi.String("true"),
 // 				},
 // 			},
@@ -473,7 +473,7 @@ type GrafanaArrayInput interface {
 type GrafanaArray []GrafanaInput
 
 func (GrafanaArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Grafana)(nil))
+	return reflect.TypeOf((*[]*Grafana)(nil)).Elem()
 }
 
 func (i GrafanaArray) ToGrafanaArrayOutput() GrafanaArrayOutput {
@@ -498,7 +498,7 @@ type GrafanaMapInput interface {
 type GrafanaMap map[string]GrafanaInput
 
 func (GrafanaMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Grafana)(nil))
+	return reflect.TypeOf((*map[string]*Grafana)(nil)).Elem()
 }
 
 func (i GrafanaMap) ToGrafanaMapOutput() GrafanaMapOutput {
@@ -509,9 +509,7 @@ func (i GrafanaMap) ToGrafanaMapOutputWithContext(ctx context.Context) GrafanaMa
 	return pulumi.ToOutputWithContext(ctx, i).(GrafanaMapOutput)
 }
 
-type GrafanaOutput struct {
-	*pulumi.OutputState
-}
+type GrafanaOutput struct{ *pulumi.OutputState }
 
 func (GrafanaOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Grafana)(nil))
@@ -530,14 +528,12 @@ func (o GrafanaOutput) ToGrafanaPtrOutput() GrafanaPtrOutput {
 }
 
 func (o GrafanaOutput) ToGrafanaPtrOutputWithContext(ctx context.Context) GrafanaPtrOutput {
-	return o.ApplyT(func(v Grafana) *Grafana {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Grafana) *Grafana {
 		return &v
 	}).(GrafanaPtrOutput)
 }
 
-type GrafanaPtrOutput struct {
-	*pulumi.OutputState
-}
+type GrafanaPtrOutput struct{ *pulumi.OutputState }
 
 func (GrafanaPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Grafana)(nil))
@@ -549,6 +545,16 @@ func (o GrafanaPtrOutput) ToGrafanaPtrOutput() GrafanaPtrOutput {
 
 func (o GrafanaPtrOutput) ToGrafanaPtrOutputWithContext(ctx context.Context) GrafanaPtrOutput {
 	return o
+}
+
+func (o GrafanaPtrOutput) Elem() GrafanaOutput {
+	return o.ApplyT(func(v *Grafana) Grafana {
+		if v != nil {
+			return *v
+		}
+		var ret Grafana
+		return ret
+	}).(GrafanaOutput)
 }
 
 type GrafanaArrayOutput struct{ *pulumi.OutputState }
@@ -592,6 +598,10 @@ func (o GrafanaMapOutput) MapIndex(k pulumi.StringInput) GrafanaOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaInput)(nil)).Elem(), &Grafana{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaPtrInput)(nil)).Elem(), &Grafana{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaArrayInput)(nil)).Elem(), GrafanaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaMapInput)(nil)).Elem(), GrafanaMap{})
 	pulumi.RegisterOutputType(GrafanaOutput{})
 	pulumi.RegisterOutputType(GrafanaPtrOutput{})
 	pulumi.RegisterOutputType(GrafanaArrayOutput{})

@@ -10,33 +10,33 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetKafkaKafkaUserConfigPrivatelinkAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaKafkaUserConfigPrivatelinkAccessInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Kafka server provided values:
         /// </summary>
         [Input("kafka")]
-        public string? Kafka { get; set; }
+        public Input<string>? Kafka { get; set; }
 
         /// <summary>
         /// Enable kafka_connect
         /// </summary>
         [Input("kafkaConnect")]
-        public string? KafkaConnect { get; set; }
+        public Input<string>? KafkaConnect { get; set; }
 
         /// <summary>
         /// Enable kafka_rest
         /// </summary>
         [Input("kafkaRest")]
-        public string? KafkaRest { get; set; }
+        public Input<string>? KafkaRest { get; set; }
 
         /// <summary>
         /// Enable schema_registry
         /// </summary>
         [Input("schemaRegistry")]
-        public string? SchemaRegistry { get; set; }
+        public Input<string>? SchemaRegistry { get; set; }
 
-        public GetKafkaKafkaUserConfigPrivatelinkAccessArgs()
+        public GetKafkaKafkaUserConfigPrivatelinkAccessInputArgs()
         {
         }
     }

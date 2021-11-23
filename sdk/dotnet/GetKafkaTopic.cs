@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -51,6 +52,47 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetKafkaTopicResult> InvokeAsync(GetKafkaTopicArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaTopicResult>("aiven:index/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Kafka Topic Data Source
+        /// 
+        /// The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mytesttopic = Output.Create(Aiven.GetKafkaTopic.InvokeAsync(new Aiven.GetKafkaTopicArgs
+        ///         {
+        ///             Project = aiven_project.Myproject.Project,
+        ///             ServiceName = aiven_service.Myservice.Service_name,
+        ///             TopicName = "&lt;TOPIC_NAME&gt;",
+        ///             Partitions = 3,
+        ///             Replication = 1,
+        ///             Config = new Aiven.Inputs.GetKafkaTopicConfigArgs
+        ///             {
+        ///                 FlushMs = "10",
+        ///                 UncleanLeaderElectionEnable = "true",
+        ///                 CleanupPolicy = "compact",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKafkaTopicResult> Invoke(GetKafkaTopicInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKafkaTopicResult>("aiven:index/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicInvokeArgs(), options.WithVersion());
     }
 
 
@@ -130,6 +172,86 @@ namespace Pulumi.Aiven
         public string TopicName { get; set; } = null!;
 
         public GetKafkaTopicArgs()
+        {
+        }
+    }
+
+    public sealed class GetKafkaTopicInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// cleanup.policy value, can be `create`, `delete` or `compact,delete`
+        /// </summary>
+        [Input("cleanupPolicy")]
+        public Input<string>? CleanupPolicy { get; set; }
+
+        /// <summary>
+        /// Kafka topic configuration
+        /// </summary>
+        [Input("config")]
+        public Input<Inputs.GetKafkaTopicConfigInputArgs>? Config { get; set; }
+
+        /// <summary>
+        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+        /// </summary>
+        [Input("minimumInSyncReplicas")]
+        public Input<int>? MinimumInSyncReplicas { get; set; }
+
+        /// <summary>
+        /// Number of partitions to create in the topic.
+        /// </summary>
+        [Input("partitions")]
+        public Input<int>? Partitions { get; set; }
+
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the topic belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// These properties cannot be changed once the service is created. Doing so will result in
+        /// the topic being deleted and new one created instead.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        /// <summary>
+        /// Replication factor for the topic.
+        /// </summary>
+        [Input("replication")]
+        public Input<int>? Replication { get; set; }
+
+        /// <summary>
+        /// retention.bytes value
+        /// </summary>
+        [Input("retentionBytes")]
+        public Input<int>? RetentionBytes { get; set; }
+
+        /// <summary>
+        /// Retention period in hours, if -1 it is infinite.
+        /// </summary>
+        [Input("retentionHours")]
+        public Input<int>? RetentionHours { get; set; }
+
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("tags")]
+        private InputList<Inputs.GetKafkaTopicTagInputArgs>? _tags;
+        public InputList<Inputs.GetKafkaTopicTagInputArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.GetKafkaTopicTagInputArgs>());
+            set => _tags = value;
+        }
+
+        [Input("terminationProtection")]
+        public Input<bool>? TerminationProtection { get; set; }
+
+        /// <summary>
+        /// is the actual name of the topic account. This propery cannot be changed
+        /// once the service is created. Doing so will result in the topic being deleted and new one
+        /// created instead.
+        /// </summary>
+        [Input("topicName", required: true)]
+        public Input<string> TopicName { get; set; } = null!;
+
+        public GetKafkaTopicInvokeArgs()
         {
         }
     }

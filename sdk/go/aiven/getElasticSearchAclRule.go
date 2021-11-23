@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,4 +37,70 @@ type LookupElasticSearchAclRuleResult struct {
 	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
 	Username    string `pulumi:"username"`
+}
+
+func LookupElasticSearchAclRuleOutput(ctx *pulumi.Context, args LookupElasticSearchAclRuleOutputArgs, opts ...pulumi.InvokeOption) LookupElasticSearchAclRuleResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupElasticSearchAclRuleResult, error) {
+			args := v.(LookupElasticSearchAclRuleArgs)
+			r, err := LookupElasticSearchAclRule(ctx, &args, opts...)
+			return *r, err
+		}).(LookupElasticSearchAclRuleResultOutput)
+}
+
+// A collection of arguments for invoking getElasticSearchAclRule.
+type LookupElasticSearchAclRuleOutputArgs struct {
+	Index       pulumi.StringInput `pulumi:"index"`
+	Permission  pulumi.StringInput `pulumi:"permission"`
+	Project     pulumi.StringInput `pulumi:"project"`
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	Username    pulumi.StringInput `pulumi:"username"`
+}
+
+func (LookupElasticSearchAclRuleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupElasticSearchAclRuleArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getElasticSearchAclRule.
+type LookupElasticSearchAclRuleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupElasticSearchAclRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupElasticSearchAclRuleResult)(nil)).Elem()
+}
+
+func (o LookupElasticSearchAclRuleResultOutput) ToLookupElasticSearchAclRuleResultOutput() LookupElasticSearchAclRuleResultOutput {
+	return o
+}
+
+func (o LookupElasticSearchAclRuleResultOutput) ToLookupElasticSearchAclRuleResultOutputWithContext(ctx context.Context) LookupElasticSearchAclRuleResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupElasticSearchAclRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclRuleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupElasticSearchAclRuleResultOutput) Index() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclRuleResult) string { return v.Index }).(pulumi.StringOutput)
+}
+
+func (o LookupElasticSearchAclRuleResultOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclRuleResult) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+func (o LookupElasticSearchAclRuleResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclRuleResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupElasticSearchAclRuleResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclRuleResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupElasticSearchAclRuleResultOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticSearchAclRuleResult) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupElasticSearchAclRuleResultOutput{})
 }

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 export function getOpenSearchAclRule(args: GetOpenSearchAclRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchAclRuleResult> {
@@ -46,4 +45,19 @@ export interface GetOpenSearchAclRuleResult {
     readonly project: string;
     readonly serviceName: string;
     readonly username: string;
+}
+
+export function getOpenSearchAclRuleOutput(args: GetOpenSearchAclRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchAclRuleResult> {
+    return pulumi.output(args).apply(a => getOpenSearchAclRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getOpenSearchAclRule.
+ */
+export interface GetOpenSearchAclRuleOutputArgs {
+    index: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+    project: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }

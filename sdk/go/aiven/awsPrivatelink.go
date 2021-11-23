@@ -228,7 +228,7 @@ type AwsPrivatelinkArrayInput interface {
 type AwsPrivatelinkArray []AwsPrivatelinkInput
 
 func (AwsPrivatelinkArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AwsPrivatelink)(nil))
+	return reflect.TypeOf((*[]*AwsPrivatelink)(nil)).Elem()
 }
 
 func (i AwsPrivatelinkArray) ToAwsPrivatelinkArrayOutput() AwsPrivatelinkArrayOutput {
@@ -253,7 +253,7 @@ type AwsPrivatelinkMapInput interface {
 type AwsPrivatelinkMap map[string]AwsPrivatelinkInput
 
 func (AwsPrivatelinkMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AwsPrivatelink)(nil))
+	return reflect.TypeOf((*map[string]*AwsPrivatelink)(nil)).Elem()
 }
 
 func (i AwsPrivatelinkMap) ToAwsPrivatelinkMapOutput() AwsPrivatelinkMapOutput {
@@ -264,9 +264,7 @@ func (i AwsPrivatelinkMap) ToAwsPrivatelinkMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AwsPrivatelinkMapOutput)
 }
 
-type AwsPrivatelinkOutput struct {
-	*pulumi.OutputState
-}
+type AwsPrivatelinkOutput struct{ *pulumi.OutputState }
 
 func (AwsPrivatelinkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AwsPrivatelink)(nil))
@@ -285,14 +283,12 @@ func (o AwsPrivatelinkOutput) ToAwsPrivatelinkPtrOutput() AwsPrivatelinkPtrOutpu
 }
 
 func (o AwsPrivatelinkOutput) ToAwsPrivatelinkPtrOutputWithContext(ctx context.Context) AwsPrivatelinkPtrOutput {
-	return o.ApplyT(func(v AwsPrivatelink) *AwsPrivatelink {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsPrivatelink) *AwsPrivatelink {
 		return &v
 	}).(AwsPrivatelinkPtrOutput)
 }
 
-type AwsPrivatelinkPtrOutput struct {
-	*pulumi.OutputState
-}
+type AwsPrivatelinkPtrOutput struct{ *pulumi.OutputState }
 
 func (AwsPrivatelinkPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AwsPrivatelink)(nil))
@@ -304,6 +300,16 @@ func (o AwsPrivatelinkPtrOutput) ToAwsPrivatelinkPtrOutput() AwsPrivatelinkPtrOu
 
 func (o AwsPrivatelinkPtrOutput) ToAwsPrivatelinkPtrOutputWithContext(ctx context.Context) AwsPrivatelinkPtrOutput {
 	return o
+}
+
+func (o AwsPrivatelinkPtrOutput) Elem() AwsPrivatelinkOutput {
+	return o.ApplyT(func(v *AwsPrivatelink) AwsPrivatelink {
+		if v != nil {
+			return *v
+		}
+		var ret AwsPrivatelink
+		return ret
+	}).(AwsPrivatelinkOutput)
 }
 
 type AwsPrivatelinkArrayOutput struct{ *pulumi.OutputState }
@@ -347,6 +353,10 @@ func (o AwsPrivatelinkMapOutput) MapIndex(k pulumi.StringInput) AwsPrivatelinkOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsPrivatelinkInput)(nil)).Elem(), &AwsPrivatelink{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsPrivatelinkPtrInput)(nil)).Elem(), &AwsPrivatelink{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsPrivatelinkArrayInput)(nil)).Elem(), AwsPrivatelinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsPrivatelinkMapInput)(nil)).Elem(), AwsPrivatelinkMap{})
 	pulumi.RegisterOutputType(AwsPrivatelinkOutput{})
 	pulumi.RegisterOutputType(AwsPrivatelinkPtrOutput{})
 	pulumi.RegisterOutputType(AwsPrivatelinkArrayOutput{})

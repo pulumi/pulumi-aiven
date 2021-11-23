@@ -12,6 +12,7 @@ __all__ = [
     'GetProjectUserResult',
     'AwaitableGetProjectUserResult',
     'get_project_user',
+    'get_project_user_output',
 ]
 
 @pulumi.output_type
@@ -133,3 +134,36 @@ def get_project_user(accepted: Optional[bool] = None,
         id=__ret__.id,
         member_type=__ret__.member_type,
         project=__ret__.project)
+
+
+@_utilities.lift_output_func(get_project_user)
+def get_project_user_output(accepted: Optional[pulumi.Input[Optional[bool]]] = None,
+                            email: Optional[pulumi.Input[str]] = None,
+                            member_type: Optional[pulumi.Input[Optional[str]]] = None,
+                            project: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectUserResult]:
+    """
+    ## # Project User Data Source
+
+    The Project User data source provides information about the existing Aiven Project User.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytestuser = aiven.get_project_user(project=aiven_project["myproject"]["project"],
+        email="john.doe@example.com")
+    ```
+
+
+    :param bool accepted: is a computed property tells whether the user has accepted the request to join
+           the project; adding user to a project sends an invitation to the target user and the
+           actual membership is only created once the user accepts the invitation. This property
+           cannot be set, only read.
+    :param str email: identifies the email address of the user.
+    :param str member_type: (Required) defines the access level the user has to the project.
+    :param str project: defines the project the user is a member of.
+    """
+    ...

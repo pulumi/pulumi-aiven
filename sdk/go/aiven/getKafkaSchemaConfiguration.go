@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupKafkaSchemaConfiguration(ctx, &aiven.LookupKafkaSchemaConfigurationArgs{
+// 		_, err := aiven.LookupKafkaSchemaConfiguration(ctx, &GetKafkaSchemaConfigurationArgs{
 // 			Project:     aiven_project.Kafka - schemas - project1.Project,
 // 			ServiceName: aiven_service.Kafka - service1.Service_name,
 // 		}, nil)
@@ -78,4 +81,89 @@ type LookupKafkaSchemaConfigurationResult struct {
 	ServiceName string  `pulumi:"serviceName"`
 	SubjectName *string `pulumi:"subjectName"`
 	Version     int     `pulumi:"version"`
+}
+
+func LookupKafkaSchemaConfigurationOutput(ctx *pulumi.Context, args LookupKafkaSchemaConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaSchemaConfigurationResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKafkaSchemaConfigurationResult, error) {
+			args := v.(LookupKafkaSchemaConfigurationArgs)
+			r, err := LookupKafkaSchemaConfiguration(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKafkaSchemaConfigurationResultOutput)
+}
+
+// A collection of arguments for invoking getKafkaSchemaConfiguration.
+type LookupKafkaSchemaConfigurationOutputArgs struct {
+	// is the Global Kafka Schema configuration compatibility level when defined
+	// for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+	// compatibility level can be overridden for a specific subject when used in `KafkaSchema`
+	// resource. If the compatibility level not specified for the individual subject by default,
+	// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+	// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+	CompatibilityLevel pulumi.StringPtrInput `pulumi:"compatibilityLevel"`
+	// and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	Project     pulumi.StringInput    `pulumi:"project"`
+	Schema      pulumi.StringPtrInput `pulumi:"schema"`
+	ServiceName pulumi.StringInput    `pulumi:"serviceName"`
+	SubjectName pulumi.StringPtrInput `pulumi:"subjectName"`
+	Version     pulumi.IntPtrInput    `pulumi:"version"`
+}
+
+func (LookupKafkaSchemaConfigurationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKafkaSchemaConfigurationArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKafkaSchemaConfiguration.
+type LookupKafkaSchemaConfigurationResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKafkaSchemaConfigurationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKafkaSchemaConfigurationResult)(nil)).Elem()
+}
+
+func (o LookupKafkaSchemaConfigurationResultOutput) ToLookupKafkaSchemaConfigurationResultOutput() LookupKafkaSchemaConfigurationResultOutput {
+	return o
+}
+
+func (o LookupKafkaSchemaConfigurationResultOutput) ToLookupKafkaSchemaConfigurationResultOutputWithContext(ctx context.Context) LookupKafkaSchemaConfigurationResultOutput {
+	return o
+}
+
+// is the Global Kafka Schema configuration compatibility level when defined
+// for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+// compatibility level can be overridden for a specific subject when used in `KafkaSchema`
+// resource. If the compatibility level not specified for the individual subject by default,
+// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+func (o LookupKafkaSchemaConfigurationResultOutput) CompatibilityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaSchemaConfigurationResult) *string { return v.CompatibilityLevel }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupKafkaSchemaConfigurationResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaSchemaConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupKafkaSchemaConfigurationResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaSchemaConfigurationResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupKafkaSchemaConfigurationResultOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaSchemaConfigurationResult) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupKafkaSchemaConfigurationResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaSchemaConfigurationResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupKafkaSchemaConfigurationResultOutput) SubjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaSchemaConfigurationResult) *string { return v.SubjectName }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupKafkaSchemaConfigurationResultOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupKafkaSchemaConfigurationResult) int { return v.Version }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKafkaSchemaConfigurationResultOutput{})
 }

@@ -12,6 +12,7 @@ __all__ = [
     'GetElasticSearchAclRuleResult',
     'AwaitableGetElasticSearchAclRuleResult',
     'get_elastic_search_acl_rule',
+    'get_elastic_search_acl_rule_output',
 ]
 
 @pulumi.output_type
@@ -115,3 +116,16 @@ def get_elastic_search_acl_rule(index: Optional[str] = None,
         project=__ret__.project,
         service_name=__ret__.service_name,
         username=__ret__.username)
+
+
+@_utilities.lift_output_func(get_elastic_search_acl_rule)
+def get_elastic_search_acl_rule_output(index: Optional[pulumi.Input[str]] = None,
+                                       permission: Optional[pulumi.Input[str]] = None,
+                                       project: Optional[pulumi.Input[str]] = None,
+                                       service_name: Optional[pulumi.Input[str]] = None,
+                                       username: Optional[pulumi.Input[str]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetElasticSearchAclRuleResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

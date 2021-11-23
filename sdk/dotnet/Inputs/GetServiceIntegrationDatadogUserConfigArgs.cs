@@ -10,60 +10,60 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationDatadogUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationDatadogUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("datadogTags")]
-        private List<Inputs.GetServiceIntegrationDatadogUserConfigDatadogTagArgs>? _datadogTags;
-        public List<Inputs.GetServiceIntegrationDatadogUserConfigDatadogTagArgs> DatadogTags
+        private InputList<Inputs.GetServiceIntegrationDatadogUserConfigDatadogTagInputArgs>? _datadogTags;
+        public InputList<Inputs.GetServiceIntegrationDatadogUserConfigDatadogTagInputArgs> DatadogTags
         {
-            get => _datadogTags ?? (_datadogTags = new List<Inputs.GetServiceIntegrationDatadogUserConfigDatadogTagArgs>());
+            get => _datadogTags ?? (_datadogTags = new InputList<Inputs.GetServiceIntegrationDatadogUserConfigDatadogTagInputArgs>());
             set => _datadogTags = value;
         }
 
         [Input("excludeConsumerGroups")]
-        private List<string>? _excludeConsumerGroups;
-        public List<string> ExcludeConsumerGroups
+        private InputList<string>? _excludeConsumerGroups;
+        public InputList<string> ExcludeConsumerGroups
         {
-            get => _excludeConsumerGroups ?? (_excludeConsumerGroups = new List<string>());
+            get => _excludeConsumerGroups ?? (_excludeConsumerGroups = new InputList<string>());
             set => _excludeConsumerGroups = value;
         }
 
         [Input("excludeTopics")]
-        private List<string>? _excludeTopics;
-        public List<string> ExcludeTopics
+        private InputList<string>? _excludeTopics;
+        public InputList<string> ExcludeTopics
         {
-            get => _excludeTopics ?? (_excludeTopics = new List<string>());
+            get => _excludeTopics ?? (_excludeTopics = new InputList<string>());
             set => _excludeTopics = value;
         }
 
         [Input("includeConsumerGroups")]
-        private List<string>? _includeConsumerGroups;
-        public List<string> IncludeConsumerGroups
+        private InputList<string>? _includeConsumerGroups;
+        public InputList<string> IncludeConsumerGroups
         {
-            get => _includeConsumerGroups ?? (_includeConsumerGroups = new List<string>());
+            get => _includeConsumerGroups ?? (_includeConsumerGroups = new InputList<string>());
             set => _includeConsumerGroups = value;
         }
 
         [Input("includeTopics")]
-        private List<string>? _includeTopics;
-        public List<string> IncludeTopics
+        private InputList<string>? _includeTopics;
+        public InputList<string> IncludeTopics
         {
-            get => _includeTopics ?? (_includeTopics = new List<string>());
+            get => _includeTopics ?? (_includeTopics = new InputList<string>());
             set => _includeTopics = value;
         }
 
         [Input("kafkaCustomMetrics")]
-        private List<string>? _kafkaCustomMetrics;
-        public List<string> KafkaCustomMetrics
+        private InputList<string>? _kafkaCustomMetrics;
+        public InputList<string> KafkaCustomMetrics
         {
-            get => _kafkaCustomMetrics ?? (_kafkaCustomMetrics = new List<string>());
+            get => _kafkaCustomMetrics ?? (_kafkaCustomMetrics = new InputList<string>());
             set => _kafkaCustomMetrics = value;
         }
 
         [Input("maxJmxMetrics")]
-        public string? MaxJmxMetrics { get; set; }
+        public Input<string>? MaxJmxMetrics { get; set; }
 
-        public GetServiceIntegrationDatadogUserConfigArgs()
+        public GetServiceIntegrationDatadogUserConfigInputArgs()
         {
         }
     }

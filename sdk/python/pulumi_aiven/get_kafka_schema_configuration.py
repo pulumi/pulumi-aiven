@@ -12,6 +12,7 @@ __all__ = [
     'GetKafkaSchemaConfigurationResult',
     'AwaitableGetKafkaSchemaConfigurationResult',
     'get_kafka_schema_configuration',
+    'get_kafka_schema_configuration_output',
 ]
 
 @pulumi.output_type
@@ -158,3 +159,40 @@ def get_kafka_schema_configuration(compatibility_level: Optional[str] = None,
         service_name=__ret__.service_name,
         subject_name=__ret__.subject_name,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_kafka_schema_configuration)
+def get_kafka_schema_configuration_output(compatibility_level: Optional[pulumi.Input[Optional[str]]] = None,
+                                          project: Optional[pulumi.Input[str]] = None,
+                                          schema: Optional[pulumi.Input[Optional[str]]] = None,
+                                          service_name: Optional[pulumi.Input[str]] = None,
+                                          subject_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                          version: Optional[pulumi.Input[Optional[int]]] = None,
+                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaSchemaConfigurationResult]:
+    """
+    ## # Kafka Schema Configuration Data Source
+
+    The Kafka Schema Configuration data source provides information about the existing Aiven
+    Kafka Schema Configuration.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    config = aiven.get_kafka_schema_configuration(project=aiven_project["kafka-schemas-project1"]["project"],
+        service_name=aiven_service["kafka-service1"]["service_name"])
+    ```
+
+
+    :param str compatibility_level: is the Global Kafka Schema configuration compatibility level when defined 
+           for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
+           compatibility level can be overridden for a specific subject when used in `KafkaSchema`
+           resource. If the compatibility level not specified for the individual subject by default,
+           it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
+           `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+    :param str project: and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
+           They should be defined using reference as shown above to set up dependencies correctly.
+    """
+    ...

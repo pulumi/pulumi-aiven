@@ -10,33 +10,33 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceGrafanaUserConfigSmtpServerArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceGrafanaUserConfigSmtpServerInputArgs : Pulumi.ResourceArgs
     {
         [Input("fromAddress")]
-        public string? FromAddress { get; set; }
+        public Input<string>? FromAddress { get; set; }
 
         [Input("fromName")]
-        public string? FromName { get; set; }
+        public Input<string>? FromName { get; set; }
 
         [Input("host")]
-        public string? Host { get; set; }
+        public Input<string>? Host { get; set; }
 
         [Input("password")]
-        public string? Password { get; set; }
+        public Input<string>? Password { get; set; }
 
         [Input("port")]
-        public string? Port { get; set; }
+        public Input<string>? Port { get; set; }
 
         [Input("skipVerify")]
-        public string? SkipVerify { get; set; }
+        public Input<string>? SkipVerify { get; set; }
 
         [Input("starttlsPolicy")]
-        public string? StarttlsPolicy { get; set; }
+        public Input<string>? StarttlsPolicy { get; set; }
 
         [Input("username")]
-        public string? Username { get; set; }
+        public Input<string>? Username { get; set; }
 
-        public GetServiceGrafanaUserConfigSmtpServerArgs()
+        public GetServiceGrafanaUserConfigSmtpServerInputArgs()
         {
         }
     }

@@ -10,44 +10,44 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetPgPgUserConfigPgbouncerArgs : Pulumi.InvokeArgs
+    public sealed class GetPgPgUserConfigPgbouncerInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// If the automatically created database pools have been unused this 
         /// many seconds, they are freed. If 0 then timeout is disabled.
         /// </summary>
         [Input("autodbIdleTimeout")]
-        public string? AutodbIdleTimeout { get; set; }
+        public Input<string>? AutodbIdleTimeout { get; set; }
 
         /// <summary>
         /// Do not allow more than this many server connections per database 
         /// (regardless of user). Setting it to 0 means unlimited.
         /// </summary>
         [Input("autodbMaxDbConnections")]
-        public string? AutodbMaxDbConnections { get; set; }
+        public Input<string>? AutodbMaxDbConnections { get; set; }
 
         /// <summary>
         /// PGBouncer pool mode
         /// </summary>
         [Input("autodbPoolMode")]
-        public string? AutodbPoolMode { get; set; }
+        public Input<string>? AutodbPoolMode { get; set; }
 
         /// <summary>
         /// If non-zero then create automatically a pool of that size per user 
         /// when a pool doesn't exist.
         /// </summary>
         [Input("autodbPoolSize")]
-        public string? AutodbPoolSize { get; set; }
+        public Input<string>? AutodbPoolSize { get; set; }
 
         [Input("ignoreStartupParameters")]
-        private List<string>? _ignoreStartupParameters;
+        private InputList<string>? _ignoreStartupParameters;
 
         /// <summary>
         /// Enum of parameters to ignore when given in startup packet.
         /// </summary>
-        public List<string> IgnoreStartupParameters
+        public InputList<string> IgnoreStartupParameters
         {
-            get => _ignoreStartupParameters ?? (_ignoreStartupParameters = new List<string>());
+            get => _ignoreStartupParameters ?? (_ignoreStartupParameters = new InputList<string>());
             set => _ignoreStartupParameters = value;
         }
 
@@ -57,29 +57,29 @@ namespace Pulumi.Aiven.Inputs
         /// effectively capped at the pool size.
         /// </summary>
         [Input("minPoolSize")]
-        public string? MinPoolSize { get; set; }
+        public Input<string>? MinPoolSize { get; set; }
 
         /// <summary>
         /// If a server connection has been idle more than this many seconds 
         /// it will be dropped. If 0 then timeout is disabled.
         /// </summary>
         [Input("serverIdleTimeout")]
-        public string? ServerIdleTimeout { get; set; }
+        public Input<string>? ServerIdleTimeout { get; set; }
 
         /// <summary>
         /// The pooler will close an unused server connection that has been connected 
         /// longer than this.
         /// </summary>
         [Input("serverLifetime")]
-        public string? ServerLifetime { get; set; }
+        public Input<string>? ServerLifetime { get; set; }
 
         /// <summary>
         /// Run server_reset_query (DISCARD ALL) in all pooling modes.
         /// </summary>
         [Input("serverResetQueryAlways")]
-        public string? ServerResetQueryAlways { get; set; }
+        public Input<string>? ServerResetQueryAlways { get; set; }
 
-        public GetPgPgUserConfigPgbouncerArgs()
+        public GetPgPgUserConfigPgbouncerInputArgs()
         {
         }
     }

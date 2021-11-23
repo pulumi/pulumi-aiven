@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationExternalGoogleCloudLoggingUserConfigInputArgs : Pulumi.ResourceArgs
     {
-        public GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs()
+        public GetServiceIntegrationExternalGoogleCloudLoggingUserConfigInputArgs()
         {
         }
     }

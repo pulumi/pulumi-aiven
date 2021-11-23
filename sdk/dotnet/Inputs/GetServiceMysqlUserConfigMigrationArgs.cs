@@ -10,30 +10,30 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceMysqlUserConfigMigrationArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceMysqlUserConfigMigrationInputArgs : Pulumi.ResourceArgs
     {
         [Input("dbname")]
-        public string? Dbname { get; set; }
+        public Input<string>? Dbname { get; set; }
 
         [Input("host")]
-        public string? Host { get; set; }
+        public Input<string>? Host { get; set; }
 
         [Input("ignoreDbs")]
-        public string? IgnoreDbs { get; set; }
+        public Input<string>? IgnoreDbs { get; set; }
 
         [Input("password")]
-        public string? Password { get; set; }
+        public Input<string>? Password { get; set; }
 
         [Input("port")]
-        public string? Port { get; set; }
+        public Input<string>? Port { get; set; }
 
         [Input("ssl")]
-        public string? Ssl { get; set; }
+        public Input<string>? Ssl { get; set; }
 
         [Input("username")]
-        public string? Username { get; set; }
+        public Input<string>? Username { get; set; }
 
-        public GetServiceMysqlUserConfigMigrationArgs()
+        public GetServiceMysqlUserConfigMigrationInputArgs()
         {
         }
     }

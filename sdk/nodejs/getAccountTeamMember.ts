@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -86,4 +85,41 @@ export interface GetAccountTeamMemberResult {
     readonly invitedByUserEmail: string;
     readonly teamId: string;
     readonly userEmail: string;
+}
+
+export function getAccountTeamMemberOutput(args: GetAccountTeamMemberOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountTeamMemberResult> {
+    return pulumi.output(args).apply(a => getAccountTeamMember(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccountTeamMember.
+ */
+export interface GetAccountTeamMemberOutputArgs {
+    /**
+     * is a boolean flag that determines whether an invitation was accepted or not by the user. 
+     * `false` value means that the invitation was sent to the user but not yet accepted.
+     * `true` means that the user accepted the invitation and is now a member of an account team.
+     */
+    accepted?: pulumi.Input<boolean>;
+    /**
+     * is a unique account id.
+     */
+    accountId: pulumi.Input<string>;
+    /**
+     * time of creation.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * team invited by user email.
+     */
+    invitedByUserEmail?: pulumi.Input<string>;
+    /**
+     * is an account team id.
+     */
+    teamId: pulumi.Input<string>;
+    /**
+     * is a user email address that first will be invited, and after accepting an invitation,
+     * he or she becomes a member of a team.
+     */
+    userEmail: pulumi.Input<string>;
 }

@@ -12,6 +12,7 @@ __all__ = [
     'GetServiceComponentResult',
     'AwaitableGetServiceComponentResult',
     'get_service_component',
+    'get_service_component_output',
 ]
 
 @pulumi.output_type
@@ -230,3 +231,69 @@ def get_service_component(component: Optional[str] = None,
         service_name=__ret__.service_name,
         ssl=__ret__.ssl,
         usage=__ret__.usage)
+
+
+@_utilities.lift_output_func(get_service_component)
+def get_service_component_output(component: Optional[pulumi.Input[str]] = None,
+                                 kafka_authentication_method: Optional[pulumi.Input[Optional[str]]] = None,
+                                 project: Optional[pulumi.Input[str]] = None,
+                                 route: Optional[pulumi.Input[Optional[str]]] = None,
+                                 service_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                 ssl: Optional[pulumi.Input[Optional[bool]]] = None,
+                                 usage: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceComponentResult]:
+    """
+    ## # Service Component Data Source
+
+    The Service Component data source provides information about the existing Aiven service Component.
+
+    Service components can be defined to get the connection info for specific service.
+    Services may support multiple different access routes (VPC peering and public access),
+    have additional components or support various authentication methods. Each of these
+    may be represented by different DNS name or TCP port and the specific component to
+    match can be selected by specifying appropriate filters as shown below.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    sc1 = aiven.get_service_component(project=aiven_kafka["project1"]["project"],
+        service_name=aiven_kafka["service1"]["service_name"],
+        component="kafka",
+        route="dynamic",
+        kafka_authentication_method="certificate")
+    ```
+
+
+    :param str component: is a service component name. Component may match the name of the service 
+           (`cassandra`, `elasticsearch`, `grafana`, `influxdb`, `kafka`, `kafka_connect`, `mysql`,
+           `pg` and `redis`), in which case the connection info of the service itself is returned.
+           Some service types support additional service specific components like `kibana` for
+           Elasticsearch, `kafka_connect`, `kafka_rest` and `schema_registry` for Kafka, and
+           `pgbouncer` for PostgreSQL. Most service types also support `prometheus`.
+    :param str kafka_authentication_method: is Kafka authentication method. This is a value specific 
+           to the 'kafka' service components. And has the following available options: `certificate`
+           and `sasl`. If not set by the user only entries with empty `kafka_authentication_method`
+           will be selected.
+    :param str project: and `service_name` - (Required) define the project and service the service component
+           belongs to.
+    :param str route: is network access route. The route may be one of `dynamic`, `public`, and `private`. 
+           Usually, you'll want to use `dynamic`, which for services that are not in a private network
+           identifies the regular public DNS name of the service and for services in a private network
+           the private DNS name. If the service is in a private network but has also public access
+           enabled the `public` route type can be used to get the public DNS name of the service. The
+           `private` option should typically not be used.
+    :param bool ssl: whether the endpoint is encrypted or accepts plaintext. By default endpoints are
+           always encrypted and this property is only included for service components they may
+           disable encryption. If not set by the user only entries with empty `ssl` or `ssl` set
+           to true will be selected.
+    :param str usage: is DNS usage name, and can be one of `primary`, `replica` or `syncing`. `replica` 
+           is used by services that have separate master and standby roles for which it identifies
+           the `replica` DNS name. `syncing` is used by limited set of services to expose nodes
+           before they have finished restoring state but may already be partially available, for
+           example a PostgreSQL node that is streaming WAL segments from backup or current master
+           but hasn't yet fully caught up.
+    """
+    ...

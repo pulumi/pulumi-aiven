@@ -10,29 +10,29 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationEndpointDatadogUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationEndpointDatadogUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("datadogApiKey")]
-        public string? DatadogApiKey { get; set; }
+        public Input<string>? DatadogApiKey { get; set; }
 
         [Input("datadogTags")]
-        private List<Inputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs>? _datadogTags;
-        public List<Inputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs> DatadogTags
+        private InputList<Inputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInputArgs>? _datadogTags;
+        public InputList<Inputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInputArgs> DatadogTags
         {
-            get => _datadogTags ?? (_datadogTags = new List<Inputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs>());
+            get => _datadogTags ?? (_datadogTags = new InputList<Inputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInputArgs>());
             set => _datadogTags = value;
         }
 
         [Input("disableConsumerStats")]
-        public string? DisableConsumerStats { get; set; }
+        public Input<string>? DisableConsumerStats { get; set; }
 
         [Input("maxPartitionContexts")]
-        public string? MaxPartitionContexts { get; set; }
+        public Input<string>? MaxPartitionContexts { get; set; }
 
         [Input("site")]
-        public string? Site { get; set; }
+        public Input<string>? Site { get; set; }
 
-        public GetServiceIntegrationEndpointDatadogUserConfigArgs()
+        public GetServiceIntegrationEndpointDatadogUserConfigInputArgs()
         {
         }
     }

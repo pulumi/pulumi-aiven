@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetPgPgUserConfigPgArgs : Pulumi.InvokeArgs
+    public sealed class GetPgPgUserConfigPgInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies a fraction of the table size to add to 
@@ -18,14 +18,14 @@ namespace Pulumi.Aiven.Inputs
         /// (20% of table size).
         /// </summary>
         [Input("autovacuumAnalyzeScaleFactor")]
-        public string? AutovacuumAnalyzeScaleFactor { get; set; }
+        public Input<string>? AutovacuumAnalyzeScaleFactor { get; set; }
 
         /// <summary>
         /// specifies the minimum number of inserted, updated 
         /// or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
         /// </summary>
         [Input("autovacuumAnalyzeThreshold")]
-        public string? AutovacuumAnalyzeThreshold { get; set; }
+        public Input<string>? AutovacuumAnalyzeThreshold { get; set; }
 
         /// <summary>
         /// specifies the maximum age (in transactions) that a table's 
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Inputs
         /// even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
         /// </summary>
         [Input("autovacuumFreezeMaxAge")]
-        public string? AutovacuumFreezeMaxAge { get; set; }
+        public Input<string>? AutovacuumFreezeMaxAge { get; set; }
 
         /// <summary>
         /// specifies the maximum number of autovacuum processes (other 
@@ -42,14 +42,14 @@ namespace Pulumi.Aiven.Inputs
         /// can only be set at server start.
         /// </summary>
         [Input("autovacuumMaxWorkers")]
-        public string? AutovacuumMaxWorkers { get; set; }
+        public Input<string>? AutovacuumMaxWorkers { get; set; }
 
         /// <summary>
         /// specifies the minimum delay between autovacuum runs on any 
         /// given database. The delay is measured in seconds, and the default is one minute.
         /// </summary>
         [Input("autovacuumNaptime")]
-        public string? AutovacuumNaptime { get; set; }
+        public Input<string>? AutovacuumNaptime { get; set; }
 
         /// <summary>
         /// specifies the cost delay value that will be used 
@@ -57,7 +57,7 @@ namespace Pulumi.Aiven.Inputs
         /// used. The default value is 20 milliseconds.
         /// </summary>
         [Input("autovacuumVacuumCostDelay")]
-        public string? AutovacuumVacuumCostDelay { get; set; }
+        public Input<string>? AutovacuumVacuumCostDelay { get; set; }
 
         /// <summary>
         /// specifies the cost limit value that will be used in 
@@ -65,53 +65,53 @@ namespace Pulumi.Aiven.Inputs
         /// value will be used.
         /// </summary>
         [Input("autovacuumVacuumCostLimit")]
-        public string? AutovacuumVacuumCostLimit { get; set; }
+        public Input<string>? AutovacuumVacuumCostLimit { get; set; }
 
         /// <summary>
         /// specifies a fraction of the table size to add to 
         /// autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
         /// </summary>
         [Input("autovacuumVacuumScaleFactor")]
-        public string? AutovacuumVacuumScaleFactor { get; set; }
+        public Input<string>? AutovacuumVacuumScaleFactor { get; set; }
 
         /// <summary>
         /// specifies the minimum number of updated or deleted tuples 
         /// needed to trigger a VACUUM in any one table. The default is 50 tuples
         /// </summary>
         [Input("autovacuumVacuumThreshold")]
-        public string? AutovacuumVacuumThreshold { get; set; }
+        public Input<string>? AutovacuumVacuumThreshold { get; set; }
 
         [Input("bgwriterDelay")]
-        public string? BgwriterDelay { get; set; }
+        public Input<string>? BgwriterDelay { get; set; }
 
         [Input("bgwriterFlushAfter")]
-        public string? BgwriterFlushAfter { get; set; }
+        public Input<string>? BgwriterFlushAfter { get; set; }
 
         [Input("bgwriterLruMaxpages")]
-        public string? BgwriterLruMaxpages { get; set; }
+        public Input<string>? BgwriterLruMaxpages { get; set; }
 
         [Input("bgwriterLruMultiplier")]
-        public string? BgwriterLruMultiplier { get; set; }
+        public Input<string>? BgwriterLruMultiplier { get; set; }
 
         /// <summary>
         /// this is the amount of time, in milliseconds, to wait on a lock before 
         /// checking to see if there is a deadlock condition.
         /// </summary>
         [Input("deadlockTimeout")]
-        public string? DeadlockTimeout { get; set; }
+        public Input<string>? DeadlockTimeout { get; set; }
 
         /// <summary>
         /// Time out sessions with open transactions after 
         /// this number of milliseconds.
         /// </summary>
         [Input("idleInTransactionSessionTimeout")]
-        public string? IdleInTransactionSessionTimeout { get; set; }
+        public Input<string>? IdleInTransactionSessionTimeout { get; set; }
 
         /// <summary>
         /// Controls system-wide use of Just-in-Time Compilation (JIT).
         /// </summary>
         [Input("jit")]
-        public string? Jit { get; set; }
+        public Input<string>? Jit { get; set; }
 
         /// <summary>
         /// Causes each action executed by autovacuum to be logged 
@@ -119,103 +119,103 @@ namespace Pulumi.Aiven.Inputs
         /// actions. Minus-one (the default) disables logging autovacuum actions.
         /// </summary>
         [Input("logAutovacuumMinDuration")]
-        public string? LogAutovacuumMinDuration { get; set; }
+        public Input<string>? LogAutovacuumMinDuration { get; set; }
 
         /// <summary>
         /// Controls the amount of detail written in the server log for 
         /// each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
         /// </summary>
         [Input("logErrorVerbosity")]
-        public string? LogErrorVerbosity { get; set; }
+        public Input<string>? LogErrorVerbosity { get; set; }
 
         /// <summary>
         /// Choose from one of the available log-formats. These can support
         /// popular log analyzers like pgbadger, pganalyze etc.
         /// </summary>
         [Input("logLinePrefix")]
-        public string? LogLinePrefix { get; set; }
+        public Input<string>? LogLinePrefix { get; set; }
 
         /// <summary>
         /// Log statements that take more than this number of 
         /// milliseconds to run, -1 disables
         /// </summary>
         [Input("logMinDurationStatement")]
-        public string? LogMinDurationStatement { get; set; }
+        public Input<string>? LogMinDurationStatement { get; set; }
 
         /// <summary>
         /// PostgreSQL maximum number of files that can be open per process
         /// </summary>
         [Input("maxFilesPerProcess")]
-        public string? MaxFilesPerProcess { get; set; }
+        public Input<string>? MaxFilesPerProcess { get; set; }
 
         /// <summary>
         /// PostgreSQL maximum locks per transaction
         /// </summary>
         [Input("maxLocksPerTransaction")]
-        public string? MaxLocksPerTransaction { get; set; }
+        public Input<string>? MaxLocksPerTransaction { get; set; }
 
         /// <summary>
         /// PostgreSQL maximum logical replication workers 
         /// (taken from the pool of max_parallel_workers)
         /// </summary>
         [Input("maxLogicalReplicationWorkers")]
-        public string? MaxLogicalReplicationWorkers { get; set; }
+        public Input<string>? MaxLogicalReplicationWorkers { get; set; }
 
         /// <summary>
         /// Sets the maximum number of workers that the system can 
         /// support for parallel queries.
         /// </summary>
         [Input("maxParallelWorkers")]
-        public string? MaxParallelWorkers { get; set; }
+        public Input<string>? MaxParallelWorkers { get; set; }
 
         /// <summary>
         /// Sets the maximum number of workers that can be 
         /// started by a single Gather or Gather Merge node.
         /// </summary>
         [Input("maxParallelWorkersPerGather")]
-        public string? MaxParallelWorkersPerGather { get; set; }
+        public Input<string>? MaxParallelWorkersPerGather { get; set; }
 
         /// <summary>
         /// PostgreSQL maximum predicate locks per transaction
         /// </summary>
         [Input("maxPredLocksPerTransaction")]
-        public string? MaxPredLocksPerTransaction { get; set; }
+        public Input<string>? MaxPredLocksPerTransaction { get; set; }
 
         /// <summary>
         /// PostgreSQL maximum prepared transactions
         /// </summary>
         [Input("maxPreparedTransactions")]
-        public string? MaxPreparedTransactions { get; set; }
+        public Input<string>? MaxPreparedTransactions { get; set; }
 
         /// <summary>
         /// PostgreSQL maximum replication slots
         /// </summary>
         [Input("maxReplicationSlots")]
-        public string? MaxReplicationSlots { get; set; }
+        public Input<string>? MaxReplicationSlots { get; set; }
 
         /// <summary>
         /// Maximum depth of the stack in bytes
         /// </summary>
         [Input("maxStackDepth")]
-        public string? MaxStackDepth { get; set; }
+        public Input<string>? MaxStackDepth { get; set; }
 
         /// <summary>
         /// Max standby archive delay in milliseconds
         /// </summary>
         [Input("maxStandbyArchiveDelay")]
-        public string? MaxStandbyArchiveDelay { get; set; }
+        public Input<string>? MaxStandbyArchiveDelay { get; set; }
 
         /// <summary>
         /// Max standby streaming delay in milliseconds
         /// </summary>
         [Input("maxStandbyStreamingDelay")]
-        public string? MaxStandbyStreamingDelay { get; set; }
+        public Input<string>? MaxStandbyStreamingDelay { get; set; }
 
         /// <summary>
         /// PostgreSQL maximum WAL senders
         /// </summary>
         [Input("maxWalSenders")]
-        public string? MaxWalSenders { get; set; }
+        public Input<string>? MaxWalSenders { get; set; }
 
         /// <summary>
         /// Sets the maximum number of background processes that the system
@@ -229,47 +229,47 @@ namespace Pulumi.Aiven.Inputs
         /// collection. The default value is top.
         /// </summary>
         [Input("maxWorkerProcesses")]
-        public string? MaxWorkerProcesses { get; set; }
+        public Input<string>? MaxWorkerProcesses { get; set; }
 
         [Input("pgPartmanBgwDotInterval")]
-        public string? PgPartmanBgwDotInterval { get; set; }
+        public Input<string>? PgPartmanBgwDotInterval { get; set; }
 
         [Input("pgPartmanBgwDotRole")]
-        public string? PgPartmanBgwDotRole { get; set; }
+        public Input<string>? PgPartmanBgwDotRole { get; set; }
 
         [Input("pgStatStatementsDotTrack")]
-        public string? PgStatStatementsDotTrack { get; set; }
+        public Input<string>? PgStatStatementsDotTrack { get; set; }
 
         /// <summary>
         /// PostgreSQL temporary file limit in KiB, -1 for unlimited
         /// </summary>
         [Input("tempFileLimit")]
-        public string? TempFileLimit { get; set; }
+        public Input<string>? TempFileLimit { get; set; }
 
         /// <summary>
         /// PostgreSQL service timezone
         /// </summary>
         [Input("timezone")]
-        public string? Timezone { get; set; }
+        public Input<string>? Timezone { get; set; }
 
         /// <summary>
         /// Specifies the number of bytes reserved to track the currently 
         /// executing command for each active session.
         /// </summary>
         [Input("trackActivityQuerySize")]
-        public string? TrackActivityQuerySize { get; set; }
+        public Input<string>? TrackActivityQuerySize { get; set; }
 
         /// <summary>
         /// Record commit time of transactions
         /// </summary>
         [Input("trackCommitTimestamp")]
-        public string? TrackCommitTimestamp { get; set; }
+        public Input<string>? TrackCommitTimestamp { get; set; }
 
         /// <summary>
         /// Enables tracking of function call counts and time used.
         /// </summary>
         [Input("trackFunctions")]
-        public string? TrackFunctions { get; set; }
+        public Input<string>? TrackFunctions { get; set; }
 
         /// <summary>
         /// Enables timing of database I/O calls. This parameter is off by default,
@@ -277,23 +277,23 @@ namespace Pulumi.Aiven.Inputs
         /// significant overhead on some platforms.
         /// </summary>
         [Input("trackIoTiming")]
-        public string? TrackIoTiming { get; set; }
+        public Input<string>? TrackIoTiming { get; set; }
 
         /// <summary>
         /// Terminate replication connections that are inactive for longer than 
         /// this amount of time, in milliseconds.
         /// </summary>
         [Input("walSenderTimeout")]
-        public string? WalSenderTimeout { get; set; }
+        public Input<string>? WalSenderTimeout { get; set; }
 
         /// <summary>
         /// WAL flush interval in milliseconds. Note that setting this value 
         /// to lower than the default 200ms may negatively impact performance
         /// </summary>
         [Input("walWriterDelay")]
-        public string? WalWriterDelay { get; set; }
+        public Input<string>? WalWriterDelay { get; set; }
 
-        public GetPgPgUserConfigPgArgs()
+        public GetPgPgUserConfigPgInputArgs()
         {
         }
     }

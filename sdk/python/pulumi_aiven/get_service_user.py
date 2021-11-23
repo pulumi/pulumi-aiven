@@ -12,6 +12,7 @@ __all__ = [
     'GetServiceUserResult',
     'AwaitableGetServiceUserResult',
     'get_service_user',
+    'get_service_user_output',
 ]
 
 @pulumi.output_type
@@ -247,3 +248,50 @@ def get_service_user(access_cert: Optional[str] = None,
         service_name=__ret__.service_name,
         type=__ret__.type,
         username=__ret__.username)
+
+
+@_utilities.lift_output_func(get_service_user)
+def get_service_user_output(access_cert: Optional[pulumi.Input[Optional[str]]] = None,
+                            access_key: Optional[pulumi.Input[Optional[str]]] = None,
+                            authentication: Optional[pulumi.Input[Optional[str]]] = None,
+                            password: Optional[pulumi.Input[Optional[str]]] = None,
+                            project: Optional[pulumi.Input[str]] = None,
+                            redis_acl_categories: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            redis_acl_channels: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            redis_acl_commands: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            redis_acl_keys: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            service_name: Optional[pulumi.Input[str]] = None,
+                            type: Optional[pulumi.Input[Optional[str]]] = None,
+                            username: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceUserResult]:
+    """
+    ## # Service User Data Source
+
+    The Service User data source provides information about the existing Aiven Service User.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myserviceuser = aiven.get_service_user(project=aiven_project["myproject"]["project"],
+        service_name=aiven_service["myservice"]["service_name"],
+        username="<USERNAME>")
+    ```
+
+    > **Note** The service user data source is not supported for Aiven Grafana services.
+
+
+    :param str access_cert: is the access certificate of the user (not applicable for all services).
+    :param str access_key: is the access key of the user (not applicable for all services).
+    :param str password: is the password of the user (not applicable for all services).
+    :param str project: and `service_name` - (Required) define the project and service the user belongs to. They should be defined
+           using reference as shown above to set up dependencies correctly.
+    :param Sequence[str] redis_acl_categories: Redis specific field, defines command category rules.
+    :param Sequence[str] redis_acl_commands: Redis specific field, defines rules for individual commands.
+    :param Sequence[str] redis_acl_keys: Redis specific field, defines key access rules.
+    :param str type: tells whether the user is primary account or regular account.
+    :param str username: is the actual name of the user account.
+    """
+    ...

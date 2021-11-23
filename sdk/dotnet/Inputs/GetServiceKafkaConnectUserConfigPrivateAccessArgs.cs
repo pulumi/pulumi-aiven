@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceKafkaConnectUserConfigPrivateAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceKafkaConnectUserConfigPrivateAccessInputArgs : Pulumi.ResourceArgs
     {
         [Input("kafkaConnect")]
-        public string? KafkaConnect { get; set; }
+        public Input<string>? KafkaConnect { get; set; }
 
         [Input("prometheus")]
-        public string? Prometheus { get; set; }
+        public Input<string>? Prometheus { get; set; }
 
-        public GetServiceKafkaConnectUserConfigPrivateAccessArgs()
+        public GetServiceKafkaConnectUserConfigPrivateAccessInputArgs()
         {
         }
     }

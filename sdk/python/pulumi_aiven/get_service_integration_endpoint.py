@@ -14,6 +14,7 @@ __all__ = [
     'GetServiceIntegrationEndpointResult',
     'AwaitableGetServiceIntegrationEndpointResult',
     'get_service_integration_endpoint',
+    'get_service_integration_endpoint_output',
 ]
 
 @pulumi.output_type
@@ -261,3 +262,46 @@ def get_service_integration_endpoint(datadog_user_config: Optional[pulumi.InputT
         prometheus_user_config=__ret__.prometheus_user_config,
         rsyslog_user_config=__ret__.rsyslog_user_config,
         signalfx_user_config=__ret__.signalfx_user_config)
+
+
+@_utilities.lift_output_func(get_service_integration_endpoint)
+def get_service_integration_endpoint_output(datadog_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationEndpointDatadogUserConfigArgs']]]] = None,
+                                            endpoint_config: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                            endpoint_name: Optional[pulumi.Input[str]] = None,
+                                            endpoint_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                            external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']]]] = None,
+                                            external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']]]] = None,
+                                            external_elasticsearch_logs_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]]] = None,
+                                            external_google_cloud_logging_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]]] = None,
+                                            external_kafka_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalKafkaUserConfigArgs']]]] = None,
+                                            external_schema_registry_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']]]] = None,
+                                            jolokia_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationEndpointJolokiaUserConfigArgs']]]] = None,
+                                            project: Optional[pulumi.Input[str]] = None,
+                                            prometheus_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationEndpointPrometheusUserConfigArgs']]]] = None,
+                                            rsyslog_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationEndpointRsyslogUserConfigArgs']]]] = None,
+                                            signalfx_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationEndpointSignalfxUserConfigArgs']]]] = None,
+                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIntegrationEndpointResult]:
+    """
+    ## # Service Integration Endpoint Data Source
+
+    The Service Integration Endpoint data source provides information about the existing
+    Aiven Service Integration Endpoint.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myendpoint = aiven.get_service_integration_endpoint(project=aiven_project["myproject"]["project"],
+        endpoint_name="<ENDPOINT_NAME>")
+    ```
+
+
+    :param str endpoint_name: is the name of the endpoint. This value has no effect beyond being used
+           to identify different integration endpoints.
+    :param str endpoint_type: is the type of the external service this endpoint is associated with.
+           By the time of writing the only available option is `datadog`.
+    :param str project: defines the project the endpoint is associated with.
+    """
+    ...

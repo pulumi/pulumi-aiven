@@ -12,6 +12,7 @@ __all__ = [
     'GetConnectionPoolResult',
     'AwaitableGetConnectionPoolResult',
     'get_connection_pool',
+    'get_connection_pool_output',
 ]
 
 @pulumi.output_type
@@ -201,3 +202,49 @@ def get_connection_pool(connection_uri: Optional[str] = None,
         project=__ret__.project,
         service_name=__ret__.service_name,
         username=__ret__.username)
+
+
+@_utilities.lift_output_func(get_connection_pool)
+def get_connection_pool_output(connection_uri: Optional[pulumi.Input[Optional[str]]] = None,
+                               database_name: Optional[pulumi.Input[Optional[str]]] = None,
+                               pool_mode: Optional[pulumi.Input[Optional[str]]] = None,
+                               pool_name: Optional[pulumi.Input[str]] = None,
+                               pool_size: Optional[pulumi.Input[Optional[int]]] = None,
+                               project: Optional[pulumi.Input[str]] = None,
+                               service_name: Optional[pulumi.Input[str]] = None,
+                               username: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionPoolResult]:
+    """
+    ## # Connection Pool Data Source
+
+    The Connection Pool data source provides information about the existing Aiven Connection Pool.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    mytestpool = aiven.get_connection_pool(project=aiven_project["myproject"]["project"],
+        service_name=aiven_service["myservice"]["service_name"],
+        pool_name="mypool")
+    ```
+
+
+    :param str connection_uri: is a computed property that tells the URI for connecting to the pool.
+           This value cannot be set, only read.
+    :param str database_name: is the name of the database the pool connects to. This should be
+           defined using reference as shown above to set up dependencies correctly.
+    :param str pool_mode: is the mode the pool operates in (session, transaction, statement).
+    :param str pool_name: is the name of the pool.
+    :param int pool_size: is the number of connections the pool may create towards the backend
+           server. This does not affect the number of incoming connections, which is always a much
+           larger number.
+    :param str project: and `service_name` - (Required) define the project and service the connection pool
+           belongs to. They should be defined using reference as shown above to set up dependencies
+           correctly. These properties cannot be changed once the service is created. Doing so will
+           result in the connection pool being deleted and new one created instead.
+    :param str username: is the name of the service user used to connect to the database. This should
+           be defined using reference as shown above to set up dependencies correctly.
+    """
+    ...

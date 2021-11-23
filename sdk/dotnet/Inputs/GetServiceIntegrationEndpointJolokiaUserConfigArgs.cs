@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationEndpointJolokiaUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationEndpointJolokiaUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("basicAuthPassword")]
-        public string? BasicAuthPassword { get; set; }
+        public Input<string>? BasicAuthPassword { get; set; }
 
         [Input("basicAuthUsername")]
-        public string? BasicAuthUsername { get; set; }
+        public Input<string>? BasicAuthUsername { get; set; }
 
-        public GetServiceIntegrationEndpointJolokiaUserConfigArgs()
+        public GetServiceIntegrationEndpointJolokiaUserConfigInputArgs()
         {
         }
     }

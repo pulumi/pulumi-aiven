@@ -34,11 +34,11 @@ import (
 // 			ServiceName:           pulumi.String("my-kc1"),
 // 			MaintenanceWindowDow:  pulumi.String("monday"),
 // 			MaintenanceWindowTime: pulumi.String("10:00:00"),
-// 			KafkaConnectUserConfig: &aiven.KafkaConnectKafkaConnectUserConfigArgs{
-// 				KafkaConnect: &aiven.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs{
+// 			KafkaConnectUserConfig: &KafkaConnectKafkaConnectUserConfigArgs{
+// 				KafkaConnect: &KafkaConnectKafkaConnectUserConfigKafkaConnectArgs{
 // 					ConsumerIsolationLevel: pulumi.String("read_committed"),
 // 				},
-// 				PublicAccess: &aiven.KafkaConnectKafkaConnectUserConfigPublicAccessArgs{
+// 				PublicAccess: &KafkaConnectKafkaConnectUserConfigPublicAccessArgs{
 // 					KafkaConnect: pulumi.String("true"),
 // 				},
 // 			},
@@ -475,7 +475,7 @@ type KafkaConnectArrayInput interface {
 type KafkaConnectArray []KafkaConnectInput
 
 func (KafkaConnectArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*KafkaConnect)(nil))
+	return reflect.TypeOf((*[]*KafkaConnect)(nil)).Elem()
 }
 
 func (i KafkaConnectArray) ToKafkaConnectArrayOutput() KafkaConnectArrayOutput {
@@ -500,7 +500,7 @@ type KafkaConnectMapInput interface {
 type KafkaConnectMap map[string]KafkaConnectInput
 
 func (KafkaConnectMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*KafkaConnect)(nil))
+	return reflect.TypeOf((*map[string]*KafkaConnect)(nil)).Elem()
 }
 
 func (i KafkaConnectMap) ToKafkaConnectMapOutput() KafkaConnectMapOutput {
@@ -511,9 +511,7 @@ func (i KafkaConnectMap) ToKafkaConnectMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectMapOutput)
 }
 
-type KafkaConnectOutput struct {
-	*pulumi.OutputState
-}
+type KafkaConnectOutput struct{ *pulumi.OutputState }
 
 func (KafkaConnectOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KafkaConnect)(nil))
@@ -532,14 +530,12 @@ func (o KafkaConnectOutput) ToKafkaConnectPtrOutput() KafkaConnectPtrOutput {
 }
 
 func (o KafkaConnectOutput) ToKafkaConnectPtrOutputWithContext(ctx context.Context) KafkaConnectPtrOutput {
-	return o.ApplyT(func(v KafkaConnect) *KafkaConnect {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaConnect) *KafkaConnect {
 		return &v
 	}).(KafkaConnectPtrOutput)
 }
 
-type KafkaConnectPtrOutput struct {
-	*pulumi.OutputState
-}
+type KafkaConnectPtrOutput struct{ *pulumi.OutputState }
 
 func (KafkaConnectPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KafkaConnect)(nil))
@@ -551,6 +547,16 @@ func (o KafkaConnectPtrOutput) ToKafkaConnectPtrOutput() KafkaConnectPtrOutput {
 
 func (o KafkaConnectPtrOutput) ToKafkaConnectPtrOutputWithContext(ctx context.Context) KafkaConnectPtrOutput {
 	return o
+}
+
+func (o KafkaConnectPtrOutput) Elem() KafkaConnectOutput {
+	return o.ApplyT(func(v *KafkaConnect) KafkaConnect {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaConnect
+		return ret
+	}).(KafkaConnectOutput)
 }
 
 type KafkaConnectArrayOutput struct{ *pulumi.OutputState }
@@ -594,6 +600,10 @@ func (o KafkaConnectMapOutput) MapIndex(k pulumi.StringInput) KafkaConnectOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectInput)(nil)).Elem(), &KafkaConnect{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectPtrInput)(nil)).Elem(), &KafkaConnect{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectArrayInput)(nil)).Elem(), KafkaConnectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectMapInput)(nil)).Elem(), KafkaConnectMap{})
 	pulumi.RegisterOutputType(KafkaConnectOutput{})
 	pulumi.RegisterOutputType(KafkaConnectPtrOutput{})
 	pulumi.RegisterOutputType(KafkaConnectArrayOutput{})

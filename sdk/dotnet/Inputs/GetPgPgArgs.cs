@@ -10,57 +10,57 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetPgPgArgs : Pulumi.InvokeArgs
+    public sealed class GetPgPgInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Primary PostgreSQL database name
         /// </summary>
         [Input("dbname", required: true)]
-        public string Dbname { get; set; } = null!;
+        public Input<string> Dbname { get; set; } = null!;
 
         /// <summary>
         /// PostgreSQL master node host IP or name
         /// </summary>
         [Input("host", required: true)]
-        public string Host { get; set; } = null!;
+        public Input<string> Host { get; set; } = null!;
 
         /// <summary>
         /// PostgreSQL admin user password
         /// </summary>
         [Input("password", required: true)]
-        public string Password { get; set; } = null!;
+        public Input<string> Password { get; set; } = null!;
 
         /// <summary>
         /// PostgreSQL port
         /// </summary>
         [Input("port", required: true)]
-        public int Port { get; set; }
+        public Input<int> Port { get; set; } = null!;
 
         /// <summary>
         /// PostgreSQL replica URI for services with a replica
         /// </summary>
         [Input("replicaUri", required: true)]
-        public string ReplicaUri { get; set; } = null!;
+        public Input<string> ReplicaUri { get; set; } = null!;
 
         /// <summary>
         /// PostgreSQL sslmode setting (currently always `require`)
         /// </summary>
         [Input("sslmode", required: true)]
-        public string Sslmode { get; set; } = null!;
+        public Input<string> Sslmode { get; set; } = null!;
 
         /// <summary>
         /// PostgreSQL master connection URI
         /// </summary>
         [Input("uri", required: true)]
-        public string Uri { get; set; } = null!;
+        public Input<string> Uri { get; set; } = null!;
 
         /// <summary>
         /// PostgreSQL admin user name
         /// </summary>
         [Input("user", required: true)]
-        public string User { get; set; } = null!;
+        public Input<string> User { get; set; } = null!;
 
-        public GetPgPgArgs()
+        public GetPgPgInputArgs()
         {
         }
     }

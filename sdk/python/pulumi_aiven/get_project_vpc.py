@@ -12,6 +12,7 @@ __all__ = [
     'GetProjectVpcResult',
     'AwaitableGetProjectVpcResult',
     'get_project_vpc',
+    'get_project_vpc_output',
 ]
 
 @pulumi.output_type
@@ -130,3 +131,35 @@ def get_project_vpc(cloud_name: Optional[str] = None,
         network_cidr=__ret__.network_cidr,
         project=__ret__.project,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_project_vpc)
+def get_project_vpc_output(cloud_name: Optional[pulumi.Input[str]] = None,
+                           network_cidr: Optional[pulumi.Input[Optional[str]]] = None,
+                           project: Optional[pulumi.Input[str]] = None,
+                           state: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectVpcResult]:
+    """
+    ## # Project VPC Data Source
+
+    The Project VPC data source provides information about the existing Aiven Project VPC.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    myvpc = aiven.get_project_vpc(project=aiven_project["myproject"]["project"],
+        cloud_name="google-europe-west1")
+    ```
+
+
+    :param str cloud_name: defines where the cloud provider and region where the service is hosted
+           in. See the Service resource for additional information.
+    :param str network_cidr: defines the network CIDR of the VPC.
+    :param str project: defines the project the VPC belongs to.
+    :param str state: ia a computed property that tells the current state of the VPC. This property cannot be
+           set, only read.
+    """
+    ...

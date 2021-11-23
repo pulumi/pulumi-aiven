@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceElasticsearchArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceElasticsearchInputArgs : Pulumi.ResourceArgs
     {
         [Input("kibanaUri", required: true)]
-        public string KibanaUri { get; set; } = null!;
+        public Input<string> KibanaUri { get; set; } = null!;
 
-        public GetServiceElasticsearchArgs()
+        public GetServiceElasticsearchInputArgs()
         {
         }
     }

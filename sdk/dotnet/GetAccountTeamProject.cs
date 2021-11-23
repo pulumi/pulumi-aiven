@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -18,6 +19,14 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetAccountTeamProjectResult> InvokeAsync(GetAccountTeamProjectArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamProjectResult>("aiven:index/getAccountTeamProject:getAccountTeamProject", args ?? new GetAccountTeamProjectArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Account Team Project Data Source
+        /// 
+        /// The Account Team Project data source provides information about the existing Account Team Project.
+        /// </summary>
+        public static Output<GetAccountTeamProjectResult> Invoke(GetAccountTeamProjectInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccountTeamProjectResult>("aiven:index/getAccountTeamProject:getAccountTeamProject", args ?? new GetAccountTeamProjectInvokeArgs(), options.WithVersion());
     }
 
 
@@ -49,6 +58,38 @@ namespace Pulumi.Aiven
         public string? TeamType { get; set; }
 
         public GetAccountTeamProjectArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccountTeamProjectInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// is a unique account id.
+        /// </summary>
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// is a project name of already existing project.
+        /// </summary>
+        [Input("projectName", required: true)]
+        public Input<string> ProjectName { get; set; } = null!;
+
+        /// <summary>
+        /// is an account team id.
+        /// </summary>
+        [Input("teamId", required: true)]
+        public Input<string> TeamId { get; set; } = null!;
+
+        /// <summary>
+        /// is an account team project type, can one of the following values: `admin`, 
+        /// `developer`, `operator` and `read_only`.
+        /// </summary>
+        [Input("teamType")]
+        public Input<string>? TeamType { get; set; }
+
+        public GetAccountTeamProjectInvokeArgs()
         {
         }
     }

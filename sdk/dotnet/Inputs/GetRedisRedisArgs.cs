@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetRedisRedisArgs : Pulumi.InvokeArgs
+    public sealed class GetRedisRedisInputArgs : Pulumi.ResourceArgs
     {
-        public GetRedisRedisArgs()
+        public GetRedisRedisInputArgs()
         {
         }
     }

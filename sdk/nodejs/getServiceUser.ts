@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -136,4 +135,54 @@ export interface GetServiceUserResult {
      */
     readonly type: string;
     readonly username: string;
+}
+
+export function getServiceUserOutput(args: GetServiceUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceUserResult> {
+    return pulumi.output(args).apply(a => getServiceUser(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServiceUser.
+ */
+export interface GetServiceUserOutputArgs {
+    /**
+     * is the access certificate of the user (not applicable for all services).
+     */
+    accessCert?: pulumi.Input<string>;
+    /**
+     * is the access key of the user (not applicable for all services).
+     */
+    accessKey?: pulumi.Input<string>;
+    authentication?: pulumi.Input<string>;
+    /**
+     * is the password of the user (not applicable for all services).
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
+     * using reference as shown above to set up dependencies correctly.
+     */
+    project: pulumi.Input<string>;
+    /**
+     * Redis specific field, defines command category rules.
+     */
+    redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
+    redisAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Redis specific field, defines rules for individual commands.
+     */
+    redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Redis specific field, defines key access rules.
+     */
+    redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceName: pulumi.Input<string>;
+    /**
+     * tells whether the user is primary account or regular account.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * is the actual name of the user account.
+     */
+    username: pulumi.Input<string>;
 }

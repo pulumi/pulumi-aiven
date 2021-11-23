@@ -10,18 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("logId")]
-        public string? LogId { get; set; }
+        public Input<string>? LogId { get; set; }
 
         [Input("projectId")]
-        public string? ProjectId { get; set; }
+        public Input<string>? ProjectId { get; set; }
 
         [Input("serviceAccountCredentials")]
-        public string? ServiceAccountCredentials { get; set; }
+        public Input<string>? ServiceAccountCredentials { get; set; }
 
-        public GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs()
+        public GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInputArgs()
         {
         }
     }

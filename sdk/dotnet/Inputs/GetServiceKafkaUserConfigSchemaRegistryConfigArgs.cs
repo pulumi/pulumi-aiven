@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceKafkaUserConfigSchemaRegistryConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceKafkaUserConfigSchemaRegistryConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("leaderEligibility")]
-        public string? LeaderEligibility { get; set; }
+        public Input<string>? LeaderEligibility { get; set; }
 
         [Input("topicName")]
-        public string? TopicName { get; set; }
+        public Input<string>? TopicName { get; set; }
 
-        public GetServiceKafkaUserConfigSchemaRegistryConfigArgs()
+        public GetServiceKafkaUserConfigSchemaRegistryConfigInputArgs()
         {
         }
     }

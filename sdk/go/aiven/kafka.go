@@ -34,16 +34,16 @@ import (
 // 			ServiceName:           pulumi.String("my-kafka1"),
 // 			MaintenanceWindowDow:  pulumi.String("monday"),
 // 			MaintenanceWindowTime: pulumi.String("10:00:00"),
-// 			KafkaUserConfig: &aiven.KafkaKafkaUserConfigArgs{
+// 			KafkaUserConfig: &KafkaKafkaUserConfigArgs{
 // 				KafkaRest:      pulumi.String("true"),
 // 				KafkaConnect:   pulumi.String("true"),
 // 				SchemaRegistry: pulumi.String("true"),
 // 				KafkaVersion:   pulumi.String("2.4"),
-// 				Kafka: &aiven.KafkaKafkaUserConfigKafkaArgs{
+// 				Kafka: &KafkaKafkaUserConfigKafkaArgs{
 // 					GroupMaxSessionTimeoutMs: pulumi.String("70000"),
 // 					LogRetentionBytes:        pulumi.String("1000000000"),
 // 				},
-// 				PublicAccess: &aiven.KafkaKafkaUserConfigPublicAccessArgs{
+// 				PublicAccess: &KafkaKafkaUserConfigPublicAccessArgs{
 // 					KafkaRest:    pulumi.String("true"),
 // 					KafkaConnect: pulumi.String("true"),
 // 				},
@@ -486,7 +486,7 @@ type KafkaArrayInput interface {
 type KafkaArray []KafkaInput
 
 func (KafkaArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Kafka)(nil))
+	return reflect.TypeOf((*[]*Kafka)(nil)).Elem()
 }
 
 func (i KafkaArray) ToKafkaArrayOutput() KafkaArrayOutput {
@@ -511,7 +511,7 @@ type KafkaMapInput interface {
 type KafkaMap map[string]KafkaInput
 
 func (KafkaMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Kafka)(nil))
+	return reflect.TypeOf((*map[string]*Kafka)(nil)).Elem()
 }
 
 func (i KafkaMap) ToKafkaMapOutput() KafkaMapOutput {
@@ -522,9 +522,7 @@ func (i KafkaMap) ToKafkaMapOutputWithContext(ctx context.Context) KafkaMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaMapOutput)
 }
 
-type KafkaOutput struct {
-	*pulumi.OutputState
-}
+type KafkaOutput struct{ *pulumi.OutputState }
 
 func (KafkaOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Kafka)(nil))
@@ -543,14 +541,12 @@ func (o KafkaOutput) ToKafkaPtrOutput() KafkaPtrOutput {
 }
 
 func (o KafkaOutput) ToKafkaPtrOutputWithContext(ctx context.Context) KafkaPtrOutput {
-	return o.ApplyT(func(v Kafka) *Kafka {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Kafka) *Kafka {
 		return &v
 	}).(KafkaPtrOutput)
 }
 
-type KafkaPtrOutput struct {
-	*pulumi.OutputState
-}
+type KafkaPtrOutput struct{ *pulumi.OutputState }
 
 func (KafkaPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Kafka)(nil))
@@ -562,6 +558,16 @@ func (o KafkaPtrOutput) ToKafkaPtrOutput() KafkaPtrOutput {
 
 func (o KafkaPtrOutput) ToKafkaPtrOutputWithContext(ctx context.Context) KafkaPtrOutput {
 	return o
+}
+
+func (o KafkaPtrOutput) Elem() KafkaOutput {
+	return o.ApplyT(func(v *Kafka) Kafka {
+		if v != nil {
+			return *v
+		}
+		var ret Kafka
+		return ret
+	}).(KafkaOutput)
 }
 
 type KafkaArrayOutput struct{ *pulumi.OutputState }
@@ -605,6 +611,10 @@ func (o KafkaMapOutput) MapIndex(k pulumi.StringInput) KafkaOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaInput)(nil)).Elem(), &Kafka{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaPtrInput)(nil)).Elem(), &Kafka{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaArrayInput)(nil)).Elem(), KafkaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaMapInput)(nil)).Elem(), KafkaMap{})
 	pulumi.RegisterOutputType(KafkaOutput{})
 	pulumi.RegisterOutputType(KafkaPtrOutput{})
 	pulumi.RegisterOutputType(KafkaArrayOutput{})

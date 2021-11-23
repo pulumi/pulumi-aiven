@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -197,4 +196,82 @@ export interface GetProjectResult {
     readonly technicalEmails?: string[];
     readonly useSourceProjectBillingGroup?: boolean;
     readonly vatId?: string;
+}
+
+export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
+    return pulumi.output(args).apply(a => getProject(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProject.
+ */
+export interface GetProjectOutputArgs {
+    /**
+     * is an optional property to link a project to already an existing account by 
+     * using account ID.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * is a computed property returning the amount of platform credits available to
+     * the project. This could be your free trial or other promotional credits.
+     */
+    availableCredits?: pulumi.Input<string>;
+    billingAddress?: pulumi.Input<string>;
+    billingCurrency?: pulumi.Input<string>;
+    billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    billingExtraText?: pulumi.Input<string>;
+    billingGroup?: pulumi.Input<string>;
+    /**
+     * is a computed property that can be used to read the CA certificate of the
+     * project. This is required for configuring clients that connect to certain services like
+     * Kafka. This value cannot be set, only read.
+     */
+    caCert?: pulumi.Input<string>;
+    /**
+     * is either the full card UUID or the last 4 digits of the card. As the full
+     * UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+     * the card. This can be omitted if `copyFromProject` is used to copy billing info from
+     * another project.
+     */
+    cardId?: pulumi.Input<string>;
+    /**
+     * is the name of another project used to copy billing information and
+     * some other project attributes like technical contacts from. This is mostly relevant when
+     * an existing project has billing type set to invoice and that needs to be copied over to a
+     * new project. (Setting billing is otherwise not allowed over the API.) This only has
+     * effect when the project is created.
+     */
+    copyFromProject?: pulumi.Input<string>;
+    country?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string>;
+    /**
+     * defines the default cloud provider and region where services are
+     * hosted. This can be changed freely after the project is created. This will not affect existing
+     * services.
+     */
+    defaultCloud?: pulumi.Input<string>;
+    /**
+     * is a computed property returning the current accumulated bill for this
+     * project in the current billing period.
+     */
+    estimatedBalance?: pulumi.Input<string>;
+    /**
+     * is a computed property returning the method of invoicing used for payments for
+     * this project, e.g. "card".
+     */
+    paymentMethod?: pulumi.Input<string>;
+    /**
+     * defines the name of the project. Name must be globally unique (between all
+     * Aiven customers) and cannot be changed later without destroying and re-creating the
+     * project, including all sub-resources.
+     */
+    project: pulumi.Input<string>;
+    /**
+     * defines the email addresses that will receive alerts about
+     * upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+     * this up-to-date to be aware of any potential issues with your project.
+     */
+    technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    useSourceProjectBillingGroup?: pulumi.Input<boolean>;
+    vatId?: pulumi.Input<string>;
 }

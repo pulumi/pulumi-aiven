@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupProjectVpc(ctx, &aiven.LookupProjectVpcArgs{
+// 		_, err := aiven.LookupProjectVpc(ctx, &GetProjectVpcArgs{
 // 			Project:   aiven_project.Myproject.Project,
 // 			CloudName: "google-europe-west1",
 // 		}, nil)
@@ -68,4 +71,74 @@ type LookupProjectVpcResult struct {
 	// ia a computed property that tells the current state of the VPC. This property cannot be
 	// set, only read.
 	State string `pulumi:"state"`
+}
+
+func LookupProjectVpcOutput(ctx *pulumi.Context, args LookupProjectVpcOutputArgs, opts ...pulumi.InvokeOption) LookupProjectVpcResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupProjectVpcResult, error) {
+			args := v.(LookupProjectVpcArgs)
+			r, err := LookupProjectVpc(ctx, &args, opts...)
+			return *r, err
+		}).(LookupProjectVpcResultOutput)
+}
+
+// A collection of arguments for invoking getProjectVpc.
+type LookupProjectVpcOutputArgs struct {
+	// defines where the cloud provider and region where the service is hosted
+	// in. See the Service resource for additional information.
+	CloudName pulumi.StringInput `pulumi:"cloudName"`
+	// defines the network CIDR of the VPC.
+	NetworkCidr pulumi.StringPtrInput `pulumi:"networkCidr"`
+	// defines the project the VPC belongs to.
+	Project pulumi.StringInput `pulumi:"project"`
+	// ia a computed property that tells the current state of the VPC. This property cannot be
+	// set, only read.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (LookupProjectVpcOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectVpcArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProjectVpc.
+type LookupProjectVpcResultOutput struct{ *pulumi.OutputState }
+
+func (LookupProjectVpcResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectVpcResult)(nil)).Elem()
+}
+
+func (o LookupProjectVpcResultOutput) ToLookupProjectVpcResultOutput() LookupProjectVpcResultOutput {
+	return o
+}
+
+func (o LookupProjectVpcResultOutput) ToLookupProjectVpcResultOutputWithContext(ctx context.Context) LookupProjectVpcResultOutput {
+	return o
+}
+
+func (o LookupProjectVpcResultOutput) CloudName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.CloudName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupProjectVpcResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// defines the network CIDR of the VPC.
+func (o LookupProjectVpcResultOutput) NetworkCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectVpcResult) *string { return v.NetworkCidr }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupProjectVpcResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// ia a computed property that tells the current state of the VPC. This property cannot be
+// set, only read.
+func (o LookupProjectVpcResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupProjectVpcResultOutput{})
 }

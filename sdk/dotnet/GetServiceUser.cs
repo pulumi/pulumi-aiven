@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -45,6 +46,41 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetServiceUserResult> InvokeAsync(GetServiceUserArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceUserResult>("aiven:index/getServiceUser:getServiceUser", args ?? new GetServiceUserArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Service User Data Source
+        /// 
+        /// The Service User data source provides information about the existing Aiven Service User.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myserviceuser = Output.Create(Aiven.GetServiceUser.InvokeAsync(new Aiven.GetServiceUserArgs
+        ///         {
+        ///             Project = aiven_project.Myproject.Project,
+        ///             ServiceName = aiven_service.Myservice.Service_name,
+        ///             Username = "&lt;USERNAME&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// &gt; **Note** The service user data source is not supported for Aiven Grafana services.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetServiceUserResult> Invoke(GetServiceUserInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceUserResult>("aiven:index/getServiceUser:getServiceUser", args ?? new GetServiceUserInvokeArgs(), options.WithVersion());
     }
 
 
@@ -138,6 +174,100 @@ namespace Pulumi.Aiven
         public string Username { get; set; } = null!;
 
         public GetServiceUserArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceUserInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// is the access certificate of the user (not applicable for all services).
+        /// </summary>
+        [Input("accessCert")]
+        public Input<string>? AccessCert { get; set; }
+
+        /// <summary>
+        /// is the access key of the user (not applicable for all services).
+        /// </summary>
+        [Input("accessKey")]
+        public Input<string>? AccessKey { get; set; }
+
+        [Input("authentication")]
+        public Input<string>? Authentication { get; set; }
+
+        /// <summary>
+        /// is the password of the user (not applicable for all services).
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the user belongs to. They should be defined
+        /// using reference as shown above to set up dependencies correctly.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        [Input("redisAclCategories")]
+        private InputList<string>? _redisAclCategories;
+
+        /// <summary>
+        /// Redis specific field, defines command category rules.
+        /// </summary>
+        public InputList<string> RedisAclCategories
+        {
+            get => _redisAclCategories ?? (_redisAclCategories = new InputList<string>());
+            set => _redisAclCategories = value;
+        }
+
+        [Input("redisAclChannels")]
+        private InputList<string>? _redisAclChannels;
+        public InputList<string> RedisAclChannels
+        {
+            get => _redisAclChannels ?? (_redisAclChannels = new InputList<string>());
+            set => _redisAclChannels = value;
+        }
+
+        [Input("redisAclCommands")]
+        private InputList<string>? _redisAclCommands;
+
+        /// <summary>
+        /// Redis specific field, defines rules for individual commands.
+        /// </summary>
+        public InputList<string> RedisAclCommands
+        {
+            get => _redisAclCommands ?? (_redisAclCommands = new InputList<string>());
+            set => _redisAclCommands = value;
+        }
+
+        [Input("redisAclKeys")]
+        private InputList<string>? _redisAclKeys;
+
+        /// <summary>
+        /// Redis specific field, defines key access rules.
+        /// </summary>
+        public InputList<string> RedisAclKeys
+        {
+            get => _redisAclKeys ?? (_redisAclKeys = new InputList<string>());
+            set => _redisAclKeys = value;
+        }
+
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        /// <summary>
+        /// tells whether the user is primary account or regular account.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// is the actual name of the user account.
+        /// </summary>
+        [Input("username", required: true)]
+        public Input<string> Username { get; set; } = null!;
+
+        public GetServiceUserInvokeArgs()
         {
         }
     }

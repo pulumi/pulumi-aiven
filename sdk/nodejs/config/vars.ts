@@ -4,9 +4,17 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("aiven");
+declare var exports: any;
+const __config = new pulumi.Config("aiven");
 
 /**
  * Aiven Authentication Token
  */
-export let apiToken: string | undefined = __config.get("apiToken");
+export declare const apiToken: string | undefined;
+Object.defineProperty(exports, "apiToken", {
+    get() {
+        return __config.get("apiToken");
+    },
+    enumerable: true,
+});
+

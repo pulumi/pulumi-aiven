@@ -12,6 +12,7 @@ __all__ = [
     'GetAwsPrivatelinkResult',
     'AwaitableGetAwsPrivatelinkResult',
     'get_aws_privatelink',
+    'get_aws_privatelink_output',
 ]
 
 @pulumi.output_type
@@ -147,3 +148,39 @@ def get_aws_privatelink(aws_service_id: Optional[str] = None,
         principals=__ret__.principals,
         project=__ret__.project,
         service_name=__ret__.service_name)
+
+
+@_utilities.lift_output_func(get_aws_privatelink)
+def get_aws_privatelink_output(aws_service_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               aws_service_name: Optional[pulumi.Input[Optional[str]]] = None,
+                               principals: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               project: Optional[pulumi.Input[str]] = None,
+                               service_name: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsPrivatelinkResult]:
+    """
+    ## # AWS Privatelink Data Source
+
+    The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    foo = aiven.get_aws_privatelink(project=data["aiven_project"]["foo"]["project"],
+        service_name=aiven_kafka["bar"]["service_name"])
+    ```
+
+
+    :param str aws_service_id: AWS service ID.
+    :param str aws_service_name: AWS service name.
+    :param Sequence[str] principals: list of allowed principals
+    :param str project: identifies the project the service belongs to. To set up proper dependency between the project
+           and the service, refer to the project as shown in the above example. Project cannot be changed later without
+           destroying and re-creating the service.
+    :param str service_name: specifies the actual name of the service. The name cannot be changed later without
+           destroying and re-creating the service so name should be picked based on intended service usage rather than current
+           attributes.
+    """
+    ...

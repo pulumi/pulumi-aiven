@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetDatabaseResult> InvokeAsync(GetDatabaseArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseResult>("aiven:index/getDatabase:getDatabase", args ?? new GetDatabaseArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Database Data Source
+        /// 
+        /// The Database data source provides information about the existing Aiven Database.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mydatabase = Output.Create(Aiven.GetDatabase.InvokeAsync(new Aiven.GetDatabaseArgs
+        ///         {
+        ///             Project = aiven_project.Myproject.Project,
+        ///             ServiceName = aiven_service.Myservice.Service_name,
+        ///             DatabaseName = "&lt;DATABASE_NAME&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDatabaseResult> Invoke(GetDatabaseInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatabaseResult>("aiven:index/getDatabase:getDatabase", args ?? new GetDatabaseInvokeArgs(), options.WithVersion());
     }
 
 
@@ -80,6 +114,44 @@ namespace Pulumi.Aiven
         public bool? TerminationProtection { get; set; }
 
         public GetDatabaseArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatabaseInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// is the actual name of the database.
+        /// </summary>
+        [Input("databaseName", required: true)]
+        public Input<string> DatabaseName { get; set; } = null!;
+
+        /// <summary>
+        /// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+        /// </summary>
+        [Input("lcCollate")]
+        public Input<string>? LcCollate { get; set; }
+
+        /// <summary>
+        /// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+        /// </summary>
+        [Input("lcCtype")]
+        public Input<string>? LcCtype { get; set; }
+
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the database belongs to.
+        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("terminationProtection")]
+        public Input<bool>? TerminationProtection { get; set; }
+
+        public GetDatabaseInvokeArgs()
         {
         }
     }

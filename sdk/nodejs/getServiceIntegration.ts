@@ -144,3 +144,51 @@ export interface GetServiceIntegrationResult {
     readonly sourceEndpointId?: string;
     readonly sourceServiceName: string;
 }
+
+export function getServiceIntegrationOutput(args: GetServiceIntegrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIntegrationResult> {
+    return pulumi.output(args).apply(a => getServiceIntegration(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServiceIntegration.
+ */
+export interface GetServiceIntegrationOutputArgs {
+    dashboardUserConfig?: pulumi.Input<inputs.GetServiceIntegrationDashboardUserConfigArgs>;
+    datadogUserConfig?: pulumi.Input<inputs.GetServiceIntegrationDatadogUserConfigArgs>;
+    destinationEndpointId?: pulumi.Input<string>;
+    /**
+     * identifies the target side of the integration.
+     */
+    destinationServiceName: pulumi.Input<string>;
+    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs>;
+    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs>;
+    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs>;
+    externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs>;
+    /**
+     * identifies the type of integration that is set up. Possible values include `dashboard`
+     * , `datadog`, `logs`, `metrics` and `mirrormaker`.
+     */
+    integrationType: pulumi.Input<string>;
+    kafkaConnectUserConfig?: pulumi.Input<inputs.GetServiceIntegrationKafkaConnectUserConfigArgs>;
+    kafkaLogsUserConfig?: pulumi.Input<inputs.GetServiceIntegrationKafkaLogsUserConfigArgs>;
+    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.GetServiceIntegrationKafkaMirrormakerUserConfigArgs>;
+    logsUserConfig?: pulumi.Input<inputs.GetServiceIntegrationLogsUserConfigArgs>;
+    m3aggregatorUserConfig?: pulumi.Input<inputs.GetServiceIntegrationM3aggregatorUserConfigArgs>;
+    m3coordinatorUserConfig?: pulumi.Input<inputs.GetServiceIntegrationM3coordinatorUserConfigArgs>;
+    metricsUserConfig?: pulumi.Input<inputs.GetServiceIntegrationMetricsUserConfigArgs>;
+    mirrormakerUserConfig?: pulumi.Input<inputs.GetServiceIntegrationMirrormakerUserConfigArgs>;
+    /**
+     * defines the project the integration belongs to.
+     */
+    project: pulumi.Input<string>;
+    prometheusUserConfig?: pulumi.Input<inputs.GetServiceIntegrationPrometheusUserConfigArgs>;
+    readReplicaUserConfig?: pulumi.Input<inputs.GetServiceIntegrationReadReplicaUserConfigArgs>;
+    rsyslogUserConfig?: pulumi.Input<inputs.GetServiceIntegrationRsyslogUserConfigArgs>;
+    schemaRegistryProxyUserConfig?: pulumi.Input<inputs.GetServiceIntegrationSchemaRegistryProxyUserConfigArgs>;
+    signalfxUserConfig?: pulumi.Input<inputs.GetServiceIntegrationSignalfxUserConfigArgs>;
+    sourceEndpointId?: pulumi.Input<string>;
+    /**
+     * identifies the source side of the integration.
+     */
+    sourceServiceName: pulumi.Input<string>;
+}

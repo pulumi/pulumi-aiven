@@ -10,25 +10,25 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("droppedMetrics")]
-        private List<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs>? _droppedMetrics;
-        public List<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs> DroppedMetrics
+        private InputList<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInputArgs>? _droppedMetrics;
+        public InputList<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInputArgs> DroppedMetrics
         {
-            get => _droppedMetrics ?? (_droppedMetrics = new List<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs>());
+            get => _droppedMetrics ?? (_droppedMetrics = new InputList<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInputArgs>());
             set => _droppedMetrics = value;
         }
 
         [Input("extraMetrics")]
-        private List<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs>? _extraMetrics;
-        public List<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs> ExtraMetrics
+        private InputList<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInputArgs>? _extraMetrics;
+        public InputList<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInputArgs> ExtraMetrics
         {
-            get => _extraMetrics ?? (_extraMetrics = new List<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs>());
+            get => _extraMetrics ?? (_extraMetrics = new InputList<Inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInputArgs>());
             set => _extraMetrics = value;
         }
 
-        public GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs()
+        public GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInputArgs()
         {
         }
     }

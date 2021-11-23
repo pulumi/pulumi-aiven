@@ -10,39 +10,39 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetM3AggregatorM3aggregatorUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetM3AggregatorM3aggregatorUserConfigInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         /// </summary>
         [Input("customDomain")]
-        public string? CustomDomain { get; set; }
+        public Input<string>? CustomDomain { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
+        private InputList<string>? _ipFilters;
 
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
-        public List<string> IpFilters
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
         [Input("m3Version")]
-        public string? M3Version { get; set; }
+        public Input<string>? M3Version { get; set; }
 
         /// <summary>
         /// M3 major version
         /// </summary>
         [Input("m3aggregatorVersion")]
-        public string? M3aggregatorVersion { get; set; }
+        public Input<string>? M3aggregatorVersion { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetM3AggregatorM3aggregatorUserConfigArgs()
+        public GetM3AggregatorM3aggregatorUserConfigInputArgs()
         {
         }
     }

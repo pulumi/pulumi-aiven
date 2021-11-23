@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetServiceIntegrationEndpointResult> InvokeAsync(GetServiceIntegrationEndpointArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationEndpointResult>("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args ?? new GetServiceIntegrationEndpointArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Service Integration Endpoint Data Source
+        /// 
+        /// The Service Integration Endpoint data source provides information about the existing 
+        /// Aiven Service Integration Endpoint.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myendpoint = Output.Create(Aiven.GetServiceIntegrationEndpoint.InvokeAsync(new Aiven.GetServiceIntegrationEndpointArgs
+        ///         {
+        ///             Project = aiven_project.Myproject.Project,
+        ///             EndpointName = "&lt;ENDPOINT_NAME&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetServiceIntegrationEndpointResult> Invoke(GetServiceIntegrationEndpointInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceIntegrationEndpointResult>("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args ?? new GetServiceIntegrationEndpointInvokeArgs(), options.WithVersion());
     }
 
 
@@ -110,6 +144,74 @@ namespace Pulumi.Aiven
         public Inputs.GetServiceIntegrationEndpointSignalfxUserConfigArgs? SignalfxUserConfig { get; set; }
 
         public GetServiceIntegrationEndpointArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceIntegrationEndpointInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datadogUserConfig")]
+        public Input<Inputs.GetServiceIntegrationEndpointDatadogUserConfigInputArgs>? DatadogUserConfig { get; set; }
+
+        [Input("endpointConfig")]
+        private InputMap<string>? _endpointConfig;
+        public InputMap<string> EndpointConfig
+        {
+            get => _endpointConfig ?? (_endpointConfig = new InputMap<string>());
+            set => _endpointConfig = value;
+        }
+
+        /// <summary>
+        /// is the name of the endpoint. This value has no effect beyond being used
+        /// to identify different integration endpoints.
+        /// </summary>
+        [Input("endpointName", required: true)]
+        public Input<string> EndpointName { get; set; } = null!;
+
+        /// <summary>
+        /// is the type of the external service this endpoint is associated with.
+        /// By the time of writing the only available option is `datadog`.
+        /// </summary>
+        [Input("endpointType")]
+        public Input<string>? EndpointType { get; set; }
+
+        [Input("externalAwsCloudwatchLogsUserConfig")]
+        public Input<Inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInputArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
+
+        [Input("externalAwsCloudwatchMetricsUserConfig")]
+        public Input<Inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInputArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
+
+        [Input("externalElasticsearchLogsUserConfig")]
+        public Input<Inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInputArgs>? ExternalElasticsearchLogsUserConfig { get; set; }
+
+        [Input("externalGoogleCloudLoggingUserConfig")]
+        public Input<Inputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInputArgs>? ExternalGoogleCloudLoggingUserConfig { get; set; }
+
+        [Input("externalKafkaUserConfig")]
+        public Input<Inputs.GetServiceIntegrationEndpointExternalKafkaUserConfigInputArgs>? ExternalKafkaUserConfig { get; set; }
+
+        [Input("externalSchemaRegistryUserConfig")]
+        public Input<Inputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInputArgs>? ExternalSchemaRegistryUserConfig { get; set; }
+
+        [Input("jolokiaUserConfig")]
+        public Input<Inputs.GetServiceIntegrationEndpointJolokiaUserConfigInputArgs>? JolokiaUserConfig { get; set; }
+
+        /// <summary>
+        /// defines the project the endpoint is associated with.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        [Input("prometheusUserConfig")]
+        public Input<Inputs.GetServiceIntegrationEndpointPrometheusUserConfigInputArgs>? PrometheusUserConfig { get; set; }
+
+        [Input("rsyslogUserConfig")]
+        public Input<Inputs.GetServiceIntegrationEndpointRsyslogUserConfigInputArgs>? RsyslogUserConfig { get; set; }
+
+        [Input("signalfxUserConfig")]
+        public Input<Inputs.GetServiceIntegrationEndpointSignalfxUserConfigInputArgs>? SignalfxUserConfig { get; set; }
+
+        public GetServiceIntegrationEndpointInvokeArgs()
         {
         }
     }

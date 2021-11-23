@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInputArgs : Pulumi.ResourceArgs
     {
         [Input("field")]
-        public string? Field { get; set; }
+        public Input<string>? Field { get; set; }
 
         [Input("metric")]
-        public string? Metric { get; set; }
+        public Input<string>? Metric { get; set; }
 
-        public GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs()
+        public GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInputArgs()
         {
         }
     }

@@ -10,24 +10,24 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("ca")]
-        public string? Ca { get; set; }
+        public Input<string>? Ca { get; set; }
 
         [Input("indexDaysMax")]
-        public string? IndexDaysMax { get; set; }
+        public Input<string>? IndexDaysMax { get; set; }
 
         [Input("indexPrefix")]
-        public string? IndexPrefix { get; set; }
+        public Input<string>? IndexPrefix { get; set; }
 
         [Input("timeout")]
-        public string? Timeout { get; set; }
+        public Input<string>? Timeout { get; set; }
 
         [Input("url")]
-        public string? Url { get; set; }
+        public Input<string>? Url { get; set; }
 
-        public GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs()
+        public GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInputArgs()
         {
         }
     }

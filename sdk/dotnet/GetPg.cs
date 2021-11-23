@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,6 +43,38 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetPgResult> InvokeAsync(GetPgArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPgResult>("aiven:index/getPg:getPg", args ?? new GetPgArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # PG Data Source
+        /// 
+        /// The PG data source provides information about the existing Aiven PostgreSQL service.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var pg = Output.Create(Aiven.GetPg.InvokeAsync(new Aiven.GetPgArgs
+        ///         {
+        ///             Project = data.Aiven_project.Pr1.Project,
+        ///             ServiceName = "my-pg1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetPgResult> Invoke(GetPgInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPgResult>("aiven:index/getPg:getPg", args ?? new GetPgInvokeArgs(), options.WithVersion());
     }
 
 
@@ -191,6 +224,156 @@ namespace Pulumi.Aiven
         public bool? TerminationProtection { get; set; }
 
         public GetPgArgs()
+        {
+        }
+    }
+
+    public sealed class GetPgInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// defines where the cloud provider and region where the service is hosted
+        /// in. This can be changed freely after service is created. Changing the value will trigger
+        /// a potentially lengthy migration process for the service. Format is cloud provider name
+        /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+        /// specific region name. These are documented on each Cloud provider's own support articles,
+        /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+        /// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        /// </summary>
+        [Input("cloudName")]
+        public Input<string>? CloudName { get; set; }
+
+        [Input("components")]
+        private InputList<Inputs.GetPgComponentInputArgs>? _components;
+        public InputList<Inputs.GetPgComponentInputArgs> Components
+        {
+            get => _components ?? (_components = new InputList<Inputs.GetPgComponentInputArgs>());
+            set => _components = value;
+        }
+
+        /// <summary>
+        /// day of week when maintenance operations should be performed. 
+        /// On monday, tuesday, wednesday, etc.
+        /// </summary>
+        [Input("maintenanceWindowDow")]
+        public Input<string>? MaintenanceWindowDow { get; set; }
+
+        /// <summary>
+        /// time of day when maintenance operations should be performed. 
+        /// UTC time in HH:mm:ss format.
+        /// </summary>
+        [Input("maintenanceWindowTime")]
+        public Input<string>? MaintenanceWindowTime { get; set; }
+
+        /// <summary>
+        /// PostgreSQL specific server provided values.
+        /// </summary>
+        [Input("pg")]
+        public Input<Inputs.GetPgPgInputArgs>? Pg { get; set; }
+
+        /// <summary>
+        /// defines PostgreSQL specific additional configuration options. The following 
+        /// configuration options available:
+        /// </summary>
+        [Input("pgUserConfig")]
+        public Input<Inputs.GetPgPgUserConfigInputArgs>? PgUserConfig { get; set; }
+
+        /// <summary>
+        /// defines what kind of computing resources are allocated for the service. It can
+        /// be changed after creation, though there are some restrictions when going to a smaller
+        /// plan such as the new plan must have sufficient amount of disk space to store all current
+        /// data and switching to a plan with fewer nodes might not be supported. The basic plan
+        /// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+        /// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+        /// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// </summary>
+        [Input("plan")]
+        public Input<string>? Plan { get; set; }
+
+        /// <summary>
+        /// identifies the project the service belongs to. To set up proper dependency
+        /// between the project and the service, refer to the project as shown in the above example.
+        /// Project cannot be changed later without destroying and re-creating the service.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        /// <summary>
+        /// optionally specifies the VPC the service should run in. If the value
+        /// is not set the service is not run inside a VPC. When set, the value should be given as a
+        /// reference as shown above to set up dependencies correctly and the VPC must be in the same
+        /// cloud and region as the service itself. Project can be freely moved to and from VPC after
+        /// creation but doing so triggers migration to new servers so the operation can take
+        /// significant amount of time to complete if the service has a lot of data.
+        /// </summary>
+        [Input("projectVpcId")]
+        public Input<string>? ProjectVpcId { get; set; }
+
+        /// <summary>
+        /// PostgreSQL hostname.
+        /// </summary>
+        [Input("serviceHost")]
+        public Input<string>? ServiceHost { get; set; }
+
+        [Input("serviceIntegrations")]
+        private InputList<Inputs.GetPgServiceIntegrationInputArgs>? _serviceIntegrations;
+        public InputList<Inputs.GetPgServiceIntegrationInputArgs> ServiceIntegrations
+        {
+            get => _serviceIntegrations ?? (_serviceIntegrations = new InputList<Inputs.GetPgServiceIntegrationInputArgs>());
+            set => _serviceIntegrations = value;
+        }
+
+        /// <summary>
+        /// specifies the actual name of the service. The name cannot be changed
+        /// later without destroying and re-creating the service so name should be picked based on
+        /// intended service usage rather than current attributes.
+        /// </summary>
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        /// <summary>
+        /// Password used for connecting to the PostgreSQL service, if applicable.
+        /// </summary>
+        [Input("servicePassword")]
+        public Input<string>? ServicePassword { get; set; }
+
+        /// <summary>
+        /// PostgreSQL port.
+        /// </summary>
+        [Input("servicePort")]
+        public Input<int>? ServicePort { get; set; }
+
+        [Input("serviceType")]
+        public Input<string>? ServiceType { get; set; }
+
+        /// <summary>
+        /// URI for connecting to the PostgreSQL service.
+        /// </summary>
+        [Input("serviceUri")]
+        public Input<string>? ServiceUri { get; set; }
+
+        /// <summary>
+        /// Username used for connecting to the PostgreSQL service, if applicable.
+        /// </summary>
+        [Input("serviceUsername")]
+        public Input<string>? ServiceUsername { get; set; }
+
+        /// <summary>
+        /// Service state.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// prevents the service from being deleted. It is recommended to
+        /// set this to `true` for all production services to prevent unintentional service
+        /// deletion. This does not shield against deleting databases or topics but for services
+        /// with backups much of the content can at least be restored from backup in case accidental
+        /// deletion is done.
+        /// </summary>
+        [Input("terminationProtection")]
+        public Input<bool>? TerminationProtection { get; set; }
+
+        public GetPgInvokeArgs()
         {
         }
     }

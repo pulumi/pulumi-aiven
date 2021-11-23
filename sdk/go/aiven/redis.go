@@ -34,9 +34,9 @@ import (
 // 			ServiceName:           pulumi.String("my-redis1"),
 // 			MaintenanceWindowDow:  pulumi.String("monday"),
 // 			MaintenanceWindowTime: pulumi.String("10:00:00"),
-// 			RedisUserConfig: &aiven.RedisRedisUserConfigArgs{
+// 			RedisUserConfig: &RedisRedisUserConfigArgs{
 // 				RedisMaxmemoryPolicy: pulumi.String("allkeys-random"),
-// 				PublicAccess: &aiven.RedisRedisUserConfigPublicAccessArgs{
+// 				PublicAccess: &RedisRedisUserConfigPublicAccessArgs{
 // 					Redis: pulumi.String("true"),
 // 				},
 // 			},
@@ -473,7 +473,7 @@ type RedisArrayInput interface {
 type RedisArray []RedisInput
 
 func (RedisArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Redis)(nil))
+	return reflect.TypeOf((*[]*Redis)(nil)).Elem()
 }
 
 func (i RedisArray) ToRedisArrayOutput() RedisArrayOutput {
@@ -498,7 +498,7 @@ type RedisMapInput interface {
 type RedisMap map[string]RedisInput
 
 func (RedisMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Redis)(nil))
+	return reflect.TypeOf((*map[string]*Redis)(nil)).Elem()
 }
 
 func (i RedisMap) ToRedisMapOutput() RedisMapOutput {
@@ -509,9 +509,7 @@ func (i RedisMap) ToRedisMapOutputWithContext(ctx context.Context) RedisMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(RedisMapOutput)
 }
 
-type RedisOutput struct {
-	*pulumi.OutputState
-}
+type RedisOutput struct{ *pulumi.OutputState }
 
 func (RedisOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Redis)(nil))
@@ -530,14 +528,12 @@ func (o RedisOutput) ToRedisPtrOutput() RedisPtrOutput {
 }
 
 func (o RedisOutput) ToRedisPtrOutputWithContext(ctx context.Context) RedisPtrOutput {
-	return o.ApplyT(func(v Redis) *Redis {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Redis) *Redis {
 		return &v
 	}).(RedisPtrOutput)
 }
 
-type RedisPtrOutput struct {
-	*pulumi.OutputState
-}
+type RedisPtrOutput struct{ *pulumi.OutputState }
 
 func (RedisPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Redis)(nil))
@@ -549,6 +545,16 @@ func (o RedisPtrOutput) ToRedisPtrOutput() RedisPtrOutput {
 
 func (o RedisPtrOutput) ToRedisPtrOutputWithContext(ctx context.Context) RedisPtrOutput {
 	return o
+}
+
+func (o RedisPtrOutput) Elem() RedisOutput {
+	return o.ApplyT(func(v *Redis) Redis {
+		if v != nil {
+			return *v
+		}
+		var ret Redis
+		return ret
+	}).(RedisOutput)
 }
 
 type RedisArrayOutput struct{ *pulumi.OutputState }
@@ -592,6 +598,10 @@ func (o RedisMapOutput) MapIndex(k pulumi.StringInput) RedisOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RedisInput)(nil)).Elem(), &Redis{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RedisPtrInput)(nil)).Elem(), &Redis{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RedisArrayInput)(nil)).Elem(), RedisArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RedisMapInput)(nil)).Elem(), RedisMap{})
 	pulumi.RegisterOutputType(RedisOutput{})
 	pulumi.RegisterOutputType(RedisPtrOutput{})
 	pulumi.RegisterOutputType(RedisArrayOutput{})

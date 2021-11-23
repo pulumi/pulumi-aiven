@@ -10,45 +10,45 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetPgPgUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetPgPgUserConfigInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// custom password for admin user. Defaults to random string. *This must
         /// be set only when a new service is being created.*
         /// </summary>
         [Input("adminPassword")]
-        public string? AdminPassword { get; set; }
+        public Input<string>? AdminPassword { get; set; }
 
         /// <summary>
         /// custom username for admin user. *This must be set only when a new service
         /// is being created.*
         /// </summary>
         [Input("adminUsername")]
-        public string? AdminUsername { get; set; }
+        public Input<string>? AdminUsername { get; set; }
 
         /// <summary>
         /// the hour of day (in UTC) when backup for the service is started. New backup 
         /// is only started if previous backup has already completed.
         /// </summary>
         [Input("backupHour")]
-        public string? BackupHour { get; set; }
+        public Input<string>? BackupHour { get; set; }
 
         /// <summary>
         /// the minute of an hour when backup for the service is started. New backup 
         /// is only started if previous backup has already completed.
         /// </summary>
         [Input("backupMinute")]
-        public string? BackupMinute { get; set; }
+        public Input<string>? BackupMinute { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
+        private InputList<string>? _ipFilters;
 
         /// <summary>
         /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
-        public List<string> IpFilters
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
@@ -56,83 +56,83 @@ namespace Pulumi.Aiven.Inputs
         /// migrate data from existing server, has the following options:
         /// </summary>
         [Input("migration")]
-        public Inputs.GetPgPgUserConfigMigrationArgs? Migration { get; set; }
+        public Input<Inputs.GetPgPgUserConfigMigrationInputArgs>? Migration { get; set; }
 
         /// <summary>
         /// PostgreSQL specific server provided values.
         /// </summary>
         [Input("pg")]
-        public Inputs.GetPgPgUserConfigPgArgs? Pg { get; set; }
+        public Input<Inputs.GetPgPgUserConfigPgInputArgs>? Pg { get; set; }
 
         /// <summary>
         /// This setting is deprecated. Use read-replica service integration instead.
         /// </summary>
         [Input("pgReadReplica")]
-        public string? PgReadReplica { get; set; }
+        public Input<string>? PgReadReplica { get; set; }
 
         /// <summary>
         /// Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
         /// This has effect only when a new service is being created.
         /// </summary>
         [Input("pgServiceToForkFrom")]
-        public string? PgServiceToForkFrom { get; set; }
+        public Input<string>? PgServiceToForkFrom { get; set; }
 
         /// <summary>
         /// PostgreSQL major version.
         /// </summary>
         [Input("pgVersion")]
-        public string? PgVersion { get; set; }
+        public Input<string>? PgVersion { get; set; }
 
         /// <summary>
         /// Enable pgbouncer.
         /// </summary>
         [Input("pgbouncer")]
-        public Inputs.GetPgPgUserConfigPgbouncerArgs? Pgbouncer { get; set; }
+        public Input<Inputs.GetPgPgUserConfigPgbouncerInputArgs>? Pgbouncer { get; set; }
 
         /// <summary>
         /// PGLookout settings.
         /// </summary>
         [Input("pglookout")]
-        public Inputs.GetPgPgUserConfigPglookoutArgs? Pglookout { get; set; }
+        public Input<Inputs.GetPgPgUserConfigPglookoutInputArgs>? Pglookout { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from private networks.
         /// </summary>
         [Input("privateAccess")]
-        public Inputs.GetPgPgUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetPgPgUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         /// <summary>
         /// Allow access to selected service components through Privatelink.
         /// </summary>
         [Input("privatelinkAccess")]
-        public Inputs.GetPgPgUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+        public Input<Inputs.GetPgPgUserConfigPrivatelinkAccessInputArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
         /// Name of another project to fork a service from. This has
         /// effect only when a new service is being created.
         /// </summary>
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
-        public Inputs.GetPgPgUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetPgPgUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         /// <summary>
         /// Recovery target time when forking a service. This has effect 
         /// only when a new service is being created.
         /// </summary>
         [Input("recoveryTargetTime")]
-        public string? RecoveryTargetTime { get; set; }
+        public Input<string>? RecoveryTargetTime { get; set; }
 
         /// <summary>
         /// Name of another service to fork from. This has effect only 
         /// when a new service is being created.
         /// </summary>
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         /// <summary>
         /// Percentage of total RAM that the database server uses for 
@@ -140,30 +140,30 @@ namespace Pulumi.Aiven.Inputs
         /// the shared_buffers configuration value. The absolute maximum is 12 GB.
         /// </summary>
         [Input("sharedBuffersPercentage")]
-        public string? SharedBuffersPercentage { get; set; }
+        public Input<string>? SharedBuffersPercentage { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
         /// <summary>
         /// Synchronous replication type. Note that the service plan 
         /// also needs to support synchronous replication.
         /// </summary>
         [Input("synchronousReplication")]
-        public string? SynchronousReplication { get; set; }
+        public Input<string>? SynchronousReplication { get; set; }
 
         /// <summary>
         /// TimescaleDB extension configuration values.
         /// </summary>
         [Input("timescaledb")]
-        public Inputs.GetPgPgUserConfigTimescaledbArgs? Timescaledb { get; set; }
+        public Input<Inputs.GetPgPgUserConfigTimescaledbInputArgs>? Timescaledb { get; set; }
 
         /// <summary>
         /// Variant of the PostgreSQL service, may affect the features that are 
         /// exposed by default. Options: `aiven` or `timescale`.
         /// </summary>
         [Input("variant")]
-        public string? Variant { get; set; }
+        public Input<string>? Variant { get; set; }
 
         /// <summary>
         /// Sets the maximum amount of memory to be used by a query operation (such 
@@ -171,9 +171,9 @@ namespace Pulumi.Aiven.Inputs
         /// total RAM (up to 32MB).
         /// </summary>
         [Input("workMem")]
-        public string? WorkMem { get; set; }
+        public Input<string>? WorkMem { get; set; }
 
-        public GetPgPgUserConfigArgs()
+        public GetPgPgUserConfigInputArgs()
         {
         }
     }

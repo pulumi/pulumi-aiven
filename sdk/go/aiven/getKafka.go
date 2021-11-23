@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupKafka(ctx, &aiven.LookupKafkaArgs{
+// 		_, err := aiven.LookupKafka(ctx, &GetKafkaArgs{
 // 			Project:     data.Aiven_project.Pr1.Project,
 // 			ServiceName: "my-kafka1",
 // 		}, nil)
@@ -173,4 +176,227 @@ type LookupKafkaResult struct {
 	// with backups much of the content can at least be restored from backup in case accidental
 	// deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
+}
+
+func LookupKafkaOutput(ctx *pulumi.Context, args LookupKafkaOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKafkaResult, error) {
+			args := v.(LookupKafkaArgs)
+			r, err := LookupKafka(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKafkaResultOutput)
+}
+
+// A collection of arguments for invoking getKafka.
+type LookupKafkaOutputArgs struct {
+	// defines where the cloud provider and region where the service is hosted
+	// in. This can be changed freely after service is created. Changing the value will trigger
+	// a potentially lengthy migration process for the service. Format is cloud provider name
+	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+	// specific region name. These are documented on each Cloud provider's own support articles,
+	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	CloudName  pulumi.StringPtrInput       `pulumi:"cloudName"`
+	Components GetKafkaComponentArrayInput `pulumi:"components"`
+	DefaultAcl pulumi.BoolPtrInput         `pulumi:"defaultAcl"`
+	// Kafka server provided values:
+	Kafka GetKafkaKafkaPtrInput `pulumi:"kafka"`
+	// defines Kafka specific additional configuration options. The following
+	// configuration options available:
+	KafkaUserConfig GetKafkaKafkaUserConfigPtrInput `pulumi:"kafkaUserConfig"`
+	// day of week when maintenance operations should be performed.
+	// On monday, tuesday, wednesday, etc.
+	MaintenanceWindowDow pulumi.StringPtrInput `pulumi:"maintenanceWindowDow"`
+	// time of day when maintenance operations should be performed.
+	// UTC time in HH:mm:ss format.
+	MaintenanceWindowTime pulumi.StringPtrInput `pulumi:"maintenanceWindowTime"`
+	// defines what kind of computing resources are allocated for the service. It can
+	// be changed after creation, though there are some restrictions when going to a smaller
+	// plan such as the new plan must have sufficient amount of disk space to store all current
+	// data and switching to a plan with fewer nodes might not be supported. The basic plan
+	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	Plan pulumi.StringPtrInput `pulumi:"plan"`
+	// identifies the project the service belongs to. To set up proper dependency
+	// between the project and the service, refer to the project as shown in the above example.
+	// Project cannot be changed later without destroying and re-creating the service.
+	Project pulumi.StringInput `pulumi:"project"`
+	// optionally specifies the VPC the service should run in. If the value
+	// is not set the service is not run inside a VPC. When set, the value should be given as a
+	// reference as shown above to set up dependencies correctly and the VPC must be in the same
+	// cloud and region as the service itself. Project can be freely moved to and from VPC after
+	// creation but doing so triggers migration to new servers so the operation can take
+	// significant amount of time to complete if the service has a lot of data.
+	ProjectVpcId pulumi.StringPtrInput `pulumi:"projectVpcId"`
+	// Kafka hostname.
+	ServiceHost         pulumi.StringPtrInput                `pulumi:"serviceHost"`
+	ServiceIntegrations GetKafkaServiceIntegrationArrayInput `pulumi:"serviceIntegrations"`
+	// specifies the actual name of the service. The name cannot be changed
+	// later without destroying and re-creating the service so name should be picked based on
+	// intended service usage rather than current attributes.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Password used for connecting to the Kafka service, if applicable.
+	ServicePassword pulumi.StringPtrInput `pulumi:"servicePassword"`
+	// Kafka port.
+	ServicePort pulumi.IntPtrInput    `pulumi:"servicePort"`
+	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
+	// URI for connecting to the Kafka service.
+	ServiceUri pulumi.StringPtrInput `pulumi:"serviceUri"`
+	// Username used for connecting to the Kafka service, if applicable.
+	ServiceUsername pulumi.StringPtrInput `pulumi:"serviceUsername"`
+	// Service state.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// prevents the service from being deleted. It is recommended to
+	// set this to `true` for all production services to prevent unintentional service
+	// deletion. This does not shield against deleting databases or topics but for services
+	// with backups much of the content can at least be restored from backup in case accidental
+	// deletion is done.
+	TerminationProtection pulumi.BoolPtrInput `pulumi:"terminationProtection"`
+}
+
+func (LookupKafkaOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKafkaArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKafka.
+type LookupKafkaResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKafkaResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKafkaResult)(nil)).Elem()
+}
+
+func (o LookupKafkaResultOutput) ToLookupKafkaResultOutput() LookupKafkaResultOutput {
+	return o
+}
+
+func (o LookupKafkaResultOutput) ToLookupKafkaResultOutputWithContext(ctx context.Context) LookupKafkaResultOutput {
+	return o
+}
+
+// defines where the cloud provider and region where the service is hosted
+// in. This can be changed freely after service is created. Changing the value will trigger
+// a potentially lengthy migration process for the service. Format is cloud provider name
+// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
+// specific region name. These are documented on each Cloud provider's own support articles,
+// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
+// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+func (o LookupKafkaResultOutput) CloudName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaResult) *string { return v.CloudName }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupKafkaResultOutput) Components() GetKafkaComponentArrayOutput {
+	return o.ApplyT(func(v LookupKafkaResult) []GetKafkaComponent { return v.Components }).(GetKafkaComponentArrayOutput)
+}
+
+func (o LookupKafkaResultOutput) DefaultAcl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupKafkaResult) *bool { return v.DefaultAcl }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupKafkaResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Kafka server provided values:
+func (o LookupKafkaResultOutput) Kafka() GetKafkaKafkaOutput {
+	return o.ApplyT(func(v LookupKafkaResult) GetKafkaKafka { return v.Kafka }).(GetKafkaKafkaOutput)
+}
+
+// defines Kafka specific additional configuration options. The following
+// configuration options available:
+func (o LookupKafkaResultOutput) KafkaUserConfig() GetKafkaKafkaUserConfigPtrOutput {
+	return o.ApplyT(func(v LookupKafkaResult) *GetKafkaKafkaUserConfig { return v.KafkaUserConfig }).(GetKafkaKafkaUserConfigPtrOutput)
+}
+
+// day of week when maintenance operations should be performed.
+// On monday, tuesday, wednesday, etc.
+func (o LookupKafkaResultOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaResult) *string { return v.MaintenanceWindowDow }).(pulumi.StringPtrOutput)
+}
+
+// time of day when maintenance operations should be performed.
+// UTC time in HH:mm:ss format.
+func (o LookupKafkaResultOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaResult) *string { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
+}
+
+// defines what kind of computing resources are allocated for the service. It can
+// be changed after creation, though there are some restrictions when going to a smaller
+// plan such as the new plan must have sufficient amount of disk space to store all current
+// data and switching to a plan with fewer nodes might not be supported. The basic plan
+// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
+// (roughly) the amount of memory on each node (also other attributes like number of CPUs
+// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+func (o LookupKafkaResultOutput) Plan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaResult) *string { return v.Plan }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupKafkaResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// optionally specifies the VPC the service should run in. If the value
+// is not set the service is not run inside a VPC. When set, the value should be given as a
+// reference as shown above to set up dependencies correctly and the VPC must be in the same
+// cloud and region as the service itself. Project can be freely moved to and from VPC after
+// creation but doing so triggers migration to new servers so the operation can take
+// significant amount of time to complete if the service has a lot of data.
+func (o LookupKafkaResultOutput) ProjectVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaResult) *string { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+}
+
+// Kafka hostname.
+func (o LookupKafkaResultOutput) ServiceHost() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaResult) string { return v.ServiceHost }).(pulumi.StringOutput)
+}
+
+func (o LookupKafkaResultOutput) ServiceIntegrations() GetKafkaServiceIntegrationArrayOutput {
+	return o.ApplyT(func(v LookupKafkaResult) []GetKafkaServiceIntegration { return v.ServiceIntegrations }).(GetKafkaServiceIntegrationArrayOutput)
+}
+
+func (o LookupKafkaResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Password used for connecting to the Kafka service, if applicable.
+func (o LookupKafkaResultOutput) ServicePassword() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaResult) string { return v.ServicePassword }).(pulumi.StringOutput)
+}
+
+// Kafka port.
+func (o LookupKafkaResultOutput) ServicePort() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupKafkaResult) int { return v.ServicePort }).(pulumi.IntOutput)
+}
+
+func (o LookupKafkaResultOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaResult) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// URI for connecting to the Kafka service.
+func (o LookupKafkaResultOutput) ServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaResult) string { return v.ServiceUri }).(pulumi.StringOutput)
+}
+
+// Username used for connecting to the Kafka service, if applicable.
+func (o LookupKafkaResultOutput) ServiceUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaResult) string { return v.ServiceUsername }).(pulumi.StringOutput)
+}
+
+// Service state.
+func (o LookupKafkaResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// prevents the service from being deleted. It is recommended to
+// set this to `true` for all production services to prevent unintentional service
+// deletion. This does not shield against deleting databases or topics but for services
+// with backups much of the content can at least be restored from backup in case accidental
+// deletion is done.
+func (o LookupKafkaResultOutput) TerminationProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupKafkaResult) *bool { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKafkaResultOutput{})
 }

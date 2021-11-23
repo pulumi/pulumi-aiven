@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("accessKey")]
-        public string? AccessKey { get; set; }
+        public Input<string>? AccessKey { get; set; }
 
         [Input("logGroupName")]
-        public string? LogGroupName { get; set; }
+        public Input<string>? LogGroupName { get; set; }
 
         [Input("region")]
-        public string? Region { get; set; }
+        public Input<string>? Region { get; set; }
 
         [Input("secretKey")]
-        public string? SecretKey { get; set; }
+        public Input<string>? SecretKey { get; set; }
 
-        public GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs()
+        public GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInputArgs()
         {
         }
     }

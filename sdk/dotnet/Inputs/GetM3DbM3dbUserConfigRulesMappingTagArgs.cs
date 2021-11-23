@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetM3DbM3dbUserConfigRulesMappingTagArgs : Pulumi.InvokeArgs
+    public sealed class GetM3DbM3dbUserConfigRulesMappingTagInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the namespace
         /// </summary>
         [Input("name")]
-        public string? Name { get; set; }
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Value of the tag.
         /// </summary>
         [Input("value")]
-        public string? Value { get; set; }
+        public Input<string>? Value { get; set; }
 
-        public GetM3DbM3dbUserConfigRulesMappingTagArgs()
+        public GetM3DbM3dbUserConfigRulesMappingTagInputArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,13 +28,13 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := 3
 // 		opt1 := 1
-// 		_, err := aiven.LookupKafkaTopic(ctx, &aiven.LookupKafkaTopicArgs{
+// 		_, err := aiven.LookupKafkaTopic(ctx, &GetKafkaTopicArgs{
 // 			Project:     aiven_project.Myproject.Project,
 // 			ServiceName: aiven_service.Myservice.Service_name,
 // 			TopicName:   "<TOPIC_NAME>",
 // 			Partitions:  &opt0,
 // 			Replication: &opt1,
-// 			Config: aiven.GetKafkaTopicConfig{
+// 			Config: GetKafkaTopicConfig{
 // 				FlushMs:                     "10",
 // 				UncleanLeaderElectionEnable: "true",
 // 				CleanupPolicy:               "compact",
@@ -106,4 +109,126 @@ type LookupKafkaTopicResult struct {
 	Tags                  []GetKafkaTopicTag `pulumi:"tags"`
 	TerminationProtection *bool              `pulumi:"terminationProtection"`
 	TopicName             string             `pulumi:"topicName"`
+}
+
+func LookupKafkaTopicOutput(ctx *pulumi.Context, args LookupKafkaTopicOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaTopicResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKafkaTopicResult, error) {
+			args := v.(LookupKafkaTopicArgs)
+			r, err := LookupKafkaTopic(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKafkaTopicResultOutput)
+}
+
+// A collection of arguments for invoking getKafkaTopic.
+type LookupKafkaTopicOutputArgs struct {
+	// cleanup.policy value, can be `create`, `delete` or `compact,delete`
+	CleanupPolicy pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
+	// Kafka topic configuration
+	Config GetKafkaTopicConfigPtrInput `pulumi:"config"`
+	// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+	MinimumInSyncReplicas pulumi.IntPtrInput `pulumi:"minimumInSyncReplicas"`
+	// Number of partitions to create in the topic.
+	Partitions pulumi.IntPtrInput `pulumi:"partitions"`
+	// and `serviceName` - (Required) define the project and service the topic belongs to.
+	// They should be defined using reference as shown above to set up dependencies correctly.
+	// These properties cannot be changed once the service is created. Doing so will result in
+	// the topic being deleted and new one created instead.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Replication factor for the topic.
+	Replication pulumi.IntPtrInput `pulumi:"replication"`
+	// retention.bytes value
+	RetentionBytes pulumi.IntPtrInput `pulumi:"retentionBytes"`
+	// Retention period in hours, if -1 it is infinite.
+	RetentionHours        pulumi.IntPtrInput         `pulumi:"retentionHours"`
+	ServiceName           pulumi.StringInput         `pulumi:"serviceName"`
+	Tags                  GetKafkaTopicTagArrayInput `pulumi:"tags"`
+	TerminationProtection pulumi.BoolPtrInput        `pulumi:"terminationProtection"`
+	// is the actual name of the topic account. This propery cannot be changed
+	// once the service is created. Doing so will result in the topic being deleted and new one
+	// created instead.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
+}
+
+func (LookupKafkaTopicOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKafkaTopicArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKafkaTopic.
+type LookupKafkaTopicResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKafkaTopicResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKafkaTopicResult)(nil)).Elem()
+}
+
+func (o LookupKafkaTopicResultOutput) ToLookupKafkaTopicResultOutput() LookupKafkaTopicResultOutput {
+	return o
+}
+
+func (o LookupKafkaTopicResultOutput) ToLookupKafkaTopicResultOutputWithContext(ctx context.Context) LookupKafkaTopicResultOutput {
+	return o
+}
+
+// cleanup.policy value, can be `create`, `delete` or `compact,delete`
+func (o LookupKafkaTopicResultOutput) CleanupPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topic configuration
+func (o LookupKafkaTopicResultOutput) Config() GetKafkaTopicConfigPtrOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) *GetKafkaTopicConfig { return v.Config }).(GetKafkaTopicConfigPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupKafkaTopicResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+func (o LookupKafkaTopicResultOutput) MinimumInSyncReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) *int { return v.MinimumInSyncReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Number of partitions to create in the topic.
+func (o LookupKafkaTopicResultOutput) Partitions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) *int { return v.Partitions }).(pulumi.IntPtrOutput)
+}
+
+func (o LookupKafkaTopicResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Replication factor for the topic.
+func (o LookupKafkaTopicResultOutput) Replication() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) *int { return v.Replication }).(pulumi.IntPtrOutput)
+}
+
+// retention.bytes value
+func (o LookupKafkaTopicResultOutput) RetentionBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) *int { return v.RetentionBytes }).(pulumi.IntPtrOutput)
+}
+
+// Retention period in hours, if -1 it is infinite.
+func (o LookupKafkaTopicResultOutput) RetentionHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) *int { return v.RetentionHours }).(pulumi.IntPtrOutput)
+}
+
+func (o LookupKafkaTopicResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupKafkaTopicResultOutput) Tags() GetKafkaTopicTagArrayOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) []GetKafkaTopicTag { return v.Tags }).(GetKafkaTopicTagArrayOutput)
+}
+
+func (o LookupKafkaTopicResultOutput) TerminationProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) *bool { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+}
+
+func (o LookupKafkaTopicResultOutput) TopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.TopicName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKafkaTopicResultOutput{})
 }

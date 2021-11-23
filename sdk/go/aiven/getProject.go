@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupProject(ctx, &aiven.LookupProjectArgs{
+// 		_, err := aiven.LookupProject(ctx, &GetProjectArgs{
 // 			Project: "<PROJECT_NAME>",
 // 		}, nil)
 // 		if err != nil {
@@ -143,4 +146,195 @@ type LookupProjectResult struct {
 	TechnicalEmails              []string `pulumi:"technicalEmails"`
 	UseSourceProjectBillingGroup *bool    `pulumi:"useSourceProjectBillingGroup"`
 	VatId                        *string  `pulumi:"vatId"`
+}
+
+func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupProjectResult, error) {
+			args := v.(LookupProjectArgs)
+			r, err := LookupProject(ctx, &args, opts...)
+			return *r, err
+		}).(LookupProjectResultOutput)
+}
+
+// A collection of arguments for invoking getProject.
+type LookupProjectOutputArgs struct {
+	// is an optional property to link a project to already an existing account by
+	// using account ID.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// is a computed property returning the amount of platform credits available to
+	// the project. This could be your free trial or other promotional credits.
+	AvailableCredits pulumi.StringPtrInput   `pulumi:"availableCredits"`
+	BillingAddress   pulumi.StringPtrInput   `pulumi:"billingAddress"`
+	BillingCurrency  pulumi.StringPtrInput   `pulumi:"billingCurrency"`
+	BillingEmails    pulumi.StringArrayInput `pulumi:"billingEmails"`
+	BillingExtraText pulumi.StringPtrInput   `pulumi:"billingExtraText"`
+	BillingGroup     pulumi.StringPtrInput   `pulumi:"billingGroup"`
+	// is a computed property that can be used to read the CA certificate of the
+	// project. This is required for configuring clients that connect to certain services like
+	// Kafka. This value cannot be set, only read.
+	CaCert pulumi.StringPtrInput `pulumi:"caCert"`
+	// is either the full card UUID or the last 4 digits of the card. As the full
+	// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+	// the card. This can be omitted if `copyFromProject` is used to copy billing info from
+	// another project.
+	CardId pulumi.StringPtrInput `pulumi:"cardId"`
+	// is the name of another project used to copy billing information and
+	// some other project attributes like technical contacts from. This is mostly relevant when
+	// an existing project has billing type set to invoice and that needs to be copied over to a
+	// new project. (Setting billing is otherwise not allowed over the API.) This only has
+	// effect when the project is created.
+	CopyFromProject pulumi.StringPtrInput `pulumi:"copyFromProject"`
+	Country         pulumi.StringPtrInput `pulumi:"country"`
+	CountryCode     pulumi.StringPtrInput `pulumi:"countryCode"`
+	// defines the default cloud provider and region where services are
+	// hosted. This can be changed freely after the project is created. This will not affect existing
+	// services.
+	DefaultCloud pulumi.StringPtrInput `pulumi:"defaultCloud"`
+	// is a computed property returning the current accumulated bill for this
+	// project in the current billing period.
+	EstimatedBalance pulumi.StringPtrInput `pulumi:"estimatedBalance"`
+	// is a computed property returning the method of invoicing used for payments for
+	// this project, e.g. "card".
+	PaymentMethod pulumi.StringPtrInput `pulumi:"paymentMethod"`
+	// defines the name of the project. Name must be globally unique (between all
+	// Aiven customers) and cannot be changed later without destroying and re-creating the
+	// project, including all sub-resources.
+	Project pulumi.StringInput `pulumi:"project"`
+	// defines the email addresses that will receive alerts about
+	// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+	// this up-to-date to be aware of any potential issues with your project.
+	TechnicalEmails              pulumi.StringArrayInput `pulumi:"technicalEmails"`
+	UseSourceProjectBillingGroup pulumi.BoolPtrInput     `pulumi:"useSourceProjectBillingGroup"`
+	VatId                        pulumi.StringPtrInput   `pulumi:"vatId"`
+}
+
+func (LookupProjectOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProject.
+type LookupProjectResultOutput struct{ *pulumi.OutputState }
+
+func (LookupProjectResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectResult)(nil)).Elem()
+}
+
+func (o LookupProjectResultOutput) ToLookupProjectResultOutput() LookupProjectResultOutput {
+	return o
+}
+
+func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx context.Context) LookupProjectResultOutput {
+	return o
+}
+
+// is an optional property to link a project to already an existing account by
+// using account ID.
+func (o LookupProjectResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// is a computed property returning the amount of platform credits available to
+// the project. This could be your free trial or other promotional credits.
+func (o LookupProjectResultOutput) AvailableCredits() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.AvailableCredits }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) BillingAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.BillingAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupProjectResultOutput) BillingCurrency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.BillingCurrency }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupProjectResultOutput) BillingEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupProjectResult) []string { return v.BillingEmails }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupProjectResultOutput) BillingExtraText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.BillingExtraText }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupProjectResultOutput) BillingGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.BillingGroup }).(pulumi.StringPtrOutput)
+}
+
+// is a computed property that can be used to read the CA certificate of the
+// project. This is required for configuring clients that connect to certain services like
+// Kafka. This value cannot be set, only read.
+func (o LookupProjectResultOutput) CaCert() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.CaCert }).(pulumi.StringOutput)
+}
+
+// is either the full card UUID or the last 4 digits of the card. As the full
+// UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
+// the card. This can be omitted if `copyFromProject` is used to copy billing info from
+// another project.
+func (o LookupProjectResultOutput) CardId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.CardId }).(pulumi.StringPtrOutput)
+}
+
+// is the name of another project used to copy billing information and
+// some other project attributes like technical contacts from. This is mostly relevant when
+// an existing project has billing type set to invoice and that needs to be copied over to a
+// new project. (Setting billing is otherwise not allowed over the API.) This only has
+// effect when the project is created.
+func (o LookupProjectResultOutput) CopyFromProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.CopyFromProject }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupProjectResultOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.Country }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) CountryCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.CountryCode }).(pulumi.StringPtrOutput)
+}
+
+// defines the default cloud provider and region where services are
+// hosted. This can be changed freely after the project is created. This will not affect existing
+// services.
+func (o LookupProjectResultOutput) DefaultCloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.DefaultCloud }).(pulumi.StringPtrOutput)
+}
+
+// is a computed property returning the current accumulated bill for this
+// project in the current billing period.
+func (o LookupProjectResultOutput) EstimatedBalance() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.EstimatedBalance }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// is a computed property returning the method of invoicing used for payments for
+// this project, e.g. "card".
+func (o LookupProjectResultOutput) PaymentMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.PaymentMethod }).(pulumi.StringOutput)
+}
+
+func (o LookupProjectResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// defines the email addresses that will receive alerts about
+// upcoming maintenance updates or warnings about service instability. It is a good practice to keep
+// this up-to-date to be aware of any potential issues with your project.
+func (o LookupProjectResultOutput) TechnicalEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupProjectResult) []string { return v.TechnicalEmails }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupProjectResultOutput) UseSourceProjectBillingGroup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *bool { return v.UseSourceProjectBillingGroup }).(pulumi.BoolPtrOutput)
+}
+
+func (o LookupProjectResultOutput) VatId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.VatId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupProjectResultOutput{})
 }

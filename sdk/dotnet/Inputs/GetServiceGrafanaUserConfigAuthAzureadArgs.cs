@@ -10,40 +10,40 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceGrafanaUserConfigAuthAzureadArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceGrafanaUserConfigAuthAzureadInputArgs : Pulumi.ResourceArgs
     {
         [Input("allowSignUp")]
-        public string? AllowSignUp { get; set; }
+        public Input<string>? AllowSignUp { get; set; }
 
         [Input("allowedDomains")]
-        private List<string>? _allowedDomains;
-        public List<string> AllowedDomains
+        private InputList<string>? _allowedDomains;
+        public InputList<string> AllowedDomains
         {
-            get => _allowedDomains ?? (_allowedDomains = new List<string>());
+            get => _allowedDomains ?? (_allowedDomains = new InputList<string>());
             set => _allowedDomains = value;
         }
 
         [Input("allowedGroups")]
-        private List<string>? _allowedGroups;
-        public List<string> AllowedGroups
+        private InputList<string>? _allowedGroups;
+        public InputList<string> AllowedGroups
         {
-            get => _allowedGroups ?? (_allowedGroups = new List<string>());
+            get => _allowedGroups ?? (_allowedGroups = new InputList<string>());
             set => _allowedGroups = value;
         }
 
         [Input("authUrl")]
-        public string? AuthUrl { get; set; }
+        public Input<string>? AuthUrl { get; set; }
 
         [Input("clientId")]
-        public string? ClientId { get; set; }
+        public Input<string>? ClientId { get; set; }
 
         [Input("clientSecret")]
-        public string? ClientSecret { get; set; }
+        public Input<string>? ClientSecret { get; set; }
 
         [Input("tokenUrl")]
-        public string? TokenUrl { get; set; }
+        public Input<string>? TokenUrl { get; set; }
 
-        public GetServiceGrafanaUserConfigAuthAzureadArgs()
+        public GetServiceGrafanaUserConfigAuthAzureadInputArgs()
         {
         }
     }

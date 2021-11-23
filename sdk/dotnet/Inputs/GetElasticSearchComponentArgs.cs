@@ -10,30 +10,30 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetElasticSearchComponentArgs : Pulumi.InvokeArgs
+    public sealed class GetElasticSearchComponentInputArgs : Pulumi.ResourceArgs
     {
         [Input("component", required: true)]
-        public string Component { get; set; } = null!;
+        public Input<string> Component { get; set; } = null!;
 
         [Input("host", required: true)]
-        public string Host { get; set; } = null!;
+        public Input<string> Host { get; set; } = null!;
 
         [Input("kafkaAuthenticationMethod", required: true)]
-        public string KafkaAuthenticationMethod { get; set; } = null!;
+        public Input<string> KafkaAuthenticationMethod { get; set; } = null!;
 
         [Input("port", required: true)]
-        public int Port { get; set; }
+        public Input<int> Port { get; set; } = null!;
 
         [Input("route", required: true)]
-        public string Route { get; set; } = null!;
+        public Input<string> Route { get; set; } = null!;
 
         [Input("ssl", required: true)]
-        public bool Ssl { get; set; }
+        public Input<bool> Ssl { get; set; } = null!;
 
         [Input("usage", required: true)]
-        public string Usage { get; set; } = null!;
+        public Input<string> Usage { get; set; } = null!;
 
-        public GetElasticSearchComponentArgs()
+        public GetElasticSearchComponentInputArgs()
         {
         }
     }

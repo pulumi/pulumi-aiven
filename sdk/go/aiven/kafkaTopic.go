@@ -337,7 +337,7 @@ type KafkaTopicArrayInput interface {
 type KafkaTopicArray []KafkaTopicInput
 
 func (KafkaTopicArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*KafkaTopic)(nil))
+	return reflect.TypeOf((*[]*KafkaTopic)(nil)).Elem()
 }
 
 func (i KafkaTopicArray) ToKafkaTopicArrayOutput() KafkaTopicArrayOutput {
@@ -362,7 +362,7 @@ type KafkaTopicMapInput interface {
 type KafkaTopicMap map[string]KafkaTopicInput
 
 func (KafkaTopicMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*KafkaTopic)(nil))
+	return reflect.TypeOf((*map[string]*KafkaTopic)(nil)).Elem()
 }
 
 func (i KafkaTopicMap) ToKafkaTopicMapOutput() KafkaTopicMapOutput {
@@ -373,9 +373,7 @@ func (i KafkaTopicMap) ToKafkaTopicMapOutputWithContext(ctx context.Context) Kaf
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicMapOutput)
 }
 
-type KafkaTopicOutput struct {
-	*pulumi.OutputState
-}
+type KafkaTopicOutput struct{ *pulumi.OutputState }
 
 func (KafkaTopicOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KafkaTopic)(nil))
@@ -394,14 +392,12 @@ func (o KafkaTopicOutput) ToKafkaTopicPtrOutput() KafkaTopicPtrOutput {
 }
 
 func (o KafkaTopicOutput) ToKafkaTopicPtrOutputWithContext(ctx context.Context) KafkaTopicPtrOutput {
-	return o.ApplyT(func(v KafkaTopic) *KafkaTopic {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaTopic) *KafkaTopic {
 		return &v
 	}).(KafkaTopicPtrOutput)
 }
 
-type KafkaTopicPtrOutput struct {
-	*pulumi.OutputState
-}
+type KafkaTopicPtrOutput struct{ *pulumi.OutputState }
 
 func (KafkaTopicPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KafkaTopic)(nil))
@@ -413,6 +409,16 @@ func (o KafkaTopicPtrOutput) ToKafkaTopicPtrOutput() KafkaTopicPtrOutput {
 
 func (o KafkaTopicPtrOutput) ToKafkaTopicPtrOutputWithContext(ctx context.Context) KafkaTopicPtrOutput {
 	return o
+}
+
+func (o KafkaTopicPtrOutput) Elem() KafkaTopicOutput {
+	return o.ApplyT(func(v *KafkaTopic) KafkaTopic {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaTopic
+		return ret
+	}).(KafkaTopicOutput)
 }
 
 type KafkaTopicArrayOutput struct{ *pulumi.OutputState }
@@ -456,6 +462,10 @@ func (o KafkaTopicMapOutput) MapIndex(k pulumi.StringInput) KafkaTopicOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaTopicInput)(nil)).Elem(), &KafkaTopic{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaTopicPtrInput)(nil)).Elem(), &KafkaTopic{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaTopicArrayInput)(nil)).Elem(), KafkaTopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaTopicMapInput)(nil)).Elem(), KafkaTopicMap{})
 	pulumi.RegisterOutputType(KafkaTopicOutput{})
 	pulumi.RegisterOutputType(KafkaTopicPtrOutput{})
 	pulumi.RegisterOutputType(KafkaTopicArrayOutput{})

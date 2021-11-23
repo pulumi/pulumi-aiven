@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -45,6 +46,41 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetMirrorMakerReplicationFlowResult> InvokeAsync(GetMirrorMakerReplicationFlowArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # MirrorMaker 2 Replication Flow Data Source
+        /// 
+        /// The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 
+        /// Replication Flow on Aiven Cloud.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var f1 = Output.Create(Aiven.GetMirrorMakerReplicationFlow.InvokeAsync(new Aiven.GetMirrorMakerReplicationFlowArgs
+        ///         {
+        ///             Project = aiven_project.Kafka_mm_project1.Project,
+        ///             ServiceName = aiven_service.Mm.Service_name,
+        ///             SourceCluster = aiven_service.Source.Service_name,
+        ///             TargetCluster = aiven_service.Target.Service_name,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMirrorMakerReplicationFlowResult> Invoke(GetMirrorMakerReplicationFlowInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowInvokeArgs(), options.WithVersion());
     }
 
 
@@ -115,6 +151,77 @@ namespace Pulumi.Aiven
         }
 
         public GetMirrorMakerReplicationFlowArgs()
+        {
+        }
+    }
+
+    public sealed class GetMirrorMakerReplicationFlowInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("emitHeartbeatsEnabled")]
+        public Input<bool>? EmitHeartbeatsEnabled { get; set; }
+
+        /// <summary>
+        /// enable of disable replication flows for a MirrorMaker service
+        /// </summary>
+        [Input("enable")]
+        public Input<bool>? Enable { get; set; }
+
+        /// <summary>
+        /// and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
+        /// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        /// </summary>
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        [Input("replicationPolicyClass")]
+        public Input<string>? ReplicationPolicyClass { get; set; }
+
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        /// <summary>
+        /// is a source cluster alias.
+        /// </summary>
+        [Input("sourceCluster", required: true)]
+        public Input<string> SourceCluster { get; set; } = null!;
+
+        [Input("syncGroupOffsetsEnabled")]
+        public Input<bool>? SyncGroupOffsetsEnabled { get; set; }
+
+        [Input("syncGroupOffsetsIntervalSeconds")]
+        public Input<int>? SyncGroupOffsetsIntervalSeconds { get; set; }
+
+        /// <summary>
+        /// is a target cluster alias.
+        /// </summary>
+        [Input("targetCluster", required: true)]
+        public Input<string> TargetCluster { get; set; } = null!;
+
+        [Input("topics")]
+        private InputList<string>? _topics;
+
+        /// <summary>
+        /// is a list of topics and/or regular expressions to replicate.
+        /// </summary>
+        public InputList<string> Topics
+        {
+            get => _topics ?? (_topics = new InputList<string>());
+            set => _topics = value;
+        }
+
+        [Input("topicsBlacklists")]
+        private InputList<string>? _topicsBlacklists;
+
+        /// <summary>
+        /// is a list of topics and/or regular expressions to not replicate.
+        /// </summary>
+        public InputList<string> TopicsBlacklists
+        {
+            get => _topicsBlacklists ?? (_topicsBlacklists = new InputList<string>());
+            set => _topicsBlacklists = value;
+        }
+
+        public GetMirrorMakerReplicationFlowInvokeArgs()
         {
         }
     }

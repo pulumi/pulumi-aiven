@@ -10,14 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetCassandaCassandraUserConfigCassandraArgs : Pulumi.InvokeArgs
+    public sealed class GetCassandaCassandraUserConfigCassandraInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fail any multiple-partition batch exceeding this value.
         /// 50kb (10x warn threshold) by default.
         /// </summary>
         [Input("batchSizeFailThresholdInKb")]
-        public string? BatchSizeFailThresholdInKb { get; set; }
+        public Input<string>? BatchSizeFailThresholdInKb { get; set; }
 
         /// <summary>
         /// Log a warning message on any multiple-partition
@@ -25,9 +25,9 @@ namespace Pulumi.Aiven.Inputs
         /// the size of this thresholdas it can lead to node instability.
         /// </summary>
         [Input("batchSizeWarnThresholdInKb")]
-        public string? BatchSizeWarnThresholdInKb { get; set; }
+        public Input<string>? BatchSizeWarnThresholdInKb { get; set; }
 
-        public GetCassandaCassandraUserConfigCassandraArgs()
+        public GetCassandaCassandraUserConfigCassandraInputArgs()
         {
         }
     }

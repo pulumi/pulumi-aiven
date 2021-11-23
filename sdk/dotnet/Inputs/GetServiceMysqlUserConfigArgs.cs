@@ -10,62 +10,62 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceMysqlUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceMysqlUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("adminPassword")]
-        public string? AdminPassword { get; set; }
+        public Input<string>? AdminPassword { get; set; }
 
         [Input("adminUsername")]
-        public string? AdminUsername { get; set; }
+        public Input<string>? AdminUsername { get; set; }
 
         [Input("backupHour")]
-        public string? BackupHour { get; set; }
+        public Input<string>? BackupHour { get; set; }
 
         [Input("backupMinute")]
-        public string? BackupMinute { get; set; }
+        public Input<string>? BackupMinute { get; set; }
 
         [Input("binlogRetentionPeriod")]
-        public string? BinlogRetentionPeriod { get; set; }
+        public Input<string>? BinlogRetentionPeriod { get; set; }
 
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
-        public List<string> IpFilters
+        private InputList<string>? _ipFilters;
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
         [Input("migration")]
-        public Inputs.GetServiceMysqlUserConfigMigrationArgs? Migration { get; set; }
+        public Input<Inputs.GetServiceMysqlUserConfigMigrationInputArgs>? Migration { get; set; }
 
         [Input("mysql")]
-        public Inputs.GetServiceMysqlUserConfigMysqlArgs? Mysql { get; set; }
+        public Input<Inputs.GetServiceMysqlUserConfigMysqlInputArgs>? Mysql { get; set; }
 
         [Input("mysqlVersion")]
-        public string? MysqlVersion { get; set; }
+        public Input<string>? MysqlVersion { get; set; }
 
         [Input("privateAccess")]
-        public Inputs.GetServiceMysqlUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetServiceMysqlUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         [Input("privatelinkAccess")]
-        public Inputs.GetServiceMysqlUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+        public Input<Inputs.GetServiceMysqlUserConfigPrivatelinkAccessInputArgs>? PrivatelinkAccess { get; set; }
 
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         [Input("publicAccess")]
-        public Inputs.GetServiceMysqlUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetServiceMysqlUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         [Input("recoveryTargetTime")]
-        public string? RecoveryTargetTime { get; set; }
+        public Input<string>? RecoveryTargetTime { get; set; }
 
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetServiceMysqlUserConfigArgs()
+        public GetServiceMysqlUserConfigInputArgs()
         {
         }
     }

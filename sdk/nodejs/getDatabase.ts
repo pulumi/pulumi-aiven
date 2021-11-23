@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -86,4 +85,33 @@ export interface GetDatabaseResult {
     readonly project: string;
     readonly serviceName: string;
     readonly terminationProtection?: boolean;
+}
+
+export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
+    return pulumi.output(args).apply(a => getDatabase(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDatabase.
+ */
+export interface GetDatabaseOutputArgs {
+    /**
+     * is the actual name of the database.
+     */
+    databaseName: pulumi.Input<string>;
+    /**
+     * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+     */
+    lcCollate?: pulumi.Input<string>;
+    /**
+     * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+     */
+    lcCtype?: pulumi.Input<string>;
+    /**
+     * and `serviceName` - (Required) define the project and service the database belongs to.
+     * They should be defined using reference as shown above to set up dependencies correctly.
+     */
+    project: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
+    terminationProtection?: pulumi.Input<boolean>;
 }

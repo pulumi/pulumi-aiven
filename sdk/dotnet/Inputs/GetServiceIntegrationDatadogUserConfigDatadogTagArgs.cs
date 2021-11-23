@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationDatadogUserConfigDatadogTagArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationDatadogUserConfigDatadogTagInputArgs : Pulumi.ResourceArgs
     {
         [Input("comment")]
-        public string? Comment { get; set; }
+        public Input<string>? Comment { get; set; }
 
         [Input("tag")]
-        public string? Tag { get; set; }
+        public Input<string>? Tag { get; set; }
 
-        public GetServiceIntegrationDatadogUserConfigDatadogTagArgs()
+        public GetServiceIntegrationDatadogUserConfigDatadogTagInputArgs()
         {
         }
     }

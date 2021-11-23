@@ -217,7 +217,7 @@ type OpenSearchAclConfigArrayInput interface {
 type OpenSearchAclConfigArray []OpenSearchAclConfigInput
 
 func (OpenSearchAclConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*OpenSearchAclConfig)(nil))
+	return reflect.TypeOf((*[]*OpenSearchAclConfig)(nil)).Elem()
 }
 
 func (i OpenSearchAclConfigArray) ToOpenSearchAclConfigArrayOutput() OpenSearchAclConfigArrayOutput {
@@ -242,7 +242,7 @@ type OpenSearchAclConfigMapInput interface {
 type OpenSearchAclConfigMap map[string]OpenSearchAclConfigInput
 
 func (OpenSearchAclConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*OpenSearchAclConfig)(nil))
+	return reflect.TypeOf((*map[string]*OpenSearchAclConfig)(nil)).Elem()
 }
 
 func (i OpenSearchAclConfigMap) ToOpenSearchAclConfigMapOutput() OpenSearchAclConfigMapOutput {
@@ -253,9 +253,7 @@ func (i OpenSearchAclConfigMap) ToOpenSearchAclConfigMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchAclConfigMapOutput)
 }
 
-type OpenSearchAclConfigOutput struct {
-	*pulumi.OutputState
-}
+type OpenSearchAclConfigOutput struct{ *pulumi.OutputState }
 
 func (OpenSearchAclConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OpenSearchAclConfig)(nil))
@@ -274,14 +272,12 @@ func (o OpenSearchAclConfigOutput) ToOpenSearchAclConfigPtrOutput() OpenSearchAc
 }
 
 func (o OpenSearchAclConfigOutput) ToOpenSearchAclConfigPtrOutputWithContext(ctx context.Context) OpenSearchAclConfigPtrOutput {
-	return o.ApplyT(func(v OpenSearchAclConfig) *OpenSearchAclConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenSearchAclConfig) *OpenSearchAclConfig {
 		return &v
 	}).(OpenSearchAclConfigPtrOutput)
 }
 
-type OpenSearchAclConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type OpenSearchAclConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (OpenSearchAclConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OpenSearchAclConfig)(nil))
@@ -293,6 +289,16 @@ func (o OpenSearchAclConfigPtrOutput) ToOpenSearchAclConfigPtrOutput() OpenSearc
 
 func (o OpenSearchAclConfigPtrOutput) ToOpenSearchAclConfigPtrOutputWithContext(ctx context.Context) OpenSearchAclConfigPtrOutput {
 	return o
+}
+
+func (o OpenSearchAclConfigPtrOutput) Elem() OpenSearchAclConfigOutput {
+	return o.ApplyT(func(v *OpenSearchAclConfig) OpenSearchAclConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OpenSearchAclConfig
+		return ret
+	}).(OpenSearchAclConfigOutput)
 }
 
 type OpenSearchAclConfigArrayOutput struct{ *pulumi.OutputState }
@@ -336,6 +342,10 @@ func (o OpenSearchAclConfigMapOutput) MapIndex(k pulumi.StringInput) OpenSearchA
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchAclConfigInput)(nil)).Elem(), &OpenSearchAclConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchAclConfigPtrInput)(nil)).Elem(), &OpenSearchAclConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchAclConfigArrayInput)(nil)).Elem(), OpenSearchAclConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchAclConfigMapInput)(nil)).Elem(), OpenSearchAclConfigMap{})
 	pulumi.RegisterOutputType(OpenSearchAclConfigOutput{})
 	pulumi.RegisterOutputType(OpenSearchAclConfigPtrOutput{})
 	pulumi.RegisterOutputType(OpenSearchAclConfigArrayOutput{})

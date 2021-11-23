@@ -10,34 +10,34 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetGrafanaGrafanaUserConfigExternalImageStorageArgs : Pulumi.InvokeArgs
+    public sealed class GetGrafanaGrafanaUserConfigExternalImageStorageInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// S3 access key. Requires permissions to the S3 bucket for the 
         /// s3:PutObject and s3:PutObjectAcl actions
         /// </summary>
         [Input("accessKey")]
-        public string? AccessKey { get; set; }
+        public Input<string>? AccessKey { get; set; }
 
         /// <summary>
         /// Bucket URL for S3
         /// </summary>
         [Input("bucketUrl")]
-        public string? BucketUrl { get; set; }
+        public Input<string>? BucketUrl { get; set; }
 
         /// <summary>
         /// Provider type
         /// </summary>
         [Input("provider")]
-        public string? Provider { get; set; }
+        public Input<string>? Provider { get; set; }
 
         /// <summary>
         /// S3 secret key
         /// </summary>
         [Input("secretKey")]
-        public string? SecretKey { get; set; }
+        public Input<string>? SecretKey { get; set; }
 
-        public GetGrafanaGrafanaUserConfigExternalImageStorageArgs()
+        public GetGrafanaGrafanaUserConfigExternalImageStorageInputArgs()
         {
         }
     }

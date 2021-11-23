@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -91,4 +90,38 @@ export interface GetAwsPrivatelinkResult {
     readonly principals?: string[];
     readonly project: string;
     readonly serviceName: string;
+}
+
+export function getAwsPrivatelinkOutput(args: GetAwsPrivatelinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsPrivatelinkResult> {
+    return pulumi.output(args).apply(a => getAwsPrivatelink(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAwsPrivatelink.
+ */
+export interface GetAwsPrivatelinkOutputArgs {
+    /**
+     * AWS service ID.
+     */
+    awsServiceId?: pulumi.Input<string>;
+    /**
+     * AWS service name.
+     */
+    awsServiceName?: pulumi.Input<string>;
+    /**
+     * list of allowed principals
+     */
+    principals?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * identifies the project the service belongs to. To set up proper dependency between the project
+     * and the service, refer to the project as shown in the above example. Project cannot be changed later without
+     * destroying and re-creating the service.
+     */
+    project: pulumi.Input<string>;
+    /**
+     * specifies the actual name of the service. The name cannot be changed later without
+     * destroying and re-creating the service so name should be picked based on intended service usage rather than current
+     * attributes.
+     */
+    serviceName: pulumi.Input<string>;
 }

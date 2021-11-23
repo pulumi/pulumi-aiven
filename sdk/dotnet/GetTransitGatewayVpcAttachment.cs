@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -44,6 +45,40 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Task<GetTransitGatewayVpcAttachmentResult> InvokeAsync(GetTransitGatewayVpcAttachmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransitGatewayVpcAttachmentResult>("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", args ?? new GetTransitGatewayVpcAttachmentArgs(), options.WithVersion());
+
+        /// <summary>
+        /// ## # Transit Gateway VPC Attachment Data Source
+        /// 
+        /// The Transit Gateway VPC Attachment resource allows the creation and management Transit 
+        /// Gateway VPC Attachment VPC peering connection between Aiven and AWS.  
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var attachment = Output.Create(Aiven.GetTransitGatewayVpcAttachment.InvokeAsync(new Aiven.GetTransitGatewayVpcAttachmentArgs
+        ///         {
+        ///             VpcId = aiven_project_vpc.Bar.Id,
+        ///             PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
+        ///             PeerVpc = "google-project1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTransitGatewayVpcAttachmentResult> Invoke(GetTransitGatewayVpcAttachmentInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTransitGatewayVpcAttachmentResult>("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", args ?? new GetTransitGatewayVpcAttachmentInvokeArgs(), options.WithVersion());
     }
 
 
@@ -100,6 +135,63 @@ namespace Pulumi.Aiven
         public string VpcId { get; set; } = null!;
 
         public GetTransitGatewayVpcAttachmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetTransitGatewayVpcAttachmentInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// AWS account ID of the peered VPC.
+        /// </summary>
+        [Input("peerCloudAccount", required: true)]
+        public Input<string> PeerCloudAccount { get; set; } = null!;
+
+        /// <summary>
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC).
+        /// </summary>
+        [Input("peerRegion")]
+        public Input<string>? PeerRegion { get; set; }
+
+        /// <summary>
+        /// Transit gateway ID
+        /// </summary>
+        [Input("peerVpc", required: true)]
+        public Input<string> PeerVpc { get; set; } = null!;
+
+        [Input("peeringConnectionId")]
+        public Input<string>? PeeringConnectionId { get; set; }
+
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        [Input("stateInfo")]
+        private InputMap<object>? _stateInfo;
+        public InputMap<object> StateInfo
+        {
+            get => _stateInfo ?? (_stateInfo = new InputMap<object>());
+            set => _stateInfo = value;
+        }
+
+        [Input("userPeerNetworkCidrs")]
+        private InputList<string>? _userPeerNetworkCidrs;
+
+        /// <summary>
+        /// List of private IPv4 ranges to route through the peering connection.
+        /// </summary>
+        public InputList<string> UserPeerNetworkCidrs
+        {
+            get => _userPeerNetworkCidrs ?? (_userPeerNetworkCidrs = new InputList<string>());
+            set => _userPeerNetworkCidrs = value;
+        }
+
+        /// <summary>
+        /// is the Aiven VPC the peering connection is associated with.
+        /// </summary>
+        [Input("vpcId", required: true)]
+        public Input<string> VpcId { get; set; } = null!;
+
+        public GetTransitGatewayVpcAttachmentInvokeArgs()
         {
         }
     }

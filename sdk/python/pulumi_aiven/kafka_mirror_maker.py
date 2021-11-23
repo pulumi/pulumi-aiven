@@ -653,11 +653,11 @@ class KafkaMirrorMaker(pulumi.CustomResource):
             service_name="my-mm1",
             kafka_mirrormaker_user_config=aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigArgs(
                 ip_filters=["0.0.0.0/0"],
-                kafka_mirrormaker={
-                    "refreshGroupsIntervalSeconds": 600,
-                    "refreshTopicsEnabled": True,
-                    "refreshTopicsIntervalSeconds": 600,
-                },
+                kafka_mirrormaker=aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs(
+                    refresh_groups_interval_seconds="600",
+                    refresh_topics_enabled="true",
+                    refresh_topics_interval_seconds="600",
+                ),
             ))
         ```
 
@@ -727,11 +727,11 @@ class KafkaMirrorMaker(pulumi.CustomResource):
             service_name="my-mm1",
             kafka_mirrormaker_user_config=aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigArgs(
                 ip_filters=["0.0.0.0/0"],
-                kafka_mirrormaker={
-                    "refreshGroupsIntervalSeconds": 600,
-                    "refreshTopicsEnabled": True,
-                    "refreshTopicsIntervalSeconds": 600,
-                },
+                kafka_mirrormaker=aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs(
+                    refresh_groups_interval_seconds="600",
+                    refresh_topics_enabled="true",
+                    refresh_topics_interval_seconds="600",
+                ),
             ))
         ```
 

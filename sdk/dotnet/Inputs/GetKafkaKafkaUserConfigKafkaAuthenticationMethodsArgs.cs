@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaKafkaUserConfigKafkaAuthenticationMethodsInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable certificate/SSL authentication
         /// </summary>
         [Input("certificate")]
-        public string? Certificate { get; set; }
+        public Input<string>? Certificate { get; set; }
 
         /// <summary>
         /// Enable SASL authentication
         /// </summary>
         [Input("sasl")]
-        public string? Sasl { get; set; }
+        public Input<string>? Sasl { get; set; }
 
-        public GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs()
+        public GetKafkaKafkaUserConfigKafkaAuthenticationMethodsInputArgs()
         {
         }
     }

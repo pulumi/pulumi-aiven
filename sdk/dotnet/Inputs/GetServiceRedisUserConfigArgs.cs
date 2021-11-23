@@ -10,74 +10,74 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceRedisUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceRedisUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("ipFilters")]
-        private List<string>? _ipFilters;
-        public List<string> IpFilters
+        private InputList<string>? _ipFilters;
+        public InputList<string> IpFilters
         {
-            get => _ipFilters ?? (_ipFilters = new List<string>());
+            get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
         [Input("migration")]
-        public Inputs.GetServiceRedisUserConfigMigrationArgs? Migration { get; set; }
+        public Input<Inputs.GetServiceRedisUserConfigMigrationInputArgs>? Migration { get; set; }
 
         [Input("privateAccess")]
-        public Inputs.GetServiceRedisUserConfigPrivateAccessArgs? PrivateAccess { get; set; }
+        public Input<Inputs.GetServiceRedisUserConfigPrivateAccessInputArgs>? PrivateAccess { get; set; }
 
         [Input("privatelinkAccess")]
-        public Inputs.GetServiceRedisUserConfigPrivatelinkAccessArgs? PrivatelinkAccess { get; set; }
+        public Input<Inputs.GetServiceRedisUserConfigPrivatelinkAccessInputArgs>? PrivatelinkAccess { get; set; }
 
         [Input("projectToForkFrom")]
-        public string? ProjectToForkFrom { get; set; }
+        public Input<string>? ProjectToForkFrom { get; set; }
 
         [Input("publicAccess")]
-        public Inputs.GetServiceRedisUserConfigPublicAccessArgs? PublicAccess { get; set; }
+        public Input<Inputs.GetServiceRedisUserConfigPublicAccessInputArgs>? PublicAccess { get; set; }
 
         [Input("recoveryBasebackupName")]
-        public string? RecoveryBasebackupName { get; set; }
+        public Input<string>? RecoveryBasebackupName { get; set; }
 
         [Input("redisAclChannelsDefault")]
-        public string? RedisAclChannelsDefault { get; set; }
+        public Input<string>? RedisAclChannelsDefault { get; set; }
 
         [Input("redisIoThreads")]
-        public string? RedisIoThreads { get; set; }
+        public Input<string>? RedisIoThreads { get; set; }
 
         [Input("redisLfuDecayTime")]
-        public string? RedisLfuDecayTime { get; set; }
+        public Input<string>? RedisLfuDecayTime { get; set; }
 
         [Input("redisLfuLogFactor")]
-        public string? RedisLfuLogFactor { get; set; }
+        public Input<string>? RedisLfuLogFactor { get; set; }
 
         [Input("redisMaxmemoryPolicy")]
-        public string? RedisMaxmemoryPolicy { get; set; }
+        public Input<string>? RedisMaxmemoryPolicy { get; set; }
 
         [Input("redisNotifyKeyspaceEvents")]
-        public string? RedisNotifyKeyspaceEvents { get; set; }
+        public Input<string>? RedisNotifyKeyspaceEvents { get; set; }
 
         [Input("redisNumberOfDatabases")]
-        public string? RedisNumberOfDatabases { get; set; }
+        public Input<string>? RedisNumberOfDatabases { get; set; }
 
         [Input("redisPersistence")]
-        public string? RedisPersistence { get; set; }
+        public Input<string>? RedisPersistence { get; set; }
 
         [Input("redisPubsubClientOutputBufferLimit")]
-        public string? RedisPubsubClientOutputBufferLimit { get; set; }
+        public Input<string>? RedisPubsubClientOutputBufferLimit { get; set; }
 
         [Input("redisSsl")]
-        public string? RedisSsl { get; set; }
+        public Input<string>? RedisSsl { get; set; }
 
         [Input("redisTimeout")]
-        public string? RedisTimeout { get; set; }
+        public Input<string>? RedisTimeout { get; set; }
 
         [Input("serviceToForkFrom")]
-        public string? ServiceToForkFrom { get; set; }
+        public Input<string>? ServiceToForkFrom { get; set; }
 
         [Input("staticIps")]
-        public string? StaticIps { get; set; }
+        public Input<string>? StaticIps { get; set; }
 
-        public GetServiceRedisUserConfigArgs()
+        public GetServiceRedisUserConfigInputArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package aiven
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupKafkaConnector(ctx, &aiven.LookupKafkaConnectorArgs{
+// 		_, err := aiven.LookupKafkaConnector(ctx, &GetKafkaConnectorArgs{
 // 			Project:       aiven_project.Kafka - con - project1.Project,
 // 			ServiceName:   aiven_service.Kafka - service1.Service_name,
 // 			ConnectorName: "kafka-es-con1",
@@ -95,4 +98,116 @@ type LookupKafkaConnectorResult struct {
 	// List of tasks of a connector, each element contains `connector`
 	// (Related connector name) and `task` (Task id / number).
 	Tasks []GetKafkaConnectorTask `pulumi:"tasks"`
+}
+
+func LookupKafkaConnectorOutput(ctx *pulumi.Context, args LookupKafkaConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaConnectorResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKafkaConnectorResult, error) {
+			args := v.(LookupKafkaConnectorArgs)
+			r, err := LookupKafkaConnector(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKafkaConnectorResultOutput)
+}
+
+// A collection of arguments for invoking getKafkaConnector.
+type LookupKafkaConnectorOutputArgs struct {
+	Config        pulumi.StringMapInput `pulumi:"config"`
+	ConnectorName pulumi.StringInput    `pulumi:"connectorName"`
+	// Kafka connector author.
+	PluginAuthor pulumi.StringPtrInput `pulumi:"pluginAuthor"`
+	// Kafka connector Java class.
+	PluginClass pulumi.StringPtrInput `pulumi:"pluginClass"`
+	// Kafka connector documentation URL.
+	PluginDocUrl pulumi.StringPtrInput `pulumi:"pluginDocUrl"`
+	// Kafka connector title.
+	PluginTitle pulumi.StringPtrInput `pulumi:"pluginTitle"`
+	// Kafka connector type.
+	PluginType pulumi.StringPtrInput `pulumi:"pluginType"`
+	// Kafka connector version.
+	PluginVersion pulumi.StringPtrInput `pulumi:"pluginVersion"`
+	Project       pulumi.StringInput    `pulumi:"project"`
+	ServiceName   pulumi.StringInput    `pulumi:"serviceName"`
+	// List of tasks of a connector, each element contains `connector`
+	// (Related connector name) and `task` (Task id / number).
+	Tasks GetKafkaConnectorTaskArrayInput `pulumi:"tasks"`
+}
+
+func (LookupKafkaConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKafkaConnectorArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKafkaConnector.
+type LookupKafkaConnectorResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKafkaConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKafkaConnectorResult)(nil)).Elem()
+}
+
+func (o LookupKafkaConnectorResultOutput) ToLookupKafkaConnectorResultOutput() LookupKafkaConnectorResultOutput {
+	return o
+}
+
+func (o LookupKafkaConnectorResultOutput) ToLookupKafkaConnectorResultOutputWithContext(ctx context.Context) LookupKafkaConnectorResultOutput {
+	return o
+}
+
+func (o LookupKafkaConnectorResultOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) map[string]string { return v.Config }).(pulumi.StringMapOutput)
+}
+
+func (o LookupKafkaConnectorResultOutput) ConnectorName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.ConnectorName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupKafkaConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Kafka connector author.
+func (o LookupKafkaConnectorResultOutput) PluginAuthor() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.PluginAuthor }).(pulumi.StringOutput)
+}
+
+// Kafka connector Java class.
+func (o LookupKafkaConnectorResultOutput) PluginClass() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.PluginClass }).(pulumi.StringOutput)
+}
+
+// Kafka connector documentation URL.
+func (o LookupKafkaConnectorResultOutput) PluginDocUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.PluginDocUrl }).(pulumi.StringOutput)
+}
+
+// Kafka connector title.
+func (o LookupKafkaConnectorResultOutput) PluginTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.PluginTitle }).(pulumi.StringOutput)
+}
+
+// Kafka connector type.
+func (o LookupKafkaConnectorResultOutput) PluginType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.PluginType }).(pulumi.StringOutput)
+}
+
+// Kafka connector version.
+func (o LookupKafkaConnectorResultOutput) PluginVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.PluginVersion }).(pulumi.StringOutput)
+}
+
+func (o LookupKafkaConnectorResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupKafkaConnectorResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// List of tasks of a connector, each element contains `connector`
+// (Related connector name) and `task` (Task id / number).
+func (o LookupKafkaConnectorResultOutput) Tasks() GetKafkaConnectorTaskArrayOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) []GetKafkaConnectorTask { return v.Tasks }).(GetKafkaConnectorTaskArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKafkaConnectorResultOutput{})
 }

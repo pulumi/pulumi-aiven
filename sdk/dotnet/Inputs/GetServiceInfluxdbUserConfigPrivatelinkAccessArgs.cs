@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceInfluxdbUserConfigPrivatelinkAccessArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceInfluxdbUserConfigPrivatelinkAccessInputArgs : Pulumi.ResourceArgs
     {
         [Input("influxdb")]
-        public string? Influxdb { get; set; }
+        public Input<string>? Influxdb { get; set; }
 
-        public GetServiceInfluxdbUserConfigPrivatelinkAccessArgs()
+        public GetServiceInfluxdbUserConfigPrivatelinkAccessInputArgs()
         {
         }
     }

@@ -10,33 +10,33 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetGrafanaGrafanaUserConfigDateFormatsArgs : Pulumi.InvokeArgs
+    public sealed class GetGrafanaGrafanaUserConfigDateFormatsInputArgs : Pulumi.ResourceArgs
     {
         [Input("defaultTimezone")]
-        public string? DefaultTimezone { get; set; }
+        public Input<string>? DefaultTimezone { get; set; }
 
         [Input("fullDate")]
-        public string? FullDate { get; set; }
+        public Input<string>? FullDate { get; set; }
 
         [Input("intervalDay")]
-        public string? IntervalDay { get; set; }
+        public Input<string>? IntervalDay { get; set; }
 
         [Input("intervalHour")]
-        public string? IntervalHour { get; set; }
+        public Input<string>? IntervalHour { get; set; }
 
         [Input("intervalMinute")]
-        public string? IntervalMinute { get; set; }
+        public Input<string>? IntervalMinute { get; set; }
 
         [Input("intervalMonth")]
-        public string? IntervalMonth { get; set; }
+        public Input<string>? IntervalMonth { get; set; }
 
         [Input("intervalSecond")]
-        public string? IntervalSecond { get; set; }
+        public Input<string>? IntervalSecond { get; set; }
 
         [Input("intervalYear")]
-        public string? IntervalYear { get; set; }
+        public Input<string>? IntervalYear { get; set; }
 
-        public GetGrafanaGrafanaUserConfigDateFormatsArgs()
+        public GetGrafanaGrafanaUserConfigDateFormatsInputArgs()
         {
         }
     }

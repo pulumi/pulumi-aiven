@@ -10,34 +10,34 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceGrafanaUserConfigAuthGithubArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceGrafanaUserConfigAuthGithubInputArgs : Pulumi.ResourceArgs
     {
         [Input("allowSignUp")]
-        public string? AllowSignUp { get; set; }
+        public Input<string>? AllowSignUp { get; set; }
 
         [Input("allowedOrganizations")]
-        private List<string>? _allowedOrganizations;
-        public List<string> AllowedOrganizations
+        private InputList<string>? _allowedOrganizations;
+        public InputList<string> AllowedOrganizations
         {
-            get => _allowedOrganizations ?? (_allowedOrganizations = new List<string>());
+            get => _allowedOrganizations ?? (_allowedOrganizations = new InputList<string>());
             set => _allowedOrganizations = value;
         }
 
         [Input("clientId")]
-        public string? ClientId { get; set; }
+        public Input<string>? ClientId { get; set; }
 
         [Input("clientSecret")]
-        public string? ClientSecret { get; set; }
+        public Input<string>? ClientSecret { get; set; }
 
         [Input("teamIds")]
-        private List<string>? _teamIds;
-        public List<string> TeamIds
+        private InputList<string>? _teamIds;
+        public InputList<string> TeamIds
         {
-            get => _teamIds ?? (_teamIds = new List<string>());
+            get => _teamIds ?? (_teamIds = new InputList<string>());
             set => _teamIds = value;
         }
 
-        public GetServiceGrafanaUserConfigAuthGithubArgs()
+        public GetServiceGrafanaUserConfigAuthGithubInputArgs()
         {
         }
     }

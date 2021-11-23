@@ -10,24 +10,24 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceIntegrationMetricsUserConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationMetricsUserConfigInputArgs : Pulumi.ResourceArgs
     {
         [Input("database")]
-        public string? Database { get; set; }
+        public Input<string>? Database { get; set; }
 
         [Input("retentionDays")]
-        public string? RetentionDays { get; set; }
+        public Input<string>? RetentionDays { get; set; }
 
         [Input("roUsername")]
-        public string? RoUsername { get; set; }
+        public Input<string>? RoUsername { get; set; }
 
         [Input("sourceMysql")]
-        public Inputs.GetServiceIntegrationMetricsUserConfigSourceMysqlArgs? SourceMysql { get; set; }
+        public Input<Inputs.GetServiceIntegrationMetricsUserConfigSourceMysqlInputArgs>? SourceMysql { get; set; }
 
         [Input("username")]
-        public string? Username { get; set; }
+        public Input<string>? Username { get; set; }
 
-        public GetServiceIntegrationMetricsUserConfigArgs()
+        public GetServiceIntegrationMetricsUserConfigInputArgs()
         {
         }
     }

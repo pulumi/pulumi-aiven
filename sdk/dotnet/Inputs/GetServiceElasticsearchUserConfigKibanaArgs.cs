@@ -10,18 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetServiceElasticsearchUserConfigKibanaArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceElasticsearchUserConfigKibanaInputArgs : Pulumi.ResourceArgs
     {
         [Input("elasticsearchRequestTimeout")]
-        public string? ElasticsearchRequestTimeout { get; set; }
+        public Input<string>? ElasticsearchRequestTimeout { get; set; }
 
         [Input("enabled")]
-        public string? Enabled { get; set; }
+        public Input<string>? Enabled { get; set; }
 
         [Input("maxOldSpaceSize")]
-        public string? MaxOldSpaceSize { get; set; }
+        public Input<string>? MaxOldSpaceSize { get; set; }
 
-        public GetServiceElasticsearchUserConfigKibanaArgs()
+        public GetServiceElasticsearchUserConfigKibanaInputArgs()
         {
         }
     }

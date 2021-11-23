@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GetM3AggregatorM3aggregatorArgs : Pulumi.InvokeArgs
+    public sealed class GetM3AggregatorM3aggregatorInputArgs : Pulumi.ResourceArgs
     {
-        public GetM3AggregatorM3aggregatorArgs()
+        public GetM3AggregatorM3aggregatorInputArgs()
         {
         }
     }

@@ -290,7 +290,7 @@ type BillingGroupArrayInput interface {
 type BillingGroupArray []BillingGroupInput
 
 func (BillingGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BillingGroup)(nil))
+	return reflect.TypeOf((*[]*BillingGroup)(nil)).Elem()
 }
 
 func (i BillingGroupArray) ToBillingGroupArrayOutput() BillingGroupArrayOutput {
@@ -315,7 +315,7 @@ type BillingGroupMapInput interface {
 type BillingGroupMap map[string]BillingGroupInput
 
 func (BillingGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BillingGroup)(nil))
+	return reflect.TypeOf((*map[string]*BillingGroup)(nil)).Elem()
 }
 
 func (i BillingGroupMap) ToBillingGroupMapOutput() BillingGroupMapOutput {
@@ -326,9 +326,7 @@ func (i BillingGroupMap) ToBillingGroupMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(BillingGroupMapOutput)
 }
 
-type BillingGroupOutput struct {
-	*pulumi.OutputState
-}
+type BillingGroupOutput struct{ *pulumi.OutputState }
 
 func (BillingGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BillingGroup)(nil))
@@ -347,14 +345,12 @@ func (o BillingGroupOutput) ToBillingGroupPtrOutput() BillingGroupPtrOutput {
 }
 
 func (o BillingGroupOutput) ToBillingGroupPtrOutputWithContext(ctx context.Context) BillingGroupPtrOutput {
-	return o.ApplyT(func(v BillingGroup) *BillingGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingGroup) *BillingGroup {
 		return &v
 	}).(BillingGroupPtrOutput)
 }
 
-type BillingGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type BillingGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (BillingGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BillingGroup)(nil))
@@ -366,6 +362,16 @@ func (o BillingGroupPtrOutput) ToBillingGroupPtrOutput() BillingGroupPtrOutput {
 
 func (o BillingGroupPtrOutput) ToBillingGroupPtrOutputWithContext(ctx context.Context) BillingGroupPtrOutput {
 	return o
+}
+
+func (o BillingGroupPtrOutput) Elem() BillingGroupOutput {
+	return o.ApplyT(func(v *BillingGroup) BillingGroup {
+		if v != nil {
+			return *v
+		}
+		var ret BillingGroup
+		return ret
+	}).(BillingGroupOutput)
 }
 
 type BillingGroupArrayOutput struct{ *pulumi.OutputState }
@@ -409,6 +415,10 @@ func (o BillingGroupMapOutput) MapIndex(k pulumi.StringInput) BillingGroupOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingGroupInput)(nil)).Elem(), &BillingGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingGroupPtrInput)(nil)).Elem(), &BillingGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingGroupArrayInput)(nil)).Elem(), BillingGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingGroupMapInput)(nil)).Elem(), BillingGroupMap{})
 	pulumi.RegisterOutputType(BillingGroupOutput{})
 	pulumi.RegisterOutputType(BillingGroupPtrOutput{})
 	pulumi.RegisterOutputType(BillingGroupArrayOutput{})

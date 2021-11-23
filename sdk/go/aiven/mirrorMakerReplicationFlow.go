@@ -296,7 +296,7 @@ type MirrorMakerReplicationFlowArrayInput interface {
 type MirrorMakerReplicationFlowArray []MirrorMakerReplicationFlowInput
 
 func (MirrorMakerReplicationFlowArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MirrorMakerReplicationFlow)(nil))
+	return reflect.TypeOf((*[]*MirrorMakerReplicationFlow)(nil)).Elem()
 }
 
 func (i MirrorMakerReplicationFlowArray) ToMirrorMakerReplicationFlowArrayOutput() MirrorMakerReplicationFlowArrayOutput {
@@ -321,7 +321,7 @@ type MirrorMakerReplicationFlowMapInput interface {
 type MirrorMakerReplicationFlowMap map[string]MirrorMakerReplicationFlowInput
 
 func (MirrorMakerReplicationFlowMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MirrorMakerReplicationFlow)(nil))
+	return reflect.TypeOf((*map[string]*MirrorMakerReplicationFlow)(nil)).Elem()
 }
 
 func (i MirrorMakerReplicationFlowMap) ToMirrorMakerReplicationFlowMapOutput() MirrorMakerReplicationFlowMapOutput {
@@ -332,9 +332,7 @@ func (i MirrorMakerReplicationFlowMap) ToMirrorMakerReplicationFlowMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(MirrorMakerReplicationFlowMapOutput)
 }
 
-type MirrorMakerReplicationFlowOutput struct {
-	*pulumi.OutputState
-}
+type MirrorMakerReplicationFlowOutput struct{ *pulumi.OutputState }
 
 func (MirrorMakerReplicationFlowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MirrorMakerReplicationFlow)(nil))
@@ -353,14 +351,12 @@ func (o MirrorMakerReplicationFlowOutput) ToMirrorMakerReplicationFlowPtrOutput(
 }
 
 func (o MirrorMakerReplicationFlowOutput) ToMirrorMakerReplicationFlowPtrOutputWithContext(ctx context.Context) MirrorMakerReplicationFlowPtrOutput {
-	return o.ApplyT(func(v MirrorMakerReplicationFlow) *MirrorMakerReplicationFlow {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MirrorMakerReplicationFlow) *MirrorMakerReplicationFlow {
 		return &v
 	}).(MirrorMakerReplicationFlowPtrOutput)
 }
 
-type MirrorMakerReplicationFlowPtrOutput struct {
-	*pulumi.OutputState
-}
+type MirrorMakerReplicationFlowPtrOutput struct{ *pulumi.OutputState }
 
 func (MirrorMakerReplicationFlowPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MirrorMakerReplicationFlow)(nil))
@@ -372,6 +368,16 @@ func (o MirrorMakerReplicationFlowPtrOutput) ToMirrorMakerReplicationFlowPtrOutp
 
 func (o MirrorMakerReplicationFlowPtrOutput) ToMirrorMakerReplicationFlowPtrOutputWithContext(ctx context.Context) MirrorMakerReplicationFlowPtrOutput {
 	return o
+}
+
+func (o MirrorMakerReplicationFlowPtrOutput) Elem() MirrorMakerReplicationFlowOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) MirrorMakerReplicationFlow {
+		if v != nil {
+			return *v
+		}
+		var ret MirrorMakerReplicationFlow
+		return ret
+	}).(MirrorMakerReplicationFlowOutput)
 }
 
 type MirrorMakerReplicationFlowArrayOutput struct{ *pulumi.OutputState }
@@ -415,6 +421,10 @@ func (o MirrorMakerReplicationFlowMapOutput) MapIndex(k pulumi.StringInput) Mirr
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MirrorMakerReplicationFlowInput)(nil)).Elem(), &MirrorMakerReplicationFlow{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MirrorMakerReplicationFlowPtrInput)(nil)).Elem(), &MirrorMakerReplicationFlow{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MirrorMakerReplicationFlowArrayInput)(nil)).Elem(), MirrorMakerReplicationFlowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MirrorMakerReplicationFlowMapInput)(nil)).Elem(), MirrorMakerReplicationFlowMap{})
 	pulumi.RegisterOutputType(MirrorMakerReplicationFlowOutput{})
 	pulumi.RegisterOutputType(MirrorMakerReplicationFlowPtrOutput{})
 	pulumi.RegisterOutputType(MirrorMakerReplicationFlowArrayOutput{})
