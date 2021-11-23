@@ -269,6 +269,13 @@ __all__ = [
     'GetCassandaCassandraUserConfigPublicAccessArgs',
     'GetCassandaComponentArgs',
     'GetCassandaServiceIntegrationArgs',
+    'GetCassandraCassandraArgs',
+    'GetCassandraCassandraUserConfigArgs',
+    'GetCassandraCassandraUserConfigCassandraArgs',
+    'GetCassandraCassandraUserConfigPrivateAccessArgs',
+    'GetCassandraCassandraUserConfigPublicAccessArgs',
+    'GetCassandraComponentArgs',
+    'GetCassandraServiceIntegrationArgs',
     'GetElasticSearchAclAclArgs',
     'GetElasticSearchAclAclRuleArgs',
     'GetElasticSearchComponentArgs',
@@ -22243,16 +22250,6 @@ class GetCassandaCassandraUserConfigArgs:
                  public_access: Optional['GetCassandaCassandraUserConfigPublicAccessArgs'] = None,
                  service_to_fork_from: Optional[str] = None,
                  static_ips: Optional[str] = None):
-        """
-        :param 'GetCassandaCassandraUserConfigCassandraArgs' cassandra: Cassandra specific server provided values.
-        :param Sequence[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        :param str migrate_sstableloader: sets the service into migration mode enabling the sstableloader 
-               utility to be used to upload Cassandra data files. Available only on service create.
-        :param 'GetCassandaCassandraUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'GetCassandaCassandraUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
-        :param str service_to_fork_from: Name of another service to fork from. This has effect only 
-               when a new service is being created.
-        """
         if cassandra is not None:
             pulumi.set(__self__, "cassandra", cassandra)
         if cassandra_version is not None:
@@ -22275,9 +22272,6 @@ class GetCassandaCassandraUserConfigArgs:
     @property
     @pulumi.getter
     def cassandra(self) -> Optional['GetCassandaCassandraUserConfigCassandraArgs']:
-        """
-        Cassandra specific server provided values.
-        """
         return pulumi.get(self, "cassandra")
 
     @cassandra.setter
@@ -22296,9 +22290,6 @@ class GetCassandaCassandraUserConfigArgs:
     @property
     @pulumi.getter(name="ipFilters")
     def ip_filters(self) -> Optional[Sequence[str]]:
-        """
-        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
         return pulumi.get(self, "ip_filters")
 
     @ip_filters.setter
@@ -22308,10 +22299,6 @@ class GetCassandaCassandraUserConfigArgs:
     @property
     @pulumi.getter(name="migrateSstableloader")
     def migrate_sstableloader(self) -> Optional[str]:
-        """
-        sets the service into migration mode enabling the sstableloader 
-        utility to be used to upload Cassandra data files. Available only on service create.
-        """
         return pulumi.get(self, "migrate_sstableloader")
 
     @migrate_sstableloader.setter
@@ -22321,9 +22308,6 @@ class GetCassandaCassandraUserConfigArgs:
     @property
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['GetCassandaCassandraUserConfigPrivateAccessArgs']:
-        """
-        Allow access to selected service ports from private networks.
-        """
         return pulumi.get(self, "private_access")
 
     @private_access.setter
@@ -22342,9 +22326,6 @@ class GetCassandaCassandraUserConfigArgs:
     @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['GetCassandaCassandraUserConfigPublicAccessArgs']:
-        """
-        Allow access to selected service ports from the public Internet
-        """
         return pulumi.get(self, "public_access")
 
     @public_access.setter
@@ -22354,10 +22335,6 @@ class GetCassandaCassandraUserConfigArgs:
     @property
     @pulumi.getter(name="serviceToForkFrom")
     def service_to_fork_from(self) -> Optional[str]:
-        """
-        Name of another service to fork from. This has effect only 
-        when a new service is being created.
-        """
         return pulumi.get(self, "service_to_fork_from")
 
     @service_to_fork_from.setter
@@ -22379,13 +22356,6 @@ class GetCassandaCassandraUserConfigCassandraArgs:
     def __init__(__self__, *,
                  batch_size_fail_threshold_in_kb: Optional[str] = None,
                  batch_size_warn_threshold_in_kb: Optional[str] = None):
-        """
-        :param str batch_size_fail_threshold_in_kb: Fail any multiple-partition batch exceeding this value.
-               50kb (10x warn threshold) by default.
-        :param str batch_size_warn_threshold_in_kb: Log a warning message on any multiple-partition
-               batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing
-               the size of this thresholdas it can lead to node instability.
-        """
         if batch_size_fail_threshold_in_kb is not None:
             pulumi.set(__self__, "batch_size_fail_threshold_in_kb", batch_size_fail_threshold_in_kb)
         if batch_size_warn_threshold_in_kb is not None:
@@ -22394,10 +22364,6 @@ class GetCassandaCassandraUserConfigCassandraArgs:
     @property
     @pulumi.getter(name="batchSizeFailThresholdInKb")
     def batch_size_fail_threshold_in_kb(self) -> Optional[str]:
-        """
-        Fail any multiple-partition batch exceeding this value.
-        50kb (10x warn threshold) by default.
-        """
         return pulumi.get(self, "batch_size_fail_threshold_in_kb")
 
     @batch_size_fail_threshold_in_kb.setter
@@ -22407,11 +22373,6 @@ class GetCassandaCassandraUserConfigCassandraArgs:
     @property
     @pulumi.getter(name="batchSizeWarnThresholdInKb")
     def batch_size_warn_threshold_in_kb(self) -> Optional[str]:
-        """
-        Log a warning message on any multiple-partition
-        batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing
-        the size of this thresholdas it can lead to node instability.
-        """
         return pulumi.get(self, "batch_size_warn_threshold_in_kb")
 
     @batch_size_warn_threshold_in_kb.setter
@@ -22423,20 +22384,12 @@ class GetCassandaCassandraUserConfigCassandraArgs:
 class GetCassandaCassandraUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
                  prometheus: Optional[str] = None):
-        """
-        :param str prometheus: Allow clients to connect to prometheus from the public internet 
-               for service nodes that are in a project VPC or another type of private network.
-        """
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
-        """
-        Allow clients to connect to prometheus from the public internet 
-        for service nodes that are in a project VPC or another type of private network.
-        """
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
@@ -22448,20 +22401,12 @@ class GetCassandaCassandraUserConfigPrivateAccessArgs:
 class GetCassandaCassandraUserConfigPublicAccessArgs:
     def __init__(__self__, *,
                  prometheus: Optional[str] = None):
-        """
-        :param str prometheus: Allow clients to connect to prometheus from the public internet 
-               for service nodes that are in a project VPC or another type of private network.
-        """
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
     def prometheus(self) -> Optional[str]:
-        """
-        Allow clients to connect to prometheus from the public internet 
-        for service nodes that are in a project VPC or another type of private network.
-        """
         return pulumi.get(self, "prometheus")
 
     @prometheus.setter
@@ -22553,6 +22498,359 @@ class GetCassandaComponentArgs:
 
 @pulumi.input_type
 class GetCassandaServiceIntegrationArgs:
+    def __init__(__self__, *,
+                 integration_type: str,
+                 source_service_name: str):
+        pulumi.set(__self__, "integration_type", integration_type)
+        pulumi.set(__self__, "source_service_name", source_service_name)
+
+    @property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> str:
+        return pulumi.get(self, "integration_type")
+
+    @integration_type.setter
+    def integration_type(self, value: str):
+        pulumi.set(self, "integration_type", value)
+
+    @property
+    @pulumi.getter(name="sourceServiceName")
+    def source_service_name(self) -> str:
+        return pulumi.get(self, "source_service_name")
+
+    @source_service_name.setter
+    def source_service_name(self, value: str):
+        pulumi.set(self, "source_service_name", value)
+
+
+@pulumi.input_type
+class GetCassandraCassandraArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class GetCassandraCassandraUserConfigArgs:
+    def __init__(__self__, *,
+                 cassandra: Optional['GetCassandraCassandraUserConfigCassandraArgs'] = None,
+                 cassandra_version: Optional[str] = None,
+                 ip_filters: Optional[Sequence[str]] = None,
+                 migrate_sstableloader: Optional[str] = None,
+                 private_access: Optional['GetCassandraCassandraUserConfigPrivateAccessArgs'] = None,
+                 project_to_fork_from: Optional[str] = None,
+                 public_access: Optional['GetCassandraCassandraUserConfigPublicAccessArgs'] = None,
+                 service_to_fork_from: Optional[str] = None,
+                 static_ips: Optional[str] = None):
+        """
+        :param 'GetCassandraCassandraUserConfigCassandraArgs' cassandra: Cassandra specific server provided values.
+        :param Sequence[str] ip_filters: allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param str migrate_sstableloader: sets the service into migration mode enabling the sstableloader 
+               utility to be used to upload Cassandra data files. Available only on service create.
+        :param 'GetCassandraCassandraUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'GetCassandraCassandraUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param str service_to_fork_from: Name of another service to fork from. This has effect only 
+               when a new service is being created.
+        """
+        if cassandra is not None:
+            pulumi.set(__self__, "cassandra", cassandra)
+        if cassandra_version is not None:
+            pulumi.set(__self__, "cassandra_version", cassandra_version)
+        if ip_filters is not None:
+            pulumi.set(__self__, "ip_filters", ip_filters)
+        if migrate_sstableloader is not None:
+            pulumi.set(__self__, "migrate_sstableloader", migrate_sstableloader)
+        if private_access is not None:
+            pulumi.set(__self__, "private_access", private_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
+        if public_access is not None:
+            pulumi.set(__self__, "public_access", public_access)
+        if service_to_fork_from is not None:
+            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
+        if static_ips is not None:
+            pulumi.set(__self__, "static_ips", static_ips)
+
+    @property
+    @pulumi.getter
+    def cassandra(self) -> Optional['GetCassandraCassandraUserConfigCassandraArgs']:
+        """
+        Cassandra specific server provided values.
+        """
+        return pulumi.get(self, "cassandra")
+
+    @cassandra.setter
+    def cassandra(self, value: Optional['GetCassandraCassandraUserConfigCassandraArgs']):
+        pulumi.set(self, "cassandra", value)
+
+    @property
+    @pulumi.getter(name="cassandraVersion")
+    def cassandra_version(self) -> Optional[str]:
+        return pulumi.get(self, "cassandra_version")
+
+    @cassandra_version.setter
+    def cassandra_version(self, value: Optional[str]):
+        pulumi.set(self, "cassandra_version", value)
+
+    @property
+    @pulumi.getter(name="ipFilters")
+    def ip_filters(self) -> Optional[Sequence[str]]:
+        """
+        allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
+        return pulumi.get(self, "ip_filters")
+
+    @ip_filters.setter
+    def ip_filters(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "ip_filters", value)
+
+    @property
+    @pulumi.getter(name="migrateSstableloader")
+    def migrate_sstableloader(self) -> Optional[str]:
+        """
+        sets the service into migration mode enabling the sstableloader 
+        utility to be used to upload Cassandra data files. Available only on service create.
+        """
+        return pulumi.get(self, "migrate_sstableloader")
+
+    @migrate_sstableloader.setter
+    def migrate_sstableloader(self, value: Optional[str]):
+        pulumi.set(self, "migrate_sstableloader", value)
+
+    @property
+    @pulumi.getter(name="privateAccess")
+    def private_access(self) -> Optional['GetCassandraCassandraUserConfigPrivateAccessArgs']:
+        """
+        Allow access to selected service ports from private networks.
+        """
+        return pulumi.get(self, "private_access")
+
+    @private_access.setter
+    def private_access(self, value: Optional['GetCassandraCassandraUserConfigPrivateAccessArgs']):
+        pulumi.set(self, "private_access", value)
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[str]:
+        return pulumi.get(self, "project_to_fork_from")
+
+    @project_to_fork_from.setter
+    def project_to_fork_from(self, value: Optional[str]):
+        pulumi.set(self, "project_to_fork_from", value)
+
+    @property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> Optional['GetCassandraCassandraUserConfigPublicAccessArgs']:
+        """
+        Allow access to selected service ports from the public Internet
+        """
+        return pulumi.get(self, "public_access")
+
+    @public_access.setter
+    def public_access(self, value: Optional['GetCassandraCassandraUserConfigPublicAccessArgs']):
+        pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="serviceToForkFrom")
+    def service_to_fork_from(self) -> Optional[str]:
+        """
+        Name of another service to fork from. This has effect only 
+        when a new service is being created.
+        """
+        return pulumi.get(self, "service_to_fork_from")
+
+    @service_to_fork_from.setter
+    def service_to_fork_from(self, value: Optional[str]):
+        pulumi.set(self, "service_to_fork_from", value)
+
+    @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> Optional[str]:
+        return pulumi.get(self, "static_ips")
+
+    @static_ips.setter
+    def static_ips(self, value: Optional[str]):
+        pulumi.set(self, "static_ips", value)
+
+
+@pulumi.input_type
+class GetCassandraCassandraUserConfigCassandraArgs:
+    def __init__(__self__, *,
+                 batch_size_fail_threshold_in_kb: Optional[str] = None,
+                 batch_size_warn_threshold_in_kb: Optional[str] = None):
+        """
+        :param str batch_size_fail_threshold_in_kb: Fail any multiple-partition batch exceeding this value.
+               50kb (10x warn threshold) by default.
+        :param str batch_size_warn_threshold_in_kb: Log a warning message on any multiple-partition
+               batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing
+               the size of this thresholdas it can lead to node instability.
+        """
+        if batch_size_fail_threshold_in_kb is not None:
+            pulumi.set(__self__, "batch_size_fail_threshold_in_kb", batch_size_fail_threshold_in_kb)
+        if batch_size_warn_threshold_in_kb is not None:
+            pulumi.set(__self__, "batch_size_warn_threshold_in_kb", batch_size_warn_threshold_in_kb)
+
+    @property
+    @pulumi.getter(name="batchSizeFailThresholdInKb")
+    def batch_size_fail_threshold_in_kb(self) -> Optional[str]:
+        """
+        Fail any multiple-partition batch exceeding this value.
+        50kb (10x warn threshold) by default.
+        """
+        return pulumi.get(self, "batch_size_fail_threshold_in_kb")
+
+    @batch_size_fail_threshold_in_kb.setter
+    def batch_size_fail_threshold_in_kb(self, value: Optional[str]):
+        pulumi.set(self, "batch_size_fail_threshold_in_kb", value)
+
+    @property
+    @pulumi.getter(name="batchSizeWarnThresholdInKb")
+    def batch_size_warn_threshold_in_kb(self) -> Optional[str]:
+        """
+        Log a warning message on any multiple-partition
+        batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing
+        the size of this thresholdas it can lead to node instability.
+        """
+        return pulumi.get(self, "batch_size_warn_threshold_in_kb")
+
+    @batch_size_warn_threshold_in_kb.setter
+    def batch_size_warn_threshold_in_kb(self, value: Optional[str]):
+        pulumi.set(self, "batch_size_warn_threshold_in_kb", value)
+
+
+@pulumi.input_type
+class GetCassandraCassandraUserConfigPrivateAccessArgs:
+    def __init__(__self__, *,
+                 prometheus: Optional[str] = None):
+        """
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network.
+        """
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "prometheus")
+
+    @prometheus.setter
+    def prometheus(self, value: Optional[str]):
+        pulumi.set(self, "prometheus", value)
+
+
+@pulumi.input_type
+class GetCassandraCassandraUserConfigPublicAccessArgs:
+    def __init__(__self__, *,
+                 prometheus: Optional[str] = None):
+        """
+        :param str prometheus: Allow clients to connect to prometheus from the public internet 
+               for service nodes that are in a project VPC or another type of private network.
+        """
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        """
+        Allow clients to connect to prometheus from the public internet 
+        for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "prometheus")
+
+    @prometheus.setter
+    def prometheus(self, value: Optional[str]):
+        pulumi.set(self, "prometheus", value)
+
+
+@pulumi.input_type
+class GetCassandraComponentArgs:
+    def __init__(__self__, *,
+                 component: str,
+                 host: str,
+                 kafka_authentication_method: str,
+                 port: int,
+                 route: str,
+                 ssl: bool,
+                 usage: str):
+        pulumi.set(__self__, "component", component)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "route", route)
+        pulumi.set(__self__, "ssl", ssl)
+        pulumi.set(__self__, "usage", usage)
+
+    @property
+    @pulumi.getter
+    def component(self) -> str:
+        return pulumi.get(self, "component")
+
+    @component.setter
+    def component(self, value: str):
+        pulumi.set(self, "component", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: str):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="kafkaAuthenticationMethod")
+    def kafka_authentication_method(self) -> str:
+        return pulumi.get(self, "kafka_authentication_method")
+
+    @kafka_authentication_method.setter
+    def kafka_authentication_method(self, value: str):
+        pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: int):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def route(self) -> str:
+        return pulumi.get(self, "route")
+
+    @route.setter
+    def route(self, value: str):
+        pulumi.set(self, "route", value)
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> bool:
+        return pulumi.get(self, "ssl")
+
+    @ssl.setter
+    def ssl(self, value: bool):
+        pulumi.set(self, "ssl", value)
+
+    @property
+    @pulumi.getter
+    def usage(self) -> str:
+        return pulumi.get(self, "usage")
+
+    @usage.setter
+    def usage(self, value: str):
+        pulumi.set(self, "usage", value)
+
+
+@pulumi.input_type
+class GetCassandraServiceIntegrationArgs:
     def __init__(__self__, *,
                  integration_type: str,
                  source_service_name: str):

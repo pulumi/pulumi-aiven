@@ -26,6 +26,7 @@ from .get_account_team_member import *
 from .get_account_team_project import *
 from .get_aws_privatelink import *
 from .get_cassanda import *
+from .get_cassandra import *
 from .get_connection_pool import *
 from .get_database import *
 from .get_elastic_search import *

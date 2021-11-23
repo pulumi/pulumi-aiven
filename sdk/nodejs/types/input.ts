@@ -430,17 +430,103 @@ export interface ElasticSearchServiceIntegration {
     sourceServiceName: pulumi.Input<string>;
 }
 
-export interface GetCassandaCassandraArgs {
-}
-
 export interface GetCassandaCassandra {
 }
 
+export interface GetCassandaCassandraArgs {
+}
+
 export interface GetCassandaCassandraUserConfig {
+    cassandra?: inputs.GetCassandaCassandraUserConfigCassandra;
+    cassandraVersion?: string;
+    ipFilters?: string[];
+    migrateSstableloader?: string;
+    privateAccess?: inputs.GetCassandaCassandraUserConfigPrivateAccess;
+    projectToForkFrom?: string;
+    publicAccess?: inputs.GetCassandaCassandraUserConfigPublicAccess;
+    serviceToForkFrom?: string;
+    staticIps?: string;
+}
+
+export interface GetCassandaCassandraUserConfigArgs {
+    cassandra?: pulumi.Input<inputs.GetCassandaCassandraUserConfigCassandraArgs>;
+    cassandraVersion?: pulumi.Input<string>;
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    migrateSstableloader?: pulumi.Input<string>;
+    privateAccess?: pulumi.Input<inputs.GetCassandaCassandraUserConfigPrivateAccessArgs>;
+    projectToForkFrom?: pulumi.Input<string>;
+    publicAccess?: pulumi.Input<inputs.GetCassandaCassandraUserConfigPublicAccessArgs>;
+    serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
+}
+
+export interface GetCassandaCassandraUserConfigCassandraArgs {
+    batchSizeFailThresholdInKb?: pulumi.Input<string>;
+    batchSizeWarnThresholdInKb?: pulumi.Input<string>;
+}
+
+export interface GetCassandaCassandraUserConfigCassandra {
+    batchSizeFailThresholdInKb?: string;
+    batchSizeWarnThresholdInKb?: string;
+}
+
+export interface GetCassandaCassandraUserConfigPrivateAccessArgs {
+    prometheus?: pulumi.Input<string>;
+}
+
+export interface GetCassandaCassandraUserConfigPrivateAccess {
+    prometheus?: string;
+}
+
+export interface GetCassandaCassandraUserConfigPublicAccess {
+    prometheus?: string;
+}
+
+export interface GetCassandaCassandraUserConfigPublicAccessArgs {
+    prometheus?: pulumi.Input<string>;
+}
+
+export interface GetCassandaComponentArgs {
+    component?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
+    kafkaAuthenticationMethod?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    route?: pulumi.Input<string>;
+    ssl?: pulumi.Input<boolean>;
+    usage?: pulumi.Input<string>;
+}
+
+export interface GetCassandaComponent {
+    component?: string;
+    host?: string;
+    kafkaAuthenticationMethod?: string;
+    port?: number;
+    route?: string;
+    ssl?: boolean;
+    usage?: string;
+}
+
+export interface GetCassandaServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetCassandaServiceIntegrationArgs {
+    integrationType: pulumi.Input<string>;
+    sourceServiceName: pulumi.Input<string>;
+}
+
+export interface GetCassandraCassandraArgs {
+}
+
+export interface GetCassandraCassandra {
+}
+
+export interface GetCassandraCassandraUserConfig {
     /**
      * Cassandra specific server provided values.
      */
-    cassandra?: inputs.GetCassandaCassandraUserConfigCassandra;
+    cassandra?: inputs.GetCassandraCassandraUserConfigCassandra;
     cassandraVersion?: string;
     /**
      * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -454,12 +540,12 @@ export interface GetCassandaCassandraUserConfig {
     /**
      * Allow access to selected service ports from private networks.
      */
-    privateAccess?: inputs.GetCassandaCassandraUserConfigPrivateAccess;
+    privateAccess?: inputs.GetCassandraCassandraUserConfigPrivateAccess;
     projectToForkFrom?: string;
     /**
      * Allow access to selected service ports from the public Internet
      */
-    publicAccess?: inputs.GetCassandaCassandraUserConfigPublicAccess;
+    publicAccess?: inputs.GetCassandraCassandraUserConfigPublicAccess;
     /**
      * Name of another service to fork from. This has effect only 
      * when a new service is being created.
@@ -468,11 +554,11 @@ export interface GetCassandaCassandraUserConfig {
     staticIps?: string;
 }
 
-export interface GetCassandaCassandraUserConfigArgs {
+export interface GetCassandraCassandraUserConfigArgs {
     /**
      * Cassandra specific server provided values.
      */
-    cassandra?: pulumi.Input<inputs.GetCassandaCassandraUserConfigCassandraArgs>;
+    cassandra?: pulumi.Input<inputs.GetCassandraCassandraUserConfigCassandraArgs>;
     cassandraVersion?: pulumi.Input<string>;
     /**
      * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -486,12 +572,12 @@ export interface GetCassandaCassandraUserConfigArgs {
     /**
      * Allow access to selected service ports from private networks.
      */
-    privateAccess?: pulumi.Input<inputs.GetCassandaCassandraUserConfigPrivateAccessArgs>;
+    privateAccess?: pulumi.Input<inputs.GetCassandraCassandraUserConfigPrivateAccessArgs>;
     projectToForkFrom?: pulumi.Input<string>;
     /**
      * Allow access to selected service ports from the public Internet
      */
-    publicAccess?: pulumi.Input<inputs.GetCassandaCassandraUserConfigPublicAccessArgs>;
+    publicAccess?: pulumi.Input<inputs.GetCassandraCassandraUserConfigPublicAccessArgs>;
     /**
      * Name of another service to fork from. This has effect only 
      * when a new service is being created.
@@ -500,7 +586,7 @@ export interface GetCassandaCassandraUserConfigArgs {
     staticIps?: pulumi.Input<string>;
 }
 
-export interface GetCassandaCassandraUserConfigCassandraArgs {
+export interface GetCassandraCassandraUserConfigCassandraArgs {
     /**
      * Fail any multiple-partition batch exceeding this value.
      * 50kb (10x warn threshold) by default.
@@ -514,7 +600,7 @@ export interface GetCassandaCassandraUserConfigCassandraArgs {
     batchSizeWarnThresholdInKb?: pulumi.Input<string>;
 }
 
-export interface GetCassandaCassandraUserConfigCassandra {
+export interface GetCassandraCassandraUserConfigCassandra {
     /**
      * Fail any multiple-partition batch exceeding this value.
      * 50kb (10x warn threshold) by default.
@@ -528,15 +614,7 @@ export interface GetCassandaCassandraUserConfigCassandra {
     batchSizeWarnThresholdInKb?: string;
 }
 
-export interface GetCassandaCassandraUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network.
-     */
-    prometheus?: string;
-}
-
-export interface GetCassandaCassandraUserConfigPrivateAccessArgs {
+export interface GetCassandraCassandraUserConfigPrivateAccessArgs {
     /**
      * Allow clients to connect to prometheus from the public internet 
      * for service nodes that are in a project VPC or another type of private network.
@@ -544,7 +622,7 @@ export interface GetCassandaCassandraUserConfigPrivateAccessArgs {
     prometheus?: pulumi.Input<string>;
 }
 
-export interface GetCassandaCassandraUserConfigPublicAccess {
+export interface GetCassandraCassandraUserConfigPrivateAccess {
     /**
      * Allow clients to connect to prometheus from the public internet 
      * for service nodes that are in a project VPC or another type of private network.
@@ -552,7 +630,15 @@ export interface GetCassandaCassandraUserConfigPublicAccess {
     prometheus?: string;
 }
 
-export interface GetCassandaCassandraUserConfigPublicAccessArgs {
+export interface GetCassandraCassandraUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
+    prometheus?: string;
+}
+
+export interface GetCassandraCassandraUserConfigPublicAccessArgs {
     /**
      * Allow clients to connect to prometheus from the public internet 
      * for service nodes that are in a project VPC or another type of private network.
@@ -560,17 +646,7 @@ export interface GetCassandaCassandraUserConfigPublicAccessArgs {
     prometheus?: pulumi.Input<string>;
 }
 
-export interface GetCassandaComponent {
-    component?: string;
-    host?: string;
-    kafkaAuthenticationMethod?: string;
-    port?: number;
-    route?: string;
-    ssl?: boolean;
-    usage?: string;
-}
-
-export interface GetCassandaComponentArgs {
+export interface GetCassandraComponentArgs {
     component?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     kafkaAuthenticationMethod?: pulumi.Input<string>;
@@ -580,12 +656,22 @@ export interface GetCassandaComponentArgs {
     usage?: pulumi.Input<string>;
 }
 
-export interface GetCassandaServiceIntegrationArgs {
+export interface GetCassandraComponent {
+    component?: string;
+    host?: string;
+    kafkaAuthenticationMethod?: string;
+    port?: number;
+    route?: string;
+    ssl?: boolean;
+    usage?: string;
+}
+
+export interface GetCassandraServiceIntegrationArgs {
     integrationType: pulumi.Input<string>;
     sourceServiceName: pulumi.Input<string>;
 }
 
-export interface GetCassandaServiceIntegration {
+export interface GetCassandraServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
 }
@@ -630,13 +716,6 @@ export interface GetElasticSearchComponentArgs {
     usage?: pulumi.Input<string>;
 }
 
-export interface GetElasticSearchElasticsearchArgs {
-    /**
-     * URI for Kibana frontend.
-     */
-    kibanaUri?: pulumi.Input<string>;
-}
-
 export interface GetElasticSearchElasticsearch {
     /**
      * URI for Kibana frontend.
@@ -644,78 +723,11 @@ export interface GetElasticSearchElasticsearch {
     kibanaUri?: string;
 }
 
-export interface GetElasticSearchElasticsearchUserConfigArgs {
+export interface GetElasticSearchElasticsearchArgs {
     /**
-     * Serve the web frontend using a custom CNAME pointing to the 
-     * Aiven DNS name.
+     * URI for Kibana frontend.
      */
-    customDomain?: pulumi.Input<string>;
-    /**
-     * Disable automatic replication factor 
-     * adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
-     * least to two nodes. Note: setting this to true increases a risk of data loss in case of
-     * virtual machine failure.
-     */
-    disableReplicationFactorAdjustment?: pulumi.Input<string>;
-    /**
-     * Elasticsearch specific server provided values.
-     */
-    elasticsearch?: pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigElasticsearchArgs>;
-    /**
-     * Elasticsearch major version.
-     */
-    elasticsearchVersion?: pulumi.Input<string>;
-    /**
-     * Glob pattern and number of indexes matching that pattern to 
-     * be kept.
-     */
-    indexPatterns?: pulumi.Input<pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigIndexPatternArgs>[]>;
-    /**
-     * Template settings for all new indexe.
-     */
-    indexTemplate?: pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigIndexTemplateArgs>;
-    /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    keepIndexRefreshInterval?: pulumi.Input<string>;
-    /**
-     * Allow clients to connect to kibana from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
-     */
-    kibana?: pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigKibanaArgs>;
-    /**
-     * Maximum number of indexes to keep before deleting the oldest one.
-     */
-    maxIndexCount?: pulumi.Input<string>;
-    opensearchVersion?: pulumi.Input<string>;
-    /**
-     * Allow access to selected service ports from private networks.
-     */
-    privateAccess?: pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigPrivateAccessArgs>;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigPrivatelinkAccessArgs>;
-    /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
-     */
-    projectToForkFrom?: pulumi.Input<string>;
-    /**
-     * Allow access to selected service ports from the public Internet.
-     */
-    publicAccess?: pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigPublicAccessArgs>;
-    /**
-     * Name of the basebackup to restore in forked service.
-     */
-    recoveryBasebackupName?: pulumi.Input<string>;
-    /**
-     * Name of another service to fork from. This has effect 
-     * only when a new service is being created.
-     */
-    serviceToForkFrom?: pulumi.Input<string>;
-    staticIps?: pulumi.Input<string>;
+    kibanaUri?: pulumi.Input<string>;
 }
 
 export interface GetElasticSearchElasticsearchUserConfig {
@@ -790,6 +802,80 @@ export interface GetElasticSearchElasticsearchUserConfig {
      */
     serviceToForkFrom?: string;
     staticIps?: string;
+}
+
+export interface GetElasticSearchElasticsearchUserConfigArgs {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the 
+     * Aiven DNS name.
+     */
+    customDomain?: pulumi.Input<string>;
+    /**
+     * Disable automatic replication factor 
+     * adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
+     * least to two nodes. Note: setting this to true increases a risk of data loss in case of
+     * virtual machine failure.
+     */
+    disableReplicationFactorAdjustment?: pulumi.Input<string>;
+    /**
+     * Elasticsearch specific server provided values.
+     */
+    elasticsearch?: pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigElasticsearchArgs>;
+    /**
+     * Elasticsearch major version.
+     */
+    elasticsearchVersion?: pulumi.Input<string>;
+    /**
+     * Glob pattern and number of indexes matching that pattern to 
+     * be kept.
+     */
+    indexPatterns?: pulumi.Input<pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigIndexPatternArgs>[]>;
+    /**
+     * Template settings for all new indexe.
+     */
+    indexTemplate?: pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigIndexTemplateArgs>;
+    /**
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    keepIndexRefreshInterval?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to kibana from the public internet for 
+     * service nodes that are in a project VPC or another type of private network.
+     */
+    kibana?: pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigKibanaArgs>;
+    /**
+     * Maximum number of indexes to keep before deleting the oldest one.
+     */
+    maxIndexCount?: pulumi.Input<string>;
+    opensearchVersion?: pulumi.Input<string>;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
+    privateAccess?: pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigPrivateAccessArgs>;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigPrivatelinkAccessArgs>;
+    /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: pulumi.Input<string>;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
+    publicAccess?: pulumi.Input<inputs.GetElasticSearchElasticsearchUserConfigPublicAccessArgs>;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
+    recoveryBasebackupName?: pulumi.Input<string>;
+    /**
+     * Name of another service to fork from. This has effect 
+     * only when a new service is being created.
+     */
+    serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigElasticsearch {
@@ -1102,23 +1188,6 @@ export interface GetElasticSearchElasticsearchUserConfigIndexPatternArgs {
     sortingAlgorithm?: pulumi.Input<string>;
 }
 
-export interface GetElasticSearchElasticsearchUserConfigIndexTemplate {
-    /**
-     * The maximum number of nested JSON objects that
-     * a single document can contain across all nested types. This limit helps to prevent out of
-     * memory errors when a document contains too many nested objects. Default is 10000.
-     */
-    mappingNestedObjectsLimit?: string;
-    /**
-     * The number of replicas each primary shard has.
-     */
-    numberOfReplicas?: string;
-    /**
-     * The number of primary shards that an index should have.
-     */
-    numberOfShards?: string;
-}
-
 export interface GetElasticSearchElasticsearchUserConfigIndexTemplateArgs {
     /**
      * The maximum number of nested JSON objects that
@@ -1134,6 +1203,23 @@ export interface GetElasticSearchElasticsearchUserConfigIndexTemplateArgs {
      * The number of primary shards that an index should have.
      */
     numberOfShards?: pulumi.Input<string>;
+}
+
+export interface GetElasticSearchElasticsearchUserConfigIndexTemplate {
+    /**
+     * The maximum number of nested JSON objects that
+     * a single document can contain across all nested types. This limit helps to prevent out of
+     * memory errors when a document contains too many nested objects. Default is 10000.
+     */
+    mappingNestedObjectsLimit?: string;
+    /**
+     * The number of replicas each primary shard has.
+     */
+    numberOfReplicas?: string;
+    /**
+     * The number of primary shards that an index should have.
+     */
+    numberOfShards?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigKibana {
@@ -1264,14 +1350,14 @@ export interface GetElasticSearchElasticsearchUserConfigPublicAccessArgs {
     prometheus?: pulumi.Input<string>;
 }
 
-export interface GetElasticSearchServiceIntegration {
-    integrationType: string;
-    sourceServiceName: string;
-}
-
 export interface GetElasticSearchServiceIntegrationArgs {
     integrationType: pulumi.Input<string>;
     sourceServiceName: pulumi.Input<string>;
+}
+
+export interface GetElasticSearchServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
 }
 
 export interface GetGrafanaComponent {
@@ -1306,147 +1392,10 @@ export interface GetGrafanaComponentArgs {
     usage?: pulumi.Input<string>;
 }
 
-export interface GetGrafanaGrafana {
-}
-
 export interface GetGrafanaGrafanaArgs {
 }
 
-export interface GetGrafanaGrafanaUserConfig {
-    /**
-     * Enable or disable Grafana alerting functionality
-     */
-    alertingEnabled?: string;
-    /**
-     * Default error or timeout setting for new alerting rules
-     */
-    alertingErrorOrTimeout?: string;
-    alertingMaxAnnotationsToKeep?: string;
-    /**
-     * Default value for 'no data or null values' for
-     * new alerting rules
-     */
-    alertingNodataOrNullvalues?: string;
-    /**
-     * Allow embedding Grafana dashboards with iframe/frame/object/embed 
-     * tags. Disabled by default to limit impact of clickjacking
-     */
-    allowEmbedding?: string;
-    authAzuread?: inputs.GetGrafanaGrafanaUserConfigAuthAzuread;
-    /**
-     * Enable or disable basic authentication form, used by Grafana 
-     * built-in login.
-     */
-    authBasicEnabled?: string;
-    /**
-     * Generic OAuth integration.
-     */
-    authGenericOauth?: inputs.GetGrafanaGrafanaUserConfigAuthGenericOauth;
-    /**
-     * Automatically sign-up users on successful sign-in
-     */
-    authGithub?: inputs.GetGrafanaGrafanaUserConfigAuthGithub;
-    /**
-     * GitLab Auth integration.
-     */
-    authGitlab?: inputs.GetGrafanaGrafanaUserConfigAuthGitlab;
-    /**
-     * Google Auth integration
-     */
-    authGoogle?: inputs.GetGrafanaGrafanaUserConfigAuthGoogle;
-    /**
-     * Cookie SameSite attribute: 'strict' prevents sending cookie for 
-     * cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
-     */
-    cookieSamesite?: string;
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-     */
-    customDomain?: string;
-    /**
-     * Signed sequence of decimal numbers, followed
-     * by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
-     */
-    dashboardsMinRefreshInterval?: string;
-    /**
-     * Dashboard versions to keep per dashboard.
-     */
-    dashboardsVersionsToKeep?: string;
-    /**
-     * Send 'X-Grafana-User' header to data source.
-     */
-    dataproxySendUserHeader?: string;
-    /**
-     * Timeout for data proxy requests in seconds.
-     */
-    dataproxyTimeout?: string;
-    dateFormats?: inputs.GetGrafanaGrafanaUserConfigDateFormats;
-    /**
-     * Set to true to disable gravatar. Defaults to false 
-     * (gravatar is enabled).
-     */
-    disableGravatar?: string;
-    /**
-     * Editors can manage folders, teams and dashboards created by them.
-     */
-    editorsCanAdmin?: string;
-    /**
-     * External image store settings
-     */
-    externalImageStorage?: inputs.GetGrafanaGrafanaUserConfigExternalImageStorage;
-    /**
-     * Google Analytics Universal Analytics ID for tracking Grafana usage
-     */
-    googleAnalyticsUaId?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-     */
-    ipFilters?: string[];
-    /**
-     * Enable Grafana /metrics endpoint
-     */
-    metricsEnabled?: string;
-    privateAccess?: inputs.GetGrafanaGrafanaUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: inputs.GetGrafanaGrafanaUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has 
-     * effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet.
-     */
-    publicAccess?: inputs.GetGrafanaGrafanaUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service.
-     */
-    recoveryBasebackupName?: string;
-    /**
-     * Name of another service to fork from. This has effect only 
-     * when a new service is being created.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * SMTP server settings.
-     */
-    smtpServer?: inputs.GetGrafanaGrafanaUserConfigSmtpServer;
-    staticIps?: string;
-    /**
-     * Auto-assign new users on signup to main organization. 
-     * Defaults to false.
-     */
-    userAutoAssignOrg?: string;
-    /**
-     * Set role for new signups. Defaults to Viewer.
-     */
-    userAutoAssignOrgRole?: string;
-    /**
-     * Users with view-only permission can edit but not save dashboards.
-     */
-    viewersCanEdit?: string;
+export interface GetGrafanaGrafana {
 }
 
 export interface GetGrafanaGrafanaUserConfigArgs {
@@ -1586,6 +1535,143 @@ export interface GetGrafanaGrafanaUserConfigArgs {
     viewersCanEdit?: pulumi.Input<string>;
 }
 
+export interface GetGrafanaGrafanaUserConfig {
+    /**
+     * Enable or disable Grafana alerting functionality
+     */
+    alertingEnabled?: string;
+    /**
+     * Default error or timeout setting for new alerting rules
+     */
+    alertingErrorOrTimeout?: string;
+    alertingMaxAnnotationsToKeep?: string;
+    /**
+     * Default value for 'no data or null values' for
+     * new alerting rules
+     */
+    alertingNodataOrNullvalues?: string;
+    /**
+     * Allow embedding Grafana dashboards with iframe/frame/object/embed 
+     * tags. Disabled by default to limit impact of clickjacking
+     */
+    allowEmbedding?: string;
+    authAzuread?: inputs.GetGrafanaGrafanaUserConfigAuthAzuread;
+    /**
+     * Enable or disable basic authentication form, used by Grafana 
+     * built-in login.
+     */
+    authBasicEnabled?: string;
+    /**
+     * Generic OAuth integration.
+     */
+    authGenericOauth?: inputs.GetGrafanaGrafanaUserConfigAuthGenericOauth;
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
+    authGithub?: inputs.GetGrafanaGrafanaUserConfigAuthGithub;
+    /**
+     * GitLab Auth integration.
+     */
+    authGitlab?: inputs.GetGrafanaGrafanaUserConfigAuthGitlab;
+    /**
+     * Google Auth integration
+     */
+    authGoogle?: inputs.GetGrafanaGrafanaUserConfigAuthGoogle;
+    /**
+     * Cookie SameSite attribute: 'strict' prevents sending cookie for 
+     * cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+     */
+    cookieSamesite?: string;
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
+    customDomain?: string;
+    /**
+     * Signed sequence of decimal numbers, followed
+     * by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+     */
+    dashboardsMinRefreshInterval?: string;
+    /**
+     * Dashboard versions to keep per dashboard.
+     */
+    dashboardsVersionsToKeep?: string;
+    /**
+     * Send 'X-Grafana-User' header to data source.
+     */
+    dataproxySendUserHeader?: string;
+    /**
+     * Timeout for data proxy requests in seconds.
+     */
+    dataproxyTimeout?: string;
+    dateFormats?: inputs.GetGrafanaGrafanaUserConfigDateFormats;
+    /**
+     * Set to true to disable gravatar. Defaults to false 
+     * (gravatar is enabled).
+     */
+    disableGravatar?: string;
+    /**
+     * Editors can manage folders, teams and dashboards created by them.
+     */
+    editorsCanAdmin?: string;
+    /**
+     * External image store settings
+     */
+    externalImageStorage?: inputs.GetGrafanaGrafanaUserConfigExternalImageStorage;
+    /**
+     * Google Analytics Universal Analytics ID for tracking Grafana usage
+     */
+    googleAnalyticsUaId?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
+    ipFilters?: string[];
+    /**
+     * Enable Grafana /metrics endpoint
+     */
+    metricsEnabled?: string;
+    privateAccess?: inputs.GetGrafanaGrafanaUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: inputs.GetGrafanaGrafanaUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has 
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
+    publicAccess?: inputs.GetGrafanaGrafanaUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
+    recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
+    serviceToForkFrom?: string;
+    /**
+     * SMTP server settings.
+     */
+    smtpServer?: inputs.GetGrafanaGrafanaUserConfigSmtpServer;
+    staticIps?: string;
+    /**
+     * Auto-assign new users on signup to main organization. 
+     * Defaults to false.
+     */
+    userAutoAssignOrg?: string;
+    /**
+     * Set role for new signups. Defaults to Viewer.
+     */
+    userAutoAssignOrgRole?: string;
+    /**
+     * Users with view-only permission can edit but not save dashboards.
+     */
+    viewersCanEdit?: string;
+}
+
 export interface GetGrafanaGrafanaUserConfigAuthAzuread {
     /**
      * Automatically sign-up users on successful sign-in
@@ -1648,49 +1734,6 @@ export interface GetGrafanaGrafanaUserConfigAuthAzureadArgs {
     tokenUrl?: pulumi.Input<string>;
 }
 
-export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
-    /**
-     * Automatically sign-up users on successful sign-in
-     */
-    allowSignUp?: string;
-    /**
-     * Allowed domain
-     */
-    allowedDomains?: string[];
-    /**
-     * Must consist of alpha-numeric characters and dashes"
-     */
-    allowedOrganizations?: string[];
-    /**
-     * API URL. This only needs to be set when using self hosted GitLab
-     */
-    apiUrl?: string;
-    /**
-     * Authorization URL. This only needs to be set when using self hosted GitLab
-     */
-    authUrl?: string;
-    /**
-     * Client ID from provider
-     */
-    clientId?: string;
-    /**
-     * Client secret from provider
-     */
-    clientSecret?: string;
-    /**
-     * Name of the OAuth integration
-     */
-    name?: string;
-    /**
-     * Scope must be non-empty string without whitespace
-     */
-    scopes?: string[];
-    /**
-     * Token URL. This only needs to be set when using self hosted GitLab
-     */
-    tokenUrl?: string;
-}
-
 export interface GetGrafanaGrafanaUserConfigAuthGenericOauthArgs {
     /**
      * Automatically sign-up users on successful sign-in
@@ -1732,6 +1775,49 @@ export interface GetGrafanaGrafanaUserConfigAuthGenericOauthArgs {
      * Token URL. This only needs to be set when using self hosted GitLab
      */
     tokenUrl?: pulumi.Input<string>;
+}
+
+export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
+    /**
+     * Automatically sign-up users on successful sign-in
+     */
+    allowSignUp?: string;
+    /**
+     * Allowed domain
+     */
+    allowedDomains?: string[];
+    /**
+     * Must consist of alpha-numeric characters and dashes"
+     */
+    allowedOrganizations?: string[];
+    /**
+     * API URL. This only needs to be set when using self hosted GitLab
+     */
+    apiUrl?: string;
+    /**
+     * Authorization URL. This only needs to be set when using self hosted GitLab
+     */
+    authUrl?: string;
+    /**
+     * Client ID from provider
+     */
+    clientId?: string;
+    /**
+     * Client secret from provider
+     */
+    clientSecret?: string;
+    /**
+     * Name of the OAuth integration
+     */
+    name?: string;
+    /**
+     * Scope must be non-empty string without whitespace
+     */
+    scopes?: string[];
+    /**
+     * Token URL. This only needs to be set when using self hosted GitLab
+     */
+    tokenUrl?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGithub {
@@ -1902,26 +1988,6 @@ export interface GetGrafanaGrafanaUserConfigDateFormatsArgs {
     intervalYear?: pulumi.Input<string>;
 }
 
-export interface GetGrafanaGrafanaUserConfigExternalImageStorageArgs {
-    /**
-     * S3 access key. Requires permissions to the S3 bucket for the 
-     * s3:PutObject and s3:PutObjectAcl actions
-     */
-    accessKey?: pulumi.Input<string>;
-    /**
-     * Bucket URL for S3
-     */
-    bucketUrl?: pulumi.Input<string>;
-    /**
-     * Provider type
-     */
-    provider?: pulumi.Input<string>;
-    /**
-     * S3 secret key
-     */
-    secretKey?: pulumi.Input<string>;
-}
-
 export interface GetGrafanaGrafanaUserConfigExternalImageStorage {
     /**
      * S3 access key. Requires permissions to the S3 bucket for the 
@@ -1940,6 +2006,26 @@ export interface GetGrafanaGrafanaUserConfigExternalImageStorage {
      * S3 secret key
      */
     secretKey?: string;
+}
+
+export interface GetGrafanaGrafanaUserConfigExternalImageStorageArgs {
+    /**
+     * S3 access key. Requires permissions to the S3 bucket for the 
+     * s3:PutObject and s3:PutObjectAcl actions
+     */
+    accessKey?: pulumi.Input<string>;
+    /**
+     * Bucket URL for S3
+     */
+    bucketUrl?: pulumi.Input<string>;
+    /**
+     * Provider type
+     */
+    provider?: pulumi.Input<string>;
+    /**
+     * S3 secret key
+     */
+    secretKey?: pulumi.Input<string>;
 }
 
 export interface GetGrafanaGrafanaUserConfigPrivateAccess {
@@ -2280,14 +2366,14 @@ export interface GetInfluxDbInfluxdbUserConfigPublicAccess {
     influxdb?: string;
 }
 
-export interface GetInfluxDbServiceIntegration {
-    integrationType: string;
-    sourceServiceName: string;
-}
-
 export interface GetInfluxDbServiceIntegrationArgs {
     integrationType: pulumi.Input<string>;
     sourceServiceName: pulumi.Input<string>;
+}
+
+export interface GetInfluxDbServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
 }
 
 export interface GetKafkaComponent {
@@ -2330,10 +2416,10 @@ export interface GetKafkaConnectComponentArgs {
     usage?: pulumi.Input<string>;
 }
 
-export interface GetKafkaConnectKafkaConnectArgs {
+export interface GetKafkaConnectKafkaConnect {
 }
 
-export interface GetKafkaConnectKafkaConnect {
+export interface GetKafkaConnectKafkaConnectArgs {
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfig {
@@ -2520,13 +2606,6 @@ export interface GetKafkaConnectKafkaConnectUserConfigPrivateAccess {
     prometheus?: string;
 }
 
-export interface GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs {
-    /**
-     * Kafka Connect specific server provided values.
-     */
-    kafkaConnect?: pulumi.Input<string>;
-}
-
 export interface GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
     /**
      * Kafka Connect specific server provided values.
@@ -2534,16 +2613,11 @@ export interface GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
     kafkaConnect?: string;
 }
 
-export interface GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs {
+export interface GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs {
     /**
      * Kafka Connect specific server provided values.
      */
     kafkaConnect?: pulumi.Input<string>;
-    /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to 
-     * the service's private IP addresses. Only available in certain network locations.
-     */
-    prometheus?: pulumi.Input<string>;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
@@ -2558,9 +2632,16 @@ export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
     prometheus?: string;
 }
 
-export interface GetKafkaConnectServiceIntegration {
-    integrationType: string;
-    sourceServiceName: string;
+export interface GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs {
+    /**
+     * Kafka Connect specific server provided values.
+     */
+    kafkaConnect?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to 
+     * the service's private IP addresses. Only available in certain network locations.
+     */
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface GetKafkaConnectServiceIntegrationArgs {
@@ -2568,13 +2649,9 @@ export interface GetKafkaConnectServiceIntegrationArgs {
     sourceServiceName: pulumi.Input<string>;
 }
 
-export interface GetKafkaConnectorTask {
-    connector?: string;
-    /**
-     * List of tasks of a connector, each element contains `connector` 
-     * (Related connector name) and `task` (Task id / number).
-     */
-    task?: number;
+export interface GetKafkaConnectServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
 }
 
 export interface GetKafkaConnectorTaskArgs {
@@ -2586,27 +2663,13 @@ export interface GetKafkaConnectorTaskArgs {
     task?: pulumi.Input<number>;
 }
 
-export interface GetKafkaKafka {
+export interface GetKafkaConnectorTask {
+    connector?: string;
     /**
-     * The Kafka client certificate
+     * List of tasks of a connector, each element contains `connector` 
+     * (Related connector name) and `task` (Task id / number).
      */
-    accessCert?: string;
-    /**
-     * The Kafka client certificate key
-     */
-    accessKey?: string;
-    /**
-     * The Kafka Connect URI, if any
-     */
-    connectUri?: string;
-    /**
-     * The Kafka REST URI, if any
-     */
-    restUri?: string;
-    /**
-     * The Schema Registry URI, if any
-     */
-    schemaRegistryUri?: string;
+    task?: number;
 }
 
 export interface GetKafkaKafkaArgs {
@@ -2630,6 +2693,29 @@ export interface GetKafkaKafkaArgs {
      * The Schema Registry URI, if any
      */
     schemaRegistryUri?: pulumi.Input<string>;
+}
+
+export interface GetKafkaKafka {
+    /**
+     * The Kafka client certificate
+     */
+    accessCert?: string;
+    /**
+     * The Kafka client certificate key
+     */
+    accessKey?: string;
+    /**
+     * The Kafka Connect URI, if any
+     */
+    connectUri?: string;
+    /**
+     * The Kafka REST URI, if any
+     */
+    restUri?: string;
+    /**
+     * The Schema Registry URI, if any
+     */
+    schemaRegistryUri?: string;
 }
 
 export interface GetKafkaKafkaUserConfigArgs {
@@ -3170,68 +3256,6 @@ export interface GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs {
     sasl?: pulumi.Input<string>;
 }
 
-export interface GetKafkaKafkaUserConfigKafkaConnectConfigArgs {
-    /**
-     * Defines what client configurations can 
-     * be overridden by the connector. Default is None
-     */
-    connectorClientConfigOverridePolicy?: pulumi.Input<string>;
-    /**
-     * What to do when there is no initial offset in Kafka or 
-     * if the current offset does not exist any more on the server. Default is earliest.
-     */
-    consumerAutoOffsetReset?: pulumi.Input<string>;
-    /**
-     * Records are fetched in batches by the consumer, and 
-     * if the first record batch in the first non-empty partition of the fetch is larger than this value,
-     * the record batch will still be returned to ensure that the consumer can make progress. As such,
-     * this is not a absolute maximum.
-     */
-    consumerFetchMaxBytes?: pulumi.Input<string>;
-    /**
-     * Transaction read isolation level. readUncommitted is 
-     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
-     */
-    consumerIsolationLevel?: pulumi.Input<string>;
-    /**
-     * Records are fetched in batches by the consumer.If 
-     * the first record batch in the first non-empty partition of the fetch is larger than this limit,
-     * the batch will still be returned to ensure that the consumer can make progress.
-     */
-    consumerMaxPartitionFetchBytes?: pulumi.Input<string>;
-    /**
-     * The maximum delay in milliseconds between invocations 
-     * of poll() when using consumer group management (defaults to 300000).
-     */
-    consumerMaxPollIntervalMs?: pulumi.Input<string>;
-    /**
-     * The maximum number of records returned in a single call 
-     * to poll() (defaults to 500).
-     */
-    consumerMaxPollRecords?: pulumi.Input<string>;
-    /**
-     * The interval at which to try committing offsets for 
-     * tasks (defaults to 60000).
-     */
-    offsetFlushIntervalMs?: pulumi.Input<string>;
-    /**
-     * Maximum number of milliseconds to wait for records to 
-     * flush and partition offset data to be committed to offset storage before cancelling the process
-     * and restoring the offset data to be committed in a future attempt (defaults to 5000).
-     */
-    offsetFlushTimeoutMs?: pulumi.Input<string>;
-    /**
-     * This setting will limit the number of record batches 
-     * the producer will send in a single request to avoid sending huge requests.
-     */
-    producerMaxRequestSize?: pulumi.Input<string>;
-    /**
-     * The timeout in milliseconds used to detect failures when 
-     * using Kafka’s group management facilities (defaults to 10000).
-     */
-    sessionTimeoutMs?: pulumi.Input<string>;
-}
-
 export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
     /**
      * Defines what client configurations can 
@@ -3294,37 +3318,66 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
     sessionTimeoutMs?: string;
 }
 
-export interface GetKafkaKafkaUserConfigKafkaRestConfigArgs {
+export interface GetKafkaKafkaUserConfigKafkaConnectConfigArgs {
     /**
-     * If true the consumer's offset will be periodically 
-     * committed to Kafka in the background
+     * Defines what client configurations can 
+     * be overridden by the connector. Default is None
      */
-    consumerEnableAutoCommit?: pulumi.Input<string>;
+    connectorClientConfigOverridePolicy?: pulumi.Input<string>;
     /**
-     * Maximum number of bytes in unencoded message keys and 
-     * values by a single request
+     * What to do when there is no initial offset in Kafka or 
+     * if the current offset does not exist any more on the server. Default is earliest.
      */
-    consumerRequestMaxBytes?: pulumi.Input<string>;
+    consumerAutoOffsetReset?: pulumi.Input<string>;
     /**
-     * The maximum total time to wait for messages for a 
-     * request if the maximum number of messages has not yet been reached
+     * Records are fetched in batches by the consumer, and 
+     * if the first record batch in the first non-empty partition of the fetch is larger than this value,
+     * the record batch will still be returned to ensure that the consumer can make progress. As such,
+     * this is not a absolute maximum.
      */
-    consumerRequestTimeoutMs?: pulumi.Input<string>;
+    consumerFetchMaxBytes?: pulumi.Input<string>;
     /**
-     * The number of acknowledgments the producer requires the leader to 
-     * have received before considering a request complete. If set to 'all' or '-1', the leader will wait
-     * for the full set of in-sync replicas to acknowledge the record.
+     * Transaction read isolation level. readUncommitted is 
+     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
      */
-    producerAcks?: pulumi.Input<string>;
+    consumerIsolationLevel?: pulumi.Input<string>;
     /**
-     * Wait for up to the given delay to allow batching records together
+     * Records are fetched in batches by the consumer.If 
+     * the first record batch in the first non-empty partition of the fetch is larger than this limit,
+     * the batch will still be returned to ensure that the consumer can make progress.
      */
-    producerLingerMs?: pulumi.Input<string>;
+    consumerMaxPartitionFetchBytes?: pulumi.Input<string>;
     /**
-     * Maximum number of SimpleConsumers that can be 
-     * instantiated per broker.
+     * The maximum delay in milliseconds between invocations 
+     * of poll() when using consumer group management (defaults to 300000).
      */
-    simpleconsumerPoolSizeMax?: pulumi.Input<string>;
+    consumerMaxPollIntervalMs?: pulumi.Input<string>;
+    /**
+     * The maximum number of records returned in a single call 
+     * to poll() (defaults to 500).
+     */
+    consumerMaxPollRecords?: pulumi.Input<string>;
+    /**
+     * The interval at which to try committing offsets for 
+     * tasks (defaults to 60000).
+     */
+    offsetFlushIntervalMs?: pulumi.Input<string>;
+    /**
+     * Maximum number of milliseconds to wait for records to 
+     * flush and partition offset data to be committed to offset storage before cancelling the process
+     * and restoring the offset data to be committed in a future attempt (defaults to 5000).
+     */
+    offsetFlushTimeoutMs?: pulumi.Input<string>;
+    /**
+     * This setting will limit the number of record batches 
+     * the producer will send in a single request to avoid sending huge requests.
+     */
+    producerMaxRequestSize?: pulumi.Input<string>;
+    /**
+     * The timeout in milliseconds used to detect failures when 
+     * using Kafka’s group management facilities (defaults to 10000).
+     */
+    sessionTimeoutMs?: pulumi.Input<string>;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaRestConfig {
@@ -3360,12 +3413,37 @@ export interface GetKafkaKafkaUserConfigKafkaRestConfig {
     simpleconsumerPoolSizeMax?: string;
 }
 
-export interface GetKafkaKafkaUserConfigPrivateAccessArgs {
+export interface GetKafkaKafkaUserConfigKafkaRestConfigArgs {
     /**
-     * Allow clients to connect to prometheus from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
+     * If true the consumer's offset will be periodically 
+     * committed to Kafka in the background
      */
-    prometheus?: pulumi.Input<string>;
+    consumerEnableAutoCommit?: pulumi.Input<string>;
+    /**
+     * Maximum number of bytes in unencoded message keys and 
+     * values by a single request
+     */
+    consumerRequestMaxBytes?: pulumi.Input<string>;
+    /**
+     * The maximum total time to wait for messages for a 
+     * request if the maximum number of messages has not yet been reached
+     */
+    consumerRequestTimeoutMs?: pulumi.Input<string>;
+    /**
+     * The number of acknowledgments the producer requires the leader to 
+     * have received before considering a request complete. If set to 'all' or '-1', the leader will wait
+     * for the full set of in-sync replicas to acknowledge the record.
+     */
+    producerAcks?: pulumi.Input<string>;
+    /**
+     * Wait for up to the given delay to allow batching records together
+     */
+    producerLingerMs?: pulumi.Input<string>;
+    /**
+     * Maximum number of SimpleConsumers that can be 
+     * instantiated per broker.
+     */
+    simpleconsumerPoolSizeMax?: pulumi.Input<string>;
 }
 
 export interface GetKafkaKafkaUserConfigPrivateAccess {
@@ -3376,23 +3454,12 @@ export interface GetKafkaKafkaUserConfigPrivateAccess {
     prometheus?: string;
 }
 
-export interface GetKafkaKafkaUserConfigPrivatelinkAccessArgs {
+export interface GetKafkaKafkaUserConfigPrivateAccessArgs {
     /**
-     * Kafka server provided values:
+     * Allow clients to connect to prometheus from the public internet for 
+     * service nodes that are in a project VPC or another type of private network
      */
-    kafka?: pulumi.Input<string>;
-    /**
-     * Enable kafka_connect
-     */
-    kafkaConnect?: pulumi.Input<string>;
-    /**
-     * Enable kafka_rest
-     */
-    kafkaRest?: pulumi.Input<string>;
-    /**
-     * Enable schema_registry
-     */
-    schemaRegistry?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface GetKafkaKafkaUserConfigPrivatelinkAccess {
@@ -3412,6 +3479,25 @@ export interface GetKafkaKafkaUserConfigPrivatelinkAccess {
      * Enable schema_registry
      */
     schemaRegistry?: string;
+}
+
+export interface GetKafkaKafkaUserConfigPrivatelinkAccessArgs {
+    /**
+     * Kafka server provided values:
+     */
+    kafka?: pulumi.Input<string>;
+    /**
+     * Enable kafka_connect
+     */
+    kafkaConnect?: pulumi.Input<string>;
+    /**
+     * Enable kafka_rest
+     */
+    kafkaRest?: pulumi.Input<string>;
+    /**
+     * Enable schema_registry
+     */
+    schemaRegistry?: pulumi.Input<string>;
 }
 
 export interface GetKafkaKafkaUserConfigPublicAccessArgs {
@@ -3550,40 +3636,6 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs {
     staticIps?: pulumi.Input<string>;
 }
 
-export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
-    /**
-     * Whether to periodically write the translated offsets
-     * of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
-     * as long as no active consumers in that group are connected to the target cluster.
-     */
-    emitCheckpointsEnabled?: string;
-    emitCheckpointsIntervalSeconds?: string;
-    /**
-     * Whether to periodically check for new consumer groups. 
-     * Defaults to 'true'.
-     */
-    refreshGroupsEnabled?: string;
-    /**
-     * Whether to periodically check for new topics and 
-     * partitions. Defaults to 'true'.
-     */
-    refreshGroupsIntervalSeconds?: string;
-    refreshTopicsEnabled?: string;
-    /**
-     * Frequency of topic and partitions refresh in 
-     * seconds. Defaults to 600 seconds (10 minutes).
-     */
-    refreshTopicsIntervalSeconds?: string;
-    syncGroupOffsetsEnabled?: string;
-    /**
-     * Frequency at which consumer group offsets
-     * are synced (default: 60, every minute).
-     */
-    syncGroupOffsetsIntervalSeconds?: string;
-    syncTopicConfigsEnabled?: string;
-    tasksMaxPerCpu?: string;
-}
-
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs {
     /**
      * Whether to periodically write the translated offsets
@@ -3618,6 +3670,40 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerAr
     tasksMaxPerCpu?: pulumi.Input<string>;
 }
 
+export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
+    /**
+     * Whether to periodically write the translated offsets
+     * of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
+     * as long as no active consumers in that group are connected to the target cluster.
+     */
+    emitCheckpointsEnabled?: string;
+    emitCheckpointsIntervalSeconds?: string;
+    /**
+     * Whether to periodically check for new consumer groups. 
+     * Defaults to 'true'.
+     */
+    refreshGroupsEnabled?: string;
+    /**
+     * Whether to periodically check for new topics and 
+     * partitions. Defaults to 'true'.
+     */
+    refreshGroupsIntervalSeconds?: string;
+    refreshTopicsEnabled?: string;
+    /**
+     * Frequency of topic and partitions refresh in 
+     * seconds. Defaults to 600 seconds (10 minutes).
+     */
+    refreshTopicsIntervalSeconds?: string;
+    syncGroupOffsetsEnabled?: string;
+    /**
+     * Frequency at which consumer group offsets
+     * are synced (default: 60, every minute).
+     */
+    syncGroupOffsetsIntervalSeconds?: string;
+    syncTopicConfigsEnabled?: string;
+    tasksMaxPerCpu?: string;
+}
+
 export interface GetKafkaMirrorMakerServiceIntegrationArgs {
     integrationType: pulumi.Input<string>;
     sourceServiceName: pulumi.Input<string>;
@@ -3636,105 +3722,6 @@ export interface GetKafkaServiceIntegrationArgs {
 export interface GetKafkaServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
-}
-
-export interface GetKafkaTopicConfigArgs {
-    /**
-     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
-     */
-    cleanupPolicy?: pulumi.Input<string>;
-    /**
-     * compression.type value
-     */
-    compressionType?: pulumi.Input<string>;
-    /**
-     * delete.retention.ms value
-     */
-    deleteRetentionMs?: pulumi.Input<string>;
-    /**
-     * file.delete.delay.ms value
-     */
-    fileDeleteDelayMs?: pulumi.Input<string>;
-    /**
-     * flush.messages value
-     */
-    flushMessages?: pulumi.Input<string>;
-    /**
-     * flush.ms value
-     */
-    flushMs?: pulumi.Input<string>;
-    /**
-     * index.interval.bytes value
-     */
-    indexIntervalBytes?: pulumi.Input<string>;
-    /**
-     * max.compaction.lag.ms value
-     */
-    maxCompactionLagMs?: pulumi.Input<string>;
-    /**
-     * max.message.bytes value
-     */
-    maxMessageBytes?: pulumi.Input<string>;
-    /**
-     * message.downconversion.enable value
-     */
-    messageDownconversionEnable?: pulumi.Input<string>;
-    /**
-     * message.format.version value
-     */
-    messageFormatVersion?: pulumi.Input<string>;
-    /**
-     * message.timestamp.difference.max.ms value
-     */
-    messageTimestampDifferenceMaxMs?: pulumi.Input<string>;
-    /**
-     * message.timestamp.type value
-     */
-    messageTimestampType?: pulumi.Input<string>;
-    /**
-     * min.cleanable.dirty.ratio value
-     */
-    minCleanableDirtyRatio?: pulumi.Input<string>;
-    /**
-     * min.compaction.lag.ms value
-     */
-    minCompactionLagMs?: pulumi.Input<string>;
-    /**
-     * min.insync.replicas value
-     */
-    minInsyncReplicas?: pulumi.Input<string>;
-    /**
-     * preallocate value
-     */
-    preallocate?: pulumi.Input<string>;
-    /**
-     * retention.bytes value
-     */
-    retentionBytes?: pulumi.Input<string>;
-    /**
-     * retention.ms value
-     */
-    retentionMs?: pulumi.Input<string>;
-    /**
-     * segment.bytes value
-     */
-    segmentBytes?: pulumi.Input<string>;
-    /**
-     * segment.index.bytes value
-     */
-    segmentIndexBytes?: pulumi.Input<string>;
-    /**
-     * segment.jitter.ms value
-     */
-    segmentJitterMs?: pulumi.Input<string>;
-    /**
-     * segment.ms value
-     */
-    segmentMs?: pulumi.Input<string>;
-    /**
-     * unclean.leader.election.enable value
-     */
-    uncleanLeaderElectionEnable?: pulumi.Input<string>;
 }
 
 export interface GetKafkaTopicConfig {
@@ -3836,14 +3823,113 @@ export interface GetKafkaTopicConfig {
     uncleanLeaderElectionEnable?: string;
 }
 
-export interface GetKafkaTopicTagArgs {
-    key: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+export interface GetKafkaTopicConfigArgs {
+    /**
+     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
+     */
+    cleanupPolicy?: pulumi.Input<string>;
+    /**
+     * compression.type value
+     */
+    compressionType?: pulumi.Input<string>;
+    /**
+     * delete.retention.ms value
+     */
+    deleteRetentionMs?: pulumi.Input<string>;
+    /**
+     * file.delete.delay.ms value
+     */
+    fileDeleteDelayMs?: pulumi.Input<string>;
+    /**
+     * flush.messages value
+     */
+    flushMessages?: pulumi.Input<string>;
+    /**
+     * flush.ms value
+     */
+    flushMs?: pulumi.Input<string>;
+    /**
+     * index.interval.bytes value
+     */
+    indexIntervalBytes?: pulumi.Input<string>;
+    /**
+     * max.compaction.lag.ms value
+     */
+    maxCompactionLagMs?: pulumi.Input<string>;
+    /**
+     * max.message.bytes value
+     */
+    maxMessageBytes?: pulumi.Input<string>;
+    /**
+     * message.downconversion.enable value
+     */
+    messageDownconversionEnable?: pulumi.Input<string>;
+    /**
+     * message.format.version value
+     */
+    messageFormatVersion?: pulumi.Input<string>;
+    /**
+     * message.timestamp.difference.max.ms value
+     */
+    messageTimestampDifferenceMaxMs?: pulumi.Input<string>;
+    /**
+     * message.timestamp.type value
+     */
+    messageTimestampType?: pulumi.Input<string>;
+    /**
+     * min.cleanable.dirty.ratio value
+     */
+    minCleanableDirtyRatio?: pulumi.Input<string>;
+    /**
+     * min.compaction.lag.ms value
+     */
+    minCompactionLagMs?: pulumi.Input<string>;
+    /**
+     * min.insync.replicas value
+     */
+    minInsyncReplicas?: pulumi.Input<string>;
+    /**
+     * preallocate value
+     */
+    preallocate?: pulumi.Input<string>;
+    /**
+     * retention.bytes value
+     */
+    retentionBytes?: pulumi.Input<string>;
+    /**
+     * retention.ms value
+     */
+    retentionMs?: pulumi.Input<string>;
+    /**
+     * segment.bytes value
+     */
+    segmentBytes?: pulumi.Input<string>;
+    /**
+     * segment.index.bytes value
+     */
+    segmentIndexBytes?: pulumi.Input<string>;
+    /**
+     * segment.jitter.ms value
+     */
+    segmentJitterMs?: pulumi.Input<string>;
+    /**
+     * segment.ms value
+     */
+    segmentMs?: pulumi.Input<string>;
+    /**
+     * unclean.leader.election.enable value
+     */
+    uncleanLeaderElectionEnable?: pulumi.Input<string>;
 }
 
 export interface GetKafkaTopicTag {
     key: string;
     value?: string;
+}
+
+export interface GetKafkaTopicTagArgs {
+    key: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface GetM3AggregatorComponent {
@@ -3942,61 +4028,6 @@ export interface GetM3DbM3dbArgs {
 export interface GetM3DbM3db {
 }
 
-export interface GetM3DbM3dbUserConfig {
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-     */
-    customDomain?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-     */
-    ipFilters?: string[];
-    /**
-     * M3 limits
-     */
-    limits?: inputs.GetM3DbM3dbUserConfigLimits;
-    m3Version?: string;
-    /**
-     * Enables access to Graphite Carbon 
-     * plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
-     * metrics are written to aggregated namespaces only.
-     */
-    m3coordinatorEnableGraphiteCarbonIngest?: string;
-    /**
-     * M3 major version
-     */
-    m3dbVersion?: string;
-    /**
-     * List of M3 namespaces
-     */
-    namespaces?: inputs.GetM3DbM3dbUserConfigNamespace[];
-    /**
-     * Allow access to selected service ports from private networks.
-     */
-    privateAccess?: inputs.GetM3DbM3dbUserConfigPrivateAccess;
-    /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet.
-     */
-    publicAccess?: inputs.GetM3DbM3dbUserConfigPublicAccess;
-    /**
-     * Mapping rules allow more granular use of aggregation, not simply sending
-     * everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
-     * rules will be sent to it and nothing else.
-     */
-    rules?: inputs.GetM3DbM3dbUserConfigRules;
-    /**
-     * Name of another service to fork from. This has effect only 
-     * when a new service is being created.
-     */
-    serviceToForkFrom?: string;
-    staticIps?: string;
-}
-
 export interface GetM3DbM3dbUserConfigArgs {
     /**
      * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -4052,6 +4083,61 @@ export interface GetM3DbM3dbUserConfigArgs {
     staticIps?: pulumi.Input<string>;
 }
 
+export interface GetM3DbM3dbUserConfig {
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     */
+    customDomain?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
+    ipFilters?: string[];
+    /**
+     * M3 limits
+     */
+    limits?: inputs.GetM3DbM3dbUserConfigLimits;
+    m3Version?: string;
+    /**
+     * Enables access to Graphite Carbon 
+     * plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
+     * metrics are written to aggregated namespaces only.
+     */
+    m3coordinatorEnableGraphiteCarbonIngest?: string;
+    /**
+     * M3 major version
+     */
+    m3dbVersion?: string;
+    /**
+     * List of M3 namespaces
+     */
+    namespaces?: inputs.GetM3DbM3dbUserConfigNamespace[];
+    /**
+     * Allow access to selected service ports from private networks.
+     */
+    privateAccess?: inputs.GetM3DbM3dbUserConfigPrivateAccess;
+    /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet.
+     */
+    publicAccess?: inputs.GetM3DbM3dbUserConfigPublicAccess;
+    /**
+     * Mapping rules allow more granular use of aggregation, not simply sending
+     * everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
+     * rules will be sent to it and nothing else.
+     */
+    rules?: inputs.GetM3DbM3dbUserConfigRules;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
+    serviceToForkFrom?: string;
+    staticIps?: string;
+}
+
 export interface GetM3DbM3dbUserConfigLimits {
     /**
      * The maximum number of data points fetched during request
@@ -4092,25 +4178,6 @@ export interface GetM3DbM3dbUserConfigLimitsArgs {
     querySeries?: pulumi.Input<string>;
 }
 
-export interface GetM3DbM3dbUserConfigNamespaceArgs {
-    /**
-     * The name of the namespace
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Namespace options
-     */
-    options?: pulumi.Input<inputs.GetM3DbM3dbUserConfigNamespaceOptionsArgs>;
-    /**
-     * The resolution for an aggregated namespace
-     */
-    resolution?: pulumi.Input<string>;
-    /**
-     * The type of aggregation (aggregated/unaggregated)
-     */
-    type?: pulumi.Input<string>;
-}
-
 export interface GetM3DbM3dbUserConfigNamespace {
     /**
      * The name of the namespace
@@ -4128,6 +4195,25 @@ export interface GetM3DbM3dbUserConfigNamespace {
      * The type of aggregation (aggregated/unaggregated)
      */
     type?: string;
+}
+
+export interface GetM3DbM3dbUserConfigNamespaceArgs {
+    /**
+     * The name of the namespace
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Namespace options
+     */
+    options?: pulumi.Input<inputs.GetM3DbM3dbUserConfigNamespaceOptionsArgs>;
+    /**
+     * The resolution for an aggregated namespace
+     */
+    resolution?: pulumi.Input<string>;
+    /**
+     * The type of aggregation (aggregated/unaggregated)
+     */
+    type?: pulumi.Input<string>;
 }
 
 export interface GetM3DbM3dbUserConfigNamespaceOptions {
@@ -4218,14 +4304,6 @@ export interface GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs {
     retentionPeriodDuration?: pulumi.Input<string>;
 }
 
-export interface GetM3DbM3dbUserConfigPrivateAccessArgs {
-    /**
-     * Allow clients to connect to m3coordinator from the public internet 
-     * for service nodes that are in a project VPC or another type of private network.
-     */
-    m3coordinator?: pulumi.Input<string>;
-}
-
 export interface GetM3DbM3dbUserConfigPrivateAccess {
     /**
      * Allow clients to connect to m3coordinator from the public internet 
@@ -4234,12 +4312,12 @@ export interface GetM3DbM3dbUserConfigPrivateAccess {
     m3coordinator?: string;
 }
 
-export interface GetM3DbM3dbUserConfigPublicAccess {
+export interface GetM3DbM3dbUserConfigPrivateAccessArgs {
     /**
      * Allow clients to connect to m3coordinator from the public internet 
      * for service nodes that are in a project VPC or another type of private network.
      */
-    m3coordinator?: string;
+    m3coordinator?: pulumi.Input<string>;
 }
 
 export interface GetM3DbM3dbUserConfigPublicAccessArgs {
@@ -4250,37 +4328,20 @@ export interface GetM3DbM3dbUserConfigPublicAccessArgs {
     m3coordinator?: pulumi.Input<string>;
 }
 
-export interface GetM3DbM3dbUserConfigRules {
-    mappings?: inputs.GetM3DbM3dbUserConfigRulesMapping[];
+export interface GetM3DbM3dbUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to m3coordinator from the public internet 
+     * for service nodes that are in a project VPC or another type of private network.
+     */
+    m3coordinator?: string;
 }
 
 export interface GetM3DbM3dbUserConfigRulesArgs {
     mappings?: pulumi.Input<pulumi.Input<inputs.GetM3DbM3dbUserConfigRulesMappingArgs>[]>;
 }
 
-export interface GetM3DbM3dbUserConfigRulesMappingArgs {
-    /**
-     * List of aggregations to be applied
-     */
-    aggregations?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
-     */
-    drop?: pulumi.Input<string>;
-    /**
-     * The metrics to be used with this particular rule; Matching metric names with wildcards (using
-     * __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
-     * can be used at start of value for negation, and multiple filters can be supplied using space as separator.
-     */
-    filter?: pulumi.Input<string>;
-    /**
-     * The name of the namespace
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * List of tags to be appended to matching metrics.
-     */
-    tags?: pulumi.Input<pulumi.Input<inputs.GetM3DbM3dbUserConfigRulesMappingTagArgs>[]>;
+export interface GetM3DbM3dbUserConfigRules {
+    mappings?: inputs.GetM3DbM3dbUserConfigRulesMapping[];
 }
 
 export interface GetM3DbM3dbUserConfigRulesMapping {
@@ -4306,6 +4367,31 @@ export interface GetM3DbM3dbUserConfigRulesMapping {
      * List of tags to be appended to matching metrics.
      */
     tags?: inputs.GetM3DbM3dbUserConfigRulesMappingTag[];
+}
+
+export interface GetM3DbM3dbUserConfigRulesMappingArgs {
+    /**
+     * List of aggregations to be applied
+     */
+    aggregations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
+     */
+    drop?: pulumi.Input<string>;
+    /**
+     * The metrics to be used with this particular rule; Matching metric names with wildcards (using
+     * __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
+     * can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+     */
+    filter?: pulumi.Input<string>;
+    /**
+     * The name of the namespace
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * List of tags to be appended to matching metrics.
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.GetM3DbM3dbUserConfigRulesMappingTagArgs>[]>;
 }
 
 export interface GetM3DbM3dbUserConfigRulesMappingTag {
@@ -4340,25 +4426,6 @@ export interface GetM3DbServiceIntegrationArgs {
     sourceServiceName: pulumi.Input<string>;
 }
 
-export interface GetMySqlComponentArgs {
-    component?: pulumi.Input<string>;
-    /**
-     * Hostname or IP address of the server where to migrate data from
-     */
-    host?: pulumi.Input<string>;
-    kafkaAuthenticationMethod?: pulumi.Input<string>;
-    /**
-     * Port number of the server where to migrate data from
-     */
-    port?: pulumi.Input<number>;
-    route?: pulumi.Input<string>;
-    /**
-     * The server where to migrate data from is secured with SSL
-     */
-    ssl?: pulumi.Input<boolean>;
-    usage?: pulumi.Input<string>;
-}
-
 export interface GetMySqlComponent {
     component?: string;
     /**
@@ -4378,83 +4445,29 @@ export interface GetMySqlComponent {
     usage?: string;
 }
 
+export interface GetMySqlComponentArgs {
+    component?: pulumi.Input<string>;
+    /**
+     * Hostname or IP address of the server where to migrate data from
+     */
+    host?: pulumi.Input<string>;
+    kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Port number of the server where to migrate data from
+     */
+    port?: pulumi.Input<number>;
+    route?: pulumi.Input<string>;
+    /**
+     * The server where to migrate data from is secured with SSL
+     */
+    ssl?: pulumi.Input<boolean>;
+    usage?: pulumi.Input<string>;
+}
+
 export interface GetMySqlMysql {
 }
 
 export interface GetMySqlMysqlArgs {
-}
-
-export interface GetMySqlMysqlUserConfig {
-    /**
-     * Custom password for admin user. Defaults to random string. 
-     * This must be set only when a new service is being created.
-     */
-    adminPassword?: string;
-    /**
-     * Custom username for admin user. This must be set only when a 
-     * new service is being created.
-     */
-    adminUsername?: string;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. 
-     * New backup is only started if previous backup has already completed.
-     */
-    backupHour?: string;
-    /**
-     * The minute of an hour when backup for the service is started. 
-     * New backup is only started if previous backup has already completed.
-     */
-    backupMinute?: string;
-    /**
-     * The minimum amount of time in seconds to keep binlog entries
-     * before deletion. This may be extended for services that require binlog entries for longer than the
-     * default for example if using the MySQL Debezium Kafka connector.
-     */
-    binlogRetentionPeriod?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-     */
-    ipFilters?: string[];
-    /**
-     * Migrate data from existing server
-     */
-    migration?: inputs.GetMySqlMysqlUserConfigMigration;
-    /**
-     * MySQL specific server provided values.
-     */
-    mysql?: inputs.GetMySqlMysqlUserConfigMysql;
-    /**
-     * MySQL major version
-     */
-    mysqlVersion?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: inputs.GetMySqlMysqlUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: inputs.GetMySqlMysqlUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: inputs.GetMySqlMysqlUserConfigPublicAccess;
-    /**
-     * Recovery target time when forking a service. This has effect 
-     * only when a new service is being created.
-     */
-    recoveryTargetTime?: string;
-    /**
-     * Name of another service to fork from. This has effect only when 
-     * a new service is being created.
-     */
-    serviceToForkFrom?: string;
-    staticIps?: string;
 }
 
 export interface GetMySqlMysqlUserConfigArgs {
@@ -4528,6 +4541,79 @@ export interface GetMySqlMysqlUserConfigArgs {
      */
     serviceToForkFrom?: pulumi.Input<string>;
     staticIps?: pulumi.Input<string>;
+}
+
+export interface GetMySqlMysqlUserConfig {
+    /**
+     * Custom password for admin user. Defaults to random string. 
+     * This must be set only when a new service is being created.
+     */
+    adminPassword?: string;
+    /**
+     * Custom username for admin user. This must be set only when a 
+     * new service is being created.
+     */
+    adminUsername?: string;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. 
+     * New backup is only started if previous backup has already completed.
+     */
+    backupHour?: string;
+    /**
+     * The minute of an hour when backup for the service is started. 
+     * New backup is only started if previous backup has already completed.
+     */
+    backupMinute?: string;
+    /**
+     * The minimum amount of time in seconds to keep binlog entries
+     * before deletion. This may be extended for services that require binlog entries for longer than the
+     * default for example if using the MySQL Debezium Kafka connector.
+     */
+    binlogRetentionPeriod?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
+    ipFilters?: string[];
+    /**
+     * Migrate data from existing server
+     */
+    migration?: inputs.GetMySqlMysqlUserConfigMigration;
+    /**
+     * MySQL specific server provided values.
+     */
+    mysql?: inputs.GetMySqlMysqlUserConfigMysql;
+    /**
+     * MySQL major version
+     */
+    mysqlVersion?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
+    privateAccess?: inputs.GetMySqlMysqlUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: inputs.GetMySqlMysqlUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: inputs.GetMySqlMysqlUserConfigPublicAccess;
+    /**
+     * Recovery target time when forking a service. This has effect 
+     * only when a new service is being created.
+     */
+    recoveryTargetTime?: string;
+    /**
+     * Name of another service to fork from. This has effect only when 
+     * a new service is being created.
+     */
+    serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetMySqlMysqlUserConfigMigrationArgs {
@@ -4872,18 +4958,6 @@ export interface GetMySqlMysqlUserConfigPrivateAccessArgs {
     prometheus?: pulumi.Input<string>;
 }
 
-export interface GetMySqlMysqlUserConfigPrivatelinkAccessArgs {
-    /**
-     * MySQL specific server provided values.
-     */
-    mysql?: pulumi.Input<string>;
-    /**
-     * (Optional) Allow clients to connect to mysqlx from the public internet for service
-     * nodes that are in a project VPC or another type of private network
-     */
-    mysqlx?: pulumi.Input<string>;
-}
-
 export interface GetMySqlMysqlUserConfigPrivatelinkAccess {
     /**
      * MySQL specific server provided values.
@@ -4896,7 +4970,7 @@ export interface GetMySqlMysqlUserConfigPrivatelinkAccess {
     mysqlx?: string;
 }
 
-export interface GetMySqlMysqlUserConfigPublicAccessArgs {
+export interface GetMySqlMysqlUserConfigPrivatelinkAccessArgs {
     /**
      * MySQL specific server provided values.
      */
@@ -4906,11 +4980,6 @@ export interface GetMySqlMysqlUserConfigPublicAccessArgs {
      * nodes that are in a project VPC or another type of private network
      */
     mysqlx?: pulumi.Input<string>;
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
-     */
-    prometheus?: pulumi.Input<string>;
 }
 
 export interface GetMySqlMysqlUserConfigPublicAccess {
@@ -4930,14 +4999,31 @@ export interface GetMySqlMysqlUserConfigPublicAccess {
     prometheus?: string;
 }
 
-export interface GetMySqlServiceIntegrationArgs {
-    integrationType: pulumi.Input<string>;
-    sourceServiceName: pulumi.Input<string>;
+export interface GetMySqlMysqlUserConfigPublicAccessArgs {
+    /**
+     * MySQL specific server provided values.
+     */
+    mysql?: pulumi.Input<string>;
+    /**
+     * (Optional) Allow clients to connect to mysqlx from the public internet for service
+     * nodes that are in a project VPC or another type of private network
+     */
+    mysqlx?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface GetMySqlServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
+}
+
+export interface GetMySqlServiceIntegrationArgs {
+    integrationType: pulumi.Input<string>;
+    sourceServiceName: pulumi.Input<string>;
 }
 
 export interface GetOpenSearchComponent {
@@ -5146,23 +5232,6 @@ export interface GetOpenSearchOpensearchUserConfigIndexPattern {
     sortingAlgorithm?: string;
 }
 
-export interface GetOpenSearchOpensearchUserConfigIndexTemplate {
-    /**
-     * The maximum number of nested JSON objects that a single document can contain
-     * across all nested types. This limit helps to prevent out of memory errors when a document contains too many
-     * nested objects. Default is 10000.
-     */
-    mappingNestedObjectsLimit?: string;
-    /**
-     * The number of replicas each primary shard has.
-     */
-    numberOfReplicas?: string;
-    /**
-     * The number of primary shards that an index should have.
-     */
-    numberOfShards?: string;
-}
-
 export interface GetOpenSearchOpensearchUserConfigIndexTemplateArgs {
     /**
      * The maximum number of nested JSON objects that a single document can contain
@@ -5180,127 +5249,21 @@ export interface GetOpenSearchOpensearchUserConfigIndexTemplateArgs {
     numberOfShards?: pulumi.Input<string>;
 }
 
-export interface GetOpenSearchOpensearchUserConfigOpensearch {
+export interface GetOpenSearchOpensearchUserConfigIndexTemplate {
     /**
-     * Explicitly allow or block automatic creation of indices. Defaults to true
+     * The maximum number of nested JSON objects that a single document can contain
+     * across all nested types. This limit helps to prevent out of memory errors when a document contains too many
+     * nested objects. Default is 10000.
      */
-    actionAutoCreateIndexEnabled?: string;
+    mappingNestedObjectsLimit?: string;
     /**
-     * Require explicit index names when deleting
+     * The number of replicas each primary shard has.
      */
-    actionDestructiveRequiresName?: string;
+    numberOfReplicas?: string;
     /**
-     * Controls the number of shards allowed in the cluster per data node
+     * The number of primary shards that an index should have.
      */
-    clusterMaxShardsPerNode?: string;
-    /**
-     * Maximum content length for HTTP requests to the Opensearch HTTP API, in bytes.
-     */
-    httpMaxContentLength?: string;
-    /**
-     * The max size of allowed headers, in bytes.
-     */
-    httpMaxHeaderSize?: string;
-    /**
-     * The max length of an HTTP URL, in bytes.
-     */
-    httpMaxInitialLineLength?: string;
-    /**
-     * Relative amount. Maximum amount of heap memory used for field data cache.
-     * This is an expert setting; decreasing the value too much will increase overhead of loading field data; too
-     * much memory used for field data cache will decrease amount of heap available for other operations.
-     */
-    indicesFielddataCacheSize?: string;
-    /**
-     * Percentage value. Default is 10%. Total amount of heap used for indexing
-     * buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too
-     * high value will increase indexing performance but causes performance issues for query performance.
-     */
-    indicesMemoryIndexBufferSize?: string;
-    /**
-     * Percentage value. Default is 10%. Maximum amount of heap used for query cache.
-     * This is an expert setting. Too low value will decrease query performance and increase performance for other
-     * operations; too high value will cause issues with other Opensearch functionality.
-     */
-    indicesQueriesCacheSize?: string;
-    /**
-     * Maximum number of clauses Lucene BooleanQuery can have. The default
-     * value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches
-     * first before increasing this value.
-     */
-    indicesQueryBoolMaxClauseCount?: string;
-    /**
-     * Whitelisted addresses for reindexing. Changing this value will cause all
-     * Opensearch instances to restart.
-     */
-    reindexRemoteWhitelists?: string[];
-    /**
-     * Maximum number of aggregation buckets allowed in a single response. Opensearch default
-     * value is used when this is not defined.
-     */
-    searchMaxBuckets?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact details.
-     */
-    threadPoolAnalyzeQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note this may
-     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
-     * value.
-     */
-    threadPoolAnalyzeSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note this
-     * may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
-     * value.
-     */
-    threadPoolForceMergeSize?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact details.
-     */
-    threadPoolGetQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note this may have
-     * maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
-     */
-    threadPoolGetSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note this may
-     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
-     * value.
-     */
-    threadPoolIndexSize?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact details.
-     */
-    threadPoolSearchQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note this may
-     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
-     * value.
-     */
-    threadPoolSearchSize?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact
-     * details.
-     */
-    threadPoolSearchThrottledQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note
-     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
-     * maximum value.
-     */
-    threadPoolSearchThrottledSize?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact details.
-     */
-    threadPoolWriteQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note this may
-     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
-     * value.
-     */
-    threadPoolWriteSize?: string;
+    numberOfShards?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigOpensearchArgs {
@@ -5426,6 +5389,129 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchArgs {
     threadPoolWriteSize?: pulumi.Input<string>;
 }
 
+export interface GetOpenSearchOpensearchUserConfigOpensearch {
+    /**
+     * Explicitly allow or block automatic creation of indices. Defaults to true
+     */
+    actionAutoCreateIndexEnabled?: string;
+    /**
+     * Require explicit index names when deleting
+     */
+    actionDestructiveRequiresName?: string;
+    /**
+     * Controls the number of shards allowed in the cluster per data node
+     */
+    clusterMaxShardsPerNode?: string;
+    /**
+     * Maximum content length for HTTP requests to the Opensearch HTTP API, in bytes.
+     */
+    httpMaxContentLength?: string;
+    /**
+     * The max size of allowed headers, in bytes.
+     */
+    httpMaxHeaderSize?: string;
+    /**
+     * The max length of an HTTP URL, in bytes.
+     */
+    httpMaxInitialLineLength?: string;
+    /**
+     * Relative amount. Maximum amount of heap memory used for field data cache.
+     * This is an expert setting; decreasing the value too much will increase overhead of loading field data; too
+     * much memory used for field data cache will decrease amount of heap available for other operations.
+     */
+    indicesFielddataCacheSize?: string;
+    /**
+     * Percentage value. Default is 10%. Total amount of heap used for indexing
+     * buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too
+     * high value will increase indexing performance but causes performance issues for query performance.
+     */
+    indicesMemoryIndexBufferSize?: string;
+    /**
+     * Percentage value. Default is 10%. Maximum amount of heap used for query cache.
+     * This is an expert setting. Too low value will decrease query performance and increase performance for other
+     * operations; too high value will cause issues with other Opensearch functionality.
+     */
+    indicesQueriesCacheSize?: string;
+    /**
+     * Maximum number of clauses Lucene BooleanQuery can have. The default
+     * value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches
+     * first before increasing this value.
+     */
+    indicesQueryBoolMaxClauseCount?: string;
+    /**
+     * Whitelisted addresses for reindexing. Changing this value will cause all
+     * Opensearch instances to restart.
+     */
+    reindexRemoteWhitelists?: string[];
+    /**
+     * Maximum number of aggregation buckets allowed in a single response. Opensearch default
+     * value is used when this is not defined.
+     */
+    searchMaxBuckets?: string;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
+    threadPoolAnalyzeQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may
+     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
+     * value.
+     */
+    threadPoolAnalyzeSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this
+     * may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
+     * value.
+     */
+    threadPoolForceMergeSize?: string;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
+    threadPoolGetQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may have
+     * maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     */
+    threadPoolGetSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may
+     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
+     * value.
+     */
+    threadPoolIndexSize?: string;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
+    threadPoolSearchQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may
+     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
+     * value.
+     */
+    threadPoolSearchSize?: string;
+    /**
+     * Size for the thread pool queue. See documentation for exact
+     * details.
+     */
+    threadPoolSearchThrottledQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note
+     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
+     * maximum value.
+     */
+    threadPoolSearchThrottledSize?: string;
+    /**
+     * Size for the thread pool queue. See documentation for exact details.
+     */
+    threadPoolWriteQueueSize?: string;
+    /**
+     * Size for the thread pool. See documentation for exact details. Do note this may
+     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
+     * value.
+     */
+    threadPoolWriteSize?: string;
+}
+
 export interface GetOpenSearchOpensearchUserConfigOpensearchDashboards {
     /**
      * Enable or disable Opensearch dashboards.
@@ -5462,24 +5548,6 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs {
     opensearchRequestTimeout?: pulumi.Input<string>;
 }
 
-export interface GetOpenSearchOpensearchUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to opensearch from the public internet for service nodes that are in a
-     * project VPC or another type of private network.
-     */
-    opensearch?: string;
-    /**
-     * Allow clients to connect to opensearchDashboards from the public internet for
-     * service nodes that are in a project VPC or another type of private network.
-     */
-    opensearchDashboards?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a
-     * project VPC or another type of private network.
-     */
-    prometheus?: string;
-}
-
 export interface GetOpenSearchOpensearchUserConfigPrivateAccessArgs {
     /**
      * Allow clients to connect to opensearch from the public internet for service nodes that are in a
@@ -5498,17 +5566,22 @@ export interface GetOpenSearchOpensearchUserConfigPrivateAccessArgs {
     prometheus?: pulumi.Input<string>;
 }
 
-export interface GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs {
+export interface GetOpenSearchOpensearchUserConfigPrivateAccess {
     /**
      * Allow clients to connect to opensearch from the public internet for service nodes that are in a
      * project VPC or another type of private network.
      */
-    opensearch?: pulumi.Input<string>;
+    opensearch?: string;
     /**
      * Allow clients to connect to opensearchDashboards from the public internet for
      * service nodes that are in a project VPC or another type of private network.
      */
-    opensearchDashboards?: pulumi.Input<string>;
+    opensearchDashboards?: string;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a
+     * project VPC or another type of private network.
+     */
+    prometheus?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
@@ -5524,7 +5597,7 @@ export interface GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
     opensearchDashboards?: string;
 }
 
-export interface GetOpenSearchOpensearchUserConfigPublicAccessArgs {
+export interface GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs {
     /**
      * Allow clients to connect to opensearch from the public internet for service nodes that are in a
      * project VPC or another type of private network.
@@ -5535,11 +5608,6 @@ export interface GetOpenSearchOpensearchUserConfigPublicAccessArgs {
      * service nodes that are in a project VPC or another type of private network.
      */
     opensearchDashboards?: pulumi.Input<string>;
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a
-     * project VPC or another type of private network.
-     */
-    prometheus?: pulumi.Input<string>;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPublicAccess {
@@ -5560,14 +5628,32 @@ export interface GetOpenSearchOpensearchUserConfigPublicAccess {
     prometheus?: string;
 }
 
-export interface GetOpenSearchServiceIntegration {
-    integrationType: string;
-    sourceServiceName: string;
+export interface GetOpenSearchOpensearchUserConfigPublicAccessArgs {
+    /**
+     * Allow clients to connect to opensearch from the public internet for service nodes that are in a
+     * project VPC or another type of private network.
+     */
+    opensearch?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to opensearchDashboards from the public internet for
+     * service nodes that are in a project VPC or another type of private network.
+     */
+    opensearchDashboards?: pulumi.Input<string>;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a
+     * project VPC or another type of private network.
+     */
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface GetOpenSearchServiceIntegrationArgs {
     integrationType: pulumi.Input<string>;
     sourceServiceName: pulumi.Input<string>;
+}
+
+export interface GetOpenSearchServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
 }
 
 export interface GetPgComponentArgs {
@@ -5608,41 +5694,6 @@ export interface GetPgComponent {
     usage?: string;
 }
 
-export interface GetPgPg {
-    /**
-     * Primary PostgreSQL database name
-     */
-    dbname?: string;
-    /**
-     * PostgreSQL master node host IP or name
-     */
-    host?: string;
-    /**
-     * PostgreSQL admin user password
-     */
-    password?: string;
-    /**
-     * PostgreSQL port
-     */
-    port?: number;
-    /**
-     * PostgreSQL replica URI for services with a replica
-     */
-    replicaUri?: string;
-    /**
-     * PostgreSQL sslmode setting (currently always `require`)
-     */
-    sslmode?: string;
-    /**
-     * PostgreSQL master connection URI
-     */
-    uri?: string;
-    /**
-     * PostgreSQL admin user name
-     */
-    user?: string;
-}
-
 export interface GetPgPgArgs {
     /**
      * Primary PostgreSQL database name
@@ -5678,114 +5729,39 @@ export interface GetPgPgArgs {
     user?: pulumi.Input<string>;
 }
 
-export interface GetPgPgUserConfig {
+export interface GetPgPg {
     /**
-     * custom password for admin user. Defaults to random string. *This must
-     * be set only when a new service is being created.*
+     * Primary PostgreSQL database name
      */
-    adminPassword?: string;
+    dbname?: string;
     /**
-     * custom username for admin user. *This must be set only when a new service
-     * is being created.*
+     * PostgreSQL master node host IP or name
      */
-    adminUsername?: string;
+    host?: string;
     /**
-     * the hour of day (in UTC) when backup for the service is started. New backup 
-     * is only started if previous backup has already completed.
+     * PostgreSQL admin user password
      */
-    backupHour?: string;
+    password?: string;
     /**
-     * the minute of an hour when backup for the service is started. New backup 
-     * is only started if previous backup has already completed.
+     * PostgreSQL port
      */
-    backupMinute?: string;
+    port?: number;
     /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     * PostgreSQL replica URI for services with a replica
      */
-    ipFilters?: string[];
+    replicaUri?: string;
     /**
-     * migrate data from existing server, has the following options:
+     * PostgreSQL sslmode setting (currently always `require`)
      */
-    migration?: inputs.GetPgPgUserConfigMigration;
+    sslmode?: string;
     /**
-     * PostgreSQL specific server provided values.
+     * PostgreSQL master connection URI
      */
-    pg?: inputs.GetPgPgUserConfigPg;
+    uri?: string;
     /**
-     * This setting is deprecated. Use read-replica service integration instead.
+     * PostgreSQL admin user name
      */
-    pgReadReplica?: string;
-    /**
-     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
-     * This has effect only when a new service is being created.
-     */
-    pgServiceToForkFrom?: string;
-    /**
-     * PostgreSQL major version.
-     */
-    pgVersion?: string;
-    /**
-     * Enable pgbouncer.
-     */
-    pgbouncer?: inputs.GetPgPgUserConfigPgbouncer;
-    /**
-     * PGLookout settings.
-     */
-    pglookout?: inputs.GetPgPgUserConfigPglookout;
-    /**
-     * Allow access to selected service ports from private networks.
-     */
-    privateAccess?: inputs.GetPgPgUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink.
-     */
-    privatelinkAccess?: inputs.GetPgPgUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: inputs.GetPgPgUserConfigPublicAccess;
-    /**
-     * Recovery target time when forking a service. This has effect 
-     * only when a new service is being created.
-     */
-    recoveryTargetTime?: string;
-    /**
-     * Name of another service to fork from. This has effect only 
-     * when a new service is being created.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Percentage of total RAM that the database server uses for 
-     * memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
-     * the sharedBuffers configuration value. The absolute maximum is 12 GB.
-     */
-    sharedBuffersPercentage?: string;
-    staticIps?: string;
-    /**
-     * Synchronous replication type. Note that the service plan 
-     * also needs to support synchronous replication.
-     */
-    synchronousReplication?: string;
-    /**
-     * TimescaleDB extension configuration values.
-     */
-    timescaledb?: inputs.GetPgPgUserConfigTimescaledb;
-    /**
-     * Variant of the PostgreSQL service, may affect the features that are 
-     * exposed by default. Options: `aiven` or `timescale`.
-     */
-    variant?: string;
-    /**
-     * Sets the maximum amount of memory to be used by a query operation (such 
-     * as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
-     * total RAM (up to 32MB).
-     */
-    workMem?: string;
+    user?: string;
 }
 
 export interface GetPgPgUserConfigArgs {
@@ -5898,36 +5874,114 @@ export interface GetPgPgUserConfigArgs {
     workMem?: pulumi.Input<string>;
 }
 
-export interface GetPgPgUserConfigMigration {
+export interface GetPgPgUserConfig {
     /**
-     * Primary PostgreSQL database name
+     * custom password for admin user. Defaults to random string. *This must
+     * be set only when a new service is being created.*
      */
-    dbname?: string;
+    adminPassword?: string;
     /**
-     * PostgreSQL master node host IP or name
+     * custom username for admin user. *This must be set only when a new service
+     * is being created.*
      */
-    host?: string;
+    adminUsername?: string;
     /**
-     * Comma-separated list of databases, which should be ignored during
-     * migration (supported by MySQL only at the moment)
+     * the hour of day (in UTC) when backup for the service is started. New backup 
+     * is only started if previous backup has already completed.
      */
-    ignoreDbs?: string;
+    backupHour?: string;
     /**
-     * PostgreSQL admin user password
+     * the minute of an hour when backup for the service is started. New backup 
+     * is only started if previous backup has already completed.
      */
-    password?: string;
+    backupMinute?: string;
     /**
-     * PostgreSQL port
+     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
-    port?: string;
+    ipFilters?: string[];
     /**
-     * the server where to migrate data from is secured with SSL.
+     * migrate data from existing server, has the following options:
      */
-    ssl?: string;
+    migration?: inputs.GetPgPgUserConfigMigration;
     /**
-     * user name for authentication with the server where to migrate data from.
+     * PostgreSQL specific server provided values.
      */
-    username?: string;
+    pg?: inputs.GetPgPgUserConfigPg;
+    /**
+     * This setting is deprecated. Use read-replica service integration instead.
+     */
+    pgReadReplica?: string;
+    /**
+     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
+     * This has effect only when a new service is being created.
+     */
+    pgServiceToForkFrom?: string;
+    /**
+     * PostgreSQL major version.
+     */
+    pgVersion?: string;
+    /**
+     * Enable pgbouncer.
+     */
+    pgbouncer?: inputs.GetPgPgUserConfigPgbouncer;
+    /**
+     * PGLookout settings.
+     */
+    pglookout?: inputs.GetPgPgUserConfigPglookout;
+    /**
+     * Allow access to selected service ports from private networks.
+     */
+    privateAccess?: inputs.GetPgPgUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink.
+     */
+    privatelinkAccess?: inputs.GetPgPgUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: inputs.GetPgPgUserConfigPublicAccess;
+    /**
+     * Recovery target time when forking a service. This has effect 
+     * only when a new service is being created.
+     */
+    recoveryTargetTime?: string;
+    /**
+     * Name of another service to fork from. This has effect only 
+     * when a new service is being created.
+     */
+    serviceToForkFrom?: string;
+    /**
+     * Percentage of total RAM that the database server uses for 
+     * memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
+     * the sharedBuffers configuration value. The absolute maximum is 12 GB.
+     */
+    sharedBuffersPercentage?: string;
+    staticIps?: string;
+    /**
+     * Synchronous replication type. Note that the service plan 
+     * also needs to support synchronous replication.
+     */
+    synchronousReplication?: string;
+    /**
+     * TimescaleDB extension configuration values.
+     */
+    timescaledb?: inputs.GetPgPgUserConfigTimescaledb;
+    /**
+     * Variant of the PostgreSQL service, may affect the features that are 
+     * exposed by default. Options: `aiven` or `timescale`.
+     */
+    variant?: string;
+    /**
+     * Sets the maximum amount of memory to be used by a query operation (such 
+     * as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
+     * total RAM (up to 32MB).
+     */
+    workMem?: string;
 }
 
 export interface GetPgPgUserConfigMigrationArgs {
@@ -5960,6 +6014,38 @@ export interface GetPgPgUserConfigMigrationArgs {
      * user name for authentication with the server where to migrate data from.
      */
     username?: pulumi.Input<string>;
+}
+
+export interface GetPgPgUserConfigMigration {
+    /**
+     * Primary PostgreSQL database name
+     */
+    dbname?: string;
+    /**
+     * PostgreSQL master node host IP or name
+     */
+    host?: string;
+    /**
+     * Comma-separated list of databases, which should be ignored during
+     * migration (supported by MySQL only at the moment)
+     */
+    ignoreDbs?: string;
+    /**
+     * PostgreSQL admin user password
+     */
+    password?: string;
+    /**
+     * PostgreSQL port
+     */
+    port?: string;
+    /**
+     * the server where to migrate data from is secured with SSL.
+     */
+    ssl?: string;
+    /**
+     * user name for authentication with the server where to migrate data from.
+     */
+    username?: string;
 }
 
 export interface GetPgPgUserConfigPg {
@@ -6354,52 +6440,6 @@ export interface GetPgPgUserConfigPgArgs {
     walWriterDelay?: pulumi.Input<string>;
 }
 
-export interface GetPgPgUserConfigPgbouncerArgs {
-    /**
-     * If the automatically created database pools have been unused this 
-     * many seconds, they are freed. If 0 then timeout is disabled.
-     */
-    autodbIdleTimeout?: pulumi.Input<string>;
-    /**
-     * Do not allow more than this many server connections per database 
-     * (regardless of user). Setting it to 0 means unlimited.
-     */
-    autodbMaxDbConnections?: pulumi.Input<string>;
-    /**
-     * PGBouncer pool mode
-     */
-    autodbPoolMode?: pulumi.Input<string>;
-    /**
-     * If non-zero then create automatically a pool of that size per user 
-     * when a pool doesn't exist.
-     */
-    autodbPoolSize?: pulumi.Input<string>;
-    /**
-     * Enum of parameters to ignore when given in startup packet.
-     */
-    ignoreStartupParameters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Add more server connections to pool if below this number. Improves 
-     * behavior when usual load comes suddenly back after period of total inactivity. The value is
-     * effectively capped at the pool size.
-     */
-    minPoolSize?: pulumi.Input<string>;
-    /**
-     * If a server connection has been idle more than this many seconds 
-     * it will be dropped. If 0 then timeout is disabled.
-     */
-    serverIdleTimeout?: pulumi.Input<string>;
-    /**
-     * The pooler will close an unused server connection that has been connected 
-     * longer than this.
-     */
-    serverLifetime?: pulumi.Input<string>;
-    /**
-     * Run serverResetQuery (DISCARD ALL) in all pooling modes.
-     */
-    serverResetQueryAlways?: pulumi.Input<string>;
-}
-
 export interface GetPgPgUserConfigPgbouncer {
     /**
      * If the automatically created database pools have been unused this 
@@ -6444,6 +6484,52 @@ export interface GetPgPgUserConfigPgbouncer {
      * Run serverResetQuery (DISCARD ALL) in all pooling modes.
      */
     serverResetQueryAlways?: string;
+}
+
+export interface GetPgPgUserConfigPgbouncerArgs {
+    /**
+     * If the automatically created database pools have been unused this 
+     * many seconds, they are freed. If 0 then timeout is disabled.
+     */
+    autodbIdleTimeout?: pulumi.Input<string>;
+    /**
+     * Do not allow more than this many server connections per database 
+     * (regardless of user). Setting it to 0 means unlimited.
+     */
+    autodbMaxDbConnections?: pulumi.Input<string>;
+    /**
+     * PGBouncer pool mode
+     */
+    autodbPoolMode?: pulumi.Input<string>;
+    /**
+     * If non-zero then create automatically a pool of that size per user 
+     * when a pool doesn't exist.
+     */
+    autodbPoolSize?: pulumi.Input<string>;
+    /**
+     * Enum of parameters to ignore when given in startup packet.
+     */
+    ignoreStartupParameters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Add more server connections to pool if below this number. Improves 
+     * behavior when usual load comes suddenly back after period of total inactivity. The value is
+     * effectively capped at the pool size.
+     */
+    minPoolSize?: pulumi.Input<string>;
+    /**
+     * If a server connection has been idle more than this many seconds 
+     * it will be dropped. If 0 then timeout is disabled.
+     */
+    serverIdleTimeout?: pulumi.Input<string>;
+    /**
+     * The pooler will close an unused server connection that has been connected 
+     * longer than this.
+     */
+    serverLifetime?: pulumi.Input<string>;
+    /**
+     * Run serverResetQuery (DISCARD ALL) in all pooling modes.
+     */
+    serverResetQueryAlways?: pulumi.Input<string>;
 }
 
 export interface GetPgPgUserConfigPglookout {
@@ -6494,17 +6580,6 @@ export interface GetPgPgUserConfigPrivateAccess {
     prometheus?: string;
 }
 
-export interface GetPgPgUserConfigPrivatelinkAccessArgs {
-    /**
-     * PostgreSQL specific server provided values.
-     */
-    pg?: pulumi.Input<string>;
-    /**
-     * Enable pgbouncer.
-     */
-    pgbouncer?: pulumi.Input<string>;
-}
-
 export interface GetPgPgUserConfigPrivatelinkAccess {
     /**
      * PostgreSQL specific server provided values.
@@ -6514,6 +6589,17 @@ export interface GetPgPgUserConfigPrivatelinkAccess {
      * Enable pgbouncer.
      */
     pgbouncer?: string;
+}
+
+export interface GetPgPgUserConfigPrivatelinkAccessArgs {
+    /**
+     * PostgreSQL specific server provided values.
+     */
+    pg?: pulumi.Input<string>;
+    /**
+     * Enable pgbouncer.
+     */
+    pgbouncer?: pulumi.Input<string>;
 }
 
 export interface GetPgPgUserConfigPublicAccess {
@@ -6566,14 +6652,14 @@ export interface GetPgPgUserConfigTimescaledbArgs {
     maxBackgroundWorkers?: pulumi.Input<string>;
 }
 
-export interface GetPgServiceIntegrationArgs {
-    integrationType: pulumi.Input<string>;
-    sourceServiceName: pulumi.Input<string>;
-}
-
 export interface GetPgServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
+}
+
+export interface GetPgServiceIntegrationArgs {
+    integrationType: pulumi.Input<string>;
+    sourceServiceName: pulumi.Input<string>;
 }
 
 export interface GetRedisComponent {
@@ -6614,77 +6700,10 @@ export interface GetRedisComponentArgs {
     usage?: pulumi.Input<string>;
 }
 
-export interface GetRedisRedis {
-}
-
 export interface GetRedisRedisArgs {
 }
 
-export interface GetRedisRedisUserConfigArgs {
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Migrate data from existing server
-     */
-    migration?: pulumi.Input<inputs.GetRedisRedisUserConfigMigrationArgs>;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: pulumi.Input<inputs.GetRedisRedisUserConfigPrivateAccessArgs>;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: pulumi.Input<inputs.GetRedisRedisUserConfigPrivatelinkAccessArgs>;
-    /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
-     */
-    projectToForkFrom?: pulumi.Input<string>;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: pulumi.Input<inputs.GetRedisRedisUserConfigPublicAccessArgs>;
-    /**
-     * Name of the basebackup to restore in forked service
-     */
-    recoveryBasebackupName?: pulumi.Input<string>;
-    redisAclChannelsDefault?: pulumi.Input<string>;
-    /**
-     * Redis IO thread count
-     * * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
-     */
-    redisIoThreads?: pulumi.Input<string>;
-    redisLfuDecayTime?: pulumi.Input<string>;
-    /**
-     * Counter logarithm factor for volatile-lfu and allkeys-lfu 
-     * maxmemory-policies
-     */
-    redisLfuLogFactor?: pulumi.Input<string>;
-    /**
-     * Redis maxmemory-policy
-     */
-    redisMaxmemoryPolicy?: pulumi.Input<string>;
-    /**
-     * Set notify-keyspace-events option
-     */
-    redisNotifyKeyspaceEvents?: pulumi.Input<string>;
-    redisNumberOfDatabases?: pulumi.Input<string>;
-    redisPersistence?: pulumi.Input<string>;
-    redisPubsubClientOutputBufferLimit?: pulumi.Input<string>;
-    /**
-     * Require SSL to access Redis
-     */
-    redisSsl?: pulumi.Input<string>;
-    /**
-     * Redis idle connection timeout
-     * * `serviceToForkFrom"` - Name of another service to fork from. This has effect only
-     * when a new service is being created.
-     */
-    redisTimeout?: pulumi.Input<string>;
-    serviceToForkFrom?: pulumi.Input<string>;
-    staticIps?: pulumi.Input<string>;
+export interface GetRedisRedis {
 }
 
 export interface GetRedisRedisUserConfig {
@@ -6754,6 +6773,73 @@ export interface GetRedisRedisUserConfig {
     staticIps?: string;
 }
 
+export interface GetRedisRedisUserConfigArgs {
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Migrate data from existing server
+     */
+    migration?: pulumi.Input<inputs.GetRedisRedisUserConfigMigrationArgs>;
+    /**
+     * Allow access to selected service ports from private networks
+     */
+    privateAccess?: pulumi.Input<inputs.GetRedisRedisUserConfigPrivateAccessArgs>;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: pulumi.Input<inputs.GetRedisRedisUserConfigPrivatelinkAccessArgs>;
+    /**
+     * Name of another project to fork a service from. This has
+     * effect only when a new service is being created.
+     */
+    projectToForkFrom?: pulumi.Input<string>;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: pulumi.Input<inputs.GetRedisRedisUserConfigPublicAccessArgs>;
+    /**
+     * Name of the basebackup to restore in forked service
+     */
+    recoveryBasebackupName?: pulumi.Input<string>;
+    redisAclChannelsDefault?: pulumi.Input<string>;
+    /**
+     * Redis IO thread count
+     * * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
+     */
+    redisIoThreads?: pulumi.Input<string>;
+    redisLfuDecayTime?: pulumi.Input<string>;
+    /**
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu 
+     * maxmemory-policies
+     */
+    redisLfuLogFactor?: pulumi.Input<string>;
+    /**
+     * Redis maxmemory-policy
+     */
+    redisMaxmemoryPolicy?: pulumi.Input<string>;
+    /**
+     * Set notify-keyspace-events option
+     */
+    redisNotifyKeyspaceEvents?: pulumi.Input<string>;
+    redisNumberOfDatabases?: pulumi.Input<string>;
+    redisPersistence?: pulumi.Input<string>;
+    redisPubsubClientOutputBufferLimit?: pulumi.Input<string>;
+    /**
+     * Require SSL to access Redis
+     */
+    redisSsl?: pulumi.Input<string>;
+    /**
+     * Redis idle connection timeout
+     * * `serviceToForkFrom"` - Name of another service to fork from. This has effect only
+     * when a new service is being created.
+     */
+    redisTimeout?: pulumi.Input<string>;
+    serviceToForkFrom?: pulumi.Input<string>;
+    staticIps?: pulumi.Input<string>;
+}
+
 export interface GetRedisRedisUserConfigMigrationArgs {
     /**
      * Database name for bootstrapping the initial connection
@@ -6818,18 +6904,6 @@ export interface GetRedisRedisUserConfigMigration {
     username?: string;
 }
 
-export interface GetRedisRedisUserConfigPrivateAccessArgs {
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
-     */
-    prometheus?: pulumi.Input<string>;
-    /**
-     * Redis specific server provided values.
-     */
-    redis?: pulumi.Input<string>;
-}
-
 export interface GetRedisRedisUserConfigPrivateAccess {
     /**
      * Allow clients to connect to prometheus from the public internet 
@@ -6842,11 +6916,16 @@ export interface GetRedisRedisUserConfigPrivateAccess {
     redis?: string;
 }
 
-export interface GetRedisRedisUserConfigPrivatelinkAccess {
+export interface GetRedisRedisUserConfigPrivateAccessArgs {
+    /**
+     * Allow clients to connect to prometheus from the public internet 
+     * for service nodes that are in a project VPC or another type of private network
+     */
+    prometheus?: pulumi.Input<string>;
     /**
      * Redis specific server provided values.
      */
-    redis?: string;
+    redis?: pulumi.Input<string>;
 }
 
 export interface GetRedisRedisUserConfigPrivatelinkAccessArgs {
@@ -6854,6 +6933,13 @@ export interface GetRedisRedisUserConfigPrivatelinkAccessArgs {
      * Redis specific server provided values.
      */
     redis?: pulumi.Input<string>;
+}
+
+export interface GetRedisRedisUserConfigPrivatelinkAccess {
+    /**
+     * Redis specific server provided values.
+     */
+    redis?: string;
 }
 
 export interface GetRedisRedisUserConfigPublicAccess {
@@ -6896,18 +6982,6 @@ export interface GetServiceCassandraArgs {
 export interface GetServiceCassandra {
 }
 
-export interface GetServiceCassandraUserConfig {
-    cassandra?: inputs.GetServiceCassandraUserConfigCassandra;
-    cassandraVersion?: string;
-    ipFilters?: string[];
-    migrateSstableloader?: string;
-    privateAccess?: inputs.GetServiceCassandraUserConfigPrivateAccess;
-    projectToForkFrom?: string;
-    publicAccess?: inputs.GetServiceCassandraUserConfigPublicAccess;
-    serviceToForkFrom?: string;
-    staticIps?: string;
-}
-
 export interface GetServiceCassandraUserConfigArgs {
     cassandra?: pulumi.Input<inputs.GetServiceCassandraUserConfigCassandraArgs>;
     cassandraVersion?: pulumi.Input<string>;
@@ -6920,9 +6994,16 @@ export interface GetServiceCassandraUserConfigArgs {
     staticIps?: pulumi.Input<string>;
 }
 
-export interface GetServiceCassandraUserConfigCassandraArgs {
-    batchSizeFailThresholdInKb?: pulumi.Input<string>;
-    batchSizeWarnThresholdInKb?: pulumi.Input<string>;
+export interface GetServiceCassandraUserConfig {
+    cassandra?: inputs.GetServiceCassandraUserConfigCassandra;
+    cassandraVersion?: string;
+    ipFilters?: string[];
+    migrateSstableloader?: string;
+    privateAccess?: inputs.GetServiceCassandraUserConfigPrivateAccess;
+    projectToForkFrom?: string;
+    publicAccess?: inputs.GetServiceCassandraUserConfigPublicAccess;
+    serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetServiceCassandraUserConfigCassandra {
@@ -6930,20 +7011,25 @@ export interface GetServiceCassandraUserConfigCassandra {
     batchSizeWarnThresholdInKb?: string;
 }
 
-export interface GetServiceCassandraUserConfigPrivateAccess {
-    prometheus?: string;
+export interface GetServiceCassandraUserConfigCassandraArgs {
+    batchSizeFailThresholdInKb?: pulumi.Input<string>;
+    batchSizeWarnThresholdInKb?: pulumi.Input<string>;
 }
 
 export interface GetServiceCassandraUserConfigPrivateAccessArgs {
     prometheus?: pulumi.Input<string>;
 }
 
-export interface GetServiceCassandraUserConfigPublicAccessArgs {
-    prometheus?: pulumi.Input<string>;
+export interface GetServiceCassandraUserConfigPrivateAccess {
+    prometheus?: string;
 }
 
 export interface GetServiceCassandraUserConfigPublicAccess {
     prometheus?: string;
+}
+
+export interface GetServiceCassandraUserConfigPublicAccessArgs {
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface GetServiceComponent {
@@ -6966,12 +7052,12 @@ export interface GetServiceComponentArgs {
     usage?: pulumi.Input<string>;
 }
 
-export interface GetServiceElasticsearchArgs {
-    kibanaUri?: pulumi.Input<string>;
-}
-
 export interface GetServiceElasticsearch {
     kibanaUri?: string;
+}
+
+export interface GetServiceElasticsearchArgs {
+    kibanaUri?: pulumi.Input<string>;
 }
 
 export interface GetServiceElasticsearchUserConfig {
@@ -7016,34 +7102,6 @@ export interface GetServiceElasticsearchUserConfigArgs {
     staticIps?: pulumi.Input<string>;
 }
 
-export interface GetServiceElasticsearchUserConfigElasticsearch {
-    actionAutoCreateIndexEnabled?: string;
-    actionDestructiveRequiresName?: string;
-    clusterMaxShardsPerNode?: string;
-    httpMaxContentLength?: string;
-    httpMaxHeaderSize?: string;
-    httpMaxInitialLineLength?: string;
-    indicesFielddataCacheSize?: string;
-    indicesMemoryIndexBufferSize?: string;
-    indicesQueriesCacheSize?: string;
-    indicesQueryBoolMaxClauseCount?: string;
-    reindexRemoteWhitelists?: string[];
-    searchMaxBuckets?: string;
-    threadPoolAnalyzeQueueSize?: string;
-    threadPoolAnalyzeSize?: string;
-    threadPoolForceMergeSize?: string;
-    threadPoolGetQueueSize?: string;
-    threadPoolGetSize?: string;
-    threadPoolIndexQueueSize?: string;
-    threadPoolIndexSize?: string;
-    threadPoolSearchQueueSize?: string;
-    threadPoolSearchSize?: string;
-    threadPoolSearchThrottledQueueSize?: string;
-    threadPoolSearchThrottledSize?: string;
-    threadPoolWriteQueueSize?: string;
-    threadPoolWriteSize?: string;
-}
-
 export interface GetServiceElasticsearchUserConfigElasticsearchArgs {
     actionAutoCreateIndexEnabled?: pulumi.Input<string>;
     actionDestructiveRequiresName?: pulumi.Input<string>;
@@ -7072,6 +7130,34 @@ export interface GetServiceElasticsearchUserConfigElasticsearchArgs {
     threadPoolWriteSize?: pulumi.Input<string>;
 }
 
+export interface GetServiceElasticsearchUserConfigElasticsearch {
+    actionAutoCreateIndexEnabled?: string;
+    actionDestructiveRequiresName?: string;
+    clusterMaxShardsPerNode?: string;
+    httpMaxContentLength?: string;
+    httpMaxHeaderSize?: string;
+    httpMaxInitialLineLength?: string;
+    indicesFielddataCacheSize?: string;
+    indicesMemoryIndexBufferSize?: string;
+    indicesQueriesCacheSize?: string;
+    indicesQueryBoolMaxClauseCount?: string;
+    reindexRemoteWhitelists?: string[];
+    searchMaxBuckets?: string;
+    threadPoolAnalyzeQueueSize?: string;
+    threadPoolAnalyzeSize?: string;
+    threadPoolForceMergeSize?: string;
+    threadPoolGetQueueSize?: string;
+    threadPoolGetSize?: string;
+    threadPoolIndexQueueSize?: string;
+    threadPoolIndexSize?: string;
+    threadPoolSearchQueueSize?: string;
+    threadPoolSearchSize?: string;
+    threadPoolSearchThrottledQueueSize?: string;
+    threadPoolSearchThrottledSize?: string;
+    threadPoolWriteQueueSize?: string;
+    threadPoolWriteSize?: string;
+}
+
 export interface GetServiceElasticsearchUserConfigIndexPattern {
     maxIndexCount?: string;
     pattern?: string;
@@ -7084,16 +7170,16 @@ export interface GetServiceElasticsearchUserConfigIndexPatternArgs {
     sortingAlgorithm?: pulumi.Input<string>;
 }
 
-export interface GetServiceElasticsearchUserConfigIndexTemplate {
-    mappingNestedObjectsLimit?: string;
-    numberOfReplicas?: string;
-    numberOfShards?: string;
-}
-
 export interface GetServiceElasticsearchUserConfigIndexTemplateArgs {
     mappingNestedObjectsLimit?: pulumi.Input<string>;
     numberOfReplicas?: pulumi.Input<string>;
     numberOfShards?: pulumi.Input<string>;
+}
+
+export interface GetServiceElasticsearchUserConfigIndexTemplate {
+    mappingNestedObjectsLimit?: string;
+    numberOfReplicas?: string;
+    numberOfShards?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigKibanaArgs {
@@ -7130,60 +7216,22 @@ export interface GetServiceElasticsearchUserConfigPrivatelinkAccess {
     kibana?: string;
 }
 
-export interface GetServiceElasticsearchUserConfigPublicAccessArgs {
-    elasticsearch?: pulumi.Input<string>;
-    kibana?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
-}
-
 export interface GetServiceElasticsearchUserConfigPublicAccess {
     elasticsearch?: string;
     kibana?: string;
     prometheus?: string;
 }
 
+export interface GetServiceElasticsearchUserConfigPublicAccessArgs {
+    elasticsearch?: pulumi.Input<string>;
+    kibana?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
+}
+
 export interface GetServiceGrafana {
 }
 
 export interface GetServiceGrafanaArgs {
-}
-
-export interface GetServiceGrafanaUserConfigArgs {
-    alertingEnabled?: pulumi.Input<string>;
-    alertingErrorOrTimeout?: pulumi.Input<string>;
-    alertingMaxAnnotationsToKeep?: pulumi.Input<string>;
-    alertingNodataOrNullvalues?: pulumi.Input<string>;
-    allowEmbedding?: pulumi.Input<string>;
-    authAzuread?: pulumi.Input<inputs.GetServiceGrafanaUserConfigAuthAzureadArgs>;
-    authBasicEnabled?: pulumi.Input<string>;
-    authGenericOauth?: pulumi.Input<inputs.GetServiceGrafanaUserConfigAuthGenericOauthArgs>;
-    authGithub?: pulumi.Input<inputs.GetServiceGrafanaUserConfigAuthGithubArgs>;
-    authGitlab?: pulumi.Input<inputs.GetServiceGrafanaUserConfigAuthGitlabArgs>;
-    authGoogle?: pulumi.Input<inputs.GetServiceGrafanaUserConfigAuthGoogleArgs>;
-    cookieSamesite?: pulumi.Input<string>;
-    customDomain?: pulumi.Input<string>;
-    dashboardsMinRefreshInterval?: pulumi.Input<string>;
-    dashboardsVersionsToKeep?: pulumi.Input<string>;
-    dataproxySendUserHeader?: pulumi.Input<string>;
-    dataproxyTimeout?: pulumi.Input<string>;
-    dateFormats?: pulumi.Input<inputs.GetServiceGrafanaUserConfigDateFormatsArgs>;
-    disableGravatar?: pulumi.Input<string>;
-    editorsCanAdmin?: pulumi.Input<string>;
-    externalImageStorage?: pulumi.Input<inputs.GetServiceGrafanaUserConfigExternalImageStorageArgs>;
-    googleAnalyticsUaId?: pulumi.Input<string>;
-    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    metricsEnabled?: pulumi.Input<string>;
-    privateAccess?: pulumi.Input<inputs.GetServiceGrafanaUserConfigPrivateAccessArgs>;
-    privatelinkAccess?: pulumi.Input<inputs.GetServiceGrafanaUserConfigPrivatelinkAccessArgs>;
-    projectToForkFrom?: pulumi.Input<string>;
-    publicAccess?: pulumi.Input<inputs.GetServiceGrafanaUserConfigPublicAccessArgs>;
-    recoveryBasebackupName?: pulumi.Input<string>;
-    serviceToForkFrom?: pulumi.Input<string>;
-    smtpServer?: pulumi.Input<inputs.GetServiceGrafanaUserConfigSmtpServerArgs>;
-    staticIps?: pulumi.Input<string>;
-    userAutoAssignOrg?: pulumi.Input<string>;
-    userAutoAssignOrgRole?: pulumi.Input<string>;
-    viewersCanEdit?: pulumi.Input<string>;
 }
 
 export interface GetServiceGrafanaUserConfig {
@@ -7224,6 +7272,44 @@ export interface GetServiceGrafanaUserConfig {
     viewersCanEdit?: string;
 }
 
+export interface GetServiceGrafanaUserConfigArgs {
+    alertingEnabled?: pulumi.Input<string>;
+    alertingErrorOrTimeout?: pulumi.Input<string>;
+    alertingMaxAnnotationsToKeep?: pulumi.Input<string>;
+    alertingNodataOrNullvalues?: pulumi.Input<string>;
+    allowEmbedding?: pulumi.Input<string>;
+    authAzuread?: pulumi.Input<inputs.GetServiceGrafanaUserConfigAuthAzureadArgs>;
+    authBasicEnabled?: pulumi.Input<string>;
+    authGenericOauth?: pulumi.Input<inputs.GetServiceGrafanaUserConfigAuthGenericOauthArgs>;
+    authGithub?: pulumi.Input<inputs.GetServiceGrafanaUserConfigAuthGithubArgs>;
+    authGitlab?: pulumi.Input<inputs.GetServiceGrafanaUserConfigAuthGitlabArgs>;
+    authGoogle?: pulumi.Input<inputs.GetServiceGrafanaUserConfigAuthGoogleArgs>;
+    cookieSamesite?: pulumi.Input<string>;
+    customDomain?: pulumi.Input<string>;
+    dashboardsMinRefreshInterval?: pulumi.Input<string>;
+    dashboardsVersionsToKeep?: pulumi.Input<string>;
+    dataproxySendUserHeader?: pulumi.Input<string>;
+    dataproxyTimeout?: pulumi.Input<string>;
+    dateFormats?: pulumi.Input<inputs.GetServiceGrafanaUserConfigDateFormatsArgs>;
+    disableGravatar?: pulumi.Input<string>;
+    editorsCanAdmin?: pulumi.Input<string>;
+    externalImageStorage?: pulumi.Input<inputs.GetServiceGrafanaUserConfigExternalImageStorageArgs>;
+    googleAnalyticsUaId?: pulumi.Input<string>;
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    metricsEnabled?: pulumi.Input<string>;
+    privateAccess?: pulumi.Input<inputs.GetServiceGrafanaUserConfigPrivateAccessArgs>;
+    privatelinkAccess?: pulumi.Input<inputs.GetServiceGrafanaUserConfigPrivatelinkAccessArgs>;
+    projectToForkFrom?: pulumi.Input<string>;
+    publicAccess?: pulumi.Input<inputs.GetServiceGrafanaUserConfigPublicAccessArgs>;
+    recoveryBasebackupName?: pulumi.Input<string>;
+    serviceToForkFrom?: pulumi.Input<string>;
+    smtpServer?: pulumi.Input<inputs.GetServiceGrafanaUserConfigSmtpServerArgs>;
+    staticIps?: pulumi.Input<string>;
+    userAutoAssignOrg?: pulumi.Input<string>;
+    userAutoAssignOrgRole?: pulumi.Input<string>;
+    viewersCanEdit?: pulumi.Input<string>;
+}
+
 export interface GetServiceGrafanaUserConfigAuthAzuread {
     allowSignUp?: string;
     allowedDomains?: string[];
@@ -7244,19 +7330,6 @@ export interface GetServiceGrafanaUserConfigAuthAzureadArgs {
     tokenUrl?: pulumi.Input<string>;
 }
 
-export interface GetServiceGrafanaUserConfigAuthGenericOauth {
-    allowSignUp?: string;
-    allowedDomains?: string[];
-    allowedOrganizations?: string[];
-    apiUrl?: string;
-    authUrl?: string;
-    clientId?: string;
-    clientSecret?: string;
-    name?: string;
-    scopes?: string[];
-    tokenUrl?: string;
-}
-
 export interface GetServiceGrafanaUserConfigAuthGenericOauthArgs {
     allowSignUp?: pulumi.Input<string>;
     allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
@@ -7268,6 +7341,19 @@ export interface GetServiceGrafanaUserConfigAuthGenericOauthArgs {
     name?: pulumi.Input<string>;
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     tokenUrl?: pulumi.Input<string>;
+}
+
+export interface GetServiceGrafanaUserConfigAuthGenericOauth {
+    allowSignUp?: string;
+    allowedDomains?: string[];
+    allowedOrganizations?: string[];
+    apiUrl?: string;
+    authUrl?: string;
+    clientId?: string;
+    clientSecret?: string;
+    name?: string;
+    scopes?: string[];
+    tokenUrl?: string;
 }
 
 export interface GetServiceGrafanaUserConfigAuthGithub {
@@ -7286,16 +7372,6 @@ export interface GetServiceGrafanaUserConfigAuthGithubArgs {
     teamIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetServiceGrafanaUserConfigAuthGitlabArgs {
-    allowSignUp?: pulumi.Input<string>;
-    allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    apiUrl?: pulumi.Input<string>;
-    authUrl?: pulumi.Input<string>;
-    clientId?: pulumi.Input<string>;
-    clientSecret?: pulumi.Input<string>;
-    tokenUrl?: pulumi.Input<string>;
-}
-
 export interface GetServiceGrafanaUserConfigAuthGitlab {
     allowSignUp?: string;
     allowedGroups?: string[];
@@ -7304,6 +7380,16 @@ export interface GetServiceGrafanaUserConfigAuthGitlab {
     clientId?: string;
     clientSecret?: string;
     tokenUrl?: string;
+}
+
+export interface GetServiceGrafanaUserConfigAuthGitlabArgs {
+    allowSignUp?: pulumi.Input<string>;
+    allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    apiUrl?: pulumi.Input<string>;
+    authUrl?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
+    tokenUrl?: pulumi.Input<string>;
 }
 
 export interface GetServiceGrafanaUserConfigAuthGoogle {
@@ -7320,17 +7406,6 @@ export interface GetServiceGrafanaUserConfigAuthGoogleArgs {
     clientSecret?: pulumi.Input<string>;
 }
 
-export interface GetServiceGrafanaUserConfigDateFormats {
-    defaultTimezone?: string;
-    fullDate?: string;
-    intervalDay?: string;
-    intervalHour?: string;
-    intervalMinute?: string;
-    intervalMonth?: string;
-    intervalSecond?: string;
-    intervalYear?: string;
-}
-
 export interface GetServiceGrafanaUserConfigDateFormatsArgs {
     defaultTimezone?: pulumi.Input<string>;
     fullDate?: pulumi.Input<string>;
@@ -7340,6 +7415,17 @@ export interface GetServiceGrafanaUserConfigDateFormatsArgs {
     intervalMonth?: pulumi.Input<string>;
     intervalSecond?: pulumi.Input<string>;
     intervalYear?: pulumi.Input<string>;
+}
+
+export interface GetServiceGrafanaUserConfigDateFormats {
+    defaultTimezone?: string;
+    fullDate?: string;
+    intervalDay?: string;
+    intervalHour?: string;
+    intervalMinute?: string;
+    intervalMonth?: string;
+    intervalSecond?: string;
+    intervalYear?: string;
 }
 
 export interface GetServiceGrafanaUserConfigExternalImageStorage {
@@ -7356,23 +7442,19 @@ export interface GetServiceGrafanaUserConfigExternalImageStorageArgs {
     secretKey?: pulumi.Input<string>;
 }
 
-export interface GetServiceGrafanaUserConfigPrivateAccessArgs {
-    grafana?: pulumi.Input<string>;
-}
-
 export interface GetServiceGrafanaUserConfigPrivateAccess {
     grafana?: string;
 }
 
-export interface GetServiceGrafanaUserConfigPrivatelinkAccess {
-    grafana?: string;
+export interface GetServiceGrafanaUserConfigPrivateAccessArgs {
+    grafana?: pulumi.Input<string>;
 }
 
 export interface GetServiceGrafanaUserConfigPrivatelinkAccessArgs {
     grafana?: pulumi.Input<string>;
 }
 
-export interface GetServiceGrafanaUserConfigPublicAccess {
+export interface GetServiceGrafanaUserConfigPrivatelinkAccess {
     grafana?: string;
 }
 
@@ -7380,15 +7462,8 @@ export interface GetServiceGrafanaUserConfigPublicAccessArgs {
     grafana?: pulumi.Input<string>;
 }
 
-export interface GetServiceGrafanaUserConfigSmtpServerArgs {
-    fromAddress?: pulumi.Input<string>;
-    fromName?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    port?: pulumi.Input<string>;
-    skipVerify?: pulumi.Input<string>;
-    starttlsPolicy?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
+export interface GetServiceGrafanaUserConfigPublicAccess {
+    grafana?: string;
 }
 
 export interface GetServiceGrafanaUserConfigSmtpServer {
@@ -7400,6 +7475,17 @@ export interface GetServiceGrafanaUserConfigSmtpServer {
     skipVerify?: string;
     starttlsPolicy?: string;
     username?: string;
+}
+
+export interface GetServiceGrafanaUserConfigSmtpServerArgs {
+    fromAddress?: pulumi.Input<string>;
+    fromName?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
+    port?: pulumi.Input<string>;
+    skipVerify?: pulumi.Input<string>;
+    starttlsPolicy?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 export interface GetServiceInfluxdb {
@@ -7470,12 +7556,12 @@ export interface GetServiceInfluxdbUserConfigPrivatelinkAccess {
     influxdb?: string;
 }
 
-export interface GetServiceInfluxdbUserConfigPublicAccess {
-    influxdb?: string;
-}
-
 export interface GetServiceInfluxdbUserConfigPublicAccessArgs {
     influxdb?: pulumi.Input<string>;
+}
+
+export interface GetServiceInfluxdbUserConfigPublicAccess {
+    influxdb?: string;
 }
 
 export interface GetServiceIntegrationDashboardUserConfig {
@@ -7504,14 +7590,14 @@ export interface GetServiceIntegrationDatadogUserConfigArgs {
     maxJmxMetrics?: pulumi.Input<string>;
 }
 
-export interface GetServiceIntegrationDatadogUserConfigDatadogTag {
-    comment?: string;
-    tag?: string;
-}
-
 export interface GetServiceIntegrationDatadogUserConfigDatadogTagArgs {
     comment?: pulumi.Input<string>;
     tag?: pulumi.Input<string>;
+}
+
+export interface GetServiceIntegrationDatadogUserConfigDatadogTag {
+    comment?: string;
+    tag?: string;
 }
 
 export interface GetServiceIntegrationEndpointDatadogUserConfigArgs {
@@ -7554,18 +7640,18 @@ export interface GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfi
     secretKey?: pulumi.Input<string>;
 }
 
-export interface GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
-    accessKey?: string;
-    namespace?: string;
-    region?: string;
-    secretKey?: string;
-}
-
 export interface GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs {
     accessKey?: pulumi.Input<string>;
     namespace?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
     secretKey?: pulumi.Input<string>;
+}
+
+export interface GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
+    accessKey?: string;
+    namespace?: string;
+    region?: string;
+    secretKey?: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
@@ -7584,16 +7670,16 @@ export interface GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfi
     url?: pulumi.Input<string>;
 }
 
-export interface GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs {
-    logId?: pulumi.Input<string>;
-    projectId?: pulumi.Input<string>;
-    serviceAccountCredentials?: pulumi.Input<string>;
-}
-
 export interface GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
     logId?: string;
     projectId?: string;
     serviceAccountCredentials?: string;
+}
+
+export interface GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs {
+    logId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    serviceAccountCredentials?: pulumi.Input<string>;
 }
 
 export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
@@ -7634,14 +7720,14 @@ export interface GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigAr
     url?: pulumi.Input<string>;
 }
 
-export interface GetServiceIntegrationEndpointJolokiaUserConfig {
-    basicAuthPassword?: string;
-    basicAuthUsername?: string;
-}
-
 export interface GetServiceIntegrationEndpointJolokiaUserConfigArgs {
     basicAuthPassword?: pulumi.Input<string>;
     basicAuthUsername?: pulumi.Input<string>;
+}
+
+export interface GetServiceIntegrationEndpointJolokiaUserConfig {
+    basicAuthPassword?: string;
+    basicAuthUsername?: string;
 }
 
 export interface GetServiceIntegrationEndpointPrometheusUserConfig {
@@ -7690,10 +7776,10 @@ export interface GetServiceIntegrationEndpointSignalfxUserConfigArgs {
     signalfxRealm?: pulumi.Input<string>;
 }
 
-export interface GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs {
+export interface GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
 }
 
-export interface GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+export interface GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs {
 }
 
 export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
@@ -7706,24 +7792,24 @@ export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs
     extraMetrics?: pulumi.Input<pulumi.Input<inputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs>[]>;
 }
 
-export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
-    field?: string;
-    metric?: string;
-}
-
 export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs {
     field?: pulumi.Input<string>;
     metric?: pulumi.Input<string>;
 }
 
-export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs {
-    field?: pulumi.Input<string>;
-    metric?: pulumi.Input<string>;
+export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+    field?: string;
+    metric?: string;
 }
 
 export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
     field?: string;
     metric?: string;
+}
+
+export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs {
+    field?: pulumi.Input<string>;
+    metric?: pulumi.Input<string>;
 }
 
 export interface GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs {
@@ -7732,25 +7818,18 @@ export interface GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs {
 export interface GetServiceIntegrationExternalElasticsearchLogsUserConfig {
 }
 
-export interface GetServiceIntegrationExternalGoogleCloudLoggingUserConfig {
-}
-
 export interface GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs {
 }
 
-export interface GetServiceIntegrationKafkaConnectUserConfigArgs {
-    kafkaConnect?: pulumi.Input<inputs.GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs>;
+export interface GetServiceIntegrationExternalGoogleCloudLoggingUserConfig {
 }
 
 export interface GetServiceIntegrationKafkaConnectUserConfig {
     kafkaConnect?: inputs.GetServiceIntegrationKafkaConnectUserConfigKafkaConnect;
 }
 
-export interface GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs {
-    configStorageTopic?: pulumi.Input<string>;
-    groupId?: pulumi.Input<string>;
-    offsetStorageTopic?: pulumi.Input<string>;
-    statusStorageTopic?: pulumi.Input<string>;
+export interface GetServiceIntegrationKafkaConnectUserConfigArgs {
+    kafkaConnect?: pulumi.Input<inputs.GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs>;
 }
 
 export interface GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
@@ -7760,12 +7839,19 @@ export interface GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
     statusStorageTopic?: string;
 }
 
-export interface GetServiceIntegrationKafkaLogsUserConfig {
-    kafkaTopic?: string;
+export interface GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs {
+    configStorageTopic?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
+    offsetStorageTopic?: pulumi.Input<string>;
+    statusStorageTopic?: pulumi.Input<string>;
 }
 
 export interface GetServiceIntegrationKafkaLogsUserConfigArgs {
     kafkaTopic?: pulumi.Input<string>;
+}
+
+export interface GetServiceIntegrationKafkaLogsUserConfig {
+    kafkaTopic?: string;
 }
 
 export interface GetServiceIntegrationKafkaMirrormakerUserConfigArgs {
@@ -7776,14 +7862,14 @@ export interface GetServiceIntegrationKafkaMirrormakerUserConfig {
     clusterAlias?: string;
 }
 
-export interface GetServiceIntegrationLogsUserConfigArgs {
-    elasticsearchIndexDaysMax?: pulumi.Input<string>;
-    elasticsearchIndexPrefix?: pulumi.Input<string>;
-}
-
 export interface GetServiceIntegrationLogsUserConfig {
     elasticsearchIndexDaysMax?: string;
     elasticsearchIndexPrefix?: string;
+}
+
+export interface GetServiceIntegrationLogsUserConfigArgs {
+    elasticsearchIndexDaysMax?: pulumi.Input<string>;
+    elasticsearchIndexPrefix?: pulumi.Input<string>;
 }
 
 export interface GetServiceIntegrationM3aggregatorUserConfig {
@@ -7864,12 +7950,12 @@ export interface GetServiceIntegrationMirrormakerUserConfigArgs {
     mirrormakerWhitelist?: pulumi.Input<string>;
 }
 
-export interface GetServiceIntegrationPrometheusUserConfig {
-    sourceMysql?: inputs.GetServiceIntegrationPrometheusUserConfigSourceMysql;
-}
-
 export interface GetServiceIntegrationPrometheusUserConfigArgs {
     sourceMysql?: pulumi.Input<inputs.GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs>;
+}
+
+export interface GetServiceIntegrationPrometheusUserConfig {
+    sourceMysql?: inputs.GetServiceIntegrationPrometheusUserConfigSourceMysql;
 }
 
 export interface GetServiceIntegrationPrometheusUserConfigSourceMysql {
@@ -7932,18 +8018,10 @@ export interface GetServiceIntegrationSchemaRegistryProxyUserConfigArgs {
 export interface GetServiceIntegrationSchemaRegistryProxyUserConfig {
 }
 
-export interface GetServiceIntegrationSignalfxUserConfigArgs {
-}
-
 export interface GetServiceIntegrationSignalfxUserConfig {
 }
 
-export interface GetServiceKafkaArgs {
-    accessCert?: pulumi.Input<string>;
-    accessKey?: pulumi.Input<string>;
-    connectUri?: pulumi.Input<string>;
-    restUri?: pulumi.Input<string>;
-    schemaRegistryUri?: pulumi.Input<string>;
+export interface GetServiceIntegrationSignalfxUserConfigArgs {
 }
 
 export interface GetServiceKafka {
@@ -7952,6 +8030,14 @@ export interface GetServiceKafka {
     connectUri?: string;
     restUri?: string;
     schemaRegistryUri?: string;
+}
+
+export interface GetServiceKafkaArgs {
+    accessCert?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
+    connectUri?: pulumi.Input<string>;
+    restUri?: pulumi.Input<string>;
+    schemaRegistryUri?: pulumi.Input<string>;
 }
 
 export interface GetServiceKafkaConnectArgs {
@@ -7978,20 +8064,6 @@ export interface GetServiceKafkaConnectUserConfig {
     staticIps?: string;
 }
 
-export interface GetServiceKafkaConnectUserConfigKafkaConnectArgs {
-    connectorClientConfigOverridePolicy?: pulumi.Input<string>;
-    consumerAutoOffsetReset?: pulumi.Input<string>;
-    consumerFetchMaxBytes?: pulumi.Input<string>;
-    consumerIsolationLevel?: pulumi.Input<string>;
-    consumerMaxPartitionFetchBytes?: pulumi.Input<string>;
-    consumerMaxPollIntervalMs?: pulumi.Input<string>;
-    consumerMaxPollRecords?: pulumi.Input<string>;
-    offsetFlushIntervalMs?: pulumi.Input<string>;
-    offsetFlushTimeoutMs?: pulumi.Input<string>;
-    producerMaxRequestSize?: pulumi.Input<string>;
-    sessionTimeoutMs?: pulumi.Input<string>;
-}
-
 export interface GetServiceKafkaConnectUserConfigKafkaConnect {
     connectorClientConfigOverridePolicy?: string;
     consumerAutoOffsetReset?: string;
@@ -8004,6 +8076,20 @@ export interface GetServiceKafkaConnectUserConfigKafkaConnect {
     offsetFlushTimeoutMs?: string;
     producerMaxRequestSize?: string;
     sessionTimeoutMs?: string;
+}
+
+export interface GetServiceKafkaConnectUserConfigKafkaConnectArgs {
+    connectorClientConfigOverridePolicy?: pulumi.Input<string>;
+    consumerAutoOffsetReset?: pulumi.Input<string>;
+    consumerFetchMaxBytes?: pulumi.Input<string>;
+    consumerIsolationLevel?: pulumi.Input<string>;
+    consumerMaxPartitionFetchBytes?: pulumi.Input<string>;
+    consumerMaxPollIntervalMs?: pulumi.Input<string>;
+    consumerMaxPollRecords?: pulumi.Input<string>;
+    offsetFlushIntervalMs?: pulumi.Input<string>;
+    offsetFlushTimeoutMs?: pulumi.Input<string>;
+    producerMaxRequestSize?: pulumi.Input<string>;
+    sessionTimeoutMs?: pulumi.Input<string>;
 }
 
 export interface GetServiceKafkaConnectUserConfigPrivateAccessArgs {
@@ -8034,16 +8120,10 @@ export interface GetServiceKafkaConnectUserConfigPublicAccess {
     prometheus?: string;
 }
 
-export interface GetServiceKafkaMirrormaker {
-}
-
 export interface GetServiceKafkaMirrormakerArgs {
 }
 
-export interface GetServiceKafkaMirrormakerUserConfig {
-    ipFilters?: string[];
-    kafkaMirrormaker?: inputs.GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker;
-    staticIps?: string;
+export interface GetServiceKafkaMirrormaker {
 }
 
 export interface GetServiceKafkaMirrormakerUserConfigArgs {
@@ -8052,17 +8132,10 @@ export interface GetServiceKafkaMirrormakerUserConfigArgs {
     staticIps?: pulumi.Input<string>;
 }
 
-export interface GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
-    emitCheckpointsEnabled?: string;
-    emitCheckpointsIntervalSeconds?: string;
-    refreshGroupsEnabled?: string;
-    refreshGroupsIntervalSeconds?: string;
-    refreshTopicsEnabled?: string;
-    refreshTopicsIntervalSeconds?: string;
-    syncGroupOffsetsEnabled?: string;
-    syncGroupOffsetsIntervalSeconds?: string;
-    syncTopicConfigsEnabled?: string;
-    tasksMaxPerCpu?: string;
+export interface GetServiceKafkaMirrormakerUserConfig {
+    ipFilters?: string[];
+    kafkaMirrormaker?: inputs.GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker;
+    staticIps?: string;
 }
 
 export interface GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs {
@@ -8078,22 +8151,17 @@ export interface GetServiceKafkaMirrormakerUserConfigKafkaMirrormakerArgs {
     tasksMaxPerCpu?: pulumi.Input<string>;
 }
 
-export interface GetServiceKafkaUserConfig {
-    customDomain?: string;
-    ipFilters?: string[];
-    kafka?: inputs.GetServiceKafkaUserConfigKafka;
-    kafkaAuthenticationMethods?: inputs.GetServiceKafkaUserConfigKafkaAuthenticationMethods;
-    kafkaConnect?: string;
-    kafkaConnectConfig?: inputs.GetServiceKafkaUserConfigKafkaConnectConfig;
-    kafkaRest?: string;
-    kafkaRestConfig?: inputs.GetServiceKafkaUserConfigKafkaRestConfig;
-    kafkaVersion?: string;
-    privateAccess?: inputs.GetServiceKafkaUserConfigPrivateAccess;
-    privatelinkAccess?: inputs.GetServiceKafkaUserConfigPrivatelinkAccess;
-    publicAccess?: inputs.GetServiceKafkaUserConfigPublicAccess;
-    schemaRegistry?: string;
-    schemaRegistryConfig?: inputs.GetServiceKafkaUserConfigSchemaRegistryConfig;
-    staticIps?: string;
+export interface GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
+    emitCheckpointsEnabled?: string;
+    emitCheckpointsIntervalSeconds?: string;
+    refreshGroupsEnabled?: string;
+    refreshGroupsIntervalSeconds?: string;
+    refreshTopicsEnabled?: string;
+    refreshTopicsIntervalSeconds?: string;
+    syncGroupOffsetsEnabled?: string;
+    syncGroupOffsetsIntervalSeconds?: string;
+    syncTopicConfigsEnabled?: string;
+    tasksMaxPerCpu?: string;
 }
 
 export interface GetServiceKafkaUserConfigArgs {
@@ -8114,46 +8182,22 @@ export interface GetServiceKafkaUserConfigArgs {
     staticIps?: pulumi.Input<string>;
 }
 
-export interface GetServiceKafkaUserConfigKafka {
-    autoCreateTopicsEnable?: string;
-    compressionType?: string;
-    connectionsMaxIdleMs?: string;
-    defaultReplicationFactor?: string;
-    groupInitialRebalanceDelayMs?: string;
-    groupMaxSessionTimeoutMs?: string;
-    groupMinSessionTimeoutMs?: string;
-    logCleanerDeleteRetentionMs?: string;
-    logCleanerMaxCompactionLagMs?: string;
-    logCleanerMinCleanableRatio?: string;
-    logCleanerMinCompactionLagMs?: string;
-    logCleanupPolicy?: string;
-    logFlushIntervalMessages?: string;
-    logFlushIntervalMs?: string;
-    logIndexIntervalBytes?: string;
-    logIndexSizeMaxBytes?: string;
-    logMessageDownconversionEnable?: string;
-    logMessageTimestampDifferenceMaxMs?: string;
-    logMessageTimestampType?: string;
-    logPreallocate?: string;
-    logRetentionBytes?: string;
-    logRetentionHours?: string;
-    logRetentionMs?: string;
-    logRollJitterMs?: string;
-    logRollMs?: string;
-    logSegmentBytes?: string;
-    logSegmentDeleteDelayMs?: string;
-    maxConnectionsPerIp?: string;
-    maxIncrementalFetchSessionCacheSlots?: string;
-    messageMaxBytes?: string;
-    minInsyncReplicas?: string;
-    numPartitions?: string;
-    offsetsRetentionMinutes?: string;
-    producerPurgatoryPurgeIntervalRequests?: string;
-    replicaFetchMaxBytes?: string;
-    replicaFetchResponseMaxBytes?: string;
-    socketRequestMaxBytes?: string;
-    transactionRemoveExpiredTransactionCleanupIntervalMs?: string;
-    transactionStateLogSegmentBytes?: string;
+export interface GetServiceKafkaUserConfig {
+    customDomain?: string;
+    ipFilters?: string[];
+    kafka?: inputs.GetServiceKafkaUserConfigKafka;
+    kafkaAuthenticationMethods?: inputs.GetServiceKafkaUserConfigKafkaAuthenticationMethods;
+    kafkaConnect?: string;
+    kafkaConnectConfig?: inputs.GetServiceKafkaUserConfigKafkaConnectConfig;
+    kafkaRest?: string;
+    kafkaRestConfig?: inputs.GetServiceKafkaUserConfigKafkaRestConfig;
+    kafkaVersion?: string;
+    privateAccess?: inputs.GetServiceKafkaUserConfigPrivateAccess;
+    privatelinkAccess?: inputs.GetServiceKafkaUserConfigPrivatelinkAccess;
+    publicAccess?: inputs.GetServiceKafkaUserConfigPublicAccess;
+    schemaRegistry?: string;
+    schemaRegistryConfig?: inputs.GetServiceKafkaUserConfigSchemaRegistryConfig;
+    staticIps?: string;
 }
 
 export interface GetServiceKafkaUserConfigKafkaArgs {
@@ -8198,9 +8242,46 @@ export interface GetServiceKafkaUserConfigKafkaArgs {
     transactionStateLogSegmentBytes?: pulumi.Input<string>;
 }
 
-export interface GetServiceKafkaUserConfigKafkaAuthenticationMethods {
-    certificate?: string;
-    sasl?: string;
+export interface GetServiceKafkaUserConfigKafka {
+    autoCreateTopicsEnable?: string;
+    compressionType?: string;
+    connectionsMaxIdleMs?: string;
+    defaultReplicationFactor?: string;
+    groupInitialRebalanceDelayMs?: string;
+    groupMaxSessionTimeoutMs?: string;
+    groupMinSessionTimeoutMs?: string;
+    logCleanerDeleteRetentionMs?: string;
+    logCleanerMaxCompactionLagMs?: string;
+    logCleanerMinCleanableRatio?: string;
+    logCleanerMinCompactionLagMs?: string;
+    logCleanupPolicy?: string;
+    logFlushIntervalMessages?: string;
+    logFlushIntervalMs?: string;
+    logIndexIntervalBytes?: string;
+    logIndexSizeMaxBytes?: string;
+    logMessageDownconversionEnable?: string;
+    logMessageTimestampDifferenceMaxMs?: string;
+    logMessageTimestampType?: string;
+    logPreallocate?: string;
+    logRetentionBytes?: string;
+    logRetentionHours?: string;
+    logRetentionMs?: string;
+    logRollJitterMs?: string;
+    logRollMs?: string;
+    logSegmentBytes?: string;
+    logSegmentDeleteDelayMs?: string;
+    maxConnectionsPerIp?: string;
+    maxIncrementalFetchSessionCacheSlots?: string;
+    messageMaxBytes?: string;
+    minInsyncReplicas?: string;
+    numPartitions?: string;
+    offsetsRetentionMinutes?: string;
+    producerPurgatoryPurgeIntervalRequests?: string;
+    replicaFetchMaxBytes?: string;
+    replicaFetchResponseMaxBytes?: string;
+    socketRequestMaxBytes?: string;
+    transactionRemoveExpiredTransactionCleanupIntervalMs?: string;
+    transactionStateLogSegmentBytes?: string;
 }
 
 export interface GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs {
@@ -8208,18 +8289,9 @@ export interface GetServiceKafkaUserConfigKafkaAuthenticationMethodsArgs {
     sasl?: pulumi.Input<string>;
 }
 
-export interface GetServiceKafkaUserConfigKafkaConnectConfigArgs {
-    connectorClientConfigOverridePolicy?: pulumi.Input<string>;
-    consumerAutoOffsetReset?: pulumi.Input<string>;
-    consumerFetchMaxBytes?: pulumi.Input<string>;
-    consumerIsolationLevel?: pulumi.Input<string>;
-    consumerMaxPartitionFetchBytes?: pulumi.Input<string>;
-    consumerMaxPollIntervalMs?: pulumi.Input<string>;
-    consumerMaxPollRecords?: pulumi.Input<string>;
-    offsetFlushIntervalMs?: pulumi.Input<string>;
-    offsetFlushTimeoutMs?: pulumi.Input<string>;
-    producerMaxRequestSize?: pulumi.Input<string>;
-    sessionTimeoutMs?: pulumi.Input<string>;
+export interface GetServiceKafkaUserConfigKafkaAuthenticationMethods {
+    certificate?: string;
+    sasl?: string;
 }
 
 export interface GetServiceKafkaUserConfigKafkaConnectConfig {
@@ -8236,13 +8308,18 @@ export interface GetServiceKafkaUserConfigKafkaConnectConfig {
     sessionTimeoutMs?: string;
 }
 
-export interface GetServiceKafkaUserConfigKafkaRestConfig {
-    consumerEnableAutoCommit?: string;
-    consumerRequestMaxBytes?: string;
-    consumerRequestTimeoutMs?: string;
-    producerAcks?: string;
-    producerLingerMs?: string;
-    simpleconsumerPoolSizeMax?: string;
+export interface GetServiceKafkaUserConfigKafkaConnectConfigArgs {
+    connectorClientConfigOverridePolicy?: pulumi.Input<string>;
+    consumerAutoOffsetReset?: pulumi.Input<string>;
+    consumerFetchMaxBytes?: pulumi.Input<string>;
+    consumerIsolationLevel?: pulumi.Input<string>;
+    consumerMaxPartitionFetchBytes?: pulumi.Input<string>;
+    consumerMaxPollIntervalMs?: pulumi.Input<string>;
+    consumerMaxPollRecords?: pulumi.Input<string>;
+    offsetFlushIntervalMs?: pulumi.Input<string>;
+    offsetFlushTimeoutMs?: pulumi.Input<string>;
+    producerMaxRequestSize?: pulumi.Input<string>;
+    sessionTimeoutMs?: pulumi.Input<string>;
 }
 
 export interface GetServiceKafkaUserConfigKafkaRestConfigArgs {
@@ -8254,19 +8331,21 @@ export interface GetServiceKafkaUserConfigKafkaRestConfigArgs {
     simpleconsumerPoolSizeMax?: pulumi.Input<string>;
 }
 
+export interface GetServiceKafkaUserConfigKafkaRestConfig {
+    consumerEnableAutoCommit?: string;
+    consumerRequestMaxBytes?: string;
+    consumerRequestTimeoutMs?: string;
+    producerAcks?: string;
+    producerLingerMs?: string;
+    simpleconsumerPoolSizeMax?: string;
+}
+
 export interface GetServiceKafkaUserConfigPrivateAccess {
     prometheus?: string;
 }
 
 export interface GetServiceKafkaUserConfigPrivateAccessArgs {
     prometheus?: pulumi.Input<string>;
-}
-
-export interface GetServiceKafkaUserConfigPrivatelinkAccess {
-    kafka?: string;
-    kafkaConnect?: string;
-    kafkaRest?: string;
-    schemaRegistry?: string;
 }
 
 export interface GetServiceKafkaUserConfigPrivatelinkAccessArgs {
@@ -8276,11 +8355,10 @@ export interface GetServiceKafkaUserConfigPrivatelinkAccessArgs {
     schemaRegistry?: pulumi.Input<string>;
 }
 
-export interface GetServiceKafkaUserConfigPublicAccess {
+export interface GetServiceKafkaUserConfigPrivatelinkAccess {
     kafka?: string;
     kafkaConnect?: string;
     kafkaRest?: string;
-    prometheus?: string;
     schemaRegistry?: string;
 }
 
@@ -8290,6 +8368,14 @@ export interface GetServiceKafkaUserConfigPublicAccessArgs {
     kafkaRest?: pulumi.Input<string>;
     prometheus?: pulumi.Input<string>;
     schemaRegistry?: pulumi.Input<string>;
+}
+
+export interface GetServiceKafkaUserConfigPublicAccess {
+    kafka?: string;
+    kafkaConnect?: string;
+    kafkaRest?: string;
+    prometheus?: string;
+    schemaRegistry?: string;
 }
 
 export interface GetServiceKafkaUserConfigSchemaRegistryConfig {
@@ -8302,29 +8388,10 @@ export interface GetServiceKafkaUserConfigSchemaRegistryConfigArgs {
     topicName?: pulumi.Input<string>;
 }
 
-export interface GetServiceMysql {
-}
-
 export interface GetServiceMysqlArgs {
 }
 
-export interface GetServiceMysqlUserConfig {
-    adminPassword?: string;
-    adminUsername?: string;
-    backupHour?: string;
-    backupMinute?: string;
-    binlogRetentionPeriod?: string;
-    ipFilters?: string[];
-    migration?: inputs.GetServiceMysqlUserConfigMigration;
-    mysql?: inputs.GetServiceMysqlUserConfigMysql;
-    mysqlVersion?: string;
-    privateAccess?: inputs.GetServiceMysqlUserConfigPrivateAccess;
-    privatelinkAccess?: inputs.GetServiceMysqlUserConfigPrivatelinkAccess;
-    projectToForkFrom?: string;
-    publicAccess?: inputs.GetServiceMysqlUserConfigPublicAccess;
-    recoveryTargetTime?: string;
-    serviceToForkFrom?: string;
-    staticIps?: string;
+export interface GetServiceMysql {
 }
 
 export interface GetServiceMysqlUserConfigArgs {
@@ -8344,6 +8411,25 @@ export interface GetServiceMysqlUserConfigArgs {
     recoveryTargetTime?: pulumi.Input<string>;
     serviceToForkFrom?: pulumi.Input<string>;
     staticIps?: pulumi.Input<string>;
+}
+
+export interface GetServiceMysqlUserConfig {
+    adminPassword?: string;
+    adminUsername?: string;
+    backupHour?: string;
+    backupMinute?: string;
+    binlogRetentionPeriod?: string;
+    ipFilters?: string[];
+    migration?: inputs.GetServiceMysqlUserConfigMigration;
+    mysql?: inputs.GetServiceMysqlUserConfigMysql;
+    mysqlVersion?: string;
+    privateAccess?: inputs.GetServiceMysqlUserConfigPrivateAccess;
+    privatelinkAccess?: inputs.GetServiceMysqlUserConfigPrivatelinkAccess;
+    projectToForkFrom?: string;
+    publicAccess?: inputs.GetServiceMysqlUserConfigPublicAccess;
+    recoveryTargetTime?: string;
+    serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetServiceMysqlUserConfigMigration {
@@ -8442,16 +8528,16 @@ export interface GetServiceMysqlUserConfigPrivatelinkAccessArgs {
     mysqlx?: pulumi.Input<string>;
 }
 
-export interface GetServiceMysqlUserConfigPublicAccess {
-    mysql?: string;
-    mysqlx?: string;
-    prometheus?: string;
-}
-
 export interface GetServiceMysqlUserConfigPublicAccessArgs {
     mysql?: pulumi.Input<string>;
     mysqlx?: pulumi.Input<string>;
     prometheus?: pulumi.Input<string>;
+}
+
+export interface GetServiceMysqlUserConfigPublicAccess {
+    mysql?: string;
+    mysqlx?: string;
+    prometheus?: string;
 }
 
 export interface GetServiceOpensearch {
@@ -8460,26 +8546,6 @@ export interface GetServiceOpensearch {
 
 export interface GetServiceOpensearchArgs {
     opensearchDashboardsUri?: pulumi.Input<string>;
-}
-
-export interface GetServiceOpensearchUserConfig {
-    customDomain?: string;
-    disableReplicationFactorAdjustment?: string;
-    indexPatterns?: inputs.GetServiceOpensearchUserConfigIndexPattern[];
-    indexTemplate?: inputs.GetServiceOpensearchUserConfigIndexTemplate;
-    ipFilters?: string[];
-    keepIndexRefreshInterval?: string;
-    maxIndexCount?: string;
-    opensearch?: inputs.GetServiceOpensearchUserConfigOpensearch;
-    opensearchDashboards?: inputs.GetServiceOpensearchUserConfigOpensearchDashboards;
-    opensearchVersion?: string;
-    privateAccess?: inputs.GetServiceOpensearchUserConfigPrivateAccess;
-    privatelinkAccess?: inputs.GetServiceOpensearchUserConfigPrivatelinkAccess;
-    projectToForkFrom?: string;
-    publicAccess?: inputs.GetServiceOpensearchUserConfigPublicAccess;
-    recoveryBasebackupName?: string;
-    serviceToForkFrom?: string;
-    staticIps?: string;
 }
 
 export interface GetServiceOpensearchUserConfigArgs {
@@ -8502,10 +8568,24 @@ export interface GetServiceOpensearchUserConfigArgs {
     staticIps?: pulumi.Input<string>;
 }
 
-export interface GetServiceOpensearchUserConfigIndexPattern {
+export interface GetServiceOpensearchUserConfig {
+    customDomain?: string;
+    disableReplicationFactorAdjustment?: string;
+    indexPatterns?: inputs.GetServiceOpensearchUserConfigIndexPattern[];
+    indexTemplate?: inputs.GetServiceOpensearchUserConfigIndexTemplate;
+    ipFilters?: string[];
+    keepIndexRefreshInterval?: string;
     maxIndexCount?: string;
-    pattern?: string;
-    sortingAlgorithm?: string;
+    opensearch?: inputs.GetServiceOpensearchUserConfigOpensearch;
+    opensearchDashboards?: inputs.GetServiceOpensearchUserConfigOpensearchDashboards;
+    opensearchVersion?: string;
+    privateAccess?: inputs.GetServiceOpensearchUserConfigPrivateAccess;
+    privatelinkAccess?: inputs.GetServiceOpensearchUserConfigPrivatelinkAccess;
+    projectToForkFrom?: string;
+    publicAccess?: inputs.GetServiceOpensearchUserConfigPublicAccess;
+    recoveryBasebackupName?: string;
+    serviceToForkFrom?: string;
+    staticIps?: string;
 }
 
 export interface GetServiceOpensearchUserConfigIndexPatternArgs {
@@ -8514,10 +8594,10 @@ export interface GetServiceOpensearchUserConfigIndexPatternArgs {
     sortingAlgorithm?: pulumi.Input<string>;
 }
 
-export interface GetServiceOpensearchUserConfigIndexTemplate {
-    mappingNestedObjectsLimit?: string;
-    numberOfReplicas?: string;
-    numberOfShards?: string;
+export interface GetServiceOpensearchUserConfigIndexPattern {
+    maxIndexCount?: string;
+    pattern?: string;
+    sortingAlgorithm?: string;
 }
 
 export interface GetServiceOpensearchUserConfigIndexTemplateArgs {
@@ -8526,31 +8606,10 @@ export interface GetServiceOpensearchUserConfigIndexTemplateArgs {
     numberOfShards?: pulumi.Input<string>;
 }
 
-export interface GetServiceOpensearchUserConfigOpensearchArgs {
-    actionAutoCreateIndexEnabled?: pulumi.Input<string>;
-    actionDestructiveRequiresName?: pulumi.Input<string>;
-    clusterMaxShardsPerNode?: pulumi.Input<string>;
-    httpMaxContentLength?: pulumi.Input<string>;
-    httpMaxHeaderSize?: pulumi.Input<string>;
-    httpMaxInitialLineLength?: pulumi.Input<string>;
-    indicesFielddataCacheSize?: pulumi.Input<string>;
-    indicesMemoryIndexBufferSize?: pulumi.Input<string>;
-    indicesQueriesCacheSize?: pulumi.Input<string>;
-    indicesQueryBoolMaxClauseCount?: pulumi.Input<string>;
-    reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
-    searchMaxBuckets?: pulumi.Input<string>;
-    threadPoolAnalyzeQueueSize?: pulumi.Input<string>;
-    threadPoolAnalyzeSize?: pulumi.Input<string>;
-    threadPoolForceMergeSize?: pulumi.Input<string>;
-    threadPoolGetQueueSize?: pulumi.Input<string>;
-    threadPoolGetSize?: pulumi.Input<string>;
-    threadPoolIndexSize?: pulumi.Input<string>;
-    threadPoolSearchQueueSize?: pulumi.Input<string>;
-    threadPoolSearchSize?: pulumi.Input<string>;
-    threadPoolSearchThrottledQueueSize?: pulumi.Input<string>;
-    threadPoolSearchThrottledSize?: pulumi.Input<string>;
-    threadPoolWriteQueueSize?: pulumi.Input<string>;
-    threadPoolWriteSize?: pulumi.Input<string>;
+export interface GetServiceOpensearchUserConfigIndexTemplate {
+    mappingNestedObjectsLimit?: string;
+    numberOfReplicas?: string;
+    numberOfShards?: string;
 }
 
 export interface GetServiceOpensearchUserConfigOpensearch {
@@ -8580,6 +8639,33 @@ export interface GetServiceOpensearchUserConfigOpensearch {
     threadPoolWriteSize?: string;
 }
 
+export interface GetServiceOpensearchUserConfigOpensearchArgs {
+    actionAutoCreateIndexEnabled?: pulumi.Input<string>;
+    actionDestructiveRequiresName?: pulumi.Input<string>;
+    clusterMaxShardsPerNode?: pulumi.Input<string>;
+    httpMaxContentLength?: pulumi.Input<string>;
+    httpMaxHeaderSize?: pulumi.Input<string>;
+    httpMaxInitialLineLength?: pulumi.Input<string>;
+    indicesFielddataCacheSize?: pulumi.Input<string>;
+    indicesMemoryIndexBufferSize?: pulumi.Input<string>;
+    indicesQueriesCacheSize?: pulumi.Input<string>;
+    indicesQueryBoolMaxClauseCount?: pulumi.Input<string>;
+    reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    searchMaxBuckets?: pulumi.Input<string>;
+    threadPoolAnalyzeQueueSize?: pulumi.Input<string>;
+    threadPoolAnalyzeSize?: pulumi.Input<string>;
+    threadPoolForceMergeSize?: pulumi.Input<string>;
+    threadPoolGetQueueSize?: pulumi.Input<string>;
+    threadPoolGetSize?: pulumi.Input<string>;
+    threadPoolIndexSize?: pulumi.Input<string>;
+    threadPoolSearchQueueSize?: pulumi.Input<string>;
+    threadPoolSearchSize?: pulumi.Input<string>;
+    threadPoolSearchThrottledQueueSize?: pulumi.Input<string>;
+    threadPoolSearchThrottledSize?: pulumi.Input<string>;
+    threadPoolWriteQueueSize?: pulumi.Input<string>;
+    threadPoolWriteSize?: pulumi.Input<string>;
+}
+
 export interface GetServiceOpensearchUserConfigOpensearchDashboards {
     enabled?: string;
     maxOldSpaceSize?: string;
@@ -8592,16 +8678,16 @@ export interface GetServiceOpensearchUserConfigOpensearchDashboardsArgs {
     opensearchRequestTimeout?: pulumi.Input<string>;
 }
 
-export interface GetServiceOpensearchUserConfigPrivateAccess {
-    opensearch?: string;
-    opensearchDashboards?: string;
-    prometheus?: string;
-}
-
 export interface GetServiceOpensearchUserConfigPrivateAccessArgs {
     opensearch?: pulumi.Input<string>;
     opensearchDashboards?: pulumi.Input<string>;
     prometheus?: pulumi.Input<string>;
+}
+
+export interface GetServiceOpensearchUserConfigPrivateAccess {
+    opensearch?: string;
+    opensearchDashboards?: string;
+    prometheus?: string;
 }
 
 export interface GetServiceOpensearchUserConfigPrivatelinkAccess {
@@ -8626,17 +8712,6 @@ export interface GetServiceOpensearchUserConfigPublicAccessArgs {
     prometheus?: pulumi.Input<string>;
 }
 
-export interface GetServicePg {
-    dbname?: string;
-    host?: string;
-    password?: string;
-    port?: number;
-    replicaUri?: string;
-    sslmode?: string;
-    uri?: string;
-    user?: string;
-}
-
 export interface GetServicePgArgs {
     dbname?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
@@ -8648,31 +8723,15 @@ export interface GetServicePgArgs {
     user?: pulumi.Input<string>;
 }
 
-export interface GetServicePgUserConfig {
-    adminPassword?: string;
-    adminUsername?: string;
-    backupHour?: string;
-    backupMinute?: string;
-    ipFilters?: string[];
-    migration?: inputs.GetServicePgUserConfigMigration;
-    pg?: inputs.GetServicePgUserConfigPg;
-    pgReadReplica?: string;
-    pgServiceToForkFrom?: string;
-    pgVersion?: string;
-    pgbouncer?: inputs.GetServicePgUserConfigPgbouncer;
-    pglookout?: inputs.GetServicePgUserConfigPglookout;
-    privateAccess?: inputs.GetServicePgUserConfigPrivateAccess;
-    privatelinkAccess?: inputs.GetServicePgUserConfigPrivatelinkAccess;
-    projectToForkFrom?: string;
-    publicAccess?: inputs.GetServicePgUserConfigPublicAccess;
-    recoveryTargetTime?: string;
-    serviceToForkFrom?: string;
-    sharedBuffersPercentage?: string;
-    staticIps?: string;
-    synchronousReplication?: string;
-    timescaledb?: inputs.GetServicePgUserConfigTimescaledb;
-    variant?: string;
-    workMem?: string;
+export interface GetServicePg {
+    dbname?: string;
+    host?: string;
+    password?: string;
+    port?: number;
+    replicaUri?: string;
+    sslmode?: string;
+    uri?: string;
+    user?: string;
 }
 
 export interface GetServicePgUserConfigArgs {
@@ -8702,14 +8761,31 @@ export interface GetServicePgUserConfigArgs {
     workMem?: pulumi.Input<string>;
 }
 
-export interface GetServicePgUserConfigMigration {
-    dbname?: string;
-    host?: string;
-    ignoreDbs?: string;
-    password?: string;
-    port?: string;
-    ssl?: string;
-    username?: string;
+export interface GetServicePgUserConfig {
+    adminPassword?: string;
+    adminUsername?: string;
+    backupHour?: string;
+    backupMinute?: string;
+    ipFilters?: string[];
+    migration?: inputs.GetServicePgUserConfigMigration;
+    pg?: inputs.GetServicePgUserConfigPg;
+    pgReadReplica?: string;
+    pgServiceToForkFrom?: string;
+    pgVersion?: string;
+    pgbouncer?: inputs.GetServicePgUserConfigPgbouncer;
+    pglookout?: inputs.GetServicePgUserConfigPglookout;
+    privateAccess?: inputs.GetServicePgUserConfigPrivateAccess;
+    privatelinkAccess?: inputs.GetServicePgUserConfigPrivatelinkAccess;
+    projectToForkFrom?: string;
+    publicAccess?: inputs.GetServicePgUserConfigPublicAccess;
+    recoveryTargetTime?: string;
+    serviceToForkFrom?: string;
+    sharedBuffersPercentage?: string;
+    staticIps?: string;
+    synchronousReplication?: string;
+    timescaledb?: inputs.GetServicePgUserConfigTimescaledb;
+    variant?: string;
+    workMem?: string;
 }
 
 export interface GetServicePgUserConfigMigrationArgs {
@@ -8722,51 +8798,14 @@ export interface GetServicePgUserConfigMigrationArgs {
     username?: pulumi.Input<string>;
 }
 
-export interface GetServicePgUserConfigPg {
-    autovacuumAnalyzeScaleFactor?: string;
-    autovacuumAnalyzeThreshold?: string;
-    autovacuumFreezeMaxAge?: string;
-    autovacuumMaxWorkers?: string;
-    autovacuumNaptime?: string;
-    autovacuumVacuumCostDelay?: string;
-    autovacuumVacuumCostLimit?: string;
-    autovacuumVacuumScaleFactor?: string;
-    autovacuumVacuumThreshold?: string;
-    bgwriterDelay?: string;
-    bgwriterFlushAfter?: string;
-    bgwriterLruMaxpages?: string;
-    bgwriterLruMultiplier?: string;
-    deadlockTimeout?: string;
-    idleInTransactionSessionTimeout?: string;
-    jit?: string;
-    logAutovacuumMinDuration?: string;
-    logErrorVerbosity?: string;
-    logLinePrefix?: string;
-    logMinDurationStatement?: string;
-    maxFilesPerProcess?: string;
-    maxLocksPerTransaction?: string;
-    maxLogicalReplicationWorkers?: string;
-    maxParallelWorkers?: string;
-    maxParallelWorkersPerGather?: string;
-    maxPredLocksPerTransaction?: string;
-    maxPreparedTransactions?: string;
-    maxReplicationSlots?: string;
-    maxStackDepth?: string;
-    maxStandbyArchiveDelay?: string;
-    maxStandbyStreamingDelay?: string;
-    maxWalSenders?: string;
-    maxWorkerProcesses?: string;
-    pgPartmanBgwInterval?: string;
-    pgPartmanBgwRole?: string;
-    pgStatStatementsTrack?: string;
-    tempFileLimit?: string;
-    timezone?: string;
-    trackActivityQuerySize?: string;
-    trackCommitTimestamp?: string;
-    trackFunctions?: string;
-    trackIoTiming?: string;
-    walSenderTimeout?: string;
-    walWriterDelay?: string;
+export interface GetServicePgUserConfigMigration {
+    dbname?: string;
+    host?: string;
+    ignoreDbs?: string;
+    password?: string;
+    port?: string;
+    ssl?: string;
+    username?: string;
 }
 
 export interface GetServicePgUserConfigPgArgs {
@@ -8816,6 +8855,53 @@ export interface GetServicePgUserConfigPgArgs {
     walWriterDelay?: pulumi.Input<string>;
 }
 
+export interface GetServicePgUserConfigPg {
+    autovacuumAnalyzeScaleFactor?: string;
+    autovacuumAnalyzeThreshold?: string;
+    autovacuumFreezeMaxAge?: string;
+    autovacuumMaxWorkers?: string;
+    autovacuumNaptime?: string;
+    autovacuumVacuumCostDelay?: string;
+    autovacuumVacuumCostLimit?: string;
+    autovacuumVacuumScaleFactor?: string;
+    autovacuumVacuumThreshold?: string;
+    bgwriterDelay?: string;
+    bgwriterFlushAfter?: string;
+    bgwriterLruMaxpages?: string;
+    bgwriterLruMultiplier?: string;
+    deadlockTimeout?: string;
+    idleInTransactionSessionTimeout?: string;
+    jit?: string;
+    logAutovacuumMinDuration?: string;
+    logErrorVerbosity?: string;
+    logLinePrefix?: string;
+    logMinDurationStatement?: string;
+    maxFilesPerProcess?: string;
+    maxLocksPerTransaction?: string;
+    maxLogicalReplicationWorkers?: string;
+    maxParallelWorkers?: string;
+    maxParallelWorkersPerGather?: string;
+    maxPredLocksPerTransaction?: string;
+    maxPreparedTransactions?: string;
+    maxReplicationSlots?: string;
+    maxStackDepth?: string;
+    maxStandbyArchiveDelay?: string;
+    maxStandbyStreamingDelay?: string;
+    maxWalSenders?: string;
+    maxWorkerProcesses?: string;
+    pgPartmanBgwInterval?: string;
+    pgPartmanBgwRole?: string;
+    pgStatStatementsTrack?: string;
+    tempFileLimit?: string;
+    timezone?: string;
+    trackActivityQuerySize?: string;
+    trackCommitTimestamp?: string;
+    trackFunctions?: string;
+    trackIoTiming?: string;
+    walSenderTimeout?: string;
+    walWriterDelay?: string;
+}
+
 export interface GetServicePgUserConfigPgbouncerArgs {
     autodbIdleTimeout?: pulumi.Input<string>;
     autodbMaxDbConnections?: pulumi.Input<string>;
@@ -8860,20 +8946,14 @@ export interface GetServicePgUserConfigPrivateAccessArgs {
     prometheus?: pulumi.Input<string>;
 }
 
-export interface GetServicePgUserConfigPrivatelinkAccessArgs {
-    pg?: pulumi.Input<string>;
-    pgbouncer?: pulumi.Input<string>;
-}
-
 export interface GetServicePgUserConfigPrivatelinkAccess {
     pg?: string;
     pgbouncer?: string;
 }
 
-export interface GetServicePgUserConfigPublicAccessArgs {
+export interface GetServicePgUserConfigPrivatelinkAccessArgs {
     pg?: pulumi.Input<string>;
     pgbouncer?: pulumi.Input<string>;
-    prometheus?: pulumi.Input<string>;
 }
 
 export interface GetServicePgUserConfigPublicAccess {
@@ -8882,18 +8962,24 @@ export interface GetServicePgUserConfigPublicAccess {
     prometheus?: string;
 }
 
-export interface GetServicePgUserConfigTimescaledbArgs {
-    maxBackgroundWorkers?: pulumi.Input<string>;
+export interface GetServicePgUserConfigPublicAccessArgs {
+    pg?: pulumi.Input<string>;
+    pgbouncer?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface GetServicePgUserConfigTimescaledb {
     maxBackgroundWorkers?: string;
 }
 
-export interface GetServiceRedisArgs {
+export interface GetServicePgUserConfigTimescaledbArgs {
+    maxBackgroundWorkers?: pulumi.Input<string>;
 }
 
 export interface GetServiceRedis {
+}
+
+export interface GetServiceRedisArgs {
 }
 
 export interface GetServiceRedisUserConfigArgs {
@@ -8962,22 +9048,22 @@ export interface GetServiceRedisUserConfigMigration {
     username?: string;
 }
 
-export interface GetServiceRedisUserConfigPrivateAccess {
-    prometheus?: string;
-    redis?: string;
-}
-
 export interface GetServiceRedisUserConfigPrivateAccessArgs {
     prometheus?: pulumi.Input<string>;
     redis?: pulumi.Input<string>;
 }
 
-export interface GetServiceRedisUserConfigPrivatelinkAccess {
+export interface GetServiceRedisUserConfigPrivateAccess {
+    prometheus?: string;
     redis?: string;
 }
 
 export interface GetServiceRedisUserConfigPrivatelinkAccessArgs {
     redis?: pulumi.Input<string>;
+}
+
+export interface GetServiceRedisUserConfigPrivatelinkAccess {
+    redis?: string;
 }
 
 export interface GetServiceRedisUserConfigPublicAccess {
@@ -8990,14 +9076,14 @@ export interface GetServiceRedisUserConfigPublicAccessArgs {
     redis?: pulumi.Input<string>;
 }
 
-export interface GetServiceServiceIntegrationArgs {
-    integrationType: pulumi.Input<string>;
-    sourceServiceName: pulumi.Input<string>;
-}
-
 export interface GetServiceServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
+}
+
+export interface GetServiceServiceIntegrationArgs {
+    integrationType: pulumi.Input<string>;
+    sourceServiceName: pulumi.Input<string>;
 }
 
 export interface GrafanaComponent {

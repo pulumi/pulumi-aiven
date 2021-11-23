@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Deprecate `aiven.getCassanda` in favor of `aiven.getCassandra`
 
 ---
 

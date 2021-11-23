@@ -10,35 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Cassandra Data Source
-//
-// The Cassandra data source provides information about the existing Aiven Cassandra service.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.GetCassanda(ctx, &GetCassandaArgs{
-// 			Project:     data.Aiven_project.Foo.Project,
-// 			ServiceName: fmt.Sprintf("%v%v%v", "test-acc-sr-", "%", "s"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
+// Deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra
 func GetCassanda(ctx *pulumi.Context, args *GetCassandaArgs, opts ...pulumi.InvokeOption) (*GetCassandaResult, error) {
 	var rv GetCassandaResult
 	err := ctx.Invoke("aiven:index/getCassanda:getCassanda", args, &rv, opts...)
@@ -50,132 +22,50 @@ func GetCassanda(ctx *pulumi.Context, args *GetCassandaArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getCassanda.
 type GetCassandaArgs struct {
-	// Cassandra specific server provided values.
-	Cassandra *GetCassandaCassandra `pulumi:"cassandra"`
-	// defines Cassandra specific additional configuration options.
-	// The following configuration options available:
-	CassandraUserConfig *GetCassandaCassandraUserConfig `pulumi:"cassandraUserConfig"`
-	// defines the cloud provider and region where the service is hosted.
-	// This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lengthy migration process for the service. Format is cloud provider name
-	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-	// specific region name. These are documented on each Cloud provider's own support articles,
-	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-	CloudName  *string                `pulumi:"cloudName"`
-	Components []GetCassandaComponent `pulumi:"components"`
-	// day of week when maintenance operations should be performed.
-	// On monday, tuesday, wednesday, etc.
-	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
-	// time of day when maintenance operations should be performed.
-	// UTC time in HH:mm:ss format.
-	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// defines what kind of computing resources are allocated for the service. It can
-	// be changed after creation, though there are some restrictions when going to a smaller
-	// plan such as the new plan must have sufficient amount of disk space to store all current
-	// data and switching to a plan with fewer nodes might not be supported. The basic plan
-	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan *string `pulumi:"plan"`
-	// identifies the project the service belongs to. To set up proper dependency
-	// between the project and the service, refer to the project as shown in the above example.
-	// Project cannot be changed later without destroying and re-creating the service.
-	Project string `pulumi:"project"`
-	// optionally specifies the VPC the service should run in. If the value
-	// is not set the service is not run inside a VPC. When set, the value should be given as a
-	// reference as shown above to set up dependencies correctly and the VPC must be in the same
-	// cloud and region as the service itself. Project can be freely moved to and from VPC after
-	// creation but doing so triggers migration to new servers so the operation can take
-	// significant amount of time to complete if the service has a lot of data.
-	ProjectVpcId *string `pulumi:"projectVpcId"`
-	// Cassandra hostname.
-	ServiceHost         *string                         `pulumi:"serviceHost"`
-	ServiceIntegrations []GetCassandaServiceIntegration `pulumi:"serviceIntegrations"`
-	// specifies the actual name of the service. The name cannot be changed
-	// later without destroying and re-creating the service so name should be picked based on
-	// intended service usage rather than current attributes.
-	ServiceName string `pulumi:"serviceName"`
-	// Password used for connecting to the Cassandra service, if applicable.
-	ServicePassword *string `pulumi:"servicePassword"`
-	// Cassandra port.
-	ServicePort *int    `pulumi:"servicePort"`
-	ServiceType *string `pulumi:"serviceType"`
-	// URI for connecting to the Cassandra service.
-	ServiceUri *string `pulumi:"serviceUri"`
-	// Username used for connecting to the Cassandra service, if applicable.
-	ServiceUsername *string `pulumi:"serviceUsername"`
-	// Service state.
-	State *string `pulumi:"state"`
-	// prevents the service from being deleted. It is recommended to
-	// set this to `true` for all production services to prevent unintentional service
-	// deletion. This does not shield against deleting databases or topics but for services
-	// with backups much of the content can at least be restored from backup in case accidental
-	// deletion is done.
-	TerminationProtection *bool `pulumi:"terminationProtection"`
+	Cassandra             *GetCassandaCassandra           `pulumi:"cassandra"`
+	CassandraUserConfig   *GetCassandaCassandraUserConfig `pulumi:"cassandraUserConfig"`
+	CloudName             *string                         `pulumi:"cloudName"`
+	Components            []GetCassandaComponent          `pulumi:"components"`
+	MaintenanceWindowDow  *string                         `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowTime *string                         `pulumi:"maintenanceWindowTime"`
+	Plan                  *string                         `pulumi:"plan"`
+	Project               string                          `pulumi:"project"`
+	ProjectVpcId          *string                         `pulumi:"projectVpcId"`
+	ServiceHost           *string                         `pulumi:"serviceHost"`
+	ServiceIntegrations   []GetCassandaServiceIntegration `pulumi:"serviceIntegrations"`
+	ServiceName           string                          `pulumi:"serviceName"`
+	ServicePassword       *string                         `pulumi:"servicePassword"`
+	ServicePort           *int                            `pulumi:"servicePort"`
+	ServiceType           *string                         `pulumi:"serviceType"`
+	ServiceUri            *string                         `pulumi:"serviceUri"`
+	ServiceUsername       *string                         `pulumi:"serviceUsername"`
+	State                 *string                         `pulumi:"state"`
+	TerminationProtection *bool                           `pulumi:"terminationProtection"`
 }
 
 // A collection of values returned by getCassanda.
 type GetCassandaResult struct {
-	// Cassandra specific server provided values.
-	Cassandra GetCassandaCassandra `pulumi:"cassandra"`
-	// defines Cassandra specific additional configuration options.
-	// The following configuration options available:
+	Cassandra           GetCassandaCassandra            `pulumi:"cassandra"`
 	CassandraUserConfig *GetCassandaCassandraUserConfig `pulumi:"cassandraUserConfig"`
-	// defines the cloud provider and region where the service is hosted.
-	// This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lengthy migration process for the service. Format is cloud provider name
-	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-	// specific region name. These are documented on each Cloud provider's own support articles,
-	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-	CloudName  *string                `pulumi:"cloudName"`
-	Components []GetCassandaComponent `pulumi:"components"`
+	CloudName           *string                         `pulumi:"cloudName"`
+	Components          []GetCassandaComponent          `pulumi:"components"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// day of week when maintenance operations should be performed.
-	// On monday, tuesday, wednesday, etc.
-	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
-	// time of day when maintenance operations should be performed.
-	// UTC time in HH:mm:ss format.
-	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// defines what kind of computing resources are allocated for the service. It can
-	// be changed after creation, though there are some restrictions when going to a smaller
-	// plan such as the new plan must have sufficient amount of disk space to store all current
-	// data and switching to a plan with fewer nodes might not be supported. The basic plan
-	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan    *string `pulumi:"plan"`
-	Project string  `pulumi:"project"`
-	// optionally specifies the VPC the service should run in. If the value
-	// is not set the service is not run inside a VPC. When set, the value should be given as a
-	// reference as shown above to set up dependencies correctly and the VPC must be in the same
-	// cloud and region as the service itself. Project can be freely moved to and from VPC after
-	// creation but doing so triggers migration to new servers so the operation can take
-	// significant amount of time to complete if the service has a lot of data.
-	ProjectVpcId *string `pulumi:"projectVpcId"`
-	// Cassandra hostname.
-	ServiceHost         string                          `pulumi:"serviceHost"`
-	ServiceIntegrations []GetCassandaServiceIntegration `pulumi:"serviceIntegrations"`
-	ServiceName         string                          `pulumi:"serviceName"`
-	// Password used for connecting to the Cassandra service, if applicable.
-	ServicePassword string `pulumi:"servicePassword"`
-	// Cassandra port.
-	ServicePort int    `pulumi:"servicePort"`
-	ServiceType string `pulumi:"serviceType"`
-	// URI for connecting to the Cassandra service.
-	ServiceUri string `pulumi:"serviceUri"`
-	// Username used for connecting to the Cassandra service, if applicable.
-	ServiceUsername string `pulumi:"serviceUsername"`
-	// Service state.
-	State string `pulumi:"state"`
-	// prevents the service from being deleted. It is recommended to
-	// set this to `true` for all production services to prevent unintentional service
-	// deletion. This does not shield against deleting databases or topics but for services
-	// with backups much of the content can at least be restored from backup in case accidental
-	// deletion is done.
-	TerminationProtection *bool `pulumi:"terminationProtection"`
+	Id                    string                          `pulumi:"id"`
+	MaintenanceWindowDow  *string                         `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowTime *string                         `pulumi:"maintenanceWindowTime"`
+	Plan                  *string                         `pulumi:"plan"`
+	Project               string                          `pulumi:"project"`
+	ProjectVpcId          *string                         `pulumi:"projectVpcId"`
+	ServiceHost           string                          `pulumi:"serviceHost"`
+	ServiceIntegrations   []GetCassandaServiceIntegration `pulumi:"serviceIntegrations"`
+	ServiceName           string                          `pulumi:"serviceName"`
+	ServicePassword       string                          `pulumi:"servicePassword"`
+	ServicePort           int                             `pulumi:"servicePort"`
+	ServiceType           string                          `pulumi:"serviceType"`
+	ServiceUri            string                          `pulumi:"serviceUri"`
+	ServiceUsername       string                          `pulumi:"serviceUsername"`
+	State                 string                          `pulumi:"state"`
+	TerminationProtection *bool                           `pulumi:"terminationProtection"`
 }
 
 func GetCassandaOutput(ctx *pulumi.Context, args GetCassandaOutputArgs, opts ...pulumi.InvokeOption) GetCassandaResultOutput {
@@ -189,69 +79,25 @@ func GetCassandaOutput(ctx *pulumi.Context, args GetCassandaOutputArgs, opts ...
 
 // A collection of arguments for invoking getCassanda.
 type GetCassandaOutputArgs struct {
-	// Cassandra specific server provided values.
-	Cassandra GetCassandaCassandraPtrInput `pulumi:"cassandra"`
-	// defines Cassandra specific additional configuration options.
-	// The following configuration options available:
-	CassandraUserConfig GetCassandaCassandraUserConfigPtrInput `pulumi:"cassandraUserConfig"`
-	// defines the cloud provider and region where the service is hosted.
-	// This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lengthy migration process for the service. Format is cloud provider name
-	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-	// specific region name. These are documented on each Cloud provider's own support articles,
-	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-	CloudName  pulumi.StringPtrInput          `pulumi:"cloudName"`
-	Components GetCassandaComponentArrayInput `pulumi:"components"`
-	// day of week when maintenance operations should be performed.
-	// On monday, tuesday, wednesday, etc.
-	MaintenanceWindowDow pulumi.StringPtrInput `pulumi:"maintenanceWindowDow"`
-	// time of day when maintenance operations should be performed.
-	// UTC time in HH:mm:ss format.
-	MaintenanceWindowTime pulumi.StringPtrInput `pulumi:"maintenanceWindowTime"`
-	// defines what kind of computing resources are allocated for the service. It can
-	// be changed after creation, though there are some restrictions when going to a smaller
-	// plan such as the new plan must have sufficient amount of disk space to store all current
-	// data and switching to a plan with fewer nodes might not be supported. The basic plan
-	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan pulumi.StringPtrInput `pulumi:"plan"`
-	// identifies the project the service belongs to. To set up proper dependency
-	// between the project and the service, refer to the project as shown in the above example.
-	// Project cannot be changed later without destroying and re-creating the service.
-	Project pulumi.StringInput `pulumi:"project"`
-	// optionally specifies the VPC the service should run in. If the value
-	// is not set the service is not run inside a VPC. When set, the value should be given as a
-	// reference as shown above to set up dependencies correctly and the VPC must be in the same
-	// cloud and region as the service itself. Project can be freely moved to and from VPC after
-	// creation but doing so triggers migration to new servers so the operation can take
-	// significant amount of time to complete if the service has a lot of data.
-	ProjectVpcId pulumi.StringPtrInput `pulumi:"projectVpcId"`
-	// Cassandra hostname.
-	ServiceHost         pulumi.StringPtrInput                   `pulumi:"serviceHost"`
-	ServiceIntegrations GetCassandaServiceIntegrationArrayInput `pulumi:"serviceIntegrations"`
-	// specifies the actual name of the service. The name cannot be changed
-	// later without destroying and re-creating the service so name should be picked based on
-	// intended service usage rather than current attributes.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Password used for connecting to the Cassandra service, if applicable.
-	ServicePassword pulumi.StringPtrInput `pulumi:"servicePassword"`
-	// Cassandra port.
-	ServicePort pulumi.IntPtrInput    `pulumi:"servicePort"`
-	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
-	// URI for connecting to the Cassandra service.
-	ServiceUri pulumi.StringPtrInput `pulumi:"serviceUri"`
-	// Username used for connecting to the Cassandra service, if applicable.
-	ServiceUsername pulumi.StringPtrInput `pulumi:"serviceUsername"`
-	// Service state.
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// prevents the service from being deleted. It is recommended to
-	// set this to `true` for all production services to prevent unintentional service
-	// deletion. This does not shield against deleting databases or topics but for services
-	// with backups much of the content can at least be restored from backup in case accidental
-	// deletion is done.
-	TerminationProtection pulumi.BoolPtrInput `pulumi:"terminationProtection"`
+	Cassandra             GetCassandaCassandraPtrInput            `pulumi:"cassandra"`
+	CassandraUserConfig   GetCassandaCassandraUserConfigPtrInput  `pulumi:"cassandraUserConfig"`
+	CloudName             pulumi.StringPtrInput                   `pulumi:"cloudName"`
+	Components            GetCassandaComponentArrayInput          `pulumi:"components"`
+	MaintenanceWindowDow  pulumi.StringPtrInput                   `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowTime pulumi.StringPtrInput                   `pulumi:"maintenanceWindowTime"`
+	Plan                  pulumi.StringPtrInput                   `pulumi:"plan"`
+	Project               pulumi.StringInput                      `pulumi:"project"`
+	ProjectVpcId          pulumi.StringPtrInput                   `pulumi:"projectVpcId"`
+	ServiceHost           pulumi.StringPtrInput                   `pulumi:"serviceHost"`
+	ServiceIntegrations   GetCassandaServiceIntegrationArrayInput `pulumi:"serviceIntegrations"`
+	ServiceName           pulumi.StringInput                      `pulumi:"serviceName"`
+	ServicePassword       pulumi.StringPtrInput                   `pulumi:"servicePassword"`
+	ServicePort           pulumi.IntPtrInput                      `pulumi:"servicePort"`
+	ServiceType           pulumi.StringPtrInput                   `pulumi:"serviceType"`
+	ServiceUri            pulumi.StringPtrInput                   `pulumi:"serviceUri"`
+	ServiceUsername       pulumi.StringPtrInput                   `pulumi:"serviceUsername"`
+	State                 pulumi.StringPtrInput                   `pulumi:"state"`
+	TerminationProtection pulumi.BoolPtrInput                     `pulumi:"terminationProtection"`
 }
 
 func (GetCassandaOutputArgs) ElementType() reflect.Type {
@@ -273,24 +119,14 @@ func (o GetCassandaResultOutput) ToGetCassandaResultOutputWithContext(ctx contex
 	return o
 }
 
-// Cassandra specific server provided values.
 func (o GetCassandaResultOutput) Cassandra() GetCassandaCassandraOutput {
 	return o.ApplyT(func(v GetCassandaResult) GetCassandaCassandra { return v.Cassandra }).(GetCassandaCassandraOutput)
 }
 
-// defines Cassandra specific additional configuration options.
-// The following configuration options available:
 func (o GetCassandaResultOutput) CassandraUserConfig() GetCassandaCassandraUserConfigPtrOutput {
 	return o.ApplyT(func(v GetCassandaResult) *GetCassandaCassandraUserConfig { return v.CassandraUserConfig }).(GetCassandaCassandraUserConfigPtrOutput)
 }
 
-// defines the cloud provider and region where the service is hosted.
-// This can be changed freely after service is created. Changing the value will trigger
-// a potentially lengthy migration process for the service. Format is cloud provider name
-// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-// specific region name. These are documented on each Cloud provider's own support articles,
-// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 func (o GetCassandaResultOutput) CloudName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandaResult) *string { return v.CloudName }).(pulumi.StringPtrOutput)
 }
@@ -304,25 +140,14 @@ func (o GetCassandaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// day of week when maintenance operations should be performed.
-// On monday, tuesday, wednesday, etc.
 func (o GetCassandaResultOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandaResult) *string { return v.MaintenanceWindowDow }).(pulumi.StringPtrOutput)
 }
 
-// time of day when maintenance operations should be performed.
-// UTC time in HH:mm:ss format.
 func (o GetCassandaResultOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandaResult) *string { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
 }
 
-// defines what kind of computing resources are allocated for the service. It can
-// be changed after creation, though there are some restrictions when going to a smaller
-// plan such as the new plan must have sufficient amount of disk space to store all current
-// data and switching to a plan with fewer nodes might not be supported. The basic plan
-// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 func (o GetCassandaResultOutput) Plan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandaResult) *string { return v.Plan }).(pulumi.StringPtrOutput)
 }
@@ -331,17 +156,10 @@ func (o GetCassandaResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// optionally specifies the VPC the service should run in. If the value
-// is not set the service is not run inside a VPC. When set, the value should be given as a
-// reference as shown above to set up dependencies correctly and the VPC must be in the same
-// cloud and region as the service itself. Project can be freely moved to and from VPC after
-// creation but doing so triggers migration to new servers so the operation can take
-// significant amount of time to complete if the service has a lot of data.
 func (o GetCassandaResultOutput) ProjectVpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandaResult) *string { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
 }
 
-// Cassandra hostname.
 func (o GetCassandaResultOutput) ServiceHost() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ServiceHost }).(pulumi.StringOutput)
 }
@@ -354,12 +172,10 @@ func (o GetCassandaResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Password used for connecting to the Cassandra service, if applicable.
 func (o GetCassandaResultOutput) ServicePassword() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ServicePassword }).(pulumi.StringOutput)
 }
 
-// Cassandra port.
 func (o GetCassandaResultOutput) ServicePort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCassandaResult) int { return v.ServicePort }).(pulumi.IntOutput)
 }
@@ -368,26 +184,18 @@ func (o GetCassandaResultOutput) ServiceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ServiceType }).(pulumi.StringOutput)
 }
 
-// URI for connecting to the Cassandra service.
 func (o GetCassandaResultOutput) ServiceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ServiceUri }).(pulumi.StringOutput)
 }
 
-// Username used for connecting to the Cassandra service, if applicable.
 func (o GetCassandaResultOutput) ServiceUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ServiceUsername }).(pulumi.StringOutput)
 }
 
-// Service state.
 func (o GetCassandaResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// prevents the service from being deleted. It is recommended to
-// set this to `true` for all production services to prevent unintentional service
-// deletion. This does not shield against deleting databases or topics but for services
-// with backups much of the content can at least be restored from backup in case accidental
-// deletion is done.
 func (o GetCassandaResultOutput) TerminationProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetCassandaResult) *bool { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
 }

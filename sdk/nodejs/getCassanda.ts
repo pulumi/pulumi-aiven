@@ -5,24 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-/**
- * ## # Cassandra Data Source
- *
- * The Cassandra data source provides information about the existing Aiven Cassandra service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const bar = aiven.getCassanda({
- *     project: data.aiven_project.foo.project,
- *     serviceName: `test-acc-sr-%s`,
- * });
- * ```
- */
+/** @deprecated aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
 export function getCassanda(args: GetCassandaArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandaResult> {
+    pulumi.log.warn("getCassanda is deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra")
     if (!opts) {
         opts = {}
     }
@@ -57,100 +42,24 @@ export function getCassanda(args: GetCassandaArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getCassanda.
  */
 export interface GetCassandaArgs {
-    /**
-     * Cassandra specific server provided values.
-     */
     cassandra?: inputs.GetCassandaCassandra;
-    /**
-     * defines Cassandra specific additional configuration options. 
-     * The following configuration options available:
-     */
     cassandraUserConfig?: inputs.GetCassandaCassandraUserConfig;
-    /**
-     * defines the cloud provider and region where the service is hosted. 
-     * This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lengthy migration process for the service. Format is cloud provider name
-     * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-     * specific region name. These are documented on each Cloud provider's own support articles,
-     * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-     * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-     */
     cloudName?: string;
     components?: inputs.GetCassandaComponent[];
-    /**
-     * day of week when maintenance operations should be performed. 
-     * On monday, tuesday, wednesday, etc.
-     */
     maintenanceWindowDow?: string;
-    /**
-     * time of day when maintenance operations should be performed. 
-     * UTC time in HH:mm:ss format.
-     */
     maintenanceWindowTime?: string;
-    /**
-     * defines what kind of computing resources are allocated for the service. It can
-     * be changed after creation, though there are some restrictions when going to a smaller
-     * plan such as the new plan must have sufficient amount of disk space to store all current
-     * data and switching to a plan with fewer nodes might not be supported. The basic plan
-     * names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-     * (roughly) the amount of memory on each node (also other attributes like number of CPUs
-     * and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-     */
     plan?: string;
-    /**
-     * identifies the project the service belongs to. To set up proper dependency
-     * between the project and the service, refer to the project as shown in the above example.
-     * Project cannot be changed later without destroying and re-creating the service.
-     */
     project: string;
-    /**
-     * optionally specifies the VPC the service should run in. If the value
-     * is not set the service is not run inside a VPC. When set, the value should be given as a
-     * reference as shown above to set up dependencies correctly and the VPC must be in the same
-     * cloud and region as the service itself. Project can be freely moved to and from VPC after
-     * creation but doing so triggers migration to new servers so the operation can take
-     * significant amount of time to complete if the service has a lot of data.
-     */
     projectVpcId?: string;
-    /**
-     * Cassandra hostname.
-     */
     serviceHost?: string;
     serviceIntegrations?: inputs.GetCassandaServiceIntegration[];
-    /**
-     * specifies the actual name of the service. The name cannot be changed
-     * later without destroying and re-creating the service so name should be picked based on
-     * intended service usage rather than current attributes.
-     */
     serviceName: string;
-    /**
-     * Password used for connecting to the Cassandra service, if applicable.
-     */
     servicePassword?: string;
-    /**
-     * Cassandra port.
-     */
     servicePort?: number;
     serviceType?: string;
-    /**
-     * URI for connecting to the Cassandra service.
-     */
     serviceUri?: string;
-    /**
-     * Username used for connecting to the Cassandra service, if applicable.
-     */
     serviceUsername?: string;
-    /**
-     * Service state.
-     */
     state?: string;
-    /**
-     * prevents the service from being deleted. It is recommended to
-     * set this to `true` for all production services to prevent unintentional service
-     * deletion. This does not shield against deleting databases or topics but for services
-     * with backups much of the content can at least be restored from backup in case accidental
-     * deletion is done.
-     */
     terminationProtection?: boolean;
 }
 
@@ -158,94 +67,28 @@ export interface GetCassandaArgs {
  * A collection of values returned by getCassanda.
  */
 export interface GetCassandaResult {
-    /**
-     * Cassandra specific server provided values.
-     */
     readonly cassandra: outputs.GetCassandaCassandra;
-    /**
-     * defines Cassandra specific additional configuration options. 
-     * The following configuration options available:
-     */
     readonly cassandraUserConfig?: outputs.GetCassandaCassandraUserConfig;
-    /**
-     * defines the cloud provider and region where the service is hosted. 
-     * This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lengthy migration process for the service. Format is cloud provider name
-     * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-     * specific region name. These are documented on each Cloud provider's own support articles,
-     * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-     * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-     */
     readonly cloudName?: string;
     readonly components: outputs.GetCassandaComponent[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * day of week when maintenance operations should be performed. 
-     * On monday, tuesday, wednesday, etc.
-     */
     readonly maintenanceWindowDow?: string;
-    /**
-     * time of day when maintenance operations should be performed. 
-     * UTC time in HH:mm:ss format.
-     */
     readonly maintenanceWindowTime?: string;
-    /**
-     * defines what kind of computing resources are allocated for the service. It can
-     * be changed after creation, though there are some restrictions when going to a smaller
-     * plan such as the new plan must have sufficient amount of disk space to store all current
-     * data and switching to a plan with fewer nodes might not be supported. The basic plan
-     * names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-     * (roughly) the amount of memory on each node (also other attributes like number of CPUs
-     * and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-     */
     readonly plan?: string;
     readonly project: string;
-    /**
-     * optionally specifies the VPC the service should run in. If the value
-     * is not set the service is not run inside a VPC. When set, the value should be given as a
-     * reference as shown above to set up dependencies correctly and the VPC must be in the same
-     * cloud and region as the service itself. Project can be freely moved to and from VPC after
-     * creation but doing so triggers migration to new servers so the operation can take
-     * significant amount of time to complete if the service has a lot of data.
-     */
     readonly projectVpcId?: string;
-    /**
-     * Cassandra hostname.
-     */
     readonly serviceHost: string;
     readonly serviceIntegrations?: outputs.GetCassandaServiceIntegration[];
     readonly serviceName: string;
-    /**
-     * Password used for connecting to the Cassandra service, if applicable.
-     */
     readonly servicePassword: string;
-    /**
-     * Cassandra port.
-     */
     readonly servicePort: number;
     readonly serviceType: string;
-    /**
-     * URI for connecting to the Cassandra service.
-     */
     readonly serviceUri: string;
-    /**
-     * Username used for connecting to the Cassandra service, if applicable.
-     */
     readonly serviceUsername: string;
-    /**
-     * Service state.
-     */
     readonly state: string;
-    /**
-     * prevents the service from being deleted. It is recommended to
-     * set this to `true` for all production services to prevent unintentional service
-     * deletion. This does not shield against deleting databases or topics but for services
-     * with backups much of the content can at least be restored from backup in case accidental
-     * deletion is done.
-     */
     readonly terminationProtection?: boolean;
 }
 
@@ -257,99 +100,23 @@ export function getCassandaOutput(args: GetCassandaOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getCassanda.
  */
 export interface GetCassandaOutputArgs {
-    /**
-     * Cassandra specific server provided values.
-     */
     cassandra?: pulumi.Input<inputs.GetCassandaCassandraArgs>;
-    /**
-     * defines Cassandra specific additional configuration options. 
-     * The following configuration options available:
-     */
     cassandraUserConfig?: pulumi.Input<inputs.GetCassandaCassandraUserConfigArgs>;
-    /**
-     * defines the cloud provider and region where the service is hosted. 
-     * This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lengthy migration process for the service. Format is cloud provider name
-     * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-     * specific region name. These are documented on each Cloud provider's own support articles,
-     * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-     * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-     */
     cloudName?: pulumi.Input<string>;
     components?: pulumi.Input<pulumi.Input<inputs.GetCassandaComponentArgs>[]>;
-    /**
-     * day of week when maintenance operations should be performed. 
-     * On monday, tuesday, wednesday, etc.
-     */
     maintenanceWindowDow?: pulumi.Input<string>;
-    /**
-     * time of day when maintenance operations should be performed. 
-     * UTC time in HH:mm:ss format.
-     */
     maintenanceWindowTime?: pulumi.Input<string>;
-    /**
-     * defines what kind of computing resources are allocated for the service. It can
-     * be changed after creation, though there are some restrictions when going to a smaller
-     * plan such as the new plan must have sufficient amount of disk space to store all current
-     * data and switching to a plan with fewer nodes might not be supported. The basic plan
-     * names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-     * (roughly) the amount of memory on each node (also other attributes like number of CPUs
-     * and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-     */
     plan?: pulumi.Input<string>;
-    /**
-     * identifies the project the service belongs to. To set up proper dependency
-     * between the project and the service, refer to the project as shown in the above example.
-     * Project cannot be changed later without destroying and re-creating the service.
-     */
     project: pulumi.Input<string>;
-    /**
-     * optionally specifies the VPC the service should run in. If the value
-     * is not set the service is not run inside a VPC. When set, the value should be given as a
-     * reference as shown above to set up dependencies correctly and the VPC must be in the same
-     * cloud and region as the service itself. Project can be freely moved to and from VPC after
-     * creation but doing so triggers migration to new servers so the operation can take
-     * significant amount of time to complete if the service has a lot of data.
-     */
     projectVpcId?: pulumi.Input<string>;
-    /**
-     * Cassandra hostname.
-     */
     serviceHost?: pulumi.Input<string>;
     serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.GetCassandaServiceIntegrationArgs>[]>;
-    /**
-     * specifies the actual name of the service. The name cannot be changed
-     * later without destroying and re-creating the service so name should be picked based on
-     * intended service usage rather than current attributes.
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * Password used for connecting to the Cassandra service, if applicable.
-     */
     servicePassword?: pulumi.Input<string>;
-    /**
-     * Cassandra port.
-     */
     servicePort?: pulumi.Input<number>;
     serviceType?: pulumi.Input<string>;
-    /**
-     * URI for connecting to the Cassandra service.
-     */
     serviceUri?: pulumi.Input<string>;
-    /**
-     * Username used for connecting to the Cassandra service, if applicable.
-     */
     serviceUsername?: pulumi.Input<string>;
-    /**
-     * Service state.
-     */
     state?: pulumi.Input<string>;
-    /**
-     * prevents the service from being deleted. It is recommended to
-     * set this to `true` for all production services to prevent unintentional service
-     * deletion. This does not shield against deleting databases or topics but for services
-     * with backups much of the content can at least be restored from backup in case accidental
-     * deletion is done.
-     */
     terminationProtection?: pulumi.Input<boolean>;
 }

@@ -12,18 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GetCassandaCassandraUserConfigCassandraInputArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Fail any multiple-partition batch exceeding this value.
-        /// 50kb (10x warn threshold) by default.
-        /// </summary>
         [Input("batchSizeFailThresholdInKb")]
         public Input<string>? BatchSizeFailThresholdInKb { get; set; }
 
-        /// <summary>
-        /// Log a warning message on any multiple-partition
-        /// batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing
-        /// the size of this thresholdas it can lead to node instability.
-        /// </summary>
         [Input("batchSizeWarnThresholdInKb")]
         public Input<string>? BatchSizeWarnThresholdInKb { get; set; }
 

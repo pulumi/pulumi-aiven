@@ -36,6 +36,7 @@
         "getAccountTeamProject.ts",
         "getAwsPrivatelink.ts",
         "getCassanda.ts",
+        "getCassandra.ts",
         "getConnectionPool.ts",
         "getDatabase.ts",
         "getElasticSearch.ts",
