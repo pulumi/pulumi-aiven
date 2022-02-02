@@ -27,9 +27,7 @@ export function getKafkaMirrorMaker(args: GetKafkaMirrorMakerArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", {
         "cloudName": args.cloudName,
         "components": args.components,

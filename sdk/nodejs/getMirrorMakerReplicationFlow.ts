@@ -29,9 +29,7 @@ export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", {
         "emitHeartbeatsEnabled": args.emitHeartbeatsEnabled,
         "enable": args.enable,

@@ -14,9 +14,7 @@ export function getAccountTeam(args: GetAccountTeamArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getAccountTeam:getAccountTeam", {
         "accountId": args.accountId,
         "createTime": args.createTime,

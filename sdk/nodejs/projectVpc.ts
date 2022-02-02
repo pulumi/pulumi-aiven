@@ -81,14 +81,14 @@ export class ProjectVpc extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectVpcArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectVpcArgs | ProjectVpcState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectVpcState | undefined;
-            inputs["cloudName"] = state ? state.cloudName : undefined;
-            inputs["networkCidr"] = state ? state.networkCidr : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["state"] = state ? state.state : undefined;
+            resourceInputs["cloudName"] = state ? state.cloudName : undefined;
+            resourceInputs["networkCidr"] = state ? state.networkCidr : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as ProjectVpcArgs | undefined;
             if ((!args || args.cloudName === undefined) && !opts.urn) {
@@ -100,15 +100,13 @@ export class ProjectVpc extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["cloudName"] = args ? args.cloudName : undefined;
-            inputs["networkCidr"] = args ? args.networkCidr : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["cloudName"] = args ? args.cloudName : undefined;
+            resourceInputs["networkCidr"] = args ? args.networkCidr : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["state"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectVpc.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectVpc.__pulumiType, name, resourceInputs, opts);
     }
 }
 

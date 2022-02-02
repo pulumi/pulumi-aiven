@@ -27,9 +27,7 @@ export function getM3Aggregator(args: GetM3AggregatorArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getM3Aggregator:getM3Aggregator", {
         "cloudName": args.cloudName,
         "components": args.components,

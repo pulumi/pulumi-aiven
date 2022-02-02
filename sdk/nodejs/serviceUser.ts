@@ -111,22 +111,22 @@ export class ServiceUser extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceUserArgs | ServiceUserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceUserState | undefined;
-            inputs["accessCert"] = state ? state.accessCert : undefined;
-            inputs["accessKey"] = state ? state.accessKey : undefined;
-            inputs["authentication"] = state ? state.authentication : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["redisAclCategories"] = state ? state.redisAclCategories : undefined;
-            inputs["redisAclChannels"] = state ? state.redisAclChannels : undefined;
-            inputs["redisAclCommands"] = state ? state.redisAclCommands : undefined;
-            inputs["redisAclKeys"] = state ? state.redisAclKeys : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["username"] = state ? state.username : undefined;
+            resourceInputs["accessCert"] = state ? state.accessCert : undefined;
+            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
+            resourceInputs["authentication"] = state ? state.authentication : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["redisAclCategories"] = state ? state.redisAclCategories : undefined;
+            resourceInputs["redisAclChannels"] = state ? state.redisAclChannels : undefined;
+            resourceInputs["redisAclCommands"] = state ? state.redisAclCommands : undefined;
+            resourceInputs["redisAclKeys"] = state ? state.redisAclKeys : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as ServiceUserArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
@@ -138,23 +138,21 @@ export class ServiceUser extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            inputs["authentication"] = args ? args.authentication : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["redisAclCategories"] = args ? args.redisAclCategories : undefined;
-            inputs["redisAclChannels"] = args ? args.redisAclChannels : undefined;
-            inputs["redisAclCommands"] = args ? args.redisAclCommands : undefined;
-            inputs["redisAclKeys"] = args ? args.redisAclKeys : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["username"] = args ? args.username : undefined;
-            inputs["accessCert"] = undefined /*out*/;
-            inputs["accessKey"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["authentication"] = args ? args.authentication : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["redisAclCategories"] = args ? args.redisAclCategories : undefined;
+            resourceInputs["redisAclChannels"] = args ? args.redisAclChannels : undefined;
+            resourceInputs["redisAclCommands"] = args ? args.redisAclCommands : undefined;
+            resourceInputs["redisAclKeys"] = args ? args.redisAclKeys : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["accessCert"] = undefined /*out*/;
+            resourceInputs["accessKey"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServiceUser.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServiceUser.__pulumiType, name, resourceInputs, opts);
     }
 }
 

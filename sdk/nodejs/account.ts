@@ -80,29 +80,27 @@ export class Account extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountArgs | AccountState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["ownerTeamId"] = state ? state.ownerTeamId : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ownerTeamId"] = state ? state.ownerTeamId : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["ownerTeamId"] = args ? args.ownerTeamId : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
-            inputs["accountId"] = undefined /*out*/;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ownerTeamId"] = args ? args.ownerTeamId : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["updateTime"] = args ? args.updateTime : undefined;
+            resourceInputs["accountId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Account.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Account.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,7 +41,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMySqlResult> InvokeAsync(GetMySqlArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMySqlResult>("aiven:index/getMySql:getMySql", args ?? new GetMySqlArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMySqlResult>("aiven:index/getMySql:getMySql", args ?? new GetMySqlArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # MySQL Data Source
@@ -74,7 +73,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMySqlResult> Invoke(GetMySqlInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMySqlResult>("aiven:index/getMySql:getMySql", args ?? new GetMySqlInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMySqlResult>("aiven:index/getMySql:getMySql", args ?? new GetMySqlInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -28,9 +28,7 @@ export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpoin
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", {
         "datadogUserConfig": args.datadogUserConfig,
         "endpointConfig": args.endpointConfig,

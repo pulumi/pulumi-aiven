@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,7 +41,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaMirrorMakerResult> InvokeAsync(GetKafkaMirrorMakerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaMirrorMakerResult>("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", args ?? new GetKafkaMirrorMakerArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaMirrorMakerResult>("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", args ?? new GetKafkaMirrorMakerArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Kafka MirrorMaker Data Source
@@ -74,7 +73,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaMirrorMakerResult> Invoke(GetKafkaMirrorMakerInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaMirrorMakerResult>("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", args ?? new GetKafkaMirrorMakerInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKafkaMirrorMakerResult>("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", args ?? new GetKafkaMirrorMakerInvokeArgs(), options.WithDefaults());
     }
 
 

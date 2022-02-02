@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
     public static class GetElasticSearchAclConfig
     {
         public static Task<GetElasticSearchAclConfigResult> InvokeAsync(GetElasticSearchAclConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetElasticSearchAclConfigResult>("aiven:index/getElasticSearchAclConfig:getElasticSearchAclConfig", args ?? new GetElasticSearchAclConfigArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetElasticSearchAclConfigResult>("aiven:index/getElasticSearchAclConfig:getElasticSearchAclConfig", args ?? new GetElasticSearchAclConfigArgs(), options.WithDefaults());
 
         public static Output<GetElasticSearchAclConfigResult> Invoke(GetElasticSearchAclConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetElasticSearchAclConfigResult>("aiven:index/getElasticSearchAclConfig:getElasticSearchAclConfig", args ?? new GetElasticSearchAclConfigInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetElasticSearchAclConfigResult>("aiven:index/getElasticSearchAclConfig:getElasticSearchAclConfig", args ?? new GetElasticSearchAclConfigInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetConnectionPoolResult> InvokeAsync(GetConnectionPoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionPoolResult>("aiven:index/getConnectionPool:getConnectionPool", args ?? new GetConnectionPoolArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionPoolResult>("aiven:index/getConnectionPool:getConnectionPool", args ?? new GetConnectionPoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Connection Pool Data Source
@@ -76,7 +75,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetConnectionPoolResult> Invoke(GetConnectionPoolInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConnectionPoolResult>("aiven:index/getConnectionPool:getConnectionPool", args ?? new GetConnectionPoolInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConnectionPoolResult>("aiven:index/getConnectionPool:getConnectionPool", args ?? new GetConnectionPoolInvokeArgs(), options.WithDefaults());
     }
 
 

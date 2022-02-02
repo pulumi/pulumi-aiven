@@ -95,18 +95,18 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: TransitGatewayVpcAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TransitGatewayVpcAttachmentArgs | TransitGatewayVpcAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitGatewayVpcAttachmentState | undefined;
-            inputs["peerCloudAccount"] = state ? state.peerCloudAccount : undefined;
-            inputs["peerRegion"] = state ? state.peerRegion : undefined;
-            inputs["peerVpc"] = state ? state.peerVpc : undefined;
-            inputs["peeringConnectionId"] = state ? state.peeringConnectionId : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["stateInfo"] = state ? state.stateInfo : undefined;
-            inputs["userPeerNetworkCidrs"] = state ? state.userPeerNetworkCidrs : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["peerCloudAccount"] = state ? state.peerCloudAccount : undefined;
+            resourceInputs["peerRegion"] = state ? state.peerRegion : undefined;
+            resourceInputs["peerVpc"] = state ? state.peerVpc : undefined;
+            resourceInputs["peeringConnectionId"] = state ? state.peeringConnectionId : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["stateInfo"] = state ? state.stateInfo : undefined;
+            resourceInputs["userPeerNetworkCidrs"] = state ? state.userPeerNetworkCidrs : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as TransitGatewayVpcAttachmentArgs | undefined;
             if ((!args || args.peerCloudAccount === undefined) && !opts.urn) {
@@ -124,19 +124,17 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            inputs["peerCloudAccount"] = args ? args.peerCloudAccount : undefined;
-            inputs["peerRegion"] = args ? args.peerRegion : undefined;
-            inputs["peerVpc"] = args ? args.peerVpc : undefined;
-            inputs["userPeerNetworkCidrs"] = args ? args.userPeerNetworkCidrs : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["peeringConnectionId"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateInfo"] = undefined /*out*/;
+            resourceInputs["peerCloudAccount"] = args ? args.peerCloudAccount : undefined;
+            resourceInputs["peerRegion"] = args ? args.peerRegion : undefined;
+            resourceInputs["peerVpc"] = args ? args.peerVpc : undefined;
+            resourceInputs["userPeerNetworkCidrs"] = args ? args.userPeerNetworkCidrs : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["peeringConnectionId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateInfo"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TransitGatewayVpcAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TransitGatewayVpcAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

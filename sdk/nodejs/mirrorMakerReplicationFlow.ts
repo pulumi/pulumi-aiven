@@ -114,21 +114,21 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
      */
     constructor(name: string, args: MirrorMakerReplicationFlowArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MirrorMakerReplicationFlowArgs | MirrorMakerReplicationFlowState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MirrorMakerReplicationFlowState | undefined;
-            inputs["emitHeartbeatsEnabled"] = state ? state.emitHeartbeatsEnabled : undefined;
-            inputs["enable"] = state ? state.enable : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["replicationPolicyClass"] = state ? state.replicationPolicyClass : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["sourceCluster"] = state ? state.sourceCluster : undefined;
-            inputs["syncGroupOffsetsEnabled"] = state ? state.syncGroupOffsetsEnabled : undefined;
-            inputs["syncGroupOffsetsIntervalSeconds"] = state ? state.syncGroupOffsetsIntervalSeconds : undefined;
-            inputs["targetCluster"] = state ? state.targetCluster : undefined;
-            inputs["topics"] = state ? state.topics : undefined;
-            inputs["topicsBlacklists"] = state ? state.topicsBlacklists : undefined;
+            resourceInputs["emitHeartbeatsEnabled"] = state ? state.emitHeartbeatsEnabled : undefined;
+            resourceInputs["enable"] = state ? state.enable : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["replicationPolicyClass"] = state ? state.replicationPolicyClass : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["sourceCluster"] = state ? state.sourceCluster : undefined;
+            resourceInputs["syncGroupOffsetsEnabled"] = state ? state.syncGroupOffsetsEnabled : undefined;
+            resourceInputs["syncGroupOffsetsIntervalSeconds"] = state ? state.syncGroupOffsetsIntervalSeconds : undefined;
+            resourceInputs["targetCluster"] = state ? state.targetCluster : undefined;
+            resourceInputs["topics"] = state ? state.topics : undefined;
+            resourceInputs["topicsBlacklists"] = state ? state.topicsBlacklists : undefined;
         } else {
             const args = argsOrState as MirrorMakerReplicationFlowArgs | undefined;
             if ((!args || args.enable === undefined) && !opts.urn) {
@@ -146,22 +146,20 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             if ((!args || args.targetCluster === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetCluster'");
             }
-            inputs["emitHeartbeatsEnabled"] = args ? args.emitHeartbeatsEnabled : undefined;
-            inputs["enable"] = args ? args.enable : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["replicationPolicyClass"] = args ? args.replicationPolicyClass : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["sourceCluster"] = args ? args.sourceCluster : undefined;
-            inputs["syncGroupOffsetsEnabled"] = args ? args.syncGroupOffsetsEnabled : undefined;
-            inputs["syncGroupOffsetsIntervalSeconds"] = args ? args.syncGroupOffsetsIntervalSeconds : undefined;
-            inputs["targetCluster"] = args ? args.targetCluster : undefined;
-            inputs["topics"] = args ? args.topics : undefined;
-            inputs["topicsBlacklists"] = args ? args.topicsBlacklists : undefined;
+            resourceInputs["emitHeartbeatsEnabled"] = args ? args.emitHeartbeatsEnabled : undefined;
+            resourceInputs["enable"] = args ? args.enable : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["replicationPolicyClass"] = args ? args.replicationPolicyClass : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["sourceCluster"] = args ? args.sourceCluster : undefined;
+            resourceInputs["syncGroupOffsetsEnabled"] = args ? args.syncGroupOffsetsEnabled : undefined;
+            resourceInputs["syncGroupOffsetsIntervalSeconds"] = args ? args.syncGroupOffsetsIntervalSeconds : undefined;
+            resourceInputs["targetCluster"] = args ? args.targetCluster : undefined;
+            resourceInputs["topics"] = args ? args.topics : undefined;
+            resourceInputs["topicsBlacklists"] = args ? args.topicsBlacklists : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MirrorMakerReplicationFlow.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MirrorMakerReplicationFlow.__pulumiType, name, resourceInputs, opts);
     }
 }
 

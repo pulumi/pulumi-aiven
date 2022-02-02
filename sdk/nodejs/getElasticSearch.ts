@@ -27,9 +27,7 @@ export function getElasticSearch(args: GetElasticSearchArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getElasticSearch:getElasticSearch", {
         "cloudName": args.cloudName,
         "components": args.components,

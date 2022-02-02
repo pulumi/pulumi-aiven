@@ -27,9 +27,7 @@ export function getKafkaConnect(args: GetKafkaConnectArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getKafkaConnect:getKafkaConnect", {
         "cloudName": args.cloudName,
         "components": args.components,

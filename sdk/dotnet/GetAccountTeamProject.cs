@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -18,7 +17,7 @@ namespace Pulumi.Aiven
         /// The Account Team Project data source provides information about the existing Account Team Project.
         /// </summary>
         public static Task<GetAccountTeamProjectResult> InvokeAsync(GetAccountTeamProjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamProjectResult>("aiven:index/getAccountTeamProject:getAccountTeamProject", args ?? new GetAccountTeamProjectArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamProjectResult>("aiven:index/getAccountTeamProject:getAccountTeamProject", args ?? new GetAccountTeamProjectArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Account Team Project Data Source
@@ -26,7 +25,7 @@ namespace Pulumi.Aiven
         /// The Account Team Project data source provides information about the existing Account Team Project.
         /// </summary>
         public static Output<GetAccountTeamProjectResult> Invoke(GetAccountTeamProjectInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountTeamProjectResult>("aiven:index/getAccountTeamProject:getAccountTeamProject", args ?? new GetAccountTeamProjectInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAccountTeamProjectResult>("aiven:index/getAccountTeamProject:getAccountTeamProject", args ?? new GetAccountTeamProjectInvokeArgs(), options.WithDefaults());
     }
 
 

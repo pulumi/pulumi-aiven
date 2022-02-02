@@ -79,14 +79,14 @@ export class ProjectUser extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectUserArgs | ProjectUserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectUserState | undefined;
-            inputs["accepted"] = state ? state.accepted : undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["memberType"] = state ? state.memberType : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["accepted"] = state ? state.accepted : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["memberType"] = state ? state.memberType : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectUserArgs | undefined;
             if ((!args || args.email === undefined) && !opts.urn) {
@@ -98,15 +98,13 @@ export class ProjectUser extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["email"] = args ? args.email : undefined;
-            inputs["memberType"] = args ? args.memberType : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["accepted"] = undefined /*out*/;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["memberType"] = args ? args.memberType : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["accepted"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProjectUser.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProjectUser.__pulumiType, name, resourceInputs, opts);
     }
 }
 

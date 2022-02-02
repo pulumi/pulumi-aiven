@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -18,7 +17,7 @@ namespace Pulumi.Aiven
         /// The Account Team data source provides information about the existing Account Team.
         /// </summary>
         public static Task<GetAccountTeamResult> InvokeAsync(GetAccountTeamArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamResult>("aiven:index/getAccountTeam:getAccountTeam", args ?? new GetAccountTeamArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamResult>("aiven:index/getAccountTeam:getAccountTeam", args ?? new GetAccountTeamArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Account Team Data Source
@@ -26,7 +25,7 @@ namespace Pulumi.Aiven
         /// The Account Team data source provides information about the existing Account Team.
         /// </summary>
         public static Output<GetAccountTeamResult> Invoke(GetAccountTeamInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountTeamResult>("aiven:index/getAccountTeam:getAccountTeam", args ?? new GetAccountTeamInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAccountTeamResult>("aiven:index/getAccountTeam:getAccountTeam", args ?? new GetAccountTeamInvokeArgs(), options.WithDefaults());
     }
 
 

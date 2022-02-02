@@ -175,29 +175,29 @@ export class Redis extends pulumi.CustomResource {
      */
     constructor(name: string, args: RedisArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RedisArgs | RedisState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RedisState | undefined;
-            inputs["cloudName"] = state ? state.cloudName : undefined;
-            inputs["components"] = state ? state.components : undefined;
-            inputs["maintenanceWindowDow"] = state ? state.maintenanceWindowDow : undefined;
-            inputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
-            inputs["plan"] = state ? state.plan : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["projectVpcId"] = state ? state.projectVpcId : undefined;
-            inputs["redis"] = state ? state.redis : undefined;
-            inputs["redisUserConfig"] = state ? state.redisUserConfig : undefined;
-            inputs["serviceHost"] = state ? state.serviceHost : undefined;
-            inputs["serviceIntegrations"] = state ? state.serviceIntegrations : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["servicePassword"] = state ? state.servicePassword : undefined;
-            inputs["servicePort"] = state ? state.servicePort : undefined;
-            inputs["serviceType"] = state ? state.serviceType : undefined;
-            inputs["serviceUri"] = state ? state.serviceUri : undefined;
-            inputs["serviceUsername"] = state ? state.serviceUsername : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["terminationProtection"] = state ? state.terminationProtection : undefined;
+            resourceInputs["cloudName"] = state ? state.cloudName : undefined;
+            resourceInputs["components"] = state ? state.components : undefined;
+            resourceInputs["maintenanceWindowDow"] = state ? state.maintenanceWindowDow : undefined;
+            resourceInputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
+            resourceInputs["plan"] = state ? state.plan : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["projectVpcId"] = state ? state.projectVpcId : undefined;
+            resourceInputs["redis"] = state ? state.redis : undefined;
+            resourceInputs["redisUserConfig"] = state ? state.redisUserConfig : undefined;
+            resourceInputs["serviceHost"] = state ? state.serviceHost : undefined;
+            resourceInputs["serviceIntegrations"] = state ? state.serviceIntegrations : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["servicePassword"] = state ? state.servicePassword : undefined;
+            resourceInputs["servicePort"] = state ? state.servicePort : undefined;
+            resourceInputs["serviceType"] = state ? state.serviceType : undefined;
+            resourceInputs["serviceUri"] = state ? state.serviceUri : undefined;
+            resourceInputs["serviceUsername"] = state ? state.serviceUsername : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as RedisArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
@@ -206,30 +206,28 @@ export class Redis extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            inputs["cloudName"] = args ? args.cloudName : undefined;
-            inputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
-            inputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
-            inputs["plan"] = args ? args.plan : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["projectVpcId"] = args ? args.projectVpcId : undefined;
-            inputs["redis"] = args ? args.redis : undefined;
-            inputs["redisUserConfig"] = args ? args.redisUserConfig : undefined;
-            inputs["serviceIntegrations"] = args ? args.serviceIntegrations : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["terminationProtection"] = args ? args.terminationProtection : undefined;
-            inputs["components"] = undefined /*out*/;
-            inputs["serviceHost"] = undefined /*out*/;
-            inputs["servicePassword"] = undefined /*out*/;
-            inputs["servicePort"] = undefined /*out*/;
-            inputs["serviceType"] = undefined /*out*/;
-            inputs["serviceUri"] = undefined /*out*/;
-            inputs["serviceUsername"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["cloudName"] = args ? args.cloudName : undefined;
+            resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
+            resourceInputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
+            resourceInputs["plan"] = args ? args.plan : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["projectVpcId"] = args ? args.projectVpcId : undefined;
+            resourceInputs["redis"] = args ? args.redis : undefined;
+            resourceInputs["redisUserConfig"] = args ? args.redisUserConfig : undefined;
+            resourceInputs["serviceIntegrations"] = args ? args.serviceIntegrations : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
+            resourceInputs["components"] = undefined /*out*/;
+            resourceInputs["serviceHost"] = undefined /*out*/;
+            resourceInputs["servicePassword"] = undefined /*out*/;
+            resourceInputs["servicePort"] = undefined /*out*/;
+            resourceInputs["serviceType"] = undefined /*out*/;
+            resourceInputs["serviceUri"] = undefined /*out*/;
+            resourceInputs["serviceUsername"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Redis.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Redis.__pulumiType, name, resourceInputs, opts);
     }
 }
 

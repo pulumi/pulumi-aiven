@@ -95,22 +95,22 @@ export class AccountAuthentication extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccountAuthenticationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountAuthenticationArgs | AccountAuthenticationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountAuthenticationState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["authenticationId"] = state ? state.authenticationId : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["samlAcsUrl"] = state ? state.samlAcsUrl : undefined;
-            inputs["samlCertificate"] = state ? state.samlCertificate : undefined;
-            inputs["samlEntityId"] = state ? state.samlEntityId : undefined;
-            inputs["samlIdpUrl"] = state ? state.samlIdpUrl : undefined;
-            inputs["samlMetadataUrl"] = state ? state.samlMetadataUrl : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["authenticationId"] = state ? state.authenticationId : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["samlAcsUrl"] = state ? state.samlAcsUrl : undefined;
+            resourceInputs["samlCertificate"] = state ? state.samlCertificate : undefined;
+            resourceInputs["samlEntityId"] = state ? state.samlEntityId : undefined;
+            resourceInputs["samlIdpUrl"] = state ? state.samlIdpUrl : undefined;
+            resourceInputs["samlMetadataUrl"] = state ? state.samlMetadataUrl : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AccountAuthenticationArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -119,23 +119,21 @@ export class AccountAuthentication extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["authenticationId"] = args ? args.authenticationId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["samlAcsUrl"] = args ? args.samlAcsUrl : undefined;
-            inputs["samlCertificate"] = args ? args.samlCertificate : undefined;
-            inputs["samlEntityId"] = args ? args.samlEntityId : undefined;
-            inputs["samlIdpUrl"] = args ? args.samlIdpUrl : undefined;
-            inputs["samlMetadataUrl"] = args ? args.samlMetadataUrl : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["authenticationId"] = args ? args.authenticationId : undefined;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["samlAcsUrl"] = args ? args.samlAcsUrl : undefined;
+            resourceInputs["samlCertificate"] = args ? args.samlCertificate : undefined;
+            resourceInputs["samlEntityId"] = args ? args.samlEntityId : undefined;
+            resourceInputs["samlIdpUrl"] = args ? args.samlIdpUrl : undefined;
+            resourceInputs["samlMetadataUrl"] = args ? args.samlMetadataUrl : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["updateTime"] = args ? args.updateTime : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccountAuthentication.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccountAuthentication.__pulumiType, name, resourceInputs, opts);
     }
 }
 

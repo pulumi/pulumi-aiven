@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,7 +41,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetM3DbResult> InvokeAsync(GetM3DbArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetM3DbResult>("aiven:index/getM3Db:getM3Db", args ?? new GetM3DbArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetM3DbResult>("aiven:index/getM3Db:getM3Db", args ?? new GetM3DbArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # M3 DB Data Source
@@ -74,7 +73,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetM3DbResult> Invoke(GetM3DbInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetM3DbResult>("aiven:index/getM3Db:getM3Db", args ?? new GetM3DbInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetM3DbResult>("aiven:index/getM3Db:getM3Db", args ?? new GetM3DbInvokeArgs(), options.WithDefaults());
     }
 
 

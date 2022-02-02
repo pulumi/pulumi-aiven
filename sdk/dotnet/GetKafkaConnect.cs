@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,7 +41,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaConnectResult> InvokeAsync(GetKafkaConnectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectResult>("aiven:index/getKafkaConnect:getKafkaConnect", args ?? new GetKafkaConnectArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectResult>("aiven:index/getKafkaConnect:getKafkaConnect", args ?? new GetKafkaConnectArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Kafka Connect Data Source
@@ -74,7 +73,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaConnectResult> Invoke(GetKafkaConnectInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaConnectResult>("aiven:index/getKafkaConnect:getKafkaConnect", args ?? new GetKafkaConnectInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKafkaConnectResult>("aiven:index/getKafkaConnect:getKafkaConnect", args ?? new GetKafkaConnectInvokeArgs(), options.WithDefaults());
     }
 
 

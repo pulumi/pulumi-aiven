@@ -68,14 +68,14 @@ export class AccountTeamProject extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccountTeamProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountTeamProjectArgs | AccountTeamProjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountTeamProjectState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["projectName"] = state ? state.projectName : undefined;
-            inputs["teamId"] = state ? state.teamId : undefined;
-            inputs["teamType"] = state ? state.teamType : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["projectName"] = state ? state.projectName : undefined;
+            resourceInputs["teamId"] = state ? state.teamId : undefined;
+            resourceInputs["teamType"] = state ? state.teamType : undefined;
         } else {
             const args = argsOrState as AccountTeamProjectArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -84,15 +84,13 @@ export class AccountTeamProject extends pulumi.CustomResource {
             if ((!args || args.teamId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'teamId'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["projectName"] = args ? args.projectName : undefined;
-            inputs["teamId"] = args ? args.teamId : undefined;
-            inputs["teamType"] = args ? args.teamType : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["projectName"] = args ? args.projectName : undefined;
+            resourceInputs["teamId"] = args ? args.teamId : undefined;
+            resourceInputs["teamType"] = args ? args.teamType : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccountTeamProject.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccountTeamProject.__pulumiType, name, resourceInputs, opts);
     }
 }
 

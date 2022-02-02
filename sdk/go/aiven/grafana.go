@@ -419,7 +419,7 @@ type GrafanaInput interface {
 }
 
 func (*Grafana) ElementType() reflect.Type {
-	return reflect.TypeOf((*Grafana)(nil))
+	return reflect.TypeOf((**Grafana)(nil)).Elem()
 }
 
 func (i *Grafana) ToGrafanaOutput() GrafanaOutput {
@@ -428,35 +428,6 @@ func (i *Grafana) ToGrafanaOutput() GrafanaOutput {
 
 func (i *Grafana) ToGrafanaOutputWithContext(ctx context.Context) GrafanaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GrafanaOutput)
-}
-
-func (i *Grafana) ToGrafanaPtrOutput() GrafanaPtrOutput {
-	return i.ToGrafanaPtrOutputWithContext(context.Background())
-}
-
-func (i *Grafana) ToGrafanaPtrOutputWithContext(ctx context.Context) GrafanaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GrafanaPtrOutput)
-}
-
-type GrafanaPtrInput interface {
-	pulumi.Input
-
-	ToGrafanaPtrOutput() GrafanaPtrOutput
-	ToGrafanaPtrOutputWithContext(ctx context.Context) GrafanaPtrOutput
-}
-
-type grafanaPtrType GrafanaArgs
-
-func (*grafanaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Grafana)(nil))
-}
-
-func (i *grafanaPtrType) ToGrafanaPtrOutput() GrafanaPtrOutput {
-	return i.ToGrafanaPtrOutputWithContext(context.Background())
-}
-
-func (i *grafanaPtrType) ToGrafanaPtrOutputWithContext(ctx context.Context) GrafanaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GrafanaPtrOutput)
 }
 
 // GrafanaArrayInput is an input type that accepts GrafanaArray and GrafanaArrayOutput values.
@@ -512,7 +483,7 @@ func (i GrafanaMap) ToGrafanaMapOutputWithContext(ctx context.Context) GrafanaMa
 type GrafanaOutput struct{ *pulumi.OutputState }
 
 func (GrafanaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Grafana)(nil))
+	return reflect.TypeOf((**Grafana)(nil)).Elem()
 }
 
 func (o GrafanaOutput) ToGrafanaOutput() GrafanaOutput {
@@ -523,44 +494,10 @@ func (o GrafanaOutput) ToGrafanaOutputWithContext(ctx context.Context) GrafanaOu
 	return o
 }
 
-func (o GrafanaOutput) ToGrafanaPtrOutput() GrafanaPtrOutput {
-	return o.ToGrafanaPtrOutputWithContext(context.Background())
-}
-
-func (o GrafanaOutput) ToGrafanaPtrOutputWithContext(ctx context.Context) GrafanaPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Grafana) *Grafana {
-		return &v
-	}).(GrafanaPtrOutput)
-}
-
-type GrafanaPtrOutput struct{ *pulumi.OutputState }
-
-func (GrafanaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Grafana)(nil))
-}
-
-func (o GrafanaPtrOutput) ToGrafanaPtrOutput() GrafanaPtrOutput {
-	return o
-}
-
-func (o GrafanaPtrOutput) ToGrafanaPtrOutputWithContext(ctx context.Context) GrafanaPtrOutput {
-	return o
-}
-
-func (o GrafanaPtrOutput) Elem() GrafanaOutput {
-	return o.ApplyT(func(v *Grafana) Grafana {
-		if v != nil {
-			return *v
-		}
-		var ret Grafana
-		return ret
-	}).(GrafanaOutput)
-}
-
 type GrafanaArrayOutput struct{ *pulumi.OutputState }
 
 func (GrafanaArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Grafana)(nil))
+	return reflect.TypeOf((*[]*Grafana)(nil)).Elem()
 }
 
 func (o GrafanaArrayOutput) ToGrafanaArrayOutput() GrafanaArrayOutput {
@@ -572,15 +509,15 @@ func (o GrafanaArrayOutput) ToGrafanaArrayOutputWithContext(ctx context.Context)
 }
 
 func (o GrafanaArrayOutput) Index(i pulumi.IntInput) GrafanaOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Grafana {
-		return vs[0].([]Grafana)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Grafana {
+		return vs[0].([]*Grafana)[vs[1].(int)]
 	}).(GrafanaOutput)
 }
 
 type GrafanaMapOutput struct{ *pulumi.OutputState }
 
 func (GrafanaMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Grafana)(nil))
+	return reflect.TypeOf((*map[string]*Grafana)(nil)).Elem()
 }
 
 func (o GrafanaMapOutput) ToGrafanaMapOutput() GrafanaMapOutput {
@@ -592,18 +529,16 @@ func (o GrafanaMapOutput) ToGrafanaMapOutputWithContext(ctx context.Context) Gra
 }
 
 func (o GrafanaMapOutput) MapIndex(k pulumi.StringInput) GrafanaOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Grafana {
-		return vs[0].(map[string]Grafana)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Grafana {
+		return vs[0].(map[string]*Grafana)[vs[1].(string)]
 	}).(GrafanaOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaInput)(nil)).Elem(), &Grafana{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaPtrInput)(nil)).Elem(), &Grafana{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaArrayInput)(nil)).Elem(), GrafanaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafanaMapInput)(nil)).Elem(), GrafanaMap{})
 	pulumi.RegisterOutputType(GrafanaOutput{})
-	pulumi.RegisterOutputType(GrafanaPtrOutput{})
 	pulumi.RegisterOutputType(GrafanaArrayOutput{})
 	pulumi.RegisterOutputType(GrafanaMapOutput{})
 }

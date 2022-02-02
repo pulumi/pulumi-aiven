@@ -107,18 +107,18 @@ export class ConnectionPool extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConnectionPoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectionPoolArgs | ConnectionPoolState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionPoolState | undefined;
-            inputs["connectionUri"] = state ? state.connectionUri : undefined;
-            inputs["databaseName"] = state ? state.databaseName : undefined;
-            inputs["poolMode"] = state ? state.poolMode : undefined;
-            inputs["poolName"] = state ? state.poolName : undefined;
-            inputs["poolSize"] = state ? state.poolSize : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["username"] = state ? state.username : undefined;
+            resourceInputs["connectionUri"] = state ? state.connectionUri : undefined;
+            resourceInputs["databaseName"] = state ? state.databaseName : undefined;
+            resourceInputs["poolMode"] = state ? state.poolMode : undefined;
+            resourceInputs["poolName"] = state ? state.poolName : undefined;
+            resourceInputs["poolSize"] = state ? state.poolSize : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as ConnectionPoolArgs | undefined;
             if ((!args || args.databaseName === undefined) && !opts.urn) {
@@ -133,19 +133,17 @@ export class ConnectionPool extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            inputs["databaseName"] = args ? args.databaseName : undefined;
-            inputs["poolMode"] = args ? args.poolMode : undefined;
-            inputs["poolName"] = args ? args.poolName : undefined;
-            inputs["poolSize"] = args ? args.poolSize : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["username"] = args ? args.username : undefined;
-            inputs["connectionUri"] = undefined /*out*/;
+            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
+            resourceInputs["poolMode"] = args ? args.poolMode : undefined;
+            resourceInputs["poolName"] = args ? args.poolName : undefined;
+            resourceInputs["poolSize"] = args ? args.poolSize : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["connectionUri"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ConnectionPool.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ConnectionPool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

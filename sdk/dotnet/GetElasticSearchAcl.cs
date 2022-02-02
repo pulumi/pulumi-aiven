@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetElasticSearchAclResult> InvokeAsync(GetElasticSearchAclArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetElasticSearchAclResult>("aiven:index/getElasticSearchAcl:getElasticSearchAcl", args ?? new GetElasticSearchAclArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetElasticSearchAclResult>("aiven:index/getElasticSearchAcl:getElasticSearchAcl", args ?? new GetElasticSearchAclArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Elasticsearch ACL Data Source
@@ -76,7 +75,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetElasticSearchAclResult> Invoke(GetElasticSearchAclInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetElasticSearchAclResult>("aiven:index/getElasticSearchAcl:getElasticSearchAcl", args ?? new GetElasticSearchAclInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetElasticSearchAclResult>("aiven:index/getElasticSearchAcl:getElasticSearchAcl", args ?? new GetElasticSearchAclInvokeArgs(), options.WithDefaults());
     }
 
 

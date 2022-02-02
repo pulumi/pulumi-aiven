@@ -142,25 +142,25 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceIntegrationEndpointArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceIntegrationEndpointArgs | ServiceIntegrationEndpointState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceIntegrationEndpointState | undefined;
-            inputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
-            inputs["endpointConfig"] = state ? state.endpointConfig : undefined;
-            inputs["endpointName"] = state ? state.endpointName : undefined;
-            inputs["endpointType"] = state ? state.endpointType : undefined;
-            inputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
-            inputs["externalAwsCloudwatchMetricsUserConfig"] = state ? state.externalAwsCloudwatchMetricsUserConfig : undefined;
-            inputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
-            inputs["externalGoogleCloudLoggingUserConfig"] = state ? state.externalGoogleCloudLoggingUserConfig : undefined;
-            inputs["externalKafkaUserConfig"] = state ? state.externalKafkaUserConfig : undefined;
-            inputs["externalSchemaRegistryUserConfig"] = state ? state.externalSchemaRegistryUserConfig : undefined;
-            inputs["jolokiaUserConfig"] = state ? state.jolokiaUserConfig : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["prometheusUserConfig"] = state ? state.prometheusUserConfig : undefined;
-            inputs["rsyslogUserConfig"] = state ? state.rsyslogUserConfig : undefined;
-            inputs["signalfxUserConfig"] = state ? state.signalfxUserConfig : undefined;
+            resourceInputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
+            resourceInputs["endpointConfig"] = state ? state.endpointConfig : undefined;
+            resourceInputs["endpointName"] = state ? state.endpointName : undefined;
+            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
+            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
+            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = state ? state.externalAwsCloudwatchMetricsUserConfig : undefined;
+            resourceInputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
+            resourceInputs["externalGoogleCloudLoggingUserConfig"] = state ? state.externalGoogleCloudLoggingUserConfig : undefined;
+            resourceInputs["externalKafkaUserConfig"] = state ? state.externalKafkaUserConfig : undefined;
+            resourceInputs["externalSchemaRegistryUserConfig"] = state ? state.externalSchemaRegistryUserConfig : undefined;
+            resourceInputs["jolokiaUserConfig"] = state ? state.jolokiaUserConfig : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["prometheusUserConfig"] = state ? state.prometheusUserConfig : undefined;
+            resourceInputs["rsyslogUserConfig"] = state ? state.rsyslogUserConfig : undefined;
+            resourceInputs["signalfxUserConfig"] = state ? state.signalfxUserConfig : undefined;
         } else {
             const args = argsOrState as ServiceIntegrationEndpointArgs | undefined;
             if ((!args || args.endpointName === undefined) && !opts.urn) {
@@ -172,26 +172,24 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
-            inputs["endpointName"] = args ? args.endpointName : undefined;
-            inputs["endpointType"] = args ? args.endpointType : undefined;
-            inputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
-            inputs["externalAwsCloudwatchMetricsUserConfig"] = args ? args.externalAwsCloudwatchMetricsUserConfig : undefined;
-            inputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
-            inputs["externalGoogleCloudLoggingUserConfig"] = args ? args.externalGoogleCloudLoggingUserConfig : undefined;
-            inputs["externalKafkaUserConfig"] = args ? args.externalKafkaUserConfig : undefined;
-            inputs["externalSchemaRegistryUserConfig"] = args ? args.externalSchemaRegistryUserConfig : undefined;
-            inputs["jolokiaUserConfig"] = args ? args.jolokiaUserConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["prometheusUserConfig"] = args ? args.prometheusUserConfig : undefined;
-            inputs["rsyslogUserConfig"] = args ? args.rsyslogUserConfig : undefined;
-            inputs["signalfxUserConfig"] = args ? args.signalfxUserConfig : undefined;
-            inputs["endpointConfig"] = undefined /*out*/;
+            resourceInputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
+            resourceInputs["endpointName"] = args ? args.endpointName : undefined;
+            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
+            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
+            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = args ? args.externalAwsCloudwatchMetricsUserConfig : undefined;
+            resourceInputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
+            resourceInputs["externalGoogleCloudLoggingUserConfig"] = args ? args.externalGoogleCloudLoggingUserConfig : undefined;
+            resourceInputs["externalKafkaUserConfig"] = args ? args.externalKafkaUserConfig : undefined;
+            resourceInputs["externalSchemaRegistryUserConfig"] = args ? args.externalSchemaRegistryUserConfig : undefined;
+            resourceInputs["jolokiaUserConfig"] = args ? args.jolokiaUserConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["prometheusUserConfig"] = args ? args.prometheusUserConfig : undefined;
+            resourceInputs["rsyslogUserConfig"] = args ? args.rsyslogUserConfig : undefined;
+            resourceInputs["signalfxUserConfig"] = args ? args.signalfxUserConfig : undefined;
+            resourceInputs["endpointConfig"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServiceIntegrationEndpoint.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServiceIntegrationEndpoint.__pulumiType, name, resourceInputs, opts);
     }
 }
 

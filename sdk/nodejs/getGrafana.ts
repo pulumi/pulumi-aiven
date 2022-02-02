@@ -27,9 +27,7 @@ export function getGrafana(args: GetGrafanaArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getGrafana:getGrafana", {
         "cloudName": args.cloudName,
         "components": args.components,

@@ -84,15 +84,15 @@ export class AwsPrivatelink extends pulumi.CustomResource {
      */
     constructor(name: string, args: AwsPrivatelinkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AwsPrivatelinkArgs | AwsPrivatelinkState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AwsPrivatelinkState | undefined;
-            inputs["awsServiceId"] = state ? state.awsServiceId : undefined;
-            inputs["awsServiceName"] = state ? state.awsServiceName : undefined;
-            inputs["principals"] = state ? state.principals : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["awsServiceId"] = state ? state.awsServiceId : undefined;
+            resourceInputs["awsServiceName"] = state ? state.awsServiceName : undefined;
+            resourceInputs["principals"] = state ? state.principals : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as AwsPrivatelinkArgs | undefined;
             if ((!args || args.principals === undefined) && !opts.urn) {
@@ -104,16 +104,14 @@ export class AwsPrivatelink extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            inputs["principals"] = args ? args.principals : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["awsServiceId"] = undefined /*out*/;
-            inputs["awsServiceName"] = undefined /*out*/;
+            resourceInputs["principals"] = args ? args.principals : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["awsServiceId"] = undefined /*out*/;
+            resourceInputs["awsServiceName"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AwsPrivatelink.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AwsPrivatelink.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,7 +41,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGrafanaResult> InvokeAsync(GetGrafanaArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGrafanaResult>("aiven:index/getGrafana:getGrafana", args ?? new GetGrafanaArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGrafanaResult>("aiven:index/getGrafana:getGrafana", args ?? new GetGrafanaArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Grafana Data Source
@@ -74,7 +73,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGrafanaResult> Invoke(GetGrafanaInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGrafanaResult>("aiven:index/getGrafana:getGrafana", args ?? new GetGrafanaInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetGrafanaResult>("aiven:index/getGrafana:getGrafana", args ?? new GetGrafanaInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -410,7 +410,7 @@ type ServiceIntegrationInput interface {
 }
 
 func (*ServiceIntegration) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceIntegration)(nil))
+	return reflect.TypeOf((**ServiceIntegration)(nil)).Elem()
 }
 
 func (i *ServiceIntegration) ToServiceIntegrationOutput() ServiceIntegrationOutput {
@@ -419,35 +419,6 @@ func (i *ServiceIntegration) ToServiceIntegrationOutput() ServiceIntegrationOutp
 
 func (i *ServiceIntegration) ToServiceIntegrationOutputWithContext(ctx context.Context) ServiceIntegrationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationOutput)
-}
-
-func (i *ServiceIntegration) ToServiceIntegrationPtrOutput() ServiceIntegrationPtrOutput {
-	return i.ToServiceIntegrationPtrOutputWithContext(context.Background())
-}
-
-func (i *ServiceIntegration) ToServiceIntegrationPtrOutputWithContext(ctx context.Context) ServiceIntegrationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationPtrOutput)
-}
-
-type ServiceIntegrationPtrInput interface {
-	pulumi.Input
-
-	ToServiceIntegrationPtrOutput() ServiceIntegrationPtrOutput
-	ToServiceIntegrationPtrOutputWithContext(ctx context.Context) ServiceIntegrationPtrOutput
-}
-
-type serviceIntegrationPtrType ServiceIntegrationArgs
-
-func (*serviceIntegrationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceIntegration)(nil))
-}
-
-func (i *serviceIntegrationPtrType) ToServiceIntegrationPtrOutput() ServiceIntegrationPtrOutput {
-	return i.ToServiceIntegrationPtrOutputWithContext(context.Background())
-}
-
-func (i *serviceIntegrationPtrType) ToServiceIntegrationPtrOutputWithContext(ctx context.Context) ServiceIntegrationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationPtrOutput)
 }
 
 // ServiceIntegrationArrayInput is an input type that accepts ServiceIntegrationArray and ServiceIntegrationArrayOutput values.
@@ -503,7 +474,7 @@ func (i ServiceIntegrationMap) ToServiceIntegrationMapOutputWithContext(ctx cont
 type ServiceIntegrationOutput struct{ *pulumi.OutputState }
 
 func (ServiceIntegrationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceIntegration)(nil))
+	return reflect.TypeOf((**ServiceIntegration)(nil)).Elem()
 }
 
 func (o ServiceIntegrationOutput) ToServiceIntegrationOutput() ServiceIntegrationOutput {
@@ -514,44 +485,10 @@ func (o ServiceIntegrationOutput) ToServiceIntegrationOutputWithContext(ctx cont
 	return o
 }
 
-func (o ServiceIntegrationOutput) ToServiceIntegrationPtrOutput() ServiceIntegrationPtrOutput {
-	return o.ToServiceIntegrationPtrOutputWithContext(context.Background())
-}
-
-func (o ServiceIntegrationOutput) ToServiceIntegrationPtrOutputWithContext(ctx context.Context) ServiceIntegrationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIntegration) *ServiceIntegration {
-		return &v
-	}).(ServiceIntegrationPtrOutput)
-}
-
-type ServiceIntegrationPtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceIntegrationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceIntegration)(nil))
-}
-
-func (o ServiceIntegrationPtrOutput) ToServiceIntegrationPtrOutput() ServiceIntegrationPtrOutput {
-	return o
-}
-
-func (o ServiceIntegrationPtrOutput) ToServiceIntegrationPtrOutputWithContext(ctx context.Context) ServiceIntegrationPtrOutput {
-	return o
-}
-
-func (o ServiceIntegrationPtrOutput) Elem() ServiceIntegrationOutput {
-	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegration {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceIntegration
-		return ret
-	}).(ServiceIntegrationOutput)
-}
-
 type ServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceIntegrationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceIntegration)(nil))
+	return reflect.TypeOf((*[]*ServiceIntegration)(nil)).Elem()
 }
 
 func (o ServiceIntegrationArrayOutput) ToServiceIntegrationArrayOutput() ServiceIntegrationArrayOutput {
@@ -563,15 +500,15 @@ func (o ServiceIntegrationArrayOutput) ToServiceIntegrationArrayOutputWithContex
 }
 
 func (o ServiceIntegrationArrayOutput) Index(i pulumi.IntInput) ServiceIntegrationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceIntegration {
-		return vs[0].([]ServiceIntegration)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceIntegration {
+		return vs[0].([]*ServiceIntegration)[vs[1].(int)]
 	}).(ServiceIntegrationOutput)
 }
 
 type ServiceIntegrationMapOutput struct{ *pulumi.OutputState }
 
 func (ServiceIntegrationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ServiceIntegration)(nil))
+	return reflect.TypeOf((*map[string]*ServiceIntegration)(nil)).Elem()
 }
 
 func (o ServiceIntegrationMapOutput) ToServiceIntegrationMapOutput() ServiceIntegrationMapOutput {
@@ -583,18 +520,16 @@ func (o ServiceIntegrationMapOutput) ToServiceIntegrationMapOutputWithContext(ct
 }
 
 func (o ServiceIntegrationMapOutput) MapIndex(k pulumi.StringInput) ServiceIntegrationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceIntegration {
-		return vs[0].(map[string]ServiceIntegration)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ServiceIntegration {
+		return vs[0].(map[string]*ServiceIntegration)[vs[1].(string)]
 	}).(ServiceIntegrationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationInput)(nil)).Elem(), &ServiceIntegration{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationPtrInput)(nil)).Elem(), &ServiceIntegration{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationArrayInput)(nil)).Elem(), ServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationMapInput)(nil)).Elem(), ServiceIntegrationMap{})
 	pulumi.RegisterOutputType(ServiceIntegrationOutput{})
-	pulumi.RegisterOutputType(ServiceIntegrationPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationMapOutput{})
 }

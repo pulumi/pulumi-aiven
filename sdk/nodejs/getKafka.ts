@@ -27,9 +27,7 @@ export function getKafka(args: GetKafkaArgs, opts?: pulumi.InvokeOptions): Promi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getKafka:getKafka", {
         "cloudName": args.cloudName,
         "components": args.components,

@@ -417,7 +417,7 @@ type M3DbInput interface {
 }
 
 func (*M3Db) ElementType() reflect.Type {
-	return reflect.TypeOf((*M3Db)(nil))
+	return reflect.TypeOf((**M3Db)(nil)).Elem()
 }
 
 func (i *M3Db) ToM3DbOutput() M3DbOutput {
@@ -426,35 +426,6 @@ func (i *M3Db) ToM3DbOutput() M3DbOutput {
 
 func (i *M3Db) ToM3DbOutputWithContext(ctx context.Context) M3DbOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(M3DbOutput)
-}
-
-func (i *M3Db) ToM3DbPtrOutput() M3DbPtrOutput {
-	return i.ToM3DbPtrOutputWithContext(context.Background())
-}
-
-func (i *M3Db) ToM3DbPtrOutputWithContext(ctx context.Context) M3DbPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(M3DbPtrOutput)
-}
-
-type M3DbPtrInput interface {
-	pulumi.Input
-
-	ToM3DbPtrOutput() M3DbPtrOutput
-	ToM3DbPtrOutputWithContext(ctx context.Context) M3DbPtrOutput
-}
-
-type m3dbPtrType M3DbArgs
-
-func (*m3dbPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**M3Db)(nil))
-}
-
-func (i *m3dbPtrType) ToM3DbPtrOutput() M3DbPtrOutput {
-	return i.ToM3DbPtrOutputWithContext(context.Background())
-}
-
-func (i *m3dbPtrType) ToM3DbPtrOutputWithContext(ctx context.Context) M3DbPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(M3DbPtrOutput)
 }
 
 // M3DbArrayInput is an input type that accepts M3DbArray and M3DbArrayOutput values.
@@ -510,7 +481,7 @@ func (i M3DbMap) ToM3DbMapOutputWithContext(ctx context.Context) M3DbMapOutput {
 type M3DbOutput struct{ *pulumi.OutputState }
 
 func (M3DbOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*M3Db)(nil))
+	return reflect.TypeOf((**M3Db)(nil)).Elem()
 }
 
 func (o M3DbOutput) ToM3DbOutput() M3DbOutput {
@@ -521,44 +492,10 @@ func (o M3DbOutput) ToM3DbOutputWithContext(ctx context.Context) M3DbOutput {
 	return o
 }
 
-func (o M3DbOutput) ToM3DbPtrOutput() M3DbPtrOutput {
-	return o.ToM3DbPtrOutputWithContext(context.Background())
-}
-
-func (o M3DbOutput) ToM3DbPtrOutputWithContext(ctx context.Context) M3DbPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v M3Db) *M3Db {
-		return &v
-	}).(M3DbPtrOutput)
-}
-
-type M3DbPtrOutput struct{ *pulumi.OutputState }
-
-func (M3DbPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**M3Db)(nil))
-}
-
-func (o M3DbPtrOutput) ToM3DbPtrOutput() M3DbPtrOutput {
-	return o
-}
-
-func (o M3DbPtrOutput) ToM3DbPtrOutputWithContext(ctx context.Context) M3DbPtrOutput {
-	return o
-}
-
-func (o M3DbPtrOutput) Elem() M3DbOutput {
-	return o.ApplyT(func(v *M3Db) M3Db {
-		if v != nil {
-			return *v
-		}
-		var ret M3Db
-		return ret
-	}).(M3DbOutput)
-}
-
 type M3DbArrayOutput struct{ *pulumi.OutputState }
 
 func (M3DbArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]M3Db)(nil))
+	return reflect.TypeOf((*[]*M3Db)(nil)).Elem()
 }
 
 func (o M3DbArrayOutput) ToM3DbArrayOutput() M3DbArrayOutput {
@@ -570,15 +507,15 @@ func (o M3DbArrayOutput) ToM3DbArrayOutputWithContext(ctx context.Context) M3DbA
 }
 
 func (o M3DbArrayOutput) Index(i pulumi.IntInput) M3DbOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) M3Db {
-		return vs[0].([]M3Db)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *M3Db {
+		return vs[0].([]*M3Db)[vs[1].(int)]
 	}).(M3DbOutput)
 }
 
 type M3DbMapOutput struct{ *pulumi.OutputState }
 
 func (M3DbMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]M3Db)(nil))
+	return reflect.TypeOf((*map[string]*M3Db)(nil)).Elem()
 }
 
 func (o M3DbMapOutput) ToM3DbMapOutput() M3DbMapOutput {
@@ -590,18 +527,16 @@ func (o M3DbMapOutput) ToM3DbMapOutputWithContext(ctx context.Context) M3DbMapOu
 }
 
 func (o M3DbMapOutput) MapIndex(k pulumi.StringInput) M3DbOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) M3Db {
-		return vs[0].(map[string]M3Db)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *M3Db {
+		return vs[0].(map[string]*M3Db)[vs[1].(string)]
 	}).(M3DbOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbInput)(nil)).Elem(), &M3Db{})
-	pulumi.RegisterInputType(reflect.TypeOf((*M3DbPtrInput)(nil)).Elem(), &M3Db{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbArrayInput)(nil)).Elem(), M3DbArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*M3DbMapInput)(nil)).Elem(), M3DbMap{})
 	pulumi.RegisterOutputType(M3DbOutput{})
-	pulumi.RegisterOutputType(M3DbPtrOutput{})
 	pulumi.RegisterOutputType(M3DbArrayOutput{})
 	pulumi.RegisterOutputType(M3DbMapOutput{})
 }

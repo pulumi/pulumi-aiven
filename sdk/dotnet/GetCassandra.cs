@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,7 +41,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCassandraResult> InvokeAsync(GetCassandraArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCassandraResult>("aiven:index/getCassandra:getCassandra", args ?? new GetCassandraArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCassandraResult>("aiven:index/getCassandra:getCassandra", args ?? new GetCassandraArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Cassandra Data Source
@@ -74,7 +73,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCassandraResult> Invoke(GetCassandraInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCassandraResult>("aiven:index/getCassandra:getCassandra", args ?? new GetCassandraInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCassandraResult>("aiven:index/getCassandra:getCassandra", args ?? new GetCassandraInvokeArgs(), options.WithDefaults());
     }
 
 
