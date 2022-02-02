@@ -29,9 +29,7 @@ export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getServiceUser:getServiceUser", {
         "accessCert": args.accessCert,
         "accessKey": args.accessKey,

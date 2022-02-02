@@ -55,6 +55,7 @@ setup(name='pulumi_aiven',
       package_data={
           'pulumi_aiven': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

@@ -121,21 +121,21 @@ export class KafkaConnector extends pulumi.CustomResource {
      */
     constructor(name: string, args: KafkaConnectorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KafkaConnectorArgs | KafkaConnectorState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaConnectorState | undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["connectorName"] = state ? state.connectorName : undefined;
-            inputs["pluginAuthor"] = state ? state.pluginAuthor : undefined;
-            inputs["pluginClass"] = state ? state.pluginClass : undefined;
-            inputs["pluginDocUrl"] = state ? state.pluginDocUrl : undefined;
-            inputs["pluginTitle"] = state ? state.pluginTitle : undefined;
-            inputs["pluginType"] = state ? state.pluginType : undefined;
-            inputs["pluginVersion"] = state ? state.pluginVersion : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["tasks"] = state ? state.tasks : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["connectorName"] = state ? state.connectorName : undefined;
+            resourceInputs["pluginAuthor"] = state ? state.pluginAuthor : undefined;
+            resourceInputs["pluginClass"] = state ? state.pluginClass : undefined;
+            resourceInputs["pluginDocUrl"] = state ? state.pluginDocUrl : undefined;
+            resourceInputs["pluginTitle"] = state ? state.pluginTitle : undefined;
+            resourceInputs["pluginType"] = state ? state.pluginType : undefined;
+            resourceInputs["pluginVersion"] = state ? state.pluginVersion : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["tasks"] = state ? state.tasks : undefined;
         } else {
             const args = argsOrState as KafkaConnectorArgs | undefined;
             if ((!args || args.config === undefined) && !opts.urn) {
@@ -150,22 +150,20 @@ export class KafkaConnector extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            inputs["config"] = args ? args.config : undefined;
-            inputs["connectorName"] = args ? args.connectorName : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["pluginAuthor"] = undefined /*out*/;
-            inputs["pluginClass"] = undefined /*out*/;
-            inputs["pluginDocUrl"] = undefined /*out*/;
-            inputs["pluginTitle"] = undefined /*out*/;
-            inputs["pluginType"] = undefined /*out*/;
-            inputs["pluginVersion"] = undefined /*out*/;
-            inputs["tasks"] = undefined /*out*/;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["connectorName"] = args ? args.connectorName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["pluginAuthor"] = undefined /*out*/;
+            resourceInputs["pluginClass"] = undefined /*out*/;
+            resourceInputs["pluginDocUrl"] = undefined /*out*/;
+            resourceInputs["pluginTitle"] = undefined /*out*/;
+            resourceInputs["pluginType"] = undefined /*out*/;
+            resourceInputs["pluginVersion"] = undefined /*out*/;
+            resourceInputs["tasks"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KafkaConnector.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KafkaConnector.__pulumiType, name, resourceInputs, opts);
     }
 }
 

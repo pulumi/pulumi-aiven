@@ -146,7 +146,7 @@ type ElasticSearchAclRuleInput interface {
 }
 
 func (*ElasticSearchAclRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticSearchAclRule)(nil))
+	return reflect.TypeOf((**ElasticSearchAclRule)(nil)).Elem()
 }
 
 func (i *ElasticSearchAclRule) ToElasticSearchAclRuleOutput() ElasticSearchAclRuleOutput {
@@ -155,35 +155,6 @@ func (i *ElasticSearchAclRule) ToElasticSearchAclRuleOutput() ElasticSearchAclRu
 
 func (i *ElasticSearchAclRule) ToElasticSearchAclRuleOutputWithContext(ctx context.Context) ElasticSearchAclRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchAclRuleOutput)
-}
-
-func (i *ElasticSearchAclRule) ToElasticSearchAclRulePtrOutput() ElasticSearchAclRulePtrOutput {
-	return i.ToElasticSearchAclRulePtrOutputWithContext(context.Background())
-}
-
-func (i *ElasticSearchAclRule) ToElasticSearchAclRulePtrOutputWithContext(ctx context.Context) ElasticSearchAclRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchAclRulePtrOutput)
-}
-
-type ElasticSearchAclRulePtrInput interface {
-	pulumi.Input
-
-	ToElasticSearchAclRulePtrOutput() ElasticSearchAclRulePtrOutput
-	ToElasticSearchAclRulePtrOutputWithContext(ctx context.Context) ElasticSearchAclRulePtrOutput
-}
-
-type elasticSearchAclRulePtrType ElasticSearchAclRuleArgs
-
-func (*elasticSearchAclRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElasticSearchAclRule)(nil))
-}
-
-func (i *elasticSearchAclRulePtrType) ToElasticSearchAclRulePtrOutput() ElasticSearchAclRulePtrOutput {
-	return i.ToElasticSearchAclRulePtrOutputWithContext(context.Background())
-}
-
-func (i *elasticSearchAclRulePtrType) ToElasticSearchAclRulePtrOutputWithContext(ctx context.Context) ElasticSearchAclRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchAclRulePtrOutput)
 }
 
 // ElasticSearchAclRuleArrayInput is an input type that accepts ElasticSearchAclRuleArray and ElasticSearchAclRuleArrayOutput values.
@@ -239,7 +210,7 @@ func (i ElasticSearchAclRuleMap) ToElasticSearchAclRuleMapOutputWithContext(ctx 
 type ElasticSearchAclRuleOutput struct{ *pulumi.OutputState }
 
 func (ElasticSearchAclRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticSearchAclRule)(nil))
+	return reflect.TypeOf((**ElasticSearchAclRule)(nil)).Elem()
 }
 
 func (o ElasticSearchAclRuleOutput) ToElasticSearchAclRuleOutput() ElasticSearchAclRuleOutput {
@@ -250,44 +221,10 @@ func (o ElasticSearchAclRuleOutput) ToElasticSearchAclRuleOutputWithContext(ctx 
 	return o
 }
 
-func (o ElasticSearchAclRuleOutput) ToElasticSearchAclRulePtrOutput() ElasticSearchAclRulePtrOutput {
-	return o.ToElasticSearchAclRulePtrOutputWithContext(context.Background())
-}
-
-func (o ElasticSearchAclRuleOutput) ToElasticSearchAclRulePtrOutputWithContext(ctx context.Context) ElasticSearchAclRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticSearchAclRule) *ElasticSearchAclRule {
-		return &v
-	}).(ElasticSearchAclRulePtrOutput)
-}
-
-type ElasticSearchAclRulePtrOutput struct{ *pulumi.OutputState }
-
-func (ElasticSearchAclRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElasticSearchAclRule)(nil))
-}
-
-func (o ElasticSearchAclRulePtrOutput) ToElasticSearchAclRulePtrOutput() ElasticSearchAclRulePtrOutput {
-	return o
-}
-
-func (o ElasticSearchAclRulePtrOutput) ToElasticSearchAclRulePtrOutputWithContext(ctx context.Context) ElasticSearchAclRulePtrOutput {
-	return o
-}
-
-func (o ElasticSearchAclRulePtrOutput) Elem() ElasticSearchAclRuleOutput {
-	return o.ApplyT(func(v *ElasticSearchAclRule) ElasticSearchAclRule {
-		if v != nil {
-			return *v
-		}
-		var ret ElasticSearchAclRule
-		return ret
-	}).(ElasticSearchAclRuleOutput)
-}
-
 type ElasticSearchAclRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ElasticSearchAclRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElasticSearchAclRule)(nil))
+	return reflect.TypeOf((*[]*ElasticSearchAclRule)(nil)).Elem()
 }
 
 func (o ElasticSearchAclRuleArrayOutput) ToElasticSearchAclRuleArrayOutput() ElasticSearchAclRuleArrayOutput {
@@ -299,15 +236,15 @@ func (o ElasticSearchAclRuleArrayOutput) ToElasticSearchAclRuleArrayOutputWithCo
 }
 
 func (o ElasticSearchAclRuleArrayOutput) Index(i pulumi.IntInput) ElasticSearchAclRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElasticSearchAclRule {
-		return vs[0].([]ElasticSearchAclRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ElasticSearchAclRule {
+		return vs[0].([]*ElasticSearchAclRule)[vs[1].(int)]
 	}).(ElasticSearchAclRuleOutput)
 }
 
 type ElasticSearchAclRuleMapOutput struct{ *pulumi.OutputState }
 
 func (ElasticSearchAclRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ElasticSearchAclRule)(nil))
+	return reflect.TypeOf((*map[string]*ElasticSearchAclRule)(nil)).Elem()
 }
 
 func (o ElasticSearchAclRuleMapOutput) ToElasticSearchAclRuleMapOutput() ElasticSearchAclRuleMapOutput {
@@ -319,18 +256,16 @@ func (o ElasticSearchAclRuleMapOutput) ToElasticSearchAclRuleMapOutputWithContex
 }
 
 func (o ElasticSearchAclRuleMapOutput) MapIndex(k pulumi.StringInput) ElasticSearchAclRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ElasticSearchAclRule {
-		return vs[0].(map[string]ElasticSearchAclRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ElasticSearchAclRule {
+		return vs[0].(map[string]*ElasticSearchAclRule)[vs[1].(string)]
 	}).(ElasticSearchAclRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchAclRuleInput)(nil)).Elem(), &ElasticSearchAclRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchAclRulePtrInput)(nil)).Elem(), &ElasticSearchAclRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchAclRuleArrayInput)(nil)).Elem(), ElasticSearchAclRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchAclRuleMapInput)(nil)).Elem(), ElasticSearchAclRuleMap{})
 	pulumi.RegisterOutputType(ElasticSearchAclRuleOutput{})
-	pulumi.RegisterOutputType(ElasticSearchAclRulePtrOutput{})
 	pulumi.RegisterOutputType(ElasticSearchAclRuleArrayOutput{})
 	pulumi.RegisterOutputType(ElasticSearchAclRuleMapOutput{})
 }

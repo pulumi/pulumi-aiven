@@ -86,15 +86,15 @@ export class KafkaAcl extends pulumi.CustomResource {
      */
     constructor(name: string, args: KafkaAclArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KafkaAclArgs | KafkaAclState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaAclState | undefined;
-            inputs["permission"] = state ? state.permission : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["topic"] = state ? state.topic : undefined;
-            inputs["username"] = state ? state.username : undefined;
+            resourceInputs["permission"] = state ? state.permission : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["topic"] = state ? state.topic : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as KafkaAclArgs | undefined;
             if ((!args || args.permission === undefined) && !opts.urn) {
@@ -112,16 +112,14 @@ export class KafkaAcl extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            inputs["permission"] = args ? args.permission : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["topic"] = args ? args.topic : undefined;
-            inputs["username"] = args ? args.username : undefined;
+            resourceInputs["permission"] = args ? args.permission : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KafkaAcl.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KafkaAcl.__pulumiType, name, resourceInputs, opts);
     }
 }
 

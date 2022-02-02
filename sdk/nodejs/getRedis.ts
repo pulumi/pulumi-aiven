@@ -27,9 +27,7 @@ export function getRedis(args: GetRedisArgs, opts?: pulumi.InvokeOptions): Promi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getRedis:getRedis", {
         "cloudName": args.cloudName,
         "components": args.components,

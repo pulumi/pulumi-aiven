@@ -106,22 +106,22 @@ export class KafkaTopic extends pulumi.CustomResource {
      */
     constructor(name: string, args: KafkaTopicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KafkaTopicArgs | KafkaTopicState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaTopicState | undefined;
-            inputs["cleanupPolicy"] = state ? state.cleanupPolicy : undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["minimumInSyncReplicas"] = state ? state.minimumInSyncReplicas : undefined;
-            inputs["partitions"] = state ? state.partitions : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["replication"] = state ? state.replication : undefined;
-            inputs["retentionBytes"] = state ? state.retentionBytes : undefined;
-            inputs["retentionHours"] = state ? state.retentionHours : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["terminationProtection"] = state ? state.terminationProtection : undefined;
-            inputs["topicName"] = state ? state.topicName : undefined;
+            resourceInputs["cleanupPolicy"] = state ? state.cleanupPolicy : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["minimumInSyncReplicas"] = state ? state.minimumInSyncReplicas : undefined;
+            resourceInputs["partitions"] = state ? state.partitions : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["replication"] = state ? state.replication : undefined;
+            resourceInputs["retentionBytes"] = state ? state.retentionBytes : undefined;
+            resourceInputs["retentionHours"] = state ? state.retentionHours : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
+            resourceInputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as KafkaTopicArgs | undefined;
             if ((!args || args.partitions === undefined) && !opts.urn) {
@@ -139,23 +139,21 @@ export class KafkaTopic extends pulumi.CustomResource {
             if ((!args || args.topicName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
-            inputs["cleanupPolicy"] = args ? args.cleanupPolicy : undefined;
-            inputs["config"] = args ? args.config : undefined;
-            inputs["minimumInSyncReplicas"] = args ? args.minimumInSyncReplicas : undefined;
-            inputs["partitions"] = args ? args.partitions : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["replication"] = args ? args.replication : undefined;
-            inputs["retentionBytes"] = args ? args.retentionBytes : undefined;
-            inputs["retentionHours"] = args ? args.retentionHours : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["terminationProtection"] = args ? args.terminationProtection : undefined;
-            inputs["topicName"] = args ? args.topicName : undefined;
+            resourceInputs["cleanupPolicy"] = args ? args.cleanupPolicy : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["minimumInSyncReplicas"] = args ? args.minimumInSyncReplicas : undefined;
+            resourceInputs["partitions"] = args ? args.partitions : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["replication"] = args ? args.replication : undefined;
+            resourceInputs["retentionBytes"] = args ? args.retentionBytes : undefined;
+            resourceInputs["retentionHours"] = args ? args.retentionHours : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
+            resourceInputs["topicName"] = args ? args.topicName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KafkaTopic.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KafkaTopic.__pulumiType, name, resourceInputs, opts);
     }
 }
 

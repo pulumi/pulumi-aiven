@@ -188,7 +188,7 @@ type KafkaAclInput interface {
 }
 
 func (*KafkaAcl) ElementType() reflect.Type {
-	return reflect.TypeOf((*KafkaAcl)(nil))
+	return reflect.TypeOf((**KafkaAcl)(nil)).Elem()
 }
 
 func (i *KafkaAcl) ToKafkaAclOutput() KafkaAclOutput {
@@ -197,35 +197,6 @@ func (i *KafkaAcl) ToKafkaAclOutput() KafkaAclOutput {
 
 func (i *KafkaAcl) ToKafkaAclOutputWithContext(ctx context.Context) KafkaAclOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaAclOutput)
-}
-
-func (i *KafkaAcl) ToKafkaAclPtrOutput() KafkaAclPtrOutput {
-	return i.ToKafkaAclPtrOutputWithContext(context.Background())
-}
-
-func (i *KafkaAcl) ToKafkaAclPtrOutputWithContext(ctx context.Context) KafkaAclPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaAclPtrOutput)
-}
-
-type KafkaAclPtrInput interface {
-	pulumi.Input
-
-	ToKafkaAclPtrOutput() KafkaAclPtrOutput
-	ToKafkaAclPtrOutputWithContext(ctx context.Context) KafkaAclPtrOutput
-}
-
-type kafkaAclPtrType KafkaAclArgs
-
-func (*kafkaAclPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KafkaAcl)(nil))
-}
-
-func (i *kafkaAclPtrType) ToKafkaAclPtrOutput() KafkaAclPtrOutput {
-	return i.ToKafkaAclPtrOutputWithContext(context.Background())
-}
-
-func (i *kafkaAclPtrType) ToKafkaAclPtrOutputWithContext(ctx context.Context) KafkaAclPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaAclPtrOutput)
 }
 
 // KafkaAclArrayInput is an input type that accepts KafkaAclArray and KafkaAclArrayOutput values.
@@ -281,7 +252,7 @@ func (i KafkaAclMap) ToKafkaAclMapOutputWithContext(ctx context.Context) KafkaAc
 type KafkaAclOutput struct{ *pulumi.OutputState }
 
 func (KafkaAclOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KafkaAcl)(nil))
+	return reflect.TypeOf((**KafkaAcl)(nil)).Elem()
 }
 
 func (o KafkaAclOutput) ToKafkaAclOutput() KafkaAclOutput {
@@ -292,44 +263,10 @@ func (o KafkaAclOutput) ToKafkaAclOutputWithContext(ctx context.Context) KafkaAc
 	return o
 }
 
-func (o KafkaAclOutput) ToKafkaAclPtrOutput() KafkaAclPtrOutput {
-	return o.ToKafkaAclPtrOutputWithContext(context.Background())
-}
-
-func (o KafkaAclOutput) ToKafkaAclPtrOutputWithContext(ctx context.Context) KafkaAclPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaAcl) *KafkaAcl {
-		return &v
-	}).(KafkaAclPtrOutput)
-}
-
-type KafkaAclPtrOutput struct{ *pulumi.OutputState }
-
-func (KafkaAclPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KafkaAcl)(nil))
-}
-
-func (o KafkaAclPtrOutput) ToKafkaAclPtrOutput() KafkaAclPtrOutput {
-	return o
-}
-
-func (o KafkaAclPtrOutput) ToKafkaAclPtrOutputWithContext(ctx context.Context) KafkaAclPtrOutput {
-	return o
-}
-
-func (o KafkaAclPtrOutput) Elem() KafkaAclOutput {
-	return o.ApplyT(func(v *KafkaAcl) KafkaAcl {
-		if v != nil {
-			return *v
-		}
-		var ret KafkaAcl
-		return ret
-	}).(KafkaAclOutput)
-}
-
 type KafkaAclArrayOutput struct{ *pulumi.OutputState }
 
 func (KafkaAclArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KafkaAcl)(nil))
+	return reflect.TypeOf((*[]*KafkaAcl)(nil)).Elem()
 }
 
 func (o KafkaAclArrayOutput) ToKafkaAclArrayOutput() KafkaAclArrayOutput {
@@ -341,15 +278,15 @@ func (o KafkaAclArrayOutput) ToKafkaAclArrayOutputWithContext(ctx context.Contex
 }
 
 func (o KafkaAclArrayOutput) Index(i pulumi.IntInput) KafkaAclOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KafkaAcl {
-		return vs[0].([]KafkaAcl)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KafkaAcl {
+		return vs[0].([]*KafkaAcl)[vs[1].(int)]
 	}).(KafkaAclOutput)
 }
 
 type KafkaAclMapOutput struct{ *pulumi.OutputState }
 
 func (KafkaAclMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]KafkaAcl)(nil))
+	return reflect.TypeOf((*map[string]*KafkaAcl)(nil)).Elem()
 }
 
 func (o KafkaAclMapOutput) ToKafkaAclMapOutput() KafkaAclMapOutput {
@@ -361,18 +298,16 @@ func (o KafkaAclMapOutput) ToKafkaAclMapOutputWithContext(ctx context.Context) K
 }
 
 func (o KafkaAclMapOutput) MapIndex(k pulumi.StringInput) KafkaAclOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KafkaAcl {
-		return vs[0].(map[string]KafkaAcl)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KafkaAcl {
+		return vs[0].(map[string]*KafkaAcl)[vs[1].(string)]
 	}).(KafkaAclOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaAclInput)(nil)).Elem(), &KafkaAcl{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KafkaAclPtrInput)(nil)).Elem(), &KafkaAcl{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaAclArrayInput)(nil)).Elem(), KafkaAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaAclMapInput)(nil)).Elem(), KafkaAclMap{})
 	pulumi.RegisterOutputType(KafkaAclOutput{})
-	pulumi.RegisterOutputType(KafkaAclPtrOutput{})
 	pulumi.RegisterOutputType(KafkaAclArrayOutput{})
 	pulumi.RegisterOutputType(KafkaAclMapOutput{})
 }

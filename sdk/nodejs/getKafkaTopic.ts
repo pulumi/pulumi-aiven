@@ -35,9 +35,7 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getKafkaTopic:getKafkaTopic", {
         "cleanupPolicy": args.cleanupPolicy,
         "config": args.config,

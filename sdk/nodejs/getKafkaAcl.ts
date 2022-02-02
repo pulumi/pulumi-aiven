@@ -30,9 +30,7 @@ export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getKafkaAcl:getKafkaAcl", {
         "permission": args.permission,
         "project": args.project,

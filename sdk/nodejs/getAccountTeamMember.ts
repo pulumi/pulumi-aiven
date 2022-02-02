@@ -14,9 +14,7 @@ export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getAccountTeamMember:getAccountTeamMember", {
         "accepted": args.accepted,
         "accountId": args.accountId,

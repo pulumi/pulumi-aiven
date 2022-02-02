@@ -27,9 +27,7 @@ export function getKafkaSchemaConfiguration(args: GetKafkaSchemaConfigurationArg
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", {
         "compatibilityLevel": args.compatibilityLevel,
         "project": args.project,

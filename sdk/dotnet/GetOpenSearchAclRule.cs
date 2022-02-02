@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
     public static class GetOpenSearchAclRule
     {
         public static Task<GetOpenSearchAclRuleResult> InvokeAsync(GetOpenSearchAclRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchAclRuleResult>("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args ?? new GetOpenSearchAclRuleArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchAclRuleResult>("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args ?? new GetOpenSearchAclRuleArgs(), options.WithDefaults());
 
         public static Output<GetOpenSearchAclRuleResult> Invoke(GetOpenSearchAclRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOpenSearchAclRuleResult>("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args ?? new GetOpenSearchAclRuleInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetOpenSearchAclRuleResult>("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args ?? new GetOpenSearchAclRuleInvokeArgs(), options.WithDefaults());
     }
 
 

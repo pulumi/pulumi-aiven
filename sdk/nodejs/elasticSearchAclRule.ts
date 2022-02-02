@@ -129,15 +129,15 @@ export class ElasticSearchAclRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: ElasticSearchAclRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ElasticSearchAclRuleArgs | ElasticSearchAclRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElasticSearchAclRuleState | undefined;
-            inputs["index"] = state ? state.index : undefined;
-            inputs["permission"] = state ? state.permission : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["username"] = state ? state.username : undefined;
+            resourceInputs["index"] = state ? state.index : undefined;
+            resourceInputs["permission"] = state ? state.permission : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as ElasticSearchAclRuleArgs | undefined;
             if ((!args || args.index === undefined) && !opts.urn) {
@@ -155,16 +155,14 @@ export class ElasticSearchAclRule extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            inputs["index"] = args ? args.index : undefined;
-            inputs["permission"] = args ? args.permission : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["username"] = args ? args.username : undefined;
+            resourceInputs["index"] = args ? args.index : undefined;
+            resourceInputs["permission"] = args ? args.permission : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ElasticSearchAclRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ElasticSearchAclRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,7 +41,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPgResult> InvokeAsync(GetPgArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPgResult>("aiven:index/getPg:getPg", args ?? new GetPgArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPgResult>("aiven:index/getPg:getPg", args ?? new GetPgArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # PG Data Source
@@ -74,7 +73,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPgResult> Invoke(GetPgInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPgResult>("aiven:index/getPg:getPg", args ?? new GetPgInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPgResult>("aiven:index/getPg:getPg", args ?? new GetPgInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -34,9 +34,7 @@ export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getServiceIntegration:getServiceIntegration", {
         "dashboardUserConfig": args.dashboardUserConfig,
         "datadogUserConfig": args.datadogUserConfig,

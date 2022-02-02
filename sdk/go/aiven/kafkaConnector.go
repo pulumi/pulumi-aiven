@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewKafkaConnector(ctx, "kafka_es_con1", &aiven.KafkaConnectorArgs{
+// 		_, err := aiven.NewKafkaConnector(ctx, "kafka-es-con1", &aiven.KafkaConnectorArgs{
 // 			Project:       pulumi.Any(aiven_project.Kafka - con - project1.Project),
 // 			ServiceName:   pulumi.Any(aiven_kafka.Kafka - service1.Service_name),
 // 			ConnectorName: pulumi.String("kafka-es-con1"),
@@ -213,7 +213,7 @@ type KafkaConnectorInput interface {
 }
 
 func (*KafkaConnector) ElementType() reflect.Type {
-	return reflect.TypeOf((*KafkaConnector)(nil))
+	return reflect.TypeOf((**KafkaConnector)(nil)).Elem()
 }
 
 func (i *KafkaConnector) ToKafkaConnectorOutput() KafkaConnectorOutput {
@@ -222,35 +222,6 @@ func (i *KafkaConnector) ToKafkaConnectorOutput() KafkaConnectorOutput {
 
 func (i *KafkaConnector) ToKafkaConnectorOutputWithContext(ctx context.Context) KafkaConnectorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectorOutput)
-}
-
-func (i *KafkaConnector) ToKafkaConnectorPtrOutput() KafkaConnectorPtrOutput {
-	return i.ToKafkaConnectorPtrOutputWithContext(context.Background())
-}
-
-func (i *KafkaConnector) ToKafkaConnectorPtrOutputWithContext(ctx context.Context) KafkaConnectorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectorPtrOutput)
-}
-
-type KafkaConnectorPtrInput interface {
-	pulumi.Input
-
-	ToKafkaConnectorPtrOutput() KafkaConnectorPtrOutput
-	ToKafkaConnectorPtrOutputWithContext(ctx context.Context) KafkaConnectorPtrOutput
-}
-
-type kafkaConnectorPtrType KafkaConnectorArgs
-
-func (*kafkaConnectorPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KafkaConnector)(nil))
-}
-
-func (i *kafkaConnectorPtrType) ToKafkaConnectorPtrOutput() KafkaConnectorPtrOutput {
-	return i.ToKafkaConnectorPtrOutputWithContext(context.Background())
-}
-
-func (i *kafkaConnectorPtrType) ToKafkaConnectorPtrOutputWithContext(ctx context.Context) KafkaConnectorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectorPtrOutput)
 }
 
 // KafkaConnectorArrayInput is an input type that accepts KafkaConnectorArray and KafkaConnectorArrayOutput values.
@@ -306,7 +277,7 @@ func (i KafkaConnectorMap) ToKafkaConnectorMapOutputWithContext(ctx context.Cont
 type KafkaConnectorOutput struct{ *pulumi.OutputState }
 
 func (KafkaConnectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KafkaConnector)(nil))
+	return reflect.TypeOf((**KafkaConnector)(nil)).Elem()
 }
 
 func (o KafkaConnectorOutput) ToKafkaConnectorOutput() KafkaConnectorOutput {
@@ -317,44 +288,10 @@ func (o KafkaConnectorOutput) ToKafkaConnectorOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o KafkaConnectorOutput) ToKafkaConnectorPtrOutput() KafkaConnectorPtrOutput {
-	return o.ToKafkaConnectorPtrOutputWithContext(context.Background())
-}
-
-func (o KafkaConnectorOutput) ToKafkaConnectorPtrOutputWithContext(ctx context.Context) KafkaConnectorPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaConnector) *KafkaConnector {
-		return &v
-	}).(KafkaConnectorPtrOutput)
-}
-
-type KafkaConnectorPtrOutput struct{ *pulumi.OutputState }
-
-func (KafkaConnectorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KafkaConnector)(nil))
-}
-
-func (o KafkaConnectorPtrOutput) ToKafkaConnectorPtrOutput() KafkaConnectorPtrOutput {
-	return o
-}
-
-func (o KafkaConnectorPtrOutput) ToKafkaConnectorPtrOutputWithContext(ctx context.Context) KafkaConnectorPtrOutput {
-	return o
-}
-
-func (o KafkaConnectorPtrOutput) Elem() KafkaConnectorOutput {
-	return o.ApplyT(func(v *KafkaConnector) KafkaConnector {
-		if v != nil {
-			return *v
-		}
-		var ret KafkaConnector
-		return ret
-	}).(KafkaConnectorOutput)
-}
-
 type KafkaConnectorArrayOutput struct{ *pulumi.OutputState }
 
 func (KafkaConnectorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KafkaConnector)(nil))
+	return reflect.TypeOf((*[]*KafkaConnector)(nil)).Elem()
 }
 
 func (o KafkaConnectorArrayOutput) ToKafkaConnectorArrayOutput() KafkaConnectorArrayOutput {
@@ -366,15 +303,15 @@ func (o KafkaConnectorArrayOutput) ToKafkaConnectorArrayOutputWithContext(ctx co
 }
 
 func (o KafkaConnectorArrayOutput) Index(i pulumi.IntInput) KafkaConnectorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KafkaConnector {
-		return vs[0].([]KafkaConnector)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KafkaConnector {
+		return vs[0].([]*KafkaConnector)[vs[1].(int)]
 	}).(KafkaConnectorOutput)
 }
 
 type KafkaConnectorMapOutput struct{ *pulumi.OutputState }
 
 func (KafkaConnectorMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]KafkaConnector)(nil))
+	return reflect.TypeOf((*map[string]*KafkaConnector)(nil)).Elem()
 }
 
 func (o KafkaConnectorMapOutput) ToKafkaConnectorMapOutput() KafkaConnectorMapOutput {
@@ -386,18 +323,16 @@ func (o KafkaConnectorMapOutput) ToKafkaConnectorMapOutputWithContext(ctx contex
 }
 
 func (o KafkaConnectorMapOutput) MapIndex(k pulumi.StringInput) KafkaConnectorOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KafkaConnector {
-		return vs[0].(map[string]KafkaConnector)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KafkaConnector {
+		return vs[0].(map[string]*KafkaConnector)[vs[1].(string)]
 	}).(KafkaConnectorOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectorInput)(nil)).Elem(), &KafkaConnector{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectorPtrInput)(nil)).Elem(), &KafkaConnector{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectorArrayInput)(nil)).Elem(), KafkaConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectorMapInput)(nil)).Elem(), KafkaConnectorMap{})
 	pulumi.RegisterOutputType(KafkaConnectorOutput{})
-	pulumi.RegisterOutputType(KafkaConnectorPtrOutput{})
 	pulumi.RegisterOutputType(KafkaConnectorArrayOutput{})
 	pulumi.RegisterOutputType(KafkaConnectorMapOutput{})
 }

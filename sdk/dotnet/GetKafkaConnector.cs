@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -49,7 +48,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaConnectorResult> InvokeAsync(GetKafkaConnectorArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Kafka connector Data Source
@@ -88,7 +87,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaConnectorResult> Invoke(GetKafkaConnectorInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

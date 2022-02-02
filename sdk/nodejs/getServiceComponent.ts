@@ -35,9 +35,7 @@ export function getServiceComponent(args: GetServiceComponentArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getServiceComponent:getServiceComponent", {
         "component": args.component,
         "kafkaAuthenticationMethod": args.kafkaAuthenticationMethod,

@@ -86,16 +86,16 @@ export class Database extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatabaseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            inputs["databaseName"] = state ? state.databaseName : undefined;
-            inputs["lcCollate"] = state ? state.lcCollate : undefined;
-            inputs["lcCtype"] = state ? state.lcCtype : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["terminationProtection"] = state ? state.terminationProtection : undefined;
+            resourceInputs["databaseName"] = state ? state.databaseName : undefined;
+            resourceInputs["lcCollate"] = state ? state.lcCollate : undefined;
+            resourceInputs["lcCtype"] = state ? state.lcCtype : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
             if ((!args || args.databaseName === undefined) && !opts.urn) {
@@ -107,17 +107,15 @@ export class Database extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            inputs["databaseName"] = args ? args.databaseName : undefined;
-            inputs["lcCollate"] = args ? args.lcCollate : undefined;
-            inputs["lcCtype"] = args ? args.lcCtype : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["terminationProtection"] = args ? args.terminationProtection : undefined;
+            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
+            resourceInputs["lcCollate"] = args ? args.lcCollate : undefined;
+            resourceInputs["lcCtype"] = args ? args.lcCtype : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Database.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Database.__pulumiType, name, resourceInputs, opts);
     }
 }
 

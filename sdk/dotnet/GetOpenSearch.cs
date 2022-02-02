@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,7 +41,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetOpenSearchResult> InvokeAsync(GetOpenSearchArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchResult>("aiven:index/getOpenSearch:getOpenSearch", args ?? new GetOpenSearchArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchResult>("aiven:index/getOpenSearch:getOpenSearch", args ?? new GetOpenSearchArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Opensearch Data Source
@@ -74,7 +73,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetOpenSearchResult> Invoke(GetOpenSearchInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOpenSearchResult>("aiven:index/getOpenSearch:getOpenSearch", args ?? new GetOpenSearchInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetOpenSearchResult>("aiven:index/getOpenSearch:getOpenSearch", args ?? new GetOpenSearchInvokeArgs(), options.WithDefaults());
     }
 
 

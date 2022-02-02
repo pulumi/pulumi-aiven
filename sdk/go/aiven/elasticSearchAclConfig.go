@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewElasticSearchAclConfig(ctx, "es_acl_config", &aiven.ElasticSearchAclConfigArgs{
+// 		_, err := aiven.NewElasticSearchAclConfig(ctx, "es-acl-config", &aiven.ElasticSearchAclConfigArgs{
 // 			Project:     pulumi.Any(aiven_project.Es - project.Project),
 // 			ServiceName: pulumi.Any(aiven_service.Es.Service_name),
 // 			Enabled:     pulumi.Bool(true),
@@ -163,7 +163,7 @@ type ElasticSearchAclConfigInput interface {
 }
 
 func (*ElasticSearchAclConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticSearchAclConfig)(nil))
+	return reflect.TypeOf((**ElasticSearchAclConfig)(nil)).Elem()
 }
 
 func (i *ElasticSearchAclConfig) ToElasticSearchAclConfigOutput() ElasticSearchAclConfigOutput {
@@ -172,35 +172,6 @@ func (i *ElasticSearchAclConfig) ToElasticSearchAclConfigOutput() ElasticSearchA
 
 func (i *ElasticSearchAclConfig) ToElasticSearchAclConfigOutputWithContext(ctx context.Context) ElasticSearchAclConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchAclConfigOutput)
-}
-
-func (i *ElasticSearchAclConfig) ToElasticSearchAclConfigPtrOutput() ElasticSearchAclConfigPtrOutput {
-	return i.ToElasticSearchAclConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *ElasticSearchAclConfig) ToElasticSearchAclConfigPtrOutputWithContext(ctx context.Context) ElasticSearchAclConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchAclConfigPtrOutput)
-}
-
-type ElasticSearchAclConfigPtrInput interface {
-	pulumi.Input
-
-	ToElasticSearchAclConfigPtrOutput() ElasticSearchAclConfigPtrOutput
-	ToElasticSearchAclConfigPtrOutputWithContext(ctx context.Context) ElasticSearchAclConfigPtrOutput
-}
-
-type elasticSearchAclConfigPtrType ElasticSearchAclConfigArgs
-
-func (*elasticSearchAclConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElasticSearchAclConfig)(nil))
-}
-
-func (i *elasticSearchAclConfigPtrType) ToElasticSearchAclConfigPtrOutput() ElasticSearchAclConfigPtrOutput {
-	return i.ToElasticSearchAclConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *elasticSearchAclConfigPtrType) ToElasticSearchAclConfigPtrOutputWithContext(ctx context.Context) ElasticSearchAclConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticSearchAclConfigPtrOutput)
 }
 
 // ElasticSearchAclConfigArrayInput is an input type that accepts ElasticSearchAclConfigArray and ElasticSearchAclConfigArrayOutput values.
@@ -256,7 +227,7 @@ func (i ElasticSearchAclConfigMap) ToElasticSearchAclConfigMapOutputWithContext(
 type ElasticSearchAclConfigOutput struct{ *pulumi.OutputState }
 
 func (ElasticSearchAclConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticSearchAclConfig)(nil))
+	return reflect.TypeOf((**ElasticSearchAclConfig)(nil)).Elem()
 }
 
 func (o ElasticSearchAclConfigOutput) ToElasticSearchAclConfigOutput() ElasticSearchAclConfigOutput {
@@ -267,44 +238,10 @@ func (o ElasticSearchAclConfigOutput) ToElasticSearchAclConfigOutputWithContext(
 	return o
 }
 
-func (o ElasticSearchAclConfigOutput) ToElasticSearchAclConfigPtrOutput() ElasticSearchAclConfigPtrOutput {
-	return o.ToElasticSearchAclConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ElasticSearchAclConfigOutput) ToElasticSearchAclConfigPtrOutputWithContext(ctx context.Context) ElasticSearchAclConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticSearchAclConfig) *ElasticSearchAclConfig {
-		return &v
-	}).(ElasticSearchAclConfigPtrOutput)
-}
-
-type ElasticSearchAclConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ElasticSearchAclConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElasticSearchAclConfig)(nil))
-}
-
-func (o ElasticSearchAclConfigPtrOutput) ToElasticSearchAclConfigPtrOutput() ElasticSearchAclConfigPtrOutput {
-	return o
-}
-
-func (o ElasticSearchAclConfigPtrOutput) ToElasticSearchAclConfigPtrOutputWithContext(ctx context.Context) ElasticSearchAclConfigPtrOutput {
-	return o
-}
-
-func (o ElasticSearchAclConfigPtrOutput) Elem() ElasticSearchAclConfigOutput {
-	return o.ApplyT(func(v *ElasticSearchAclConfig) ElasticSearchAclConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ElasticSearchAclConfig
-		return ret
-	}).(ElasticSearchAclConfigOutput)
-}
-
 type ElasticSearchAclConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (ElasticSearchAclConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElasticSearchAclConfig)(nil))
+	return reflect.TypeOf((*[]*ElasticSearchAclConfig)(nil)).Elem()
 }
 
 func (o ElasticSearchAclConfigArrayOutput) ToElasticSearchAclConfigArrayOutput() ElasticSearchAclConfigArrayOutput {
@@ -316,15 +253,15 @@ func (o ElasticSearchAclConfigArrayOutput) ToElasticSearchAclConfigArrayOutputWi
 }
 
 func (o ElasticSearchAclConfigArrayOutput) Index(i pulumi.IntInput) ElasticSearchAclConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElasticSearchAclConfig {
-		return vs[0].([]ElasticSearchAclConfig)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ElasticSearchAclConfig {
+		return vs[0].([]*ElasticSearchAclConfig)[vs[1].(int)]
 	}).(ElasticSearchAclConfigOutput)
 }
 
 type ElasticSearchAclConfigMapOutput struct{ *pulumi.OutputState }
 
 func (ElasticSearchAclConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ElasticSearchAclConfig)(nil))
+	return reflect.TypeOf((*map[string]*ElasticSearchAclConfig)(nil)).Elem()
 }
 
 func (o ElasticSearchAclConfigMapOutput) ToElasticSearchAclConfigMapOutput() ElasticSearchAclConfigMapOutput {
@@ -336,18 +273,16 @@ func (o ElasticSearchAclConfigMapOutput) ToElasticSearchAclConfigMapOutputWithCo
 }
 
 func (o ElasticSearchAclConfigMapOutput) MapIndex(k pulumi.StringInput) ElasticSearchAclConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ElasticSearchAclConfig {
-		return vs[0].(map[string]ElasticSearchAclConfig)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ElasticSearchAclConfig {
+		return vs[0].(map[string]*ElasticSearchAclConfig)[vs[1].(string)]
 	}).(ElasticSearchAclConfigOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchAclConfigInput)(nil)).Elem(), &ElasticSearchAclConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchAclConfigPtrInput)(nil)).Elem(), &ElasticSearchAclConfig{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchAclConfigArrayInput)(nil)).Elem(), ElasticSearchAclConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticSearchAclConfigMapInput)(nil)).Elem(), ElasticSearchAclConfigMap{})
 	pulumi.RegisterOutputType(ElasticSearchAclConfigOutput{})
-	pulumi.RegisterOutputType(ElasticSearchAclConfigPtrOutput{})
 	pulumi.RegisterOutputType(ElasticSearchAclConfigArrayOutput{})
 	pulumi.RegisterOutputType(ElasticSearchAclConfigMapOutput{})
 }

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaSchemaResult> InvokeAsync(GetKafkaSchemaArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Kafka Schema Data Source
@@ -76,7 +75,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaSchemaResult> Invoke(GetKafkaSchemaInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaInvokeArgs(), options.WithDefaults());
     }
 
 

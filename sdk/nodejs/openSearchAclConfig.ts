@@ -80,14 +80,14 @@ export class OpenSearchAclConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: OpenSearchAclConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OpenSearchAclConfigArgs | OpenSearchAclConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OpenSearchAclConfigState | undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["extendedAcl"] = state ? state.extendedAcl : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["extendedAcl"] = state ? state.extendedAcl : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as OpenSearchAclConfigArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
@@ -96,15 +96,13 @@ export class OpenSearchAclConfig extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["extendedAcl"] = args ? args.extendedAcl : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["extendedAcl"] = args ? args.extendedAcl : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OpenSearchAclConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OpenSearchAclConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -414,7 +414,7 @@ type OpenSearchInput interface {
 }
 
 func (*OpenSearch) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenSearch)(nil))
+	return reflect.TypeOf((**OpenSearch)(nil)).Elem()
 }
 
 func (i *OpenSearch) ToOpenSearchOutput() OpenSearchOutput {
@@ -423,35 +423,6 @@ func (i *OpenSearch) ToOpenSearchOutput() OpenSearchOutput {
 
 func (i *OpenSearch) ToOpenSearchOutputWithContext(ctx context.Context) OpenSearchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchOutput)
-}
-
-func (i *OpenSearch) ToOpenSearchPtrOutput() OpenSearchPtrOutput {
-	return i.ToOpenSearchPtrOutputWithContext(context.Background())
-}
-
-func (i *OpenSearch) ToOpenSearchPtrOutputWithContext(ctx context.Context) OpenSearchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchPtrOutput)
-}
-
-type OpenSearchPtrInput interface {
-	pulumi.Input
-
-	ToOpenSearchPtrOutput() OpenSearchPtrOutput
-	ToOpenSearchPtrOutputWithContext(ctx context.Context) OpenSearchPtrOutput
-}
-
-type openSearchPtrType OpenSearchArgs
-
-func (*openSearchPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OpenSearch)(nil))
-}
-
-func (i *openSearchPtrType) ToOpenSearchPtrOutput() OpenSearchPtrOutput {
-	return i.ToOpenSearchPtrOutputWithContext(context.Background())
-}
-
-func (i *openSearchPtrType) ToOpenSearchPtrOutputWithContext(ctx context.Context) OpenSearchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OpenSearchPtrOutput)
 }
 
 // OpenSearchArrayInput is an input type that accepts OpenSearchArray and OpenSearchArrayOutput values.
@@ -507,7 +478,7 @@ func (i OpenSearchMap) ToOpenSearchMapOutputWithContext(ctx context.Context) Ope
 type OpenSearchOutput struct{ *pulumi.OutputState }
 
 func (OpenSearchOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenSearch)(nil))
+	return reflect.TypeOf((**OpenSearch)(nil)).Elem()
 }
 
 func (o OpenSearchOutput) ToOpenSearchOutput() OpenSearchOutput {
@@ -518,44 +489,10 @@ func (o OpenSearchOutput) ToOpenSearchOutputWithContext(ctx context.Context) Ope
 	return o
 }
 
-func (o OpenSearchOutput) ToOpenSearchPtrOutput() OpenSearchPtrOutput {
-	return o.ToOpenSearchPtrOutputWithContext(context.Background())
-}
-
-func (o OpenSearchOutput) ToOpenSearchPtrOutputWithContext(ctx context.Context) OpenSearchPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenSearch) *OpenSearch {
-		return &v
-	}).(OpenSearchPtrOutput)
-}
-
-type OpenSearchPtrOutput struct{ *pulumi.OutputState }
-
-func (OpenSearchPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OpenSearch)(nil))
-}
-
-func (o OpenSearchPtrOutput) ToOpenSearchPtrOutput() OpenSearchPtrOutput {
-	return o
-}
-
-func (o OpenSearchPtrOutput) ToOpenSearchPtrOutputWithContext(ctx context.Context) OpenSearchPtrOutput {
-	return o
-}
-
-func (o OpenSearchPtrOutput) Elem() OpenSearchOutput {
-	return o.ApplyT(func(v *OpenSearch) OpenSearch {
-		if v != nil {
-			return *v
-		}
-		var ret OpenSearch
-		return ret
-	}).(OpenSearchOutput)
-}
-
 type OpenSearchArrayOutput struct{ *pulumi.OutputState }
 
 func (OpenSearchArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OpenSearch)(nil))
+	return reflect.TypeOf((*[]*OpenSearch)(nil)).Elem()
 }
 
 func (o OpenSearchArrayOutput) ToOpenSearchArrayOutput() OpenSearchArrayOutput {
@@ -567,15 +504,15 @@ func (o OpenSearchArrayOutput) ToOpenSearchArrayOutputWithContext(ctx context.Co
 }
 
 func (o OpenSearchArrayOutput) Index(i pulumi.IntInput) OpenSearchOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenSearch {
-		return vs[0].([]OpenSearch)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OpenSearch {
+		return vs[0].([]*OpenSearch)[vs[1].(int)]
 	}).(OpenSearchOutput)
 }
 
 type OpenSearchMapOutput struct{ *pulumi.OutputState }
 
 func (OpenSearchMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]OpenSearch)(nil))
+	return reflect.TypeOf((*map[string]*OpenSearch)(nil)).Elem()
 }
 
 func (o OpenSearchMapOutput) ToOpenSearchMapOutput() OpenSearchMapOutput {
@@ -587,18 +524,16 @@ func (o OpenSearchMapOutput) ToOpenSearchMapOutputWithContext(ctx context.Contex
 }
 
 func (o OpenSearchMapOutput) MapIndex(k pulumi.StringInput) OpenSearchOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OpenSearch {
-		return vs[0].(map[string]OpenSearch)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *OpenSearch {
+		return vs[0].(map[string]*OpenSearch)[vs[1].(string)]
 	}).(OpenSearchOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchInput)(nil)).Elem(), &OpenSearch{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchPtrInput)(nil)).Elem(), &OpenSearch{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchArrayInput)(nil)).Elem(), OpenSearchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenSearchMapInput)(nil)).Elem(), OpenSearchMap{})
 	pulumi.RegisterOutputType(OpenSearchOutput{})
-	pulumi.RegisterOutputType(OpenSearchPtrOutput{})
 	pulumi.RegisterOutputType(OpenSearchArrayOutput{})
 	pulumi.RegisterOutputType(OpenSearchMapOutput{})
 }

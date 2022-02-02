@@ -25,9 +25,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getProject:getProject", {
         "accountId": args.accountId,
         "availableCredits": args.availableCredits,

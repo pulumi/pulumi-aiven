@@ -9,9 +9,7 @@ export function getElasticSearchAclRule(args: GetElasticSearchAclRuleArgs, opts?
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getElasticSearchAclRule:getElasticSearchAclRule", {
         "index": args.index,
         "permission": args.permission,

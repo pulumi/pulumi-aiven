@@ -166,7 +166,7 @@ type AccountTeamMemberInput interface {
 }
 
 func (*AccountTeamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountTeamMember)(nil))
+	return reflect.TypeOf((**AccountTeamMember)(nil)).Elem()
 }
 
 func (i *AccountTeamMember) ToAccountTeamMemberOutput() AccountTeamMemberOutput {
@@ -175,35 +175,6 @@ func (i *AccountTeamMember) ToAccountTeamMemberOutput() AccountTeamMemberOutput 
 
 func (i *AccountTeamMember) ToAccountTeamMemberOutputWithContext(ctx context.Context) AccountTeamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamMemberOutput)
-}
-
-func (i *AccountTeamMember) ToAccountTeamMemberPtrOutput() AccountTeamMemberPtrOutput {
-	return i.ToAccountTeamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *AccountTeamMember) ToAccountTeamMemberPtrOutputWithContext(ctx context.Context) AccountTeamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamMemberPtrOutput)
-}
-
-type AccountTeamMemberPtrInput interface {
-	pulumi.Input
-
-	ToAccountTeamMemberPtrOutput() AccountTeamMemberPtrOutput
-	ToAccountTeamMemberPtrOutputWithContext(ctx context.Context) AccountTeamMemberPtrOutput
-}
-
-type accountTeamMemberPtrType AccountTeamMemberArgs
-
-func (*accountTeamMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccountTeamMember)(nil))
-}
-
-func (i *accountTeamMemberPtrType) ToAccountTeamMemberPtrOutput() AccountTeamMemberPtrOutput {
-	return i.ToAccountTeamMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *accountTeamMemberPtrType) ToAccountTeamMemberPtrOutputWithContext(ctx context.Context) AccountTeamMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountTeamMemberPtrOutput)
 }
 
 // AccountTeamMemberArrayInput is an input type that accepts AccountTeamMemberArray and AccountTeamMemberArrayOutput values.
@@ -259,7 +230,7 @@ func (i AccountTeamMemberMap) ToAccountTeamMemberMapOutputWithContext(ctx contex
 type AccountTeamMemberOutput struct{ *pulumi.OutputState }
 
 func (AccountTeamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountTeamMember)(nil))
+	return reflect.TypeOf((**AccountTeamMember)(nil)).Elem()
 }
 
 func (o AccountTeamMemberOutput) ToAccountTeamMemberOutput() AccountTeamMemberOutput {
@@ -270,44 +241,10 @@ func (o AccountTeamMemberOutput) ToAccountTeamMemberOutputWithContext(ctx contex
 	return o
 }
 
-func (o AccountTeamMemberOutput) ToAccountTeamMemberPtrOutput() AccountTeamMemberPtrOutput {
-	return o.ToAccountTeamMemberPtrOutputWithContext(context.Background())
-}
-
-func (o AccountTeamMemberOutput) ToAccountTeamMemberPtrOutputWithContext(ctx context.Context) AccountTeamMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountTeamMember) *AccountTeamMember {
-		return &v
-	}).(AccountTeamMemberPtrOutput)
-}
-
-type AccountTeamMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (AccountTeamMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccountTeamMember)(nil))
-}
-
-func (o AccountTeamMemberPtrOutput) ToAccountTeamMemberPtrOutput() AccountTeamMemberPtrOutput {
-	return o
-}
-
-func (o AccountTeamMemberPtrOutput) ToAccountTeamMemberPtrOutputWithContext(ctx context.Context) AccountTeamMemberPtrOutput {
-	return o
-}
-
-func (o AccountTeamMemberPtrOutput) Elem() AccountTeamMemberOutput {
-	return o.ApplyT(func(v *AccountTeamMember) AccountTeamMember {
-		if v != nil {
-			return *v
-		}
-		var ret AccountTeamMember
-		return ret
-	}).(AccountTeamMemberOutput)
-}
-
 type AccountTeamMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (AccountTeamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AccountTeamMember)(nil))
+	return reflect.TypeOf((*[]*AccountTeamMember)(nil)).Elem()
 }
 
 func (o AccountTeamMemberArrayOutput) ToAccountTeamMemberArrayOutput() AccountTeamMemberArrayOutput {
@@ -319,15 +256,15 @@ func (o AccountTeamMemberArrayOutput) ToAccountTeamMemberArrayOutputWithContext(
 }
 
 func (o AccountTeamMemberArrayOutput) Index(i pulumi.IntInput) AccountTeamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccountTeamMember {
-		return vs[0].([]AccountTeamMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccountTeamMember {
+		return vs[0].([]*AccountTeamMember)[vs[1].(int)]
 	}).(AccountTeamMemberOutput)
 }
 
 type AccountTeamMemberMapOutput struct{ *pulumi.OutputState }
 
 func (AccountTeamMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AccountTeamMember)(nil))
+	return reflect.TypeOf((*map[string]*AccountTeamMember)(nil)).Elem()
 }
 
 func (o AccountTeamMemberMapOutput) ToAccountTeamMemberMapOutput() AccountTeamMemberMapOutput {
@@ -339,18 +276,16 @@ func (o AccountTeamMemberMapOutput) ToAccountTeamMemberMapOutputWithContext(ctx 
 }
 
 func (o AccountTeamMemberMapOutput) MapIndex(k pulumi.StringInput) AccountTeamMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccountTeamMember {
-		return vs[0].(map[string]AccountTeamMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AccountTeamMember {
+		return vs[0].(map[string]*AccountTeamMember)[vs[1].(string)]
 	}).(AccountTeamMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountTeamMemberInput)(nil)).Elem(), &AccountTeamMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccountTeamMemberPtrInput)(nil)).Elem(), &AccountTeamMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountTeamMemberArrayInput)(nil)).Elem(), AccountTeamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountTeamMemberMapInput)(nil)).Elem(), AccountTeamMemberMap{})
 	pulumi.RegisterOutputType(AccountTeamMemberOutput{})
-	pulumi.RegisterOutputType(AccountTeamMemberPtrOutput{})
 	pulumi.RegisterOutputType(AccountTeamMemberArrayOutput{})
 	pulumi.RegisterOutputType(AccountTeamMemberMapOutput{})
 }

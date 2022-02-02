@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,7 +41,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetElasticSearchResult> InvokeAsync(GetElasticSearchArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetElasticSearchResult>("aiven:index/getElasticSearch:getElasticSearch", args ?? new GetElasticSearchArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetElasticSearchResult>("aiven:index/getElasticSearch:getElasticSearch", args ?? new GetElasticSearchArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Elasticsearch Data Source
@@ -74,7 +73,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetElasticSearchResult> Invoke(GetElasticSearchInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetElasticSearchResult>("aiven:index/getElasticSearch:getElasticSearch", args ?? new GetElasticSearchInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetElasticSearchResult>("aiven:index/getElasticSearch:getElasticSearch", args ?? new GetElasticSearchInvokeArgs(), options.WithDefaults());
     }
 
 

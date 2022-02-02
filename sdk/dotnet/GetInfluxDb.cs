@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,7 +41,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInfluxDbResult> InvokeAsync(GetInfluxDbArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInfluxDbResult>("aiven:index/getInfluxDb:getInfluxDb", args ?? new GetInfluxDbArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInfluxDbResult>("aiven:index/getInfluxDb:getInfluxDb", args ?? new GetInfluxDbArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # InfluxDB Data Source
@@ -74,7 +73,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInfluxDbResult> Invoke(GetInfluxDbInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInfluxDbResult>("aiven:index/getInfluxDb:getInfluxDb", args ?? new GetInfluxDbInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInfluxDbResult>("aiven:index/getInfluxDb:getInfluxDb", args ?? new GetInfluxDbInvokeArgs(), options.WithDefaults());
     }
 
 

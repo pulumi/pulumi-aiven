@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -42,7 +41,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetM3AggregatorResult> InvokeAsync(GetM3AggregatorArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetM3AggregatorResult>("aiven:index/getM3Aggregator:getM3Aggregator", args ?? new GetM3AggregatorArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetM3AggregatorResult>("aiven:index/getM3Aggregator:getM3Aggregator", args ?? new GetM3AggregatorArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # M3 Aggregator Data Source
@@ -74,7 +73,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetM3AggregatorResult> Invoke(GetM3AggregatorInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetM3AggregatorResult>("aiven:index/getM3Aggregator:getM3Aggregator", args ?? new GetM3AggregatorInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetM3AggregatorResult>("aiven:index/getM3Aggregator:getM3Aggregator", args ?? new GetM3AggregatorInvokeArgs(), options.WithDefaults());
     }
 
 

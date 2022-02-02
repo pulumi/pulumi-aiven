@@ -178,35 +178,35 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceIntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceIntegrationArgs | ServiceIntegrationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceIntegrationState | undefined;
-            inputs["dashboardUserConfig"] = state ? state.dashboardUserConfig : undefined;
-            inputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
-            inputs["destinationEndpointId"] = state ? state.destinationEndpointId : undefined;
-            inputs["destinationServiceName"] = state ? state.destinationServiceName : undefined;
-            inputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
-            inputs["externalAwsCloudwatchMetricsUserConfig"] = state ? state.externalAwsCloudwatchMetricsUserConfig : undefined;
-            inputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
-            inputs["externalGoogleCloudLoggingUserConfig"] = state ? state.externalGoogleCloudLoggingUserConfig : undefined;
-            inputs["integrationType"] = state ? state.integrationType : undefined;
-            inputs["kafkaConnectUserConfig"] = state ? state.kafkaConnectUserConfig : undefined;
-            inputs["kafkaLogsUserConfig"] = state ? state.kafkaLogsUserConfig : undefined;
-            inputs["kafkaMirrormakerUserConfig"] = state ? state.kafkaMirrormakerUserConfig : undefined;
-            inputs["logsUserConfig"] = state ? state.logsUserConfig : undefined;
-            inputs["m3aggregatorUserConfig"] = state ? state.m3aggregatorUserConfig : undefined;
-            inputs["m3coordinatorUserConfig"] = state ? state.m3coordinatorUserConfig : undefined;
-            inputs["metricsUserConfig"] = state ? state.metricsUserConfig : undefined;
-            inputs["mirrormakerUserConfig"] = state ? state.mirrormakerUserConfig : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["prometheusUserConfig"] = state ? state.prometheusUserConfig : undefined;
-            inputs["readReplicaUserConfig"] = state ? state.readReplicaUserConfig : undefined;
-            inputs["rsyslogUserConfig"] = state ? state.rsyslogUserConfig : undefined;
-            inputs["schemaRegistryProxyUserConfig"] = state ? state.schemaRegistryProxyUserConfig : undefined;
-            inputs["signalfxUserConfig"] = state ? state.signalfxUserConfig : undefined;
-            inputs["sourceEndpointId"] = state ? state.sourceEndpointId : undefined;
-            inputs["sourceServiceName"] = state ? state.sourceServiceName : undefined;
+            resourceInputs["dashboardUserConfig"] = state ? state.dashboardUserConfig : undefined;
+            resourceInputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
+            resourceInputs["destinationEndpointId"] = state ? state.destinationEndpointId : undefined;
+            resourceInputs["destinationServiceName"] = state ? state.destinationServiceName : undefined;
+            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
+            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = state ? state.externalAwsCloudwatchMetricsUserConfig : undefined;
+            resourceInputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
+            resourceInputs["externalGoogleCloudLoggingUserConfig"] = state ? state.externalGoogleCloudLoggingUserConfig : undefined;
+            resourceInputs["integrationType"] = state ? state.integrationType : undefined;
+            resourceInputs["kafkaConnectUserConfig"] = state ? state.kafkaConnectUserConfig : undefined;
+            resourceInputs["kafkaLogsUserConfig"] = state ? state.kafkaLogsUserConfig : undefined;
+            resourceInputs["kafkaMirrormakerUserConfig"] = state ? state.kafkaMirrormakerUserConfig : undefined;
+            resourceInputs["logsUserConfig"] = state ? state.logsUserConfig : undefined;
+            resourceInputs["m3aggregatorUserConfig"] = state ? state.m3aggregatorUserConfig : undefined;
+            resourceInputs["m3coordinatorUserConfig"] = state ? state.m3coordinatorUserConfig : undefined;
+            resourceInputs["metricsUserConfig"] = state ? state.metricsUserConfig : undefined;
+            resourceInputs["mirrormakerUserConfig"] = state ? state.mirrormakerUserConfig : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["prometheusUserConfig"] = state ? state.prometheusUserConfig : undefined;
+            resourceInputs["readReplicaUserConfig"] = state ? state.readReplicaUserConfig : undefined;
+            resourceInputs["rsyslogUserConfig"] = state ? state.rsyslogUserConfig : undefined;
+            resourceInputs["schemaRegistryProxyUserConfig"] = state ? state.schemaRegistryProxyUserConfig : undefined;
+            resourceInputs["signalfxUserConfig"] = state ? state.signalfxUserConfig : undefined;
+            resourceInputs["sourceEndpointId"] = state ? state.sourceEndpointId : undefined;
+            resourceInputs["sourceServiceName"] = state ? state.sourceServiceName : undefined;
         } else {
             const args = argsOrState as ServiceIntegrationArgs | undefined;
             if ((!args || args.integrationType === undefined) && !opts.urn) {
@@ -215,36 +215,34 @@ export class ServiceIntegration extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["dashboardUserConfig"] = args ? args.dashboardUserConfig : undefined;
-            inputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
-            inputs["destinationEndpointId"] = args ? args.destinationEndpointId : undefined;
-            inputs["destinationServiceName"] = args ? args.destinationServiceName : undefined;
-            inputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
-            inputs["externalAwsCloudwatchMetricsUserConfig"] = args ? args.externalAwsCloudwatchMetricsUserConfig : undefined;
-            inputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
-            inputs["externalGoogleCloudLoggingUserConfig"] = args ? args.externalGoogleCloudLoggingUserConfig : undefined;
-            inputs["integrationType"] = args ? args.integrationType : undefined;
-            inputs["kafkaConnectUserConfig"] = args ? args.kafkaConnectUserConfig : undefined;
-            inputs["kafkaLogsUserConfig"] = args ? args.kafkaLogsUserConfig : undefined;
-            inputs["kafkaMirrormakerUserConfig"] = args ? args.kafkaMirrormakerUserConfig : undefined;
-            inputs["logsUserConfig"] = args ? args.logsUserConfig : undefined;
-            inputs["m3aggregatorUserConfig"] = args ? args.m3aggregatorUserConfig : undefined;
-            inputs["m3coordinatorUserConfig"] = args ? args.m3coordinatorUserConfig : undefined;
-            inputs["metricsUserConfig"] = args ? args.metricsUserConfig : undefined;
-            inputs["mirrormakerUserConfig"] = args ? args.mirrormakerUserConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["prometheusUserConfig"] = args ? args.prometheusUserConfig : undefined;
-            inputs["readReplicaUserConfig"] = args ? args.readReplicaUserConfig : undefined;
-            inputs["rsyslogUserConfig"] = args ? args.rsyslogUserConfig : undefined;
-            inputs["schemaRegistryProxyUserConfig"] = args ? args.schemaRegistryProxyUserConfig : undefined;
-            inputs["signalfxUserConfig"] = args ? args.signalfxUserConfig : undefined;
-            inputs["sourceEndpointId"] = args ? args.sourceEndpointId : undefined;
-            inputs["sourceServiceName"] = args ? args.sourceServiceName : undefined;
+            resourceInputs["dashboardUserConfig"] = args ? args.dashboardUserConfig : undefined;
+            resourceInputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
+            resourceInputs["destinationEndpointId"] = args ? args.destinationEndpointId : undefined;
+            resourceInputs["destinationServiceName"] = args ? args.destinationServiceName : undefined;
+            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
+            resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = args ? args.externalAwsCloudwatchMetricsUserConfig : undefined;
+            resourceInputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
+            resourceInputs["externalGoogleCloudLoggingUserConfig"] = args ? args.externalGoogleCloudLoggingUserConfig : undefined;
+            resourceInputs["integrationType"] = args ? args.integrationType : undefined;
+            resourceInputs["kafkaConnectUserConfig"] = args ? args.kafkaConnectUserConfig : undefined;
+            resourceInputs["kafkaLogsUserConfig"] = args ? args.kafkaLogsUserConfig : undefined;
+            resourceInputs["kafkaMirrormakerUserConfig"] = args ? args.kafkaMirrormakerUserConfig : undefined;
+            resourceInputs["logsUserConfig"] = args ? args.logsUserConfig : undefined;
+            resourceInputs["m3aggregatorUserConfig"] = args ? args.m3aggregatorUserConfig : undefined;
+            resourceInputs["m3coordinatorUserConfig"] = args ? args.m3coordinatorUserConfig : undefined;
+            resourceInputs["metricsUserConfig"] = args ? args.metricsUserConfig : undefined;
+            resourceInputs["mirrormakerUserConfig"] = args ? args.mirrormakerUserConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["prometheusUserConfig"] = args ? args.prometheusUserConfig : undefined;
+            resourceInputs["readReplicaUserConfig"] = args ? args.readReplicaUserConfig : undefined;
+            resourceInputs["rsyslogUserConfig"] = args ? args.rsyslogUserConfig : undefined;
+            resourceInputs["schemaRegistryProxyUserConfig"] = args ? args.schemaRegistryProxyUserConfig : undefined;
+            resourceInputs["signalfxUserConfig"] = args ? args.signalfxUserConfig : undefined;
+            resourceInputs["sourceEndpointId"] = args ? args.sourceEndpointId : undefined;
+            resourceInputs["sourceServiceName"] = args ? args.sourceServiceName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServiceIntegration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServiceIntegration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

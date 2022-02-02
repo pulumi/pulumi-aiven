@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -14,10 +13,10 @@ namespace Pulumi.Aiven
     public static class GetCassanda
     {
         public static Task<GetCassandaResult> InvokeAsync(GetCassandaArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCassandaResult>("aiven:index/getCassanda:getCassanda", args ?? new GetCassandaArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCassandaResult>("aiven:index/getCassanda:getCassanda", args ?? new GetCassandaArgs(), options.WithDefaults());
 
         public static Output<GetCassandaResult> Invoke(GetCassandaInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCassandaResult>("aiven:index/getCassanda:getCassanda", args ?? new GetCassandaInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCassandaResult>("aiven:index/getCassanda:getCassanda", args ?? new GetCassandaInvokeArgs(), options.WithDefaults());
     }
 
 

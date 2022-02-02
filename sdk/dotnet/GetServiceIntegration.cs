@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -49,7 +48,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceIntegrationResult> InvokeAsync(GetServiceIntegrationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Service Integration Data Source
@@ -88,7 +87,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceIntegrationResult> Invoke(GetServiceIntegrationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationInvokeArgs(), options.WithDefaults());
     }
 
 

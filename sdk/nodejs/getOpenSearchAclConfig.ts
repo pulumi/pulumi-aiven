@@ -9,9 +9,7 @@ export function getOpenSearchAclConfig(args: GetOpenSearchAclConfigArgs, opts?: 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", {
         "enabled": args.enabled,
         "extendedAcl": args.extendedAcl,

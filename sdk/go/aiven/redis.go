@@ -419,7 +419,7 @@ type RedisInput interface {
 }
 
 func (*Redis) ElementType() reflect.Type {
-	return reflect.TypeOf((*Redis)(nil))
+	return reflect.TypeOf((**Redis)(nil)).Elem()
 }
 
 func (i *Redis) ToRedisOutput() RedisOutput {
@@ -428,35 +428,6 @@ func (i *Redis) ToRedisOutput() RedisOutput {
 
 func (i *Redis) ToRedisOutputWithContext(ctx context.Context) RedisOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RedisOutput)
-}
-
-func (i *Redis) ToRedisPtrOutput() RedisPtrOutput {
-	return i.ToRedisPtrOutputWithContext(context.Background())
-}
-
-func (i *Redis) ToRedisPtrOutputWithContext(ctx context.Context) RedisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RedisPtrOutput)
-}
-
-type RedisPtrInput interface {
-	pulumi.Input
-
-	ToRedisPtrOutput() RedisPtrOutput
-	ToRedisPtrOutputWithContext(ctx context.Context) RedisPtrOutput
-}
-
-type redisPtrType RedisArgs
-
-func (*redisPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Redis)(nil))
-}
-
-func (i *redisPtrType) ToRedisPtrOutput() RedisPtrOutput {
-	return i.ToRedisPtrOutputWithContext(context.Background())
-}
-
-func (i *redisPtrType) ToRedisPtrOutputWithContext(ctx context.Context) RedisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RedisPtrOutput)
 }
 
 // RedisArrayInput is an input type that accepts RedisArray and RedisArrayOutput values.
@@ -512,7 +483,7 @@ func (i RedisMap) ToRedisMapOutputWithContext(ctx context.Context) RedisMapOutpu
 type RedisOutput struct{ *pulumi.OutputState }
 
 func (RedisOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Redis)(nil))
+	return reflect.TypeOf((**Redis)(nil)).Elem()
 }
 
 func (o RedisOutput) ToRedisOutput() RedisOutput {
@@ -523,44 +494,10 @@ func (o RedisOutput) ToRedisOutputWithContext(ctx context.Context) RedisOutput {
 	return o
 }
 
-func (o RedisOutput) ToRedisPtrOutput() RedisPtrOutput {
-	return o.ToRedisPtrOutputWithContext(context.Background())
-}
-
-func (o RedisOutput) ToRedisPtrOutputWithContext(ctx context.Context) RedisPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Redis) *Redis {
-		return &v
-	}).(RedisPtrOutput)
-}
-
-type RedisPtrOutput struct{ *pulumi.OutputState }
-
-func (RedisPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Redis)(nil))
-}
-
-func (o RedisPtrOutput) ToRedisPtrOutput() RedisPtrOutput {
-	return o
-}
-
-func (o RedisPtrOutput) ToRedisPtrOutputWithContext(ctx context.Context) RedisPtrOutput {
-	return o
-}
-
-func (o RedisPtrOutput) Elem() RedisOutput {
-	return o.ApplyT(func(v *Redis) Redis {
-		if v != nil {
-			return *v
-		}
-		var ret Redis
-		return ret
-	}).(RedisOutput)
-}
-
 type RedisArrayOutput struct{ *pulumi.OutputState }
 
 func (RedisArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Redis)(nil))
+	return reflect.TypeOf((*[]*Redis)(nil)).Elem()
 }
 
 func (o RedisArrayOutput) ToRedisArrayOutput() RedisArrayOutput {
@@ -572,15 +509,15 @@ func (o RedisArrayOutput) ToRedisArrayOutputWithContext(ctx context.Context) Red
 }
 
 func (o RedisArrayOutput) Index(i pulumi.IntInput) RedisOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Redis {
-		return vs[0].([]Redis)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Redis {
+		return vs[0].([]*Redis)[vs[1].(int)]
 	}).(RedisOutput)
 }
 
 type RedisMapOutput struct{ *pulumi.OutputState }
 
 func (RedisMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Redis)(nil))
+	return reflect.TypeOf((*map[string]*Redis)(nil)).Elem()
 }
 
 func (o RedisMapOutput) ToRedisMapOutput() RedisMapOutput {
@@ -592,18 +529,16 @@ func (o RedisMapOutput) ToRedisMapOutputWithContext(ctx context.Context) RedisMa
 }
 
 func (o RedisMapOutput) MapIndex(k pulumi.StringInput) RedisOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Redis {
-		return vs[0].(map[string]Redis)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Redis {
+		return vs[0].(map[string]*Redis)[vs[1].(string)]
 	}).(RedisOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RedisInput)(nil)).Elem(), &Redis{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RedisPtrInput)(nil)).Elem(), &Redis{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RedisArrayInput)(nil)).Elem(), RedisArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RedisMapInput)(nil)).Elem(), RedisMap{})
 	pulumi.RegisterOutputType(RedisOutput{})
-	pulumi.RegisterOutputType(RedisPtrOutput{})
 	pulumi.RegisterOutputType(RedisArrayOutput{})
 	pulumi.RegisterOutputType(RedisMapOutput{})
 }

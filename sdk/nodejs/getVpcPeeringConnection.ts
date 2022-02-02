@@ -28,9 +28,7 @@ export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getVpcPeeringConnection:getVpcPeeringConnection", {
         "peerAzureAppId": args.peerAzureAppId,
         "peerAzureTenantId": args.peerAzureTenantId,

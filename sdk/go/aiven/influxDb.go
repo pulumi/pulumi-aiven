@@ -413,7 +413,7 @@ type InfluxDbInput interface {
 }
 
 func (*InfluxDb) ElementType() reflect.Type {
-	return reflect.TypeOf((*InfluxDb)(nil))
+	return reflect.TypeOf((**InfluxDb)(nil)).Elem()
 }
 
 func (i *InfluxDb) ToInfluxDbOutput() InfluxDbOutput {
@@ -422,35 +422,6 @@ func (i *InfluxDb) ToInfluxDbOutput() InfluxDbOutput {
 
 func (i *InfluxDb) ToInfluxDbOutputWithContext(ctx context.Context) InfluxDbOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbOutput)
-}
-
-func (i *InfluxDb) ToInfluxDbPtrOutput() InfluxDbPtrOutput {
-	return i.ToInfluxDbPtrOutputWithContext(context.Background())
-}
-
-func (i *InfluxDb) ToInfluxDbPtrOutputWithContext(ctx context.Context) InfluxDbPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbPtrOutput)
-}
-
-type InfluxDbPtrInput interface {
-	pulumi.Input
-
-	ToInfluxDbPtrOutput() InfluxDbPtrOutput
-	ToInfluxDbPtrOutputWithContext(ctx context.Context) InfluxDbPtrOutput
-}
-
-type influxDbPtrType InfluxDbArgs
-
-func (*influxDbPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InfluxDb)(nil))
-}
-
-func (i *influxDbPtrType) ToInfluxDbPtrOutput() InfluxDbPtrOutput {
-	return i.ToInfluxDbPtrOutputWithContext(context.Background())
-}
-
-func (i *influxDbPtrType) ToInfluxDbPtrOutputWithContext(ctx context.Context) InfluxDbPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InfluxDbPtrOutput)
 }
 
 // InfluxDbArrayInput is an input type that accepts InfluxDbArray and InfluxDbArrayOutput values.
@@ -506,7 +477,7 @@ func (i InfluxDbMap) ToInfluxDbMapOutputWithContext(ctx context.Context) InfluxD
 type InfluxDbOutput struct{ *pulumi.OutputState }
 
 func (InfluxDbOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InfluxDb)(nil))
+	return reflect.TypeOf((**InfluxDb)(nil)).Elem()
 }
 
 func (o InfluxDbOutput) ToInfluxDbOutput() InfluxDbOutput {
@@ -517,44 +488,10 @@ func (o InfluxDbOutput) ToInfluxDbOutputWithContext(ctx context.Context) InfluxD
 	return o
 }
 
-func (o InfluxDbOutput) ToInfluxDbPtrOutput() InfluxDbPtrOutput {
-	return o.ToInfluxDbPtrOutputWithContext(context.Background())
-}
-
-func (o InfluxDbOutput) ToInfluxDbPtrOutputWithContext(ctx context.Context) InfluxDbPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InfluxDb) *InfluxDb {
-		return &v
-	}).(InfluxDbPtrOutput)
-}
-
-type InfluxDbPtrOutput struct{ *pulumi.OutputState }
-
-func (InfluxDbPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InfluxDb)(nil))
-}
-
-func (o InfluxDbPtrOutput) ToInfluxDbPtrOutput() InfluxDbPtrOutput {
-	return o
-}
-
-func (o InfluxDbPtrOutput) ToInfluxDbPtrOutputWithContext(ctx context.Context) InfluxDbPtrOutput {
-	return o
-}
-
-func (o InfluxDbPtrOutput) Elem() InfluxDbOutput {
-	return o.ApplyT(func(v *InfluxDb) InfluxDb {
-		if v != nil {
-			return *v
-		}
-		var ret InfluxDb
-		return ret
-	}).(InfluxDbOutput)
-}
-
 type InfluxDbArrayOutput struct{ *pulumi.OutputState }
 
 func (InfluxDbArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InfluxDb)(nil))
+	return reflect.TypeOf((*[]*InfluxDb)(nil)).Elem()
 }
 
 func (o InfluxDbArrayOutput) ToInfluxDbArrayOutput() InfluxDbArrayOutput {
@@ -566,15 +503,15 @@ func (o InfluxDbArrayOutput) ToInfluxDbArrayOutputWithContext(ctx context.Contex
 }
 
 func (o InfluxDbArrayOutput) Index(i pulumi.IntInput) InfluxDbOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfluxDb {
-		return vs[0].([]InfluxDb)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InfluxDb {
+		return vs[0].([]*InfluxDb)[vs[1].(int)]
 	}).(InfluxDbOutput)
 }
 
 type InfluxDbMapOutput struct{ *pulumi.OutputState }
 
 func (InfluxDbMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]InfluxDb)(nil))
+	return reflect.TypeOf((*map[string]*InfluxDb)(nil)).Elem()
 }
 
 func (o InfluxDbMapOutput) ToInfluxDbMapOutput() InfluxDbMapOutput {
@@ -586,18 +523,16 @@ func (o InfluxDbMapOutput) ToInfluxDbMapOutputWithContext(ctx context.Context) I
 }
 
 func (o InfluxDbMapOutput) MapIndex(k pulumi.StringInput) InfluxDbOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InfluxDb {
-		return vs[0].(map[string]InfluxDb)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *InfluxDb {
+		return vs[0].(map[string]*InfluxDb)[vs[1].(string)]
 	}).(InfluxDbOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InfluxDbInput)(nil)).Elem(), &InfluxDb{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InfluxDbPtrInput)(nil)).Elem(), &InfluxDb{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfluxDbArrayInput)(nil)).Elem(), InfluxDbArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfluxDbMapInput)(nil)).Elem(), InfluxDbMap{})
 	pulumi.RegisterOutputType(InfluxDbOutput{})
-	pulumi.RegisterOutputType(InfluxDbPtrOutput{})
 	pulumi.RegisterOutputType(InfluxDbArrayOutput{})
 	pulumi.RegisterOutputType(InfluxDbMapOutput{})
 }

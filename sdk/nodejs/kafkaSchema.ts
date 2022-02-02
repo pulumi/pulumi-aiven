@@ -75,16 +75,16 @@ export class KafkaSchema extends pulumi.CustomResource {
      */
     constructor(name: string, args: KafkaSchemaArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KafkaSchemaArgs | KafkaSchemaState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaSchemaState | undefined;
-            inputs["compatibilityLevel"] = state ? state.compatibilityLevel : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["schema"] = state ? state.schema : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["subjectName"] = state ? state.subjectName : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["compatibilityLevel"] = state ? state.compatibilityLevel : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["subjectName"] = state ? state.subjectName : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as KafkaSchemaArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
@@ -99,17 +99,15 @@ export class KafkaSchema extends pulumi.CustomResource {
             if ((!args || args.subjectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subjectName'");
             }
-            inputs["compatibilityLevel"] = args ? args.compatibilityLevel : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["schema"] = args ? args.schema : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["subjectName"] = args ? args.subjectName : undefined;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["compatibilityLevel"] = args ? args.compatibilityLevel : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["subjectName"] = args ? args.subjectName : undefined;
+            resourceInputs["version"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KafkaSchema.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KafkaSchema.__pulumiType, name, resourceInputs, opts);
     }
 }
 

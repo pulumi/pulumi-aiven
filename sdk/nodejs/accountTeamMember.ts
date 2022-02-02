@@ -80,16 +80,16 @@ export class AccountTeamMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccountTeamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountTeamMemberArgs | AccountTeamMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountTeamMemberState | undefined;
-            inputs["accepted"] = state ? state.accepted : undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["invitedByUserEmail"] = state ? state.invitedByUserEmail : undefined;
-            inputs["teamId"] = state ? state.teamId : undefined;
-            inputs["userEmail"] = state ? state.userEmail : undefined;
+            resourceInputs["accepted"] = state ? state.accepted : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["invitedByUserEmail"] = state ? state.invitedByUserEmail : undefined;
+            resourceInputs["teamId"] = state ? state.teamId : undefined;
+            resourceInputs["userEmail"] = state ? state.userEmail : undefined;
         } else {
             const args = argsOrState as AccountTeamMemberArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -101,17 +101,15 @@ export class AccountTeamMember extends pulumi.CustomResource {
             if ((!args || args.userEmail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userEmail'");
             }
-            inputs["accepted"] = args ? args.accepted : undefined;
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["invitedByUserEmail"] = args ? args.invitedByUserEmail : undefined;
-            inputs["teamId"] = args ? args.teamId : undefined;
-            inputs["userEmail"] = args ? args.userEmail : undefined;
+            resourceInputs["accepted"] = args ? args.accepted : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["invitedByUserEmail"] = args ? args.invitedByUserEmail : undefined;
+            resourceInputs["teamId"] = args ? args.teamId : undefined;
+            resourceInputs["userEmail"] = args ? args.userEmail : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccountTeamMember.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccountTeamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

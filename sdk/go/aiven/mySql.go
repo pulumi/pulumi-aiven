@@ -438,7 +438,7 @@ type MySqlInput interface {
 }
 
 func (*MySql) ElementType() reflect.Type {
-	return reflect.TypeOf((*MySql)(nil))
+	return reflect.TypeOf((**MySql)(nil)).Elem()
 }
 
 func (i *MySql) ToMySqlOutput() MySqlOutput {
@@ -447,35 +447,6 @@ func (i *MySql) ToMySqlOutput() MySqlOutput {
 
 func (i *MySql) ToMySqlOutputWithContext(ctx context.Context) MySqlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MySqlOutput)
-}
-
-func (i *MySql) ToMySqlPtrOutput() MySqlPtrOutput {
-	return i.ToMySqlPtrOutputWithContext(context.Background())
-}
-
-func (i *MySql) ToMySqlPtrOutputWithContext(ctx context.Context) MySqlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MySqlPtrOutput)
-}
-
-type MySqlPtrInput interface {
-	pulumi.Input
-
-	ToMySqlPtrOutput() MySqlPtrOutput
-	ToMySqlPtrOutputWithContext(ctx context.Context) MySqlPtrOutput
-}
-
-type mySqlPtrType MySqlArgs
-
-func (*mySqlPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MySql)(nil))
-}
-
-func (i *mySqlPtrType) ToMySqlPtrOutput() MySqlPtrOutput {
-	return i.ToMySqlPtrOutputWithContext(context.Background())
-}
-
-func (i *mySqlPtrType) ToMySqlPtrOutputWithContext(ctx context.Context) MySqlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MySqlPtrOutput)
 }
 
 // MySqlArrayInput is an input type that accepts MySqlArray and MySqlArrayOutput values.
@@ -531,7 +502,7 @@ func (i MySqlMap) ToMySqlMapOutputWithContext(ctx context.Context) MySqlMapOutpu
 type MySqlOutput struct{ *pulumi.OutputState }
 
 func (MySqlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MySql)(nil))
+	return reflect.TypeOf((**MySql)(nil)).Elem()
 }
 
 func (o MySqlOutput) ToMySqlOutput() MySqlOutput {
@@ -542,44 +513,10 @@ func (o MySqlOutput) ToMySqlOutputWithContext(ctx context.Context) MySqlOutput {
 	return o
 }
 
-func (o MySqlOutput) ToMySqlPtrOutput() MySqlPtrOutput {
-	return o.ToMySqlPtrOutputWithContext(context.Background())
-}
-
-func (o MySqlOutput) ToMySqlPtrOutputWithContext(ctx context.Context) MySqlPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MySql) *MySql {
-		return &v
-	}).(MySqlPtrOutput)
-}
-
-type MySqlPtrOutput struct{ *pulumi.OutputState }
-
-func (MySqlPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MySql)(nil))
-}
-
-func (o MySqlPtrOutput) ToMySqlPtrOutput() MySqlPtrOutput {
-	return o
-}
-
-func (o MySqlPtrOutput) ToMySqlPtrOutputWithContext(ctx context.Context) MySqlPtrOutput {
-	return o
-}
-
-func (o MySqlPtrOutput) Elem() MySqlOutput {
-	return o.ApplyT(func(v *MySql) MySql {
-		if v != nil {
-			return *v
-		}
-		var ret MySql
-		return ret
-	}).(MySqlOutput)
-}
-
 type MySqlArrayOutput struct{ *pulumi.OutputState }
 
 func (MySqlArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MySql)(nil))
+	return reflect.TypeOf((*[]*MySql)(nil)).Elem()
 }
 
 func (o MySqlArrayOutput) ToMySqlArrayOutput() MySqlArrayOutput {
@@ -591,15 +528,15 @@ func (o MySqlArrayOutput) ToMySqlArrayOutputWithContext(ctx context.Context) MyS
 }
 
 func (o MySqlArrayOutput) Index(i pulumi.IntInput) MySqlOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MySql {
-		return vs[0].([]MySql)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MySql {
+		return vs[0].([]*MySql)[vs[1].(int)]
 	}).(MySqlOutput)
 }
 
 type MySqlMapOutput struct{ *pulumi.OutputState }
 
 func (MySqlMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MySql)(nil))
+	return reflect.TypeOf((*map[string]*MySql)(nil)).Elem()
 }
 
 func (o MySqlMapOutput) ToMySqlMapOutput() MySqlMapOutput {
@@ -611,18 +548,16 @@ func (o MySqlMapOutput) ToMySqlMapOutputWithContext(ctx context.Context) MySqlMa
 }
 
 func (o MySqlMapOutput) MapIndex(k pulumi.StringInput) MySqlOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MySql {
-		return vs[0].(map[string]MySql)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MySql {
+		return vs[0].(map[string]*MySql)[vs[1].(string)]
 	}).(MySqlOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlInput)(nil)).Elem(), &MySql{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MySqlPtrInput)(nil)).Elem(), &MySql{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlArrayInput)(nil)).Elem(), MySqlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlMapInput)(nil)).Elem(), MySqlMap{})
 	pulumi.RegisterOutputType(MySqlOutput{})
-	pulumi.RegisterOutputType(MySqlPtrOutput{})
 	pulumi.RegisterOutputType(MySqlArrayOutput{})
 	pulumi.RegisterOutputType(MySqlMapOutput{})
 }

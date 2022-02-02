@@ -27,9 +27,7 @@ export function getM3Db(args: GetM3DbArgs, opts?: pulumi.InvokeOptions): Promise
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getM3Db:getM3Db", {
         "cloudName": args.cloudName,
         "components": args.components,

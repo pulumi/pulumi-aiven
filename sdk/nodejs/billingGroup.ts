@@ -115,43 +115,41 @@ export class BillingGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args?: BillingGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BillingGroupArgs | BillingGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BillingGroupState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["addressLines"] = state ? state.addressLines : undefined;
-            inputs["billingCurrency"] = state ? state.billingCurrency : undefined;
-            inputs["billingEmails"] = state ? state.billingEmails : undefined;
-            inputs["billingExtraText"] = state ? state.billingExtraText : undefined;
-            inputs["cardId"] = state ? state.cardId : undefined;
-            inputs["city"] = state ? state.city : undefined;
-            inputs["company"] = state ? state.company : undefined;
-            inputs["countryCode"] = state ? state.countryCode : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["vatId"] = state ? state.vatId : undefined;
-            inputs["zipCode"] = state ? state.zipCode : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["addressLines"] = state ? state.addressLines : undefined;
+            resourceInputs["billingCurrency"] = state ? state.billingCurrency : undefined;
+            resourceInputs["billingEmails"] = state ? state.billingEmails : undefined;
+            resourceInputs["billingExtraText"] = state ? state.billingExtraText : undefined;
+            resourceInputs["cardId"] = state ? state.cardId : undefined;
+            resourceInputs["city"] = state ? state.city : undefined;
+            resourceInputs["company"] = state ? state.company : undefined;
+            resourceInputs["countryCode"] = state ? state.countryCode : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["vatId"] = state ? state.vatId : undefined;
+            resourceInputs["zipCode"] = state ? state.zipCode : undefined;
         } else {
             const args = argsOrState as BillingGroupArgs | undefined;
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["addressLines"] = args ? args.addressLines : undefined;
-            inputs["billingCurrency"] = args ? args.billingCurrency : undefined;
-            inputs["billingEmails"] = args ? args.billingEmails : undefined;
-            inputs["billingExtraText"] = args ? args.billingExtraText : undefined;
-            inputs["cardId"] = args ? args.cardId : undefined;
-            inputs["city"] = args ? args.city : undefined;
-            inputs["company"] = args ? args.company : undefined;
-            inputs["countryCode"] = args ? args.countryCode : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["vatId"] = args ? args.vatId : undefined;
-            inputs["zipCode"] = args ? args.zipCode : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["addressLines"] = args ? args.addressLines : undefined;
+            resourceInputs["billingCurrency"] = args ? args.billingCurrency : undefined;
+            resourceInputs["billingEmails"] = args ? args.billingEmails : undefined;
+            resourceInputs["billingExtraText"] = args ? args.billingExtraText : undefined;
+            resourceInputs["cardId"] = args ? args.cardId : undefined;
+            resourceInputs["city"] = args ? args.city : undefined;
+            resourceInputs["company"] = args ? args.company : undefined;
+            resourceInputs["countryCode"] = args ? args.countryCode : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["vatId"] = args ? args.vatId : undefined;
+            resourceInputs["zipCode"] = args ? args.zipCode : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BillingGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BillingGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

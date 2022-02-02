@@ -27,9 +27,7 @@ export function getPg(args: GetPgArgs, opts?: pulumi.InvokeOptions): Promise<Get
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getPg:getPg", {
         "cloudName": args.cloudName,
         "components": args.components,

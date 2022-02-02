@@ -155,7 +155,7 @@ type ProjectUserInput interface {
 }
 
 func (*ProjectUser) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectUser)(nil))
+	return reflect.TypeOf((**ProjectUser)(nil)).Elem()
 }
 
 func (i *ProjectUser) ToProjectUserOutput() ProjectUserOutput {
@@ -164,35 +164,6 @@ func (i *ProjectUser) ToProjectUserOutput() ProjectUserOutput {
 
 func (i *ProjectUser) ToProjectUserOutputWithContext(ctx context.Context) ProjectUserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectUserOutput)
-}
-
-func (i *ProjectUser) ToProjectUserPtrOutput() ProjectUserPtrOutput {
-	return i.ToProjectUserPtrOutputWithContext(context.Background())
-}
-
-func (i *ProjectUser) ToProjectUserPtrOutputWithContext(ctx context.Context) ProjectUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectUserPtrOutput)
-}
-
-type ProjectUserPtrInput interface {
-	pulumi.Input
-
-	ToProjectUserPtrOutput() ProjectUserPtrOutput
-	ToProjectUserPtrOutputWithContext(ctx context.Context) ProjectUserPtrOutput
-}
-
-type projectUserPtrType ProjectUserArgs
-
-func (*projectUserPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectUser)(nil))
-}
-
-func (i *projectUserPtrType) ToProjectUserPtrOutput() ProjectUserPtrOutput {
-	return i.ToProjectUserPtrOutputWithContext(context.Background())
-}
-
-func (i *projectUserPtrType) ToProjectUserPtrOutputWithContext(ctx context.Context) ProjectUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectUserPtrOutput)
 }
 
 // ProjectUserArrayInput is an input type that accepts ProjectUserArray and ProjectUserArrayOutput values.
@@ -248,7 +219,7 @@ func (i ProjectUserMap) ToProjectUserMapOutputWithContext(ctx context.Context) P
 type ProjectUserOutput struct{ *pulumi.OutputState }
 
 func (ProjectUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectUser)(nil))
+	return reflect.TypeOf((**ProjectUser)(nil)).Elem()
 }
 
 func (o ProjectUserOutput) ToProjectUserOutput() ProjectUserOutput {
@@ -259,44 +230,10 @@ func (o ProjectUserOutput) ToProjectUserOutputWithContext(ctx context.Context) P
 	return o
 }
 
-func (o ProjectUserOutput) ToProjectUserPtrOutput() ProjectUserPtrOutput {
-	return o.ToProjectUserPtrOutputWithContext(context.Background())
-}
-
-func (o ProjectUserOutput) ToProjectUserPtrOutputWithContext(ctx context.Context) ProjectUserPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectUser) *ProjectUser {
-		return &v
-	}).(ProjectUserPtrOutput)
-}
-
-type ProjectUserPtrOutput struct{ *pulumi.OutputState }
-
-func (ProjectUserPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProjectUser)(nil))
-}
-
-func (o ProjectUserPtrOutput) ToProjectUserPtrOutput() ProjectUserPtrOutput {
-	return o
-}
-
-func (o ProjectUserPtrOutput) ToProjectUserPtrOutputWithContext(ctx context.Context) ProjectUserPtrOutput {
-	return o
-}
-
-func (o ProjectUserPtrOutput) Elem() ProjectUserOutput {
-	return o.ApplyT(func(v *ProjectUser) ProjectUser {
-		if v != nil {
-			return *v
-		}
-		var ret ProjectUser
-		return ret
-	}).(ProjectUserOutput)
-}
-
 type ProjectUserArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectUserArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectUser)(nil))
+	return reflect.TypeOf((*[]*ProjectUser)(nil)).Elem()
 }
 
 func (o ProjectUserArrayOutput) ToProjectUserArrayOutput() ProjectUserArrayOutput {
@@ -308,15 +245,15 @@ func (o ProjectUserArrayOutput) ToProjectUserArrayOutputWithContext(ctx context.
 }
 
 func (o ProjectUserArrayOutput) Index(i pulumi.IntInput) ProjectUserOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectUser {
-		return vs[0].([]ProjectUser)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectUser {
+		return vs[0].([]*ProjectUser)[vs[1].(int)]
 	}).(ProjectUserOutput)
 }
 
 type ProjectUserMapOutput struct{ *pulumi.OutputState }
 
 func (ProjectUserMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProjectUser)(nil))
+	return reflect.TypeOf((*map[string]*ProjectUser)(nil)).Elem()
 }
 
 func (o ProjectUserMapOutput) ToProjectUserMapOutput() ProjectUserMapOutput {
@@ -328,18 +265,16 @@ func (o ProjectUserMapOutput) ToProjectUserMapOutputWithContext(ctx context.Cont
 }
 
 func (o ProjectUserMapOutput) MapIndex(k pulumi.StringInput) ProjectUserOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectUser {
-		return vs[0].(map[string]ProjectUser)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProjectUser {
+		return vs[0].(map[string]*ProjectUser)[vs[1].(string)]
 	}).(ProjectUserOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectUserInput)(nil)).Elem(), &ProjectUser{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectUserPtrInput)(nil)).Elem(), &ProjectUser{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectUserArrayInput)(nil)).Elem(), ProjectUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectUserMapInput)(nil)).Elem(), ProjectUserMap{})
 	pulumi.RegisterOutputType(ProjectUserOutput{})
-	pulumi.RegisterOutputType(ProjectUserPtrOutput{})
 	pulumi.RegisterOutputType(ProjectUserArrayOutput{})
 	pulumi.RegisterOutputType(ProjectUserMapOutput{})
 }

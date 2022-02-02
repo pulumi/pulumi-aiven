@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -51,7 +50,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceComponentResult> InvokeAsync(GetServiceComponentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceComponentResult>("aiven:index/getServiceComponent:getServiceComponent", args ?? new GetServiceComponentArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceComponentResult>("aiven:index/getServiceComponent:getServiceComponent", args ?? new GetServiceComponentArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Service Component Data Source
@@ -92,7 +91,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceComponentResult> Invoke(GetServiceComponentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceComponentResult>("aiven:index/getServiceComponent:getServiceComponent", args ?? new GetServiceComponentInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceComponentResult>("aiven:index/getServiceComponent:getServiceComponent", args ?? new GetServiceComponentInvokeArgs(), options.WithDefaults());
     }
 
 

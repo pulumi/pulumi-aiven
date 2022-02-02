@@ -27,9 +27,7 @@ export function getInfluxDb(args: GetInfluxDbArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getInfluxDb:getInfluxDb", {
         "cloudName": args.cloudName,
         "components": args.components,

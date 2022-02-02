@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -45,7 +44,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMirrorMakerReplicationFlowResult> InvokeAsync(GetMirrorMakerReplicationFlowArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # MirrorMaker 2 Replication Flow Data Source
@@ -80,7 +79,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMirrorMakerReplicationFlowResult> Invoke(GetMirrorMakerReplicationFlowInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowInvokeArgs(), options.WithDefaults());
     }
 
 

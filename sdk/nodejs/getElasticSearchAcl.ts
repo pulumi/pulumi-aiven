@@ -28,9 +28,7 @@ export function getElasticSearchAcl(args: GetElasticSearchAclArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getElasticSearchAcl:getElasticSearchAcl", {
         "acls": args.acls,
         "enabled": args.enabled,

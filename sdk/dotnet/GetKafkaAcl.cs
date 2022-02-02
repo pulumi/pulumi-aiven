@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Aiven
 {
@@ -46,7 +45,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKafkaAclResult> InvokeAsync(GetKafkaAclArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## # Kafka ACL Data Source
@@ -82,7 +81,7 @@ namespace Pulumi.Aiven
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKafkaAclResult> Invoke(GetKafkaAclInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclInvokeArgs(), options.WithDefaults());
     }
 
 

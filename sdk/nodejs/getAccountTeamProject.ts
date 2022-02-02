@@ -14,9 +14,7 @@ export function getAccountTeamProject(args: GetAccountTeamProjectArgs, opts?: pu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getAccountTeamProject:getAccountTeamProject", {
         "accountId": args.accountId,
         "projectName": args.projectName,

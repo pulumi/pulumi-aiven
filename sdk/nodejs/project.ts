@@ -158,58 +158,56 @@ export class Project extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["availableCredits"] = state ? state.availableCredits : undefined;
-            inputs["billingAddress"] = state ? state.billingAddress : undefined;
-            inputs["billingCurrency"] = state ? state.billingCurrency : undefined;
-            inputs["billingEmails"] = state ? state.billingEmails : undefined;
-            inputs["billingExtraText"] = state ? state.billingExtraText : undefined;
-            inputs["billingGroup"] = state ? state.billingGroup : undefined;
-            inputs["caCert"] = state ? state.caCert : undefined;
-            inputs["cardId"] = state ? state.cardId : undefined;
-            inputs["copyFromProject"] = state ? state.copyFromProject : undefined;
-            inputs["country"] = state ? state.country : undefined;
-            inputs["countryCode"] = state ? state.countryCode : undefined;
-            inputs["defaultCloud"] = state ? state.defaultCloud : undefined;
-            inputs["estimatedBalance"] = state ? state.estimatedBalance : undefined;
-            inputs["paymentMethod"] = state ? state.paymentMethod : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["technicalEmails"] = state ? state.technicalEmails : undefined;
-            inputs["useSourceProjectBillingGroup"] = state ? state.useSourceProjectBillingGroup : undefined;
-            inputs["vatId"] = state ? state.vatId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["availableCredits"] = state ? state.availableCredits : undefined;
+            resourceInputs["billingAddress"] = state ? state.billingAddress : undefined;
+            resourceInputs["billingCurrency"] = state ? state.billingCurrency : undefined;
+            resourceInputs["billingEmails"] = state ? state.billingEmails : undefined;
+            resourceInputs["billingExtraText"] = state ? state.billingExtraText : undefined;
+            resourceInputs["billingGroup"] = state ? state.billingGroup : undefined;
+            resourceInputs["caCert"] = state ? state.caCert : undefined;
+            resourceInputs["cardId"] = state ? state.cardId : undefined;
+            resourceInputs["copyFromProject"] = state ? state.copyFromProject : undefined;
+            resourceInputs["country"] = state ? state.country : undefined;
+            resourceInputs["countryCode"] = state ? state.countryCode : undefined;
+            resourceInputs["defaultCloud"] = state ? state.defaultCloud : undefined;
+            resourceInputs["estimatedBalance"] = state ? state.estimatedBalance : undefined;
+            resourceInputs["paymentMethod"] = state ? state.paymentMethod : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["technicalEmails"] = state ? state.technicalEmails : undefined;
+            resourceInputs["useSourceProjectBillingGroup"] = state ? state.useSourceProjectBillingGroup : undefined;
+            resourceInputs["vatId"] = state ? state.vatId : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["availableCredits"] = args ? args.availableCredits : undefined;
-            inputs["billingAddress"] = args ? args.billingAddress : undefined;
-            inputs["billingCurrency"] = args ? args.billingCurrency : undefined;
-            inputs["billingEmails"] = args ? args.billingEmails : undefined;
-            inputs["billingExtraText"] = args ? args.billingExtraText : undefined;
-            inputs["billingGroup"] = args ? args.billingGroup : undefined;
-            inputs["caCert"] = args ? args.caCert : undefined;
-            inputs["cardId"] = args ? args.cardId : undefined;
-            inputs["copyFromProject"] = args ? args.copyFromProject : undefined;
-            inputs["countryCode"] = args ? args.countryCode : undefined;
-            inputs["defaultCloud"] = args ? args.defaultCloud : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["technicalEmails"] = args ? args.technicalEmails : undefined;
-            inputs["useSourceProjectBillingGroup"] = args ? args.useSourceProjectBillingGroup : undefined;
-            inputs["vatId"] = args ? args.vatId : undefined;
-            inputs["country"] = undefined /*out*/;
-            inputs["estimatedBalance"] = undefined /*out*/;
-            inputs["paymentMethod"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["availableCredits"] = args ? args.availableCredits : undefined;
+            resourceInputs["billingAddress"] = args ? args.billingAddress : undefined;
+            resourceInputs["billingCurrency"] = args ? args.billingCurrency : undefined;
+            resourceInputs["billingEmails"] = args ? args.billingEmails : undefined;
+            resourceInputs["billingExtraText"] = args ? args.billingExtraText : undefined;
+            resourceInputs["billingGroup"] = args ? args.billingGroup : undefined;
+            resourceInputs["caCert"] = args ? args.caCert : undefined;
+            resourceInputs["cardId"] = args ? args.cardId : undefined;
+            resourceInputs["copyFromProject"] = args ? args.copyFromProject : undefined;
+            resourceInputs["countryCode"] = args ? args.countryCode : undefined;
+            resourceInputs["defaultCloud"] = args ? args.defaultCloud : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["technicalEmails"] = args ? args.technicalEmails : undefined;
+            resourceInputs["useSourceProjectBillingGroup"] = args ? args.useSourceProjectBillingGroup : undefined;
+            resourceInputs["vatId"] = args ? args.vatId : undefined;
+            resourceInputs["country"] = undefined /*out*/;
+            resourceInputs["estimatedBalance"] = undefined /*out*/;
+            resourceInputs["paymentMethod"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Project.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Project.__pulumiType, name, resourceInputs, opts);
     }
 }
 

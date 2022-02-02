@@ -9,9 +9,7 @@ export function getOpenSearchAclRule(args: GetOpenSearchAclRuleArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", {
         "index": args.index,
         "permission": args.permission,
