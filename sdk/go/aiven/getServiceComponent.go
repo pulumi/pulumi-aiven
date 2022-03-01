@@ -32,15 +32,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := aiven_kafka.Service1.Service_name
-// 		opt1 := "dynamic"
-// 		opt2 := "certificate"
 // 		_, err := aiven.LookupServiceComponent(ctx, &GetServiceComponentArgs{
 // 			Project:                   aiven_kafka.Project1.Project,
-// 			ServiceName:               &opt0,
+// 			ServiceName:               pulumi.StringRef(aiven_kafka.Service1.Service_name),
 // 			Component:                 "kafka",
-// 			Route:                     &opt1,
-// 			KafkaAuthenticationMethod: &opt2,
+// 			Route:                     pulumi.StringRef("dynamic"),
+// 			KafkaAuthenticationMethod: pulumi.StringRef("certificate"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

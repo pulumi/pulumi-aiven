@@ -26,18 +26,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := 3
-// 		opt1 := 1
 // 		_, err := aiven.LookupKafkaTopic(ctx, &GetKafkaTopicArgs{
 // 			Project:     aiven_project.Myproject.Project,
 // 			ServiceName: aiven_service.Myservice.Service_name,
 // 			TopicName:   "<TOPIC_NAME>",
-// 			Partitions:  &opt0,
-// 			Replication: &opt1,
+// 			Partitions:  pulumi.IntRef(3),
+// 			Replication: pulumi.IntRef(1),
 // 			Config: GetKafkaTopicConfig{
-// 				FlushMs:                     "10",
-// 				UncleanLeaderElectionEnable: "true",
-// 				CleanupPolicy:               "compact",
+// 				FlushMs:                     pulumi.StringRef("10"),
+// 				UncleanLeaderElectionEnable: pulumi.StringRef("true"),
+// 				CleanupPolicy:               pulumi.StringRef("compact"),
 // 			},
 // 		}, nil)
 // 		if err != nil {
