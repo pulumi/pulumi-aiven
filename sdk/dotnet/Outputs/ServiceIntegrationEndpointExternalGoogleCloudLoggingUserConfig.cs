@@ -13,8 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig
     {
+        /// <summary>
+        /// Google Cloud Logging log id
+        /// </summary>
         public readonly string? LogId;
+        /// <summary>
+        /// GCP project id.
+        /// </summary>
         public readonly string? ProjectId;
+        /// <summary>
+        /// Google Service Account Credentials
+        /// </summary>
         public readonly string? ServiceAccountCredentials;
 
         [OutputConstructor]

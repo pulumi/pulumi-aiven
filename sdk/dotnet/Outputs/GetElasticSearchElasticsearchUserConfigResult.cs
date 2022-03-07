@@ -13,76 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetElasticSearchElasticsearchUserConfigResult
     {
-        /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the 
-        /// Aiven DNS name.
-        /// </summary>
         public readonly string? CustomDomain;
-        /// <summary>
-        /// Disable automatic replication factor 
-        /// adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
-        /// least to two nodes. Note: setting this to true increases a risk of data loss in case of
-        /// virtual machine failure.
-        /// </summary>
         public readonly string? DisableReplicationFactorAdjustment;
         /// <summary>
-        /// Elasticsearch specific server provided values.
+        /// Elasticsearch server provided values
         /// </summary>
         public readonly Outputs.GetElasticSearchElasticsearchUserConfigElasticsearchResult? Elasticsearch;
-        /// <summary>
-        /// Elasticsearch major version.
-        /// </summary>
         public readonly string? ElasticsearchVersion;
-        /// <summary>
-        /// Glob pattern and number of indexes matching that pattern to 
-        /// be kept.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetElasticSearchElasticsearchUserConfigIndexPatternResult> IndexPatterns;
-        /// <summary>
-        /// Template settings for all new indexe.
-        /// </summary>
         public readonly Outputs.GetElasticSearchElasticsearchUserConfigIndexTemplateResult? IndexTemplate;
-        /// <summary>
-        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? KeepIndexRefreshInterval;
-        /// <summary>
-        /// Allow clients to connect to kibana from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network.
-        /// </summary>
         public readonly Outputs.GetElasticSearchElasticsearchUserConfigKibanaResult? Kibana;
-        /// <summary>
-        /// Maximum number of indexes to keep before deleting the oldest one.
-        /// </summary>
         public readonly string? MaxIndexCount;
         public readonly string? OpensearchVersion;
-        /// <summary>
-        /// Allow access to selected service ports from private networks.
-        /// </summary>
         public readonly Outputs.GetElasticSearchElasticsearchUserConfigPrivateAccessResult? PrivateAccess;
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         public readonly Outputs.GetElasticSearchElasticsearchUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
-        /// <summary>
-        /// Name of another project to fork a service from. This has
-        /// effect only when a new service is being created.
-        /// </summary>
         public readonly string? ProjectToForkFrom;
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet.
-        /// </summary>
         public readonly Outputs.GetElasticSearchElasticsearchUserConfigPublicAccessResult? PublicAccess;
-        /// <summary>
-        /// Name of the basebackup to restore in forked service.
-        /// </summary>
         public readonly string? RecoveryBasebackupName;
-        /// <summary>
-        /// Name of another service to fork from. This has effect 
-        /// only when a new service is being created.
-        /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

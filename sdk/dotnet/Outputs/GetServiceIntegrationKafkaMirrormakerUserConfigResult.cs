@@ -14,11 +14,16 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationKafkaMirrormakerUserConfigResult
     {
         public readonly string? ClusterAlias;
+        public readonly Outputs.GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult? KafkaMirrormaker;
 
         [OutputConstructor]
-        private GetServiceIntegrationKafkaMirrormakerUserConfigResult(string? clusterAlias)
+        private GetServiceIntegrationKafkaMirrormakerUserConfigResult(
+            string? clusterAlias,
+
+            Outputs.GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult? kafkaMirrormaker)
         {
             ClusterAlias = clusterAlias;
+            KafkaMirrormaker = kafkaMirrormaker;
         }
     }
 }

@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceKafkaUserConfigPublicAccessResult
     {
+        /// <summary>
+        /// Kafka specific server provided values
+        /// </summary>
         public readonly string? Kafka;
+        /// <summary>
+        /// Kafka Connect specific server provided values
+        /// </summary>
         public readonly string? KafkaConnect;
         public readonly string? KafkaRest;
         public readonly string? Prometheus;

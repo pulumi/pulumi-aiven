@@ -13,34 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetPgPgUserConfigMigrationResult
     {
-        /// <summary>
-        /// Primary PostgreSQL database name
-        /// </summary>
         public readonly string? Dbname;
-        /// <summary>
-        /// PostgreSQL master node host IP or name
-        /// </summary>
         public readonly string? Host;
-        /// <summary>
-        /// Comma-separated list of databases, which should be ignored during
-        /// migration (supported by MySQL only at the moment)
-        /// </summary>
         public readonly string? IgnoreDbs;
-        /// <summary>
-        /// PostgreSQL admin user password
-        /// </summary>
+        public readonly string? Method;
         public readonly string? Password;
-        /// <summary>
-        /// PostgreSQL port
-        /// </summary>
         public readonly string? Port;
-        /// <summary>
-        /// the server where to migrate data from is secured with SSL.
-        /// </summary>
         public readonly string? Ssl;
-        /// <summary>
-        /// user name for authentication with the server where to migrate data from.
-        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]
@@ -50,6 +29,8 @@ namespace Pulumi.Aiven.Outputs
             string? host,
 
             string? ignoreDbs,
+
+            string? method,
 
             string? password,
 
@@ -62,6 +43,7 @@ namespace Pulumi.Aiven.Outputs
             Dbname = dbname;
             Host = host;
             IgnoreDbs = ignoreDbs;
+            Method = method;
             Password = password;
             Port = port;
             Ssl = ssl;

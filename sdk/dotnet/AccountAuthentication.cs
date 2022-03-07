@@ -10,81 +10,79 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Account Authentication Resource
-    /// 
     /// The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
     /// </summary>
     [AivenResourceType("aiven:index/accountAuthentication:AccountAuthentication")]
     public partial class AccountAuthentication : Pulumi.CustomResource
     {
         /// <summary>
-        /// is a unique account id.
+        /// The unique id of the account.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// account authentication id.
+        /// Account authentication id
         /// </summary>
         [Output("authenticationId")]
         public Output<string> AuthenticationId { get; private set; } = null!;
 
         /// <summary>
-        /// time of creation.
+        /// Time of creation
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// defines an authentication method enabled or not.
+        /// Status of account authentication method. The default value is `false`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// is an account authentication name.
+        /// The name of the account authentication.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// is a SAML Assertion Consumer Service URL.
+        /// SAML Assertion Consumer Service URL
         /// </summary>
         [Output("samlAcsUrl")]
         public Output<string> SamlAcsUrl { get; private set; } = null!;
 
         /// <summary>
-        /// is a SAML Certificate.
+        /// SAML Certificate
         /// </summary>
         [Output("samlCertificate")]
         public Output<string?> SamlCertificate { get; private set; } = null!;
 
         /// <summary>
-        /// is a SAML Entity ID.
+        /// SAML Entity id
         /// </summary>
         [Output("samlEntityId")]
         public Output<string?> SamlEntityId { get; private set; } = null!;
 
         /// <summary>
-        /// is a SAML Idp URL.
+        /// SAML Idp URL
         /// </summary>
         [Output("samlIdpUrl")]
         public Output<string?> SamlIdpUrl { get; private set; } = null!;
 
         /// <summary>
-        /// is a SAML Metadata URL.
+        /// SAML Metadata URL
         /// </summary>
         [Output("samlMetadataUrl")]
         public Output<string> SamlMetadataUrl { get; private set; } = null!;
 
         /// <summary>
-        /// is an account authentication type, can be one of `internal` and `saml`.
+        /// The account authentication type. The possible values are `internal` and `saml`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// time of last update.
+        /// Time of last update
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -136,76 +134,46 @@ namespace Pulumi.Aiven
     public sealed class AccountAuthenticationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// is a unique account id.
+        /// The unique id of the account.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// account authentication id.
-        /// </summary>
-        [Input("authenticationId")]
-        public Input<string>? AuthenticationId { get; set; }
-
-        /// <summary>
-        /// time of creation.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// defines an authentication method enabled or not.
+        /// Status of account authentication method. The default value is `false`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// is an account authentication name.
+        /// The name of the account authentication.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// is a SAML Assertion Consumer Service URL.
-        /// </summary>
-        [Input("samlAcsUrl")]
-        public Input<string>? SamlAcsUrl { get; set; }
-
-        /// <summary>
-        /// is a SAML Certificate.
+        /// SAML Certificate
         /// </summary>
         [Input("samlCertificate")]
         public Input<string>? SamlCertificate { get; set; }
 
         /// <summary>
-        /// is a SAML Entity ID.
+        /// SAML Entity id
         /// </summary>
         [Input("samlEntityId")]
         public Input<string>? SamlEntityId { get; set; }
 
         /// <summary>
-        /// is a SAML Idp URL.
+        /// SAML Idp URL
         /// </summary>
         [Input("samlIdpUrl")]
         public Input<string>? SamlIdpUrl { get; set; }
 
         /// <summary>
-        /// is a SAML Metadata URL.
-        /// </summary>
-        [Input("samlMetadataUrl")]
-        public Input<string>? SamlMetadataUrl { get; set; }
-
-        /// <summary>
-        /// is an account authentication type, can be one of `internal` and `saml`.
+        /// The account authentication type. The possible values are `internal` and `saml`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
-
-        /// <summary>
-        /// time of last update.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public AccountAuthenticationArgs()
         {
@@ -215,73 +183,73 @@ namespace Pulumi.Aiven
     public sealed class AccountAuthenticationState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// is a unique account id.
+        /// The unique id of the account.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// account authentication id.
+        /// Account authentication id
         /// </summary>
         [Input("authenticationId")]
         public Input<string>? AuthenticationId { get; set; }
 
         /// <summary>
-        /// time of creation.
+        /// Time of creation
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// defines an authentication method enabled or not.
+        /// Status of account authentication method. The default value is `false`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// is an account authentication name.
+        /// The name of the account authentication.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// is a SAML Assertion Consumer Service URL.
+        /// SAML Assertion Consumer Service URL
         /// </summary>
         [Input("samlAcsUrl")]
         public Input<string>? SamlAcsUrl { get; set; }
 
         /// <summary>
-        /// is a SAML Certificate.
+        /// SAML Certificate
         /// </summary>
         [Input("samlCertificate")]
         public Input<string>? SamlCertificate { get; set; }
 
         /// <summary>
-        /// is a SAML Entity ID.
+        /// SAML Entity id
         /// </summary>
         [Input("samlEntityId")]
         public Input<string>? SamlEntityId { get; set; }
 
         /// <summary>
-        /// is a SAML Idp URL.
+        /// SAML Idp URL
         /// </summary>
         [Input("samlIdpUrl")]
         public Input<string>? SamlIdpUrl { get; set; }
 
         /// <summary>
-        /// is a SAML Metadata URL.
+        /// SAML Metadata URL
         /// </summary>
         [Input("samlMetadataUrl")]
         public Input<string>? SamlMetadataUrl { get; set; }
 
         /// <summary>
-        /// is an account authentication type, can be one of `internal` and `saml`.
+        /// The account authentication type. The possible values are `internal` and `saml`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// time of last update.
+        /// Time of last update
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

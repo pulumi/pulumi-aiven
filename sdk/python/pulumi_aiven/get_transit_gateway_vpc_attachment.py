@@ -60,47 +60,65 @@ class GetTransitGatewayVpcAttachmentResult:
     @property
     @pulumi.getter(name="peerCloudAccount")
     def peer_cloud_account(self) -> str:
+        """
+        AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "peer_cloud_account")
 
     @property
     @pulumi.getter(name="peerRegion")
-    def peer_region(self) -> Optional[str]:
+    def peer_region(self) -> str:
         """
-        AWS region of the peered VPC (if not in the same region as Aiven VPC).
+        AWS region of the peered VPC (if not in the same region as Aiven VPC)
         """
         return pulumi.get(self, "peer_region")
 
     @property
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> str:
+        """
+        Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "peer_vpc")
 
     @property
     @pulumi.getter(name="peeringConnectionId")
     def peering_connection_id(self) -> str:
+        """
+        Cloud provider identifier for the peering connection if available
+        """
         return pulumi.get(self, "peering_connection_id")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        State of the peering connection
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="stateInfo")
     def state_info(self) -> Mapping[str, Any]:
+        """
+        State-specific help or error information
+        """
         return pulumi.get(self, "state_info")
 
     @property
     @pulumi.getter(name="userPeerNetworkCidrs")
-    def user_peer_network_cidrs(self) -> Optional[Sequence[str]]:
+    def user_peer_network_cidrs(self) -> Sequence[str]:
         """
-        List of private IPv4 ranges to route through the peering connection.
+        List of private IPv4 ranges to route through the peering connection
         """
         return pulumi.get(self, "user_peer_network_cidrs")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
+        """
+        The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -122,19 +140,11 @@ class AwaitableGetTransitGatewayVpcAttachmentResult(GetTransitGatewayVpcAttachme
 
 
 def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
-                                       peer_region: Optional[str] = None,
                                        peer_vpc: Optional[str] = None,
-                                       peering_connection_id: Optional[str] = None,
-                                       state: Optional[str] = None,
-                                       state_info: Optional[Mapping[str, Any]] = None,
-                                       user_peer_network_cidrs: Optional[Sequence[str]] = None,
                                        vpc_id: Optional[str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransitGatewayVpcAttachmentResult:
     """
-    ## # Transit Gateway VPC Attachment Data Source
-
-    The Transit Gateway VPC Attachment resource allows the creation and management Transit
-    Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+    The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
 
     ## Example Usage
 
@@ -148,20 +158,13 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
     ```
 
 
-    :param str peer_cloud_account: AWS account ID of the peered VPC.
-    :param str peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC).
-    :param str peer_vpc: Transit gateway ID
-    :param Sequence[str] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection.
-    :param str vpc_id: is the Aiven VPC the peering connection is associated with.
+    :param str peer_cloud_account: AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+    :param str peer_vpc: Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+    :param str vpc_id: The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['peerCloudAccount'] = peer_cloud_account
-    __args__['peerRegion'] = peer_region
     __args__['peerVpc'] = peer_vpc
-    __args__['peeringConnectionId'] = peering_connection_id
-    __args__['state'] = state
-    __args__['stateInfo'] = state_info
-    __args__['userPeerNetworkCidrs'] = user_peer_network_cidrs
     __args__['vpcId'] = vpc_id
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -183,19 +186,11 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
 
 @_utilities.lift_output_func(get_transit_gateway_vpc_attachment)
 def get_transit_gateway_vpc_attachment_output(peer_cloud_account: Optional[pulumi.Input[str]] = None,
-                                              peer_region: Optional[pulumi.Input[Optional[str]]] = None,
                                               peer_vpc: Optional[pulumi.Input[str]] = None,
-                                              peering_connection_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                              state: Optional[pulumi.Input[Optional[str]]] = None,
-                                              state_info: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
-                                              user_peer_network_cidrs: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                               vpc_id: Optional[pulumi.Input[str]] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitGatewayVpcAttachmentResult]:
     """
-    ## # Transit Gateway VPC Attachment Data Source
-
-    The Transit Gateway VPC Attachment resource allows the creation and management Transit
-    Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+    The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
 
     ## Example Usage
 
@@ -209,10 +204,8 @@ def get_transit_gateway_vpc_attachment_output(peer_cloud_account: Optional[pulum
     ```
 
 
-    :param str peer_cloud_account: AWS account ID of the peered VPC.
-    :param str peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC).
-    :param str peer_vpc: Transit gateway ID
-    :param Sequence[str] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection.
-    :param str vpc_id: is the Aiven VPC the peering connection is associated with.
+    :param str peer_cloud_account: AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+    :param str peer_vpc: Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+    :param str vpc_id: The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

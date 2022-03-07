@@ -54,6 +54,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("deadlockTimeout")]
         public Input<string>? DeadlockTimeout { get; set; }
 
+        [Input("defaultToastCompression")]
+        public Input<string>? DefaultToastCompression { get; set; }
+
         [Input("idleInTransactionSessionTimeout")]
         public Input<string>? IdleInTransactionSessionTimeout { get; set; }
 
@@ -95,6 +98,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("maxReplicationSlots")]
         public Input<string>? MaxReplicationSlots { get; set; }
+
+        [Input("maxSlotWalKeepSize")]
+        public Input<string>? MaxSlotWalKeepSize { get; set; }
 
         [Input("maxStackDepth")]
         public Input<string>? MaxStackDepth { get; set; }

@@ -15,8 +15,7 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? Connector;
         /// <summary>
-        /// List of tasks of a connector, each element contains `connector` 
-        /// (Related connector name) and `task` (Task id / number).
+        /// List of tasks of a connector.
         /// </summary>
         public readonly int? Task;
 

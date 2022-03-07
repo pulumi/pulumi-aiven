@@ -26,18 +26,17 @@ class MirrorMakerReplicationFlowArgs:
                  topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a MirrorMakerReplicationFlow resource.
-        :param pulumi.Input[bool] enable: enable of disable replication flows for a MirrorMaker service
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
-               Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
-        :param pulumi.Input[str] service_name: Service to link the kafka topic to
-        :param pulumi.Input[str] source_cluster: is a source cluster alias.
-        :param pulumi.Input[str] target_cluster: is a target cluster alias.
-        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled
-        :param pulumi.Input[str] replication_policy_class: Replication policy class
-        :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets
-        :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: is a list of topics and/or regular expressions to replicate.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
+        :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] source_cluster: Source cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[str] target_cluster: Target cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled. The default value is `false`.
+        :param pulumi.Input[str] replication_policy_class: Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+        :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets. The default value is `false`.
+        :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync. The default value is `1`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
         """
         pulumi.set(__self__, "enable", enable)
         pulumi.set(__self__, "project", project)
@@ -61,7 +60,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter
     def enable(self) -> pulumi.Input[bool]:
         """
-        enable of disable replication flows for a MirrorMaker service
+        Enable of disable replication flows for a service.
         """
         return pulumi.get(self, "enable")
 
@@ -73,8 +72,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
-        Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -86,7 +84,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service to link the kafka topic to
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -98,7 +96,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter(name="sourceCluster")
     def source_cluster(self) -> pulumi.Input[str]:
         """
-        is a source cluster alias.
+        Source cluster alias. Maximum Length: `128`.
         """
         return pulumi.get(self, "source_cluster")
 
@@ -110,7 +108,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter(name="targetCluster")
     def target_cluster(self) -> pulumi.Input[str]:
         """
-        is a target cluster alias.
+        Target cluster alias. Maximum Length: `128`.
         """
         return pulumi.get(self, "target_cluster")
 
@@ -122,7 +120,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter(name="emitHeartbeatsEnabled")
     def emit_heartbeats_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Emit heartbeats enabled
+        Emit heartbeats enabled. The default value is `false`.
         """
         return pulumi.get(self, "emit_heartbeats_enabled")
 
@@ -134,7 +132,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter(name="replicationPolicyClass")
     def replication_policy_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Replication policy class
+        Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         """
         return pulumi.get(self, "replication_policy_class")
 
@@ -146,7 +144,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter(name="syncGroupOffsetsEnabled")
     def sync_group_offsets_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Sync consumer group offsets
+        Sync consumer group offsets. The default value is `false`.
         """
         return pulumi.get(self, "sync_group_offsets_enabled")
 
@@ -158,7 +156,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
     def sync_group_offsets_interval_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        Frequency of consumer group offset sync
+        Frequency of consumer group offset sync. The default value is `1`.
         """
         return pulumi.get(self, "sync_group_offsets_interval_seconds")
 
@@ -170,7 +168,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter
     def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        is a list of topics and/or regular expressions to replicate.
+        List of topics and/or regular expressions to replicate
         """
         return pulumi.get(self, "topics")
 
@@ -182,7 +180,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter(name="topicsBlacklists")
     def topics_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        is a list of topics and/or regular expressions to not replicate.
+        List of topics and/or regular expressions to not replicate.
         """
         return pulumi.get(self, "topics_blacklists")
 
@@ -207,18 +205,17 @@ class _MirrorMakerReplicationFlowState:
                  topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.
-        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled
-        :param pulumi.Input[bool] enable: enable of disable replication flows for a MirrorMaker service
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
-               Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
-        :param pulumi.Input[str] replication_policy_class: Replication policy class
-        :param pulumi.Input[str] service_name: Service to link the kafka topic to
-        :param pulumi.Input[str] source_cluster: is a source cluster alias.
-        :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets
-        :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync
-        :param pulumi.Input[str] target_cluster: is a target cluster alias.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: is a list of topics and/or regular expressions to replicate.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
+        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled. The default value is `false`.
+        :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] replication_policy_class: Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+        :param pulumi.Input[str] service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] source_cluster: Source cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets. The default value is `false`.
+        :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync. The default value is `1`.
+        :param pulumi.Input[str] target_cluster: Target cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
         """
         if emit_heartbeats_enabled is not None:
             pulumi.set(__self__, "emit_heartbeats_enabled", emit_heartbeats_enabled)
@@ -247,7 +244,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter(name="emitHeartbeatsEnabled")
     def emit_heartbeats_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Emit heartbeats enabled
+        Emit heartbeats enabled. The default value is `false`.
         """
         return pulumi.get(self, "emit_heartbeats_enabled")
 
@@ -259,7 +256,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        enable of disable replication flows for a MirrorMaker service
+        Enable of disable replication flows for a service.
         """
         return pulumi.get(self, "enable")
 
@@ -271,8 +268,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
-        Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -284,7 +280,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter(name="replicationPolicyClass")
     def replication_policy_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Replication policy class
+        Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         """
         return pulumi.get(self, "replication_policy_class")
 
@@ -296,7 +292,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service to link the kafka topic to
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -308,7 +304,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter(name="sourceCluster")
     def source_cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        is a source cluster alias.
+        Source cluster alias. Maximum Length: `128`.
         """
         return pulumi.get(self, "source_cluster")
 
@@ -320,7 +316,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter(name="syncGroupOffsetsEnabled")
     def sync_group_offsets_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Sync consumer group offsets
+        Sync consumer group offsets. The default value is `false`.
         """
         return pulumi.get(self, "sync_group_offsets_enabled")
 
@@ -332,7 +328,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
     def sync_group_offsets_interval_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        Frequency of consumer group offset sync
+        Frequency of consumer group offset sync. The default value is `1`.
         """
         return pulumi.get(self, "sync_group_offsets_interval_seconds")
 
@@ -344,7 +340,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter(name="targetCluster")
     def target_cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        is a target cluster alias.
+        Target cluster alias. Maximum Length: `128`.
         """
         return pulumi.get(self, "target_cluster")
 
@@ -356,7 +352,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter
     def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        is a list of topics and/or regular expressions to replicate.
+        List of topics and/or regular expressions to replicate
         """
         return pulumi.get(self, "topics")
 
@@ -368,7 +364,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter(name="topicsBlacklists")
     def topics_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        is a list of topics and/or regular expressions to not replicate.
+        List of topics and/or regular expressions to not replicate.
         """
         return pulumi.get(self, "topics_blacklists")
 
@@ -395,10 +391,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                  topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        ## # MirrorMaker 2 Replication Flow Resource
-
-        The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2
-        Replication Flows on Aiven Cloud.
+        The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 Replication Flows on Aiven Cloud.
 
         ## Example Usage
 
@@ -422,18 +415,17 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled
-        :param pulumi.Input[bool] enable: enable of disable replication flows for a MirrorMaker service
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
-               Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
-        :param pulumi.Input[str] replication_policy_class: Replication policy class
-        :param pulumi.Input[str] service_name: Service to link the kafka topic to
-        :param pulumi.Input[str] source_cluster: is a source cluster alias.
-        :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets
-        :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync
-        :param pulumi.Input[str] target_cluster: is a target cluster alias.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: is a list of topics and/or regular expressions to replicate.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
+        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled. The default value is `false`.
+        :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] replication_policy_class: Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+        :param pulumi.Input[str] service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] source_cluster: Source cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets. The default value is `false`.
+        :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync. The default value is `1`.
+        :param pulumi.Input[str] target_cluster: Target cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
         """
         ...
     @overload
@@ -442,10 +434,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                  args: MirrorMakerReplicationFlowArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # MirrorMaker 2 Replication Flow Resource
-
-        The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2
-        Replication Flows on Aiven Cloud.
+        The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 Replication Flows on Aiven Cloud.
 
         ## Example Usage
 
@@ -554,18 +543,17 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled
-        :param pulumi.Input[bool] enable: enable of disable replication flows for a MirrorMaker service
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
-               Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
-        :param pulumi.Input[str] replication_policy_class: Replication policy class
-        :param pulumi.Input[str] service_name: Service to link the kafka topic to
-        :param pulumi.Input[str] source_cluster: is a source cluster alias.
-        :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets
-        :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync
-        :param pulumi.Input[str] target_cluster: is a target cluster alias.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: is a list of topics and/or regular expressions to replicate.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: is a list of topics and/or regular expressions to not replicate.
+        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled. The default value is `false`.
+        :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] replication_policy_class: Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+        :param pulumi.Input[str] service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] source_cluster: Source cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets. The default value is `false`.
+        :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync. The default value is `1`.
+        :param pulumi.Input[str] target_cluster: Target cluster alias. Maximum Length: `128`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -588,7 +576,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="emitHeartbeatsEnabled")
     def emit_heartbeats_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Emit heartbeats enabled
+        Emit heartbeats enabled. The default value is `false`.
         """
         return pulumi.get(self, "emit_heartbeats_enabled")
 
@@ -596,7 +584,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter
     def enable(self) -> pulumi.Output[bool]:
         """
-        enable of disable replication flows for a MirrorMaker service
+        Enable of disable replication flows for a service.
         """
         return pulumi.get(self, "enable")
 
@@ -604,8 +592,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
-        Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -613,7 +600,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="replicationPolicyClass")
     def replication_policy_class(self) -> pulumi.Output[Optional[str]]:
         """
-        Replication policy class
+        Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         """
         return pulumi.get(self, "replication_policy_class")
 
@@ -621,7 +608,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service to link the kafka topic to
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -629,7 +616,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="sourceCluster")
     def source_cluster(self) -> pulumi.Output[str]:
         """
-        is a source cluster alias.
+        Source cluster alias. Maximum Length: `128`.
         """
         return pulumi.get(self, "source_cluster")
 
@@ -637,7 +624,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="syncGroupOffsetsEnabled")
     def sync_group_offsets_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Sync consumer group offsets
+        Sync consumer group offsets. The default value is `false`.
         """
         return pulumi.get(self, "sync_group_offsets_enabled")
 
@@ -645,7 +632,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
     def sync_group_offsets_interval_seconds(self) -> pulumi.Output[Optional[int]]:
         """
-        Frequency of consumer group offset sync
+        Frequency of consumer group offset sync. The default value is `1`.
         """
         return pulumi.get(self, "sync_group_offsets_interval_seconds")
 
@@ -653,7 +640,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="targetCluster")
     def target_cluster(self) -> pulumi.Output[str]:
         """
-        is a target cluster alias.
+        Target cluster alias. Maximum Length: `128`.
         """
         return pulumi.get(self, "target_cluster")
 
@@ -661,7 +648,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter
     def topics(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        is a list of topics and/or regular expressions to replicate.
+        List of topics and/or regular expressions to replicate
         """
         return pulumi.get(self, "topics")
 
@@ -669,7 +656,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="topicsBlacklists")
     def topics_blacklists(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        is a list of topics and/or regular expressions to not replicate.
+        List of topics and/or regular expressions to not replicate.
         """
         return pulumi.get(self, "topics_blacklists")
 

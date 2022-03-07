@@ -13,62 +13,26 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaKafkaUserConfigResult
     {
-        /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-        /// </summary>
         public readonly string? CustomDomain;
-        /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Kafka server provided values:
+        /// Kafka server provided values
         /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaResult? Kafka;
-        /// <summary>
-        /// Kafka authentication methods
-        /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethodsResult? KafkaAuthenticationMethods;
-        /// <summary>
-        /// Enable kafka_connect
-        /// </summary>
         public readonly string? KafkaConnect;
-        /// <summary>
-        /// Kafka Connect configuration values
-        /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaConnectConfigResult? KafkaConnectConfig;
-        /// <summary>
-        /// Enable kafka_rest
-        /// </summary>
         public readonly string? KafkaRest;
-        /// <summary>
-        /// Kafka-REST configuration
-        /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaRestConfigResult? KafkaRestConfig;
-        /// <summary>
-        /// Kafka major version
-        /// </summary>
         public readonly string? KafkaVersion;
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigPrivateAccessResult? PrivateAccess;
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigPublicAccessResult? PublicAccess;
-        /// <summary>
-        /// Enable schema_registry
-        /// </summary>
         public readonly string? SchemaRegistry;
-        /// <summary>
-        /// Schema Registry configuration
-        /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigSchemaRegistryConfigResult? SchemaRegistryConfig;
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

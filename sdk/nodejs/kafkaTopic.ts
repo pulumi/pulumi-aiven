@@ -5,6 +5,34 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytesttopic = new aiven.KafkaTopic("mytesttopic", {
+ *     project: aiven_project.myproject.project,
+ *     serviceName: aiven_kafka.myservice.service_name,
+ *     topicName: "<TOPIC_NAME>",
+ *     partitions: 5,
+ *     replication: 3,
+ *     terminationProtection: true,
+ *     config: {
+ *         flushMs: 10,
+ *         uncleanLeaderElectionEnable: true,
+ *         cleanupPolicy: "compact,delete",
+ *     },
+ *     timeouts: [{
+ *         create: "1m",
+ *         read: "5m",
+ *     }],
+ * });
+ * ```
+ */
 export class KafkaTopic extends pulumi.CustomResource {
     /**
      * Get an existing KafkaTopic resource's state with the given name, ID, and optional extra
@@ -34,7 +62,7 @@ export class KafkaTopic extends pulumi.CustomResource {
     }
 
     /**
-     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
+     * **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
      *
      * @deprecated use config.cleanup_policy instead
      */
@@ -44,45 +72,41 @@ export class KafkaTopic extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<outputs.KafkaTopicConfig | undefined>;
     /**
-     * Minimum required nodes in-sync replicas 
-     * (ISR) to produce to a partition.
+     * **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
      *
      * @deprecated use config.min_insync_replicas instead
      */
     public readonly minimumInSyncReplicas!: pulumi.Output<number | undefined>;
     /**
-     * Number of partitions to create in the topic.
+     * The number of partitions to create in the topic.
      */
     public readonly partitions!: pulumi.Output<number>;
     /**
-     * and `serviceName` - (Required) define the project and service the topic belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
-     * These properties cannot be changed once the service is created. Doing so will result in
-     * the topic being deleted and new one created instead.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Replication factor for the topic.
+     * The replication factor for the topic.
      */
     public readonly replication!: pulumi.Output<number>;
     /**
-     * retention.bytes value
+     * **DEPRECATED use config.retention_bytes instead** Retention bytes.
      *
      * @deprecated use config.retention_bytes instead
      */
     public readonly retentionBytes!: pulumi.Output<number | undefined>;
     /**
-     * Retention period in hours, if -1 it is infinite.
+     * **DEPRECATED use config.retention_ms instead** Retention period (hours).
      *
      * @deprecated use config.retention_ms instead
      */
     public readonly retentionHours!: pulumi.Output<number | undefined>;
     /**
-     * Service to link the kafka topic to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Kafka Topic tag
+     * Kafka Topic tag.
      */
     public readonly tags!: pulumi.Output<outputs.KafkaTopicTag[] | undefined>;
     /**
@@ -91,9 +115,7 @@ export class KafkaTopic extends pulumi.CustomResource {
      */
     public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * is the actual name of the topic account. This propery cannot be changed
-     * once the service is created. Doing so will result in the topic being deleted and new one
-     * created instead.
+     * The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly topicName!: pulumi.Output<string>;
 
@@ -162,7 +184,7 @@ export class KafkaTopic extends pulumi.CustomResource {
  */
 export interface KafkaTopicState {
     /**
-     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
+     * **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
      *
      * @deprecated use config.cleanup_policy instead
      */
@@ -172,45 +194,41 @@ export interface KafkaTopicState {
      */
     config?: pulumi.Input<inputs.KafkaTopicConfig>;
     /**
-     * Minimum required nodes in-sync replicas 
-     * (ISR) to produce to a partition.
+     * **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
      *
      * @deprecated use config.min_insync_replicas instead
      */
     minimumInSyncReplicas?: pulumi.Input<number>;
     /**
-     * Number of partitions to create in the topic.
+     * The number of partitions to create in the topic.
      */
     partitions?: pulumi.Input<number>;
     /**
-     * and `serviceName` - (Required) define the project and service the topic belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
-     * These properties cannot be changed once the service is created. Doing so will result in
-     * the topic being deleted and new one created instead.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Replication factor for the topic.
+     * The replication factor for the topic.
      */
     replication?: pulumi.Input<number>;
     /**
-     * retention.bytes value
+     * **DEPRECATED use config.retention_bytes instead** Retention bytes.
      *
      * @deprecated use config.retention_bytes instead
      */
     retentionBytes?: pulumi.Input<number>;
     /**
-     * Retention period in hours, if -1 it is infinite.
+     * **DEPRECATED use config.retention_ms instead** Retention period (hours).
      *
      * @deprecated use config.retention_ms instead
      */
     retentionHours?: pulumi.Input<number>;
     /**
-     * Service to link the kafka topic to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Kafka Topic tag
+     * Kafka Topic tag.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
     /**
@@ -219,9 +237,7 @@ export interface KafkaTopicState {
      */
     terminationProtection?: pulumi.Input<boolean>;
     /**
-     * is the actual name of the topic account. This propery cannot be changed
-     * once the service is created. Doing so will result in the topic being deleted and new one
-     * created instead.
+     * The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
      */
     topicName?: pulumi.Input<string>;
 }
@@ -231,7 +247,7 @@ export interface KafkaTopicState {
  */
 export interface KafkaTopicArgs {
     /**
-     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
+     * **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
      *
      * @deprecated use config.cleanup_policy instead
      */
@@ -241,45 +257,41 @@ export interface KafkaTopicArgs {
      */
     config?: pulumi.Input<inputs.KafkaTopicConfig>;
     /**
-     * Minimum required nodes in-sync replicas 
-     * (ISR) to produce to a partition.
+     * **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
      *
      * @deprecated use config.min_insync_replicas instead
      */
     minimumInSyncReplicas?: pulumi.Input<number>;
     /**
-     * Number of partitions to create in the topic.
+     * The number of partitions to create in the topic.
      */
     partitions: pulumi.Input<number>;
     /**
-     * and `serviceName` - (Required) define the project and service the topic belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
-     * These properties cannot be changed once the service is created. Doing so will result in
-     * the topic being deleted and new one created instead.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Replication factor for the topic.
+     * The replication factor for the topic.
      */
     replication: pulumi.Input<number>;
     /**
-     * retention.bytes value
+     * **DEPRECATED use config.retention_bytes instead** Retention bytes.
      *
      * @deprecated use config.retention_bytes instead
      */
     retentionBytes?: pulumi.Input<number>;
     /**
-     * Retention period in hours, if -1 it is infinite.
+     * **DEPRECATED use config.retention_ms instead** Retention period (hours).
      *
      * @deprecated use config.retention_ms instead
      */
     retentionHours?: pulumi.Input<number>;
     /**
-     * Service to link the kafka topic to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Kafka Topic tag
+     * Kafka Topic tag.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
     /**
@@ -288,9 +300,7 @@ export interface KafkaTopicArgs {
      */
     terminationProtection?: pulumi.Input<boolean>;
     /**
-     * is the actual name of the topic account. This propery cannot be changed
-     * once the service is created. Doing so will result in the topic being deleted and new one
-     * created instead.
+     * The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
      */
     topicName: pulumi.Input<string>;
 }

@@ -462,8 +462,6 @@ class BillingGroup(pulumi.CustomResource):
                  zip_code: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # Billing Group Resource
-
         The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
 
         ## Example Usage
@@ -503,8 +501,6 @@ class BillingGroup(pulumi.CustomResource):
                  args: Optional[BillingGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # Billing Group Resource
-
         The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
 
         ## Example Usage

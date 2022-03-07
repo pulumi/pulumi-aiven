@@ -43,13 +43,16 @@ class GetAccountTeamResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The unique account id
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        time of creation.
+        Time of creation
         """
         return pulumi.get(self, "create_time")
 
@@ -64,13 +67,16 @@ class GetAccountTeamResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The account team name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="teamId")
     def team_id(self) -> str:
         """
-        is an auto-generated unique account team id.
+        The auto-generated unique account team id
         """
         return pulumi.get(self, "team_id")
 
@@ -78,7 +84,7 @@ class GetAccountTeamResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        time of last update.
+        Time of last update
         """
         return pulumi.get(self, "update_time")
 
@@ -98,29 +104,18 @@ class AwaitableGetAccountTeamResult(GetAccountTeamResult):
 
 
 def get_account_team(account_id: Optional[str] = None,
-                     create_time: Optional[str] = None,
                      name: Optional[str] = None,
-                     team_id: Optional[str] = None,
-                     update_time: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountTeamResult:
     """
-    ## # Account Team Data Source
-
     The Account Team data source provides information about the existing Account Team.
 
 
-    :param str account_id: is a unique account id.
-    :param str create_time: time of creation.
-    :param str name: defines an account team name.
-    :param str team_id: is an auto-generated unique account team id.
-    :param str update_time: time of last update.
+    :param str account_id: The unique account id
+    :param str name: The account team name
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    __args__['createTime'] = create_time
     __args__['name'] = name
-    __args__['teamId'] = team_id
-    __args__['updateTime'] = update_time
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -138,21 +133,13 @@ def get_account_team(account_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_account_team)
 def get_account_team_output(account_id: Optional[pulumi.Input[str]] = None,
-                            create_time: Optional[pulumi.Input[Optional[str]]] = None,
                             name: Optional[pulumi.Input[str]] = None,
-                            team_id: Optional[pulumi.Input[Optional[str]]] = None,
-                            update_time: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountTeamResult]:
     """
-    ## # Account Team Data Source
-
     The Account Team data source provides information about the existing Account Team.
 
 
-    :param str account_id: is a unique account id.
-    :param str create_time: time of creation.
-    :param str name: defines an account team name.
-    :param str team_id: is an auto-generated unique account team id.
-    :param str update_time: time of last update.
+    :param str account_id: The unique account id
+    :param str name: The account team name
     """
     ...

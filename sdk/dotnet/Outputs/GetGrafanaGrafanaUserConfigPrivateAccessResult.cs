@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetGrafanaGrafanaUserConfigPrivateAccessResult
     {
         /// <summary>
-        /// Grafana specific server provided values.
+        /// Grafana server provided values
         /// </summary>
         public readonly string? Grafana;
 

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Project User Resource
-    /// 
     /// The Project User resource allows the creation and management of Aiven Project Users.
     /// 
     /// ## Example Usage
@@ -39,28 +37,25 @@ namespace Pulumi.Aiven
     public partial class ProjectUser : Pulumi.CustomResource
     {
         /// <summary>
-        /// is a computed property tells whether the user has accepted the request to join
-        /// the project; adding user to a project sends an invitation to the target user and the
-        /// actual membership is only created once the user accepts the invitation. This property
-        /// cannot be set, only read.
+        /// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
         /// </summary>
         [Output("accepted")]
         public Output<bool> Accepted { get; private set; } = null!;
 
         /// <summary>
-        /// identifies the email address of the user.
+        /// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// defines the access level the user has to the project.
+        /// Project membership type. The possible values are `admin`, `developer` and `operator`.
         /// </summary>
         [Output("memberType")]
         public Output<string> MemberType { get; private set; } = null!;
 
         /// <summary>
-        /// defines the project the user is a member of.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -112,19 +107,19 @@ namespace Pulumi.Aiven
     public sealed class ProjectUserArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// identifies the email address of the user.
+        /// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// defines the access level the user has to the project.
+        /// Project membership type. The possible values are `admin`, `developer` and `operator`.
         /// </summary>
         [Input("memberType", required: true)]
         public Input<string> MemberType { get; set; } = null!;
 
         /// <summary>
-        /// defines the project the user is a member of.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -137,28 +132,25 @@ namespace Pulumi.Aiven
     public sealed class ProjectUserState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// is a computed property tells whether the user has accepted the request to join
-        /// the project; adding user to a project sends an invitation to the target user and the
-        /// actual membership is only created once the user accepts the invitation. This property
-        /// cannot be set, only read.
+        /// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
         /// </summary>
         [Input("accepted")]
         public Input<bool>? Accepted { get; set; }
 
         /// <summary>
-        /// identifies the email address of the user.
+        /// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// defines the access level the user has to the project.
+        /// Project membership type. The possible values are `admin`, `developer` and `operator`.
         /// </summary>
         [Input("memberType")]
         public Input<string>? MemberType { get; set; }
 
         /// <summary>
-        /// defines the project the user is a member of.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

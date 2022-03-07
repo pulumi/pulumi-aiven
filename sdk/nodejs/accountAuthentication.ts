@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Account Authentication Resource
- *
  * The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
  */
 export class AccountAuthentication extends pulumi.CustomResource {
@@ -38,53 +36,53 @@ export class AccountAuthentication extends pulumi.CustomResource {
     }
 
     /**
-     * is a unique account id.
+     * The unique id of the account.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * account authentication id.
+     * Account authentication id
      */
-    public readonly authenticationId!: pulumi.Output<string>;
+    public /*out*/ readonly authenticationId!: pulumi.Output<string>;
     /**
-     * time of creation.
+     * Time of creation
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * defines an authentication method enabled or not.
+     * Status of account authentication method. The default value is `false`.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * is an account authentication name.
+     * The name of the account authentication.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * is a SAML Assertion Consumer Service URL.
+     * SAML Assertion Consumer Service URL
      */
-    public readonly samlAcsUrl!: pulumi.Output<string>;
+    public /*out*/ readonly samlAcsUrl!: pulumi.Output<string>;
     /**
-     * is a SAML Certificate.
+     * SAML Certificate
      */
     public readonly samlCertificate!: pulumi.Output<string | undefined>;
     /**
-     * is a SAML Entity ID.
+     * SAML Entity id
      */
     public readonly samlEntityId!: pulumi.Output<string | undefined>;
     /**
-     * is a SAML Idp URL.
+     * SAML Idp URL
      */
     public readonly samlIdpUrl!: pulumi.Output<string | undefined>;
     /**
-     * is a SAML Metadata URL.
+     * SAML Metadata URL
      */
-    public readonly samlMetadataUrl!: pulumi.Output<string>;
+    public /*out*/ readonly samlMetadataUrl!: pulumi.Output<string>;
     /**
-     * is an account authentication type, can be one of `internal` and `saml`.
+     * The account authentication type. The possible values are `internal` and `saml`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * time of last update.
+     * Time of last update
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a AccountAuthentication resource with the given unique name, arguments, and options.
@@ -120,17 +118,17 @@ export class AccountAuthentication extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["authenticationId"] = args ? args.authenticationId : undefined;
-            resourceInputs["createTime"] = args ? args.createTime : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["samlAcsUrl"] = args ? args.samlAcsUrl : undefined;
             resourceInputs["samlCertificate"] = args ? args.samlCertificate : undefined;
             resourceInputs["samlEntityId"] = args ? args.samlEntityId : undefined;
             resourceInputs["samlIdpUrl"] = args ? args.samlIdpUrl : undefined;
-            resourceInputs["samlMetadataUrl"] = args ? args.samlMetadataUrl : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["updateTime"] = args ? args.updateTime : undefined;
+            resourceInputs["authenticationId"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["samlAcsUrl"] = undefined /*out*/;
+            resourceInputs["samlMetadataUrl"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountAuthentication.__pulumiType, name, resourceInputs, opts);
@@ -142,51 +140,51 @@ export class AccountAuthentication extends pulumi.CustomResource {
  */
 export interface AccountAuthenticationState {
     /**
-     * is a unique account id.
+     * The unique id of the account.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * account authentication id.
+     * Account authentication id
      */
     authenticationId?: pulumi.Input<string>;
     /**
-     * time of creation.
+     * Time of creation
      */
     createTime?: pulumi.Input<string>;
     /**
-     * defines an authentication method enabled or not.
+     * Status of account authentication method. The default value is `false`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * is an account authentication name.
+     * The name of the account authentication.
      */
     name?: pulumi.Input<string>;
     /**
-     * is a SAML Assertion Consumer Service URL.
+     * SAML Assertion Consumer Service URL
      */
     samlAcsUrl?: pulumi.Input<string>;
     /**
-     * is a SAML Certificate.
+     * SAML Certificate
      */
     samlCertificate?: pulumi.Input<string>;
     /**
-     * is a SAML Entity ID.
+     * SAML Entity id
      */
     samlEntityId?: pulumi.Input<string>;
     /**
-     * is a SAML Idp URL.
+     * SAML Idp URL
      */
     samlIdpUrl?: pulumi.Input<string>;
     /**
-     * is a SAML Metadata URL.
+     * SAML Metadata URL
      */
     samlMetadataUrl?: pulumi.Input<string>;
     /**
-     * is an account authentication type, can be one of `internal` and `saml`.
+     * The account authentication type. The possible values are `internal` and `saml`.
      */
     type?: pulumi.Input<string>;
     /**
-     * time of last update.
+     * Time of last update
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -196,51 +194,31 @@ export interface AccountAuthenticationState {
  */
 export interface AccountAuthenticationArgs {
     /**
-     * is a unique account id.
+     * The unique id of the account.
      */
     accountId: pulumi.Input<string>;
     /**
-     * account authentication id.
-     */
-    authenticationId?: pulumi.Input<string>;
-    /**
-     * time of creation.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
-     * defines an authentication method enabled or not.
+     * Status of account authentication method. The default value is `false`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * is an account authentication name.
+     * The name of the account authentication.
      */
     name?: pulumi.Input<string>;
     /**
-     * is a SAML Assertion Consumer Service URL.
-     */
-    samlAcsUrl?: pulumi.Input<string>;
-    /**
-     * is a SAML Certificate.
+     * SAML Certificate
      */
     samlCertificate?: pulumi.Input<string>;
     /**
-     * is a SAML Entity ID.
+     * SAML Entity id
      */
     samlEntityId?: pulumi.Input<string>;
     /**
-     * is a SAML Idp URL.
+     * SAML Idp URL
      */
     samlIdpUrl?: pulumi.Input<string>;
     /**
-     * is a SAML Metadata URL.
-     */
-    samlMetadataUrl?: pulumi.Input<string>;
-    /**
-     * is an account authentication type, can be one of `internal` and `saml`.
+     * The account authentication type. The possible values are `internal` and `saml`.
      */
     type: pulumi.Input<string>;
-    /**
-     * time of last update.
-     */
-    updateTime?: pulumi.Input<string>;
 }

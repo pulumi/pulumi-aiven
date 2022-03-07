@@ -20,12 +20,11 @@ class OpenSearchAclRuleArgs:
                  username: pulumi.Input[str]):
         """
         The set of arguments for constructing a OpenSearchAclRule resource.
-        :param pulumi.Input[str] index: Elasticsearch index pattern
-        :param pulumi.Input[str] permission: is the Opensearch permission, list of supported permissions: 
-               `deny`, `admin`, `read`, `readwrite`, `write`.
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the ACL belongs to.
-        :param pulumi.Input[str] service_name: Service to link the Opensearch ACLs to
-        :param pulumi.Input[str] username: and `index` - (Required) define the username and index the ACL rule should apply to.
+        :param pulumi.Input[str] index: The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] permission: The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         pulumi.set(__self__, "index", index)
         pulumi.set(__self__, "permission", permission)
@@ -37,7 +36,7 @@ class OpenSearchAclRuleArgs:
     @pulumi.getter
     def index(self) -> pulumi.Input[str]:
         """
-        Elasticsearch index pattern
+        The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "index")
 
@@ -49,8 +48,7 @@ class OpenSearchAclRuleArgs:
     @pulumi.getter
     def permission(self) -> pulumi.Input[str]:
         """
-        is the Opensearch permission, list of supported permissions: 
-        `deny`, `admin`, `read`, `readwrite`, `write`.
+        The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
         """
         return pulumi.get(self, "permission")
 
@@ -62,7 +60,7 @@ class OpenSearchAclRuleArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        and `service_name` - (Required) define the project and service the ACL belongs to.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -74,7 +72,7 @@ class OpenSearchAclRuleArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service to link the Opensearch ACLs to
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -86,7 +84,7 @@ class OpenSearchAclRuleArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
-        and `index` - (Required) define the username and index the ACL rule should apply to.
+        The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -105,12 +103,11 @@ class _OpenSearchAclRuleState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OpenSearchAclRule resources.
-        :param pulumi.Input[str] index: Elasticsearch index pattern
-        :param pulumi.Input[str] permission: is the Opensearch permission, list of supported permissions: 
-               `deny`, `admin`, `read`, `readwrite`, `write`.
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the ACL belongs to.
-        :param pulumi.Input[str] service_name: Service to link the Opensearch ACLs to
-        :param pulumi.Input[str] username: and `index` - (Required) define the username and index the ACL rule should apply to.
+        :param pulumi.Input[str] index: The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] permission: The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         if index is not None:
             pulumi.set(__self__, "index", index)
@@ -127,7 +124,7 @@ class _OpenSearchAclRuleState:
     @pulumi.getter
     def index(self) -> Optional[pulumi.Input[str]]:
         """
-        Elasticsearch index pattern
+        The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "index")
 
@@ -139,8 +136,7 @@ class _OpenSearchAclRuleState:
     @pulumi.getter
     def permission(self) -> Optional[pulumi.Input[str]]:
         """
-        is the Opensearch permission, list of supported permissions: 
-        `deny`, `admin`, `read`, `readwrite`, `write`.
+        The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
         """
         return pulumi.get(self, "permission")
 
@@ -152,7 +148,7 @@ class _OpenSearchAclRuleState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        and `service_name` - (Required) define the project and service the ACL belongs to.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -164,7 +160,7 @@ class _OpenSearchAclRuleState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service to link the Opensearch ACLs to
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -176,7 +172,7 @@ class _OpenSearchAclRuleState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        and `index` - (Required) define the username and index the ACL rule should apply to.
+        The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -197,8 +193,6 @@ class OpenSearchAclRule(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # Opensearch ACL Rule Resource
-
         The Opensearch ACL Rule resource models a single ACL Rule for an Aiven Opensearch service.
 
         ## Example Usage
@@ -207,51 +201,51 @@ class OpenSearchAclRule(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        es_user = aiven.ServiceUser("esUser",
+        os_user = aiven.ServiceUser("osUser",
             project=var["aiven_project_name"],
-            service_name=aiven_opensearch["es_test"]["service_name"],
+            service_name=aiven_opensearch["os_test"]["service_name"],
             username="documentation-user-1")
-        es_user2 = aiven.ServiceUser("esUser2",
+        os_user2 = aiven.ServiceUser("osUser2",
             project=var["aiven_project_name"],
-            service_name=aiven_opensearch["es_test"]["service_name"],
+            service_name=aiven_opensearch["os_test"]["service_name"],
             username="documentation-user-2")
-        es_acls_config = aiven.OpenSearchAclConfig("esAclsConfig",
+        os_acls_config = aiven.OpenSearchAclConfig("osAclsConfig",
             project=var["aiven_project_name"],
-            service_name=aiven_opensearch["es_test"]["service_name"],
+            service_name=aiven_opensearch["os_test"]["service_name"],
             enabled=True,
             extended_acl=False)
         acl_rules = [
             {
-                "username": es_user.username,
+                "username": os_user.username,
                 "index": "index2",
                 "permission": "readwrite",
             },
             {
-                "username": es_user.username,
+                "username": os_user.username,
                 "index": "index3",
                 "permission": "read",
             },
             {
-                "username": es_user.username,
+                "username": os_user.username,
                 "index": "index5",
                 "permission": "deny",
             },
             {
-                "username": es_user2.username,
+                "username": os_user2.username,
                 "index": "index3",
                 "permission": "write",
             },
             {
-                "username": es_user2.username,
+                "username": os_user2.username,
                 "index": "index7",
                 "permission": "readwrite",
             },
         ]
-        es_acl_rule = []
+        os_acl_rule = []
         for range in [{"key": k, "value": v} for [k, v] in enumerate({i: v for i, v in acl_rules})]:
-            es_acl_rule.append(aiven.OpenSearchAclRule(f"esAclRule-{range['key']}",
-                project=es_acls_config.project,
-                service_name=es_acls_config.service_name,
+            os_acl_rule.append(aiven.OpenSearchAclRule(f"osAclRule-{range['key']}",
+                project=os_acls_config.project,
+                service_name=os_acls_config.service_name,
                 username=range["value"]["username"],
                 index=range["value"]["index"],
                 permission=range["value"]["permission"]))
@@ -259,12 +253,11 @@ class OpenSearchAclRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] index: Elasticsearch index pattern
-        :param pulumi.Input[str] permission: is the Opensearch permission, list of supported permissions: 
-               `deny`, `admin`, `read`, `readwrite`, `write`.
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the ACL belongs to.
-        :param pulumi.Input[str] service_name: Service to link the Opensearch ACLs to
-        :param pulumi.Input[str] username: and `index` - (Required) define the username and index the ACL rule should apply to.
+        :param pulumi.Input[str] index: The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] permission: The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         ...
     @overload
@@ -273,8 +266,6 @@ class OpenSearchAclRule(pulumi.CustomResource):
                  args: OpenSearchAclRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # Opensearch ACL Rule Resource
-
         The Opensearch ACL Rule resource models a single ACL Rule for an Aiven Opensearch service.
 
         ## Example Usage
@@ -283,51 +274,51 @@ class OpenSearchAclRule(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        es_user = aiven.ServiceUser("esUser",
+        os_user = aiven.ServiceUser("osUser",
             project=var["aiven_project_name"],
-            service_name=aiven_opensearch["es_test"]["service_name"],
+            service_name=aiven_opensearch["os_test"]["service_name"],
             username="documentation-user-1")
-        es_user2 = aiven.ServiceUser("esUser2",
+        os_user2 = aiven.ServiceUser("osUser2",
             project=var["aiven_project_name"],
-            service_name=aiven_opensearch["es_test"]["service_name"],
+            service_name=aiven_opensearch["os_test"]["service_name"],
             username="documentation-user-2")
-        es_acls_config = aiven.OpenSearchAclConfig("esAclsConfig",
+        os_acls_config = aiven.OpenSearchAclConfig("osAclsConfig",
             project=var["aiven_project_name"],
-            service_name=aiven_opensearch["es_test"]["service_name"],
+            service_name=aiven_opensearch["os_test"]["service_name"],
             enabled=True,
             extended_acl=False)
         acl_rules = [
             {
-                "username": es_user.username,
+                "username": os_user.username,
                 "index": "index2",
                 "permission": "readwrite",
             },
             {
-                "username": es_user.username,
+                "username": os_user.username,
                 "index": "index3",
                 "permission": "read",
             },
             {
-                "username": es_user.username,
+                "username": os_user.username,
                 "index": "index5",
                 "permission": "deny",
             },
             {
-                "username": es_user2.username,
+                "username": os_user2.username,
                 "index": "index3",
                 "permission": "write",
             },
             {
-                "username": es_user2.username,
+                "username": os_user2.username,
                 "index": "index7",
                 "permission": "readwrite",
             },
         ]
-        es_acl_rule = []
+        os_acl_rule = []
         for range in [{"key": k, "value": v} for [k, v] in enumerate({i: v for i, v in acl_rules})]:
-            es_acl_rule.append(aiven.OpenSearchAclRule(f"esAclRule-{range['key']}",
-                project=es_acls_config.project,
-                service_name=es_acls_config.service_name,
+            os_acl_rule.append(aiven.OpenSearchAclRule(f"osAclRule-{range['key']}",
+                project=os_acls_config.project,
+                service_name=os_acls_config.service_name,
                 username=range["value"]["username"],
                 index=range["value"]["index"],
                 permission=range["value"]["permission"]))
@@ -402,12 +393,11 @@ class OpenSearchAclRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] index: Elasticsearch index pattern
-        :param pulumi.Input[str] permission: is the Opensearch permission, list of supported permissions: 
-               `deny`, `admin`, `read`, `readwrite`, `write`.
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the ACL belongs to.
-        :param pulumi.Input[str] service_name: Service to link the Opensearch ACLs to
-        :param pulumi.Input[str] username: and `index` - (Required) define the username and index the ACL rule should apply to.
+        :param pulumi.Input[str] index: The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] permission: The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -424,7 +414,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
     @pulumi.getter
     def index(self) -> pulumi.Output[str]:
         """
-        Elasticsearch index pattern
+        The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "index")
 
@@ -432,8 +422,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
     @pulumi.getter
     def permission(self) -> pulumi.Output[str]:
         """
-        is the Opensearch permission, list of supported permissions: 
-        `deny`, `admin`, `read`, `readwrite`, `write`.
+        The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
         """
         return pulumi.get(self, "permission")
 
@@ -441,7 +430,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        and `service_name` - (Required) define the project and service the ACL belongs to.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -449,7 +438,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service to link the Opensearch ACLs to
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -457,7 +446,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        and `index` - (Required) define the username and index the ACL rule should apply to.
+        The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 

@@ -15,6 +15,9 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? CustomDomain;
         public readonly string? DisableReplicationFactorAdjustment;
+        /// <summary>
+        /// Elasticsearch specific server provided values
+        /// </summary>
         public readonly Outputs.GetServiceElasticsearchUserConfigElasticsearchResult? Elasticsearch;
         public readonly string? ElasticsearchVersion;
         public readonly ImmutableArray<Outputs.GetServiceElasticsearchUserConfigIndexPatternResult> IndexPatterns;
@@ -30,6 +33,9 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetServiceElasticsearchUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryBasebackupName;
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

@@ -13,9 +13,6 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ElasticSearchElasticsearch
     {
-        /// <summary>
-        /// URI for Kibana frontend.
-        /// </summary>
         public readonly string? KibanaUri;
 
         [OutputConstructor]

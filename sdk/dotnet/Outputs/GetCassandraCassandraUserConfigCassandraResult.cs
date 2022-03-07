@@ -13,16 +13,7 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetCassandraCassandraUserConfigCassandraResult
     {
-        /// <summary>
-        /// Fail any multiple-partition batch exceeding this value.
-        /// 50kb (10x warn threshold) by default.
-        /// </summary>
         public readonly string? BatchSizeFailThresholdInKb;
-        /// <summary>
-        /// Log a warning message on any multiple-partition
-        /// batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing
-        /// the size of this thresholdas it can lead to node instability.
-        /// </summary>
         public readonly string? BatchSizeWarnThresholdInKb;
 
         [OutputConstructor]

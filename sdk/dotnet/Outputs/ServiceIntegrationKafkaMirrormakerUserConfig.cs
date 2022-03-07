@@ -13,12 +13,23 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationKafkaMirrormakerUserConfig
     {
+        /// <summary>
+        /// Kafka cluster alias
+        /// </summary>
         public readonly string? ClusterAlias;
+        /// <summary>
+        /// Kafka MirrorMaker configuration values
+        /// </summary>
+        public readonly Outputs.ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker? KafkaMirrormaker;
 
         [OutputConstructor]
-        private ServiceIntegrationKafkaMirrormakerUserConfig(string? clusterAlias)
+        private ServiceIntegrationKafkaMirrormakerUserConfig(
+            string? clusterAlias,
+
+            Outputs.ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker? kafkaMirrormaker)
         {
             ClusterAlias = clusterAlias;
+            KafkaMirrormaker = kafkaMirrormaker;
         }
     }
 }

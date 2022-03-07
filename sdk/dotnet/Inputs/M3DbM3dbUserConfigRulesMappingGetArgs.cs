@@ -14,42 +14,31 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("aggregations")]
         private InputList<string>? _aggregations;
-
-        /// <summary>
-        /// List of aggregations to be applied
-        /// </summary>
         public InputList<string> Aggregations
         {
             get => _aggregations ?? (_aggregations = new InputList<string>());
             set => _aggregations = value;
         }
 
-        /// <summary>
-        /// Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
-        /// </summary>
         [Input("drop")]
         public Input<string>? Drop { get; set; }
 
-        /// <summary>
-        /// The metrics to be used with this particular rule; Matching metric names with wildcards (using
-        /// __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
-        /// can be used at start of value for negation, and multiple filters can be supplied using space as separator.
-        /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
-        /// <summary>
-        /// The name of the namespace
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("namespaces")]
+        private InputList<string>? _namespaces;
+        public InputList<string> Namespaces
+        {
+            get => _namespaces ?? (_namespaces = new InputList<string>());
+            set => _namespaces = value;
+        }
+
         [Input("tags")]
         private InputList<Inputs.M3DbM3dbUserConfigRulesMappingTagGetArgs>? _tags;
-
-        /// <summary>
-        /// List of tags to be appended to matching metrics.
-        /// </summary>
         public InputList<Inputs.M3DbM3dbUserConfigRulesMappingTagGetArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.M3DbM3dbUserConfigRulesMappingTagGetArgs>());

@@ -14,26 +14,27 @@ namespace Pulumi.Aiven.Outputs
     public sealed class M3DbM3dbUserConfig
     {
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// Custom domain
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// IP filter
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
         /// M3 limits
         /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigLimits? Limits;
+        /// <summary>
+        /// M3 major version (deprecated, use m3db_version)
+        /// </summary>
         public readonly string? M3Version;
         /// <summary>
-        /// Enables access to Graphite Carbon 
-        /// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
-        /// metrics are written to aggregated namespaces only.
+        /// Enable Graphite ingestion using Carbon plaintext protocol
         /// </summary>
         public readonly string? M3coordinatorEnableGraphiteCarbonIngest;
         /// <summary>
-        /// M3 major version
+        /// M3 major version (the minimum compatible version)
         /// </summary>
         public readonly string? M3dbVersion;
         /// <summary>
@@ -41,29 +42,28 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigNamespace> Namespaces;
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has
-        /// effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigPublicAccess? PublicAccess;
         /// <summary>
-        /// Mapping rules allow more granular use of aggregation, not simply sending 
-        /// everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
-        /// rules will be sent to it and nothing else.
+        /// M3 rules
         /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigRules? Rules;
         /// <summary>
-        /// Name of another service to fork from. This has effect only 
-        /// when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

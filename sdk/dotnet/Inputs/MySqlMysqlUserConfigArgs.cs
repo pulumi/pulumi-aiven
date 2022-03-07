@@ -13,37 +13,31 @@ namespace Pulumi.Aiven.Inputs
     public sealed class MySqlMysqlUserConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Custom password for admin user. Defaults to random string. 
-        /// This must be set only when a new service is being created.
+        /// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
         /// </summary>
         [Input("adminPassword")]
         public Input<string>? AdminPassword { get; set; }
 
         /// <summary>
-        /// Custom username for admin user. This must be set only when a 
-        /// new service is being created.
+        /// Custom username for admin user. This must be set only when a new service is being created.
         /// </summary>
         [Input("adminUsername")]
         public Input<string>? AdminUsername { get; set; }
 
         /// <summary>
-        /// The hour of day (in UTC) when backup for the service is started. 
-        /// New backup is only started if previous backup has already completed.
+        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         /// </summary>
         [Input("backupHour")]
         public Input<string>? BackupHour { get; set; }
 
         /// <summary>
-        /// The minute of an hour when backup for the service is started. 
-        /// New backup is only started if previous backup has already completed.
+        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         /// </summary>
         [Input("backupMinute")]
         public Input<string>? BackupMinute { get; set; }
 
         /// <summary>
-        /// The minimum amount of time in seconds to keep binlog entries 
-        /// before deletion. This may be extended for services that require binlog entries for longer than the
-        /// default for example if using the MySQL Debezium Kafka connector.
+        /// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
         /// </summary>
         [Input("binlogRetentionPeriod")]
         public Input<string>? BinlogRetentionPeriod { get; set; }
@@ -52,7 +46,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// IP filter
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -67,8 +61,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.MySqlMysqlUserConfigMigrationArgs>? Migration { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to mysql from the public internet for service 
-        /// nodes that are in a project VPC or another type of private network
+        /// mysql.conf configuration values
         /// </summary>
         [Input("mysql")]
         public Input<Inputs.MySqlMysqlUserConfigMysqlArgs>? Mysql { get; set; }
@@ -92,8 +85,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.MySqlMysqlUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Name of another project to fork a service from. This has
-        /// effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
         /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
@@ -105,19 +97,20 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.MySqlMysqlUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// Recovery target time when forking a service. This has effect 
-        /// only when a new service is being created.
+        /// Recovery target time when forking a service. This has effect only when a new service is being created.
         /// </summary>
         [Input("recoveryTargetTime")]
         public Input<string>? RecoveryTargetTime { get; set; }
 
         /// <summary>
-        /// Name of another service to fork from. This has effect only when 
-        /// a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

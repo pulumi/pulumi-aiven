@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class InfluxDbInfluxdbUserConfig
     {
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+        /// Custom domain
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.InfluxDbInfluxdbUserConfigInfluxdb? Influxdb;
         /// <summary>
-        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// IP filter
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -34,8 +34,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has 
-        /// effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
@@ -47,10 +46,12 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RecoveryBasebackupName;
         /// <summary>
-        /// Name of another service to fork from. This has effect 
-        /// only when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

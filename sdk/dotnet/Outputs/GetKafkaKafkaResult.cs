@@ -13,25 +13,10 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaKafkaResult
     {
-        /// <summary>
-        /// The Kafka client certificate
-        /// </summary>
         public readonly string AccessCert;
-        /// <summary>
-        /// The Kafka client certificate key
-        /// </summary>
         public readonly string AccessKey;
-        /// <summary>
-        /// The Kafka Connect URI, if any
-        /// </summary>
         public readonly string ConnectUri;
-        /// <summary>
-        /// The Kafka REST URI, if any
-        /// </summary>
         public readonly string RestUri;
-        /// <summary>
-        /// The Schema Registry URI, if any
-        /// </summary>
         public readonly string SchemaRegistryUri;
 
         [OutputConstructor]

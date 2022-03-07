@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Kafka connectors Resource
-//
 // The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
 //
 // ## Example Usage
@@ -21,22 +19,26 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewKafkaConnector(ctx, "kafka-es-con1", &aiven.KafkaConnectorArgs{
+// 		_, err := aiven.NewKafkaConnector(ctx, "kafka-os-con1", &aiven.KafkaConnectorArgs{
 // 			Project:       pulumi.Any(aiven_project.Kafka - con - project1.Project),
 // 			ServiceName:   pulumi.Any(aiven_kafka.Kafka - service1.Service_name),
-// 			ConnectorName: pulumi.String("kafka-es-con1"),
+// 			ConnectorName: pulumi.String("kafka-os-con1"),
 // 			Config: pulumi.StringMap{
-// 				"topics":          pulumi.Any(aiven_kafka_topic.Kafka - topic1.Topic_name),
-// 				"connector.class": pulumi.String("io.aiven.connect.elasticsearch.ElasticsearchSinkConnector"),
-// 				"type.name":       pulumi.String("es-connector"),
-// 				"name":            pulumi.String("kafka-es-con1"),
-// 				"connection.url":  pulumi.Any(aiven_elasticsearch.Es - service1.Service_uri),
+// 				"topics":              pulumi.Any(aiven_kafka_topic.Kafka - topic1.Topic_name),
+// 				"connector.class":     pulumi.String("io.aiven.kafka.connect.opensearch.OpensearchSinkConnector"),
+// 				"type.name":           pulumi.String("os-connector"),
+// 				"name":                pulumi.String("kafka-os-con1"),
+// 				"connection.url":      pulumi.String(fmt.Sprintf("%v%v%v", aiven_opensearch.Os-service1.Service_host, ":", aiven_opensearch.Os-service1.Service_port)),
+// 				"connection.username": pulumi.Any(aiven_opensearch.Os - service1.Service_username),
+// 				"connection.password": pulumi.Any(aiven_opensearch.Os - service1.Service_password),
 // 			},
 // 		})
 // 		if err != nil {
@@ -46,39 +48,30 @@ import (
 // 	})
 // }
 // ```
-//
-// * `project` and `serviceName`- (Required) define the project and service the Kafka Connectors belongs to.
-// They should be defined using reference as shown above to set up dependencies correctly.
-//
-// * `connectorName`- (Required) is the Kafka connector name.
-//
-// * `config`- (Required)is the Kafka Connector configuration parameters, where `topics`, `connector.class` and `name`
-// are required parameters but the rest of them are connector type specific.
 type KafkaConnector struct {
 	pulumi.CustomResourceState
 
-	// Kafka Connector configuration parameters
+	// The Kafka Connector configuration parameters.
 	Config pulumi.StringMapOutput `pulumi:"config"`
-	// Kafka connector name
+	// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
 	ConnectorName pulumi.StringOutput `pulumi:"connectorName"`
-	// Kafka connector author.
+	// The Kafka connector author.
 	PluginAuthor pulumi.StringOutput `pulumi:"pluginAuthor"`
-	// Kafka connector Java class.
+	// The Kafka connector Java class.
 	PluginClass pulumi.StringOutput `pulumi:"pluginClass"`
-	// Kafka connector documentation URL.
+	// The Kafka connector documentation URL.
 	PluginDocUrl pulumi.StringOutput `pulumi:"pluginDocUrl"`
-	// Kafka connector title.
+	// The Kafka connector title.
 	PluginTitle pulumi.StringOutput `pulumi:"pluginTitle"`
-	// Kafka connector type.
+	// The Kafka connector type.
 	PluginType pulumi.StringOutput `pulumi:"pluginType"`
-	// Kafka connector version.
+	// The version of the kafka connector.
 	PluginVersion pulumi.StringOutput `pulumi:"pluginVersion"`
-	// Project to link the kafka connector to
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Service to link the kafka connector to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// List of tasks of a connector, each element contains `connector`
-	// (Related connector name) and `task` (Task id / number).
+	// List of tasks of a connector.
 	Tasks KafkaConnectorTaskArrayOutput `pulumi:"tasks"`
 }
 
@@ -123,54 +116,52 @@ func GetKafkaConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaConnector resources.
 type kafkaConnectorState struct {
-	// Kafka Connector configuration parameters
+	// The Kafka Connector configuration parameters.
 	Config map[string]string `pulumi:"config"`
-	// Kafka connector name
+	// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
 	ConnectorName *string `pulumi:"connectorName"`
-	// Kafka connector author.
+	// The Kafka connector author.
 	PluginAuthor *string `pulumi:"pluginAuthor"`
-	// Kafka connector Java class.
+	// The Kafka connector Java class.
 	PluginClass *string `pulumi:"pluginClass"`
-	// Kafka connector documentation URL.
+	// The Kafka connector documentation URL.
 	PluginDocUrl *string `pulumi:"pluginDocUrl"`
-	// Kafka connector title.
+	// The Kafka connector title.
 	PluginTitle *string `pulumi:"pluginTitle"`
-	// Kafka connector type.
+	// The Kafka connector type.
 	PluginType *string `pulumi:"pluginType"`
-	// Kafka connector version.
+	// The version of the kafka connector.
 	PluginVersion *string `pulumi:"pluginVersion"`
-	// Project to link the kafka connector to
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Service to link the kafka connector to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// List of tasks of a connector, each element contains `connector`
-	// (Related connector name) and `task` (Task id / number).
+	// List of tasks of a connector.
 	Tasks []KafkaConnectorTask `pulumi:"tasks"`
 }
 
 type KafkaConnectorState struct {
-	// Kafka Connector configuration parameters
+	// The Kafka Connector configuration parameters.
 	Config pulumi.StringMapInput
-	// Kafka connector name
+	// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
 	ConnectorName pulumi.StringPtrInput
-	// Kafka connector author.
+	// The Kafka connector author.
 	PluginAuthor pulumi.StringPtrInput
-	// Kafka connector Java class.
+	// The Kafka connector Java class.
 	PluginClass pulumi.StringPtrInput
-	// Kafka connector documentation URL.
+	// The Kafka connector documentation URL.
 	PluginDocUrl pulumi.StringPtrInput
-	// Kafka connector title.
+	// The Kafka connector title.
 	PluginTitle pulumi.StringPtrInput
-	// Kafka connector type.
+	// The Kafka connector type.
 	PluginType pulumi.StringPtrInput
-	// Kafka connector version.
+	// The version of the kafka connector.
 	PluginVersion pulumi.StringPtrInput
-	// Project to link the kafka connector to
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Service to link the kafka connector to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// List of tasks of a connector, each element contains `connector`
-	// (Related connector name) and `task` (Task id / number).
+	// List of tasks of a connector.
 	Tasks KafkaConnectorTaskArrayInput
 }
 
@@ -179,25 +170,25 @@ func (KafkaConnectorState) ElementType() reflect.Type {
 }
 
 type kafkaConnectorArgs struct {
-	// Kafka Connector configuration parameters
+	// The Kafka Connector configuration parameters.
 	Config map[string]string `pulumi:"config"`
-	// Kafka connector name
+	// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
 	ConnectorName string `pulumi:"connectorName"`
-	// Project to link the kafka connector to
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Service to link the kafka connector to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a KafkaConnector resource.
 type KafkaConnectorArgs struct {
-	// Kafka Connector configuration parameters
+	// The Kafka Connector configuration parameters.
 	Config pulumi.StringMapInput
-	// Kafka connector name
+	// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
 	ConnectorName pulumi.StringInput
-	// Project to link the kafka connector to
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Service to link the kafka connector to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
 }
 

@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetKafkaConnectResult',
@@ -22,22 +21,37 @@ class GetKafkaConnectResult:
     """
     A collection of values returned by getKafkaConnect.
     """
-    def __init__(__self__, cloud_name=None, components=None, id=None, kafka_connect=None, kafka_connect_user_config=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
+    def __init__(__self__, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, kafka_connect_user_configs=None, kafka_connects=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, termination_protection=None):
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
         pulumi.set(__self__, "cloud_name", cloud_name)
         if components and not isinstance(components, list):
             raise TypeError("Expected argument 'components' to be a list")
         pulumi.set(__self__, "components", components)
+        if disk_space and not isinstance(disk_space, str):
+            raise TypeError("Expected argument 'disk_space' to be a str")
+        pulumi.set(__self__, "disk_space", disk_space)
+        if disk_space_cap and not isinstance(disk_space_cap, str):
+            raise TypeError("Expected argument 'disk_space_cap' to be a str")
+        pulumi.set(__self__, "disk_space_cap", disk_space_cap)
+        if disk_space_default and not isinstance(disk_space_default, str):
+            raise TypeError("Expected argument 'disk_space_default' to be a str")
+        pulumi.set(__self__, "disk_space_default", disk_space_default)
+        if disk_space_step and not isinstance(disk_space_step, str):
+            raise TypeError("Expected argument 'disk_space_step' to be a str")
+        pulumi.set(__self__, "disk_space_step", disk_space_step)
+        if disk_space_used and not isinstance(disk_space_used, str):
+            raise TypeError("Expected argument 'disk_space_used' to be a str")
+        pulumi.set(__self__, "disk_space_used", disk_space_used)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if kafka_connect and not isinstance(kafka_connect, dict):
-            raise TypeError("Expected argument 'kafka_connect' to be a dict")
-        pulumi.set(__self__, "kafka_connect", kafka_connect)
-        if kafka_connect_user_config and not isinstance(kafka_connect_user_config, dict):
-            raise TypeError("Expected argument 'kafka_connect_user_config' to be a dict")
-        pulumi.set(__self__, "kafka_connect_user_config", kafka_connect_user_config)
+        if kafka_connect_user_configs and not isinstance(kafka_connect_user_configs, list):
+            raise TypeError("Expected argument 'kafka_connect_user_configs' to be a list")
+        pulumi.set(__self__, "kafka_connect_user_configs", kafka_connect_user_configs)
+        if kafka_connects and not isinstance(kafka_connects, list):
+            raise TypeError("Expected argument 'kafka_connects' to be a list")
+        pulumi.set(__self__, "kafka_connects", kafka_connects)
         if maintenance_window_dow and not isinstance(maintenance_window_dow, str):
             raise TypeError("Expected argument 'maintenance_window_dow' to be a str")
         pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
@@ -80,28 +94,68 @@ class GetKafkaConnectResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if static_ips and not isinstance(static_ips, list):
+            raise TypeError("Expected argument 'static_ips' to be a list")
+        pulumi.set(__self__, "static_ips", static_ips)
         if termination_protection and not isinstance(termination_protection, bool):
             raise TypeError("Expected argument 'termination_protection' to be a bool")
         pulumi.set(__self__, "termination_protection", termination_protection)
 
     @property
     @pulumi.getter(name="cloudName")
-    def cloud_name(self) -> Optional[str]:
+    def cloud_name(self) -> str:
         """
-        defines where the cloud provider and region where the service is hosted
-        in. This can be changed freely after service is created. Changing the value will trigger
-        a potentially lengthy migration process for the service. Format is cloud provider name
-        (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        specific region name. These are documented on each Cloud provider's own support articles,
-        like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         """
         return pulumi.get(self, "cloud_name")
 
     @property
     @pulumi.getter
     def components(self) -> Sequence['outputs.GetKafkaConnectComponentResult']:
+        """
+        Service component information objects
+        """
         return pulumi.get(self, "components")
+
+    @property
+    @pulumi.getter(name="diskSpace")
+    def disk_space(self) -> str:
+        """
+        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        """
+        return pulumi.get(self, "disk_space")
+
+    @property
+    @pulumi.getter(name="diskSpaceCap")
+    def disk_space_cap(self) -> str:
+        """
+        The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        """
+        return pulumi.get(self, "disk_space_cap")
+
+    @property
+    @pulumi.getter(name="diskSpaceDefault")
+    def disk_space_default(self) -> str:
+        """
+        The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        """
+        return pulumi.get(self, "disk_space_default")
+
+    @property
+    @pulumi.getter(name="diskSpaceStep")
+    def disk_space_step(self) -> str:
+        """
+        The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        """
+        return pulumi.get(self, "disk_space_step")
+
+    @property
+    @pulumi.getter(name="diskSpaceUsed")
+    def disk_space_used(self) -> str:
+        """
+        Disk space that service is currently using
+        """
+        return pulumi.get(self, "disk_space_used")
 
     @property
     @pulumi.getter
@@ -112,69 +166,58 @@ class GetKafkaConnectResult:
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="kafkaConnect")
-    def kafka_connect(self) -> 'outputs.GetKafkaConnectKafkaConnectResult':
+    @pulumi.getter(name="kafkaConnectUserConfigs")
+    def kafka_connect_user_configs(self) -> Sequence['outputs.GetKafkaConnectKafkaConnectUserConfigResult']:
         """
-        Kafka Connect specific server provided values.
+        Kafka*connect user configurable settings
         """
-        return pulumi.get(self, "kafka_connect")
+        return pulumi.get(self, "kafka_connect_user_configs")
 
     @property
-    @pulumi.getter(name="kafkaConnectUserConfig")
-    def kafka_connect_user_config(self) -> Optional['outputs.GetKafkaConnectKafkaConnectUserConfigResult']:
+    @pulumi.getter(name="kafkaConnects")
+    def kafka_connects(self) -> Sequence['outputs.GetKafkaConnectKafkaConnectResult']:
         """
-        defines Kafka Connect specific additional configuration options. 
-        The following configuration options available:
+        Kafka Connect server provided values
         """
-        return pulumi.get(self, "kafka_connect_user_config")
+        return pulumi.get(self, "kafka_connects")
 
     @property
     @pulumi.getter(name="maintenanceWindowDow")
-    def maintenance_window_dow(self) -> Optional[str]:
+    def maintenance_window_dow(self) -> str:
         """
-        day of week when maintenance operations should be performed. 
-        On monday, tuesday, wednesday, etc.
+        Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
 
     @property
     @pulumi.getter(name="maintenanceWindowTime")
-    def maintenance_window_time(self) -> Optional[str]:
+    def maintenance_window_time(self) -> str:
         """
-        time of day when maintenance operations should be performed. 
-        UTC time in HH:mm:ss format.
+        Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")
 
     @property
     @pulumi.getter
-    def plan(self) -> Optional[str]:
+    def plan(self) -> str:
         """
-        defines what kind of computing resources are allocated for the service. It can
-        be changed after creation, though there are some restrictions when going to a smaller
-        plan such as the new plan must have sufficient amount of disk space to store all current
-        data and switching to a plan with fewer nodes might not be supported. The basic plan
-        names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="projectVpcId")
-    def project_vpc_id(self) -> Optional[str]:
+    def project_vpc_id(self) -> str:
         """
-        optionally specifies the VPC the service should run in. If the value
-        is not set the service is not run inside a VPC. When set, the value should be given as a
-        reference as shown above to set up dependencies correctly and the VPC must be in the same
-        cloud and region as the service itself. Project can be freely moved to and from VPC after
-        creation but doing so triggers migration to new servers so the operation can take
-        significant amount of time to complete if the service has a lot of data.
+        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
 
@@ -182,25 +225,31 @@ class GetKafkaConnectResult:
     @pulumi.getter(name="serviceHost")
     def service_host(self) -> str:
         """
-        Kafka Connect hostname.
+        The hostname of the service.
         """
         return pulumi.get(self, "service_host")
 
     @property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> Optional[Sequence['outputs.GetKafkaConnectServiceIntegrationResult']]:
+    def service_integrations(self) -> Sequence['outputs.GetKafkaConnectServiceIntegrationResult']:
+        """
+        Service integrations to specify when creating a service. Not applied after initial service creation
+        """
         return pulumi.get(self, "service_integrations")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="servicePassword")
     def service_password(self) -> str:
         """
-        Password used for connecting to the Kafka Connect service, if applicable.
+        Password used for connecting to the service, if applicable
         """
         return pulumi.get(self, "service_password")
 
@@ -208,20 +257,23 @@ class GetKafkaConnectResult:
     @pulumi.getter(name="servicePort")
     def service_port(self) -> int:
         """
-        Kafka Connect port.
+        The port of the service
         """
         return pulumi.get(self, "service_port")
 
     @property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> str:
+        """
+        Aiven internal service type code
+        """
         return pulumi.get(self, "service_type")
 
     @property
     @pulumi.getter(name="serviceUri")
     def service_uri(self) -> str:
         """
-        URI for connecting to the Kafka Connect service.
+        URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         """
         return pulumi.get(self, "service_uri")
 
@@ -229,7 +281,7 @@ class GetKafkaConnectResult:
     @pulumi.getter(name="serviceUsername")
     def service_username(self) -> str:
         """
-        Username used for connecting to the Kafka Connect service, if applicable.
+        Username used for connecting to the service, if applicable
         """
         return pulumi.get(self, "service_username")
 
@@ -237,19 +289,23 @@ class GetKafkaConnectResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        Service state.
+        Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         """
         return pulumi.get(self, "state")
 
     @property
-    @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> Optional[bool]:
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> Sequence[str]:
         """
-        prevents the service from being deleted. It is recommended to
-        set this to `true` for all production services to prevent unintentional service
-        deletion. This does not shield against deleting databases or topics but for services
-        with backups much of the content can at least be restored from backup in case accidental
-        deletion is done.
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
+        return pulumi.get(self, "static_ips")
+
+    @property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> bool:
+        """
+        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         return pulumi.get(self, "termination_protection")
 
@@ -262,9 +318,14 @@ class AwaitableGetKafkaConnectResult(GetKafkaConnectResult):
         return GetKafkaConnectResult(
             cloud_name=self.cloud_name,
             components=self.components,
+            disk_space=self.disk_space,
+            disk_space_cap=self.disk_space_cap,
+            disk_space_default=self.disk_space_default,
+            disk_space_step=self.disk_space_step,
+            disk_space_used=self.disk_space_used,
             id=self.id,
-            kafka_connect=self.kafka_connect,
-            kafka_connect_user_config=self.kafka_connect_user_config,
+            kafka_connect_user_configs=self.kafka_connect_user_configs,
+            kafka_connects=self.kafka_connects,
             maintenance_window_dow=self.maintenance_window_dow,
             maintenance_window_time=self.maintenance_window_time,
             plan=self.plan,
@@ -279,32 +340,14 @@ class AwaitableGetKafkaConnectResult(GetKafkaConnectResult):
             service_uri=self.service_uri,
             service_username=self.service_username,
             state=self.state,
+            static_ips=self.static_ips,
             termination_protection=self.termination_protection)
 
 
-def get_kafka_connect(cloud_name: Optional[str] = None,
-                      components: Optional[Sequence[pulumi.InputType['GetKafkaConnectComponentArgs']]] = None,
-                      kafka_connect: Optional[pulumi.InputType['GetKafkaConnectKafkaConnectArgs']] = None,
-                      kafka_connect_user_config: Optional[pulumi.InputType['GetKafkaConnectKafkaConnectUserConfigArgs']] = None,
-                      maintenance_window_dow: Optional[str] = None,
-                      maintenance_window_time: Optional[str] = None,
-                      plan: Optional[str] = None,
-                      project: Optional[str] = None,
-                      project_vpc_id: Optional[str] = None,
-                      service_host: Optional[str] = None,
-                      service_integrations: Optional[Sequence[pulumi.InputType['GetKafkaConnectServiceIntegrationArgs']]] = None,
+def get_kafka_connect(project: Optional[str] = None,
                       service_name: Optional[str] = None,
-                      service_password: Optional[str] = None,
-                      service_port: Optional[int] = None,
-                      service_type: Optional[str] = None,
-                      service_uri: Optional[str] = None,
-                      service_username: Optional[str] = None,
-                      state: Optional[str] = None,
-                      termination_protection: Optional[bool] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaConnectResult:
     """
-    ## # Kafka Connect Data Source
-
     The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
 
     ## Example Usage
@@ -318,71 +361,12 @@ def get_kafka_connect(cloud_name: Optional[str] = None,
     ```
 
 
-    :param str cloud_name: defines where the cloud provider and region where the service is hosted
-           in. This can be changed freely after service is created. Changing the value will trigger
-           a potentially lengthy migration process for the service. Format is cloud provider name
-           (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-           specific region name. These are documented on each Cloud provider's own support articles,
-           like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-           [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-    :param pulumi.InputType['GetKafkaConnectKafkaConnectArgs'] kafka_connect: Kafka Connect specific server provided values.
-    :param pulumi.InputType['GetKafkaConnectKafkaConnectUserConfigArgs'] kafka_connect_user_config: defines Kafka Connect specific additional configuration options. 
-           The following configuration options available:
-    :param str maintenance_window_dow: day of week when maintenance operations should be performed. 
-           On monday, tuesday, wednesday, etc.
-    :param str maintenance_window_time: time of day when maintenance operations should be performed. 
-           UTC time in HH:mm:ss format.
-    :param str plan: defines what kind of computing resources are allocated for the service. It can
-           be changed after creation, though there are some restrictions when going to a smaller
-           plan such as the new plan must have sufficient amount of disk space to store all current
-           data and switching to a plan with fewer nodes might not be supported. The basic plan
-           names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-           (roughly) the amount of memory on each node (also other attributes like number of CPUs
-           and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-    :param str project: identifies the project the service belongs to. To set up proper dependency
-           between the project and the service, refer to the project as shown in the above example.
-           Project cannot be changed later without destroying and re-creating the service.
-    :param str project_vpc_id: optionally specifies the VPC the service should run in. If the value
-           is not set the service is not run inside a VPC. When set, the value should be given as a
-           reference as shown above to set up dependencies correctly and the VPC must be in the same
-           cloud and region as the service itself. Project can be freely moved to and from VPC after
-           creation but doing so triggers migration to new servers so the operation can take
-           significant amount of time to complete if the service has a lot of data.
-    :param str service_host: Kafka Connect hostname.
-    :param str service_name: specifies the actual name of the service. The name cannot be changed
-           later without destroying and re-creating the service so name should be picked based on
-           intended service usage rather than current attributes.
-    :param str service_password: Password used for connecting to the Kafka Connect service, if applicable.
-    :param int service_port: Kafka Connect port.
-    :param str service_uri: URI for connecting to the Kafka Connect service.
-    :param str service_username: Username used for connecting to the Kafka Connect service, if applicable.
-    :param str state: Service state.
-    :param bool termination_protection: prevents the service from being deleted. It is recommended to
-           set this to `true` for all production services to prevent unintentional service
-           deletion. This does not shield against deleting databases or topics but for services
-           with backups much of the content can at least be restored from backup in case accidental
-           deletion is done.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     __args__ = dict()
-    __args__['cloudName'] = cloud_name
-    __args__['components'] = components
-    __args__['kafkaConnect'] = kafka_connect
-    __args__['kafkaConnectUserConfig'] = kafka_connect_user_config
-    __args__['maintenanceWindowDow'] = maintenance_window_dow
-    __args__['maintenanceWindowTime'] = maintenance_window_time
-    __args__['plan'] = plan
     __args__['project'] = project
-    __args__['projectVpcId'] = project_vpc_id
-    __args__['serviceHost'] = service_host
-    __args__['serviceIntegrations'] = service_integrations
     __args__['serviceName'] = service_name
-    __args__['servicePassword'] = service_password
-    __args__['servicePort'] = service_port
-    __args__['serviceType'] = service_type
-    __args__['serviceUri'] = service_uri
-    __args__['serviceUsername'] = service_username
-    __args__['state'] = state
-    __args__['terminationProtection'] = termination_protection
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -392,9 +376,14 @@ def get_kafka_connect(cloud_name: Optional[str] = None,
     return AwaitableGetKafkaConnectResult(
         cloud_name=__ret__.cloud_name,
         components=__ret__.components,
+        disk_space=__ret__.disk_space,
+        disk_space_cap=__ret__.disk_space_cap,
+        disk_space_default=__ret__.disk_space_default,
+        disk_space_step=__ret__.disk_space_step,
+        disk_space_used=__ret__.disk_space_used,
         id=__ret__.id,
-        kafka_connect=__ret__.kafka_connect,
-        kafka_connect_user_config=__ret__.kafka_connect_user_config,
+        kafka_connect_user_configs=__ret__.kafka_connect_user_configs,
+        kafka_connects=__ret__.kafka_connects,
         maintenance_window_dow=__ret__.maintenance_window_dow,
         maintenance_window_time=__ret__.maintenance_window_time,
         plan=__ret__.plan,
@@ -409,33 +398,15 @@ def get_kafka_connect(cloud_name: Optional[str] = None,
         service_uri=__ret__.service_uri,
         service_username=__ret__.service_username,
         state=__ret__.state,
+        static_ips=__ret__.static_ips,
         termination_protection=__ret__.termination_protection)
 
 
 @_utilities.lift_output_func(get_kafka_connect)
-def get_kafka_connect_output(cloud_name: Optional[pulumi.Input[Optional[str]]] = None,
-                             components: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKafkaConnectComponentArgs']]]]] = None,
-                             kafka_connect: Optional[pulumi.Input[Optional[pulumi.InputType['GetKafkaConnectKafkaConnectArgs']]]] = None,
-                             kafka_connect_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetKafkaConnectKafkaConnectUserConfigArgs']]]] = None,
-                             maintenance_window_dow: Optional[pulumi.Input[Optional[str]]] = None,
-                             maintenance_window_time: Optional[pulumi.Input[Optional[str]]] = None,
-                             plan: Optional[pulumi.Input[Optional[str]]] = None,
-                             project: Optional[pulumi.Input[str]] = None,
-                             project_vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                             service_host: Optional[pulumi.Input[Optional[str]]] = None,
-                             service_integrations: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKafkaConnectServiceIntegrationArgs']]]]] = None,
+def get_kafka_connect_output(project: Optional[pulumi.Input[str]] = None,
                              service_name: Optional[pulumi.Input[str]] = None,
-                             service_password: Optional[pulumi.Input[Optional[str]]] = None,
-                             service_port: Optional[pulumi.Input[Optional[int]]] = None,
-                             service_type: Optional[pulumi.Input[Optional[str]]] = None,
-                             service_uri: Optional[pulumi.Input[Optional[str]]] = None,
-                             service_username: Optional[pulumi.Input[Optional[str]]] = None,
-                             state: Optional[pulumi.Input[Optional[str]]] = None,
-                             termination_protection: Optional[pulumi.Input[Optional[bool]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaConnectResult]:
     """
-    ## # Kafka Connect Data Source
-
     The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
 
     ## Example Usage
@@ -449,49 +420,7 @@ def get_kafka_connect_output(cloud_name: Optional[pulumi.Input[Optional[str]]] =
     ```
 
 
-    :param str cloud_name: defines where the cloud provider and region where the service is hosted
-           in. This can be changed freely after service is created. Changing the value will trigger
-           a potentially lengthy migration process for the service. Format is cloud provider name
-           (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-           specific region name. These are documented on each Cloud provider's own support articles,
-           like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-           [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-    :param pulumi.InputType['GetKafkaConnectKafkaConnectArgs'] kafka_connect: Kafka Connect specific server provided values.
-    :param pulumi.InputType['GetKafkaConnectKafkaConnectUserConfigArgs'] kafka_connect_user_config: defines Kafka Connect specific additional configuration options. 
-           The following configuration options available:
-    :param str maintenance_window_dow: day of week when maintenance operations should be performed. 
-           On monday, tuesday, wednesday, etc.
-    :param str maintenance_window_time: time of day when maintenance operations should be performed. 
-           UTC time in HH:mm:ss format.
-    :param str plan: defines what kind of computing resources are allocated for the service. It can
-           be changed after creation, though there are some restrictions when going to a smaller
-           plan such as the new plan must have sufficient amount of disk space to store all current
-           data and switching to a plan with fewer nodes might not be supported. The basic plan
-           names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-           (roughly) the amount of memory on each node (also other attributes like number of CPUs
-           and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-    :param str project: identifies the project the service belongs to. To set up proper dependency
-           between the project and the service, refer to the project as shown in the above example.
-           Project cannot be changed later without destroying and re-creating the service.
-    :param str project_vpc_id: optionally specifies the VPC the service should run in. If the value
-           is not set the service is not run inside a VPC. When set, the value should be given as a
-           reference as shown above to set up dependencies correctly and the VPC must be in the same
-           cloud and region as the service itself. Project can be freely moved to and from VPC after
-           creation but doing so triggers migration to new servers so the operation can take
-           significant amount of time to complete if the service has a lot of data.
-    :param str service_host: Kafka Connect hostname.
-    :param str service_name: specifies the actual name of the service. The name cannot be changed
-           later without destroying and re-creating the service so name should be picked based on
-           intended service usage rather than current attributes.
-    :param str service_password: Password used for connecting to the Kafka Connect service, if applicable.
-    :param int service_port: Kafka Connect port.
-    :param str service_uri: URI for connecting to the Kafka Connect service.
-    :param str service_username: Username used for connecting to the Kafka Connect service, if applicable.
-    :param str state: Service state.
-    :param bool termination_protection: prevents the service from being deleted. It is recommended to
-           set this to `true` for all production services to prevent unintentional service
-           deletion. This does not shield against deleting databases or topics but for services
-           with backups much of the content can at least be restored from backup in case accidental
-           deletion is done.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     ...

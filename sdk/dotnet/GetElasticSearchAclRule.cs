@@ -11,9 +11,67 @@ namespace Pulumi.Aiven
 {
     public static class GetElasticSearchAclRule
     {
+        /// <summary>
+        /// The Elasticsearch ACL Rule data source provides information about an existing Aiven Elasticsearch ACL Rule.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var esAclRule = Output.Create(Aiven.GetElasticSearchAclRule.InvokeAsync(new Aiven.GetElasticSearchAclRuleArgs
+        ///         {
+        ///             Project = aiven_elasticsearch_acl_config.Es_acls_config.Project,
+        ///             ServiceName = aiven_elasticsearch_acl_config.Es_acls_config.Service_name,
+        ///             Username = "&lt;USERNAME&gt;",
+        ///             Index = "&lt;INDEX&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetElasticSearchAclRuleResult> InvokeAsync(GetElasticSearchAclRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetElasticSearchAclRuleResult>("aiven:index/getElasticSearchAclRule:getElasticSearchAclRule", args ?? new GetElasticSearchAclRuleArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// The Elasticsearch ACL Rule data source provides information about an existing Aiven Elasticsearch ACL Rule.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var esAclRule = Output.Create(Aiven.GetElasticSearchAclRule.InvokeAsync(new Aiven.GetElasticSearchAclRuleArgs
+        ///         {
+        ///             Project = aiven_elasticsearch_acl_config.Es_acls_config.Project,
+        ///             ServiceName = aiven_elasticsearch_acl_config.Es_acls_config.Service_name,
+        ///             Username = "&lt;USERNAME&gt;",
+        ///             Index = "&lt;INDEX&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetElasticSearchAclRuleResult> Invoke(GetElasticSearchAclRuleInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetElasticSearchAclRuleResult>("aiven:index/getElasticSearchAclRule:getElasticSearchAclRule", args ?? new GetElasticSearchAclRuleInvokeArgs(), options.WithDefaults());
     }
@@ -21,18 +79,27 @@ namespace Pulumi.Aiven
 
     public sealed class GetElasticSearchAclRuleArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("index", required: true)]
         public string Index { get; set; } = null!;
 
-        [Input("permission", required: true)]
-        public string Permission { get; set; } = null!;
-
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
 
@@ -43,18 +110,27 @@ namespace Pulumi.Aiven
 
     public sealed class GetElasticSearchAclRuleInvokeArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("index", required: true)]
         public Input<string> Index { get; set; } = null!;
 
-        [Input("permission", required: true)]
-        public Input<string> Permission { get; set; } = null!;
-
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
@@ -71,10 +147,25 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Index;
+        /// <summary>
+        /// The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        /// </summary>
         public readonly string Permission;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

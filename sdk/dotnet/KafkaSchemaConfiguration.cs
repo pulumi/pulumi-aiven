@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Kafka Schema Configuration Resource
-    /// 
     /// The Kafka Schema Configuration resource allows the creation and management of Aiven Kafka Schema Configurations.
     /// 
     /// ## Example Usage
@@ -39,25 +37,19 @@ namespace Pulumi.Aiven
     public partial class KafkaSchemaConfiguration : Pulumi.CustomResource
     {
         /// <summary>
-        /// is the Global Kafka Schema configuration compatibility level when defined 
-        /// for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-        /// compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
-        /// resource. If the compatibility level not specified for the individual subject by default,
-        /// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-        /// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        /// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         /// </summary>
         [Output("compatibilityLevel")]
-        public Output<string> CompatibilityLevel { get; private set; } = null!;
+        public Output<string?> CompatibilityLevel { get; private set; } = null!;
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Service to link the Kafka Schemas Configuration to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -109,25 +101,19 @@ namespace Pulumi.Aiven
     public sealed class KafkaSchemaConfigurationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// is the Global Kafka Schema configuration compatibility level when defined 
-        /// for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-        /// compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
-        /// resource. If the compatibility level not specified for the individual subject by default,
-        /// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-        /// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        /// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         /// </summary>
-        [Input("compatibilityLevel", required: true)]
-        public Input<string> CompatibilityLevel { get; set; } = null!;
+        [Input("compatibilityLevel")]
+        public Input<string>? CompatibilityLevel { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Service to link the Kafka Schemas Configuration to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -140,25 +126,19 @@ namespace Pulumi.Aiven
     public sealed class KafkaSchemaConfigurationState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// is the Global Kafka Schema configuration compatibility level when defined 
-        /// for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-        /// compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
-        /// resource. If the compatibility level not specified for the individual subject by default,
-        /// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-        /// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        /// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         /// </summary>
         [Input("compatibilityLevel")]
         public Input<string>? CompatibilityLevel { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Service to link the Kafka Schemas Configuration to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

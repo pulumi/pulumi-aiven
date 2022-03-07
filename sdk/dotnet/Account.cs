@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Account Resource
-    /// 
     /// The Account resource allows the creation and management of an Aiven Account.
     /// 
     /// ## Example Usage
@@ -36,37 +34,37 @@ namespace Pulumi.Aiven
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>
-        /// is an auto-generated unique account id.
+        /// Account id
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// time of creation.
+        /// Time of creation
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// defines an account name.
+        /// Account name
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// is an owner team id.
+        /// Owner team id
         /// </summary>
         [Output("ownerTeamId")]
         public Output<string> OwnerTeamId { get; private set; } = null!;
 
         /// <summary>
-        /// is a tenant id.
+        /// Tenant id
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
 
         /// <summary>
-        /// time of last update.
+        /// Time of last update
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -118,34 +116,10 @@ namespace Pulumi.Aiven
     public sealed class AccountArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// time of creation.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// defines an account name.
+        /// Account name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// is an owner team id.
-        /// </summary>
-        [Input("ownerTeamId")]
-        public Input<string>? OwnerTeamId { get; set; }
-
-        /// <summary>
-        /// is a tenant id.
-        /// </summary>
-        [Input("tenantId")]
-        public Input<string>? TenantId { get; set; }
-
-        /// <summary>
-        /// time of last update.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public AccountArgs()
         {
@@ -155,37 +129,37 @@ namespace Pulumi.Aiven
     public sealed class AccountState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// is an auto-generated unique account id.
+        /// Account id
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// time of creation.
+        /// Time of creation
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// defines an account name.
+        /// Account name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// is an owner team id.
+        /// Owner team id
         /// </summary>
         [Input("ownerTeamId")]
         public Input<string>? OwnerTeamId { get; set; }
 
         /// <summary>
-        /// is a tenant id.
+        /// Tenant id
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// time of last update.
+        /// Time of last update
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

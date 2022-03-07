@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Project User Resource
-//
 // The Project User resource allows the creation and management of Aiven Project Users.
 //
 // ## Example Usage
@@ -42,16 +40,13 @@ import (
 type ProjectUser struct {
 	pulumi.CustomResourceState
 
-	// is a computed property tells whether the user has accepted the request to join
-	// the project; adding user to a project sends an invitation to the target user and the
-	// actual membership is only created once the user accepts the invitation. This property
-	// cannot be set, only read.
+	// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
 	Accepted pulumi.BoolOutput `pulumi:"accepted"`
-	// identifies the email address of the user.
+	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// defines the access level the user has to the project.
+	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType pulumi.StringOutput `pulumi:"memberType"`
-	// defines the project the user is a member of.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
@@ -93,30 +88,24 @@ func GetProjectUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectUser resources.
 type projectUserState struct {
-	// is a computed property tells whether the user has accepted the request to join
-	// the project; adding user to a project sends an invitation to the target user and the
-	// actual membership is only created once the user accepts the invitation. This property
-	// cannot be set, only read.
+	// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
 	Accepted *bool `pulumi:"accepted"`
-	// identifies the email address of the user.
+	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
 	Email *string `pulumi:"email"`
-	// defines the access level the user has to the project.
+	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType *string `pulumi:"memberType"`
-	// defines the project the user is a member of.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
 }
 
 type ProjectUserState struct {
-	// is a computed property tells whether the user has accepted the request to join
-	// the project; adding user to a project sends an invitation to the target user and the
-	// actual membership is only created once the user accepts the invitation. This property
-	// cannot be set, only read.
+	// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
 	Accepted pulumi.BoolPtrInput
-	// identifies the email address of the user.
+	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
 	Email pulumi.StringPtrInput
-	// defines the access level the user has to the project.
+	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType pulumi.StringPtrInput
-	// defines the project the user is a member of.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
 }
 
@@ -125,21 +114,21 @@ func (ProjectUserState) ElementType() reflect.Type {
 }
 
 type projectUserArgs struct {
-	// identifies the email address of the user.
+	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
 	Email string `pulumi:"email"`
-	// defines the access level the user has to the project.
+	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType string `pulumi:"memberType"`
-	// defines the project the user is a member of.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ProjectUser resource.
 type ProjectUserArgs struct {
-	// identifies the email address of the user.
+	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
 	Email pulumi.StringInput
-	// defines the access level the user has to the project.
+	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType pulumi.StringInput
-	// defines the project the user is a member of.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
 }
 

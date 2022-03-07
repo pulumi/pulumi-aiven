@@ -14,14 +14,9 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OpenSearchOpensearchUserConfigPrivatelinkAccess
     {
         /// <summary>
-        /// Allow clients to connect to opensearch from the public internet for service nodes
-        /// that are in a project VPC or another type of private network.
+        /// Opensearch server provided values
         /// </summary>
         public readonly string? Opensearch;
-        /// <summary>
-        /// Allow clients to connect to opensearch_dashboards from the public
-        /// internet for service nodes that are in a project VPC or another type of private network.
-        /// </summary>
         public readonly string? OpensearchDashboards;
 
         [OutputConstructor]

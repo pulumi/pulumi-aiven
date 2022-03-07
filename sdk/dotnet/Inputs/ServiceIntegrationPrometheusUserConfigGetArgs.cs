@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationPrometheusUserConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration options for metrics where source service is MySQL
+        /// </summary>
         [Input("sourceMysql")]
         public Input<Inputs.ServiceIntegrationPrometheusUserConfigSourceMysqlGetArgs>? SourceMysql { get; set; }
 

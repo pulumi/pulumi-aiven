@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Project User Resource
- *
  * The Project User resource allows the creation and management of Aiven Project Users.
  *
  * ## Example Usage
@@ -51,22 +49,19 @@ export class ProjectUser extends pulumi.CustomResource {
     }
 
     /**
-     * is a computed property tells whether the user has accepted the request to join
-     * the project; adding user to a project sends an invitation to the target user and the
-     * actual membership is only created once the user accepts the invitation. This property
-     * cannot be set, only read.
+     * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
      */
     public /*out*/ readonly accepted!: pulumi.Output<boolean>;
     /**
-     * identifies the email address of the user.
+     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly email!: pulumi.Output<string>;
     /**
-     * defines the access level the user has to the project.
+     * Project membership type. The possible values are `admin`, `developer` and `operator`.
      */
     public readonly memberType!: pulumi.Output<string>;
     /**
-     * defines the project the user is a member of.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
 
@@ -113,22 +108,19 @@ export class ProjectUser extends pulumi.CustomResource {
  */
 export interface ProjectUserState {
     /**
-     * is a computed property tells whether the user has accepted the request to join
-     * the project; adding user to a project sends an invitation to the target user and the
-     * actual membership is only created once the user accepts the invitation. This property
-     * cannot be set, only read.
+     * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
      */
     accepted?: pulumi.Input<boolean>;
     /**
-     * identifies the email address of the user.
+     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
      */
     email?: pulumi.Input<string>;
     /**
-     * defines the access level the user has to the project.
+     * Project membership type. The possible values are `admin`, `developer` and `operator`.
      */
     memberType?: pulumi.Input<string>;
     /**
-     * defines the project the user is a member of.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
 }
@@ -138,15 +130,15 @@ export interface ProjectUserState {
  */
 export interface ProjectUserArgs {
     /**
-     * identifies the email address of the user.
+     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
      */
     email: pulumi.Input<string>;
     /**
-     * defines the access level the user has to the project.
+     * Project membership type. The possible values are `admin`, `developer` and `operator`.
      */
     memberType: pulumi.Input<string>;
     /**
-     * defines the project the user is a member of.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
 }

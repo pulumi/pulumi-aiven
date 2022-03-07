@@ -10,59 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Service Integration Endpoint Resource
-    /// 
     /// The Service Integration Endpoint resource allows the creation and management of Aiven Service Integration Endpoints.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myendpoint = new Aiven.ServiceIntegrationEndpoint("myendpoint", new Aiven.ServiceIntegrationEndpointArgs
-    ///         {
-    ///             Project = aiven_project.Myproject.Project,
-    ///             EndpointName = "&lt;ENDPOINT_NAME&gt;",
-    ///             EndpointType = "datadog",
-    ///             DatadogUserConfig = new Aiven.Inputs.ServiceIntegrationEndpointDatadogUserConfigArgs
-    ///             {
-    ///                 DatadogApiKey = "&lt;DATADOG_API_KEY&gt;",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Prometheus Integration Endpoint
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var prometheusIntegration = new Aiven.ServiceIntegrationEndpoint("prometheusIntegration", new Aiven.ServiceIntegrationEndpointArgs
-    ///         {
-    ///             Project = aiven_project.Myproject.Project,
-    ///             EndpointName = "&lt;ENDPOINT_NAME&gt;",
-    ///             EndpointType = "prometheus",
-    ///             PrometheusUserConfig = new Aiven.Inputs.ServiceIntegrationEndpointPrometheusUserConfigArgs
-    ///             {
-    ///                 BasicAuthUsername = "&lt;USERNAME&gt;",
-    ///                 BasicAuthPassword = "&lt;PASSWORD&gt;",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint")]
     public partial class ServiceIntegrationEndpoint : Pulumi.CustomResource
@@ -80,15 +28,13 @@ namespace Pulumi.Aiven
         public Output<ImmutableDictionary<string, string>> EndpointConfig { get; private set; } = null!;
 
         /// <summary>
-        /// is the name of the endpoint. This value has no effect beyond being used
-        /// to identify different integration endpoints.
+        /// Name of the service integration endpoint
         /// </summary>
         [Output("endpointName")]
         public Output<string> EndpointName { get; private set; } = null!;
 
         /// <summary>
-        /// is the type of the external service this endpoint is associated with.
-        /// Available options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
+        /// Type of the service integration endpoint
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
@@ -136,7 +82,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationEndpointJolokiaUserConfig?> JolokiaUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// defines the project the endpoint is associated with.
+        /// Project the service integration endpoint belongs to
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -212,15 +158,13 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationEndpointDatadogUserConfigArgs>? DatadogUserConfig { get; set; }
 
         /// <summary>
-        /// is the name of the endpoint. This value has no effect beyond being used
-        /// to identify different integration endpoints.
+        /// Name of the service integration endpoint
         /// </summary>
         [Input("endpointName", required: true)]
         public Input<string> EndpointName { get; set; } = null!;
 
         /// <summary>
-        /// is the type of the external service this endpoint is associated with.
-        /// Available options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
+        /// Type of the service integration endpoint
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
@@ -268,7 +212,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationEndpointJolokiaUserConfigArgs>? JolokiaUserConfig { get; set; }
 
         /// <summary>
-        /// defines the project the endpoint is associated with.
+        /// Project the service integration endpoint belongs to
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -317,15 +261,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// is the name of the endpoint. This value has no effect beyond being used
-        /// to identify different integration endpoints.
+        /// Name of the service integration endpoint
         /// </summary>
         [Input("endpointName")]
         public Input<string>? EndpointName { get; set; }
 
         /// <summary>
-        /// is the type of the external service this endpoint is associated with.
-        /// Available options are `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_kafka`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
+        /// Type of the service integration endpoint
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
@@ -373,7 +315,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationEndpointJolokiaUserConfigGetArgs>? JolokiaUserConfig { get; set; }
 
         /// <summary>
-        /// defines the project the endpoint is associated with.
+        /// Project the service integration endpoint belongs to
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

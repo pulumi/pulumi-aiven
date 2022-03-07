@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetCassandaResult',
@@ -24,19 +23,34 @@ class GetCassandaResult:
     """
     A collection of values returned by getCassanda.
     """
-    def __init__(__self__, cassandra=None, cassandra_user_config=None, cloud_name=None, components=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, termination_protection=None):
-        if cassandra and not isinstance(cassandra, dict):
-            raise TypeError("Expected argument 'cassandra' to be a dict")
-        pulumi.set(__self__, "cassandra", cassandra)
-        if cassandra_user_config and not isinstance(cassandra_user_config, dict):
-            raise TypeError("Expected argument 'cassandra_user_config' to be a dict")
-        pulumi.set(__self__, "cassandra_user_config", cassandra_user_config)
+    def __init__(__self__, cassandra_user_configs=None, cassandras=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, termination_protection=None):
+        if cassandra_user_configs and not isinstance(cassandra_user_configs, list):
+            raise TypeError("Expected argument 'cassandra_user_configs' to be a list")
+        pulumi.set(__self__, "cassandra_user_configs", cassandra_user_configs)
+        if cassandras and not isinstance(cassandras, list):
+            raise TypeError("Expected argument 'cassandras' to be a list")
+        pulumi.set(__self__, "cassandras", cassandras)
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
         pulumi.set(__self__, "cloud_name", cloud_name)
         if components and not isinstance(components, list):
             raise TypeError("Expected argument 'components' to be a list")
         pulumi.set(__self__, "components", components)
+        if disk_space and not isinstance(disk_space, str):
+            raise TypeError("Expected argument 'disk_space' to be a str")
+        pulumi.set(__self__, "disk_space", disk_space)
+        if disk_space_cap and not isinstance(disk_space_cap, str):
+            raise TypeError("Expected argument 'disk_space_cap' to be a str")
+        pulumi.set(__self__, "disk_space_cap", disk_space_cap)
+        if disk_space_default and not isinstance(disk_space_default, str):
+            raise TypeError("Expected argument 'disk_space_default' to be a str")
+        pulumi.set(__self__, "disk_space_default", disk_space_default)
+        if disk_space_step and not isinstance(disk_space_step, str):
+            raise TypeError("Expected argument 'disk_space_step' to be a str")
+        pulumi.set(__self__, "disk_space_step", disk_space_step)
+        if disk_space_used and not isinstance(disk_space_used, str):
+            raise TypeError("Expected argument 'disk_space_used' to be a str")
+        pulumi.set(__self__, "disk_space_used", disk_space_used)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -82,29 +96,57 @@ class GetCassandaResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if static_ips and not isinstance(static_ips, list):
+            raise TypeError("Expected argument 'static_ips' to be a list")
+        pulumi.set(__self__, "static_ips", static_ips)
         if termination_protection and not isinstance(termination_protection, bool):
             raise TypeError("Expected argument 'termination_protection' to be a bool")
         pulumi.set(__self__, "termination_protection", termination_protection)
 
     @property
-    @pulumi.getter
-    def cassandra(self) -> 'outputs.GetCassandaCassandraResult':
-        return pulumi.get(self, "cassandra")
+    @pulumi.getter(name="cassandraUserConfigs")
+    def cassandra_user_configs(self) -> Sequence['outputs.GetCassandaCassandraUserConfigResult']:
+        return pulumi.get(self, "cassandra_user_configs")
 
     @property
-    @pulumi.getter(name="cassandraUserConfig")
-    def cassandra_user_config(self) -> Optional['outputs.GetCassandaCassandraUserConfigResult']:
-        return pulumi.get(self, "cassandra_user_config")
+    @pulumi.getter
+    def cassandras(self) -> Sequence['outputs.GetCassandaCassandraResult']:
+        return pulumi.get(self, "cassandras")
 
     @property
     @pulumi.getter(name="cloudName")
-    def cloud_name(self) -> Optional[str]:
+    def cloud_name(self) -> str:
         return pulumi.get(self, "cloud_name")
 
     @property
     @pulumi.getter
     def components(self) -> Sequence['outputs.GetCassandaComponentResult']:
         return pulumi.get(self, "components")
+
+    @property
+    @pulumi.getter(name="diskSpace")
+    def disk_space(self) -> str:
+        return pulumi.get(self, "disk_space")
+
+    @property
+    @pulumi.getter(name="diskSpaceCap")
+    def disk_space_cap(self) -> str:
+        return pulumi.get(self, "disk_space_cap")
+
+    @property
+    @pulumi.getter(name="diskSpaceDefault")
+    def disk_space_default(self) -> str:
+        return pulumi.get(self, "disk_space_default")
+
+    @property
+    @pulumi.getter(name="diskSpaceStep")
+    def disk_space_step(self) -> str:
+        return pulumi.get(self, "disk_space_step")
+
+    @property
+    @pulumi.getter(name="diskSpaceUsed")
+    def disk_space_used(self) -> str:
+        return pulumi.get(self, "disk_space_used")
 
     @property
     @pulumi.getter
@@ -116,17 +158,17 @@ class GetCassandaResult:
 
     @property
     @pulumi.getter(name="maintenanceWindowDow")
-    def maintenance_window_dow(self) -> Optional[str]:
+    def maintenance_window_dow(self) -> str:
         return pulumi.get(self, "maintenance_window_dow")
 
     @property
     @pulumi.getter(name="maintenanceWindowTime")
-    def maintenance_window_time(self) -> Optional[str]:
+    def maintenance_window_time(self) -> str:
         return pulumi.get(self, "maintenance_window_time")
 
     @property
     @pulumi.getter
-    def plan(self) -> Optional[str]:
+    def plan(self) -> str:
         return pulumi.get(self, "plan")
 
     @property
@@ -136,7 +178,7 @@ class GetCassandaResult:
 
     @property
     @pulumi.getter(name="projectVpcId")
-    def project_vpc_id(self) -> Optional[str]:
+    def project_vpc_id(self) -> str:
         return pulumi.get(self, "project_vpc_id")
 
     @property
@@ -146,7 +188,7 @@ class GetCassandaResult:
 
     @property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> Optional[Sequence['outputs.GetCassandaServiceIntegrationResult']]:
+    def service_integrations(self) -> Sequence['outputs.GetCassandaServiceIntegrationResult']:
         return pulumi.get(self, "service_integrations")
 
     @property
@@ -185,8 +227,13 @@ class GetCassandaResult:
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> Sequence[str]:
+        return pulumi.get(self, "static_ips")
+
+    @property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> Optional[bool]:
+    def termination_protection(self) -> bool:
         return pulumi.get(self, "termination_protection")
 
 
@@ -196,10 +243,15 @@ class AwaitableGetCassandaResult(GetCassandaResult):
         if False:
             yield self
         return GetCassandaResult(
-            cassandra=self.cassandra,
-            cassandra_user_config=self.cassandra_user_config,
+            cassandra_user_configs=self.cassandra_user_configs,
+            cassandras=self.cassandras,
             cloud_name=self.cloud_name,
             components=self.components,
+            disk_space=self.disk_space,
+            disk_space_cap=self.disk_space_cap,
+            disk_space_default=self.disk_space_default,
+            disk_space_step=self.disk_space_step,
+            disk_space_used=self.disk_space_used,
             id=self.id,
             maintenance_window_dow=self.maintenance_window_dow,
             maintenance_window_time=self.maintenance_window_time,
@@ -215,53 +267,20 @@ class AwaitableGetCassandaResult(GetCassandaResult):
             service_uri=self.service_uri,
             service_username=self.service_username,
             state=self.state,
+            static_ips=self.static_ips,
             termination_protection=self.termination_protection)
 
 
-def get_cassanda(cassandra: Optional[pulumi.InputType['GetCassandaCassandraArgs']] = None,
-                 cassandra_user_config: Optional[pulumi.InputType['GetCassandaCassandraUserConfigArgs']] = None,
-                 cloud_name: Optional[str] = None,
-                 components: Optional[Sequence[pulumi.InputType['GetCassandaComponentArgs']]] = None,
-                 maintenance_window_dow: Optional[str] = None,
-                 maintenance_window_time: Optional[str] = None,
-                 plan: Optional[str] = None,
-                 project: Optional[str] = None,
-                 project_vpc_id: Optional[str] = None,
-                 service_host: Optional[str] = None,
-                 service_integrations: Optional[Sequence[pulumi.InputType['GetCassandaServiceIntegrationArgs']]] = None,
+def get_cassanda(project: Optional[str] = None,
                  service_name: Optional[str] = None,
-                 service_password: Optional[str] = None,
-                 service_port: Optional[int] = None,
-                 service_type: Optional[str] = None,
-                 service_uri: Optional[str] = None,
-                 service_username: Optional[str] = None,
-                 state: Optional[str] = None,
-                 termination_protection: Optional[bool] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCassandaResult:
     """
     Use this data source to access information about an existing resource.
     """
     pulumi.log.warn("""get_cassanda is deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra""")
     __args__ = dict()
-    __args__['cassandra'] = cassandra
-    __args__['cassandraUserConfig'] = cassandra_user_config
-    __args__['cloudName'] = cloud_name
-    __args__['components'] = components
-    __args__['maintenanceWindowDow'] = maintenance_window_dow
-    __args__['maintenanceWindowTime'] = maintenance_window_time
-    __args__['plan'] = plan
     __args__['project'] = project
-    __args__['projectVpcId'] = project_vpc_id
-    __args__['serviceHost'] = service_host
-    __args__['serviceIntegrations'] = service_integrations
     __args__['serviceName'] = service_name
-    __args__['servicePassword'] = service_password
-    __args__['servicePort'] = service_port
-    __args__['serviceType'] = service_type
-    __args__['serviceUri'] = service_uri
-    __args__['serviceUsername'] = service_username
-    __args__['state'] = state
-    __args__['terminationProtection'] = termination_protection
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -269,10 +288,15 @@ def get_cassanda(cassandra: Optional[pulumi.InputType['GetCassandaCassandraArgs'
     __ret__ = pulumi.runtime.invoke('aiven:index/getCassanda:getCassanda', __args__, opts=opts, typ=GetCassandaResult).value
 
     return AwaitableGetCassandaResult(
-        cassandra=__ret__.cassandra,
-        cassandra_user_config=__ret__.cassandra_user_config,
+        cassandra_user_configs=__ret__.cassandra_user_configs,
+        cassandras=__ret__.cassandras,
         cloud_name=__ret__.cloud_name,
         components=__ret__.components,
+        disk_space=__ret__.disk_space,
+        disk_space_cap=__ret__.disk_space_cap,
+        disk_space_default=__ret__.disk_space_default,
+        disk_space_step=__ret__.disk_space_step,
+        disk_space_used=__ret__.disk_space_used,
         id=__ret__.id,
         maintenance_window_dow=__ret__.maintenance_window_dow,
         maintenance_window_time=__ret__.maintenance_window_time,
@@ -288,29 +312,13 @@ def get_cassanda(cassandra: Optional[pulumi.InputType['GetCassandaCassandraArgs'
         service_uri=__ret__.service_uri,
         service_username=__ret__.service_username,
         state=__ret__.state,
+        static_ips=__ret__.static_ips,
         termination_protection=__ret__.termination_protection)
 
 
 @_utilities.lift_output_func(get_cassanda)
-def get_cassanda_output(cassandra: Optional[pulumi.Input[Optional[pulumi.InputType['GetCassandaCassandraArgs']]]] = None,
-                        cassandra_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetCassandaCassandraUserConfigArgs']]]] = None,
-                        cloud_name: Optional[pulumi.Input[Optional[str]]] = None,
-                        components: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetCassandaComponentArgs']]]]] = None,
-                        maintenance_window_dow: Optional[pulumi.Input[Optional[str]]] = None,
-                        maintenance_window_time: Optional[pulumi.Input[Optional[str]]] = None,
-                        plan: Optional[pulumi.Input[Optional[str]]] = None,
-                        project: Optional[pulumi.Input[str]] = None,
-                        project_vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                        service_host: Optional[pulumi.Input[Optional[str]]] = None,
-                        service_integrations: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetCassandaServiceIntegrationArgs']]]]] = None,
+def get_cassanda_output(project: Optional[pulumi.Input[str]] = None,
                         service_name: Optional[pulumi.Input[str]] = None,
-                        service_password: Optional[pulumi.Input[Optional[str]]] = None,
-                        service_port: Optional[pulumi.Input[Optional[int]]] = None,
-                        service_type: Optional[pulumi.Input[Optional[str]]] = None,
-                        service_uri: Optional[pulumi.Input[Optional[str]]] = None,
-                        service_username: Optional[pulumi.Input[Optional[str]]] = None,
-                        state: Optional[pulumi.Input[Optional[str]]] = None,
-                        termination_protection: Optional[pulumi.Input[Optional[bool]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCassandaResult]:
     """
     Use this data source to access information about an existing resource.

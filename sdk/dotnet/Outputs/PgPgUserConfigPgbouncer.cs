@@ -13,48 +13,14 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class PgPgUserConfigPgbouncer
     {
-        /// <summary>
-        /// If the automatically created database pools have been unused this 
-        /// many seconds, they are freed. If 0 then timeout is disabled.
-        /// </summary>
         public readonly string? AutodbIdleTimeout;
-        /// <summary>
-        /// Do not allow more than this many server connections per database 
-        /// (regardless of user). Setting it to 0 means unlimited.
-        /// </summary>
         public readonly string? AutodbMaxDbConnections;
-        /// <summary>
-        /// PGBouncer pool mode
-        /// </summary>
         public readonly string? AutodbPoolMode;
-        /// <summary>
-        /// If non-zero then create automatically a pool of that size per user 
-        /// when a pool doesn't exist.
-        /// </summary>
         public readonly string? AutodbPoolSize;
-        /// <summary>
-        /// Enum of parameters to ignore when given in startup packet.
-        /// </summary>
         public readonly ImmutableArray<string> IgnoreStartupParameters;
-        /// <summary>
-        /// Add more server connections to pool if below this number. Improves 
-        /// behavior when usual load comes suddenly back after period of total inactivity. The value is
-        /// effectively capped at the pool size.
-        /// </summary>
         public readonly string? MinPoolSize;
-        /// <summary>
-        /// If a server connection has been idle more than this many seconds 
-        /// it will be dropped. If 0 then timeout is disabled.
-        /// </summary>
         public readonly string? ServerIdleTimeout;
-        /// <summary>
-        /// The pooler will close an unused server connection that has been connected 
-        /// longer than this.
-        /// </summary>
         public readonly string? ServerLifetime;
-        /// <summary>
-        /// Run server_reset_query (DISCARD ALL) in all pooling modes.
-        /// </summary>
         public readonly string? ServerResetQueryAlways;
 
         [OutputConstructor]

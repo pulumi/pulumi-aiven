@@ -5,9 +5,35 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Kafka Schema Resource
- *
  * The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const kafka_schema1 = new aiven.KafkaSchema("kafka-schema1", {
+ *     project: aiven_project["kafka-schemas-project1"].project,
+ *     serviceName: aiven_kafka["kafka-service1"].service_name,
+ *     subjectName: "kafka-schema1",
+ *     compatibilityLevel: "FORWARD",
+ *     schema: `    {
+ *        "doc": "example",
+ *        "fields": [{
+ *            "default": 5,
+ *            "doc": "my test number",
+ *            "name": "test",
+ *            "namespace": "test",
+ *            "type": "int"
+ *        }],
+ *        "name": "example",
+ *        "namespace": "example",
+ *        "type": "record"
+ *     }
+ * `,
+ * });
+ * ```
  */
 export class KafkaSchema extends pulumi.CustomResource {
     /**
@@ -38,31 +64,27 @@ export class KafkaSchema extends pulumi.CustomResource {
     }
 
     /**
-     * configuration compatibility level overrides specific subject
-     * resource. If the compatibility level not specified for the individual subject by default,
-     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+     * Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
      */
     public readonly compatibilityLevel!: pulumi.Output<string | undefined>;
     /**
-     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * is Kafka Schema configuration should be a valid Avro Schema JSON format.
+     * Kafka Schema configuration should be a valid Avro Schema JSON format.
      */
     public readonly schema!: pulumi.Output<string>;
     /**
-     * Service to link the Kafka Schema to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * is Kafka Schema subject name.
+     * The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly subjectName!: pulumi.Output<string>;
     /**
-     * Kafka Schema configuration version
+     * Kafka Schema configuration version.
      */
     public /*out*/ readonly version!: pulumi.Output<number>;
 
@@ -116,31 +138,27 @@ export class KafkaSchema extends pulumi.CustomResource {
  */
 export interface KafkaSchemaState {
     /**
-     * configuration compatibility level overrides specific subject
-     * resource. If the compatibility level not specified for the individual subject by default,
-     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+     * Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
      */
     compatibilityLevel?: pulumi.Input<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * is Kafka Schema configuration should be a valid Avro Schema JSON format.
+     * Kafka Schema configuration should be a valid Avro Schema JSON format.
      */
     schema?: pulumi.Input<string>;
     /**
-     * Service to link the Kafka Schema to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * is Kafka Schema subject name.
+     * The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
      */
     subjectName?: pulumi.Input<string>;
     /**
-     * Kafka Schema configuration version
+     * Kafka Schema configuration version.
      */
     version?: pulumi.Input<number>;
 }
@@ -150,27 +168,23 @@ export interface KafkaSchemaState {
  */
 export interface KafkaSchemaArgs {
     /**
-     * configuration compatibility level overrides specific subject
-     * resource. If the compatibility level not specified for the individual subject by default,
-     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+     * Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
      */
     compatibilityLevel?: pulumi.Input<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * is Kafka Schema configuration should be a valid Avro Schema JSON format.
+     * Kafka Schema configuration should be a valid Avro Schema JSON format.
      */
     schema: pulumi.Input<string>;
     /**
-     * Service to link the Kafka Schema to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * is Kafka Schema subject name.
+     * The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
      */
     subjectName: pulumi.Input<string>;
 }

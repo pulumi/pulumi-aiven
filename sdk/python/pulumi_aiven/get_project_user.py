@@ -41,16 +41,16 @@ class GetProjectUserResult:
     @pulumi.getter
     def accepted(self) -> bool:
         """
-        is a computed property tells whether the user has accepted the request to join
-        the project; adding user to a project sends an invitation to the target user and the
-        actual membership is only created once the user accepts the invitation. This property
-        cannot be set, only read.
+        Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
         """
         return pulumi.get(self, "accepted")
 
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "email")
 
     @property
@@ -63,15 +63,18 @@ class GetProjectUserResult:
 
     @property
     @pulumi.getter(name="memberType")
-    def member_type(self) -> Optional[str]:
+    def member_type(self) -> str:
         """
-        (Required) defines the access level the user has to the project.
+        Project membership type. The possible values are `admin`, `developer` and `operator`.
         """
         return pulumi.get(self, "member_type")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
 
@@ -88,14 +91,10 @@ class AwaitableGetProjectUserResult(GetProjectUserResult):
             project=self.project)
 
 
-def get_project_user(accepted: Optional[bool] = None,
-                     email: Optional[str] = None,
-                     member_type: Optional[str] = None,
+def get_project_user(email: Optional[str] = None,
                      project: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectUserResult:
     """
-    ## # Project User Data Source
-
     The Project User data source provides information about the existing Aiven Project User.
 
     ## Example Usage
@@ -109,18 +108,11 @@ def get_project_user(accepted: Optional[bool] = None,
     ```
 
 
-    :param bool accepted: is a computed property tells whether the user has accepted the request to join
-           the project; adding user to a project sends an invitation to the target user and the
-           actual membership is only created once the user accepts the invitation. This property
-           cannot be set, only read.
-    :param str email: identifies the email address of the user.
-    :param str member_type: (Required) defines the access level the user has to the project.
-    :param str project: defines the project the user is a member of.
+    :param str email: Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
-    __args__['accepted'] = accepted
     __args__['email'] = email
-    __args__['memberType'] = member_type
     __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -137,14 +129,10 @@ def get_project_user(accepted: Optional[bool] = None,
 
 
 @_utilities.lift_output_func(get_project_user)
-def get_project_user_output(accepted: Optional[pulumi.Input[Optional[bool]]] = None,
-                            email: Optional[pulumi.Input[str]] = None,
-                            member_type: Optional[pulumi.Input[Optional[str]]] = None,
+def get_project_user_output(email: Optional[pulumi.Input[str]] = None,
                             project: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectUserResult]:
     """
-    ## # Project User Data Source
-
     The Project User data source provides information about the existing Aiven Project User.
 
     ## Example Usage
@@ -158,12 +146,7 @@ def get_project_user_output(accepted: Optional[pulumi.Input[Optional[bool]]] = N
     ```
 
 
-    :param bool accepted: is a computed property tells whether the user has accepted the request to join
-           the project; adding user to a project sends an invitation to the target user and the
-           actual membership is only created once the user accepts the invitation. This property
-           cannot be set, only read.
-    :param str email: identifies the email address of the user.
-    :param str member_type: (Required) defines the access level the user has to the project.
-    :param str project: defines the project the user is a member of.
+    :param str email: Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

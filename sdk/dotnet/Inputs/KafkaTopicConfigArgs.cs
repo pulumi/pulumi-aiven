@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaTopicConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// cleanup.policy value, can be `create`, `delete` or `compact,delete`
+        /// cleanup.policy value
         /// </summary>
         [Input("cleanupPolicy")]
         public Input<string>? CleanupPolicy { get; set; }

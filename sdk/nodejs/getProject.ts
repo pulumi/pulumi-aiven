@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Project Data Source
- *
  * The Project data source provides information about the existing Aiven Project.
  *
  * ## Example Usage
@@ -27,25 +25,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getProject:getProject", {
-        "accountId": args.accountId,
-        "availableCredits": args.availableCredits,
-        "billingAddress": args.billingAddress,
-        "billingCurrency": args.billingCurrency,
-        "billingEmails": args.billingEmails,
-        "billingExtraText": args.billingExtraText,
-        "billingGroup": args.billingGroup,
-        "caCert": args.caCert,
-        "cardId": args.cardId,
-        "copyFromProject": args.copyFromProject,
-        "country": args.country,
-        "countryCode": args.countryCode,
-        "defaultCloud": args.defaultCloud,
-        "estimatedBalance": args.estimatedBalance,
-        "paymentMethod": args.paymentMethod,
         "project": args.project,
-        "technicalEmails": args.technicalEmails,
-        "useSourceProjectBillingGroup": args.useSourceProjectBillingGroup,
-        "vatId": args.vatId,
     }, opts);
 }
 
@@ -54,73 +34,9 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetProjectArgs {
     /**
-     * is an optional property to link a project to already an existing account by 
-     * using account ID.
-     */
-    accountId?: string;
-    /**
-     * is a computed property returning the amount of platform credits available to
-     * the project. This could be your free trial or other promotional credits.
-     */
-    availableCredits?: string;
-    billingAddress?: string;
-    billingCurrency?: string;
-    billingEmails?: string[];
-    billingExtraText?: string;
-    billingGroup?: string;
-    /**
-     * is a computed property that can be used to read the CA certificate of the
-     * project. This is required for configuring clients that connect to certain services like
-     * Kafka. This value cannot be set, only read.
-     */
-    caCert?: string;
-    /**
-     * is either the full card UUID or the last 4 digits of the card. As the full
-     * UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
-     * the card. This can be omitted if `copyFromProject` is used to copy billing info from
-     * another project.
-     */
-    cardId?: string;
-    /**
-     * is the name of another project used to copy billing information and
-     * some other project attributes like technical contacts from. This is mostly relevant when
-     * an existing project has billing type set to invoice and that needs to be copied over to a
-     * new project. (Setting billing is otherwise not allowed over the API.) This only has
-     * effect when the project is created.
-     */
-    copyFromProject?: string;
-    country?: string;
-    countryCode?: string;
-    /**
-     * defines the default cloud provider and region where services are
-     * hosted. This can be changed freely after the project is created. This will not affect existing
-     * services.
-     */
-    defaultCloud?: string;
-    /**
-     * is a computed property returning the current accumulated bill for this
-     * project in the current billing period.
-     */
-    estimatedBalance?: string;
-    /**
-     * is a computed property returning the method of invoicing used for payments for
-     * this project, e.g. "card".
-     */
-    paymentMethod?: string;
-    /**
-     * defines the name of the project. Name must be globally unique (between all
-     * Aiven customers) and cannot be changed later without destroying and re-creating the
-     * project, including all sub-resources.
+     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      */
     project: string;
-    /**
-     * defines the email addresses that will receive alerts about
-     * upcoming maintenance updates or warnings about service instability. It is a good practice to keep
-     * this up-to-date to be aware of any potential issues with your project.
-     */
-    technicalEmails?: string[];
-    useSourceProjectBillingGroup?: boolean;
-    vatId?: string;
 }
 
 /**
@@ -128,52 +44,59 @@ export interface GetProjectArgs {
  */
 export interface GetProjectResult {
     /**
-     * is an optional property to link a project to already an existing account by 
-     * using account ID.
+     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
-     * is a computed property returning the amount of platform credits available to
-     * the project. This could be your free trial or other promotional credits.
+     * If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+     */
+    readonly addAccountOwnersAdminAccess: boolean;
+    /**
+     * The amount of platform credits available to the project. This could be your free trial or other promotional credits.
      */
     readonly availableCredits: string;
-    readonly billingAddress?: string;
-    readonly billingCurrency?: string;
-    readonly billingEmails?: string[];
-    readonly billingExtraText?: string;
-    readonly billingGroup?: string;
     /**
-     * is a computed property that can be used to read the CA certificate of the
-     * project. This is required for configuring clients that connect to certain services like
-     * Kafka. This value cannot be set, only read.
+     * **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
+     */
+    readonly billingAddress: string;
+    /**
+     * **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
+     */
+    readonly billingCurrency: string;
+    /**
+     * **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
+     */
+    readonly billingEmails: string[];
+    /**
+     * **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
+     */
+    readonly billingExtraText: string;
+    /**
+     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+     */
+    readonly billingGroup: string;
+    /**
+     * The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
      */
     readonly caCert: string;
     /**
-     * is either the full card UUID or the last 4 digits of the card. As the full
-     * UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
-     * the card. This can be omitted if `copyFromProject` is used to copy billing info from
-     * another project.
+     * **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copyFromProject` is used to copy billing info from another project.
      */
-    readonly cardId?: string;
+    readonly cardId: string;
     /**
-     * is the name of another project used to copy billing information and
-     * some other project attributes like technical contacts from. This is mostly relevant when
-     * an existing project has billing type set to invoice and that needs to be copied over to a
-     * new project. (Setting billing is otherwise not allowed over the API.) This only has
-     * effect when the project is created.
+     * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
      */
-    readonly copyFromProject?: string;
-    readonly country: string;
-    readonly countryCode?: string;
+    readonly copyFromProject: string;
     /**
-     * defines the default cloud provider and region where services are
-     * hosted. This can be changed freely after the project is created. This will not affect existing
-     * services.
+     * **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
      */
-    readonly defaultCloud?: string;
+    readonly countryCode: string;
     /**
-     * is a computed property returning the current accumulated bill for this
-     * project in the current billing period.
+     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+     */
+    readonly defaultCloud: string;
+    /**
+     * The current accumulated bill for this project in the current billing period.
      */
     readonly estimatedBalance: string;
     /**
@@ -181,19 +104,25 @@ export interface GetProjectResult {
      */
     readonly id: string;
     /**
-     * is a computed property returning the method of invoicing used for payments for
-     * this project, e.g. "card".
+     * The method of invoicing used for payments for this project, e.g. `card`.
      */
     readonly paymentMethod: string;
+    /**
+     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     */
     readonly project: string;
     /**
-     * defines the email addresses that will receive alerts about
-     * upcoming maintenance updates or warnings about service instability. It is a good practice to keep
-     * this up-to-date to be aware of any potential issues with your project.
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
      */
-    readonly technicalEmails?: string[];
-    readonly useSourceProjectBillingGroup?: boolean;
-    readonly vatId?: string;
+    readonly technicalEmails: string[];
+    /**
+     * Use the same billing group that is used in source project.
+     */
+    readonly useSourceProjectBillingGroup: boolean;
+    /**
+     * **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
+     */
+    readonly vatId: string;
 }
 
 export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
@@ -205,71 +134,7 @@ export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.Invok
  */
 export interface GetProjectOutputArgs {
     /**
-     * is an optional property to link a project to already an existing account by 
-     * using account ID.
-     */
-    accountId?: pulumi.Input<string>;
-    /**
-     * is a computed property returning the amount of platform credits available to
-     * the project. This could be your free trial or other promotional credits.
-     */
-    availableCredits?: pulumi.Input<string>;
-    billingAddress?: pulumi.Input<string>;
-    billingCurrency?: pulumi.Input<string>;
-    billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
-    billingExtraText?: pulumi.Input<string>;
-    billingGroup?: pulumi.Input<string>;
-    /**
-     * is a computed property that can be used to read the CA certificate of the
-     * project. This is required for configuring clients that connect to certain services like
-     * Kafka. This value cannot be set, only read.
-     */
-    caCert?: pulumi.Input<string>;
-    /**
-     * is either the full card UUID or the last 4 digits of the card. As the full
-     * UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
-     * the card. This can be omitted if `copyFromProject` is used to copy billing info from
-     * another project.
-     */
-    cardId?: pulumi.Input<string>;
-    /**
-     * is the name of another project used to copy billing information and
-     * some other project attributes like technical contacts from. This is mostly relevant when
-     * an existing project has billing type set to invoice and that needs to be copied over to a
-     * new project. (Setting billing is otherwise not allowed over the API.) This only has
-     * effect when the project is created.
-     */
-    copyFromProject?: pulumi.Input<string>;
-    country?: pulumi.Input<string>;
-    countryCode?: pulumi.Input<string>;
-    /**
-     * defines the default cloud provider and region where services are
-     * hosted. This can be changed freely after the project is created. This will not affect existing
-     * services.
-     */
-    defaultCloud?: pulumi.Input<string>;
-    /**
-     * is a computed property returning the current accumulated bill for this
-     * project in the current billing period.
-     */
-    estimatedBalance?: pulumi.Input<string>;
-    /**
-     * is a computed property returning the method of invoicing used for payments for
-     * this project, e.g. "card".
-     */
-    paymentMethod?: pulumi.Input<string>;
-    /**
-     * defines the name of the project. Name must be globally unique (between all
-     * Aiven customers) and cannot be changed later without destroying and re-creating the
-     * project, including all sub-resources.
+     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      */
     project: pulumi.Input<string>;
-    /**
-     * defines the email addresses that will receive alerts about
-     * upcoming maintenance updates or warnings about service instability. It is a good practice to keep
-     * this up-to-date to be aware of any potential issues with your project.
-     */
-    technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
-    useSourceProjectBillingGroup?: pulumi.Input<boolean>;
-    vatId?: pulumi.Input<string>;
 }

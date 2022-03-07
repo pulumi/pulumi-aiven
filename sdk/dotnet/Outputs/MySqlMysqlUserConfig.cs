@@ -14,33 +14,27 @@ namespace Pulumi.Aiven.Outputs
     public sealed class MySqlMysqlUserConfig
     {
         /// <summary>
-        /// Custom password for admin user. Defaults to random string. 
-        /// This must be set only when a new service is being created.
+        /// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
         /// </summary>
         public readonly string? AdminPassword;
         /// <summary>
-        /// Custom username for admin user. This must be set only when a 
-        /// new service is being created.
+        /// Custom username for admin user. This must be set only when a new service is being created.
         /// </summary>
         public readonly string? AdminUsername;
         /// <summary>
-        /// The hour of day (in UTC) when backup for the service is started. 
-        /// New backup is only started if previous backup has already completed.
+        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         /// </summary>
         public readonly string? BackupHour;
         /// <summary>
-        /// The minute of an hour when backup for the service is started. 
-        /// New backup is only started if previous backup has already completed.
+        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         /// </summary>
         public readonly string? BackupMinute;
         /// <summary>
-        /// The minimum amount of time in seconds to keep binlog entries 
-        /// before deletion. This may be extended for services that require binlog entries for longer than the
-        /// default for example if using the MySQL Debezium Kafka connector.
+        /// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
         /// </summary>
         public readonly string? BinlogRetentionPeriod;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// IP filter
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -48,8 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.MySqlMysqlUserConfigMigration? Migration;
         /// <summary>
-        /// Allow clients to connect to mysql from the public internet for service 
-        /// nodes that are in a project VPC or another type of private network
+        /// mysql.conf configuration values
         /// </summary>
         public readonly Outputs.MySqlMysqlUserConfigMysql? Mysql;
         /// <summary>
@@ -65,8 +58,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.MySqlMysqlUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has
-        /// effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
@@ -74,15 +66,16 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.MySqlMysqlUserConfigPublicAccess? PublicAccess;
         /// <summary>
-        /// Recovery target time when forking a service. This has effect 
-        /// only when a new service is being created.
+        /// Recovery target time when forking a service. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? RecoveryTargetTime;
         /// <summary>
-        /// Name of another service to fork from. This has effect only when 
-        /// a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

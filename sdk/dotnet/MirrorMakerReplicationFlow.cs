@@ -10,10 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # MirrorMaker 2 Replication Flow Resource
-    /// 
-    /// The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2
-    /// Replication Flows on Aiven Cloud.
+    /// The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 Replication Flows on Aiven Cloud.
     /// 
     /// ## Example Usage
     /// 
@@ -52,68 +49,67 @@ namespace Pulumi.Aiven
     public partial class MirrorMakerReplicationFlow : Pulumi.CustomResource
     {
         /// <summary>
-        /// Emit heartbeats enabled
+        /// Emit heartbeats enabled. The default value is `false`.
         /// </summary>
         [Output("emitHeartbeatsEnabled")]
         public Output<bool?> EmitHeartbeatsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// enable of disable replication flows for a MirrorMaker service
+        /// Enable of disable replication flows for a service.
         /// </summary>
         [Output("enable")]
         public Output<bool> Enable { get; private set; } = null!;
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
-        /// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Replication policy class
+        /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         /// </summary>
         [Output("replicationPolicyClass")]
         public Output<string?> ReplicationPolicyClass { get; private set; } = null!;
 
         /// <summary>
-        /// Service to link the kafka topic to
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// is a source cluster alias.
+        /// Source cluster alias. Maximum Length: `128`.
         /// </summary>
         [Output("sourceCluster")]
         public Output<string> SourceCluster { get; private set; } = null!;
 
         /// <summary>
-        /// Sync consumer group offsets
+        /// Sync consumer group offsets. The default value is `false`.
         /// </summary>
         [Output("syncGroupOffsetsEnabled")]
         public Output<bool?> SyncGroupOffsetsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Frequency of consumer group offset sync
+        /// Frequency of consumer group offset sync. The default value is `1`.
         /// </summary>
         [Output("syncGroupOffsetsIntervalSeconds")]
         public Output<int?> SyncGroupOffsetsIntervalSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// is a target cluster alias.
+        /// Target cluster alias. Maximum Length: `128`.
         /// </summary>
         [Output("targetCluster")]
         public Output<string> TargetCluster { get; private set; } = null!;
 
         /// <summary>
-        /// is a list of topics and/or regular expressions to replicate.
+        /// List of topics and/or regular expressions to replicate
         /// </summary>
         [Output("topics")]
         public Output<ImmutableArray<string>> Topics { get; private set; } = null!;
 
         /// <summary>
-        /// is a list of topics and/or regular expressions to not replicate.
+        /// List of topics and/or regular expressions to not replicate.
         /// </summary>
         [Output("topicsBlacklists")]
         public Output<ImmutableArray<string>> TopicsBlacklists { get; private set; } = null!;
@@ -165,56 +161,55 @@ namespace Pulumi.Aiven
     public sealed class MirrorMakerReplicationFlowArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Emit heartbeats enabled
+        /// Emit heartbeats enabled. The default value is `false`.
         /// </summary>
         [Input("emitHeartbeatsEnabled")]
         public Input<bool>? EmitHeartbeatsEnabled { get; set; }
 
         /// <summary>
-        /// enable of disable replication flows for a MirrorMaker service
+        /// Enable of disable replication flows for a service.
         /// </summary>
         [Input("enable", required: true)]
         public Input<bool> Enable { get; set; } = null!;
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
-        /// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Replication policy class
+        /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         /// </summary>
         [Input("replicationPolicyClass")]
         public Input<string>? ReplicationPolicyClass { get; set; }
 
         /// <summary>
-        /// Service to link the kafka topic to
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// is a source cluster alias.
+        /// Source cluster alias. Maximum Length: `128`.
         /// </summary>
         [Input("sourceCluster", required: true)]
         public Input<string> SourceCluster { get; set; } = null!;
 
         /// <summary>
-        /// Sync consumer group offsets
+        /// Sync consumer group offsets. The default value is `false`.
         /// </summary>
         [Input("syncGroupOffsetsEnabled")]
         public Input<bool>? SyncGroupOffsetsEnabled { get; set; }
 
         /// <summary>
-        /// Frequency of consumer group offset sync
+        /// Frequency of consumer group offset sync. The default value is `1`.
         /// </summary>
         [Input("syncGroupOffsetsIntervalSeconds")]
         public Input<int>? SyncGroupOffsetsIntervalSeconds { get; set; }
 
         /// <summary>
-        /// is a target cluster alias.
+        /// Target cluster alias. Maximum Length: `128`.
         /// </summary>
         [Input("targetCluster", required: true)]
         public Input<string> TargetCluster { get; set; } = null!;
@@ -223,7 +218,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _topics;
 
         /// <summary>
-        /// is a list of topics and/or regular expressions to replicate.
+        /// List of topics and/or regular expressions to replicate
         /// </summary>
         public InputList<string> Topics
         {
@@ -235,7 +230,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _topicsBlacklists;
 
         /// <summary>
-        /// is a list of topics and/or regular expressions to not replicate.
+        /// List of topics and/or regular expressions to not replicate.
         /// </summary>
         public InputList<string> TopicsBlacklists
         {
@@ -251,56 +246,55 @@ namespace Pulumi.Aiven
     public sealed class MirrorMakerReplicationFlowState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Emit heartbeats enabled
+        /// Emit heartbeats enabled. The default value is `false`.
         /// </summary>
         [Input("emitHeartbeatsEnabled")]
         public Input<bool>? EmitHeartbeatsEnabled { get; set; }
 
         /// <summary>
-        /// enable of disable replication flows for a MirrorMaker service
+        /// Enable of disable replication flows for a service.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
-        /// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Replication policy class
+        /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         /// </summary>
         [Input("replicationPolicyClass")]
         public Input<string>? ReplicationPolicyClass { get; set; }
 
         /// <summary>
-        /// Service to link the kafka topic to
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// is a source cluster alias.
+        /// Source cluster alias. Maximum Length: `128`.
         /// </summary>
         [Input("sourceCluster")]
         public Input<string>? SourceCluster { get; set; }
 
         /// <summary>
-        /// Sync consumer group offsets
+        /// Sync consumer group offsets. The default value is `false`.
         /// </summary>
         [Input("syncGroupOffsetsEnabled")]
         public Input<bool>? SyncGroupOffsetsEnabled { get; set; }
 
         /// <summary>
-        /// Frequency of consumer group offset sync
+        /// Frequency of consumer group offset sync. The default value is `1`.
         /// </summary>
         [Input("syncGroupOffsetsIntervalSeconds")]
         public Input<int>? SyncGroupOffsetsIntervalSeconds { get; set; }
 
         /// <summary>
-        /// is a target cluster alias.
+        /// Target cluster alias. Maximum Length: `128`.
         /// </summary>
         [Input("targetCluster")]
         public Input<string>? TargetCluster { get; set; }
@@ -309,7 +303,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _topics;
 
         /// <summary>
-        /// is a list of topics and/or regular expressions to replicate.
+        /// List of topics and/or regular expressions to replicate
         /// </summary>
         public InputList<string> Topics
         {
@@ -321,7 +315,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _topicsBlacklists;
 
         /// <summary>
-        /// is a list of topics and/or regular expressions to not replicate.
+        /// List of topics and/or regular expressions to not replicate.
         /// </summary>
         public InputList<string> TopicsBlacklists
         {

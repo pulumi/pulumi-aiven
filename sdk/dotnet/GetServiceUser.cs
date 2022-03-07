@@ -12,8 +12,6 @@ namespace Pulumi.Aiven
     public static class GetServiceUser
     {
         /// <summary>
-        /// ## # Service User Data Source
-        /// 
         /// The Service User data source provides information about the existing Aiven Service User.
         /// 
         /// {{% examples %}}
@@ -38,8 +36,6 @@ namespace Pulumi.Aiven
         /// 
         /// }
         /// ```
-        /// 
-        /// &gt; **Note** The service user data source is not supported for Aiven Grafana services.
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -47,8 +43,6 @@ namespace Pulumi.Aiven
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceUserResult>("aiven:index/getServiceUser:getServiceUser", args ?? new GetServiceUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # Service User Data Source
-        /// 
         /// The Service User data source provides information about the existing Aiven Service User.
         /// 
         /// {{% examples %}}
@@ -73,8 +67,6 @@ namespace Pulumi.Aiven
         /// 
         /// }
         /// ```
-        /// 
-        /// &gt; **Note** The service user data source is not supported for Aiven Grafana services.
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -86,88 +78,19 @@ namespace Pulumi.Aiven
     public sealed class GetServiceUserArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is the access certificate of the user (not applicable for all services).
-        /// </summary>
-        [Input("accessCert")]
-        public string? AccessCert { get; set; }
-
-        /// <summary>
-        /// is the access key of the user (not applicable for all services).
-        /// </summary>
-        [Input("accessKey")]
-        public string? AccessKey { get; set; }
-
-        [Input("authentication")]
-        public string? Authentication { get; set; }
-
-        /// <summary>
-        /// is the password of the user (not applicable for all services).
-        /// </summary>
-        [Input("password")]
-        public string? Password { get; set; }
-
-        /// <summary>
-        /// and `service_name` - (Required) define the project and service the user belongs to. They should be defined
-        /// using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        [Input("redisAclCategories")]
-        private List<string>? _redisAclCategories;
-
         /// <summary>
-        /// Redis specific field, defines command category rules.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
-        public List<string> RedisAclCategories
-        {
-            get => _redisAclCategories ?? (_redisAclCategories = new List<string>());
-            set => _redisAclCategories = value;
-        }
-
-        [Input("redisAclChannels")]
-        private List<string>? _redisAclChannels;
-        public List<string> RedisAclChannels
-        {
-            get => _redisAclChannels ?? (_redisAclChannels = new List<string>());
-            set => _redisAclChannels = value;
-        }
-
-        [Input("redisAclCommands")]
-        private List<string>? _redisAclCommands;
-
-        /// <summary>
-        /// Redis specific field, defines rules for individual commands.
-        /// </summary>
-        public List<string> RedisAclCommands
-        {
-            get => _redisAclCommands ?? (_redisAclCommands = new List<string>());
-            set => _redisAclCommands = value;
-        }
-
-        [Input("redisAclKeys")]
-        private List<string>? _redisAclKeys;
-
-        /// <summary>
-        /// Redis specific field, defines key access rules.
-        /// </summary>
-        public List<string> RedisAclKeys
-        {
-            get => _redisAclKeys ?? (_redisAclKeys = new List<string>());
-            set => _redisAclKeys = value;
-        }
-
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// tells whether the user is primary account or regular account.
-        /// </summary>
-        [Input("type")]
-        public string? Type { get; set; }
-
-        /// <summary>
-        /// is the actual name of the user account.
+        /// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -180,88 +103,19 @@ namespace Pulumi.Aiven
     public sealed class GetServiceUserInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is the access certificate of the user (not applicable for all services).
-        /// </summary>
-        [Input("accessCert")]
-        public Input<string>? AccessCert { get; set; }
-
-        /// <summary>
-        /// is the access key of the user (not applicable for all services).
-        /// </summary>
-        [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
-
-        [Input("authentication")]
-        public Input<string>? Authentication { get; set; }
-
-        /// <summary>
-        /// is the password of the user (not applicable for all services).
-        /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
-
-        /// <summary>
-        /// and `service_name` - (Required) define the project and service the user belongs to. They should be defined
-        /// using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("redisAclCategories")]
-        private InputList<string>? _redisAclCategories;
-
         /// <summary>
-        /// Redis specific field, defines command category rules.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
-        public InputList<string> RedisAclCategories
-        {
-            get => _redisAclCategories ?? (_redisAclCategories = new InputList<string>());
-            set => _redisAclCategories = value;
-        }
-
-        [Input("redisAclChannels")]
-        private InputList<string>? _redisAclChannels;
-        public InputList<string> RedisAclChannels
-        {
-            get => _redisAclChannels ?? (_redisAclChannels = new InputList<string>());
-            set => _redisAclChannels = value;
-        }
-
-        [Input("redisAclCommands")]
-        private InputList<string>? _redisAclCommands;
-
-        /// <summary>
-        /// Redis specific field, defines rules for individual commands.
-        /// </summary>
-        public InputList<string> RedisAclCommands
-        {
-            get => _redisAclCommands ?? (_redisAclCommands = new InputList<string>());
-            set => _redisAclCommands = value;
-        }
-
-        [Input("redisAclKeys")]
-        private InputList<string>? _redisAclKeys;
-
-        /// <summary>
-        /// Redis specific field, defines key access rules.
-        /// </summary>
-        public InputList<string> RedisAclKeys
-        {
-            get => _redisAclKeys ?? (_redisAclKeys = new InputList<string>());
-            set => _redisAclKeys = value;
-        }
-
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// tells whether the user is primary account or regular account.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        /// <summary>
-        /// is the actual name of the user account.
+        /// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -276,41 +130,60 @@ namespace Pulumi.Aiven
     public sealed class GetServiceUserResult
     {
         /// <summary>
-        /// is the access certificate of the user (not applicable for all services).
+        /// Access certificate for the user if applicable for the service in question
         /// </summary>
         public readonly string AccessCert;
         /// <summary>
-        /// is the access key of the user (not applicable for all services).
+        /// Access certificate key for the user if applicable for the service in question
         /// </summary>
         public readonly string AccessKey;
-        public readonly string? Authentication;
+        /// <summary>
+        /// Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+        /// </summary>
+        public readonly string Authentication;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// is the password of the user (not applicable for all services).
+        /// The password of the service user ( not applicable for all services ).
         /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
+        public readonly bool PgAllowReplication;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Redis specific field, defines command category rules.
+        /// Redis specific field, defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public readonly ImmutableArray<string> RedisAclCategories;
+        /// <summary>
+        /// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly ImmutableArray<string> RedisAclChannels;
         /// <summary>
-        /// Redis specific field, defines rules for individual commands.
+        /// Redis specific field, defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public readonly ImmutableArray<string> RedisAclCommands;
         /// <summary>
-        /// Redis specific field, defines key access rules.
+        /// Redis specific field, defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public readonly ImmutableArray<string> RedisAclKeys;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// tells whether the user is primary account or regular account.
+        /// Type of the user account. Tells wether the user is the primary account or a regular account.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]
@@ -319,11 +192,13 @@ namespace Pulumi.Aiven
 
             string accessKey,
 
-            string? authentication,
+            string authentication,
 
             string id,
 
             string password,
+
+            bool pgAllowReplication,
 
             string project,
 
@@ -346,6 +221,7 @@ namespace Pulumi.Aiven
             Authentication = authentication;
             Id = id;
             Password = password;
+            PgAllowReplication = pgAllowReplication;
             Project = project;
             RedisAclCategories = redisAclCategories;
             RedisAclChannels = redisAclChannels;

@@ -13,21 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetM3DbM3dbUserConfigNamespaceResult
     {
-        /// <summary>
-        /// The name of the namespace
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// Namespace options
-        /// </summary>
         public readonly Outputs.GetM3DbM3dbUserConfigNamespaceOptionsResult? Options;
-        /// <summary>
-        /// The resolution for an aggregated namespace
-        /// </summary>
         public readonly string? Resolution;
-        /// <summary>
-        /// The type of aggregation (aggregated/unaggregated)
-        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

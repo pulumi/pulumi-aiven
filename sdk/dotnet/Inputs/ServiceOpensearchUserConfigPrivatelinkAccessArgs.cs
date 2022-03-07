@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceOpensearchUserConfigPrivatelinkAccessArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Opensearch specific server provided values
+        /// </summary>
         [Input("opensearch")]
         public Input<string>? Opensearch { get; set; }
 

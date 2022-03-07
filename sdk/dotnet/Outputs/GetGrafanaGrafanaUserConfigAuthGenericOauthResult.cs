@@ -13,45 +13,15 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetGrafanaGrafanaUserConfigAuthGenericOauthResult
     {
-        /// <summary>
-        /// Automatically sign-up users on successful sign-in
-        /// </summary>
         public readonly string? AllowSignUp;
-        /// <summary>
-        /// Allowed domain
-        /// </summary>
         public readonly ImmutableArray<string> AllowedDomains;
-        /// <summary>
-        /// Must consist of alpha-numeric characters and dashes"
-        /// </summary>
         public readonly ImmutableArray<string> AllowedOrganizations;
-        /// <summary>
-        /// API URL. This only needs to be set when using self hosted GitLab
-        /// </summary>
         public readonly string? ApiUrl;
-        /// <summary>
-        /// Authorization URL. This only needs to be set when using self hosted GitLab
-        /// </summary>
         public readonly string? AuthUrl;
-        /// <summary>
-        /// Client ID from provider
-        /// </summary>
         public readonly string? ClientId;
-        /// <summary>
-        /// Client secret from provider
-        /// </summary>
         public readonly string? ClientSecret;
-        /// <summary>
-        /// Name of the OAuth integration
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// Scope must be non-empty string without whitespace
-        /// </summary>
         public readonly ImmutableArray<string> Scopes;
-        /// <summary>
-        /// Token URL. This only needs to be set when using self hosted GitLab
-        /// </summary>
         public readonly string? TokenUrl;
 
         [OutputConstructor]

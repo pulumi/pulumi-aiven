@@ -47,22 +47,23 @@ class GetAccountTeamMemberResult:
     @pulumi.getter
     def accepted(self) -> bool:
         """
-        is a boolean flag that determines whether an invitation was accepted or not by the user. 
-        `false` value means that the invitation was sent to the user but not yet accepted.
-        `true` means that the user accepted the invitation and is now a member of an account team.
+        is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
         """
         return pulumi.get(self, "accepted")
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The unique account id This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        time of creation.
+        Time of creation
         """
         return pulumi.get(self, "create_time")
 
@@ -78,18 +79,24 @@ class GetAccountTeamMemberResult:
     @pulumi.getter(name="invitedByUserEmail")
     def invited_by_user_email(self) -> str:
         """
-        team invited by user email.
+        The email address that invited this user.
         """
         return pulumi.get(self, "invited_by_user_email")
 
     @property
     @pulumi.getter(name="teamId")
     def team_id(self) -> str:
+        """
+        An account team id This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "team_id")
 
     @property
     @pulumi.getter(name="userEmail")
     def user_email(self) -> str:
+        """
+        Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "user_email")
 
 
@@ -108,34 +115,20 @@ class AwaitableGetAccountTeamMemberResult(GetAccountTeamMemberResult):
             user_email=self.user_email)
 
 
-def get_account_team_member(accepted: Optional[bool] = None,
-                            account_id: Optional[str] = None,
-                            create_time: Optional[str] = None,
-                            invited_by_user_email: Optional[str] = None,
+def get_account_team_member(account_id: Optional[str] = None,
                             team_id: Optional[str] = None,
                             user_email: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountTeamMemberResult:
     """
-    ## # Account Team Member Data Source
-
     The Account Team Member data source provides information about the existing Aiven Account Team Member.
 
 
-    :param bool accepted: is a boolean flag that determines whether an invitation was accepted or not by the user. 
-           `false` value means that the invitation was sent to the user but not yet accepted.
-           `true` means that the user accepted the invitation and is now a member of an account team.
-    :param str account_id: is a unique account id.
-    :param str create_time: time of creation.
-    :param str invited_by_user_email: team invited by user email.
-    :param str team_id: is an account team id.
-    :param str user_email: is a user email address that first will be invited, and after accepting an invitation,
-           he or she becomes a member of a team.
+    :param str account_id: The unique account id This property cannot be changed, doing so forces recreation of the resource.
+    :param str team_id: An account team id This property cannot be changed, doing so forces recreation of the resource.
+    :param str user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
-    __args__['accepted'] = accepted
     __args__['accountId'] = account_id
-    __args__['createTime'] = create_time
-    __args__['invitedByUserEmail'] = invited_by_user_email
     __args__['teamId'] = team_id
     __args__['userEmail'] = user_email
     if opts is None:
@@ -155,27 +148,16 @@ def get_account_team_member(accepted: Optional[bool] = None,
 
 
 @_utilities.lift_output_func(get_account_team_member)
-def get_account_team_member_output(accepted: Optional[pulumi.Input[Optional[bool]]] = None,
-                                   account_id: Optional[pulumi.Input[str]] = None,
-                                   create_time: Optional[pulumi.Input[Optional[str]]] = None,
-                                   invited_by_user_email: Optional[pulumi.Input[Optional[str]]] = None,
+def get_account_team_member_output(account_id: Optional[pulumi.Input[str]] = None,
                                    team_id: Optional[pulumi.Input[str]] = None,
                                    user_email: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountTeamMemberResult]:
     """
-    ## # Account Team Member Data Source
-
     The Account Team Member data source provides information about the existing Aiven Account Team Member.
 
 
-    :param bool accepted: is a boolean flag that determines whether an invitation was accepted or not by the user. 
-           `false` value means that the invitation was sent to the user but not yet accepted.
-           `true` means that the user accepted the invitation and is now a member of an account team.
-    :param str account_id: is a unique account id.
-    :param str create_time: time of creation.
-    :param str invited_by_user_email: team invited by user email.
-    :param str team_id: is an account team id.
-    :param str user_email: is a user email address that first will be invited, and after accepting an invitation,
-           he or she becomes a member of a team.
+    :param str account_id: The unique account id This property cannot be changed, doing so forces recreation of the resource.
+    :param str team_id: An account team id This property cannot be changed, doing so forces recreation of the resource.
+    :param str user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

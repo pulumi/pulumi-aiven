@@ -14,13 +14,9 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetElasticSearchElasticsearchUserConfigPrivatelinkAccessResult
     {
         /// <summary>
-        /// Elasticsearch specific server provided values.
+        /// Elasticsearch server provided values
         /// </summary>
         public readonly string? Elasticsearch;
-        /// <summary>
-        /// Allow clients to connect to kibana from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network.
-        /// </summary>
         public readonly string? Kibana;
 
         [OutputConstructor]

@@ -10,8 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Account Team Data Source
-//
 // The Account Team data source provides information about the existing Account Team.
 func LookupAccountTeam(ctx *pulumi.Context, args *LookupAccountTeamArgs, opts ...pulumi.InvokeOption) (*LookupAccountTeamResult, error) {
 	var rv LookupAccountTeamResult
@@ -24,29 +22,25 @@ func LookupAccountTeam(ctx *pulumi.Context, args *LookupAccountTeamArgs, opts ..
 
 // A collection of arguments for invoking getAccountTeam.
 type LookupAccountTeamArgs struct {
-	// is a unique account id.
+	// The unique account id
 	AccountId string `pulumi:"accountId"`
-	// time of creation.
-	CreateTime *string `pulumi:"createTime"`
-	// defines an account team name.
+	// The account team name
 	Name string `pulumi:"name"`
-	// is an auto-generated unique account team id.
-	TeamId *string `pulumi:"teamId"`
-	// time of last update.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // A collection of values returned by getAccountTeam.
 type LookupAccountTeamResult struct {
+	// The unique account id
 	AccountId string `pulumi:"accountId"`
-	// time of creation.
+	// Time of creation
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The account team name
 	Name string `pulumi:"name"`
-	// is an auto-generated unique account team id.
+	// The auto-generated unique account team id
 	TeamId string `pulumi:"teamId"`
-	// time of last update.
+	// Time of last update
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -61,16 +55,10 @@ func LookupAccountTeamOutput(ctx *pulumi.Context, args LookupAccountTeamOutputAr
 
 // A collection of arguments for invoking getAccountTeam.
 type LookupAccountTeamOutputArgs struct {
-	// is a unique account id.
+	// The unique account id
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// time of creation.
-	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// defines an account team name.
+	// The account team name
 	Name pulumi.StringInput `pulumi:"name"`
-	// is an auto-generated unique account team id.
-	TeamId pulumi.StringPtrInput `pulumi:"teamId"`
-	// time of last update.
-	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
 func (LookupAccountTeamOutputArgs) ElementType() reflect.Type {
@@ -92,11 +80,12 @@ func (o LookupAccountTeamResultOutput) ToLookupAccountTeamResultOutputWithContex
 	return o
 }
 
+// The unique account id
 func (o LookupAccountTeamResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// time of creation.
+// Time of creation
 func (o LookupAccountTeamResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -106,16 +95,17 @@ func (o LookupAccountTeamResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The account team name
 func (o LookupAccountTeamResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// is an auto-generated unique account team id.
+// The auto-generated unique account team id
 func (o LookupAccountTeamResultOutput) TeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamResult) string { return v.TeamId }).(pulumi.StringOutput)
 }
 
-// time of last update.
+// Time of last update
 func (o LookupAccountTeamResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

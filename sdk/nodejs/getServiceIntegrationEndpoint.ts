@@ -6,10 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # Service Integration Endpoint Data Source
- *
- * The Service Integration Endpoint data source provides information about the existing
- * Aiven Service Integration Endpoint.
+ * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
  *
  * ## Example Usage
  *
@@ -30,21 +27,8 @@ export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpoin
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", {
-        "datadogUserConfig": args.datadogUserConfig,
-        "endpointConfig": args.endpointConfig,
         "endpointName": args.endpointName,
-        "endpointType": args.endpointType,
-        "externalAwsCloudwatchLogsUserConfig": args.externalAwsCloudwatchLogsUserConfig,
-        "externalAwsCloudwatchMetricsUserConfig": args.externalAwsCloudwatchMetricsUserConfig,
-        "externalElasticsearchLogsUserConfig": args.externalElasticsearchLogsUserConfig,
-        "externalGoogleCloudLoggingUserConfig": args.externalGoogleCloudLoggingUserConfig,
-        "externalKafkaUserConfig": args.externalKafkaUserConfig,
-        "externalSchemaRegistryUserConfig": args.externalSchemaRegistryUserConfig,
-        "jolokiaUserConfig": args.jolokiaUserConfig,
         "project": args.project,
-        "prometheusUserConfig": args.prometheusUserConfig,
-        "rsyslogUserConfig": args.rsyslogUserConfig,
-        "signalfxUserConfig": args.signalfxUserConfig,
     }, opts);
 }
 
@@ -52,61 +36,84 @@ export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpoin
  * A collection of arguments for invoking getServiceIntegrationEndpoint.
  */
 export interface GetServiceIntegrationEndpointArgs {
-    datadogUserConfig?: inputs.GetServiceIntegrationEndpointDatadogUserConfig;
-    endpointConfig?: {[key: string]: string};
     /**
-     * is the name of the endpoint. This value has no effect beyond being used
-     * to identify different integration endpoints.
+     * Name of the service integration endpoint
      */
     endpointName: string;
     /**
-     * is the type of the external service this endpoint is associated with.
-     * By the time of writing the only available option is `datadog`.
-     */
-    endpointType?: string;
-    externalAwsCloudwatchLogsUserConfig?: inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
-    externalAwsCloudwatchMetricsUserConfig?: inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
-    externalElasticsearchLogsUserConfig?: inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
-    externalGoogleCloudLoggingUserConfig?: inputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
-    externalKafkaUserConfig?: inputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;
-    externalSchemaRegistryUserConfig?: inputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
-    jolokiaUserConfig?: inputs.GetServiceIntegrationEndpointJolokiaUserConfig;
-    /**
-     * defines the project the endpoint is associated with.
+     * Project the service integration endpoint belongs to
      */
     project: string;
-    prometheusUserConfig?: inputs.GetServiceIntegrationEndpointPrometheusUserConfig;
-    rsyslogUserConfig?: inputs.GetServiceIntegrationEndpointRsyslogUserConfig;
-    signalfxUserConfig?: inputs.GetServiceIntegrationEndpointSignalfxUserConfig;
 }
 
 /**
  * A collection of values returned by getServiceIntegrationEndpoint.
  */
 export interface GetServiceIntegrationEndpointResult {
-    readonly datadogUserConfig?: outputs.GetServiceIntegrationEndpointDatadogUserConfig;
+    /**
+     * Datadog specific user configurable settings
+     */
+    readonly datadogUserConfigs: outputs.GetServiceIntegrationEndpointDatadogUserConfig[];
+    /**
+     * Integration endpoint specific backend configuration
+     */
     readonly endpointConfig: {[key: string]: string};
+    /**
+     * Name of the service integration endpoint
+     */
     readonly endpointName: string;
     /**
-     * is the type of the external service this endpoint is associated with.
-     * By the time of writing the only available option is `datadog`.
+     * Type of the service integration endpoint
      */
-    readonly endpointType?: string;
-    readonly externalAwsCloudwatchLogsUserConfig?: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
-    readonly externalAwsCloudwatchMetricsUserConfig?: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
-    readonly externalElasticsearchLogsUserConfig?: outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
-    readonly externalGoogleCloudLoggingUserConfig?: outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
-    readonly externalKafkaUserConfig?: outputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;
-    readonly externalSchemaRegistryUserConfig?: outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
+    readonly endpointType: string;
+    /**
+     * external AWS CloudWatch Logs specific user configurable settings
+     */
+    readonly externalAwsCloudwatchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig[];
+    /**
+     * External AWS cloudwatch mertrics specific user configurable settings
+     */
+    readonly externalAwsCloudwatchMetricsUserConfigs: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig[];
+    /**
+     * external elasticsearch specific user configurable settings
+     */
+    readonly externalElasticsearchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig[];
+    /**
+     * external Google Cloud Logginig specific user configurable settings
+     */
+    readonly externalGoogleCloudLoggingUserConfigs: outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig[];
+    /**
+     * external Kafka specific user configurable settings
+     */
+    readonly externalKafkaUserConfigs: outputs.GetServiceIntegrationEndpointExternalKafkaUserConfig[];
+    /**
+     * External schema registry specific user configurable settings
+     */
+    readonly externalSchemaRegistryUserConfigs: outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly jolokiaUserConfig?: outputs.GetServiceIntegrationEndpointJolokiaUserConfig;
+    /**
+     * Jolokia specific user configurable settings
+     */
+    readonly jolokiaUserConfigs: outputs.GetServiceIntegrationEndpointJolokiaUserConfig[];
+    /**
+     * Project the service integration endpoint belongs to
+     */
     readonly project: string;
-    readonly prometheusUserConfig?: outputs.GetServiceIntegrationEndpointPrometheusUserConfig;
-    readonly rsyslogUserConfig?: outputs.GetServiceIntegrationEndpointRsyslogUserConfig;
-    readonly signalfxUserConfig?: outputs.GetServiceIntegrationEndpointSignalfxUserConfig;
+    /**
+     * Prometheus specific user configurable settings
+     */
+    readonly prometheusUserConfigs: outputs.GetServiceIntegrationEndpointPrometheusUserConfig[];
+    /**
+     * rsyslog specific user configurable settings
+     */
+    readonly rsyslogUserConfigs: outputs.GetServiceIntegrationEndpointRsyslogUserConfig[];
+    /**
+     * Signalfx specific user configurable settings
+     */
+    readonly signalfxUserConfigs: outputs.GetServiceIntegrationEndpointSignalfxUserConfig[];
 }
 
 export function getServiceIntegrationEndpointOutput(args: GetServiceIntegrationEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIntegrationEndpointResult> {
@@ -117,30 +124,12 @@ export function getServiceIntegrationEndpointOutput(args: GetServiceIntegrationE
  * A collection of arguments for invoking getServiceIntegrationEndpoint.
  */
 export interface GetServiceIntegrationEndpointOutputArgs {
-    datadogUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointDatadogUserConfigArgs>;
-    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * is the name of the endpoint. This value has no effect beyond being used
-     * to identify different integration endpoints.
+     * Name of the service integration endpoint
      */
     endpointName: pulumi.Input<string>;
     /**
-     * is the type of the external service this endpoint is associated with.
-     * By the time of writing the only available option is `datadog`.
-     */
-    endpointType?: pulumi.Input<string>;
-    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs>;
-    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs>;
-    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs>;
-    externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs>;
-    externalKafkaUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointExternalKafkaUserConfigArgs>;
-    externalSchemaRegistryUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs>;
-    jolokiaUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointJolokiaUserConfigArgs>;
-    /**
-     * defines the project the endpoint is associated with.
+     * Project the service integration endpoint belongs to
      */
     project: pulumi.Input<string>;
-    prometheusUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointPrometheusUserConfigArgs>;
-    rsyslogUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointRsyslogUserConfigArgs>;
-    signalfxUserConfig?: pulumi.Input<inputs.GetServiceIntegrationEndpointSignalfxUserConfigArgs>;
 }

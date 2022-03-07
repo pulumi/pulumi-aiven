@@ -5,10 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # MirrorMaker 2 Replication Flow Resource
- *
- * The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2
- * Replication Flows on Aiven Cloud.
+ * The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 Replication Flows on Aiven Cloud.
  *
  * ## Example Usage
  *
@@ -60,48 +57,47 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
     }
 
     /**
-     * Emit heartbeats enabled
+     * Emit heartbeats enabled. The default value is `false`.
      */
     public readonly emitHeartbeatsEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * enable of disable replication flows for a MirrorMaker service
+     * Enable of disable replication flows for a service.
      */
     public readonly enable!: pulumi.Output<boolean>;
     /**
-     * and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication 
-     * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Replication policy class
+     * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      */
     public readonly replicationPolicyClass!: pulumi.Output<string | undefined>;
     /**
-     * Service to link the kafka topic to
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * is a source cluster alias.
+     * Source cluster alias. Maximum Length: `128`.
      */
     public readonly sourceCluster!: pulumi.Output<string>;
     /**
-     * Sync consumer group offsets
+     * Sync consumer group offsets. The default value is `false`.
      */
     public readonly syncGroupOffsetsEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Frequency of consumer group offset sync
+     * Frequency of consumer group offset sync. The default value is `1`.
      */
     public readonly syncGroupOffsetsIntervalSeconds!: pulumi.Output<number | undefined>;
     /**
-     * is a target cluster alias.
+     * Target cluster alias. Maximum Length: `128`.
      */
     public readonly targetCluster!: pulumi.Output<string>;
     /**
-     * is a list of topics and/or regular expressions to replicate.
+     * List of topics and/or regular expressions to replicate
      */
     public readonly topics!: pulumi.Output<string[] | undefined>;
     /**
-     * is a list of topics and/or regular expressions to not replicate.
+     * List of topics and/or regular expressions to not replicate.
      */
     public readonly topicsBlacklists!: pulumi.Output<string[] | undefined>;
 
@@ -168,48 +164,47 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
  */
 export interface MirrorMakerReplicationFlowState {
     /**
-     * Emit heartbeats enabled
+     * Emit heartbeats enabled. The default value is `false`.
      */
     emitHeartbeatsEnabled?: pulumi.Input<boolean>;
     /**
-     * enable of disable replication flows for a MirrorMaker service
+     * Enable of disable replication flows for a service.
      */
     enable?: pulumi.Input<boolean>;
     /**
-     * and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication 
-     * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Replication policy class
+     * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      */
     replicationPolicyClass?: pulumi.Input<string>;
     /**
-     * Service to link the kafka topic to
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * is a source cluster alias.
+     * Source cluster alias. Maximum Length: `128`.
      */
     sourceCluster?: pulumi.Input<string>;
     /**
-     * Sync consumer group offsets
+     * Sync consumer group offsets. The default value is `false`.
      */
     syncGroupOffsetsEnabled?: pulumi.Input<boolean>;
     /**
-     * Frequency of consumer group offset sync
+     * Frequency of consumer group offset sync. The default value is `1`.
      */
     syncGroupOffsetsIntervalSeconds?: pulumi.Input<number>;
     /**
-     * is a target cluster alias.
+     * Target cluster alias. Maximum Length: `128`.
      */
     targetCluster?: pulumi.Input<string>;
     /**
-     * is a list of topics and/or regular expressions to replicate.
+     * List of topics and/or regular expressions to replicate
      */
     topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * is a list of topics and/or regular expressions to not replicate.
+     * List of topics and/or regular expressions to not replicate.
      */
     topicsBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -219,48 +214,47 @@ export interface MirrorMakerReplicationFlowState {
  */
 export interface MirrorMakerReplicationFlowArgs {
     /**
-     * Emit heartbeats enabled
+     * Emit heartbeats enabled. The default value is `false`.
      */
     emitHeartbeatsEnabled?: pulumi.Input<boolean>;
     /**
-     * enable of disable replication flows for a MirrorMaker service
+     * Enable of disable replication flows for a service.
      */
     enable: pulumi.Input<boolean>;
     /**
-     * and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication 
-     * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Replication policy class
+     * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      */
     replicationPolicyClass?: pulumi.Input<string>;
     /**
-     * Service to link the kafka topic to
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * is a source cluster alias.
+     * Source cluster alias. Maximum Length: `128`.
      */
     sourceCluster: pulumi.Input<string>;
     /**
-     * Sync consumer group offsets
+     * Sync consumer group offsets. The default value is `false`.
      */
     syncGroupOffsetsEnabled?: pulumi.Input<boolean>;
     /**
-     * Frequency of consumer group offset sync
+     * Frequency of consumer group offset sync. The default value is `1`.
      */
     syncGroupOffsetsIntervalSeconds?: pulumi.Input<number>;
     /**
-     * is a target cluster alias.
+     * Target cluster alias. Maximum Length: `128`.
      */
     targetCluster: pulumi.Input<string>;
     /**
-     * is a list of topics and/or regular expressions to replicate.
+     * List of topics and/or regular expressions to replicate
      */
     topics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * is a list of topics and/or regular expressions to not replicate.
+     * List of topics and/or regular expressions to not replicate.
      */
     topicsBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
 }

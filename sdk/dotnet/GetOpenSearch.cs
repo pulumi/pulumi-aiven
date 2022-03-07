@@ -12,8 +12,6 @@ namespace Pulumi.Aiven
     public static class GetOpenSearch
     {
         /// <summary>
-        /// ## # Opensearch Data Source
-        /// 
         /// The Opensearch data source provides information about the existing Aiven Opensearch service.
         /// 
         /// {{% examples %}}
@@ -44,8 +42,6 @@ namespace Pulumi.Aiven
             => Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchResult>("aiven:index/getOpenSearch:getOpenSearch", args ?? new GetOpenSearchArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # Opensearch Data Source
-        /// 
         /// The Opensearch data source provides information about the existing Aiven Opensearch service.
         /// 
         /// {{% examples %}}
@@ -80,145 +76,16 @@ namespace Pulumi.Aiven
     public sealed class GetOpenSearchArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// defines where the cloud provider and region where the service is hosted in. This can be changed freely
-        /// after service is created. Changing the value will trigger a potentially lengthy migration process for the service.
-        /// Format is cloud provider name
-        /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are
-        /// documented on each Cloud provider's own support articles,
-        /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        /// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        /// </summary>
-        [Input("cloudName")]
-        public string? CloudName { get; set; }
-
-        [Input("components")]
-        private List<Inputs.GetOpenSearchComponentArgs>? _components;
-        public List<Inputs.GetOpenSearchComponentArgs> Components
-        {
-            get => _components ?? (_components = new List<Inputs.GetOpenSearchComponentArgs>());
-            set => _components = value;
-        }
-
-        /// <summary>
-        /// day of week when maintenance operations should be performed. On monday, tuesday, wednesday,
-        /// etc.
-        /// </summary>
-        [Input("maintenanceWindowDow")]
-        public string? MaintenanceWindowDow { get; set; }
-
-        /// <summary>
-        /// time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        /// </summary>
-        [Input("maintenanceWindowTime")]
-        public string? MaintenanceWindowTime { get; set; }
-
-        /// <summary>
-        /// Allow clients to connect to opensearch from the public internet for service nodes that are in a
-        /// project VPC or another type of private network.
-        /// </summary>
-        [Input("opensearch")]
-        public Inputs.GetOpenSearchOpensearchArgs? Opensearch { get; set; }
-
-        /// <summary>
-        /// defines Opensearch specific additional configuration options. The following configuration
-        /// options available:
-        /// </summary>
-        [Input("opensearchUserConfig")]
-        public Inputs.GetOpenSearchOpensearchUserConfigArgs? OpensearchUserConfig { get; set; }
-
-        /// <summary>
-        /// defines what kind of computing resources are allocated for the service. It can be changed after creation,
-        /// though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of
-        /// disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan
-        /// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        /// (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies
-        /// but naming is based on memory). The available options can be seem from
-        /// the [Aiven pricing page](https://aiven.io/pricing).
-        /// </summary>
-        [Input("plan")]
-        public string? Plan { get; set; }
-
-        /// <summary>
-        /// identifies the project the service belongs to. To set up proper dependency between the project
-        /// and the service, refer to the project as shown in the above example. Project cannot be changed later without
-        /// destroying and re-creating the service.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// optionally specifies the VPC the service should run in. If the value is not set the service is not
-        /// run inside a VPC. When set, the value should be given as a reference as shown above to set up dependencies correctly
-        /// and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC
-        /// after creation but doing so triggers migration to new servers so the operation can take significant amount of time to
-        /// complete if the service has a lot of data.
-        /// </summary>
-        [Input("projectVpcId")]
-        public string? ProjectVpcId { get; set; }
-
-        /// <summary>
-        /// Opensearch hostname.
-        /// </summary>
-        [Input("serviceHost")]
-        public string? ServiceHost { get; set; }
-
-        [Input("serviceIntegrations")]
-        private List<Inputs.GetOpenSearchServiceIntegrationArgs>? _serviceIntegrations;
-        public List<Inputs.GetOpenSearchServiceIntegrationArgs> ServiceIntegrations
-        {
-            get => _serviceIntegrations ?? (_serviceIntegrations = new List<Inputs.GetOpenSearchServiceIntegrationArgs>());
-            set => _serviceIntegrations = value;
-        }
-
-        /// <summary>
-        /// specifies the actual name of the service. The name cannot be changed later without
-        /// destroying and re-creating the service so name should be picked based on intended service usage rather than current
-        /// attributes.
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
-
-        /// <summary>
-        /// Password used for connecting to the Opensearch service, if applicable.
-        /// </summary>
-        [Input("servicePassword")]
-        public string? ServicePassword { get; set; }
-
-        /// <summary>
-        /// Opensearch port.
-        /// </summary>
-        [Input("servicePort")]
-        public int? ServicePort { get; set; }
-
-        [Input("serviceType")]
-        public string? ServiceType { get; set; }
-
-        /// <summary>
-        /// URI for connecting to the Opensearch service.
-        /// </summary>
-        [Input("serviceUri")]
-        public string? ServiceUri { get; set; }
-
-        /// <summary>
-        /// Username used for connecting to the Opensearch service, if applicable.
-        /// </summary>
-        [Input("serviceUsername")]
-        public string? ServiceUsername { get; set; }
-
-        /// <summary>
-        /// Service state.
-        /// </summary>
-        [Input("state")]
-        public string? State { get; set; }
-
-        /// <summary>
-        /// prevents the service from being deleted. It is recommended to set this to `true` for all
-        /// production services to prevent unintentional service deletion. This does not shield against deleting databases or
-        /// topics but for services with backups much of the content can at least be restored from backup in case accidental
-        /// deletion is done.
-        /// </summary>
-        [Input("terminationProtection")]
-        public bool? TerminationProtection { get; set; }
 
         public GetOpenSearchArgs()
         {
@@ -228,145 +95,16 @@ namespace Pulumi.Aiven
     public sealed class GetOpenSearchInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// defines where the cloud provider and region where the service is hosted in. This can be changed freely
-        /// after service is created. Changing the value will trigger a potentially lengthy migration process for the service.
-        /// Format is cloud provider name
-        /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are
-        /// documented on each Cloud provider's own support articles,
-        /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        /// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        /// </summary>
-        [Input("cloudName")]
-        public Input<string>? CloudName { get; set; }
-
-        [Input("components")]
-        private InputList<Inputs.GetOpenSearchComponentInputArgs>? _components;
-        public InputList<Inputs.GetOpenSearchComponentInputArgs> Components
-        {
-            get => _components ?? (_components = new InputList<Inputs.GetOpenSearchComponentInputArgs>());
-            set => _components = value;
-        }
-
-        /// <summary>
-        /// day of week when maintenance operations should be performed. On monday, tuesday, wednesday,
-        /// etc.
-        /// </summary>
-        [Input("maintenanceWindowDow")]
-        public Input<string>? MaintenanceWindowDow { get; set; }
-
-        /// <summary>
-        /// time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        /// </summary>
-        [Input("maintenanceWindowTime")]
-        public Input<string>? MaintenanceWindowTime { get; set; }
-
-        /// <summary>
-        /// Allow clients to connect to opensearch from the public internet for service nodes that are in a
-        /// project VPC or another type of private network.
-        /// </summary>
-        [Input("opensearch")]
-        public Input<Inputs.GetOpenSearchOpensearchInputArgs>? Opensearch { get; set; }
-
-        /// <summary>
-        /// defines Opensearch specific additional configuration options. The following configuration
-        /// options available:
-        /// </summary>
-        [Input("opensearchUserConfig")]
-        public Input<Inputs.GetOpenSearchOpensearchUserConfigInputArgs>? OpensearchUserConfig { get; set; }
-
-        /// <summary>
-        /// defines what kind of computing resources are allocated for the service. It can be changed after creation,
-        /// though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of
-        /// disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan
-        /// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        /// (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies
-        /// but naming is based on memory). The available options can be seem from
-        /// the [Aiven pricing page](https://aiven.io/pricing).
-        /// </summary>
-        [Input("plan")]
-        public Input<string>? Plan { get; set; }
-
-        /// <summary>
-        /// identifies the project the service belongs to. To set up proper dependency between the project
-        /// and the service, refer to the project as shown in the above example. Project cannot be changed later without
-        /// destroying and re-creating the service.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// optionally specifies the VPC the service should run in. If the value is not set the service is not
-        /// run inside a VPC. When set, the value should be given as a reference as shown above to set up dependencies correctly
-        /// and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC
-        /// after creation but doing so triggers migration to new servers so the operation can take significant amount of time to
-        /// complete if the service has a lot of data.
-        /// </summary>
-        [Input("projectVpcId")]
-        public Input<string>? ProjectVpcId { get; set; }
-
-        /// <summary>
-        /// Opensearch hostname.
-        /// </summary>
-        [Input("serviceHost")]
-        public Input<string>? ServiceHost { get; set; }
-
-        [Input("serviceIntegrations")]
-        private InputList<Inputs.GetOpenSearchServiceIntegrationInputArgs>? _serviceIntegrations;
-        public InputList<Inputs.GetOpenSearchServiceIntegrationInputArgs> ServiceIntegrations
-        {
-            get => _serviceIntegrations ?? (_serviceIntegrations = new InputList<Inputs.GetOpenSearchServiceIntegrationInputArgs>());
-            set => _serviceIntegrations = value;
-        }
-
-        /// <summary>
-        /// specifies the actual name of the service. The name cannot be changed later without
-        /// destroying and re-creating the service so name should be picked based on intended service usage rather than current
-        /// attributes.
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
-
-        /// <summary>
-        /// Password used for connecting to the Opensearch service, if applicable.
-        /// </summary>
-        [Input("servicePassword")]
-        public Input<string>? ServicePassword { get; set; }
-
-        /// <summary>
-        /// Opensearch port.
-        /// </summary>
-        [Input("servicePort")]
-        public Input<int>? ServicePort { get; set; }
-
-        [Input("serviceType")]
-        public Input<string>? ServiceType { get; set; }
-
-        /// <summary>
-        /// URI for connecting to the Opensearch service.
-        /// </summary>
-        [Input("serviceUri")]
-        public Input<string>? ServiceUri { get; set; }
-
-        /// <summary>
-        /// Username used for connecting to the Opensearch service, if applicable.
-        /// </summary>
-        [Input("serviceUsername")]
-        public Input<string>? ServiceUsername { get; set; }
-
-        /// <summary>
-        /// Service state.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// prevents the service from being deleted. It is recommended to set this to `true` for all
-        /// production services to prevent unintentional service deletion. This does not shield against deleting databases or
-        /// topics but for services with backups much of the content can at least be restored from backup in case accidental
-        /// deletion is done.
-        /// </summary>
-        [Input("terminationProtection")]
-        public Input<bool>? TerminationProtection { get; set; }
 
         public GetOpenSearchInvokeArgs()
         {
@@ -378,114 +116,141 @@ namespace Pulumi.Aiven
     public sealed class GetOpenSearchResult
     {
         /// <summary>
-        /// defines where the cloud provider and region where the service is hosted in. This can be changed freely
-        /// after service is created. Changing the value will trigger a potentially lengthy migration process for the service.
-        /// Format is cloud provider name
-        /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are
-        /// documented on each Cloud provider's own support articles,
-        /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        /// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         /// </summary>
-        public readonly string? CloudName;
+        public readonly string CloudName;
+        /// <summary>
+        /// Service component information objects
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetOpenSearchComponentResult> Components;
+        /// <summary>
+        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// </summary>
+        public readonly string DiskSpace;
+        /// <summary>
+        /// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        /// </summary>
+        public readonly string DiskSpaceCap;
+        /// <summary>
+        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        /// </summary>
+        public readonly string DiskSpaceDefault;
+        /// <summary>
+        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        /// </summary>
+        public readonly string DiskSpaceStep;
+        /// <summary>
+        /// Disk space that service is currently using
+        /// </summary>
+        public readonly string DiskSpaceUsed;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// day of week when maintenance operations should be performed. On monday, tuesday, wednesday,
-        /// etc.
+        /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         /// </summary>
-        public readonly string? MaintenanceWindowDow;
+        public readonly string MaintenanceWindowDow;
         /// <summary>
-        /// time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        /// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         /// </summary>
-        public readonly string? MaintenanceWindowTime;
+        public readonly string MaintenanceWindowTime;
         /// <summary>
-        /// Allow clients to connect to opensearch from the public internet for service nodes that are in a
-        /// project VPC or another type of private network.
+        /// Opensearch user configurable settings
         /// </summary>
-        public readonly Outputs.GetOpenSearchOpensearchResult Opensearch;
+        public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigResult> OpensearchUserConfigs;
         /// <summary>
-        /// defines Opensearch specific additional configuration options. The following configuration
-        /// options available:
+        /// Opensearch server provided values
         /// </summary>
-        public readonly Outputs.GetOpenSearchOpensearchUserConfigResult? OpensearchUserConfig;
+        public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchResult> Opensearches;
         /// <summary>
-        /// defines what kind of computing resources are allocated for the service. It can be changed after creation,
-        /// though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of
-        /// disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan
-        /// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        /// (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies
-        /// but naming is based on memory). The available options can be seem from
-        /// the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
-        public readonly string? Plan;
+        public readonly string Plan;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
         /// <summary>
-        /// optionally specifies the VPC the service should run in. If the value is not set the service is not
-        /// run inside a VPC. When set, the value should be given as a reference as shown above to set up dependencies correctly
-        /// and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC
-        /// after creation but doing so triggers migration to new servers so the operation can take significant amount of time to
-        /// complete if the service has a lot of data.
+        /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         /// </summary>
-        public readonly string? ProjectVpcId;
+        public readonly string ProjectVpcId;
         /// <summary>
-        /// Opensearch hostname.
+        /// The hostname of the service.
         /// </summary>
         public readonly string ServiceHost;
+        /// <summary>
+        /// Service integrations to specify when creating a service. Not applied after initial service creation
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetOpenSearchServiceIntegrationResult> ServiceIntegrations;
+        /// <summary>
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Password used for connecting to the Opensearch service, if applicable.
+        /// Password used for connecting to the service, if applicable
         /// </summary>
         public readonly string ServicePassword;
         /// <summary>
-        /// Opensearch port.
+        /// The port of the service
         /// </summary>
         public readonly int ServicePort;
+        /// <summary>
+        /// Aiven internal service type code
+        /// </summary>
         public readonly string ServiceType;
         /// <summary>
-        /// URI for connecting to the Opensearch service.
+        /// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         /// </summary>
         public readonly string ServiceUri;
         /// <summary>
-        /// Username used for connecting to the Opensearch service, if applicable.
+        /// Username used for connecting to the service, if applicable
         /// </summary>
         public readonly string ServiceUsername;
         /// <summary>
-        /// Service state.
+        /// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// prevents the service from being deleted. It is recommended to set this to `true` for all
-        /// production services to prevent unintentional service deletion. This does not shield against deleting databases or
-        /// topics but for services with backups much of the content can at least be restored from backup in case accidental
-        /// deletion is done.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
-        public readonly bool? TerminationProtection;
+        public readonly ImmutableArray<string> StaticIps;
+        /// <summary>
+        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+        /// </summary>
+        public readonly bool TerminationProtection;
 
         [OutputConstructor]
         private GetOpenSearchResult(
-            string? cloudName,
+            string cloudName,
 
             ImmutableArray<Outputs.GetOpenSearchComponentResult> components,
 
+            string diskSpace,
+
+            string diskSpaceCap,
+
+            string diskSpaceDefault,
+
+            string diskSpaceStep,
+
+            string diskSpaceUsed,
+
             string id,
 
-            string? maintenanceWindowDow,
+            string maintenanceWindowDow,
 
-            string? maintenanceWindowTime,
+            string maintenanceWindowTime,
 
-            Outputs.GetOpenSearchOpensearchResult opensearch,
+            ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigResult> opensearchUserConfigs,
 
-            Outputs.GetOpenSearchOpensearchUserConfigResult? opensearchUserConfig,
+            ImmutableArray<Outputs.GetOpenSearchOpensearchResult> opensearches,
 
-            string? plan,
+            string plan,
 
             string project,
 
-            string? projectVpcId,
+            string projectVpcId,
 
             string serviceHost,
 
@@ -505,15 +270,22 @@ namespace Pulumi.Aiven
 
             string state,
 
-            bool? terminationProtection)
+            ImmutableArray<string> staticIps,
+
+            bool terminationProtection)
         {
             CloudName = cloudName;
             Components = components;
+            DiskSpace = diskSpace;
+            DiskSpaceCap = diskSpaceCap;
+            DiskSpaceDefault = diskSpaceDefault;
+            DiskSpaceStep = diskSpaceStep;
+            DiskSpaceUsed = diskSpaceUsed;
             Id = id;
             MaintenanceWindowDow = maintenanceWindowDow;
             MaintenanceWindowTime = maintenanceWindowTime;
-            Opensearch = opensearch;
-            OpensearchUserConfig = opensearchUserConfig;
+            OpensearchUserConfigs = opensearchUserConfigs;
+            Opensearches = opensearches;
             Plan = plan;
             Project = project;
             ProjectVpcId = projectVpcId;
@@ -526,6 +298,7 @@ namespace Pulumi.Aiven
             ServiceUri = serviceUri;
             ServiceUsername = serviceUsername;
             State = state;
+            StaticIps = staticIps;
             TerminationProtection = terminationProtection;
         }
     }

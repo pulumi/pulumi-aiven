@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Account Data Source
- *
  * The Account data source provides information about the existing Aiven Account.
  *
  * ## Example Usage
@@ -27,12 +25,7 @@ export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): P
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getAccount:getAccount", {
-        "accountId": args.accountId,
-        "createTime": args.createTime,
         "name": args.name,
-        "ownerTeamId": args.ownerTeamId,
-        "tenantId": args.tenantId,
-        "updateTime": args.updateTime,
     }, opts);
 }
 
@@ -41,29 +34,9 @@ export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetAccountArgs {
     /**
-     * is an auto-generated unique account id.
-     */
-    accountId?: string;
-    /**
-     * time of creation.
-     */
-    createTime?: string;
-    /**
-     * defines an account name.
+     * Account name
      */
     name: string;
-    /**
-     * is an owner team id.
-     */
-    ownerTeamId?: string;
-    /**
-     * is a tenant id.
-     */
-    tenantId?: string;
-    /**
-     * time of last update.
-     */
-    updateTime?: string;
 }
 
 /**
@@ -71,28 +44,31 @@ export interface GetAccountArgs {
  */
 export interface GetAccountResult {
     /**
-     * is an auto-generated unique account id.
+     * Account id
      */
     readonly accountId: string;
     /**
-     * time of creation.
+     * Time of creation
      */
     readonly createTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Account name
+     */
     readonly name: string;
     /**
-     * is an owner team id.
+     * Owner team id
      */
     readonly ownerTeamId: string;
     /**
-     * is a tenant id.
+     * Tenant id
      */
     readonly tenantId: string;
     /**
-     * time of last update.
+     * Time of last update
      */
     readonly updateTime: string;
 }
@@ -106,27 +82,7 @@ export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.Invok
  */
 export interface GetAccountOutputArgs {
     /**
-     * is an auto-generated unique account id.
-     */
-    accountId?: pulumi.Input<string>;
-    /**
-     * time of creation.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
-     * defines an account name.
+     * Account name
      */
     name: pulumi.Input<string>;
-    /**
-     * is an owner team id.
-     */
-    ownerTeamId?: pulumi.Input<string>;
-    /**
-     * is a tenant id.
-     */
-    tenantId?: pulumi.Input<string>;
-    /**
-     * time of last update.
-     */
-    updateTime?: pulumi.Input<string>;
 }

@@ -12,10 +12,7 @@ namespace Pulumi.Aiven
     public static class GetMirrorMakerReplicationFlow
     {
         /// <summary>
-        /// ## # MirrorMaker 2 Replication Flow Data Source
-        /// 
-        /// The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 
-        /// Replication Flow on Aiven Cloud.
+        /// The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -47,10 +44,7 @@ namespace Pulumi.Aiven
             => Pulumi.Deployment.Instance.InvokeAsync<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # MirrorMaker 2 Replication Flow Data Source
-        /// 
-        /// The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 
-        /// Replication Flow on Aiven Cloud.
+        /// The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -85,69 +79,29 @@ namespace Pulumi.Aiven
 
     public sealed class GetMirrorMakerReplicationFlowArgs : Pulumi.InvokeArgs
     {
-        [Input("emitHeartbeatsEnabled")]
-        public bool? EmitHeartbeatsEnabled { get; set; }
-
         /// <summary>
-        /// enable of disable replication flows for a MirrorMaker service
-        /// </summary>
-        [Input("enable")]
-        public bool? Enable { get; set; }
-
-        /// <summary>
-        /// and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
-        /// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        [Input("replicationPolicyClass")]
-        public string? ReplicationPolicyClass { get; set; }
-
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// is a source cluster alias.
+        /// Source cluster alias. Maximum Length: `128`.
         /// </summary>
         [Input("sourceCluster", required: true)]
         public string SourceCluster { get; set; } = null!;
 
-        [Input("syncGroupOffsetsEnabled")]
-        public bool? SyncGroupOffsetsEnabled { get; set; }
-
-        [Input("syncGroupOffsetsIntervalSeconds")]
-        public int? SyncGroupOffsetsIntervalSeconds { get; set; }
-
         /// <summary>
-        /// is a target cluster alias.
+        /// Target cluster alias. Maximum Length: `128`.
         /// </summary>
         [Input("targetCluster", required: true)]
         public string TargetCluster { get; set; } = null!;
-
-        [Input("topics")]
-        private List<string>? _topics;
-
-        /// <summary>
-        /// is a list of topics and/or regular expressions to replicate.
-        /// </summary>
-        public List<string> Topics
-        {
-            get => _topics ?? (_topics = new List<string>());
-            set => _topics = value;
-        }
-
-        [Input("topicsBlacklists")]
-        private List<string>? _topicsBlacklists;
-
-        /// <summary>
-        /// is a list of topics and/or regular expressions to not replicate.
-        /// </summary>
-        public List<string> TopicsBlacklists
-        {
-            get => _topicsBlacklists ?? (_topicsBlacklists = new List<string>());
-            set => _topicsBlacklists = value;
-        }
 
         public GetMirrorMakerReplicationFlowArgs()
         {
@@ -156,69 +110,29 @@ namespace Pulumi.Aiven
 
     public sealed class GetMirrorMakerReplicationFlowInvokeArgs : Pulumi.InvokeArgs
     {
-        [Input("emitHeartbeatsEnabled")]
-        public Input<bool>? EmitHeartbeatsEnabled { get; set; }
-
         /// <summary>
-        /// enable of disable replication flows for a MirrorMaker service
-        /// </summary>
-        [Input("enable")]
-        public Input<bool>? Enable { get; set; }
-
-        /// <summary>
-        /// and `service_name` - (Required) define the project and service the Kafka MirrorMaker Replication 
-        /// Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("replicationPolicyClass")]
-        public Input<string>? ReplicationPolicyClass { get; set; }
-
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// is a source cluster alias.
+        /// Source cluster alias. Maximum Length: `128`.
         /// </summary>
         [Input("sourceCluster", required: true)]
         public Input<string> SourceCluster { get; set; } = null!;
 
-        [Input("syncGroupOffsetsEnabled")]
-        public Input<bool>? SyncGroupOffsetsEnabled { get; set; }
-
-        [Input("syncGroupOffsetsIntervalSeconds")]
-        public Input<int>? SyncGroupOffsetsIntervalSeconds { get; set; }
-
         /// <summary>
-        /// is a target cluster alias.
+        /// Target cluster alias. Maximum Length: `128`.
         /// </summary>
         [Input("targetCluster", required: true)]
         public Input<string> TargetCluster { get; set; } = null!;
-
-        [Input("topics")]
-        private InputList<string>? _topics;
-
-        /// <summary>
-        /// is a list of topics and/or regular expressions to replicate.
-        /// </summary>
-        public InputList<string> Topics
-        {
-            get => _topics ?? (_topics = new InputList<string>());
-            set => _topics = value;
-        }
-
-        [Input("topicsBlacklists")]
-        private InputList<string>? _topicsBlacklists;
-
-        /// <summary>
-        /// is a list of topics and/or regular expressions to not replicate.
-        /// </summary>
-        public InputList<string> TopicsBlacklists
-        {
-            get => _topicsBlacklists ?? (_topicsBlacklists = new InputList<string>());
-            set => _topicsBlacklists = value;
-        }
 
         public GetMirrorMakerReplicationFlowInvokeArgs()
         {
@@ -229,50 +143,74 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetMirrorMakerReplicationFlowResult
     {
-        public readonly bool? EmitHeartbeatsEnabled;
         /// <summary>
-        /// enable of disable replication flows for a MirrorMaker service
+        /// Emit heartbeats enabled. The default value is `false`.
         /// </summary>
-        public readonly bool? Enable;
+        public readonly bool EmitHeartbeatsEnabled;
+        /// <summary>
+        /// Enable of disable replication flows for a service.
+        /// </summary>
+        public readonly bool Enable;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
-        public readonly string? ReplicationPolicyClass;
+        /// <summary>
+        /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+        /// </summary>
+        public readonly string ReplicationPolicyClass;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Source cluster alias. Maximum Length: `128`.
+        /// </summary>
         public readonly string SourceCluster;
-        public readonly bool? SyncGroupOffsetsEnabled;
-        public readonly int? SyncGroupOffsetsIntervalSeconds;
+        /// <summary>
+        /// Sync consumer group offsets. The default value is `false`.
+        /// </summary>
+        public readonly bool SyncGroupOffsetsEnabled;
+        /// <summary>
+        /// Frequency of consumer group offset sync. The default value is `1`.
+        /// </summary>
+        public readonly int SyncGroupOffsetsIntervalSeconds;
+        /// <summary>
+        /// Target cluster alias. Maximum Length: `128`.
+        /// </summary>
         public readonly string TargetCluster;
         /// <summary>
-        /// is a list of topics and/or regular expressions to replicate.
+        /// List of topics and/or regular expressions to replicate
         /// </summary>
         public readonly ImmutableArray<string> Topics;
         /// <summary>
-        /// is a list of topics and/or regular expressions to not replicate.
+        /// List of topics and/or regular expressions to not replicate.
         /// </summary>
         public readonly ImmutableArray<string> TopicsBlacklists;
 
         [OutputConstructor]
         private GetMirrorMakerReplicationFlowResult(
-            bool? emitHeartbeatsEnabled,
+            bool emitHeartbeatsEnabled,
 
-            bool? enable,
+            bool enable,
 
             string id,
 
             string project,
 
-            string? replicationPolicyClass,
+            string replicationPolicyClass,
 
             string serviceName,
 
             string sourceCluster,
 
-            bool? syncGroupOffsetsEnabled,
+            bool syncGroupOffsetsEnabled,
 
-            int? syncGroupOffsetsIntervalSeconds,
+            int syncGroupOffsetsIntervalSeconds,
 
             string targetCluster,
 

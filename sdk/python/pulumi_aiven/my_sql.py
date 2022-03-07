@@ -18,70 +18,40 @@ class MySqlArgs:
                  project: pulumi.Input[str],
                  service_name: pulumi.Input[str],
                  cloud_name: Optional[pulumi.Input[str]] = None,
+                 disk_space: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input['MySqlMysqlArgs']] = None,
                  mysql_user_config: Optional[pulumi.Input['MySqlMysqlUserConfigArgs']] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlServiceIntegrationArgs']]]] = None,
+                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a MySql resource.
-        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
-               between the project and the service, refer to the project as shown in the above example.
-               Project cannot be changed later without destroying and re-creating the service.
-        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
-               later without destroying and re-creating the service so name should be picked based on
-               intended service usage rather than current attributes.
-        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
-               in. This can be changed freely after service is created. Changing the value will trigger
-               a potentially lengthy migration process for the service. Format is cloud provider name
-               (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-               specific region name. These are documented on each Cloud provider's own support articles,
-               like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-               [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
-               On monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
-               UTC time in HH:mm:ss format.
-        :param pulumi.Input['MySqlMysqlArgs'] mysql: Allow clients to connect to mysql from the public internet for service 
-               nodes that are in a project VPC or another type of private network
-        :param pulumi.Input['MySqlMysqlUserConfigArgs'] mysql_user_config: defines MySQL specific additional configuration options. The following 
-               configuration options available:
-        :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
-               be changed after creation, though there are some restrictions when going to a smaller
-               plan such as the new plan must have sufficient amount of disk space to store all current
-               data and switching to a plan with fewer nodes might not be supported. The basic plan
-               names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-               (roughly) the amount of memory on each node (also other attributes like number of CPUs
-               and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project_vpc_id: optionally specifies the VPC the service should run in. If the value
-               is not set the service is not run inside a VPC. When set, the value should be given as a
-               reference as shown above to set up dependencies correctly and the VPC must be in the same
-               cloud and region as the service itself. Project can be freely moved to and from VPC after
-               creation but doing so triggers migration to new servers so the operation can take
-               significant amount of time to complete if the service has a lot of data.
-        :param pulumi.Input[Sequence[pulumi.Input['MySqlServiceIntegrationArgs']]] service_integrations: can be used to define service integrations that must exist
-               immediately upon service creation. By the time of writing the only such integration is
-               defining that MySQL service is a read-replica of another service. To define a read-
-               replica the following configuration needs to be added:
-        :param pulumi.Input[bool] termination_protection: prevents the service from being deleted. It is recommended to
-               set this to `true` for all production services to prevent unintentional service
-               deletion. This does not shield against deleting databases or topics but for services
-               with backups much of the content can at least be restored from backup in case accidental
-               deletion is done.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        :param pulumi.Input['MySqlMysqlUserConfigArgs'] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[Sequence[pulumi.Input['MySqlServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
+        if disk_space is not None:
+            pulumi.set(__self__, "disk_space", disk_space)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
             pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
-        if mysql is not None:
-            pulumi.set(__self__, "mysql", mysql)
         if mysql_user_config is not None:
             pulumi.set(__self__, "mysql_user_config", mysql_user_config)
         if plan is not None:
@@ -90,6 +60,8 @@ class MySqlArgs:
             pulumi.set(__self__, "project_vpc_id", project_vpc_id)
         if service_integrations is not None:
             pulumi.set(__self__, "service_integrations", service_integrations)
+        if static_ips is not None:
+            pulumi.set(__self__, "static_ips", static_ips)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -97,9 +69,7 @@ class MySqlArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        identifies the project the service belongs to. To set up proper dependency
-        between the project and the service, refer to the project as shown in the above example.
-        Project cannot be changed later without destroying and re-creating the service.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -111,9 +81,7 @@ class MySqlArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        specifies the actual name of the service. The name cannot be changed
-        later without destroying and re-creating the service so name should be picked based on
-        intended service usage rather than current attributes.
+        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         """
         return pulumi.get(self, "service_name")
 
@@ -125,13 +93,7 @@ class MySqlArgs:
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[pulumi.Input[str]]:
         """
-        defines where the cloud provider and region where the service is hosted
-        in. This can be changed freely after service is created. Changing the value will trigger
-        a potentially lengthy migration process for the service. Format is cloud provider name
-        (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        specific region name. These are documented on each Cloud provider's own support articles,
-        like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         """
         return pulumi.get(self, "cloud_name")
 
@@ -140,11 +102,22 @@ class MySqlArgs:
         pulumi.set(self, "cloud_name", value)
 
     @property
+    @pulumi.getter(name="diskSpace")
+    def disk_space(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        """
+        return pulumi.get(self, "disk_space")
+
+    @disk_space.setter
+    def disk_space(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space", value)
+
+    @property
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> Optional[pulumi.Input[str]]:
         """
-        day of week when maintenance operations should be performed. 
-        On monday, tuesday, wednesday, etc.
+        Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
 
@@ -156,8 +129,7 @@ class MySqlArgs:
     @pulumi.getter(name="maintenanceWindowTime")
     def maintenance_window_time(self) -> Optional[pulumi.Input[str]]:
         """
-        time of day when maintenance operations should be performed. 
-        UTC time in HH:mm:ss format.
+        Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")
 
@@ -166,24 +138,10 @@ class MySqlArgs:
         pulumi.set(self, "maintenance_window_time", value)
 
     @property
-    @pulumi.getter
-    def mysql(self) -> Optional[pulumi.Input['MySqlMysqlArgs']]:
-        """
-        Allow clients to connect to mysql from the public internet for service 
-        nodes that are in a project VPC or another type of private network
-        """
-        return pulumi.get(self, "mysql")
-
-    @mysql.setter
-    def mysql(self, value: Optional[pulumi.Input['MySqlMysqlArgs']]):
-        pulumi.set(self, "mysql", value)
-
-    @property
     @pulumi.getter(name="mysqlUserConfig")
     def mysql_user_config(self) -> Optional[pulumi.Input['MySqlMysqlUserConfigArgs']]:
         """
-        defines MySQL specific additional configuration options. The following 
-        configuration options available:
+        Mysql user configurable settings
         """
         return pulumi.get(self, "mysql_user_config")
 
@@ -195,13 +153,7 @@ class MySqlArgs:
     @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[str]]:
         """
-        defines what kind of computing resources are allocated for the service. It can
-        be changed after creation, though there are some restrictions when going to a smaller
-        plan such as the new plan must have sufficient amount of disk space to store all current
-        data and switching to a plan with fewer nodes might not be supported. The basic plan
-        names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -213,12 +165,7 @@ class MySqlArgs:
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        optionally specifies the VPC the service should run in. If the value
-        is not set the service is not run inside a VPC. When set, the value should be given as a
-        reference as shown above to set up dependencies correctly and the VPC must be in the same
-        cloud and region as the service itself. Project can be freely moved to and from VPC after
-        creation but doing so triggers migration to new servers so the operation can take
-        significant amount of time to complete if the service has a lot of data.
+        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
 
@@ -230,10 +177,7 @@ class MySqlArgs:
     @pulumi.getter(name="serviceIntegrations")
     def service_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MySqlServiceIntegrationArgs']]]]:
         """
-        can be used to define service integrations that must exist
-        immediately upon service creation. By the time of writing the only such integration is
-        defining that MySQL service is a read-replica of another service. To define a read-
-        replica the following configuration needs to be added:
+        Service integrations to specify when creating a service. Not applied after initial service creation
         """
         return pulumi.get(self, "service_integrations")
 
@@ -242,14 +186,22 @@ class MySqlArgs:
         pulumi.set(self, "service_integrations", value)
 
     @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
+        return pulumi.get(self, "static_ips")
+
+    @static_ips.setter
+    def static_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "static_ips", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        prevents the service from being deleted. It is recommended to
-        set this to `true` for all production services to prevent unintentional service
-        deletion. This does not shield against deleting databases or topics but for services
-        with backups much of the content can at least be restored from backup in case accidental
-        deletion is done.
+        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         return pulumi.get(self, "termination_protection")
 
@@ -263,10 +215,15 @@ class _MySqlState:
     def __init__(__self__, *,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  components: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlComponentArgs']]]] = None,
+                 disk_space: Optional[pulumi.Input[str]] = None,
+                 disk_space_cap: Optional[pulumi.Input[str]] = None,
+                 disk_space_default: Optional[pulumi.Input[str]] = None,
+                 disk_space_step: Optional[pulumi.Input[str]] = None,
+                 disk_space_used: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input['MySqlMysqlArgs']] = None,
                  mysql_user_config: Optional[pulumi.Input['MySqlMysqlUserConfigArgs']] = None,
+                 mysqls: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlMysqlArgs']]]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
@@ -279,73 +236,58 @@ class _MySqlState:
                  service_uri: Optional[pulumi.Input[str]] = None,
                  service_username: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering MySql resources.
-        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
-               in. This can be changed freely after service is created. Changing the value will trigger
-               a potentially lengthy migration process for the service. Format is cloud provider name
-               (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-               specific region name. These are documented on each Cloud provider's own support articles,
-               like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-               [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input['MySqlComponentArgs']]] components: Service component information objects
-        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
-               On monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
-               UTC time in HH:mm:ss format.
-        :param pulumi.Input['MySqlMysqlArgs'] mysql: Allow clients to connect to mysql from the public internet for service 
-               nodes that are in a project VPC or another type of private network
-        :param pulumi.Input['MySqlMysqlUserConfigArgs'] mysql_user_config: defines MySQL specific additional configuration options. The following 
-               configuration options available:
-        :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
-               be changed after creation, though there are some restrictions when going to a smaller
-               plan such as the new plan must have sufficient amount of disk space to store all current
-               data and switching to a plan with fewer nodes might not be supported. The basic plan
-               names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-               (roughly) the amount of memory on each node (also other attributes like number of CPUs
-               and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
-               between the project and the service, refer to the project as shown in the above example.
-               Project cannot be changed later without destroying and re-creating the service.
-        :param pulumi.Input[str] project_vpc_id: optionally specifies the VPC the service should run in. If the value
-               is not set the service is not run inside a VPC. When set, the value should be given as a
-               reference as shown above to set up dependencies correctly and the VPC must be in the same
-               cloud and region as the service itself. Project can be freely moved to and from VPC after
-               creation but doing so triggers migration to new servers so the operation can take
-               significant amount of time to complete if the service has a lot of data.
-        :param pulumi.Input[str] service_host: MySQL hostname.
-        :param pulumi.Input[Sequence[pulumi.Input['MySqlServiceIntegrationArgs']]] service_integrations: can be used to define service integrations that must exist
-               immediately upon service creation. By the time of writing the only such integration is
-               defining that MySQL service is a read-replica of another service. To define a read-
-               replica the following configuration needs to be added:
-        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
-               later without destroying and re-creating the service so name should be picked based on
-               intended service usage rather than current attributes.
-        :param pulumi.Input[str] service_password: Password used for connecting to the MySQL service, if applicable.
-        :param pulumi.Input[int] service_port: MySQL port.
+        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
+        :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        :param pulumi.Input['MySqlMysqlUserConfigArgs'] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['MySqlMysqlArgs']]] mysqls: MySQL specific server provided values
+        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[str] service_host: The hostname of the service.
+        :param pulumi.Input[Sequence[pulumi.Input['MySqlServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        :param pulumi.Input[str] service_password: Password used for connecting to the service, if applicable
+        :param pulumi.Input[int] service_port: The port of the service
         :param pulumi.Input[str] service_type: Aiven internal service type code
-        :param pulumi.Input[str] service_uri: URI for connecting to the MySQL service.
-        :param pulumi.Input[str] service_username: Username used for connecting to the MySQL service, if applicable.
-        :param pulumi.Input[str] state: Service state.
-        :param pulumi.Input[bool] termination_protection: prevents the service from being deleted. It is recommended to
-               set this to `true` for all production services to prevent unintentional service
-               deletion. This does not shield against deleting databases or topics but for services
-               with backups much of the content can at least be restored from backup in case accidental
-               deletion is done.
+        :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
+        :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
         if components is not None:
             pulumi.set(__self__, "components", components)
+        if disk_space is not None:
+            pulumi.set(__self__, "disk_space", disk_space)
+        if disk_space_cap is not None:
+            pulumi.set(__self__, "disk_space_cap", disk_space_cap)
+        if disk_space_default is not None:
+            pulumi.set(__self__, "disk_space_default", disk_space_default)
+        if disk_space_step is not None:
+            pulumi.set(__self__, "disk_space_step", disk_space_step)
+        if disk_space_used is not None:
+            pulumi.set(__self__, "disk_space_used", disk_space_used)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
             pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
-        if mysql is not None:
-            pulumi.set(__self__, "mysql", mysql)
         if mysql_user_config is not None:
             pulumi.set(__self__, "mysql_user_config", mysql_user_config)
+        if mysqls is not None:
+            pulumi.set(__self__, "mysqls", mysqls)
         if plan is not None:
             pulumi.set(__self__, "plan", plan)
         if project is not None:
@@ -370,6 +312,8 @@ class _MySqlState:
             pulumi.set(__self__, "service_username", service_username)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if static_ips is not None:
+            pulumi.set(__self__, "static_ips", static_ips)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -377,13 +321,7 @@ class _MySqlState:
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[pulumi.Input[str]]:
         """
-        defines where the cloud provider and region where the service is hosted
-        in. This can be changed freely after service is created. Changing the value will trigger
-        a potentially lengthy migration process for the service. Format is cloud provider name
-        (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        specific region name. These are documented on each Cloud provider's own support articles,
-        like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         """
         return pulumi.get(self, "cloud_name")
 
@@ -404,11 +342,70 @@ class _MySqlState:
         pulumi.set(self, "components", value)
 
     @property
+    @pulumi.getter(name="diskSpace")
+    def disk_space(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        """
+        return pulumi.get(self, "disk_space")
+
+    @disk_space.setter
+    def disk_space(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space", value)
+
+    @property
+    @pulumi.getter(name="diskSpaceCap")
+    def disk_space_cap(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        """
+        return pulumi.get(self, "disk_space_cap")
+
+    @disk_space_cap.setter
+    def disk_space_cap(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space_cap", value)
+
+    @property
+    @pulumi.getter(name="diskSpaceDefault")
+    def disk_space_default(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        """
+        return pulumi.get(self, "disk_space_default")
+
+    @disk_space_default.setter
+    def disk_space_default(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space_default", value)
+
+    @property
+    @pulumi.getter(name="diskSpaceStep")
+    def disk_space_step(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        """
+        return pulumi.get(self, "disk_space_step")
+
+    @disk_space_step.setter
+    def disk_space_step(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space_step", value)
+
+    @property
+    @pulumi.getter(name="diskSpaceUsed")
+    def disk_space_used(self) -> Optional[pulumi.Input[str]]:
+        """
+        Disk space that service is currently using
+        """
+        return pulumi.get(self, "disk_space_used")
+
+    @disk_space_used.setter
+    def disk_space_used(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space_used", value)
+
+    @property
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> Optional[pulumi.Input[str]]:
         """
-        day of week when maintenance operations should be performed. 
-        On monday, tuesday, wednesday, etc.
+        Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
 
@@ -420,8 +417,7 @@ class _MySqlState:
     @pulumi.getter(name="maintenanceWindowTime")
     def maintenance_window_time(self) -> Optional[pulumi.Input[str]]:
         """
-        time of day when maintenance operations should be performed. 
-        UTC time in HH:mm:ss format.
+        Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")
 
@@ -430,24 +426,10 @@ class _MySqlState:
         pulumi.set(self, "maintenance_window_time", value)
 
     @property
-    @pulumi.getter
-    def mysql(self) -> Optional[pulumi.Input['MySqlMysqlArgs']]:
-        """
-        Allow clients to connect to mysql from the public internet for service 
-        nodes that are in a project VPC or another type of private network
-        """
-        return pulumi.get(self, "mysql")
-
-    @mysql.setter
-    def mysql(self, value: Optional[pulumi.Input['MySqlMysqlArgs']]):
-        pulumi.set(self, "mysql", value)
-
-    @property
     @pulumi.getter(name="mysqlUserConfig")
     def mysql_user_config(self) -> Optional[pulumi.Input['MySqlMysqlUserConfigArgs']]:
         """
-        defines MySQL specific additional configuration options. The following 
-        configuration options available:
+        Mysql user configurable settings
         """
         return pulumi.get(self, "mysql_user_config")
 
@@ -457,15 +439,21 @@ class _MySqlState:
 
     @property
     @pulumi.getter
+    def mysqls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MySqlMysqlArgs']]]]:
+        """
+        MySQL specific server provided values
+        """
+        return pulumi.get(self, "mysqls")
+
+    @mysqls.setter
+    def mysqls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlMysqlArgs']]]]):
+        pulumi.set(self, "mysqls", value)
+
+    @property
+    @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[str]]:
         """
-        defines what kind of computing resources are allocated for the service. It can
-        be changed after creation, though there are some restrictions when going to a smaller
-        plan such as the new plan must have sufficient amount of disk space to store all current
-        data and switching to a plan with fewer nodes might not be supported. The basic plan
-        names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -477,9 +465,7 @@ class _MySqlState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        identifies the project the service belongs to. To set up proper dependency
-        between the project and the service, refer to the project as shown in the above example.
-        Project cannot be changed later without destroying and re-creating the service.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -491,12 +477,7 @@ class _MySqlState:
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        optionally specifies the VPC the service should run in. If the value
-        is not set the service is not run inside a VPC. When set, the value should be given as a
-        reference as shown above to set up dependencies correctly and the VPC must be in the same
-        cloud and region as the service itself. Project can be freely moved to and from VPC after
-        creation but doing so triggers migration to new servers so the operation can take
-        significant amount of time to complete if the service has a lot of data.
+        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
 
@@ -508,7 +489,7 @@ class _MySqlState:
     @pulumi.getter(name="serviceHost")
     def service_host(self) -> Optional[pulumi.Input[str]]:
         """
-        MySQL hostname.
+        The hostname of the service.
         """
         return pulumi.get(self, "service_host")
 
@@ -520,10 +501,7 @@ class _MySqlState:
     @pulumi.getter(name="serviceIntegrations")
     def service_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MySqlServiceIntegrationArgs']]]]:
         """
-        can be used to define service integrations that must exist
-        immediately upon service creation. By the time of writing the only such integration is
-        defining that MySQL service is a read-replica of another service. To define a read-
-        replica the following configuration needs to be added:
+        Service integrations to specify when creating a service. Not applied after initial service creation
         """
         return pulumi.get(self, "service_integrations")
 
@@ -535,9 +513,7 @@ class _MySqlState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        specifies the actual name of the service. The name cannot be changed
-        later without destroying and re-creating the service so name should be picked based on
-        intended service usage rather than current attributes.
+        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         """
         return pulumi.get(self, "service_name")
 
@@ -549,7 +525,7 @@ class _MySqlState:
     @pulumi.getter(name="servicePassword")
     def service_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Password used for connecting to the MySQL service, if applicable.
+        Password used for connecting to the service, if applicable
         """
         return pulumi.get(self, "service_password")
 
@@ -561,7 +537,7 @@ class _MySqlState:
     @pulumi.getter(name="servicePort")
     def service_port(self) -> Optional[pulumi.Input[int]]:
         """
-        MySQL port.
+        The port of the service
         """
         return pulumi.get(self, "service_port")
 
@@ -585,7 +561,7 @@ class _MySqlState:
     @pulumi.getter(name="serviceUri")
     def service_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI for connecting to the MySQL service.
+        URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         """
         return pulumi.get(self, "service_uri")
 
@@ -597,7 +573,7 @@ class _MySqlState:
     @pulumi.getter(name="serviceUsername")
     def service_username(self) -> Optional[pulumi.Input[str]]:
         """
-        Username used for connecting to the MySQL service, if applicable.
+        Username used for connecting to the service, if applicable
         """
         return pulumi.get(self, "service_username")
 
@@ -609,7 +585,7 @@ class _MySqlState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Service state.
+        Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         """
         return pulumi.get(self, "state")
 
@@ -618,14 +594,22 @@ class _MySqlState:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
+        return pulumi.get(self, "static_ips")
+
+    @static_ips.setter
+    def static_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "static_ips", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        prevents the service from being deleted. It is recommended to
-        set this to `true` for all production services to prevent unintentional service
-        deletion. This does not shield against deleting databases or topics but for services
-        with backups much of the content can at least be restored from backup in case accidental
-        deletion is done.
+        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         return pulumi.get(self, "termination_protection")
 
@@ -640,20 +624,19 @@ class MySql(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
+                 disk_space: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlArgs']]] = None,
                  mysql_user_config: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlServiceIntegrationArgs']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        ## # MySQL Resource
-
         The MySQL resource allows the creation and management of Aiven MySQL services.
 
         ## Example Usage
@@ -683,49 +666,18 @@ class MySql(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
-               in. This can be changed freely after service is created. Changing the value will trigger
-               a potentially lengthy migration process for the service. Format is cloud provider name
-               (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-               specific region name. These are documented on each Cloud provider's own support articles,
-               like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-               [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
-               On monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
-               UTC time in HH:mm:ss format.
-        :param pulumi.Input[pulumi.InputType['MySqlMysqlArgs']] mysql: Allow clients to connect to mysql from the public internet for service 
-               nodes that are in a project VPC or another type of private network
-        :param pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']] mysql_user_config: defines MySQL specific additional configuration options. The following 
-               configuration options available:
-        :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
-               be changed after creation, though there are some restrictions when going to a smaller
-               plan such as the new plan must have sufficient amount of disk space to store all current
-               data and switching to a plan with fewer nodes might not be supported. The basic plan
-               names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-               (roughly) the amount of memory on each node (also other attributes like number of CPUs
-               and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
-               between the project and the service, refer to the project as shown in the above example.
-               Project cannot be changed later without destroying and re-creating the service.
-        :param pulumi.Input[str] project_vpc_id: optionally specifies the VPC the service should run in. If the value
-               is not set the service is not run inside a VPC. When set, the value should be given as a
-               reference as shown above to set up dependencies correctly and the VPC must be in the same
-               cloud and region as the service itself. Project can be freely moved to and from VPC after
-               creation but doing so triggers migration to new servers so the operation can take
-               significant amount of time to complete if the service has a lot of data.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlServiceIntegrationArgs']]]] service_integrations: can be used to define service integrations that must exist
-               immediately upon service creation. By the time of writing the only such integration is
-               defining that MySQL service is a read-replica of another service. To define a read-
-               replica the following configuration needs to be added:
-        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
-               later without destroying and re-creating the service so name should be picked based on
-               intended service usage rather than current attributes.
-        :param pulumi.Input[bool] termination_protection: prevents the service from being deleted. It is recommended to
-               set this to `true` for all production services to prevent unintentional service
-               deletion. This does not shield against deleting databases or topics but for services
-               with backups much of the content can at least be restored from backup in case accidental
-               deletion is done.
+        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        :param pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         ...
     @overload
@@ -734,8 +686,6 @@ class MySql(pulumi.CustomResource):
                  args: MySqlArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # MySQL Resource
-
         The MySQL resource allows the creation and management of Aiven MySQL services.
 
         ## Example Usage
@@ -779,15 +729,16 @@ class MySql(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
+                 disk_space: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlArgs']]] = None,
                  mysql_user_config: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlServiceIntegrationArgs']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
@@ -802,9 +753,9 @@ class MySql(pulumi.CustomResource):
             __props__ = MySqlArgs.__new__(MySqlArgs)
 
             __props__.__dict__["cloud_name"] = cloud_name
+            __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
-            __props__.__dict__["mysql"] = mysql
             __props__.__dict__["mysql_user_config"] = mysql_user_config
             __props__.__dict__["plan"] = plan
             if project is None and not opts.urn:
@@ -815,8 +766,14 @@ class MySql(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["static_ips"] = static_ips
             __props__.__dict__["termination_protection"] = termination_protection
             __props__.__dict__["components"] = None
+            __props__.__dict__["disk_space_cap"] = None
+            __props__.__dict__["disk_space_default"] = None
+            __props__.__dict__["disk_space_step"] = None
+            __props__.__dict__["disk_space_used"] = None
+            __props__.__dict__["mysqls"] = None
             __props__.__dict__["service_host"] = None
             __props__.__dict__["service_password"] = None
             __props__.__dict__["service_port"] = None
@@ -836,10 +793,15 @@ class MySql(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cloud_name: Optional[pulumi.Input[str]] = None,
             components: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlComponentArgs']]]]] = None,
+            disk_space: Optional[pulumi.Input[str]] = None,
+            disk_space_cap: Optional[pulumi.Input[str]] = None,
+            disk_space_default: Optional[pulumi.Input[str]] = None,
+            disk_space_step: Optional[pulumi.Input[str]] = None,
+            disk_space_used: Optional[pulumi.Input[str]] = None,
             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
             maintenance_window_time: Optional[pulumi.Input[str]] = None,
-            mysql: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlArgs']]] = None,
             mysql_user_config: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']]] = None,
+            mysqls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlMysqlArgs']]]]] = None,
             plan: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             project_vpc_id: Optional[pulumi.Input[str]] = None,
@@ -852,6 +814,7 @@ class MySql(pulumi.CustomResource):
             service_uri: Optional[pulumi.Input[str]] = None,
             service_username: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None) -> 'MySql':
         """
         Get an existing MySql resource's state with the given name, id, and optional extra
@@ -860,57 +823,31 @@ class MySql(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
-               in. This can be changed freely after service is created. Changing the value will trigger
-               a potentially lengthy migration process for the service. Format is cloud provider name
-               (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-               specific region name. These are documented on each Cloud provider's own support articles,
-               like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-               [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlComponentArgs']]]] components: Service component information objects
-        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
-               On monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
-               UTC time in HH:mm:ss format.
-        :param pulumi.Input[pulumi.InputType['MySqlMysqlArgs']] mysql: Allow clients to connect to mysql from the public internet for service 
-               nodes that are in a project VPC or another type of private network
-        :param pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']] mysql_user_config: defines MySQL specific additional configuration options. The following 
-               configuration options available:
-        :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
-               be changed after creation, though there are some restrictions when going to a smaller
-               plan such as the new plan must have sufficient amount of disk space to store all current
-               data and switching to a plan with fewer nodes might not be supported. The basic plan
-               names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-               (roughly) the amount of memory on each node (also other attributes like number of CPUs
-               and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
-               between the project and the service, refer to the project as shown in the above example.
-               Project cannot be changed later without destroying and re-creating the service.
-        :param pulumi.Input[str] project_vpc_id: optionally specifies the VPC the service should run in. If the value
-               is not set the service is not run inside a VPC. When set, the value should be given as a
-               reference as shown above to set up dependencies correctly and the VPC must be in the same
-               cloud and region as the service itself. Project can be freely moved to and from VPC after
-               creation but doing so triggers migration to new servers so the operation can take
-               significant amount of time to complete if the service has a lot of data.
-        :param pulumi.Input[str] service_host: MySQL hostname.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlServiceIntegrationArgs']]]] service_integrations: can be used to define service integrations that must exist
-               immediately upon service creation. By the time of writing the only such integration is
-               defining that MySQL service is a read-replica of another service. To define a read-
-               replica the following configuration needs to be added:
-        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
-               later without destroying and re-creating the service so name should be picked based on
-               intended service usage rather than current attributes.
-        :param pulumi.Input[str] service_password: Password used for connecting to the MySQL service, if applicable.
-        :param pulumi.Input[int] service_port: MySQL port.
+        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
+        :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        :param pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlMysqlArgs']]]] mysqls: MySQL specific server provided values
+        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[str] service_host: The hostname of the service.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        :param pulumi.Input[str] service_password: Password used for connecting to the service, if applicable
+        :param pulumi.Input[int] service_port: The port of the service
         :param pulumi.Input[str] service_type: Aiven internal service type code
-        :param pulumi.Input[str] service_uri: URI for connecting to the MySQL service.
-        :param pulumi.Input[str] service_username: Username used for connecting to the MySQL service, if applicable.
-        :param pulumi.Input[str] state: Service state.
-        :param pulumi.Input[bool] termination_protection: prevents the service from being deleted. It is recommended to
-               set this to `true` for all production services to prevent unintentional service
-               deletion. This does not shield against deleting databases or topics but for services
-               with backups much of the content can at least be restored from backup in case accidental
-               deletion is done.
+        :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
+        :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -918,10 +855,15 @@ class MySql(pulumi.CustomResource):
 
         __props__.__dict__["cloud_name"] = cloud_name
         __props__.__dict__["components"] = components
+        __props__.__dict__["disk_space"] = disk_space
+        __props__.__dict__["disk_space_cap"] = disk_space_cap
+        __props__.__dict__["disk_space_default"] = disk_space_default
+        __props__.__dict__["disk_space_step"] = disk_space_step
+        __props__.__dict__["disk_space_used"] = disk_space_used
         __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
         __props__.__dict__["maintenance_window_time"] = maintenance_window_time
-        __props__.__dict__["mysql"] = mysql
         __props__.__dict__["mysql_user_config"] = mysql_user_config
+        __props__.__dict__["mysqls"] = mysqls
         __props__.__dict__["plan"] = plan
         __props__.__dict__["project"] = project
         __props__.__dict__["project_vpc_id"] = project_vpc_id
@@ -934,6 +876,7 @@ class MySql(pulumi.CustomResource):
         __props__.__dict__["service_uri"] = service_uri
         __props__.__dict__["service_username"] = service_username
         __props__.__dict__["state"] = state
+        __props__.__dict__["static_ips"] = static_ips
         __props__.__dict__["termination_protection"] = termination_protection
         return MySql(resource_name, opts=opts, __props__=__props__)
 
@@ -941,13 +884,7 @@ class MySql(pulumi.CustomResource):
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Output[Optional[str]]:
         """
-        defines where the cloud provider and region where the service is hosted
-        in. This can be changed freely after service is created. Changing the value will trigger
-        a potentially lengthy migration process for the service. Format is cloud provider name
-        (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        specific region name. These are documented on each Cloud provider's own support articles,
-        like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         """
         return pulumi.get(self, "cloud_name")
 
@@ -960,11 +897,50 @@ class MySql(pulumi.CustomResource):
         return pulumi.get(self, "components")
 
     @property
+    @pulumi.getter(name="diskSpace")
+    def disk_space(self) -> pulumi.Output[Optional[str]]:
+        """
+        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        """
+        return pulumi.get(self, "disk_space")
+
+    @property
+    @pulumi.getter(name="diskSpaceCap")
+    def disk_space_cap(self) -> pulumi.Output[str]:
+        """
+        The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        """
+        return pulumi.get(self, "disk_space_cap")
+
+    @property
+    @pulumi.getter(name="diskSpaceDefault")
+    def disk_space_default(self) -> pulumi.Output[str]:
+        """
+        The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        """
+        return pulumi.get(self, "disk_space_default")
+
+    @property
+    @pulumi.getter(name="diskSpaceStep")
+    def disk_space_step(self) -> pulumi.Output[str]:
+        """
+        The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        """
+        return pulumi.get(self, "disk_space_step")
+
+    @property
+    @pulumi.getter(name="diskSpaceUsed")
+    def disk_space_used(self) -> pulumi.Output[str]:
+        """
+        Disk space that service is currently using
+        """
+        return pulumi.get(self, "disk_space_used")
+
+    @property
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> pulumi.Output[Optional[str]]:
         """
-        day of week when maintenance operations should be performed. 
-        On monday, tuesday, wednesday, etc.
+        Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
 
@@ -972,40 +948,31 @@ class MySql(pulumi.CustomResource):
     @pulumi.getter(name="maintenanceWindowTime")
     def maintenance_window_time(self) -> pulumi.Output[Optional[str]]:
         """
-        time of day when maintenance operations should be performed. 
-        UTC time in HH:mm:ss format.
+        Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")
-
-    @property
-    @pulumi.getter
-    def mysql(self) -> pulumi.Output['outputs.MySqlMysql']:
-        """
-        Allow clients to connect to mysql from the public internet for service 
-        nodes that are in a project VPC or another type of private network
-        """
-        return pulumi.get(self, "mysql")
 
     @property
     @pulumi.getter(name="mysqlUserConfig")
     def mysql_user_config(self) -> pulumi.Output[Optional['outputs.MySqlMysqlUserConfig']]:
         """
-        defines MySQL specific additional configuration options. The following 
-        configuration options available:
+        Mysql user configurable settings
         """
         return pulumi.get(self, "mysql_user_config")
 
     @property
     @pulumi.getter
+    def mysqls(self) -> pulumi.Output[Sequence['outputs.MySqlMysql']]:
+        """
+        MySQL specific server provided values
+        """
+        return pulumi.get(self, "mysqls")
+
+    @property
+    @pulumi.getter
     def plan(self) -> pulumi.Output[Optional[str]]:
         """
-        defines what kind of computing resources are allocated for the service. It can
-        be changed after creation, though there are some restrictions when going to a smaller
-        plan such as the new plan must have sufficient amount of disk space to store all current
-        data and switching to a plan with fewer nodes might not be supported. The basic plan
-        names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -1013,9 +980,7 @@ class MySql(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        identifies the project the service belongs to. To set up proper dependency
-        between the project and the service, refer to the project as shown in the above example.
-        Project cannot be changed later without destroying and re-creating the service.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -1023,12 +988,7 @@ class MySql(pulumi.CustomResource):
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
-        optionally specifies the VPC the service should run in. If the value
-        is not set the service is not run inside a VPC. When set, the value should be given as a
-        reference as shown above to set up dependencies correctly and the VPC must be in the same
-        cloud and region as the service itself. Project can be freely moved to and from VPC after
-        creation but doing so triggers migration to new servers so the operation can take
-        significant amount of time to complete if the service has a lot of data.
+        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
 
@@ -1036,7 +996,7 @@ class MySql(pulumi.CustomResource):
     @pulumi.getter(name="serviceHost")
     def service_host(self) -> pulumi.Output[str]:
         """
-        MySQL hostname.
+        The hostname of the service.
         """
         return pulumi.get(self, "service_host")
 
@@ -1044,10 +1004,7 @@ class MySql(pulumi.CustomResource):
     @pulumi.getter(name="serviceIntegrations")
     def service_integrations(self) -> pulumi.Output[Optional[Sequence['outputs.MySqlServiceIntegration']]]:
         """
-        can be used to define service integrations that must exist
-        immediately upon service creation. By the time of writing the only such integration is
-        defining that MySQL service is a read-replica of another service. To define a read-
-        replica the following configuration needs to be added:
+        Service integrations to specify when creating a service. Not applied after initial service creation
         """
         return pulumi.get(self, "service_integrations")
 
@@ -1055,9 +1012,7 @@ class MySql(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        specifies the actual name of the service. The name cannot be changed
-        later without destroying and re-creating the service so name should be picked based on
-        intended service usage rather than current attributes.
+        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         """
         return pulumi.get(self, "service_name")
 
@@ -1065,7 +1020,7 @@ class MySql(pulumi.CustomResource):
     @pulumi.getter(name="servicePassword")
     def service_password(self) -> pulumi.Output[str]:
         """
-        Password used for connecting to the MySQL service, if applicable.
+        Password used for connecting to the service, if applicable
         """
         return pulumi.get(self, "service_password")
 
@@ -1073,7 +1028,7 @@ class MySql(pulumi.CustomResource):
     @pulumi.getter(name="servicePort")
     def service_port(self) -> pulumi.Output[int]:
         """
-        MySQL port.
+        The port of the service
         """
         return pulumi.get(self, "service_port")
 
@@ -1089,7 +1044,7 @@ class MySql(pulumi.CustomResource):
     @pulumi.getter(name="serviceUri")
     def service_uri(self) -> pulumi.Output[str]:
         """
-        URI for connecting to the MySQL service.
+        URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         """
         return pulumi.get(self, "service_uri")
 
@@ -1097,7 +1052,7 @@ class MySql(pulumi.CustomResource):
     @pulumi.getter(name="serviceUsername")
     def service_username(self) -> pulumi.Output[str]:
         """
-        Username used for connecting to the MySQL service, if applicable.
+        Username used for connecting to the service, if applicable
         """
         return pulumi.get(self, "service_username")
 
@@ -1105,19 +1060,23 @@ class MySql(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Service state.
+        Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
+        return pulumi.get(self, "static_ips")
 
     @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> pulumi.Output[Optional[bool]]:
         """
-        prevents the service from being deleted. It is recommended to
-        set this to `true` for all production services to prevent unintentional service
-        deletion. This does not shield against deleting databases or topics but for services
-        with backups much of the content can at least be restored from backup in case accidental
-        deletion is done.
+        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         return pulumi.get(self, "termination_protection")
 

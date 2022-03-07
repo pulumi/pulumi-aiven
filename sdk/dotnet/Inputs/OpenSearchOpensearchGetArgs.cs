@@ -12,9 +12,6 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class OpenSearchOpensearchGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// URI for Opensearch dashboards frontend.
-        /// </summary>
         [Input("opensearchDashboardsUri")]
         public Input<string>? OpensearchDashboardsUri { get; set; }
 

@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Resource Kafka ACL Resource
-//
 // The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
 //
 // ## Example Usage
@@ -44,19 +42,15 @@ import (
 type KafkaAcl struct {
 	pulumi.CustomResourceState
 
-	// is the level of permission the matching users are given to the matching
-	// topics (admin, read, readwrite, write).
+	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
 	Permission pulumi.StringOutput `pulumi:"permission"`
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
-	// These properties cannot be changed once the service is created. Doing so will result in
-	// the topic being deleted and new one created instead.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Service to link the Kafka ACL to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// is a topic name pattern the ACL entry matches to.
+	// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Topic pulumi.StringOutput `pulumi:"topic"`
-	// is a username pattern the ACL entry matches to.
+	// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -104,36 +98,28 @@ func GetKafkaAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaAcl resources.
 type kafkaAclState struct {
-	// is the level of permission the matching users are given to the matching
-	// topics (admin, read, readwrite, write).
+	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
 	Permission *string `pulumi:"permission"`
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
-	// These properties cannot be changed once the service is created. Doing so will result in
-	// the topic being deleted and new one created instead.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Service to link the Kafka ACL to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// is a topic name pattern the ACL entry matches to.
+	// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Topic *string `pulumi:"topic"`
-	// is a username pattern the ACL entry matches to.
+	// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
 type KafkaAclState struct {
-	// is the level of permission the matching users are given to the matching
-	// topics (admin, read, readwrite, write).
+	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
 	Permission pulumi.StringPtrInput
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
-	// These properties cannot be changed once the service is created. Doing so will result in
-	// the topic being deleted and new one created instead.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Service to link the Kafka ACL to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// is a topic name pattern the ACL entry matches to.
+	// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Topic pulumi.StringPtrInput
-	// is a username pattern the ACL entry matches to.
+	// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -142,37 +128,29 @@ func (KafkaAclState) ElementType() reflect.Type {
 }
 
 type kafkaAclArgs struct {
-	// is the level of permission the matching users are given to the matching
-	// topics (admin, read, readwrite, write).
+	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
 	Permission string `pulumi:"permission"`
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
-	// These properties cannot be changed once the service is created. Doing so will result in
-	// the topic being deleted and new one created instead.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Service to link the Kafka ACL to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// is a topic name pattern the ACL entry matches to.
+	// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Topic string `pulumi:"topic"`
-	// is a username pattern the ACL entry matches to.
+	// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a KafkaAcl resource.
 type KafkaAclArgs struct {
-	// is the level of permission the matching users are given to the matching
-	// topics (admin, read, readwrite, write).
+	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
 	Permission pulumi.StringInput
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
-	// These properties cannot be changed once the service is created. Doing so will result in
-	// the topic being deleted and new one created instead.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Service to link the Kafka ACL to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// is a topic name pattern the ACL entry matches to.
+	// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Topic pulumi.StringInput
-	// is a username pattern the ACL entry matches to.
+	// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringInput
 }
 

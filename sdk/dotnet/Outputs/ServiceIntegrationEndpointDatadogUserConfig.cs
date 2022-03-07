@@ -13,10 +13,33 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationEndpointDatadogUserConfig
     {
+        /// <summary>
+        /// Datadog API key
+        /// </summary>
         public readonly string? DatadogApiKey;
+        /// <summary>
+        /// Custom tags provided by user
+        /// </summary>
         public readonly ImmutableArray<Outputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag> DatadogTags;
+        /// <summary>
+        /// Disable consumer group metrics
+        /// </summary>
         public readonly string? DisableConsumerStats;
+        /// <summary>
+        /// Number of separate instances to fetch kafka consumer statistics with
+        /// </summary>
+        public readonly string? KafkaConsumerCheckInstances;
+        /// <summary>
+        /// Number of seconds that datadog will wait to get consumer statistics from brokers
+        /// </summary>
+        public readonly string? KafkaConsumerStatsTimeout;
+        /// <summary>
+        /// Maximum number of partition contexts to send
+        /// </summary>
         public readonly string? MaxPartitionContexts;
+        /// <summary>
+        /// Datadog intake site. Defaults to datadoghq.com
+        /// </summary>
         public readonly string? Site;
 
         [OutputConstructor]
@@ -27,6 +50,10 @@ namespace Pulumi.Aiven.Outputs
 
             string? disableConsumerStats,
 
+            string? kafkaConsumerCheckInstances,
+
+            string? kafkaConsumerStatsTimeout,
+
             string? maxPartitionContexts,
 
             string? site)
@@ -34,6 +61,8 @@ namespace Pulumi.Aiven.Outputs
             DatadogApiKey = datadogApiKey;
             DatadogTags = datadogTags;
             DisableConsumerStats = disableConsumerStats;
+            KafkaConsumerCheckInstances = kafkaConsumerCheckInstances;
+            KafkaConsumerStatsTimeout = kafkaConsumerStatsTimeout;
             MaxPartitionContexts = maxPartitionContexts;
             Site = site;
         }

@@ -10,8 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Account Resource
-//
 // The Account resource allows the creation and management of an Aiven Account.
 //
 // ## Example Usage
@@ -37,17 +35,17 @@ import (
 type Account struct {
 	pulumi.CustomResourceState
 
-	// is an auto-generated unique account id.
+	// Account id
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// time of creation.
+	// Time of creation
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// defines an account name.
+	// Account name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// is an owner team id.
+	// Owner team id
 	OwnerTeamId pulumi.StringOutput `pulumi:"ownerTeamId"`
-	// is a tenant id.
+	// Tenant id
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// time of last update.
+	// Time of last update
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -80,32 +78,32 @@ func GetAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
-	// is an auto-generated unique account id.
+	// Account id
 	AccountId *string `pulumi:"accountId"`
-	// time of creation.
+	// Time of creation
 	CreateTime *string `pulumi:"createTime"`
-	// defines an account name.
+	// Account name
 	Name *string `pulumi:"name"`
-	// is an owner team id.
+	// Owner team id
 	OwnerTeamId *string `pulumi:"ownerTeamId"`
-	// is a tenant id.
+	// Tenant id
 	TenantId *string `pulumi:"tenantId"`
-	// time of last update.
+	// Time of last update
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AccountState struct {
-	// is an auto-generated unique account id.
+	// Account id
 	AccountId pulumi.StringPtrInput
-	// time of creation.
+	// Time of creation
 	CreateTime pulumi.StringPtrInput
-	// defines an account name.
+	// Account name
 	Name pulumi.StringPtrInput
-	// is an owner team id.
+	// Owner team id
 	OwnerTeamId pulumi.StringPtrInput
-	// is a tenant id.
+	// Tenant id
 	TenantId pulumi.StringPtrInput
-	// time of last update.
+	// Time of last update
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -114,30 +112,14 @@ func (AccountState) ElementType() reflect.Type {
 }
 
 type accountArgs struct {
-	// time of creation.
-	CreateTime *string `pulumi:"createTime"`
-	// defines an account name.
+	// Account name
 	Name *string `pulumi:"name"`
-	// is an owner team id.
-	OwnerTeamId *string `pulumi:"ownerTeamId"`
-	// is a tenant id.
-	TenantId *string `pulumi:"tenantId"`
-	// time of last update.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
-	// time of creation.
-	CreateTime pulumi.StringPtrInput
-	// defines an account name.
+	// Account name
 	Name pulumi.StringPtrInput
-	// is an owner team id.
-	OwnerTeamId pulumi.StringPtrInput
-	// is a tenant id.
-	TenantId pulumi.StringPtrInput
-	// time of last update.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (AccountArgs) ElementType() reflect.Type {

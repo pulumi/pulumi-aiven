@@ -14,14 +14,8 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GrafanaComponent
     {
         public readonly string? Component;
-        /// <summary>
-        /// Server hostname or IP
-        /// </summary>
         public readonly string? Host;
         public readonly string? KafkaAuthenticationMethod;
-        /// <summary>
-        /// SMTP server port
-        /// </summary>
         public readonly int? Port;
         public readonly string? Route;
         public readonly bool? Ssl;

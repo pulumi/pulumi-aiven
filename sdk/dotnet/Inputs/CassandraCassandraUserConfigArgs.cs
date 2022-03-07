@@ -13,11 +13,14 @@ namespace Pulumi.Aiven.Inputs
     public sealed class CassandraCassandraUserConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cassandra configuration values
+        /// cassandra configuration values
         /// </summary>
         [Input("cassandra")]
         public Input<Inputs.CassandraCassandraUserConfigCassandraArgs>? Cassandra { get; set; }
 
+        /// <summary>
+        /// Cassandra major version
+        /// </summary>
         [Input("cassandraVersion")]
         public Input<string>? CassandraVersion { get; set; }
 
@@ -25,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// IP filter
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -34,18 +37,20 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// sets the service into migration mode enabling the sstableloader 
-        /// utility to be used to upload Cassandra data files. Available only on service create.
+        /// Migration mode for the sstableloader utility
         /// </summary>
         [Input("migrateSstableloader")]
         public Input<string>? MigrateSstableloader { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.CassandraCassandraUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
 
@@ -56,12 +61,14 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.CassandraCassandraUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// Name of another service to fork from. This has effect only 
-        /// when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

@@ -32,10 +32,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountTeamProject{}
 	case "aiven:index/awsPrivatelink:AwsPrivatelink":
 		r = &AwsPrivatelink{}
+	case "aiven:index/azurePrivatelink:AzurePrivatelink":
+		r = &AzurePrivatelink{}
+	case "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval":
+		r = &AzurePrivatelinkConnectionApproval{}
 	case "aiven:index/billingGroup:BillingGroup":
 		r = &BillingGroup{}
 	case "aiven:index/cassandra:Cassandra":
 		r = &Cassandra{}
+	case "aiven:index/clickhouse:Clickhouse":
+		r = &Clickhouse{}
+	case "aiven:index/clickhouseDatabase:ClickhouseDatabase":
+		r = &ClickhouseDatabase{}
+	case "aiven:index/clickhouseGrant:ClickhouseGrant":
+		r = &ClickhouseGrant{}
+	case "aiven:index/clickhouseRole:ClickhouseRole":
+		r = &ClickhouseRole{}
+	case "aiven:index/clickhouseUser:ClickhouseUser":
+		r = &ClickhouseUser{}
 	case "aiven:index/connectionPool:ConnectionPool":
 		r = &ConnectionPool{}
 	case "aiven:index/database:Database":
@@ -48,6 +62,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ElasticSearchAclConfig{}
 	case "aiven:index/elasticSearchAclRule:ElasticSearchAclRule":
 		r = &ElasticSearchAclRule{}
+	case "aiven:index/flink:Flink":
+		r = &Flink{}
+	case "aiven:index/flinkJob:FlinkJob":
+		r = &FlinkJob{}
+	case "aiven:index/flinkJobTable:FlinkJobTable":
+		r = &FlinkJobTable{}
 	case "aiven:index/grafana:Grafana":
 		r = &Grafana{}
 	case "aiven:index/influxDb:InfluxDb":
@@ -100,6 +120,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceIntegrationEndpoint{}
 	case "aiven:index/serviceUser:ServiceUser":
 		r = &ServiceUser{}
+	case "aiven:index/staticIp:StaticIp":
+		r = &StaticIp{}
 	case "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment":
 		r = &TransitGatewayVpcAttachment{}
 	case "aiven:index/vpcPeeringConnection:VpcPeeringConnection":
@@ -167,12 +189,47 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
+		"index/azurePrivatelink",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/azurePrivatelinkConnectionApproval",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
 		"index/billingGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/cassandra",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/clickhouse",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/clickhouseDatabase",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/clickhouseGrant",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/clickhouseRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/clickhouseUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -203,6 +260,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/elasticSearchAclRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/flink",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/flinkJob",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/flinkJobTable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -333,6 +405,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/serviceUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/staticIp",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

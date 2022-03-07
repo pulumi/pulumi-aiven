@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Opensearch ACL Config Resource
-//
-// The Opensearch ACL Config resource allows the configuration of ACL management on an Aiven Opensearch service.
+// The Opensearch resource allows the creation and management of Aiven Opensearch services.
 //
 // ## Example Usage
 //
@@ -27,11 +25,24 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewOpenSearchAclConfig(ctx, "os-acl-config", &aiven.OpenSearchAclConfigArgs{
-// 			Project:     pulumi.Any(aiven_project.Os - project.Project),
-// 			ServiceName: pulumi.Any(aiven_opensearch.Os.Service_name),
-// 			Enabled:     pulumi.Bool(true),
-// 			ExtendedAcl: pulumi.Bool(false),
+// 		_, err := aiven.NewOpenSearch(ctx, "os1", &aiven.OpenSearchArgs{
+// 			Project:               pulumi.Any(data.Aiven_project.Pr1.Project),
+// 			CloudName:             pulumi.String("google-europe-west1"),
+// 			Plan:                  pulumi.String("startup-4"),
+// 			ServiceName:           pulumi.String("my-os1"),
+// 			MaintenanceWindowDow:  pulumi.String("monday"),
+// 			MaintenanceWindowTime: pulumi.String("10:00:00"),
+// 			OpensearchUserConfig: &OpenSearchOpensearchUserConfigArgs{
+// 				OpensearchVersion: pulumi.String("1"),
+// 				OpensearchDashboards: &OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{
+// 					Enabled:                  pulumi.String("true"),
+// 					OpensearchRequestTimeout: pulumi.String("30000"),
+// 				},
+// 				PublicAccess: &OpenSearchOpensearchUserConfigPublicAccessArgs{
+// 					Opensearch:           pulumi.String("true"),
+// 					OpensearchDashboards: pulumi.String("true"),
+// 				},
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -43,16 +54,13 @@ import (
 type OpenSearchAclConfig struct {
 	pulumi.CustomResourceState
 
-	// enables of disables Opensearch ACL's.
+	// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as
-	// long as all operations only target indexes they have been granted access to.
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
 	ExtendedAcl pulumi.BoolPtrOutput `pulumi:"extendedAcl"`
-	// and `serviceName` - (Required) define the project and service the ACL belongs to. They should be defined
-	// using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Service to link the Opensearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -91,30 +99,24 @@ func GetOpenSearchAclConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OpenSearchAclConfig resources.
 type openSearchAclConfigState struct {
-	// enables of disables Opensearch ACL's.
+	// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
 	Enabled *bool `pulumi:"enabled"`
-	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as
-	// long as all operations only target indexes they have been granted access to.
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
 	ExtendedAcl *bool `pulumi:"extendedAcl"`
-	// and `serviceName` - (Required) define the project and service the ACL belongs to. They should be defined
-	// using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Service to link the Opensearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type OpenSearchAclConfigState struct {
-	// enables of disables Opensearch ACL's.
+	// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
 	Enabled pulumi.BoolPtrInput
-	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as
-	// long as all operations only target indexes they have been granted access to.
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
 	ExtendedAcl pulumi.BoolPtrInput
-	// and `serviceName` - (Required) define the project and service the ACL belongs to. They should be defined
-	// using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Service to link the Opensearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -123,31 +125,25 @@ func (OpenSearchAclConfigState) ElementType() reflect.Type {
 }
 
 type openSearchAclConfigArgs struct {
-	// enables of disables Opensearch ACL's.
+	// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
 	Enabled *bool `pulumi:"enabled"`
-	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as
-	// long as all operations only target indexes they have been granted access to.
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
 	ExtendedAcl *bool `pulumi:"extendedAcl"`
-	// and `serviceName` - (Required) define the project and service the ACL belongs to. They should be defined
-	// using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Service to link the Opensearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a OpenSearchAclConfig resource.
 type OpenSearchAclConfigArgs struct {
-	// enables of disables Opensearch ACL's.
+	// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
 	Enabled pulumi.BoolPtrInput
-	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as
-	// long as all operations only target indexes they have been granted access to.
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
 	ExtendedAcl pulumi.BoolPtrInput
-	// and `serviceName` - (Required) define the project and service the ACL belongs to. They should be defined
-	// using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Service to link the Opensearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
 }
 

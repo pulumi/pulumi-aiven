@@ -14,52 +14,51 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ElasticSearchElasticsearchUserConfig
     {
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the 
-        /// Aiven DNS name.
+        /// Custom domain
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
-        /// Disable automatic replication factor 
-        /// adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
-        /// least to two nodes. Note: setting this to true increases a risk of data loss in case of
-        /// virtual machine failure.
+        /// Disable replication factor adjustment
         /// </summary>
         public readonly string? DisableReplicationFactorAdjustment;
         /// <summary>
-        /// Allow clients to connect to elasticsearch from the public 
-        /// internet for service nodes that are in a project VPC or another type of private network.
+        /// Elasticsearch settings
         /// </summary>
         public readonly Outputs.ElasticSearchElasticsearchUserConfigElasticsearch? Elasticsearch;
         /// <summary>
-        /// Elasticsearch major version.
+        /// Elasticsearch major version
         /// </summary>
         public readonly string? ElasticsearchVersion;
         /// <summary>
-        /// Glob pattern and number of indexes matching that pattern to 
-        /// be kept.
+        /// Index patterns
         /// </summary>
         public readonly ImmutableArray<Outputs.ElasticSearchElasticsearchUserConfigIndexPattern> IndexPatterns;
         /// <summary>
-        /// Template settings for all new indexe.
+        /// Template settings for all new indexes
         /// </summary>
         public readonly Outputs.ElasticSearchElasticsearchUserConfigIndexTemplate? IndexTemplate;
         /// <summary>
-        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// IP filter
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Don't reset index.refresh_interval to the default value
+        /// </summary>
         public readonly string? KeepIndexRefreshInterval;
         /// <summary>
-        /// Allow clients to connect to kibana from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network.
+        /// Kibana settings
         /// </summary>
         public readonly Outputs.ElasticSearchElasticsearchUserConfigKibana? Kibana;
         /// <summary>
-        /// Maximum number of indexes to keep before deleting the oldest one.
+        /// Maximum index count
         /// </summary>
         public readonly string? MaxIndexCount;
+        /// <summary>
+        /// OpenSearch major version
+        /// </summary>
         public readonly string? OpensearchVersion;
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.ElasticSearchElasticsearchUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
@@ -67,23 +66,24 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.ElasticSearchElasticsearchUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has 
-        /// effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.ElasticSearchElasticsearchUserConfigPublicAccess? PublicAccess;
         /// <summary>
-        /// Name of the basebackup to restore in forked service.
+        /// Name of the basebackup to restore in forked service
         /// </summary>
         public readonly string? RecoveryBasebackupName;
         /// <summary>
-        /// Name of another service to fork from. This has effect 
-        /// only when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

@@ -10,8 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Billing Group Resource
-//
 // The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
 //
 // ## Example Usage

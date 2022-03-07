@@ -14,15 +14,25 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("enabledMetrics")]
         private InputList<string>? _enabledMetrics;
+
+        /// <summary>
+        /// list of metrics to send
+        /// </summary>
         public InputList<string> EnabledMetrics
         {
             get => _enabledMetrics ?? (_enabledMetrics = new InputList<string>());
             set => _enabledMetrics = value;
         }
 
+        /// <summary>
+        /// SignalFX API key
+        /// </summary>
         [Input("signalfxApiKey")]
         public Input<string>? SignalfxApiKey { get; set; }
 
+        /// <summary>
+        /// SignalFX realm
+        /// </summary>
         [Input("signalfxRealm")]
         public Input<string>? SignalfxRealm { get; set; }
 

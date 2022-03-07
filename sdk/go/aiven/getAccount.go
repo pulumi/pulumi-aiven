@@ -10,8 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Account Data Source
-//
 // The Account data source provides information about the existing Aiven Account.
 //
 // ## Example Usage
@@ -47,34 +45,25 @@ func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getAccount.
 type LookupAccountArgs struct {
-	// is an auto-generated unique account id.
-	AccountId *string `pulumi:"accountId"`
-	// time of creation.
-	CreateTime *string `pulumi:"createTime"`
-	// defines an account name.
+	// Account name
 	Name string `pulumi:"name"`
-	// is an owner team id.
-	OwnerTeamId *string `pulumi:"ownerTeamId"`
-	// is a tenant id.
-	TenantId *string `pulumi:"tenantId"`
-	// time of last update.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // A collection of values returned by getAccount.
 type LookupAccountResult struct {
-	// is an auto-generated unique account id.
+	// Account id
 	AccountId string `pulumi:"accountId"`
-	// time of creation.
+	// Time of creation
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Account name
 	Name string `pulumi:"name"`
-	// is an owner team id.
+	// Owner team id
 	OwnerTeamId string `pulumi:"ownerTeamId"`
-	// is a tenant id.
+	// Tenant id
 	TenantId string `pulumi:"tenantId"`
-	// time of last update.
+	// Time of last update
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -89,18 +78,8 @@ func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts
 
 // A collection of arguments for invoking getAccount.
 type LookupAccountOutputArgs struct {
-	// is an auto-generated unique account id.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// time of creation.
-	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// defines an account name.
+	// Account name
 	Name pulumi.StringInput `pulumi:"name"`
-	// is an owner team id.
-	OwnerTeamId pulumi.StringPtrInput `pulumi:"ownerTeamId"`
-	// is a tenant id.
-	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
-	// time of last update.
-	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
 func (LookupAccountOutputArgs) ElementType() reflect.Type {
@@ -122,12 +101,12 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx co
 	return o
 }
 
-// is an auto-generated unique account id.
+// Account id
 func (o LookupAccountResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// time of creation.
+// Time of creation
 func (o LookupAccountResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -137,21 +116,22 @@ func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Account name
 func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// is an owner team id.
+// Owner team id
 func (o LookupAccountResultOutput) OwnerTeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.OwnerTeamId }).(pulumi.StringOutput)
 }
 
-// is a tenant id.
+// Tenant id
 func (o LookupAccountResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// time of last update.
+// Time of last update
 func (o LookupAccountResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

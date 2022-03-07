@@ -15,18 +15,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("component")]
         public Input<string>? Component { get; set; }
 
-        /// <summary>
-        /// Server hostname or IP
-        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         [Input("kafkaAuthenticationMethod")]
         public Input<string>? KafkaAuthenticationMethod { get; set; }
 
-        /// <summary>
-        /// SMTP server port
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 

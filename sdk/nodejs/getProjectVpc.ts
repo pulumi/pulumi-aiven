@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Project VPC Data Source
- *
  * The Project VPC data source provides information about the existing Aiven Project VPC.
  *
  * ## Example Usage
@@ -29,9 +27,7 @@ export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptio
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getProjectVpc:getProjectVpc", {
         "cloudName": args.cloudName,
-        "networkCidr": args.networkCidr,
         "project": args.project,
-        "state": args.state,
     }, opts);
 }
 
@@ -40,42 +36,37 @@ export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetProjectVpcArgs {
     /**
-     * defines where the cloud provider and region where the service is hosted
-     * in. See the Service resource for additional information.
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      */
     cloudName: string;
     /**
-     * defines the network CIDR of the VPC.
-     */
-    networkCidr?: string;
-    /**
-     * defines the project the VPC belongs to.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: string;
-    /**
-     * ia a computed property that tells the current state of the VPC. This property cannot be
-     * set, only read.
-     */
-    state?: string;
 }
 
 /**
  * A collection of values returned by getProjectVpc.
  */
 export interface GetProjectVpcResult {
+    /**
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly cloudName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * defines the network CIDR of the VPC.
+     * Network address range used by the VPC like 192.168.0.0/24
      */
-    readonly networkCidr?: string;
+    readonly networkCidr: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
     /**
-     * ia a computed property that tells the current state of the VPC. This property cannot be
-     * set, only read.
+     * State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
      */
     readonly state: string;
 }
@@ -89,21 +80,11 @@ export function getProjectVpcOutput(args: GetProjectVpcOutputArgs, opts?: pulumi
  */
 export interface GetProjectVpcOutputArgs {
     /**
-     * defines where the cloud provider and region where the service is hosted
-     * in. See the Service resource for additional information.
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      */
     cloudName: pulumi.Input<string>;
     /**
-     * defines the network CIDR of the VPC.
-     */
-    networkCidr?: pulumi.Input<string>;
-    /**
-     * defines the project the VPC belongs to.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
-    /**
-     * ia a computed property that tells the current state of the VPC. This property cannot be
-     * set, only read.
-     */
-    state?: pulumi.Input<string>;
 }

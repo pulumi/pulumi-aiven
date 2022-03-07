@@ -6,8 +6,6 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # Kafka Connect Resource
- *
  * The Kafka Connect resource allows the creation and management of Aiven Kafka Connect services.
  *
  * ## Example Usage
@@ -63,13 +61,7 @@ export class KafkaConnect extends pulumi.CustomResource {
     }
 
     /**
-     * defines where the cloud provider and region where the service is hosted
-     * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lengthy migration process for the service. Format is cloud provider name
-     * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-     * specific region name. These are documented on each Cloud provider's own support articles,
-     * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-     * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+     * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
     public readonly cloudName!: pulumi.Output<string | undefined>;
     /**
@@ -77,52 +69,55 @@ export class KafkaConnect extends pulumi.CustomResource {
      */
     public /*out*/ readonly components!: pulumi.Output<outputs.KafkaConnectComponent[]>;
     /**
-     * Allow clients to connect to kafkaConnect from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
+     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      */
-    public readonly kafkaConnect!: pulumi.Output<outputs.KafkaConnectKafkaConnect>;
+    public readonly diskSpace!: pulumi.Output<string | undefined>;
     /**
-     * defines kafka Connect specific additional configuration options. 
-     * The following configuration options available:
+     * The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+     */
+    public /*out*/ readonly diskSpaceCap!: pulumi.Output<string>;
+    /**
+     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+     */
+    public /*out*/ readonly diskSpaceDefault!: pulumi.Output<string>;
+    /**
+     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+     */
+    public /*out*/ readonly diskSpaceStep!: pulumi.Output<string>;
+    /**
+     * Disk space that service is currently using
+     */
+    public /*out*/ readonly diskSpaceUsed!: pulumi.Output<string>;
+    /**
+     * Kafka*connect user configurable settings
      */
     public readonly kafkaConnectUserConfig!: pulumi.Output<outputs.KafkaConnectKafkaConnectUserConfig | undefined>;
     /**
-     * day of week when maintenance operations should be performed. 
-     * On monday, tuesday, wednesday, etc.
+     * Kafka Connect server provided values
+     */
+    public /*out*/ readonly kafkaConnects!: pulumi.Output<outputs.KafkaConnectKafkaConnect[]>;
+    /**
+     * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
     public readonly maintenanceWindowDow!: pulumi.Output<string | undefined>;
     /**
-     * time of day when maintenance operations should be performed. 
-     * UTC time in HH:mm:ss format.
+     * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */
     public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
     /**
-     * defines what kind of computing resources are allocated for the service. It can
-     * be changed after creation, though there are some restrictions when going to a smaller
-     * plan such as the new plan must have sufficient amount of disk space to store all current
-     * data and switching to a plan with fewer nodes might not be supported. The basic plan
-     * names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-     * (roughly) the amount of memory on each node (also other attributes like number of CPUs
-     * and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */
     public readonly plan!: pulumi.Output<string | undefined>;
     /**
-     * identifies the project the service belongs to. To set up proper dependency
-     * between the project and the service, refer to the project as shown in the above example.
-     * Project cannot be changed later without destroying and re-creating the service.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * optionally specifies the VPC the service should run in. If the value
-     * is not set the service is not run inside a VPC. When set, the value should be given as a
-     * reference as shown above to set up dependencies correctly and the VPC must be in the same
-     * cloud and region as the service itself. Project can be freely moved to and from VPC after
-     * creation but doing so triggers migration to new servers so the operation can take
-     * significant amount of time to complete if the service has a lot of data.
+     * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      */
     public readonly projectVpcId!: pulumi.Output<string | undefined>;
     /**
-     * Kafka Connect hostname.
+     * The hostname of the service.
      */
     public /*out*/ readonly serviceHost!: pulumi.Output<string>;
     /**
@@ -130,17 +125,15 @@ export class KafkaConnect extends pulumi.CustomResource {
      */
     public readonly serviceIntegrations!: pulumi.Output<outputs.KafkaConnectServiceIntegration[] | undefined>;
     /**
-     * specifies the actual name of the service. The name cannot be changed
-     * later without destroying and re-creating the service so name should be picked based on
-     * intended service usage rather than current attributes.
+     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Password used for connecting to the Kafka Connect service, if applicable.
+     * Password used for connecting to the service, if applicable
      */
     public /*out*/ readonly servicePassword!: pulumi.Output<string>;
     /**
-     * Kafka Connect port.
+     * The port of the service
      */
     public /*out*/ readonly servicePort!: pulumi.Output<number>;
     /**
@@ -148,23 +141,23 @@ export class KafkaConnect extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceType!: pulumi.Output<string>;
     /**
-     * URI for connecting to the Kafka Connect service.
+     * URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
      */
     public /*out*/ readonly serviceUri!: pulumi.Output<string>;
     /**
-     * Username used for connecting to the Kafka Connect service, if applicable.
+     * Username used for connecting to the service, if applicable
      */
     public /*out*/ readonly serviceUsername!: pulumi.Output<string>;
     /**
-     * Service state.
+     * Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * prevents the service from being deleted. It is recommended to
-     * set this to `true` for all production services to prevent unintentional service
-     * deletion. This does not shield against deleting databases or topics but for services
-     * with backups much of the content can at least be restored from backup in case accidental
-     * deletion is done.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
+    public readonly staticIps!: pulumi.Output<string[] | undefined>;
+    /**
+     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
     public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
 
@@ -183,8 +176,13 @@ export class KafkaConnect extends pulumi.CustomResource {
             const state = argsOrState as KafkaConnectState | undefined;
             resourceInputs["cloudName"] = state ? state.cloudName : undefined;
             resourceInputs["components"] = state ? state.components : undefined;
-            resourceInputs["kafkaConnect"] = state ? state.kafkaConnect : undefined;
+            resourceInputs["diskSpace"] = state ? state.diskSpace : undefined;
+            resourceInputs["diskSpaceCap"] = state ? state.diskSpaceCap : undefined;
+            resourceInputs["diskSpaceDefault"] = state ? state.diskSpaceDefault : undefined;
+            resourceInputs["diskSpaceStep"] = state ? state.diskSpaceStep : undefined;
+            resourceInputs["diskSpaceUsed"] = state ? state.diskSpaceUsed : undefined;
             resourceInputs["kafkaConnectUserConfig"] = state ? state.kafkaConnectUserConfig : undefined;
+            resourceInputs["kafkaConnects"] = state ? state.kafkaConnects : undefined;
             resourceInputs["maintenanceWindowDow"] = state ? state.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
             resourceInputs["plan"] = state ? state.plan : undefined;
@@ -199,6 +197,7 @@ export class KafkaConnect extends pulumi.CustomResource {
             resourceInputs["serviceUri"] = state ? state.serviceUri : undefined;
             resourceInputs["serviceUsername"] = state ? state.serviceUsername : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["staticIps"] = state ? state.staticIps : undefined;
             resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as KafkaConnectArgs | undefined;
@@ -209,7 +208,7 @@ export class KafkaConnect extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
-            resourceInputs["kafkaConnect"] = args ? args.kafkaConnect : undefined;
+            resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
             resourceInputs["kafkaConnectUserConfig"] = args ? args.kafkaConnectUserConfig : undefined;
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
@@ -218,8 +217,14 @@ export class KafkaConnect extends pulumi.CustomResource {
             resourceInputs["projectVpcId"] = args ? args.projectVpcId : undefined;
             resourceInputs["serviceIntegrations"] = args ? args.serviceIntegrations : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["staticIps"] = args ? args.staticIps : undefined;
             resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
             resourceInputs["components"] = undefined /*out*/;
+            resourceInputs["diskSpaceCap"] = undefined /*out*/;
+            resourceInputs["diskSpaceDefault"] = undefined /*out*/;
+            resourceInputs["diskSpaceStep"] = undefined /*out*/;
+            resourceInputs["diskSpaceUsed"] = undefined /*out*/;
+            resourceInputs["kafkaConnects"] = undefined /*out*/;
             resourceInputs["serviceHost"] = undefined /*out*/;
             resourceInputs["servicePassword"] = undefined /*out*/;
             resourceInputs["servicePort"] = undefined /*out*/;
@@ -238,13 +243,7 @@ export class KafkaConnect extends pulumi.CustomResource {
  */
 export interface KafkaConnectState {
     /**
-     * defines where the cloud provider and region where the service is hosted
-     * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lengthy migration process for the service. Format is cloud provider name
-     * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-     * specific region name. These are documented on each Cloud provider's own support articles,
-     * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-     * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+     * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
     cloudName?: pulumi.Input<string>;
     /**
@@ -252,52 +251,55 @@ export interface KafkaConnectState {
      */
     components?: pulumi.Input<pulumi.Input<inputs.KafkaConnectComponent>[]>;
     /**
-     * Allow clients to connect to kafkaConnect from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
+     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      */
-    kafkaConnect?: pulumi.Input<inputs.KafkaConnectKafkaConnect>;
+    diskSpace?: pulumi.Input<string>;
     /**
-     * defines kafka Connect specific additional configuration options. 
-     * The following configuration options available:
+     * The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+     */
+    diskSpaceCap?: pulumi.Input<string>;
+    /**
+     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+     */
+    diskSpaceDefault?: pulumi.Input<string>;
+    /**
+     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+     */
+    diskSpaceStep?: pulumi.Input<string>;
+    /**
+     * Disk space that service is currently using
+     */
+    diskSpaceUsed?: pulumi.Input<string>;
+    /**
+     * Kafka*connect user configurable settings
      */
     kafkaConnectUserConfig?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfig>;
     /**
-     * day of week when maintenance operations should be performed. 
-     * On monday, tuesday, wednesday, etc.
+     * Kafka Connect server provided values
+     */
+    kafkaConnects?: pulumi.Input<pulumi.Input<inputs.KafkaConnectKafkaConnect>[]>;
+    /**
+     * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
     maintenanceWindowDow?: pulumi.Input<string>;
     /**
-     * time of day when maintenance operations should be performed. 
-     * UTC time in HH:mm:ss format.
+     * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * defines what kind of computing resources are allocated for the service. It can
-     * be changed after creation, though there are some restrictions when going to a smaller
-     * plan such as the new plan must have sufficient amount of disk space to store all current
-     * data and switching to a plan with fewer nodes might not be supported. The basic plan
-     * names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-     * (roughly) the amount of memory on each node (also other attributes like number of CPUs
-     * and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */
     plan?: pulumi.Input<string>;
     /**
-     * identifies the project the service belongs to. To set up proper dependency
-     * between the project and the service, refer to the project as shown in the above example.
-     * Project cannot be changed later without destroying and re-creating the service.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * optionally specifies the VPC the service should run in. If the value
-     * is not set the service is not run inside a VPC. When set, the value should be given as a
-     * reference as shown above to set up dependencies correctly and the VPC must be in the same
-     * cloud and region as the service itself. Project can be freely moved to and from VPC after
-     * creation but doing so triggers migration to new servers so the operation can take
-     * significant amount of time to complete if the service has a lot of data.
+     * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      */
     projectVpcId?: pulumi.Input<string>;
     /**
-     * Kafka Connect hostname.
+     * The hostname of the service.
      */
     serviceHost?: pulumi.Input<string>;
     /**
@@ -305,17 +307,15 @@ export interface KafkaConnectState {
      */
     serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.KafkaConnectServiceIntegration>[]>;
     /**
-     * specifies the actual name of the service. The name cannot be changed
-     * later without destroying and re-creating the service so name should be picked based on
-     * intended service usage rather than current attributes.
+     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Password used for connecting to the Kafka Connect service, if applicable.
+     * Password used for connecting to the service, if applicable
      */
     servicePassword?: pulumi.Input<string>;
     /**
-     * Kafka Connect port.
+     * The port of the service
      */
     servicePort?: pulumi.Input<number>;
     /**
@@ -323,23 +323,23 @@ export interface KafkaConnectState {
      */
     serviceType?: pulumi.Input<string>;
     /**
-     * URI for connecting to the Kafka Connect service.
+     * URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
      */
     serviceUri?: pulumi.Input<string>;
     /**
-     * Username used for connecting to the Kafka Connect service, if applicable.
+     * Username used for connecting to the service, if applicable
      */
     serviceUsername?: pulumi.Input<string>;
     /**
-     * Service state.
+     * Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
      */
     state?: pulumi.Input<string>;
     /**
-     * prevents the service from being deleted. It is recommended to
-     * set this to `true` for all production services to prevent unintentional service
-     * deletion. This does not shield against deleting databases or topics but for services
-     * with backups much of the content can at least be restored from backup in case accidental
-     * deletion is done.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
+    staticIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
     terminationProtection?: pulumi.Input<boolean>;
 }
@@ -349,58 +349,35 @@ export interface KafkaConnectState {
  */
 export interface KafkaConnectArgs {
     /**
-     * defines where the cloud provider and region where the service is hosted
-     * in. This can be changed freely after service is created. Changing the value will trigger
-     * a potentially lengthy migration process for the service. Format is cloud provider name
-     * (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-     * specific region name. These are documented on each Cloud provider's own support articles,
-     * like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-     * [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+     * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * Allow clients to connect to kafkaConnect from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
+     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      */
-    kafkaConnect?: pulumi.Input<inputs.KafkaConnectKafkaConnect>;
+    diskSpace?: pulumi.Input<string>;
     /**
-     * defines kafka Connect specific additional configuration options. 
-     * The following configuration options available:
+     * Kafka*connect user configurable settings
      */
     kafkaConnectUserConfig?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfig>;
     /**
-     * day of week when maintenance operations should be performed. 
-     * On monday, tuesday, wednesday, etc.
+     * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
     maintenanceWindowDow?: pulumi.Input<string>;
     /**
-     * time of day when maintenance operations should be performed. 
-     * UTC time in HH:mm:ss format.
+     * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * defines what kind of computing resources are allocated for the service. It can
-     * be changed after creation, though there are some restrictions when going to a smaller
-     * plan such as the new plan must have sufficient amount of disk space to store all current
-     * data and switching to a plan with fewer nodes might not be supported. The basic plan
-     * names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-     * (roughly) the amount of memory on each node (also other attributes like number of CPUs
-     * and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */
     plan?: pulumi.Input<string>;
     /**
-     * identifies the project the service belongs to. To set up proper dependency
-     * between the project and the service, refer to the project as shown in the above example.
-     * Project cannot be changed later without destroying and re-creating the service.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * optionally specifies the VPC the service should run in. If the value
-     * is not set the service is not run inside a VPC. When set, the value should be given as a
-     * reference as shown above to set up dependencies correctly and the VPC must be in the same
-     * cloud and region as the service itself. Project can be freely moved to and from VPC after
-     * creation but doing so triggers migration to new servers so the operation can take
-     * significant amount of time to complete if the service has a lot of data.
+     * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      */
     projectVpcId?: pulumi.Input<string>;
     /**
@@ -408,17 +385,15 @@ export interface KafkaConnectArgs {
      */
     serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.KafkaConnectServiceIntegration>[]>;
     /**
-     * specifies the actual name of the service. The name cannot be changed
-     * later without destroying and re-creating the service so name should be picked based on
-     * intended service usage rather than current attributes.
+     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * prevents the service from being deleted. It is recommended to
-     * set this to `true` for all production services to prevent unintentional service
-     * deletion. This does not shield against deleting databases or topics but for services
-     * with backups much of the content can at least be restored from backup in case accidental
-     * deletion is done.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
+    staticIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
     terminationProtection?: pulumi.Input<boolean>;
 }

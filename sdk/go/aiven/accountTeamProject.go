@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Account Team Project Resource
-//
 // The Account Team Project resource allows the creation and management of an Account Team Project.
 //
 // It is intended to link an existing project to the existing account team.
@@ -21,14 +19,13 @@ import (
 type AccountTeamProject struct {
 	pulumi.CustomResourceState
 
-	// is a unique account id.
+	// The unique account id
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// is a project name of already existing project.
+	// The name of an already existing project
 	ProjectName pulumi.StringPtrOutput `pulumi:"projectName"`
-	// is an account team id.
+	// An account team id
 	TeamId pulumi.StringOutput `pulumi:"teamId"`
-	// is an account team project type, can one of the following values: `admin`,
-	// `developer`, `operator` and `readOnly`.
+	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType pulumi.StringPtrOutput `pulumi:"teamType"`
 }
 
@@ -67,26 +64,24 @@ func GetAccountTeamProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountTeamProject resources.
 type accountTeamProjectState struct {
-	// is a unique account id.
+	// The unique account id
 	AccountId *string `pulumi:"accountId"`
-	// is a project name of already existing project.
+	// The name of an already existing project
 	ProjectName *string `pulumi:"projectName"`
-	// is an account team id.
+	// An account team id
 	TeamId *string `pulumi:"teamId"`
-	// is an account team project type, can one of the following values: `admin`,
-	// `developer`, `operator` and `readOnly`.
+	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType *string `pulumi:"teamType"`
 }
 
 type AccountTeamProjectState struct {
-	// is a unique account id.
+	// The unique account id
 	AccountId pulumi.StringPtrInput
-	// is a project name of already existing project.
+	// The name of an already existing project
 	ProjectName pulumi.StringPtrInput
-	// is an account team id.
+	// An account team id
 	TeamId pulumi.StringPtrInput
-	// is an account team project type, can one of the following values: `admin`,
-	// `developer`, `operator` and `readOnly`.
+	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType pulumi.StringPtrInput
 }
 
@@ -95,27 +90,25 @@ func (AccountTeamProjectState) ElementType() reflect.Type {
 }
 
 type accountTeamProjectArgs struct {
-	// is a unique account id.
+	// The unique account id
 	AccountId string `pulumi:"accountId"`
-	// is a project name of already existing project.
+	// The name of an already existing project
 	ProjectName *string `pulumi:"projectName"`
-	// is an account team id.
+	// An account team id
 	TeamId string `pulumi:"teamId"`
-	// is an account team project type, can one of the following values: `admin`,
-	// `developer`, `operator` and `readOnly`.
+	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType *string `pulumi:"teamType"`
 }
 
 // The set of arguments for constructing a AccountTeamProject resource.
 type AccountTeamProjectArgs struct {
-	// is a unique account id.
+	// The unique account id
 	AccountId pulumi.StringInput
-	// is a project name of already existing project.
+	// The name of an already existing project
 	ProjectName pulumi.StringPtrInput
-	// is an account team id.
+	// An account team id
 	TeamId pulumi.StringInput
-	// is an account team project type, can one of the following values: `admin`,
-	// `developer`, `operator` and `readOnly`.
+	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType pulumi.StringPtrInput
 }
 

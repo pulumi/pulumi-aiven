@@ -10,38 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Service Integration Resource
-    /// 
     /// The Service Integration resource allows the creation and management of Aiven Service Integrations.
+    /// 
+    /// **Note** For services running on `hobbiest` plan service integrations are not supported.
     /// 
     /// Service Integration defines an integration between two Aiven services or between Aiven service and an external
     /// integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,
     /// getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
     /// Elasticsearch, etc.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myintegration = new Aiven.ServiceIntegration("myintegration", new Aiven.ServiceIntegrationArgs
-    ///         {
-    ///             Project = aiven_project.Myproject.Project,
-    ///             DestinationEndpointId = aiven_service_integration_endpoint.XX.Id,
-    ///             IntegrationType = "datadog",
-    ///             SourceServiceName = aiven_kafka.XXX.Service_name,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &gt; **Note** For services running on `hobbiest` plan service integrations are not supported.
     /// </summary>
     [AivenResourceType("aiven:index/serviceIntegration:ServiceIntegration")]
     public partial class ServiceIntegration : Pulumi.CustomResource
@@ -49,20 +25,11 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Dashboard specific user configurable settings
         /// </summary>
-        [Output("dashboardUserConfig")]
-        public Output<Outputs.ServiceIntegrationDashboardUserConfig?> DashboardUserConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// Dashboard specific user configurable settings
-        /// </summary>
         [Output("datadogUserConfig")]
         public Output<Outputs.ServiceIntegrationDatadogUserConfig?> DatadogUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// or `destination_service_name` - (Required) identifies the target side of the integration.
-        /// Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
-        /// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the
-        /// reference syntax described above to set up the dependency correctly.
+        /// Destination endpoint for the integration (if any)
         /// </summary>
         [Output("destinationEndpointId")]
         public Output<string?> DestinationEndpointId { get; private set; } = null!;
@@ -74,34 +41,13 @@ namespace Pulumi.Aiven
         public Output<string?> DestinationServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// External AWS Cloudwatch logs specific user configurable settings
+        /// Service Integration Id at aiven
         /// </summary>
-        [Output("externalAwsCloudwatchLogsUserConfig")]
-        public Output<Outputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig?> ExternalAwsCloudwatchLogsUserConfig { get; private set; } = null!;
+        [Output("integrationId")]
+        public Output<string> IntegrationId { get; private set; } = null!;
 
         /// <summary>
-        /// External AWS cloudwatch metrics specific user configurable settings
-        /// </summary>
-        [Output("externalAwsCloudwatchMetricsUserConfig")]
-        public Output<Outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig?> ExternalAwsCloudwatchMetricsUserConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// External Elasticsearch logs specific user configurable settings
-        /// </summary>
-        [Output("externalElasticsearchLogsUserConfig")]
-        public Output<Outputs.ServiceIntegrationExternalElasticsearchLogsUserConfig?> ExternalElasticsearchLogsUserConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// External Google Cloud Logging specific user configurable settings
-        /// </summary>
-        [Output("externalGoogleCloudLoggingUserConfig")]
-        public Output<Outputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfig?> ExternalGoogleCloudLoggingUserConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// identifies the type of integration that is set up. Possible values include `dashboard`
-        /// , `datadog`, `logs`, `metrics`, `kafka_connect`, `external_google_cloud_logging`, `external_elasticsearch_logs`
-        /// `external_aws_cloudwatch_logs`, `read_replica`, `rsyslog`, `signalfx`, `kafka_logs`, `m3aggregator`,
-        /// `m3coordinator`, `prometheus`, `schema_registry_proxy` and `kafka_mirrormaker`.
+        /// Type of the service integration
         /// </summary>
         [Output("integrationType")]
         public Output<string> IntegrationType { get; private set; } = null!;
@@ -131,18 +77,6 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationLogsUserConfig?> LogsUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// M3 aggregator specific user configurable settings
-        /// </summary>
-        [Output("m3aggregatorUserConfig")]
-        public Output<Outputs.ServiceIntegrationM3aggregatorUserConfig?> M3aggregatorUserConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// M3 coordinator specific user configurable settings
-        /// </summary>
-        [Output("m3coordinatorUserConfig")]
-        public Output<Outputs.ServiceIntegrationM3coordinatorUserConfig?> M3coordinatorUserConfig { get; private set; } = null!;
-
-        /// <summary>
         /// Metrics specific user configurable settings
         /// </summary>
         [Output("metricsUserConfig")]
@@ -155,7 +89,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationMirrormakerUserConfig?> MirrormakerUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// defines the project the integration belongs to.
+        /// Project the integration belongs to
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -167,34 +101,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationPrometheusUserConfig?> PrometheusUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// PG Read replica specific user configurable settings
-        /// </summary>
-        [Output("readReplicaUserConfig")]
-        public Output<Outputs.ServiceIntegrationReadReplicaUserConfig?> ReadReplicaUserConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// RSyslog specific user configurable settings
-        /// </summary>
-        [Output("rsyslogUserConfig")]
-        public Output<Outputs.ServiceIntegrationRsyslogUserConfig?> RsyslogUserConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// Schema registry proxy specific user configurable settings
-        /// </summary>
-        [Output("schemaRegistryProxyUserConfig")]
-        public Output<Outputs.ServiceIntegrationSchemaRegistryProxyUserConfig?> SchemaRegistryProxyUserConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// Signalfx specific user configurable settings
-        /// </summary>
-        [Output("signalfxUserConfig")]
-        public Output<Outputs.ServiceIntegrationSignalfxUserConfig?> SignalfxUserConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// or `source_service_name` - (Optional) identifies the source side of the integration. Only either
-        /// endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
-        /// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the
-        /// reference syntax described above to set up the dependency correctly.
+        /// Source endpoint for the integration (if any)
         /// </summary>
         [Output("sourceEndpointId")]
         public Output<string?> SourceEndpointId { get; private set; } = null!;
@@ -254,20 +161,11 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Dashboard specific user configurable settings
         /// </summary>
-        [Input("dashboardUserConfig")]
-        public Input<Inputs.ServiceIntegrationDashboardUserConfigArgs>? DashboardUserConfig { get; set; }
-
-        /// <summary>
-        /// Dashboard specific user configurable settings
-        /// </summary>
         [Input("datadogUserConfig")]
         public Input<Inputs.ServiceIntegrationDatadogUserConfigArgs>? DatadogUserConfig { get; set; }
 
         /// <summary>
-        /// or `destination_service_name` - (Required) identifies the target side of the integration.
-        /// Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
-        /// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the
-        /// reference syntax described above to set up the dependency correctly.
+        /// Destination endpoint for the integration (if any)
         /// </summary>
         [Input("destinationEndpointId")]
         public Input<string>? DestinationEndpointId { get; set; }
@@ -279,34 +177,7 @@ namespace Pulumi.Aiven
         public Input<string>? DestinationServiceName { get; set; }
 
         /// <summary>
-        /// External AWS Cloudwatch logs specific user configurable settings
-        /// </summary>
-        [Input("externalAwsCloudwatchLogsUserConfig")]
-        public Input<Inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
-
-        /// <summary>
-        /// External AWS cloudwatch metrics specific user configurable settings
-        /// </summary>
-        [Input("externalAwsCloudwatchMetricsUserConfig")]
-        public Input<Inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
-
-        /// <summary>
-        /// External Elasticsearch logs specific user configurable settings
-        /// </summary>
-        [Input("externalElasticsearchLogsUserConfig")]
-        public Input<Inputs.ServiceIntegrationExternalElasticsearchLogsUserConfigArgs>? ExternalElasticsearchLogsUserConfig { get; set; }
-
-        /// <summary>
-        /// External Google Cloud Logging specific user configurable settings
-        /// </summary>
-        [Input("externalGoogleCloudLoggingUserConfig")]
-        public Input<Inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs>? ExternalGoogleCloudLoggingUserConfig { get; set; }
-
-        /// <summary>
-        /// identifies the type of integration that is set up. Possible values include `dashboard`
-        /// , `datadog`, `logs`, `metrics`, `kafka_connect`, `external_google_cloud_logging`, `external_elasticsearch_logs`
-        /// `external_aws_cloudwatch_logs`, `read_replica`, `rsyslog`, `signalfx`, `kafka_logs`, `m3aggregator`,
-        /// `m3coordinator`, `prometheus`, `schema_registry_proxy` and `kafka_mirrormaker`.
+        /// Type of the service integration
         /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;
@@ -336,18 +207,6 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationLogsUserConfigArgs>? LogsUserConfig { get; set; }
 
         /// <summary>
-        /// M3 aggregator specific user configurable settings
-        /// </summary>
-        [Input("m3aggregatorUserConfig")]
-        public Input<Inputs.ServiceIntegrationM3aggregatorUserConfigArgs>? M3aggregatorUserConfig { get; set; }
-
-        /// <summary>
-        /// M3 coordinator specific user configurable settings
-        /// </summary>
-        [Input("m3coordinatorUserConfig")]
-        public Input<Inputs.ServiceIntegrationM3coordinatorUserConfigArgs>? M3coordinatorUserConfig { get; set; }
-
-        /// <summary>
         /// Metrics specific user configurable settings
         /// </summary>
         [Input("metricsUserConfig")]
@@ -360,7 +219,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationMirrormakerUserConfigArgs>? MirrormakerUserConfig { get; set; }
 
         /// <summary>
-        /// defines the project the integration belongs to.
+        /// Project the integration belongs to
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -372,34 +231,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationPrometheusUserConfigArgs>? PrometheusUserConfig { get; set; }
 
         /// <summary>
-        /// PG Read replica specific user configurable settings
-        /// </summary>
-        [Input("readReplicaUserConfig")]
-        public Input<Inputs.ServiceIntegrationReadReplicaUserConfigArgs>? ReadReplicaUserConfig { get; set; }
-
-        /// <summary>
-        /// RSyslog specific user configurable settings
-        /// </summary>
-        [Input("rsyslogUserConfig")]
-        public Input<Inputs.ServiceIntegrationRsyslogUserConfigArgs>? RsyslogUserConfig { get; set; }
-
-        /// <summary>
-        /// Schema registry proxy specific user configurable settings
-        /// </summary>
-        [Input("schemaRegistryProxyUserConfig")]
-        public Input<Inputs.ServiceIntegrationSchemaRegistryProxyUserConfigArgs>? SchemaRegistryProxyUserConfig { get; set; }
-
-        /// <summary>
-        /// Signalfx specific user configurable settings
-        /// </summary>
-        [Input("signalfxUserConfig")]
-        public Input<Inputs.ServiceIntegrationSignalfxUserConfigArgs>? SignalfxUserConfig { get; set; }
-
-        /// <summary>
-        /// or `source_service_name` - (Optional) identifies the source side of the integration. Only either
-        /// endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
-        /// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the
-        /// reference syntax described above to set up the dependency correctly.
+        /// Source endpoint for the integration (if any)
         /// </summary>
         [Input("sourceEndpointId")]
         public Input<string>? SourceEndpointId { get; set; }
@@ -420,20 +252,11 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Dashboard specific user configurable settings
         /// </summary>
-        [Input("dashboardUserConfig")]
-        public Input<Inputs.ServiceIntegrationDashboardUserConfigGetArgs>? DashboardUserConfig { get; set; }
-
-        /// <summary>
-        /// Dashboard specific user configurable settings
-        /// </summary>
         [Input("datadogUserConfig")]
         public Input<Inputs.ServiceIntegrationDatadogUserConfigGetArgs>? DatadogUserConfig { get; set; }
 
         /// <summary>
-        /// or `destination_service_name` - (Required) identifies the target side of the integration.
-        /// Only either endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
-        /// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the target needs to be defined using the
-        /// reference syntax described above to set up the dependency correctly.
+        /// Destination endpoint for the integration (if any)
         /// </summary>
         [Input("destinationEndpointId")]
         public Input<string>? DestinationEndpointId { get; set; }
@@ -445,34 +268,13 @@ namespace Pulumi.Aiven
         public Input<string>? DestinationServiceName { get; set; }
 
         /// <summary>
-        /// External AWS Cloudwatch logs specific user configurable settings
+        /// Service Integration Id at aiven
         /// </summary>
-        [Input("externalAwsCloudwatchLogsUserConfig")]
-        public Input<Inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfigGetArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
+        [Input("integrationId")]
+        public Input<string>? IntegrationId { get; set; }
 
         /// <summary>
-        /// External AWS cloudwatch metrics specific user configurable settings
-        /// </summary>
-        [Input("externalAwsCloudwatchMetricsUserConfig")]
-        public Input<Inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigGetArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
-
-        /// <summary>
-        /// External Elasticsearch logs specific user configurable settings
-        /// </summary>
-        [Input("externalElasticsearchLogsUserConfig")]
-        public Input<Inputs.ServiceIntegrationExternalElasticsearchLogsUserConfigGetArgs>? ExternalElasticsearchLogsUserConfig { get; set; }
-
-        /// <summary>
-        /// External Google Cloud Logging specific user configurable settings
-        /// </summary>
-        [Input("externalGoogleCloudLoggingUserConfig")]
-        public Input<Inputs.ServiceIntegrationExternalGoogleCloudLoggingUserConfigGetArgs>? ExternalGoogleCloudLoggingUserConfig { get; set; }
-
-        /// <summary>
-        /// identifies the type of integration that is set up. Possible values include `dashboard`
-        /// , `datadog`, `logs`, `metrics`, `kafka_connect`, `external_google_cloud_logging`, `external_elasticsearch_logs`
-        /// `external_aws_cloudwatch_logs`, `read_replica`, `rsyslog`, `signalfx`, `kafka_logs`, `m3aggregator`,
-        /// `m3coordinator`, `prometheus`, `schema_registry_proxy` and `kafka_mirrormaker`.
+        /// Type of the service integration
         /// </summary>
         [Input("integrationType")]
         public Input<string>? IntegrationType { get; set; }
@@ -502,18 +304,6 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationLogsUserConfigGetArgs>? LogsUserConfig { get; set; }
 
         /// <summary>
-        /// M3 aggregator specific user configurable settings
-        /// </summary>
-        [Input("m3aggregatorUserConfig")]
-        public Input<Inputs.ServiceIntegrationM3aggregatorUserConfigGetArgs>? M3aggregatorUserConfig { get; set; }
-
-        /// <summary>
-        /// M3 coordinator specific user configurable settings
-        /// </summary>
-        [Input("m3coordinatorUserConfig")]
-        public Input<Inputs.ServiceIntegrationM3coordinatorUserConfigGetArgs>? M3coordinatorUserConfig { get; set; }
-
-        /// <summary>
         /// Metrics specific user configurable settings
         /// </summary>
         [Input("metricsUserConfig")]
@@ -526,7 +316,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationMirrormakerUserConfigGetArgs>? MirrormakerUserConfig { get; set; }
 
         /// <summary>
-        /// defines the project the integration belongs to.
+        /// Project the integration belongs to
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -538,34 +328,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationPrometheusUserConfigGetArgs>? PrometheusUserConfig { get; set; }
 
         /// <summary>
-        /// PG Read replica specific user configurable settings
-        /// </summary>
-        [Input("readReplicaUserConfig")]
-        public Input<Inputs.ServiceIntegrationReadReplicaUserConfigGetArgs>? ReadReplicaUserConfig { get; set; }
-
-        /// <summary>
-        /// RSyslog specific user configurable settings
-        /// </summary>
-        [Input("rsyslogUserConfig")]
-        public Input<Inputs.ServiceIntegrationRsyslogUserConfigGetArgs>? RsyslogUserConfig { get; set; }
-
-        /// <summary>
-        /// Schema registry proxy specific user configurable settings
-        /// </summary>
-        [Input("schemaRegistryProxyUserConfig")]
-        public Input<Inputs.ServiceIntegrationSchemaRegistryProxyUserConfigGetArgs>? SchemaRegistryProxyUserConfig { get; set; }
-
-        /// <summary>
-        /// Signalfx specific user configurable settings
-        /// </summary>
-        [Input("signalfxUserConfig")]
-        public Input<Inputs.ServiceIntegrationSignalfxUserConfigGetArgs>? SignalfxUserConfig { get; set; }
-
-        /// <summary>
-        /// or `source_service_name` - (Optional) identifies the source side of the integration. Only either
-        /// endpoint identifier (e.g. `aiven_service_integration_endpoint.XXX.id`) or service name (
-        /// e.g. `aiven_kafka.XXX.service_name`) must be specified. In either case the source needs to be defined using the
-        /// reference syntax described above to set up the dependency correctly.
+        /// Source endpoint for the integration (if any)
         /// </summary>
         [Input("sourceEndpointId")]
         public Input<string>? SourceEndpointId { get; set; }

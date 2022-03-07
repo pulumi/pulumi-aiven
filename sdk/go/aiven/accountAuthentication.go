@@ -11,35 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Account Authentication Resource
-//
 // The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
 type AccountAuthentication struct {
 	pulumi.CustomResourceState
 
-	// is a unique account id.
+	// The unique id of the account.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// account authentication id.
+	// Account authentication id
 	AuthenticationId pulumi.StringOutput `pulumi:"authenticationId"`
-	// time of creation.
+	// Time of creation
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// defines an authentication method enabled or not.
+	// Status of account authentication method. The default value is `false`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// is an account authentication name.
+	// The name of the account authentication.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// is a SAML Assertion Consumer Service URL.
+	// SAML Assertion Consumer Service URL
 	SamlAcsUrl pulumi.StringOutput `pulumi:"samlAcsUrl"`
-	// is a SAML Certificate.
+	// SAML Certificate
 	SamlCertificate pulumi.StringPtrOutput `pulumi:"samlCertificate"`
-	// is a SAML Entity ID.
+	// SAML Entity id
 	SamlEntityId pulumi.StringPtrOutput `pulumi:"samlEntityId"`
-	// is a SAML Idp URL.
+	// SAML Idp URL
 	SamlIdpUrl pulumi.StringPtrOutput `pulumi:"samlIdpUrl"`
-	// is a SAML Metadata URL.
+	// SAML Metadata URL
 	SamlMetadataUrl pulumi.StringOutput `pulumi:"samlMetadataUrl"`
-	// is an account authentication type, can be one of `internal` and `saml`.
+	// The account authentication type. The possible values are `internal` and `saml`.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// time of last update.
+	// Time of last update
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -78,56 +76,56 @@ func GetAccountAuthentication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountAuthentication resources.
 type accountAuthenticationState struct {
-	// is a unique account id.
+	// The unique id of the account.
 	AccountId *string `pulumi:"accountId"`
-	// account authentication id.
+	// Account authentication id
 	AuthenticationId *string `pulumi:"authenticationId"`
-	// time of creation.
+	// Time of creation
 	CreateTime *string `pulumi:"createTime"`
-	// defines an authentication method enabled or not.
+	// Status of account authentication method. The default value is `false`.
 	Enabled *bool `pulumi:"enabled"`
-	// is an account authentication name.
+	// The name of the account authentication.
 	Name *string `pulumi:"name"`
-	// is a SAML Assertion Consumer Service URL.
+	// SAML Assertion Consumer Service URL
 	SamlAcsUrl *string `pulumi:"samlAcsUrl"`
-	// is a SAML Certificate.
+	// SAML Certificate
 	SamlCertificate *string `pulumi:"samlCertificate"`
-	// is a SAML Entity ID.
+	// SAML Entity id
 	SamlEntityId *string `pulumi:"samlEntityId"`
-	// is a SAML Idp URL.
+	// SAML Idp URL
 	SamlIdpUrl *string `pulumi:"samlIdpUrl"`
-	// is a SAML Metadata URL.
+	// SAML Metadata URL
 	SamlMetadataUrl *string `pulumi:"samlMetadataUrl"`
-	// is an account authentication type, can be one of `internal` and `saml`.
+	// The account authentication type. The possible values are `internal` and `saml`.
 	Type *string `pulumi:"type"`
-	// time of last update.
+	// Time of last update
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AccountAuthenticationState struct {
-	// is a unique account id.
+	// The unique id of the account.
 	AccountId pulumi.StringPtrInput
-	// account authentication id.
+	// Account authentication id
 	AuthenticationId pulumi.StringPtrInput
-	// time of creation.
+	// Time of creation
 	CreateTime pulumi.StringPtrInput
-	// defines an authentication method enabled or not.
+	// Status of account authentication method. The default value is `false`.
 	Enabled pulumi.BoolPtrInput
-	// is an account authentication name.
+	// The name of the account authentication.
 	Name pulumi.StringPtrInput
-	// is a SAML Assertion Consumer Service URL.
+	// SAML Assertion Consumer Service URL
 	SamlAcsUrl pulumi.StringPtrInput
-	// is a SAML Certificate.
+	// SAML Certificate
 	SamlCertificate pulumi.StringPtrInput
-	// is a SAML Entity ID.
+	// SAML Entity id
 	SamlEntityId pulumi.StringPtrInput
-	// is a SAML Idp URL.
+	// SAML Idp URL
 	SamlIdpUrl pulumi.StringPtrInput
-	// is a SAML Metadata URL.
+	// SAML Metadata URL
 	SamlMetadataUrl pulumi.StringPtrInput
-	// is an account authentication type, can be one of `internal` and `saml`.
+	// The account authentication type. The possible values are `internal` and `saml`.
 	Type pulumi.StringPtrInput
-	// time of last update.
+	// Time of last update
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -136,58 +134,38 @@ func (AccountAuthenticationState) ElementType() reflect.Type {
 }
 
 type accountAuthenticationArgs struct {
-	// is a unique account id.
+	// The unique id of the account.
 	AccountId string `pulumi:"accountId"`
-	// account authentication id.
-	AuthenticationId *string `pulumi:"authenticationId"`
-	// time of creation.
-	CreateTime *string `pulumi:"createTime"`
-	// defines an authentication method enabled or not.
+	// Status of account authentication method. The default value is `false`.
 	Enabled *bool `pulumi:"enabled"`
-	// is an account authentication name.
+	// The name of the account authentication.
 	Name *string `pulumi:"name"`
-	// is a SAML Assertion Consumer Service URL.
-	SamlAcsUrl *string `pulumi:"samlAcsUrl"`
-	// is a SAML Certificate.
+	// SAML Certificate
 	SamlCertificate *string `pulumi:"samlCertificate"`
-	// is a SAML Entity ID.
+	// SAML Entity id
 	SamlEntityId *string `pulumi:"samlEntityId"`
-	// is a SAML Idp URL.
+	// SAML Idp URL
 	SamlIdpUrl *string `pulumi:"samlIdpUrl"`
-	// is a SAML Metadata URL.
-	SamlMetadataUrl *string `pulumi:"samlMetadataUrl"`
-	// is an account authentication type, can be one of `internal` and `saml`.
+	// The account authentication type. The possible values are `internal` and `saml`.
 	Type string `pulumi:"type"`
-	// time of last update.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a AccountAuthentication resource.
 type AccountAuthenticationArgs struct {
-	// is a unique account id.
+	// The unique id of the account.
 	AccountId pulumi.StringInput
-	// account authentication id.
-	AuthenticationId pulumi.StringPtrInput
-	// time of creation.
-	CreateTime pulumi.StringPtrInput
-	// defines an authentication method enabled or not.
+	// Status of account authentication method. The default value is `false`.
 	Enabled pulumi.BoolPtrInput
-	// is an account authentication name.
+	// The name of the account authentication.
 	Name pulumi.StringPtrInput
-	// is a SAML Assertion Consumer Service URL.
-	SamlAcsUrl pulumi.StringPtrInput
-	// is a SAML Certificate.
+	// SAML Certificate
 	SamlCertificate pulumi.StringPtrInput
-	// is a SAML Entity ID.
+	// SAML Entity id
 	SamlEntityId pulumi.StringPtrInput
-	// is a SAML Idp URL.
+	// SAML Idp URL
 	SamlIdpUrl pulumi.StringPtrInput
-	// is a SAML Metadata URL.
-	SamlMetadataUrl pulumi.StringPtrInput
-	// is an account authentication type, can be one of `internal` and `saml`.
+	// The account authentication type. The possible values are `internal` and `saml`.
 	Type pulumi.StringInput
-	// time of last update.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (AccountAuthenticationArgs) ElementType() reflect.Type {

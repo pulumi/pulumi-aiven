@@ -14,19 +14,10 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ElasticSearchElasticsearchUserConfigPublicAccess
     {
         /// <summary>
-        /// Allow clients to connect to elasticsearch from the public 
-        /// internet for service nodes that are in a project VPC or another type of private network.
+        /// Elasticsearch server provided values
         /// </summary>
         public readonly string? Elasticsearch;
-        /// <summary>
-        /// Allow clients to connect to kibana from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network.
-        /// </summary>
         public readonly string? Kibana;
-        /// <summary>
-        /// Allow clients to connect to prometheus from the public 
-        /// internet for service nodes that are in a project VPC or another type of private network.
-        /// </summary>
         public readonly string? Prometheus;
 
         [OutputConstructor]

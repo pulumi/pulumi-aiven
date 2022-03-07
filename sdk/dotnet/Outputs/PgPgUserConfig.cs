@@ -14,69 +14,63 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPgUserConfig
     {
         /// <summary>
-        /// custom password for admin user. Defaults to random string. *This must
-        /// be set only when a new service is being created.*
+        /// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
         /// </summary>
         public readonly string? AdminPassword;
         /// <summary>
-        /// custom username for admin user. *This must be set only when a new service
-        /// is being created.*
+        /// Custom username for admin user. This must be set only when a new service is being created.
         /// </summary>
         public readonly string? AdminUsername;
         /// <summary>
-        /// the hour of day (in UTC) when backup for the service is started. New backup 
-        /// is only started if previous backup has already completed.
+        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         /// </summary>
         public readonly string? BackupHour;
         /// <summary>
-        /// the minute of an hour when backup for the service is started. New backup 
-        /// is only started if previous backup has already completed.
+        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         /// </summary>
         public readonly string? BackupMinute;
         /// <summary>
-        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// IP filter
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// migrate data from existing server, has the following options:
+        /// Migrate data from existing server
         /// </summary>
         public readonly Outputs.PgPgUserConfigMigration? Migration;
         /// <summary>
-        /// Enable pg.
+        /// postgresql.conf configuration values
         /// </summary>
         public readonly Outputs.PgPgUserConfigPg? Pg;
         /// <summary>
-        /// This setting is deprecated. Use read-replica service integration instead.
+        /// Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         /// </summary>
         public readonly string? PgReadReplica;
         /// <summary>
-        /// Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
-        /// This has effect only when a new service is being created.
+        /// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
         /// </summary>
         public readonly string? PgServiceToForkFrom;
         /// <summary>
-        /// PostgreSQL major version.
+        /// PostgreSQL major version
         /// </summary>
         public readonly string? PgVersion;
         /// <summary>
-        /// Enable pgbouncer.
+        /// PGBouncer connection pooling settings
         /// </summary>
         public readonly Outputs.PgPgUserConfigPgbouncer? Pgbouncer;
         /// <summary>
-        /// PGLookout settings.
+        /// PGLookout settings
         /// </summary>
         public readonly Outputs.PgPgUserConfigPglookout? Pglookout;
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.PgPgUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
-        /// Allow access to selected service components through Privatelink.
+        /// Allow access to selected service components through Privatelink
         /// </summary>
         public readonly Outputs.PgPgUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has
-        /// effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
@@ -84,40 +78,35 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.PgPgUserConfigPublicAccess? PublicAccess;
         /// <summary>
-        /// Recovery target time when forking a service. This has effect 
-        /// only when a new service is being created.
+        /// Recovery target time when forking a service. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? RecoveryTargetTime;
         /// <summary>
-        /// Name of another service to fork from. This has effect only 
-        /// when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>
-        /// Percentage of total RAM that the database server uses for 
-        /// memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
-        /// the shared_buffers configuration value. The absolute maximum is 12 GB.
+        /// shared*buffers*percentage
         /// </summary>
         public readonly string? SharedBuffersPercentage;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
         /// <summary>
-        /// Synchronous replication type. Note that the service plan 
-        /// also needs to support synchronous replication.
+        /// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         /// </summary>
         public readonly string? SynchronousReplication;
         /// <summary>
-        /// TimescaleDB extension configuration values.
+        /// TimescaleDB extension configuration values
         /// </summary>
         public readonly Outputs.PgPgUserConfigTimescaledb? Timescaledb;
         /// <summary>
-        /// Variant of the PostgreSQL service, may affect the features that are 
-        /// exposed by default. Options: `aiven` or `timescale`.
+        /// Variant of the PostgreSQL service, may affect the features that are exposed by default
         /// </summary>
         public readonly string? Variant;
         /// <summary>
-        /// Sets the maximum amount of memory to be used by a query operation (such 
-        /// as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
-        /// total RAM (up to 32MB).
+        /// work_mem
         /// </summary>
         public readonly string? WorkMem;
 

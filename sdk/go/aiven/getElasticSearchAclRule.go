@@ -10,6 +10,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The Elasticsearch ACL Rule data source provides information about an existing Aiven Elasticsearch ACL Rule.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupElasticSearchAclRule(ctx, &GetElasticSearchAclRuleArgs{
+// 			Project:     aiven_elasticsearch_acl_config.Es_acls_config.Project,
+// 			ServiceName: aiven_elasticsearch_acl_config.Es_acls_config.Service_name,
+// 			Username:    "<USERNAME>",
+// 			Index:       "<INDEX>",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupElasticSearchAclRule(ctx *pulumi.Context, args *LookupElasticSearchAclRuleArgs, opts ...pulumi.InvokeOption) (*LookupElasticSearchAclRuleResult, error) {
 	var rv LookupElasticSearchAclRuleResult
 	err := ctx.Invoke("aiven:index/getElasticSearchAclRule:getElasticSearchAclRule", args, &rv, opts...)
@@ -21,22 +48,30 @@ func LookupElasticSearchAclRule(ctx *pulumi.Context, args *LookupElasticSearchAc
 
 // A collection of arguments for invoking getElasticSearchAclRule.
 type LookupElasticSearchAclRuleArgs struct {
-	Index       string `pulumi:"index"`
-	Permission  string `pulumi:"permission"`
-	Project     string `pulumi:"project"`
+	// The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+	Index string `pulumi:"index"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	Username    string `pulumi:"username"`
+	// The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Username string `pulumi:"username"`
 }
 
 // A collection of values returned by getElasticSearchAclRule.
 type LookupElasticSearchAclRuleResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Index       string `pulumi:"index"`
-	Permission  string `pulumi:"permission"`
-	Project     string `pulumi:"project"`
+	Id string `pulumi:"id"`
+	// The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+	Index string `pulumi:"index"`
+	// The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+	Permission string `pulumi:"permission"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	Username    string `pulumi:"username"`
+	// The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Username string `pulumi:"username"`
 }
 
 func LookupElasticSearchAclRuleOutput(ctx *pulumi.Context, args LookupElasticSearchAclRuleOutputArgs, opts ...pulumi.InvokeOption) LookupElasticSearchAclRuleResultOutput {
@@ -50,11 +85,14 @@ func LookupElasticSearchAclRuleOutput(ctx *pulumi.Context, args LookupElasticSea
 
 // A collection of arguments for invoking getElasticSearchAclRule.
 type LookupElasticSearchAclRuleOutputArgs struct {
-	Index       pulumi.StringInput `pulumi:"index"`
-	Permission  pulumi.StringInput `pulumi:"permission"`
-	Project     pulumi.StringInput `pulumi:"project"`
+	// The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+	Index pulumi.StringInput `pulumi:"index"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (LookupElasticSearchAclRuleOutputArgs) ElementType() reflect.Type {
@@ -81,22 +119,27 @@ func (o LookupElasticSearchAclRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticSearchAclRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupElasticSearchAclRuleResultOutput) Index() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticSearchAclRuleResult) string { return v.Index }).(pulumi.StringOutput)
 }
 
+// The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
 func (o LookupElasticSearchAclRuleResultOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticSearchAclRuleResult) string { return v.Permission }).(pulumi.StringOutput)
 }
 
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupElasticSearchAclRuleResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticSearchAclRuleResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupElasticSearchAclRuleResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticSearchAclRuleResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupElasticSearchAclRuleResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupElasticSearchAclRuleResult) string { return v.Username }).(pulumi.StringOutput)
 }

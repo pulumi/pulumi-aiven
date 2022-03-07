@@ -39,12 +39,18 @@ class GetElasticSearchAclConfigResult:
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> bool:
+        """
+        Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access The default value is `true`.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="extendedAcl")
-    def extended_acl(self) -> Optional[bool]:
+    def extended_acl(self) -> bool:
+        """
+        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to The default value is `10`.
+        """
         return pulumi.get(self, "extended_acl")
 
     @property
@@ -58,11 +64,17 @@ class GetElasticSearchAclConfigResult:
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -79,17 +91,27 @@ class AwaitableGetElasticSearchAclConfigResult(GetElasticSearchAclConfigResult):
             service_name=self.service_name)
 
 
-def get_elastic_search_acl_config(enabled: Optional[bool] = None,
-                                  extended_acl: Optional[bool] = None,
-                                  project: Optional[str] = None,
+def get_elastic_search_acl_config(project: Optional[str] = None,
                                   service_name: Optional[str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetElasticSearchAclConfigResult:
     """
-    Use this data source to access information about an existing resource.
+    The Elasticsearch ACL Config data source provides information about an existing Aiven Elasticsearch ACL Config.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    es_acl_config = aiven.get_elastic_search_acl_config(project=aiven_project["es-project"]["project"],
+        service_name=aiven_service["es"]["service_name"])
+    ```
+
+
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
-    __args__['enabled'] = enabled
-    __args__['extendedAcl'] = extended_acl
     __args__['project'] = project
     __args__['serviceName'] = service_name
     if opts is None:
@@ -107,12 +129,24 @@ def get_elastic_search_acl_config(enabled: Optional[bool] = None,
 
 
 @_utilities.lift_output_func(get_elastic_search_acl_config)
-def get_elastic_search_acl_config_output(enabled: Optional[pulumi.Input[Optional[bool]]] = None,
-                                         extended_acl: Optional[pulumi.Input[Optional[bool]]] = None,
-                                         project: Optional[pulumi.Input[str]] = None,
+def get_elastic_search_acl_config_output(project: Optional[pulumi.Input[str]] = None,
                                          service_name: Optional[pulumi.Input[str]] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetElasticSearchAclConfigResult]:
     """
-    Use this data source to access information about an existing resource.
+    The Elasticsearch ACL Config data source provides information about an existing Aiven Elasticsearch ACL Config.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    es_acl_config = aiven.get_elastic_search_acl_config(project=aiven_project["es-project"]["project"],
+        service_name=aiven_service["es"]["service_name"])
+    ```
+
+
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

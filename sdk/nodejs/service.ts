@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * The Service resource allows the creation and management of Aiven Services.
+ */
 export class Service extends pulumi.CustomResource {
     /**
      * Get an existing Service resource's state with the given name, ID, and optional extra
@@ -34,13 +37,21 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
-     * Cassandra specific server provided values
-     */
-    public readonly cassandra!: pulumi.Output<outputs.ServiceCassandra>;
-    /**
-     * Cassandra specific user configurable settings
+     * Cassandra user configurable settings
      */
     public readonly cassandraUserConfig!: pulumi.Output<outputs.ServiceCassandraUserConfig | undefined>;
+    /**
+     * Cassandra specific server provided values
+     */
+    public /*out*/ readonly cassandras!: pulumi.Output<outputs.ServiceCassandra[]>;
+    /**
+     * Clickhouse user configurable settings
+     */
+    public readonly clickhouseUserConfig!: pulumi.Output<outputs.ServiceClickhouseUserConfig | undefined>;
+    /**
+     * Clickhouse specific server provided values
+     */
+    public /*out*/ readonly clickhouses!: pulumi.Output<outputs.ServiceClickhouse[]>;
     /**
      * Cloud the service runs in
      */
@@ -50,53 +61,81 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly components!: pulumi.Output<outputs.ServiceComponent[]>;
     /**
-     * Elasticsearch specific server provided values
+     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      */
-    public readonly elasticsearch!: pulumi.Output<outputs.ServiceElasticsearch>;
+    public readonly diskSpace!: pulumi.Output<string | undefined>;
     /**
-     * Elasticsearch specific user configurable settings
+     * The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+     */
+    public /*out*/ readonly diskSpaceCap!: pulumi.Output<string>;
+    /**
+     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+     */
+    public /*out*/ readonly diskSpaceDefault!: pulumi.Output<string>;
+    /**
+     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+     */
+    public /*out*/ readonly diskSpaceStep!: pulumi.Output<string>;
+    /**
+     * Disk space that service is currently using
+     */
+    public /*out*/ readonly diskSpaceUsed!: pulumi.Output<string>;
+    /**
+     * Elasticsearch user configurable settings
      */
     public readonly elasticsearchUserConfig!: pulumi.Output<outputs.ServiceElasticsearchUserConfig | undefined>;
     /**
-     * Grafana specific server provided values
+     * Elasticsearch specific server provided values
      */
-    public readonly grafana!: pulumi.Output<outputs.ServiceGrafana>;
+    public /*out*/ readonly elasticsearches!: pulumi.Output<outputs.ServiceElasticsearch[]>;
     /**
-     * Grafana specific user configurable settings
+     * Flink user configurable settings
+     */
+    public readonly flinkUserConfig!: pulumi.Output<outputs.ServiceFlinkUserConfig | undefined>;
+    /**
+     * Flink specific server provided values
+     */
+    public readonly flinks!: pulumi.Output<outputs.ServiceFlink[]>;
+    /**
+     * Grafana user configurable settings
      */
     public readonly grafanaUserConfig!: pulumi.Output<outputs.ServiceGrafanaUserConfig | undefined>;
     /**
-     * InfluxDB specific server provided values
+     * Grafana specific server provided values
      */
-    public readonly influxdb!: pulumi.Output<outputs.ServiceInfluxdb>;
+    public /*out*/ readonly grafanas!: pulumi.Output<outputs.ServiceGrafana[]>;
     /**
-     * InfluxDB specific user configurable settings
+     * Influxdb user configurable settings
      */
     public readonly influxdbUserConfig!: pulumi.Output<outputs.ServiceInfluxdbUserConfig | undefined>;
     /**
-     * Kafka specific server provided values
+     * InfluxDB specific server provided values
      */
-    public readonly kafka!: pulumi.Output<outputs.ServiceKafka>;
+    public /*out*/ readonly influxdbs!: pulumi.Output<outputs.ServiceInfluxdb[]>;
     /**
-     * Kafka Connect specific server provided values
-     */
-    public readonly kafkaConnect!: pulumi.Output<outputs.ServiceKafkaConnect>;
-    /**
-     * Kafka Connect specific user configurable settings
+     * Kafka*connect user configurable settings
      */
     public readonly kafkaConnectUserConfig!: pulumi.Output<outputs.ServiceKafkaConnectUserConfig | undefined>;
     /**
-     * Kafka MirrorMaker 2 specific server provided values
+     * Kafka Connect specific server provided values
      */
-    public readonly kafkaMirrormaker!: pulumi.Output<outputs.ServiceKafkaMirrormaker>;
+    public /*out*/ readonly kafkaConnects!: pulumi.Output<outputs.ServiceKafkaConnect[]>;
     /**
-     * Kafka MirrorMaker 2 specific user configurable settings
+     * Kafka*mirrormaker user configurable settings
      */
     public readonly kafkaMirrormakerUserConfig!: pulumi.Output<outputs.ServiceKafkaMirrormakerUserConfig | undefined>;
     /**
-     * Kafka specific user configurable settings
+     * Kafka MirrorMaker 2 specific server provided values
+     */
+    public /*out*/ readonly kafkaMirrormakers!: pulumi.Output<outputs.ServiceKafkaMirrormaker[]>;
+    /**
+     * Kafka user configurable settings
      */
     public readonly kafkaUserConfig!: pulumi.Output<outputs.ServiceKafkaUserConfig | undefined>;
+    /**
+     * Kafka specific server provided values
+     */
+    public readonly kafkas!: pulumi.Output<outputs.ServiceKafka[]>;
     /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
@@ -106,29 +145,29 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
     /**
-     * MySQL specific server provided values
-     */
-    public readonly mysql!: pulumi.Output<outputs.ServiceMysql>;
-    /**
-     * MySQL specific user configurable settings
+     * Mysql user configurable settings
      */
     public readonly mysqlUserConfig!: pulumi.Output<outputs.ServiceMysqlUserConfig | undefined>;
     /**
-     * Opensearch specific server provided values
+     * MySQL specific server provided values
      */
-    public readonly opensearch!: pulumi.Output<outputs.ServiceOpensearch>;
+    public /*out*/ readonly mysqls!: pulumi.Output<outputs.ServiceMysql[]>;
     /**
-     * Opensearch specific user configurable settings
+     * Opensearch user configurable settings
      */
     public readonly opensearchUserConfig!: pulumi.Output<outputs.ServiceOpensearchUserConfig | undefined>;
     /**
-     * PostgreSQL specific server provided values
+     * Opensearch specific server provided values
      */
-    public readonly pg!: pulumi.Output<outputs.ServicePg>;
+    public /*out*/ readonly opensearches!: pulumi.Output<outputs.ServiceOpensearch[]>;
     /**
-     * PostgreSQL specific user configurable settings
+     * Pg user configurable settings
      */
     public readonly pgUserConfig!: pulumi.Output<outputs.ServicePgUserConfig | undefined>;
+    /**
+     * PostgreSQL specific server provided values
+     */
+    public /*out*/ readonly pgs!: pulumi.Output<outputs.ServicePg[]>;
     /**
      * Subscription plan
      */
@@ -144,9 +183,9 @@ export class Service extends pulumi.CustomResource {
     /**
      * Redis specific server provided values
      */
-    public readonly redis!: pulumi.Output<outputs.ServiceRedis>;
+    public /*out*/ readonly redis!: pulumi.Output<outputs.ServiceRedi[]>;
     /**
-     * Redis specific user configurable settings
+     * Redis user configurable settings
      */
     public readonly redisUserConfig!: pulumi.Output<outputs.ServiceRedisUserConfig | undefined>;
     /**
@@ -182,9 +221,13 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceUsername!: pulumi.Output<string>;
     /**
-     * Service state
+     * Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
+    public readonly staticIps!: pulumi.Output<string[] | undefined>;
     /**
      * Prevent service from being deleted. It is recommended to have this enabled for all services.
      */
@@ -203,30 +246,39 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            resourceInputs["cassandra"] = state ? state.cassandra : undefined;
             resourceInputs["cassandraUserConfig"] = state ? state.cassandraUserConfig : undefined;
+            resourceInputs["cassandras"] = state ? state.cassandras : undefined;
+            resourceInputs["clickhouseUserConfig"] = state ? state.clickhouseUserConfig : undefined;
+            resourceInputs["clickhouses"] = state ? state.clickhouses : undefined;
             resourceInputs["cloudName"] = state ? state.cloudName : undefined;
             resourceInputs["components"] = state ? state.components : undefined;
-            resourceInputs["elasticsearch"] = state ? state.elasticsearch : undefined;
+            resourceInputs["diskSpace"] = state ? state.diskSpace : undefined;
+            resourceInputs["diskSpaceCap"] = state ? state.diskSpaceCap : undefined;
+            resourceInputs["diskSpaceDefault"] = state ? state.diskSpaceDefault : undefined;
+            resourceInputs["diskSpaceStep"] = state ? state.diskSpaceStep : undefined;
+            resourceInputs["diskSpaceUsed"] = state ? state.diskSpaceUsed : undefined;
             resourceInputs["elasticsearchUserConfig"] = state ? state.elasticsearchUserConfig : undefined;
-            resourceInputs["grafana"] = state ? state.grafana : undefined;
+            resourceInputs["elasticsearches"] = state ? state.elasticsearches : undefined;
+            resourceInputs["flinkUserConfig"] = state ? state.flinkUserConfig : undefined;
+            resourceInputs["flinks"] = state ? state.flinks : undefined;
             resourceInputs["grafanaUserConfig"] = state ? state.grafanaUserConfig : undefined;
-            resourceInputs["influxdb"] = state ? state.influxdb : undefined;
+            resourceInputs["grafanas"] = state ? state.grafanas : undefined;
             resourceInputs["influxdbUserConfig"] = state ? state.influxdbUserConfig : undefined;
-            resourceInputs["kafka"] = state ? state.kafka : undefined;
-            resourceInputs["kafkaConnect"] = state ? state.kafkaConnect : undefined;
+            resourceInputs["influxdbs"] = state ? state.influxdbs : undefined;
             resourceInputs["kafkaConnectUserConfig"] = state ? state.kafkaConnectUserConfig : undefined;
-            resourceInputs["kafkaMirrormaker"] = state ? state.kafkaMirrormaker : undefined;
+            resourceInputs["kafkaConnects"] = state ? state.kafkaConnects : undefined;
             resourceInputs["kafkaMirrormakerUserConfig"] = state ? state.kafkaMirrormakerUserConfig : undefined;
+            resourceInputs["kafkaMirrormakers"] = state ? state.kafkaMirrormakers : undefined;
             resourceInputs["kafkaUserConfig"] = state ? state.kafkaUserConfig : undefined;
+            resourceInputs["kafkas"] = state ? state.kafkas : undefined;
             resourceInputs["maintenanceWindowDow"] = state ? state.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
-            resourceInputs["mysql"] = state ? state.mysql : undefined;
             resourceInputs["mysqlUserConfig"] = state ? state.mysqlUserConfig : undefined;
-            resourceInputs["opensearch"] = state ? state.opensearch : undefined;
+            resourceInputs["mysqls"] = state ? state.mysqls : undefined;
             resourceInputs["opensearchUserConfig"] = state ? state.opensearchUserConfig : undefined;
-            resourceInputs["pg"] = state ? state.pg : undefined;
+            resourceInputs["opensearches"] = state ? state.opensearches : undefined;
             resourceInputs["pgUserConfig"] = state ? state.pgUserConfig : undefined;
+            resourceInputs["pgs"] = state ? state.pgs : undefined;
             resourceInputs["plan"] = state ? state.plan : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["projectVpcId"] = state ? state.projectVpcId : undefined;
@@ -241,6 +293,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["serviceUri"] = state ? state.serviceUri : undefined;
             resourceInputs["serviceUsername"] = state ? state.serviceUsername : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["staticIps"] = state ? state.staticIps : undefined;
             resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
@@ -253,39 +306,49 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.serviceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceType'");
             }
-            resourceInputs["cassandra"] = args ? args.cassandra : undefined;
             resourceInputs["cassandraUserConfig"] = args ? args.cassandraUserConfig : undefined;
+            resourceInputs["clickhouseUserConfig"] = args ? args.clickhouseUserConfig : undefined;
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
-            resourceInputs["elasticsearch"] = args ? args.elasticsearch : undefined;
+            resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
             resourceInputs["elasticsearchUserConfig"] = args ? args.elasticsearchUserConfig : undefined;
-            resourceInputs["grafana"] = args ? args.grafana : undefined;
+            resourceInputs["flinkUserConfig"] = args ? args.flinkUserConfig : undefined;
+            resourceInputs["flinks"] = args ? args.flinks : undefined;
             resourceInputs["grafanaUserConfig"] = args ? args.grafanaUserConfig : undefined;
-            resourceInputs["influxdb"] = args ? args.influxdb : undefined;
             resourceInputs["influxdbUserConfig"] = args ? args.influxdbUserConfig : undefined;
-            resourceInputs["kafka"] = args ? args.kafka : undefined;
-            resourceInputs["kafkaConnect"] = args ? args.kafkaConnect : undefined;
             resourceInputs["kafkaConnectUserConfig"] = args ? args.kafkaConnectUserConfig : undefined;
-            resourceInputs["kafkaMirrormaker"] = args ? args.kafkaMirrormaker : undefined;
             resourceInputs["kafkaMirrormakerUserConfig"] = args ? args.kafkaMirrormakerUserConfig : undefined;
             resourceInputs["kafkaUserConfig"] = args ? args.kafkaUserConfig : undefined;
+            resourceInputs["kafkas"] = args ? args.kafkas : undefined;
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
-            resourceInputs["mysql"] = args ? args.mysql : undefined;
             resourceInputs["mysqlUserConfig"] = args ? args.mysqlUserConfig : undefined;
-            resourceInputs["opensearch"] = args ? args.opensearch : undefined;
             resourceInputs["opensearchUserConfig"] = args ? args.opensearchUserConfig : undefined;
-            resourceInputs["pg"] = args ? args.pg : undefined;
             resourceInputs["pgUserConfig"] = args ? args.pgUserConfig : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["projectVpcId"] = args ? args.projectVpcId : undefined;
-            resourceInputs["redis"] = args ? args.redis : undefined;
             resourceInputs["redisUserConfig"] = args ? args.redisUserConfig : undefined;
             resourceInputs["serviceIntegrations"] = args ? args.serviceIntegrations : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["serviceType"] = args ? args.serviceType : undefined;
+            resourceInputs["staticIps"] = args ? args.staticIps : undefined;
             resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
+            resourceInputs["cassandras"] = undefined /*out*/;
+            resourceInputs["clickhouses"] = undefined /*out*/;
             resourceInputs["components"] = undefined /*out*/;
+            resourceInputs["diskSpaceCap"] = undefined /*out*/;
+            resourceInputs["diskSpaceDefault"] = undefined /*out*/;
+            resourceInputs["diskSpaceStep"] = undefined /*out*/;
+            resourceInputs["diskSpaceUsed"] = undefined /*out*/;
+            resourceInputs["elasticsearches"] = undefined /*out*/;
+            resourceInputs["grafanas"] = undefined /*out*/;
+            resourceInputs["influxdbs"] = undefined /*out*/;
+            resourceInputs["kafkaConnects"] = undefined /*out*/;
+            resourceInputs["kafkaMirrormakers"] = undefined /*out*/;
+            resourceInputs["mysqls"] = undefined /*out*/;
+            resourceInputs["opensearches"] = undefined /*out*/;
+            resourceInputs["pgs"] = undefined /*out*/;
+            resourceInputs["redis"] = undefined /*out*/;
             resourceInputs["serviceHost"] = undefined /*out*/;
             resourceInputs["servicePassword"] = undefined /*out*/;
             resourceInputs["servicePort"] = undefined /*out*/;
@@ -303,13 +366,21 @@ export class Service extends pulumi.CustomResource {
  */
 export interface ServiceState {
     /**
-     * Cassandra specific server provided values
-     */
-    cassandra?: pulumi.Input<inputs.ServiceCassandra>;
-    /**
-     * Cassandra specific user configurable settings
+     * Cassandra user configurable settings
      */
     cassandraUserConfig?: pulumi.Input<inputs.ServiceCassandraUserConfig>;
+    /**
+     * Cassandra specific server provided values
+     */
+    cassandras?: pulumi.Input<pulumi.Input<inputs.ServiceCassandra>[]>;
+    /**
+     * Clickhouse user configurable settings
+     */
+    clickhouseUserConfig?: pulumi.Input<inputs.ServiceClickhouseUserConfig>;
+    /**
+     * Clickhouse specific server provided values
+     */
+    clickhouses?: pulumi.Input<pulumi.Input<inputs.ServiceClickhouse>[]>;
     /**
      * Cloud the service runs in
      */
@@ -319,53 +390,81 @@ export interface ServiceState {
      */
     components?: pulumi.Input<pulumi.Input<inputs.ServiceComponent>[]>;
     /**
-     * Elasticsearch specific server provided values
+     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      */
-    elasticsearch?: pulumi.Input<inputs.ServiceElasticsearch>;
+    diskSpace?: pulumi.Input<string>;
     /**
-     * Elasticsearch specific user configurable settings
+     * The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+     */
+    diskSpaceCap?: pulumi.Input<string>;
+    /**
+     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+     */
+    diskSpaceDefault?: pulumi.Input<string>;
+    /**
+     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+     */
+    diskSpaceStep?: pulumi.Input<string>;
+    /**
+     * Disk space that service is currently using
+     */
+    diskSpaceUsed?: pulumi.Input<string>;
+    /**
+     * Elasticsearch user configurable settings
      */
     elasticsearchUserConfig?: pulumi.Input<inputs.ServiceElasticsearchUserConfig>;
     /**
-     * Grafana specific server provided values
+     * Elasticsearch specific server provided values
      */
-    grafana?: pulumi.Input<inputs.ServiceGrafana>;
+    elasticsearches?: pulumi.Input<pulumi.Input<inputs.ServiceElasticsearch>[]>;
     /**
-     * Grafana specific user configurable settings
+     * Flink user configurable settings
+     */
+    flinkUserConfig?: pulumi.Input<inputs.ServiceFlinkUserConfig>;
+    /**
+     * Flink specific server provided values
+     */
+    flinks?: pulumi.Input<pulumi.Input<inputs.ServiceFlink>[]>;
+    /**
+     * Grafana user configurable settings
      */
     grafanaUserConfig?: pulumi.Input<inputs.ServiceGrafanaUserConfig>;
     /**
-     * InfluxDB specific server provided values
+     * Grafana specific server provided values
      */
-    influxdb?: pulumi.Input<inputs.ServiceInfluxdb>;
+    grafanas?: pulumi.Input<pulumi.Input<inputs.ServiceGrafana>[]>;
     /**
-     * InfluxDB specific user configurable settings
+     * Influxdb user configurable settings
      */
     influxdbUserConfig?: pulumi.Input<inputs.ServiceInfluxdbUserConfig>;
     /**
-     * Kafka specific server provided values
+     * InfluxDB specific server provided values
      */
-    kafka?: pulumi.Input<inputs.ServiceKafka>;
+    influxdbs?: pulumi.Input<pulumi.Input<inputs.ServiceInfluxdb>[]>;
     /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: pulumi.Input<inputs.ServiceKafkaConnect>;
-    /**
-     * Kafka Connect specific user configurable settings
+     * Kafka*connect user configurable settings
      */
     kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceKafkaConnectUserConfig>;
     /**
-     * Kafka MirrorMaker 2 specific server provided values
+     * Kafka Connect specific server provided values
      */
-    kafkaMirrormaker?: pulumi.Input<inputs.ServiceKafkaMirrormaker>;
+    kafkaConnects?: pulumi.Input<pulumi.Input<inputs.ServiceKafkaConnect>[]>;
     /**
-     * Kafka MirrorMaker 2 specific user configurable settings
+     * Kafka*mirrormaker user configurable settings
      */
     kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceKafkaMirrormakerUserConfig>;
     /**
-     * Kafka specific user configurable settings
+     * Kafka MirrorMaker 2 specific server provided values
+     */
+    kafkaMirrormakers?: pulumi.Input<pulumi.Input<inputs.ServiceKafkaMirrormaker>[]>;
+    /**
+     * Kafka user configurable settings
      */
     kafkaUserConfig?: pulumi.Input<inputs.ServiceKafkaUserConfig>;
+    /**
+     * Kafka specific server provided values
+     */
+    kafkas?: pulumi.Input<pulumi.Input<inputs.ServiceKafka>[]>;
     /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
@@ -375,29 +474,29 @@ export interface ServiceState {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * MySQL specific server provided values
-     */
-    mysql?: pulumi.Input<inputs.ServiceMysql>;
-    /**
-     * MySQL specific user configurable settings
+     * Mysql user configurable settings
      */
     mysqlUserConfig?: pulumi.Input<inputs.ServiceMysqlUserConfig>;
     /**
-     * Opensearch specific server provided values
+     * MySQL specific server provided values
      */
-    opensearch?: pulumi.Input<inputs.ServiceOpensearch>;
+    mysqls?: pulumi.Input<pulumi.Input<inputs.ServiceMysql>[]>;
     /**
-     * Opensearch specific user configurable settings
+     * Opensearch user configurable settings
      */
     opensearchUserConfig?: pulumi.Input<inputs.ServiceOpensearchUserConfig>;
     /**
-     * PostgreSQL specific server provided values
+     * Opensearch specific server provided values
      */
-    pg?: pulumi.Input<inputs.ServicePg>;
+    opensearches?: pulumi.Input<pulumi.Input<inputs.ServiceOpensearch>[]>;
     /**
-     * PostgreSQL specific user configurable settings
+     * Pg user configurable settings
      */
     pgUserConfig?: pulumi.Input<inputs.ServicePgUserConfig>;
+    /**
+     * PostgreSQL specific server provided values
+     */
+    pgs?: pulumi.Input<pulumi.Input<inputs.ServicePg>[]>;
     /**
      * Subscription plan
      */
@@ -413,9 +512,9 @@ export interface ServiceState {
     /**
      * Redis specific server provided values
      */
-    redis?: pulumi.Input<inputs.ServiceRedis>;
+    redis?: pulumi.Input<pulumi.Input<inputs.ServiceRedi>[]>;
     /**
-     * Redis specific user configurable settings
+     * Redis user configurable settings
      */
     redisUserConfig?: pulumi.Input<inputs.ServiceRedisUserConfig>;
     /**
@@ -451,9 +550,13 @@ export interface ServiceState {
      */
     serviceUsername?: pulumi.Input<string>;
     /**
-     * Service state
+     * Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
      */
     state?: pulumi.Input<string>;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
+    staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Prevent service from being deleted. It is recommended to have this enabled for all services.
      */
@@ -465,65 +568,57 @@ export interface ServiceState {
  */
 export interface ServiceArgs {
     /**
-     * Cassandra specific server provided values
-     */
-    cassandra?: pulumi.Input<inputs.ServiceCassandra>;
-    /**
-     * Cassandra specific user configurable settings
+     * Cassandra user configurable settings
      */
     cassandraUserConfig?: pulumi.Input<inputs.ServiceCassandraUserConfig>;
+    /**
+     * Clickhouse user configurable settings
+     */
+    clickhouseUserConfig?: pulumi.Input<inputs.ServiceClickhouseUserConfig>;
     /**
      * Cloud the service runs in
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * Elasticsearch specific server provided values
+     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      */
-    elasticsearch?: pulumi.Input<inputs.ServiceElasticsearch>;
+    diskSpace?: pulumi.Input<string>;
     /**
-     * Elasticsearch specific user configurable settings
+     * Elasticsearch user configurable settings
      */
     elasticsearchUserConfig?: pulumi.Input<inputs.ServiceElasticsearchUserConfig>;
     /**
-     * Grafana specific server provided values
+     * Flink user configurable settings
      */
-    grafana?: pulumi.Input<inputs.ServiceGrafana>;
+    flinkUserConfig?: pulumi.Input<inputs.ServiceFlinkUserConfig>;
     /**
-     * Grafana specific user configurable settings
+     * Flink specific server provided values
+     */
+    flinks?: pulumi.Input<pulumi.Input<inputs.ServiceFlink>[]>;
+    /**
+     * Grafana user configurable settings
      */
     grafanaUserConfig?: pulumi.Input<inputs.ServiceGrafanaUserConfig>;
     /**
-     * InfluxDB specific server provided values
-     */
-    influxdb?: pulumi.Input<inputs.ServiceInfluxdb>;
-    /**
-     * InfluxDB specific user configurable settings
+     * Influxdb user configurable settings
      */
     influxdbUserConfig?: pulumi.Input<inputs.ServiceInfluxdbUserConfig>;
     /**
-     * Kafka specific server provided values
-     */
-    kafka?: pulumi.Input<inputs.ServiceKafka>;
-    /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: pulumi.Input<inputs.ServiceKafkaConnect>;
-    /**
-     * Kafka Connect specific user configurable settings
+     * Kafka*connect user configurable settings
      */
     kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceKafkaConnectUserConfig>;
     /**
-     * Kafka MirrorMaker 2 specific server provided values
-     */
-    kafkaMirrormaker?: pulumi.Input<inputs.ServiceKafkaMirrormaker>;
-    /**
-     * Kafka MirrorMaker 2 specific user configurable settings
+     * Kafka*mirrormaker user configurable settings
      */
     kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceKafkaMirrormakerUserConfig>;
     /**
-     * Kafka specific user configurable settings
+     * Kafka user configurable settings
      */
     kafkaUserConfig?: pulumi.Input<inputs.ServiceKafkaUserConfig>;
+    /**
+     * Kafka specific server provided values
+     */
+    kafkas?: pulumi.Input<pulumi.Input<inputs.ServiceKafka>[]>;
     /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
@@ -533,27 +628,15 @@ export interface ServiceArgs {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * MySQL specific server provided values
-     */
-    mysql?: pulumi.Input<inputs.ServiceMysql>;
-    /**
-     * MySQL specific user configurable settings
+     * Mysql user configurable settings
      */
     mysqlUserConfig?: pulumi.Input<inputs.ServiceMysqlUserConfig>;
     /**
-     * Opensearch specific server provided values
-     */
-    opensearch?: pulumi.Input<inputs.ServiceOpensearch>;
-    /**
-     * Opensearch specific user configurable settings
+     * Opensearch user configurable settings
      */
     opensearchUserConfig?: pulumi.Input<inputs.ServiceOpensearchUserConfig>;
     /**
-     * PostgreSQL specific server provided values
-     */
-    pg?: pulumi.Input<inputs.ServicePg>;
-    /**
-     * PostgreSQL specific user configurable settings
+     * Pg user configurable settings
      */
     pgUserConfig?: pulumi.Input<inputs.ServicePgUserConfig>;
     /**
@@ -569,11 +652,7 @@ export interface ServiceArgs {
      */
     projectVpcId?: pulumi.Input<string>;
     /**
-     * Redis specific server provided values
-     */
-    redis?: pulumi.Input<inputs.ServiceRedis>;
-    /**
-     * Redis specific user configurable settings
+     * Redis user configurable settings
      */
     redisUserConfig?: pulumi.Input<inputs.ServiceRedisUserConfig>;
     /**
@@ -588,6 +667,10 @@ export interface ServiceArgs {
      * Service type code
      */
     serviceType: pulumi.Input<string>;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
+    staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Prevent service from being deleted. It is recommended to have this enabled for all services.
      */

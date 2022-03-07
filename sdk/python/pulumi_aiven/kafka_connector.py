@@ -21,10 +21,10 @@ class KafkaConnectorArgs:
                  service_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a KafkaConnector resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: Kafka Connector configuration parameters
-        :param pulumi.Input[str] connector_name: Kafka connector name
-        :param pulumi.Input[str] project: Project to link the kafka connector to
-        :param pulumi.Input[str] service_name: Service to link the kafka connector to
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The Kafka Connector configuration parameters.
+        :param pulumi.Input[str] connector_name: The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "connector_name", connector_name)
@@ -35,7 +35,7 @@ class KafkaConnectorArgs:
     @pulumi.getter
     def config(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
-        Kafka Connector configuration parameters
+        The Kafka Connector configuration parameters.
         """
         return pulumi.get(self, "config")
 
@@ -47,7 +47,7 @@ class KafkaConnectorArgs:
     @pulumi.getter(name="connectorName")
     def connector_name(self) -> pulumi.Input[str]:
         """
-        Kafka connector name
+        The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "connector_name")
 
@@ -59,7 +59,7 @@ class KafkaConnectorArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Project to link the kafka connector to
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -71,7 +71,7 @@ class KafkaConnectorArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service to link the kafka connector to
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -96,18 +96,17 @@ class _KafkaConnectorState:
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]]] = None):
         """
         Input properties used for looking up and filtering KafkaConnector resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: Kafka Connector configuration parameters
-        :param pulumi.Input[str] connector_name: Kafka connector name
-        :param pulumi.Input[str] plugin_author: Kafka connector author.
-        :param pulumi.Input[str] plugin_class: Kafka connector Java class.
-        :param pulumi.Input[str] plugin_doc_url: Kafka connector documentation URL.
-        :param pulumi.Input[str] plugin_title: Kafka connector title.
-        :param pulumi.Input[str] plugin_type: Kafka connector type.
-        :param pulumi.Input[str] plugin_version: Kafka connector version.
-        :param pulumi.Input[str] project: Project to link the kafka connector to
-        :param pulumi.Input[str] service_name: Service to link the kafka connector to
-        :param pulumi.Input[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]] tasks: List of tasks of a connector, each element contains `connector` 
-               (Related connector name) and `task` (Task id / number).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The Kafka Connector configuration parameters.
+        :param pulumi.Input[str] connector_name: The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] plugin_author: The Kafka connector author.
+        :param pulumi.Input[str] plugin_class: The Kafka connector Java class.
+        :param pulumi.Input[str] plugin_doc_url: The Kafka connector documentation URL.
+        :param pulumi.Input[str] plugin_title: The Kafka connector title.
+        :param pulumi.Input[str] plugin_type: The Kafka connector type.
+        :param pulumi.Input[str] plugin_version: The version of the kafka connector.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]] tasks: List of tasks of a connector.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -136,7 +135,7 @@ class _KafkaConnectorState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Kafka Connector configuration parameters
+        The Kafka Connector configuration parameters.
         """
         return pulumi.get(self, "config")
 
@@ -148,7 +147,7 @@ class _KafkaConnectorState:
     @pulumi.getter(name="connectorName")
     def connector_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Kafka connector name
+        The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "connector_name")
 
@@ -160,7 +159,7 @@ class _KafkaConnectorState:
     @pulumi.getter(name="pluginAuthor")
     def plugin_author(self) -> Optional[pulumi.Input[str]]:
         """
-        Kafka connector author.
+        The Kafka connector author.
         """
         return pulumi.get(self, "plugin_author")
 
@@ -172,7 +171,7 @@ class _KafkaConnectorState:
     @pulumi.getter(name="pluginClass")
     def plugin_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Kafka connector Java class.
+        The Kafka connector Java class.
         """
         return pulumi.get(self, "plugin_class")
 
@@ -184,7 +183,7 @@ class _KafkaConnectorState:
     @pulumi.getter(name="pluginDocUrl")
     def plugin_doc_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Kafka connector documentation URL.
+        The Kafka connector documentation URL.
         """
         return pulumi.get(self, "plugin_doc_url")
 
@@ -196,7 +195,7 @@ class _KafkaConnectorState:
     @pulumi.getter(name="pluginTitle")
     def plugin_title(self) -> Optional[pulumi.Input[str]]:
         """
-        Kafka connector title.
+        The Kafka connector title.
         """
         return pulumi.get(self, "plugin_title")
 
@@ -208,7 +207,7 @@ class _KafkaConnectorState:
     @pulumi.getter(name="pluginType")
     def plugin_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Kafka connector type.
+        The Kafka connector type.
         """
         return pulumi.get(self, "plugin_type")
 
@@ -220,7 +219,7 @@ class _KafkaConnectorState:
     @pulumi.getter(name="pluginVersion")
     def plugin_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Kafka connector version.
+        The version of the kafka connector.
         """
         return pulumi.get(self, "plugin_version")
 
@@ -232,7 +231,7 @@ class _KafkaConnectorState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Project to link the kafka connector to
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -244,7 +243,7 @@ class _KafkaConnectorState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service to link the kafka connector to
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -256,8 +255,7 @@ class _KafkaConnectorState:
     @pulumi.getter
     def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]]]:
         """
-        List of tasks of a connector, each element contains `connector` 
-        (Related connector name) and `task` (Task id / number).
+        List of tasks of a connector.
         """
         return pulumi.get(self, "tasks")
 
@@ -277,8 +275,6 @@ class KafkaConnector(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # Kafka connectors Resource
-
         The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
 
         ## Example Usage
@@ -287,33 +283,27 @@ class KafkaConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        kafka_es_con1 = aiven.KafkaConnector("kafka-es-con1",
+        kafka_os_con1 = aiven.KafkaConnector("kafka-os-con1",
             project=aiven_project["kafka-con-project1"]["project"],
             service_name=aiven_kafka["kafka-service1"]["service_name"],
-            connector_name="kafka-es-con1",
+            connector_name="kafka-os-con1",
             config={
                 "topics": aiven_kafka_topic["kafka-topic1"]["topic_name"],
-                "connector.class": "io.aiven.connect.elasticsearch.ElasticsearchSinkConnector",
-                "type.name": "es-connector",
-                "name": "kafka-es-con1",
-                "connection.url": aiven_elasticsearch["es-service1"]["service_uri"],
+                "connector.class": "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector",
+                "type.name": "os-connector",
+                "name": "kafka-os-con1",
+                "connection.url": f"{aiven_opensearch['os-service1']['service_host']}:{aiven_opensearch['os-service1']['service_port']}",
+                "connection.username": aiven_opensearch["os-service1"]["service_username"],
+                "connection.password": aiven_opensearch["os-service1"]["service_password"],
             })
         ```
 
-        * `project` and `service_name`- (Required) define the project and service the Kafka Connectors belongs to.
-        They should be defined using reference as shown above to set up dependencies correctly.
-
-        * `connector_name`- (Required) is the Kafka connector name.
-
-        * `config`- (Required)is the Kafka Connector configuration parameters, where `topics`, `connector.class` and `name`
-        are required parameters but the rest of them are connector type specific.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: Kafka Connector configuration parameters
-        :param pulumi.Input[str] connector_name: Kafka connector name
-        :param pulumi.Input[str] project: Project to link the kafka connector to
-        :param pulumi.Input[str] service_name: Service to link the kafka connector to
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The Kafka Connector configuration parameters.
+        :param pulumi.Input[str] connector_name: The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         ...
     @overload
@@ -322,8 +312,6 @@ class KafkaConnector(pulumi.CustomResource):
                  args: KafkaConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # Kafka connectors Resource
-
         The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
 
         ## Example Usage
@@ -332,26 +320,20 @@ class KafkaConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        kafka_es_con1 = aiven.KafkaConnector("kafka-es-con1",
+        kafka_os_con1 = aiven.KafkaConnector("kafka-os-con1",
             project=aiven_project["kafka-con-project1"]["project"],
             service_name=aiven_kafka["kafka-service1"]["service_name"],
-            connector_name="kafka-es-con1",
+            connector_name="kafka-os-con1",
             config={
                 "topics": aiven_kafka_topic["kafka-topic1"]["topic_name"],
-                "connector.class": "io.aiven.connect.elasticsearch.ElasticsearchSinkConnector",
-                "type.name": "es-connector",
-                "name": "kafka-es-con1",
-                "connection.url": aiven_elasticsearch["es-service1"]["service_uri"],
+                "connector.class": "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector",
+                "type.name": "os-connector",
+                "name": "kafka-os-con1",
+                "connection.url": f"{aiven_opensearch['os-service1']['service_host']}:{aiven_opensearch['os-service1']['service_port']}",
+                "connection.username": aiven_opensearch["os-service1"]["service_username"],
+                "connection.password": aiven_opensearch["os-service1"]["service_password"],
             })
         ```
-
-        * `project` and `service_name`- (Required) define the project and service the Kafka Connectors belongs to.
-        They should be defined using reference as shown above to set up dependencies correctly.
-
-        * `connector_name`- (Required) is the Kafka connector name.
-
-        * `config`- (Required)is the Kafka Connector configuration parameters, where `topics`, `connector.class` and `name`
-        are required parameters but the rest of them are connector type specific.
 
         :param str resource_name: The name of the resource.
         :param KafkaConnectorArgs args: The arguments to use to populate this resource's properties.
@@ -431,18 +413,17 @@ class KafkaConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: Kafka Connector configuration parameters
-        :param pulumi.Input[str] connector_name: Kafka connector name
-        :param pulumi.Input[str] plugin_author: Kafka connector author.
-        :param pulumi.Input[str] plugin_class: Kafka connector Java class.
-        :param pulumi.Input[str] plugin_doc_url: Kafka connector documentation URL.
-        :param pulumi.Input[str] plugin_title: Kafka connector title.
-        :param pulumi.Input[str] plugin_type: Kafka connector type.
-        :param pulumi.Input[str] plugin_version: Kafka connector version.
-        :param pulumi.Input[str] project: Project to link the kafka connector to
-        :param pulumi.Input[str] service_name: Service to link the kafka connector to
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaConnectorTaskArgs']]]] tasks: List of tasks of a connector, each element contains `connector` 
-               (Related connector name) and `task` (Task id / number).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The Kafka Connector configuration parameters.
+        :param pulumi.Input[str] connector_name: The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] plugin_author: The Kafka connector author.
+        :param pulumi.Input[str] plugin_class: The Kafka connector Java class.
+        :param pulumi.Input[str] plugin_doc_url: The Kafka connector documentation URL.
+        :param pulumi.Input[str] plugin_title: The Kafka connector title.
+        :param pulumi.Input[str] plugin_type: The Kafka connector type.
+        :param pulumi.Input[str] plugin_version: The version of the kafka connector.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaConnectorTaskArgs']]]] tasks: List of tasks of a connector.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -465,7 +446,7 @@ class KafkaConnector(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Kafka Connector configuration parameters
+        The Kafka Connector configuration parameters.
         """
         return pulumi.get(self, "config")
 
@@ -473,7 +454,7 @@ class KafkaConnector(pulumi.CustomResource):
     @pulumi.getter(name="connectorName")
     def connector_name(self) -> pulumi.Output[str]:
         """
-        Kafka connector name
+        The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "connector_name")
 
@@ -481,7 +462,7 @@ class KafkaConnector(pulumi.CustomResource):
     @pulumi.getter(name="pluginAuthor")
     def plugin_author(self) -> pulumi.Output[str]:
         """
-        Kafka connector author.
+        The Kafka connector author.
         """
         return pulumi.get(self, "plugin_author")
 
@@ -489,7 +470,7 @@ class KafkaConnector(pulumi.CustomResource):
     @pulumi.getter(name="pluginClass")
     def plugin_class(self) -> pulumi.Output[str]:
         """
-        Kafka connector Java class.
+        The Kafka connector Java class.
         """
         return pulumi.get(self, "plugin_class")
 
@@ -497,7 +478,7 @@ class KafkaConnector(pulumi.CustomResource):
     @pulumi.getter(name="pluginDocUrl")
     def plugin_doc_url(self) -> pulumi.Output[str]:
         """
-        Kafka connector documentation URL.
+        The Kafka connector documentation URL.
         """
         return pulumi.get(self, "plugin_doc_url")
 
@@ -505,7 +486,7 @@ class KafkaConnector(pulumi.CustomResource):
     @pulumi.getter(name="pluginTitle")
     def plugin_title(self) -> pulumi.Output[str]:
         """
-        Kafka connector title.
+        The Kafka connector title.
         """
         return pulumi.get(self, "plugin_title")
 
@@ -513,7 +494,7 @@ class KafkaConnector(pulumi.CustomResource):
     @pulumi.getter(name="pluginType")
     def plugin_type(self) -> pulumi.Output[str]:
         """
-        Kafka connector type.
+        The Kafka connector type.
         """
         return pulumi.get(self, "plugin_type")
 
@@ -521,7 +502,7 @@ class KafkaConnector(pulumi.CustomResource):
     @pulumi.getter(name="pluginVersion")
     def plugin_version(self) -> pulumi.Output[str]:
         """
-        Kafka connector version.
+        The version of the kafka connector.
         """
         return pulumi.get(self, "plugin_version")
 
@@ -529,7 +510,7 @@ class KafkaConnector(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Project to link the kafka connector to
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -537,7 +518,7 @@ class KafkaConnector(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service to link the kafka connector to
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -545,8 +526,7 @@ class KafkaConnector(pulumi.CustomResource):
     @pulumi.getter
     def tasks(self) -> pulumi.Output[Sequence['outputs.KafkaConnectorTask']]:
         """
-        List of tasks of a connector, each element contains `connector` 
-        (Related connector name) and `task` (Task id / number).
+        List of tasks of a connector.
         """
         return pulumi.get(self, "tasks")
 

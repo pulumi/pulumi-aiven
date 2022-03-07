@@ -12,23 +12,51 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationEndpointDatadogUserConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Datadog API key
+        /// </summary>
         [Input("datadogApiKey")]
         public Input<string>? DatadogApiKey { get; set; }
 
         [Input("datadogTags")]
         private InputList<Inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs>? _datadogTags;
+
+        /// <summary>
+        /// Custom tags provided by user
+        /// </summary>
         public InputList<Inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs> DatadogTags
         {
             get => _datadogTags ?? (_datadogTags = new InputList<Inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs>());
             set => _datadogTags = value;
         }
 
+        /// <summary>
+        /// Disable consumer group metrics
+        /// </summary>
         [Input("disableConsumerStats")]
         public Input<string>? DisableConsumerStats { get; set; }
 
+        /// <summary>
+        /// Number of separate instances to fetch kafka consumer statistics with
+        /// </summary>
+        [Input("kafkaConsumerCheckInstances")]
+        public Input<string>? KafkaConsumerCheckInstances { get; set; }
+
+        /// <summary>
+        /// Number of seconds that datadog will wait to get consumer statistics from brokers
+        /// </summary>
+        [Input("kafkaConsumerStatsTimeout")]
+        public Input<string>? KafkaConsumerStatsTimeout { get; set; }
+
+        /// <summary>
+        /// Maximum number of partition contexts to send
+        /// </summary>
         [Input("maxPartitionContexts")]
         public Input<string>? MaxPartitionContexts { get; set; }
 
+        /// <summary>
+        /// Datadog intake site. Defaults to datadoghq.com
+        /// </summary>
         [Input("site")]
         public Input<string>? Site { get; set; }
 

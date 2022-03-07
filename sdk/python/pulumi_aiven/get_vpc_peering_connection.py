@@ -65,51 +65,57 @@ class GetVpcPeeringConnectionResult:
 
     @property
     @pulumi.getter(name="peerAzureAppId")
-    def peer_azure_app_id(self) -> Optional[str]:
+    def peer_azure_app_id(self) -> str:
         """
-        an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
+        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_azure_app_id")
 
     @property
     @pulumi.getter(name="peerAzureTenantId")
-    def peer_azure_tenant_id(self) -> Optional[str]:
+    def peer_azure_tenant_id(self) -> str:
         """
-        an Azure tenant id in UUID4 form.
+        Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_azure_tenant_id")
 
     @property
     @pulumi.getter(name="peerCloudAccount")
     def peer_cloud_account(self) -> str:
+        """
+        AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "peer_cloud_account")
 
     @property
     @pulumi.getter(name="peerRegion")
-    def peer_region(self) -> Optional[str]:
+    def peer_region(self) -> str:
         """
-        defines the region of the remote VPC if it is not in the same region as Aiven VPC.
+        AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_region")
 
     @property
     @pulumi.getter(name="peerResourceGroup")
-    def peer_resource_group(self) -> Optional[str]:
+    def peer_resource_group(self) -> str:
         """
-        an Azure resource group name of the peered VPC.
+        Azure resource group name of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_resource_group")
 
     @property
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> str:
+        """
+        AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "peer_vpc")
 
     @property
     @pulumi.getter(name="peeringConnectionId")
     def peering_connection_id(self) -> str:
         """
-        a cloud provider identifier for the peering connection if available.
+        Cloud provider identifier for the peering connection if available
         """
         return pulumi.get(self, "peering_connection_id")
 
@@ -117,10 +123,7 @@ class GetVpcPeeringConnectionResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        is the state of the peering connection. This property is computed by Aiven 
-        therefore cannot be set, only read. Where state can be one of: `APPROVED`,
-        `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
-        `INVALID_SPECIFICATION`.
+        State of the peering connection
         """
         return pulumi.get(self, "state")
 
@@ -128,13 +131,16 @@ class GetVpcPeeringConnectionResult:
     @pulumi.getter(name="stateInfo")
     def state_info(self) -> Mapping[str, Any]:
         """
-        state-specific help or error information.
+        State-specific help or error information
         """
         return pulumi.get(self, "state_info")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
+        """
+        The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -157,22 +163,12 @@ class AwaitableGetVpcPeeringConnectionResult(GetVpcPeeringConnectionResult):
             vpc_id=self.vpc_id)
 
 
-def get_vpc_peering_connection(peer_azure_app_id: Optional[str] = None,
-                               peer_azure_tenant_id: Optional[str] = None,
-                               peer_cloud_account: Optional[str] = None,
-                               peer_region: Optional[str] = None,
-                               peer_resource_group: Optional[str] = None,
+def get_vpc_peering_connection(peer_cloud_account: Optional[str] = None,
                                peer_vpc: Optional[str] = None,
-                               peering_connection_id: Optional[str] = None,
-                               state: Optional[str] = None,
-                               state_info: Optional[Mapping[str, Any]] = None,
                                vpc_id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcPeeringConnectionResult:
     """
-    ## # VPC Peering Connection Data Source
-
-    The VPC Peering Connection data source provides information about the existing Aiven
-    VPC Peering Connection.
+    The VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
 
     ## Example Usage
 
@@ -186,31 +182,13 @@ def get_vpc_peering_connection(peer_azure_app_id: Optional[str] = None,
     ```
 
 
-    :param str peer_azure_app_id: an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
-    :param str peer_azure_tenant_id: an Azure tenant id in UUID4 form.
-    :param str peer_cloud_account: defines the identifier of the cloud account the VPC is being
-           peered with.
-    :param str peer_region: defines the region of the remote VPC if it is not in the same region as Aiven VPC.
-    :param str peer_resource_group: an Azure resource group name of the peered VPC.
-    :param str peer_vpc: defines the identifier or name of the remote VPC.
-    :param str peering_connection_id: a cloud provider identifier for the peering connection if available.
-    :param str state: is the state of the peering connection. This property is computed by Aiven 
-           therefore cannot be set, only read. Where state can be one of: `APPROVED`,
-           `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
-           `INVALID_SPECIFICATION`.
-    :param Mapping[str, Any] state_info: state-specific help or error information.
-    :param str vpc_id: is the Aiven VPC the peering connection is associated with.
+    :param str peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+    :param str peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+    :param str vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
-    __args__['peerAzureAppId'] = peer_azure_app_id
-    __args__['peerAzureTenantId'] = peer_azure_tenant_id
     __args__['peerCloudAccount'] = peer_cloud_account
-    __args__['peerRegion'] = peer_region
-    __args__['peerResourceGroup'] = peer_resource_group
     __args__['peerVpc'] = peer_vpc
-    __args__['peeringConnectionId'] = peering_connection_id
-    __args__['state'] = state
-    __args__['stateInfo'] = state_info
     __args__['vpcId'] = vpc_id
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -233,22 +211,12 @@ def get_vpc_peering_connection(peer_azure_app_id: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_vpc_peering_connection)
-def get_vpc_peering_connection_output(peer_azure_app_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                      peer_azure_tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                      peer_cloud_account: Optional[pulumi.Input[str]] = None,
-                                      peer_region: Optional[pulumi.Input[Optional[str]]] = None,
-                                      peer_resource_group: Optional[pulumi.Input[Optional[str]]] = None,
+def get_vpc_peering_connection_output(peer_cloud_account: Optional[pulumi.Input[str]] = None,
                                       peer_vpc: Optional[pulumi.Input[str]] = None,
-                                      peering_connection_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                      state: Optional[pulumi.Input[Optional[str]]] = None,
-                                      state_info: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                                       vpc_id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcPeeringConnectionResult]:
     """
-    ## # VPC Peering Connection Data Source
-
-    The VPC Peering Connection data source provides information about the existing Aiven
-    VPC Peering Connection.
+    The VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
 
     ## Example Usage
 
@@ -262,19 +230,8 @@ def get_vpc_peering_connection_output(peer_azure_app_id: Optional[pulumi.Input[O
     ```
 
 
-    :param str peer_azure_app_id: an Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet.
-    :param str peer_azure_tenant_id: an Azure tenant id in UUID4 form.
-    :param str peer_cloud_account: defines the identifier of the cloud account the VPC is being
-           peered with.
-    :param str peer_region: defines the region of the remote VPC if it is not in the same region as Aiven VPC.
-    :param str peer_resource_group: an Azure resource group name of the peered VPC.
-    :param str peer_vpc: defines the identifier or name of the remote VPC.
-    :param str peering_connection_id: a cloud provider identifier for the peering connection if available.
-    :param str state: is the state of the peering connection. This property is computed by Aiven 
-           therefore cannot be set, only read. Where state can be one of: `APPROVED`,
-           `PENDING_PEER`, `ACTIVE`, `DELETED`, `DELETED_BY_PEER`, `REJECTED_BY_PEER` and
-           `INVALID_SPECIFICATION`.
-    :param Mapping[str, Any] state_info: state-specific help or error information.
-    :param str vpc_id: is the Aiven VPC the peering connection is associated with.
+    :param str peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+    :param str peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+    :param str vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

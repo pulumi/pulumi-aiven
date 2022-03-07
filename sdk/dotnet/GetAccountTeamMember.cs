@@ -12,16 +12,12 @@ namespace Pulumi.Aiven
     public static class GetAccountTeamMember
     {
         /// <summary>
-        /// ## # Account Team Member Data Source
-        /// 
         /// The Account Team Member data source provides information about the existing Aiven Account Team Member.
         /// </summary>
         public static Task<GetAccountTeamMemberResult> InvokeAsync(GetAccountTeamMemberArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamMemberResult>("aiven:index/getAccountTeamMember:getAccountTeamMember", args ?? new GetAccountTeamMemberArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # Account Team Member Data Source
-        /// 
         /// The Account Team Member data source provides information about the existing Aiven Account Team Member.
         /// </summary>
         public static Output<GetAccountTeamMemberResult> Invoke(GetAccountTeamMemberInvokeArgs args, InvokeOptions? options = null)
@@ -32,40 +28,19 @@ namespace Pulumi.Aiven
     public sealed class GetAccountTeamMemberArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is a boolean flag that determines whether an invitation was accepted or not by the user. 
-        /// `false` value means that the invitation was sent to the user but not yet accepted.
-        /// `true` means that the user accepted the invitation and is now a member of an account team.
-        /// </summary>
-        [Input("accepted")]
-        public bool? Accepted { get; set; }
-
-        /// <summary>
-        /// is a unique account id.
+        /// The unique account id This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// time of creation.
-        /// </summary>
-        [Input("createTime")]
-        public string? CreateTime { get; set; }
-
-        /// <summary>
-        /// team invited by user email.
-        /// </summary>
-        [Input("invitedByUserEmail")]
-        public string? InvitedByUserEmail { get; set; }
-
-        /// <summary>
-        /// is an account team id.
+        /// An account team id This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("teamId", required: true)]
         public string TeamId { get; set; } = null!;
 
         /// <summary>
-        /// is a user email address that first will be invited, and after accepting an invitation,
-        /// he or she becomes a member of a team.
+        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("userEmail", required: true)]
         public string UserEmail { get; set; } = null!;
@@ -78,40 +53,19 @@ namespace Pulumi.Aiven
     public sealed class GetAccountTeamMemberInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is a boolean flag that determines whether an invitation was accepted or not by the user. 
-        /// `false` value means that the invitation was sent to the user but not yet accepted.
-        /// `true` means that the user accepted the invitation and is now a member of an account team.
-        /// </summary>
-        [Input("accepted")]
-        public Input<bool>? Accepted { get; set; }
-
-        /// <summary>
-        /// is a unique account id.
+        /// The unique account id This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// time of creation.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// team invited by user email.
-        /// </summary>
-        [Input("invitedByUserEmail")]
-        public Input<string>? InvitedByUserEmail { get; set; }
-
-        /// <summary>
-        /// is an account team id.
+        /// An account team id This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("teamId", required: true)]
         public Input<string> TeamId { get; set; } = null!;
 
         /// <summary>
-        /// is a user email address that first will be invited, and after accepting an invitation,
-        /// he or she becomes a member of a team.
+        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("userEmail", required: true)]
         public Input<string> UserEmail { get; set; } = null!;
@@ -126,14 +80,15 @@ namespace Pulumi.Aiven
     public sealed class GetAccountTeamMemberResult
     {
         /// <summary>
-        /// is a boolean flag that determines whether an invitation was accepted or not by the user. 
-        /// `false` value means that the invitation was sent to the user but not yet accepted.
-        /// `true` means that the user accepted the invitation and is now a member of an account team.
+        /// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
         /// </summary>
         public readonly bool Accepted;
+        /// <summary>
+        /// The unique account id This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// time of creation.
+        /// Time of creation
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -141,10 +96,16 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// team invited by user email.
+        /// The email address that invited this user.
         /// </summary>
         public readonly string InvitedByUserEmail;
+        /// <summary>
+        /// An account team id This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string TeamId;
+        /// <summary>
+        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string UserEmail;
 
         [OutputConstructor]

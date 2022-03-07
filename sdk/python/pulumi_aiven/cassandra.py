@@ -17,65 +17,39 @@ class CassandraArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  service_name: pulumi.Input[str],
-                 cassandra: Optional[pulumi.Input['CassandraCassandraArgs']] = None,
                  cassandra_user_config: Optional[pulumi.Input['CassandraCassandraUserConfigArgs']] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
+                 disk_space: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]] = None,
+                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Cassandra resource.
-        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
-               between the project and the service, refer to the project as shown in the above example.
-               Project cannot be changed later without destroying and re-creating the service.
-        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
-               later without destroying and re-creating the service so name should be picked based on
-               intended service usage rather than current attributes.
-        :param pulumi.Input['CassandraCassandraArgs'] cassandra: Cassandra configuration values
-        :param pulumi.Input['CassandraCassandraUserConfigArgs'] cassandra_user_config: defines Cassandra specific additional configuration options. 
-               The following configuration options available:
-        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
-               in. This can be changed freely after service is created. Changing the value will trigger
-               a potentially lengthy migration process for the service. Format is cloud provider name
-               (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-               specific region name. These are documented on each Cloud provider's own support articles,
-               like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-               [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
-               On monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
-               UTC time in HH:mm:ss format.
-        :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
-               be changed after creation, though there are some restrictions when going to a smaller
-               plan such as the new plan must have sufficient amount of disk space to store all current
-               data and switching to a plan with fewer nodes might not be supported. The basic plan
-               names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-               (roughly) the amount of memory on each node (also other attributes like number of CPUs
-               and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project_vpc_id: optionally specifies the VPC the service should run in. If the value
-               is not set the service is not run inside a VPC. When set, the value should be given as a
-               reference as shown above to set up dependencies correctly and the VPC must be in the same
-               cloud and region as the service itself. Project can be freely moved to and from VPC after
-               creation but doing so triggers migration to new servers so the operation can take
-               significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        :param pulumi.Input['CassandraCassandraUserConfigArgs'] cassandra_user_config: Cassandra user configurable settings
+        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[bool] termination_protection: prevents the service from being deleted. It is recommended to
-               set this to `true` for all production services to prevent unintentional service
-               deletion. This does not shield against deleting databases or topics but for services
-               with backups much of the content can at least be restored from backup in case accidental
-               deletion is done.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
-        if cassandra is not None:
-            pulumi.set(__self__, "cassandra", cassandra)
         if cassandra_user_config is not None:
             pulumi.set(__self__, "cassandra_user_config", cassandra_user_config)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
+        if disk_space is not None:
+            pulumi.set(__self__, "disk_space", disk_space)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
@@ -86,6 +60,8 @@ class CassandraArgs:
             pulumi.set(__self__, "project_vpc_id", project_vpc_id)
         if service_integrations is not None:
             pulumi.set(__self__, "service_integrations", service_integrations)
+        if static_ips is not None:
+            pulumi.set(__self__, "static_ips", static_ips)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -93,9 +69,7 @@ class CassandraArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        identifies the project the service belongs to. To set up proper dependency
-        between the project and the service, refer to the project as shown in the above example.
-        Project cannot be changed later without destroying and re-creating the service.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -107,9 +81,7 @@ class CassandraArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        specifies the actual name of the service. The name cannot be changed
-        later without destroying and re-creating the service so name should be picked based on
-        intended service usage rather than current attributes.
+        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         """
         return pulumi.get(self, "service_name")
 
@@ -118,23 +90,10 @@ class CassandraArgs:
         pulumi.set(self, "service_name", value)
 
     @property
-    @pulumi.getter
-    def cassandra(self) -> Optional[pulumi.Input['CassandraCassandraArgs']]:
-        """
-        Cassandra configuration values
-        """
-        return pulumi.get(self, "cassandra")
-
-    @cassandra.setter
-    def cassandra(self, value: Optional[pulumi.Input['CassandraCassandraArgs']]):
-        pulumi.set(self, "cassandra", value)
-
-    @property
     @pulumi.getter(name="cassandraUserConfig")
     def cassandra_user_config(self) -> Optional[pulumi.Input['CassandraCassandraUserConfigArgs']]:
         """
-        defines Cassandra specific additional configuration options. 
-        The following configuration options available:
+        Cassandra user configurable settings
         """
         return pulumi.get(self, "cassandra_user_config")
 
@@ -146,13 +105,7 @@ class CassandraArgs:
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[pulumi.Input[str]]:
         """
-        defines where the cloud provider and region where the service is hosted
-        in. This can be changed freely after service is created. Changing the value will trigger
-        a potentially lengthy migration process for the service. Format is cloud provider name
-        (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        specific region name. These are documented on each Cloud provider's own support articles,
-        like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         """
         return pulumi.get(self, "cloud_name")
 
@@ -161,11 +114,22 @@ class CassandraArgs:
         pulumi.set(self, "cloud_name", value)
 
     @property
+    @pulumi.getter(name="diskSpace")
+    def disk_space(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        """
+        return pulumi.get(self, "disk_space")
+
+    @disk_space.setter
+    def disk_space(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space", value)
+
+    @property
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> Optional[pulumi.Input[str]]:
         """
-        day of week when maintenance operations should be performed. 
-        On monday, tuesday, wednesday, etc.
+        Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
 
@@ -177,8 +141,7 @@ class CassandraArgs:
     @pulumi.getter(name="maintenanceWindowTime")
     def maintenance_window_time(self) -> Optional[pulumi.Input[str]]:
         """
-        time of day when maintenance operations should be performed. 
-        UTC time in HH:mm:ss format.
+        Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")
 
@@ -190,13 +153,7 @@ class CassandraArgs:
     @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[str]]:
         """
-        defines what kind of computing resources are allocated for the service. It can
-        be changed after creation, though there are some restrictions when going to a smaller
-        plan such as the new plan must have sufficient amount of disk space to store all current
-        data and switching to a plan with fewer nodes might not be supported. The basic plan
-        names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -208,12 +165,7 @@ class CassandraArgs:
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        optionally specifies the VPC the service should run in. If the value
-        is not set the service is not run inside a VPC. When set, the value should be given as a
-        reference as shown above to set up dependencies correctly and the VPC must be in the same
-        cloud and region as the service itself. Project can be freely moved to and from VPC after
-        creation but doing so triggers migration to new servers so the operation can take
-        significant amount of time to complete if the service has a lot of data.
+        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
 
@@ -234,14 +186,22 @@ class CassandraArgs:
         pulumi.set(self, "service_integrations", value)
 
     @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
+        return pulumi.get(self, "static_ips")
+
+    @static_ips.setter
+    def static_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "static_ips", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        prevents the service from being deleted. It is recommended to
-        set this to `true` for all production services to prevent unintentional service
-        deletion. This does not shield against deleting databases or topics but for services
-        with backups much of the content can at least be restored from backup in case accidental
-        deletion is done.
+        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         return pulumi.get(self, "termination_protection")
 
@@ -253,10 +213,15 @@ class CassandraArgs:
 @pulumi.input_type
 class _CassandraState:
     def __init__(__self__, *,
-                 cassandra: Optional[pulumi.Input['CassandraCassandraArgs']] = None,
                  cassandra_user_config: Optional[pulumi.Input['CassandraCassandraUserConfigArgs']] = None,
+                 cassandras: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraCassandraArgs']]]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  components: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraComponentArgs']]]] = None,
+                 disk_space: Optional[pulumi.Input[str]] = None,
+                 disk_space_cap: Optional[pulumi.Input[str]] = None,
+                 disk_space_default: Optional[pulumi.Input[str]] = None,
+                 disk_space_step: Optional[pulumi.Input[str]] = None,
+                 disk_space_used: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -271,65 +236,54 @@ class _CassandraState:
                  service_uri: Optional[pulumi.Input[str]] = None,
                  service_username: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Cassandra resources.
-        :param pulumi.Input['CassandraCassandraArgs'] cassandra: Cassandra configuration values
-        :param pulumi.Input['CassandraCassandraUserConfigArgs'] cassandra_user_config: defines Cassandra specific additional configuration options. 
-               The following configuration options available:
-        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
-               in. This can be changed freely after service is created. Changing the value will trigger
-               a potentially lengthy migration process for the service. Format is cloud provider name
-               (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-               specific region name. These are documented on each Cloud provider's own support articles,
-               like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-               [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input['CassandraCassandraUserConfigArgs'] cassandra_user_config: Cassandra user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['CassandraCassandraArgs']]] cassandras: Cassandra server provided values
+        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input['CassandraComponentArgs']]] components: Service component information objects
-        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
-               On monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
-               UTC time in HH:mm:ss format.
-        :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
-               be changed after creation, though there are some restrictions when going to a smaller
-               plan such as the new plan must have sufficient amount of disk space to store all current
-               data and switching to a plan with fewer nodes might not be supported. The basic plan
-               names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-               (roughly) the amount of memory on each node (also other attributes like number of CPUs
-               and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
-               between the project and the service, refer to the project as shown in the above example.
-               Project cannot be changed later without destroying and re-creating the service.
-        :param pulumi.Input[str] project_vpc_id: optionally specifies the VPC the service should run in. If the value
-               is not set the service is not run inside a VPC. When set, the value should be given as a
-               reference as shown above to set up dependencies correctly and the VPC must be in the same
-               cloud and region as the service itself. Project can be freely moved to and from VPC after
-               creation but doing so triggers migration to new servers so the operation can take
-               significant amount of time to complete if the service has a lot of data.
-        :param pulumi.Input[str] service_host: Cassandra hostname.
+        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
+        :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[str] service_host: The hostname of the service.
         :param pulumi.Input[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
-               later without destroying and re-creating the service so name should be picked based on
-               intended service usage rather than current attributes.
-        :param pulumi.Input[str] service_password: Password used for connecting to the Cassandra service, if applicable.
-        :param pulumi.Input[int] service_port: Cassandra port.
+        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        :param pulumi.Input[str] service_password: Password used for connecting to the service, if applicable
+        :param pulumi.Input[int] service_port: The port of the service
         :param pulumi.Input[str] service_type: Aiven internal service type code
-        :param pulumi.Input[str] service_uri: URI for connecting to the Cassandra service.
-        :param pulumi.Input[str] service_username: Username used for connecting to the Cassandra service, if applicable.
-        :param pulumi.Input[str] state: Service state.
-        :param pulumi.Input[bool] termination_protection: prevents the service from being deleted. It is recommended to
-               set this to `true` for all production services to prevent unintentional service
-               deletion. This does not shield against deleting databases or topics but for services
-               with backups much of the content can at least be restored from backup in case accidental
-               deletion is done.
+        :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
+        :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
-        if cassandra is not None:
-            pulumi.set(__self__, "cassandra", cassandra)
         if cassandra_user_config is not None:
             pulumi.set(__self__, "cassandra_user_config", cassandra_user_config)
+        if cassandras is not None:
+            pulumi.set(__self__, "cassandras", cassandras)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
         if components is not None:
             pulumi.set(__self__, "components", components)
+        if disk_space is not None:
+            pulumi.set(__self__, "disk_space", disk_space)
+        if disk_space_cap is not None:
+            pulumi.set(__self__, "disk_space_cap", disk_space_cap)
+        if disk_space_default is not None:
+            pulumi.set(__self__, "disk_space_default", disk_space_default)
+        if disk_space_step is not None:
+            pulumi.set(__self__, "disk_space_step", disk_space_step)
+        if disk_space_used is not None:
+            pulumi.set(__self__, "disk_space_used", disk_space_used)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
@@ -358,27 +312,16 @@ class _CassandraState:
             pulumi.set(__self__, "service_username", service_username)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if static_ips is not None:
+            pulumi.set(__self__, "static_ips", static_ips)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
-
-    @property
-    @pulumi.getter
-    def cassandra(self) -> Optional[pulumi.Input['CassandraCassandraArgs']]:
-        """
-        Cassandra configuration values
-        """
-        return pulumi.get(self, "cassandra")
-
-    @cassandra.setter
-    def cassandra(self, value: Optional[pulumi.Input['CassandraCassandraArgs']]):
-        pulumi.set(self, "cassandra", value)
 
     @property
     @pulumi.getter(name="cassandraUserConfig")
     def cassandra_user_config(self) -> Optional[pulumi.Input['CassandraCassandraUserConfigArgs']]:
         """
-        defines Cassandra specific additional configuration options. 
-        The following configuration options available:
+        Cassandra user configurable settings
         """
         return pulumi.get(self, "cassandra_user_config")
 
@@ -387,16 +330,22 @@ class _CassandraState:
         pulumi.set(self, "cassandra_user_config", value)
 
     @property
+    @pulumi.getter
+    def cassandras(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CassandraCassandraArgs']]]]:
+        """
+        Cassandra server provided values
+        """
+        return pulumi.get(self, "cassandras")
+
+    @cassandras.setter
+    def cassandras(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraCassandraArgs']]]]):
+        pulumi.set(self, "cassandras", value)
+
+    @property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[pulumi.Input[str]]:
         """
-        defines where the cloud provider and region where the service is hosted
-        in. This can be changed freely after service is created. Changing the value will trigger
-        a potentially lengthy migration process for the service. Format is cloud provider name
-        (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        specific region name. These are documented on each Cloud provider's own support articles,
-        like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         """
         return pulumi.get(self, "cloud_name")
 
@@ -417,11 +366,70 @@ class _CassandraState:
         pulumi.set(self, "components", value)
 
     @property
+    @pulumi.getter(name="diskSpace")
+    def disk_space(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        """
+        return pulumi.get(self, "disk_space")
+
+    @disk_space.setter
+    def disk_space(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space", value)
+
+    @property
+    @pulumi.getter(name="diskSpaceCap")
+    def disk_space_cap(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        """
+        return pulumi.get(self, "disk_space_cap")
+
+    @disk_space_cap.setter
+    def disk_space_cap(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space_cap", value)
+
+    @property
+    @pulumi.getter(name="diskSpaceDefault")
+    def disk_space_default(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        """
+        return pulumi.get(self, "disk_space_default")
+
+    @disk_space_default.setter
+    def disk_space_default(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space_default", value)
+
+    @property
+    @pulumi.getter(name="diskSpaceStep")
+    def disk_space_step(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        """
+        return pulumi.get(self, "disk_space_step")
+
+    @disk_space_step.setter
+    def disk_space_step(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space_step", value)
+
+    @property
+    @pulumi.getter(name="diskSpaceUsed")
+    def disk_space_used(self) -> Optional[pulumi.Input[str]]:
+        """
+        Disk space that service is currently using
+        """
+        return pulumi.get(self, "disk_space_used")
+
+    @disk_space_used.setter
+    def disk_space_used(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space_used", value)
+
+    @property
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> Optional[pulumi.Input[str]]:
         """
-        day of week when maintenance operations should be performed. 
-        On monday, tuesday, wednesday, etc.
+        Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
 
@@ -433,8 +441,7 @@ class _CassandraState:
     @pulumi.getter(name="maintenanceWindowTime")
     def maintenance_window_time(self) -> Optional[pulumi.Input[str]]:
         """
-        time of day when maintenance operations should be performed. 
-        UTC time in HH:mm:ss format.
+        Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")
 
@@ -446,13 +453,7 @@ class _CassandraState:
     @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[str]]:
         """
-        defines what kind of computing resources are allocated for the service. It can
-        be changed after creation, though there are some restrictions when going to a smaller
-        plan such as the new plan must have sufficient amount of disk space to store all current
-        data and switching to a plan with fewer nodes might not be supported. The basic plan
-        names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -464,9 +465,7 @@ class _CassandraState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        identifies the project the service belongs to. To set up proper dependency
-        between the project and the service, refer to the project as shown in the above example.
-        Project cannot be changed later without destroying and re-creating the service.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -478,12 +477,7 @@ class _CassandraState:
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        optionally specifies the VPC the service should run in. If the value
-        is not set the service is not run inside a VPC. When set, the value should be given as a
-        reference as shown above to set up dependencies correctly and the VPC must be in the same
-        cloud and region as the service itself. Project can be freely moved to and from VPC after
-        creation but doing so triggers migration to new servers so the operation can take
-        significant amount of time to complete if the service has a lot of data.
+        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
 
@@ -495,7 +489,7 @@ class _CassandraState:
     @pulumi.getter(name="serviceHost")
     def service_host(self) -> Optional[pulumi.Input[str]]:
         """
-        Cassandra hostname.
+        The hostname of the service.
         """
         return pulumi.get(self, "service_host")
 
@@ -519,9 +513,7 @@ class _CassandraState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        specifies the actual name of the service. The name cannot be changed
-        later without destroying and re-creating the service so name should be picked based on
-        intended service usage rather than current attributes.
+        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         """
         return pulumi.get(self, "service_name")
 
@@ -533,7 +525,7 @@ class _CassandraState:
     @pulumi.getter(name="servicePassword")
     def service_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Password used for connecting to the Cassandra service, if applicable.
+        Password used for connecting to the service, if applicable
         """
         return pulumi.get(self, "service_password")
 
@@ -545,7 +537,7 @@ class _CassandraState:
     @pulumi.getter(name="servicePort")
     def service_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Cassandra port.
+        The port of the service
         """
         return pulumi.get(self, "service_port")
 
@@ -569,7 +561,7 @@ class _CassandraState:
     @pulumi.getter(name="serviceUri")
     def service_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI for connecting to the Cassandra service.
+        URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         """
         return pulumi.get(self, "service_uri")
 
@@ -581,7 +573,7 @@ class _CassandraState:
     @pulumi.getter(name="serviceUsername")
     def service_username(self) -> Optional[pulumi.Input[str]]:
         """
-        Username used for connecting to the Cassandra service, if applicable.
+        Username used for connecting to the service, if applicable
         """
         return pulumi.get(self, "service_username")
 
@@ -593,7 +585,7 @@ class _CassandraState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Service state.
+        Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         """
         return pulumi.get(self, "state")
 
@@ -602,14 +594,22 @@ class _CassandraState:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
+        return pulumi.get(self, "static_ips")
+
+    @static_ips.setter
+    def static_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "static_ips", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        prevents the service from being deleted. It is recommended to
-        set this to `true` for all production services to prevent unintentional service
-        deletion. This does not shield against deleting databases or topics but for services
-        with backups much of the content can at least be restored from backup in case accidental
-        deletion is done.
+        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         return pulumi.get(self, "termination_protection")
 
@@ -623,9 +623,9 @@ class Cassandra(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cassandra: Optional[pulumi.Input[pulumi.InputType['CassandraCassandraArgs']]] = None,
                  cassandra_user_config: Optional[pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
+                 disk_space: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -633,11 +633,10 @@ class Cassandra(pulumi.CustomResource):
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraServiceIntegrationArgs']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        ## # Cassandra Resource
-
         The Cassandra resource allows the creation and management of Aiven Cassandra services.
 
         ## Example Usage
@@ -663,45 +662,18 @@ class Cassandra(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CassandraCassandraArgs']] cassandra: Cassandra configuration values
-        :param pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']] cassandra_user_config: defines Cassandra specific additional configuration options. 
-               The following configuration options available:
-        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
-               in. This can be changed freely after service is created. Changing the value will trigger
-               a potentially lengthy migration process for the service. Format is cloud provider name
-               (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-               specific region name. These are documented on each Cloud provider's own support articles,
-               like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-               [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
-               On monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
-               UTC time in HH:mm:ss format.
-        :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
-               be changed after creation, though there are some restrictions when going to a smaller
-               plan such as the new plan must have sufficient amount of disk space to store all current
-               data and switching to a plan with fewer nodes might not be supported. The basic plan
-               names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-               (roughly) the amount of memory on each node (also other attributes like number of CPUs
-               and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
-               between the project and the service, refer to the project as shown in the above example.
-               Project cannot be changed later without destroying and re-creating the service.
-        :param pulumi.Input[str] project_vpc_id: optionally specifies the VPC the service should run in. If the value
-               is not set the service is not run inside a VPC. When set, the value should be given as a
-               reference as shown above to set up dependencies correctly and the VPC must be in the same
-               cloud and region as the service itself. Project can be freely moved to and from VPC after
-               creation but doing so triggers migration to new servers so the operation can take
-               significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']] cassandra_user_config: Cassandra user configurable settings
+        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
-               later without destroying and re-creating the service so name should be picked based on
-               intended service usage rather than current attributes.
-        :param pulumi.Input[bool] termination_protection: prevents the service from being deleted. It is recommended to
-               set this to `true` for all production services to prevent unintentional service
-               deletion. This does not shield against deleting databases or topics but for services
-               with backups much of the content can at least be restored from backup in case accidental
-               deletion is done.
+        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         ...
     @overload
@@ -710,8 +682,6 @@ class Cassandra(pulumi.CustomResource):
                  args: CassandraArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # Cassandra Resource
-
         The Cassandra resource allows the creation and management of Aiven Cassandra services.
 
         ## Example Usage
@@ -750,9 +720,9 @@ class Cassandra(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cassandra: Optional[pulumi.Input[pulumi.InputType['CassandraCassandraArgs']]] = None,
                  cassandra_user_config: Optional[pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
+                 disk_space: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -760,6 +730,7 @@ class Cassandra(pulumi.CustomResource):
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraServiceIntegrationArgs']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
@@ -773,9 +744,9 @@ class Cassandra(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CassandraArgs.__new__(CassandraArgs)
 
-            __props__.__dict__["cassandra"] = cassandra
             __props__.__dict__["cassandra_user_config"] = cassandra_user_config
             __props__.__dict__["cloud_name"] = cloud_name
+            __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
             __props__.__dict__["plan"] = plan
@@ -787,8 +758,14 @@ class Cassandra(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["static_ips"] = static_ips
             __props__.__dict__["termination_protection"] = termination_protection
+            __props__.__dict__["cassandras"] = None
             __props__.__dict__["components"] = None
+            __props__.__dict__["disk_space_cap"] = None
+            __props__.__dict__["disk_space_default"] = None
+            __props__.__dict__["disk_space_step"] = None
+            __props__.__dict__["disk_space_used"] = None
             __props__.__dict__["service_host"] = None
             __props__.__dict__["service_password"] = None
             __props__.__dict__["service_port"] = None
@@ -806,10 +783,15 @@ class Cassandra(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cassandra: Optional[pulumi.Input[pulumi.InputType['CassandraCassandraArgs']]] = None,
             cassandra_user_config: Optional[pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']]] = None,
+            cassandras: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraCassandraArgs']]]]] = None,
             cloud_name: Optional[pulumi.Input[str]] = None,
             components: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraComponentArgs']]]]] = None,
+            disk_space: Optional[pulumi.Input[str]] = None,
+            disk_space_cap: Optional[pulumi.Input[str]] = None,
+            disk_space_default: Optional[pulumi.Input[str]] = None,
+            disk_space_step: Optional[pulumi.Input[str]] = None,
+            disk_space_used: Optional[pulumi.Input[str]] = None,
             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
             maintenance_window_time: Optional[pulumi.Input[str]] = None,
             plan: Optional[pulumi.Input[str]] = None,
@@ -824,6 +806,7 @@ class Cassandra(pulumi.CustomResource):
             service_uri: Optional[pulumi.Input[str]] = None,
             service_username: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None) -> 'Cassandra':
         """
         Get an existing Cassandra resource's state with the given name, id, and optional extra
@@ -832,62 +815,45 @@ class Cassandra(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CassandraCassandraArgs']] cassandra: Cassandra configuration values
-        :param pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']] cassandra_user_config: defines Cassandra specific additional configuration options. 
-               The following configuration options available:
-        :param pulumi.Input[str] cloud_name: defines where the cloud provider and region where the service is hosted
-               in. This can be changed freely after service is created. Changing the value will trigger
-               a potentially lengthy migration process for the service. Format is cloud provider name
-               (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-               specific region name. These are documented on each Cloud provider's own support articles,
-               like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-               [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']] cassandra_user_config: Cassandra user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraCassandraArgs']]]] cassandras: Cassandra server provided values
+        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraComponentArgs']]]] components: Service component information objects
-        :param pulumi.Input[str] maintenance_window_dow: day of week when maintenance operations should be performed. 
-               On monday, tuesday, wednesday, etc.
-        :param pulumi.Input[str] maintenance_window_time: time of day when maintenance operations should be performed. 
-               UTC time in HH:mm:ss format.
-        :param pulumi.Input[str] plan: defines what kind of computing resources are allocated for the service. It can
-               be changed after creation, though there are some restrictions when going to a smaller
-               plan such as the new plan must have sufficient amount of disk space to store all current
-               data and switching to a plan with fewer nodes might not be supported. The basic plan
-               names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-               (roughly) the amount of memory on each node (also other attributes like number of CPUs
-               and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency
-               between the project and the service, refer to the project as shown in the above example.
-               Project cannot be changed later without destroying and re-creating the service.
-        :param pulumi.Input[str] project_vpc_id: optionally specifies the VPC the service should run in. If the value
-               is not set the service is not run inside a VPC. When set, the value should be given as a
-               reference as shown above to set up dependencies correctly and the VPC must be in the same
-               cloud and region as the service itself. Project can be freely moved to and from VPC after
-               creation but doing so triggers migration to new servers so the operation can take
-               significant amount of time to complete if the service has a lot of data.
-        :param pulumi.Input[str] service_host: Cassandra hostname.
+        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
+        :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[str] service_host: The hostname of the service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed
-               later without destroying and re-creating the service so name should be picked based on
-               intended service usage rather than current attributes.
-        :param pulumi.Input[str] service_password: Password used for connecting to the Cassandra service, if applicable.
-        :param pulumi.Input[int] service_port: Cassandra port.
+        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        :param pulumi.Input[str] service_password: Password used for connecting to the service, if applicable
+        :param pulumi.Input[int] service_port: The port of the service
         :param pulumi.Input[str] service_type: Aiven internal service type code
-        :param pulumi.Input[str] service_uri: URI for connecting to the Cassandra service.
-        :param pulumi.Input[str] service_username: Username used for connecting to the Cassandra service, if applicable.
-        :param pulumi.Input[str] state: Service state.
-        :param pulumi.Input[bool] termination_protection: prevents the service from being deleted. It is recommended to
-               set this to `true` for all production services to prevent unintentional service
-               deletion. This does not shield against deleting databases or topics but for services
-               with backups much of the content can at least be restored from backup in case accidental
-               deletion is done.
+        :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
+        :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _CassandraState.__new__(_CassandraState)
 
-        __props__.__dict__["cassandra"] = cassandra
         __props__.__dict__["cassandra_user_config"] = cassandra_user_config
+        __props__.__dict__["cassandras"] = cassandras
         __props__.__dict__["cloud_name"] = cloud_name
         __props__.__dict__["components"] = components
+        __props__.__dict__["disk_space"] = disk_space
+        __props__.__dict__["disk_space_cap"] = disk_space_cap
+        __props__.__dict__["disk_space_default"] = disk_space_default
+        __props__.__dict__["disk_space_step"] = disk_space_step
+        __props__.__dict__["disk_space_used"] = disk_space_used
         __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
         __props__.__dict__["maintenance_window_time"] = maintenance_window_time
         __props__.__dict__["plan"] = plan
@@ -902,37 +868,31 @@ class Cassandra(pulumi.CustomResource):
         __props__.__dict__["service_uri"] = service_uri
         __props__.__dict__["service_username"] = service_username
         __props__.__dict__["state"] = state
+        __props__.__dict__["static_ips"] = static_ips
         __props__.__dict__["termination_protection"] = termination_protection
         return Cassandra(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter
-    def cassandra(self) -> pulumi.Output['outputs.CassandraCassandra']:
-        """
-        Cassandra configuration values
-        """
-        return pulumi.get(self, "cassandra")
 
     @property
     @pulumi.getter(name="cassandraUserConfig")
     def cassandra_user_config(self) -> pulumi.Output[Optional['outputs.CassandraCassandraUserConfig']]:
         """
-        defines Cassandra specific additional configuration options. 
-        The following configuration options available:
+        Cassandra user configurable settings
         """
         return pulumi.get(self, "cassandra_user_config")
+
+    @property
+    @pulumi.getter
+    def cassandras(self) -> pulumi.Output[Sequence['outputs.CassandraCassandra']]:
+        """
+        Cassandra server provided values
+        """
+        return pulumi.get(self, "cassandras")
 
     @property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Output[Optional[str]]:
         """
-        defines where the cloud provider and region where the service is hosted
-        in. This can be changed freely after service is created. Changing the value will trigger
-        a potentially lengthy migration process for the service. Format is cloud provider name
-        (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        specific region name. These are documented on each Cloud provider's own support articles,
-        like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         """
         return pulumi.get(self, "cloud_name")
 
@@ -945,11 +905,50 @@ class Cassandra(pulumi.CustomResource):
         return pulumi.get(self, "components")
 
     @property
+    @pulumi.getter(name="diskSpace")
+    def disk_space(self) -> pulumi.Output[Optional[str]]:
+        """
+        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        """
+        return pulumi.get(self, "disk_space")
+
+    @property
+    @pulumi.getter(name="diskSpaceCap")
+    def disk_space_cap(self) -> pulumi.Output[str]:
+        """
+        The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        """
+        return pulumi.get(self, "disk_space_cap")
+
+    @property
+    @pulumi.getter(name="diskSpaceDefault")
+    def disk_space_default(self) -> pulumi.Output[str]:
+        """
+        The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        """
+        return pulumi.get(self, "disk_space_default")
+
+    @property
+    @pulumi.getter(name="diskSpaceStep")
+    def disk_space_step(self) -> pulumi.Output[str]:
+        """
+        The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        """
+        return pulumi.get(self, "disk_space_step")
+
+    @property
+    @pulumi.getter(name="diskSpaceUsed")
+    def disk_space_used(self) -> pulumi.Output[str]:
+        """
+        Disk space that service is currently using
+        """
+        return pulumi.get(self, "disk_space_used")
+
+    @property
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> pulumi.Output[Optional[str]]:
         """
-        day of week when maintenance operations should be performed. 
-        On monday, tuesday, wednesday, etc.
+        Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
 
@@ -957,8 +956,7 @@ class Cassandra(pulumi.CustomResource):
     @pulumi.getter(name="maintenanceWindowTime")
     def maintenance_window_time(self) -> pulumi.Output[Optional[str]]:
         """
-        time of day when maintenance operations should be performed. 
-        UTC time in HH:mm:ss format.
+        Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")
 
@@ -966,13 +964,7 @@ class Cassandra(pulumi.CustomResource):
     @pulumi.getter
     def plan(self) -> pulumi.Output[Optional[str]]:
         """
-        defines what kind of computing resources are allocated for the service. It can
-        be changed after creation, though there are some restrictions when going to a smaller
-        plan such as the new plan must have sufficient amount of disk space to store all current
-        data and switching to a plan with fewer nodes might not be supported. The basic plan
-        names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -980,9 +972,7 @@ class Cassandra(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        identifies the project the service belongs to. To set up proper dependency
-        between the project and the service, refer to the project as shown in the above example.
-        Project cannot be changed later without destroying and re-creating the service.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -990,12 +980,7 @@ class Cassandra(pulumi.CustomResource):
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
-        optionally specifies the VPC the service should run in. If the value
-        is not set the service is not run inside a VPC. When set, the value should be given as a
-        reference as shown above to set up dependencies correctly and the VPC must be in the same
-        cloud and region as the service itself. Project can be freely moved to and from VPC after
-        creation but doing so triggers migration to new servers so the operation can take
-        significant amount of time to complete if the service has a lot of data.
+        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
 
@@ -1003,7 +988,7 @@ class Cassandra(pulumi.CustomResource):
     @pulumi.getter(name="serviceHost")
     def service_host(self) -> pulumi.Output[str]:
         """
-        Cassandra hostname.
+        The hostname of the service.
         """
         return pulumi.get(self, "service_host")
 
@@ -1019,9 +1004,7 @@ class Cassandra(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        specifies the actual name of the service. The name cannot be changed
-        later without destroying and re-creating the service so name should be picked based on
-        intended service usage rather than current attributes.
+        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         """
         return pulumi.get(self, "service_name")
 
@@ -1029,7 +1012,7 @@ class Cassandra(pulumi.CustomResource):
     @pulumi.getter(name="servicePassword")
     def service_password(self) -> pulumi.Output[str]:
         """
-        Password used for connecting to the Cassandra service, if applicable.
+        Password used for connecting to the service, if applicable
         """
         return pulumi.get(self, "service_password")
 
@@ -1037,7 +1020,7 @@ class Cassandra(pulumi.CustomResource):
     @pulumi.getter(name="servicePort")
     def service_port(self) -> pulumi.Output[int]:
         """
-        Cassandra port.
+        The port of the service
         """
         return pulumi.get(self, "service_port")
 
@@ -1053,7 +1036,7 @@ class Cassandra(pulumi.CustomResource):
     @pulumi.getter(name="serviceUri")
     def service_uri(self) -> pulumi.Output[str]:
         """
-        URI for connecting to the Cassandra service.
+        URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         """
         return pulumi.get(self, "service_uri")
 
@@ -1061,7 +1044,7 @@ class Cassandra(pulumi.CustomResource):
     @pulumi.getter(name="serviceUsername")
     def service_username(self) -> pulumi.Output[str]:
         """
-        Username used for connecting to the Cassandra service, if applicable.
+        Username used for connecting to the service, if applicable
         """
         return pulumi.get(self, "service_username")
 
@@ -1069,19 +1052,23 @@ class Cassandra(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Service state.
+        Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
+        return pulumi.get(self, "static_ips")
 
     @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> pulumi.Output[Optional[bool]]:
         """
-        prevents the service from being deleted. It is recommended to
-        set this to `true` for all production services to prevent unintentional service
-        deletion. This does not shield against deleting databases or topics but for services
-        with backups much of the content can at least be restored from backup in case accidental
-        deletion is done.
+        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         return pulumi.get(self, "termination_protection")
 

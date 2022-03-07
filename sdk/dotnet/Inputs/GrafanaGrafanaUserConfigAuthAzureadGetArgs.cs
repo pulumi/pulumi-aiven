@@ -12,18 +12,11 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigAuthAzureadGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Automatically sign-up users on successful sign-in
-        /// </summary>
         [Input("allowSignUp")]
         public Input<string>? AllowSignUp { get; set; }
 
         [Input("allowedDomains")]
         private InputList<string>? _allowedDomains;
-
-        /// <summary>
-        /// Allowed domain
-        /// </summary>
         public InputList<string> AllowedDomains
         {
             get => _allowedDomains ?? (_allowedDomains = new InputList<string>());
@@ -32,37 +25,21 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("allowedGroups")]
         private InputList<string>? _allowedGroups;
-
-        /// <summary>
-        /// Require users to belong to one of given groups
-        /// </summary>
         public InputList<string> AllowedGroups
         {
             get => _allowedGroups ?? (_allowedGroups = new InputList<string>());
             set => _allowedGroups = value;
         }
 
-        /// <summary>
-        /// Authorization URL. This only needs to be set when using self hosted GitLab
-        /// </summary>
         [Input("authUrl")]
         public Input<string>? AuthUrl { get; set; }
 
-        /// <summary>
-        /// Client ID from provider
-        /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
-        /// <summary>
-        /// Client secret from provider
-        /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
 
-        /// <summary>
-        /// Token URL. This only needs to be set when using self hosted GitLab
-        /// </summary>
         [Input("tokenUrl")]
         public Input<string>? TokenUrl { get; set; }
 

@@ -13,19 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetM3AggregatorM3aggregatorUserConfigResult
     {
-        /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-        /// </summary>
         public readonly string? CustomDomain;
-        /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? M3Version;
-        /// <summary>
-        /// M3 major version
-        /// </summary>
         public readonly string? M3aggregatorVersion;
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

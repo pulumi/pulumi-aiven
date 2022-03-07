@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Account Team Member Data Source
- *
  * The Account Team Member data source provides information about the existing Aiven Account Team Member.
  */
 export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamMemberResult> {
@@ -16,10 +14,7 @@ export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulu
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getAccountTeamMember:getAccountTeamMember", {
-        "accepted": args.accepted,
         "accountId": args.accountId,
-        "createTime": args.createTime,
-        "invitedByUserEmail": args.invitedByUserEmail,
         "teamId": args.teamId,
         "userEmail": args.userEmail,
     }, opts);
@@ -30,30 +25,15 @@ export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulu
  */
 export interface GetAccountTeamMemberArgs {
     /**
-     * is a boolean flag that determines whether an invitation was accepted or not by the user. 
-     * `false` value means that the invitation was sent to the user but not yet accepted.
-     * `true` means that the user accepted the invitation and is now a member of an account team.
-     */
-    accepted?: boolean;
-    /**
-     * is a unique account id.
+     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
      */
     accountId: string;
     /**
-     * time of creation.
-     */
-    createTime?: string;
-    /**
-     * team invited by user email.
-     */
-    invitedByUserEmail?: string;
-    /**
-     * is an account team id.
+     * An account team id This property cannot be changed, doing so forces recreation of the resource.
      */
     teamId: string;
     /**
-     * is a user email address that first will be invited, and after accepting an invitation,
-     * he or she becomes a member of a team.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
      */
     userEmail: string;
 }
@@ -63,14 +43,15 @@ export interface GetAccountTeamMemberArgs {
  */
 export interface GetAccountTeamMemberResult {
     /**
-     * is a boolean flag that determines whether an invitation was accepted or not by the user. 
-     * `false` value means that the invitation was sent to the user but not yet accepted.
-     * `true` means that the user accepted the invitation and is now a member of an account team.
+     * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
      */
     readonly accepted: boolean;
+    /**
+     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly accountId: string;
     /**
-     * time of creation.
+     * Time of creation
      */
     readonly createTime: string;
     /**
@@ -78,10 +59,16 @@ export interface GetAccountTeamMemberResult {
      */
     readonly id: string;
     /**
-     * team invited by user email.
+     * The email address that invited this user.
      */
     readonly invitedByUserEmail: string;
+    /**
+     * An account team id This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly teamId: string;
+    /**
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly userEmail: string;
 }
 
@@ -94,30 +81,15 @@ export function getAccountTeamMemberOutput(args: GetAccountTeamMemberOutputArgs,
  */
 export interface GetAccountTeamMemberOutputArgs {
     /**
-     * is a boolean flag that determines whether an invitation was accepted or not by the user. 
-     * `false` value means that the invitation was sent to the user but not yet accepted.
-     * `true` means that the user accepted the invitation and is now a member of an account team.
-     */
-    accepted?: pulumi.Input<boolean>;
-    /**
-     * is a unique account id.
+     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
      */
     accountId: pulumi.Input<string>;
     /**
-     * time of creation.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
-     * team invited by user email.
-     */
-    invitedByUserEmail?: pulumi.Input<string>;
-    /**
-     * is an account team id.
+     * An account team id This property cannot be changed, doing so forces recreation of the resource.
      */
     teamId: pulumi.Input<string>;
     /**
-     * is a user email address that first will be invited, and after accepting an invitation,
-     * he or she becomes a member of a team.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
      */
     userEmail: pulumi.Input<string>;
 }

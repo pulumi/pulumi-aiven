@@ -12,10 +12,7 @@ namespace Pulumi.Aiven
     public static class GetKafkaSchemaConfiguration
     {
         /// <summary>
-        /// ## # Kafka Schema Configuration Data Source
-        /// 
-        /// The Kafka Schema Configuration data source provides information about the existing Aiven 
-        /// Kafka Schema Configuration.
+        /// The Kafka Schema Configuration data source provides information about the existing Aiven Kafka Schema Configuration.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -29,11 +26,12 @@ namespace Pulumi.Aiven
         /// {
         ///     public MyStack()
         ///     {
-        ///         var config = Output.Create(Aiven.GetKafkaSchemaConfiguration.InvokeAsync(new Aiven.GetKafkaSchemaConfigurationArgs
+        ///         var config = new Aiven.KafkaSchemaConfiguration("config", new Aiven.KafkaSchemaConfigurationArgs
         ///         {
         ///             Project = aiven_project.Kafka_schemas_project1.Project,
-        ///             ServiceName = aiven_service.Kafka_service1.Service_name,
-        ///         }));
+        ///             ServiceName = aiven_kafka.Kafka_service1.Service_name,
+        ///             CompatibilityLevel = "BACKWARD",
+        ///         });
         ///     }
         /// 
         /// }
@@ -45,10 +43,7 @@ namespace Pulumi.Aiven
             => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaConfigurationResult>("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", args ?? new GetKafkaSchemaConfigurationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # Kafka Schema Configuration Data Source
-        /// 
-        /// The Kafka Schema Configuration data source provides information about the existing Aiven 
-        /// Kafka Schema Configuration.
+        /// The Kafka Schema Configuration data source provides information about the existing Aiven Kafka Schema Configuration.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -62,11 +57,12 @@ namespace Pulumi.Aiven
         /// {
         ///     public MyStack()
         ///     {
-        ///         var config = Output.Create(Aiven.GetKafkaSchemaConfiguration.InvokeAsync(new Aiven.GetKafkaSchemaConfigurationArgs
+        ///         var config = new Aiven.KafkaSchemaConfiguration("config", new Aiven.KafkaSchemaConfigurationArgs
         ///         {
         ///             Project = aiven_project.Kafka_schemas_project1.Project,
-        ///             ServiceName = aiven_service.Kafka_service1.Service_name,
-        ///         }));
+        ///             ServiceName = aiven_kafka.Kafka_service1.Service_name,
+        ///             CompatibilityLevel = "BACKWARD",
+        ///         });
         ///     }
         /// 
         /// }
@@ -82,34 +78,16 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaSchemaConfigurationArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is the Global Kafka Schema configuration compatibility level when defined 
-        /// for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-        /// compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
-        /// resource. If the compatibility level not specified for the individual subject by default,
-        /// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-        /// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
-        /// </summary>
-        [Input("compatibilityLevel")]
-        public string? CompatibilityLevel { get; set; }
-
-        /// <summary>
-        /// and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        [Input("schema")]
-        public string? Schema { get; set; }
-
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
-
-        [Input("subjectName")]
-        public string? SubjectName { get; set; }
-
-        [Input("version")]
-        public int? Version { get; set; }
 
         public GetKafkaSchemaConfigurationArgs()
         {
@@ -119,34 +97,16 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaSchemaConfigurationInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is the Global Kafka Schema configuration compatibility level when defined 
-        /// for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-        /// compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
-        /// resource. If the compatibility level not specified for the individual subject by default,
-        /// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-        /// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
-        /// </summary>
-        [Input("compatibilityLevel")]
-        public Input<string>? CompatibilityLevel { get; set; }
-
-        /// <summary>
-        /// and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("schema")]
-        public Input<string>? Schema { get; set; }
-
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
-
-        [Input("subjectName")]
-        public Input<string>? SubjectName { get; set; }
-
-        [Input("version")]
-        public Input<int>? Version { get; set; }
 
         public GetKafkaSchemaConfigurationInvokeArgs()
         {
@@ -158,37 +118,47 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaSchemaConfigurationResult
     {
         /// <summary>
-        /// is the Global Kafka Schema configuration compatibility level when defined 
-        /// for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-        /// compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
-        /// resource. If the compatibility level not specified for the individual subject by default,
-        /// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-        /// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        /// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         /// </summary>
-        public readonly string? CompatibilityLevel;
+        public readonly string CompatibilityLevel;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
-        public readonly string? Schema;
+        /// <summary>
+        /// Kafka Schema configuration should be a valid Avro Schema JSON format.
+        /// </summary>
+        public readonly string Schema;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
-        public readonly string? SubjectName;
+        /// <summary>
+        /// The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
+        public readonly string SubjectName;
+        /// <summary>
+        /// Kafka Schema configuration version.
+        /// </summary>
         public readonly int Version;
 
         [OutputConstructor]
         private GetKafkaSchemaConfigurationResult(
-            string? compatibilityLevel,
+            string compatibilityLevel,
 
             string id,
 
             string project,
 
-            string? schema,
+            string schema,
 
             string serviceName,
 
-            string? subjectName,
+            string subjectName,
 
             int version)
         {

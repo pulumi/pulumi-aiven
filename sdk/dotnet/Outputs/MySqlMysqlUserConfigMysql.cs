@@ -13,124 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class MySqlMysqlUserConfigMysql
     {
-        /// <summary>
-        /// The number of seconds that the mysqld server waits for a 
-        /// connect packet before responding with Bad handshake
-        /// </summary>
         public readonly string? ConnectTimeout;
-        /// <summary>
-        /// Default server time zone as an offset from UTC 
-        /// (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
-        /// </summary>
         public readonly string? DefaultTimeZone;
-        /// <summary>
-        /// The maximum permitted result length in bytes for 
-        /// the GROUP_CONCAT() function.
-        /// </summary>
         public readonly string? GroupConcatMaxLen;
-        /// <summary>
-        /// The time, in seconds, before cached 
-        /// statistics expire
-        /// </summary>
         public readonly string? InformationSchemaStatsExpiry;
-        /// <summary>
-        /// Minimum length of words that are stored in 
-        /// an InnoDB FULLTEXT index.
-        /// </summary>
         public readonly string? InnodbFtMinTokenSize;
-        /// <summary>
-        /// This option is used to specify your 
-        /// own InnoDB FULLTEXT index stopword list for all InnoDB tables.
-        /// </summary>
         public readonly string? InnodbFtServerStopwordTable;
-        /// <summary>
-        /// The length of time in seconds an InnoDB 
-        /// transaction waits for a row lock before giving up.
-        /// </summary>
         public readonly string? InnodbLockWaitTimeout;
-        /// <summary>
-        /// The size in bytes of the buffer that InnoDB 
-        /// uses to write to the log files on disk.
-        /// </summary>
         public readonly string? InnodbLogBufferSize;
-        /// <summary>
-        /// The upper limit in bytes on the 
-        /// size of the temporary log files used during online DDL operations for InnoDB tables.
-        /// </summary>
         public readonly string? InnodbOnlineAlterLogMaxSize;
-        /// <summary>
-        /// When enabled, information about all 
-        /// deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
-        /// </summary>
         public readonly string? InnodbPrintAllDeadlocks;
-        /// <summary>
-        /// When enabled a transaction timeout 
-        /// causes InnoDB to abort and roll back the entire transaction.
-        /// </summary>
         public readonly string? InnodbRollbackOnTimeout;
-        /// <summary>
-        /// The number of seconds the server waits for 
-        /// activity on an interactive connection before closing it.
-        /// </summary>
         public readonly string? InteractiveTimeout;
         public readonly string? InternalTmpMemStorageEngine;
-        /// <summary>
-        /// The slow_query_logs work as SQL statements that take 
-        /// more than long_query_time seconds to execute. Default is 10s
-        /// </summary>
         public readonly string? LongQueryTime;
-        /// <summary>
-        /// Size of the largest message in bytes that can 
-        /// be received by the server. Default is 67108864 (64M)
-        /// </summary>
         public readonly string? MaxAllowedPacket;
-        /// <summary>
-        /// Limits the size of internal in-memory tables. 
-        /// Also set tmp_table_size. Default is 16777216 (16M)
-        /// </summary>
         public readonly string? MaxHeapTableSize;
-        /// <summary>
-        /// The number of seconds to wait for more data from 
-        /// a connection before aborting the read.
-        /// </summary>
         public readonly string? NetReadTimeout;
-        /// <summary>
-        /// The number of seconds to wait for a block to be 
-        /// written to a connection before aborting the write.
-        /// </summary>
         public readonly string? NetWriteTimeout;
-        /// <summary>
-        /// Slow query log enables capturing of slow queries. 
-        /// Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off
-        /// </summary>
         public readonly string? SlowQueryLog;
-        /// <summary>
-        /// Sort buffer size in bytes for ORDER BY optimization. 
-        /// Default is 262144 (256K)
-        /// </summary>
         public readonly string? SortBufferSize;
-        /// <summary>
-        /// Global SQL mode. Set to empty to use MySQL server defaults. 
-        /// When creating a new service and not setting this field Aiven default SQL mode (strict,
-        /// SQL standard compliant) will be assigned.
-        /// </summary>
         public readonly string? SqlMode;
-        /// <summary>
-        /// Require primary key to be defined for new 
-        /// tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
-        /// to always have primary keys because various functionality may break if any large table
-        /// is missing them.
-        /// </summary>
         public readonly string? SqlRequirePrimaryKey;
-        /// <summary>
-        /// Limits the size of internal in-memory tables. Also set 
-        /// max_heap_table_size. Default is 16777216 (16M)
-        /// </summary>
         public readonly string? TmpTableSize;
-        /// <summary>
-        /// The number of seconds the server waits for activity on 
-        /// a noninteractive connection before closing it.
-        /// </summary>
         public readonly string? WaitTimeout;
 
         [OutputConstructor]

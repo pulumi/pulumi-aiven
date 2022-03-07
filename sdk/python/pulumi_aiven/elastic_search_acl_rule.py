@@ -20,12 +20,11 @@ class ElasticSearchAclRuleArgs:
                  username: pulumi.Input[str]):
         """
         The set of arguments for constructing a ElasticSearchAclRule resource.
-        :param pulumi.Input[str] index: Elasticsearch index pattern
-        :param pulumi.Input[str] permission: is the Elasticsearch permission, list of supported permissions: 
-               `deny`, `admin`, `read`, `readwrite`, `write`.
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the ACL belongs to.
-        :param pulumi.Input[str] service_name: Service to link the Elasticsearch ACLs to
-        :param pulumi.Input[str] username: and `index` - (Required) define the username and index the ACL rule should apply to.
+        :param pulumi.Input[str] index: The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] permission: The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         pulumi.set(__self__, "index", index)
         pulumi.set(__self__, "permission", permission)
@@ -37,7 +36,7 @@ class ElasticSearchAclRuleArgs:
     @pulumi.getter
     def index(self) -> pulumi.Input[str]:
         """
-        Elasticsearch index pattern
+        The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "index")
 
@@ -49,8 +48,7 @@ class ElasticSearchAclRuleArgs:
     @pulumi.getter
     def permission(self) -> pulumi.Input[str]:
         """
-        is the Elasticsearch permission, list of supported permissions: 
-        `deny`, `admin`, `read`, `readwrite`, `write`.
+        The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
         """
         return pulumi.get(self, "permission")
 
@@ -62,7 +60,7 @@ class ElasticSearchAclRuleArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        and `service_name` - (Required) define the project and service the ACL belongs to.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -74,7 +72,7 @@ class ElasticSearchAclRuleArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Service to link the Elasticsearch ACLs to
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -86,7 +84,7 @@ class ElasticSearchAclRuleArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
-        and `index` - (Required) define the username and index the ACL rule should apply to.
+        The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -105,12 +103,11 @@ class _ElasticSearchAclRuleState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ElasticSearchAclRule resources.
-        :param pulumi.Input[str] index: Elasticsearch index pattern
-        :param pulumi.Input[str] permission: is the Elasticsearch permission, list of supported permissions: 
-               `deny`, `admin`, `read`, `readwrite`, `write`.
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the ACL belongs to.
-        :param pulumi.Input[str] service_name: Service to link the Elasticsearch ACLs to
-        :param pulumi.Input[str] username: and `index` - (Required) define the username and index the ACL rule should apply to.
+        :param pulumi.Input[str] index: The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] permission: The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         if index is not None:
             pulumi.set(__self__, "index", index)
@@ -127,7 +124,7 @@ class _ElasticSearchAclRuleState:
     @pulumi.getter
     def index(self) -> Optional[pulumi.Input[str]]:
         """
-        Elasticsearch index pattern
+        The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "index")
 
@@ -139,8 +136,7 @@ class _ElasticSearchAclRuleState:
     @pulumi.getter
     def permission(self) -> Optional[pulumi.Input[str]]:
         """
-        is the Elasticsearch permission, list of supported permissions: 
-        `deny`, `admin`, `read`, `readwrite`, `write`.
+        The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
         """
         return pulumi.get(self, "permission")
 
@@ -152,7 +148,7 @@ class _ElasticSearchAclRuleState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        and `service_name` - (Required) define the project and service the ACL belongs to.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -164,7 +160,7 @@ class _ElasticSearchAclRuleState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Service to link the Elasticsearch ACLs to
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -176,7 +172,7 @@ class _ElasticSearchAclRuleState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        and `index` - (Required) define the username and index the ACL rule should apply to.
+        The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -197,8 +193,6 @@ class ElasticSearchAclRule(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # Elasticsearch ACL Rule Resource
-
         The Elasticsearch ACL Rule resource models a single ACL Rule for an Aiven Elasticsearch service.
 
         ## Example Usage
@@ -259,12 +253,11 @@ class ElasticSearchAclRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] index: Elasticsearch index pattern
-        :param pulumi.Input[str] permission: is the Elasticsearch permission, list of supported permissions: 
-               `deny`, `admin`, `read`, `readwrite`, `write`.
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the ACL belongs to.
-        :param pulumi.Input[str] service_name: Service to link the Elasticsearch ACLs to
-        :param pulumi.Input[str] username: and `index` - (Required) define the username and index the ACL rule should apply to.
+        :param pulumi.Input[str] index: The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] permission: The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         ...
     @overload
@@ -273,8 +266,6 @@ class ElasticSearchAclRule(pulumi.CustomResource):
                  args: ElasticSearchAclRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # Elasticsearch ACL Rule Resource
-
         The Elasticsearch ACL Rule resource models a single ACL Rule for an Aiven Elasticsearch service.
 
         ## Example Usage
@@ -402,12 +393,11 @@ class ElasticSearchAclRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] index: Elasticsearch index pattern
-        :param pulumi.Input[str] permission: is the Elasticsearch permission, list of supported permissions: 
-               `deny`, `admin`, `read`, `readwrite`, `write`.
-        :param pulumi.Input[str] project: and `service_name` - (Required) define the project and service the ACL belongs to.
-        :param pulumi.Input[str] service_name: Service to link the Elasticsearch ACLs to
-        :param pulumi.Input[str] username: and `index` - (Required) define the username and index the ACL rule should apply to.
+        :param pulumi.Input[str] index: The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] permission: The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -424,7 +414,7 @@ class ElasticSearchAclRule(pulumi.CustomResource):
     @pulumi.getter
     def index(self) -> pulumi.Output[str]:
         """
-        Elasticsearch index pattern
+        The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "index")
 
@@ -432,8 +422,7 @@ class ElasticSearchAclRule(pulumi.CustomResource):
     @pulumi.getter
     def permission(self) -> pulumi.Output[str]:
         """
-        is the Elasticsearch permission, list of supported permissions: 
-        `deny`, `admin`, `read`, `readwrite`, `write`.
+        The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
         """
         return pulumi.get(self, "permission")
 
@@ -441,7 +430,7 @@ class ElasticSearchAclRule(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        and `service_name` - (Required) define the project and service the ACL belongs to.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -449,7 +438,7 @@ class ElasticSearchAclRule(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Service to link the Elasticsearch ACLs to
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -457,7 +446,7 @@ class ElasticSearchAclRule(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        and `index` - (Required) define the username and index the ACL rule should apply to.
+        The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 

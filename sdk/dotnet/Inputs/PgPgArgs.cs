@@ -13,25 +13,25 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// database name for bootstrapping the initial connection.
+        /// Primary PostgreSQL database name
         /// </summary>
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
 
         /// <summary>
-        /// hostname or IP address of the server where to migrate data from.
+        /// PostgreSQL master node host IP or name
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// password for authentication with the server where to migrate data from.
+        /// PostgreSQL admin user password
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// port number of the server where to migrate data from.
+        /// PostgreSQL port
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ReplicaUri { get; set; }
 
         /// <summary>
-        /// PostgreSQL sslmode setting (currently always `require`)
+        /// PostgreSQL sslmode setting (currently always "require")
         /// </summary>
         [Input("sslmode")]
         public Input<string>? Sslmode { get; set; }

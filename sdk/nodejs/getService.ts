@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * The Service datasource provides information about specific Aiven Services.
+ */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     if (!opts) {
         opts = {}
@@ -12,45 +15,8 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getService:getService", {
-        "cassandra": args.cassandra,
-        "cassandraUserConfig": args.cassandraUserConfig,
-        "cloudName": args.cloudName,
-        "components": args.components,
-        "elasticsearch": args.elasticsearch,
-        "elasticsearchUserConfig": args.elasticsearchUserConfig,
-        "grafana": args.grafana,
-        "grafanaUserConfig": args.grafanaUserConfig,
-        "influxdb": args.influxdb,
-        "influxdbUserConfig": args.influxdbUserConfig,
-        "kafka": args.kafka,
-        "kafkaConnect": args.kafkaConnect,
-        "kafkaConnectUserConfig": args.kafkaConnectUserConfig,
-        "kafkaMirrormaker": args.kafkaMirrormaker,
-        "kafkaMirrormakerUserConfig": args.kafkaMirrormakerUserConfig,
-        "kafkaUserConfig": args.kafkaUserConfig,
-        "maintenanceWindowDow": args.maintenanceWindowDow,
-        "maintenanceWindowTime": args.maintenanceWindowTime,
-        "mysql": args.mysql,
-        "mysqlUserConfig": args.mysqlUserConfig,
-        "opensearch": args.opensearch,
-        "opensearchUserConfig": args.opensearchUserConfig,
-        "pg": args.pg,
-        "pgUserConfig": args.pgUserConfig,
-        "plan": args.plan,
         "project": args.project,
-        "projectVpcId": args.projectVpcId,
-        "redis": args.redis,
-        "redisUserConfig": args.redisUserConfig,
-        "serviceHost": args.serviceHost,
-        "serviceIntegrations": args.serviceIntegrations,
         "serviceName": args.serviceName,
-        "servicePassword": args.servicePassword,
-        "servicePort": args.servicePort,
-        "serviceType": args.serviceType,
-        "serviceUri": args.serviceUri,
-        "serviceUsername": args.serviceUsername,
-        "state": args.state,
-        "terminationProtection": args.terminationProtection,
     }, opts);
 }
 
@@ -58,94 +24,220 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getService.
  */
 export interface GetServiceArgs {
-    cassandra?: inputs.GetServiceCassandra;
-    cassandraUserConfig?: inputs.GetServiceCassandraUserConfig;
-    cloudName?: string;
-    components?: inputs.GetServiceComponent[];
-    elasticsearch?: inputs.GetServiceElasticsearch;
-    elasticsearchUserConfig?: inputs.GetServiceElasticsearchUserConfig;
-    grafana?: inputs.GetServiceGrafana;
-    grafanaUserConfig?: inputs.GetServiceGrafanaUserConfig;
-    influxdb?: inputs.GetServiceInfluxdb;
-    influxdbUserConfig?: inputs.GetServiceInfluxdbUserConfig;
-    kafka?: inputs.GetServiceKafka;
-    kafkaConnect?: inputs.GetServiceKafkaConnect;
-    kafkaConnectUserConfig?: inputs.GetServiceKafkaConnectUserConfig;
-    kafkaMirrormaker?: inputs.GetServiceKafkaMirrormaker;
-    kafkaMirrormakerUserConfig?: inputs.GetServiceKafkaMirrormakerUserConfig;
-    kafkaUserConfig?: inputs.GetServiceKafkaUserConfig;
-    maintenanceWindowDow?: string;
-    maintenanceWindowTime?: string;
-    mysql?: inputs.GetServiceMysql;
-    mysqlUserConfig?: inputs.GetServiceMysqlUserConfig;
-    opensearch?: inputs.GetServiceOpensearch;
-    opensearchUserConfig?: inputs.GetServiceOpensearchUserConfig;
-    pg?: inputs.GetServicePg;
-    pgUserConfig?: inputs.GetServicePgUserConfig;
-    plan?: string;
+    /**
+     * Target project
+     */
     project: string;
-    projectVpcId?: string;
-    redis?: inputs.GetServiceRedis;
-    redisUserConfig?: inputs.GetServiceRedisUserConfig;
-    serviceHost?: string;
-    serviceIntegrations?: inputs.GetServiceServiceIntegration[];
+    /**
+     * Service name
+     */
     serviceName: string;
-    servicePassword?: string;
-    servicePort?: number;
-    serviceType?: string;
-    serviceUri?: string;
-    serviceUsername?: string;
-    state?: string;
-    terminationProtection?: boolean;
 }
 
 /**
  * A collection of values returned by getService.
  */
 export interface GetServiceResult {
-    readonly cassandra: outputs.GetServiceCassandra;
-    readonly cassandraUserConfig?: outputs.GetServiceCassandraUserConfig;
-    readonly cloudName?: string;
+    /**
+     * Cassandra user configurable settings
+     */
+    readonly cassandraUserConfigs: outputs.GetServiceCassandraUserConfig[];
+    /**
+     * Cassandra specific server provided values
+     */
+    readonly cassandras: outputs.GetServiceCassandra[];
+    /**
+     * Clickhouse user configurable settings
+     */
+    readonly clickhouseUserConfigs: outputs.GetServiceClickhouseUserConfig[];
+    /**
+     * Clickhouse specific server provided values
+     */
+    readonly clickhouses: outputs.GetServiceClickhouse[];
+    /**
+     * Cloud the service runs in
+     */
+    readonly cloudName: string;
+    /**
+     * Service component information objects
+     */
     readonly components: outputs.GetServiceComponent[];
-    readonly elasticsearch: outputs.GetServiceElasticsearch;
-    readonly elasticsearchUserConfig?: outputs.GetServiceElasticsearchUserConfig;
-    readonly grafana: outputs.GetServiceGrafana;
-    readonly grafanaUserConfig?: outputs.GetServiceGrafanaUserConfig;
+    /**
+     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     */
+    readonly diskSpace: string;
+    /**
+     * The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+     */
+    readonly diskSpaceCap: string;
+    /**
+     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+     */
+    readonly diskSpaceDefault: string;
+    /**
+     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+     */
+    readonly diskSpaceStep: string;
+    /**
+     * Disk space that service is currently using
+     */
+    readonly diskSpaceUsed: string;
+    /**
+     * Elasticsearch user configurable settings
+     */
+    readonly elasticsearchUserConfigs: outputs.GetServiceElasticsearchUserConfig[];
+    /**
+     * Elasticsearch specific server provided values
+     */
+    readonly elasticsearches: outputs.GetServiceElasticsearch[];
+    /**
+     * Flink user configurable settings
+     */
+    readonly flinkUserConfigs: outputs.GetServiceFlinkUserConfig[];
+    /**
+     * Flink specific server provided values
+     */
+    readonly flinks: outputs.GetServiceFlink[];
+    /**
+     * Grafana user configurable settings
+     */
+    readonly grafanaUserConfigs: outputs.GetServiceGrafanaUserConfig[];
+    /**
+     * Grafana specific server provided values
+     */
+    readonly grafanas: outputs.GetServiceGrafana[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly influxdb: outputs.GetServiceInfluxdb;
-    readonly influxdbUserConfig?: outputs.GetServiceInfluxdbUserConfig;
-    readonly kafka: outputs.GetServiceKafka;
-    readonly kafkaConnect: outputs.GetServiceKafkaConnect;
-    readonly kafkaConnectUserConfig?: outputs.GetServiceKafkaConnectUserConfig;
-    readonly kafkaMirrormaker: outputs.GetServiceKafkaMirrormaker;
-    readonly kafkaMirrormakerUserConfig?: outputs.GetServiceKafkaMirrormakerUserConfig;
-    readonly kafkaUserConfig?: outputs.GetServiceKafkaUserConfig;
-    readonly maintenanceWindowDow?: string;
-    readonly maintenanceWindowTime?: string;
-    readonly mysql: outputs.GetServiceMysql;
-    readonly mysqlUserConfig?: outputs.GetServiceMysqlUserConfig;
-    readonly opensearch: outputs.GetServiceOpensearch;
-    readonly opensearchUserConfig?: outputs.GetServiceOpensearchUserConfig;
-    readonly pg: outputs.GetServicePg;
-    readonly pgUserConfig?: outputs.GetServicePgUserConfig;
-    readonly plan?: string;
+    /**
+     * Influxdb user configurable settings
+     */
+    readonly influxdbUserConfigs: outputs.GetServiceInfluxdbUserConfig[];
+    /**
+     * InfluxDB specific server provided values
+     */
+    readonly influxdbs: outputs.GetServiceInfluxdb[];
+    /**
+     * Kafka*connect user configurable settings
+     */
+    readonly kafkaConnectUserConfigs: outputs.GetServiceKafkaConnectUserConfig[];
+    /**
+     * Kafka Connect specific server provided values
+     */
+    readonly kafkaConnects: outputs.GetServiceKafkaConnect[];
+    /**
+     * Kafka*mirrormaker user configurable settings
+     */
+    readonly kafkaMirrormakerUserConfigs: outputs.GetServiceKafkaMirrormakerUserConfig[];
+    /**
+     * Kafka MirrorMaker 2 specific server provided values
+     */
+    readonly kafkaMirrormakers: outputs.GetServiceKafkaMirrormaker[];
+    /**
+     * Kafka user configurable settings
+     */
+    readonly kafkaUserConfigs: outputs.GetServiceKafkaUserConfig[];
+    /**
+     * Kafka specific server provided values
+     */
+    readonly kafkas: outputs.GetServiceKafka[];
+    /**
+     * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+     */
+    readonly maintenanceWindowDow: string;
+    /**
+     * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+     */
+    readonly maintenanceWindowTime: string;
+    /**
+     * Mysql user configurable settings
+     */
+    readonly mysqlUserConfigs: outputs.GetServiceMysqlUserConfig[];
+    /**
+     * MySQL specific server provided values
+     */
+    readonly mysqls: outputs.GetServiceMysql[];
+    /**
+     * Opensearch user configurable settings
+     */
+    readonly opensearchUserConfigs: outputs.GetServiceOpensearchUserConfig[];
+    /**
+     * Opensearch specific server provided values
+     */
+    readonly opensearches: outputs.GetServiceOpensearch[];
+    /**
+     * Pg user configurable settings
+     */
+    readonly pgUserConfigs: outputs.GetServicePgUserConfig[];
+    /**
+     * PostgreSQL specific server provided values
+     */
+    readonly pgs: outputs.GetServicePg[];
+    /**
+     * Subscription plan
+     */
+    readonly plan: string;
+    /**
+     * Target project
+     */
     readonly project: string;
-    readonly projectVpcId?: string;
-    readonly redis: outputs.GetServiceRedis;
-    readonly redisUserConfig?: outputs.GetServiceRedisUserConfig;
+    /**
+     * Identifier of the VPC the service should be in, if any
+     */
+    readonly projectVpcId: string;
+    /**
+     * Redis specific server provided values
+     */
+    readonly redis: outputs.GetServiceRedi[];
+    /**
+     * Redis user configurable settings
+     */
+    readonly redisUserConfigs: outputs.GetServiceRedisUserConfig[];
+    /**
+     * Service hostname
+     */
     readonly serviceHost: string;
-    readonly serviceIntegrations?: outputs.GetServiceServiceIntegration[];
+    /**
+     * Service integrations to specify when creating a service. Not applied after initial service creation
+     */
+    readonly serviceIntegrations: outputs.GetServiceServiceIntegration[];
+    /**
+     * Service name
+     */
     readonly serviceName: string;
+    /**
+     * Password used for connecting to the service, if applicable
+     */
     readonly servicePassword: string;
+    /**
+     * Service port
+     */
     readonly servicePort: number;
-    readonly serviceType?: string;
+    /**
+     * Service type code
+     */
+    readonly serviceType: string;
+    /**
+     * URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+     */
     readonly serviceUri: string;
+    /**
+     * Username used for connecting to the service, if applicable
+     */
     readonly serviceUsername: string;
+    /**
+     * Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
+     */
     readonly state: string;
-    readonly terminationProtection?: boolean;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
+    readonly staticIps: string[];
+    /**
+     * Prevent service from being deleted. It is recommended to have this enabled for all services.
+     */
+    readonly terminationProtection: boolean;
 }
 
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
@@ -156,43 +248,12 @@ export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getService.
  */
 export interface GetServiceOutputArgs {
-    cassandra?: pulumi.Input<inputs.GetServiceCassandraArgs>;
-    cassandraUserConfig?: pulumi.Input<inputs.GetServiceCassandraUserConfigArgs>;
-    cloudName?: pulumi.Input<string>;
-    components?: pulumi.Input<pulumi.Input<inputs.GetServiceComponentArgs>[]>;
-    elasticsearch?: pulumi.Input<inputs.GetServiceElasticsearchArgs>;
-    elasticsearchUserConfig?: pulumi.Input<inputs.GetServiceElasticsearchUserConfigArgs>;
-    grafana?: pulumi.Input<inputs.GetServiceGrafanaArgs>;
-    grafanaUserConfig?: pulumi.Input<inputs.GetServiceGrafanaUserConfigArgs>;
-    influxdb?: pulumi.Input<inputs.GetServiceInfluxdbArgs>;
-    influxdbUserConfig?: pulumi.Input<inputs.GetServiceInfluxdbUserConfigArgs>;
-    kafka?: pulumi.Input<inputs.GetServiceKafkaArgs>;
-    kafkaConnect?: pulumi.Input<inputs.GetServiceKafkaConnectArgs>;
-    kafkaConnectUserConfig?: pulumi.Input<inputs.GetServiceKafkaConnectUserConfigArgs>;
-    kafkaMirrormaker?: pulumi.Input<inputs.GetServiceKafkaMirrormakerArgs>;
-    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.GetServiceKafkaMirrormakerUserConfigArgs>;
-    kafkaUserConfig?: pulumi.Input<inputs.GetServiceKafkaUserConfigArgs>;
-    maintenanceWindowDow?: pulumi.Input<string>;
-    maintenanceWindowTime?: pulumi.Input<string>;
-    mysql?: pulumi.Input<inputs.GetServiceMysqlArgs>;
-    mysqlUserConfig?: pulumi.Input<inputs.GetServiceMysqlUserConfigArgs>;
-    opensearch?: pulumi.Input<inputs.GetServiceOpensearchArgs>;
-    opensearchUserConfig?: pulumi.Input<inputs.GetServiceOpensearchUserConfigArgs>;
-    pg?: pulumi.Input<inputs.GetServicePgArgs>;
-    pgUserConfig?: pulumi.Input<inputs.GetServicePgUserConfigArgs>;
-    plan?: pulumi.Input<string>;
+    /**
+     * Target project
+     */
     project: pulumi.Input<string>;
-    projectVpcId?: pulumi.Input<string>;
-    redis?: pulumi.Input<inputs.GetServiceRedisArgs>;
-    redisUserConfig?: pulumi.Input<inputs.GetServiceRedisUserConfigArgs>;
-    serviceHost?: pulumi.Input<string>;
-    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.GetServiceServiceIntegrationArgs>[]>;
+    /**
+     * Service name
+     */
     serviceName: pulumi.Input<string>;
-    servicePassword?: pulumi.Input<string>;
-    servicePort?: pulumi.Input<number>;
-    serviceType?: pulumi.Input<string>;
-    serviceUri?: pulumi.Input<string>;
-    serviceUsername?: pulumi.Input<string>;
-    state?: pulumi.Input<string>;
-    terminationProtection?: pulumi.Input<boolean>;
 }

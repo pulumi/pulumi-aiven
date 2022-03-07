@@ -20,10 +20,13 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, account_id=None, available_credits=None, billing_address=None, billing_currency=None, billing_emails=None, billing_extra_text=None, billing_group=None, ca_cert=None, card_id=None, copy_from_project=None, country=None, country_code=None, default_cloud=None, estimated_balance=None, id=None, payment_method=None, project=None, technical_emails=None, use_source_project_billing_group=None, vat_id=None):
+    def __init__(__self__, account_id=None, add_account_owners_admin_access=None, available_credits=None, billing_address=None, billing_currency=None, billing_emails=None, billing_extra_text=None, billing_group=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, default_cloud=None, estimated_balance=None, id=None, payment_method=None, project=None, technical_emails=None, use_source_project_billing_group=None, vat_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if add_account_owners_admin_access and not isinstance(add_account_owners_admin_access, bool):
+            raise TypeError("Expected argument 'add_account_owners_admin_access' to be a bool")
+        pulumi.set(__self__, "add_account_owners_admin_access", add_account_owners_admin_access)
         if available_credits and not isinstance(available_credits, str):
             raise TypeError("Expected argument 'available_credits' to be a str")
         pulumi.set(__self__, "available_credits", available_credits)
@@ -51,9 +54,6 @@ class GetProjectResult:
         if copy_from_project and not isinstance(copy_from_project, str):
             raise TypeError("Expected argument 'copy_from_project' to be a str")
         pulumi.set(__self__, "copy_from_project", copy_from_project)
-        if country and not isinstance(country, str):
-            raise TypeError("Expected argument 'country' to be a str")
-        pulumi.set(__self__, "country", country)
         if country_code and not isinstance(country_code, str):
             raise TypeError("Expected argument 'country_code' to be a str")
         pulumi.set(__self__, "country_code", country_code)
@@ -84,97 +84,105 @@ class GetProjectResult:
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[str]:
+    def account_id(self) -> str:
         """
-        is an optional property to link a project to already an existing account by 
-        using account ID.
+        An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="addAccountOwnersAdminAccess")
+    def add_account_owners_admin_access(self) -> bool:
+        """
+        If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+        """
+        return pulumi.get(self, "add_account_owners_admin_access")
 
     @property
     @pulumi.getter(name="availableCredits")
     def available_credits(self) -> str:
         """
-        is a computed property returning the amount of platform credits available to
-        the project. This could be your free trial or other promotional credits.
+        The amount of platform credits available to the project. This could be your free trial or other promotional credits.
         """
         return pulumi.get(self, "available_credits")
 
     @property
     @pulumi.getter(name="billingAddress")
-    def billing_address(self) -> Optional[str]:
+    def billing_address(self) -> str:
+        """
+        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
+        """
         return pulumi.get(self, "billing_address")
 
     @property
     @pulumi.getter(name="billingCurrency")
-    def billing_currency(self) -> Optional[str]:
+    def billing_currency(self) -> str:
+        """
+        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
+        """
         return pulumi.get(self, "billing_currency")
 
     @property
     @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> Optional[Sequence[str]]:
+    def billing_emails(self) -> Sequence[str]:
+        """
+        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
+        """
         return pulumi.get(self, "billing_emails")
 
     @property
     @pulumi.getter(name="billingExtraText")
-    def billing_extra_text(self) -> Optional[str]:
+    def billing_extra_text(self) -> str:
+        """
+        **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
+        """
         return pulumi.get(self, "billing_extra_text")
 
     @property
     @pulumi.getter(name="billingGroup")
-    def billing_group(self) -> Optional[str]:
+    def billing_group(self) -> str:
+        """
+        The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+        """
         return pulumi.get(self, "billing_group")
 
     @property
     @pulumi.getter(name="caCert")
     def ca_cert(self) -> str:
         """
-        is a computed property that can be used to read the CA certificate of the
-        project. This is required for configuring clients that connect to certain services like
-        Kafka. This value cannot be set, only read.
+        The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
         """
         return pulumi.get(self, "ca_cert")
 
     @property
     @pulumi.getter(name="cardId")
-    def card_id(self) -> Optional[str]:
+    def card_id(self) -> str:
         """
-        is either the full card UUID or the last 4 digits of the card. As the full
-        UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
-        the card. This can be omitted if `copy_from_project` is used to copy billing info from
-        another project.
+        **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copy_from_project` is used to copy billing info from another project.
         """
         return pulumi.get(self, "card_id")
 
     @property
     @pulumi.getter(name="copyFromProject")
-    def copy_from_project(self) -> Optional[str]:
+    def copy_from_project(self) -> str:
         """
-        is the name of another project used to copy billing information and
-        some other project attributes like technical contacts from. This is mostly relevant when
-        an existing project has billing type set to invoice and that needs to be copied over to a
-        new project. (Setting billing is otherwise not allowed over the API.) This only has
-        effect when the project is created.
+        is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "copy_from_project")
 
     @property
-    @pulumi.getter
-    def country(self) -> str:
-        return pulumi.get(self, "country")
-
-    @property
     @pulumi.getter(name="countryCode")
-    def country_code(self) -> Optional[str]:
+    def country_code(self) -> str:
+        """
+        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
+        """
         return pulumi.get(self, "country_code")
 
     @property
     @pulumi.getter(name="defaultCloud")
-    def default_cloud(self) -> Optional[str]:
+    def default_cloud(self) -> str:
         """
-        defines the default cloud provider and region where services are
-        hosted. This can be changed freely after the project is created. This will not affect existing
-        services.
+        Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         """
         return pulumi.get(self, "default_cloud")
 
@@ -182,8 +190,7 @@ class GetProjectResult:
     @pulumi.getter(name="estimatedBalance")
     def estimated_balance(self) -> str:
         """
-        is a computed property returning the current accumulated bill for this
-        project in the current billing period.
+        The current accumulated bill for this project in the current billing period.
         """
         return pulumi.get(self, "estimated_balance")
 
@@ -199,34 +206,40 @@ class GetProjectResult:
     @pulumi.getter(name="paymentMethod")
     def payment_method(self) -> str:
         """
-        is a computed property returning the method of invoicing used for payments for
-        this project, e.g. "card".
+        The method of invoicing used for payments for this project, e.g. `card`.
         """
         return pulumi.get(self, "payment_method")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="technicalEmails")
-    def technical_emails(self) -> Optional[Sequence[str]]:
+    def technical_emails(self) -> Sequence[str]:
         """
-        defines the email addresses that will receive alerts about
-        upcoming maintenance updates or warnings about service instability. It is a good practice to keep
-        this up-to-date to be aware of any potential issues with your project.
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         """
         return pulumi.get(self, "technical_emails")
 
     @property
     @pulumi.getter(name="useSourceProjectBillingGroup")
-    def use_source_project_billing_group(self) -> Optional[bool]:
+    def use_source_project_billing_group(self) -> bool:
+        """
+        Use the same billing group that is used in source project.
+        """
         return pulumi.get(self, "use_source_project_billing_group")
 
     @property
     @pulumi.getter(name="vatId")
-    def vat_id(self) -> Optional[str]:
+    def vat_id(self) -> str:
+        """
+        **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
+        """
         return pulumi.get(self, "vat_id")
 
 
@@ -237,6 +250,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             yield self
         return GetProjectResult(
             account_id=self.account_id,
+            add_account_owners_admin_access=self.add_account_owners_admin_access,
             available_credits=self.available_credits,
             billing_address=self.billing_address,
             billing_currency=self.billing_currency,
@@ -246,7 +260,6 @@ class AwaitableGetProjectResult(GetProjectResult):
             ca_cert=self.ca_cert,
             card_id=self.card_id,
             copy_from_project=self.copy_from_project,
-            country=self.country,
             country_code=self.country_code,
             default_cloud=self.default_cloud,
             estimated_balance=self.estimated_balance,
@@ -258,29 +271,9 @@ class AwaitableGetProjectResult(GetProjectResult):
             vat_id=self.vat_id)
 
 
-def get_project(account_id: Optional[str] = None,
-                available_credits: Optional[str] = None,
-                billing_address: Optional[str] = None,
-                billing_currency: Optional[str] = None,
-                billing_emails: Optional[Sequence[str]] = None,
-                billing_extra_text: Optional[str] = None,
-                billing_group: Optional[str] = None,
-                ca_cert: Optional[str] = None,
-                card_id: Optional[str] = None,
-                copy_from_project: Optional[str] = None,
-                country: Optional[str] = None,
-                country_code: Optional[str] = None,
-                default_cloud: Optional[str] = None,
-                estimated_balance: Optional[str] = None,
-                payment_method: Optional[str] = None,
-                project: Optional[str] = None,
-                technical_emails: Optional[Sequence[str]] = None,
-                use_source_project_billing_group: Optional[bool] = None,
-                vat_id: Optional[str] = None,
+def get_project(project: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
-    ## # Project Data Source
-
     The Project data source provides information about the existing Aiven Project.
 
     ## Example Usage
@@ -293,56 +286,10 @@ def get_project(account_id: Optional[str] = None,
     ```
 
 
-    :param str account_id: is an optional property to link a project to already an existing account by 
-           using account ID.
-    :param str available_credits: is a computed property returning the amount of platform credits available to
-           the project. This could be your free trial or other promotional credits.
-    :param str ca_cert: is a computed property that can be used to read the CA certificate of the
-           project. This is required for configuring clients that connect to certain services like
-           Kafka. This value cannot be set, only read.
-    :param str card_id: is either the full card UUID or the last 4 digits of the card. As the full
-           UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
-           the card. This can be omitted if `copy_from_project` is used to copy billing info from
-           another project.
-    :param str copy_from_project: is the name of another project used to copy billing information and
-           some other project attributes like technical contacts from. This is mostly relevant when
-           an existing project has billing type set to invoice and that needs to be copied over to a
-           new project. (Setting billing is otherwise not allowed over the API.) This only has
-           effect when the project is created.
-    :param str default_cloud: defines the default cloud provider and region where services are
-           hosted. This can be changed freely after the project is created. This will not affect existing
-           services.
-    :param str estimated_balance: is a computed property returning the current accumulated bill for this
-           project in the current billing period.
-    :param str payment_method: is a computed property returning the method of invoicing used for payments for
-           this project, e.g. "card".
-    :param str project: defines the name of the project. Name must be globally unique (between all
-           Aiven customers) and cannot be changed later without destroying and re-creating the
-           project, including all sub-resources.
-    :param Sequence[str] technical_emails: defines the email addresses that will receive alerts about
-           upcoming maintenance updates or warnings about service instability. It is a good practice to keep
-           this up-to-date to be aware of any potential issues with your project.
+    :param str project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
     """
     __args__ = dict()
-    __args__['accountId'] = account_id
-    __args__['availableCredits'] = available_credits
-    __args__['billingAddress'] = billing_address
-    __args__['billingCurrency'] = billing_currency
-    __args__['billingEmails'] = billing_emails
-    __args__['billingExtraText'] = billing_extra_text
-    __args__['billingGroup'] = billing_group
-    __args__['caCert'] = ca_cert
-    __args__['cardId'] = card_id
-    __args__['copyFromProject'] = copy_from_project
-    __args__['country'] = country
-    __args__['countryCode'] = country_code
-    __args__['defaultCloud'] = default_cloud
-    __args__['estimatedBalance'] = estimated_balance
-    __args__['paymentMethod'] = payment_method
     __args__['project'] = project
-    __args__['technicalEmails'] = technical_emails
-    __args__['useSourceProjectBillingGroup'] = use_source_project_billing_group
-    __args__['vatId'] = vat_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -351,6 +298,7 @@ def get_project(account_id: Optional[str] = None,
 
     return AwaitableGetProjectResult(
         account_id=__ret__.account_id,
+        add_account_owners_admin_access=__ret__.add_account_owners_admin_access,
         available_credits=__ret__.available_credits,
         billing_address=__ret__.billing_address,
         billing_currency=__ret__.billing_currency,
@@ -360,7 +308,6 @@ def get_project(account_id: Optional[str] = None,
         ca_cert=__ret__.ca_cert,
         card_id=__ret__.card_id,
         copy_from_project=__ret__.copy_from_project,
-        country=__ret__.country,
         country_code=__ret__.country_code,
         default_cloud=__ret__.default_cloud,
         estimated_balance=__ret__.estimated_balance,
@@ -373,29 +320,9 @@ def get_project(account_id: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_project)
-def get_project_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
-                       available_credits: Optional[pulumi.Input[Optional[str]]] = None,
-                       billing_address: Optional[pulumi.Input[Optional[str]]] = None,
-                       billing_currency: Optional[pulumi.Input[Optional[str]]] = None,
-                       billing_emails: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                       billing_extra_text: Optional[pulumi.Input[Optional[str]]] = None,
-                       billing_group: Optional[pulumi.Input[Optional[str]]] = None,
-                       ca_cert: Optional[pulumi.Input[Optional[str]]] = None,
-                       card_id: Optional[pulumi.Input[Optional[str]]] = None,
-                       copy_from_project: Optional[pulumi.Input[Optional[str]]] = None,
-                       country: Optional[pulumi.Input[Optional[str]]] = None,
-                       country_code: Optional[pulumi.Input[Optional[str]]] = None,
-                       default_cloud: Optional[pulumi.Input[Optional[str]]] = None,
-                       estimated_balance: Optional[pulumi.Input[Optional[str]]] = None,
-                       payment_method: Optional[pulumi.Input[Optional[str]]] = None,
-                       project: Optional[pulumi.Input[str]] = None,
-                       technical_emails: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                       use_source_project_billing_group: Optional[pulumi.Input[Optional[bool]]] = None,
-                       vat_id: Optional[pulumi.Input[Optional[str]]] = None,
+def get_project_output(project: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
-    ## # Project Data Source
-
     The Project data source provides information about the existing Aiven Project.
 
     ## Example Usage
@@ -408,34 +335,6 @@ def get_project_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
-    :param str account_id: is an optional property to link a project to already an existing account by 
-           using account ID.
-    :param str available_credits: is a computed property returning the amount of platform credits available to
-           the project. This could be your free trial or other promotional credits.
-    :param str ca_cert: is a computed property that can be used to read the CA certificate of the
-           project. This is required for configuring clients that connect to certain services like
-           Kafka. This value cannot be set, only read.
-    :param str card_id: is either the full card UUID or the last 4 digits of the card. As the full
-           UUID is not shown in the UI it is typically easier to use the last 4 digits to identify
-           the card. This can be omitted if `copy_from_project` is used to copy billing info from
-           another project.
-    :param str copy_from_project: is the name of another project used to copy billing information and
-           some other project attributes like technical contacts from. This is mostly relevant when
-           an existing project has billing type set to invoice and that needs to be copied over to a
-           new project. (Setting billing is otherwise not allowed over the API.) This only has
-           effect when the project is created.
-    :param str default_cloud: defines the default cloud provider and region where services are
-           hosted. This can be changed freely after the project is created. This will not affect existing
-           services.
-    :param str estimated_balance: is a computed property returning the current accumulated bill for this
-           project in the current billing period.
-    :param str payment_method: is a computed property returning the method of invoicing used for payments for
-           this project, e.g. "card".
-    :param str project: defines the name of the project. Name must be globally unique (between all
-           Aiven customers) and cannot be changed later without destroying and re-creating the
-           project, including all sub-resources.
-    :param Sequence[str] technical_emails: defines the email addresses that will receive alerts about
-           upcoming maintenance updates or warnings about service instability. It is a good practice to keep
-           this up-to-date to be aware of any potential issues with your project.
+    :param str project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
     """
     ...

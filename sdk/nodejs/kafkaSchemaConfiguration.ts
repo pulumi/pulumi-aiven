@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Kafka Schema Configuration Resource
- *
  * The Kafka Schema Configuration resource allows the creation and management of Aiven Kafka Schema Configurations.
  *
  * ## Example Usage
@@ -51,21 +49,15 @@ export class KafkaSchemaConfiguration extends pulumi.CustomResource {
     }
 
     /**
-     * is the Global Kafka Schema configuration compatibility level when defined 
-     * for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-     * compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
-     * resource. If the compatibility level not specified for the individual subject by default,
-     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+     * Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
      */
-    public readonly compatibilityLevel!: pulumi.Output<string>;
+    public readonly compatibilityLevel!: pulumi.Output<string | undefined>;
     /**
-     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Service to link the Kafka Schemas Configuration to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -87,9 +79,6 @@ export class KafkaSchemaConfiguration extends pulumi.CustomResource {
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as KafkaSchemaConfigurationArgs | undefined;
-            if ((!args || args.compatibilityLevel === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'compatibilityLevel'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -110,21 +99,15 @@ export class KafkaSchemaConfiguration extends pulumi.CustomResource {
  */
 export interface KafkaSchemaConfigurationState {
     /**
-     * is the Global Kafka Schema configuration compatibility level when defined 
-     * for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-     * compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
-     * resource. If the compatibility level not specified for the individual subject by default,
-     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+     * Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
      */
     compatibilityLevel?: pulumi.Input<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Service to link the Kafka Schemas Configuration to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -134,21 +117,15 @@ export interface KafkaSchemaConfigurationState {
  */
 export interface KafkaSchemaConfigurationArgs {
     /**
-     * is the Global Kafka Schema configuration compatibility level when defined 
-     * for `aiven.KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-     * compatibility level can be overridden for a specific subject when used in `aiven.KafkaSchema`
-     * resource. If the compatibility level not specified for the individual subject by default,
-     * it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-     * `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+     * Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
      */
-    compatibilityLevel: pulumi.Input<string>;
+    compatibilityLevel?: pulumi.Input<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to. 
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Service to link the Kafka Schemas Configuration to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

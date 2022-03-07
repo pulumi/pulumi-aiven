@@ -22,40 +22,28 @@ func GetCassanda(ctx *pulumi.Context, args *GetCassandaArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getCassanda.
 type GetCassandaArgs struct {
-	Cassandra             *GetCassandaCassandra           `pulumi:"cassandra"`
-	CassandraUserConfig   *GetCassandaCassandraUserConfig `pulumi:"cassandraUserConfig"`
-	CloudName             *string                         `pulumi:"cloudName"`
-	Components            []GetCassandaComponent          `pulumi:"components"`
-	MaintenanceWindowDow  *string                         `pulumi:"maintenanceWindowDow"`
-	MaintenanceWindowTime *string                         `pulumi:"maintenanceWindowTime"`
-	Plan                  *string                         `pulumi:"plan"`
-	Project               string                          `pulumi:"project"`
-	ProjectVpcId          *string                         `pulumi:"projectVpcId"`
-	ServiceHost           *string                         `pulumi:"serviceHost"`
-	ServiceIntegrations   []GetCassandaServiceIntegration `pulumi:"serviceIntegrations"`
-	ServiceName           string                          `pulumi:"serviceName"`
-	ServicePassword       *string                         `pulumi:"servicePassword"`
-	ServicePort           *int                            `pulumi:"servicePort"`
-	ServiceType           *string                         `pulumi:"serviceType"`
-	ServiceUri            *string                         `pulumi:"serviceUri"`
-	ServiceUsername       *string                         `pulumi:"serviceUsername"`
-	State                 *string                         `pulumi:"state"`
-	TerminationProtection *bool                           `pulumi:"terminationProtection"`
+	Project     string `pulumi:"project"`
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getCassanda.
 type GetCassandaResult struct {
-	Cassandra           GetCassandaCassandra            `pulumi:"cassandra"`
-	CassandraUserConfig *GetCassandaCassandraUserConfig `pulumi:"cassandraUserConfig"`
-	CloudName           *string                         `pulumi:"cloudName"`
-	Components          []GetCassandaComponent          `pulumi:"components"`
+	CassandraUserConfigs []GetCassandaCassandraUserConfig `pulumi:"cassandraUserConfigs"`
+	Cassandras           []GetCassandaCassandra           `pulumi:"cassandras"`
+	CloudName            string                           `pulumi:"cloudName"`
+	Components           []GetCassandaComponent           `pulumi:"components"`
+	DiskSpace            string                           `pulumi:"diskSpace"`
+	DiskSpaceCap         string                           `pulumi:"diskSpaceCap"`
+	DiskSpaceDefault     string                           `pulumi:"diskSpaceDefault"`
+	DiskSpaceStep        string                           `pulumi:"diskSpaceStep"`
+	DiskSpaceUsed        string                           `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                    string                          `pulumi:"id"`
-	MaintenanceWindowDow  *string                         `pulumi:"maintenanceWindowDow"`
-	MaintenanceWindowTime *string                         `pulumi:"maintenanceWindowTime"`
-	Plan                  *string                         `pulumi:"plan"`
+	MaintenanceWindowDow  string                          `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowTime string                          `pulumi:"maintenanceWindowTime"`
+	Plan                  string                          `pulumi:"plan"`
 	Project               string                          `pulumi:"project"`
-	ProjectVpcId          *string                         `pulumi:"projectVpcId"`
+	ProjectVpcId          string                          `pulumi:"projectVpcId"`
 	ServiceHost           string                          `pulumi:"serviceHost"`
 	ServiceIntegrations   []GetCassandaServiceIntegration `pulumi:"serviceIntegrations"`
 	ServiceName           string                          `pulumi:"serviceName"`
@@ -65,7 +53,8 @@ type GetCassandaResult struct {
 	ServiceUri            string                          `pulumi:"serviceUri"`
 	ServiceUsername       string                          `pulumi:"serviceUsername"`
 	State                 string                          `pulumi:"state"`
-	TerminationProtection *bool                           `pulumi:"terminationProtection"`
+	StaticIps             []string                        `pulumi:"staticIps"`
+	TerminationProtection bool                            `pulumi:"terminationProtection"`
 }
 
 func GetCassandaOutput(ctx *pulumi.Context, args GetCassandaOutputArgs, opts ...pulumi.InvokeOption) GetCassandaResultOutput {
@@ -79,25 +68,8 @@ func GetCassandaOutput(ctx *pulumi.Context, args GetCassandaOutputArgs, opts ...
 
 // A collection of arguments for invoking getCassanda.
 type GetCassandaOutputArgs struct {
-	Cassandra             GetCassandaCassandraPtrInput            `pulumi:"cassandra"`
-	CassandraUserConfig   GetCassandaCassandraUserConfigPtrInput  `pulumi:"cassandraUserConfig"`
-	CloudName             pulumi.StringPtrInput                   `pulumi:"cloudName"`
-	Components            GetCassandaComponentArrayInput          `pulumi:"components"`
-	MaintenanceWindowDow  pulumi.StringPtrInput                   `pulumi:"maintenanceWindowDow"`
-	MaintenanceWindowTime pulumi.StringPtrInput                   `pulumi:"maintenanceWindowTime"`
-	Plan                  pulumi.StringPtrInput                   `pulumi:"plan"`
-	Project               pulumi.StringInput                      `pulumi:"project"`
-	ProjectVpcId          pulumi.StringPtrInput                   `pulumi:"projectVpcId"`
-	ServiceHost           pulumi.StringPtrInput                   `pulumi:"serviceHost"`
-	ServiceIntegrations   GetCassandaServiceIntegrationArrayInput `pulumi:"serviceIntegrations"`
-	ServiceName           pulumi.StringInput                      `pulumi:"serviceName"`
-	ServicePassword       pulumi.StringPtrInput                   `pulumi:"servicePassword"`
-	ServicePort           pulumi.IntPtrInput                      `pulumi:"servicePort"`
-	ServiceType           pulumi.StringPtrInput                   `pulumi:"serviceType"`
-	ServiceUri            pulumi.StringPtrInput                   `pulumi:"serviceUri"`
-	ServiceUsername       pulumi.StringPtrInput                   `pulumi:"serviceUsername"`
-	State                 pulumi.StringPtrInput                   `pulumi:"state"`
-	TerminationProtection pulumi.BoolPtrInput                     `pulumi:"terminationProtection"`
+	Project     pulumi.StringInput `pulumi:"project"`
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (GetCassandaOutputArgs) ElementType() reflect.Type {
@@ -119,20 +91,40 @@ func (o GetCassandaResultOutput) ToGetCassandaResultOutputWithContext(ctx contex
 	return o
 }
 
-func (o GetCassandaResultOutput) Cassandra() GetCassandaCassandraOutput {
-	return o.ApplyT(func(v GetCassandaResult) GetCassandaCassandra { return v.Cassandra }).(GetCassandaCassandraOutput)
+func (o GetCassandaResultOutput) CassandraUserConfigs() GetCassandaCassandraUserConfigArrayOutput {
+	return o.ApplyT(func(v GetCassandaResult) []GetCassandaCassandraUserConfig { return v.CassandraUserConfigs }).(GetCassandaCassandraUserConfigArrayOutput)
 }
 
-func (o GetCassandaResultOutput) CassandraUserConfig() GetCassandaCassandraUserConfigPtrOutput {
-	return o.ApplyT(func(v GetCassandaResult) *GetCassandaCassandraUserConfig { return v.CassandraUserConfig }).(GetCassandaCassandraUserConfigPtrOutput)
+func (o GetCassandaResultOutput) Cassandras() GetCassandaCassandraArrayOutput {
+	return o.ApplyT(func(v GetCassandaResult) []GetCassandaCassandra { return v.Cassandras }).(GetCassandaCassandraArrayOutput)
 }
 
-func (o GetCassandaResultOutput) CloudName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetCassandaResult) *string { return v.CloudName }).(pulumi.StringPtrOutput)
+func (o GetCassandaResultOutput) CloudName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandaResult) string { return v.CloudName }).(pulumi.StringOutput)
 }
 
 func (o GetCassandaResultOutput) Components() GetCassandaComponentArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []GetCassandaComponent { return v.Components }).(GetCassandaComponentArrayOutput)
+}
+
+func (o GetCassandaResultOutput) DiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandaResult) string { return v.DiskSpace }).(pulumi.StringOutput)
+}
+
+func (o GetCassandaResultOutput) DiskSpaceCap() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandaResult) string { return v.DiskSpaceCap }).(pulumi.StringOutput)
+}
+
+func (o GetCassandaResultOutput) DiskSpaceDefault() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandaResult) string { return v.DiskSpaceDefault }).(pulumi.StringOutput)
+}
+
+func (o GetCassandaResultOutput) DiskSpaceStep() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandaResult) string { return v.DiskSpaceStep }).(pulumi.StringOutput)
+}
+
+func (o GetCassandaResultOutput) DiskSpaceUsed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandaResult) string { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -140,24 +132,24 @@ func (o GetCassandaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetCassandaResultOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetCassandaResult) *string { return v.MaintenanceWindowDow }).(pulumi.StringPtrOutput)
+func (o GetCassandaResultOutput) MaintenanceWindowDow() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandaResult) string { return v.MaintenanceWindowDow }).(pulumi.StringOutput)
 }
 
-func (o GetCassandaResultOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetCassandaResult) *string { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
+func (o GetCassandaResultOutput) MaintenanceWindowTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandaResult) string { return v.MaintenanceWindowTime }).(pulumi.StringOutput)
 }
 
-func (o GetCassandaResultOutput) Plan() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetCassandaResult) *string { return v.Plan }).(pulumi.StringPtrOutput)
+func (o GetCassandaResultOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandaResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
 func (o GetCassandaResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-func (o GetCassandaResultOutput) ProjectVpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetCassandaResult) *string { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+func (o GetCassandaResultOutput) ProjectVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandaResult) string { return v.ProjectVpcId }).(pulumi.StringOutput)
 }
 
 func (o GetCassandaResultOutput) ServiceHost() pulumi.StringOutput {
@@ -196,8 +188,12 @@ func (o GetCassandaResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-func (o GetCassandaResultOutput) TerminationProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetCassandaResult) *bool { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+func (o GetCassandaResultOutput) StaticIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCassandaResult) []string { return v.StaticIps }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCassandaResultOutput) TerminationProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCassandaResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
 }
 
 func init() {

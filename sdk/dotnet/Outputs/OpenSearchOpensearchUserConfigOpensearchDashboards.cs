@@ -13,20 +13,8 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class OpenSearchOpensearchUserConfigOpensearchDashboards
     {
-        /// <summary>
-        /// Enable or disable opensearch_dashboards.
-        /// </summary>
         public readonly string? Enabled;
-        /// <summary>
-        /// Limits the maximum amount of memory (in MiB) the Opensearch dashboards
-        /// process can use. This sets the max_old_space_size option of the nodejs running the Opensearch dashboards.
-        /// Note: the memory reserved by Opensearch dashboards is not available for Opensearch.
-        /// </summary>
         public readonly string? MaxOldSpaceSize;
-        /// <summary>
-        /// Timeout in milliseconds for requests made by opensearch_dashboards
-        /// towards Opensearch.
-        /// </summary>
         public readonly string? OpensearchRequestTimeout;
 
         [OutputConstructor]

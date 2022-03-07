@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Redis Resource
-    /// 
     /// The Redis resource allows the creation and management of Aiven Redis services.
     /// 
     /// ## Example Usage
@@ -50,13 +48,7 @@ namespace Pulumi.Aiven
     public partial class Redis : Pulumi.CustomResource
     {
         /// <summary>
-        /// defines where the cloud provider and region where the service is hosted
-        /// in. This can be changed freely after service is created. Changing the value will trigger
-        /// a potentially lengthy migration process for the service. Format is cloud provider name
-        /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        /// specific region name. These are documented on each Cloud provider's own support articles,
-        /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        /// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         /// </summary>
         [Output("cloudName")]
         public Output<string?> CloudName { get; private set; } = null!;
@@ -68,66 +60,79 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.RedisComponent>> Components { get; private set; } = null!;
 
         /// <summary>
-        /// day of week when maintenance operations should be performed. 
-        /// On monday, tuesday, wednesday, etc.
+        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// </summary>
+        [Output("diskSpace")]
+        public Output<string?> DiskSpace { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        /// </summary>
+        [Output("diskSpaceCap")]
+        public Output<string> DiskSpaceCap { get; private set; } = null!;
+
+        /// <summary>
+        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        /// </summary>
+        [Output("diskSpaceDefault")]
+        public Output<string> DiskSpaceDefault { get; private set; } = null!;
+
+        /// <summary>
+        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        /// </summary>
+        [Output("diskSpaceStep")]
+        public Output<string> DiskSpaceStep { get; private set; } = null!;
+
+        /// <summary>
+        /// Disk space that service is currently using
+        /// </summary>
+        [Output("diskSpaceUsed")]
+        public Output<string> DiskSpaceUsed { get; private set; } = null!;
+
+        /// <summary>
+        /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         /// </summary>
         [Output("maintenanceWindowDow")]
         public Output<string?> MaintenanceWindowDow { get; private set; } = null!;
 
         /// <summary>
-        /// time of day when maintenance operations should be performed. 
-        /// UTC time in HH:mm:ss format.
+        /// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         /// </summary>
         [Output("maintenanceWindowTime")]
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
-        /// defines what kind of computing resources are allocated for the service. It can
-        /// be changed after creation, though there are some restrictions when going to a smaller
-        /// plan such as the new plan must have sufficient amount of disk space to store all current
-        /// data and switching to a plan with fewer nodes might not be supported. The basic plan
-        /// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        /// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        /// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Output("plan")]
         public Output<string?> Plan { get; private set; } = null!;
 
         /// <summary>
-        /// identifies the project the service belongs to. To set up proper dependency
-        /// between the project and the service, refer to the project as shown in the above example.
-        /// Project cannot be changed later without destroying and re-creating the service.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// optionally specifies the VPC the service should run in. If the value
-        /// is not set the service is not run inside a VPC. When set, the value should be given as a
-        /// reference as shown above to set up dependencies correctly and the VPC must be in the same
-        /// cloud and region as the service itself. Project can be freely moved to and from VPC after
-        /// creation but doing so triggers migration to new servers so the operation can take
-        /// significant amount of time to complete if the service has a lot of data.
+        /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         /// </summary>
         [Output("projectVpcId")]
         public Output<string?> ProjectVpcId { get; private set; } = null!;
 
         /// <summary>
-        /// Allow clients to connect to redis from the public internet for service 
-        /// nodes that are in a project VPC or another type of private network
+        /// Redis server provided values
         /// </summary>
         [Output("redis")]
-        public Output<Outputs.RedisRedis> RedisServer { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RedisRedi>> RedisServer { get; private set; } = null!;
 
         /// <summary>
-        /// defines Redis specific additional configuration options. The following 
-        /// configuration options available:
+        /// Redis user configurable settings
         /// </summary>
         [Output("redisUserConfig")]
         public Output<Outputs.RedisRedisUserConfig?> RedisUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Redis hostname.
+        /// The hostname of the service.
         /// </summary>
         [Output("serviceHost")]
         public Output<string> ServiceHost { get; private set; } = null!;
@@ -139,21 +144,19 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.RedisServiceIntegration>> ServiceIntegrations { get; private set; } = null!;
 
         /// <summary>
-        /// specifies the actual name of the service. The name cannot be changed
-        /// later without destroying and re-creating the service so name should be picked based on
-        /// intended service usage rather than current attributes.
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Password used for connecting to the Redis service, if applicable.
+        /// Password used for connecting to the service, if applicable
         /// </summary>
         [Output("servicePassword")]
         public Output<string> ServicePassword { get; private set; } = null!;
 
         /// <summary>
-        /// Redis port.
+        /// The port of the service
         /// </summary>
         [Output("servicePort")]
         public Output<int> ServicePort { get; private set; } = null!;
@@ -165,29 +168,31 @@ namespace Pulumi.Aiven
         public Output<string> ServiceType { get; private set; } = null!;
 
         /// <summary>
-        /// URI for connecting to the Redis service.
+        /// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         /// </summary>
         [Output("serviceUri")]
         public Output<string> ServiceUri { get; private set; } = null!;
 
         /// <summary>
-        /// Username used for connecting to the Redis service, if applicable.
+        /// Username used for connecting to the service, if applicable
         /// </summary>
         [Output("serviceUsername")]
         public Output<string> ServiceUsername { get; private set; } = null!;
 
         /// <summary>
-        /// Service state.
+        /// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// prevents the service from being deleted. It is recommended to
-        /// set this to `true` for all production services to prevent unintentional service
-        /// deletion. This does not shield against deleting databases or topics but for services
-        /// with backups much of the content can at least be restored from backup in case accidental
-        /// deletion is done.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
+        [Output("staticIps")]
+        public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
+
+        /// <summary>
+        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Output("terminationProtection")]
         public Output<bool?> TerminationProtection { get; private set; } = null!;
@@ -239,72 +244,49 @@ namespace Pulumi.Aiven
     public sealed class RedisArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// defines where the cloud provider and region where the service is hosted
-        /// in. This can be changed freely after service is created. Changing the value will trigger
-        /// a potentially lengthy migration process for the service. Format is cloud provider name
-        /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        /// specific region name. These are documented on each Cloud provider's own support articles,
-        /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        /// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// day of week when maintenance operations should be performed. 
-        /// On monday, tuesday, wednesday, etc.
+        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// </summary>
+        [Input("diskSpace")]
+        public Input<string>? DiskSpace { get; set; }
+
+        /// <summary>
+        /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         /// </summary>
         [Input("maintenanceWindowDow")]
         public Input<string>? MaintenanceWindowDow { get; set; }
 
         /// <summary>
-        /// time of day when maintenance operations should be performed. 
-        /// UTC time in HH:mm:ss format.
+        /// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         /// </summary>
         [Input("maintenanceWindowTime")]
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// defines what kind of computing resources are allocated for the service. It can
-        /// be changed after creation, though there are some restrictions when going to a smaller
-        /// plan such as the new plan must have sufficient amount of disk space to store all current
-        /// data and switching to a plan with fewer nodes might not be supported. The basic plan
-        /// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        /// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        /// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
 
         /// <summary>
-        /// identifies the project the service belongs to. To set up proper dependency
-        /// between the project and the service, refer to the project as shown in the above example.
-        /// Project cannot be changed later without destroying and re-creating the service.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// optionally specifies the VPC the service should run in. If the value
-        /// is not set the service is not run inside a VPC. When set, the value should be given as a
-        /// reference as shown above to set up dependencies correctly and the VPC must be in the same
-        /// cloud and region as the service itself. Project can be freely moved to and from VPC after
-        /// creation but doing so triggers migration to new servers so the operation can take
-        /// significant amount of time to complete if the service has a lot of data.
+        /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         /// </summary>
         [Input("projectVpcId")]
         public Input<string>? ProjectVpcId { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to redis from the public internet for service 
-        /// nodes that are in a project VPC or another type of private network
-        /// </summary>
-        [Input("redis")]
-        public Input<Inputs.RedisRedisArgs>? RedisServer { get; set; }
-
-        /// <summary>
-        /// defines Redis specific additional configuration options. The following 
-        /// configuration options available:
+        /// Redis user configurable settings
         /// </summary>
         [Input("redisUserConfig")]
         public Input<Inputs.RedisRedisUserConfigArgs>? RedisUserConfig { get; set; }
@@ -322,19 +304,25 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// specifies the actual name of the service. The name cannot be changed
-        /// later without destroying and re-creating the service so name should be picked based on
-        /// intended service usage rather than current attributes.
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("staticIps")]
+        private InputList<string>? _staticIps;
+
         /// <summary>
-        /// prevents the service from being deleted. It is recommended to
-        /// set this to `true` for all production services to prevent unintentional service
-        /// deletion. This does not shield against deleting databases or topics but for services
-        /// with backups much of the content can at least be restored from backup in case accidental
-        /// deletion is done.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
+        public InputList<string> StaticIps
+        {
+            get => _staticIps ?? (_staticIps = new InputList<string>());
+            set => _staticIps = value;
+        }
+
+        /// <summary>
+        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
@@ -347,13 +335,7 @@ namespace Pulumi.Aiven
     public sealed class RedisState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// defines where the cloud provider and region where the service is hosted
-        /// in. This can be changed freely after service is created. Changing the value will trigger
-        /// a potentially lengthy migration process for the service. Format is cloud provider name
-        /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        /// specific region name. These are documented on each Cloud provider's own support articles,
-        /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        /// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
@@ -371,66 +353,85 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// day of week when maintenance operations should be performed. 
-        /// On monday, tuesday, wednesday, etc.
+        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// </summary>
+        [Input("diskSpace")]
+        public Input<string>? DiskSpace { get; set; }
+
+        /// <summary>
+        /// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        /// </summary>
+        [Input("diskSpaceCap")]
+        public Input<string>? DiskSpaceCap { get; set; }
+
+        /// <summary>
+        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        /// </summary>
+        [Input("diskSpaceDefault")]
+        public Input<string>? DiskSpaceDefault { get; set; }
+
+        /// <summary>
+        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        /// </summary>
+        [Input("diskSpaceStep")]
+        public Input<string>? DiskSpaceStep { get; set; }
+
+        /// <summary>
+        /// Disk space that service is currently using
+        /// </summary>
+        [Input("diskSpaceUsed")]
+        public Input<string>? DiskSpaceUsed { get; set; }
+
+        /// <summary>
+        /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         /// </summary>
         [Input("maintenanceWindowDow")]
         public Input<string>? MaintenanceWindowDow { get; set; }
 
         /// <summary>
-        /// time of day when maintenance operations should be performed. 
-        /// UTC time in HH:mm:ss format.
+        /// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         /// </summary>
         [Input("maintenanceWindowTime")]
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// defines what kind of computing resources are allocated for the service. It can
-        /// be changed after creation, though there are some restrictions when going to a smaller
-        /// plan such as the new plan must have sufficient amount of disk space to store all current
-        /// data and switching to a plan with fewer nodes might not be supported. The basic plan
-        /// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        /// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        /// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
 
         /// <summary>
-        /// identifies the project the service belongs to. To set up proper dependency
-        /// between the project and the service, refer to the project as shown in the above example.
-        /// Project cannot be changed later without destroying and re-creating the service.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// optionally specifies the VPC the service should run in. If the value
-        /// is not set the service is not run inside a VPC. When set, the value should be given as a
-        /// reference as shown above to set up dependencies correctly and the VPC must be in the same
-        /// cloud and region as the service itself. Project can be freely moved to and from VPC after
-        /// creation but doing so triggers migration to new servers so the operation can take
-        /// significant amount of time to complete if the service has a lot of data.
+        /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         /// </summary>
         [Input("projectVpcId")]
         public Input<string>? ProjectVpcId { get; set; }
 
-        /// <summary>
-        /// Allow clients to connect to redis from the public internet for service 
-        /// nodes that are in a project VPC or another type of private network
-        /// </summary>
         [Input("redis")]
-        public Input<Inputs.RedisRedisGetArgs>? RedisServer { get; set; }
+        private InputList<Inputs.RedisRediGetArgs>? _redis;
 
         /// <summary>
-        /// defines Redis specific additional configuration options. The following 
-        /// configuration options available:
+        /// Redis server provided values
+        /// </summary>
+        public InputList<Inputs.RedisRediGetArgs> RedisServer
+        {
+            get => _redis ?? (_redis = new InputList<Inputs.RedisRediGetArgs>());
+            set => _redis = value;
+        }
+
+        /// <summary>
+        /// Redis user configurable settings
         /// </summary>
         [Input("redisUserConfig")]
         public Input<Inputs.RedisRedisUserConfigGetArgs>? RedisUserConfig { get; set; }
 
         /// <summary>
-        /// Redis hostname.
+        /// The hostname of the service.
         /// </summary>
         [Input("serviceHost")]
         public Input<string>? ServiceHost { get; set; }
@@ -448,21 +449,19 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// specifies the actual name of the service. The name cannot be changed
-        /// later without destroying and re-creating the service so name should be picked based on
-        /// intended service usage rather than current attributes.
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Password used for connecting to the Redis service, if applicable.
+        /// Password used for connecting to the service, if applicable
         /// </summary>
         [Input("servicePassword")]
         public Input<string>? ServicePassword { get; set; }
 
         /// <summary>
-        /// Redis port.
+        /// The port of the service
         /// </summary>
         [Input("servicePort")]
         public Input<int>? ServicePort { get; set; }
@@ -474,29 +473,37 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceType { get; set; }
 
         /// <summary>
-        /// URI for connecting to the Redis service.
+        /// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         /// </summary>
         [Input("serviceUri")]
         public Input<string>? ServiceUri { get; set; }
 
         /// <summary>
-        /// Username used for connecting to the Redis service, if applicable.
+        /// Username used for connecting to the service, if applicable
         /// </summary>
         [Input("serviceUsername")]
         public Input<string>? ServiceUsername { get; set; }
 
         /// <summary>
-        /// Service state.
+        /// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        [Input("staticIps")]
+        private InputList<string>? _staticIps;
+
         /// <summary>
-        /// prevents the service from being deleted. It is recommended to
-        /// set this to `true` for all production services to prevent unintentional service
-        /// deletion. This does not shield against deleting databases or topics but for services
-        /// with backups much of the content can at least be restored from backup in case accidental
-        /// deletion is done.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
+        public InputList<string> StaticIps
+        {
+            get => _staticIps ?? (_staticIps = new InputList<string>());
+            set => _staticIps = value;
+        }
+
+        /// <summary>
+        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }

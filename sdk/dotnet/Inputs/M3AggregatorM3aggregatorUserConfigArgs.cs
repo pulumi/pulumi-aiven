@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class M3AggregatorM3aggregatorUserConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// Custom domain
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// IP filter
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -30,15 +30,21 @@ namespace Pulumi.Aiven.Inputs
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// M3 major version (deprecated, use m3aggregator_version)
+        /// </summary>
         [Input("m3Version")]
         public Input<string>? M3Version { get; set; }
 
         /// <summary>
-        /// M3 major version
+        /// M3 major version (the minimum compatible version)
         /// </summary>
         [Input("m3aggregatorVersion")]
         public Input<string>? M3aggregatorVersion { get; set; }
 
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

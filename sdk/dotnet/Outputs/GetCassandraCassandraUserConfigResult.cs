@@ -14,33 +14,19 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetCassandraCassandraUserConfigResult
     {
         /// <summary>
-        /// Cassandra specific server provided values.
+        /// Cassandra server provided values
         /// </summary>
         public readonly Outputs.GetCassandraCassandraUserConfigCassandraResult? Cassandra;
         public readonly string? CassandraVersion;
-        /// <summary>
-        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// sets the service into migration mode enabling the sstableloader 
-        /// utility to be used to upload Cassandra data files. Available only on service create.
-        /// </summary>
         public readonly string? MigrateSstableloader;
-        /// <summary>
-        /// Allow access to selected service ports from private networks.
-        /// </summary>
         public readonly Outputs.GetCassandraCassandraUserConfigPrivateAccessResult? PrivateAccess;
         public readonly string? ProjectToForkFrom;
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         public readonly Outputs.GetCassandraCassandraUserConfigPublicAccessResult? PublicAccess;
-        /// <summary>
-        /// Name of another service to fork from. This has effect only 
-        /// when a new service is being created.
-        /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

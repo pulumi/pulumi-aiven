@@ -13,11 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceKafkaConnectUserConfig
     {
+        /// <summary>
+        /// IP filter
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Kafka Connect configuration values
+        /// </summary>
         public readonly Outputs.ServiceKafkaConnectUserConfigKafkaConnect? KafkaConnect;
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         public readonly Outputs.ServiceKafkaConnectUserConfigPrivateAccess? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
         public readonly Outputs.ServiceKafkaConnectUserConfigPrivatelinkAccess? PrivatelinkAccess;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         public readonly Outputs.ServiceKafkaConnectUserConfigPublicAccess? PublicAccess;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

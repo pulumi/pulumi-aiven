@@ -13,20 +13,65 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceKafkaUserConfig
     {
+        /// <summary>
+        /// Custom domain
+        /// </summary>
         public readonly string? CustomDomain;
+        /// <summary>
+        /// IP filter
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Kafka broker configuration values
+        /// </summary>
         public readonly Outputs.ServiceKafkaUserConfigKafka? Kafka;
+        /// <summary>
+        /// Kafka authentication methods
+        /// </summary>
         public readonly Outputs.ServiceKafkaUserConfigKafkaAuthenticationMethods? KafkaAuthenticationMethods;
+        /// <summary>
+        /// Enable Kafka Connect service
+        /// </summary>
         public readonly string? KafkaConnect;
+        /// <summary>
+        /// Kafka Connect configuration values
+        /// </summary>
         public readonly Outputs.ServiceKafkaUserConfigKafkaConnectConfig? KafkaConnectConfig;
+        /// <summary>
+        /// Enable Kafka-REST service
+        /// </summary>
         public readonly string? KafkaRest;
+        /// <summary>
+        /// Kafka REST configuration
+        /// </summary>
         public readonly Outputs.ServiceKafkaUserConfigKafkaRestConfig? KafkaRestConfig;
+        /// <summary>
+        /// Kafka major version
+        /// </summary>
         public readonly string? KafkaVersion;
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         public readonly Outputs.ServiceKafkaUserConfigPrivateAccess? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
         public readonly Outputs.ServiceKafkaUserConfigPrivatelinkAccess? PrivatelinkAccess;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         public readonly Outputs.ServiceKafkaUserConfigPublicAccess? PublicAccess;
+        /// <summary>
+        /// Enable Schema-Registry service
+        /// </summary>
         public readonly string? SchemaRegistry;
+        /// <summary>
+        /// Schema Registry configuration
+        /// </summary>
         public readonly Outputs.ServiceKafkaUserConfigSchemaRegistryConfig? SchemaRegistryConfig;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceRedisUserConfigPrivatelinkAccessGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Redis specific server provided values
+        /// </summary>
         [Input("redis")]
         public Input<string>? Redis { get; set; }
 

@@ -10,6 +10,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The Opensearch ACL Config data source provides information about an existing Aiven Opensearch ACL Config.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aiven.LookupOpenSearchAclConfig(ctx, &GetOpenSearchAclConfigArgs{
+// 			Project:     aiven_project.Os - project.Project,
+// 			ServiceName: aiven_service.Os.Service_name,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupOpenSearchAclConfig(ctx *pulumi.Context, args *LookupOpenSearchAclConfigArgs, opts ...pulumi.InvokeOption) (*LookupOpenSearchAclConfigResult, error) {
 	var rv LookupOpenSearchAclConfigResult
 	err := ctx.Invoke("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args, &rv, opts...)
@@ -21,19 +46,23 @@ func LookupOpenSearchAclConfig(ctx *pulumi.Context, args *LookupOpenSearchAclCon
 
 // A collection of arguments for invoking getOpenSearchAclConfig.
 type LookupOpenSearchAclConfigArgs struct {
-	Enabled     *bool  `pulumi:"enabled"`
-	ExtendedAcl *bool  `pulumi:"extendedAcl"`
-	Project     string `pulumi:"project"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getOpenSearchAclConfig.
 type LookupOpenSearchAclConfigResult struct {
-	Enabled     *bool `pulumi:"enabled"`
-	ExtendedAcl *bool `pulumi:"extendedAcl"`
+	// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+	Enabled bool `pulumi:"enabled"`
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+	ExtendedAcl bool `pulumi:"extendedAcl"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Project     string `pulumi:"project"`
+	Id string `pulumi:"id"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -48,10 +77,10 @@ func LookupOpenSearchAclConfigOutput(ctx *pulumi.Context, args LookupOpenSearchA
 
 // A collection of arguments for invoking getOpenSearchAclConfig.
 type LookupOpenSearchAclConfigOutputArgs struct {
-	Enabled     pulumi.BoolPtrInput `pulumi:"enabled"`
-	ExtendedAcl pulumi.BoolPtrInput `pulumi:"extendedAcl"`
-	Project     pulumi.StringInput  `pulumi:"project"`
-	ServiceName pulumi.StringInput  `pulumi:"serviceName"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupOpenSearchAclConfigOutputArgs) ElementType() reflect.Type {
@@ -73,12 +102,14 @@ func (o LookupOpenSearchAclConfigResultOutput) ToLookupOpenSearchAclConfigResult
 	return o
 }
 
-func (o LookupOpenSearchAclConfigResultOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupOpenSearchAclConfigResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+func (o LookupOpenSearchAclConfigResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupOpenSearchAclConfigResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-func (o LookupOpenSearchAclConfigResultOutput) ExtendedAcl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupOpenSearchAclConfigResult) *bool { return v.ExtendedAcl }).(pulumi.BoolPtrOutput)
+// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+func (o LookupOpenSearchAclConfigResultOutput) ExtendedAcl() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupOpenSearchAclConfigResult) bool { return v.ExtendedAcl }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -86,10 +117,12 @@ func (o LookupOpenSearchAclConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenSearchAclConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupOpenSearchAclConfigResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenSearchAclConfigResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupOpenSearchAclConfigResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenSearchAclConfigResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

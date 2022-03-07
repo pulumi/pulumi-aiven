@@ -13,33 +13,12 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetGrafanaGrafanaUserConfigAuthAzureadResult
     {
-        /// <summary>
-        /// Automatically sign-up users on successful sign-in
-        /// </summary>
         public readonly string? AllowSignUp;
-        /// <summary>
-        /// Allowed domain
-        /// </summary>
         public readonly ImmutableArray<string> AllowedDomains;
-        /// <summary>
-        /// Require users to belong to one of given groups
-        /// </summary>
         public readonly ImmutableArray<string> AllowedGroups;
-        /// <summary>
-        /// Authorization URL. This only needs to be set when using self hosted GitLab
-        /// </summary>
         public readonly string? AuthUrl;
-        /// <summary>
-        /// Client ID from provider
-        /// </summary>
         public readonly string? ClientId;
-        /// <summary>
-        /// Client secret from provider
-        /// </summary>
         public readonly string? ClientSecret;
-        /// <summary>
-        /// Token URL. This only needs to be set when using self hosted GitLab
-        /// </summary>
         public readonly string? TokenUrl;
 
         [OutputConstructor]

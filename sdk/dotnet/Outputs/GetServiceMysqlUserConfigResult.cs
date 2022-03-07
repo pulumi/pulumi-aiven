@@ -20,6 +20,9 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? BinlogRetentionPeriod;
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetServiceMysqlUserConfigMigrationResult? Migration;
+        /// <summary>
+        /// MySQL specific server provided values
+        /// </summary>
         public readonly Outputs.GetServiceMysqlUserConfigMysqlResult? Mysql;
         public readonly string? MysqlVersion;
         public readonly Outputs.GetServiceMysqlUserConfigPrivateAccessResult? PrivateAccess;
@@ -28,6 +31,9 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetServiceMysqlUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryTargetTime;
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

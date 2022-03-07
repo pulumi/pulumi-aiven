@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Billing Group Resource
- *
  * The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
  *
  * ## Example Usage

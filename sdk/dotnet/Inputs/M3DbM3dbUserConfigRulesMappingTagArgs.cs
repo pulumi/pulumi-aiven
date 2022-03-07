@@ -12,15 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3DbM3dbUserConfigRulesMappingTagArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the namespace
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Value of the tag.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

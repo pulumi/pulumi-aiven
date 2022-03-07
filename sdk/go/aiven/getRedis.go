@@ -10,8 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Redis Data Source
-//
 // The Redis data source provides information about the existing Aiven Redis service.
 //
 // ## Example Usage
@@ -48,132 +46,66 @@ func LookupRedis(ctx *pulumi.Context, args *LookupRedisArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getRedis.
 type LookupRedisArgs struct {
-	// defines where the cloud provider and region where the service is hosted
-	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lengthy migration process for the service. Format is cloud provider name
-	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-	// specific region name. These are documented on each Cloud provider's own support articles,
-	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-	CloudName  *string             `pulumi:"cloudName"`
-	Components []GetRedisComponent `pulumi:"components"`
-	// day of week when maintenance operations should be performed.
-	// On monday, tuesday, wednesday, etc.
-	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
-	// time of day when maintenance operations should be performed.
-	// UTC time in HH:mm:ss format.
-	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// defines what kind of computing resources are allocated for the service. It can
-	// be changed after creation, though there are some restrictions when going to a smaller
-	// plan such as the new plan must have sufficient amount of disk space to store all current
-	// data and switching to a plan with fewer nodes might not be supported. The basic plan
-	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan *string `pulumi:"plan"`
-	// identifies the project the service belongs to. To set up proper dependency
-	// between the project and the service, refer to the project as shown in the above example.
-	// Project cannot be changed later without destroying and re-creating the service.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// optionally specifies the VPC the service should run in. If the value
-	// is not set the service is not run inside a VPC. When set, the value should be given as a
-	// reference as shown above to set up dependencies correctly and the VPC must be in the same
-	// cloud and region as the service itself. Project can be freely moved to and from VPC after
-	// creation but doing so triggers migration to new servers so the operation can take
-	// significant amount of time to complete if the service has a lot of data.
-	ProjectVpcId *string `pulumi:"projectVpcId"`
-	// Redis specific server provided values.
-	Redis *GetRedisRedis `pulumi:"redis"`
-	// defines Redis specific additional configuration options. The following
-	// configuration options available:
-	RedisUserConfig *GetRedisRedisUserConfig `pulumi:"redisUserConfig"`
-	// Redis hostname.
-	ServiceHost         *string                      `pulumi:"serviceHost"`
-	ServiceIntegrations []GetRedisServiceIntegration `pulumi:"serviceIntegrations"`
-	// specifies the actual name of the service. The name cannot be changed
-	// later without destroying and re-creating the service so name should be picked based on
-	// intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Password used for connecting to the Redis service, if applicable.
-	ServicePassword *string `pulumi:"servicePassword"`
-	// Redis port.
-	ServicePort *int    `pulumi:"servicePort"`
-	ServiceType *string `pulumi:"serviceType"`
-	// URI for connecting to the Redis service.
-	ServiceUri *string `pulumi:"serviceUri"`
-	// Username used for connecting to the Redis service, if applicable.
-	ServiceUsername *string `pulumi:"serviceUsername"`
-	// Service state.
-	State *string `pulumi:"state"`
-	// prevents the service from being deleted. It is recommended to
-	// set this to `true` for all production services to prevent unintentional service
-	// deletion. This does not shield against deleting databases or topics but for services
-	// with backups much of the content can at least be restored from backup in case accidental
-	// deletion is done.
-	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 // A collection of values returned by getRedis.
 type LookupRedisResult struct {
-	// defines where the cloud provider and region where the service is hosted
-	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lengthy migration process for the service. Format is cloud provider name
-	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-	// specific region name. These are documented on each Cloud provider's own support articles,
-	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-	CloudName  *string             `pulumi:"cloudName"`
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	CloudName string `pulumi:"cloudName"`
+	// Service component information objects
 	Components []GetRedisComponent `pulumi:"components"`
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	DiskSpace string `pulumi:"diskSpace"`
+	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+	DiskSpaceCap string `pulumi:"diskSpaceCap"`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+	DiskSpaceDefault string `pulumi:"diskSpaceDefault"`
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+	DiskSpaceStep string `pulumi:"diskSpaceStep"`
+	// Disk space that service is currently using
+	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// day of week when maintenance operations should be performed.
-	// On monday, tuesday, wednesday, etc.
-	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
-	// time of day when maintenance operations should be performed.
-	// UTC time in HH:mm:ss format.
-	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// defines what kind of computing resources are allocated for the service. It can
-	// be changed after creation, though there are some restrictions when going to a smaller
-	// plan such as the new plan must have sufficient amount of disk space to store all current
-	// data and switching to a plan with fewer nodes might not be supported. The basic plan
-	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan    *string `pulumi:"plan"`
-	Project string  `pulumi:"project"`
-	// optionally specifies the VPC the service should run in. If the value
-	// is not set the service is not run inside a VPC. When set, the value should be given as a
-	// reference as shown above to set up dependencies correctly and the VPC must be in the same
-	// cloud and region as the service itself. Project can be freely moved to and from VPC after
-	// creation but doing so triggers migration to new servers so the operation can take
-	// significant amount of time to complete if the service has a lot of data.
-	ProjectVpcId *string `pulumi:"projectVpcId"`
-	// Redis specific server provided values.
-	Redis GetRedisRedis `pulumi:"redis"`
-	// defines Redis specific additional configuration options. The following
-	// configuration options available:
-	RedisUserConfig *GetRedisRedisUserConfig `pulumi:"redisUserConfig"`
-	// Redis hostname.
-	ServiceHost         string                       `pulumi:"serviceHost"`
+	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
+	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	Plan string `pulumi:"plan"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	ProjectVpcId string `pulumi:"projectVpcId"`
+	// Redis server provided values
+	Redis []GetRedisRedi `pulumi:"redis"`
+	// Redis user configurable settings
+	RedisUserConfigs []GetRedisRedisUserConfig `pulumi:"redisUserConfigs"`
+	// The hostname of the service.
+	ServiceHost string `pulumi:"serviceHost"`
+	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []GetRedisServiceIntegration `pulumi:"serviceIntegrations"`
-	ServiceName         string                       `pulumi:"serviceName"`
-	// Password used for connecting to the Redis service, if applicable.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	ServiceName string `pulumi:"serviceName"`
+	// Password used for connecting to the service, if applicable
 	ServicePassword string `pulumi:"servicePassword"`
-	// Redis port.
-	ServicePort int    `pulumi:"servicePort"`
+	// The port of the service
+	ServicePort int `pulumi:"servicePort"`
+	// Aiven internal service type code
 	ServiceType string `pulumi:"serviceType"`
-	// URI for connecting to the Redis service.
+	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
 	ServiceUri string `pulumi:"serviceUri"`
-	// Username used for connecting to the Redis service, if applicable.
+	// Username used for connecting to the service, if applicable
 	ServiceUsername string `pulumi:"serviceUsername"`
-	// Service state.
+	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State string `pulumi:"state"`
-	// prevents the service from being deleted. It is recommended to
-	// set this to `true` for all production services to prevent unintentional service
-	// deletion. This does not shield against deleting databases or topics but for services
-	// with backups much of the content can at least be restored from backup in case accidental
-	// deletion is done.
-	TerminationProtection *bool `pulumi:"terminationProtection"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps []string `pulumi:"staticIps"`
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+	TerminationProtection bool `pulumi:"terminationProtection"`
 }
 
 func LookupRedisOutput(ctx *pulumi.Context, args LookupRedisOutputArgs, opts ...pulumi.InvokeOption) LookupRedisResultOutput {
@@ -187,69 +119,10 @@ func LookupRedisOutput(ctx *pulumi.Context, args LookupRedisOutputArgs, opts ...
 
 // A collection of arguments for invoking getRedis.
 type LookupRedisOutputArgs struct {
-	// defines where the cloud provider and region where the service is hosted
-	// in. This can be changed freely after service is created. Changing the value will trigger
-	// a potentially lengthy migration process for the service. Format is cloud provider name
-	// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-	// specific region name. These are documented on each Cloud provider's own support articles,
-	// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-	// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-	CloudName  pulumi.StringPtrInput       `pulumi:"cloudName"`
-	Components GetRedisComponentArrayInput `pulumi:"components"`
-	// day of week when maintenance operations should be performed.
-	// On monday, tuesday, wednesday, etc.
-	MaintenanceWindowDow pulumi.StringPtrInput `pulumi:"maintenanceWindowDow"`
-	// time of day when maintenance operations should be performed.
-	// UTC time in HH:mm:ss format.
-	MaintenanceWindowTime pulumi.StringPtrInput `pulumi:"maintenanceWindowTime"`
-	// defines what kind of computing resources are allocated for the service. It can
-	// be changed after creation, though there are some restrictions when going to a smaller
-	// plan such as the new plan must have sufficient amount of disk space to store all current
-	// data and switching to a plan with fewer nodes might not be supported. The basic plan
-	// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-	// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-	// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan pulumi.StringPtrInput `pulumi:"plan"`
-	// identifies the project the service belongs to. To set up proper dependency
-	// between the project and the service, refer to the project as shown in the above example.
-	// Project cannot be changed later without destroying and re-creating the service.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
-	// optionally specifies the VPC the service should run in. If the value
-	// is not set the service is not run inside a VPC. When set, the value should be given as a
-	// reference as shown above to set up dependencies correctly and the VPC must be in the same
-	// cloud and region as the service itself. Project can be freely moved to and from VPC after
-	// creation but doing so triggers migration to new servers so the operation can take
-	// significant amount of time to complete if the service has a lot of data.
-	ProjectVpcId pulumi.StringPtrInput `pulumi:"projectVpcId"`
-	// Redis specific server provided values.
-	Redis GetRedisRedisPtrInput `pulumi:"redis"`
-	// defines Redis specific additional configuration options. The following
-	// configuration options available:
-	RedisUserConfig GetRedisRedisUserConfigPtrInput `pulumi:"redisUserConfig"`
-	// Redis hostname.
-	ServiceHost         pulumi.StringPtrInput                `pulumi:"serviceHost"`
-	ServiceIntegrations GetRedisServiceIntegrationArrayInput `pulumi:"serviceIntegrations"`
-	// specifies the actual name of the service. The name cannot be changed
-	// later without destroying and re-creating the service so name should be picked based on
-	// intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Password used for connecting to the Redis service, if applicable.
-	ServicePassword pulumi.StringPtrInput `pulumi:"servicePassword"`
-	// Redis port.
-	ServicePort pulumi.IntPtrInput    `pulumi:"servicePort"`
-	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
-	// URI for connecting to the Redis service.
-	ServiceUri pulumi.StringPtrInput `pulumi:"serviceUri"`
-	// Username used for connecting to the Redis service, if applicable.
-	ServiceUsername pulumi.StringPtrInput `pulumi:"serviceUsername"`
-	// Service state.
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// prevents the service from being deleted. It is recommended to
-	// set this to `true` for all production services to prevent unintentional service
-	// deletion. This does not shield against deleting databases or topics but for services
-	// with backups much of the content can at least be restored from backup in case accidental
-	// deletion is done.
-	TerminationProtection pulumi.BoolPtrInput `pulumi:"terminationProtection"`
 }
 
 func (LookupRedisOutputArgs) ElementType() reflect.Type {
@@ -271,19 +144,39 @@ func (o LookupRedisResultOutput) ToLookupRedisResultOutputWithContext(ctx contex
 	return o
 }
 
-// defines where the cloud provider and region where the service is hosted
-// in. This can be changed freely after service is created. Changing the value will trigger
-// a potentially lengthy migration process for the service. Format is cloud provider name
-// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-// specific region name. These are documented on each Cloud provider's own support articles,
-// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-func (o LookupRedisResultOutput) CloudName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupRedisResult) *string { return v.CloudName }).(pulumi.StringPtrOutput)
+// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+func (o LookupRedisResultOutput) CloudName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRedisResult) string { return v.CloudName }).(pulumi.StringOutput)
 }
 
+// Service component information objects
 func (o LookupRedisResultOutput) Components() GetRedisComponentArrayOutput {
 	return o.ApplyT(func(v LookupRedisResult) []GetRedisComponent { return v.Components }).(GetRedisComponentArrayOutput)
+}
+
+// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+func (o LookupRedisResultOutput) DiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRedisResult) string { return v.DiskSpace }).(pulumi.StringOutput)
+}
+
+// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+func (o LookupRedisResultOutput) DiskSpaceCap() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRedisResult) string { return v.DiskSpaceCap }).(pulumi.StringOutput)
+}
+
+// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+func (o LookupRedisResultOutput) DiskSpaceDefault() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRedisResult) string { return v.DiskSpaceDefault }).(pulumi.StringOutput)
+}
+
+// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+func (o LookupRedisResultOutput) DiskSpaceStep() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRedisResult) string { return v.DiskSpaceStep }).(pulumi.StringOutput)
+}
+
+// Disk space that service is currently using
+func (o LookupRedisResultOutput) DiskSpaceUsed() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRedisResult) string { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -291,103 +184,94 @@ func (o LookupRedisResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// day of week when maintenance operations should be performed.
-// On monday, tuesday, wednesday, etc.
-func (o LookupRedisResultOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupRedisResult) *string { return v.MaintenanceWindowDow }).(pulumi.StringPtrOutput)
+// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+func (o LookupRedisResultOutput) MaintenanceWindowDow() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRedisResult) string { return v.MaintenanceWindowDow }).(pulumi.StringOutput)
 }
 
-// time of day when maintenance operations should be performed.
-// UTC time in HH:mm:ss format.
-func (o LookupRedisResultOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupRedisResult) *string { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
+// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+func (o LookupRedisResultOutput) MaintenanceWindowTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRedisResult) string { return v.MaintenanceWindowTime }).(pulumi.StringOutput)
 }
 
-// defines what kind of computing resources are allocated for the service. It can
-// be changed after creation, though there are some restrictions when going to a smaller
-// plan such as the new plan must have sufficient amount of disk space to store all current
-// data and switching to a plan with fewer nodes might not be supported. The basic plan
-// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-func (o LookupRedisResultOutput) Plan() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupRedisResult) *string { return v.Plan }).(pulumi.StringPtrOutput)
+// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+func (o LookupRedisResultOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRedisResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupRedisResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// optionally specifies the VPC the service should run in. If the value
-// is not set the service is not run inside a VPC. When set, the value should be given as a
-// reference as shown above to set up dependencies correctly and the VPC must be in the same
-// cloud and region as the service itself. Project can be freely moved to and from VPC after
-// creation but doing so triggers migration to new servers so the operation can take
-// significant amount of time to complete if the service has a lot of data.
-func (o LookupRedisResultOutput) ProjectVpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupRedisResult) *string { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+func (o LookupRedisResultOutput) ProjectVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRedisResult) string { return v.ProjectVpcId }).(pulumi.StringOutput)
 }
 
-// Redis specific server provided values.
-func (o LookupRedisResultOutput) Redis() GetRedisRedisOutput {
-	return o.ApplyT(func(v LookupRedisResult) GetRedisRedis { return v.Redis }).(GetRedisRedisOutput)
+// Redis server provided values
+func (o LookupRedisResultOutput) Redis() GetRedisRediArrayOutput {
+	return o.ApplyT(func(v LookupRedisResult) []GetRedisRedi { return v.Redis }).(GetRedisRediArrayOutput)
 }
 
-// defines Redis specific additional configuration options. The following
-// configuration options available:
-func (o LookupRedisResultOutput) RedisUserConfig() GetRedisRedisUserConfigPtrOutput {
-	return o.ApplyT(func(v LookupRedisResult) *GetRedisRedisUserConfig { return v.RedisUserConfig }).(GetRedisRedisUserConfigPtrOutput)
+// Redis user configurable settings
+func (o LookupRedisResultOutput) RedisUserConfigs() GetRedisRedisUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupRedisResult) []GetRedisRedisUserConfig { return v.RedisUserConfigs }).(GetRedisRedisUserConfigArrayOutput)
 }
 
-// Redis hostname.
+// The hostname of the service.
 func (o LookupRedisResultOutput) ServiceHost() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.ServiceHost }).(pulumi.StringOutput)
 }
 
+// Service integrations to specify when creating a service. Not applied after initial service creation
 func (o LookupRedisResultOutput) ServiceIntegrations() GetRedisServiceIntegrationArrayOutput {
 	return o.ApplyT(func(v LookupRedisResult) []GetRedisServiceIntegration { return v.ServiceIntegrations }).(GetRedisServiceIntegrationArrayOutput)
 }
 
+// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 func (o LookupRedisResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Password used for connecting to the Redis service, if applicable.
+// Password used for connecting to the service, if applicable
 func (o LookupRedisResultOutput) ServicePassword() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.ServicePassword }).(pulumi.StringOutput)
 }
 
-// Redis port.
+// The port of the service
 func (o LookupRedisResultOutput) ServicePort() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRedisResult) int { return v.ServicePort }).(pulumi.IntOutput)
 }
 
+// Aiven internal service type code
 func (o LookupRedisResultOutput) ServiceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.ServiceType }).(pulumi.StringOutput)
 }
 
-// URI for connecting to the Redis service.
+// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
 func (o LookupRedisResultOutput) ServiceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.ServiceUri }).(pulumi.StringOutput)
 }
 
-// Username used for connecting to the Redis service, if applicable.
+// Username used for connecting to the service, if applicable
 func (o LookupRedisResultOutput) ServiceUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.ServiceUsername }).(pulumi.StringOutput)
 }
 
-// Service state.
+// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 func (o LookupRedisResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// prevents the service from being deleted. It is recommended to
-// set this to `true` for all production services to prevent unintentional service
-// deletion. This does not shield against deleting databases or topics but for services
-// with backups much of the content can at least be restored from backup in case accidental
-// deletion is done.
-func (o LookupRedisResultOutput) TerminationProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupRedisResult) *bool { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+func (o LookupRedisResultOutput) StaticIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRedisResult) []string { return v.StaticIps }).(pulumi.StringArrayOutput)
+}
+
+// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+func (o LookupRedisResultOutput) TerminationProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRedisResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
 }
 
 func init() {

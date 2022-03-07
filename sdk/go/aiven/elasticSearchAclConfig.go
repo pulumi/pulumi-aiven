@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Elasticsearch ACL Config Resource
-//
 // The Elasticsearch ACL Config resource allows the configuration of ACL management on an Aiven Elasticsearch service.
 //
 // ## Example Usage
@@ -43,16 +41,13 @@ import (
 type ElasticSearchAclConfig struct {
 	pulumi.CustomResourceState
 
-	// enables of disables Elasticsearch ACL's.
+	// Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access The default value is `true`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-	// these APIs as long as all operations only target indexes they have been granted access to.
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to The default value is `10`.
 	ExtendedAcl pulumi.BoolPtrOutput `pulumi:"extendedAcl"`
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Service to link the Elasticsearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -91,30 +86,24 @@ func GetElasticSearchAclConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ElasticSearchAclConfig resources.
 type elasticSearchAclConfigState struct {
-	// enables of disables Elasticsearch ACL's.
+	// Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access The default value is `true`.
 	Enabled *bool `pulumi:"enabled"`
-	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-	// these APIs as long as all operations only target indexes they have been granted access to.
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to The default value is `10`.
 	ExtendedAcl *bool `pulumi:"extendedAcl"`
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Service to link the Elasticsearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type ElasticSearchAclConfigState struct {
-	// enables of disables Elasticsearch ACL's.
+	// Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access The default value is `true`.
 	Enabled pulumi.BoolPtrInput
-	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-	// these APIs as long as all operations only target indexes they have been granted access to.
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to The default value is `10`.
 	ExtendedAcl pulumi.BoolPtrInput
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Service to link the Elasticsearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -123,31 +112,25 @@ func (ElasticSearchAclConfigState) ElementType() reflect.Type {
 }
 
 type elasticSearchAclConfigArgs struct {
-	// enables of disables Elasticsearch ACL's.
+	// Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access The default value is `true`.
 	Enabled *bool `pulumi:"enabled"`
-	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-	// these APIs as long as all operations only target indexes they have been granted access to.
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to The default value is `10`.
 	ExtendedAcl *bool `pulumi:"extendedAcl"`
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Service to link the Elasticsearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a ElasticSearchAclConfig resource.
 type ElasticSearchAclConfigArgs struct {
-	// enables of disables Elasticsearch ACL's.
+	// Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access The default value is `true`.
 	Enabled pulumi.BoolPtrInput
-	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-	// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-	// these APIs as long as all operations only target indexes they have been granted access to.
+	// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to The default value is `10`.
 	ExtendedAcl pulumi.BoolPtrInput
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Service to link the Elasticsearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
 }
 

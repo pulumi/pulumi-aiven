@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Project VPC Resource
- *
  * The Project VPC resource allows the creation and management of Aiven Project VPCs.
  *
  * ## Example Usage
@@ -54,21 +52,19 @@ export class ProjectVpc extends pulumi.CustomResource {
     }
 
     /**
-     * defines where the cloud provider and region where the service is hosted
-     * in. See the Service resource for additional information.
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly cloudName!: pulumi.Output<string>;
     /**
-     * defines the network CIDR of the VPC.
+     * Network address range used by the VPC like 192.168.0.0/24
      */
     public readonly networkCidr!: pulumi.Output<string>;
     /**
-     * defines the project the VPC belongs to.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * ia a computed property that tells the current state of the VPC. This property cannot be
-     * set, only read.
+     * State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
 
@@ -115,21 +111,19 @@ export class ProjectVpc extends pulumi.CustomResource {
  */
 export interface ProjectVpcState {
     /**
-     * defines where the cloud provider and region where the service is hosted
-     * in. See the Service resource for additional information.
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * defines the network CIDR of the VPC.
+     * Network address range used by the VPC like 192.168.0.0/24
      */
     networkCidr?: pulumi.Input<string>;
     /**
-     * defines the project the VPC belongs to.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * ia a computed property that tells the current state of the VPC. This property cannot be
-     * set, only read.
+     * State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
      */
     state?: pulumi.Input<string>;
 }
@@ -139,16 +133,15 @@ export interface ProjectVpcState {
  */
 export interface ProjectVpcArgs {
     /**
-     * defines where the cloud provider and region where the service is hosted
-     * in. See the Service resource for additional information.
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      */
     cloudName: pulumi.Input<string>;
     /**
-     * defines the network CIDR of the VPC.
+     * Network address range used by the VPC like 192.168.0.0/24
      */
     networkCidr: pulumi.Input<string>;
     /**
-     * defines the project the VPC belongs to.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
 }

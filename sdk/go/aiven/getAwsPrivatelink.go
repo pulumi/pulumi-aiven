@@ -10,8 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # AWS Privatelink Data Source
-//
 // The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
 //
 // ## Example Usage
@@ -48,34 +46,26 @@ func LookupAwsPrivatelink(ctx *pulumi.Context, args *LookupAwsPrivatelinkArgs, o
 
 // A collection of arguments for invoking getAwsPrivatelink.
 type LookupAwsPrivatelinkArgs struct {
-	// AWS service ID.
-	AwsServiceId *string `pulumi:"awsServiceId"`
-	// AWS service name.
-	AwsServiceName *string `pulumi:"awsServiceName"`
-	// list of allowed principals
-	Principals []string `pulumi:"principals"`
-	// identifies the project the service belongs to. To set up proper dependency between the project
-	// and the service, refer to the project as shown in the above example. Project cannot be changed later without
-	// destroying and re-creating the service.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// specifies the actual name of the service. The name cannot be changed later without
-	// destroying and re-creating the service so name should be picked based on intended service usage rather than current
-	// attributes.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getAwsPrivatelink.
 type LookupAwsPrivatelinkResult struct {
-	// AWS service ID.
+	// AWS service ID
 	AwsServiceId string `pulumi:"awsServiceId"`
-	// AWS service name.
+	// AWS service name
 	AwsServiceName string `pulumi:"awsServiceName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// list of allowed principals
-	Principals  []string `pulumi:"principals"`
-	Project     string   `pulumi:"project"`
-	ServiceName string   `pulumi:"serviceName"`
+	// List of allowed principals
+	Principals []string `pulumi:"principals"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 func LookupAwsPrivatelinkOutput(ctx *pulumi.Context, args LookupAwsPrivatelinkOutputArgs, opts ...pulumi.InvokeOption) LookupAwsPrivatelinkResultOutput {
@@ -89,19 +79,9 @@ func LookupAwsPrivatelinkOutput(ctx *pulumi.Context, args LookupAwsPrivatelinkOu
 
 // A collection of arguments for invoking getAwsPrivatelink.
 type LookupAwsPrivatelinkOutputArgs struct {
-	// AWS service ID.
-	AwsServiceId pulumi.StringPtrInput `pulumi:"awsServiceId"`
-	// AWS service name.
-	AwsServiceName pulumi.StringPtrInput `pulumi:"awsServiceName"`
-	// list of allowed principals
-	Principals pulumi.StringArrayInput `pulumi:"principals"`
-	// identifies the project the service belongs to. To set up proper dependency between the project
-	// and the service, refer to the project as shown in the above example. Project cannot be changed later without
-	// destroying and re-creating the service.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
-	// specifies the actual name of the service. The name cannot be changed later without
-	// destroying and re-creating the service so name should be picked based on intended service usage rather than current
-	// attributes.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -124,12 +104,12 @@ func (o LookupAwsPrivatelinkResultOutput) ToLookupAwsPrivatelinkResultOutputWith
 	return o
 }
 
-// AWS service ID.
+// AWS service ID
 func (o LookupAwsPrivatelinkResultOutput) AwsServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsPrivatelinkResult) string { return v.AwsServiceId }).(pulumi.StringOutput)
 }
 
-// AWS service name.
+// AWS service name
 func (o LookupAwsPrivatelinkResultOutput) AwsServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsPrivatelinkResult) string { return v.AwsServiceName }).(pulumi.StringOutput)
 }
@@ -139,15 +119,17 @@ func (o LookupAwsPrivatelinkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsPrivatelinkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// list of allowed principals
+// List of allowed principals
 func (o LookupAwsPrivatelinkResultOutput) Principals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAwsPrivatelinkResult) []string { return v.Principals }).(pulumi.StringArrayOutput)
 }
 
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupAwsPrivatelinkResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsPrivatelinkResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupAwsPrivatelinkResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsPrivatelinkResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

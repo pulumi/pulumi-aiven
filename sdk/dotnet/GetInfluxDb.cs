@@ -12,8 +12,6 @@ namespace Pulumi.Aiven
     public static class GetInfluxDb
     {
         /// <summary>
-        /// ## # InfluxDB Data Source
-        /// 
         /// The InfluxDB data source provides information about the existing Aiven InfluxDB service.
         /// 
         /// {{% examples %}}
@@ -44,8 +42,6 @@ namespace Pulumi.Aiven
             => Pulumi.Deployment.Instance.InvokeAsync<GetInfluxDbResult>("aiven:index/getInfluxDb:getInfluxDb", args ?? new GetInfluxDbArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # InfluxDB Data Source
-        /// 
         /// The InfluxDB data source provides information about the existing Aiven InfluxDB service.
         /// 
         /// {{% examples %}}
@@ -80,147 +76,16 @@ namespace Pulumi.Aiven
     public sealed class GetInfluxDbArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// defines where the cloud provider and region where the service is hosted
-        /// in. This can be changed freely after service is created. Changing the value will trigger
-        /// a potentially lengthy migration process for the service. Format is cloud provider name
-        /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        /// specific region name. These are documented on each Cloud provider's own support articles,
-        /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        /// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        /// </summary>
-        [Input("cloudName")]
-        public string? CloudName { get; set; }
-
-        [Input("components")]
-        private List<Inputs.GetInfluxDbComponentArgs>? _components;
-        public List<Inputs.GetInfluxDbComponentArgs> Components
-        {
-            get => _components ?? (_components = new List<Inputs.GetInfluxDbComponentArgs>());
-            set => _components = value;
-        }
-
-        /// <summary>
-        /// InfluxDB specific server provided values.
-        /// </summary>
-        [Input("influxdb")]
-        public Inputs.GetInfluxDbInfluxdbArgs? Influxdb { get; set; }
-
-        /// <summary>
-        /// defines InfluxDB specific additional configuration options. The following 
-        /// configuration options available:
-        /// </summary>
-        [Input("influxdbUserConfig")]
-        public Inputs.GetInfluxDbInfluxdbUserConfigArgs? InfluxdbUserConfig { get; set; }
-
-        /// <summary>
-        /// day of week when maintenance operations should be performed. 
-        /// On monday, tuesday, wednesday, etc.
-        /// </summary>
-        [Input("maintenanceWindowDow")]
-        public string? MaintenanceWindowDow { get; set; }
-
-        /// <summary>
-        /// time of day when maintenance operations should be performed. 
-        /// UTC time in HH:mm:ss format.
-        /// </summary>
-        [Input("maintenanceWindowTime")]
-        public string? MaintenanceWindowTime { get; set; }
-
-        /// <summary>
-        /// defines what kind of computing resources are allocated for the service. It can
-        /// be changed after creation, though there are some restrictions when going to a smaller
-        /// plan such as the new plan must have sufficient amount of disk space to store all current
-        /// data and switching to a plan with fewer nodes might not be supported. The basic plan
-        /// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        /// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        /// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        /// </summary>
-        [Input("plan")]
-        public string? Plan { get; set; }
-
-        /// <summary>
-        /// identifies the project the service belongs to. To set up proper dependency
-        /// between the project and the service, refer to the project as shown in the above example.
-        /// Project cannot be changed later without destroying and re-creating the service.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// optionally specifies the VPC the service should run in. If the value
-        /// is not set the service is not run inside a VPC. When set, the value should be given as a
-        /// reference as shown above to set up dependencies correctly and the VPC must be in the same
-        /// cloud and region as the service itself. Project can be freely moved to and from VPC after
-        /// creation but doing so triggers migration to new servers so the operation can take
-        /// significant amount of time to complete if the service has a lot of data.
-        /// </summary>
-        [Input("projectVpcId")]
-        public string? ProjectVpcId { get; set; }
-
-        /// <summary>
-        /// InfluxDB hostname.
-        /// </summary>
-        [Input("serviceHost")]
-        public string? ServiceHost { get; set; }
-
-        [Input("serviceIntegrations")]
-        private List<Inputs.GetInfluxDbServiceIntegrationArgs>? _serviceIntegrations;
-        public List<Inputs.GetInfluxDbServiceIntegrationArgs> ServiceIntegrations
-        {
-            get => _serviceIntegrations ?? (_serviceIntegrations = new List<Inputs.GetInfluxDbServiceIntegrationArgs>());
-            set => _serviceIntegrations = value;
-        }
-
-        /// <summary>
-        /// specifies the actual name of the service. The name cannot be changed
-        /// later without destroying and re-creating the service so name should be picked based on
-        /// intended service usage rather than current attributes.
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
-
-        /// <summary>
-        /// Password used for connecting to the InfluxDB service, if applicable.
-        /// </summary>
-        [Input("servicePassword")]
-        public string? ServicePassword { get; set; }
-
-        /// <summary>
-        /// InfluxDB port.
-        /// </summary>
-        [Input("servicePort")]
-        public int? ServicePort { get; set; }
-
-        [Input("serviceType")]
-        public string? ServiceType { get; set; }
-
-        /// <summary>
-        /// URI for connecting to the InfluxDB service.
-        /// </summary>
-        [Input("serviceUri")]
-        public string? ServiceUri { get; set; }
-
-        /// <summary>
-        /// Username used for connecting to the InfluxDB service, if applicable.
-        /// </summary>
-        [Input("serviceUsername")]
-        public string? ServiceUsername { get; set; }
-
-        /// <summary>
-        /// Service state.
-        /// </summary>
-        [Input("state")]
-        public string? State { get; set; }
-
-        /// <summary>
-        /// prevents the service from being deleted. It is recommended to
-        /// set this to `true` for all production services to prevent unintentional service
-        /// deletion. This does not shield against deleting databases or topics but for services
-        /// with backups much of the content can at least be restored from backup in case accidental
-        /// deletion is done.
-        /// </summary>
-        [Input("terminationProtection")]
-        public bool? TerminationProtection { get; set; }
 
         public GetInfluxDbArgs()
         {
@@ -230,147 +95,16 @@ namespace Pulumi.Aiven
     public sealed class GetInfluxDbInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// defines where the cloud provider and region where the service is hosted
-        /// in. This can be changed freely after service is created. Changing the value will trigger
-        /// a potentially lengthy migration process for the service. Format is cloud provider name
-        /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        /// specific region name. These are documented on each Cloud provider's own support articles,
-        /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        /// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        /// </summary>
-        [Input("cloudName")]
-        public Input<string>? CloudName { get; set; }
-
-        [Input("components")]
-        private InputList<Inputs.GetInfluxDbComponentInputArgs>? _components;
-        public InputList<Inputs.GetInfluxDbComponentInputArgs> Components
-        {
-            get => _components ?? (_components = new InputList<Inputs.GetInfluxDbComponentInputArgs>());
-            set => _components = value;
-        }
-
-        /// <summary>
-        /// InfluxDB specific server provided values.
-        /// </summary>
-        [Input("influxdb")]
-        public Input<Inputs.GetInfluxDbInfluxdbInputArgs>? Influxdb { get; set; }
-
-        /// <summary>
-        /// defines InfluxDB specific additional configuration options. The following 
-        /// configuration options available:
-        /// </summary>
-        [Input("influxdbUserConfig")]
-        public Input<Inputs.GetInfluxDbInfluxdbUserConfigInputArgs>? InfluxdbUserConfig { get; set; }
-
-        /// <summary>
-        /// day of week when maintenance operations should be performed. 
-        /// On monday, tuesday, wednesday, etc.
-        /// </summary>
-        [Input("maintenanceWindowDow")]
-        public Input<string>? MaintenanceWindowDow { get; set; }
-
-        /// <summary>
-        /// time of day when maintenance operations should be performed. 
-        /// UTC time in HH:mm:ss format.
-        /// </summary>
-        [Input("maintenanceWindowTime")]
-        public Input<string>? MaintenanceWindowTime { get; set; }
-
-        /// <summary>
-        /// defines what kind of computing resources are allocated for the service. It can
-        /// be changed after creation, though there are some restrictions when going to a smaller
-        /// plan such as the new plan must have sufficient amount of disk space to store all current
-        /// data and switching to a plan with fewer nodes might not be supported. The basic plan
-        /// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        /// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        /// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        /// </summary>
-        [Input("plan")]
-        public Input<string>? Plan { get; set; }
-
-        /// <summary>
-        /// identifies the project the service belongs to. To set up proper dependency
-        /// between the project and the service, refer to the project as shown in the above example.
-        /// Project cannot be changed later without destroying and re-creating the service.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// optionally specifies the VPC the service should run in. If the value
-        /// is not set the service is not run inside a VPC. When set, the value should be given as a
-        /// reference as shown above to set up dependencies correctly and the VPC must be in the same
-        /// cloud and region as the service itself. Project can be freely moved to and from VPC after
-        /// creation but doing so triggers migration to new servers so the operation can take
-        /// significant amount of time to complete if the service has a lot of data.
-        /// </summary>
-        [Input("projectVpcId")]
-        public Input<string>? ProjectVpcId { get; set; }
-
-        /// <summary>
-        /// InfluxDB hostname.
-        /// </summary>
-        [Input("serviceHost")]
-        public Input<string>? ServiceHost { get; set; }
-
-        [Input("serviceIntegrations")]
-        private InputList<Inputs.GetInfluxDbServiceIntegrationInputArgs>? _serviceIntegrations;
-        public InputList<Inputs.GetInfluxDbServiceIntegrationInputArgs> ServiceIntegrations
-        {
-            get => _serviceIntegrations ?? (_serviceIntegrations = new InputList<Inputs.GetInfluxDbServiceIntegrationInputArgs>());
-            set => _serviceIntegrations = value;
-        }
-
-        /// <summary>
-        /// specifies the actual name of the service. The name cannot be changed
-        /// later without destroying and re-creating the service so name should be picked based on
-        /// intended service usage rather than current attributes.
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
-
-        /// <summary>
-        /// Password used for connecting to the InfluxDB service, if applicable.
-        /// </summary>
-        [Input("servicePassword")]
-        public Input<string>? ServicePassword { get; set; }
-
-        /// <summary>
-        /// InfluxDB port.
-        /// </summary>
-        [Input("servicePort")]
-        public Input<int>? ServicePort { get; set; }
-
-        [Input("serviceType")]
-        public Input<string>? ServiceType { get; set; }
-
-        /// <summary>
-        /// URI for connecting to the InfluxDB service.
-        /// </summary>
-        [Input("serviceUri")]
-        public Input<string>? ServiceUri { get; set; }
-
-        /// <summary>
-        /// Username used for connecting to the InfluxDB service, if applicable.
-        /// </summary>
-        [Input("serviceUsername")]
-        public Input<string>? ServiceUsername { get; set; }
-
-        /// <summary>
-        /// Service state.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// prevents the service from being deleted. It is recommended to
-        /// set this to `true` for all production services to prevent unintentional service
-        /// deletion. This does not shield against deleting databases or topics but for services
-        /// with backups much of the content can at least be restored from backup in case accidental
-        /// deletion is done.
-        /// </summary>
-        [Input("terminationProtection")]
-        public Input<bool>? TerminationProtection { get; set; }
 
         public GetInfluxDbInvokeArgs()
         {
@@ -382,116 +116,141 @@ namespace Pulumi.Aiven
     public sealed class GetInfluxDbResult
     {
         /// <summary>
-        /// defines where the cloud provider and region where the service is hosted
-        /// in. This can be changed freely after service is created. Changing the value will trigger
-        /// a potentially lengthy migration process for the service. Format is cloud provider name
-        /// (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider
-        /// specific region name. These are documented on each Cloud provider's own support articles,
-        /// like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and
-        /// [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         /// </summary>
-        public readonly string? CloudName;
+        public readonly string CloudName;
+        /// <summary>
+        /// Service component information objects
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInfluxDbComponentResult> Components;
+        /// <summary>
+        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// </summary>
+        public readonly string DiskSpace;
+        /// <summary>
+        /// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        /// </summary>
+        public readonly string DiskSpaceCap;
+        /// <summary>
+        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        /// </summary>
+        public readonly string DiskSpaceDefault;
+        /// <summary>
+        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        /// </summary>
+        public readonly string DiskSpaceStep;
+        /// <summary>
+        /// Disk space that service is currently using
+        /// </summary>
+        public readonly string DiskSpaceUsed;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// InfluxDB specific server provided values.
+        /// Influxdb user configurable settings
         /// </summary>
-        public readonly Outputs.GetInfluxDbInfluxdbResult Influxdb;
+        public readonly ImmutableArray<Outputs.GetInfluxDbInfluxdbUserConfigResult> InfluxdbUserConfigs;
         /// <summary>
-        /// defines InfluxDB specific additional configuration options. The following 
-        /// configuration options available:
+        /// InfluxDB server provided values
         /// </summary>
-        public readonly Outputs.GetInfluxDbInfluxdbUserConfigResult? InfluxdbUserConfig;
+        public readonly ImmutableArray<Outputs.GetInfluxDbInfluxdbResult> Influxdbs;
         /// <summary>
-        /// day of week when maintenance operations should be performed. 
-        /// On monday, tuesday, wednesday, etc.
+        /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         /// </summary>
-        public readonly string? MaintenanceWindowDow;
+        public readonly string MaintenanceWindowDow;
         /// <summary>
-        /// time of day when maintenance operations should be performed. 
-        /// UTC time in HH:mm:ss format.
+        /// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         /// </summary>
-        public readonly string? MaintenanceWindowTime;
+        public readonly string MaintenanceWindowTime;
         /// <summary>
-        /// defines what kind of computing resources are allocated for the service. It can
-        /// be changed after creation, though there are some restrictions when going to a smaller
-        /// plan such as the new plan must have sufficient amount of disk space to store all current
-        /// data and switching to a plan with fewer nodes might not be supported. The basic plan
-        /// names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is
-        /// (roughly) the amount of memory on each node (also other attributes like number of CPUs
-        /// and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
-        public readonly string? Plan;
+        public readonly string Plan;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
         /// <summary>
-        /// optionally specifies the VPC the service should run in. If the value
-        /// is not set the service is not run inside a VPC. When set, the value should be given as a
-        /// reference as shown above to set up dependencies correctly and the VPC must be in the same
-        /// cloud and region as the service itself. Project can be freely moved to and from VPC after
-        /// creation but doing so triggers migration to new servers so the operation can take
-        /// significant amount of time to complete if the service has a lot of data.
+        /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         /// </summary>
-        public readonly string? ProjectVpcId;
+        public readonly string ProjectVpcId;
         /// <summary>
-        /// InfluxDB hostname.
+        /// The hostname of the service.
         /// </summary>
         public readonly string ServiceHost;
+        /// <summary>
+        /// Service integrations to specify when creating a service. Not applied after initial service creation
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInfluxDbServiceIntegrationResult> ServiceIntegrations;
+        /// <summary>
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Password used for connecting to the InfluxDB service, if applicable.
+        /// Password used for connecting to the service, if applicable
         /// </summary>
         public readonly string ServicePassword;
         /// <summary>
-        /// InfluxDB port.
+        /// The port of the service
         /// </summary>
         public readonly int ServicePort;
+        /// <summary>
+        /// Aiven internal service type code
+        /// </summary>
         public readonly string ServiceType;
         /// <summary>
-        /// URI for connecting to the InfluxDB service.
+        /// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         /// </summary>
         public readonly string ServiceUri;
         /// <summary>
-        /// Username used for connecting to the InfluxDB service, if applicable.
+        /// Username used for connecting to the service, if applicable
         /// </summary>
         public readonly string ServiceUsername;
         /// <summary>
-        /// Service state.
+        /// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// prevents the service from being deleted. It is recommended to
-        /// set this to `true` for all production services to prevent unintentional service
-        /// deletion. This does not shield against deleting databases or topics but for services
-        /// with backups much of the content can at least be restored from backup in case accidental
-        /// deletion is done.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
-        public readonly bool? TerminationProtection;
+        public readonly ImmutableArray<string> StaticIps;
+        /// <summary>
+        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+        /// </summary>
+        public readonly bool TerminationProtection;
 
         [OutputConstructor]
         private GetInfluxDbResult(
-            string? cloudName,
+            string cloudName,
 
             ImmutableArray<Outputs.GetInfluxDbComponentResult> components,
 
+            string diskSpace,
+
+            string diskSpaceCap,
+
+            string diskSpaceDefault,
+
+            string diskSpaceStep,
+
+            string diskSpaceUsed,
+
             string id,
 
-            Outputs.GetInfluxDbInfluxdbResult influxdb,
+            ImmutableArray<Outputs.GetInfluxDbInfluxdbUserConfigResult> influxdbUserConfigs,
 
-            Outputs.GetInfluxDbInfluxdbUserConfigResult? influxdbUserConfig,
+            ImmutableArray<Outputs.GetInfluxDbInfluxdbResult> influxdbs,
 
-            string? maintenanceWindowDow,
+            string maintenanceWindowDow,
 
-            string? maintenanceWindowTime,
+            string maintenanceWindowTime,
 
-            string? plan,
+            string plan,
 
             string project,
 
-            string? projectVpcId,
+            string projectVpcId,
 
             string serviceHost,
 
@@ -511,13 +270,20 @@ namespace Pulumi.Aiven
 
             string state,
 
-            bool? terminationProtection)
+            ImmutableArray<string> staticIps,
+
+            bool terminationProtection)
         {
             CloudName = cloudName;
             Components = components;
+            DiskSpace = diskSpace;
+            DiskSpaceCap = diskSpaceCap;
+            DiskSpaceDefault = diskSpaceDefault;
+            DiskSpaceStep = diskSpaceStep;
+            DiskSpaceUsed = diskSpaceUsed;
             Id = id;
-            Influxdb = influxdb;
-            InfluxdbUserConfig = influxdbUserConfig;
+            InfluxdbUserConfigs = influxdbUserConfigs;
+            Influxdbs = influxdbs;
             MaintenanceWindowDow = maintenanceWindowDow;
             MaintenanceWindowTime = maintenanceWindowTime;
             Plan = plan;
@@ -532,6 +298,7 @@ namespace Pulumi.Aiven
             ServiceUri = serviceUri;
             ServiceUsername = serviceUsername;
             State = state;
+            StaticIps = staticIps;
             TerminationProtection = terminationProtection;
         }
     }

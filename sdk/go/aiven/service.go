@@ -11,57 +11,76 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The Service resource allows the creation and management of Aiven Services.
 type Service struct {
 	pulumi.CustomResourceState
 
-	// Cassandra specific server provided values
-	Cassandra ServiceCassandraOutput `pulumi:"cassandra"`
-	// Cassandra specific user configurable settings
+	// Cassandra user configurable settings
 	CassandraUserConfig ServiceCassandraUserConfigPtrOutput `pulumi:"cassandraUserConfig"`
+	// Cassandra specific server provided values
+	Cassandras ServiceCassandraArrayOutput `pulumi:"cassandras"`
+	// Clickhouse user configurable settings
+	ClickhouseUserConfig ServiceClickhouseUserConfigPtrOutput `pulumi:"clickhouseUserConfig"`
+	// Clickhouse specific server provided values
+	Clickhouses ServiceClickhouseArrayOutput `pulumi:"clickhouses"`
 	// Cloud the service runs in
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components ServiceComponentArrayOutput `pulumi:"components"`
-	// Elasticsearch specific server provided values
-	Elasticsearch ServiceElasticsearchOutput `pulumi:"elasticsearch"`
-	// Elasticsearch specific user configurable settings
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
+	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+	DiskSpaceDefault pulumi.StringOutput `pulumi:"diskSpaceDefault"`
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
+	// Disk space that service is currently using
+	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
+	// Elasticsearch user configurable settings
 	ElasticsearchUserConfig ServiceElasticsearchUserConfigPtrOutput `pulumi:"elasticsearchUserConfig"`
-	// Grafana specific server provided values
-	Grafana ServiceGrafanaOutput `pulumi:"grafana"`
-	// Grafana specific user configurable settings
+	// Elasticsearch specific server provided values
+	Elasticsearches ServiceElasticsearchArrayOutput `pulumi:"elasticsearches"`
+	// Flink user configurable settings
+	FlinkUserConfig ServiceFlinkUserConfigPtrOutput `pulumi:"flinkUserConfig"`
+	// Flink specific server provided values
+	Flinks ServiceFlinkArrayOutput `pulumi:"flinks"`
+	// Grafana user configurable settings
 	GrafanaUserConfig ServiceGrafanaUserConfigPtrOutput `pulumi:"grafanaUserConfig"`
-	// InfluxDB specific server provided values
-	Influxdb ServiceInfluxdbOutput `pulumi:"influxdb"`
-	// InfluxDB specific user configurable settings
+	// Grafana specific server provided values
+	Grafanas ServiceGrafanaArrayOutput `pulumi:"grafanas"`
+	// Influxdb user configurable settings
 	InfluxdbUserConfig ServiceInfluxdbUserConfigPtrOutput `pulumi:"influxdbUserConfig"`
-	// Kafka specific server provided values
-	Kafka ServiceKafkaOutput `pulumi:"kafka"`
-	// Kafka Connect specific server provided values
-	KafkaConnect ServiceKafkaConnectOutput `pulumi:"kafkaConnect"`
-	// Kafka Connect specific user configurable settings
+	// InfluxDB specific server provided values
+	Influxdbs ServiceInfluxdbArrayOutput `pulumi:"influxdbs"`
+	// Kafka*connect user configurable settings
 	KafkaConnectUserConfig ServiceKafkaConnectUserConfigPtrOutput `pulumi:"kafkaConnectUserConfig"`
-	// Kafka MirrorMaker 2 specific server provided values
-	KafkaMirrormaker ServiceKafkaMirrormakerOutput `pulumi:"kafkaMirrormaker"`
-	// Kafka MirrorMaker 2 specific user configurable settings
+	// Kafka Connect specific server provided values
+	KafkaConnects ServiceKafkaConnectArrayOutput `pulumi:"kafkaConnects"`
+	// Kafka*mirrormaker user configurable settings
 	KafkaMirrormakerUserConfig ServiceKafkaMirrormakerUserConfigPtrOutput `pulumi:"kafkaMirrormakerUserConfig"`
-	// Kafka specific user configurable settings
+	// Kafka MirrorMaker 2 specific server provided values
+	KafkaMirrormakers ServiceKafkaMirrormakerArrayOutput `pulumi:"kafkaMirrormakers"`
+	// Kafka user configurable settings
 	KafkaUserConfig ServiceKafkaUserConfigPtrOutput `pulumi:"kafkaUserConfig"`
+	// Kafka specific server provided values
+	Kafkas ServiceKafkaArrayOutput `pulumi:"kafkas"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
-	// MySQL specific server provided values
-	Mysql ServiceMysqlOutput `pulumi:"mysql"`
-	// MySQL specific user configurable settings
+	// Mysql user configurable settings
 	MysqlUserConfig ServiceMysqlUserConfigPtrOutput `pulumi:"mysqlUserConfig"`
-	// Opensearch specific server provided values
-	Opensearch ServiceOpensearchOutput `pulumi:"opensearch"`
-	// Opensearch specific user configurable settings
+	// MySQL specific server provided values
+	Mysqls ServiceMysqlArrayOutput `pulumi:"mysqls"`
+	// Opensearch user configurable settings
 	OpensearchUserConfig ServiceOpensearchUserConfigPtrOutput `pulumi:"opensearchUserConfig"`
-	// PostgreSQL specific server provided values
-	Pg ServicePgOutput `pulumi:"pg"`
-	// PostgreSQL specific user configurable settings
+	// Opensearch specific server provided values
+	Opensearches ServiceOpensearchArrayOutput `pulumi:"opensearches"`
+	// Pg user configurable settings
 	PgUserConfig ServicePgUserConfigPtrOutput `pulumi:"pgUserConfig"`
+	// PostgreSQL specific server provided values
+	Pgs ServicePgArrayOutput `pulumi:"pgs"`
 	// Subscription plan
 	Plan pulumi.StringPtrOutput `pulumi:"plan"`
 	// Target project
@@ -69,8 +88,8 @@ type Service struct {
 	// Identifier of the VPC the service should be in, if any
 	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
 	// Redis specific server provided values
-	Redis ServiceRedisOutput `pulumi:"redis"`
-	// Redis specific user configurable settings
+	Redis ServiceRediArrayOutput `pulumi:"redis"`
+	// Redis user configurable settings
 	RedisUserConfig ServiceRedisUserConfigPtrOutput `pulumi:"redisUserConfig"`
 	// Service hostname
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
@@ -88,8 +107,10 @@ type Service struct {
 	ServiceUri pulumi.StringOutput `pulumi:"serviceUri"`
 	// Username used for connecting to the service, if applicable
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
-	// Service state
+	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
 	State pulumi.StringOutput `pulumi:"state"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Prevent service from being deleted. It is recommended to have this enabled for all services.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
@@ -132,54 +153,72 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
-	// Cassandra specific server provided values
-	Cassandra *ServiceCassandra `pulumi:"cassandra"`
-	// Cassandra specific user configurable settings
+	// Cassandra user configurable settings
 	CassandraUserConfig *ServiceCassandraUserConfig `pulumi:"cassandraUserConfig"`
+	// Cassandra specific server provided values
+	Cassandras []ServiceCassandra `pulumi:"cassandras"`
+	// Clickhouse user configurable settings
+	ClickhouseUserConfig *ServiceClickhouseUserConfig `pulumi:"clickhouseUserConfig"`
+	// Clickhouse specific server provided values
+	Clickhouses []ServiceClickhouse `pulumi:"clickhouses"`
 	// Cloud the service runs in
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []ServiceComponent `pulumi:"components"`
-	// Elasticsearch specific server provided values
-	Elasticsearch *ServiceElasticsearch `pulumi:"elasticsearch"`
-	// Elasticsearch specific user configurable settings
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	DiskSpace *string `pulumi:"diskSpace"`
+	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+	DiskSpaceDefault *string `pulumi:"diskSpaceDefault"`
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
+	// Disk space that service is currently using
+	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
+	// Elasticsearch user configurable settings
 	ElasticsearchUserConfig *ServiceElasticsearchUserConfig `pulumi:"elasticsearchUserConfig"`
-	// Grafana specific server provided values
-	Grafana *ServiceGrafana `pulumi:"grafana"`
-	// Grafana specific user configurable settings
+	// Elasticsearch specific server provided values
+	Elasticsearches []ServiceElasticsearch `pulumi:"elasticsearches"`
+	// Flink user configurable settings
+	FlinkUserConfig *ServiceFlinkUserConfig `pulumi:"flinkUserConfig"`
+	// Flink specific server provided values
+	Flinks []ServiceFlink `pulumi:"flinks"`
+	// Grafana user configurable settings
 	GrafanaUserConfig *ServiceGrafanaUserConfig `pulumi:"grafanaUserConfig"`
-	// InfluxDB specific server provided values
-	Influxdb *ServiceInfluxdb `pulumi:"influxdb"`
-	// InfluxDB specific user configurable settings
+	// Grafana specific server provided values
+	Grafanas []ServiceGrafana `pulumi:"grafanas"`
+	// Influxdb user configurable settings
 	InfluxdbUserConfig *ServiceInfluxdbUserConfig `pulumi:"influxdbUserConfig"`
-	// Kafka specific server provided values
-	Kafka *ServiceKafka `pulumi:"kafka"`
-	// Kafka Connect specific server provided values
-	KafkaConnect *ServiceKafkaConnect `pulumi:"kafkaConnect"`
-	// Kafka Connect specific user configurable settings
+	// InfluxDB specific server provided values
+	Influxdbs []ServiceInfluxdb `pulumi:"influxdbs"`
+	// Kafka*connect user configurable settings
 	KafkaConnectUserConfig *ServiceKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
-	// Kafka MirrorMaker 2 specific server provided values
-	KafkaMirrormaker *ServiceKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
-	// Kafka MirrorMaker 2 specific user configurable settings
+	// Kafka Connect specific server provided values
+	KafkaConnects []ServiceKafkaConnect `pulumi:"kafkaConnects"`
+	// Kafka*mirrormaker user configurable settings
 	KafkaMirrormakerUserConfig *ServiceKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
-	// Kafka specific user configurable settings
+	// Kafka MirrorMaker 2 specific server provided values
+	KafkaMirrormakers []ServiceKafkaMirrormaker `pulumi:"kafkaMirrormakers"`
+	// Kafka user configurable settings
 	KafkaUserConfig *ServiceKafkaUserConfig `pulumi:"kafkaUserConfig"`
+	// Kafka specific server provided values
+	Kafkas []ServiceKafka `pulumi:"kafkas"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// MySQL specific server provided values
-	Mysql *ServiceMysql `pulumi:"mysql"`
-	// MySQL specific user configurable settings
+	// Mysql user configurable settings
 	MysqlUserConfig *ServiceMysqlUserConfig `pulumi:"mysqlUserConfig"`
-	// Opensearch specific server provided values
-	Opensearch *ServiceOpensearch `pulumi:"opensearch"`
-	// Opensearch specific user configurable settings
+	// MySQL specific server provided values
+	Mysqls []ServiceMysql `pulumi:"mysqls"`
+	// Opensearch user configurable settings
 	OpensearchUserConfig *ServiceOpensearchUserConfig `pulumi:"opensearchUserConfig"`
-	// PostgreSQL specific server provided values
-	Pg *ServicePg `pulumi:"pg"`
-	// PostgreSQL specific user configurable settings
+	// Opensearch specific server provided values
+	Opensearches []ServiceOpensearch `pulumi:"opensearches"`
+	// Pg user configurable settings
 	PgUserConfig *ServicePgUserConfig `pulumi:"pgUserConfig"`
+	// PostgreSQL specific server provided values
+	Pgs []ServicePg `pulumi:"pgs"`
 	// Subscription plan
 	Plan *string `pulumi:"plan"`
 	// Target project
@@ -187,8 +226,8 @@ type serviceState struct {
 	// Identifier of the VPC the service should be in, if any
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// Redis specific server provided values
-	Redis *ServiceRedis `pulumi:"redis"`
-	// Redis specific user configurable settings
+	Redis []ServiceRedi `pulumi:"redis"`
+	// Redis user configurable settings
 	RedisUserConfig *ServiceRedisUserConfig `pulumi:"redisUserConfig"`
 	// Service hostname
 	ServiceHost *string `pulumi:"serviceHost"`
@@ -206,61 +245,81 @@ type serviceState struct {
 	ServiceUri *string `pulumi:"serviceUri"`
 	// Username used for connecting to the service, if applicable
 	ServiceUsername *string `pulumi:"serviceUsername"`
-	// Service state
+	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
 	State *string `pulumi:"state"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps []string `pulumi:"staticIps"`
 	// Prevent service from being deleted. It is recommended to have this enabled for all services.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 type ServiceState struct {
-	// Cassandra specific server provided values
-	Cassandra ServiceCassandraPtrInput
-	// Cassandra specific user configurable settings
+	// Cassandra user configurable settings
 	CassandraUserConfig ServiceCassandraUserConfigPtrInput
+	// Cassandra specific server provided values
+	Cassandras ServiceCassandraArrayInput
+	// Clickhouse user configurable settings
+	ClickhouseUserConfig ServiceClickhouseUserConfigPtrInput
+	// Clickhouse specific server provided values
+	Clickhouses ServiceClickhouseArrayInput
 	// Cloud the service runs in
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components ServiceComponentArrayInput
-	// Elasticsearch specific server provided values
-	Elasticsearch ServiceElasticsearchPtrInput
-	// Elasticsearch specific user configurable settings
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	DiskSpace pulumi.StringPtrInput
+	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+	DiskSpaceCap pulumi.StringPtrInput
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+	DiskSpaceDefault pulumi.StringPtrInput
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+	DiskSpaceStep pulumi.StringPtrInput
+	// Disk space that service is currently using
+	DiskSpaceUsed pulumi.StringPtrInput
+	// Elasticsearch user configurable settings
 	ElasticsearchUserConfig ServiceElasticsearchUserConfigPtrInput
-	// Grafana specific server provided values
-	Grafana ServiceGrafanaPtrInput
-	// Grafana specific user configurable settings
+	// Elasticsearch specific server provided values
+	Elasticsearches ServiceElasticsearchArrayInput
+	// Flink user configurable settings
+	FlinkUserConfig ServiceFlinkUserConfigPtrInput
+	// Flink specific server provided values
+	Flinks ServiceFlinkArrayInput
+	// Grafana user configurable settings
 	GrafanaUserConfig ServiceGrafanaUserConfigPtrInput
-	// InfluxDB specific server provided values
-	Influxdb ServiceInfluxdbPtrInput
-	// InfluxDB specific user configurable settings
+	// Grafana specific server provided values
+	Grafanas ServiceGrafanaArrayInput
+	// Influxdb user configurable settings
 	InfluxdbUserConfig ServiceInfluxdbUserConfigPtrInput
-	// Kafka specific server provided values
-	Kafka ServiceKafkaPtrInput
-	// Kafka Connect specific server provided values
-	KafkaConnect ServiceKafkaConnectPtrInput
-	// Kafka Connect specific user configurable settings
+	// InfluxDB specific server provided values
+	Influxdbs ServiceInfluxdbArrayInput
+	// Kafka*connect user configurable settings
 	KafkaConnectUserConfig ServiceKafkaConnectUserConfigPtrInput
-	// Kafka MirrorMaker 2 specific server provided values
-	KafkaMirrormaker ServiceKafkaMirrormakerPtrInput
-	// Kafka MirrorMaker 2 specific user configurable settings
+	// Kafka Connect specific server provided values
+	KafkaConnects ServiceKafkaConnectArrayInput
+	// Kafka*mirrormaker user configurable settings
 	KafkaMirrormakerUserConfig ServiceKafkaMirrormakerUserConfigPtrInput
-	// Kafka specific user configurable settings
+	// Kafka MirrorMaker 2 specific server provided values
+	KafkaMirrormakers ServiceKafkaMirrormakerArrayInput
+	// Kafka user configurable settings
 	KafkaUserConfig ServiceKafkaUserConfigPtrInput
+	// Kafka specific server provided values
+	Kafkas ServiceKafkaArrayInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// MySQL specific server provided values
-	Mysql ServiceMysqlPtrInput
-	// MySQL specific user configurable settings
+	// Mysql user configurable settings
 	MysqlUserConfig ServiceMysqlUserConfigPtrInput
-	// Opensearch specific server provided values
-	Opensearch ServiceOpensearchPtrInput
-	// Opensearch specific user configurable settings
+	// MySQL specific server provided values
+	Mysqls ServiceMysqlArrayInput
+	// Opensearch user configurable settings
 	OpensearchUserConfig ServiceOpensearchUserConfigPtrInput
-	// PostgreSQL specific server provided values
-	Pg ServicePgPtrInput
-	// PostgreSQL specific user configurable settings
+	// Opensearch specific server provided values
+	Opensearches ServiceOpensearchArrayInput
+	// Pg user configurable settings
 	PgUserConfig ServicePgUserConfigPtrInput
+	// PostgreSQL specific server provided values
+	Pgs ServicePgArrayInput
 	// Subscription plan
 	Plan pulumi.StringPtrInput
 	// Target project
@@ -268,8 +327,8 @@ type ServiceState struct {
 	// Identifier of the VPC the service should be in, if any
 	ProjectVpcId pulumi.StringPtrInput
 	// Redis specific server provided values
-	Redis ServiceRedisPtrInput
-	// Redis specific user configurable settings
+	Redis ServiceRediArrayInput
+	// Redis user configurable settings
 	RedisUserConfig ServiceRedisUserConfigPtrInput
 	// Service hostname
 	ServiceHost pulumi.StringPtrInput
@@ -287,8 +346,10 @@ type ServiceState struct {
 	ServiceUri pulumi.StringPtrInput
 	// Username used for connecting to the service, if applicable
 	ServiceUsername pulumi.StringPtrInput
-	// Service state
+	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
 	State pulumi.StringPtrInput
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringArrayInput
 	// Prevent service from being deleted. It is recommended to have this enabled for all services.
 	TerminationProtection pulumi.BoolPtrInput
 }
@@ -298,51 +359,41 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
-	// Cassandra specific server provided values
-	Cassandra *ServiceCassandra `pulumi:"cassandra"`
-	// Cassandra specific user configurable settings
+	// Cassandra user configurable settings
 	CassandraUserConfig *ServiceCassandraUserConfig `pulumi:"cassandraUserConfig"`
+	// Clickhouse user configurable settings
+	ClickhouseUserConfig *ServiceClickhouseUserConfig `pulumi:"clickhouseUserConfig"`
 	// Cloud the service runs in
 	CloudName *string `pulumi:"cloudName"`
-	// Elasticsearch specific server provided values
-	Elasticsearch *ServiceElasticsearch `pulumi:"elasticsearch"`
-	// Elasticsearch specific user configurable settings
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	DiskSpace *string `pulumi:"diskSpace"`
+	// Elasticsearch user configurable settings
 	ElasticsearchUserConfig *ServiceElasticsearchUserConfig `pulumi:"elasticsearchUserConfig"`
-	// Grafana specific server provided values
-	Grafana *ServiceGrafana `pulumi:"grafana"`
-	// Grafana specific user configurable settings
+	// Flink user configurable settings
+	FlinkUserConfig *ServiceFlinkUserConfig `pulumi:"flinkUserConfig"`
+	// Flink specific server provided values
+	Flinks []ServiceFlink `pulumi:"flinks"`
+	// Grafana user configurable settings
 	GrafanaUserConfig *ServiceGrafanaUserConfig `pulumi:"grafanaUserConfig"`
-	// InfluxDB specific server provided values
-	Influxdb *ServiceInfluxdb `pulumi:"influxdb"`
-	// InfluxDB specific user configurable settings
+	// Influxdb user configurable settings
 	InfluxdbUserConfig *ServiceInfluxdbUserConfig `pulumi:"influxdbUserConfig"`
-	// Kafka specific server provided values
-	Kafka *ServiceKafka `pulumi:"kafka"`
-	// Kafka Connect specific server provided values
-	KafkaConnect *ServiceKafkaConnect `pulumi:"kafkaConnect"`
-	// Kafka Connect specific user configurable settings
+	// Kafka*connect user configurable settings
 	KafkaConnectUserConfig *ServiceKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
-	// Kafka MirrorMaker 2 specific server provided values
-	KafkaMirrormaker *ServiceKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
-	// Kafka MirrorMaker 2 specific user configurable settings
+	// Kafka*mirrormaker user configurable settings
 	KafkaMirrormakerUserConfig *ServiceKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
-	// Kafka specific user configurable settings
+	// Kafka user configurable settings
 	KafkaUserConfig *ServiceKafkaUserConfig `pulumi:"kafkaUserConfig"`
+	// Kafka specific server provided values
+	Kafkas []ServiceKafka `pulumi:"kafkas"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// MySQL specific server provided values
-	Mysql *ServiceMysql `pulumi:"mysql"`
-	// MySQL specific user configurable settings
+	// Mysql user configurable settings
 	MysqlUserConfig *ServiceMysqlUserConfig `pulumi:"mysqlUserConfig"`
-	// Opensearch specific server provided values
-	Opensearch *ServiceOpensearch `pulumi:"opensearch"`
-	// Opensearch specific user configurable settings
+	// Opensearch user configurable settings
 	OpensearchUserConfig *ServiceOpensearchUserConfig `pulumi:"opensearchUserConfig"`
-	// PostgreSQL specific server provided values
-	Pg *ServicePg `pulumi:"pg"`
-	// PostgreSQL specific user configurable settings
+	// Pg user configurable settings
 	PgUserConfig *ServicePgUserConfig `pulumi:"pgUserConfig"`
 	// Subscription plan
 	Plan *string `pulumi:"plan"`
@@ -350,9 +401,7 @@ type serviceArgs struct {
 	Project string `pulumi:"project"`
 	// Identifier of the VPC the service should be in, if any
 	ProjectVpcId *string `pulumi:"projectVpcId"`
-	// Redis specific server provided values
-	Redis *ServiceRedis `pulumi:"redis"`
-	// Redis specific user configurable settings
+	// Redis user configurable settings
 	RedisUserConfig *ServiceRedisUserConfig `pulumi:"redisUserConfig"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []ServiceServiceIntegration `pulumi:"serviceIntegrations"`
@@ -360,57 +409,49 @@ type serviceArgs struct {
 	ServiceName string `pulumi:"serviceName"`
 	// Service type code
 	ServiceType string `pulumi:"serviceType"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps []string `pulumi:"staticIps"`
 	// Prevent service from being deleted. It is recommended to have this enabled for all services.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	// Cassandra specific server provided values
-	Cassandra ServiceCassandraPtrInput
-	// Cassandra specific user configurable settings
+	// Cassandra user configurable settings
 	CassandraUserConfig ServiceCassandraUserConfigPtrInput
+	// Clickhouse user configurable settings
+	ClickhouseUserConfig ServiceClickhouseUserConfigPtrInput
 	// Cloud the service runs in
 	CloudName pulumi.StringPtrInput
-	// Elasticsearch specific server provided values
-	Elasticsearch ServiceElasticsearchPtrInput
-	// Elasticsearch specific user configurable settings
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	DiskSpace pulumi.StringPtrInput
+	// Elasticsearch user configurable settings
 	ElasticsearchUserConfig ServiceElasticsearchUserConfigPtrInput
-	// Grafana specific server provided values
-	Grafana ServiceGrafanaPtrInput
-	// Grafana specific user configurable settings
+	// Flink user configurable settings
+	FlinkUserConfig ServiceFlinkUserConfigPtrInput
+	// Flink specific server provided values
+	Flinks ServiceFlinkArrayInput
+	// Grafana user configurable settings
 	GrafanaUserConfig ServiceGrafanaUserConfigPtrInput
-	// InfluxDB specific server provided values
-	Influxdb ServiceInfluxdbPtrInput
-	// InfluxDB specific user configurable settings
+	// Influxdb user configurable settings
 	InfluxdbUserConfig ServiceInfluxdbUserConfigPtrInput
-	// Kafka specific server provided values
-	Kafka ServiceKafkaPtrInput
-	// Kafka Connect specific server provided values
-	KafkaConnect ServiceKafkaConnectPtrInput
-	// Kafka Connect specific user configurable settings
+	// Kafka*connect user configurable settings
 	KafkaConnectUserConfig ServiceKafkaConnectUserConfigPtrInput
-	// Kafka MirrorMaker 2 specific server provided values
-	KafkaMirrormaker ServiceKafkaMirrormakerPtrInput
-	// Kafka MirrorMaker 2 specific user configurable settings
+	// Kafka*mirrormaker user configurable settings
 	KafkaMirrormakerUserConfig ServiceKafkaMirrormakerUserConfigPtrInput
-	// Kafka specific user configurable settings
+	// Kafka user configurable settings
 	KafkaUserConfig ServiceKafkaUserConfigPtrInput
+	// Kafka specific server provided values
+	Kafkas ServiceKafkaArrayInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// MySQL specific server provided values
-	Mysql ServiceMysqlPtrInput
-	// MySQL specific user configurable settings
+	// Mysql user configurable settings
 	MysqlUserConfig ServiceMysqlUserConfigPtrInput
-	// Opensearch specific server provided values
-	Opensearch ServiceOpensearchPtrInput
-	// Opensearch specific user configurable settings
+	// Opensearch user configurable settings
 	OpensearchUserConfig ServiceOpensearchUserConfigPtrInput
-	// PostgreSQL specific server provided values
-	Pg ServicePgPtrInput
-	// PostgreSQL specific user configurable settings
+	// Pg user configurable settings
 	PgUserConfig ServicePgUserConfigPtrInput
 	// Subscription plan
 	Plan pulumi.StringPtrInput
@@ -418,9 +459,7 @@ type ServiceArgs struct {
 	Project pulumi.StringInput
 	// Identifier of the VPC the service should be in, if any
 	ProjectVpcId pulumi.StringPtrInput
-	// Redis specific server provided values
-	Redis ServiceRedisPtrInput
-	// Redis specific user configurable settings
+	// Redis user configurable settings
 	RedisUserConfig ServiceRedisUserConfigPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations ServiceServiceIntegrationArrayInput
@@ -428,6 +467,8 @@ type ServiceArgs struct {
 	ServiceName pulumi.StringInput
 	// Service type code
 	ServiceType pulumi.StringInput
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringArrayInput
 	// Prevent service from being deleted. It is recommended to have this enabled for all services.
 	TerminationProtection pulumi.BoolPtrInput
 }

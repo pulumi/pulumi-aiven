@@ -12,16 +12,12 @@ namespace Pulumi.Aiven
     public static class GetAccountTeamProject
     {
         /// <summary>
-        /// ## # Account Team Project Data Source
-        /// 
         /// The Account Team Project data source provides information about the existing Account Team Project.
         /// </summary>
         public static Task<GetAccountTeamProjectResult> InvokeAsync(GetAccountTeamProjectArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamProjectResult>("aiven:index/getAccountTeamProject:getAccountTeamProject", args ?? new GetAccountTeamProjectArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # Account Team Project Data Source
-        /// 
         /// The Account Team Project data source provides information about the existing Account Team Project.
         /// </summary>
         public static Output<GetAccountTeamProjectResult> Invoke(GetAccountTeamProjectInvokeArgs args, InvokeOptions? options = null)
@@ -32,29 +28,22 @@ namespace Pulumi.Aiven
     public sealed class GetAccountTeamProjectArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is a unique account id.
+        /// The unique account id
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// is a project name of already existing project.
+        /// The name of an already existing project
         /// </summary>
         [Input("projectName", required: true)]
         public string ProjectName { get; set; } = null!;
 
         /// <summary>
-        /// is an account team id.
+        /// An account team id
         /// </summary>
         [Input("teamId", required: true)]
         public string TeamId { get; set; } = null!;
-
-        /// <summary>
-        /// is an account team project type, can one of the following values: `admin`, 
-        /// `developer`, `operator` and `read_only`.
-        /// </summary>
-        [Input("teamType")]
-        public string? TeamType { get; set; }
 
         public GetAccountTeamProjectArgs()
         {
@@ -64,29 +53,22 @@ namespace Pulumi.Aiven
     public sealed class GetAccountTeamProjectInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is a unique account id.
+        /// The unique account id
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// is a project name of already existing project.
+        /// The name of an already existing project
         /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
 
         /// <summary>
-        /// is an account team id.
+        /// An account team id
         /// </summary>
         [Input("teamId", required: true)]
         public Input<string> TeamId { get; set; } = null!;
-
-        /// <summary>
-        /// is an account team project type, can one of the following values: `admin`, 
-        /// `developer`, `operator` and `read_only`.
-        /// </summary>
-        [Input("teamType")]
-        public Input<string>? TeamType { get; set; }
 
         public GetAccountTeamProjectInvokeArgs()
         {
@@ -97,18 +79,26 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetAccountTeamProjectResult
     {
+        /// <summary>
+        /// The unique account id
+        /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of an already existing project
+        /// </summary>
         public readonly string ProjectName;
+        /// <summary>
+        /// An account team id
+        /// </summary>
         public readonly string TeamId;
         /// <summary>
-        /// is an account team project type, can one of the following values: `admin`, 
-        /// `developer`, `operator` and `read_only`.
+        /// The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
         /// </summary>
-        public readonly string? TeamType;
+        public readonly string TeamType;
 
         [OutputConstructor]
         private GetAccountTeamProjectResult(
@@ -120,7 +110,7 @@ namespace Pulumi.Aiven
 
             string teamId,
 
-            string? teamType)
+            string teamType)
         {
             AccountId = accountId;
             Id = id;
