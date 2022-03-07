@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetElasticSearchAclResult',
@@ -44,24 +43,25 @@ class GetElasticSearchAclResult:
 
     @property
     @pulumi.getter
-    def acls(self) -> Optional[Sequence['outputs.GetElasticSearchAclAclResult']]:
+    def acls(self) -> Sequence['outputs.GetElasticSearchAclAclResult']:
+        """
+        List of Elasticsearch ACLs
+        """
         return pulumi.get(self, "acls")
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> bool:
         """
-        enables or disables Elasticsearch ACLs.
+        Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="extendedAcl")
-    def extended_acl(self) -> Optional[bool]:
+    def extended_acl(self) -> bool:
         """
-        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
-        (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-        these APIs as long as all operations only target indexes they have been granted access to.
+        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         """
         return pulumi.get(self, "extended_acl")
 
@@ -76,11 +76,17 @@ class GetElasticSearchAclResult:
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -98,17 +104,11 @@ class AwaitableGetElasticSearchAclResult(GetElasticSearchAclResult):
             service_name=self.service_name)
 
 
-def get_elastic_search_acl(acls: Optional[Sequence[pulumi.InputType['GetElasticSearchAclAclArgs']]] = None,
-                           enabled: Optional[bool] = None,
-                           extended_acl: Optional[bool] = None,
-                           project: Optional[str] = None,
+def get_elastic_search_acl(project: Optional[str] = None,
                            service_name: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetElasticSearchAclResult:
     """
-    ## # Elasticsearch ACL Data Source
-
-    The Elasticsearch ACL data source provides information about the existing Aiven Elasticsearch ACL
-    for Elasticsearch service.
+    The Elasticsearch ACL data source provides information about the existing Aiven Elasticsearch ACL for Elasticsearch service.
 
     ## Example Usage
 
@@ -121,17 +121,10 @@ def get_elastic_search_acl(acls: Optional[Sequence[pulumi.InputType['GetElasticS
     ```
 
 
-    :param bool enabled: enables or disables Elasticsearch ACLs.
-    :param bool extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
-           (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-           these APIs as long as all operations only target indexes they have been granted access to.
-    :param str project: and `service_name` - (Required) define the project and service the ACL belongs to. 
-           They should be defined using reference as shown above to set up dependencies correctly.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
-    __args__['acls'] = acls
-    __args__['enabled'] = enabled
-    __args__['extendedAcl'] = extended_acl
     __args__['project'] = project
     __args__['serviceName'] = service_name
     if opts is None:
@@ -150,17 +143,11 @@ def get_elastic_search_acl(acls: Optional[Sequence[pulumi.InputType['GetElasticS
 
 
 @_utilities.lift_output_func(get_elastic_search_acl)
-def get_elastic_search_acl_output(acls: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetElasticSearchAclAclArgs']]]]] = None,
-                                  enabled: Optional[pulumi.Input[Optional[bool]]] = None,
-                                  extended_acl: Optional[pulumi.Input[Optional[bool]]] = None,
-                                  project: Optional[pulumi.Input[str]] = None,
+def get_elastic_search_acl_output(project: Optional[pulumi.Input[str]] = None,
                                   service_name: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetElasticSearchAclResult]:
     """
-    ## # Elasticsearch ACL Data Source
-
-    The Elasticsearch ACL data source provides information about the existing Aiven Elasticsearch ACL
-    for Elasticsearch service.
+    The Elasticsearch ACL data source provides information about the existing Aiven Elasticsearch ACL for Elasticsearch service.
 
     ## Example Usage
 
@@ -173,11 +160,7 @@ def get_elastic_search_acl_output(acls: Optional[pulumi.Input[Optional[Sequence[
     ```
 
 
-    :param bool enabled: enables or disables Elasticsearch ACLs.
-    :param bool extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
-           (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-           these APIs as long as all operations only target indexes they have been granted access to.
-    :param str project: and `service_name` - (Required) define the project and service the ACL belongs to. 
-           They should be defined using reference as shown above to set up dependencies correctly.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

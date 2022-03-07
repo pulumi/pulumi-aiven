@@ -13,44 +13,21 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetInfluxDbInfluxdbUserConfigResult
     {
-        /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
-        /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
-        /// InfluxDB specific server provided values.
+        /// InfluxDB server provided values
         /// </summary>
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigInfluxdbResult? Influxdb;
-        /// <summary>
-        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigPrivateAccessResult? PrivateAccess;
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
-        /// <summary>
-        /// Name of another project to fork a service from. This has
-        /// effect only when a new service is being created.
-        /// </summary>
         public readonly string? ProjectToForkFrom;
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigPublicAccessResult? PublicAccess;
-        /// <summary>
-        /// Name of the basebackup to restore in forked service
-        /// </summary>
         public readonly string? RecoveryBasebackupName;
-        /// <summary>
-        /// Name of another service to fork from. This has effect 
-        /// only when a new service is being created.
-        /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

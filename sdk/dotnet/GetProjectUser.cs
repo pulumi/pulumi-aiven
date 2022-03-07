@@ -12,8 +12,6 @@ namespace Pulumi.Aiven
     public static class GetProjectUser
     {
         /// <summary>
-        /// ## # Project User Data Source
-        /// 
         /// The Project User data source provides information about the existing Aiven Project User.
         /// 
         /// {{% examples %}}
@@ -44,8 +42,6 @@ namespace Pulumi.Aiven
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectUserResult>("aiven:index/getProjectUser:getProjectUser", args ?? new GetProjectUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # Project User Data Source
-        /// 
         /// The Project User data source provides information about the existing Aiven Project User.
         /// 
         /// {{% examples %}}
@@ -80,28 +76,13 @@ namespace Pulumi.Aiven
     public sealed class GetProjectUserArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is a computed property tells whether the user has accepted the request to join
-        /// the project; adding user to a project sends an invitation to the target user and the
-        /// actual membership is only created once the user accepts the invitation. This property
-        /// cannot be set, only read.
-        /// </summary>
-        [Input("accepted")]
-        public bool? Accepted { get; set; }
-
-        /// <summary>
-        /// identifies the email address of the user.
+        /// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("email", required: true)]
         public string Email { get; set; } = null!;
 
         /// <summary>
-        /// (Required) defines the access level the user has to the project.
-        /// </summary>
-        [Input("memberType")]
-        public string? MemberType { get; set; }
-
-        /// <summary>
-        /// defines the project the user is a member of.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -114,28 +95,13 @@ namespace Pulumi.Aiven
     public sealed class GetProjectUserInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is a computed property tells whether the user has accepted the request to join
-        /// the project; adding user to a project sends an invitation to the target user and the
-        /// actual membership is only created once the user accepts the invitation. This property
-        /// cannot be set, only read.
-        /// </summary>
-        [Input("accepted")]
-        public Input<bool>? Accepted { get; set; }
-
-        /// <summary>
-        /// identifies the email address of the user.
+        /// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// (Required) defines the access level the user has to the project.
-        /// </summary>
-        [Input("memberType")]
-        public Input<string>? MemberType { get; set; }
-
-        /// <summary>
-        /// defines the project the user is a member of.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -150,21 +116,24 @@ namespace Pulumi.Aiven
     public sealed class GetProjectUserResult
     {
         /// <summary>
-        /// is a computed property tells whether the user has accepted the request to join
-        /// the project; adding user to a project sends an invitation to the target user and the
-        /// actual membership is only created once the user accepts the invitation. This property
-        /// cannot be set, only read.
+        /// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
         /// </summary>
         public readonly bool Accepted;
+        /// <summary>
+        /// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Email;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (Required) defines the access level the user has to the project.
+        /// Project membership type. The possible values are `admin`, `developer` and `operator`.
         /// </summary>
-        public readonly string? MemberType;
+        public readonly string MemberType;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
 
         [OutputConstructor]
@@ -175,7 +144,7 @@ namespace Pulumi.Aiven
 
             string id,
 
-            string? memberType,
+            string memberType,
 
             string project)
         {

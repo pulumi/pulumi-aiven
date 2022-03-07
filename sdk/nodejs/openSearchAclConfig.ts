@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Opensearch ACL Config Resource
- *
- * The Opensearch ACL Config resource allows the configuration of ACL management on an Aiven Opensearch service.
+ * The Opensearch resource allows the creation and management of Aiven Opensearch services.
  *
  * ## Example Usage
  *
@@ -15,11 +13,24 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const os_acl_config = new aiven.OpenSearchAclConfig("os-acl-config", {
- *     project: aiven_project["os-project"].project,
- *     serviceName: aiven_opensearch.os.service_name,
- *     enabled: true,
- *     extendedAcl: false,
+ * const os1 = new aiven.OpenSearch("os1", {
+ *     project: data.aiven_project.pr1.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-4",
+ *     serviceName: "my-os1",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ *     opensearchUserConfig: {
+ *         opensearchVersion: 1,
+ *         opensearchDashboards: {
+ *             enabled: true,
+ *             opensearchRequestTimeout: 30000,
+ *         },
+ *         publicAccess: {
+ *             opensearch: true,
+ *             opensearchDashboards: true,
+ *         },
+ *     },
  * });
  * ```
  */
@@ -52,22 +63,19 @@ export class OpenSearchAclConfig extends pulumi.CustomResource {
     }
 
     /**
-     * enables of disables Opensearch ACL's.
+     * Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as
-     * long as all operations only target indexes they have been granted access to.
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
      */
     public readonly extendedAcl!: pulumi.Output<boolean | undefined>;
     /**
-     * and `serviceName` - (Required) define the project and service the ACL belongs to. They should be defined
-     * using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Service to link the Opensearch ACLs to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -111,22 +119,19 @@ export class OpenSearchAclConfig extends pulumi.CustomResource {
  */
 export interface OpenSearchAclConfigState {
     /**
-     * enables of disables Opensearch ACL's.
+     * Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as
-     * long as all operations only target indexes they have been granted access to.
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
      */
     extendedAcl?: pulumi.Input<boolean>;
     /**
-     * and `serviceName` - (Required) define the project and service the ACL belongs to. They should be defined
-     * using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Service to link the Opensearch ACLs to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -136,22 +141,19 @@ export interface OpenSearchAclConfigState {
  */
 export interface OpenSearchAclConfigArgs {
     /**
-     * enables of disables Opensearch ACL's.
+     * Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as
-     * long as all operations only target indexes they have been granted access to.
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
      */
     extendedAcl?: pulumi.Input<boolean>;
     /**
-     * and `serviceName` - (Required) define the project and service the ACL belongs to. They should be defined
-     * using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Service to link the Opensearch ACLs to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

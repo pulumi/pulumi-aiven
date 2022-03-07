@@ -14,8 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GrafanaGrafanaUserConfigPublicAccess
     {
         /// <summary>
-        /// Allow clients to connect to grafana from the public internet for service nodes that 
-        /// are in a project VPC or another type of private network.
+        /// Grafana server provided values
         /// </summary>
         public readonly string? Grafana;
 

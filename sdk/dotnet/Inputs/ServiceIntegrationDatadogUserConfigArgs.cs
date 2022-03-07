@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("datadogTags")]
         private InputList<Inputs.ServiceIntegrationDatadogUserConfigDatadogTagArgs>? _datadogTags;
+
+        /// <summary>
+        /// Custom tags provided by user
+        /// </summary>
         public InputList<Inputs.ServiceIntegrationDatadogUserConfigDatadogTagArgs> DatadogTags
         {
             get => _datadogTags ?? (_datadogTags = new InputList<Inputs.ServiceIntegrationDatadogUserConfigDatadogTagArgs>());
@@ -22,6 +26,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("excludeConsumerGroups")]
         private InputList<string>? _excludeConsumerGroups;
+
+        /// <summary>
+        /// List of custom metrics
+        /// </summary>
         public InputList<string> ExcludeConsumerGroups
         {
             get => _excludeConsumerGroups ?? (_excludeConsumerGroups = new InputList<string>());
@@ -30,6 +38,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("excludeTopics")]
         private InputList<string>? _excludeTopics;
+
+        /// <summary>
+        /// List of topics to exclude
+        /// </summary>
         public InputList<string> ExcludeTopics
         {
             get => _excludeTopics ?? (_excludeTopics = new InputList<string>());
@@ -38,6 +50,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("includeConsumerGroups")]
         private InputList<string>? _includeConsumerGroups;
+
+        /// <summary>
+        /// List of custom metrics
+        /// </summary>
         public InputList<string> IncludeConsumerGroups
         {
             get => _includeConsumerGroups ?? (_includeConsumerGroups = new InputList<string>());
@@ -46,6 +62,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("includeTopics")]
         private InputList<string>? _includeTopics;
+
+        /// <summary>
+        /// List of topics to include
+        /// </summary>
         public InputList<string> IncludeTopics
         {
             get => _includeTopics ?? (_includeTopics = new InputList<string>());
@@ -54,12 +74,19 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("kafkaCustomMetrics")]
         private InputList<string>? _kafkaCustomMetrics;
+
+        /// <summary>
+        /// List of custom metrics
+        /// </summary>
         public InputList<string> KafkaCustomMetrics
         {
             get => _kafkaCustomMetrics ?? (_kafkaCustomMetrics = new InputList<string>());
             set => _kafkaCustomMetrics = value;
         }
 
+        /// <summary>
+        /// Maximum number of JMX metrics to send
+        /// </summary>
         [Input("maxJmxMetrics")]
         public Input<string>? MaxJmxMetrics { get; set; }
 

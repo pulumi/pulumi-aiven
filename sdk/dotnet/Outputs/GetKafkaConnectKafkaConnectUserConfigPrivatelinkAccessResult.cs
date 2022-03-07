@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessResult
     {
         /// <summary>
-        /// Kafka Connect specific server provided values.
+        /// Kafka Connect server provided values
         /// </summary>
         public readonly string? KafkaConnect;
 

@@ -13,18 +13,8 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetElasticSearchElasticsearchUserConfigIndexPatternResult
     {
-        /// <summary>
-        /// Maximum number of indexes to keep before deleting the oldest one.
-        /// </summary>
         public readonly string? MaxIndexCount;
-        /// <summary>
-        /// Must consist of alpha-numeric characters, dashes, underscores, 
-        /// dots and glob characters (* and ?)
-        /// </summary>
         public readonly string? Pattern;
-        /// <summary>
-        /// Deletion sorting algorithm
-        /// </summary>
         public readonly string? SortingAlgorithm;
 
         [OutputConstructor]

@@ -10,10 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Transit Gateway VPC Attachment Resource
-    /// 
-    /// The Transit Gateway VPC Attachment resource allows the creation and management Transit
-    /// Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+    /// The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
     /// 
     /// ## Example Usage
     /// 
@@ -45,19 +42,19 @@ namespace Pulumi.Aiven
     public partial class TransitGatewayVpcAttachment : Pulumi.CustomResource
     {
         /// <summary>
-        /// AWS account ID of the peered VPC.
+        /// AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("peerCloudAccount")]
         public Output<string> PeerCloudAccount { get; private set; } = null!;
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC).
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC)
         /// </summary>
         [Output("peerRegion")]
         public Output<string> PeerRegion { get; private set; } = null!;
 
         /// <summary>
-        /// Transit gateway ID
+        /// Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("peerVpc")]
         public Output<string> PeerVpc { get; private set; } = null!;
@@ -81,13 +78,13 @@ namespace Pulumi.Aiven
         public Output<ImmutableDictionary<string, object>> StateInfo { get; private set; } = null!;
 
         /// <summary>
-        /// List of private IPv4 ranges to route through the peering connection.
+        /// List of private IPv4 ranges to route through the peering connection
         /// </summary>
         [Output("userPeerNetworkCidrs")]
         public Output<ImmutableArray<string>> UserPeerNetworkCidrs { get; private set; } = null!;
 
         /// <summary>
-        /// is the Aiven VPC the peering connection is associated with.
+        /// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -139,19 +136,19 @@ namespace Pulumi.Aiven
     public sealed class TransitGatewayVpcAttachmentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS account ID of the peered VPC.
+        /// AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerCloudAccount", required: true)]
         public Input<string> PeerCloudAccount { get; set; } = null!;
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC).
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC)
         /// </summary>
         [Input("peerRegion", required: true)]
         public Input<string> PeerRegion { get; set; } = null!;
 
         /// <summary>
-        /// Transit gateway ID
+        /// Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerVpc", required: true)]
         public Input<string> PeerVpc { get; set; } = null!;
@@ -160,7 +157,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _userPeerNetworkCidrs;
 
         /// <summary>
-        /// List of private IPv4 ranges to route through the peering connection.
+        /// List of private IPv4 ranges to route through the peering connection
         /// </summary>
         public InputList<string> UserPeerNetworkCidrs
         {
@@ -169,7 +166,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// is the Aiven VPC the peering connection is associated with.
+        /// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -182,19 +179,19 @@ namespace Pulumi.Aiven
     public sealed class TransitGatewayVpcAttachmentState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS account ID of the peered VPC.
+        /// AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerCloudAccount")]
         public Input<string>? PeerCloudAccount { get; set; }
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC).
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC)
         /// </summary>
         [Input("peerRegion")]
         public Input<string>? PeerRegion { get; set; }
 
         /// <summary>
-        /// Transit gateway ID
+        /// Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerVpc")]
         public Input<string>? PeerVpc { get; set; }
@@ -227,7 +224,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _userPeerNetworkCidrs;
 
         /// <summary>
-        /// List of private IPv4 ranges to route through the peering connection.
+        /// List of private IPv4 ranges to route through the peering connection
         /// </summary>
         public InputList<string> UserPeerNetworkCidrs
         {
@@ -236,7 +233,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// is the Aiven VPC the peering connection is associated with.
+        /// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

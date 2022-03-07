@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServicePgUserConfigPrivatelinkAccessResult
     {
+        /// <summary>
+        /// PostgreSQL specific server provided values
+        /// </summary>
         public readonly string? Pg;
         public readonly string? Pgbouncer;
 

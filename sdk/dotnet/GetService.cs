@@ -11,9 +11,15 @@ namespace Pulumi.Aiven
 {
     public static class GetService
     {
+        /// <summary>
+        /// The Service datasource provides information about specific Aiven Services.
+        /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("aiven:index/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// The Service datasource provides information about specific Aiven Services.
+        /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("aiven:index/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
@@ -21,132 +27,17 @@ namespace Pulumi.Aiven
 
     public sealed class GetServiceArgs : Pulumi.InvokeArgs
     {
-        [Input("cassandra")]
-        public Inputs.GetServiceCassandraArgs? Cassandra { get; set; }
-
-        [Input("cassandraUserConfig")]
-        public Inputs.GetServiceCassandraUserConfigArgs? CassandraUserConfig { get; set; }
-
-        [Input("cloudName")]
-        public string? CloudName { get; set; }
-
-        [Input("components")]
-        private List<Inputs.GetServiceComponentArgs>? _components;
-        public List<Inputs.GetServiceComponentArgs> Components
-        {
-            get => _components ?? (_components = new List<Inputs.GetServiceComponentArgs>());
-            set => _components = value;
-        }
-
-        [Input("elasticsearch")]
-        public Inputs.GetServiceElasticsearchArgs? Elasticsearch { get; set; }
-
-        [Input("elasticsearchUserConfig")]
-        public Inputs.GetServiceElasticsearchUserConfigArgs? ElasticsearchUserConfig { get; set; }
-
-        [Input("grafana")]
-        public Inputs.GetServiceGrafanaArgs? Grafana { get; set; }
-
-        [Input("grafanaUserConfig")]
-        public Inputs.GetServiceGrafanaUserConfigArgs? GrafanaUserConfig { get; set; }
-
-        [Input("influxdb")]
-        public Inputs.GetServiceInfluxdbArgs? Influxdb { get; set; }
-
-        [Input("influxdbUserConfig")]
-        public Inputs.GetServiceInfluxdbUserConfigArgs? InfluxdbUserConfig { get; set; }
-
-        [Input("kafka")]
-        public Inputs.GetServiceKafkaArgs? Kafka { get; set; }
-
-        [Input("kafkaConnect")]
-        public Inputs.GetServiceKafkaConnectArgs? KafkaConnect { get; set; }
-
-        [Input("kafkaConnectUserConfig")]
-        public Inputs.GetServiceKafkaConnectUserConfigArgs? KafkaConnectUserConfig { get; set; }
-
-        [Input("kafkaMirrormaker")]
-        public Inputs.GetServiceKafkaMirrormakerArgs? KafkaMirrormaker { get; set; }
-
-        [Input("kafkaMirrormakerUserConfig")]
-        public Inputs.GetServiceKafkaMirrormakerUserConfigArgs? KafkaMirrormakerUserConfig { get; set; }
-
-        [Input("kafkaUserConfig")]
-        public Inputs.GetServiceKafkaUserConfigArgs? KafkaUserConfig { get; set; }
-
-        [Input("maintenanceWindowDow")]
-        public string? MaintenanceWindowDow { get; set; }
-
-        [Input("maintenanceWindowTime")]
-        public string? MaintenanceWindowTime { get; set; }
-
-        [Input("mysql")]
-        public Inputs.GetServiceMysqlArgs? Mysql { get; set; }
-
-        [Input("mysqlUserConfig")]
-        public Inputs.GetServiceMysqlUserConfigArgs? MysqlUserConfig { get; set; }
-
-        [Input("opensearch")]
-        public Inputs.GetServiceOpensearchArgs? Opensearch { get; set; }
-
-        [Input("opensearchUserConfig")]
-        public Inputs.GetServiceOpensearchUserConfigArgs? OpensearchUserConfig { get; set; }
-
-        [Input("pg")]
-        public Inputs.GetServicePgArgs? Pg { get; set; }
-
-        [Input("pgUserConfig")]
-        public Inputs.GetServicePgUserConfigArgs? PgUserConfig { get; set; }
-
-        [Input("plan")]
-        public string? Plan { get; set; }
-
+        /// <summary>
+        /// Target project
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        [Input("projectVpcId")]
-        public string? ProjectVpcId { get; set; }
-
-        [Input("redis")]
-        public Inputs.GetServiceRedisArgs? Redis { get; set; }
-
-        [Input("redisUserConfig")]
-        public Inputs.GetServiceRedisUserConfigArgs? RedisUserConfig { get; set; }
-
-        [Input("serviceHost")]
-        public string? ServiceHost { get; set; }
-
-        [Input("serviceIntegrations")]
-        private List<Inputs.GetServiceServiceIntegrationArgs>? _serviceIntegrations;
-        public List<Inputs.GetServiceServiceIntegrationArgs> ServiceIntegrations
-        {
-            get => _serviceIntegrations ?? (_serviceIntegrations = new List<Inputs.GetServiceServiceIntegrationArgs>());
-            set => _serviceIntegrations = value;
-        }
-
+        /// <summary>
+        /// Service name
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
-
-        [Input("servicePassword")]
-        public string? ServicePassword { get; set; }
-
-        [Input("servicePort")]
-        public int? ServicePort { get; set; }
-
-        [Input("serviceType")]
-        public string? ServiceType { get; set; }
-
-        [Input("serviceUri")]
-        public string? ServiceUri { get; set; }
-
-        [Input("serviceUsername")]
-        public string? ServiceUsername { get; set; }
-
-        [Input("state")]
-        public string? State { get; set; }
-
-        [Input("terminationProtection")]
-        public bool? TerminationProtection { get; set; }
 
         public GetServiceArgs()
         {
@@ -155,132 +46,17 @@ namespace Pulumi.Aiven
 
     public sealed class GetServiceInvokeArgs : Pulumi.InvokeArgs
     {
-        [Input("cassandra")]
-        public Input<Inputs.GetServiceCassandraInputArgs>? Cassandra { get; set; }
-
-        [Input("cassandraUserConfig")]
-        public Input<Inputs.GetServiceCassandraUserConfigInputArgs>? CassandraUserConfig { get; set; }
-
-        [Input("cloudName")]
-        public Input<string>? CloudName { get; set; }
-
-        [Input("components")]
-        private InputList<Inputs.GetServiceComponentInputArgs>? _components;
-        public InputList<Inputs.GetServiceComponentInputArgs> Components
-        {
-            get => _components ?? (_components = new InputList<Inputs.GetServiceComponentInputArgs>());
-            set => _components = value;
-        }
-
-        [Input("elasticsearch")]
-        public Input<Inputs.GetServiceElasticsearchInputArgs>? Elasticsearch { get; set; }
-
-        [Input("elasticsearchUserConfig")]
-        public Input<Inputs.GetServiceElasticsearchUserConfigInputArgs>? ElasticsearchUserConfig { get; set; }
-
-        [Input("grafana")]
-        public Input<Inputs.GetServiceGrafanaInputArgs>? Grafana { get; set; }
-
-        [Input("grafanaUserConfig")]
-        public Input<Inputs.GetServiceGrafanaUserConfigInputArgs>? GrafanaUserConfig { get; set; }
-
-        [Input("influxdb")]
-        public Input<Inputs.GetServiceInfluxdbInputArgs>? Influxdb { get; set; }
-
-        [Input("influxdbUserConfig")]
-        public Input<Inputs.GetServiceInfluxdbUserConfigInputArgs>? InfluxdbUserConfig { get; set; }
-
-        [Input("kafka")]
-        public Input<Inputs.GetServiceKafkaInputArgs>? Kafka { get; set; }
-
-        [Input("kafkaConnect")]
-        public Input<Inputs.GetServiceKafkaConnectInputArgs>? KafkaConnect { get; set; }
-
-        [Input("kafkaConnectUserConfig")]
-        public Input<Inputs.GetServiceKafkaConnectUserConfigInputArgs>? KafkaConnectUserConfig { get; set; }
-
-        [Input("kafkaMirrormaker")]
-        public Input<Inputs.GetServiceKafkaMirrormakerInputArgs>? KafkaMirrormaker { get; set; }
-
-        [Input("kafkaMirrormakerUserConfig")]
-        public Input<Inputs.GetServiceKafkaMirrormakerUserConfigInputArgs>? KafkaMirrormakerUserConfig { get; set; }
-
-        [Input("kafkaUserConfig")]
-        public Input<Inputs.GetServiceKafkaUserConfigInputArgs>? KafkaUserConfig { get; set; }
-
-        [Input("maintenanceWindowDow")]
-        public Input<string>? MaintenanceWindowDow { get; set; }
-
-        [Input("maintenanceWindowTime")]
-        public Input<string>? MaintenanceWindowTime { get; set; }
-
-        [Input("mysql")]
-        public Input<Inputs.GetServiceMysqlInputArgs>? Mysql { get; set; }
-
-        [Input("mysqlUserConfig")]
-        public Input<Inputs.GetServiceMysqlUserConfigInputArgs>? MysqlUserConfig { get; set; }
-
-        [Input("opensearch")]
-        public Input<Inputs.GetServiceOpensearchInputArgs>? Opensearch { get; set; }
-
-        [Input("opensearchUserConfig")]
-        public Input<Inputs.GetServiceOpensearchUserConfigInputArgs>? OpensearchUserConfig { get; set; }
-
-        [Input("pg")]
-        public Input<Inputs.GetServicePgInputArgs>? Pg { get; set; }
-
-        [Input("pgUserConfig")]
-        public Input<Inputs.GetServicePgUserConfigInputArgs>? PgUserConfig { get; set; }
-
-        [Input("plan")]
-        public Input<string>? Plan { get; set; }
-
+        /// <summary>
+        /// Target project
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("projectVpcId")]
-        public Input<string>? ProjectVpcId { get; set; }
-
-        [Input("redis")]
-        public Input<Inputs.GetServiceRedisInputArgs>? Redis { get; set; }
-
-        [Input("redisUserConfig")]
-        public Input<Inputs.GetServiceRedisUserConfigInputArgs>? RedisUserConfig { get; set; }
-
-        [Input("serviceHost")]
-        public Input<string>? ServiceHost { get; set; }
-
-        [Input("serviceIntegrations")]
-        private InputList<Inputs.GetServiceServiceIntegrationInputArgs>? _serviceIntegrations;
-        public InputList<Inputs.GetServiceServiceIntegrationInputArgs> ServiceIntegrations
-        {
-            get => _serviceIntegrations ?? (_serviceIntegrations = new InputList<Inputs.GetServiceServiceIntegrationInputArgs>());
-            set => _serviceIntegrations = value;
-        }
-
+        /// <summary>
+        /// Service name
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
-
-        [Input("servicePassword")]
-        public Input<string>? ServicePassword { get; set; }
-
-        [Input("servicePort")]
-        public Input<int>? ServicePort { get; set; }
-
-        [Input("serviceType")]
-        public Input<string>? ServiceType { get; set; }
-
-        [Input("serviceUri")]
-        public Input<string>? ServiceUri { get; set; }
-
-        [Input("serviceUsername")]
-        public Input<string>? ServiceUsername { get; set; }
-
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        [Input("terminationProtection")]
-        public Input<bool>? TerminationProtection { get; set; }
 
         public GetServiceInvokeArgs()
         {
@@ -291,111 +67,286 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceResult
     {
-        public readonly Outputs.GetServiceCassandraResult Cassandra;
-        public readonly Outputs.GetServiceCassandraUserConfigResult? CassandraUserConfig;
-        public readonly string? CloudName;
+        /// <summary>
+        /// Cassandra user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceCassandraUserConfigResult> CassandraUserConfigs;
+        /// <summary>
+        /// Cassandra specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceCassandraResult> Cassandras;
+        /// <summary>
+        /// Clickhouse user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceClickhouseUserConfigResult> ClickhouseUserConfigs;
+        /// <summary>
+        /// Clickhouse specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceClickhouseResult> Clickhouses;
+        /// <summary>
+        /// Cloud the service runs in
+        /// </summary>
+        public readonly string CloudName;
+        /// <summary>
+        /// Service component information objects
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceComponentResult> Components;
-        public readonly Outputs.GetServiceElasticsearchResult Elasticsearch;
-        public readonly Outputs.GetServiceElasticsearchUserConfigResult? ElasticsearchUserConfig;
-        public readonly Outputs.GetServiceGrafanaResult Grafana;
-        public readonly Outputs.GetServiceGrafanaUserConfigResult? GrafanaUserConfig;
+        /// <summary>
+        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// </summary>
+        public readonly string DiskSpace;
+        /// <summary>
+        /// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        /// </summary>
+        public readonly string DiskSpaceCap;
+        /// <summary>
+        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        /// </summary>
+        public readonly string DiskSpaceDefault;
+        /// <summary>
+        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        /// </summary>
+        public readonly string DiskSpaceStep;
+        /// <summary>
+        /// Disk space that service is currently using
+        /// </summary>
+        public readonly string DiskSpaceUsed;
+        /// <summary>
+        /// Elasticsearch user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceElasticsearchUserConfigResult> ElasticsearchUserConfigs;
+        /// <summary>
+        /// Elasticsearch specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceElasticsearchResult> Elasticsearches;
+        /// <summary>
+        /// Flink user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceFlinkUserConfigResult> FlinkUserConfigs;
+        /// <summary>
+        /// Flink specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceFlinkResult> Flinks;
+        /// <summary>
+        /// Grafana user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceGrafanaUserConfigResult> GrafanaUserConfigs;
+        /// <summary>
+        /// Grafana specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceGrafanaResult> Grafanas;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly Outputs.GetServiceInfluxdbResult Influxdb;
-        public readonly Outputs.GetServiceInfluxdbUserConfigResult? InfluxdbUserConfig;
-        public readonly Outputs.GetServiceKafkaResult Kafka;
-        public readonly Outputs.GetServiceKafkaConnectResult KafkaConnect;
-        public readonly Outputs.GetServiceKafkaConnectUserConfigResult? KafkaConnectUserConfig;
-        public readonly Outputs.GetServiceKafkaMirrormakerResult KafkaMirrormaker;
-        public readonly Outputs.GetServiceKafkaMirrormakerUserConfigResult? KafkaMirrormakerUserConfig;
-        public readonly Outputs.GetServiceKafkaUserConfigResult? KafkaUserConfig;
-        public readonly string? MaintenanceWindowDow;
-        public readonly string? MaintenanceWindowTime;
-        public readonly Outputs.GetServiceMysqlResult Mysql;
-        public readonly Outputs.GetServiceMysqlUserConfigResult? MysqlUserConfig;
-        public readonly Outputs.GetServiceOpensearchResult Opensearch;
-        public readonly Outputs.GetServiceOpensearchUserConfigResult? OpensearchUserConfig;
-        public readonly Outputs.GetServicePgResult Pg;
-        public readonly Outputs.GetServicePgUserConfigResult? PgUserConfig;
-        public readonly string? Plan;
+        /// <summary>
+        /// Influxdb user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceInfluxdbUserConfigResult> InfluxdbUserConfigs;
+        /// <summary>
+        /// InfluxDB specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceInfluxdbResult> Influxdbs;
+        /// <summary>
+        /// Kafka*connect user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceKafkaConnectUserConfigResult> KafkaConnectUserConfigs;
+        /// <summary>
+        /// Kafka Connect specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceKafkaConnectResult> KafkaConnects;
+        /// <summary>
+        /// Kafka*mirrormaker user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceKafkaMirrormakerUserConfigResult> KafkaMirrormakerUserConfigs;
+        /// <summary>
+        /// Kafka MirrorMaker 2 specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceKafkaMirrormakerResult> KafkaMirrormakers;
+        /// <summary>
+        /// Kafka user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceKafkaUserConfigResult> KafkaUserConfigs;
+        /// <summary>
+        /// Kafka specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceKafkaResult> Kafkas;
+        /// <summary>
+        /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        /// </summary>
+        public readonly string MaintenanceWindowDow;
+        /// <summary>
+        /// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        /// </summary>
+        public readonly string MaintenanceWindowTime;
+        /// <summary>
+        /// Mysql user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceMysqlUserConfigResult> MysqlUserConfigs;
+        /// <summary>
+        /// MySQL specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceMysqlResult> Mysqls;
+        /// <summary>
+        /// Opensearch user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceOpensearchUserConfigResult> OpensearchUserConfigs;
+        /// <summary>
+        /// Opensearch specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceOpensearchResult> Opensearches;
+        /// <summary>
+        /// Pg user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServicePgUserConfigResult> PgUserConfigs;
+        /// <summary>
+        /// PostgreSQL specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServicePgResult> Pgs;
+        /// <summary>
+        /// Subscription plan
+        /// </summary>
+        public readonly string Plan;
+        /// <summary>
+        /// Target project
+        /// </summary>
         public readonly string Project;
-        public readonly string? ProjectVpcId;
-        public readonly Outputs.GetServiceRedisResult Redis;
-        public readonly Outputs.GetServiceRedisUserConfigResult? RedisUserConfig;
+        /// <summary>
+        /// Identifier of the VPC the service should be in, if any
+        /// </summary>
+        public readonly string ProjectVpcId;
+        /// <summary>
+        /// Redis specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceRediResult> Redis;
+        /// <summary>
+        /// Redis user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceRedisUserConfigResult> RedisUserConfigs;
+        /// <summary>
+        /// Service hostname
+        /// </summary>
         public readonly string ServiceHost;
+        /// <summary>
+        /// Service integrations to specify when creating a service. Not applied after initial service creation
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceServiceIntegrationResult> ServiceIntegrations;
+        /// <summary>
+        /// Service name
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Password used for connecting to the service, if applicable
+        /// </summary>
         public readonly string ServicePassword;
+        /// <summary>
+        /// Service port
+        /// </summary>
         public readonly int ServicePort;
-        public readonly string? ServiceType;
+        /// <summary>
+        /// Service type code
+        /// </summary>
+        public readonly string ServiceType;
+        /// <summary>
+        /// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        /// </summary>
         public readonly string ServiceUri;
+        /// <summary>
+        /// Username used for connecting to the service, if applicable
+        /// </summary>
         public readonly string ServiceUsername;
+        /// <summary>
+        /// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
+        /// </summary>
         public readonly string State;
-        public readonly bool? TerminationProtection;
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
+        public readonly ImmutableArray<string> StaticIps;
+        /// <summary>
+        /// Prevent service from being deleted. It is recommended to have this enabled for all services.
+        /// </summary>
+        public readonly bool TerminationProtection;
 
         [OutputConstructor]
         private GetServiceResult(
-            Outputs.GetServiceCassandraResult cassandra,
+            ImmutableArray<Outputs.GetServiceCassandraUserConfigResult> cassandraUserConfigs,
 
-            Outputs.GetServiceCassandraUserConfigResult? cassandraUserConfig,
+            ImmutableArray<Outputs.GetServiceCassandraResult> cassandras,
 
-            string? cloudName,
+            ImmutableArray<Outputs.GetServiceClickhouseUserConfigResult> clickhouseUserConfigs,
+
+            ImmutableArray<Outputs.GetServiceClickhouseResult> clickhouses,
+
+            string cloudName,
 
             ImmutableArray<Outputs.GetServiceComponentResult> components,
 
-            Outputs.GetServiceElasticsearchResult elasticsearch,
+            string diskSpace,
 
-            Outputs.GetServiceElasticsearchUserConfigResult? elasticsearchUserConfig,
+            string diskSpaceCap,
 
-            Outputs.GetServiceGrafanaResult grafana,
+            string diskSpaceDefault,
 
-            Outputs.GetServiceGrafanaUserConfigResult? grafanaUserConfig,
+            string diskSpaceStep,
+
+            string diskSpaceUsed,
+
+            ImmutableArray<Outputs.GetServiceElasticsearchUserConfigResult> elasticsearchUserConfigs,
+
+            ImmutableArray<Outputs.GetServiceElasticsearchResult> elasticsearches,
+
+            ImmutableArray<Outputs.GetServiceFlinkUserConfigResult> flinkUserConfigs,
+
+            ImmutableArray<Outputs.GetServiceFlinkResult> flinks,
+
+            ImmutableArray<Outputs.GetServiceGrafanaUserConfigResult> grafanaUserConfigs,
+
+            ImmutableArray<Outputs.GetServiceGrafanaResult> grafanas,
 
             string id,
 
-            Outputs.GetServiceInfluxdbResult influxdb,
+            ImmutableArray<Outputs.GetServiceInfluxdbUserConfigResult> influxdbUserConfigs,
 
-            Outputs.GetServiceInfluxdbUserConfigResult? influxdbUserConfig,
+            ImmutableArray<Outputs.GetServiceInfluxdbResult> influxdbs,
 
-            Outputs.GetServiceKafkaResult kafka,
+            ImmutableArray<Outputs.GetServiceKafkaConnectUserConfigResult> kafkaConnectUserConfigs,
 
-            Outputs.GetServiceKafkaConnectResult kafkaConnect,
+            ImmutableArray<Outputs.GetServiceKafkaConnectResult> kafkaConnects,
 
-            Outputs.GetServiceKafkaConnectUserConfigResult? kafkaConnectUserConfig,
+            ImmutableArray<Outputs.GetServiceKafkaMirrormakerUserConfigResult> kafkaMirrormakerUserConfigs,
 
-            Outputs.GetServiceKafkaMirrormakerResult kafkaMirrormaker,
+            ImmutableArray<Outputs.GetServiceKafkaMirrormakerResult> kafkaMirrormakers,
 
-            Outputs.GetServiceKafkaMirrormakerUserConfigResult? kafkaMirrormakerUserConfig,
+            ImmutableArray<Outputs.GetServiceKafkaUserConfigResult> kafkaUserConfigs,
 
-            Outputs.GetServiceKafkaUserConfigResult? kafkaUserConfig,
+            ImmutableArray<Outputs.GetServiceKafkaResult> kafkas,
 
-            string? maintenanceWindowDow,
+            string maintenanceWindowDow,
 
-            string? maintenanceWindowTime,
+            string maintenanceWindowTime,
 
-            Outputs.GetServiceMysqlResult mysql,
+            ImmutableArray<Outputs.GetServiceMysqlUserConfigResult> mysqlUserConfigs,
 
-            Outputs.GetServiceMysqlUserConfigResult? mysqlUserConfig,
+            ImmutableArray<Outputs.GetServiceMysqlResult> mysqls,
 
-            Outputs.GetServiceOpensearchResult opensearch,
+            ImmutableArray<Outputs.GetServiceOpensearchUserConfigResult> opensearchUserConfigs,
 
-            Outputs.GetServiceOpensearchUserConfigResult? opensearchUserConfig,
+            ImmutableArray<Outputs.GetServiceOpensearchResult> opensearches,
 
-            Outputs.GetServicePgResult pg,
+            ImmutableArray<Outputs.GetServicePgUserConfigResult> pgUserConfigs,
 
-            Outputs.GetServicePgUserConfigResult? pgUserConfig,
+            ImmutableArray<Outputs.GetServicePgResult> pgs,
 
-            string? plan,
+            string plan,
 
             string project,
 
-            string? projectVpcId,
+            string projectVpcId,
 
-            Outputs.GetServiceRedisResult redis,
+            ImmutableArray<Outputs.GetServiceRediResult> redis,
 
-            Outputs.GetServiceRedisUserConfigResult? redisUserConfig,
+            ImmutableArray<Outputs.GetServiceRedisUserConfigResult> redisUserConfigs,
 
             string serviceHost,
 
@@ -407,7 +358,7 @@ namespace Pulumi.Aiven
 
             int servicePort,
 
-            string? serviceType,
+            string serviceType,
 
             string serviceUri,
 
@@ -415,38 +366,49 @@ namespace Pulumi.Aiven
 
             string state,
 
-            bool? terminationProtection)
+            ImmutableArray<string> staticIps,
+
+            bool terminationProtection)
         {
-            Cassandra = cassandra;
-            CassandraUserConfig = cassandraUserConfig;
+            CassandraUserConfigs = cassandraUserConfigs;
+            Cassandras = cassandras;
+            ClickhouseUserConfigs = clickhouseUserConfigs;
+            Clickhouses = clickhouses;
             CloudName = cloudName;
             Components = components;
-            Elasticsearch = elasticsearch;
-            ElasticsearchUserConfig = elasticsearchUserConfig;
-            Grafana = grafana;
-            GrafanaUserConfig = grafanaUserConfig;
+            DiskSpace = diskSpace;
+            DiskSpaceCap = diskSpaceCap;
+            DiskSpaceDefault = diskSpaceDefault;
+            DiskSpaceStep = diskSpaceStep;
+            DiskSpaceUsed = diskSpaceUsed;
+            ElasticsearchUserConfigs = elasticsearchUserConfigs;
+            Elasticsearches = elasticsearches;
+            FlinkUserConfigs = flinkUserConfigs;
+            Flinks = flinks;
+            GrafanaUserConfigs = grafanaUserConfigs;
+            Grafanas = grafanas;
             Id = id;
-            Influxdb = influxdb;
-            InfluxdbUserConfig = influxdbUserConfig;
-            Kafka = kafka;
-            KafkaConnect = kafkaConnect;
-            KafkaConnectUserConfig = kafkaConnectUserConfig;
-            KafkaMirrormaker = kafkaMirrormaker;
-            KafkaMirrormakerUserConfig = kafkaMirrormakerUserConfig;
-            KafkaUserConfig = kafkaUserConfig;
+            InfluxdbUserConfigs = influxdbUserConfigs;
+            Influxdbs = influxdbs;
+            KafkaConnectUserConfigs = kafkaConnectUserConfigs;
+            KafkaConnects = kafkaConnects;
+            KafkaMirrormakerUserConfigs = kafkaMirrormakerUserConfigs;
+            KafkaMirrormakers = kafkaMirrormakers;
+            KafkaUserConfigs = kafkaUserConfigs;
+            Kafkas = kafkas;
             MaintenanceWindowDow = maintenanceWindowDow;
             MaintenanceWindowTime = maintenanceWindowTime;
-            Mysql = mysql;
-            MysqlUserConfig = mysqlUserConfig;
-            Opensearch = opensearch;
-            OpensearchUserConfig = opensearchUserConfig;
-            Pg = pg;
-            PgUserConfig = pgUserConfig;
+            MysqlUserConfigs = mysqlUserConfigs;
+            Mysqls = mysqls;
+            OpensearchUserConfigs = opensearchUserConfigs;
+            Opensearches = opensearches;
+            PgUserConfigs = pgUserConfigs;
+            Pgs = pgs;
             Plan = plan;
             Project = project;
             ProjectVpcId = projectVpcId;
             Redis = redis;
-            RedisUserConfig = redisUserConfig;
+            RedisUserConfigs = redisUserConfigs;
             ServiceHost = serviceHost;
             ServiceIntegrations = serviceIntegrations;
             ServiceName = serviceName;
@@ -456,6 +418,7 @@ namespace Pulumi.Aiven
             ServiceUri = serviceUri;
             ServiceUsername = serviceUsername;
             State = state;
+            StaticIps = staticIps;
             TerminationProtection = terminationProtection;
         }
     }

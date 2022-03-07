@@ -9,63 +9,53 @@ export interface CassandraCassandra {
 
 export interface CassandraCassandraUserConfig {
     /**
-     * Cassandra configuration values
+     * cassandra configuration values
      */
     cassandra?: outputs.CassandraCassandraUserConfigCassandra;
+    /**
+     * Cassandra major version
+     */
     cassandraVersion?: string;
     /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     * IP filter
      */
     ipFilters?: string[];
     /**
-     * sets the service into migration mode enabling the sstableloader 
-     * utility to be used to upload Cassandra data files. Available only on service create.
+     * Migration mode for the sstableloader utility
      */
     migrateSstableloader?: string;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.CassandraCassandraUserConfigPrivateAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
     projectToForkFrom?: string;
     /**
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.CassandraCassandraUserConfigPublicAccess;
     /**
-     * Name of another service to fork from. This has effect only 
-     * when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
 export interface CassandraCassandraUserConfigCassandra {
-    /**
-     * Fail any multiple-partition batch exceeding this value. 
-     * 50kb (10x warn threshold) by default.
-     */
     batchSizeFailThresholdInKb?: string;
-    /**
-     * Log a warning message on any multiple-partition 
-     * batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing
-     * the size of this thresholdas it can lead to node instability.
-     */
     batchSizeWarnThresholdInKb?: string;
 }
 
 export interface CassandraCassandraUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
 export interface CassandraCassandraUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
@@ -80,12 +70,93 @@ export interface CassandraComponent {
 }
 
 export interface CassandraServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
+    sourceServiceName: string;
+}
+
+export interface ClickhouseClickhouse {
+}
+
+export interface ClickhouseClickhouseUserConfig {
+    /**
+     * IP filter
+     */
+    ipFilters?: string[];
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
+    serviceToForkFrom?: string;
+}
+
+export interface ClickhouseComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface ClickhouseGrantPrivilegeGrant {
+    /**
+     * The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    column?: string;
+    /**
+     * The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    database: string;
+    /**
+     * The privilege to grant, i.e. 'INSERT', 'SELECT', etc. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    privilege?: string;
+    /**
+     * The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    table?: string;
+    /**
+     * If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+     */
+    withGrant?: boolean;
+}
+
+export interface ClickhouseGrantRoleGrant {
+    /**
+     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    role?: string;
+}
+
+export interface ClickhouseServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
+    integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }
 
 export interface ElasticSearchAclAcl {
+    /**
+     * Elasticsearch rules.
+     */
     rules: outputs.ElasticSearchAclAclRule[];
+    /**
+     * Username for the ACL entry. Maximum Length: `40`.
+     */
     username: string;
 }
 
@@ -105,60 +176,56 @@ export interface ElasticSearchComponent {
 }
 
 export interface ElasticSearchElasticsearch {
-    /**
-     * URI for Kibana frontend.
-     */
     kibanaUri: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfig {
     /**
-     * Serve the web frontend using a custom CNAME pointing to the 
-     * Aiven DNS name.
+     * Custom domain
      */
     customDomain?: string;
     /**
-     * Disable automatic replication factor 
-     * adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
-     * least to two nodes. Note: setting this to true increases a risk of data loss in case of
-     * virtual machine failure.
+     * Disable replication factor adjustment
      */
     disableReplicationFactorAdjustment?: string;
     /**
-     * Allow clients to connect to elasticsearch from the public 
-     * internet for service nodes that are in a project VPC or another type of private network.
+     * Elasticsearch settings
      */
     elasticsearch?: outputs.ElasticSearchElasticsearchUserConfigElasticsearch;
     /**
-     * Elasticsearch major version.
+     * Elasticsearch major version
      */
     elasticsearchVersion?: string;
     /**
-     * Glob pattern and number of indexes matching that pattern to 
-     * be kept.
+     * Index patterns
      */
     indexPatterns?: outputs.ElasticSearchElasticsearchUserConfigIndexPattern[];
     /**
-     * Template settings for all new indexe.
+     * Template settings for all new indexes
      */
     indexTemplate?: outputs.ElasticSearchElasticsearchUserConfigIndexTemplate;
     /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     * IP filter
      */
     ipFilters?: string[];
+    /**
+     * Don't reset index.refresh_interval to the default value
+     */
     keepIndexRefreshInterval?: string;
     /**
-     * Allow clients to connect to kibana from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
+     * Kibana settings
      */
     kibana?: outputs.ElasticSearchElasticsearchUserConfigKibana;
     /**
-     * Maximum number of indexes to keep before deleting the oldest one.
+     * Maximum index count
      */
     maxIndexCount?: string;
+    /**
+     * OpenSearch major version
+     */
     opensearchVersion?: string;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.ElasticSearchElasticsearchUserConfigPrivateAccess;
     /**
@@ -166,267 +233,190 @@ export interface ElasticSearchElasticsearchUserConfig {
      */
     privatelinkAccess?: outputs.ElasticSearchElasticsearchUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has 
-     * effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.ElasticSearchElasticsearchUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service
      */
     recoveryBasebackupName?: string;
     /**
-     * Name of another service to fork from. This has effect 
-     * only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigElasticsearch {
-    /**
-     * Explicitly allow or block automatic 
-     * creation of indices. Defaults to true
-     */
     actionAutoCreateIndexEnabled?: string;
-    /**
-     * Require explicit index names when deleting
-     */
     actionDestructiveRequiresName?: string;
-    /**
-     * Controls the number of shards allowed in the
-     * cluster per data node.
-     */
     clusterMaxShardsPerNode?: string;
-    /**
-     * Maximum content length for HTTP requests to 
-     * the Elasticsearch HTTP API, in bytes.
-     */
     httpMaxContentLength?: string;
-    /**
-     * The max size of allowed headers, in bytes.
-     */
     httpMaxHeaderSize?: string;
-    /**
-     * The max length of an HTTP URL, in bytes.
-     */
     httpMaxInitialLineLength?: string;
-    /**
-     * Relative amount. Maximum amount of 
-     * heap memory used for field data cache. This is an expert setting; decreasing the
-     * value too much will increase overhead of loading field data; too much memory used
-     * for field data cache will decrease amount of heap available for other operations.
-     */
     indicesFielddataCacheSize?: string;
-    /**
-     * Percentage value. Default is 10%. 
-     * Total amount of heap used for indexing buffer, before writing segments to disk.
-     * This is an expert setting. Too low value will slow down indexing; too high value
-     * will increase indexing performance but causes performance issues for query performance.
-     */
     indicesMemoryIndexBufferSize?: string;
-    /**
-     * Percentage value. Default is 10%. 
-     * Maximum amount of heap used for query cache. This is an expert setting.
-     * Too low value will decrease query performance and increase performance for other
-     * operations; too high value will cause issues with other Elasticsearch functionality.
-     */
     indicesQueriesCacheSize?: string;
-    /**
-     * Maximum number of clauses Lucene 
-     * BooleanQuery can have. The default value (1024) is relatively high, and increasing it
-     * may cause performance issues. Investigate other approaches first before increasing this value.
-     */
     indicesQueryBoolMaxClauseCount?: string;
-    /**
-     * Whitelisted addresses for reindexing. 
-     * Changing this value will cause all Elasticsearch instances to restart.
-     */
+    overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
-    /**
-     * Maximum number of aggregation buckets allowed 
-     * in a single response. Elasticsearch default value is used when this is not defined.
-     */
     searchMaxBuckets?: string;
-    /**
-     * Size for the thread pool queue. 
-     * See documentation for exact details.
-     */
     threadPoolAnalyzeQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation 
-     * for exact details. Do note this may have maximum value depending on CPU count -
-     * value is automatically lowered if set to higher than maximum value.
-     */
     threadPoolAnalyzeSize?: string;
-    /**
-     * Size for the thread pool. See 
-     * documentation for exact details. Do note this may have maximum value depending on
-     * CPU count - value is automatically lowered if set to higher than maximum value.
-     */
     threadPoolForceMergeSize?: string;
-    /**
-     * Size for the thread pool queue. See 
-     * documentation for exact details.
-     */
     threadPoolGetQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation 
-     * for exact details. Do note this may have maximum value depending on CPU count -
-     * value is automatically lowered if set to higher than maximum value.
-     */
     threadPoolGetSize?: string;
-    /**
-     * Size for the thread pool queue. 
-     * See documentation for exact details.
-     */
     threadPoolIndexQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation 
-     * for exact details. Do note this may have maximum value depending on CPU count -
-     * value is automatically lowered if set to higher than maximum value.
-     */
     threadPoolIndexSize?: string;
-    /**
-     * Size for the thread pool queue. See 
-     * documentation for exact details.
-     */
     threadPoolSearchQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation 
-     * for exact details. Do note this may have maximum value depending on CPU count - value
-     * is automatically lowered if set to higher than maximum value.
-     */
     threadPoolSearchSize?: string;
-    /**
-     * Size for the thread pool queue. 
-     * See documentation for exact details.
-     */
     threadPoolSearchThrottledQueueSize?: string;
-    /**
-     * Size for the thread pool. See 
-     * documentation for exact details. Do note this may have maximum value depending on
-     * CPU count - value is automatically lowered if set to higher than maximum value.
-     */
     threadPoolSearchThrottledSize?: string;
-    /**
-     * Size for the thread pool queue. See 
-     * documentation for exact details.
-     */
     threadPoolWriteQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation 
-     * for exact details. Do note this may have maximum value depending on CPU count - value
-     * is automatically lowered if set to higher than maximum value.
-     */
     threadPoolWriteSize?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigIndexPattern {
-    /**
-     * Maximum number of indexes to keep before deleting the oldest one.
-     */
     maxIndexCount?: string;
-    /**
-     * Must consist of alpha-numeric characters, dashes, underscores, 
-     * dots and glob characters (* and ?)
-     */
     pattern?: string;
-    /**
-     * Deletion sorting algorithm
-     */
     sortingAlgorithm?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigIndexTemplate {
-    /**
-     * The maximum number of nested JSON objects that 
-     * a single document can contain across all nested types. This limit helps to prevent out of
-     * memory errors when a document contains too many nested objects. Default is 10000.
-     */
     mappingNestedObjectsLimit?: string;
-    /**
-     * The number of replicas each primary shard has.
-     */
     numberOfReplicas?: string;
-    /**
-     * The number of primary shards that an index should have.
-     */
     numberOfShards?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigKibana {
-    /**
-     * Timeout in milliseconds for requests 
-     * made by Kibana towards Elasticsearch.
-     */
     elasticsearchRequestTimeout?: string;
-    /**
-     * Enable or disable Kibana.
-     */
     enabled?: string;
-    /**
-     * Limits the maximum amount of memory (in MiB) the 
-     * Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
-     * the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
-     */
     maxOldSpaceSize?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigPrivateAccess {
     /**
-     * Allow clients to connect to elasticsearch from the public 
-     * internet for service nodes that are in a project VPC or another type of private network.
+     * Elasticsearch server provided values
      */
     elasticsearch?: string;
-    /**
-     * Allow clients to connect to kibana from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
-     */
     kibana?: string;
-    /**
-     * Allow clients to connect to prometheus from the public 
-     * internet for service nodes that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigPrivatelinkAccess {
     /**
-     * Allow clients to connect to elasticsearch from the public 
-     * internet for service nodes that are in a project VPC or another type of private network.
+     * Elasticsearch server provided values
      */
     elasticsearch?: string;
-    /**
-     * Allow clients to connect to kibana from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
-     */
     kibana?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigPublicAccess {
     /**
-     * Allow clients to connect to elasticsearch from the public 
-     * internet for service nodes that are in a project VPC or another type of private network.
+     * Elasticsearch server provided values
      */
     elasticsearch?: string;
-    /**
-     * Allow clients to connect to kibana from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
-     */
     kibana?: string;
-    /**
-     * Allow clients to connect to prometheus from the public 
-     * internet for service nodes that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
 export interface ElasticSearchServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
+    sourceServiceName: string;
+}
+
+export interface FlinkComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface FlinkFlink {
+    /**
+     * Host and Port of a Flink server
+     */
+    hostPorts: string[];
+}
+
+export interface FlinkFlinkUserConfig {
+    /**
+     * Flink execution.checkpointing.interval in milliseconds
+     */
+    executionCheckpointingIntervalMs?: string;
+    /**
+     * Flink execution.checkpointing.timeout in milliseconds
+     */
+    executionCheckpointingTimeoutMs?: string;
+    /**
+     * Flink major version
+     */
+    flinkVersion?: string;
+    /**
+     * IP filter
+     */
+    ipFilters?: string[];
+    /**
+     * Flink taskmanager.numberOfTaskSlots
+     */
+    numberOfTaskSlots?: string;
+    /**
+     * Flink parallelism.default
+     */
+    parallelismDefault?: string;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.FlinkFlinkUserConfigPrivatelinkAccess;
+    /**
+     * Flink restart-strategy
+     */
+    restartStrategy?: string;
+    /**
+     * Flink restart-strategy.failure-rate.delay in seconds
+     */
+    restartStrategyDelaySec?: string;
+    /**
+     * Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+     */
+    restartStrategyFailureRateIntervalMin?: string;
+    /**
+     * Flink restart-strategy.failure-rate.max-failures-per-interval
+     */
+    restartStrategyMaxFailures?: string;
+}
+
+export interface FlinkFlinkUserConfigPrivatelinkAccess {
+    /**
+     * Flink server provided values
+     */
+    flink?: string;
+}
+
+export interface FlinkServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
+    integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }
 
@@ -478,63 +468,32 @@ export interface GetCassandraCassandra {
 
 export interface GetCassandraCassandraUserConfig {
     /**
-     * Cassandra specific server provided values.
+     * Cassandra server provided values
      */
     cassandra?: outputs.GetCassandraCassandraUserConfigCassandra;
     cassandraVersion?: string;
-    /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
     ipFilters?: string[];
-    /**
-     * sets the service into migration mode enabling the sstableloader 
-     * utility to be used to upload Cassandra data files. Available only on service create.
-     */
     migrateSstableloader?: string;
-    /**
-     * Allow access to selected service ports from private networks.
-     */
     privateAccess?: outputs.GetCassandraCassandraUserConfigPrivateAccess;
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.GetCassandraCassandraUserConfigPublicAccess;
-    /**
-     * Name of another service to fork from. This has effect only 
-     * when a new service is being created.
-     */
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
 export interface GetCassandraCassandraUserConfigCassandra {
-    /**
-     * Fail any multiple-partition batch exceeding this value.
-     * 50kb (10x warn threshold) by default.
-     */
     batchSizeFailThresholdInKb?: string;
-    /**
-     * Log a warning message on any multiple-partition
-     * batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing
-     * the size of this thresholdas it can lead to node instability.
-     */
     batchSizeWarnThresholdInKb?: string;
 }
 
 export interface GetCassandraCassandraUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
 export interface GetCassandraCassandraUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
@@ -549,6 +508,30 @@ export interface GetCassandraComponent {
 }
 
 export interface GetCassandraServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetClickhouseClickhouse {
+}
+
+export interface GetClickhouseClickhouseUserConfig {
+    ipFilters?: string[];
+    projectToForkFrom?: string;
+    serviceToForkFrom?: string;
+}
+
+export interface GetClickhouseComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GetClickhouseServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
 }
@@ -574,319 +557,106 @@ export interface GetElasticSearchComponent {
 }
 
 export interface GetElasticSearchElasticsearch {
-    /**
-     * URI for Kibana frontend.
-     */
     kibanaUri: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfig {
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the 
-     * Aiven DNS name.
-     */
     customDomain?: string;
-    /**
-     * Disable automatic replication factor 
-     * adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at
-     * least to two nodes. Note: setting this to true increases a risk of data loss in case of
-     * virtual machine failure.
-     */
     disableReplicationFactorAdjustment?: string;
     /**
-     * Elasticsearch specific server provided values.
+     * Elasticsearch server provided values
      */
     elasticsearch?: outputs.GetElasticSearchElasticsearchUserConfigElasticsearch;
-    /**
-     * Elasticsearch major version.
-     */
     elasticsearchVersion?: string;
-    /**
-     * Glob pattern and number of indexes matching that pattern to 
-     * be kept.
-     */
     indexPatterns?: outputs.GetElasticSearchElasticsearchUserConfigIndexPattern[];
-    /**
-     * Template settings for all new indexe.
-     */
     indexTemplate?: outputs.GetElasticSearchElasticsearchUserConfigIndexTemplate;
-    /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
     ipFilters?: string[];
     keepIndexRefreshInterval?: string;
-    /**
-     * Allow clients to connect to kibana from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
-     */
     kibana?: outputs.GetElasticSearchElasticsearchUserConfigKibana;
-    /**
-     * Maximum number of indexes to keep before deleting the oldest one.
-     */
     maxIndexCount?: string;
     opensearchVersion?: string;
-    /**
-     * Allow access to selected service ports from private networks.
-     */
     privateAccess?: outputs.GetElasticSearchElasticsearchUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.GetElasticSearchElasticsearchUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet.
-     */
     publicAccess?: outputs.GetElasticSearchElasticsearchUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service.
-     */
     recoveryBasebackupName?: string;
-    /**
-     * Name of another service to fork from. This has effect 
-     * only when a new service is being created.
-     */
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigElasticsearch {
-    /**
-     * Explicitly allow or block automatic 
-     * creation of indices. Defaults to true
-     */
     actionAutoCreateIndexEnabled?: string;
-    /**
-     * Require explicit index names when deleting
-     */
     actionDestructiveRequiresName?: string;
-    /**
-     * Controls the number of shards allowed in the
-     * cluster per data node
-     */
     clusterMaxShardsPerNode?: string;
-    /**
-     * Maximum content length for HTTP requests to 
-     * the Elasticsearch HTTP API, in bytes.
-     */
     httpMaxContentLength?: string;
-    /**
-     * The max size of allowed headers, in bytes.
-     */
     httpMaxHeaderSize?: string;
-    /**
-     * The max length of an HTTP URL, in bytes.
-     */
     httpMaxInitialLineLength?: string;
-    /**
-     * Relative amount. Maximum amount of 
-     * heap memory used for field data cache. This is an expert setting; decreasing the
-     * value too much will increase overhead of loading field data; too much memory used
-     * for field data cache will decrease amount of heap available for other operations.
-     */
     indicesFielddataCacheSize?: string;
-    /**
-     * Percentage value. Default is 10%. 
-     * Total amount of heap used for indexing buffer, before writing segments to disk.
-     * This is an expert setting. Too low value will slow down indexing; too high value
-     * will increase indexing performance but causes performance issues for query performance.
-     */
     indicesMemoryIndexBufferSize?: string;
-    /**
-     * Percentage value. Default is 10%. 
-     * Maximum amount of heap used for query cache. This is an expert setting.
-     * Too low value will decrease query performance and increase performance for other
-     * operations; too high value will cause issues with other Elasticsearch functionality.
-     */
     indicesQueriesCacheSize?: string;
-    /**
-     * Maximum number of clauses Lucene 
-     * BooleanQuery can have. The default value (1024) is relatively high, and increasing it
-     * may cause performance issues. Investigate other approaches first before increasing this value.
-     */
     indicesQueryBoolMaxClauseCount?: string;
-    /**
-     * Whitelisted addresses for reindexing. 
-     * Changing this value will cause all Elasticsearch instances to restart.
-     */
+    overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
-    /**
-     * Maximum number of aggregation buckets allowed 
-     * in a single response. Elasticsearch default value is used when this is not defined.
-     */
     searchMaxBuckets?: string;
-    /**
-     * Size for the thread pool queue. 
-     * See documentation for exact details.
-     */
     threadPoolAnalyzeQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation 
-     * for exact details. Do note this may have maximum value depending on CPU count -
-     * value is automatically lowered if set to higher than maximum value.
-     */
     threadPoolAnalyzeSize?: string;
-    /**
-     * Size for the thread pool. See 
-     * documentation for exact details. Do note this may have maximum value depending on
-     * CPU count - value is automatically lowered if set to higher than maximum value.
-     */
     threadPoolForceMergeSize?: string;
-    /**
-     * Size for the thread pool queue. See 
-     * documentation for exact details.
-     */
     threadPoolGetQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation 
-     * for exact details. Do note this may have maximum value depending on CPU count -
-     * value is automatically lowered if set to higher than maximum value.
-     */
     threadPoolGetSize?: string;
-    /**
-     * Size for the thread pool queue. 
-     * See documentation for exact details.
-     */
     threadPoolIndexQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation 
-     * for exact details. Do note this may have maximum value depending on CPU count -
-     * value is automatically lowered if set to higher than maximum value.
-     */
     threadPoolIndexSize?: string;
-    /**
-     * Size for the thread pool queue. See 
-     * documentation for exact details.
-     */
     threadPoolSearchQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation 
-     * for exact details. Do note this may have maximum value depending on CPU count - value
-     * is automatically lowered if set to higher than maximum value.
-     */
     threadPoolSearchSize?: string;
-    /**
-     * Size for the thread pool queue. 
-     * See documentation for exact details.
-     */
     threadPoolSearchThrottledQueueSize?: string;
-    /**
-     * Size for the thread pool. See 
-     * documentation for exact details. Do note this may have maximum value depending on
-     * CPU count - value is automatically lowered if set to higher than maximum value.
-     */
     threadPoolSearchThrottledSize?: string;
-    /**
-     * Size for the thread pool queue. See 
-     * documentation for exact details.
-     */
     threadPoolWriteQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation 
-     * for exact details. Do note this may have maximum value depending on CPU count - value
-     * is automatically lowered if set to higher than maximum value.
-     */
     threadPoolWriteSize?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigIndexPattern {
-    /**
-     * Maximum number of indexes to keep before deleting the oldest one.
-     */
     maxIndexCount?: string;
-    /**
-     * Must consist of alpha-numeric characters, dashes, underscores, 
-     * dots and glob characters (* and ?)
-     */
     pattern?: string;
-    /**
-     * Deletion sorting algorithm
-     */
     sortingAlgorithm?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigIndexTemplate {
-    /**
-     * The maximum number of nested JSON objects that
-     * a single document can contain across all nested types. This limit helps to prevent out of
-     * memory errors when a document contains too many nested objects. Default is 10000.
-     */
     mappingNestedObjectsLimit?: string;
-    /**
-     * The number of replicas each primary shard has.
-     */
     numberOfReplicas?: string;
-    /**
-     * The number of primary shards that an index should have.
-     */
     numberOfShards?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigKibana {
-    /**
-     * Timeout in milliseconds for requests 
-     * made by Kibana towards Elasticsearch.
-     */
     elasticsearchRequestTimeout?: string;
-    /**
-     * Enable or disable Kibana.
-     */
     enabled?: string;
-    /**
-     * Limits the maximum amount of memory (in MiB) the 
-     * Kibana process can use. This sets the maxOldSpaceSize option of the nodejs running
-     * the Kibana. Note: the memory reserved by Kibana is not available for Elasticsearch.
-     */
     maxOldSpaceSize?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigPrivateAccess {
     /**
-     * Elasticsearch specific server provided values.
+     * Elasticsearch server provided values
      */
     elasticsearch?: string;
-    /**
-     * Allow clients to connect to kibana from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
-     */
     kibana?: string;
-    /**
-     * Allow clients to connect to prometheus from the public 
-     * internet for service nodes that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigPrivatelinkAccess {
     /**
-     * Elasticsearch specific server provided values.
+     * Elasticsearch server provided values
      */
     elasticsearch?: string;
-    /**
-     * Allow clients to connect to kibana from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
-     */
     kibana?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigPublicAccess {
     /**
-     * Elasticsearch specific server provided values.
+     * Elasticsearch server provided values
      */
     elasticsearch?: string;
-    /**
-     * Allow clients to connect to kibana from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
-     */
     kibana?: string;
-    /**
-     * Allow clients to connect to prometheus from the public 
-     * internet for service nodes that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
@@ -895,16 +665,50 @@ export interface GetElasticSearchServiceIntegration {
     sourceServiceName: string;
 }
 
-export interface GetGrafanaComponent {
+export interface GetFlinkComponent {
     component: string;
-    /**
-     * Server hostname or IP
-     */
     host: string;
     kafkaAuthenticationMethod: string;
+    port: number;
+    route: string;
+    ssl: boolean;
+    usage: string;
+}
+
+export interface GetFlinkFlink {
+    hostPorts: string[];
+}
+
+export interface GetFlinkFlinkUserConfig {
+    executionCheckpointingIntervalMs?: string;
+    executionCheckpointingTimeoutMs?: string;
+    flinkVersion?: string;
+    ipFilters?: string[];
+    numberOfTaskSlots?: string;
+    parallelismDefault?: string;
+    privatelinkAccess?: outputs.GetFlinkFlinkUserConfigPrivatelinkAccess;
+    restartStrategy?: string;
+    restartStrategyDelaySec?: string;
+    restartStrategyFailureRateIntervalMin?: string;
+    restartStrategyMaxFailures?: string;
+}
+
+export interface GetFlinkFlinkUserConfigPrivatelinkAccess {
     /**
-     * SMTP server port
+     * Flink server provided values
      */
+    flink?: string;
+}
+
+export interface GetFlinkServiceIntegration {
+    integrationType: string;
+    sourceServiceName: string;
+}
+
+export interface GetGrafanaComponent {
+    component: string;
+    host: string;
+    kafkaAuthenticationMethod: string;
     port: number;
     route: string;
     ssl: boolean;
@@ -915,286 +719,91 @@ export interface GetGrafanaGrafana {
 }
 
 export interface GetGrafanaGrafanaUserConfig {
-    /**
-     * Enable or disable Grafana alerting functionality
-     */
     alertingEnabled?: string;
-    /**
-     * Default error or timeout setting for new alerting rules
-     */
     alertingErrorOrTimeout?: string;
     alertingMaxAnnotationsToKeep?: string;
-    /**
-     * Default value for 'no data or null values' for
-     * new alerting rules
-     */
     alertingNodataOrNullvalues?: string;
-    /**
-     * Allow embedding Grafana dashboards with iframe/frame/object/embed 
-     * tags. Disabled by default to limit impact of clickjacking
-     */
     allowEmbedding?: string;
     authAzuread?: outputs.GetGrafanaGrafanaUserConfigAuthAzuread;
-    /**
-     * Enable or disable basic authentication form, used by Grafana 
-     * built-in login.
-     */
     authBasicEnabled?: string;
-    /**
-     * Generic OAuth integration.
-     */
     authGenericOauth?: outputs.GetGrafanaGrafanaUserConfigAuthGenericOauth;
-    /**
-     * Automatically sign-up users on successful sign-in
-     */
     authGithub?: outputs.GetGrafanaGrafanaUserConfigAuthGithub;
-    /**
-     * GitLab Auth integration.
-     */
     authGitlab?: outputs.GetGrafanaGrafanaUserConfigAuthGitlab;
-    /**
-     * Google Auth integration
-     */
     authGoogle?: outputs.GetGrafanaGrafanaUserConfigAuthGoogle;
-    /**
-     * Cookie SameSite attribute: 'strict' prevents sending cookie for 
-     * cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
-     */
     cookieSamesite?: string;
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-     */
     customDomain?: string;
-    /**
-     * Signed sequence of decimal numbers, followed
-     * by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
-     */
     dashboardsMinRefreshInterval?: string;
-    /**
-     * Dashboard versions to keep per dashboard.
-     */
     dashboardsVersionsToKeep?: string;
-    /**
-     * Send 'X-Grafana-User' header to data source.
-     */
     dataproxySendUserHeader?: string;
-    /**
-     * Timeout for data proxy requests in seconds.
-     */
     dataproxyTimeout?: string;
     dateFormats?: outputs.GetGrafanaGrafanaUserConfigDateFormats;
-    /**
-     * Set to true to disable gravatar. Defaults to false 
-     * (gravatar is enabled).
-     */
     disableGravatar?: string;
-    /**
-     * Editors can manage folders, teams and dashboards created by them.
-     */
     editorsCanAdmin?: string;
-    /**
-     * External image store settings
-     */
     externalImageStorage?: outputs.GetGrafanaGrafanaUserConfigExternalImageStorage;
-    /**
-     * Google Analytics Universal Analytics ID for tracking Grafana usage
-     */
     googleAnalyticsUaId?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-     */
     ipFilters?: string[];
-    /**
-     * Enable Grafana /metrics endpoint
-     */
     metricsEnabled?: string;
     privateAccess?: outputs.GetGrafanaGrafanaUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.GetGrafanaGrafanaUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has 
-     * effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet.
-     */
     publicAccess?: outputs.GetGrafanaGrafanaUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service.
-     */
     recoveryBasebackupName?: string;
-    /**
-     * Name of another service to fork from. This has effect only 
-     * when a new service is being created.
-     */
     serviceToForkFrom?: string;
-    /**
-     * SMTP server settings.
-     */
     smtpServer?: outputs.GetGrafanaGrafanaUserConfigSmtpServer;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
-    /**
-     * Auto-assign new users on signup to main organization. 
-     * Defaults to false.
-     */
     userAutoAssignOrg?: string;
-    /**
-     * Set role for new signups. Defaults to Viewer.
-     */
     userAutoAssignOrgRole?: string;
-    /**
-     * Users with view-only permission can edit but not save dashboards.
-     */
     viewersCanEdit?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthAzuread {
-    /**
-     * Automatically sign-up users on successful sign-in
-     */
     allowSignUp?: string;
-    /**
-     * Allowed domain
-     */
     allowedDomains?: string[];
-    /**
-     * Require users to belong to one of given groups
-     */
     allowedGroups?: string[];
-    /**
-     * Authorization URL. This only needs to be set when using self hosted GitLab
-     */
     authUrl?: string;
-    /**
-     * Client ID from provider
-     */
     clientId?: string;
-    /**
-     * Client secret from provider
-     */
     clientSecret?: string;
-    /**
-     * Token URL. This only needs to be set when using self hosted GitLab
-     */
     tokenUrl?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
-    /**
-     * Automatically sign-up users on successful sign-in
-     */
     allowSignUp?: string;
-    /**
-     * Allowed domain
-     */
     allowedDomains?: string[];
-    /**
-     * Must consist of alpha-numeric characters and dashes"
-     */
     allowedOrganizations?: string[];
-    /**
-     * API URL. This only needs to be set when using self hosted GitLab
-     */
     apiUrl?: string;
-    /**
-     * Authorization URL. This only needs to be set when using self hosted GitLab
-     */
     authUrl?: string;
-    /**
-     * Client ID from provider
-     */
     clientId?: string;
-    /**
-     * Client secret from provider
-     */
     clientSecret?: string;
-    /**
-     * Name of the OAuth integration
-     */
     name?: string;
-    /**
-     * Scope must be non-empty string without whitespace
-     */
     scopes?: string[];
-    /**
-     * Token URL. This only needs to be set when using self hosted GitLab
-     */
     tokenUrl?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGithub {
-    /**
-     * Automatically sign-up users on successful sign-in
-     */
     allowSignUp?: string;
-    /**
-     * Must consist of alpha-numeric characters and dashes"
-     */
     allowedOrganizations?: string[];
-    /**
-     * Client ID from provider
-     */
     clientId?: string;
-    /**
-     * Client secret from provider
-     */
     clientSecret?: string;
-    /**
-     * Require users to belong to one of given team IDs
-     */
     teamIds?: string[];
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGitlab {
-    /**
-     * Automatically sign-up users on successful sign-in
-     */
     allowSignUp?: string;
-    /**
-     * Require users to belong to one of given groups
-     */
     allowedGroups?: string[];
-    /**
-     * API URL. This only needs to be set when using self hosted GitLab
-     */
     apiUrl?: string;
-    /**
-     * Authorization URL. This only needs to be set when using self hosted GitLab
-     */
     authUrl?: string;
-    /**
-     * Client ID from provider
-     */
     clientId?: string;
-    /**
-     * Client secret from provider
-     */
     clientSecret?: string;
-    /**
-     * Token URL. This only needs to be set when using self hosted GitLab
-     */
     tokenUrl?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGoogle {
-    /**
-     * Automatically sign-up users on successful sign-in
-     */
     allowSignUp?: string;
-    /**
-     * Allowed domain
-     */
     allowedDomains?: string[];
-    /**
-     * Client ID from provider
-     */
     clientId?: string;
-    /**
-     * Client secret from provider
-     */
     clientSecret?: string;
 }
 
@@ -1210,79 +819,41 @@ export interface GetGrafanaGrafanaUserConfigDateFormats {
 }
 
 export interface GetGrafanaGrafanaUserConfigExternalImageStorage {
-    /**
-     * S3 access key. Requires permissions to the S3 bucket for the 
-     * s3:PutObject and s3:PutObjectAcl actions
-     */
     accessKey?: string;
-    /**
-     * Bucket URL for S3
-     */
     bucketUrl?: string;
-    /**
-     * Provider type
-     */
     provider?: string;
-    /**
-     * S3 secret key
-     */
     secretKey?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigPrivateAccess {
     /**
-     * Grafana specific server provided values.
+     * Grafana server provided values
      */
     grafana?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigPrivatelinkAccess {
     /**
-     * Grafana specific server provided values.
+     * Grafana server provided values
      */
     grafana?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigPublicAccess {
     /**
-     * Grafana specific server provided values.
+     * Grafana server provided values
      */
     grafana?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigSmtpServer {
-    /**
-     * Address used for sending emails
-     */
     fromAddress?: string;
-    /**
-     * Name used in outgoing emails, defaults to Grafana
-     */
     fromName?: string;
-    /**
-     * Server hostname or IP
-     */
     host?: string;
-    /**
-     * Password for SMTP authentication
-     */
     password?: string;
-    /**
-     * SMTP server port
-     */
     port?: string;
-    /**
-     * Skip verifying server certificate. Defaults to false
-     */
     skipVerify?: string;
-    /**
-     * Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. 
-     * Default is OpportunisticStartTLS.
-     */
     starttlsPolicy?: string;
-    /**
-     * Username for SMTP authentication
-     */
     username?: string;
 }
 
@@ -1306,94 +877,50 @@ export interface GetInfluxDbInfluxdb {
 }
 
 export interface GetInfluxDbInfluxdbUserConfig {
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
-     */
     customDomain?: string;
     /**
-     * InfluxDB specific server provided values.
+     * InfluxDB server provided values
      */
     influxdb?: outputs.GetInfluxDbInfluxdbUserConfigInfluxdb;
-    /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
     ipFilters?: string[];
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.GetInfluxDbInfluxdbUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service
-     */
     recoveryBasebackupName?: string;
-    /**
-     * Name of another service to fork from. This has effect 
-     * only when a new service is being created.
-     */
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigInfluxdb {
-    /**
-     * The maximum duration in seconds before a query is 
-     * logged as a slow query. Setting this to 0 (the default) will never log slow queries.
-     */
     logQueriesAfter?: string;
     maxConnectionLimit?: string;
-    /**
-     * The maximum number of rows returned in a non-chunked query. 
-     * Setting this to 0 (the default) allows an unlimited number to be returned.
-     */
     maxRowLimit?: string;
-    /**
-     * The maximum number of `GROUP BY time()` buckets that 
-     * can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
-     * be processed.
-     */
     maxSelectBuckets?: string;
-    /**
-     * The maximum number of points that can be processed in a 
-     * SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
-     */
     maxSelectPoint?: string;
-    /**
-     * The maximum duration in seconds before a query is killed. 
-     * Setting this to 0 (the default) will never kill slow queries.
-     */
     queryTimeout?: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPrivateAccess {
     /**
-     * InfluxDB specific server provided values.
+     * InfluxDB server provided values
      */
     influxdb?: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPrivatelinkAccess {
     /**
-     * InfluxDB specific server provided values.
+     * InfluxDB server provided values
      */
     influxdb?: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPublicAccess {
     /**
-     * InfluxDB specific server provided values.
+     * InfluxDB server provided values
      */
     influxdb?: string;
 }
@@ -1427,113 +954,54 @@ export interface GetKafkaConnectKafkaConnect {
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfig {
-    /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
     ipFilters?: string[];
     /**
-     * Kafka Connect specific server provided values.
+     * Kafka Connect server provided values
      */
     kafkaConnect?: outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnect;
-    /**
-     * Allow access to selected service ports from private networks.
-     */
     privateAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
     publicAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccess;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
-    /**
-     * Defines what client configurations can be 
-     * overridden by the connector. Default is None.
-     */
     connectorClientConfigOverridePolicy?: string;
-    /**
-     * What to do when there is no initial offset in Kafka or 
-     * if the current offset does not exist any more on the server. Default is earliest.
-     */
     consumerAutoOffsetReset?: string;
-    /**
-     * Records are fetched in batches by the consumer, and if 
-     * the first record batch in the first non-empty partition of the fetch is larger than this value,
-     * the record batch will still be returned to ensure that the consumer can make progress. As such,
-     * this is not a absolute maximum.
-     */
     consumerFetchMaxBytes?: string;
-    /**
-     * Transaction read isolation level. readUncommitted is 
-     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
-     */
     consumerIsolationLevel?: string;
-    /**
-     * Records are fetched in batches by the consumer.If 
-     * the first record batch in the first non-empty partition of the fetch is larger than this limit,
-     * the batch will still be returned to ensure that the consumer can make progress.
-     */
     consumerMaxPartitionFetchBytes?: string;
-    /**
-     * The maximum delay in milliseconds between invocations 
-     * of poll() when using consumer group management (defaults to 300000).
-     * * `consumerMaxPollRecords` The maximum number of records returned by a single poll.
-     */
     consumerMaxPollIntervalMs?: string;
     consumerMaxPollRecords?: string;
-    /**
-     * The interval at which to try committing offsets for tasks 
-     * (defaults to 60000).
-     */
     offsetFlushIntervalMs?: string;
-    /**
-     * Maximum number of milliseconds to wait for records to flush 
-     * and partition offset data to be committed to offset storage before cancelling the process and restoring
-     * the offset data to be committed in a future attempt (defaults to 5000).
-     */
     offsetFlushTimeoutMs?: string;
-    /**
-     * This setting will limit the number of record batches the 
-     * producer will send in a single request to avoid sending huge requests.
-     */
     producerMaxRequestSize?: string;
-    /**
-     * The timeout in milliseconds used to detect failures when using Kafka’s 
-     * group management facilities (defaults to 10000).
-     */
     sessionTimeoutMs?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPrivateAccess {
     /**
-     * Kafka Connect specific server provided values.
+     * Kafka Connect server provided values
      */
     kafkaConnect?: string;
-    /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to 
-     * the service's private IP addresses. Only available in certain network locations.
-     */
     prometheus?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
     /**
-     * Kafka Connect specific server provided values.
+     * Kafka Connect server provided values
      */
     kafkaConnect?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
     /**
-     * Kafka Connect specific server provided values.
+     * Kafka Connect server provided values
      */
     kafkaConnect?: string;
-    /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to 
-     * the service's private IP addresses. Only available in certain network locations.
-     */
     prometheus?: string;
 }
 
@@ -1545,466 +1013,140 @@ export interface GetKafkaConnectServiceIntegration {
 export interface GetKafkaConnectorTask {
     connector: string;
     /**
-     * List of tasks of a connector, each element contains `connector` 
-     * (Related connector name) and `task` (Task id / number).
+     * List of tasks of a connector.
      */
     task: number;
 }
 
 export interface GetKafkaKafka {
-    /**
-     * The Kafka client certificate
-     */
     accessCert: string;
-    /**
-     * The Kafka client certificate key
-     */
     accessKey: string;
-    /**
-     * The Kafka Connect URI, if any
-     */
     connectUri: string;
-    /**
-     * The Kafka REST URI, if any
-     */
     restUri: string;
-    /**
-     * The Schema Registry URI, if any
-     */
     schemaRegistryUri: string;
 }
 
 export interface GetKafkaKafkaUserConfig {
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-     */
     customDomain?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-     */
     ipFilters?: string[];
     /**
-     * Kafka server provided values:
+     * Kafka server provided values
      */
     kafka?: outputs.GetKafkaKafkaUserConfigKafka;
-    /**
-     * Kafka authentication methods
-     */
     kafkaAuthenticationMethods?: outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
-    /**
-     * Enable kafka_connect
-     */
     kafkaConnect?: string;
-    /**
-     * Kafka Connect configuration values
-     */
     kafkaConnectConfig?: outputs.GetKafkaKafkaUserConfigKafkaConnectConfig;
-    /**
-     * Enable kafka_rest
-     */
     kafkaRest?: string;
-    /**
-     * Kafka-REST configuration
-     */
     kafkaRestConfig?: outputs.GetKafkaKafkaUserConfigKafkaRestConfig;
-    /**
-     * Kafka major version
-     */
     kafkaVersion?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.GetKafkaKafkaUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.GetKafkaKafkaUserConfigPrivatelinkAccess;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.GetKafkaKafkaUserConfigPublicAccess;
-    /**
-     * Enable schema_registry
-     */
     schemaRegistry?: string;
-    /**
-     * Schema Registry configuration
-     */
     schemaRegistryConfig?: outputs.GetKafkaKafkaUserConfigSchemaRegistryConfig;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafka {
-    /**
-     * Enable auto creation of topics
-     */
     autoCreateTopicsEnable?: string;
-    /**
-     * Specify the final compression type for a given topic. This 
-     * configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
-     * It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
-     * which means retain the original compression codec set by the producer.
-     */
     compressionType?: string;
-    /**
-     * Idle connections timeout: the server socket processor 
-     * threads close the connections that idle for longer than this.
-     */
     connectionsMaxIdleMs?: string;
-    /**
-     * Replication factor for autocreated topics
-     */
     defaultReplicationFactor?: string;
-    /**
-     * The amount of time, in milliseconds, the group
-     * coordinator will wait for more consumers to join a new group before performing the first rebalance.
-     * A longer delay means potentially fewer rebalances, but increases the time until processing begins.
-     * The default value for this is 3 seconds. During development and testing it might be desirable to set
-     * this to 0 in order to not delay test execution time.
-     */
     groupInitialRebalanceDelayMs?: string;
-    /**
-     * The maximum allowed session timeout for registered 
-     * consumers. Longer timeouts give consumers more time to process messages in between heartbeats
-     * at the cost of a longer time to detect failures.
-     */
     groupMaxSessionTimeoutMs?: string;
-    /**
-     * The minimum allowed session timeout for registered 
-     * consumers. Longer timeouts give consumers more time to process messages in between heartbeats
-     * at the cost of a longer time to detect failures.
-     */
     groupMinSessionTimeoutMs?: string;
     logCleanerDeleteRetentionMs?: string;
-    /**
-     * The maximum amount of time message will 
-     * remain uncompacted. Only applicable for logs that are being compacted
-     */
     logCleanerMaxCompactionLagMs?: string;
-    /**
-     * Controls log compactor frequency. Larger 
-     * value means more frequent compactions but also more space wasted for logs. Consider setting
-     * log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
-     * high value for this option.
-     */
     logCleanerMinCleanableRatio?: string;
-    /**
-     * The minimum time a message will remain 
-     * uncompacted in the log. Only applicable for logs that are being compacted.
-     */
     logCleanerMinCompactionLagMs?: string;
-    /**
-     * The default cleanup policy for segments beyond the retention window.
-     */
     logCleanupPolicy?: string;
-    /**
-     * The number of messages accumulated on a log partition 
-     * before messages are flushed to disk.
-     */
     logFlushIntervalMessages?: string;
-    /**
-     * The maximum time in ms that a message in any topic is kept 
-     * in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
-     */
     logFlushIntervalMs?: string;
-    /**
-     * The interval with which Kafka adds an entry to the offset index.
-     */
     logIndexIntervalBytes?: string;
-    /**
-     * The maximum size in bytes of the offset index.
-     */
     logIndexSizeMaxBytes?: string;
-    /**
-     * This configuration controls whether down-conversion 
-     * of message formats is enabled to satisfy consume requests.
-     */
     logMessageDownconversionEnable?: string;
-    /**
-     * The maximum difference allowed between 
-     * the timestamp when a broker receives a message and the timestamp specified in the message
-     */
     logMessageTimestampDifferenceMaxMs?: string;
-    /**
-     * Define whether the timestamp in the message is 
-     * message create time or log append time.
-     */
     logMessageTimestampType?: string;
-    /**
-     * Should pre allocate file when create new segment?
-     */
     logPreallocate?: string;
-    /**
-     * The maximum size of the log before deleting messages
-     */
     logRetentionBytes?: string;
-    /**
-     * The number of hours to keep a log file before deleting it.
-     */
     logRetentionHours?: string;
-    /**
-     * The number of milliseconds to keep a log file before deleting it 
-     * (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
-     * time limit is applied.
-     */
     logRetentionMs?: string;
-    /**
-     * The maximum jitter to subtract from logRollTimeMillis 
-     * (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
-     */
     logRollJitterMs?: string;
-    /**
-     * The maximum time before a new log segment is rolled out (in milliseconds).
-     */
     logRollMs?: string;
-    /**
-     * The maximum size of a single log file
-     */
     logSegmentBytes?: string;
-    /**
-     * The amount of time to wait before deleting a file 
-     * from the filesystem.
-     */
     logSegmentDeleteDelayMs?: string;
-    /**
-     * The maximum number of connections allowed from each ip 
-     * address (defaults to 2147483647).
-     */
     maxConnectionsPerIp?: string;
-    /**
-     * The maximum number of incremental fetch 
-     * sessions that the broker will maintain.
-     */
     maxIncrementalFetchSessionCacheSlots?: string;
-    /**
-     * The maximum size of message that the server can receive.
-     */
     messageMaxBytes?: string;
-    /**
-     * When a producer sets acks to 'all' (or '-1'), 
-     * min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
-     * the write to be considered successful.
-     */
     minInsyncReplicas?: string;
-    /**
-     * Number of partitions for autocreated topics
-     */
     numPartitions?: string;
-    /**
-     * Log retention window in minutes for offsets topic.
-     */
     offsetsRetentionMinutes?: string;
-    /**
-     * The purge interval (in number of 
-     * requests) of the producer request purgatory(defaults to 1000).
-     */
     producerPurgatoryPurgeIntervalRequests?: string;
-    /**
-     * The number of bytes of messages to attempt to fetch 
-     * for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
-     * batch in the first non-empty partition of the fetch is larger than this value, the record batch
-     * will still be returned to ensure that progress can be made.
-     */
     replicaFetchMaxBytes?: string;
-    /**
-     * Maximum bytes expected for the entire fetch 
-     * response (defaults to 10485760). Records are fetched in batches, and if the first record batch
-     * in the first non-empty partition of the fetch is larger than this value, the record batch will
-     * still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
-     */
     replicaFetchResponseMaxBytes?: string;
-    /**
-     * The maximum number of bytes in a socket request 
-     * (defaults to 104857600).
-     */
     socketRequestMaxBytes?: string;
-    /**
-     * The interval at which 
-     * to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
-     * to 3600000 (1 hour)).
-     */
     transactionRemoveExpiredTransactionCleanupIntervalMs?: string;
-    /**
-     * The transaction topic segment bytes should 
-     * be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
-     * to 104857600 (100 mebibytes)).
-     */
     transactionStateLogSegmentBytes?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaAuthenticationMethods {
-    /**
-     * Enable certificate/SSL authentication
-     */
     certificate?: string;
-    /**
-     * Enable SASL authentication
-     */
     sasl?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
-    /**
-     * Defines what client configurations can 
-     * be overridden by the connector. Default is None
-     */
     connectorClientConfigOverridePolicy?: string;
-    /**
-     * What to do when there is no initial offset in Kafka or 
-     * if the current offset does not exist any more on the server. Default is earliest.
-     */
     consumerAutoOffsetReset?: string;
-    /**
-     * Records are fetched in batches by the consumer, and 
-     * if the first record batch in the first non-empty partition of the fetch is larger than this value,
-     * the record batch will still be returned to ensure that the consumer can make progress. As such,
-     * this is not a absolute maximum.
-     */
     consumerFetchMaxBytes?: string;
-    /**
-     * Transaction read isolation level. readUncommitted is 
-     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
-     */
     consumerIsolationLevel?: string;
-    /**
-     * Records are fetched in batches by the consumer.If 
-     * the first record batch in the first non-empty partition of the fetch is larger than this limit,
-     * the batch will still be returned to ensure that the consumer can make progress.
-     */
     consumerMaxPartitionFetchBytes?: string;
-    /**
-     * The maximum delay in milliseconds between invocations 
-     * of poll() when using consumer group management (defaults to 300000).
-     */
     consumerMaxPollIntervalMs?: string;
-    /**
-     * The maximum number of records returned in a single call 
-     * to poll() (defaults to 500).
-     */
     consumerMaxPollRecords?: string;
-    /**
-     * The interval at which to try committing offsets for 
-     * tasks (defaults to 60000).
-     */
     offsetFlushIntervalMs?: string;
-    /**
-     * Maximum number of milliseconds to wait for records to 
-     * flush and partition offset data to be committed to offset storage before cancelling the process
-     * and restoring the offset data to be committed in a future attempt (defaults to 5000).
-     */
     offsetFlushTimeoutMs?: string;
-    /**
-     * This setting will limit the number of record batches 
-     * the producer will send in a single request to avoid sending huge requests.
-     */
     producerMaxRequestSize?: string;
-    /**
-     * The timeout in milliseconds used to detect failures when 
-     * using Kafka’s group management facilities (defaults to 10000).
-     */
     sessionTimeoutMs?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaRestConfig {
-    /**
-     * If true the consumer's offset will be periodically 
-     * committed to Kafka in the background
-     */
     consumerEnableAutoCommit?: string;
-    /**
-     * Maximum number of bytes in unencoded message keys and 
-     * values by a single request
-     */
     consumerRequestMaxBytes?: string;
-    /**
-     * The maximum total time to wait for messages for a 
-     * request if the maximum number of messages has not yet been reached
-     */
     consumerRequestTimeoutMs?: string;
-    /**
-     * The number of acknowledgments the producer requires the leader to 
-     * have received before considering a request complete. If set to 'all' or '-1', the leader will wait
-     * for the full set of in-sync replicas to acknowledge the record.
-     */
     producerAcks?: string;
-    /**
-     * Wait for up to the given delay to allow batching records together
-     */
     producerLingerMs?: string;
-    /**
-     * Maximum number of SimpleConsumers that can be 
-     * instantiated per broker.
-     */
     simpleconsumerPoolSizeMax?: string;
 }
 
 export interface GetKafkaKafkaUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
 }
 
 export interface GetKafkaKafkaUserConfigPrivatelinkAccess {
     /**
-     * Kafka server provided values:
+     * Kafka server provided values
      */
     kafka?: string;
-    /**
-     * Enable kafka_connect
-     */
     kafkaConnect?: string;
-    /**
-     * Enable kafka_rest
-     */
     kafkaRest?: string;
-    /**
-     * Enable schema_registry
-     */
     schemaRegistry?: string;
 }
 
 export interface GetKafkaKafkaUserConfigPublicAccess {
     /**
-     * Kafka server provided values:
+     * Kafka server provided values
      */
     kafka?: string;
-    /**
-     * Enable kafka_connect
-     */
     kafkaConnect?: string;
-    /**
-     * Enable kafka_rest
-     */
     kafkaRest?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
-    /**
-     * Enable schema_registry
-     */
     schemaRegistry?: string;
 }
 
 export interface GetKafkaKafkaUserConfigSchemaRegistryConfig {
-    /**
-     * If true, Karapace / Schema Registry on the service nodes can 
-     * participate in leader election. It might be needed to disable this when the schemas topic is replicated
-     * to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
-     * Defaults to 'true'.
-     */
     leaderEligibility?: string;
-    /**
-     * The durable single partition topic that acts as the durable log for the 
-     * data. This topic must be compacted to avoid losing data due to retention policy. Please note that
-     * changing this configuration in an existing Schema Registry / Karapace setup leads to previous
-     * schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
-     * put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
-     * Defaults to '_schemas'.
-     */
     topicName?: string;
 }
 
@@ -2022,46 +1164,25 @@ export interface GetKafkaMirrorMakerKafkaMirrormaker {
 }
 
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
-    /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
     ipFilters?: string[];
     /**
-     * Kafka MirrorMaker 2 specific server provided values.
+     * Kafka MirrorMaker 2 server provided values
      */
     kafkaMirrormaker?: outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
-    /**
-     * Whether to periodically write the translated offsets
-     * of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
-     * as long as no active consumers in that group are connected to the target cluster.
-     */
     emitCheckpointsEnabled?: string;
     emitCheckpointsIntervalSeconds?: string;
-    /**
-     * Whether to periodically check for new consumer groups. 
-     * Defaults to 'true'.
-     */
     refreshGroupsEnabled?: string;
-    /**
-     * Whether to periodically check for new topics and 
-     * partitions. Defaults to 'true'.
-     */
     refreshGroupsIntervalSeconds?: string;
     refreshTopicsEnabled?: string;
-    /**
-     * Frequency of topic and partitions refresh in 
-     * seconds. Defaults to 600 seconds (10 minutes).
-     */
     refreshTopicsIntervalSeconds?: string;
     syncGroupOffsetsEnabled?: string;
-    /**
-     * Frequency at which consumer group offsets
-     * are synced (default: 60, every minute).
-     */
     syncGroupOffsetsIntervalSeconds?: string;
     syncTopicConfigsEnabled?: string;
     tasksMaxPerCpu?: string;
@@ -2079,100 +1200,34 @@ export interface GetKafkaServiceIntegration {
 
 export interface GetKafkaTopicConfig {
     /**
-     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
+     * **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
      */
     cleanupPolicy?: string;
-    /**
-     * compression.type value
-     */
     compressionType?: string;
-    /**
-     * delete.retention.ms value
-     */
     deleteRetentionMs?: string;
-    /**
-     * file.delete.delay.ms value
-     */
     fileDeleteDelayMs?: string;
-    /**
-     * flush.messages value
-     */
     flushMessages?: string;
-    /**
-     * flush.ms value
-     */
     flushMs?: string;
-    /**
-     * index.interval.bytes value
-     */
     indexIntervalBytes?: string;
-    /**
-     * max.compaction.lag.ms value
-     */
     maxCompactionLagMs?: string;
-    /**
-     * max.message.bytes value
-     */
     maxMessageBytes?: string;
-    /**
-     * message.downconversion.enable value
-     */
     messageDownconversionEnable?: string;
-    /**
-     * message.format.version value
-     */
     messageFormatVersion?: string;
-    /**
-     * message.timestamp.difference.max.ms value
-     */
     messageTimestampDifferenceMaxMs?: string;
-    /**
-     * message.timestamp.type value
-     */
     messageTimestampType?: string;
-    /**
-     * min.cleanable.dirty.ratio value
-     */
     minCleanableDirtyRatio?: string;
-    /**
-     * min.compaction.lag.ms value
-     */
     minCompactionLagMs?: string;
-    /**
-     * min.insync.replicas value
-     */
     minInsyncReplicas?: string;
-    /**
-     * preallocate value
-     */
     preallocate?: string;
     /**
-     * retention.bytes value
+     * **DEPRECATED use config.retention_bytes instead** Retention bytes.
      */
     retentionBytes?: string;
-    /**
-     * retention.ms value
-     */
     retentionMs?: string;
-    /**
-     * segment.bytes value
-     */
     segmentBytes?: string;
-    /**
-     * segment.index.bytes value
-     */
     segmentIndexBytes?: string;
-    /**
-     * segment.jitter.ms value
-     */
     segmentJitterMs?: string;
-    /**
-     * segment.ms value
-     */
     segmentMs?: string;
-    /**
-     * unclean.leader.election.enable value
-     */
     uncleanLeaderElectionEnable?: string;
 }
 
@@ -2195,19 +1250,13 @@ export interface GetM3AggregatorM3aggregator {
 }
 
 export interface GetM3AggregatorM3aggregatorUserConfig {
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-     */
     customDomain?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-     */
     ipFilters?: string[];
     m3Version?: string;
-    /**
-     * M3 major version
-     */
     m3aggregatorVersion?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
@@ -2230,156 +1279,55 @@ export interface GetM3DbM3db {
 }
 
 export interface GetM3DbM3dbUserConfig {
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-     */
     customDomain?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-     */
     ipFilters?: string[];
-    /**
-     * M3 limits
-     */
     limits?: outputs.GetM3DbM3dbUserConfigLimits;
     m3Version?: string;
-    /**
-     * Enables access to Graphite Carbon 
-     * plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
-     * metrics are written to aggregated namespaces only.
-     */
     m3coordinatorEnableGraphiteCarbonIngest?: string;
-    /**
-     * M3 major version
-     */
     m3dbVersion?: string;
-    /**
-     * List of M3 namespaces
-     */
     namespaces?: outputs.GetM3DbM3dbUserConfigNamespace[];
-    /**
-     * Allow access to selected service ports from private networks.
-     */
     privateAccess?: outputs.GetM3DbM3dbUserConfigPrivateAccess;
-    /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet.
-     */
     publicAccess?: outputs.GetM3DbM3dbUserConfigPublicAccess;
-    /**
-     * Mapping rules allow more granular use of aggregation, not simply sending
-     * everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
-     * rules will be sent to it and nothing else.
-     */
     rules?: outputs.GetM3DbM3dbUserConfigRules;
-    /**
-     * Name of another service to fork from. This has effect only 
-     * when a new service is being created.
-     */
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
 export interface GetM3DbM3dbUserConfigLimits {
-    /**
-     * The maximum number of data points fetched during request
-     */
-    globalDatapoints?: string;
-    /**
-     * The maximum number of data points fetched in single query
-     */
-    queryDatapoints?: string;
-    /**
-     * When query limits are exceeded, whether to return error 
-     * (if True) or return partial results (False)
-     */
     queryRequireExhaustive?: string;
-    /**
-     * The maximum number of series fetched in single query
-     */
     querySeries?: string;
 }
 
 export interface GetM3DbM3dbUserConfigNamespace {
-    /**
-     * The name of the namespace
-     */
     name?: string;
-    /**
-     * Namespace options
-     */
     options?: outputs.GetM3DbM3dbUserConfigNamespaceOptions;
-    /**
-     * The resolution for an aggregated namespace
-     */
     resolution?: string;
-    /**
-     * The type of aggregation (aggregated/unaggregated)
-     */
     type?: string;
 }
 
 export interface GetM3DbM3dbUserConfigNamespaceOptions {
-    /**
-     * Retention options
-     */
     retentionOptions?: outputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions;
-    /**
-     * Controls whether M3DB will create snapshot files for 
-     * this namespace
-     */
     snapshotEnabled?: string;
-    /**
-     * Controls whether M3DB will include writes to this 
-     * namespace in the commitlog.
-     */
     writesToCommitlog?: string;
 }
 
 export interface GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
-    /**
-     * Controls how long we wait before expiring stale data
-     */
     blockDataExpiryDuration?: string;
-    /**
-     * Controls how long to keep a block in memory before 
-     * flushing to a fileset on disk
-     */
     blocksizeDuration?: string;
-    /**
-     * Controls how far into the future writes to 
-     * the namespace will be accepted
-     */
     bufferFutureDuration?: string;
-    /**
-     * Controls how far into the past writes to the 
-     * namespace will be accepted
-     */
     bufferPastDuration?: string;
-    /**
-     * Controls the duration of time that M3DB will 
-     * retain data for the namespace
-     */
     retentionPeriodDuration?: string;
 }
 
 export interface GetM3DbM3dbUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to m3coordinator from the public internet 
-     * for service nodes that are in a project VPC or another type of private network.
-     */
     m3coordinator?: string;
 }
 
 export interface GetM3DbM3dbUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to m3coordinator from the public internet 
-     * for service nodes that are in a project VPC or another type of private network.
-     */
     m3coordinator?: string;
 }
 
@@ -2388,38 +1336,16 @@ export interface GetM3DbM3dbUserConfigRules {
 }
 
 export interface GetM3DbM3dbUserConfigRulesMapping {
-    /**
-     * List of aggregations to be applied
-     */
     aggregations?: string[];
-    /**
-     * Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
-     */
     drop?: string;
-    /**
-     * The metrics to be used with this particular rule; Matching metric names with wildcards (using
-     * __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
-     * can be used at start of value for negation, and multiple filters can be supplied using space as separator.
-     */
     filter?: string;
-    /**
-     * The name of the namespace
-     */
     name?: string;
-    /**
-     * List of tags to be appended to matching metrics.
-     */
+    namespaces?: string[];
     tags?: outputs.GetM3DbM3dbUserConfigRulesMappingTag[];
 }
 
 export interface GetM3DbM3dbUserConfigRulesMappingTag {
-    /**
-     * The name of the namespace
-     */
     name?: string;
-    /**
-     * Value of the tag.
-     */
     value?: string;
 }
 
@@ -2430,19 +1356,10 @@ export interface GetM3DbServiceIntegration {
 
 export interface GetMySqlComponent {
     component: string;
-    /**
-     * Hostname or IP address of the server where to migrate data from
-     */
     host: string;
     kafkaAuthenticationMethod: string;
-    /**
-     * Port number of the server where to migrate data from
-     */
     port: number;
     route: string;
-    /**
-     * The server where to migrate data from is secured with SSL
-     */
     ssl: boolean;
     usage: string;
 }
@@ -2451,275 +1368,91 @@ export interface GetMySqlMysql {
 }
 
 export interface GetMySqlMysqlUserConfig {
-    /**
-     * Custom password for admin user. Defaults to random string. 
-     * This must be set only when a new service is being created.
-     */
     adminPassword?: string;
-    /**
-     * Custom username for admin user. This must be set only when a 
-     * new service is being created.
-     */
     adminUsername?: string;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. 
-     * New backup is only started if previous backup has already completed.
-     */
     backupHour?: string;
-    /**
-     * The minute of an hour when backup for the service is started. 
-     * New backup is only started if previous backup has already completed.
-     */
     backupMinute?: string;
-    /**
-     * The minimum amount of time in seconds to keep binlog entries
-     * before deletion. This may be extended for services that require binlog entries for longer than the
-     * default for example if using the MySQL Debezium Kafka connector.
-     */
     binlogRetentionPeriod?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-     */
     ipFilters?: string[];
-    /**
-     * Migrate data from existing server
-     */
     migration?: outputs.GetMySqlMysqlUserConfigMigration;
     /**
-     * MySQL specific server provided values.
+     * MySQL specific server provided values
      */
     mysql?: outputs.GetMySqlMysqlUserConfigMysql;
-    /**
-     * MySQL major version
-     */
     mysqlVersion?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.GetMySqlMysqlUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.GetMySqlMysqlUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.GetMySqlMysqlUserConfigPublicAccess;
-    /**
-     * Recovery target time when forking a service. This has effect 
-     * only when a new service is being created.
-     */
     recoveryTargetTime?: string;
-    /**
-     * Name of another service to fork from. This has effect only when 
-     * a new service is being created.
-     */
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
 export interface GetMySqlMysqlUserConfigMigration {
-    /**
-     * Database name for bootstrapping the initial connection
-     */
     dbname?: string;
-    /**
-     * Hostname or IP address of the server where to migrate data from
-     */
     host?: string;
-    /**
-     * Comma-separated list of databases, which should be ignored
-     * during migration (supported by MySQL only at the moment)
-     */
     ignoreDbs?: string;
-    /**
-     * Password for authentication with the server where to migrate data from
-     */
+    method?: string;
     password?: string;
-    /**
-     * Port number of the server where to migrate data from
-     */
     port?: string;
-    /**
-     * The server where to migrate data from is secured with SSL
-     */
     ssl?: string;
-    /**
-     * User name for authentication with the server where to migrate data from
-     */
     username?: string;
 }
 
 export interface GetMySqlMysqlUserConfigMysql {
-    /**
-     * The number of seconds that the mysqld server waits for a 
-     * connect packet before responding with Bad handshake
-     */
     connectTimeout?: string;
-    /**
-     * Default server time zone as an offset from UTC 
-     * (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
-     */
     defaultTimeZone?: string;
-    /**
-     * The maximum permitted result length in bytes for 
-     * the GROUP_CONCAT() function.
-     */
     groupConcatMaxLen?: string;
-    /**
-     * The time, in seconds, before cached 
-     * statistics expire
-     */
     informationSchemaStatsExpiry?: string;
-    /**
-     * Minimum length of words that are stored in 
-     * an InnoDB FULLTEXT index.
-     */
     innodbFtMinTokenSize?: string;
-    /**
-     * This option is used to specify your 
-     * own InnoDB FULLTEXT index stopword list for all InnoDB tables.
-     */
     innodbFtServerStopwordTable?: string;
-    /**
-     * The length of time in seconds an InnoDB 
-     * transaction waits for a row lock before giving up.
-     */
     innodbLockWaitTimeout?: string;
-    /**
-     * The size in bytes of the buffer that InnoDB 
-     * uses to write to the log files on disk.
-     */
     innodbLogBufferSize?: string;
-    /**
-     * The upper limit in bytes on the 
-     * size of the temporary log files used during online DDL operations for InnoDB tables.
-     */
     innodbOnlineAlterLogMaxSize?: string;
-    /**
-     * When enabled, information about all 
-     * deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
-     */
     innodbPrintAllDeadlocks?: string;
-    /**
-     * When enabled a transaction timeout 
-     * causes InnoDB to abort and roll back the entire transaction.
-     */
     innodbRollbackOnTimeout?: string;
-    /**
-     * The number of seconds the server waits for 
-     * activity on an interactive connection before closing it.
-     */
     interactiveTimeout?: string;
     internalTmpMemStorageEngine?: string;
-    /**
-     * The slowQueryLogs work as SQL statements that take
-     * more than longQueryTime seconds to execute. Default is 10s
-     */
     longQueryTime?: string;
-    /**
-     * Size of the largest message in bytes that can 
-     * be received by the server. Default is 67108864 (64M)
-     */
     maxAllowedPacket?: string;
-    /**
-     * Limits the size of internal in-memory tables. 
-     * Also set tmp_table_size. Default is 16777216 (16M)
-     */
     maxHeapTableSize?: string;
-    /**
-     * The number of seconds to wait for more data from 
-     * a connection before aborting the read.
-     */
     netReadTimeout?: string;
-    /**
-     * The number of seconds to wait for a block to be 
-     * written to a connection before aborting the write.
-     */
     netWriteTimeout?: string;
-    /**
-     * Slow query log enables capturing of slow queries.
-     * Setting slowQueryLog to false also truncates the mysql.slow_log table. Default is off
-     */
     slowQueryLog?: string;
-    /**
-     * Sort buffer size in bytes for ORDER BY optimization. 
-     * Default is 262144 (256K)
-     */
     sortBufferSize?: string;
-    /**
-     * Global SQL mode. Set to empty to use MySQL server defaults. 
-     * When creating a new service and not setting this field Aiven default SQL mode (strict,
-     * SQL standard compliant) will be assigned.
-     */
     sqlMode?: string;
-    /**
-     * Require primary key to be defined for new 
-     * tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
-     * to always have primary keys because various functionality may break if any large table
-     * is missing them.
-     */
     sqlRequirePrimaryKey?: string;
-    /**
-     * Limits the size of internal in-memory tables. Also set 
-     * max_heap_table_size. Default is 16777216 (16M)
-     */
     tmpTableSize?: string;
-    /**
-     * The number of seconds the server waits for activity on 
-     * a noninteractive connection before closing it.
-     */
     waitTimeout?: string;
 }
 
 export interface GetMySqlMysqlUserConfigPrivateAccess {
     /**
-     * MySQL specific server provided values.
+     * MySQL specific server provided values
      */
     mysql?: string;
-    /**
-     * (Optional) Allow clients to connect to mysqlx from the public internet for service
-     * nodes that are in a project VPC or another type of private network
-     */
     mysqlx?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
 }
 
 export interface GetMySqlMysqlUserConfigPrivatelinkAccess {
     /**
-     * MySQL specific server provided values.
+     * MySQL specific server provided values
      */
     mysql?: string;
-    /**
-     * (Optional) Allow clients to connect to mysqlx from the public internet for service
-     * nodes that are in a project VPC or another type of private network
-     */
     mysqlx?: string;
 }
 
 export interface GetMySqlMysqlUserConfigPublicAccess {
     /**
-     * MySQL specific server provided values.
+     * MySQL specific server provided values
      */
     mysql?: string;
-    /**
-     * (Optional) Allow clients to connect to mysqlx from the public internet for service
-     * nodes that are in a project VPC or another type of private network
-     */
     mysqlx?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
 }
 
@@ -2739,302 +1472,104 @@ export interface GetOpenSearchComponent {
 }
 
 export interface GetOpenSearchOpensearch {
-    /**
-     * URI for Opensearch dashboards frontend.
-     */
     opensearchDashboardsUri: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfig {
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-     */
     customDomain?: string;
-    /**
-     * Disable automatic replication factor adjustment for multi-node services.
-     * By default, Aiven ensures all indexes are replicated at least to two nodes. Note: setting this to true increases a
-     * risk of data loss in case of virtual machine failure.
-     */
     disableReplicationFactorAdjustment?: string;
-    /**
-     * Glob pattern and number of indexes matching that pattern to be kept.
-     */
     indexPatterns?: outputs.GetOpenSearchOpensearchUserConfigIndexPattern[];
-    /**
-     * Template settings for all new indexe.
-     */
     indexTemplate?: outputs.GetOpenSearchOpensearchUserConfigIndexTemplate;
-    /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
     ipFilters?: string[];
     keepIndexRefreshInterval?: string;
-    /**
-     * Maximum number of indexes to keep before deleting the oldest one.
-     */
     maxIndexCount?: string;
     /**
-     * Allow clients to connect to opensearch from the public internet for service nodes that are in a
-     * project VPC or another type of private network.
+     * Opensearch server provided values
      */
     opensearch?: outputs.GetOpenSearchOpensearchUserConfigOpensearch;
-    /**
-     * Allow clients to connect to opensearchDashboards from the public internet for
-     * service nodes that are in a project VPC or another type of private network.
-     */
     opensearchDashboards?: outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboards;
-    /**
-     * Opensearch major version.
-     */
     opensearchVersion?: string;
-    /**
-     * Allow access to selected service ports from private networks.
-     */
     privateAccess?: outputs.GetOpenSearchOpensearchUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.GetOpenSearchOpensearchUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service
-     * is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet.
-     */
     publicAccess?: outputs.GetOpenSearchOpensearchUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service.
-     */
     recoveryBasebackupName?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being
-     * created.
-     */
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigIndexPattern {
-    /**
-     * Maximum number of indexes to keep before deleting the oldest one.
-     */
     maxIndexCount?: string;
-    /**
-     * Must consist of alpha-numeric characters, dashes, underscores, dots and glob characters (* and ?)
-     */
     pattern?: string;
-    /**
-     * Deletion sorting algorithm
-     */
     sortingAlgorithm?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigIndexTemplate {
-    /**
-     * The maximum number of nested JSON objects that a single document can contain
-     * across all nested types. This limit helps to prevent out of memory errors when a document contains too many
-     * nested objects. Default is 10000.
-     */
     mappingNestedObjectsLimit?: string;
-    /**
-     * The number of replicas each primary shard has.
-     */
     numberOfReplicas?: string;
-    /**
-     * The number of primary shards that an index should have.
-     */
     numberOfShards?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigOpensearch {
-    /**
-     * Explicitly allow or block automatic creation of indices. Defaults to true
-     */
     actionAutoCreateIndexEnabled?: string;
-    /**
-     * Require explicit index names when deleting
-     */
     actionDestructiveRequiresName?: string;
-    /**
-     * Controls the number of shards allowed in the cluster per data node
-     */
     clusterMaxShardsPerNode?: string;
-    /**
-     * Maximum content length for HTTP requests to the Opensearch HTTP API, in bytes.
-     */
     httpMaxContentLength?: string;
-    /**
-     * The max size of allowed headers, in bytes.
-     */
     httpMaxHeaderSize?: string;
-    /**
-     * The max length of an HTTP URL, in bytes.
-     */
     httpMaxInitialLineLength?: string;
-    /**
-     * Relative amount. Maximum amount of heap memory used for field data cache.
-     * This is an expert setting; decreasing the value too much will increase overhead of loading field data; too
-     * much memory used for field data cache will decrease amount of heap available for other operations.
-     */
     indicesFielddataCacheSize?: string;
-    /**
-     * Percentage value. Default is 10%. Total amount of heap used for indexing
-     * buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too
-     * high value will increase indexing performance but causes performance issues for query performance.
-     */
     indicesMemoryIndexBufferSize?: string;
-    /**
-     * Percentage value. Default is 10%. Maximum amount of heap used for query cache.
-     * This is an expert setting. Too low value will decrease query performance and increase performance for other
-     * operations; too high value will cause issues with other Opensearch functionality.
-     */
     indicesQueriesCacheSize?: string;
-    /**
-     * Maximum number of clauses Lucene BooleanQuery can have. The default
-     * value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches
-     * first before increasing this value.
-     */
     indicesQueryBoolMaxClauseCount?: string;
-    /**
-     * Whitelisted addresses for reindexing. Changing this value will cause all
-     * Opensearch instances to restart.
-     */
+    overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
-    /**
-     * Maximum number of aggregation buckets allowed in a single response. Opensearch default
-     * value is used when this is not defined.
-     */
     searchMaxBuckets?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact details.
-     */
     threadPoolAnalyzeQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note this may
-     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
-     * value.
-     */
     threadPoolAnalyzeSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note this
-     * may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
-     * value.
-     */
     threadPoolForceMergeSize?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact details.
-     */
     threadPoolGetQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note this may have
-     * maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
-     */
     threadPoolGetSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note this may
-     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
-     * value.
-     */
     threadPoolIndexSize?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact details.
-     */
     threadPoolSearchQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note this may
-     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
-     * value.
-     */
     threadPoolSearchSize?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact
-     * details.
-     */
     threadPoolSearchThrottledQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note
-     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
-     * maximum value.
-     */
     threadPoolSearchThrottledSize?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact details.
-     */
     threadPoolWriteQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note this may
-     * have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum
-     * value.
-     */
     threadPoolWriteSize?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigOpensearchDashboards {
-    /**
-     * Enable or disable Opensearch dashboards.
-     */
     enabled?: string;
-    /**
-     * Limits the maximum amount of memory (in MiB) the Opensearch dashboards process can use.
-     * This sets the maxOldSpaceSize option of the nodejs running the Opensearch dashboards. Note: the memory
-     * reserved by Opensearch dashboards is not available for Opensearch.
-     */
     maxOldSpaceSize?: string;
-    /**
-     * Timeout in milliseconds for requests made by Opensearch dashboards towards
-     * Opensearch.
-     */
     opensearchRequestTimeout?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPrivateAccess {
     /**
-     * Allow clients to connect to opensearch from the public internet for service nodes that are in a
-     * project VPC or another type of private network.
+     * Opensearch server provided values
      */
     opensearch?: string;
-    /**
-     * Allow clients to connect to opensearchDashboards from the public internet for
-     * service nodes that are in a project VPC or another type of private network.
-     */
     opensearchDashboards?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a
-     * project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
-     * Allow clients to connect to opensearch from the public internet for service nodes that are in a
-     * project VPC or another type of private network.
+     * Opensearch server provided values
      */
     opensearch?: string;
-    /**
-     * Allow clients to connect to opensearchDashboards from the public internet for
-     * service nodes that are in a project VPC or another type of private network.
-     */
     opensearchDashboards?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPublicAccess {
     /**
-     * Allow clients to connect to opensearch from the public internet for service nodes that are in a
-     * project VPC or another type of private network.
+     * Opensearch server provided values
      */
     opensearch?: string;
-    /**
-     * Allow clients to connect to opensearchDashboards from the public internet for
-     * service nodes that are in a project VPC or another type of private network.
-     */
     opensearchDashboards?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a
-     * project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
@@ -3045,499 +1580,161 @@ export interface GetOpenSearchServiceIntegration {
 
 export interface GetPgComponent {
     component: string;
-    /**
-     * PostgreSQL master node host IP or name
-     */
     host: string;
     kafkaAuthenticationMethod: string;
-    /**
-     * PostgreSQL port
-     */
     port: number;
     route: string;
-    /**
-     * the server where to migrate data from is secured with SSL.
-     */
     ssl: boolean;
     usage: string;
 }
 
 export interface GetPgPg {
-    /**
-     * Primary PostgreSQL database name
-     */
     dbname: string;
-    /**
-     * PostgreSQL master node host IP or name
-     */
     host: string;
-    /**
-     * PostgreSQL admin user password
-     */
     password: string;
-    /**
-     * PostgreSQL port
-     */
     port: number;
-    /**
-     * PostgreSQL replica URI for services with a replica
-     */
     replicaUri: string;
-    /**
-     * PostgreSQL sslmode setting (currently always `require`)
-     */
     sslmode: string;
-    /**
-     * PostgreSQL master connection URI
-     */
     uri: string;
-    /**
-     * PostgreSQL admin user name
-     */
     user: string;
 }
 
 export interface GetPgPgUserConfig {
-    /**
-     * custom password for admin user. Defaults to random string. *This must
-     * be set only when a new service is being created.*
-     */
     adminPassword?: string;
-    /**
-     * custom username for admin user. *This must be set only when a new service
-     * is being created.*
-     */
     adminUsername?: string;
-    /**
-     * the hour of day (in UTC) when backup for the service is started. New backup 
-     * is only started if previous backup has already completed.
-     */
     backupHour?: string;
-    /**
-     * the minute of an hour when backup for the service is started. New backup 
-     * is only started if previous backup has already completed.
-     */
     backupMinute?: string;
-    /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
     ipFilters?: string[];
-    /**
-     * migrate data from existing server, has the following options:
-     */
     migration?: outputs.GetPgPgUserConfigMigration;
     /**
-     * PostgreSQL specific server provided values.
+     * PostgreSQL specific server provided values
      */
     pg?: outputs.GetPgPgUserConfigPg;
-    /**
-     * This setting is deprecated. Use read-replica service integration instead.
-     */
     pgReadReplica?: string;
-    /**
-     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
-     * This has effect only when a new service is being created.
-     */
     pgServiceToForkFrom?: string;
-    /**
-     * PostgreSQL major version.
-     */
     pgVersion?: string;
-    /**
-     * Enable pgbouncer.
-     */
     pgbouncer?: outputs.GetPgPgUserConfigPgbouncer;
-    /**
-     * PGLookout settings.
-     */
     pglookout?: outputs.GetPgPgUserConfigPglookout;
-    /**
-     * Allow access to selected service ports from private networks.
-     */
     privateAccess?: outputs.GetPgPgUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink.
-     */
     privatelinkAccess?: outputs.GetPgPgUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.GetPgPgUserConfigPublicAccess;
-    /**
-     * Recovery target time when forking a service. This has effect 
-     * only when a new service is being created.
-     */
     recoveryTargetTime?: string;
-    /**
-     * Name of another service to fork from. This has effect only 
-     * when a new service is being created.
-     */
     serviceToForkFrom?: string;
-    /**
-     * Percentage of total RAM that the database server uses for 
-     * memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
-     * the sharedBuffers configuration value. The absolute maximum is 12 GB.
-     */
     sharedBuffersPercentage?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
-    /**
-     * Synchronous replication type. Note that the service plan 
-     * also needs to support synchronous replication.
-     */
     synchronousReplication?: string;
-    /**
-     * TimescaleDB extension configuration values.
-     */
     timescaledb?: outputs.GetPgPgUserConfigTimescaledb;
-    /**
-     * Variant of the PostgreSQL service, may affect the features that are 
-     * exposed by default. Options: `aiven` or `timescale`.
-     */
     variant?: string;
-    /**
-     * Sets the maximum amount of memory to be used by a query operation (such 
-     * as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
-     * total RAM (up to 32MB).
-     */
     workMem?: string;
 }
 
 export interface GetPgPgUserConfigMigration {
-    /**
-     * Primary PostgreSQL database name
-     */
     dbname?: string;
-    /**
-     * PostgreSQL master node host IP or name
-     */
     host?: string;
-    /**
-     * Comma-separated list of databases, which should be ignored during
-     * migration (supported by MySQL only at the moment)
-     */
     ignoreDbs?: string;
-    /**
-     * PostgreSQL admin user password
-     */
+    method?: string;
     password?: string;
-    /**
-     * PostgreSQL port
-     */
     port?: string;
-    /**
-     * the server where to migrate data from is secured with SSL.
-     */
     ssl?: string;
-    /**
-     * user name for authentication with the server where to migrate data from.
-     */
     username?: string;
 }
 
 export interface GetPgPgUserConfigPg {
-    /**
-     * Specifies a fraction of the table size to add to 
-     * autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
-     * (20% of table size).
-     */
     autovacuumAnalyzeScaleFactor?: string;
-    /**
-     * specifies the minimum number of inserted, updated 
-     * or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
-     */
     autovacuumAnalyzeThreshold?: string;
-    /**
-     * specifies the maximum age (in transactions) that a table's 
-     * pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
-     * wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
-     * even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
-     */
     autovacuumFreezeMaxAge?: string;
-    /**
-     * specifies the maximum number of autovacuum processes (other 
-     * than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
-     * can only be set at server start.
-     */
     autovacuumMaxWorkers?: string;
-    /**
-     * specifies the minimum delay between autovacuum runs on any 
-     * given database. The delay is measured in seconds, and the default is one minute.
-     */
     autovacuumNaptime?: string;
-    /**
-     * specifies the cost delay value that will be used 
-     * in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
-     * used. The default value is 20 milliseconds.
-     */
     autovacuumVacuumCostDelay?: string;
-    /**
-     * specifies the cost limit value that will be used in 
-     * automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
-     * value will be used.
-     */
     autovacuumVacuumCostLimit?: string;
-    /**
-     * specifies a fraction of the table size to add to 
-     * autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
-     */
     autovacuumVacuumScaleFactor?: string;
-    /**
-     * specifies the minimum number of updated or deleted tuples 
-     * needed to trigger a VACUUM in any one table. The default is 50 tuples
-     */
     autovacuumVacuumThreshold?: string;
     bgwriterDelay?: string;
     bgwriterFlushAfter?: string;
     bgwriterLruMaxpages?: string;
     bgwriterLruMultiplier?: string;
-    /**
-     * this is the amount of time, in milliseconds, to wait on a lock before 
-     * checking to see if there is a deadlock condition.
-     */
     deadlockTimeout?: string;
-    /**
-     * Time out sessions with open transactions after 
-     * this number of milliseconds.
-     */
+    defaultToastCompression?: string;
     idleInTransactionSessionTimeout?: string;
-    /**
-     * Controls system-wide use of Just-in-Time Compilation (JIT).
-     */
     jit?: string;
-    /**
-     * Causes each action executed by autovacuum to be logged 
-     * if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
-     * actions. Minus-one (the default) disables logging autovacuum actions.
-     */
     logAutovacuumMinDuration?: string;
-    /**
-     * Controls the amount of detail written in the server log for 
-     * each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
-     */
     logErrorVerbosity?: string;
-    /**
-     * Choose from one of the available log-formats. These can support
-     * popular log analyzers like pgbadger, pganalyze etc.
-     */
     logLinePrefix?: string;
-    /**
-     * Log statements that take more than this number of 
-     * milliseconds to run, -1 disables
-     */
     logMinDurationStatement?: string;
-    /**
-     * PostgreSQL maximum number of files that can be open per process
-     */
     maxFilesPerProcess?: string;
-    /**
-     * PostgreSQL maximum locks per transaction
-     */
     maxLocksPerTransaction?: string;
-    /**
-     * PostgreSQL maximum logical replication workers 
-     * (taken from the pool of max_parallel_workers)
-     */
     maxLogicalReplicationWorkers?: string;
-    /**
-     * Sets the maximum number of workers that the system can 
-     * support for parallel queries.
-     */
     maxParallelWorkers?: string;
-    /**
-     * Sets the maximum number of workers that can be 
-     * started by a single Gather or Gather Merge node.
-     */
     maxParallelWorkersPerGather?: string;
-    /**
-     * PostgreSQL maximum predicate locks per transaction
-     */
     maxPredLocksPerTransaction?: string;
-    /**
-     * PostgreSQL maximum prepared transactions
-     */
     maxPreparedTransactions?: string;
-    /**
-     * PostgreSQL maximum replication slots
-     */
     maxReplicationSlots?: string;
-    /**
-     * Maximum depth of the stack in bytes
-     */
+    maxSlotWalKeepSize?: string;
     maxStackDepth?: string;
-    /**
-     * Max standby archive delay in milliseconds
-     */
     maxStandbyArchiveDelay?: string;
-    /**
-     * Max standby streaming delay in milliseconds
-     */
     maxStandbyStreamingDelay?: string;
-    /**
-     * PostgreSQL maximum WAL senders
-     */
     maxWalSenders?: string;
-    /**
-     * Sets the maximum number of background processes that the system
-     * can support
-     * * `pg_partman_bgw.interval` - Sets the time interval to run pg_partman's scheduled tasks
-     * * `pg_partman_bgw.role` - Controls which role to use for pg_partman's scheduled
-     * background tasks.
-     * * `pg_stat_statements.track` - Controls which statements are counted. Specify top
-     * to track top-level statements (those issued directly by clients), all to also track nested
-     * statements (such as statements invoked within functions), or none to disable statement statistics
-     * collection. The default value is top.
-     */
     maxWorkerProcesses?: string;
     pgPartmanBgwDotInterval?: string;
     pgPartmanBgwDotRole?: string;
     pgStatStatementsDotTrack?: string;
-    /**
-     * PostgreSQL temporary file limit in KiB, -1 for unlimited
-     */
     tempFileLimit?: string;
-    /**
-     * PostgreSQL service timezone
-     */
     timezone?: string;
-    /**
-     * Specifies the number of bytes reserved to track the currently 
-     * executing command for each active session.
-     */
     trackActivityQuerySize?: string;
-    /**
-     * Record commit time of transactions
-     */
     trackCommitTimestamp?: string;
-    /**
-     * Enables tracking of function call counts and time used.
-     */
     trackFunctions?: string;
-    /**
-     * Enables timing of database I/O calls. This parameter is off by default,
-     * because it will repeatedly query the operating system for the current time, which may cause
-     * significant overhead on some platforms.
-     */
     trackIoTiming?: string;
-    /**
-     * Terminate replication connections that are inactive for longer than 
-     * this amount of time, in milliseconds.
-     */
     walSenderTimeout?: string;
-    /**
-     * WAL flush interval in milliseconds. Note that setting this value 
-     * to lower than the default 200ms may negatively impact performance
-     */
     walWriterDelay?: string;
 }
 
 export interface GetPgPgUserConfigPgbouncer {
-    /**
-     * If the automatically created database pools have been unused this 
-     * many seconds, they are freed. If 0 then timeout is disabled.
-     */
     autodbIdleTimeout?: string;
-    /**
-     * Do not allow more than this many server connections per database 
-     * (regardless of user). Setting it to 0 means unlimited.
-     */
     autodbMaxDbConnections?: string;
-    /**
-     * PGBouncer pool mode
-     */
     autodbPoolMode?: string;
-    /**
-     * If non-zero then create automatically a pool of that size per user 
-     * when a pool doesn't exist.
-     */
     autodbPoolSize?: string;
-    /**
-     * Enum of parameters to ignore when given in startup packet.
-     */
     ignoreStartupParameters?: string[];
-    /**
-     * Add more server connections to pool if below this number. Improves 
-     * behavior when usual load comes suddenly back after period of total inactivity. The value is
-     * effectively capped at the pool size.
-     */
     minPoolSize?: string;
-    /**
-     * If a server connection has been idle more than this many seconds 
-     * it will be dropped. If 0 then timeout is disabled.
-     */
     serverIdleTimeout?: string;
-    /**
-     * The pooler will close an unused server connection that has been connected 
-     * longer than this.
-     */
     serverLifetime?: string;
-    /**
-     * Run serverResetQuery (DISCARD ALL) in all pooling modes.
-     */
     serverResetQueryAlways?: string;
 }
 
 export interface GetPgPgUserConfigPglookout {
-    /**
-     * Number of seconds of master unavailability before 
-     * triggering database failover to standby
-     */
     maxFailoverReplicationTimeLag?: string;
 }
 
 export interface GetPgPgUserConfigPrivateAccess {
     /**
-     * PostgreSQL specific server provided values.
+     * PostgreSQL specific server provided values
      */
     pg?: string;
-    /**
-     * Enable pgbouncer.
-     */
     pgbouncer?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
 }
 
 export interface GetPgPgUserConfigPrivatelinkAccess {
     /**
-     * PostgreSQL specific server provided values.
+     * PostgreSQL specific server provided values
      */
     pg?: string;
-    /**
-     * Enable pgbouncer.
-     */
     pgbouncer?: string;
 }
 
 export interface GetPgPgUserConfigPublicAccess {
     /**
-     * PostgreSQL specific server provided values.
+     * PostgreSQL specific server provided values
      */
     pg?: string;
-    /**
-     * Enable pgbouncer.
-     */
     pgbouncer?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
 }
 
 export interface GetPgPgUserConfigTimescaledb {
-    /**
-     * The number of background workers for timescaledb 
-     * operations. You should configure this setting to the sum of your number of databases and the
-     * total number of concurrent background workers you want running at any given point in time.
-     */
     maxBackgroundWorkers?: string;
 }
 
@@ -3548,152 +1745,73 @@ export interface GetPgServiceIntegration {
 
 export interface GetRedisComponent {
     component: string;
-    /**
-     * (Required) Hostname or IP address of the server where to migrate data from
-     */
     host: string;
     kafkaAuthenticationMethod: string;
-    /**
-     * (Required) Port number of the server where to migrate data from
-     */
     port: number;
     route: string;
-    /**
-     * The server where to migrate data from is secured with SSL
-     */
     ssl: boolean;
     usage: string;
 }
 
-export interface GetRedisRedis {
+export interface GetRedisRedi {
 }
 
 export interface GetRedisRedisUserConfig {
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
     ipFilters?: string[];
-    /**
-     * Migrate data from existing server
-     */
     migration?: outputs.GetRedisRedisUserConfigMigration;
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.GetRedisRedisUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.GetRedisRedisUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.GetRedisRedisUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service
-     */
     recoveryBasebackupName?: string;
     redisAclChannelsDefault?: string;
-    /**
-     * Redis IO thread count
-     * * `redisLfuDecayTime"` - LFU maxmemory-policy counter decay time in minutes
-     */
     redisIoThreads?: string;
     redisLfuDecayTime?: string;
-    /**
-     * Counter logarithm factor for volatile-lfu and allkeys-lfu 
-     * maxmemory-policies
-     */
     redisLfuLogFactor?: string;
-    /**
-     * Redis maxmemory-policy
-     */
     redisMaxmemoryPolicy?: string;
-    /**
-     * Set notify-keyspace-events option
-     */
     redisNotifyKeyspaceEvents?: string;
     redisNumberOfDatabases?: string;
     redisPersistence?: string;
     redisPubsubClientOutputBufferLimit?: string;
-    /**
-     * Require SSL to access Redis
-     */
     redisSsl?: string;
-    /**
-     * Redis idle connection timeout
-     * * `serviceToForkFrom"` - Name of another service to fork from. This has effect only
-     * when a new service is being created.
-     */
     redisTimeout?: string;
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
 export interface GetRedisRedisUserConfigMigration {
-    /**
-     * Database name for bootstrapping the initial connection
-     */
     dbname?: string;
-    /**
-     * (Required) Hostname or IP address of the server where to migrate data from
-     */
     host?: string;
-    /**
-     * Comma-separated list of databases, which should be ignored during
-     * migration (supported by MySQL only at the moment)
-     */
     ignoreDbs?: string;
-    /**
-     * Password for authentication with the server where to migrate data from
-     */
+    method?: string;
     password?: string;
-    /**
-     * (Required) Port number of the server where to migrate data from
-     */
     port?: string;
-    /**
-     * The server where to migrate data from is secured with SSL
-     */
     ssl?: string;
-    /**
-     * User name for authentication with the server where to migrate data from
-     */
     username?: string;
 }
 
 export interface GetRedisRedisUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
     /**
-     * Redis specific server provided values.
+     * Redis server provided values
      */
     redis?: string;
 }
 
 export interface GetRedisRedisUserConfigPrivatelinkAccess {
     /**
-     * Redis specific server provided values.
+     * Redis server provided values
      */
     redis?: string;
 }
 
 export interface GetRedisRedisUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
     /**
-     * Redis specific server provided values.
+     * Redis server provided values
      */
     redis?: string;
 }
@@ -3707,6 +1825,9 @@ export interface GetServiceCassandra {
 }
 
 export interface GetServiceCassandraUserConfig {
+    /**
+     * Cassandra specific server provided values
+     */
     cassandra?: outputs.GetServiceCassandraUserConfigCassandra;
     cassandraVersion?: string;
     ipFilters?: string[];
@@ -3715,6 +1836,9 @@ export interface GetServiceCassandraUserConfig {
     projectToForkFrom?: string;
     publicAccess?: outputs.GetServiceCassandraUserConfigPublicAccess;
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
@@ -3729,6 +1853,15 @@ export interface GetServiceCassandraUserConfigPrivateAccess {
 
 export interface GetServiceCassandraUserConfigPublicAccess {
     prometheus?: string;
+}
+
+export interface GetServiceClickhouse {
+}
+
+export interface GetServiceClickhouseUserConfig {
+    ipFilters?: string[];
+    projectToForkFrom?: string;
+    serviceToForkFrom?: string;
 }
 
 export interface GetServiceComponent {
@@ -3748,6 +1881,9 @@ export interface GetServiceElasticsearch {
 export interface GetServiceElasticsearchUserConfig {
     customDomain?: string;
     disableReplicationFactorAdjustment?: string;
+    /**
+     * Elasticsearch specific server provided values
+     */
     elasticsearch?: outputs.GetServiceElasticsearchUserConfigElasticsearch;
     elasticsearchVersion?: string;
     indexPatterns?: outputs.GetServiceElasticsearchUserConfigIndexPattern[];
@@ -3763,6 +1899,9 @@ export interface GetServiceElasticsearchUserConfig {
     publicAccess?: outputs.GetServiceElasticsearchUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
@@ -3777,6 +1916,7 @@ export interface GetServiceElasticsearchUserConfigElasticsearch {
     indicesMemoryIndexBufferSize?: string;
     indicesQueriesCacheSize?: string;
     indicesQueryBoolMaxClauseCount?: string;
+    overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
     searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
@@ -3813,20 +1953,54 @@ export interface GetServiceElasticsearchUserConfigKibana {
 }
 
 export interface GetServiceElasticsearchUserConfigPrivateAccess {
+    /**
+     * Elasticsearch specific server provided values
+     */
     elasticsearch?: string;
     kibana?: string;
     prometheus?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigPrivatelinkAccess {
+    /**
+     * Elasticsearch specific server provided values
+     */
     elasticsearch?: string;
     kibana?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigPublicAccess {
+    /**
+     * Elasticsearch specific server provided values
+     */
     elasticsearch?: string;
     kibana?: string;
     prometheus?: string;
+}
+
+export interface GetServiceFlink {
+    hostPorts: string[];
+}
+
+export interface GetServiceFlinkUserConfig {
+    executionCheckpointingIntervalMs?: string;
+    executionCheckpointingTimeoutMs?: string;
+    flinkVersion?: string;
+    ipFilters?: string[];
+    numberOfTaskSlots?: string;
+    parallelismDefault?: string;
+    privatelinkAccess?: outputs.GetServiceFlinkUserConfigPrivatelinkAccess;
+    restartStrategy?: string;
+    restartStrategyDelaySec?: string;
+    restartStrategyFailureRateIntervalMin?: string;
+    restartStrategyMaxFailures?: string;
+}
+
+export interface GetServiceFlinkUserConfigPrivatelinkAccess {
+    /**
+     * Flink specific server provided values
+     */
+    flink?: string;
 }
 
 export interface GetServiceGrafana {
@@ -3864,6 +2038,9 @@ export interface GetServiceGrafanaUserConfig {
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
     smtpServer?: outputs.GetServiceGrafanaUserConfigSmtpServer;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
     userAutoAssignOrg?: string;
     userAutoAssignOrgRole?: string;
@@ -3937,14 +2114,23 @@ export interface GetServiceGrafanaUserConfigExternalImageStorage {
 }
 
 export interface GetServiceGrafanaUserConfigPrivateAccess {
+    /**
+     * Grafana specific server provided values
+     */
     grafana?: string;
 }
 
 export interface GetServiceGrafanaUserConfigPrivatelinkAccess {
+    /**
+     * Grafana specific server provided values
+     */
     grafana?: string;
 }
 
 export interface GetServiceGrafanaUserConfigPublicAccess {
+    /**
+     * Grafana specific server provided values
+     */
     grafana?: string;
 }
 
@@ -3965,6 +2151,9 @@ export interface GetServiceInfluxdb {
 
 export interface GetServiceInfluxdbUserConfig {
     customDomain?: string;
+    /**
+     * InfluxDB specific server provided values
+     */
     influxdb?: outputs.GetServiceInfluxdbUserConfigInfluxdb;
     ipFilters?: string[];
     privateAccess?: outputs.GetServiceInfluxdbUserConfigPrivateAccess;
@@ -3973,6 +2162,9 @@ export interface GetServiceInfluxdbUserConfig {
     publicAccess?: outputs.GetServiceInfluxdbUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
@@ -3986,18 +2178,24 @@ export interface GetServiceInfluxdbUserConfigInfluxdb {
 }
 
 export interface GetServiceInfluxdbUserConfigPrivateAccess {
+    /**
+     * InfluxDB specific server provided values
+     */
     influxdb?: string;
 }
 
 export interface GetServiceInfluxdbUserConfigPrivatelinkAccess {
+    /**
+     * InfluxDB specific server provided values
+     */
     influxdb?: string;
 }
 
 export interface GetServiceInfluxdbUserConfigPublicAccess {
+    /**
+     * InfluxDB specific server provided values
+     */
     influxdb?: string;
-}
-
-export interface GetServiceIntegrationDashboardUserConfig {
 }
 
 export interface GetServiceIntegrationDatadogUserConfig {
@@ -4019,6 +2217,8 @@ export interface GetServiceIntegrationEndpointDatadogUserConfig {
     datadogApiKey?: string;
     datadogTags?: outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTag[];
     disableConsumerStats?: string;
+    kafkaConsumerCheckInstances?: string;
+    kafkaConsumerStatsTimeout?: string;
     maxPartitionContexts?: string;
     site?: string;
 }
@@ -4103,30 +2303,6 @@ export interface GetServiceIntegrationEndpointSignalfxUserConfig {
     signalfxRealm?: string;
 }
 
-export interface GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
-}
-
-export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
-    droppedMetrics?: outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric[];
-    extraMetrics?: outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric[];
-}
-
-export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
-    field?: string;
-    metric?: string;
-}
-
-export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
-    field?: string;
-    metric?: string;
-}
-
-export interface GetServiceIntegrationExternalElasticsearchLogsUserConfig {
-}
-
-export interface GetServiceIntegrationExternalGoogleCloudLoggingUserConfig {
-}
-
 export interface GetServiceIntegrationKafkaConnectUserConfig {
     kafkaConnect?: outputs.GetServiceIntegrationKafkaConnectUserConfigKafkaConnect;
 }
@@ -4144,17 +2320,20 @@ export interface GetServiceIntegrationKafkaLogsUserConfig {
 
 export interface GetServiceIntegrationKafkaMirrormakerUserConfig {
     clusterAlias?: string;
+    kafkaMirrormaker?: outputs.GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker;
+}
+
+export interface GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
+    consumerFetchMinBytes?: string;
+    producerBatchSize?: string;
+    producerBufferMemory?: string;
+    producerLingerMs?: string;
+    producerMaxRequestSize?: string;
 }
 
 export interface GetServiceIntegrationLogsUserConfig {
     elasticsearchIndexDaysMax?: string;
     elasticsearchIndexPrefix?: string;
-}
-
-export interface GetServiceIntegrationM3aggregatorUserConfig {
-}
-
-export interface GetServiceIntegrationM3coordinatorUserConfig {
 }
 
 export interface GetServiceIntegrationMetricsUserConfig {
@@ -4215,18 +2394,6 @@ export interface GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
     perfEventsStatementsTimeLimit?: string;
 }
 
-export interface GetServiceIntegrationReadReplicaUserConfig {
-}
-
-export interface GetServiceIntegrationRsyslogUserConfig {
-}
-
-export interface GetServiceIntegrationSchemaRegistryProxyUserConfig {
-}
-
-export interface GetServiceIntegrationSignalfxUserConfig {
-}
-
 export interface GetServiceKafka {
     accessCert: string;
     accessKey: string;
@@ -4240,10 +2407,16 @@ export interface GetServiceKafkaConnect {
 
 export interface GetServiceKafkaConnectUserConfig {
     ipFilters?: string[];
+    /**
+     * Kafka Connect specific server provided values
+     */
     kafkaConnect?: outputs.GetServiceKafkaConnectUserConfigKafkaConnect;
     privateAccess?: outputs.GetServiceKafkaConnectUserConfigPrivateAccess;
     privatelinkAccess?: outputs.GetServiceKafkaConnectUserConfigPrivatelinkAccess;
     publicAccess?: outputs.GetServiceKafkaConnectUserConfigPublicAccess;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
@@ -4262,15 +2435,24 @@ export interface GetServiceKafkaConnectUserConfigKafkaConnect {
 }
 
 export interface GetServiceKafkaConnectUserConfigPrivateAccess {
+    /**
+     * Kafka Connect specific server provided values
+     */
     kafkaConnect?: string;
     prometheus?: string;
 }
 
 export interface GetServiceKafkaConnectUserConfigPrivatelinkAccess {
+    /**
+     * Kafka Connect specific server provided values
+     */
     kafkaConnect?: string;
 }
 
 export interface GetServiceKafkaConnectUserConfigPublicAccess {
+    /**
+     * Kafka Connect specific server provided values
+     */
     kafkaConnect?: string;
     prometheus?: string;
 }
@@ -4280,7 +2462,13 @@ export interface GetServiceKafkaMirrormaker {
 
 export interface GetServiceKafkaMirrormakerUserConfig {
     ipFilters?: string[];
+    /**
+     * Kafka MirrorMaker 2 specific server provided values
+     */
     kafkaMirrormaker?: outputs.GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
@@ -4300,8 +2488,14 @@ export interface GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
 export interface GetServiceKafkaUserConfig {
     customDomain?: string;
     ipFilters?: string[];
+    /**
+     * Kafka specific server provided values
+     */
     kafka?: outputs.GetServiceKafkaUserConfigKafka;
     kafkaAuthenticationMethods?: outputs.GetServiceKafkaUserConfigKafkaAuthenticationMethods;
+    /**
+     * Kafka Connect specific server provided values
+     */
     kafkaConnect?: string;
     kafkaConnectConfig?: outputs.GetServiceKafkaUserConfigKafkaConnectConfig;
     kafkaRest?: string;
@@ -4312,6 +2506,9 @@ export interface GetServiceKafkaUserConfig {
     publicAccess?: outputs.GetServiceKafkaUserConfigPublicAccess;
     schemaRegistry?: string;
     schemaRegistryConfig?: outputs.GetServiceKafkaUserConfigSchemaRegistryConfig;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
@@ -4390,14 +2587,26 @@ export interface GetServiceKafkaUserConfigPrivateAccess {
 }
 
 export interface GetServiceKafkaUserConfigPrivatelinkAccess {
+    /**
+     * Kafka specific server provided values
+     */
     kafka?: string;
+    /**
+     * Kafka Connect specific server provided values
+     */
     kafkaConnect?: string;
     kafkaRest?: string;
     schemaRegistry?: string;
 }
 
 export interface GetServiceKafkaUserConfigPublicAccess {
+    /**
+     * Kafka specific server provided values
+     */
     kafka?: string;
+    /**
+     * Kafka Connect specific server provided values
+     */
     kafkaConnect?: string;
     kafkaRest?: string;
     prometheus?: string;
@@ -4420,6 +2629,9 @@ export interface GetServiceMysqlUserConfig {
     binlogRetentionPeriod?: string;
     ipFilters?: string[];
     migration?: outputs.GetServiceMysqlUserConfigMigration;
+    /**
+     * MySQL specific server provided values
+     */
     mysql?: outputs.GetServiceMysqlUserConfigMysql;
     mysqlVersion?: string;
     privateAccess?: outputs.GetServiceMysqlUserConfigPrivateAccess;
@@ -4428,6 +2640,9 @@ export interface GetServiceMysqlUserConfig {
     publicAccess?: outputs.GetServiceMysqlUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
@@ -4435,6 +2650,7 @@ export interface GetServiceMysqlUserConfigMigration {
     dbname?: string;
     host?: string;
     ignoreDbs?: string;
+    method?: string;
     password?: string;
     port?: string;
     ssl?: string;
@@ -4469,17 +2685,26 @@ export interface GetServiceMysqlUserConfigMysql {
 }
 
 export interface GetServiceMysqlUserConfigPrivateAccess {
+    /**
+     * MySQL specific server provided values
+     */
     mysql?: string;
     mysqlx?: string;
     prometheus?: string;
 }
 
 export interface GetServiceMysqlUserConfigPrivatelinkAccess {
+    /**
+     * MySQL specific server provided values
+     */
     mysql?: string;
     mysqlx?: string;
 }
 
 export interface GetServiceMysqlUserConfigPublicAccess {
+    /**
+     * MySQL specific server provided values
+     */
     mysql?: string;
     mysqlx?: string;
     prometheus?: string;
@@ -4497,6 +2722,9 @@ export interface GetServiceOpensearchUserConfig {
     ipFilters?: string[];
     keepIndexRefreshInterval?: string;
     maxIndexCount?: string;
+    /**
+     * Opensearch specific server provided values
+     */
     opensearch?: outputs.GetServiceOpensearchUserConfigOpensearch;
     opensearchDashboards?: outputs.GetServiceOpensearchUserConfigOpensearchDashboards;
     opensearchVersion?: string;
@@ -4506,6 +2734,9 @@ export interface GetServiceOpensearchUserConfig {
     publicAccess?: outputs.GetServiceOpensearchUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
@@ -4532,6 +2763,7 @@ export interface GetServiceOpensearchUserConfigOpensearch {
     indicesMemoryIndexBufferSize?: string;
     indicesQueriesCacheSize?: string;
     indicesQueryBoolMaxClauseCount?: string;
+    overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
     searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
@@ -4555,17 +2787,26 @@ export interface GetServiceOpensearchUserConfigOpensearchDashboards {
 }
 
 export interface GetServiceOpensearchUserConfigPrivateAccess {
+    /**
+     * Opensearch specific server provided values
+     */
     opensearch?: string;
     opensearchDashboards?: string;
     prometheus?: string;
 }
 
 export interface GetServiceOpensearchUserConfigPrivatelinkAccess {
+    /**
+     * Opensearch specific server provided values
+     */
     opensearch?: string;
     opensearchDashboards?: string;
 }
 
 export interface GetServiceOpensearchUserConfigPublicAccess {
+    /**
+     * Opensearch specific server provided values
+     */
     opensearch?: string;
     opensearchDashboards?: string;
     prometheus?: string;
@@ -4589,6 +2830,9 @@ export interface GetServicePgUserConfig {
     backupMinute?: string;
     ipFilters?: string[];
     migration?: outputs.GetServicePgUserConfigMigration;
+    /**
+     * PostgreSQL specific server provided values
+     */
     pg?: outputs.GetServicePgUserConfigPg;
     pgReadReplica?: string;
     pgServiceToForkFrom?: string;
@@ -4602,6 +2846,9 @@ export interface GetServicePgUserConfig {
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
     sharedBuffersPercentage?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
     synchronousReplication?: string;
     timescaledb?: outputs.GetServicePgUserConfigTimescaledb;
@@ -4613,6 +2860,7 @@ export interface GetServicePgUserConfigMigration {
     dbname?: string;
     host?: string;
     ignoreDbs?: string;
+    method?: string;
     password?: string;
     port?: string;
     ssl?: string;
@@ -4634,6 +2882,7 @@ export interface GetServicePgUserConfigPg {
     bgwriterLruMaxpages?: string;
     bgwriterLruMultiplier?: string;
     deadlockTimeout?: string;
+    defaultToastCompression?: string;
     idleInTransactionSessionTimeout?: string;
     jit?: string;
     logAutovacuumMinDuration?: string;
@@ -4648,6 +2897,7 @@ export interface GetServicePgUserConfigPg {
     maxPredLocksPerTransaction?: string;
     maxPreparedTransactions?: string;
     maxReplicationSlots?: string;
+    maxSlotWalKeepSize?: string;
     maxStackDepth?: string;
     maxStandbyArchiveDelay?: string;
     maxStandbyStreamingDelay?: string;
@@ -4683,17 +2933,26 @@ export interface GetServicePgUserConfigPglookout {
 }
 
 export interface GetServicePgUserConfigPrivateAccess {
+    /**
+     * PostgreSQL specific server provided values
+     */
     pg?: string;
     pgbouncer?: string;
     prometheus?: string;
 }
 
 export interface GetServicePgUserConfigPrivatelinkAccess {
+    /**
+     * PostgreSQL specific server provided values
+     */
     pg?: string;
     pgbouncer?: string;
 }
 
 export interface GetServicePgUserConfigPublicAccess {
+    /**
+     * PostgreSQL specific server provided values
+     */
     pg?: string;
     pgbouncer?: string;
     prometheus?: string;
@@ -4703,7 +2962,7 @@ export interface GetServicePgUserConfigTimescaledb {
     maxBackgroundWorkers?: string;
 }
 
-export interface GetServiceRedis {
+export interface GetServiceRedi {
 }
 
 export interface GetServiceRedisUserConfig {
@@ -4726,6 +2985,9 @@ export interface GetServiceRedisUserConfig {
     redisSsl?: string;
     redisTimeout?: string;
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
@@ -4733,6 +2995,7 @@ export interface GetServiceRedisUserConfigMigration {
     dbname?: string;
     host?: string;
     ignoreDbs?: string;
+    method?: string;
     password?: string;
     port?: string;
     ssl?: string;
@@ -4741,15 +3004,24 @@ export interface GetServiceRedisUserConfigMigration {
 
 export interface GetServiceRedisUserConfigPrivateAccess {
     prometheus?: string;
+    /**
+     * Redis specific server provided values
+     */
     redis?: string;
 }
 
 export interface GetServiceRedisUserConfigPrivatelinkAccess {
+    /**
+     * Redis specific server provided values
+     */
     redis?: string;
 }
 
 export interface GetServiceRedisUserConfigPublicAccess {
     prometheus?: string;
+    /**
+     * Redis specific server provided values
+     */
     redis?: string;
 }
 
@@ -4760,14 +3032,8 @@ export interface GetServiceServiceIntegration {
 
 export interface GrafanaComponent {
     component: string;
-    /**
-     * Server hostname or IP
-     */
     host: string;
     kafkaAuthenticationMethod: string;
-    /**
-     * SMTP server port
-     */
     port: number;
     route: string;
     ssl: boolean;
@@ -4786,33 +3052,36 @@ export interface GrafanaGrafanaUserConfig {
      * Default error or timeout setting for new alerting rules
      */
     alertingErrorOrTimeout?: string;
+    /**
+     * Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+     */
     alertingMaxAnnotationsToKeep?: string;
     /**
-     * Default value for 'no data or null values' for
-     * new alerting rules
+     * Default value for 'no data or null values' for new alerting rules
      */
     alertingNodataOrNullvalues?: string;
     /**
-     * Allow embedding Grafana dashboards with iframe/frame/object/embed 
-     * tags. Disabled by default to limit impact of clickjacking
+     * Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
      */
     allowEmbedding?: string;
+    /**
+     * Azure AD OAuth integration
+     */
     authAzuread?: outputs.GrafanaGrafanaUserConfigAuthAzuread;
     /**
-     * Enable or disable basic authentication form, used by Grafana 
-     * built-in login.
+     * Enable or disable basic authentication form, used by Grafana built-in login
      */
     authBasicEnabled?: string;
     /**
-     * Generic OAuth integration.
+     * Generic OAuth integration
      */
     authGenericOauth?: outputs.GrafanaGrafanaUserConfigAuthGenericOauth;
     /**
-     * Automatically sign-up users on successful sign-in
+     * Github Auth integration
      */
     authGithub?: outputs.GrafanaGrafanaUserConfigAuthGithub;
     /**
-     * GitLab Auth integration.
+     * GitLab Auth integration
      */
     authGitlab?: outputs.GrafanaGrafanaUserConfigAuthGitlab;
     /**
@@ -4820,39 +3089,39 @@ export interface GrafanaGrafanaUserConfig {
      */
     authGoogle?: outputs.GrafanaGrafanaUserConfigAuthGoogle;
     /**
-     * Cookie SameSite attribute: 'strict' prevents sending cookie for 
-     * cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+     * Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
      */
     cookieSamesite?: string;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Custom domain
      */
     customDomain?: string;
     /**
-     * Signed sequence of decimal numbers, followed 
-     * by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+     * Minimum refresh interval
      */
     dashboardsMinRefreshInterval?: string;
     /**
-     * Dashboard versions to keep per dashboard.
+     * Dashboard versions to keep per dashboard
      */
     dashboardsVersionsToKeep?: string;
     /**
-     * Send 'X-Grafana-User' header to data source.
+     * Send 'X-Grafana-User' header to data source
      */
     dataproxySendUserHeader?: string;
     /**
-     * Timeout for data proxy requests in seconds.
+     * Timeout for data proxy requests in seconds
      */
     dataproxyTimeout?: string;
+    /**
+     * Grafana date format specifications
+     */
     dateFormats?: outputs.GrafanaGrafanaUserConfigDateFormats;
     /**
-     * Set to true to disable gravatar. Defaults to false 
-     * (gravatar is enabled).
+     * Set to true to disable gravatar. Defaults to false (gravatar is enabled)
      */
     disableGravatar?: string;
     /**
-     * Editors can manage folders, teams and dashboards created by them.
+     * Editors can manage folders, teams and dashboards created by them
      */
     editorsCanAdmin?: string;
     /**
@@ -4860,204 +3129,108 @@ export interface GrafanaGrafanaUserConfig {
      */
     externalImageStorage?: outputs.GrafanaGrafanaUserConfigExternalImageStorage;
     /**
-     * Google Analytics Universal Analytics ID for tracking Grafana usage
+     * Google Analytics ID
      */
     googleAnalyticsUaId?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * IP filter
      */
     ipFilters?: string[];
     /**
      * Enable Grafana /metrics endpoint
      */
     metricsEnabled?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.GrafanaGrafanaUserConfigPrivateAccess;
     /**
      * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.GrafanaGrafanaUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has 
-     * effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GrafanaGrafanaUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service
      */
     recoveryBasebackupName?: string;
     /**
-     * Name of another service to fork from. This has effect only 
-     * when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: string;
     /**
-     * SMTP server settings.
+     * SMTP server settings
      */
     smtpServer?: outputs.GrafanaGrafanaUserConfigSmtpServer;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
     /**
-     * Auto-assign new users on signup to main organization. 
-     * Defaults to false.
+     * Auto-assign new users on signup to main organization. Defaults to false
      */
     userAutoAssignOrg?: string;
     /**
-     * Set role for new signups. Defaults to Viewer.
+     * Set role for new signups. Defaults to Viewer
      */
     userAutoAssignOrgRole?: string;
     /**
-     * Users with view-only permission can edit but not save dashboards.
+     * Users with view-only permission can edit but not save dashboards
      */
     viewersCanEdit?: string;
 }
 
 export interface GrafanaGrafanaUserConfigAuthAzuread {
-    /**
-     * Automatically sign-up users on successful sign-in
-     */
     allowSignUp?: string;
-    /**
-     * Allowed domain
-     */
     allowedDomains?: string[];
-    /**
-     * Require users to belong to one of given groups
-     */
     allowedGroups?: string[];
-    /**
-     * Authorization URL. This only needs to be set when using self hosted GitLab
-     */
     authUrl?: string;
-    /**
-     * Client ID from provider
-     */
     clientId?: string;
-    /**
-     * Client secret from provider
-     */
     clientSecret?: string;
-    /**
-     * Token URL. This only needs to be set when using self hosted GitLab
-     */
     tokenUrl?: string;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGenericOauth {
-    /**
-     * Automatically sign-up users on successful sign-in
-     */
     allowSignUp?: string;
-    /**
-     * Allowed domain
-     */
     allowedDomains?: string[];
-    /**
-     * Must consist of alpha-numeric characters and dashes"
-     */
     allowedOrganizations?: string[];
-    /**
-     * API URL. This only needs to be set when using self hosted GitLab
-     */
     apiUrl?: string;
-    /**
-     * Authorization URL. This only needs to be set when using self hosted GitLab
-     */
     authUrl?: string;
-    /**
-     * Client ID from provider
-     */
     clientId?: string;
-    /**
-     * Client secret from provider
-     */
     clientSecret?: string;
-    /**
-     * Name of the OAuth integration
-     */
     name?: string;
-    /**
-     * Scope must be non-empty string without whitespace
-     */
     scopes?: string[];
-    /**
-     * Token URL. This only needs to be set when using self hosted GitLab
-     */
     tokenUrl?: string;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGithub {
-    /**
-     * Automatically sign-up users on successful sign-in
-     */
     allowSignUp?: string;
-    /**
-     * Must consist of alpha-numeric characters and dashes"
-     */
     allowedOrganizations?: string[];
-    /**
-     * Client ID from provider
-     */
     clientId?: string;
-    /**
-     * Client secret from provider
-     */
     clientSecret?: string;
-    /**
-     * Require users to belong to one of given team IDs
-     */
     teamIds?: string[];
 }
 
 export interface GrafanaGrafanaUserConfigAuthGitlab {
-    /**
-     * Automatically sign-up users on successful sign-in
-     */
     allowSignUp?: string;
-    /**
-     * Require users to belong to one of given groups
-     */
     allowedGroups?: string[];
-    /**
-     * API URL. This only needs to be set when using self hosted GitLab
-     */
     apiUrl?: string;
-    /**
-     * Authorization URL. This only needs to be set when using self hosted GitLab
-     */
     authUrl?: string;
-    /**
-     * Client ID from provider
-     */
     clientId?: string;
-    /**
-     * Client secret from provider
-     */
     clientSecret?: string;
-    /**
-     * Token URL. This only needs to be set when using self hosted GitLab
-     */
     tokenUrl?: string;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGoogle {
-    /**
-     * Automatically sign-up users on successful sign-in
-     */
     allowSignUp?: string;
-    /**
-     * Allowed domain
-     */
     allowedDomains?: string[];
-    /**
-     * Client ID from provider
-     */
     clientId?: string;
-    /**
-     * Client secret from provider
-     */
     clientSecret?: string;
 }
 
@@ -5073,87 +3246,52 @@ export interface GrafanaGrafanaUserConfigDateFormats {
 }
 
 export interface GrafanaGrafanaUserConfigExternalImageStorage {
-    /**
-     * S3 access key. Requires permissions to the S3 bucket for the 
-     * s3:PutObject and s3:PutObjectAcl actions
-     */
     accessKey?: string;
-    /**
-     * Bucket URL for S3
-     */
     bucketUrl?: string;
-    /**
-     * Provider type
-     */
     provider?: string;
-    /**
-     * S3 secret key
-     */
     secretKey?: string;
 }
 
 export interface GrafanaGrafanaUserConfigPrivateAccess {
     /**
-     * Allow clients to connect to grafana from the public internet for service nodes that 
-     * are in a project VPC or another type of private network.
+     * Grafana server provided values
      */
     grafana?: string;
 }
 
 export interface GrafanaGrafanaUserConfigPrivatelinkAccess {
     /**
-     * Allow clients to connect to grafana from the public internet for service nodes that 
-     * are in a project VPC or another type of private network.
+     * Grafana server provided values
      */
     grafana?: string;
 }
 
 export interface GrafanaGrafanaUserConfigPublicAccess {
     /**
-     * Allow clients to connect to grafana from the public internet for service nodes that 
-     * are in a project VPC or another type of private network.
+     * Grafana server provided values
      */
     grafana?: string;
 }
 
 export interface GrafanaGrafanaUserConfigSmtpServer {
-    /**
-     * Address used for sending emails
-     */
     fromAddress?: string;
-    /**
-     * Name used in outgoing emails, defaults to Grafana
-     */
     fromName?: string;
-    /**
-     * Server hostname or IP
-     */
     host?: string;
-    /**
-     * Password for SMTP authentication
-     */
     password?: string;
-    /**
-     * SMTP server port
-     */
     port?: string;
-    /**
-     * Skip verifying server certificate. Defaults to false
-     */
     skipVerify?: string;
-    /**
-     * Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. 
-     * Default is OpportunisticStartTLS.
-     */
     starttlsPolicy?: string;
-    /**
-     * Username for SMTP authentication
-     */
     username?: string;
 }
 
 export interface GrafanaServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }
 
@@ -5173,7 +3311,7 @@ export interface InfluxDbInfluxdb {
 
 export interface InfluxDbInfluxdbUserConfig {
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name
+     * Custom domain
      */
     customDomain?: string;
     /**
@@ -5181,7 +3319,7 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     influxdb?: outputs.InfluxDbInfluxdbUserConfigInfluxdb;
     /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     * IP filter
      */
     ipFilters?: string[];
     /**
@@ -5193,8 +3331,7 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     privatelinkAccess?: outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has 
-     * effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
      */
     projectToForkFrom?: string;
     /**
@@ -5206,66 +3343,53 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     recoveryBasebackupName?: string;
     /**
-     * Name of another service to fork from. This has effect 
-     * only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
 export interface InfluxDbInfluxdbUserConfigInfluxdb {
-    /**
-     * The maximum duration in seconds before a query is 
-     * logged as a slow query. Setting this to 0 (the default) will never log slow queries.
-     */
     logQueriesAfter?: string;
     maxConnectionLimit?: string;
-    /**
-     * The maximum number of rows returned in a non-chunked query. 
-     * Setting this to 0 (the default) allows an unlimited number to be returned.
-     */
     maxRowLimit?: string;
-    /**
-     * The maximum number of `GROUP BY time()` buckets that 
-     * can be processed in a query. Setting this to 0 (the default) allows an unlimited number to
-     * be processed.
-     */
     maxSelectBuckets?: string;
-    /**
-     * The maximum number of points that can be processed in a 
-     * SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
-     */
     maxSelectPoint?: string;
-    /**
-     * The maximum duration in seconds before a query is killed. 
-     * Setting this to 0 (the default) will never kill slow queries.
-     */
     queryTimeout?: string;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivateAccess {
     /**
-     * influxdb.conf configuration values
+     * InfluxDB server provided values
      */
     influxdb?: string;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivatelinkAccess {
     /**
-     * influxdb.conf configuration values
+     * InfluxDB server provided values
      */
     influxdb?: string;
 }
 
 export interface InfluxDbInfluxdbUserConfigPublicAccess {
     /**
-     * influxdb.conf configuration values
+     * InfluxDB server provided values
      */
     influxdb?: string;
 }
 
 export interface InfluxDbServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }
 
@@ -5294,16 +3418,15 @@ export interface KafkaConnectKafkaConnect {
 
 export interface KafkaConnectKafkaConnectUserConfig {
     /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     * IP filter
      */
     ipFilters?: string[];
     /**
-     * Allow clients to connect to kafkaConnect from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
+     * Kafka Connect configuration values
      */
     kafkaConnect?: outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess;
     /**
@@ -5311,117 +3434,67 @@ export interface KafkaConnectKafkaConnectUserConfig {
      */
     privatelinkAccess?: outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.KafkaConnectKafkaConnectUserConfigPublicAccess;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
-    /**
-     * Defines what client configurations can be 
-     * overridden by the connector. Default is None.
-     */
     connectorClientConfigOverridePolicy?: string;
-    /**
-     * What to do when there is no initial offset in Kafka or 
-     * if the current offset does not exist any more on the server. Default is earliest.
-     */
     consumerAutoOffsetReset?: string;
-    /**
-     * Records are fetched in batches by the consumer, and if 
-     * the first record batch in the first non-empty partition of the fetch is larger than this value,
-     * the record batch will still be returned to ensure that the consumer can make progress. As such,
-     * this is not a absolute maximum.
-     */
     consumerFetchMaxBytes?: string;
-    /**
-     * Transaction read isolation level. readUncommitted is 
-     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
-     */
     consumerIsolationLevel?: string;
-    /**
-     * Records are fetched in batches by the consumer.If 
-     * the first record batch in the first non-empty partition of the fetch is larger than this limit,
-     * the batch will still be returned to ensure that the consumer can make progress.
-     */
     consumerMaxPartitionFetchBytes?: string;
-    /**
-     * The maximum delay in milliseconds between invocations 
-     * of poll() when using consumer group management (defaults to 300000).
-     */
     consumerMaxPollIntervalMs?: string;
-    /**
-     * The maximum number of records returned by a single poll.
-     */
     consumerMaxPollRecords?: string;
-    /**
-     * The interval at which to try committing offsets for tasks 
-     * (defaults to 60000).
-     */
     offsetFlushIntervalMs?: string;
-    /**
-     * Maximum number of milliseconds to wait for records to flush 
-     * and partition offset data to be committed to offset storage before cancelling the process and restoring
-     * the offset data to be committed in a future attempt (defaults to 5000).
-     */
     offsetFlushTimeoutMs?: string;
-    /**
-     * This setting will limit the number of record batches the 
-     * producer will send in a single request to avoid sending huge requests.
-     */
     producerMaxRequestSize?: string;
-    /**
-     * The timeout in milliseconds used to detect failures when using Kafka’s 
-     * group management facilities (defaults to 10000).
-     */
     sessionTimeoutMs?: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivateAccess {
     /**
-     * Allow clients to connect to kafkaConnect from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
+     * Kafka Connect server provided values
      */
     kafkaConnect?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet for service 
-     * nodes that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
     /**
-     * Allow clients to connect to kafkaConnect from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
+     * Kafka Connect server provided values
      */
     kafkaConnect?: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
     /**
-     * Allow clients to connect to kafkaConnect from the public internet for 
-     * service nodes that are in a project VPC or another type of private network.
+     * Kafka Connect server provided values
      */
     kafkaConnect?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet for service 
-     * nodes that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
 export interface KafkaConnectServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }
 
 export interface KafkaConnectorTask {
     connector: string;
     /**
-     * List of tasks of a connector, each element contains `connector` 
-     * (Related connector name) and `task` (Task id / number).
+     * List of tasks of a connector.
      */
     task: number;
 }
@@ -5451,15 +3524,15 @@ export interface KafkaKafka {
 
 export interface KafkaKafkaUserConfig {
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Custom domain
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * IP filter
      */
     ipFilters?: string[];
     /**
-     * Enable kafka
+     * Kafka broker configuration values
      */
     kafka?: outputs.KafkaKafkaUserConfigKafka;
     /**
@@ -5467,7 +3540,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaAuthenticationMethods?: outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods;
     /**
-     * Enable kafka_connect
+     * Enable Kafka Connect service
      */
     kafkaConnect?: string;
     /**
@@ -5475,11 +3548,11 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaConnectConfig?: outputs.KafkaKafkaUserConfigKafkaConnectConfig;
     /**
-     * Enable kafka_rest
+     * Enable Kafka-REST service
      */
     kafkaRest?: string;
     /**
-     * Kafka-REST configuration
+     * Kafka REST configuration
      */
     kafkaRestConfig?: outputs.KafkaKafkaUserConfigKafkaRestConfig;
     /**
@@ -5506,380 +3579,109 @@ export interface KafkaKafkaUserConfig {
      * Schema Registry configuration
      */
     schemaRegistryConfig?: outputs.KafkaKafkaUserConfigSchemaRegistryConfig;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
 export interface KafkaKafkaUserConfigKafka {
-    /**
-     * Enable auto creation of topics
-     */
     autoCreateTopicsEnable?: string;
-    /**
-     * Specify the final compression type for a given topic. This 
-     * configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
-     * It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
-     * which means retain the original compression codec set by the producer.
-     */
     compressionType?: string;
-    /**
-     * Idle connections timeout: the server socket processor 
-     * threads close the connections that idle for longer than this.
-     */
     connectionsMaxIdleMs?: string;
-    /**
-     * Replication factor for autocreated topics
-     */
     defaultReplicationFactor?: string;
-    /**
-     * The amount of time, in milliseconds, the group 
-     * coordinator will wait for more consumers to join a new group before performing the first rebalance.
-     * A longer delay means potentially fewer rebalances, but increases the time until processing begins.
-     * The default value for this is 3 seconds. During development and testing it might be desirable to set
-     * this to 0 in order to not delay test execution time.
-     */
     groupInitialRebalanceDelayMs?: string;
-    /**
-     * The maximum allowed session timeout for registered 
-     * consumers. Longer timeouts give consumers more time to process messages in between heartbeats
-     * at the cost of a longer time to detect failures.
-     */
     groupMaxSessionTimeoutMs?: string;
-    /**
-     * The minimum allowed session timeout for registered 
-     * consumers. Longer timeouts give consumers more time to process messages in between heartbeats
-     * at the cost of a longer time to detect failures.
-     */
     groupMinSessionTimeoutMs?: string;
     logCleanerDeleteRetentionMs?: string;
-    /**
-     * The maximum amount of time message will 
-     * remain uncompacted. Only applicable for logs that are being compacted
-     */
     logCleanerMaxCompactionLagMs?: string;
-    /**
-     * Controls log compactor frequency. Larger 
-     * value means more frequent compactions but also more space wasted for logs. Consider setting
-     * log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
-     * high value for this option.
-     */
     logCleanerMinCleanableRatio?: string;
-    /**
-     * The minimum time a message will remain 
-     * uncompacted in the log. Only applicable for logs that are being compacted.
-     */
     logCleanerMinCompactionLagMs?: string;
-    /**
-     * The default cleanup policy for segments beyond the retention window.
-     */
     logCleanupPolicy?: string;
-    /**
-     * The number of messages accumulated on a log partition 
-     * before messages are flushed to disk.
-     */
     logFlushIntervalMessages?: string;
-    /**
-     * The maximum time in ms that a message in any topic is kept 
-     * in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
-     */
     logFlushIntervalMs?: string;
-    /**
-     * The interval with which Kafka adds an entry to the offset index.
-     */
     logIndexIntervalBytes?: string;
-    /**
-     * The maximum size in bytes of the offset index.
-     */
     logIndexSizeMaxBytes?: string;
-    /**
-     * This configuration controls whether down-conversion 
-     * of message formats is enabled to satisfy consume requests.
-     */
     logMessageDownconversionEnable?: string;
-    /**
-     * The maximum difference allowed between 
-     * the timestamp when a broker receives a message and the timestamp specified in the message
-     */
     logMessageTimestampDifferenceMaxMs?: string;
-    /**
-     * Define whether the timestamp in the message is 
-     * message create time or log append time.
-     */
     logMessageTimestampType?: string;
-    /**
-     * Should pre allocate file when create new segment?
-     */
     logPreallocate?: string;
-    /**
-     * The maximum size of the log before deleting messages
-     */
     logRetentionBytes?: string;
-    /**
-     * The number of hours to keep a log file before deleting it.
-     */
     logRetentionHours?: string;
-    /**
-     * The number of milliseconds to keep a log file before deleting it 
-     * (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
-     * time limit is applied.
-     */
     logRetentionMs?: string;
-    /**
-     * The maximum jitter to subtract from logRollTimeMillis 
-     * (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
-     */
     logRollJitterMs?: string;
-    /**
-     * The maximum time before a new log segment is rolled out (in milliseconds).
-     */
     logRollMs?: string;
-    /**
-     * The maximum size of a single log file
-     */
     logSegmentBytes?: string;
-    /**
-     * The amount of time to wait before deleting a file 
-     * from the filesystem.
-     */
     logSegmentDeleteDelayMs?: string;
-    /**
-     * The maximum number of connections allowed from each ip 
-     * address (defaults to 2147483647).
-     */
     maxConnectionsPerIp?: string;
-    /**
-     * The maximum number of incremental fetch 
-     * sessions that the broker will maintain.
-     */
     maxIncrementalFetchSessionCacheSlots?: string;
-    /**
-     * The maximum size of message that the server can receive.
-     */
     messageMaxBytes?: string;
-    /**
-     * When a producer sets acks to 'all' (or '-1'), 
-     * min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
-     * the write to be considered successful.
-     */
     minInsyncReplicas?: string;
-    /**
-     * Number of partitions for autocreated topics
-     */
     numPartitions?: string;
-    /**
-     * Log retention window in minutes for offsets topic.
-     */
     offsetsRetentionMinutes?: string;
-    /**
-     * The purge interval (in number of 
-     * requests) of the producer request purgatory(defaults to 1000).
-     */
     producerPurgatoryPurgeIntervalRequests?: string;
-    /**
-     * The number of bytes of messages to attempt to fetch 
-     * for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
-     * batch in the first non-empty partition of the fetch is larger than this value, the record batch
-     * will still be returned to ensure that progress can be made.
-     */
     replicaFetchMaxBytes?: string;
-    /**
-     * Maximum bytes expected for the entire fetch 
-     * response (defaults to 10485760). Records are fetched in batches, and if the first record batch
-     * in the first non-empty partition of the fetch is larger than this value, the record batch will
-     * still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
-     */
     replicaFetchResponseMaxBytes?: string;
-    /**
-     * The maximum number of bytes in a socket request 
-     * (defaults to 104857600).
-     */
     socketRequestMaxBytes?: string;
-    /**
-     * The interval at which 
-     * to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
-     * to 3600000 (1 hour)).
-     */
     transactionRemoveExpiredTransactionCleanupIntervalMs?: string;
-    /**
-     * The transaction topic segment bytes should 
-     * be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
-     * to 104857600 (100 mebibytes)).
-     */
     transactionStateLogSegmentBytes?: string;
 }
 
 export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
-    /**
-     * Enable certificate/SSL authentication
-     */
     certificate?: string;
-    /**
-     * Enable SASL authentication
-     */
     sasl?: string;
 }
 
 export interface KafkaKafkaUserConfigKafkaConnectConfig {
-    /**
-     * Defines what client configurations can 
-     * be overridden by the connector. Default is None
-     */
     connectorClientConfigOverridePolicy?: string;
-    /**
-     * What to do when there is no initial offset in Kafka or 
-     * if the current offset does not exist any more on the server. Default is earliest.
-     */
     consumerAutoOffsetReset?: string;
-    /**
-     * Records are fetched in batches by the consumer, and 
-     * if the first record batch in the first non-empty partition of the fetch is larger than this value,
-     * the record batch will still be returned to ensure that the consumer can make progress. As such,
-     * this is not a absolute maximum.
-     */
     consumerFetchMaxBytes?: string;
-    /**
-     * Transaction read isolation level. readUncommitted is 
-     * the default, but readCommitted can be used if consume-exactly-once behavior is desired.
-     */
     consumerIsolationLevel?: string;
-    /**
-     * Records are fetched in batches by the consumer.If 
-     * the first record batch in the first non-empty partition of the fetch is larger than this limit,
-     * the batch will still be returned to ensure that the consumer can make progress.
-     */
     consumerMaxPartitionFetchBytes?: string;
-    /**
-     * The maximum delay in milliseconds between invocations 
-     * of poll() when using consumer group management (defaults to 300000).
-     */
     consumerMaxPollIntervalMs?: string;
-    /**
-     * The maximum number of records returned in a single call 
-     * to poll() (defaults to 500).
-     */
     consumerMaxPollRecords?: string;
-    /**
-     * The interval at which to try committing offsets for 
-     * tasks (defaults to 60000).
-     */
     offsetFlushIntervalMs?: string;
-    /**
-     * Maximum number of milliseconds to wait for records to 
-     * flush and partition offset data to be committed to offset storage before cancelling the process
-     * and restoring the offset data to be committed in a future attempt (defaults to 5000).
-     */
     offsetFlushTimeoutMs?: string;
-    /**
-     * This setting will limit the number of record batches 
-     * the producer will send in a single request to avoid sending huge requests.
-     */
     producerMaxRequestSize?: string;
-    /**
-     * The timeout in milliseconds used to detect failures when 
-     * using Kafka’s group management facilities (defaults to 10000).
-     */
     sessionTimeoutMs?: string;
 }
 
 export interface KafkaKafkaUserConfigKafkaRestConfig {
-    /**
-     * If true the consumer's offset will be periodically 
-     * committed to Kafka in the background
-     */
     consumerEnableAutoCommit?: string;
-    /**
-     * Maximum number of bytes in unencoded message keys and 
-     * values by a single request
-     */
     consumerRequestMaxBytes?: string;
-    /**
-     * The maximum total time to wait for messages for a 
-     * request if the maximum number of messages has not yet been reached
-     */
     consumerRequestTimeoutMs?: string;
-    /**
-     * The number of acknowledgments the producer requires the leader to 
-     * have received before considering a request complete. If set to 'all' or '-1', the leader will wait
-     * for the full set of in-sync replicas to acknowledge the record.
-     */
     producerAcks?: string;
-    /**
-     * Wait for up to the given delay to allow batching records together
-     */
     producerLingerMs?: string;
-    /**
-     * Maximum number of SimpleConsumers that can be 
-     * instantiated per broker.
-     */
     simpleconsumerPoolSizeMax?: string;
 }
 
 export interface KafkaKafkaUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
 }
 
 export interface KafkaKafkaUserConfigPrivatelinkAccess {
     /**
-     * Enable kafka
+     * Kafka server provided values
      */
     kafka?: string;
-    /**
-     * Enable kafka_connect
-     */
     kafkaConnect?: string;
-    /**
-     * Enable kafka_rest
-     */
     kafkaRest?: string;
-    /**
-     * Enable Schema-Registry service
-     */
     schemaRegistry?: string;
 }
 
 export interface KafkaKafkaUserConfigPublicAccess {
     /**
-     * Enable kafka
+     * Kafka server provided values
      */
     kafka?: string;
-    /**
-     * Enable kafka_connect
-     */
     kafkaConnect?: string;
-    /**
-     * Enable kafka_rest
-     */
     kafkaRest?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
-    /**
-     * Enable Schema-Registry service
-     */
     schemaRegistry?: string;
 }
 
 export interface KafkaKafkaUserConfigSchemaRegistryConfig {
-    /**
-     * If true, Karapace / Schema Registry on the service nodes can 
-     * participate in leader election. It might be needed to disable this when the schemas topic is replicated
-     * to a secondary cluster and Karapace / Schema Registry there must not participate in leader election.
-     * Defaults to 'true'.
-     */
     leaderEligibility?: string;
-    /**
-     * The durable single partition topic that acts as the durable log for the 
-     * data. This topic must be compacted to avoid losing data due to retention policy. Please note that
-     * changing this configuration in an existing Schema Registry / Karapace setup leads to previous
-     * schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence
-     * put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled.
-     * Defaults to '_schemas'.
-     */
     topicName?: string;
 }
 
@@ -5898,70 +3700,57 @@ export interface KafkaMirrorMakerKafkaMirrormaker {
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
     /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     * IP filter
      */
     ipFilters?: string[];
     /**
      * Kafka MirrorMaker configuration values
      */
     kafkaMirrormaker?: outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
-    /**
-     * Whether to periodically write the translated offsets
-     * of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster,
-     * as long as no active consumers in that group are connected to the target cluster.
-     */
     emitCheckpointsEnabled?: string;
     emitCheckpointsIntervalSeconds?: string;
-    /**
-     * Whether to periodically check for new consumer groups.
-     * Defaults to 'true'.
-     */
     refreshGroupsEnabled?: string;
-    /**
-     * Frequency of consumer group refresh in seconds.
-     * Defaults to 600 seconds (10 minutes).
-     */
     refreshGroupsIntervalSeconds?: string;
-    /**
-     * Whether to periodically check for new topics and
-     * partitions. Defaults to 'true'.
-     */
     refreshTopicsEnabled?: string;
-    /**
-     * Frequency of topic and partitions refresh in
-     * seconds. Defaults to 600 seconds (10 minutes).
-     */
     refreshTopicsIntervalSeconds?: string;
-    /**
-     * Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. Defaults to 'false'.
-     */
     syncGroupOffsetsEnabled?: string;
-    /**
-     * Frequency at which consumer group offsets
-     * are synced (default: 60, every minute).
-     */
     syncGroupOffsetsIntervalSeconds?: string;
     syncTopicConfigsEnabled?: string;
     tasksMaxPerCpu?: string;
 }
 
 export interface KafkaMirrorMakerServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }
 
 export interface KafkaServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }
 
 export interface KafkaTopicConfig {
     /**
-     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
+     * cleanup.policy value
      */
     cleanupPolicy?: string;
     /**
@@ -6059,7 +3848,13 @@ export interface KafkaTopicConfig {
 }
 
 export interface KafkaTopicTag {
+    /**
+     * Topic tag key. Maximum Length: `64`.
+     */
     key: string;
+    /**
+     * Topic tag value. Maximum Length: `256`.
+     */
     value?: string;
 }
 
@@ -6078,23 +3873,35 @@ export interface M3AggregatorM3aggregator {
 
 export interface M3AggregatorM3aggregatorUserConfig {
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Custom domain
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * IP filter
      */
     ipFilters?: string[];
+    /**
+     * M3 major version (deprecated, use m3aggregator_version)
+     */
     m3Version?: string;
     /**
-     * M3 major version
+     * M3 major version (the minimum compatible version)
      */
     m3aggregatorVersion?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
 export interface M3AggregatorServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }
 
@@ -6113,26 +3920,27 @@ export interface M3DbM3db {
 
 export interface M3DbM3dbUserConfig {
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Custom domain
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * IP filter
      */
     ipFilters?: string[];
     /**
      * M3 limits
      */
     limits?: outputs.M3DbM3dbUserConfigLimits;
+    /**
+     * M3 major version (deprecated, use m3db_version)
+     */
     m3Version?: string;
     /**
-     * Enables access to Graphite Carbon 
-     * plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
-     * metrics are written to aggregated namespaces only.
+     * Enable Graphite ingestion using Carbon plaintext protocol
      */
     m3coordinatorEnableGraphiteCarbonIngest?: string;
     /**
-     * M3 major version
+     * M3 major version (the minimum compatible version)
      */
     m3dbVersion?: string;
     /**
@@ -6140,128 +3948,62 @@ export interface M3DbM3dbUserConfig {
      */
     namespaces?: outputs.M3DbM3dbUserConfigNamespace[];
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.M3DbM3dbUserConfigPrivateAccess;
     /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.M3DbM3dbUserConfigPublicAccess;
     /**
-     * Mapping rules allow more granular use of aggregation, not simply sending 
-     * everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
-     * rules will be sent to it and nothing else.
+     * M3 rules
      */
     rules?: outputs.M3DbM3dbUserConfigRules;
     /**
-     * Name of another service to fork from. This has effect only 
-     * when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
 export interface M3DbM3dbUserConfigLimits {
-    /**
-     * The maximum number of data points fetched during request
-     */
-    globalDatapoints?: string;
-    /**
-     * The maximum number of data points fetched in single query
-     */
-    queryDatapoints?: string;
-    /**
-     * When query limits are exceeded, whether to return error 
-     * (if True) or return partial results (False)
-     */
     queryRequireExhaustive?: string;
-    /**
-     * The maximum number of series fetched in single query
-     */
     querySeries?: string;
 }
 
 export interface M3DbM3dbUserConfigNamespace {
-    /**
-     * The name of the namespace
-     */
     name?: string;
-    /**
-     * Namespace options
-     */
     options?: outputs.M3DbM3dbUserConfigNamespaceOptions;
-    /**
-     * The resolution for an aggregated namespace
-     */
     resolution?: string;
-    /**
-     * The type of aggregation (aggregated/unaggregated)
-     */
     type?: string;
 }
 
 export interface M3DbM3dbUserConfigNamespaceOptions {
-    /**
-     * Retention options
-     */
     retentionOptions?: outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions;
-    /**
-     * Controls whether M3DB will create snapshot files for 
-     * this namespace
-     */
     snapshotEnabled?: string;
-    /**
-     * Controls whether M3DB will include writes to this 
-     * namespace in the commitlog.
-     */
     writesToCommitlog?: string;
 }
 
 export interface M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
-    /**
-     * Controls how long we wait before expiring stale data
-     */
     blockDataExpiryDuration?: string;
-    /**
-     * Controls how long to keep a block in memory before 
-     * flushing to a fileset on disk
-     */
     blocksizeDuration?: string;
-    /**
-     * Controls how far into the future writes to 
-     * the namespace will be accepted
-     */
     bufferFutureDuration?: string;
-    /**
-     * Controls how far into the past writes to the 
-     * namespace will be accepted
-     */
     bufferPastDuration?: string;
-    /**
-     * Controls the duration of time that M3DB will 
-     * retain data for the namespace
-     */
     retentionPeriodDuration?: string;
 }
 
 export interface M3DbM3dbUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to m3coordinator from the public internet 
-     * for service nodes that are in a project VPC or another type of private network.
-     */
     m3coordinator?: string;
 }
 
 export interface M3DbM3dbUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to m3coordinator from the public internet 
-     * for service nodes that are in a project VPC or another type of private network.
-     */
     m3coordinator?: string;
 }
 
@@ -6270,61 +4012,36 @@ export interface M3DbM3dbUserConfigRules {
 }
 
 export interface M3DbM3dbUserConfigRulesMapping {
-    /**
-     * List of aggregations to be applied
-     */
     aggregations?: string[];
-    /**
-     * Drop the matching metric; Only store the derived metric (as specified in the roll-up rules), if any.
-     */
     drop?: string;
-    /**
-     * The metrics to be used with this particular rule; Matching metric names with wildcards (using
-     * __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, !
-     * can be used at start of value for negation, and multiple filters can be supplied using space as separator.
-     */
     filter?: string;
-    /**
-     * The name of the namespace
-     */
     name?: string;
-    /**
-     * List of tags to be appended to matching metrics.
-     */
+    namespaces?: string[];
     tags?: outputs.M3DbM3dbUserConfigRulesMappingTag[];
 }
 
 export interface M3DbM3dbUserConfigRulesMappingTag {
-    /**
-     * The name of the namespace
-     */
     name?: string;
-    /**
-     * Value of the tag.
-     */
     value?: string;
 }
 
 export interface M3DbServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }
 
 export interface MySqlComponent {
     component: string;
-    /**
-     * Hostname or IP address of the server where to migrate data from
-     */
     host: string;
     kafkaAuthenticationMethod: string;
-    /**
-     * Port number of the server where to migrate data from
-     */
     port: number;
     route: string;
-    /**
-     * The server where to migrate data from is secured with SSL
-     */
     ssl: boolean;
     usage: string;
 }
@@ -6334,33 +4051,27 @@ export interface MySqlMysql {
 
 export interface MySqlMysqlUserConfig {
     /**
-     * Custom password for admin user. Defaults to random string. 
-     * This must be set only when a new service is being created.
+     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
      */
     adminPassword?: string;
     /**
-     * Custom username for admin user. This must be set only when a 
-     * new service is being created.
+     * Custom username for admin user. This must be set only when a new service is being created.
      */
     adminUsername?: string;
     /**
-     * The hour of day (in UTC) when backup for the service is started. 
-     * New backup is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
      */
     backupHour?: string;
     /**
-     * The minute of an hour when backup for the service is started. 
-     * New backup is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
      */
     backupMinute?: string;
     /**
-     * The minimum amount of time in seconds to keep binlog entries 
-     * before deletion. This may be extended for services that require binlog entries for longer than the
-     * default for example if using the MySQL Debezium Kafka connector.
+     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
      */
     binlogRetentionPeriod?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * IP filter
      */
     ipFilters?: string[];
     /**
@@ -6368,8 +4079,7 @@ export interface MySqlMysqlUserConfig {
      */
     migration?: outputs.MySqlMysqlUserConfigMigration;
     /**
-     * Allow clients to connect to mysql from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
+     * mysql.conf configuration values
      */
     mysql?: outputs.MySqlMysqlUserConfigMysql;
     /**
@@ -6385,8 +4095,7 @@ export interface MySqlMysqlUserConfig {
      */
     privatelinkAccess?: outputs.MySqlMysqlUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
      */
     projectToForkFrom?: string;
     /**
@@ -6394,223 +4103,91 @@ export interface MySqlMysqlUserConfig {
      */
     publicAccess?: outputs.MySqlMysqlUserConfigPublicAccess;
     /**
-     * Recovery target time when forking a service. This has effect 
-     * only when a new service is being created.
+     * Recovery target time when forking a service. This has effect only when a new service is being created.
      */
     recoveryTargetTime?: string;
     /**
-     * Name of another service to fork from. This has effect only when 
-     * a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
 export interface MySqlMysqlUserConfigMigration {
-    /**
-     * Database name for bootstrapping the initial connection
-     */
     dbname?: string;
-    /**
-     * Hostname or IP address of the server where to migrate data from
-     */
     host?: string;
-    /**
-     * Comma-separated list of databases, which should be ignored 
-     * during migration (supported by MySQL only at the moment)
-     */
     ignoreDbs?: string;
-    /**
-     * Password for authentication with the server where to migrate data from
-     */
+    method?: string;
     password?: string;
-    /**
-     * Port number of the server where to migrate data from
-     */
     port?: string;
-    /**
-     * The server where to migrate data from is secured with SSL
-     */
     ssl?: string;
-    /**
-     * User name for authentication with the server where to migrate data from
-     */
     username?: string;
 }
 
 export interface MySqlMysqlUserConfigMysql {
-    /**
-     * The number of seconds that the mysqld server waits for a 
-     * connect packet before responding with Bad handshake
-     */
     connectTimeout?: string;
-    /**
-     * Default server time zone as an offset from UTC 
-     * (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
-     */
     defaultTimeZone?: string;
-    /**
-     * The maximum permitted result length in bytes for 
-     * the GROUP_CONCAT() function.
-     */
     groupConcatMaxLen?: string;
-    /**
-     * The time, in seconds, before cached 
-     * statistics expire
-     */
     informationSchemaStatsExpiry?: string;
-    /**
-     * Minimum length of words that are stored in 
-     * an InnoDB FULLTEXT index.
-     */
     innodbFtMinTokenSize?: string;
-    /**
-     * This option is used to specify your 
-     * own InnoDB FULLTEXT index stopword list for all InnoDB tables.
-     */
     innodbFtServerStopwordTable?: string;
-    /**
-     * The length of time in seconds an InnoDB 
-     * transaction waits for a row lock before giving up.
-     */
     innodbLockWaitTimeout?: string;
-    /**
-     * The size in bytes of the buffer that InnoDB 
-     * uses to write to the log files on disk.
-     */
     innodbLogBufferSize?: string;
-    /**
-     * The upper limit in bytes on the 
-     * size of the temporary log files used during online DDL operations for InnoDB tables.
-     */
     innodbOnlineAlterLogMaxSize?: string;
-    /**
-     * When enabled, information about all 
-     * deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
-     */
     innodbPrintAllDeadlocks?: string;
-    /**
-     * When enabled a transaction timeout 
-     * causes InnoDB to abort and roll back the entire transaction.
-     */
     innodbRollbackOnTimeout?: string;
-    /**
-     * The number of seconds the server waits for 
-     * activity on an interactive connection before closing it.
-     */
     interactiveTimeout?: string;
     internalTmpMemStorageEngine?: string;
-    /**
-     * The slowQueryLogs work as SQL statements that take 
-     * more than longQueryTime seconds to execute. Default is 10s
-     */
     longQueryTime?: string;
-    /**
-     * Size of the largest message in bytes that can 
-     * be received by the server. Default is 67108864 (64M)
-     */
     maxAllowedPacket?: string;
-    /**
-     * Limits the size of internal in-memory tables. 
-     * Also set tmp_table_size. Default is 16777216 (16M)
-     */
     maxHeapTableSize?: string;
-    /**
-     * The number of seconds to wait for more data from 
-     * a connection before aborting the read.
-     */
     netReadTimeout?: string;
-    /**
-     * The number of seconds to wait for a block to be 
-     * written to a connection before aborting the write.
-     */
     netWriteTimeout?: string;
-    /**
-     * Slow query log enables capturing of slow queries. 
-     * Setting slowQueryLog to false also truncates the mysql.slow_log table. Default is off
-     */
     slowQueryLog?: string;
-    /**
-     * Sort buffer size in bytes for ORDER BY optimization. 
-     * Default is 262144 (256K)
-     */
     sortBufferSize?: string;
-    /**
-     * Global SQL mode. Set to empty to use MySQL server defaults. 
-     * When creating a new service and not setting this field Aiven default SQL mode (strict,
-     * SQL standard compliant) will be assigned.
-     */
     sqlMode?: string;
-    /**
-     * Require primary key to be defined for new 
-     * tables or old tables modified with ALTER TABLE and fail if missing. It is recommended
-     * to always have primary keys because various functionality may break if any large table
-     * is missing them.
-     */
     sqlRequirePrimaryKey?: string;
-    /**
-     * Limits the size of internal in-memory tables. Also set 
-     * max_heap_table_size. Default is 16777216 (16M)
-     */
     tmpTableSize?: string;
-    /**
-     * The number of seconds the server waits for activity on 
-     * a noninteractive connection before closing it.
-     */
     waitTimeout?: string;
 }
 
 export interface MySqlMysqlUserConfigPrivateAccess {
     /**
-     * Allow clients to connect to mysql from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
+     * MySQL specific server provided values
      */
     mysql?: string;
-    /**
-     * Allow clients to connect to mysqlx from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
-     */
     mysqlx?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
 }
 
 export interface MySqlMysqlUserConfigPrivatelinkAccess {
     /**
-     * Allow clients to connect to mysql from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
+     * MySQL specific server provided values
      */
     mysql?: string;
-    /**
-     * Allow clients to connect to mysqlx from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
-     */
     mysqlx?: string;
 }
 
 export interface MySqlMysqlUserConfigPublicAccess {
     /**
-     * Allow clients to connect to mysql from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
+     * MySQL specific server provided values
      */
     mysql?: string;
-    /**
-     * Allow clients to connect to mysqlx from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
-     */
     mysqlx?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
 }
 
 export interface MySqlServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }
 
@@ -6625,56 +4202,52 @@ export interface OpenSearchComponent {
 }
 
 export interface OpenSearchOpensearch {
-    /**
-     * URI for Opensearch dashboards frontend.
-     */
     opensearchDashboardsUri: string;
 }
 
 export interface OpenSearchOpensearchUserConfig {
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Custom domain
      */
     customDomain?: string;
     /**
-     * Disable automatic replication factor adjustment for
-     * multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: setting
-     * this to true increases a risk of data loss in case of virtual machine failure.
+     * Disable replication factor adjustment
      */
     disableReplicationFactorAdjustment?: string;
     /**
-     * Glob pattern and number of indexes matching that pattern to be kept.
+     * Index patterns
      */
     indexPatterns?: outputs.OpenSearchOpensearchUserConfigIndexPattern[];
     /**
-     * Template settings for all new indexe.
+     * Template settings for all new indexes
      */
     indexTemplate?: outputs.OpenSearchOpensearchUserConfigIndexTemplate;
     /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     * IP filter
      */
     ipFilters?: string[];
+    /**
+     * Don't reset index.refresh_interval to the default value
+     */
     keepIndexRefreshInterval?: string;
     /**
-     * Maximum number of indexes to keep before deleting the oldest one.
+     * Maximum index count
      */
     maxIndexCount?: string;
     /**
-     * Allow clients to connect to opensearch from the public internet for service nodes
-     * that are in a project VPC or another type of private network.
+     * OpenSearch settings
      */
     opensearch?: outputs.OpenSearchOpensearchUserConfigOpensearch;
     /**
-     * Allow clients to connect to opensearchDashboards from the public
-     * internet for service nodes that are in a project VPC or another type of private network.
+     * OpenSearch Dashboards settings
      */
     opensearchDashboards?: outputs.OpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
-     * Opensearch major version.
+     * OpenSearch major version
      */
     opensearchVersion?: string;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.OpenSearchOpensearchUserConfigPrivateAccess;
     /**
@@ -6682,295 +4255,135 @@ export interface OpenSearchOpensearchUserConfig {
      */
     privatelinkAccess?: outputs.OpenSearchOpensearchUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a
-     * new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.OpenSearchOpensearchUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service
      */
     recoveryBasebackupName?: string;
     /**
-     * Name of another service to fork from. This has effect only when a new service
-     * is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigIndexPattern {
-    /**
-     * Maximum number of indexes to keep before deleting the oldest one.
-     */
     maxIndexCount?: string;
-    /**
-     * Must consist of alpha-numeric characters, dashes, underscores, dots and glob
-     * characters (* and ?)
-     */
     pattern?: string;
-    /**
-     * Deletion sorting algorithm
-     */
     sortingAlgorithm?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigIndexTemplate {
-    /**
-     * The maximum number of nested JSON objects that a single document
-     * can contain across all nested types. This limit helps to prevent out of memory errors when a document contains
-     * too many nested objects. Default is 10000.
-     */
     mappingNestedObjectsLimit?: string;
-    /**
-     * The number of replicas each primary shard has.
-     */
     numberOfReplicas?: string;
-    /**
-     * The number of primary shards that an index should have.
-     */
     numberOfShards?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearch {
-    /**
-     * Explicitly allow or block automatic creation of indices.
-     * Defaults to true
-     */
     actionAutoCreateIndexEnabled?: string;
-    /**
-     * Require explicit index names when deleting
-     */
     actionDestructiveRequiresName?: string;
-    /**
-     * Controls the number of shards allowed in the cluster per data node.
-     */
     clusterMaxShardsPerNode?: string;
-    /**
-     * Maximum content length for HTTP requests to the Opensearch HTTP API, in
-     * bytes.
-     */
     httpMaxContentLength?: string;
-    /**
-     * The max size of allowed headers, in bytes.
-     */
     httpMaxHeaderSize?: string;
-    /**
-     * The max length of an HTTP URL, in bytes.
-     */
     httpMaxInitialLineLength?: string;
-    /**
-     * Relative amount. Maximum amount of heap memory used for field data
-     * cache. This is an expert setting; decreasing the value too much will increase overhead of loading field data;
-     * too much memory used for field data cache will decrease amount of heap available for other operations.
-     */
     indicesFielddataCacheSize?: string;
-    /**
-     * Percentage value. Default is 10%. Total amount of heap used
-     * for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down
-     * indexing; too high value will increase indexing performance but causes performance issues for query
-     * performance.
-     */
     indicesMemoryIndexBufferSize?: string;
-    /**
-     * Percentage value. Default is 10%. Maximum amount of heap used for
-     * query cache. This is an expert setting. Too low value will decrease query performance and increase performance
-     * for other operations; too high value will cause issues with other Opensearch functionality.
-     */
     indicesQueriesCacheSize?: string;
-    /**
-     * Maximum number of clauses Lucene BooleanQuery can have. The
-     * default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other
-     * approaches first before increasing this value.
-     */
     indicesQueryBoolMaxClauseCount?: string;
-    /**
-     * Whitelisted addresses for reindexing. Changing this value will cause
-     * all Opensearch instances to restart.
-     */
+    overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
-    /**
-     * Maximum number of aggregation buckets allowed in a single response.
-     * Opensearch default value is used when this is not defined.
-     */
     searchMaxBuckets?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact
-     * details.
-     */
     threadPoolAnalyzeQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note
-     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
-     * maximum value.
-     */
     threadPoolAnalyzeSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do
-     * note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
-     * maximum value.
-     */
     threadPoolForceMergeSize?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact details.
-     */
     threadPoolGetQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note
-     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
-     * maximum value.
-     */
     threadPoolGetSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note
-     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
-     * maximum value.
-     */
     threadPoolIndexSize?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact
-     * details.
-     */
     threadPoolSearchQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note
-     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
-     * maximum value.
-     */
     threadPoolSearchSize?: string;
-    /**
-     * Size for the thread pool queue. See documentation for
-     * exact details.
-     */
     threadPoolSearchThrottledQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact
-     * details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to
-     * higher than maximum value.
-     */
     threadPoolSearchThrottledSize?: string;
-    /**
-     * Size for the thread pool queue. See documentation for exact
-     * details.
-     */
     threadPoolWriteQueueSize?: string;
-    /**
-     * Size for the thread pool. See documentation for exact details. Do note
-     * this may have maximum value depending on CPU count - value is automatically lowered if set to higher than
-     * maximum value.
-     */
     threadPoolWriteSize?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
-    /**
-     * Enable or disable opensearch_dashboards.
-     */
     enabled?: string;
-    /**
-     * Limits the maximum amount of memory (in MiB) the Opensearch dashboards
-     * process can use. This sets the maxOldSpaceSize option of the nodejs running the Opensearch dashboards.
-     * Note: the memory reserved by Opensearch dashboards is not available for Opensearch.
-     */
     maxOldSpaceSize?: string;
-    /**
-     * Timeout in milliseconds for requests made by opensearchDashboards
-     * towards Opensearch.
-     */
     opensearchRequestTimeout?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigPrivateAccess {
     /**
-     * Allow clients to connect to opensearch from the public internet for service nodes
-     * that are in a project VPC or another type of private network.
+     * Opensearch server provided values
      */
     opensearch?: string;
-    /**
-     * Allow clients to connect to opensearchDashboards from the public
-     * internet for service nodes that are in a project VPC or another type of private network.
-     */
     opensearchDashboards?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes
-     * that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
-     * Allow clients to connect to opensearch from the public internet for service nodes
-     * that are in a project VPC or another type of private network.
+     * Opensearch server provided values
      */
     opensearch?: string;
-    /**
-     * Allow clients to connect to opensearchDashboards from the public
-     * internet for service nodes that are in a project VPC or another type of private network.
-     */
     opensearchDashboards?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigPublicAccess {
     /**
-     * Allow clients to connect to opensearch from the public internet for service nodes
-     * that are in a project VPC or another type of private network.
+     * Opensearch server provided values
      */
     opensearch?: string;
-    /**
-     * Allow clients to connect to opensearchDashboards from the public
-     * internet for service nodes that are in a project VPC or another type of private network.
-     */
     opensearchDashboards?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes
-     * that are in a project VPC or another type of private network.
-     */
     prometheus?: string;
 }
 
 export interface OpenSearchServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }
 
 export interface PgComponent {
     component: string;
-    /**
-     * hostname or IP address of the server where to migrate data from.
-     */
     host: string;
     kafkaAuthenticationMethod: string;
-    /**
-     * port number of the server where to migrate data from.
-     */
     port: number;
     route: string;
-    /**
-     * the server where to migrate data from is secured with SSL.
-     */
     ssl: boolean;
     usage: string;
 }
 
 export interface PgPg {
     /**
-     * database name for bootstrapping the initial connection.
+     * Primary PostgreSQL database name
      */
     dbname: string;
     /**
-     * hostname or IP address of the server where to migrate data from.
+     * PostgreSQL master node host IP or name
      */
     host: string;
     /**
-     * password for authentication with the server where to migrate data from.
+     * PostgreSQL admin user password
      */
     password: string;
     /**
-     * port number of the server where to migrate data from.
+     * PostgreSQL port
      */
     port: number;
     /**
@@ -6978,7 +4391,7 @@ export interface PgPg {
      */
     replicaUri: string;
     /**
-     * PostgreSQL sslmode setting (currently always `require`)
+     * PostgreSQL sslmode setting (currently always "require")
      */
     sslmode: string;
     /**
@@ -6993,69 +4406,63 @@ export interface PgPg {
 
 export interface PgPgUserConfig {
     /**
-     * custom password for admin user. Defaults to random string. *This must
-     * be set only when a new service is being created.*
+     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
      */
     adminPassword?: string;
     /**
-     * custom username for admin user. *This must be set only when a new service
-     * is being created.*
+     * Custom username for admin user. This must be set only when a new service is being created.
      */
     adminUsername?: string;
     /**
-     * the hour of day (in UTC) when backup for the service is started. New backup 
-     * is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
      */
     backupHour?: string;
     /**
-     * the minute of an hour when backup for the service is started. New backup 
-     * is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
      */
     backupMinute?: string;
     /**
-     * allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     * IP filter
      */
     ipFilters?: string[];
     /**
-     * migrate data from existing server, has the following options:
+     * Migrate data from existing server
      */
     migration?: outputs.PgPgUserConfigMigration;
     /**
-     * Enable pg.
+     * postgresql.conf configuration values
      */
     pg?: outputs.PgPgUserConfigPg;
     /**
-     * This setting is deprecated. Use read-replica service integration instead.
+     * Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
      */
     pgReadReplica?: string;
     /**
-     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). 
-     * This has effect only when a new service is being created.
+     * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
      */
     pgServiceToForkFrom?: string;
     /**
-     * PostgreSQL major version.
+     * PostgreSQL major version
      */
     pgVersion?: string;
     /**
-     * Enable pgbouncer.
+     * PGBouncer connection pooling settings
      */
     pgbouncer?: outputs.PgPgUserConfigPgbouncer;
     /**
-     * PGLookout settings.
+     * PGLookout settings
      */
     pglookout?: outputs.PgPgUserConfigPglookout;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.PgPgUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.PgPgUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
      */
     projectToForkFrom?: string;
     /**
@@ -7063,408 +4470,172 @@ export interface PgPgUserConfig {
      */
     publicAccess?: outputs.PgPgUserConfigPublicAccess;
     /**
-     * Recovery target time when forking a service. This has effect 
-     * only when a new service is being created.
+     * Recovery target time when forking a service. This has effect only when a new service is being created.
      */
     recoveryTargetTime?: string;
     /**
-     * Name of another service to fork from. This has effect only 
-     * when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created.
      */
     serviceToForkFrom?: string;
     /**
-     * Percentage of total RAM that the database server uses for 
-     * memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts
-     * the sharedBuffers configuration value. The absolute maximum is 12 GB.
+     * shared*buffers*percentage
      */
     sharedBuffersPercentage?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
     /**
-     * Synchronous replication type. Note that the service plan 
-     * also needs to support synchronous replication.
+     * Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      */
     synchronousReplication?: string;
     /**
-     * TimescaleDB extension configuration values.
+     * TimescaleDB extension configuration values
      */
     timescaledb?: outputs.PgPgUserConfigTimescaledb;
     /**
-     * Variant of the PostgreSQL service, may affect the features that are 
-     * exposed by default. Options: `aiven` or `timescale`.
+     * Variant of the PostgreSQL service, may affect the features that are exposed by default
      */
     variant?: string;
     /**
-     * Sets the maximum amount of memory to be used by a query operation (such 
-     * as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of
-     * total RAM (up to 32MB).
+     * work_mem
      */
     workMem?: string;
 }
 
 export interface PgPgUserConfigMigration {
-    /**
-     * database name for bootstrapping the initial connection.
-     */
     dbname?: string;
-    /**
-     * hostname or IP address of the server where to migrate data from.
-     */
     host?: string;
-    /**
-     * Comma-separated list of databases, which should be ignored during 
-     * migration (supported by MySQL only at the moment)
-     */
     ignoreDbs?: string;
-    /**
-     * password for authentication with the server where to migrate data from.
-     */
+    method?: string;
     password?: string;
-    /**
-     * port number of the server where to migrate data from.
-     */
     port?: string;
-    /**
-     * the server where to migrate data from is secured with SSL.
-     */
     ssl?: string;
-    /**
-     * user name for authentication with the server where to migrate data from.
-     */
     username?: string;
 }
 
 export interface PgPgUserConfigPg {
-    /**
-     * Specifies a fraction of the table size to add to 
-     * autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2
-     * (20% of table size).
-     */
     autovacuumAnalyzeScaleFactor?: string;
-    /**
-     * specifies the minimum number of inserted, updated 
-     * or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
-     */
     autovacuumAnalyzeThreshold?: string;
-    /**
-     * specifies the maximum age (in transactions) that a table's 
-     * pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID
-     * wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound
-     * even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
-     */
     autovacuumFreezeMaxAge?: string;
-    /**
-     * specifies the maximum number of autovacuum processes (other 
-     * than the autovacuum launcher) that may be running at any one time. The default is three. This parameter
-     * can only be set at server start.
-     */
     autovacuumMaxWorkers?: string;
-    /**
-     * specifies the minimum delay between autovacuum runs on any 
-     * given database. The delay is measured in seconds, and the default is one minute.
-     */
     autovacuumNaptime?: string;
-    /**
-     * specifies the cost delay value that will be used 
-     * in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be
-     * used. The default value is 20 milliseconds.
-     */
     autovacuumVacuumCostDelay?: string;
-    /**
-     * specifies the cost limit value that will be used in 
-     * automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit
-     * value will be used.
-     */
     autovacuumVacuumCostLimit?: string;
-    /**
-     * specifies a fraction of the table size to add to 
-     * autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
-     */
     autovacuumVacuumScaleFactor?: string;
-    /**
-     * specifies the minimum number of updated or deleted tuples 
-     * needed to trigger a VACUUM in any one table. The default is 50 tuples
-     */
     autovacuumVacuumThreshold?: string;
     bgwriterDelay?: string;
     bgwriterFlushAfter?: string;
     bgwriterLruMaxpages?: string;
     bgwriterLruMultiplier?: string;
-    /**
-     * this is the amount of time, in milliseconds, to wait on a lock before 
-     * checking to see if there is a deadlock condition.
-     */
     deadlockTimeout?: string;
-    /**
-     * Time out sessions with open transactions after 
-     * this number of milliseconds.
-     */
+    defaultToastCompression?: string;
     idleInTransactionSessionTimeout?: string;
-    /**
-     * Controls system-wide use of Just-in-Time Compilation (JIT).
-     */
     jit?: string;
-    /**
-     * Causes each action executed by autovacuum to be logged 
-     * if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum
-     * actions. Minus-one (the default) disables logging autovacuum actions.
-     */
     logAutovacuumMinDuration?: string;
-    /**
-     * Controls the amount of detail written in the server log for 
-     * each message that is logged. Possible values: `TERSE`, `DEFAULT` and `VERBOSE`.
-     */
     logErrorVerbosity?: string;
-    /**
-     * Choose from one of the available log-formats. These can support 
-     * popular log analyzers like pgbadger, pganalyze etc.
-     * milliseconds to run, -1 disables
-     */
     logLinePrefix?: string;
-    /**
-     * Log statements that take more than this number of
-     */
     logMinDurationStatement?: string;
-    /**
-     * PostgreSQL maximum number of files that can be open per process
-     */
     maxFilesPerProcess?: string;
-    /**
-     * PostgreSQL maximum locks per transaction
-     */
     maxLocksPerTransaction?: string;
-    /**
-     * PostgreSQL maximum logical replication workers 
-     * (taken from the pool of max_parallel_workers)
-     */
     maxLogicalReplicationWorkers?: string;
-    /**
-     * Sets the maximum number of workers that the system can 
-     * support for parallel queries.
-     */
     maxParallelWorkers?: string;
-    /**
-     * Sets the maximum number of workers that can be 
-     * started by a single Gather or Gather Merge node.
-     */
     maxParallelWorkersPerGather?: string;
-    /**
-     * PostgreSQL maximum predicate locks per transaction
-     */
     maxPredLocksPerTransaction?: string;
-    /**
-     * PostgreSQL maximum prepared transactions
-     */
     maxPreparedTransactions?: string;
-    /**
-     * PostgreSQL maximum replication slots
-     */
     maxReplicationSlots?: string;
-    /**
-     * Maximum depth of the stack in bytes
-     */
+    maxSlotWalKeepSize?: string;
     maxStackDepth?: string;
-    /**
-     * Max standby archive delay in milliseconds
-     */
     maxStandbyArchiveDelay?: string;
-    /**
-     * Max standby streaming delay in milliseconds
-     */
     maxStandbyStreamingDelay?: string;
-    /**
-     * PostgreSQL maximum WAL senders
-     */
     maxWalSenders?: string;
-    /**
-     * Sets the maximum number of background processes that the system
-     * can support
-     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks
-     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman's scheduled
-     * background tasks.
-     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top
-     * to track top-level statements (those issued directly by clients), all to also track nested
-     * statements (such as statements invoked within functions), or none to disable statement statistics
-     * collection. The default value is top.
-     */
     maxWorkerProcesses?: string;
     pgPartmanBgwDotInterval?: string;
     pgPartmanBgwDotRole?: string;
     pgStatStatementsDotTrack?: string;
-    /**
-     * PostgreSQL temporary file limit in KiB, -1 for unlimited
-     */
     tempFileLimit?: string;
-    /**
-     * PostgreSQL service timezone
-     */
     timezone?: string;
-    /**
-     * Specifies the number of bytes reserved to track the currently 
-     * executing command for each active session.
-     */
     trackActivityQuerySize?: string;
-    /**
-     * Record commit time of transactions
-     */
     trackCommitTimestamp?: string;
-    /**
-     * Enables tracking of function call counts and time used.
-     */
     trackFunctions?: string;
-    /**
-     * Enables timing of database I/O calls. This parameter is off by default, 
-     * because it will repeatedly query the operating system for the current time, which may cause significant
-     * overhead on some platforms.
-     */
     trackIoTiming?: string;
-    /**
-     * Terminate replication connections that are inactive for longer than 
-     * this amount of time, in milliseconds.
-     */
     walSenderTimeout?: string;
-    /**
-     * WAL flush interval in milliseconds. Note that setting this value 
-     * to lower than the default 200ms may negatively impact performance
-     */
     walWriterDelay?: string;
 }
 
 export interface PgPgUserConfigPgbouncer {
-    /**
-     * If the automatically created database pools have been unused this 
-     * many seconds, they are freed. If 0 then timeout is disabled.
-     */
     autodbIdleTimeout?: string;
-    /**
-     * Do not allow more than this many server connections per database 
-     * (regardless of user). Setting it to 0 means unlimited.
-     */
     autodbMaxDbConnections?: string;
-    /**
-     * PGBouncer pool mode
-     */
     autodbPoolMode?: string;
-    /**
-     * If non-zero then create automatically a pool of that size per user 
-     * when a pool doesn't exist.
-     */
     autodbPoolSize?: string;
-    /**
-     * Enum of parameters to ignore when given in startup packet.
-     */
     ignoreStartupParameters?: string[];
-    /**
-     * Add more server connections to pool if below this number. Improves 
-     * behavior when usual load comes suddenly back after period of total inactivity. The value is
-     * effectively capped at the pool size.
-     */
     minPoolSize?: string;
-    /**
-     * If a server connection has been idle more than this many seconds 
-     * it will be dropped. If 0 then timeout is disabled.
-     */
     serverIdleTimeout?: string;
-    /**
-     * The pooler will close an unused server connection that has been connected 
-     * longer than this.
-     */
     serverLifetime?: string;
-    /**
-     * Run serverResetQuery (DISCARD ALL) in all pooling modes.
-     */
     serverResetQueryAlways?: string;
 }
 
 export interface PgPgUserConfigPglookout {
-    /**
-     * Number of seconds of master unavailability before 
-     * triggering database failover to standby
-     */
     maxFailoverReplicationTimeLag?: string;
 }
 
 export interface PgPgUserConfigPrivateAccess {
     /**
-     * Enable pg.
+     * PostgreSQL specific server provided values
      */
     pg?: string;
-    /**
-     * Enable pgbouncer.
-     */
     pgbouncer?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
 }
 
 export interface PgPgUserConfigPrivatelinkAccess {
     /**
-     * Enable pg.
+     * PostgreSQL specific server provided values
      */
     pg?: string;
-    /**
-     * Enable pgbouncer.
-     */
     pgbouncer?: string;
 }
 
 export interface PgPgUserConfigPublicAccess {
     /**
-     * Enable pg.
+     * PostgreSQL specific server provided values
      */
     pg?: string;
-    /**
-     * Enable pgbouncer.
-     */
     pgbouncer?: string;
-    /**
-     * Allow clients to connect to prometheus from the public internet for 
-     * service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
 }
 
 export interface PgPgUserConfigTimescaledb {
-    /**
-     * The number of background workers for timescaledb 
-     * operations. You should configure this setting to the sum of your number of databases and the
-     * total number of concurrent background workers you want running at any given point in time.
-     */
     maxBackgroundWorkers?: string;
 }
 
 export interface PgServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }
 
 export interface RedisComponent {
     component: string;
-    /**
-     * Hostname or IP address of the server where to migrate data from
-     */
     host: string;
     kafkaAuthenticationMethod: string;
-    /**
-     * Port number of the server where to migrate data from
-     */
     port: number;
     route: string;
-    /**
-     * The server where to migrate data from is secured with SSL
-     */
     ssl: boolean;
     usage: string;
 }
 
-export interface RedisRedis {
+export interface RedisRedi {
 }
 
 export interface RedisRedisUserConfig {
     /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     * IP filter
      */
     ipFilters?: string[];
     /**
@@ -7480,8 +4651,7 @@ export interface RedisRedisUserConfig {
      */
     privatelinkAccess?: outputs.RedisRedisUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has
-     * effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
      */
     projectToForkFrom?: string;
     /**
@@ -7492,16 +4662,20 @@ export interface RedisRedisUserConfig {
      * Name of the basebackup to restore in forked service
      */
     recoveryBasebackupName?: string;
+    /**
+     * Default ACL for pub/sub channels used when Redis user is created
+     */
     redisAclChannelsDefault?: string;
     /**
      * Redis IO thread count
-     * * `redisLfuDecayTime"` - (Optional) LFU maxmemory-policy counter decay time in minutes
      */
     redisIoThreads?: string;
+    /**
+     * LFU maxmemory-policy counter decay time in minutes
+     */
     redisLfuDecayTime?: string;
     /**
-     * Counter logarithm factor for volatile-lfu and allkeys-lfu 
-     * maxmemory-policies
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
      */
     redisLfuLogFactor?: string;
     /**
@@ -7512,8 +4686,17 @@ export interface RedisRedisUserConfig {
      * Set notify-keyspace-events option
      */
     redisNotifyKeyspaceEvents?: string;
+    /**
+     * Number of redis databases
+     */
     redisNumberOfDatabases?: string;
+    /**
+     * Redis persistence
+     */
     redisPersistence?: string;
+    /**
+     * Pub/sub client output buffer hard limit in MB
+     */
     redisPubsubClientOutputBufferLimit?: string;
     /**
      * Require SSL to access Redis
@@ -7521,82 +4704,60 @@ export interface RedisRedisUserConfig {
     redisSsl?: string;
     /**
      * Redis idle connection timeout
-     * * `serviceToForkFrom"` - (Optional) Name of another service to fork from. This has effect only
-     * when a new service is being created.
      */
     redisTimeout?: string;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
 export interface RedisRedisUserConfigMigration {
-    /**
-     * Database name for bootstrapping the initial connection
-     */
     dbname?: string;
-    /**
-     * Hostname or IP address of the server where to migrate data from
-     */
     host?: string;
-    /**
-     * Comma-separated list of databases, which should be ignored during 
-     * migration (supported by MySQL only at the moment)
-     */
     ignoreDbs?: string;
-    /**
-     * Password for authentication with the server where to migrate data from
-     */
+    method?: string;
     password?: string;
-    /**
-     * Port number of the server where to migrate data from
-     */
     port?: string;
-    /**
-     * The server where to migrate data from is secured with SSL
-     */
     ssl?: string;
-    /**
-     * User name for authentication with the server where to migrate data from
-     */
     username?: string;
 }
 
 export interface RedisRedisUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
     /**
-     * Allow clients to connect to redis from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
+     * Redis server provided values
      */
     redis?: string;
 }
 
 export interface RedisRedisUserConfigPrivatelinkAccess {
     /**
-     * Allow clients to connect to redis from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
+     * Redis server provided values
      */
     redis?: string;
 }
 
 export interface RedisRedisUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet 
-     * for service nodes that are in a project VPC or another type of private network
-     */
     prometheus?: string;
     /**
-     * Allow clients to connect to redis from the public internet for service 
-     * nodes that are in a project VPC or another type of private network
+     * Redis server provided values
      */
     redis?: string;
 }
 
 export interface RedisServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }
 
@@ -7604,14 +4765,41 @@ export interface ServiceCassandra {
 }
 
 export interface ServiceCassandraUserConfig {
+    /**
+     * cassandra configuration values
+     */
     cassandra?: outputs.ServiceCassandraUserConfigCassandra;
+    /**
+     * Cassandra major version
+     */
     cassandraVersion?: string;
+    /**
+     * IP filter
+     */
     ipFilters?: string[];
+    /**
+     * Migration mode for the sstableloader utility
+     */
     migrateSstableloader?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.ServiceCassandraUserConfigPrivateAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
     projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.ServiceCassandraUserConfigPublicAccess;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
@@ -7626,6 +4814,24 @@ export interface ServiceCassandraUserConfigPrivateAccess {
 
 export interface ServiceCassandraUserConfigPublicAccess {
     prometheus?: string;
+}
+
+export interface ServiceClickhouse {
+}
+
+export interface ServiceClickhouseUserConfig {
+    /**
+     * IP filter
+     */
+    ipFilters?: string[];
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
+    serviceToForkFrom?: string;
 }
 
 export interface ServiceComponent {
@@ -7643,23 +4849,77 @@ export interface ServiceElasticsearch {
 }
 
 export interface ServiceElasticsearchUserConfig {
+    /**
+     * Custom domain
+     */
     customDomain?: string;
+    /**
+     * Disable replication factor adjustment
+     */
     disableReplicationFactorAdjustment?: string;
+    /**
+     * Elasticsearch settings
+     */
     elasticsearch?: outputs.ServiceElasticsearchUserConfigElasticsearch;
+    /**
+     * Elasticsearch major version
+     */
     elasticsearchVersion?: string;
+    /**
+     * Index patterns
+     */
     indexPatterns?: outputs.ServiceElasticsearchUserConfigIndexPattern[];
+    /**
+     * Template settings for all new indexes
+     */
     indexTemplate?: outputs.ServiceElasticsearchUserConfigIndexTemplate;
+    /**
+     * IP filter
+     */
     ipFilters?: string[];
+    /**
+     * Don't reset index.refresh_interval to the default value
+     */
     keepIndexRefreshInterval?: string;
+    /**
+     * Kibana settings
+     */
     kibana?: outputs.ServiceElasticsearchUserConfigKibana;
+    /**
+     * Maximum index count
+     */
     maxIndexCount?: string;
+    /**
+     * OpenSearch major version
+     */
     opensearchVersion?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.ServiceElasticsearchUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
     privatelinkAccess?: outputs.ServiceElasticsearchUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
     projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.ServiceElasticsearchUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
@@ -7674,6 +4934,7 @@ export interface ServiceElasticsearchUserConfigElasticsearch {
     indicesMemoryIndexBufferSize?: string;
     indicesQueriesCacheSize?: string;
     indicesQueryBoolMaxClauseCount?: string;
+    overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
     searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
@@ -7710,60 +4971,235 @@ export interface ServiceElasticsearchUserConfigKibana {
 }
 
 export interface ServiceElasticsearchUserConfigPrivateAccess {
+    /**
+     * Elasticsearch specific server provided values
+     */
     elasticsearch?: string;
     kibana?: string;
     prometheus?: string;
 }
 
 export interface ServiceElasticsearchUserConfigPrivatelinkAccess {
+    /**
+     * Elasticsearch specific server provided values
+     */
     elasticsearch?: string;
     kibana?: string;
 }
 
 export interface ServiceElasticsearchUserConfigPublicAccess {
+    /**
+     * Elasticsearch specific server provided values
+     */
     elasticsearch?: string;
     kibana?: string;
     prometheus?: string;
+}
+
+export interface ServiceFlink {
+    /**
+     * Host and Port of a Flink server
+     */
+    hostPorts: string[];
+}
+
+export interface ServiceFlinkUserConfig {
+    /**
+     * Flink execution.checkpointing.interval in milliseconds
+     */
+    executionCheckpointingIntervalMs?: string;
+    /**
+     * Flink execution.checkpointing.timeout in milliseconds
+     */
+    executionCheckpointingTimeoutMs?: string;
+    /**
+     * Flink major version
+     */
+    flinkVersion?: string;
+    /**
+     * IP filter
+     */
+    ipFilters?: string[];
+    /**
+     * Flink taskmanager.numberOfTaskSlots
+     */
+    numberOfTaskSlots?: string;
+    /**
+     * Flink parallelism.default
+     */
+    parallelismDefault?: string;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.ServiceFlinkUserConfigPrivatelinkAccess;
+    /**
+     * Flink restart-strategy
+     */
+    restartStrategy?: string;
+    /**
+     * Flink restart-strategy.failure-rate.delay in seconds
+     */
+    restartStrategyDelaySec?: string;
+    /**
+     * Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+     */
+    restartStrategyFailureRateIntervalMin?: string;
+    /**
+     * Flink restart-strategy.failure-rate.max-failures-per-interval
+     */
+    restartStrategyMaxFailures?: string;
+}
+
+export interface ServiceFlinkUserConfigPrivatelinkAccess {
+    /**
+     * Flink specific server provided values
+     */
+    flink?: string;
 }
 
 export interface ServiceGrafana {
 }
 
 export interface ServiceGrafanaUserConfig {
+    /**
+     * Enable or disable Grafana alerting functionality
+     */
     alertingEnabled?: string;
+    /**
+     * Default error or timeout setting for new alerting rules
+     */
     alertingErrorOrTimeout?: string;
+    /**
+     * Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+     */
     alertingMaxAnnotationsToKeep?: string;
+    /**
+     * Default value for 'no data or null values' for new alerting rules
+     */
     alertingNodataOrNullvalues?: string;
+    /**
+     * Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
+     */
     allowEmbedding?: string;
+    /**
+     * Azure AD OAuth integration
+     */
     authAzuread?: outputs.ServiceGrafanaUserConfigAuthAzuread;
+    /**
+     * Enable or disable basic authentication form, used by Grafana built-in login
+     */
     authBasicEnabled?: string;
+    /**
+     * Generic OAuth integration
+     */
     authGenericOauth?: outputs.ServiceGrafanaUserConfigAuthGenericOauth;
+    /**
+     * Github Auth integration
+     */
     authGithub?: outputs.ServiceGrafanaUserConfigAuthGithub;
+    /**
+     * GitLab Auth integration
+     */
     authGitlab?: outputs.ServiceGrafanaUserConfigAuthGitlab;
+    /**
+     * Google Auth integration
+     */
     authGoogle?: outputs.ServiceGrafanaUserConfigAuthGoogle;
+    /**
+     * Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+     */
     cookieSamesite?: string;
+    /**
+     * Custom domain
+     */
     customDomain?: string;
+    /**
+     * Minimum refresh interval
+     */
     dashboardsMinRefreshInterval?: string;
+    /**
+     * Dashboard versions to keep per dashboard
+     */
     dashboardsVersionsToKeep?: string;
+    /**
+     * Send 'X-Grafana-User' header to data source
+     */
     dataproxySendUserHeader?: string;
+    /**
+     * Timeout for data proxy requests in seconds
+     */
     dataproxyTimeout?: string;
+    /**
+     * Grafana date format specifications
+     */
     dateFormats?: outputs.ServiceGrafanaUserConfigDateFormats;
+    /**
+     * Set to true to disable gravatar. Defaults to false (gravatar is enabled)
+     */
     disableGravatar?: string;
+    /**
+     * Editors can manage folders, teams and dashboards created by them
+     */
     editorsCanAdmin?: string;
+    /**
+     * External image store settings
+     */
     externalImageStorage?: outputs.ServiceGrafanaUserConfigExternalImageStorage;
+    /**
+     * Google Analytics ID
+     */
     googleAnalyticsUaId?: string;
+    /**
+     * IP filter
+     */
     ipFilters?: string[];
+    /**
+     * Enable Grafana /metrics endpoint
+     */
     metricsEnabled?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.ServiceGrafanaUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
     privatelinkAccess?: outputs.ServiceGrafanaUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
     projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.ServiceGrafanaUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * SMTP server settings
+     */
     smtpServer?: outputs.ServiceGrafanaUserConfigSmtpServer;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
+    /**
+     * Auto-assign new users on signup to main organization. Defaults to false
+     */
     userAutoAssignOrg?: string;
+    /**
+     * Set role for new signups. Defaults to Viewer
+     */
     userAutoAssignOrgRole?: string;
+    /**
+     * Users with view-only permission can edit but not save dashboards
+     */
     viewersCanEdit?: string;
 }
 
@@ -7834,14 +5270,23 @@ export interface ServiceGrafanaUserConfigExternalImageStorage {
 }
 
 export interface ServiceGrafanaUserConfigPrivateAccess {
+    /**
+     * Grafana specific server provided values
+     */
     grafana?: string;
 }
 
 export interface ServiceGrafanaUserConfigPrivatelinkAccess {
+    /**
+     * Grafana specific server provided values
+     */
     grafana?: string;
 }
 
 export interface ServiceGrafanaUserConfigPublicAccess {
+    /**
+     * Grafana specific server provided values
+     */
     grafana?: string;
 }
 
@@ -7861,15 +5306,45 @@ export interface ServiceInfluxdb {
 }
 
 export interface ServiceInfluxdbUserConfig {
+    /**
+     * Custom domain
+     */
     customDomain?: string;
+    /**
+     * influxdb.conf configuration values
+     */
     influxdb?: outputs.ServiceInfluxdbUserConfigInfluxdb;
+    /**
+     * IP filter
+     */
     ipFilters?: string[];
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.ServiceInfluxdbUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
     privatelinkAccess?: outputs.ServiceInfluxdbUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
     projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.ServiceInfluxdbUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
@@ -7883,27 +5358,54 @@ export interface ServiceInfluxdbUserConfigInfluxdb {
 }
 
 export interface ServiceInfluxdbUserConfigPrivateAccess {
+    /**
+     * InfluxDB specific server provided values
+     */
     influxdb?: string;
 }
 
 export interface ServiceInfluxdbUserConfigPrivatelinkAccess {
+    /**
+     * InfluxDB specific server provided values
+     */
     influxdb?: string;
 }
 
 export interface ServiceInfluxdbUserConfigPublicAccess {
+    /**
+     * InfluxDB specific server provided values
+     */
     influxdb?: string;
 }
 
-export interface ServiceIntegrationDashboardUserConfig {
-}
-
 export interface ServiceIntegrationDatadogUserConfig {
+    /**
+     * Custom tags provided by user
+     */
     datadogTags?: outputs.ServiceIntegrationDatadogUserConfigDatadogTag[];
+    /**
+     * List of custom metrics
+     */
     excludeConsumerGroups?: string[];
+    /**
+     * List of topics to exclude
+     */
     excludeTopics?: string[];
+    /**
+     * List of custom metrics
+     */
     includeConsumerGroups?: string[];
+    /**
+     * List of topics to include
+     */
     includeTopics?: string[];
+    /**
+     * List of custom metrics
+     */
     kafkaCustomMetrics?: string[];
+    /**
+     * Maximum number of JMX metrics to send
+     */
     maxJmxMetrics?: string;
 }
 
@@ -7913,10 +5415,33 @@ export interface ServiceIntegrationDatadogUserConfigDatadogTag {
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfig {
+    /**
+     * Datadog API key
+     */
     datadogApiKey?: string;
+    /**
+     * Custom tags provided by user
+     */
     datadogTags?: outputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag[];
+    /**
+     * Disable consumer group metrics
+     */
     disableConsumerStats?: string;
+    /**
+     * Number of separate instances to fetch kafka consumer statistics with
+     */
+    kafkaConsumerCheckInstances?: string;
+    /**
+     * Number of seconds that datadog will wait to get consumer statistics from brokers
+     */
+    kafkaConsumerStatsTimeout?: string;
+    /**
+     * Maximum number of partition contexts to send
+     */
     maxPartitionContexts?: string;
+    /**
+     * Datadog intake site. Defaults to datadoghq.com
+     */
     site?: string;
 }
 
@@ -7926,105 +5451,219 @@ export interface ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
+    /**
+     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
+     */
     accessKey?: string;
+    /**
+     * AWS CloudWatch log group name
+     */
     logGroupName?: string;
+    /**
+     * AWS region
+     */
     region?: string;
+    /**
+     * AWS secret key
+     */
     secretKey?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
+    /**
+     * AWS access key. Required permissions are cloudwatch:PutMetricData
+     */
     accessKey?: string;
+    /**
+     * AWS CloudWatch Metrics Namespace
+     */
     namespace?: string;
+    /**
+     * AWS region
+     */
     region?: string;
+    /**
+     * AWS secret key
+     */
     secretKey?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
+    /**
+     * PEM encoded CA certificate
+     */
     ca?: string;
+    /**
+     * Maximum number of days of logs to keep
+     */
     indexDaysMax?: string;
+    /**
+     * Elasticsearch index prefix
+     */
     indexPrefix?: string;
+    /**
+     * Elasticsearch request timeout limit
+     */
     timeout?: string;
+    /**
+     * Elasticsearch connection URL
+     */
     url?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
+    /**
+     * Google Cloud Logging log id
+     */
     logId?: string;
+    /**
+     * GCP project id.
+     */
     projectId?: string;
+    /**
+     * Google Service Account Credentials
+     */
     serviceAccountCredentials?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
+    /**
+     * Bootstrap servers
+     */
     bootstrapServers?: string;
+    /**
+     * The list of SASL mechanisms enabled in the Kafka server.
+     */
     saslMechanism?: string;
+    /**
+     * Password for SASL PLAIN mechanism in the Kafka server.
+     */
     saslPlainPassword?: string;
+    /**
+     * Username for SASL PLAIN mechanism in the Kafka server.
+     */
     saslPlainUsername?: string;
+    /**
+     * Security protocol
+     */
     securityProtocol?: string;
+    /**
+     * PEM-encoded CA certificate
+     */
     sslCaCert?: string;
+    /**
+     * PEM-encoded client certificate
+     */
     sslClientCert?: string;
+    /**
+     * PEM-encoded client key
+     */
     sslClientKey?: string;
+    /**
+     * The endpoint identification algorithm to validate server hostname using server certificate.
+     */
     sslEndpointIdentificationAlgorithm?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
+    /**
+     * Authentication method
+     */
     authentication?: string;
+    /**
+     * Basic authentication password
+     */
     basicAuthPassword?: string;
+    /**
+     * Basic authentication user name
+     */
     basicAuthUsername?: string;
+    /**
+     * Schema Registry URL
+     */
     url?: string;
 }
 
 export interface ServiceIntegrationEndpointJolokiaUserConfig {
+    /**
+     * Jolokia basic authentication password
+     */
     basicAuthPassword?: string;
+    /**
+     * Jolokia basic authentication username
+     */
     basicAuthUsername?: string;
 }
 
 export interface ServiceIntegrationEndpointPrometheusUserConfig {
+    /**
+     * Prometheus basic authentication password
+     */
     basicAuthPassword?: string;
+    /**
+     * Prometheus basic authentication username
+     */
     basicAuthUsername?: string;
 }
 
 export interface ServiceIntegrationEndpointRsyslogUserConfig {
+    /**
+     * PEM encoded CA certificate
+     */
     ca?: string;
+    /**
+     * PEM encoded client certificate
+     */
     cert?: string;
+    /**
+     * message format
+     */
     format?: string;
+    /**
+     * PEM encoded client key
+     */
     key?: string;
+    /**
+     * custom syslog message format
+     */
     logline?: string;
+    /**
+     * rsyslog server port
+     */
     port?: string;
+    /**
+     * Structured data block for log message
+     */
     sd?: string;
+    /**
+     * rsyslog server IP address or hostname
+     */
     server?: string;
+    /**
+     * Require TLS
+     */
     tls?: string;
 }
 
 export interface ServiceIntegrationEndpointSignalfxUserConfig {
+    /**
+     * list of metrics to send
+     */
     enabledMetrics?: string[];
+    /**
+     * SignalFX API key
+     */
     signalfxApiKey?: string;
+    /**
+     * SignalFX realm
+     */
     signalfxRealm?: string;
 }
 
-export interface ServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
-}
-
-export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
-    droppedMetrics?: outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric[];
-    extraMetrics?: outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric[];
-}
-
-export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
-    field?: string;
-    metric?: string;
-}
-
-export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
-    field?: string;
-    metric?: string;
-}
-
-export interface ServiceIntegrationExternalElasticsearchLogsUserConfig {
-}
-
-export interface ServiceIntegrationExternalGoogleCloudLoggingUserConfig {
-}
-
 export interface ServiceIntegrationKafkaConnectUserConfig {
+    /**
+     * Kafka Connect service configuration values
+     */
     kafkaConnect?: outputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnect;
 }
 
@@ -8036,29 +5675,62 @@ export interface ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
 }
 
 export interface ServiceIntegrationKafkaLogsUserConfig {
+    /**
+     * Topic name
+     */
     kafkaTopic?: string;
 }
 
 export interface ServiceIntegrationKafkaMirrormakerUserConfig {
+    /**
+     * Kafka cluster alias
+     */
     clusterAlias?: string;
+    /**
+     * Kafka MirrorMaker configuration values
+     */
+    kafkaMirrormaker?: outputs.ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker;
+}
+
+export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
+    consumerFetchMinBytes?: string;
+    producerBatchSize?: string;
+    producerBufferMemory?: string;
+    producerLingerMs?: string;
+    producerMaxRequestSize?: string;
 }
 
 export interface ServiceIntegrationLogsUserConfig {
+    /**
+     * Elasticsearch index retention limit
+     */
     elasticsearchIndexDaysMax?: string;
+    /**
+     * Elasticsearch index prefix
+     */
     elasticsearchIndexPrefix?: string;
 }
 
-export interface ServiceIntegrationM3aggregatorUserConfig {
-}
-
-export interface ServiceIntegrationM3coordinatorUserConfig {
-}
-
 export interface ServiceIntegrationMetricsUserConfig {
+    /**
+     * Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     */
     database?: string;
+    /**
+     * Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+     */
     retentionDays?: string;
+    /**
+     * Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     */
     roUsername?: string;
+    /**
+     * Configuration options for metrics where source service is MySQL
+     */
     sourceMysql?: outputs.ServiceIntegrationMetricsUserConfigSourceMysql;
+    /**
+     * Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     */
     username?: string;
 }
 
@@ -8084,10 +5756,16 @@ export interface ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
 }
 
 export interface ServiceIntegrationMirrormakerUserConfig {
+    /**
+     * Mirrormaker topic whitelist
+     */
     mirrormakerWhitelist?: string;
 }
 
 export interface ServiceIntegrationPrometheusUserConfig {
+    /**
+     * Configuration options for metrics where source service is MySQL
+     */
     sourceMysql?: outputs.ServiceIntegrationPrometheusUserConfigSourceMysql;
 }
 
@@ -8112,23 +5790,26 @@ export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
     perfEventsStatementsTimeLimit?: string;
 }
 
-export interface ServiceIntegrationReadReplicaUserConfig {
-}
-
-export interface ServiceIntegrationRsyslogUserConfig {
-}
-
-export interface ServiceIntegrationSchemaRegistryProxyUserConfig {
-}
-
-export interface ServiceIntegrationSignalfxUserConfig {
-}
-
 export interface ServiceKafka {
+    /**
+     * The Kafka client certificate
+     */
     accessCert: string;
+    /**
+     * The Kafka client certificate key
+     */
     accessKey: string;
+    /**
+     * The Kafka Connect URI, if any
+     */
     connectUri: string;
+    /**
+     * The Kafka REST URI, if any
+     */
     restUri: string;
+    /**
+     * The Schema Registry URI, if any
+     */
     schemaRegistryUri: string;
 }
 
@@ -8136,11 +5817,29 @@ export interface ServiceKafkaConnect {
 }
 
 export interface ServiceKafkaConnectUserConfig {
+    /**
+     * IP filter
+     */
     ipFilters?: string[];
+    /**
+     * Kafka Connect configuration values
+     */
     kafkaConnect?: outputs.ServiceKafkaConnectUserConfigKafkaConnect;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.ServiceKafkaConnectUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
     privatelinkAccess?: outputs.ServiceKafkaConnectUserConfigPrivatelinkAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.ServiceKafkaConnectUserConfigPublicAccess;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
@@ -8159,15 +5858,24 @@ export interface ServiceKafkaConnectUserConfigKafkaConnect {
 }
 
 export interface ServiceKafkaConnectUserConfigPrivateAccess {
+    /**
+     * Kafka Connect specific server provided values
+     */
     kafkaConnect?: string;
     prometheus?: string;
 }
 
 export interface ServiceKafkaConnectUserConfigPrivatelinkAccess {
+    /**
+     * Kafka Connect specific server provided values
+     */
     kafkaConnect?: string;
 }
 
 export interface ServiceKafkaConnectUserConfigPublicAccess {
+    /**
+     * Kafka Connect specific server provided values
+     */
     kafkaConnect?: string;
     prometheus?: string;
 }
@@ -8176,8 +5884,17 @@ export interface ServiceKafkaMirrormaker {
 }
 
 export interface ServiceKafkaMirrormakerUserConfig {
+    /**
+     * IP filter
+     */
     ipFilters?: string[];
+    /**
+     * Kafka MirrorMaker configuration values
+     */
     kafkaMirrormaker?: outputs.ServiceKafkaMirrormakerUserConfigKafkaMirrormaker;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
@@ -8195,20 +5912,65 @@ export interface ServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
 }
 
 export interface ServiceKafkaUserConfig {
+    /**
+     * Custom domain
+     */
     customDomain?: string;
+    /**
+     * IP filter
+     */
     ipFilters?: string[];
+    /**
+     * Kafka broker configuration values
+     */
     kafka?: outputs.ServiceKafkaUserConfigKafka;
+    /**
+     * Kafka authentication methods
+     */
     kafkaAuthenticationMethods?: outputs.ServiceKafkaUserConfigKafkaAuthenticationMethods;
+    /**
+     * Enable Kafka Connect service
+     */
     kafkaConnect?: string;
+    /**
+     * Kafka Connect configuration values
+     */
     kafkaConnectConfig?: outputs.ServiceKafkaUserConfigKafkaConnectConfig;
+    /**
+     * Enable Kafka-REST service
+     */
     kafkaRest?: string;
+    /**
+     * Kafka REST configuration
+     */
     kafkaRestConfig?: outputs.ServiceKafkaUserConfigKafkaRestConfig;
+    /**
+     * Kafka major version
+     */
     kafkaVersion?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.ServiceKafkaUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
     privatelinkAccess?: outputs.ServiceKafkaUserConfigPrivatelinkAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.ServiceKafkaUserConfigPublicAccess;
+    /**
+     * Enable Schema-Registry service
+     */
     schemaRegistry?: string;
+    /**
+     * Schema Registry configuration
+     */
     schemaRegistryConfig?: outputs.ServiceKafkaUserConfigSchemaRegistryConfig;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
@@ -8287,14 +6049,26 @@ export interface ServiceKafkaUserConfigPrivateAccess {
 }
 
 export interface ServiceKafkaUserConfigPrivatelinkAccess {
+    /**
+     * Kafka specific server provided values
+     */
     kafka?: string;
+    /**
+     * Kafka Connect specific server provided values
+     */
     kafkaConnect?: string;
     kafkaRest?: string;
     schemaRegistry?: string;
 }
 
 export interface ServiceKafkaUserConfigPublicAccess {
+    /**
+     * Kafka specific server provided values
+     */
     kafka?: string;
+    /**
+     * Kafka Connect specific server provided values
+     */
     kafkaConnect?: string;
     kafkaRest?: string;
     prometheus?: string;
@@ -8310,21 +6084,69 @@ export interface ServiceMysql {
 }
 
 export interface ServiceMysqlUserConfig {
+    /**
+     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+     */
     adminPassword?: string;
+    /**
+     * Custom username for admin user. This must be set only when a new service is being created.
+     */
     adminUsername?: string;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     */
     backupHour?: string;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     */
     backupMinute?: string;
+    /**
+     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+     */
     binlogRetentionPeriod?: string;
+    /**
+     * IP filter
+     */
     ipFilters?: string[];
+    /**
+     * Migrate data from existing server
+     */
     migration?: outputs.ServiceMysqlUserConfigMigration;
+    /**
+     * mysql.conf configuration values
+     */
     mysql?: outputs.ServiceMysqlUserConfigMysql;
+    /**
+     * MySQL major version
+     */
     mysqlVersion?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.ServiceMysqlUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
     privatelinkAccess?: outputs.ServiceMysqlUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
     projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.ServiceMysqlUserConfigPublicAccess;
+    /**
+     * Recovery target time when forking a service. This has effect only when a new service is being created.
+     */
     recoveryTargetTime?: string;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
@@ -8332,6 +6154,7 @@ export interface ServiceMysqlUserConfigMigration {
     dbname?: string;
     host?: string;
     ignoreDbs?: string;
+    method?: string;
     password?: string;
     port?: string;
     ssl?: string;
@@ -8366,17 +6189,26 @@ export interface ServiceMysqlUserConfigMysql {
 }
 
 export interface ServiceMysqlUserConfigPrivateAccess {
+    /**
+     * MySQL specific server provided values
+     */
     mysql?: string;
     mysqlx?: string;
     prometheus?: string;
 }
 
 export interface ServiceMysqlUserConfigPrivatelinkAccess {
+    /**
+     * MySQL specific server provided values
+     */
     mysql?: string;
     mysqlx?: string;
 }
 
 export interface ServiceMysqlUserConfigPublicAccess {
+    /**
+     * MySQL specific server provided values
+     */
     mysql?: string;
     mysqlx?: string;
     prometheus?: string;
@@ -8387,22 +6219,73 @@ export interface ServiceOpensearch {
 }
 
 export interface ServiceOpensearchUserConfig {
+    /**
+     * Custom domain
+     */
     customDomain?: string;
+    /**
+     * Disable replication factor adjustment
+     */
     disableReplicationFactorAdjustment?: string;
+    /**
+     * Index patterns
+     */
     indexPatterns?: outputs.ServiceOpensearchUserConfigIndexPattern[];
+    /**
+     * Template settings for all new indexes
+     */
     indexTemplate?: outputs.ServiceOpensearchUserConfigIndexTemplate;
+    /**
+     * IP filter
+     */
     ipFilters?: string[];
+    /**
+     * Don't reset index.refresh_interval to the default value
+     */
     keepIndexRefreshInterval?: string;
+    /**
+     * Maximum index count
+     */
     maxIndexCount?: string;
+    /**
+     * OpenSearch settings
+     */
     opensearch?: outputs.ServiceOpensearchUserConfigOpensearch;
+    /**
+     * OpenSearch Dashboards settings
+     */
     opensearchDashboards?: outputs.ServiceOpensearchUserConfigOpensearchDashboards;
+    /**
+     * OpenSearch major version
+     */
     opensearchVersion?: string;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.ServiceOpensearchUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
     privatelinkAccess?: outputs.ServiceOpensearchUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
     projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.ServiceOpensearchUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
@@ -8429,6 +6312,7 @@ export interface ServiceOpensearchUserConfigOpensearch {
     indicesMemoryIndexBufferSize?: string;
     indicesQueriesCacheSize?: string;
     indicesQueryBoolMaxClauseCount?: string;
+    overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
     searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
@@ -8452,17 +6336,26 @@ export interface ServiceOpensearchUserConfigOpensearchDashboards {
 }
 
 export interface ServiceOpensearchUserConfigPrivateAccess {
+    /**
+     * Opensearch specific server provided values
+     */
     opensearch?: string;
     opensearchDashboards?: string;
     prometheus?: string;
 }
 
 export interface ServiceOpensearchUserConfigPrivatelinkAccess {
+    /**
+     * Opensearch specific server provided values
+     */
     opensearch?: string;
     opensearchDashboards?: string;
 }
 
 export interface ServiceOpensearchUserConfigPublicAccess {
+    /**
+     * Opensearch specific server provided values
+     */
     opensearch?: string;
     opensearchDashboards?: string;
     prometheus?: string;
@@ -8480,29 +6373,101 @@ export interface ServicePg {
 }
 
 export interface ServicePgUserConfig {
+    /**
+     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+     */
     adminPassword?: string;
+    /**
+     * Custom username for admin user. This must be set only when a new service is being created.
+     */
     adminUsername?: string;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     */
     backupHour?: string;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     */
     backupMinute?: string;
+    /**
+     * IP filter
+     */
     ipFilters?: string[];
+    /**
+     * Migrate data from existing server
+     */
     migration?: outputs.ServicePgUserConfigMigration;
+    /**
+     * postgresql.conf configuration values
+     */
     pg?: outputs.ServicePgUserConfigPg;
+    /**
+     * Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
+     */
     pgReadReplica?: string;
+    /**
+     * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+     */
     pgServiceToForkFrom?: string;
+    /**
+     * PostgreSQL major version
+     */
     pgVersion?: string;
+    /**
+     * PGBouncer connection pooling settings
+     */
     pgbouncer?: outputs.ServicePgUserConfigPgbouncer;
+    /**
+     * PGLookout settings
+     */
     pglookout?: outputs.ServicePgUserConfigPglookout;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.ServicePgUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
     privatelinkAccess?: outputs.ServicePgUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
     projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.ServicePgUserConfigPublicAccess;
+    /**
+     * Recovery target time when forking a service. This has effect only when a new service is being created.
+     */
     recoveryTargetTime?: string;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * shared*buffers*percentage
+     */
     sharedBuffersPercentage?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
+    /**
+     * Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     */
     synchronousReplication?: string;
+    /**
+     * TimescaleDB extension configuration values
+     */
     timescaledb?: outputs.ServicePgUserConfigTimescaledb;
+    /**
+     * Variant of the PostgreSQL service, may affect the features that are exposed by default
+     */
     variant?: string;
+    /**
+     * work_mem
+     */
     workMem?: string;
 }
 
@@ -8510,6 +6475,7 @@ export interface ServicePgUserConfigMigration {
     dbname?: string;
     host?: string;
     ignoreDbs?: string;
+    method?: string;
     password?: string;
     port?: string;
     ssl?: string;
@@ -8531,6 +6497,7 @@ export interface ServicePgUserConfigPg {
     bgwriterLruMaxpages?: string;
     bgwriterLruMultiplier?: string;
     deadlockTimeout?: string;
+    defaultToastCompression?: string;
     idleInTransactionSessionTimeout?: string;
     jit?: string;
     logAutovacuumMinDuration?: string;
@@ -8545,6 +6512,7 @@ export interface ServicePgUserConfigPg {
     maxPredLocksPerTransaction?: string;
     maxPreparedTransactions?: string;
     maxReplicationSlots?: string;
+    maxSlotWalKeepSize?: string;
     maxStackDepth?: string;
     maxStandbyArchiveDelay?: string;
     maxStandbyStreamingDelay?: string;
@@ -8580,17 +6548,26 @@ export interface ServicePgUserConfigPglookout {
 }
 
 export interface ServicePgUserConfigPrivateAccess {
+    /**
+     * PostgreSQL specific server provided values
+     */
     pg?: string;
     pgbouncer?: string;
     prometheus?: string;
 }
 
 export interface ServicePgUserConfigPrivatelinkAccess {
+    /**
+     * PostgreSQL specific server provided values
+     */
     pg?: string;
     pgbouncer?: string;
 }
 
 export interface ServicePgUserConfigPublicAccess {
+    /**
+     * PostgreSQL specific server provided values
+     */
     pg?: string;
     pgbouncer?: string;
     prometheus?: string;
@@ -8600,29 +6577,89 @@ export interface ServicePgUserConfigTimescaledb {
     maxBackgroundWorkers?: string;
 }
 
-export interface ServiceRedis {
+export interface ServiceRedi {
 }
 
 export interface ServiceRedisUserConfig {
+    /**
+     * IP filter
+     */
     ipFilters?: string[];
+    /**
+     * Migrate data from existing server
+     */
     migration?: outputs.ServiceRedisUserConfigMigration;
+    /**
+     * Allow access to selected service ports from private networks
+     */
     privateAccess?: outputs.ServiceRedisUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
     privatelinkAccess?: outputs.ServiceRedisUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
     projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
     publicAccess?: outputs.ServiceRedisUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service
+     */
     recoveryBasebackupName?: string;
+    /**
+     * Default ACL for pub/sub channels used when Redis user is created
+     */
     redisAclChannelsDefault?: string;
+    /**
+     * Redis IO thread count
+     */
     redisIoThreads?: string;
+    /**
+     * LFU maxmemory-policy counter decay time in minutes
+     */
     redisLfuDecayTime?: string;
+    /**
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
+     */
     redisLfuLogFactor?: string;
+    /**
+     * Redis maxmemory-policy
+     */
     redisMaxmemoryPolicy?: string;
+    /**
+     * Set notify-keyspace-events option
+     */
     redisNotifyKeyspaceEvents?: string;
+    /**
+     * Number of redis databases
+     */
     redisNumberOfDatabases?: string;
+    /**
+     * Redis persistence
+     */
     redisPersistence?: string;
+    /**
+     * Pub/sub client output buffer hard limit in MB
+     */
     redisPubsubClientOutputBufferLimit?: string;
+    /**
+     * Require SSL to access Redis
+     */
     redisSsl?: string;
+    /**
+     * Redis idle connection timeout
+     */
     redisTimeout?: string;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
     serviceToForkFrom?: string;
+    /**
+     * Static IP addresses
+     */
     staticIps?: string;
 }
 
@@ -8630,6 +6667,7 @@ export interface ServiceRedisUserConfigMigration {
     dbname?: string;
     host?: string;
     ignoreDbs?: string;
+    method?: string;
     password?: string;
     port?: string;
     ssl?: string;
@@ -8638,19 +6676,34 @@ export interface ServiceRedisUserConfigMigration {
 
 export interface ServiceRedisUserConfigPrivateAccess {
     prometheus?: string;
+    /**
+     * Redis specific server provided values
+     */
     redis?: string;
 }
 
 export interface ServiceRedisUserConfigPrivatelinkAccess {
+    /**
+     * Redis specific server provided values
+     */
     redis?: string;
 }
 
 export interface ServiceRedisUserConfigPublicAccess {
     prometheus?: string;
+    /**
+     * Redis specific server provided values
+     */
     redis?: string;
 }
 
 export interface ServiceServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is 'read_replica'
+     */
     integrationType: string;
+    /**
+     * Name of the source service
+     */
     sourceServiceName: string;
 }

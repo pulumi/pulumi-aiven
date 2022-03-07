@@ -5,10 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # MirrorMaker 2 Replication Flow Data Source
- *
- * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2
- * Replication Flow on Aiven Cloud.
+ * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
  *
  * ## Example Usage
  *
@@ -31,17 +28,10 @@ export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlo
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", {
-        "emitHeartbeatsEnabled": args.emitHeartbeatsEnabled,
-        "enable": args.enable,
         "project": args.project,
-        "replicationPolicyClass": args.replicationPolicyClass,
         "serviceName": args.serviceName,
         "sourceCluster": args.sourceCluster,
-        "syncGroupOffsetsEnabled": args.syncGroupOffsetsEnabled,
-        "syncGroupOffsetsIntervalSeconds": args.syncGroupOffsetsIntervalSeconds,
         "targetCluster": args.targetCluster,
-        "topics": args.topics,
-        "topicsBlacklists": args.topicsBlacklists,
     }, opts);
 }
 
@@ -49,66 +39,76 @@ export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlo
  * A collection of arguments for invoking getMirrorMakerReplicationFlow.
  */
 export interface GetMirrorMakerReplicationFlowArgs {
-    emitHeartbeatsEnabled?: boolean;
     /**
-     * enable of disable replication flows for a MirrorMaker service
-     */
-    enable?: boolean;
-    /**
-     * and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication 
-     * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: string;
-    replicationPolicyClass?: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: string;
     /**
-     * is a source cluster alias.
+     * Source cluster alias. Maximum Length: `128`.
      */
     sourceCluster: string;
-    syncGroupOffsetsEnabled?: boolean;
-    syncGroupOffsetsIntervalSeconds?: number;
     /**
-     * is a target cluster alias.
+     * Target cluster alias. Maximum Length: `128`.
      */
     targetCluster: string;
-    /**
-     * is a list of topics and/or regular expressions to replicate.
-     */
-    topics?: string[];
-    /**
-     * is a list of topics and/or regular expressions to not replicate.
-     */
-    topicsBlacklists?: string[];
 }
 
 /**
  * A collection of values returned by getMirrorMakerReplicationFlow.
  */
 export interface GetMirrorMakerReplicationFlowResult {
-    readonly emitHeartbeatsEnabled?: boolean;
     /**
-     * enable of disable replication flows for a MirrorMaker service
+     * Emit heartbeats enabled. The default value is `false`.
      */
-    readonly enable?: boolean;
+    readonly emitHeartbeatsEnabled: boolean;
+    /**
+     * Enable of disable replication flows for a service.
+     */
+    readonly enable: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
-    readonly replicationPolicyClass?: string;
+    /**
+     * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+     */
+    readonly replicationPolicyClass: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
+    /**
+     * Source cluster alias. Maximum Length: `128`.
+     */
     readonly sourceCluster: string;
-    readonly syncGroupOffsetsEnabled?: boolean;
-    readonly syncGroupOffsetsIntervalSeconds?: number;
+    /**
+     * Sync consumer group offsets. The default value is `false`.
+     */
+    readonly syncGroupOffsetsEnabled: boolean;
+    /**
+     * Frequency of consumer group offset sync. The default value is `1`.
+     */
+    readonly syncGroupOffsetsIntervalSeconds: number;
+    /**
+     * Target cluster alias. Maximum Length: `128`.
+     */
     readonly targetCluster: string;
     /**
-     * is a list of topics and/or regular expressions to replicate.
+     * List of topics and/or regular expressions to replicate
      */
-    readonly topics?: string[];
+    readonly topics: string[];
     /**
-     * is a list of topics and/or regular expressions to not replicate.
+     * List of topics and/or regular expressions to not replicate.
      */
-    readonly topicsBlacklists?: string[];
+    readonly topicsBlacklists: string[];
 }
 
 export function getMirrorMakerReplicationFlowOutput(args: GetMirrorMakerReplicationFlowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMirrorMakerReplicationFlowResult> {
@@ -119,34 +119,20 @@ export function getMirrorMakerReplicationFlowOutput(args: GetMirrorMakerReplicat
  * A collection of arguments for invoking getMirrorMakerReplicationFlow.
  */
 export interface GetMirrorMakerReplicationFlowOutputArgs {
-    emitHeartbeatsEnabled?: pulumi.Input<boolean>;
     /**
-     * enable of disable replication flows for a MirrorMaker service
-     */
-    enable?: pulumi.Input<boolean>;
-    /**
-     * and `serviceName` - (Required) define the project and service the Kafka MirrorMaker Replication 
-     * Flow belongs to. They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
-    replicationPolicyClass?: pulumi.Input<string>;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: pulumi.Input<string>;
     /**
-     * is a source cluster alias.
+     * Source cluster alias. Maximum Length: `128`.
      */
     sourceCluster: pulumi.Input<string>;
-    syncGroupOffsetsEnabled?: pulumi.Input<boolean>;
-    syncGroupOffsetsIntervalSeconds?: pulumi.Input<number>;
     /**
-     * is a target cluster alias.
+     * Target cluster alias. Maximum Length: `128`.
      */
     targetCluster: pulumi.Input<string>;
-    /**
-     * is a list of topics and/or regular expressions to replicate.
-     */
-    topics?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * is a list of topics and/or regular expressions to not replicate.
-     */
-    topicsBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
 }

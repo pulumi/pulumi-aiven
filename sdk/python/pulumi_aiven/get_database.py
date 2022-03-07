@@ -46,6 +46,9 @@ class GetDatabaseResult:
     @property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> str:
+        """
+        The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "database_name")
 
     @property
@@ -58,33 +61,39 @@ class GetDatabaseResult:
 
     @property
     @pulumi.getter(name="lcCollate")
-    def lc_collate(self) -> Optional[str]:
+    def lc_collate(self) -> str:
         """
-        default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "lc_collate")
 
     @property
     @pulumi.getter(name="lcCtype")
-    def lc_ctype(self) -> Optional[str]:
+    def lc_ctype(self) -> str:
         """
-        default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "lc_ctype")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> Optional[bool]:
+    def termination_protection(self) -> bool:
         return pulumi.get(self, "termination_protection")
 
 
@@ -104,15 +113,10 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
 
 
 def get_database(database_name: Optional[str] = None,
-                 lc_collate: Optional[str] = None,
-                 lc_ctype: Optional[str] = None,
                  project: Optional[str] = None,
                  service_name: Optional[str] = None,
-                 termination_protection: Optional[bool] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseResult:
     """
-    ## # Database Data Source
-
     The Database data source provides information about the existing Aiven Database.
 
     ## Example Usage
@@ -127,19 +131,14 @@ def get_database(database_name: Optional[str] = None,
     ```
 
 
-    :param str database_name: is the actual name of the database.
-    :param str lc_collate: default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
-    :param str lc_ctype: default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
-    :param str project: and `service_name` - (Required) define the project and service the database belongs to.
-           They should be defined using reference as shown above to set up dependencies correctly.
+    :param str database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['databaseName'] = database_name
-    __args__['lcCollate'] = lc_collate
-    __args__['lcCtype'] = lc_ctype
     __args__['project'] = project
     __args__['serviceName'] = service_name
-    __args__['terminationProtection'] = termination_protection
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -158,15 +157,10 @@ def get_database(database_name: Optional[str] = None,
 
 @_utilities.lift_output_func(get_database)
 def get_database_output(database_name: Optional[pulumi.Input[str]] = None,
-                        lc_collate: Optional[pulumi.Input[Optional[str]]] = None,
-                        lc_ctype: Optional[pulumi.Input[Optional[str]]] = None,
                         project: Optional[pulumi.Input[str]] = None,
                         service_name: Optional[pulumi.Input[str]] = None,
-                        termination_protection: Optional[pulumi.Input[Optional[bool]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseResult]:
     """
-    ## # Database Data Source
-
     The Database data source provides information about the existing Aiven Database.
 
     ## Example Usage
@@ -181,10 +175,8 @@ def get_database_output(database_name: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str database_name: is the actual name of the database.
-    :param str lc_collate: default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
-    :param str lc_ctype: default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
-    :param str project: and `service_name` - (Required) define the project and service the database belongs to.
-           They should be defined using reference as shown above to set up dependencies correctly.
+    :param str database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

@@ -10,49 +10,79 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Kafka Schema Resource
-    /// 
     /// The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var kafka_schema1 = new Aiven.KafkaSchema("kafka-schema1", new Aiven.KafkaSchemaArgs
+    ///         {
+    ///             Project = aiven_project.Kafka_schemas_project1.Project,
+    ///             ServiceName = aiven_kafka.Kafka_service1.Service_name,
+    ///             SubjectName = "kafka-schema1",
+    ///             CompatibilityLevel = "FORWARD",
+    ///             Schema = @"    {
+    ///        ""doc"": ""example"",
+    ///        ""fields"": [{
+    ///            ""default"": 5,
+    ///            ""doc"": ""my test number"",
+    ///            ""name"": ""test"",
+    ///            ""namespace"": ""test"",
+    ///            ""type"": ""int""
+    ///        }],
+    ///        ""name"": ""example"",
+    ///        ""namespace"": ""example"",
+    ///        ""type"": ""record""
+    ///     }
+    /// ",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaSchema:KafkaSchema")]
     public partial class KafkaSchema : Pulumi.CustomResource
     {
         /// <summary>
-        /// configuration compatibility level overrides specific subject
-        /// resource. If the compatibility level not specified for the individual subject by default,
-        /// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-        /// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        /// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         /// </summary>
         [Output("compatibilityLevel")]
         public Output<string?> CompatibilityLevel { get; private set; } = null!;
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// is Kafka Schema configuration should be a valid Avro Schema JSON format.
+        /// Kafka Schema configuration should be a valid Avro Schema JSON format.
         /// </summary>
         [Output("schema")]
         public Output<string> Schema { get; private set; } = null!;
 
         /// <summary>
-        /// Service to link the Kafka Schema to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// is Kafka Schema subject name.
+        /// The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("subjectName")]
         public Output<string> SubjectName { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Schema configuration version
+        /// Kafka Schema configuration version.
         /// </summary>
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
@@ -104,35 +134,31 @@ namespace Pulumi.Aiven
     public sealed class KafkaSchemaArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// configuration compatibility level overrides specific subject
-        /// resource. If the compatibility level not specified for the individual subject by default,
-        /// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-        /// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        /// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         /// </summary>
         [Input("compatibilityLevel")]
         public Input<string>? CompatibilityLevel { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// is Kafka Schema configuration should be a valid Avro Schema JSON format.
+        /// Kafka Schema configuration should be a valid Avro Schema JSON format.
         /// </summary>
         [Input("schema", required: true)]
         public Input<string> Schema { get; set; } = null!;
 
         /// <summary>
-        /// Service to link the Kafka Schema to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// is Kafka Schema subject name.
+        /// The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("subjectName", required: true)]
         public Input<string> SubjectName { get; set; } = null!;
@@ -145,41 +171,37 @@ namespace Pulumi.Aiven
     public sealed class KafkaSchemaState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// configuration compatibility level overrides specific subject
-        /// resource. If the compatibility level not specified for the individual subject by default,
-        /// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-        /// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+        /// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         /// </summary>
         [Input("compatibilityLevel")]
         public Input<string>? CompatibilityLevel { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the Kafka Schemas belongs to. 
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// is Kafka Schema configuration should be a valid Avro Schema JSON format.
+        /// Kafka Schema configuration should be a valid Avro Schema JSON format.
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
         /// <summary>
-        /// Service to link the Kafka Schema to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// is Kafka Schema subject name.
+        /// The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("subjectName")]
         public Input<string>? SubjectName { get; set; }
 
         /// <summary>
-        /// Kafka Schema configuration version
+        /// Kafka Schema configuration version.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Billing Group Resource
-    /// 
     /// The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
     /// 
     /// ## Example Usage

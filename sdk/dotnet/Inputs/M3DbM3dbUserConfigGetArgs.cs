@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class M3DbM3dbUserConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// Custom domain
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// IP filter
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -36,19 +36,20 @@ namespace Pulumi.Aiven.Inputs
         [Input("limits")]
         public Input<Inputs.M3DbM3dbUserConfigLimitsGetArgs>? Limits { get; set; }
 
+        /// <summary>
+        /// M3 major version (deprecated, use m3db_version)
+        /// </summary>
         [Input("m3Version")]
         public Input<string>? M3Version { get; set; }
 
         /// <summary>
-        /// Enables access to Graphite Carbon 
-        /// plaintext metrics ingestion. It can be enabled only for services inside VPCs. The
-        /// metrics are written to aggregated namespaces only.
+        /// Enable Graphite ingestion using Carbon plaintext protocol
         /// </summary>
         [Input("m3coordinatorEnableGraphiteCarbonIngest")]
         public Input<string>? M3coordinatorEnableGraphiteCarbonIngest { get; set; }
 
         /// <summary>
-        /// M3 major version
+        /// M3 major version (the minimum compatible version)
         /// </summary>
         [Input("m3dbVersion")]
         public Input<string>? M3dbVersion { get; set; }
@@ -66,39 +67,38 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.M3DbM3dbUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
         /// <summary>
-        /// Name of another project to fork a service from. This has
-        /// effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
         /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.M3DbM3dbUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// Mapping rules allow more granular use of aggregation, not simply sending 
-        /// everything to a namespace. If mapping rules exist that target a namespace, only data matching mapping
-        /// rules will be sent to it and nothing else.
+        /// M3 rules
         /// </summary>
         [Input("rules")]
         public Input<Inputs.M3DbM3dbUserConfigRulesGetArgs>? Rules { get; set; }
 
         /// <summary>
-        /// Name of another service to fork from. This has effect only 
-        /// when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

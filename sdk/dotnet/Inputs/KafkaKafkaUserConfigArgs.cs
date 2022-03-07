@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// Custom domain
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// IP filter
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Enable kafka
+        /// Kafka broker configuration values
         /// </summary>
         [Input("kafka")]
         public Input<Inputs.KafkaKafkaUserConfigKafkaArgs>? Kafka { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs>? KafkaAuthenticationMethods { get; set; }
 
         /// <summary>
-        /// Enable kafka_connect
+        /// Enable Kafka Connect service
         /// </summary>
         [Input("kafkaConnect")]
         public Input<string>? KafkaConnect { get; set; }
@@ -55,13 +55,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaKafkaUserConfigKafkaConnectConfigArgs>? KafkaConnectConfig { get; set; }
 
         /// <summary>
-        /// Enable kafka_rest
+        /// Enable Kafka-REST service
         /// </summary>
         [Input("kafkaRest")]
         public Input<string>? KafkaRest { get; set; }
 
         /// <summary>
-        /// Kafka-REST configuration
+        /// Kafka REST configuration
         /// </summary>
         [Input("kafkaRestConfig")]
         public Input<Inputs.KafkaKafkaUserConfigKafkaRestConfigArgs>? KafkaRestConfig { get; set; }
@@ -102,6 +102,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("schemaRegistryConfig")]
         public Input<Inputs.KafkaKafkaUserConfigSchemaRegistryConfigArgs>? SchemaRegistryConfig { get; set; }
 
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

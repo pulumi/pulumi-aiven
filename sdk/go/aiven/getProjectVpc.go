@@ -10,8 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Project VPC Data Source
-//
 // The Project VPC data source provides information about the existing Aiven Project VPC.
 //
 // ## Example Usage
@@ -48,28 +46,23 @@ func LookupProjectVpc(ctx *pulumi.Context, args *LookupProjectVpcArgs, opts ...p
 
 // A collection of arguments for invoking getProjectVpc.
 type LookupProjectVpcArgs struct {
-	// defines where the cloud provider and region where the service is hosted
-	// in. See the Service resource for additional information.
+	// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
 	CloudName string `pulumi:"cloudName"`
-	// defines the network CIDR of the VPC.
-	NetworkCidr *string `pulumi:"networkCidr"`
-	// defines the project the VPC belongs to.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// ia a computed property that tells the current state of the VPC. This property cannot be
-	// set, only read.
-	State *string `pulumi:"state"`
 }
 
 // A collection of values returned by getProjectVpc.
 type LookupProjectVpcResult struct {
+	// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
 	CloudName string `pulumi:"cloudName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// defines the network CIDR of the VPC.
-	NetworkCidr *string `pulumi:"networkCidr"`
-	Project     string  `pulumi:"project"`
-	// ia a computed property that tells the current state of the VPC. This property cannot be
-	// set, only read.
+	// Network address range used by the VPC like 192.168.0.0/24
+	NetworkCidr string `pulumi:"networkCidr"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
 	State string `pulumi:"state"`
 }
 
@@ -84,16 +77,10 @@ func LookupProjectVpcOutput(ctx *pulumi.Context, args LookupProjectVpcOutputArgs
 
 // A collection of arguments for invoking getProjectVpc.
 type LookupProjectVpcOutputArgs struct {
-	// defines where the cloud provider and region where the service is hosted
-	// in. See the Service resource for additional information.
+	// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
 	CloudName pulumi.StringInput `pulumi:"cloudName"`
-	// defines the network CIDR of the VPC.
-	NetworkCidr pulumi.StringPtrInput `pulumi:"networkCidr"`
-	// defines the project the VPC belongs to.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
-	// ia a computed property that tells the current state of the VPC. This property cannot be
-	// set, only read.
-	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
 func (LookupProjectVpcOutputArgs) ElementType() reflect.Type {
@@ -115,6 +102,7 @@ func (o LookupProjectVpcResultOutput) ToLookupProjectVpcResultOutputWithContext(
 	return o
 }
 
+// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupProjectVpcResultOutput) CloudName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.CloudName }).(pulumi.StringOutput)
 }
@@ -124,17 +112,17 @@ func (o LookupProjectVpcResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// defines the network CIDR of the VPC.
-func (o LookupProjectVpcResultOutput) NetworkCidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupProjectVpcResult) *string { return v.NetworkCidr }).(pulumi.StringPtrOutput)
+// Network address range used by the VPC like 192.168.0.0/24
+func (o LookupProjectVpcResultOutput) NetworkCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.NetworkCidr }).(pulumi.StringOutput)
 }
 
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupProjectVpcResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// ia a computed property that tells the current state of the VPC. This property cannot be
-// set, only read.
+// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
 func (o LookupProjectVpcResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.State }).(pulumi.StringOutput)
 }

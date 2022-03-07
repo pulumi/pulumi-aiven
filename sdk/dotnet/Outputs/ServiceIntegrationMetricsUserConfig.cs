@@ -13,10 +13,25 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationMetricsUserConfig
     {
+        /// <summary>
+        /// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+        /// </summary>
         public readonly string? Database;
+        /// <summary>
+        /// Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+        /// </summary>
         public readonly string? RetentionDays;
+        /// <summary>
+        /// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+        /// </summary>
         public readonly string? RoUsername;
+        /// <summary>
+        /// Configuration options for metrics where source service is MySQL
+        /// </summary>
         public readonly Outputs.ServiceIntegrationMetricsUserConfigSourceMysql? SourceMysql;
+        /// <summary>
+        /// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]

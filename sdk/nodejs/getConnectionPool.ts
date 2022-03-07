@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Connection Pool Data Source
- *
  * The Connection Pool data source provides information about the existing Aiven Connection Pool.
  *
  * ## Example Usage
@@ -29,14 +27,9 @@ export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.Inv
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getConnectionPool:getConnectionPool", {
-        "connectionUri": args.connectionUri,
-        "databaseName": args.databaseName,
-        "poolMode": args.poolMode,
         "poolName": args.poolName,
-        "poolSize": args.poolSize,
         "project": args.project,
         "serviceName": args.serviceName,
-        "username": args.username,
     }, opts);
 }
 
@@ -45,42 +38,17 @@ export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.Inv
  */
 export interface GetConnectionPoolArgs {
     /**
-     * is a computed property that tells the URI for connecting to the pool.
-     * This value cannot be set, only read.
-     */
-    connectionUri?: string;
-    /**
-     * is the name of the database the pool connects to. This should be
-     * defined using reference as shown above to set up dependencies correctly.
-     */
-    databaseName?: string;
-    /**
-     * is the mode the pool operates in (session, transaction, statement).
-     */
-    poolMode?: string;
-    /**
-     * is the name of the pool.
+     * The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
      */
     poolName: string;
     /**
-     * is the number of connections the pool may create towards the backend
-     * server. This does not affect the number of incoming connections, which is always a much
-     * larger number.
-     */
-    poolSize?: number;
-    /**
-     * and `serviceName` - (Required) define the project and service the connection pool
-     * belongs to. They should be defined using reference as shown above to set up dependencies
-     * correctly. These properties cannot be changed once the service is created. Doing so will
-     * result in the connection pool being deleted and new one created instead.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: string;
-    serviceName: string;
     /**
-     * is the name of the service user used to connect to the database. This should
-     * be defined using reference as shown above to set up dependencies correctly.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
-    username?: string;
+    serviceName: string;
 }
 
 /**
@@ -88,37 +56,41 @@ export interface GetConnectionPoolArgs {
  */
 export interface GetConnectionPoolResult {
     /**
-     * is a computed property that tells the URI for connecting to the pool.
-     * This value cannot be set, only read.
+     * The URI for connecting to the pool
      */
     readonly connectionUri: string;
     /**
-     * is the name of the database the pool connects to. This should be
-     * defined using reference as shown above to set up dependencies correctly.
+     * The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
-    readonly databaseName?: string;
+    readonly databaseName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * is the mode the pool operates in (session, transaction, statement).
+     * The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      */
-    readonly poolMode?: string;
+    readonly poolMode: string;
+    /**
+     * The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly poolName: string;
     /**
-     * is the number of connections the pool may create towards the backend
-     * server. This does not affect the number of incoming connections, which is always a much
-     * larger number.
+     * The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
      */
-    readonly poolSize?: number;
+    readonly poolSize: number;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
     /**
-     * is the name of the service user used to connect to the database. This should
-     * be defined using reference as shown above to set up dependencies correctly.
+     * The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
      */
-    readonly username?: string;
+    readonly username: string;
 }
 
 export function getConnectionPoolOutput(args: GetConnectionPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionPoolResult> {
@@ -130,40 +102,15 @@ export function getConnectionPoolOutput(args: GetConnectionPoolOutputArgs, opts?
  */
 export interface GetConnectionPoolOutputArgs {
     /**
-     * is a computed property that tells the URI for connecting to the pool.
-     * This value cannot be set, only read.
-     */
-    connectionUri?: pulumi.Input<string>;
-    /**
-     * is the name of the database the pool connects to. This should be
-     * defined using reference as shown above to set up dependencies correctly.
-     */
-    databaseName?: pulumi.Input<string>;
-    /**
-     * is the mode the pool operates in (session, transaction, statement).
-     */
-    poolMode?: pulumi.Input<string>;
-    /**
-     * is the name of the pool.
+     * The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
      */
     poolName: pulumi.Input<string>;
     /**
-     * is the number of connections the pool may create towards the backend
-     * server. This does not affect the number of incoming connections, which is always a much
-     * larger number.
-     */
-    poolSize?: pulumi.Input<number>;
-    /**
-     * and `serviceName` - (Required) define the project and service the connection pool
-     * belongs to. They should be defined using reference as shown above to set up dependencies
-     * correctly. These properties cannot be changed once the service is created. Doing so will
-     * result in the connection pool being deleted and new one created instead.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
-    serviceName: pulumi.Input<string>;
     /**
-     * is the name of the service user used to connect to the database. This should
-     * be defined using reference as shown above to set up dependencies correctly.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
-    username?: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
 }

@@ -12,37 +12,18 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Controls how long we wait before expiring stale data
-        /// </summary>
         [Input("blockDataExpiryDuration")]
         public Input<string>? BlockDataExpiryDuration { get; set; }
 
-        /// <summary>
-        /// Controls how long to keep a block in memory before 
-        /// flushing to a fileset on disk
-        /// </summary>
         [Input("blocksizeDuration")]
         public Input<string>? BlocksizeDuration { get; set; }
 
-        /// <summary>
-        /// Controls how far into the future writes to 
-        /// the namespace will be accepted
-        /// </summary>
         [Input("bufferFutureDuration")]
         public Input<string>? BufferFutureDuration { get; set; }
 
-        /// <summary>
-        /// Controls how far into the past writes to the 
-        /// namespace will be accepted
-        /// </summary>
         [Input("bufferPastDuration")]
         public Input<string>? BufferPastDuration { get; set; }
 
-        /// <summary>
-        /// Controls the duration of time that M3DB will 
-        /// retain data for the namespace
-        /// </summary>
         [Input("retentionPeriodDuration")]
         public Input<string>? RetentionPeriodDuration { get; set; }
 

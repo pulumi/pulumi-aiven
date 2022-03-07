@@ -11,22 +11,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Opensearch ACL Rule Resource
-//
 // The Opensearch ACL Rule resource models a single ACL Rule for an Aiven Opensearch service.
 type OpenSearchAclRule struct {
 	pulumi.CustomResourceState
 
-	// Elasticsearch index pattern
+	// The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
 	Index pulumi.StringOutput `pulumi:"index"`
-	// is the Opensearch permission, list of supported permissions:
-	// `deny`, `admin`, `read`, `readwrite`, `write`.
+	// The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
 	Permission pulumi.StringOutput `pulumi:"permission"`
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Service to link the Opensearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// and `index` - (Required) define the username and index the ACL rule should apply to.
+	// The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -74,30 +71,28 @@ func GetOpenSearchAclRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OpenSearchAclRule resources.
 type openSearchAclRuleState struct {
-	// Elasticsearch index pattern
+	// The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
 	Index *string `pulumi:"index"`
-	// is the Opensearch permission, list of supported permissions:
-	// `deny`, `admin`, `read`, `readwrite`, `write`.
+	// The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
 	Permission *string `pulumi:"permission"`
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Service to link the Opensearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// and `index` - (Required) define the username and index the ACL rule should apply to.
+	// The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
 type OpenSearchAclRuleState struct {
-	// Elasticsearch index pattern
+	// The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
 	Index pulumi.StringPtrInput
-	// is the Opensearch permission, list of supported permissions:
-	// `deny`, `admin`, `read`, `readwrite`, `write`.
+	// The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
 	Permission pulumi.StringPtrInput
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Service to link the Opensearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// and `index` - (Required) define the username and index the ACL rule should apply to.
+	// The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -106,31 +101,29 @@ func (OpenSearchAclRuleState) ElementType() reflect.Type {
 }
 
 type openSearchAclRuleArgs struct {
-	// Elasticsearch index pattern
+	// The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
 	Index string `pulumi:"index"`
-	// is the Opensearch permission, list of supported permissions:
-	// `deny`, `admin`, `read`, `readwrite`, `write`.
+	// The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
 	Permission string `pulumi:"permission"`
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Service to link the Opensearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// and `index` - (Required) define the username and index the ACL rule should apply to.
+	// The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a OpenSearchAclRule resource.
 type OpenSearchAclRuleArgs struct {
-	// Elasticsearch index pattern
+	// The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
 	Index pulumi.StringInput
-	// is the Opensearch permission, list of supported permissions:
-	// `deny`, `admin`, `read`, `readwrite`, `write`.
+	// The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
 	Permission pulumi.StringInput
-	// and `serviceName` - (Required) define the project and service the ACL belongs to.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Service to link the Opensearch ACLs to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// and `index` - (Required) define the username and index the ACL rule should apply to.
+	// The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringInput
 }
 

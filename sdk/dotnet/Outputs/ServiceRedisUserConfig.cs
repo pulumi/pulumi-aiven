@@ -13,25 +13,85 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceRedisUserConfig
     {
+        /// <summary>
+        /// IP filter
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Migrate data from existing server
+        /// </summary>
         public readonly Outputs.ServiceRedisUserConfigMigration? Migration;
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         public readonly Outputs.ServiceRedisUserConfigPrivateAccess? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
         public readonly Outputs.ServiceRedisUserConfigPrivatelinkAccess? PrivatelinkAccess;
+        /// <summary>
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// </summary>
         public readonly string? ProjectToForkFrom;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         public readonly Outputs.ServiceRedisUserConfigPublicAccess? PublicAccess;
+        /// <summary>
+        /// Name of the basebackup to restore in forked service
+        /// </summary>
         public readonly string? RecoveryBasebackupName;
+        /// <summary>
+        /// Default ACL for pub/sub channels used when Redis user is created
+        /// </summary>
         public readonly string? RedisAclChannelsDefault;
+        /// <summary>
+        /// Redis IO thread count
+        /// </summary>
         public readonly string? RedisIoThreads;
+        /// <summary>
+        /// LFU maxmemory-policy counter decay time in minutes
+        /// </summary>
         public readonly string? RedisLfuDecayTime;
+        /// <summary>
+        /// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
+        /// </summary>
         public readonly string? RedisLfuLogFactor;
+        /// <summary>
+        /// Redis maxmemory-policy
+        /// </summary>
         public readonly string? RedisMaxmemoryPolicy;
+        /// <summary>
+        /// Set notify-keyspace-events option
+        /// </summary>
         public readonly string? RedisNotifyKeyspaceEvents;
+        /// <summary>
+        /// Number of redis databases
+        /// </summary>
         public readonly string? RedisNumberOfDatabases;
+        /// <summary>
+        /// Redis persistence
+        /// </summary>
         public readonly string? RedisPersistence;
+        /// <summary>
+        /// Pub/sub client output buffer hard limit in MB
+        /// </summary>
         public readonly string? RedisPubsubClientOutputBufferLimit;
+        /// <summary>
+        /// Require SSL to access Redis
+        /// </summary>
         public readonly string? RedisSsl;
+        /// <summary>
+        /// Redis idle connection timeout
+        /// </summary>
         public readonly string? RedisTimeout;
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

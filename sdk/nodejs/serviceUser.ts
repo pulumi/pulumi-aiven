@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Service User Resource
- *
  * The Service User resource allows the creation and management of Aiven Service Users.
  *
  * ## Example Usage
@@ -21,8 +19,6 @@ import * as utilities from "./utilities";
  *     username: "<USERNAME>",
  * });
  * ```
- *
- * > **Note** The service user resource is not supported for Aiven Grafana services.
  */
 export class ServiceUser extends pulumi.CustomResource {
     /**
@@ -53,52 +49,55 @@ export class ServiceUser extends pulumi.CustomResource {
     }
 
     /**
-     * is the access certificate of the user (not applicable for all services).
+     * Access certificate for the user if applicable for the service in question
      */
     public /*out*/ readonly accessCert!: pulumi.Output<string>;
     /**
-     * is the access key of the user (not applicable for all services).
+     * Access certificate key for the user if applicable for the service in question
      */
     public /*out*/ readonly accessKey!: pulumi.Output<string>;
     /**
-     * Authentication details
+     * Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
      */
     public readonly authentication!: pulumi.Output<string | undefined>;
     /**
-     * Password of the user
+     * The password of the service user ( not applicable for all services ).
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
-     * using reference as shown above to set up dependencies correctly.
+     * Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    public readonly pgAllowReplication!: pulumi.Output<boolean | undefined>;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Redis specific field, defines command category rules.
+     * Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly redisAclCategories!: pulumi.Output<string[] | undefined>;
     /**
-     * Permitted pub/sub channel patterns
+     * Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly redisAclChannels!: pulumi.Output<string[] | undefined>;
     /**
-     * Redis specific field, defines rules for individual commands.
+     * Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly redisAclCommands!: pulumi.Output<string[] | undefined>;
     /**
-     * Redis specific field, defines key access rules.
+     * Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly redisAclKeys!: pulumi.Output<string[] | undefined>;
     /**
-     * Service to link the user to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * tells whether the user is primary account or regular account.
+     * Type of the user account. Tells wether the user is the primary account or a regular account.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * is the actual name of the user account.
+     * The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -119,6 +118,7 @@ export class ServiceUser extends pulumi.CustomResource {
             resourceInputs["accessKey"] = state ? state.accessKey : undefined;
             resourceInputs["authentication"] = state ? state.authentication : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["pgAllowReplication"] = state ? state.pgAllowReplication : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["redisAclCategories"] = state ? state.redisAclCategories : undefined;
             resourceInputs["redisAclChannels"] = state ? state.redisAclChannels : undefined;
@@ -140,6 +140,7 @@ export class ServiceUser extends pulumi.CustomResource {
             }
             resourceInputs["authentication"] = args ? args.authentication : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["pgAllowReplication"] = args ? args.pgAllowReplication : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["redisAclCategories"] = args ? args.redisAclCategories : undefined;
             resourceInputs["redisAclChannels"] = args ? args.redisAclChannels : undefined;
@@ -161,52 +162,55 @@ export class ServiceUser extends pulumi.CustomResource {
  */
 export interface ServiceUserState {
     /**
-     * is the access certificate of the user (not applicable for all services).
+     * Access certificate for the user if applicable for the service in question
      */
     accessCert?: pulumi.Input<string>;
     /**
-     * is the access key of the user (not applicable for all services).
+     * Access certificate key for the user if applicable for the service in question
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * Authentication details
+     * Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
      */
     authentication?: pulumi.Input<string>;
     /**
-     * Password of the user
+     * The password of the service user ( not applicable for all services ).
      */
     password?: pulumi.Input<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
-     * using reference as shown above to set up dependencies correctly.
+     * Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    pgAllowReplication?: pulumi.Input<boolean>;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Redis specific field, defines command category rules.
+     * Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
      */
     redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Permitted pub/sub channel patterns
+     * Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
      */
     redisAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Redis specific field, defines rules for individual commands.
+     * Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
      */
     redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Redis specific field, defines key access rules.
+     * Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
      */
     redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Service to link the user to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * tells whether the user is primary account or regular account.
+     * Type of the user account. Tells wether the user is the primary account or a regular account.
      */
     type?: pulumi.Input<string>;
     /**
-     * is the actual name of the user account.
+     * The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     username?: pulumi.Input<string>;
 }
@@ -216,40 +220,43 @@ export interface ServiceUserState {
  */
 export interface ServiceUserArgs {
     /**
-     * Authentication details
+     * Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
      */
     authentication?: pulumi.Input<string>;
     /**
-     * Password of the user
+     * The password of the service user ( not applicable for all services ).
      */
     password?: pulumi.Input<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
-     * using reference as shown above to set up dependencies correctly.
+     * Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    pgAllowReplication?: pulumi.Input<boolean>;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Redis specific field, defines command category rules.
+     * Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
      */
     redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Permitted pub/sub channel patterns
+     * Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
      */
     redisAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Redis specific field, defines rules for individual commands.
+     * Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
      */
     redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Redis specific field, defines key access rules.
+     * Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
      */
     redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Service to link the user to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * is the actual name of the user account.
+     * The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

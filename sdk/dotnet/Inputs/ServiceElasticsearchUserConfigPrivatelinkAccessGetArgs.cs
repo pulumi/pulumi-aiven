@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceElasticsearchUserConfigPrivatelinkAccessGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Elasticsearch specific server provided values
+        /// </summary>
         [Input("elasticsearch")]
         public Input<string>? Elasticsearch { get; set; }
 

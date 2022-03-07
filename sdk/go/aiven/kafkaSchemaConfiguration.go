@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Kafka Schema Configuration Resource
-//
 // The Kafka Schema Configuration resource allows the creation and management of Aiven Kafka Schema Configurations.
 //
 // ## Example Usage
@@ -42,17 +40,11 @@ import (
 type KafkaSchemaConfiguration struct {
 	pulumi.CustomResourceState
 
-	// is the Global Kafka Schema configuration compatibility level when defined
-	// for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-	// compatibility level can be overridden for a specific subject when used in `KafkaSchema`
-	// resource. If the compatibility level not specified for the individual subject by default,
-	// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-	// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
-	CompatibilityLevel pulumi.StringOutput `pulumi:"compatibilityLevel"`
-	// and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
+	CompatibilityLevel pulumi.StringPtrOutput `pulumi:"compatibilityLevel"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Service to link the Kafka Schemas Configuration to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -63,9 +55,6 @@ func NewKafkaSchemaConfiguration(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CompatibilityLevel == nil {
-		return nil, errors.New("invalid value for required argument 'CompatibilityLevel'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -94,32 +83,20 @@ func GetKafkaSchemaConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaSchemaConfiguration resources.
 type kafkaSchemaConfigurationState struct {
-	// is the Global Kafka Schema configuration compatibility level when defined
-	// for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-	// compatibility level can be overridden for a specific subject when used in `KafkaSchema`
-	// resource. If the compatibility level not specified for the individual subject by default,
-	// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-	// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+	// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
 	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
-	// and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Service to link the Kafka Schemas Configuration to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type KafkaSchemaConfigurationState struct {
-	// is the Global Kafka Schema configuration compatibility level when defined
-	// for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-	// compatibility level can be overridden for a specific subject when used in `KafkaSchema`
-	// resource. If the compatibility level not specified for the individual subject by default,
-	// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-	// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
+	// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
 	CompatibilityLevel pulumi.StringPtrInput
-	// and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Service to link the Kafka Schemas Configuration to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -128,33 +105,21 @@ func (KafkaSchemaConfigurationState) ElementType() reflect.Type {
 }
 
 type kafkaSchemaConfigurationArgs struct {
-	// is the Global Kafka Schema configuration compatibility level when defined
-	// for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-	// compatibility level can be overridden for a specific subject when used in `KafkaSchema`
-	// resource. If the compatibility level not specified for the individual subject by default,
-	// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-	// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
-	CompatibilityLevel string `pulumi:"compatibilityLevel"`
-	// and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
+	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Service to link the Kafka Schemas Configuration to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a KafkaSchemaConfiguration resource.
 type KafkaSchemaConfigurationArgs struct {
-	// is the Global Kafka Schema configuration compatibility level when defined
-	// for `KafkaSchemaConfiguration` resource. Also, Kafka Schema configuration
-	// compatibility level can be overridden for a specific subject when used in `KafkaSchema`
-	// resource. If the compatibility level not specified for the individual subject by default,
-	// it takes a global value. Allowed values: `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`,
-	// `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE`, `NONE`.
-	CompatibilityLevel pulumi.StringInput
-	// and `serviceName` - (Required) define the project and service the Kafka Schemas belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
+	CompatibilityLevel pulumi.StringPtrInput
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Service to link the Kafka Schemas Configuration to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
 }
 

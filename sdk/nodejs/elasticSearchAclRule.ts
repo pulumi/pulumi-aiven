@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Elasticsearch ACL Rule Resource
- *
  * The Elasticsearch ACL Rule resource models a single ACL Rule for an Aiven Elasticsearch service.
  *
  * ## Example Usage
@@ -99,24 +97,23 @@ export class ElasticSearchAclRule extends pulumi.CustomResource {
     }
 
     /**
-     * Elasticsearch index pattern
+     * The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly index!: pulumi.Output<string>;
     /**
-     * is the Elasticsearch permission, list of supported permissions: 
-     * `deny`, `admin`, `read`, `readwrite`, `write`.
+     * The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
      */
     public readonly permission!: pulumi.Output<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the ACL belongs to.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Service to link the Elasticsearch ACLs to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * and `index` - (Required) define the username and index the ACL rule should apply to.
+     * The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -171,24 +168,23 @@ export class ElasticSearchAclRule extends pulumi.CustomResource {
  */
 export interface ElasticSearchAclRuleState {
     /**
-     * Elasticsearch index pattern
+     * The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
      */
     index?: pulumi.Input<string>;
     /**
-     * is the Elasticsearch permission, list of supported permissions: 
-     * `deny`, `admin`, `read`, `readwrite`, `write`.
+     * The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
      */
     permission?: pulumi.Input<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the ACL belongs to.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Service to link the Elasticsearch ACLs to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * and `index` - (Required) define the username and index the ACL rule should apply to.
+     * The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     username?: pulumi.Input<string>;
 }
@@ -198,24 +194,23 @@ export interface ElasticSearchAclRuleState {
  */
 export interface ElasticSearchAclRuleArgs {
     /**
-     * Elasticsearch index pattern
+     * The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
      */
     index: pulumi.Input<string>;
     /**
-     * is the Elasticsearch permission, list of supported permissions: 
-     * `deny`, `admin`, `read`, `readwrite`, `write`.
+     * The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
      */
     permission: pulumi.Input<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the ACL belongs to.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Service to link the Elasticsearch ACLs to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * and `index` - (Required) define the username and index the ACL rule should apply to.
+     * The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

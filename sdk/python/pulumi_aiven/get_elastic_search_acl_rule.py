@@ -51,26 +51,41 @@ class GetElasticSearchAclRuleResult:
     @property
     @pulumi.getter
     def index(self) -> str:
+        """
+        The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "index")
 
     @property
     @pulumi.getter
     def permission(self) -> str:
+        """
+        The permission for the ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "username")
 
 
@@ -89,17 +104,33 @@ class AwaitableGetElasticSearchAclRuleResult(GetElasticSearchAclRuleResult):
 
 
 def get_elastic_search_acl_rule(index: Optional[str] = None,
-                                permission: Optional[str] = None,
                                 project: Optional[str] = None,
                                 service_name: Optional[str] = None,
                                 username: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetElasticSearchAclRuleResult:
     """
-    Use this data source to access information about an existing resource.
+    The Elasticsearch ACL Rule data source provides information about an existing Aiven Elasticsearch ACL Rule.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    es_acl_rule = aiven.get_elastic_search_acl_rule(project=aiven_elasticsearch_acl_config["es_acls_config"]["project"],
+        service_name=aiven_elasticsearch_acl_config["es_acls_config"]["service_name"],
+        username="<USERNAME>",
+        index="<INDEX>")
+    ```
+
+
+    :param str index: The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str username: The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['index'] = index
-    __args__['permission'] = permission
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['username'] = username
@@ -120,12 +151,29 @@ def get_elastic_search_acl_rule(index: Optional[str] = None,
 
 @_utilities.lift_output_func(get_elastic_search_acl_rule)
 def get_elastic_search_acl_rule_output(index: Optional[pulumi.Input[str]] = None,
-                                       permission: Optional[pulumi.Input[str]] = None,
                                        project: Optional[pulumi.Input[str]] = None,
                                        service_name: Optional[pulumi.Input[str]] = None,
                                        username: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetElasticSearchAclRuleResult]:
     """
-    Use this data source to access information about an existing resource.
+    The Elasticsearch ACL Rule data source provides information about an existing Aiven Elasticsearch ACL Rule.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    es_acl_rule = aiven.get_elastic_search_acl_rule(project=aiven_elasticsearch_acl_config["es_acls_config"]["project"],
+        service_name=aiven_elasticsearch_acl_config["es_acls_config"]["service_name"],
+        username="<USERNAME>",
+        index="<INDEX>")
+    ```
+
+
+    :param str index: The index pattern for the ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str username: The username for the ACL entry. Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

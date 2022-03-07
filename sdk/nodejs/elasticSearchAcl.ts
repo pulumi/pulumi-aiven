@@ -6,12 +6,9 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # Elasticsearch ACL Resource
+ * **This resource is deprecated, please use `aiven.ElasticSearchAclConfig`and `aiven.ElasticSearchAclRule`**
  *
- * ** This resource is deprecated, please use `aiven.ElasticSearchAclConfig` and `aiven.ElasticSearchAclRule` **
- *
- * The Elasticsearch ACL resource allows the creation and management of ACLs
- * for an Aiven Elasticsearch service.
+ * The Elasticsearch ACL resource allows the creation and management of ACLs for an Aiven Elasticsearch service.
  *
  * ## Example Usage
  *
@@ -88,22 +85,19 @@ export class ElasticSearchAcl extends pulumi.CustomResource {
      */
     public readonly acls!: pulumi.Output<outputs.ElasticSearchAclAcl[] | undefined>;
     /**
-     * enables of disables Elasticsearch ACL's.
+     * Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
-     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-     * these APIs as long as all operations only target indexes they have been granted access to.
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
      */
     public readonly extendedAcl!: pulumi.Output<boolean | undefined>;
     /**
-     * and `serviceName` - (Required) define the project and service the ACL belongs to. 
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Service to link the Elasticsearch ACLs to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -153,22 +147,19 @@ export interface ElasticSearchAclState {
      */
     acls?: pulumi.Input<pulumi.Input<inputs.ElasticSearchAclAcl>[]>;
     /**
-     * enables of disables Elasticsearch ACL's.
+     * Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
-     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-     * these APIs as long as all operations only target indexes they have been granted access to.
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
      */
     extendedAcl?: pulumi.Input<boolean>;
     /**
-     * and `serviceName` - (Required) define the project and service the ACL belongs to. 
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Service to link the Elasticsearch ACLs to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -182,22 +173,19 @@ export interface ElasticSearchAclArgs {
      */
     acls?: pulumi.Input<pulumi.Input<inputs.ElasticSearchAclAcl>[]>;
     /**
-     * enables of disables Elasticsearch ACL's.
+     * Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
-     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-     * these APIs as long as all operations only target indexes they have been granted access to.
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
      */
     extendedAcl?: pulumi.Input<boolean>;
     /**
-     * and `serviceName` - (Required) define the project and service the ACL belongs to. 
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Service to link the Elasticsearch ACLs to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

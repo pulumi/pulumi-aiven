@@ -10,9 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Opensearch ACL Config Resource
-    /// 
-    /// The Opensearch ACL Config resource allows the configuration of ACL management on an Aiven Opensearch service.
+    /// The Opensearch resource allows the creation and management of Aiven Opensearch services.
     /// 
     /// ## Example Usage
     /// 
@@ -24,12 +22,28 @@ namespace Pulumi.Aiven
     /// {
     ///     public MyStack()
     ///     {
-    ///         var os_acl_config = new Aiven.OpenSearchAclConfig("os-acl-config", new Aiven.OpenSearchAclConfigArgs
+    ///         var os1 = new Aiven.OpenSearch("os1", new Aiven.OpenSearchArgs
     ///         {
-    ///             Project = aiven_project.Os_project.Project,
-    ///             ServiceName = aiven_opensearch.Os.Service_name,
-    ///             Enabled = true,
-    ///             ExtendedAcl = false,
+    ///             Project = data.Aiven_project.Pr1.Project,
+    ///             CloudName = "google-europe-west1",
+    ///             Plan = "startup-4",
+    ///             ServiceName = "my-os1",
+    ///             MaintenanceWindowDow = "monday",
+    ///             MaintenanceWindowTime = "10:00:00",
+    ///             OpensearchUserConfig = new Aiven.Inputs.OpenSearchOpensearchUserConfigArgs
+    ///             {
+    ///                 OpensearchVersion = "1",
+    ///                 OpensearchDashboards = new Aiven.Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs
+    ///                 {
+    ///                     Enabled = "true",
+    ///                     OpensearchRequestTimeout = "30000",
+    ///                 },
+    ///                 PublicAccess = new Aiven.Inputs.OpenSearchOpensearchUserConfigPublicAccessArgs
+    ///                 {
+    ///                     Opensearch = "true",
+    ///                     OpensearchDashboards = "true",
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -40,28 +54,25 @@ namespace Pulumi.Aiven
     public partial class OpenSearchAclConfig : Pulumi.CustomResource
     {
         /// <summary>
-        /// enables of disables Opensearch ACL's.
+        /// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-        /// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as
-        /// long as all operations only target indexes they have been granted access to.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         /// </summary>
         [Output("extendedAcl")]
         public Output<bool?> ExtendedAcl { get; private set; } = null!;
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the ACL belongs to. They should be defined
-        /// using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Service to link the Opensearch ACLs to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -113,28 +124,25 @@ namespace Pulumi.Aiven
     public sealed class OpenSearchAclConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enables of disables Opensearch ACL's.
+        /// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-        /// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as
-        /// long as all operations only target indexes they have been granted access to.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         /// </summary>
         [Input("extendedAcl")]
         public Input<bool>? ExtendedAcl { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the ACL belongs to. They should be defined
-        /// using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Service to link the Opensearch ACLs to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -147,28 +155,25 @@ namespace Pulumi.Aiven
     public sealed class OpenSearchAclConfigState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enables of disables Opensearch ACL's.
+        /// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs
-        /// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as
-        /// long as all operations only target indexes they have been granted access to.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         /// </summary>
         [Input("extendedAcl")]
         public Input<bool>? ExtendedAcl { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the ACL belongs to. They should be defined
-        /// using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Service to link the Opensearch ACLs to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

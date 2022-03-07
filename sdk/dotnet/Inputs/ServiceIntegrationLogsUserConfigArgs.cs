@@ -12,9 +12,15 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationLogsUserConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Elasticsearch index retention limit
+        /// </summary>
         [Input("elasticsearchIndexDaysMax")]
         public Input<string>? ElasticsearchIndexDaysMax { get; set; }
 
+        /// <summary>
+        /// Elasticsearch index prefix
+        /// </summary>
         [Input("elasticsearchIndexPrefix")]
         public Input<string>? ElasticsearchIndexPrefix { get; set; }
 

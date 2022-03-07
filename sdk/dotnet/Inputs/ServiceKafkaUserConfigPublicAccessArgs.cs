@@ -12,9 +12,15 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceKafkaUserConfigPublicAccessArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Kafka specific server provided values
+        /// </summary>
         [Input("kafka")]
         public Input<string>? Kafka { get; set; }
 
+        /// <summary>
+        /// Kafka Connect specific server provided values
+        /// </summary>
         [Input("kafkaConnect")]
         public Input<string>? KafkaConnect { get; set; }
 

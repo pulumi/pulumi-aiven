@@ -15,6 +15,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("prometheus")]
         public Input<string>? Prometheus { get; set; }
 
+        /// <summary>
+        /// Redis specific server provided values
+        /// </summary>
         [Input("redis")]
         public Input<string>? Redis { get; set; }
 

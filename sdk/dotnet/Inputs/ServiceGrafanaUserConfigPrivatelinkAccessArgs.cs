@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceGrafanaUserConfigPrivatelinkAccessArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Grafana specific server provided values
+        /// </summary>
         [Input("grafana")]
         public Input<string>? Grafana { get; set; }
 

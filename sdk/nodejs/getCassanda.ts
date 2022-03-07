@@ -14,25 +14,8 @@ export function getCassanda(args: GetCassandaArgs, opts?: pulumi.InvokeOptions):
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getCassanda:getCassanda", {
-        "cassandra": args.cassandra,
-        "cassandraUserConfig": args.cassandraUserConfig,
-        "cloudName": args.cloudName,
-        "components": args.components,
-        "maintenanceWindowDow": args.maintenanceWindowDow,
-        "maintenanceWindowTime": args.maintenanceWindowTime,
-        "plan": args.plan,
         "project": args.project,
-        "projectVpcId": args.projectVpcId,
-        "serviceHost": args.serviceHost,
-        "serviceIntegrations": args.serviceIntegrations,
         "serviceName": args.serviceName,
-        "servicePassword": args.servicePassword,
-        "servicePort": args.servicePort,
-        "serviceType": args.serviceType,
-        "serviceUri": args.serviceUri,
-        "serviceUsername": args.serviceUsername,
-        "state": args.state,
-        "terminationProtection": args.terminationProtection,
     }, opts);
 }
 
@@ -40,46 +23,34 @@ export function getCassanda(args: GetCassandaArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getCassanda.
  */
 export interface GetCassandaArgs {
-    cassandra?: inputs.GetCassandaCassandra;
-    cassandraUserConfig?: inputs.GetCassandaCassandraUserConfig;
-    cloudName?: string;
-    components?: inputs.GetCassandaComponent[];
-    maintenanceWindowDow?: string;
-    maintenanceWindowTime?: string;
-    plan?: string;
     project: string;
-    projectVpcId?: string;
-    serviceHost?: string;
-    serviceIntegrations?: inputs.GetCassandaServiceIntegration[];
     serviceName: string;
-    servicePassword?: string;
-    servicePort?: number;
-    serviceType?: string;
-    serviceUri?: string;
-    serviceUsername?: string;
-    state?: string;
-    terminationProtection?: boolean;
 }
 
 /**
  * A collection of values returned by getCassanda.
  */
 export interface GetCassandaResult {
-    readonly cassandra: outputs.GetCassandaCassandra;
-    readonly cassandraUserConfig?: outputs.GetCassandaCassandraUserConfig;
-    readonly cloudName?: string;
+    readonly cassandraUserConfigs: outputs.GetCassandaCassandraUserConfig[];
+    readonly cassandras: outputs.GetCassandaCassandra[];
+    readonly cloudName: string;
     readonly components: outputs.GetCassandaComponent[];
+    readonly diskSpace: string;
+    readonly diskSpaceCap: string;
+    readonly diskSpaceDefault: string;
+    readonly diskSpaceStep: string;
+    readonly diskSpaceUsed: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly maintenanceWindowDow?: string;
-    readonly maintenanceWindowTime?: string;
-    readonly plan?: string;
+    readonly maintenanceWindowDow: string;
+    readonly maintenanceWindowTime: string;
+    readonly plan: string;
     readonly project: string;
-    readonly projectVpcId?: string;
+    readonly projectVpcId: string;
     readonly serviceHost: string;
-    readonly serviceIntegrations?: outputs.GetCassandaServiceIntegration[];
+    readonly serviceIntegrations: outputs.GetCassandaServiceIntegration[];
     readonly serviceName: string;
     readonly servicePassword: string;
     readonly servicePort: number;
@@ -87,7 +58,8 @@ export interface GetCassandaResult {
     readonly serviceUri: string;
     readonly serviceUsername: string;
     readonly state: string;
-    readonly terminationProtection?: boolean;
+    readonly staticIps: string[];
+    readonly terminationProtection: boolean;
 }
 
 export function getCassandaOutput(args: GetCassandaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandaResult> {
@@ -98,23 +70,6 @@ export function getCassandaOutput(args: GetCassandaOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getCassanda.
  */
 export interface GetCassandaOutputArgs {
-    cassandra?: pulumi.Input<inputs.GetCassandaCassandraArgs>;
-    cassandraUserConfig?: pulumi.Input<inputs.GetCassandaCassandraUserConfigArgs>;
-    cloudName?: pulumi.Input<string>;
-    components?: pulumi.Input<pulumi.Input<inputs.GetCassandaComponentArgs>[]>;
-    maintenanceWindowDow?: pulumi.Input<string>;
-    maintenanceWindowTime?: pulumi.Input<string>;
-    plan?: pulumi.Input<string>;
     project: pulumi.Input<string>;
-    projectVpcId?: pulumi.Input<string>;
-    serviceHost?: pulumi.Input<string>;
-    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.GetCassandaServiceIntegrationArgs>[]>;
     serviceName: pulumi.Input<string>;
-    servicePassword?: pulumi.Input<string>;
-    servicePort?: pulumi.Input<number>;
-    serviceType?: pulumi.Input<string>;
-    serviceUri?: pulumi.Input<string>;
-    serviceUsername?: pulumi.Input<string>;
-    state?: pulumi.Input<string>;
-    terminationProtection?: pulumi.Input<boolean>;
 }

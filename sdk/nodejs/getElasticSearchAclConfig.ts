@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The Elasticsearch ACL Config data source provides information about an existing Aiven Elasticsearch ACL Config.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const es-acl-config = aiven.getElasticSearchAclConfig({
+ *     project: aiven_project["es-project"].project,
+ *     serviceName: aiven_service.es.service_name,
+ * });
+ * ```
+ */
 export function getElasticSearchAclConfig(args: GetElasticSearchAclConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticSearchAclConfigResult> {
     if (!opts) {
         opts = {}
@@ -11,8 +26,6 @@ export function getElasticSearchAclConfig(args: GetElasticSearchAclConfigArgs, o
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getElasticSearchAclConfig:getElasticSearchAclConfig", {
-        "enabled": args.enabled,
-        "extendedAcl": args.extendedAcl,
         "project": args.project,
         "serviceName": args.serviceName,
     }, opts);
@@ -22,9 +35,13 @@ export function getElasticSearchAclConfig(args: GetElasticSearchAclConfigArgs, o
  * A collection of arguments for invoking getElasticSearchAclConfig.
  */
 export interface GetElasticSearchAclConfigArgs {
-    enabled?: boolean;
-    extendedAcl?: boolean;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: string;
 }
 
@@ -32,13 +49,25 @@ export interface GetElasticSearchAclConfigArgs {
  * A collection of values returned by getElasticSearchAclConfig.
  */
 export interface GetElasticSearchAclConfigResult {
-    readonly enabled?: boolean;
-    readonly extendedAcl?: boolean;
+    /**
+     * Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access The default value is `true`.
+     */
+    readonly enabled: boolean;
+    /**
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to The default value is `10`.
+     */
+    readonly extendedAcl: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
 }
 
@@ -50,8 +79,12 @@ export function getElasticSearchAclConfigOutput(args: GetElasticSearchAclConfigO
  * A collection of arguments for invoking getElasticSearchAclConfig.
  */
 export interface GetElasticSearchAclConfigOutputArgs {
-    enabled?: pulumi.Input<boolean>;
-    extendedAcl?: pulumi.Input<boolean>;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: pulumi.Input<string>;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: pulumi.Input<string>;
 }

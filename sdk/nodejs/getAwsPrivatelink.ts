@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # AWS Privatelink Data Source
- *
  * The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
  *
  * ## Example Usage
@@ -28,9 +26,6 @@ export function getAwsPrivatelink(args: GetAwsPrivatelinkArgs, opts?: pulumi.Inv
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getAwsPrivatelink:getAwsPrivatelink", {
-        "awsServiceId": args.awsServiceId,
-        "awsServiceName": args.awsServiceName,
-        "principals": args.principals,
         "project": args.project,
         "serviceName": args.serviceName,
     }, opts);
@@ -41,27 +36,11 @@ export function getAwsPrivatelink(args: GetAwsPrivatelinkArgs, opts?: pulumi.Inv
  */
 export interface GetAwsPrivatelinkArgs {
     /**
-     * AWS service ID.
-     */
-    awsServiceId?: string;
-    /**
-     * AWS service name.
-     */
-    awsServiceName?: string;
-    /**
-     * list of allowed principals
-     */
-    principals?: string[];
-    /**
-     * identifies the project the service belongs to. To set up proper dependency between the project
-     * and the service, refer to the project as shown in the above example. Project cannot be changed later without
-     * destroying and re-creating the service.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: string;
     /**
-     * specifies the actual name of the service. The name cannot be changed later without
-     * destroying and re-creating the service so name should be picked based on intended service usage rather than current
-     * attributes.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: string;
 }
@@ -71,11 +50,11 @@ export interface GetAwsPrivatelinkArgs {
  */
 export interface GetAwsPrivatelinkResult {
     /**
-     * AWS service ID.
+     * AWS service ID
      */
     readonly awsServiceId: string;
     /**
-     * AWS service name.
+     * AWS service name
      */
     readonly awsServiceName: string;
     /**
@@ -83,10 +62,16 @@ export interface GetAwsPrivatelinkResult {
      */
     readonly id: string;
     /**
-     * list of allowed principals
+     * List of allowed principals
      */
-    readonly principals?: string[];
+    readonly principals: string[];
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
 }
 
@@ -99,27 +84,11 @@ export function getAwsPrivatelinkOutput(args: GetAwsPrivatelinkOutputArgs, opts?
  */
 export interface GetAwsPrivatelinkOutputArgs {
     /**
-     * AWS service ID.
-     */
-    awsServiceId?: pulumi.Input<string>;
-    /**
-     * AWS service name.
-     */
-    awsServiceName?: pulumi.Input<string>;
-    /**
-     * list of allowed principals
-     */
-    principals?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * identifies the project the service belongs to. To set up proper dependency between the project
-     * and the service, refer to the project as shown in the above example. Project cannot be changed later without
-     * destroying and re-creating the service.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * specifies the actual name of the service. The name cannot be changed later without
-     * destroying and re-creating the service so name should be picked based on intended service usage rather than current
-     * attributes.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

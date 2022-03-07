@@ -13,69 +13,28 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetRedisRedisUserConfigResult
     {
-        /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Migrate data from existing server
-        /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigMigrationResult? Migration;
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigPrivateAccessResult? PrivateAccess;
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
-        /// <summary>
-        /// Name of another project to fork a service from. This has
-        /// effect only when a new service is being created.
-        /// </summary>
         public readonly string? ProjectToForkFrom;
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigPublicAccessResult? PublicAccess;
-        /// <summary>
-        /// Name of the basebackup to restore in forked service
-        /// </summary>
         public readonly string? RecoveryBasebackupName;
         public readonly string? RedisAclChannelsDefault;
-        /// <summary>
-        /// Redis IO thread count
-        /// * `redis_lfu_decay_time"` - LFU maxmemory-policy counter decay time in minutes
-        /// </summary>
         public readonly string? RedisIoThreads;
         public readonly string? RedisLfuDecayTime;
-        /// <summary>
-        /// Counter logarithm factor for volatile-lfu and allkeys-lfu 
-        /// maxmemory-policies
-        /// </summary>
         public readonly string? RedisLfuLogFactor;
-        /// <summary>
-        /// Redis maxmemory-policy
-        /// </summary>
         public readonly string? RedisMaxmemoryPolicy;
-        /// <summary>
-        /// Set notify-keyspace-events option
-        /// </summary>
         public readonly string? RedisNotifyKeyspaceEvents;
         public readonly string? RedisNumberOfDatabases;
         public readonly string? RedisPersistence;
         public readonly string? RedisPubsubClientOutputBufferLimit;
-        /// <summary>
-        /// Require SSL to access Redis
-        /// </summary>
         public readonly string? RedisSsl;
-        /// <summary>
-        /// Redis idle connection timeout
-        /// * `service_to_fork_from"` - Name of another service to fork from. This has effect only
-        /// when a new service is being created.
-        /// </summary>
         public readonly string? RedisTimeout;
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

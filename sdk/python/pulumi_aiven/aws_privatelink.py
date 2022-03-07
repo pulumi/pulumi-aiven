@@ -18,13 +18,9 @@ class AwsPrivatelinkArgs:
                  service_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a AwsPrivatelink resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: list of allowed principals
-        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency between the project
-               and the service, refer to the project as shown in the above example. Project cannot be changed later without
-               destroying and re-creating the service.
-        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed later without
-               destroying and re-creating the service so name should be picked based on intended service usage rather than current
-               attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: List of allowed principals
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         pulumi.set(__self__, "principals", principals)
         pulumi.set(__self__, "project", project)
@@ -34,7 +30,7 @@ class AwsPrivatelinkArgs:
     @pulumi.getter
     def principals(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        list of allowed principals
+        List of allowed principals
         """
         return pulumi.get(self, "principals")
 
@@ -46,9 +42,7 @@ class AwsPrivatelinkArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        identifies the project the service belongs to. To set up proper dependency between the project
-        and the service, refer to the project as shown in the above example. Project cannot be changed later without
-        destroying and re-creating the service.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -60,9 +54,7 @@ class AwsPrivatelinkArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        specifies the actual name of the service. The name cannot be changed later without
-        destroying and re-creating the service so name should be picked based on intended service usage rather than current
-        attributes.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -81,15 +73,11 @@ class _AwsPrivatelinkState:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AwsPrivatelink resources.
-        :param pulumi.Input[str] aws_service_id: AWS service ID.
-        :param pulumi.Input[str] aws_service_name: AWS service name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: list of allowed principals
-        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency between the project
-               and the service, refer to the project as shown in the above example. Project cannot be changed later without
-               destroying and re-creating the service.
-        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed later without
-               destroying and re-creating the service so name should be picked based on intended service usage rather than current
-               attributes.
+        :param pulumi.Input[str] aws_service_id: AWS service ID
+        :param pulumi.Input[str] aws_service_name: AWS service name
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: List of allowed principals
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         if aws_service_id is not None:
             pulumi.set(__self__, "aws_service_id", aws_service_id)
@@ -106,7 +94,7 @@ class _AwsPrivatelinkState:
     @pulumi.getter(name="awsServiceId")
     def aws_service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS service ID.
+        AWS service ID
         """
         return pulumi.get(self, "aws_service_id")
 
@@ -118,7 +106,7 @@ class _AwsPrivatelinkState:
     @pulumi.getter(name="awsServiceName")
     def aws_service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS service name.
+        AWS service name
         """
         return pulumi.get(self, "aws_service_name")
 
@@ -130,7 +118,7 @@ class _AwsPrivatelinkState:
     @pulumi.getter
     def principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of allowed principals
+        List of allowed principals
         """
         return pulumi.get(self, "principals")
 
@@ -142,9 +130,7 @@ class _AwsPrivatelinkState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        identifies the project the service belongs to. To set up proper dependency between the project
-        and the service, refer to the project as shown in the above example. Project cannot be changed later without
-        destroying and re-creating the service.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -156,9 +142,7 @@ class _AwsPrivatelinkState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        specifies the actual name of the service. The name cannot be changed later without
-        destroying and re-creating the service so name should be picked based on intended service usage rather than current
-        attributes.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -177,8 +161,6 @@ class AwsPrivatelink(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # AWS Privatelink Resource
-
         The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
 
         ## Example Usage
@@ -195,13 +177,9 @@ class AwsPrivatelink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: list of allowed principals
-        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency between the project
-               and the service, refer to the project as shown in the above example. Project cannot be changed later without
-               destroying and re-creating the service.
-        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed later without
-               destroying and re-creating the service so name should be picked based on intended service usage rather than current
-               attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: List of allowed principals
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         ...
     @overload
@@ -210,8 +188,6 @@ class AwsPrivatelink(pulumi.CustomResource):
                  args: AwsPrivatelinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # AWS Privatelink Resource
-
         The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
 
         ## Example Usage
@@ -289,15 +265,11 @@ class AwsPrivatelink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] aws_service_id: AWS service ID.
-        :param pulumi.Input[str] aws_service_name: AWS service name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: list of allowed principals
-        :param pulumi.Input[str] project: identifies the project the service belongs to. To set up proper dependency between the project
-               and the service, refer to the project as shown in the above example. Project cannot be changed later without
-               destroying and re-creating the service.
-        :param pulumi.Input[str] service_name: specifies the actual name of the service. The name cannot be changed later without
-               destroying and re-creating the service so name should be picked based on intended service usage rather than current
-               attributes.
+        :param pulumi.Input[str] aws_service_id: AWS service ID
+        :param pulumi.Input[str] aws_service_name: AWS service name
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: List of allowed principals
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -314,7 +286,7 @@ class AwsPrivatelink(pulumi.CustomResource):
     @pulumi.getter(name="awsServiceId")
     def aws_service_id(self) -> pulumi.Output[str]:
         """
-        AWS service ID.
+        AWS service ID
         """
         return pulumi.get(self, "aws_service_id")
 
@@ -322,7 +294,7 @@ class AwsPrivatelink(pulumi.CustomResource):
     @pulumi.getter(name="awsServiceName")
     def aws_service_name(self) -> pulumi.Output[str]:
         """
-        AWS service name.
+        AWS service name
         """
         return pulumi.get(self, "aws_service_name")
 
@@ -330,7 +302,7 @@ class AwsPrivatelink(pulumi.CustomResource):
     @pulumi.getter
     def principals(self) -> pulumi.Output[Sequence[str]]:
         """
-        list of allowed principals
+        List of allowed principals
         """
         return pulumi.get(self, "principals")
 
@@ -338,9 +310,7 @@ class AwsPrivatelink(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        identifies the project the service belongs to. To set up proper dependency between the project
-        and the service, refer to the project as shown in the above example. Project cannot be changed later without
-        destroying and re-creating the service.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -348,9 +318,7 @@ class AwsPrivatelink(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        specifies the actual name of the service. The name cannot be changed later without
-        destroying and re-creating the service so name should be picked based on intended service usage rather than current
-        attributes.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 

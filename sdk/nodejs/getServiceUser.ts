@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Service User Data Source
- *
  * The Service User data source provides information about the existing Aiven Service User.
  *
  * ## Example Usage
@@ -21,8 +19,6 @@ import * as utilities from "./utilities";
  *     username: "<USERNAME>",
  * });
  * ```
- *
- * > **Note** The service user data source is not supported for Aiven Grafana services.
  */
 export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceUserResult> {
     if (!opts) {
@@ -31,17 +27,8 @@ export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOpt
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getServiceUser:getServiceUser", {
-        "accessCert": args.accessCert,
-        "accessKey": args.accessKey,
-        "authentication": args.authentication,
-        "password": args.password,
         "project": args.project,
-        "redisAclCategories": args.redisAclCategories,
-        "redisAclChannels": args.redisAclChannels,
-        "redisAclCommands": args.redisAclCommands,
-        "redisAclKeys": args.redisAclKeys,
         "serviceName": args.serviceName,
-        "type": args.type,
         "username": args.username,
     }, opts);
 }
@@ -51,43 +38,15 @@ export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetServiceUserArgs {
     /**
-     * is the access certificate of the user (not applicable for all services).
-     */
-    accessCert?: string;
-    /**
-     * is the access key of the user (not applicable for all services).
-     */
-    accessKey?: string;
-    authentication?: string;
-    /**
-     * is the password of the user (not applicable for all services).
-     */
-    password?: string;
-    /**
-     * and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
-     * using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: string;
     /**
-     * Redis specific field, defines command category rules.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
-    redisAclCategories?: string[];
-    redisAclChannels?: string[];
-    /**
-     * Redis specific field, defines rules for individual commands.
-     */
-    redisAclCommands?: string[];
-    /**
-     * Redis specific field, defines key access rules.
-     */
-    redisAclKeys?: string[];
     serviceName: string;
     /**
-     * tells whether the user is primary account or regular account.
-     */
-    type?: string;
-    /**
-     * is the actual name of the user account.
+     * The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     username: string;
 }
@@ -97,41 +56,60 @@ export interface GetServiceUserArgs {
  */
 export interface GetServiceUserResult {
     /**
-     * is the access certificate of the user (not applicable for all services).
+     * Access certificate for the user if applicable for the service in question
      */
     readonly accessCert: string;
     /**
-     * is the access key of the user (not applicable for all services).
+     * Access certificate key for the user if applicable for the service in question
      */
     readonly accessKey: string;
-    readonly authentication?: string;
+    /**
+     * Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+     */
+    readonly authentication: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * is the password of the user (not applicable for all services).
+     * The password of the service user ( not applicable for all services ).
      */
     readonly password: string;
+    /**
+     * Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    readonly pgAllowReplication: boolean;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
     /**
-     * Redis specific field, defines command category rules.
+     * Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
      */
-    readonly redisAclCategories?: string[];
-    readonly redisAclChannels?: string[];
+    readonly redisAclCategories: string[];
     /**
-     * Redis specific field, defines rules for individual commands.
+     * Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
      */
-    readonly redisAclCommands?: string[];
+    readonly redisAclChannels: string[];
     /**
-     * Redis specific field, defines key access rules.
+     * Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
      */
-    readonly redisAclKeys?: string[];
+    readonly redisAclCommands: string[];
+    /**
+     * Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    readonly redisAclKeys: string[];
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
     /**
-     * tells whether the user is primary account or regular account.
+     * Type of the user account. Tells wether the user is the primary account or a regular account.
      */
     readonly type: string;
+    /**
+     * The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly username: string;
 }
 
@@ -144,43 +122,15 @@ export function getServiceUserOutput(args: GetServiceUserOutputArgs, opts?: pulu
  */
 export interface GetServiceUserOutputArgs {
     /**
-     * is the access certificate of the user (not applicable for all services).
-     */
-    accessCert?: pulumi.Input<string>;
-    /**
-     * is the access key of the user (not applicable for all services).
-     */
-    accessKey?: pulumi.Input<string>;
-    authentication?: pulumi.Input<string>;
-    /**
-     * is the password of the user (not applicable for all services).
-     */
-    password?: pulumi.Input<string>;
-    /**
-     * and `serviceName` - (Required) define the project and service the user belongs to. They should be defined
-     * using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Redis specific field, defines command category rules.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
-    redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
-    redisAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Redis specific field, defines rules for individual commands.
-     */
-    redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Redis specific field, defines key access rules.
-     */
-    redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
     serviceName: pulumi.Input<string>;
     /**
-     * tells whether the user is primary account or regular account.
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * is the actual name of the user account.
+     * The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// IP filter
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -43,8 +43,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.RedisRedisUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Name of another project to fork a service from. This has
-        /// effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
         /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
@@ -61,22 +60,26 @@ namespace Pulumi.Aiven.Inputs
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
 
+        /// <summary>
+        /// Default ACL for pub/sub channels used when Redis user is created
+        /// </summary>
         [Input("redisAclChannelsDefault")]
         public Input<string>? RedisAclChannelsDefault { get; set; }
 
         /// <summary>
         /// Redis IO thread count
-        /// * `redis_lfu_decay_time"` - (Optional) LFU maxmemory-policy counter decay time in minutes
         /// </summary>
         [Input("redisIoThreads")]
         public Input<string>? RedisIoThreads { get; set; }
 
+        /// <summary>
+        /// LFU maxmemory-policy counter decay time in minutes
+        /// </summary>
         [Input("redisLfuDecayTime")]
         public Input<string>? RedisLfuDecayTime { get; set; }
 
         /// <summary>
-        /// Counter logarithm factor for volatile-lfu and allkeys-lfu 
-        /// maxmemory-policies
+        /// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
         /// </summary>
         [Input("redisLfuLogFactor")]
         public Input<string>? RedisLfuLogFactor { get; set; }
@@ -93,12 +96,21 @@ namespace Pulumi.Aiven.Inputs
         [Input("redisNotifyKeyspaceEvents")]
         public Input<string>? RedisNotifyKeyspaceEvents { get; set; }
 
+        /// <summary>
+        /// Number of redis databases
+        /// </summary>
         [Input("redisNumberOfDatabases")]
         public Input<string>? RedisNumberOfDatabases { get; set; }
 
+        /// <summary>
+        /// Redis persistence
+        /// </summary>
         [Input("redisPersistence")]
         public Input<string>? RedisPersistence { get; set; }
 
+        /// <summary>
+        /// Pub/sub client output buffer hard limit in MB
+        /// </summary>
         [Input("redisPubsubClientOutputBufferLimit")]
         public Input<string>? RedisPubsubClientOutputBufferLimit { get; set; }
 
@@ -110,15 +122,19 @@ namespace Pulumi.Aiven.Inputs
 
         /// <summary>
         /// Redis idle connection timeout
-        /// * `service_to_fork_from"` - (Optional) Name of another service to fork from. This has effect only
-        /// when a new service is being created.
         /// </summary>
         [Input("redisTimeout")]
         public Input<string>? RedisTimeout { get; set; }
 
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

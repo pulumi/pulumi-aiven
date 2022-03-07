@@ -13,8 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceKafkaMirrormakerUserConfig
     {
+        /// <summary>
+        /// IP filter
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Kafka MirrorMaker configuration values
+        /// </summary>
         public readonly Outputs.ServiceKafkaMirrormakerUserConfigKafkaMirrormaker? KafkaMirrormaker;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Database Resource
-    /// 
     /// The Database resource allows the creation and management of Aiven Databases.
     /// 
     /// ## Example Usage
@@ -39,39 +37,38 @@ namespace Pulumi.Aiven
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>
-        /// is the actual name of the database.
+        /// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("databaseName")]
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+        /// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("lcCollate")]
         public Output<string?> LcCollate { get; private set; } = null!;
 
         /// <summary>
-        /// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+        /// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("lcCtype")]
         public Output<string?> LcCtype { get; private set; } = null!;
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the database belongs to.
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Service to link the database to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
         /// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-        /// recommended to enable this for any production databases containing critical data.
+        /// recommended to enable this for any production databases containing critical data. The default value is `false`.
         /// </summary>
         [Output("terminationProtection")]
         public Output<bool?> TerminationProtection { get; private set; } = null!;
@@ -123,39 +120,38 @@ namespace Pulumi.Aiven
     public sealed class DatabaseArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// is the actual name of the database.
+        /// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+        /// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("lcCollate")]
         public Input<string>? LcCollate { get; set; }
 
         /// <summary>
-        /// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+        /// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("lcCtype")]
         public Input<string>? LcCtype { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the database belongs to.
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Service to link the database to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
         /// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-        /// recommended to enable this for any production databases containing critical data.
+        /// recommended to enable this for any production databases containing critical data. The default value is `false`.
         /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
@@ -168,39 +164,38 @@ namespace Pulumi.Aiven
     public sealed class DatabaseState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// is the actual name of the database.
+        /// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+        /// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("lcCollate")]
         public Input<string>? LcCollate { get; set; }
 
         /// <summary>
-        /// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+        /// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("lcCtype")]
         public Input<string>? LcCtype { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the database belongs to.
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Service to link the database to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
         /// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-        /// recommended to enable this for any production databases containing critical data.
+        /// recommended to enable this for any production databases containing critical data. The default value is `false`.
         /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }

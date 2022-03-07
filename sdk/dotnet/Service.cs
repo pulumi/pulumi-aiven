@@ -9,20 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// The Service resource allows the creation and management of Aiven Services.
+    /// </summary>
     [AivenResourceType("aiven:index/service:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>
-        /// Cassandra specific server provided values
-        /// </summary>
-        [Output("cassandra")]
-        public Output<Outputs.ServiceCassandra> Cassandra { get; private set; } = null!;
-
-        /// <summary>
-        /// Cassandra specific user configurable settings
+        /// Cassandra user configurable settings
         /// </summary>
         [Output("cassandraUserConfig")]
         public Output<Outputs.ServiceCassandraUserConfig?> CassandraUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Cassandra specific server provided values
+        /// </summary>
+        [Output("cassandras")]
+        public Output<ImmutableArray<Outputs.ServiceCassandra>> Cassandras { get; private set; } = null!;
+
+        /// <summary>
+        /// Clickhouse user configurable settings
+        /// </summary>
+        [Output("clickhouseUserConfig")]
+        public Output<Outputs.ServiceClickhouseUserConfig?> ClickhouseUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Clickhouse specific server provided values
+        /// </summary>
+        [Output("clickhouses")]
+        public Output<ImmutableArray<Outputs.ServiceClickhouse>> Clickhouses { get; private set; } = null!;
 
         /// <summary>
         /// Cloud the service runs in
@@ -37,76 +52,118 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.ServiceComponent>> Components { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticsearch specific server provided values
+        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         /// </summary>
-        [Output("elasticsearch")]
-        public Output<Outputs.ServiceElasticsearch> Elasticsearch { get; private set; } = null!;
+        [Output("diskSpace")]
+        public Output<string?> DiskSpace { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticsearch specific user configurable settings
+        /// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        /// </summary>
+        [Output("diskSpaceCap")]
+        public Output<string> DiskSpaceCap { get; private set; } = null!;
+
+        /// <summary>
+        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        /// </summary>
+        [Output("diskSpaceDefault")]
+        public Output<string> DiskSpaceDefault { get; private set; } = null!;
+
+        /// <summary>
+        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        /// </summary>
+        [Output("diskSpaceStep")]
+        public Output<string> DiskSpaceStep { get; private set; } = null!;
+
+        /// <summary>
+        /// Disk space that service is currently using
+        /// </summary>
+        [Output("diskSpaceUsed")]
+        public Output<string> DiskSpaceUsed { get; private set; } = null!;
+
+        /// <summary>
+        /// Elasticsearch user configurable settings
         /// </summary>
         [Output("elasticsearchUserConfig")]
         public Output<Outputs.ServiceElasticsearchUserConfig?> ElasticsearchUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Grafana specific server provided values
+        /// Elasticsearch specific server provided values
         /// </summary>
-        [Output("grafana")]
-        public Output<Outputs.ServiceGrafana> Grafana { get; private set; } = null!;
+        [Output("elasticsearches")]
+        public Output<ImmutableArray<Outputs.ServiceElasticsearch>> Elasticsearches { get; private set; } = null!;
 
         /// <summary>
-        /// Grafana specific user configurable settings
+        /// Flink user configurable settings
+        /// </summary>
+        [Output("flinkUserConfig")]
+        public Output<Outputs.ServiceFlinkUserConfig?> FlinkUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Flink specific server provided values
+        /// </summary>
+        [Output("flinks")]
+        public Output<ImmutableArray<Outputs.ServiceFlink>> Flinks { get; private set; } = null!;
+
+        /// <summary>
+        /// Grafana user configurable settings
         /// </summary>
         [Output("grafanaUserConfig")]
         public Output<Outputs.ServiceGrafanaUserConfig?> GrafanaUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// InfluxDB specific server provided values
+        /// Grafana specific server provided values
         /// </summary>
-        [Output("influxdb")]
-        public Output<Outputs.ServiceInfluxdb> Influxdb { get; private set; } = null!;
+        [Output("grafanas")]
+        public Output<ImmutableArray<Outputs.ServiceGrafana>> Grafanas { get; private set; } = null!;
 
         /// <summary>
-        /// InfluxDB specific user configurable settings
+        /// Influxdb user configurable settings
         /// </summary>
         [Output("influxdbUserConfig")]
         public Output<Outputs.ServiceInfluxdbUserConfig?> InfluxdbUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka specific server provided values
+        /// InfluxDB specific server provided values
         /// </summary>
-        [Output("kafka")]
-        public Output<Outputs.ServiceKafka> Kafka { get; private set; } = null!;
+        [Output("influxdbs")]
+        public Output<ImmutableArray<Outputs.ServiceInfluxdb>> Influxdbs { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Connect specific server provided values
-        /// </summary>
-        [Output("kafkaConnect")]
-        public Output<Outputs.ServiceKafkaConnect> KafkaConnect { get; private set; } = null!;
-
-        /// <summary>
-        /// Kafka Connect specific user configurable settings
+        /// Kafka*connect user configurable settings
         /// </summary>
         [Output("kafkaConnectUserConfig")]
         public Output<Outputs.ServiceKafkaConnectUserConfig?> KafkaConnectUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka MirrorMaker 2 specific server provided values
+        /// Kafka Connect specific server provided values
         /// </summary>
-        [Output("kafkaMirrormaker")]
-        public Output<Outputs.ServiceKafkaMirrormaker> KafkaMirrormaker { get; private set; } = null!;
+        [Output("kafkaConnects")]
+        public Output<ImmutableArray<Outputs.ServiceKafkaConnect>> KafkaConnects { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka MirrorMaker 2 specific user configurable settings
+        /// Kafka*mirrormaker user configurable settings
         /// </summary>
         [Output("kafkaMirrormakerUserConfig")]
         public Output<Outputs.ServiceKafkaMirrormakerUserConfig?> KafkaMirrormakerUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka specific user configurable settings
+        /// Kafka MirrorMaker 2 specific server provided values
+        /// </summary>
+        [Output("kafkaMirrormakers")]
+        public Output<ImmutableArray<Outputs.ServiceKafkaMirrormaker>> KafkaMirrormakers { get; private set; } = null!;
+
+        /// <summary>
+        /// Kafka user configurable settings
         /// </summary>
         [Output("kafkaUserConfig")]
         public Output<Outputs.ServiceKafkaUserConfig?> KafkaUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Kafka specific server provided values
+        /// </summary>
+        [Output("kafkas")]
+        public Output<ImmutableArray<Outputs.ServiceKafka>> Kafkas { get; private set; } = null!;
 
         /// <summary>
         /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -121,40 +178,40 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
-        /// MySQL specific server provided values
-        /// </summary>
-        [Output("mysql")]
-        public Output<Outputs.ServiceMysql> Mysql { get; private set; } = null!;
-
-        /// <summary>
-        /// MySQL specific user configurable settings
+        /// Mysql user configurable settings
         /// </summary>
         [Output("mysqlUserConfig")]
         public Output<Outputs.ServiceMysqlUserConfig?> MysqlUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Opensearch specific server provided values
+        /// MySQL specific server provided values
         /// </summary>
-        [Output("opensearch")]
-        public Output<Outputs.ServiceOpensearch> Opensearch { get; private set; } = null!;
+        [Output("mysqls")]
+        public Output<ImmutableArray<Outputs.ServiceMysql>> Mysqls { get; private set; } = null!;
 
         /// <summary>
-        /// Opensearch specific user configurable settings
+        /// Opensearch user configurable settings
         /// </summary>
         [Output("opensearchUserConfig")]
         public Output<Outputs.ServiceOpensearchUserConfig?> OpensearchUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// PostgreSQL specific server provided values
+        /// Opensearch specific server provided values
         /// </summary>
-        [Output("pg")]
-        public Output<Outputs.ServicePg> Pg { get; private set; } = null!;
+        [Output("opensearches")]
+        public Output<ImmutableArray<Outputs.ServiceOpensearch>> Opensearches { get; private set; } = null!;
 
         /// <summary>
-        /// PostgreSQL specific user configurable settings
+        /// Pg user configurable settings
         /// </summary>
         [Output("pgUserConfig")]
         public Output<Outputs.ServicePgUserConfig?> PgUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgreSQL specific server provided values
+        /// </summary>
+        [Output("pgs")]
+        public Output<ImmutableArray<Outputs.ServicePg>> Pgs { get; private set; } = null!;
 
         /// <summary>
         /// Subscription plan
@@ -178,10 +235,10 @@ namespace Pulumi.Aiven
         /// Redis specific server provided values
         /// </summary>
         [Output("redis")]
-        public Output<Outputs.ServiceRedis> Redis { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ServiceRedi>> Redis { get; private set; } = null!;
 
         /// <summary>
-        /// Redis specific user configurable settings
+        /// Redis user configurable settings
         /// </summary>
         [Output("redisUserConfig")]
         public Output<Outputs.ServiceRedisUserConfig?> RedisUserConfig { get; private set; } = null!;
@@ -235,10 +292,16 @@ namespace Pulumi.Aiven
         public Output<string> ServiceUsername { get; private set; } = null!;
 
         /// <summary>
-        /// Service state
+        /// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
+        [Output("staticIps")]
+        public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
 
         /// <summary>
         /// Prevent service from being deleted. It is recommended to have this enabled for all services.
@@ -293,16 +356,16 @@ namespace Pulumi.Aiven
     public sealed class ServiceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cassandra specific server provided values
-        /// </summary>
-        [Input("cassandra")]
-        public Input<Inputs.ServiceCassandraArgs>? Cassandra { get; set; }
-
-        /// <summary>
-        /// Cassandra specific user configurable settings
+        /// Cassandra user configurable settings
         /// </summary>
         [Input("cassandraUserConfig")]
         public Input<Inputs.ServiceCassandraUserConfigArgs>? CassandraUserConfig { get; set; }
+
+        /// <summary>
+        /// Clickhouse user configurable settings
+        /// </summary>
+        [Input("clickhouseUserConfig")]
+        public Input<Inputs.ServiceClickhouseUserConfigArgs>? ClickhouseUserConfig { get; set; }
 
         /// <summary>
         /// Cloud the service runs in
@@ -311,76 +374,76 @@ namespace Pulumi.Aiven
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// Elasticsearch specific server provided values
+        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         /// </summary>
-        [Input("elasticsearch")]
-        public Input<Inputs.ServiceElasticsearchArgs>? Elasticsearch { get; set; }
+        [Input("diskSpace")]
+        public Input<string>? DiskSpace { get; set; }
 
         /// <summary>
-        /// Elasticsearch specific user configurable settings
+        /// Elasticsearch user configurable settings
         /// </summary>
         [Input("elasticsearchUserConfig")]
         public Input<Inputs.ServiceElasticsearchUserConfigArgs>? ElasticsearchUserConfig { get; set; }
 
         /// <summary>
-        /// Grafana specific server provided values
+        /// Flink user configurable settings
         /// </summary>
-        [Input("grafana")]
-        public Input<Inputs.ServiceGrafanaArgs>? Grafana { get; set; }
+        [Input("flinkUserConfig")]
+        public Input<Inputs.ServiceFlinkUserConfigArgs>? FlinkUserConfig { get; set; }
+
+        [Input("flinks")]
+        private InputList<Inputs.ServiceFlinkArgs>? _flinks;
 
         /// <summary>
-        /// Grafana specific user configurable settings
+        /// Flink specific server provided values
+        /// </summary>
+        public InputList<Inputs.ServiceFlinkArgs> Flinks
+        {
+            get => _flinks ?? (_flinks = new InputList<Inputs.ServiceFlinkArgs>());
+            set => _flinks = value;
+        }
+
+        /// <summary>
+        /// Grafana user configurable settings
         /// </summary>
         [Input("grafanaUserConfig")]
         public Input<Inputs.ServiceGrafanaUserConfigArgs>? GrafanaUserConfig { get; set; }
 
         /// <summary>
-        /// InfluxDB specific server provided values
-        /// </summary>
-        [Input("influxdb")]
-        public Input<Inputs.ServiceInfluxdbArgs>? Influxdb { get; set; }
-
-        /// <summary>
-        /// InfluxDB specific user configurable settings
+        /// Influxdb user configurable settings
         /// </summary>
         [Input("influxdbUserConfig")]
         public Input<Inputs.ServiceInfluxdbUserConfigArgs>? InfluxdbUserConfig { get; set; }
 
         /// <summary>
-        /// Kafka specific server provided values
-        /// </summary>
-        [Input("kafka")]
-        public Input<Inputs.ServiceKafkaArgs>? Kafka { get; set; }
-
-        /// <summary>
-        /// Kafka Connect specific server provided values
-        /// </summary>
-        [Input("kafkaConnect")]
-        public Input<Inputs.ServiceKafkaConnectArgs>? KafkaConnect { get; set; }
-
-        /// <summary>
-        /// Kafka Connect specific user configurable settings
+        /// Kafka*connect user configurable settings
         /// </summary>
         [Input("kafkaConnectUserConfig")]
         public Input<Inputs.ServiceKafkaConnectUserConfigArgs>? KafkaConnectUserConfig { get; set; }
 
         /// <summary>
-        /// Kafka MirrorMaker 2 specific server provided values
-        /// </summary>
-        [Input("kafkaMirrormaker")]
-        public Input<Inputs.ServiceKafkaMirrormakerArgs>? KafkaMirrormaker { get; set; }
-
-        /// <summary>
-        /// Kafka MirrorMaker 2 specific user configurable settings
+        /// Kafka*mirrormaker user configurable settings
         /// </summary>
         [Input("kafkaMirrormakerUserConfig")]
         public Input<Inputs.ServiceKafkaMirrormakerUserConfigArgs>? KafkaMirrormakerUserConfig { get; set; }
 
         /// <summary>
-        /// Kafka specific user configurable settings
+        /// Kafka user configurable settings
         /// </summary>
         [Input("kafkaUserConfig")]
         public Input<Inputs.ServiceKafkaUserConfigArgs>? KafkaUserConfig { get; set; }
+
+        [Input("kafkas")]
+        private InputList<Inputs.ServiceKafkaArgs>? _kafkas;
+
+        /// <summary>
+        /// Kafka specific server provided values
+        /// </summary>
+        public InputList<Inputs.ServiceKafkaArgs> Kafkas
+        {
+            get => _kafkas ?? (_kafkas = new InputList<Inputs.ServiceKafkaArgs>());
+            set => _kafkas = value;
+        }
 
         /// <summary>
         /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -395,37 +458,19 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// MySQL specific server provided values
-        /// </summary>
-        [Input("mysql")]
-        public Input<Inputs.ServiceMysqlArgs>? Mysql { get; set; }
-
-        /// <summary>
-        /// MySQL specific user configurable settings
+        /// Mysql user configurable settings
         /// </summary>
         [Input("mysqlUserConfig")]
         public Input<Inputs.ServiceMysqlUserConfigArgs>? MysqlUserConfig { get; set; }
 
         /// <summary>
-        /// Opensearch specific server provided values
-        /// </summary>
-        [Input("opensearch")]
-        public Input<Inputs.ServiceOpensearchArgs>? Opensearch { get; set; }
-
-        /// <summary>
-        /// Opensearch specific user configurable settings
+        /// Opensearch user configurable settings
         /// </summary>
         [Input("opensearchUserConfig")]
         public Input<Inputs.ServiceOpensearchUserConfigArgs>? OpensearchUserConfig { get; set; }
 
         /// <summary>
-        /// PostgreSQL specific server provided values
-        /// </summary>
-        [Input("pg")]
-        public Input<Inputs.ServicePgArgs>? Pg { get; set; }
-
-        /// <summary>
-        /// PostgreSQL specific user configurable settings
+        /// Pg user configurable settings
         /// </summary>
         [Input("pgUserConfig")]
         public Input<Inputs.ServicePgUserConfigArgs>? PgUserConfig { get; set; }
@@ -449,13 +494,7 @@ namespace Pulumi.Aiven
         public Input<string>? ProjectVpcId { get; set; }
 
         /// <summary>
-        /// Redis specific server provided values
-        /// </summary>
-        [Input("redis")]
-        public Input<Inputs.ServiceRedisArgs>? Redis { get; set; }
-
-        /// <summary>
-        /// Redis specific user configurable settings
+        /// Redis user configurable settings
         /// </summary>
         [Input("redisUserConfig")]
         public Input<Inputs.ServiceRedisUserConfigArgs>? RedisUserConfig { get; set; }
@@ -484,6 +523,18 @@ namespace Pulumi.Aiven
         [Input("serviceType", required: true)]
         public Input<string> ServiceType { get; set; } = null!;
 
+        [Input("staticIps")]
+        private InputList<string>? _staticIps;
+
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
+        public InputList<string> StaticIps
+        {
+            get => _staticIps ?? (_staticIps = new InputList<string>());
+            set => _staticIps = value;
+        }
+
         /// <summary>
         /// Prevent service from being deleted. It is recommended to have this enabled for all services.
         /// </summary>
@@ -498,16 +549,40 @@ namespace Pulumi.Aiven
     public sealed class ServiceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cassandra specific server provided values
-        /// </summary>
-        [Input("cassandra")]
-        public Input<Inputs.ServiceCassandraGetArgs>? Cassandra { get; set; }
-
-        /// <summary>
-        /// Cassandra specific user configurable settings
+        /// Cassandra user configurable settings
         /// </summary>
         [Input("cassandraUserConfig")]
         public Input<Inputs.ServiceCassandraUserConfigGetArgs>? CassandraUserConfig { get; set; }
+
+        [Input("cassandras")]
+        private InputList<Inputs.ServiceCassandraGetArgs>? _cassandras;
+
+        /// <summary>
+        /// Cassandra specific server provided values
+        /// </summary>
+        public InputList<Inputs.ServiceCassandraGetArgs> Cassandras
+        {
+            get => _cassandras ?? (_cassandras = new InputList<Inputs.ServiceCassandraGetArgs>());
+            set => _cassandras = value;
+        }
+
+        /// <summary>
+        /// Clickhouse user configurable settings
+        /// </summary>
+        [Input("clickhouseUserConfig")]
+        public Input<Inputs.ServiceClickhouseUserConfigGetArgs>? ClickhouseUserConfig { get; set; }
+
+        [Input("clickhouses")]
+        private InputList<Inputs.ServiceClickhouseGetArgs>? _clickhouses;
+
+        /// <summary>
+        /// Clickhouse specific server provided values
+        /// </summary>
+        public InputList<Inputs.ServiceClickhouseGetArgs> Clickhouses
+        {
+            get => _clickhouses ?? (_clickhouses = new InputList<Inputs.ServiceClickhouseGetArgs>());
+            set => _clickhouses = value;
+        }
 
         /// <summary>
         /// Cloud the service runs in
@@ -528,76 +603,160 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Elasticsearch specific server provided values
+        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         /// </summary>
-        [Input("elasticsearch")]
-        public Input<Inputs.ServiceElasticsearchGetArgs>? Elasticsearch { get; set; }
+        [Input("diskSpace")]
+        public Input<string>? DiskSpace { get; set; }
 
         /// <summary>
-        /// Elasticsearch specific user configurable settings
+        /// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        /// </summary>
+        [Input("diskSpaceCap")]
+        public Input<string>? DiskSpaceCap { get; set; }
+
+        /// <summary>
+        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        /// </summary>
+        [Input("diskSpaceDefault")]
+        public Input<string>? DiskSpaceDefault { get; set; }
+
+        /// <summary>
+        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        /// </summary>
+        [Input("diskSpaceStep")]
+        public Input<string>? DiskSpaceStep { get; set; }
+
+        /// <summary>
+        /// Disk space that service is currently using
+        /// </summary>
+        [Input("diskSpaceUsed")]
+        public Input<string>? DiskSpaceUsed { get; set; }
+
+        /// <summary>
+        /// Elasticsearch user configurable settings
         /// </summary>
         [Input("elasticsearchUserConfig")]
         public Input<Inputs.ServiceElasticsearchUserConfigGetArgs>? ElasticsearchUserConfig { get; set; }
 
-        /// <summary>
-        /// Grafana specific server provided values
-        /// </summary>
-        [Input("grafana")]
-        public Input<Inputs.ServiceGrafanaGetArgs>? Grafana { get; set; }
+        [Input("elasticsearches")]
+        private InputList<Inputs.ServiceElasticsearchGetArgs>? _elasticsearches;
 
         /// <summary>
-        /// Grafana specific user configurable settings
+        /// Elasticsearch specific server provided values
+        /// </summary>
+        public InputList<Inputs.ServiceElasticsearchGetArgs> Elasticsearches
+        {
+            get => _elasticsearches ?? (_elasticsearches = new InputList<Inputs.ServiceElasticsearchGetArgs>());
+            set => _elasticsearches = value;
+        }
+
+        /// <summary>
+        /// Flink user configurable settings
+        /// </summary>
+        [Input("flinkUserConfig")]
+        public Input<Inputs.ServiceFlinkUserConfigGetArgs>? FlinkUserConfig { get; set; }
+
+        [Input("flinks")]
+        private InputList<Inputs.ServiceFlinkGetArgs>? _flinks;
+
+        /// <summary>
+        /// Flink specific server provided values
+        /// </summary>
+        public InputList<Inputs.ServiceFlinkGetArgs> Flinks
+        {
+            get => _flinks ?? (_flinks = new InputList<Inputs.ServiceFlinkGetArgs>());
+            set => _flinks = value;
+        }
+
+        /// <summary>
+        /// Grafana user configurable settings
         /// </summary>
         [Input("grafanaUserConfig")]
         public Input<Inputs.ServiceGrafanaUserConfigGetArgs>? GrafanaUserConfig { get; set; }
 
-        /// <summary>
-        /// InfluxDB specific server provided values
-        /// </summary>
-        [Input("influxdb")]
-        public Input<Inputs.ServiceInfluxdbGetArgs>? Influxdb { get; set; }
+        [Input("grafanas")]
+        private InputList<Inputs.ServiceGrafanaGetArgs>? _grafanas;
 
         /// <summary>
-        /// InfluxDB specific user configurable settings
+        /// Grafana specific server provided values
+        /// </summary>
+        public InputList<Inputs.ServiceGrafanaGetArgs> Grafanas
+        {
+            get => _grafanas ?? (_grafanas = new InputList<Inputs.ServiceGrafanaGetArgs>());
+            set => _grafanas = value;
+        }
+
+        /// <summary>
+        /// Influxdb user configurable settings
         /// </summary>
         [Input("influxdbUserConfig")]
         public Input<Inputs.ServiceInfluxdbUserConfigGetArgs>? InfluxdbUserConfig { get; set; }
 
-        /// <summary>
-        /// Kafka specific server provided values
-        /// </summary>
-        [Input("kafka")]
-        public Input<Inputs.ServiceKafkaGetArgs>? Kafka { get; set; }
+        [Input("influxdbs")]
+        private InputList<Inputs.ServiceInfluxdbGetArgs>? _influxdbs;
 
         /// <summary>
-        /// Kafka Connect specific server provided values
+        /// InfluxDB specific server provided values
         /// </summary>
-        [Input("kafkaConnect")]
-        public Input<Inputs.ServiceKafkaConnectGetArgs>? KafkaConnect { get; set; }
+        public InputList<Inputs.ServiceInfluxdbGetArgs> Influxdbs
+        {
+            get => _influxdbs ?? (_influxdbs = new InputList<Inputs.ServiceInfluxdbGetArgs>());
+            set => _influxdbs = value;
+        }
 
         /// <summary>
-        /// Kafka Connect specific user configurable settings
+        /// Kafka*connect user configurable settings
         /// </summary>
         [Input("kafkaConnectUserConfig")]
         public Input<Inputs.ServiceKafkaConnectUserConfigGetArgs>? KafkaConnectUserConfig { get; set; }
 
-        /// <summary>
-        /// Kafka MirrorMaker 2 specific server provided values
-        /// </summary>
-        [Input("kafkaMirrormaker")]
-        public Input<Inputs.ServiceKafkaMirrormakerGetArgs>? KafkaMirrormaker { get; set; }
+        [Input("kafkaConnects")]
+        private InputList<Inputs.ServiceKafkaConnectGetArgs>? _kafkaConnects;
 
         /// <summary>
-        /// Kafka MirrorMaker 2 specific user configurable settings
+        /// Kafka Connect specific server provided values
+        /// </summary>
+        public InputList<Inputs.ServiceKafkaConnectGetArgs> KafkaConnects
+        {
+            get => _kafkaConnects ?? (_kafkaConnects = new InputList<Inputs.ServiceKafkaConnectGetArgs>());
+            set => _kafkaConnects = value;
+        }
+
+        /// <summary>
+        /// Kafka*mirrormaker user configurable settings
         /// </summary>
         [Input("kafkaMirrormakerUserConfig")]
         public Input<Inputs.ServiceKafkaMirrormakerUserConfigGetArgs>? KafkaMirrormakerUserConfig { get; set; }
 
+        [Input("kafkaMirrormakers")]
+        private InputList<Inputs.ServiceKafkaMirrormakerGetArgs>? _kafkaMirrormakers;
+
         /// <summary>
-        /// Kafka specific user configurable settings
+        /// Kafka MirrorMaker 2 specific server provided values
+        /// </summary>
+        public InputList<Inputs.ServiceKafkaMirrormakerGetArgs> KafkaMirrormakers
+        {
+            get => _kafkaMirrormakers ?? (_kafkaMirrormakers = new InputList<Inputs.ServiceKafkaMirrormakerGetArgs>());
+            set => _kafkaMirrormakers = value;
+        }
+
+        /// <summary>
+        /// Kafka user configurable settings
         /// </summary>
         [Input("kafkaUserConfig")]
         public Input<Inputs.ServiceKafkaUserConfigGetArgs>? KafkaUserConfig { get; set; }
+
+        [Input("kafkas")]
+        private InputList<Inputs.ServiceKafkaGetArgs>? _kafkas;
+
+        /// <summary>
+        /// Kafka specific server provided values
+        /// </summary>
+        public InputList<Inputs.ServiceKafkaGetArgs> Kafkas
+        {
+            get => _kafkas ?? (_kafkas = new InputList<Inputs.ServiceKafkaGetArgs>());
+            set => _kafkas = value;
+        }
 
         /// <summary>
         /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -612,40 +771,58 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// MySQL specific server provided values
-        /// </summary>
-        [Input("mysql")]
-        public Input<Inputs.ServiceMysqlGetArgs>? Mysql { get; set; }
-
-        /// <summary>
-        /// MySQL specific user configurable settings
+        /// Mysql user configurable settings
         /// </summary>
         [Input("mysqlUserConfig")]
         public Input<Inputs.ServiceMysqlUserConfigGetArgs>? MysqlUserConfig { get; set; }
 
-        /// <summary>
-        /// Opensearch specific server provided values
-        /// </summary>
-        [Input("opensearch")]
-        public Input<Inputs.ServiceOpensearchGetArgs>? Opensearch { get; set; }
+        [Input("mysqls")]
+        private InputList<Inputs.ServiceMysqlGetArgs>? _mysqls;
 
         /// <summary>
-        /// Opensearch specific user configurable settings
+        /// MySQL specific server provided values
+        /// </summary>
+        public InputList<Inputs.ServiceMysqlGetArgs> Mysqls
+        {
+            get => _mysqls ?? (_mysqls = new InputList<Inputs.ServiceMysqlGetArgs>());
+            set => _mysqls = value;
+        }
+
+        /// <summary>
+        /// Opensearch user configurable settings
         /// </summary>
         [Input("opensearchUserConfig")]
         public Input<Inputs.ServiceOpensearchUserConfigGetArgs>? OpensearchUserConfig { get; set; }
 
-        /// <summary>
-        /// PostgreSQL specific server provided values
-        /// </summary>
-        [Input("pg")]
-        public Input<Inputs.ServicePgGetArgs>? Pg { get; set; }
+        [Input("opensearches")]
+        private InputList<Inputs.ServiceOpensearchGetArgs>? _opensearches;
 
         /// <summary>
-        /// PostgreSQL specific user configurable settings
+        /// Opensearch specific server provided values
+        /// </summary>
+        public InputList<Inputs.ServiceOpensearchGetArgs> Opensearches
+        {
+            get => _opensearches ?? (_opensearches = new InputList<Inputs.ServiceOpensearchGetArgs>());
+            set => _opensearches = value;
+        }
+
+        /// <summary>
+        /// Pg user configurable settings
         /// </summary>
         [Input("pgUserConfig")]
         public Input<Inputs.ServicePgUserConfigGetArgs>? PgUserConfig { get; set; }
+
+        [Input("pgs")]
+        private InputList<Inputs.ServicePgGetArgs>? _pgs;
+
+        /// <summary>
+        /// PostgreSQL specific server provided values
+        /// </summary>
+        public InputList<Inputs.ServicePgGetArgs> Pgs
+        {
+            get => _pgs ?? (_pgs = new InputList<Inputs.ServicePgGetArgs>());
+            set => _pgs = value;
+        }
 
         /// <summary>
         /// Subscription plan
@@ -665,14 +842,20 @@ namespace Pulumi.Aiven
         [Input("projectVpcId")]
         public Input<string>? ProjectVpcId { get; set; }
 
+        [Input("redis")]
+        private InputList<Inputs.ServiceRediGetArgs>? _redis;
+
         /// <summary>
         /// Redis specific server provided values
         /// </summary>
-        [Input("redis")]
-        public Input<Inputs.ServiceRedisGetArgs>? Redis { get; set; }
+        public InputList<Inputs.ServiceRediGetArgs> Redis
+        {
+            get => _redis ?? (_redis = new InputList<Inputs.ServiceRediGetArgs>());
+            set => _redis = value;
+        }
 
         /// <summary>
-        /// Redis specific user configurable settings
+        /// Redis user configurable settings
         /// </summary>
         [Input("redisUserConfig")]
         public Input<Inputs.ServiceRedisUserConfigGetArgs>? RedisUserConfig { get; set; }
@@ -732,10 +915,22 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceUsername { get; set; }
 
         /// <summary>
-        /// Service state
+        /// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("staticIps")]
+        private InputList<string>? _staticIps;
+
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
+        public InputList<string> StaticIps
+        {
+            get => _staticIps ?? (_staticIps = new InputList<string>());
+            set => _staticIps = value;
+        }
 
         /// <summary>
         /// Prevent service from being deleted. It is recommended to have this enabled for all services.

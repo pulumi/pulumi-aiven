@@ -12,16 +12,12 @@ namespace Pulumi.Aiven
     public static class GetAccountTeam
     {
         /// <summary>
-        /// ## # Account Team Data Source
-        /// 
         /// The Account Team data source provides information about the existing Account Team.
         /// </summary>
         public static Task<GetAccountTeamResult> InvokeAsync(GetAccountTeamArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountTeamResult>("aiven:index/getAccountTeam:getAccountTeam", args ?? new GetAccountTeamArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # Account Team Data Source
-        /// 
         /// The Account Team data source provides information about the existing Account Team.
         /// </summary>
         public static Output<GetAccountTeamResult> Invoke(GetAccountTeamInvokeArgs args, InvokeOptions? options = null)
@@ -32,34 +28,16 @@ namespace Pulumi.Aiven
     public sealed class GetAccountTeamArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is a unique account id.
+        /// The unique account id
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// time of creation.
-        /// </summary>
-        [Input("createTime")]
-        public string? CreateTime { get; set; }
-
-        /// <summary>
-        /// defines an account team name.
+        /// The account team name
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
-
-        /// <summary>
-        /// is an auto-generated unique account team id.
-        /// </summary>
-        [Input("teamId")]
-        public string? TeamId { get; set; }
-
-        /// <summary>
-        /// time of last update.
-        /// </summary>
-        [Input("updateTime")]
-        public string? UpdateTime { get; set; }
 
         public GetAccountTeamArgs()
         {
@@ -69,34 +47,16 @@ namespace Pulumi.Aiven
     public sealed class GetAccountTeamInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is a unique account id.
+        /// The unique account id
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// time of creation.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// defines an account team name.
+        /// The account team name
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// is an auto-generated unique account team id.
-        /// </summary>
-        [Input("teamId")]
-        public Input<string>? TeamId { get; set; }
-
-        /// <summary>
-        /// time of last update.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public GetAccountTeamInvokeArgs()
         {
@@ -107,22 +67,28 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetAccountTeamResult
     {
+        /// <summary>
+        /// The unique account id
+        /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// time of creation.
+        /// Time of creation
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The account team name
+        /// </summary>
         public readonly string Name;
         /// <summary>
-        /// is an auto-generated unique account team id.
+        /// The auto-generated unique account team id
         /// </summary>
         public readonly string TeamId;
         /// <summary>
-        /// time of last update.
+        /// Time of last update
         /// </summary>
         public readonly string UpdateTime;
 

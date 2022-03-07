@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class RedisRedisUserConfig
     {
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// IP filter
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -30,8 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.RedisRedisUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has
-        /// effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
@@ -42,16 +41,20 @@ namespace Pulumi.Aiven.Outputs
         /// Name of the basebackup to restore in forked service
         /// </summary>
         public readonly string? RecoveryBasebackupName;
+        /// <summary>
+        /// Default ACL for pub/sub channels used when Redis user is created
+        /// </summary>
         public readonly string? RedisAclChannelsDefault;
         /// <summary>
         /// Redis IO thread count
-        /// * `redis_lfu_decay_time"` - (Optional) LFU maxmemory-policy counter decay time in minutes
         /// </summary>
         public readonly string? RedisIoThreads;
+        /// <summary>
+        /// LFU maxmemory-policy counter decay time in minutes
+        /// </summary>
         public readonly string? RedisLfuDecayTime;
         /// <summary>
-        /// Counter logarithm factor for volatile-lfu and allkeys-lfu 
-        /// maxmemory-policies
+        /// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
         /// </summary>
         public readonly string? RedisLfuLogFactor;
         /// <summary>
@@ -62,8 +65,17 @@ namespace Pulumi.Aiven.Outputs
         /// Set notify-keyspace-events option
         /// </summary>
         public readonly string? RedisNotifyKeyspaceEvents;
+        /// <summary>
+        /// Number of redis databases
+        /// </summary>
         public readonly string? RedisNumberOfDatabases;
+        /// <summary>
+        /// Redis persistence
+        /// </summary>
         public readonly string? RedisPersistence;
+        /// <summary>
+        /// Pub/sub client output buffer hard limit in MB
+        /// </summary>
         public readonly string? RedisPubsubClientOutputBufferLimit;
         /// <summary>
         /// Require SSL to access Redis
@@ -71,11 +83,15 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? RedisSsl;
         /// <summary>
         /// Redis idle connection timeout
-        /// * `service_to_fork_from"` - (Optional) Name of another service to fork from. This has effect only
-        /// when a new service is being created.
         /// </summary>
         public readonly string? RedisTimeout;
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

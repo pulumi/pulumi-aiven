@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Account Team Resource
- *
  * The Account Team resource allows the creation and management of an Account Team.
  */
 export class AccountTeam extends pulumi.CustomResource {
@@ -38,25 +36,25 @@ export class AccountTeam extends pulumi.CustomResource {
     }
 
     /**
-     * is a unique account id.
+     * The unique account id
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * time of creation.
+     * Time of creation
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * defines an account team name.
+     * The account team name
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * is an auto-generated unique account team id.
+     * The auto-generated unique account team id
      */
     public /*out*/ readonly teamId!: pulumi.Output<string>;
     /**
-     * time of last update.
+     * Time of last update
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a AccountTeam resource with the given unique name, arguments, and options.
@@ -82,10 +80,10 @@ export class AccountTeam extends pulumi.CustomResource {
                 throw new Error("Missing required property 'accountId'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["createTime"] = args ? args.createTime : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["updateTime"] = args ? args.updateTime : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["teamId"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountTeam.__pulumiType, name, resourceInputs, opts);
@@ -97,23 +95,23 @@ export class AccountTeam extends pulumi.CustomResource {
  */
 export interface AccountTeamState {
     /**
-     * is a unique account id.
+     * The unique account id
      */
     accountId?: pulumi.Input<string>;
     /**
-     * time of creation.
+     * Time of creation
      */
     createTime?: pulumi.Input<string>;
     /**
-     * defines an account team name.
+     * The account team name
      */
     name?: pulumi.Input<string>;
     /**
-     * is an auto-generated unique account team id.
+     * The auto-generated unique account team id
      */
     teamId?: pulumi.Input<string>;
     /**
-     * time of last update.
+     * Time of last update
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -123,19 +121,11 @@ export interface AccountTeamState {
  */
 export interface AccountTeamArgs {
     /**
-     * is a unique account id.
+     * The unique account id
      */
     accountId: pulumi.Input<string>;
     /**
-     * time of creation.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
-     * defines an account team name.
+     * The account team name
      */
     name?: pulumi.Input<string>;
-    /**
-     * time of last update.
-     */
-    updateTime?: pulumi.Input<string>;
 }

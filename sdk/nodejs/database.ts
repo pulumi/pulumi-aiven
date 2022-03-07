@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Database Resource
- *
  * The Database resource allows the creation and management of Aiven Databases.
  *
  * ## Example Usage
@@ -51,29 +49,28 @@ export class Database extends pulumi.CustomResource {
     }
 
     /**
-     * is the actual name of the database.
+     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly databaseName!: pulumi.Output<string>;
     /**
-     * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly lcCollate!: pulumi.Output<string | undefined>;
     /**
-     * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly lcCtype!: pulumi.Output<string | undefined>;
     /**
-     * and `serviceName` - (Required) define the project and service the database belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Service to link the database to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
      * It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-     * recommended to enable this for any production databases containing critical data.
+     * recommended to enable this for any production databases containing critical data. The default value is `false`.
      */
     public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
 
@@ -124,29 +121,28 @@ export class Database extends pulumi.CustomResource {
  */
 export interface DatabaseState {
     /**
-     * is the actual name of the database.
+     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
      */
     databaseName?: pulumi.Input<string>;
     /**
-     * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      */
     lcCollate?: pulumi.Input<string>;
     /**
-     * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      */
     lcCtype?: pulumi.Input<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the database belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Service to link the database to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
      * It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-     * recommended to enable this for any production databases containing critical data.
+     * recommended to enable this for any production databases containing critical data. The default value is `false`.
      */
     terminationProtection?: pulumi.Input<boolean>;
 }
@@ -156,29 +152,28 @@ export interface DatabaseState {
  */
 export interface DatabaseArgs {
     /**
-     * is the actual name of the database.
+     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
      */
     databaseName: pulumi.Input<string>;
     /**
-     * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      */
     lcCollate?: pulumi.Input<string>;
     /**
-     * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      */
     lcCtype?: pulumi.Input<string>;
     /**
-     * and `serviceName` - (Required) define the project and service the database belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Service to link the database to
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
      * It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-     * recommended to enable this for any production databases containing critical data.
+     * recommended to enable this for any production databases containing critical data. The default value is `false`.
      */
     terminationProtection?: pulumi.Input<boolean>;
 }

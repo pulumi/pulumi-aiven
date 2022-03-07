@@ -11,28 +11,44 @@ export * from "./accountTeam";
 export * from "./accountTeamMember";
 export * from "./accountTeamProject";
 export * from "./awsPrivatelink";
+export * from "./azurePrivatelink";
+export * from "./azurePrivatelinkConnectionApproval";
 export * from "./billingGroup";
 export * from "./cassandra";
+export * from "./clickhouse";
+export * from "./clickhouseDatabase";
+export * from "./clickhouseGrant";
+export * from "./clickhouseRole";
+export * from "./clickhouseUser";
 export * from "./connectionPool";
 export * from "./database";
 export * from "./elasticSearch";
 export * from "./elasticSearchAcl";
 export * from "./elasticSearchAclConfig";
 export * from "./elasticSearchAclRule";
+export * from "./flink";
+export * from "./flinkJob";
+export * from "./flinkJobTable";
 export * from "./getAccount";
 export * from "./getAccountAuthentication";
 export * from "./getAccountTeam";
 export * from "./getAccountTeamMember";
 export * from "./getAccountTeamProject";
 export * from "./getAwsPrivatelink";
+export * from "./getAzurePrivatelink";
+export * from "./getBillingGroup";
 export * from "./getCassanda";
 export * from "./getCassandra";
+export * from "./getClickhouse";
+export * from "./getClickhouseDatabase";
+export * from "./getClickhouseUser";
 export * from "./getConnectionPool";
 export * from "./getDatabase";
 export * from "./getElasticSearch";
 export * from "./getElasticSearchAcl";
 export * from "./getElasticSearchAclConfig";
 export * from "./getElasticSearchAclRule";
+export * from "./getFlink";
 export * from "./getGrafana";
 export * from "./getInfluxDb";
 export * from "./getKafka";
@@ -89,6 +105,7 @@ export * from "./service";
 export * from "./serviceIntegration";
 export * from "./serviceIntegrationEndpoint";
 export * from "./serviceUser";
+export * from "./staticIp";
 export * from "./transitGatewayVpcAttachment";
 export * from "./vpcPeeringConnection";
 
@@ -108,14 +125,24 @@ import { AccountTeam } from "./accountTeam";
 import { AccountTeamMember } from "./accountTeamMember";
 import { AccountTeamProject } from "./accountTeamProject";
 import { AwsPrivatelink } from "./awsPrivatelink";
+import { AzurePrivatelink } from "./azurePrivatelink";
+import { AzurePrivatelinkConnectionApproval } from "./azurePrivatelinkConnectionApproval";
 import { BillingGroup } from "./billingGroup";
 import { Cassandra } from "./cassandra";
+import { Clickhouse } from "./clickhouse";
+import { ClickhouseDatabase } from "./clickhouseDatabase";
+import { ClickhouseGrant } from "./clickhouseGrant";
+import { ClickhouseRole } from "./clickhouseRole";
+import { ClickhouseUser } from "./clickhouseUser";
 import { ConnectionPool } from "./connectionPool";
 import { Database } from "./database";
 import { ElasticSearch } from "./elasticSearch";
 import { ElasticSearchAcl } from "./elasticSearchAcl";
 import { ElasticSearchAclConfig } from "./elasticSearchAclConfig";
 import { ElasticSearchAclRule } from "./elasticSearchAclRule";
+import { Flink } from "./flink";
+import { FlinkJob } from "./flinkJob";
+import { FlinkJobTable } from "./flinkJobTable";
 import { Grafana } from "./grafana";
 import { InfluxDb } from "./influxDb";
 import { Kafka } from "./kafka";
@@ -142,6 +169,7 @@ import { Service } from "./service";
 import { ServiceIntegration } from "./serviceIntegration";
 import { ServiceIntegrationEndpoint } from "./serviceIntegrationEndpoint";
 import { ServiceUser } from "./serviceUser";
+import { StaticIp } from "./staticIp";
 import { TransitGatewayVpcAttachment } from "./transitGatewayVpcAttachment";
 import { VpcPeeringConnection } from "./vpcPeeringConnection";
 
@@ -161,10 +189,24 @@ const _module = {
                 return new AccountTeamProject(name, <any>undefined, { urn })
             case "aiven:index/awsPrivatelink:AwsPrivatelink":
                 return new AwsPrivatelink(name, <any>undefined, { urn })
+            case "aiven:index/azurePrivatelink:AzurePrivatelink":
+                return new AzurePrivatelink(name, <any>undefined, { urn })
+            case "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval":
+                return new AzurePrivatelinkConnectionApproval(name, <any>undefined, { urn })
             case "aiven:index/billingGroup:BillingGroup":
                 return new BillingGroup(name, <any>undefined, { urn })
             case "aiven:index/cassandra:Cassandra":
                 return new Cassandra(name, <any>undefined, { urn })
+            case "aiven:index/clickhouse:Clickhouse":
+                return new Clickhouse(name, <any>undefined, { urn })
+            case "aiven:index/clickhouseDatabase:ClickhouseDatabase":
+                return new ClickhouseDatabase(name, <any>undefined, { urn })
+            case "aiven:index/clickhouseGrant:ClickhouseGrant":
+                return new ClickhouseGrant(name, <any>undefined, { urn })
+            case "aiven:index/clickhouseRole:ClickhouseRole":
+                return new ClickhouseRole(name, <any>undefined, { urn })
+            case "aiven:index/clickhouseUser:ClickhouseUser":
+                return new ClickhouseUser(name, <any>undefined, { urn })
             case "aiven:index/connectionPool:ConnectionPool":
                 return new ConnectionPool(name, <any>undefined, { urn })
             case "aiven:index/database:Database":
@@ -177,6 +219,12 @@ const _module = {
                 return new ElasticSearchAclConfig(name, <any>undefined, { urn })
             case "aiven:index/elasticSearchAclRule:ElasticSearchAclRule":
                 return new ElasticSearchAclRule(name, <any>undefined, { urn })
+            case "aiven:index/flink:Flink":
+                return new Flink(name, <any>undefined, { urn })
+            case "aiven:index/flinkJob:FlinkJob":
+                return new FlinkJob(name, <any>undefined, { urn })
+            case "aiven:index/flinkJobTable:FlinkJobTable":
+                return new FlinkJobTable(name, <any>undefined, { urn })
             case "aiven:index/grafana:Grafana":
                 return new Grafana(name, <any>undefined, { urn })
             case "aiven:index/influxDb:InfluxDb":
@@ -229,6 +277,8 @@ const _module = {
                 return new ServiceIntegrationEndpoint(name, <any>undefined, { urn })
             case "aiven:index/serviceUser:ServiceUser":
                 return new ServiceUser(name, <any>undefined, { urn })
+            case "aiven:index/staticIp:StaticIp":
+                return new StaticIp(name, <any>undefined, { urn })
             case "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment":
                 return new TransitGatewayVpcAttachment(name, <any>undefined, { urn })
             case "aiven:index/vpcPeeringConnection:VpcPeeringConnection":
@@ -244,14 +294,24 @@ pulumi.runtime.registerResourceModule("aiven", "index/accountTeam", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/accountTeamMember", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/accountTeamProject", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/awsPrivatelink", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/azurePrivatelink", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/azurePrivatelinkConnectionApproval", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/billingGroup", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/cassandra", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/clickhouse", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/clickhouseDatabase", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/clickhouseGrant", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/clickhouseRole", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/clickhouseUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/connectionPool", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/database", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/elasticSearch", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/elasticSearchAcl", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/elasticSearchAclConfig", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/elasticSearchAclRule", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/flink", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/flinkJob", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/flinkJobTable", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/grafana", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/influxDb", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafka", _module)
@@ -278,6 +338,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/service", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/serviceIntegration", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/serviceIntegrationEndpoint", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/serviceUser", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/staticIp", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/transitGatewayVpcAttachment", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/vpcPeeringConnection", _module)
 

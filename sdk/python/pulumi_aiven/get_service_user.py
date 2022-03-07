@@ -20,7 +20,7 @@ class GetServiceUserResult:
     """
     A collection of values returned by getServiceUser.
     """
-    def __init__(__self__, access_cert=None, access_key=None, authentication=None, id=None, password=None, project=None, redis_acl_categories=None, redis_acl_channels=None, redis_acl_commands=None, redis_acl_keys=None, service_name=None, type=None, username=None):
+    def __init__(__self__, access_cert=None, access_key=None, authentication=None, id=None, password=None, pg_allow_replication=None, project=None, redis_acl_categories=None, redis_acl_channels=None, redis_acl_commands=None, redis_acl_keys=None, service_name=None, type=None, username=None):
         if access_cert and not isinstance(access_cert, str):
             raise TypeError("Expected argument 'access_cert' to be a str")
         pulumi.set(__self__, "access_cert", access_cert)
@@ -36,6 +36,9 @@ class GetServiceUserResult:
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
         pulumi.set(__self__, "password", password)
+        if pg_allow_replication and not isinstance(pg_allow_replication, bool):
+            raise TypeError("Expected argument 'pg_allow_replication' to be a bool")
+        pulumi.set(__self__, "pg_allow_replication", pg_allow_replication)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -65,7 +68,7 @@ class GetServiceUserResult:
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> str:
         """
-        is the access certificate of the user (not applicable for all services).
+        Access certificate for the user if applicable for the service in question
         """
         return pulumi.get(self, "access_cert")
 
@@ -73,13 +76,16 @@ class GetServiceUserResult:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> str:
         """
-        is the access key of the user (not applicable for all services).
+        Access certificate key for the user if applicable for the service in question
         """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter
-    def authentication(self) -> Optional[str]:
+    def authentication(self) -> str:
+        """
+        Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+        """
         return pulumi.get(self, "authentication")
 
     @property
@@ -94,60 +100,80 @@ class GetServiceUserResult:
     @pulumi.getter
     def password(self) -> str:
         """
-        is the password of the user (not applicable for all services).
+        The password of the service user ( not applicable for all services ).
         """
         return pulumi.get(self, "password")
 
     @property
+    @pulumi.getter(name="pgAllowReplication")
+    def pg_allow_replication(self) -> bool:
+        """
+        Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        """
+        return pulumi.get(self, "pg_allow_replication")
+
+    @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="redisAclCategories")
-    def redis_acl_categories(self) -> Optional[Sequence[str]]:
+    def redis_acl_categories(self) -> Sequence[str]:
         """
-        Redis specific field, defines command category rules.
+        Redis specific field, defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_categories")
 
     @property
     @pulumi.getter(name="redisAclChannels")
-    def redis_acl_channels(self) -> Optional[Sequence[str]]:
+    def redis_acl_channels(self) -> Sequence[str]:
+        """
+        Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "redis_acl_channels")
 
     @property
     @pulumi.getter(name="redisAclCommands")
-    def redis_acl_commands(self) -> Optional[Sequence[str]]:
+    def redis_acl_commands(self) -> Sequence[str]:
         """
-        Redis specific field, defines rules for individual commands.
+        Redis specific field, defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_commands")
 
     @property
     @pulumi.getter(name="redisAclKeys")
-    def redis_acl_keys(self) -> Optional[Sequence[str]]:
+    def redis_acl_keys(self) -> Sequence[str]:
         """
-        Redis specific field, defines key access rules.
+        Redis specific field, defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_keys")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def type(self) -> str:
         """
-        tells whether the user is primary account or regular account.
+        Type of the user account. Tells wether the user is the primary account or a regular account.
         """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "username")
 
 
@@ -162,6 +188,7 @@ class AwaitableGetServiceUserResult(GetServiceUserResult):
             authentication=self.authentication,
             id=self.id,
             password=self.password,
+            pg_allow_replication=self.pg_allow_replication,
             project=self.project,
             redis_acl_categories=self.redis_acl_categories,
             redis_acl_channels=self.redis_acl_channels,
@@ -172,22 +199,11 @@ class AwaitableGetServiceUserResult(GetServiceUserResult):
             username=self.username)
 
 
-def get_service_user(access_cert: Optional[str] = None,
-                     access_key: Optional[str] = None,
-                     authentication: Optional[str] = None,
-                     password: Optional[str] = None,
-                     project: Optional[str] = None,
-                     redis_acl_categories: Optional[Sequence[str]] = None,
-                     redis_acl_channels: Optional[Sequence[str]] = None,
-                     redis_acl_commands: Optional[Sequence[str]] = None,
-                     redis_acl_keys: Optional[Sequence[str]] = None,
+def get_service_user(project: Optional[str] = None,
                      service_name: Optional[str] = None,
-                     type: Optional[str] = None,
                      username: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceUserResult:
     """
-    ## # Service User Data Source
-
     The Service User data source provides information about the existing Aiven Service User.
 
     ## Example Usage
@@ -201,32 +217,14 @@ def get_service_user(access_cert: Optional[str] = None,
         username="<USERNAME>")
     ```
 
-    > **Note** The service user data source is not supported for Aiven Grafana services.
 
-
-    :param str access_cert: is the access certificate of the user (not applicable for all services).
-    :param str access_key: is the access key of the user (not applicable for all services).
-    :param str password: is the password of the user (not applicable for all services).
-    :param str project: and `service_name` - (Required) define the project and service the user belongs to. They should be defined
-           using reference as shown above to set up dependencies correctly.
-    :param Sequence[str] redis_acl_categories: Redis specific field, defines command category rules.
-    :param Sequence[str] redis_acl_commands: Redis specific field, defines rules for individual commands.
-    :param Sequence[str] redis_acl_keys: Redis specific field, defines key access rules.
-    :param str type: tells whether the user is primary account or regular account.
-    :param str username: is the actual name of the user account.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str username: The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
-    __args__['accessCert'] = access_cert
-    __args__['accessKey'] = access_key
-    __args__['authentication'] = authentication
-    __args__['password'] = password
     __args__['project'] = project
-    __args__['redisAclCategories'] = redis_acl_categories
-    __args__['redisAclChannels'] = redis_acl_channels
-    __args__['redisAclCommands'] = redis_acl_commands
-    __args__['redisAclKeys'] = redis_acl_keys
     __args__['serviceName'] = service_name
-    __args__['type'] = type
     __args__['username'] = username
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -240,6 +238,7 @@ def get_service_user(access_cert: Optional[str] = None,
         authentication=__ret__.authentication,
         id=__ret__.id,
         password=__ret__.password,
+        pg_allow_replication=__ret__.pg_allow_replication,
         project=__ret__.project,
         redis_acl_categories=__ret__.redis_acl_categories,
         redis_acl_channels=__ret__.redis_acl_channels,
@@ -251,22 +250,11 @@ def get_service_user(access_cert: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_service_user)
-def get_service_user_output(access_cert: Optional[pulumi.Input[Optional[str]]] = None,
-                            access_key: Optional[pulumi.Input[Optional[str]]] = None,
-                            authentication: Optional[pulumi.Input[Optional[str]]] = None,
-                            password: Optional[pulumi.Input[Optional[str]]] = None,
-                            project: Optional[pulumi.Input[str]] = None,
-                            redis_acl_categories: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                            redis_acl_channels: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                            redis_acl_commands: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                            redis_acl_keys: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+def get_service_user_output(project: Optional[pulumi.Input[str]] = None,
                             service_name: Optional[pulumi.Input[str]] = None,
-                            type: Optional[pulumi.Input[Optional[str]]] = None,
                             username: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceUserResult]:
     """
-    ## # Service User Data Source
-
     The Service User data source provides information about the existing Aiven Service User.
 
     ## Example Usage
@@ -280,18 +268,9 @@ def get_service_user_output(access_cert: Optional[pulumi.Input[Optional[str]]] =
         username="<USERNAME>")
     ```
 
-    > **Note** The service user data source is not supported for Aiven Grafana services.
 
-
-    :param str access_cert: is the access certificate of the user (not applicable for all services).
-    :param str access_key: is the access key of the user (not applicable for all services).
-    :param str password: is the password of the user (not applicable for all services).
-    :param str project: and `service_name` - (Required) define the project and service the user belongs to. They should be defined
-           using reference as shown above to set up dependencies correctly.
-    :param Sequence[str] redis_acl_categories: Redis specific field, defines command category rules.
-    :param Sequence[str] redis_acl_commands: Redis specific field, defines rules for individual commands.
-    :param Sequence[str] redis_acl_keys: Redis specific field, defines key access rules.
-    :param str type: tells whether the user is primary account or regular account.
-    :param str username: is the actual name of the user account.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str username: The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

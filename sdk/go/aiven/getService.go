@@ -10,6 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The Service datasource provides information about specific Aiven Services.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult
 	err := ctx.Invoke("aiven:index/getService:getService", args, &rv, opts...)
@@ -21,90 +22,114 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getService.
 type LookupServiceArgs struct {
-	Cassandra                  *GetServiceCassandra                  `pulumi:"cassandra"`
-	CassandraUserConfig        *GetServiceCassandraUserConfig        `pulumi:"cassandraUserConfig"`
-	CloudName                  *string                               `pulumi:"cloudName"`
-	Components                 []GetServiceComponent                 `pulumi:"components"`
-	Elasticsearch              *GetServiceElasticsearch              `pulumi:"elasticsearch"`
-	ElasticsearchUserConfig    *GetServiceElasticsearchUserConfig    `pulumi:"elasticsearchUserConfig"`
-	Grafana                    *GetServiceGrafana                    `pulumi:"grafana"`
-	GrafanaUserConfig          *GetServiceGrafanaUserConfig          `pulumi:"grafanaUserConfig"`
-	Influxdb                   *GetServiceInfluxdb                   `pulumi:"influxdb"`
-	InfluxdbUserConfig         *GetServiceInfluxdbUserConfig         `pulumi:"influxdbUserConfig"`
-	Kafka                      *GetServiceKafka                      `pulumi:"kafka"`
-	KafkaConnect               *GetServiceKafkaConnect               `pulumi:"kafkaConnect"`
-	KafkaConnectUserConfig     *GetServiceKafkaConnectUserConfig     `pulumi:"kafkaConnectUserConfig"`
-	KafkaMirrormaker           *GetServiceKafkaMirrormaker           `pulumi:"kafkaMirrormaker"`
-	KafkaMirrormakerUserConfig *GetServiceKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
-	KafkaUserConfig            *GetServiceKafkaUserConfig            `pulumi:"kafkaUserConfig"`
-	MaintenanceWindowDow       *string                               `pulumi:"maintenanceWindowDow"`
-	MaintenanceWindowTime      *string                               `pulumi:"maintenanceWindowTime"`
-	Mysql                      *GetServiceMysql                      `pulumi:"mysql"`
-	MysqlUserConfig            *GetServiceMysqlUserConfig            `pulumi:"mysqlUserConfig"`
-	Opensearch                 *GetServiceOpensearch                 `pulumi:"opensearch"`
-	OpensearchUserConfig       *GetServiceOpensearchUserConfig       `pulumi:"opensearchUserConfig"`
-	Pg                         *GetServicePg                         `pulumi:"pg"`
-	PgUserConfig               *GetServicePgUserConfig               `pulumi:"pgUserConfig"`
-	Plan                       *string                               `pulumi:"plan"`
-	Project                    string                                `pulumi:"project"`
-	ProjectVpcId               *string                               `pulumi:"projectVpcId"`
-	Redis                      *GetServiceRedis                      `pulumi:"redis"`
-	RedisUserConfig            *GetServiceRedisUserConfig            `pulumi:"redisUserConfig"`
-	ServiceHost                *string                               `pulumi:"serviceHost"`
-	ServiceIntegrations        []GetServiceServiceIntegration        `pulumi:"serviceIntegrations"`
-	ServiceName                string                                `pulumi:"serviceName"`
-	ServicePassword            *string                               `pulumi:"servicePassword"`
-	ServicePort                *int                                  `pulumi:"servicePort"`
-	ServiceType                *string                               `pulumi:"serviceType"`
-	ServiceUri                 *string                               `pulumi:"serviceUri"`
-	ServiceUsername            *string                               `pulumi:"serviceUsername"`
-	State                      *string                               `pulumi:"state"`
-	TerminationProtection      *bool                                 `pulumi:"terminationProtection"`
+	// Target project
+	Project string `pulumi:"project"`
+	// Service name
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getService.
 type LookupServiceResult struct {
-	Cassandra               GetServiceCassandra                `pulumi:"cassandra"`
-	CassandraUserConfig     *GetServiceCassandraUserConfig     `pulumi:"cassandraUserConfig"`
-	CloudName               *string                            `pulumi:"cloudName"`
-	Components              []GetServiceComponent              `pulumi:"components"`
-	Elasticsearch           GetServiceElasticsearch            `pulumi:"elasticsearch"`
-	ElasticsearchUserConfig *GetServiceElasticsearchUserConfig `pulumi:"elasticsearchUserConfig"`
-	Grafana                 GetServiceGrafana                  `pulumi:"grafana"`
-	GrafanaUserConfig       *GetServiceGrafanaUserConfig       `pulumi:"grafanaUserConfig"`
+	// Cassandra user configurable settings
+	CassandraUserConfigs []GetServiceCassandraUserConfig `pulumi:"cassandraUserConfigs"`
+	// Cassandra specific server provided values
+	Cassandras []GetServiceCassandra `pulumi:"cassandras"`
+	// Clickhouse user configurable settings
+	ClickhouseUserConfigs []GetServiceClickhouseUserConfig `pulumi:"clickhouseUserConfigs"`
+	// Clickhouse specific server provided values
+	Clickhouses []GetServiceClickhouse `pulumi:"clickhouses"`
+	// Cloud the service runs in
+	CloudName string `pulumi:"cloudName"`
+	// Service component information objects
+	Components []GetServiceComponent `pulumi:"components"`
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	DiskSpace string `pulumi:"diskSpace"`
+	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+	DiskSpaceCap string `pulumi:"diskSpaceCap"`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+	DiskSpaceDefault string `pulumi:"diskSpaceDefault"`
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+	DiskSpaceStep string `pulumi:"diskSpaceStep"`
+	// Disk space that service is currently using
+	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
+	// Elasticsearch user configurable settings
+	ElasticsearchUserConfigs []GetServiceElasticsearchUserConfig `pulumi:"elasticsearchUserConfigs"`
+	// Elasticsearch specific server provided values
+	Elasticsearches []GetServiceElasticsearch `pulumi:"elasticsearches"`
+	// Flink user configurable settings
+	FlinkUserConfigs []GetServiceFlinkUserConfig `pulumi:"flinkUserConfigs"`
+	// Flink specific server provided values
+	Flinks []GetServiceFlink `pulumi:"flinks"`
+	// Grafana user configurable settings
+	GrafanaUserConfigs []GetServiceGrafanaUserConfig `pulumi:"grafanaUserConfigs"`
+	// Grafana specific server provided values
+	Grafanas []GetServiceGrafana `pulumi:"grafanas"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                         string                                `pulumi:"id"`
-	Influxdb                   GetServiceInfluxdb                    `pulumi:"influxdb"`
-	InfluxdbUserConfig         *GetServiceInfluxdbUserConfig         `pulumi:"influxdbUserConfig"`
-	Kafka                      GetServiceKafka                       `pulumi:"kafka"`
-	KafkaConnect               GetServiceKafkaConnect                `pulumi:"kafkaConnect"`
-	KafkaConnectUserConfig     *GetServiceKafkaConnectUserConfig     `pulumi:"kafkaConnectUserConfig"`
-	KafkaMirrormaker           GetServiceKafkaMirrormaker            `pulumi:"kafkaMirrormaker"`
-	KafkaMirrormakerUserConfig *GetServiceKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
-	KafkaUserConfig            *GetServiceKafkaUserConfig            `pulumi:"kafkaUserConfig"`
-	MaintenanceWindowDow       *string                               `pulumi:"maintenanceWindowDow"`
-	MaintenanceWindowTime      *string                               `pulumi:"maintenanceWindowTime"`
-	Mysql                      GetServiceMysql                       `pulumi:"mysql"`
-	MysqlUserConfig            *GetServiceMysqlUserConfig            `pulumi:"mysqlUserConfig"`
-	Opensearch                 GetServiceOpensearch                  `pulumi:"opensearch"`
-	OpensearchUserConfig       *GetServiceOpensearchUserConfig       `pulumi:"opensearchUserConfig"`
-	Pg                         GetServicePg                          `pulumi:"pg"`
-	PgUserConfig               *GetServicePgUserConfig               `pulumi:"pgUserConfig"`
-	Plan                       *string                               `pulumi:"plan"`
-	Project                    string                                `pulumi:"project"`
-	ProjectVpcId               *string                               `pulumi:"projectVpcId"`
-	Redis                      GetServiceRedis                       `pulumi:"redis"`
-	RedisUserConfig            *GetServiceRedisUserConfig            `pulumi:"redisUserConfig"`
-	ServiceHost                string                                `pulumi:"serviceHost"`
-	ServiceIntegrations        []GetServiceServiceIntegration        `pulumi:"serviceIntegrations"`
-	ServiceName                string                                `pulumi:"serviceName"`
-	ServicePassword            string                                `pulumi:"servicePassword"`
-	ServicePort                int                                   `pulumi:"servicePort"`
-	ServiceType                *string                               `pulumi:"serviceType"`
-	ServiceUri                 string                                `pulumi:"serviceUri"`
-	ServiceUsername            string                                `pulumi:"serviceUsername"`
-	State                      string                                `pulumi:"state"`
-	TerminationProtection      *bool                                 `pulumi:"terminationProtection"`
+	Id string `pulumi:"id"`
+	// Influxdb user configurable settings
+	InfluxdbUserConfigs []GetServiceInfluxdbUserConfig `pulumi:"influxdbUserConfigs"`
+	// InfluxDB specific server provided values
+	Influxdbs []GetServiceInfluxdb `pulumi:"influxdbs"`
+	// Kafka*connect user configurable settings
+	KafkaConnectUserConfigs []GetServiceKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfigs"`
+	// Kafka Connect specific server provided values
+	KafkaConnects []GetServiceKafkaConnect `pulumi:"kafkaConnects"`
+	// Kafka*mirrormaker user configurable settings
+	KafkaMirrormakerUserConfigs []GetServiceKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfigs"`
+	// Kafka MirrorMaker 2 specific server provided values
+	KafkaMirrormakers []GetServiceKafkaMirrormaker `pulumi:"kafkaMirrormakers"`
+	// Kafka user configurable settings
+	KafkaUserConfigs []GetServiceKafkaUserConfig `pulumi:"kafkaUserConfigs"`
+	// Kafka specific server provided values
+	Kafkas []GetServiceKafka `pulumi:"kafkas"`
+	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
+	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
+	// Mysql user configurable settings
+	MysqlUserConfigs []GetServiceMysqlUserConfig `pulumi:"mysqlUserConfigs"`
+	// MySQL specific server provided values
+	Mysqls []GetServiceMysql `pulumi:"mysqls"`
+	// Opensearch user configurable settings
+	OpensearchUserConfigs []GetServiceOpensearchUserConfig `pulumi:"opensearchUserConfigs"`
+	// Opensearch specific server provided values
+	Opensearches []GetServiceOpensearch `pulumi:"opensearches"`
+	// Pg user configurable settings
+	PgUserConfigs []GetServicePgUserConfig `pulumi:"pgUserConfigs"`
+	// PostgreSQL specific server provided values
+	Pgs []GetServicePg `pulumi:"pgs"`
+	// Subscription plan
+	Plan string `pulumi:"plan"`
+	// Target project
+	Project string `pulumi:"project"`
+	// Identifier of the VPC the service should be in, if any
+	ProjectVpcId string `pulumi:"projectVpcId"`
+	// Redis specific server provided values
+	Redis []GetServiceRedi `pulumi:"redis"`
+	// Redis user configurable settings
+	RedisUserConfigs []GetServiceRedisUserConfig `pulumi:"redisUserConfigs"`
+	// Service hostname
+	ServiceHost string `pulumi:"serviceHost"`
+	// Service integrations to specify when creating a service. Not applied after initial service creation
+	ServiceIntegrations []GetServiceServiceIntegration `pulumi:"serviceIntegrations"`
+	// Service name
+	ServiceName string `pulumi:"serviceName"`
+	// Password used for connecting to the service, if applicable
+	ServicePassword string `pulumi:"servicePassword"`
+	// Service port
+	ServicePort int `pulumi:"servicePort"`
+	// Service type code
+	ServiceType string `pulumi:"serviceType"`
+	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+	ServiceUri string `pulumi:"serviceUri"`
+	// Username used for connecting to the service, if applicable
+	ServiceUsername string `pulumi:"serviceUsername"`
+	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
+	State string `pulumi:"state"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps []string `pulumi:"staticIps"`
+	// Prevent service from being deleted. It is recommended to have this enabled for all services.
+	TerminationProtection bool `pulumi:"terminationProtection"`
 }
 
 func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
@@ -118,45 +143,10 @@ func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts
 
 // A collection of arguments for invoking getService.
 type LookupServiceOutputArgs struct {
-	Cassandra                  GetServiceCassandraPtrInput                  `pulumi:"cassandra"`
-	CassandraUserConfig        GetServiceCassandraUserConfigPtrInput        `pulumi:"cassandraUserConfig"`
-	CloudName                  pulumi.StringPtrInput                        `pulumi:"cloudName"`
-	Components                 GetServiceComponentArrayInput                `pulumi:"components"`
-	Elasticsearch              GetServiceElasticsearchPtrInput              `pulumi:"elasticsearch"`
-	ElasticsearchUserConfig    GetServiceElasticsearchUserConfigPtrInput    `pulumi:"elasticsearchUserConfig"`
-	Grafana                    GetServiceGrafanaPtrInput                    `pulumi:"grafana"`
-	GrafanaUserConfig          GetServiceGrafanaUserConfigPtrInput          `pulumi:"grafanaUserConfig"`
-	Influxdb                   GetServiceInfluxdbPtrInput                   `pulumi:"influxdb"`
-	InfluxdbUserConfig         GetServiceInfluxdbUserConfigPtrInput         `pulumi:"influxdbUserConfig"`
-	Kafka                      GetServiceKafkaPtrInput                      `pulumi:"kafka"`
-	KafkaConnect               GetServiceKafkaConnectPtrInput               `pulumi:"kafkaConnect"`
-	KafkaConnectUserConfig     GetServiceKafkaConnectUserConfigPtrInput     `pulumi:"kafkaConnectUserConfig"`
-	KafkaMirrormaker           GetServiceKafkaMirrormakerPtrInput           `pulumi:"kafkaMirrormaker"`
-	KafkaMirrormakerUserConfig GetServiceKafkaMirrormakerUserConfigPtrInput `pulumi:"kafkaMirrormakerUserConfig"`
-	KafkaUserConfig            GetServiceKafkaUserConfigPtrInput            `pulumi:"kafkaUserConfig"`
-	MaintenanceWindowDow       pulumi.StringPtrInput                        `pulumi:"maintenanceWindowDow"`
-	MaintenanceWindowTime      pulumi.StringPtrInput                        `pulumi:"maintenanceWindowTime"`
-	Mysql                      GetServiceMysqlPtrInput                      `pulumi:"mysql"`
-	MysqlUserConfig            GetServiceMysqlUserConfigPtrInput            `pulumi:"mysqlUserConfig"`
-	Opensearch                 GetServiceOpensearchPtrInput                 `pulumi:"opensearch"`
-	OpensearchUserConfig       GetServiceOpensearchUserConfigPtrInput       `pulumi:"opensearchUserConfig"`
-	Pg                         GetServicePgPtrInput                         `pulumi:"pg"`
-	PgUserConfig               GetServicePgUserConfigPtrInput               `pulumi:"pgUserConfig"`
-	Plan                       pulumi.StringPtrInput                        `pulumi:"plan"`
-	Project                    pulumi.StringInput                           `pulumi:"project"`
-	ProjectVpcId               pulumi.StringPtrInput                        `pulumi:"projectVpcId"`
-	Redis                      GetServiceRedisPtrInput                      `pulumi:"redis"`
-	RedisUserConfig            GetServiceRedisUserConfigPtrInput            `pulumi:"redisUserConfig"`
-	ServiceHost                pulumi.StringPtrInput                        `pulumi:"serviceHost"`
-	ServiceIntegrations        GetServiceServiceIntegrationArrayInput       `pulumi:"serviceIntegrations"`
-	ServiceName                pulumi.StringInput                           `pulumi:"serviceName"`
-	ServicePassword            pulumi.StringPtrInput                        `pulumi:"servicePassword"`
-	ServicePort                pulumi.IntPtrInput                           `pulumi:"servicePort"`
-	ServiceType                pulumi.StringPtrInput                        `pulumi:"serviceType"`
-	ServiceUri                 pulumi.StringPtrInput                        `pulumi:"serviceUri"`
-	ServiceUsername            pulumi.StringPtrInput                        `pulumi:"serviceUsername"`
-	State                      pulumi.StringPtrInput                        `pulumi:"state"`
-	TerminationProtection      pulumi.BoolPtrInput                          `pulumi:"terminationProtection"`
+	// Target project
+	Project pulumi.StringInput `pulumi:"project"`
+	// Service name
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupServiceOutputArgs) ElementType() reflect.Type {
@@ -178,36 +168,89 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx co
 	return o
 }
 
-func (o LookupServiceResultOutput) Cassandra() GetServiceCassandraOutput {
-	return o.ApplyT(func(v LookupServiceResult) GetServiceCassandra { return v.Cassandra }).(GetServiceCassandraOutput)
+// Cassandra user configurable settings
+func (o LookupServiceResultOutput) CassandraUserConfigs() GetServiceCassandraUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceCassandraUserConfig { return v.CassandraUserConfigs }).(GetServiceCassandraUserConfigArrayOutput)
 }
 
-func (o LookupServiceResultOutput) CassandraUserConfig() GetServiceCassandraUserConfigPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *GetServiceCassandraUserConfig { return v.CassandraUserConfig }).(GetServiceCassandraUserConfigPtrOutput)
+// Cassandra specific server provided values
+func (o LookupServiceResultOutput) Cassandras() GetServiceCassandraArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceCassandra { return v.Cassandras }).(GetServiceCassandraArrayOutput)
 }
 
-func (o LookupServiceResultOutput) CloudName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *string { return v.CloudName }).(pulumi.StringPtrOutput)
+// Clickhouse user configurable settings
+func (o LookupServiceResultOutput) ClickhouseUserConfigs() GetServiceClickhouseUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceClickhouseUserConfig { return v.ClickhouseUserConfigs }).(GetServiceClickhouseUserConfigArrayOutput)
 }
 
+// Clickhouse specific server provided values
+func (o LookupServiceResultOutput) Clickhouses() GetServiceClickhouseArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceClickhouse { return v.Clickhouses }).(GetServiceClickhouseArrayOutput)
+}
+
+// Cloud the service runs in
+func (o LookupServiceResultOutput) CloudName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.CloudName }).(pulumi.StringOutput)
+}
+
+// Service component information objects
 func (o LookupServiceResultOutput) Components() GetServiceComponentArrayOutput {
 	return o.ApplyT(func(v LookupServiceResult) []GetServiceComponent { return v.Components }).(GetServiceComponentArrayOutput)
 }
 
-func (o LookupServiceResultOutput) Elasticsearch() GetServiceElasticsearchOutput {
-	return o.ApplyT(func(v LookupServiceResult) GetServiceElasticsearch { return v.Elasticsearch }).(GetServiceElasticsearchOutput)
+// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+func (o LookupServiceResultOutput) DiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.DiskSpace }).(pulumi.StringOutput)
 }
 
-func (o LookupServiceResultOutput) ElasticsearchUserConfig() GetServiceElasticsearchUserConfigPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *GetServiceElasticsearchUserConfig { return v.ElasticsearchUserConfig }).(GetServiceElasticsearchUserConfigPtrOutput)
+// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+func (o LookupServiceResultOutput) DiskSpaceCap() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.DiskSpaceCap }).(pulumi.StringOutput)
 }
 
-func (o LookupServiceResultOutput) Grafana() GetServiceGrafanaOutput {
-	return o.ApplyT(func(v LookupServiceResult) GetServiceGrafana { return v.Grafana }).(GetServiceGrafanaOutput)
+// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+func (o LookupServiceResultOutput) DiskSpaceDefault() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.DiskSpaceDefault }).(pulumi.StringOutput)
 }
 
-func (o LookupServiceResultOutput) GrafanaUserConfig() GetServiceGrafanaUserConfigPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *GetServiceGrafanaUserConfig { return v.GrafanaUserConfig }).(GetServiceGrafanaUserConfigPtrOutput)
+// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+func (o LookupServiceResultOutput) DiskSpaceStep() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.DiskSpaceStep }).(pulumi.StringOutput)
+}
+
+// Disk space that service is currently using
+func (o LookupServiceResultOutput) DiskSpaceUsed() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.DiskSpaceUsed }).(pulumi.StringOutput)
+}
+
+// Elasticsearch user configurable settings
+func (o LookupServiceResultOutput) ElasticsearchUserConfigs() GetServiceElasticsearchUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceElasticsearchUserConfig { return v.ElasticsearchUserConfigs }).(GetServiceElasticsearchUserConfigArrayOutput)
+}
+
+// Elasticsearch specific server provided values
+func (o LookupServiceResultOutput) Elasticsearches() GetServiceElasticsearchArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceElasticsearch { return v.Elasticsearches }).(GetServiceElasticsearchArrayOutput)
+}
+
+// Flink user configurable settings
+func (o LookupServiceResultOutput) FlinkUserConfigs() GetServiceFlinkUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceFlinkUserConfig { return v.FlinkUserConfigs }).(GetServiceFlinkUserConfigArrayOutput)
+}
+
+// Flink specific server provided values
+func (o LookupServiceResultOutput) Flinks() GetServiceFlinkArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceFlink { return v.Flinks }).(GetServiceFlinkArrayOutput)
+}
+
+// Grafana user configurable settings
+func (o LookupServiceResultOutput) GrafanaUserConfigs() GetServiceGrafanaUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceGrafanaUserConfig { return v.GrafanaUserConfigs }).(GetServiceGrafanaUserConfigArrayOutput)
+}
+
+// Grafana specific server provided values
+func (o LookupServiceResultOutput) Grafanas() GetServiceGrafanaArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceGrafana { return v.Grafanas }).(GetServiceGrafanaArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -215,128 +258,166 @@ func (o LookupServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupServiceResultOutput) Influxdb() GetServiceInfluxdbOutput {
-	return o.ApplyT(func(v LookupServiceResult) GetServiceInfluxdb { return v.Influxdb }).(GetServiceInfluxdbOutput)
+// Influxdb user configurable settings
+func (o LookupServiceResultOutput) InfluxdbUserConfigs() GetServiceInfluxdbUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceInfluxdbUserConfig { return v.InfluxdbUserConfigs }).(GetServiceInfluxdbUserConfigArrayOutput)
 }
 
-func (o LookupServiceResultOutput) InfluxdbUserConfig() GetServiceInfluxdbUserConfigPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *GetServiceInfluxdbUserConfig { return v.InfluxdbUserConfig }).(GetServiceInfluxdbUserConfigPtrOutput)
+// InfluxDB specific server provided values
+func (o LookupServiceResultOutput) Influxdbs() GetServiceInfluxdbArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceInfluxdb { return v.Influxdbs }).(GetServiceInfluxdbArrayOutput)
 }
 
-func (o LookupServiceResultOutput) Kafka() GetServiceKafkaOutput {
-	return o.ApplyT(func(v LookupServiceResult) GetServiceKafka { return v.Kafka }).(GetServiceKafkaOutput)
+// Kafka*connect user configurable settings
+func (o LookupServiceResultOutput) KafkaConnectUserConfigs() GetServiceKafkaConnectUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceKafkaConnectUserConfig { return v.KafkaConnectUserConfigs }).(GetServiceKafkaConnectUserConfigArrayOutput)
 }
 
-func (o LookupServiceResultOutput) KafkaConnect() GetServiceKafkaConnectOutput {
-	return o.ApplyT(func(v LookupServiceResult) GetServiceKafkaConnect { return v.KafkaConnect }).(GetServiceKafkaConnectOutput)
+// Kafka Connect specific server provided values
+func (o LookupServiceResultOutput) KafkaConnects() GetServiceKafkaConnectArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceKafkaConnect { return v.KafkaConnects }).(GetServiceKafkaConnectArrayOutput)
 }
 
-func (o LookupServiceResultOutput) KafkaConnectUserConfig() GetServiceKafkaConnectUserConfigPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *GetServiceKafkaConnectUserConfig { return v.KafkaConnectUserConfig }).(GetServiceKafkaConnectUserConfigPtrOutput)
+// Kafka*mirrormaker user configurable settings
+func (o LookupServiceResultOutput) KafkaMirrormakerUserConfigs() GetServiceKafkaMirrormakerUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceKafkaMirrormakerUserConfig {
+		return v.KafkaMirrormakerUserConfigs
+	}).(GetServiceKafkaMirrormakerUserConfigArrayOutput)
 }
 
-func (o LookupServiceResultOutput) KafkaMirrormaker() GetServiceKafkaMirrormakerOutput {
-	return o.ApplyT(func(v LookupServiceResult) GetServiceKafkaMirrormaker { return v.KafkaMirrormaker }).(GetServiceKafkaMirrormakerOutput)
+// Kafka MirrorMaker 2 specific server provided values
+func (o LookupServiceResultOutput) KafkaMirrormakers() GetServiceKafkaMirrormakerArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceKafkaMirrormaker { return v.KafkaMirrormakers }).(GetServiceKafkaMirrormakerArrayOutput)
 }
 
-func (o LookupServiceResultOutput) KafkaMirrormakerUserConfig() GetServiceKafkaMirrormakerUserConfigPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *GetServiceKafkaMirrormakerUserConfig { return v.KafkaMirrormakerUserConfig }).(GetServiceKafkaMirrormakerUserConfigPtrOutput)
+// Kafka user configurable settings
+func (o LookupServiceResultOutput) KafkaUserConfigs() GetServiceKafkaUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceKafkaUserConfig { return v.KafkaUserConfigs }).(GetServiceKafkaUserConfigArrayOutput)
 }
 
-func (o LookupServiceResultOutput) KafkaUserConfig() GetServiceKafkaUserConfigPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *GetServiceKafkaUserConfig { return v.KafkaUserConfig }).(GetServiceKafkaUserConfigPtrOutput)
+// Kafka specific server provided values
+func (o LookupServiceResultOutput) Kafkas() GetServiceKafkaArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceKafka { return v.Kafkas }).(GetServiceKafkaArrayOutput)
 }
 
-func (o LookupServiceResultOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *string { return v.MaintenanceWindowDow }).(pulumi.StringPtrOutput)
+// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+func (o LookupServiceResultOutput) MaintenanceWindowDow() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.MaintenanceWindowDow }).(pulumi.StringOutput)
 }
 
-func (o LookupServiceResultOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *string { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
+// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+func (o LookupServiceResultOutput) MaintenanceWindowTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.MaintenanceWindowTime }).(pulumi.StringOutput)
 }
 
-func (o LookupServiceResultOutput) Mysql() GetServiceMysqlOutput {
-	return o.ApplyT(func(v LookupServiceResult) GetServiceMysql { return v.Mysql }).(GetServiceMysqlOutput)
+// Mysql user configurable settings
+func (o LookupServiceResultOutput) MysqlUserConfigs() GetServiceMysqlUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceMysqlUserConfig { return v.MysqlUserConfigs }).(GetServiceMysqlUserConfigArrayOutput)
 }
 
-func (o LookupServiceResultOutput) MysqlUserConfig() GetServiceMysqlUserConfigPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *GetServiceMysqlUserConfig { return v.MysqlUserConfig }).(GetServiceMysqlUserConfigPtrOutput)
+// MySQL specific server provided values
+func (o LookupServiceResultOutput) Mysqls() GetServiceMysqlArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceMysql { return v.Mysqls }).(GetServiceMysqlArrayOutput)
 }
 
-func (o LookupServiceResultOutput) Opensearch() GetServiceOpensearchOutput {
-	return o.ApplyT(func(v LookupServiceResult) GetServiceOpensearch { return v.Opensearch }).(GetServiceOpensearchOutput)
+// Opensearch user configurable settings
+func (o LookupServiceResultOutput) OpensearchUserConfigs() GetServiceOpensearchUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceOpensearchUserConfig { return v.OpensearchUserConfigs }).(GetServiceOpensearchUserConfigArrayOutput)
 }
 
-func (o LookupServiceResultOutput) OpensearchUserConfig() GetServiceOpensearchUserConfigPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *GetServiceOpensearchUserConfig { return v.OpensearchUserConfig }).(GetServiceOpensearchUserConfigPtrOutput)
+// Opensearch specific server provided values
+func (o LookupServiceResultOutput) Opensearches() GetServiceOpensearchArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceOpensearch { return v.Opensearches }).(GetServiceOpensearchArrayOutput)
 }
 
-func (o LookupServiceResultOutput) Pg() GetServicePgOutput {
-	return o.ApplyT(func(v LookupServiceResult) GetServicePg { return v.Pg }).(GetServicePgOutput)
+// Pg user configurable settings
+func (o LookupServiceResultOutput) PgUserConfigs() GetServicePgUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServicePgUserConfig { return v.PgUserConfigs }).(GetServicePgUserConfigArrayOutput)
 }
 
-func (o LookupServiceResultOutput) PgUserConfig() GetServicePgUserConfigPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *GetServicePgUserConfig { return v.PgUserConfig }).(GetServicePgUserConfigPtrOutput)
+// PostgreSQL specific server provided values
+func (o LookupServiceResultOutput) Pgs() GetServicePgArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServicePg { return v.Pgs }).(GetServicePgArrayOutput)
 }
 
-func (o LookupServiceResultOutput) Plan() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *string { return v.Plan }).(pulumi.StringPtrOutput)
+// Subscription plan
+func (o LookupServiceResultOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
+// Target project
 func (o LookupServiceResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-func (o LookupServiceResultOutput) ProjectVpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *string { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+// Identifier of the VPC the service should be in, if any
+func (o LookupServiceResultOutput) ProjectVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ProjectVpcId }).(pulumi.StringOutput)
 }
 
-func (o LookupServiceResultOutput) Redis() GetServiceRedisOutput {
-	return o.ApplyT(func(v LookupServiceResult) GetServiceRedis { return v.Redis }).(GetServiceRedisOutput)
+// Redis specific server provided values
+func (o LookupServiceResultOutput) Redis() GetServiceRediArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceRedi { return v.Redis }).(GetServiceRediArrayOutput)
 }
 
-func (o LookupServiceResultOutput) RedisUserConfig() GetServiceRedisUserConfigPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *GetServiceRedisUserConfig { return v.RedisUserConfig }).(GetServiceRedisUserConfigPtrOutput)
+// Redis user configurable settings
+func (o LookupServiceResultOutput) RedisUserConfigs() GetServiceRedisUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceRedisUserConfig { return v.RedisUserConfigs }).(GetServiceRedisUserConfigArrayOutput)
 }
 
+// Service hostname
 func (o LookupServiceResultOutput) ServiceHost() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ServiceHost }).(pulumi.StringOutput)
 }
 
+// Service integrations to specify when creating a service. Not applied after initial service creation
 func (o LookupServiceResultOutput) ServiceIntegrations() GetServiceServiceIntegrationArrayOutput {
 	return o.ApplyT(func(v LookupServiceResult) []GetServiceServiceIntegration { return v.ServiceIntegrations }).(GetServiceServiceIntegrationArrayOutput)
 }
 
+// Service name
 func (o LookupServiceResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Password used for connecting to the service, if applicable
 func (o LookupServiceResultOutput) ServicePassword() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ServicePassword }).(pulumi.StringOutput)
 }
 
+// Service port
 func (o LookupServiceResultOutput) ServicePort() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupServiceResult) int { return v.ServicePort }).(pulumi.IntOutput)
 }
 
-func (o LookupServiceResultOutput) ServiceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *string { return v.ServiceType }).(pulumi.StringPtrOutput)
+// Service type code
+func (o LookupServiceResultOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ServiceType }).(pulumi.StringOutput)
 }
 
+// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
 func (o LookupServiceResultOutput) ServiceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ServiceUri }).(pulumi.StringOutput)
 }
 
+// Username used for connecting to the service, if applicable
 func (o LookupServiceResultOutput) ServiceUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ServiceUsername }).(pulumi.StringOutput)
 }
 
+// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
 func (o LookupServiceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-func (o LookupServiceResultOutput) TerminationProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupServiceResult) *bool { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+func (o LookupServiceResultOutput) StaticIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []string { return v.StaticIps }).(pulumi.StringArrayOutput)
+}
+
+// Prevent service from being deleted. It is recommended to have this enabled for all services.
+func (o LookupServiceResultOutput) TerminationProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServiceResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
 }
 
 func init() {

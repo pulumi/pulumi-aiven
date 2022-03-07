@@ -51,26 +51,41 @@ class GetKafkaAclResult:
     @property
     @pulumi.getter
     def permission(self) -> str:
+        """
+        Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def topic(self) -> str:
+        """
+        Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "topic")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "username")
 
 
@@ -95,10 +110,7 @@ def get_kafka_acl(permission: Optional[str] = None,
                   username: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaAclResult:
     """
-    ## # Kafka ACL Data Source
-
-    The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL
-    for a Kafka service.
+    The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
 
     ## Example Usage
 
@@ -109,19 +121,16 @@ def get_kafka_acl(permission: Optional[str] = None,
     mytestacl = aiven.get_kafka_acl(project=aiven_project["myproject"]["project"],
         service_name=aiven_service["myservice"]["service_name"],
         topic="<TOPIC_NAME_PATTERN>",
-        permission="admin",
+        permission="<PERMISSON>",
         username="<USERNAME_PATTERN>")
     ```
 
 
-    :param str permission: is the level of permission the matching users are given to the matching
-           topics (admin, read, readwrite, write).
-    :param str project: and `service_name` - (Required) define the project and service the ACL belongs to.
-           They should be defined using reference as shown above to set up dependencies correctly.
-           These properties cannot be changed once the service is created. Doing so will result in
-           the topic being deleted and new one created instead.
-    :param str topic: is a topic name pattern the ACL entry matches to.
-    :param str username: is a username pattern the ACL entry matches to.
+    :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str topic: Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+    :param str username: Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['permission'] = permission
@@ -152,10 +161,7 @@ def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
                          username: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaAclResult]:
     """
-    ## # Kafka ACL Data Source
-
-    The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL
-    for a Kafka service.
+    The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
 
     ## Example Usage
 
@@ -166,18 +172,15 @@ def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
     mytestacl = aiven.get_kafka_acl(project=aiven_project["myproject"]["project"],
         service_name=aiven_service["myservice"]["service_name"],
         topic="<TOPIC_NAME_PATTERN>",
-        permission="admin",
+        permission="<PERMISSON>",
         username="<USERNAME_PATTERN>")
     ```
 
 
-    :param str permission: is the level of permission the matching users are given to the matching
-           topics (admin, read, readwrite, write).
-    :param str project: and `service_name` - (Required) define the project and service the ACL belongs to.
-           They should be defined using reference as shown above to set up dependencies correctly.
-           These properties cannot be changed once the service is created. Doing so will result in
-           the topic being deleted and new one created instead.
-    :param str topic: is a topic name pattern the ACL entry matches to.
-    :param str username: is a username pattern the ACL entry matches to.
+    :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str topic: Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+    :param str username: Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

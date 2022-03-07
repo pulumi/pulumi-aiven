@@ -14,24 +14,43 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// IP filter
+        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Kafka Connect configuration values
+        /// </summary>
         [Input("kafkaConnect")]
         public Input<Inputs.ServiceKafkaConnectUserConfigKafkaConnectArgs>? KafkaConnect { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.ServiceKafkaConnectUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.ServiceKafkaConnectUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.ServiceKafkaConnectUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

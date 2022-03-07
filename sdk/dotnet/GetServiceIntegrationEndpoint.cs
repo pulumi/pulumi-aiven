@@ -12,10 +12,7 @@ namespace Pulumi.Aiven
     public static class GetServiceIntegrationEndpoint
     {
         /// <summary>
-        /// ## # Service Integration Endpoint Data Source
-        /// 
-        /// The Service Integration Endpoint data source provides information about the existing 
-        /// Aiven Service Integration Endpoint.
+        /// The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -45,10 +42,7 @@ namespace Pulumi.Aiven
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationEndpointResult>("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args ?? new GetServiceIntegrationEndpointArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # Service Integration Endpoint Data Source
-        /// 
-        /// The Service Integration Endpoint data source provides information about the existing 
-        /// Aiven Service Integration Endpoint.
+        /// The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -81,66 +75,17 @@ namespace Pulumi.Aiven
 
     public sealed class GetServiceIntegrationEndpointArgs : Pulumi.InvokeArgs
     {
-        [Input("datadogUserConfig")]
-        public Inputs.GetServiceIntegrationEndpointDatadogUserConfigArgs? DatadogUserConfig { get; set; }
-
-        [Input("endpointConfig")]
-        private Dictionary<string, string>? _endpointConfig;
-        public Dictionary<string, string> EndpointConfig
-        {
-            get => _endpointConfig ?? (_endpointConfig = new Dictionary<string, string>());
-            set => _endpointConfig = value;
-        }
-
         /// <summary>
-        /// is the name of the endpoint. This value has no effect beyond being used
-        /// to identify different integration endpoints.
+        /// Name of the service integration endpoint
         /// </summary>
         [Input("endpointName", required: true)]
         public string EndpointName { get; set; } = null!;
 
         /// <summary>
-        /// is the type of the external service this endpoint is associated with.
-        /// By the time of writing the only available option is `datadog`.
-        /// </summary>
-        [Input("endpointType")]
-        public string? EndpointType { get; set; }
-
-        [Input("externalAwsCloudwatchLogsUserConfig")]
-        public Inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs? ExternalAwsCloudwatchLogsUserConfig { get; set; }
-
-        [Input("externalAwsCloudwatchMetricsUserConfig")]
-        public Inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
-
-        [Input("externalElasticsearchLogsUserConfig")]
-        public Inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs? ExternalElasticsearchLogsUserConfig { get; set; }
-
-        [Input("externalGoogleCloudLoggingUserConfig")]
-        public Inputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs? ExternalGoogleCloudLoggingUserConfig { get; set; }
-
-        [Input("externalKafkaUserConfig")]
-        public Inputs.GetServiceIntegrationEndpointExternalKafkaUserConfigArgs? ExternalKafkaUserConfig { get; set; }
-
-        [Input("externalSchemaRegistryUserConfig")]
-        public Inputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs? ExternalSchemaRegistryUserConfig { get; set; }
-
-        [Input("jolokiaUserConfig")]
-        public Inputs.GetServiceIntegrationEndpointJolokiaUserConfigArgs? JolokiaUserConfig { get; set; }
-
-        /// <summary>
-        /// defines the project the endpoint is associated with.
+        /// Project the service integration endpoint belongs to
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
-
-        [Input("prometheusUserConfig")]
-        public Inputs.GetServiceIntegrationEndpointPrometheusUserConfigArgs? PrometheusUserConfig { get; set; }
-
-        [Input("rsyslogUserConfig")]
-        public Inputs.GetServiceIntegrationEndpointRsyslogUserConfigArgs? RsyslogUserConfig { get; set; }
-
-        [Input("signalfxUserConfig")]
-        public Inputs.GetServiceIntegrationEndpointSignalfxUserConfigArgs? SignalfxUserConfig { get; set; }
 
         public GetServiceIntegrationEndpointArgs()
         {
@@ -149,66 +94,17 @@ namespace Pulumi.Aiven
 
     public sealed class GetServiceIntegrationEndpointInvokeArgs : Pulumi.InvokeArgs
     {
-        [Input("datadogUserConfig")]
-        public Input<Inputs.GetServiceIntegrationEndpointDatadogUserConfigInputArgs>? DatadogUserConfig { get; set; }
-
-        [Input("endpointConfig")]
-        private InputMap<string>? _endpointConfig;
-        public InputMap<string> EndpointConfig
-        {
-            get => _endpointConfig ?? (_endpointConfig = new InputMap<string>());
-            set => _endpointConfig = value;
-        }
-
         /// <summary>
-        /// is the name of the endpoint. This value has no effect beyond being used
-        /// to identify different integration endpoints.
+        /// Name of the service integration endpoint
         /// </summary>
         [Input("endpointName", required: true)]
         public Input<string> EndpointName { get; set; } = null!;
 
         /// <summary>
-        /// is the type of the external service this endpoint is associated with.
-        /// By the time of writing the only available option is `datadog`.
-        /// </summary>
-        [Input("endpointType")]
-        public Input<string>? EndpointType { get; set; }
-
-        [Input("externalAwsCloudwatchLogsUserConfig")]
-        public Input<Inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInputArgs>? ExternalAwsCloudwatchLogsUserConfig { get; set; }
-
-        [Input("externalAwsCloudwatchMetricsUserConfig")]
-        public Input<Inputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInputArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
-
-        [Input("externalElasticsearchLogsUserConfig")]
-        public Input<Inputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInputArgs>? ExternalElasticsearchLogsUserConfig { get; set; }
-
-        [Input("externalGoogleCloudLoggingUserConfig")]
-        public Input<Inputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInputArgs>? ExternalGoogleCloudLoggingUserConfig { get; set; }
-
-        [Input("externalKafkaUserConfig")]
-        public Input<Inputs.GetServiceIntegrationEndpointExternalKafkaUserConfigInputArgs>? ExternalKafkaUserConfig { get; set; }
-
-        [Input("externalSchemaRegistryUserConfig")]
-        public Input<Inputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInputArgs>? ExternalSchemaRegistryUserConfig { get; set; }
-
-        [Input("jolokiaUserConfig")]
-        public Input<Inputs.GetServiceIntegrationEndpointJolokiaUserConfigInputArgs>? JolokiaUserConfig { get; set; }
-
-        /// <summary>
-        /// defines the project the endpoint is associated with.
+        /// Project the service integration endpoint belongs to
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
-
-        [Input("prometheusUserConfig")]
-        public Input<Inputs.GetServiceIntegrationEndpointPrometheusUserConfigInputArgs>? PrometheusUserConfig { get; set; }
-
-        [Input("rsyslogUserConfig")]
-        public Input<Inputs.GetServiceIntegrationEndpointRsyslogUserConfigInputArgs>? RsyslogUserConfig { get; set; }
-
-        [Input("signalfxUserConfig")]
-        public Input<Inputs.GetServiceIntegrationEndpointSignalfxUserConfigInputArgs>? SignalfxUserConfig { get; set; }
 
         public GetServiceIntegrationEndpointInvokeArgs()
         {
@@ -219,80 +115,121 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceIntegrationEndpointResult
     {
-        public readonly Outputs.GetServiceIntegrationEndpointDatadogUserConfigResult? DatadogUserConfig;
+        /// <summary>
+        /// Datadog specific user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointDatadogUserConfigResult> DatadogUserConfigs;
+        /// <summary>
+        /// Integration endpoint specific backend configuration
+        /// </summary>
         public readonly ImmutableDictionary<string, string> EndpointConfig;
+        /// <summary>
+        /// Name of the service integration endpoint
+        /// </summary>
         public readonly string EndpointName;
         /// <summary>
-        /// is the type of the external service this endpoint is associated with.
-        /// By the time of writing the only available option is `datadog`.
+        /// Type of the service integration endpoint
         /// </summary>
-        public readonly string? EndpointType;
-        public readonly Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult? ExternalAwsCloudwatchLogsUserConfig;
-        public readonly Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult? ExternalAwsCloudwatchMetricsUserConfig;
-        public readonly Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult? ExternalElasticsearchLogsUserConfig;
-        public readonly Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult? ExternalGoogleCloudLoggingUserConfig;
-        public readonly Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult? ExternalKafkaUserConfig;
-        public readonly Outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult? ExternalSchemaRegistryUserConfig;
+        public readonly string EndpointType;
+        /// <summary>
+        /// external AWS CloudWatch Logs specific user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult> ExternalAwsCloudwatchLogsUserConfigs;
+        /// <summary>
+        /// External AWS cloudwatch mertrics specific user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult> ExternalAwsCloudwatchMetricsUserConfigs;
+        /// <summary>
+        /// external elasticsearch specific user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult> ExternalElasticsearchLogsUserConfigs;
+        /// <summary>
+        /// external Google Cloud Logginig specific user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult> ExternalGoogleCloudLoggingUserConfigs;
+        /// <summary>
+        /// external Kafka specific user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult> ExternalKafkaUserConfigs;
+        /// <summary>
+        /// External schema registry specific user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult> ExternalSchemaRegistryUserConfigs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly Outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult? JolokiaUserConfig;
+        /// <summary>
+        /// Jolokia specific user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult> JolokiaUserConfigs;
+        /// <summary>
+        /// Project the service integration endpoint belongs to
+        /// </summary>
         public readonly string Project;
-        public readonly Outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult? PrometheusUserConfig;
-        public readonly Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult? RsyslogUserConfig;
-        public readonly Outputs.GetServiceIntegrationEndpointSignalfxUserConfigResult? SignalfxUserConfig;
+        /// <summary>
+        /// Prometheus specific user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult> PrometheusUserConfigs;
+        /// <summary>
+        /// rsyslog specific user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult> RsyslogUserConfigs;
+        /// <summary>
+        /// Signalfx specific user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointSignalfxUserConfigResult> SignalfxUserConfigs;
 
         [OutputConstructor]
         private GetServiceIntegrationEndpointResult(
-            Outputs.GetServiceIntegrationEndpointDatadogUserConfigResult? datadogUserConfig,
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointDatadogUserConfigResult> datadogUserConfigs,
 
             ImmutableDictionary<string, string> endpointConfig,
 
             string endpointName,
 
-            string? endpointType,
+            string endpointType,
 
-            Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult? externalAwsCloudwatchLogsUserConfig,
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult> externalAwsCloudwatchLogsUserConfigs,
 
-            Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult? externalAwsCloudwatchMetricsUserConfig,
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult> externalAwsCloudwatchMetricsUserConfigs,
 
-            Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult? externalElasticsearchLogsUserConfig,
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult> externalElasticsearchLogsUserConfigs,
 
-            Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult? externalGoogleCloudLoggingUserConfig,
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult> externalGoogleCloudLoggingUserConfigs,
 
-            Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult? externalKafkaUserConfig,
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult> externalKafkaUserConfigs,
 
-            Outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult? externalSchemaRegistryUserConfig,
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult> externalSchemaRegistryUserConfigs,
 
             string id,
 
-            Outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult? jolokiaUserConfig,
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult> jolokiaUserConfigs,
 
             string project,
 
-            Outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult? prometheusUserConfig,
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult> prometheusUserConfigs,
 
-            Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult? rsyslogUserConfig,
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult> rsyslogUserConfigs,
 
-            Outputs.GetServiceIntegrationEndpointSignalfxUserConfigResult? signalfxUserConfig)
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointSignalfxUserConfigResult> signalfxUserConfigs)
         {
-            DatadogUserConfig = datadogUserConfig;
+            DatadogUserConfigs = datadogUserConfigs;
             EndpointConfig = endpointConfig;
             EndpointName = endpointName;
             EndpointType = endpointType;
-            ExternalAwsCloudwatchLogsUserConfig = externalAwsCloudwatchLogsUserConfig;
-            ExternalAwsCloudwatchMetricsUserConfig = externalAwsCloudwatchMetricsUserConfig;
-            ExternalElasticsearchLogsUserConfig = externalElasticsearchLogsUserConfig;
-            ExternalGoogleCloudLoggingUserConfig = externalGoogleCloudLoggingUserConfig;
-            ExternalKafkaUserConfig = externalKafkaUserConfig;
-            ExternalSchemaRegistryUserConfig = externalSchemaRegistryUserConfig;
+            ExternalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
+            ExternalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
+            ExternalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
+            ExternalGoogleCloudLoggingUserConfigs = externalGoogleCloudLoggingUserConfigs;
+            ExternalKafkaUserConfigs = externalKafkaUserConfigs;
+            ExternalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;
             Id = id;
-            JolokiaUserConfig = jolokiaUserConfig;
+            JolokiaUserConfigs = jolokiaUserConfigs;
             Project = project;
-            PrometheusUserConfig = prometheusUserConfig;
-            RsyslogUserConfig = rsyslogUserConfig;
-            SignalfxUserConfig = signalfxUserConfig;
+            PrometheusUserConfigs = prometheusUserConfigs;
+            RsyslogUserConfigs = rsyslogUserConfigs;
+            SignalfxUserConfigs = signalfxUserConfigs;
         }
     }
 }

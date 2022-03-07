@@ -14,8 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class RedisRedisUserConfigPrivatelinkAccess
     {
         /// <summary>
-        /// Allow clients to connect to redis from the public internet for service 
-        /// nodes that are in a project VPC or another type of private network
+        /// Redis server provided values
         /// </summary>
         public readonly string? Redis;
 

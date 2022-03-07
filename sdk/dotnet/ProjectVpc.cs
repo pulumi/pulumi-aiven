@@ -10,35 +10,31 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Project VPC Resource
-    /// 
     /// The Project VPC resource allows the creation and management of Aiven Project VPCs.
     /// </summary>
     [AivenResourceType("aiven:index/projectVpc:ProjectVpc")]
     public partial class ProjectVpc : Pulumi.CustomResource
     {
         /// <summary>
-        /// defines where the cloud provider and region where the service is hosted
-        /// in. See the Service resource for additional information.
+        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("cloudName")]
         public Output<string> CloudName { get; private set; } = null!;
 
         /// <summary>
-        /// defines the network CIDR of the VPC.
+        /// Network address range used by the VPC like 192.168.0.0/24
         /// </summary>
         [Output("networkCidr")]
         public Output<string> NetworkCidr { get; private set; } = null!;
 
         /// <summary>
-        /// defines the project the VPC belongs to.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// ia a computed property that tells the current state of the VPC. This property cannot be
-        /// set, only read.
+        /// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -90,20 +86,19 @@ namespace Pulumi.Aiven
     public sealed class ProjectVpcArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// defines where the cloud provider and region where the service is hosted
-        /// in. See the Service resource for additional information.
+        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("cloudName", required: true)]
         public Input<string> CloudName { get; set; } = null!;
 
         /// <summary>
-        /// defines the network CIDR of the VPC.
+        /// Network address range used by the VPC like 192.168.0.0/24
         /// </summary>
         [Input("networkCidr", required: true)]
         public Input<string> NetworkCidr { get; set; } = null!;
 
         /// <summary>
-        /// defines the project the VPC belongs to.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -116,27 +111,25 @@ namespace Pulumi.Aiven
     public sealed class ProjectVpcState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// defines where the cloud provider and region where the service is hosted
-        /// in. See the Service resource for additional information.
+        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// defines the network CIDR of the VPC.
+        /// Network address range used by the VPC like 192.168.0.0/24
         /// </summary>
         [Input("networkCidr")]
         public Input<string>? NetworkCidr { get; set; }
 
         /// <summary>
-        /// defines the project the VPC belongs to.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// ia a computed property that tells the current state of the VPC. This property cannot be
-        /// set, only read.
+        /// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

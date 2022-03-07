@@ -14,25 +14,12 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaKafkaUserConfigPublicAccess
     {
         /// <summary>
-        /// Enable kafka
+        /// Kafka server provided values
         /// </summary>
         public readonly string? Kafka;
-        /// <summary>
-        /// Enable kafka_connect
-        /// </summary>
         public readonly string? KafkaConnect;
-        /// <summary>
-        /// Enable kafka_rest
-        /// </summary>
         public readonly string? KafkaRest;
-        /// <summary>
-        /// Allow clients to connect to prometheus from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
-        /// </summary>
         public readonly string? Prometheus;
-        /// <summary>
-        /// Enable Schema-Registry service
-        /// </summary>
         public readonly string? SchemaRegistry;
 
         [OutputConstructor]

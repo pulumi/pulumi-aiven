@@ -12,8 +12,6 @@ namespace Pulumi.Aiven
     public static class GetAwsPrivatelink
     {
         /// <summary>
-        /// ## # AWS Privatelink Data Source
-        /// 
         /// The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
         /// 
         /// {{% examples %}}
@@ -44,8 +42,6 @@ namespace Pulumi.Aiven
             => Pulumi.Deployment.Instance.InvokeAsync<GetAwsPrivatelinkResult>("aiven:index/getAwsPrivatelink:getAwsPrivatelink", args ?? new GetAwsPrivatelinkArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # AWS Privatelink Data Source
-        /// 
         /// The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
         /// 
         /// {{% examples %}}
@@ -80,41 +76,13 @@ namespace Pulumi.Aiven
     public sealed class GetAwsPrivatelinkArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// AWS service ID.
-        /// </summary>
-        [Input("awsServiceId")]
-        public string? AwsServiceId { get; set; }
-
-        /// <summary>
-        /// AWS service name.
-        /// </summary>
-        [Input("awsServiceName")]
-        public string? AwsServiceName { get; set; }
-
-        [Input("principals")]
-        private List<string>? _principals;
-
-        /// <summary>
-        /// list of allowed principals
-        /// </summary>
-        public List<string> Principals
-        {
-            get => _principals ?? (_principals = new List<string>());
-            set => _principals = value;
-        }
-
-        /// <summary>
-        /// identifies the project the service belongs to. To set up proper dependency between the project
-        /// and the service, refer to the project as shown in the above example. Project cannot be changed later without
-        /// destroying and re-creating the service.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// specifies the actual name of the service. The name cannot be changed later without
-        /// destroying and re-creating the service so name should be picked based on intended service usage rather than current
-        /// attributes.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -127,41 +95,13 @@ namespace Pulumi.Aiven
     public sealed class GetAwsPrivatelinkInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// AWS service ID.
-        /// </summary>
-        [Input("awsServiceId")]
-        public Input<string>? AwsServiceId { get; set; }
-
-        /// <summary>
-        /// AWS service name.
-        /// </summary>
-        [Input("awsServiceName")]
-        public Input<string>? AwsServiceName { get; set; }
-
-        [Input("principals")]
-        private InputList<string>? _principals;
-
-        /// <summary>
-        /// list of allowed principals
-        /// </summary>
-        public InputList<string> Principals
-        {
-            get => _principals ?? (_principals = new InputList<string>());
-            set => _principals = value;
-        }
-
-        /// <summary>
-        /// identifies the project the service belongs to. To set up proper dependency between the project
-        /// and the service, refer to the project as shown in the above example. Project cannot be changed later without
-        /// destroying and re-creating the service.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// specifies the actual name of the service. The name cannot be changed later without
-        /// destroying and re-creating the service so name should be picked based on intended service usage rather than current
-        /// attributes.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -176,11 +116,11 @@ namespace Pulumi.Aiven
     public sealed class GetAwsPrivatelinkResult
     {
         /// <summary>
-        /// AWS service ID.
+        /// AWS service ID
         /// </summary>
         public readonly string AwsServiceId;
         /// <summary>
-        /// AWS service name.
+        /// AWS service name
         /// </summary>
         public readonly string AwsServiceName;
         /// <summary>
@@ -188,10 +128,16 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// list of allowed principals
+        /// List of allowed principals
         /// </summary>
         public readonly ImmutableArray<string> Principals;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

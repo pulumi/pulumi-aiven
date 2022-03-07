@@ -6,8 +6,6 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # Kafka Topic Data Source
- *
  * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
  *
  * ## Example Usage
@@ -20,13 +18,6 @@ import * as utilities from "./utilities";
  *     project: aiven_project.myproject.project,
  *     serviceName: aiven_service.myservice.service_name,
  *     topicName: "<TOPIC_NAME>",
- *     partitions: 3,
- *     replication: 1,
- *     config: {
- *         flushMs: 10,
- *         uncleanLeaderElectionEnable: true,
- *         cleanupPolicy: "compact",
- *     },
  * });
  * ```
  */
@@ -37,17 +28,8 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getKafkaTopic:getKafkaTopic", {
-        "cleanupPolicy": args.cleanupPolicy,
-        "config": args.config,
-        "minimumInSyncReplicas": args.minimumInSyncReplicas,
-        "partitions": args.partitions,
         "project": args.project,
-        "replication": args.replication,
-        "retentionBytes": args.retentionBytes,
-        "retentionHours": args.retentionHours,
         "serviceName": args.serviceName,
-        "tags": args.tags,
-        "terminationProtection": args.terminationProtection,
         "topicName": args.topicName,
     }, opts);
 }
@@ -57,47 +39,15 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetKafkaTopicArgs {
     /**
-     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
-     */
-    cleanupPolicy?: string;
-    /**
-     * Kafka topic configuration
-     */
-    config?: inputs.GetKafkaTopicConfig;
-    /**
-     * Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-     */
-    minimumInSyncReplicas?: number;
-    /**
-     * Number of partitions to create in the topic.
-     */
-    partitions?: number;
-    /**
-     * and `serviceName` - (Required) define the project and service the topic belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
-     * These properties cannot be changed once the service is created. Doing so will result in
-     * the topic being deleted and new one created instead.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: string;
     /**
-     * Replication factor for the topic.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
-    replication?: number;
-    /**
-     * retention.bytes value
-     */
-    retentionBytes?: number;
-    /**
-     * Retention period in hours, if -1 it is infinite.
-     */
-    retentionHours?: number;
     serviceName: string;
-    tags?: inputs.GetKafkaTopicTag[];
-    terminationProtection?: boolean;
     /**
-     * is the actual name of the topic account. This propery cannot be changed
-     * once the service is created. Doing so will result in the topic being deleted and new one
-     * created instead.
+     * The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
      */
     topicName: string;
 }
@@ -107,41 +57,53 @@ export interface GetKafkaTopicArgs {
  */
 export interface GetKafkaTopicResult {
     /**
-     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
+     * **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
      */
-    readonly cleanupPolicy?: string;
+    readonly cleanupPolicy: string;
     /**
      * Kafka topic configuration
      */
-    readonly config?: outputs.GetKafkaTopicConfig;
+    readonly configs: outputs.GetKafkaTopicConfig[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+     * **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
      */
-    readonly minimumInSyncReplicas?: number;
+    readonly minimumInSyncReplicas: number;
     /**
-     * Number of partitions to create in the topic.
+     * The number of partitions to create in the topic.
      */
-    readonly partitions?: number;
+    readonly partitions: number;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
     /**
-     * Replication factor for the topic.
+     * The replication factor for the topic.
      */
-    readonly replication?: number;
+    readonly replication: number;
     /**
-     * retention.bytes value
+     * **DEPRECATED use config.retention_bytes instead** Retention bytes.
      */
-    readonly retentionBytes?: number;
+    readonly retentionBytes: number;
     /**
-     * Retention period in hours, if -1 it is infinite.
+     * **DEPRECATED use config.retention_ms instead** Retention period (hours).
      */
-    readonly retentionHours?: number;
+    readonly retentionHours: number;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
-    readonly tags?: outputs.GetKafkaTopicTag[];
-    readonly terminationProtection?: boolean;
+    /**
+     * Kafka Topic tag.
+     */
+    readonly tags: outputs.GetKafkaTopicTag[];
+    readonly terminationProtection: boolean;
+    /**
+     * The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly topicName: string;
 }
 
@@ -154,47 +116,15 @@ export function getKafkaTopicOutput(args: GetKafkaTopicOutputArgs, opts?: pulumi
  */
 export interface GetKafkaTopicOutputArgs {
     /**
-     * cleanup.policy value, can be `create`, `delete` or `compact,delete`
-     */
-    cleanupPolicy?: pulumi.Input<string>;
-    /**
-     * Kafka topic configuration
-     */
-    config?: pulumi.Input<inputs.GetKafkaTopicConfigArgs>;
-    /**
-     * Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-     */
-    minimumInSyncReplicas?: pulumi.Input<number>;
-    /**
-     * Number of partitions to create in the topic.
-     */
-    partitions?: pulumi.Input<number>;
-    /**
-     * and `serviceName` - (Required) define the project and service the topic belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
-     * These properties cannot be changed once the service is created. Doing so will result in
-     * the topic being deleted and new one created instead.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Replication factor for the topic.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
-    replication?: pulumi.Input<number>;
-    /**
-     * retention.bytes value
-     */
-    retentionBytes?: pulumi.Input<number>;
-    /**
-     * Retention period in hours, if -1 it is infinite.
-     */
-    retentionHours?: pulumi.Input<number>;
     serviceName: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<inputs.GetKafkaTopicTagArgs>[]>;
-    terminationProtection?: pulumi.Input<boolean>;
     /**
-     * is the actual name of the topic account. This propery cannot be changed
-     * once the service is created. Doing so will result in the topic being deleted and new one
-     * created instead.
+     * The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
      */
     topicName: pulumi.Input<string>;
 }

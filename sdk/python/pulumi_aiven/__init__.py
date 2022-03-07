@@ -11,28 +11,44 @@ from .account_team import *
 from .account_team_member import *
 from .account_team_project import *
 from .aws_privatelink import *
+from .azure_privatelink import *
+from .azure_privatelink_connection_approval import *
 from .billing_group import *
 from .cassandra import *
+from .clickhouse import *
+from .clickhouse_database import *
+from .clickhouse_grant import *
+from .clickhouse_role import *
+from .clickhouse_user import *
 from .connection_pool import *
 from .database import *
 from .elastic_search import *
 from .elastic_search_acl import *
 from .elastic_search_acl_config import *
 from .elastic_search_acl_rule import *
+from .flink import *
+from .flink_job import *
+from .flink_job_table import *
 from .get_account import *
 from .get_account_authentication import *
 from .get_account_team import *
 from .get_account_team_member import *
 from .get_account_team_project import *
 from .get_aws_privatelink import *
+from .get_azure_privatelink import *
+from .get_billing_group import *
 from .get_cassanda import *
 from .get_cassandra import *
+from .get_clickhouse import *
+from .get_clickhouse_database import *
+from .get_clickhouse_user import *
 from .get_connection_pool import *
 from .get_database import *
 from .get_elastic_search import *
 from .get_elastic_search_acl import *
 from .get_elastic_search_acl_config import *
 from .get_elastic_search_acl_rule import *
+from .get_flink import *
 from .get_grafana import *
 from .get_influx_db import *
 from .get_kafka import *
@@ -89,6 +105,7 @@ from .service import *
 from .service_integration import *
 from .service_integration_endpoint import *
 from .service_user import *
+from .static_ip import *
 from .transit_gateway_vpc_attachment import *
 from .vpc_peering_connection import *
 from ._inputs import *
@@ -154,6 +171,22 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
+  "mod": "index/azurePrivatelink",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/azurePrivatelink:AzurePrivatelink": "AzurePrivatelink"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/azurePrivatelinkConnectionApproval",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval": "AzurePrivatelinkConnectionApproval"
+  }
+ },
+ {
+  "pkg": "aiven",
   "mod": "index/billingGroup",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -166,6 +199,46 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/cassandra:Cassandra": "Cassandra"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/clickhouse",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/clickhouse:Clickhouse": "Clickhouse"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/clickhouseDatabase",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/clickhouseDatabase:ClickhouseDatabase": "ClickhouseDatabase"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/clickhouseGrant",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/clickhouseGrant:ClickhouseGrant": "ClickhouseGrant"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/clickhouseRole",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/clickhouseRole:ClickhouseRole": "ClickhouseRole"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/clickhouseUser",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/clickhouseUser:ClickhouseUser": "ClickhouseUser"
   }
  },
  {
@@ -214,6 +287,30 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/elasticSearchAclRule:ElasticSearchAclRule": "ElasticSearchAclRule"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/flink",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/flink:Flink": "Flink"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/flinkJob",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/flinkJob:FlinkJob": "FlinkJob"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/flinkJobTable",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/flinkJobTable:FlinkJobTable": "FlinkJobTable"
   }
  },
  {
@@ -422,6 +519,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/serviceUser:ServiceUser": "ServiceUser"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/staticIp",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/staticIp:StaticIp": "StaticIp"
   }
  },
  {

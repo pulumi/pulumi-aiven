@@ -14,20 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaKafkaUserConfigPrivatelinkAccess
     {
         /// <summary>
-        /// Enable kafka
+        /// Kafka server provided values
         /// </summary>
         public readonly string? Kafka;
-        /// <summary>
-        /// Enable kafka_connect
-        /// </summary>
         public readonly string? KafkaConnect;
-        /// <summary>
-        /// Enable kafka_rest
-        /// </summary>
         public readonly string? KafkaRest;
-        /// <summary>
-        /// Enable Schema-Registry service
-        /// </summary>
         public readonly string? SchemaRegistry;
 
         [OutputConstructor]

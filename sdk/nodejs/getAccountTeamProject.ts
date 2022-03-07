@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Account Team Project Data Source
- *
  * The Account Team Project data source provides information about the existing Account Team Project.
  */
 export function getAccountTeamProject(args: GetAccountTeamProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamProjectResult> {
@@ -19,7 +17,6 @@ export function getAccountTeamProject(args: GetAccountTeamProjectArgs, opts?: pu
         "accountId": args.accountId,
         "projectName": args.projectName,
         "teamId": args.teamId,
-        "teamType": args.teamType,
     }, opts);
 }
 
@@ -28,40 +25,43 @@ export function getAccountTeamProject(args: GetAccountTeamProjectArgs, opts?: pu
  */
 export interface GetAccountTeamProjectArgs {
     /**
-     * is a unique account id.
+     * The unique account id
      */
     accountId: string;
     /**
-     * is a project name of already existing project.
+     * The name of an already existing project
      */
     projectName: string;
     /**
-     * is an account team id.
+     * An account team id
      */
     teamId: string;
-    /**
-     * is an account team project type, can one of the following values: `admin`, 
-     * `developer`, `operator` and `readOnly`.
-     */
-    teamType?: string;
 }
 
 /**
  * A collection of values returned by getAccountTeamProject.
  */
 export interface GetAccountTeamProjectResult {
+    /**
+     * The unique account id
+     */
     readonly accountId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of an already existing project
+     */
     readonly projectName: string;
+    /**
+     * An account team id
+     */
     readonly teamId: string;
     /**
-     * is an account team project type, can one of the following values: `admin`, 
-     * `developer`, `operator` and `readOnly`.
+     * The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
      */
-    readonly teamType?: string;
+    readonly teamType: string;
 }
 
 export function getAccountTeamProjectOutput(args: GetAccountTeamProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountTeamProjectResult> {
@@ -73,20 +73,15 @@ export function getAccountTeamProjectOutput(args: GetAccountTeamProjectOutputArg
  */
 export interface GetAccountTeamProjectOutputArgs {
     /**
-     * is a unique account id.
+     * The unique account id
      */
     accountId: pulumi.Input<string>;
     /**
-     * is a project name of already existing project.
+     * The name of an already existing project
      */
     projectName: pulumi.Input<string>;
     /**
-     * is an account team id.
+     * An account team id
      */
     teamId: pulumi.Input<string>;
-    /**
-     * is an account team project type, can one of the following values: `admin`, 
-     * `developer`, `operator` and `readOnly`.
-     */
-    teamType?: pulumi.Input<string>;
 }

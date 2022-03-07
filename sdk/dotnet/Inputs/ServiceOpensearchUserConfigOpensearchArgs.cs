@@ -42,6 +42,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("indicesQueryBoolMaxClauseCount")]
         public Input<string>? IndicesQueryBoolMaxClauseCount { get; set; }
 
+        [Input("overrideMainResponseVersion")]
+        public Input<string>? OverrideMainResponseVersion { get; set; }
+
         [Input("reindexRemoteWhitelists")]
         private InputList<string>? _reindexRemoteWhitelists;
         public InputList<string> ReindexRemoteWhitelists

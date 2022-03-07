@@ -12,8 +12,6 @@ namespace Pulumi.Aiven
     public static class GetKafkaTopic
     {
         /// <summary>
-        /// ## # Kafka Topic Data Source
-        /// 
         /// The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
         /// 
         /// {{% examples %}}
@@ -33,14 +31,6 @@ namespace Pulumi.Aiven
         ///             Project = aiven_project.Myproject.Project,
         ///             ServiceName = aiven_service.Myservice.Service_name,
         ///             TopicName = "&lt;TOPIC_NAME&gt;",
-        ///             Partitions = 3,
-        ///             Replication = 1,
-        ///             Config = new Aiven.Inputs.GetKafkaTopicConfigArgs
-        ///             {
-        ///                 FlushMs = "10",
-        ///                 UncleanLeaderElectionEnable = "true",
-        ///                 CleanupPolicy = "compact",
-        ///             },
         ///         }));
         ///     }
         /// 
@@ -53,8 +43,6 @@ namespace Pulumi.Aiven
             => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaTopicResult>("aiven:index/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # Kafka Topic Data Source
-        /// 
         /// The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
         /// 
         /// {{% examples %}}
@@ -74,14 +62,6 @@ namespace Pulumi.Aiven
         ///             Project = aiven_project.Myproject.Project,
         ///             ServiceName = aiven_service.Myservice.Service_name,
         ///             TopicName = "&lt;TOPIC_NAME&gt;",
-        ///             Partitions = 3,
-        ///             Replication = 1,
-        ///             Config = new Aiven.Inputs.GetKafkaTopicConfigArgs
-        ///             {
-        ///                 FlushMs = "10",
-        ///                 UncleanLeaderElectionEnable = "true",
-        ///                 CleanupPolicy = "compact",
-        ///             },
         ///         }));
         ///     }
         /// 
@@ -98,74 +78,19 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// cleanup.policy value, can be `create`, `delete` or `compact,delete`
-        /// </summary>
-        [Input("cleanupPolicy")]
-        public string? CleanupPolicy { get; set; }
-
-        /// <summary>
-        /// Kafka topic configuration
-        /// </summary>
-        [Input("config")]
-        public Inputs.GetKafkaTopicConfigArgs? Config { get; set; }
-
-        /// <summary>
-        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-        /// </summary>
-        [Input("minimumInSyncReplicas")]
-        public int? MinimumInSyncReplicas { get; set; }
-
-        /// <summary>
-        /// Number of partitions to create in the topic.
-        /// </summary>
-        [Input("partitions")]
-        public int? Partitions { get; set; }
-
-        /// <summary>
-        /// and `service_name` - (Required) define the project and service the topic belongs to.
-        /// They should be defined using reference as shown above to set up dependencies correctly.
-        /// These properties cannot be changed once the service is created. Doing so will result in
-        /// the topic being deleted and new one created instead.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// Replication factor for the topic.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
-        [Input("replication")]
-        public int? Replication { get; set; }
-
-        /// <summary>
-        /// retention.bytes value
-        /// </summary>
-        [Input("retentionBytes")]
-        public int? RetentionBytes { get; set; }
-
-        /// <summary>
-        /// Retention period in hours, if -1 it is infinite.
-        /// </summary>
-        [Input("retentionHours")]
-        public int? RetentionHours { get; set; }
-
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
-        [Input("tags")]
-        private List<Inputs.GetKafkaTopicTagArgs>? _tags;
-        public List<Inputs.GetKafkaTopicTagArgs> Tags
-        {
-            get => _tags ?? (_tags = new List<Inputs.GetKafkaTopicTagArgs>());
-            set => _tags = value;
-        }
-
-        [Input("terminationProtection")]
-        public bool? TerminationProtection { get; set; }
-
         /// <summary>
-        /// is the actual name of the topic account. This propery cannot be changed
-        /// once the service is created. Doing so will result in the topic being deleted and new one
-        /// created instead.
+        /// The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("topicName", required: true)]
         public string TopicName { get; set; } = null!;
@@ -178,74 +103,19 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// cleanup.policy value, can be `create`, `delete` or `compact,delete`
-        /// </summary>
-        [Input("cleanupPolicy")]
-        public Input<string>? CleanupPolicy { get; set; }
-
-        /// <summary>
-        /// Kafka topic configuration
-        /// </summary>
-        [Input("config")]
-        public Input<Inputs.GetKafkaTopicConfigInputArgs>? Config { get; set; }
-
-        /// <summary>
-        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-        /// </summary>
-        [Input("minimumInSyncReplicas")]
-        public Input<int>? MinimumInSyncReplicas { get; set; }
-
-        /// <summary>
-        /// Number of partitions to create in the topic.
-        /// </summary>
-        [Input("partitions")]
-        public Input<int>? Partitions { get; set; }
-
-        /// <summary>
-        /// and `service_name` - (Required) define the project and service the topic belongs to.
-        /// They should be defined using reference as shown above to set up dependencies correctly.
-        /// These properties cannot be changed once the service is created. Doing so will result in
-        /// the topic being deleted and new one created instead.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Replication factor for the topic.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
-        [Input("replication")]
-        public Input<int>? Replication { get; set; }
-
-        /// <summary>
-        /// retention.bytes value
-        /// </summary>
-        [Input("retentionBytes")]
-        public Input<int>? RetentionBytes { get; set; }
-
-        /// <summary>
-        /// Retention period in hours, if -1 it is infinite.
-        /// </summary>
-        [Input("retentionHours")]
-        public Input<int>? RetentionHours { get; set; }
-
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
-        [Input("tags")]
-        private InputList<Inputs.GetKafkaTopicTagInputArgs>? _tags;
-        public InputList<Inputs.GetKafkaTopicTagInputArgs> Tags
-        {
-            get => _tags ?? (_tags = new InputList<Inputs.GetKafkaTopicTagInputArgs>());
-            set => _tags = value;
-        }
-
-        [Input("terminationProtection")]
-        public Input<bool>? TerminationProtection { get; set; }
-
         /// <summary>
-        /// is the actual name of the topic account. This propery cannot be changed
-        /// once the service is created. Doing so will result in the topic being deleted and new one
-        /// created instead.
+        /// The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("topicName", required: true)]
         public Input<string> TopicName { get; set; } = null!;
@@ -260,73 +130,85 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicResult
     {
         /// <summary>
-        /// cleanup.policy value, can be `create`, `delete` or `compact,delete`
+        /// **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
         /// </summary>
-        public readonly string? CleanupPolicy;
+        public readonly string CleanupPolicy;
         /// <summary>
         /// Kafka topic configuration
         /// </summary>
-        public readonly Outputs.GetKafkaTopicConfigResult? Config;
+        public readonly ImmutableArray<Outputs.GetKafkaTopicConfigResult> Configs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+        /// **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
         /// </summary>
-        public readonly int? MinimumInSyncReplicas;
+        public readonly int MinimumInSyncReplicas;
         /// <summary>
-        /// Number of partitions to create in the topic.
+        /// The number of partitions to create in the topic.
         /// </summary>
-        public readonly int? Partitions;
+        public readonly int Partitions;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Replication factor for the topic.
+        /// The replication factor for the topic.
         /// </summary>
-        public readonly int? Replication;
+        public readonly int Replication;
         /// <summary>
-        /// retention.bytes value
+        /// **DEPRECATED use config.retention_bytes instead** Retention bytes.
         /// </summary>
-        public readonly int? RetentionBytes;
+        public readonly int RetentionBytes;
         /// <summary>
-        /// Retention period in hours, if -1 it is infinite.
+        /// **DEPRECATED use config.retention_ms instead** Retention period (hours).
         /// </summary>
-        public readonly int? RetentionHours;
+        public readonly int RetentionHours;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Kafka Topic tag.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaTopicTagResult> Tags;
-        public readonly bool? TerminationProtection;
+        public readonly bool TerminationProtection;
+        /// <summary>
+        /// The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string TopicName;
 
         [OutputConstructor]
         private GetKafkaTopicResult(
-            string? cleanupPolicy,
+            string cleanupPolicy,
 
-            Outputs.GetKafkaTopicConfigResult? config,
+            ImmutableArray<Outputs.GetKafkaTopicConfigResult> configs,
 
             string id,
 
-            int? minimumInSyncReplicas,
+            int minimumInSyncReplicas,
 
-            int? partitions,
+            int partitions,
 
             string project,
 
-            int? replication,
+            int replication,
 
-            int? retentionBytes,
+            int retentionBytes,
 
-            int? retentionHours,
+            int retentionHours,
 
             string serviceName,
 
             ImmutableArray<Outputs.GetKafkaTopicTagResult> tags,
 
-            bool? terminationProtection,
+            bool terminationProtection,
 
             string topicName)
         {
             CleanupPolicy = cleanupPolicy;
-            Config = config;
+            Configs = configs;
             Id = id;
             MinimumInSyncReplicas = minimumInSyncReplicas;
             Partitions = partitions;

@@ -44,7 +44,7 @@ class GetAwsPrivatelinkResult:
     @pulumi.getter(name="awsServiceId")
     def aws_service_id(self) -> str:
         """
-        AWS service ID.
+        AWS service ID
         """
         return pulumi.get(self, "aws_service_id")
 
@@ -52,7 +52,7 @@ class GetAwsPrivatelinkResult:
     @pulumi.getter(name="awsServiceName")
     def aws_service_name(self) -> str:
         """
-        AWS service name.
+        AWS service name
         """
         return pulumi.get(self, "aws_service_name")
 
@@ -66,20 +66,26 @@ class GetAwsPrivatelinkResult:
 
     @property
     @pulumi.getter
-    def principals(self) -> Optional[Sequence[str]]:
+    def principals(self) -> Sequence[str]:
         """
-        list of allowed principals
+        List of allowed principals
         """
         return pulumi.get(self, "principals")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -97,15 +103,10 @@ class AwaitableGetAwsPrivatelinkResult(GetAwsPrivatelinkResult):
             service_name=self.service_name)
 
 
-def get_aws_privatelink(aws_service_id: Optional[str] = None,
-                        aws_service_name: Optional[str] = None,
-                        principals: Optional[Sequence[str]] = None,
-                        project: Optional[str] = None,
+def get_aws_privatelink(project: Optional[str] = None,
                         service_name: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsPrivatelinkResult:
     """
-    ## # AWS Privatelink Data Source
-
     The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
 
     ## Example Usage
@@ -119,20 +120,10 @@ def get_aws_privatelink(aws_service_id: Optional[str] = None,
     ```
 
 
-    :param str aws_service_id: AWS service ID.
-    :param str aws_service_name: AWS service name.
-    :param Sequence[str] principals: list of allowed principals
-    :param str project: identifies the project the service belongs to. To set up proper dependency between the project
-           and the service, refer to the project as shown in the above example. Project cannot be changed later without
-           destroying and re-creating the service.
-    :param str service_name: specifies the actual name of the service. The name cannot be changed later without
-           destroying and re-creating the service so name should be picked based on intended service usage rather than current
-           attributes.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
-    __args__['awsServiceId'] = aws_service_id
-    __args__['awsServiceName'] = aws_service_name
-    __args__['principals'] = principals
     __args__['project'] = project
     __args__['serviceName'] = service_name
     if opts is None:
@@ -151,15 +142,10 @@ def get_aws_privatelink(aws_service_id: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_aws_privatelink)
-def get_aws_privatelink_output(aws_service_id: Optional[pulumi.Input[Optional[str]]] = None,
-                               aws_service_name: Optional[pulumi.Input[Optional[str]]] = None,
-                               principals: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                               project: Optional[pulumi.Input[str]] = None,
+def get_aws_privatelink_output(project: Optional[pulumi.Input[str]] = None,
                                service_name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsPrivatelinkResult]:
     """
-    ## # AWS Privatelink Data Source
-
     The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
 
     ## Example Usage
@@ -173,14 +159,7 @@ def get_aws_privatelink_output(aws_service_id: Optional[pulumi.Input[Optional[st
     ```
 
 
-    :param str aws_service_id: AWS service ID.
-    :param str aws_service_name: AWS service name.
-    :param Sequence[str] principals: list of allowed principals
-    :param str project: identifies the project the service belongs to. To set up proper dependency between the project
-           and the service, refer to the project as shown in the above example. Project cannot be changed later without
-           destroying and re-creating the service.
-    :param str service_name: specifies the actual name of the service. The name cannot be changed later without
-           destroying and re-creating the service so name should be picked based on intended service usage rather than current
-           attributes.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetServiceIntegrationResult',
@@ -22,79 +21,49 @@ class GetServiceIntegrationResult:
     """
     A collection of values returned by getServiceIntegration.
     """
-    def __init__(__self__, dashboard_user_config=None, datadog_user_config=None, destination_endpoint_id=None, destination_service_name=None, external_aws_cloudwatch_logs_user_config=None, external_aws_cloudwatch_metrics_user_config=None, external_elasticsearch_logs_user_config=None, external_google_cloud_logging_user_config=None, id=None, integration_type=None, kafka_connect_user_config=None, kafka_logs_user_config=None, kafka_mirrormaker_user_config=None, logs_user_config=None, m3aggregator_user_config=None, m3coordinator_user_config=None, metrics_user_config=None, mirrormaker_user_config=None, project=None, prometheus_user_config=None, read_replica_user_config=None, rsyslog_user_config=None, schema_registry_proxy_user_config=None, signalfx_user_config=None, source_endpoint_id=None, source_service_name=None):
-        if dashboard_user_config and not isinstance(dashboard_user_config, dict):
-            raise TypeError("Expected argument 'dashboard_user_config' to be a dict")
-        pulumi.set(__self__, "dashboard_user_config", dashboard_user_config)
-        if datadog_user_config and not isinstance(datadog_user_config, dict):
-            raise TypeError("Expected argument 'datadog_user_config' to be a dict")
-        pulumi.set(__self__, "datadog_user_config", datadog_user_config)
+    def __init__(__self__, datadog_user_configs=None, destination_endpoint_id=None, destination_service_name=None, id=None, integration_id=None, integration_type=None, kafka_connect_user_configs=None, kafka_logs_user_configs=None, kafka_mirrormaker_user_configs=None, logs_user_configs=None, metrics_user_configs=None, mirrormaker_user_configs=None, project=None, prometheus_user_configs=None, source_endpoint_id=None, source_service_name=None):
+        if datadog_user_configs and not isinstance(datadog_user_configs, list):
+            raise TypeError("Expected argument 'datadog_user_configs' to be a list")
+        pulumi.set(__self__, "datadog_user_configs", datadog_user_configs)
         if destination_endpoint_id and not isinstance(destination_endpoint_id, str):
             raise TypeError("Expected argument 'destination_endpoint_id' to be a str")
         pulumi.set(__self__, "destination_endpoint_id", destination_endpoint_id)
         if destination_service_name and not isinstance(destination_service_name, str):
             raise TypeError("Expected argument 'destination_service_name' to be a str")
         pulumi.set(__self__, "destination_service_name", destination_service_name)
-        if external_aws_cloudwatch_logs_user_config and not isinstance(external_aws_cloudwatch_logs_user_config, dict):
-            raise TypeError("Expected argument 'external_aws_cloudwatch_logs_user_config' to be a dict")
-        pulumi.set(__self__, "external_aws_cloudwatch_logs_user_config", external_aws_cloudwatch_logs_user_config)
-        if external_aws_cloudwatch_metrics_user_config and not isinstance(external_aws_cloudwatch_metrics_user_config, dict):
-            raise TypeError("Expected argument 'external_aws_cloudwatch_metrics_user_config' to be a dict")
-        pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
-        if external_elasticsearch_logs_user_config and not isinstance(external_elasticsearch_logs_user_config, dict):
-            raise TypeError("Expected argument 'external_elasticsearch_logs_user_config' to be a dict")
-        pulumi.set(__self__, "external_elasticsearch_logs_user_config", external_elasticsearch_logs_user_config)
-        if external_google_cloud_logging_user_config and not isinstance(external_google_cloud_logging_user_config, dict):
-            raise TypeError("Expected argument 'external_google_cloud_logging_user_config' to be a dict")
-        pulumi.set(__self__, "external_google_cloud_logging_user_config", external_google_cloud_logging_user_config)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if integration_id and not isinstance(integration_id, str):
+            raise TypeError("Expected argument 'integration_id' to be a str")
+        pulumi.set(__self__, "integration_id", integration_id)
         if integration_type and not isinstance(integration_type, str):
             raise TypeError("Expected argument 'integration_type' to be a str")
         pulumi.set(__self__, "integration_type", integration_type)
-        if kafka_connect_user_config and not isinstance(kafka_connect_user_config, dict):
-            raise TypeError("Expected argument 'kafka_connect_user_config' to be a dict")
-        pulumi.set(__self__, "kafka_connect_user_config", kafka_connect_user_config)
-        if kafka_logs_user_config and not isinstance(kafka_logs_user_config, dict):
-            raise TypeError("Expected argument 'kafka_logs_user_config' to be a dict")
-        pulumi.set(__self__, "kafka_logs_user_config", kafka_logs_user_config)
-        if kafka_mirrormaker_user_config and not isinstance(kafka_mirrormaker_user_config, dict):
-            raise TypeError("Expected argument 'kafka_mirrormaker_user_config' to be a dict")
-        pulumi.set(__self__, "kafka_mirrormaker_user_config", kafka_mirrormaker_user_config)
-        if logs_user_config and not isinstance(logs_user_config, dict):
-            raise TypeError("Expected argument 'logs_user_config' to be a dict")
-        pulumi.set(__self__, "logs_user_config", logs_user_config)
-        if m3aggregator_user_config and not isinstance(m3aggregator_user_config, dict):
-            raise TypeError("Expected argument 'm3aggregator_user_config' to be a dict")
-        pulumi.set(__self__, "m3aggregator_user_config", m3aggregator_user_config)
-        if m3coordinator_user_config and not isinstance(m3coordinator_user_config, dict):
-            raise TypeError("Expected argument 'm3coordinator_user_config' to be a dict")
-        pulumi.set(__self__, "m3coordinator_user_config", m3coordinator_user_config)
-        if metrics_user_config and not isinstance(metrics_user_config, dict):
-            raise TypeError("Expected argument 'metrics_user_config' to be a dict")
-        pulumi.set(__self__, "metrics_user_config", metrics_user_config)
-        if mirrormaker_user_config and not isinstance(mirrormaker_user_config, dict):
-            raise TypeError("Expected argument 'mirrormaker_user_config' to be a dict")
-        pulumi.set(__self__, "mirrormaker_user_config", mirrormaker_user_config)
+        if kafka_connect_user_configs and not isinstance(kafka_connect_user_configs, list):
+            raise TypeError("Expected argument 'kafka_connect_user_configs' to be a list")
+        pulumi.set(__self__, "kafka_connect_user_configs", kafka_connect_user_configs)
+        if kafka_logs_user_configs and not isinstance(kafka_logs_user_configs, list):
+            raise TypeError("Expected argument 'kafka_logs_user_configs' to be a list")
+        pulumi.set(__self__, "kafka_logs_user_configs", kafka_logs_user_configs)
+        if kafka_mirrormaker_user_configs and not isinstance(kafka_mirrormaker_user_configs, list):
+            raise TypeError("Expected argument 'kafka_mirrormaker_user_configs' to be a list")
+        pulumi.set(__self__, "kafka_mirrormaker_user_configs", kafka_mirrormaker_user_configs)
+        if logs_user_configs and not isinstance(logs_user_configs, list):
+            raise TypeError("Expected argument 'logs_user_configs' to be a list")
+        pulumi.set(__self__, "logs_user_configs", logs_user_configs)
+        if metrics_user_configs and not isinstance(metrics_user_configs, list):
+            raise TypeError("Expected argument 'metrics_user_configs' to be a list")
+        pulumi.set(__self__, "metrics_user_configs", metrics_user_configs)
+        if mirrormaker_user_configs and not isinstance(mirrormaker_user_configs, list):
+            raise TypeError("Expected argument 'mirrormaker_user_configs' to be a list")
+        pulumi.set(__self__, "mirrormaker_user_configs", mirrormaker_user_configs)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
-        if prometheus_user_config and not isinstance(prometheus_user_config, dict):
-            raise TypeError("Expected argument 'prometheus_user_config' to be a dict")
-        pulumi.set(__self__, "prometheus_user_config", prometheus_user_config)
-        if read_replica_user_config and not isinstance(read_replica_user_config, dict):
-            raise TypeError("Expected argument 'read_replica_user_config' to be a dict")
-        pulumi.set(__self__, "read_replica_user_config", read_replica_user_config)
-        if rsyslog_user_config and not isinstance(rsyslog_user_config, dict):
-            raise TypeError("Expected argument 'rsyslog_user_config' to be a dict")
-        pulumi.set(__self__, "rsyslog_user_config", rsyslog_user_config)
-        if schema_registry_proxy_user_config and not isinstance(schema_registry_proxy_user_config, dict):
-            raise TypeError("Expected argument 'schema_registry_proxy_user_config' to be a dict")
-        pulumi.set(__self__, "schema_registry_proxy_user_config", schema_registry_proxy_user_config)
-        if signalfx_user_config and not isinstance(signalfx_user_config, dict):
-            raise TypeError("Expected argument 'signalfx_user_config' to be a dict")
-        pulumi.set(__self__, "signalfx_user_config", signalfx_user_config)
+        if prometheus_user_configs and not isinstance(prometheus_user_configs, list):
+            raise TypeError("Expected argument 'prometheus_user_configs' to be a list")
+        pulumi.set(__self__, "prometheus_user_configs", prometheus_user_configs)
         if source_endpoint_id and not isinstance(source_endpoint_id, str):
             raise TypeError("Expected argument 'source_endpoint_id' to be a str")
         pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
@@ -103,44 +72,28 @@ class GetServiceIntegrationResult:
         pulumi.set(__self__, "source_service_name", source_service_name)
 
     @property
-    @pulumi.getter(name="dashboardUserConfig")
-    def dashboard_user_config(self) -> Optional['outputs.GetServiceIntegrationDashboardUserConfigResult']:
-        return pulumi.get(self, "dashboard_user_config")
-
-    @property
-    @pulumi.getter(name="datadogUserConfig")
-    def datadog_user_config(self) -> Optional['outputs.GetServiceIntegrationDatadogUserConfigResult']:
-        return pulumi.get(self, "datadog_user_config")
+    @pulumi.getter(name="datadogUserConfigs")
+    def datadog_user_configs(self) -> Sequence['outputs.GetServiceIntegrationDatadogUserConfigResult']:
+        """
+        Dashboard specific user configurable settings
+        """
+        return pulumi.get(self, "datadog_user_configs")
 
     @property
     @pulumi.getter(name="destinationEndpointId")
-    def destination_endpoint_id(self) -> Optional[str]:
+    def destination_endpoint_id(self) -> str:
+        """
+        Destination endpoint for the integration (if any)
+        """
         return pulumi.get(self, "destination_endpoint_id")
 
     @property
     @pulumi.getter(name="destinationServiceName")
     def destination_service_name(self) -> str:
+        """
+        Destination service for the integration (if any)
+        """
         return pulumi.get(self, "destination_service_name")
-
-    @property
-    @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
-    def external_aws_cloudwatch_logs_user_config(self) -> Optional['outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult']:
-        return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
-
-    @property
-    @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
-    def external_aws_cloudwatch_metrics_user_config(self) -> Optional['outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigResult']:
-        return pulumi.get(self, "external_aws_cloudwatch_metrics_user_config")
-
-    @property
-    @pulumi.getter(name="externalElasticsearchLogsUserConfig")
-    def external_elasticsearch_logs_user_config(self) -> Optional['outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfigResult']:
-        return pulumi.get(self, "external_elasticsearch_logs_user_config")
-
-    @property
-    @pulumi.getter(name="externalGoogleCloudLoggingUserConfig")
-    def external_google_cloud_logging_user_config(self) -> Optional['outputs.GetServiceIntegrationExternalGoogleCloudLoggingUserConfigResult']:
-        return pulumi.get(self, "external_google_cloud_logging_user_config")
 
     @property
     @pulumi.getter
@@ -151,88 +104,99 @@ class GetServiceIntegrationResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="integrationId")
+    def integration_id(self) -> str:
+        """
+        Service Integration Id at aiven
+        """
+        return pulumi.get(self, "integration_id")
+
+    @property
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
+        """
+        Type of the service integration
+        """
         return pulumi.get(self, "integration_type")
 
     @property
-    @pulumi.getter(name="kafkaConnectUserConfig")
-    def kafka_connect_user_config(self) -> Optional['outputs.GetServiceIntegrationKafkaConnectUserConfigResult']:
-        return pulumi.get(self, "kafka_connect_user_config")
+    @pulumi.getter(name="kafkaConnectUserConfigs")
+    def kafka_connect_user_configs(self) -> Sequence['outputs.GetServiceIntegrationKafkaConnectUserConfigResult']:
+        """
+        Kafka Connect specific user configurable settings
+        """
+        return pulumi.get(self, "kafka_connect_user_configs")
 
     @property
-    @pulumi.getter(name="kafkaLogsUserConfig")
-    def kafka_logs_user_config(self) -> Optional['outputs.GetServiceIntegrationKafkaLogsUserConfigResult']:
-        return pulumi.get(self, "kafka_logs_user_config")
+    @pulumi.getter(name="kafkaLogsUserConfigs")
+    def kafka_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationKafkaLogsUserConfigResult']:
+        """
+        Kafka Logs specific user configurable settings
+        """
+        return pulumi.get(self, "kafka_logs_user_configs")
 
     @property
-    @pulumi.getter(name="kafkaMirrormakerUserConfig")
-    def kafka_mirrormaker_user_config(self) -> Optional['outputs.GetServiceIntegrationKafkaMirrormakerUserConfigResult']:
-        return pulumi.get(self, "kafka_mirrormaker_user_config")
+    @pulumi.getter(name="kafkaMirrormakerUserConfigs")
+    def kafka_mirrormaker_user_configs(self) -> Sequence['outputs.GetServiceIntegrationKafkaMirrormakerUserConfigResult']:
+        """
+        Mirrormaker 2 integration specific user configurable settings
+        """
+        return pulumi.get(self, "kafka_mirrormaker_user_configs")
 
     @property
-    @pulumi.getter(name="logsUserConfig")
-    def logs_user_config(self) -> Optional['outputs.GetServiceIntegrationLogsUserConfigResult']:
-        return pulumi.get(self, "logs_user_config")
+    @pulumi.getter(name="logsUserConfigs")
+    def logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationLogsUserConfigResult']:
+        """
+        Log integration specific user configurable settings
+        """
+        return pulumi.get(self, "logs_user_configs")
 
     @property
-    @pulumi.getter(name="m3aggregatorUserConfig")
-    def m3aggregator_user_config(self) -> Optional['outputs.GetServiceIntegrationM3aggregatorUserConfigResult']:
-        return pulumi.get(self, "m3aggregator_user_config")
+    @pulumi.getter(name="metricsUserConfigs")
+    def metrics_user_configs(self) -> Sequence['outputs.GetServiceIntegrationMetricsUserConfigResult']:
+        """
+        Metrics specific user configurable settings
+        """
+        return pulumi.get(self, "metrics_user_configs")
 
     @property
-    @pulumi.getter(name="m3coordinatorUserConfig")
-    def m3coordinator_user_config(self) -> Optional['outputs.GetServiceIntegrationM3coordinatorUserConfigResult']:
-        return pulumi.get(self, "m3coordinator_user_config")
-
-    @property
-    @pulumi.getter(name="metricsUserConfig")
-    def metrics_user_config(self) -> Optional['outputs.GetServiceIntegrationMetricsUserConfigResult']:
-        return pulumi.get(self, "metrics_user_config")
-
-    @property
-    @pulumi.getter(name="mirrormakerUserConfig")
-    def mirrormaker_user_config(self) -> Optional['outputs.GetServiceIntegrationMirrormakerUserConfigResult']:
-        return pulumi.get(self, "mirrormaker_user_config")
+    @pulumi.getter(name="mirrormakerUserConfigs")
+    def mirrormaker_user_configs(self) -> Sequence['outputs.GetServiceIntegrationMirrormakerUserConfigResult']:
+        """
+        Mirrormaker 1 integration specific user configurable settings
+        """
+        return pulumi.get(self, "mirrormaker_user_configs")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Project the integration belongs to
+        """
         return pulumi.get(self, "project")
 
     @property
-    @pulumi.getter(name="prometheusUserConfig")
-    def prometheus_user_config(self) -> Optional['outputs.GetServiceIntegrationPrometheusUserConfigResult']:
-        return pulumi.get(self, "prometheus_user_config")
-
-    @property
-    @pulumi.getter(name="readReplicaUserConfig")
-    def read_replica_user_config(self) -> Optional['outputs.GetServiceIntegrationReadReplicaUserConfigResult']:
-        return pulumi.get(self, "read_replica_user_config")
-
-    @property
-    @pulumi.getter(name="rsyslogUserConfig")
-    def rsyslog_user_config(self) -> Optional['outputs.GetServiceIntegrationRsyslogUserConfigResult']:
-        return pulumi.get(self, "rsyslog_user_config")
-
-    @property
-    @pulumi.getter(name="schemaRegistryProxyUserConfig")
-    def schema_registry_proxy_user_config(self) -> Optional['outputs.GetServiceIntegrationSchemaRegistryProxyUserConfigResult']:
-        return pulumi.get(self, "schema_registry_proxy_user_config")
-
-    @property
-    @pulumi.getter(name="signalfxUserConfig")
-    def signalfx_user_config(self) -> Optional['outputs.GetServiceIntegrationSignalfxUserConfigResult']:
-        return pulumi.get(self, "signalfx_user_config")
+    @pulumi.getter(name="prometheusUserConfigs")
+    def prometheus_user_configs(self) -> Sequence['outputs.GetServiceIntegrationPrometheusUserConfigResult']:
+        """
+        Prometheus coordinator specific user configurable settings
+        """
+        return pulumi.get(self, "prometheus_user_configs")
 
     @property
     @pulumi.getter(name="sourceEndpointId")
-    def source_endpoint_id(self) -> Optional[str]:
+    def source_endpoint_id(self) -> str:
+        """
+        Source endpoint for the integration (if any)
+        """
         return pulumi.get(self, "source_endpoint_id")
 
     @property
     @pulumi.getter(name="sourceServiceName")
     def source_service_name(self) -> str:
+        """
+        Source service for the integration (if any)
+        """
         return pulumi.get(self, "source_service_name")
 
 
@@ -242,114 +206,44 @@ class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
         if False:
             yield self
         return GetServiceIntegrationResult(
-            dashboard_user_config=self.dashboard_user_config,
-            datadog_user_config=self.datadog_user_config,
+            datadog_user_configs=self.datadog_user_configs,
             destination_endpoint_id=self.destination_endpoint_id,
             destination_service_name=self.destination_service_name,
-            external_aws_cloudwatch_logs_user_config=self.external_aws_cloudwatch_logs_user_config,
-            external_aws_cloudwatch_metrics_user_config=self.external_aws_cloudwatch_metrics_user_config,
-            external_elasticsearch_logs_user_config=self.external_elasticsearch_logs_user_config,
-            external_google_cloud_logging_user_config=self.external_google_cloud_logging_user_config,
             id=self.id,
+            integration_id=self.integration_id,
             integration_type=self.integration_type,
-            kafka_connect_user_config=self.kafka_connect_user_config,
-            kafka_logs_user_config=self.kafka_logs_user_config,
-            kafka_mirrormaker_user_config=self.kafka_mirrormaker_user_config,
-            logs_user_config=self.logs_user_config,
-            m3aggregator_user_config=self.m3aggregator_user_config,
-            m3coordinator_user_config=self.m3coordinator_user_config,
-            metrics_user_config=self.metrics_user_config,
-            mirrormaker_user_config=self.mirrormaker_user_config,
+            kafka_connect_user_configs=self.kafka_connect_user_configs,
+            kafka_logs_user_configs=self.kafka_logs_user_configs,
+            kafka_mirrormaker_user_configs=self.kafka_mirrormaker_user_configs,
+            logs_user_configs=self.logs_user_configs,
+            metrics_user_configs=self.metrics_user_configs,
+            mirrormaker_user_configs=self.mirrormaker_user_configs,
             project=self.project,
-            prometheus_user_config=self.prometheus_user_config,
-            read_replica_user_config=self.read_replica_user_config,
-            rsyslog_user_config=self.rsyslog_user_config,
-            schema_registry_proxy_user_config=self.schema_registry_proxy_user_config,
-            signalfx_user_config=self.signalfx_user_config,
+            prometheus_user_configs=self.prometheus_user_configs,
             source_endpoint_id=self.source_endpoint_id,
             source_service_name=self.source_service_name)
 
 
-def get_service_integration(dashboard_user_config: Optional[pulumi.InputType['GetServiceIntegrationDashboardUserConfigArgs']] = None,
-                            datadog_user_config: Optional[pulumi.InputType['GetServiceIntegrationDatadogUserConfigArgs']] = None,
-                            destination_endpoint_id: Optional[str] = None,
-                            destination_service_name: Optional[str] = None,
-                            external_aws_cloudwatch_logs_user_config: Optional[pulumi.InputType['GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] = None,
-                            external_aws_cloudwatch_metrics_user_config: Optional[pulumi.InputType['GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
-                            external_elasticsearch_logs_user_config: Optional[pulumi.InputType['GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] = None,
-                            external_google_cloud_logging_user_config: Optional[pulumi.InputType['GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']] = None,
+def get_service_integration(destination_service_name: Optional[str] = None,
                             integration_type: Optional[str] = None,
-                            kafka_connect_user_config: Optional[pulumi.InputType['GetServiceIntegrationKafkaConnectUserConfigArgs']] = None,
-                            kafka_logs_user_config: Optional[pulumi.InputType['GetServiceIntegrationKafkaLogsUserConfigArgs']] = None,
-                            kafka_mirrormaker_user_config: Optional[pulumi.InputType['GetServiceIntegrationKafkaMirrormakerUserConfigArgs']] = None,
-                            logs_user_config: Optional[pulumi.InputType['GetServiceIntegrationLogsUserConfigArgs']] = None,
-                            m3aggregator_user_config: Optional[pulumi.InputType['GetServiceIntegrationM3aggregatorUserConfigArgs']] = None,
-                            m3coordinator_user_config: Optional[pulumi.InputType['GetServiceIntegrationM3coordinatorUserConfigArgs']] = None,
-                            metrics_user_config: Optional[pulumi.InputType['GetServiceIntegrationMetricsUserConfigArgs']] = None,
-                            mirrormaker_user_config: Optional[pulumi.InputType['GetServiceIntegrationMirrormakerUserConfigArgs']] = None,
                             project: Optional[str] = None,
-                            prometheus_user_config: Optional[pulumi.InputType['GetServiceIntegrationPrometheusUserConfigArgs']] = None,
-                            read_replica_user_config: Optional[pulumi.InputType['GetServiceIntegrationReadReplicaUserConfigArgs']] = None,
-                            rsyslog_user_config: Optional[pulumi.InputType['GetServiceIntegrationRsyslogUserConfigArgs']] = None,
-                            schema_registry_proxy_user_config: Optional[pulumi.InputType['GetServiceIntegrationSchemaRegistryProxyUserConfigArgs']] = None,
-                            signalfx_user_config: Optional[pulumi.InputType['GetServiceIntegrationSignalfxUserConfigArgs']] = None,
-                            source_endpoint_id: Optional[str] = None,
                             source_service_name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceIntegrationResult:
     """
-    ## # Service Integration Data Source
-
     The Service Integration data source provides information about the existing Aiven Service Integration.
 
-    Service Integration defines an integration between two Aiven services or between Aiven service and an external
-    integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,
-    getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
-    Elasticsearch, etc.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    myintegration = aiven.get_service_integration(project=aiven_project["myproject"]["project"],
-        destination_service_name="<DESTINATION_SERVICE_NAME>",
-        integration_type="datadog",
-        source_service_name="<SOURCE_SERVICE_NAME>")
-    ```
+    Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
 
 
-    :param str destination_service_name: identifies the target side of the integration.
-    :param str integration_type: identifies the type of integration that is set up. Possible values include `dashboard`
-           , `datadog`, `logs`, `metrics` and `mirrormaker`.
-    :param str project: defines the project the integration belongs to.
-    :param str source_service_name: identifies the source side of the integration.
+    :param str destination_service_name: Destination service for the integration (if any)
+    :param str integration_type: Type of the service integration
+    :param str project: Project the integration belongs to
+    :param str source_service_name: Source service for the integration (if any)
     """
     __args__ = dict()
-    __args__['dashboardUserConfig'] = dashboard_user_config
-    __args__['datadogUserConfig'] = datadog_user_config
-    __args__['destinationEndpointId'] = destination_endpoint_id
     __args__['destinationServiceName'] = destination_service_name
-    __args__['externalAwsCloudwatchLogsUserConfig'] = external_aws_cloudwatch_logs_user_config
-    __args__['externalAwsCloudwatchMetricsUserConfig'] = external_aws_cloudwatch_metrics_user_config
-    __args__['externalElasticsearchLogsUserConfig'] = external_elasticsearch_logs_user_config
-    __args__['externalGoogleCloudLoggingUserConfig'] = external_google_cloud_logging_user_config
     __args__['integrationType'] = integration_type
-    __args__['kafkaConnectUserConfig'] = kafka_connect_user_config
-    __args__['kafkaLogsUserConfig'] = kafka_logs_user_config
-    __args__['kafkaMirrormakerUserConfig'] = kafka_mirrormaker_user_config
-    __args__['logsUserConfig'] = logs_user_config
-    __args__['m3aggregatorUserConfig'] = m3aggregator_user_config
-    __args__['m3coordinatorUserConfig'] = m3coordinator_user_config
-    __args__['metricsUserConfig'] = metrics_user_config
-    __args__['mirrormakerUserConfig'] = mirrormaker_user_config
     __args__['project'] = project
-    __args__['prometheusUserConfig'] = prometheus_user_config
-    __args__['readReplicaUserConfig'] = read_replica_user_config
-    __args__['rsyslogUserConfig'] = rsyslog_user_config
-    __args__['schemaRegistryProxyUserConfig'] = schema_registry_proxy_user_config
-    __args__['signalfxUserConfig'] = signalfx_user_config
-    __args__['sourceEndpointId'] = source_endpoint_id
     __args__['sourceServiceName'] = source_service_name
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -358,88 +252,39 @@ def get_service_integration(dashboard_user_config: Optional[pulumi.InputType['Ge
     __ret__ = pulumi.runtime.invoke('aiven:index/getServiceIntegration:getServiceIntegration', __args__, opts=opts, typ=GetServiceIntegrationResult).value
 
     return AwaitableGetServiceIntegrationResult(
-        dashboard_user_config=__ret__.dashboard_user_config,
-        datadog_user_config=__ret__.datadog_user_config,
+        datadog_user_configs=__ret__.datadog_user_configs,
         destination_endpoint_id=__ret__.destination_endpoint_id,
         destination_service_name=__ret__.destination_service_name,
-        external_aws_cloudwatch_logs_user_config=__ret__.external_aws_cloudwatch_logs_user_config,
-        external_aws_cloudwatch_metrics_user_config=__ret__.external_aws_cloudwatch_metrics_user_config,
-        external_elasticsearch_logs_user_config=__ret__.external_elasticsearch_logs_user_config,
-        external_google_cloud_logging_user_config=__ret__.external_google_cloud_logging_user_config,
         id=__ret__.id,
+        integration_id=__ret__.integration_id,
         integration_type=__ret__.integration_type,
-        kafka_connect_user_config=__ret__.kafka_connect_user_config,
-        kafka_logs_user_config=__ret__.kafka_logs_user_config,
-        kafka_mirrormaker_user_config=__ret__.kafka_mirrormaker_user_config,
-        logs_user_config=__ret__.logs_user_config,
-        m3aggregator_user_config=__ret__.m3aggregator_user_config,
-        m3coordinator_user_config=__ret__.m3coordinator_user_config,
-        metrics_user_config=__ret__.metrics_user_config,
-        mirrormaker_user_config=__ret__.mirrormaker_user_config,
+        kafka_connect_user_configs=__ret__.kafka_connect_user_configs,
+        kafka_logs_user_configs=__ret__.kafka_logs_user_configs,
+        kafka_mirrormaker_user_configs=__ret__.kafka_mirrormaker_user_configs,
+        logs_user_configs=__ret__.logs_user_configs,
+        metrics_user_configs=__ret__.metrics_user_configs,
+        mirrormaker_user_configs=__ret__.mirrormaker_user_configs,
         project=__ret__.project,
-        prometheus_user_config=__ret__.prometheus_user_config,
-        read_replica_user_config=__ret__.read_replica_user_config,
-        rsyslog_user_config=__ret__.rsyslog_user_config,
-        schema_registry_proxy_user_config=__ret__.schema_registry_proxy_user_config,
-        signalfx_user_config=__ret__.signalfx_user_config,
+        prometheus_user_configs=__ret__.prometheus_user_configs,
         source_endpoint_id=__ret__.source_endpoint_id,
         source_service_name=__ret__.source_service_name)
 
 
 @_utilities.lift_output_func(get_service_integration)
-def get_service_integration_output(dashboard_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationDashboardUserConfigArgs']]]] = None,
-                                   datadog_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationDatadogUserConfigArgs']]]] = None,
-                                   destination_endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                   destination_service_name: Optional[pulumi.Input[str]] = None,
-                                   external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]]] = None,
-                                   external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]]] = None,
-                                   external_elasticsearch_logs_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]]] = None,
-                                   external_google_cloud_logging_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationExternalGoogleCloudLoggingUserConfigArgs']]]] = None,
+def get_service_integration_output(destination_service_name: Optional[pulumi.Input[str]] = None,
                                    integration_type: Optional[pulumi.Input[str]] = None,
-                                   kafka_connect_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationKafkaConnectUserConfigArgs']]]] = None,
-                                   kafka_logs_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationKafkaLogsUserConfigArgs']]]] = None,
-                                   kafka_mirrormaker_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationKafkaMirrormakerUserConfigArgs']]]] = None,
-                                   logs_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationLogsUserConfigArgs']]]] = None,
-                                   m3aggregator_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationM3aggregatorUserConfigArgs']]]] = None,
-                                   m3coordinator_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationM3coordinatorUserConfigArgs']]]] = None,
-                                   metrics_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationMetricsUserConfigArgs']]]] = None,
-                                   mirrormaker_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationMirrormakerUserConfigArgs']]]] = None,
                                    project: Optional[pulumi.Input[str]] = None,
-                                   prometheus_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationPrometheusUserConfigArgs']]]] = None,
-                                   read_replica_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationReadReplicaUserConfigArgs']]]] = None,
-                                   rsyslog_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationRsyslogUserConfigArgs']]]] = None,
-                                   schema_registry_proxy_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationSchemaRegistryProxyUserConfigArgs']]]] = None,
-                                   signalfx_user_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceIntegrationSignalfxUserConfigArgs']]]] = None,
-                                   source_endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    source_service_name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIntegrationResult]:
     """
-    ## # Service Integration Data Source
-
     The Service Integration data source provides information about the existing Aiven Service Integration.
 
-    Service Integration defines an integration between two Aiven services or between Aiven service and an external
-    integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,
-    getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
-    Elasticsearch, etc.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    myintegration = aiven.get_service_integration(project=aiven_project["myproject"]["project"],
-        destination_service_name="<DESTINATION_SERVICE_NAME>",
-        integration_type="datadog",
-        source_service_name="<SOURCE_SERVICE_NAME>")
-    ```
+    Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
 
 
-    :param str destination_service_name: identifies the target side of the integration.
-    :param str integration_type: identifies the type of integration that is set up. Possible values include `dashboard`
-           , `datadog`, `logs`, `metrics` and `mirrormaker`.
-    :param str project: defines the project the integration belongs to.
-    :param str source_service_name: identifies the source side of the integration.
+    :param str destination_service_name: Destination service for the integration (if any)
+    :param str integration_type: Type of the service integration
+    :param str project: Project the integration belongs to
+    :param str source_service_name: Source service for the integration (if any)
     """
     ...

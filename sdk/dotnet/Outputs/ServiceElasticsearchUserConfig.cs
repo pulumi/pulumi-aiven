@@ -13,23 +13,77 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceElasticsearchUserConfig
     {
+        /// <summary>
+        /// Custom domain
+        /// </summary>
         public readonly string? CustomDomain;
+        /// <summary>
+        /// Disable replication factor adjustment
+        /// </summary>
         public readonly string? DisableReplicationFactorAdjustment;
+        /// <summary>
+        /// Elasticsearch settings
+        /// </summary>
         public readonly Outputs.ServiceElasticsearchUserConfigElasticsearch? Elasticsearch;
+        /// <summary>
+        /// Elasticsearch major version
+        /// </summary>
         public readonly string? ElasticsearchVersion;
+        /// <summary>
+        /// Index patterns
+        /// </summary>
         public readonly ImmutableArray<Outputs.ServiceElasticsearchUserConfigIndexPattern> IndexPatterns;
+        /// <summary>
+        /// Template settings for all new indexes
+        /// </summary>
         public readonly Outputs.ServiceElasticsearchUserConfigIndexTemplate? IndexTemplate;
+        /// <summary>
+        /// IP filter
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Don't reset index.refresh_interval to the default value
+        /// </summary>
         public readonly string? KeepIndexRefreshInterval;
+        /// <summary>
+        /// Kibana settings
+        /// </summary>
         public readonly Outputs.ServiceElasticsearchUserConfigKibana? Kibana;
+        /// <summary>
+        /// Maximum index count
+        /// </summary>
         public readonly string? MaxIndexCount;
+        /// <summary>
+        /// OpenSearch major version
+        /// </summary>
         public readonly string? OpensearchVersion;
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         public readonly Outputs.ServiceElasticsearchUserConfigPrivateAccess? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
         public readonly Outputs.ServiceElasticsearchUserConfigPrivatelinkAccess? PrivatelinkAccess;
+        /// <summary>
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// </summary>
         public readonly string? ProjectToForkFrom;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         public readonly Outputs.ServiceElasticsearchUserConfigPublicAccess? PublicAccess;
+        /// <summary>
+        /// Name of the basebackup to restore in forked service
+        /// </summary>
         public readonly string? RecoveryBasebackupName;
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

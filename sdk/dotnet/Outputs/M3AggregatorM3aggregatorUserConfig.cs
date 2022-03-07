@@ -14,18 +14,24 @@ namespace Pulumi.Aiven.Outputs
     public sealed class M3AggregatorM3aggregatorUserConfig
     {
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// Custom domain
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// IP filter
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// M3 major version (deprecated, use m3aggregator_version)
+        /// </summary>
         public readonly string? M3Version;
         /// <summary>
-        /// M3 major version
+        /// M3 major version (the minimum compatible version)
         /// </summary>
         public readonly string? M3aggregatorVersion;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

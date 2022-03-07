@@ -14,19 +14,19 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPg
     {
         /// <summary>
-        /// database name for bootstrapping the initial connection.
+        /// Primary PostgreSQL database name
         /// </summary>
         public readonly string? Dbname;
         /// <summary>
-        /// hostname or IP address of the server where to migrate data from.
+        /// PostgreSQL master node host IP or name
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// password for authentication with the server where to migrate data from.
+        /// PostgreSQL admin user password
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// port number of the server where to migrate data from.
+        /// PostgreSQL port
         /// </summary>
         public readonly int? Port;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ReplicaUri;
         /// <summary>
-        /// PostgreSQL sslmode setting (currently always `require`)
+        /// PostgreSQL sslmode setting (currently always "require")
         /// </summary>
         public readonly string? Sslmode;
         /// <summary>

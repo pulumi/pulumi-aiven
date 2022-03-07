@@ -5,11 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Account Team Member Resource
- *
  * The Account Team Member resource allows the creation and management of an Aiven Account Team Member.
  *
- * During the creation of `aiven.AccountTeamMember` resource, an email invitation will be sent\
+ * During the creation of `aiven.AccountTeamMember`resource, an email invitation will be sent
  * to a user using `userEmail` address. If the user accepts an invitation, he or she will become
  * a member of the account team. The deletion of `aiven.AccountTeamMember` will not only
  * delete the invitation if one was sent but not yet accepted by the user, it will also
@@ -44,30 +42,27 @@ export class AccountTeamMember extends pulumi.CustomResource {
     }
 
     /**
-     * is a boolean flag that determines whether an invitation was accepted or not by the user. 
-     * `false` value means that the invitation was sent to the user but not yet accepted.
-     * `true` means that the user accepted the invitation and now a member of an account team.
+     * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
      */
-    public readonly accepted!: pulumi.Output<boolean>;
+    public /*out*/ readonly accepted!: pulumi.Output<boolean>;
     /**
-     * is a unique account id.
+     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * time of creation.
+     * Time of creation
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * team invited by user email.
+     * The email address that invited this user.
      */
-    public readonly invitedByUserEmail!: pulumi.Output<string>;
+    public /*out*/ readonly invitedByUserEmail!: pulumi.Output<string>;
     /**
-     * is an account team id.
+     * An account team id This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly teamId!: pulumi.Output<string>;
     /**
-     * is a user email address that first will be invited, and after accepting an invitation,
-     * he or she becomes a member of a team.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly userEmail!: pulumi.Output<string>;
 
@@ -101,12 +96,12 @@ export class AccountTeamMember extends pulumi.CustomResource {
             if ((!args || args.userEmail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userEmail'");
             }
-            resourceInputs["accepted"] = args ? args.accepted : undefined;
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["createTime"] = args ? args.createTime : undefined;
-            resourceInputs["invitedByUserEmail"] = args ? args.invitedByUserEmail : undefined;
             resourceInputs["teamId"] = args ? args.teamId : undefined;
             resourceInputs["userEmail"] = args ? args.userEmail : undefined;
+            resourceInputs["accepted"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["invitedByUserEmail"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountTeamMember.__pulumiType, name, resourceInputs, opts);
@@ -118,30 +113,27 @@ export class AccountTeamMember extends pulumi.CustomResource {
  */
 export interface AccountTeamMemberState {
     /**
-     * is a boolean flag that determines whether an invitation was accepted or not by the user. 
-     * `false` value means that the invitation was sent to the user but not yet accepted.
-     * `true` means that the user accepted the invitation and now a member of an account team.
+     * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
      */
     accepted?: pulumi.Input<boolean>;
     /**
-     * is a unique account id.
+     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * time of creation.
+     * Time of creation
      */
     createTime?: pulumi.Input<string>;
     /**
-     * team invited by user email.
+     * The email address that invited this user.
      */
     invitedByUserEmail?: pulumi.Input<string>;
     /**
-     * is an account team id.
+     * An account team id This property cannot be changed, doing so forces recreation of the resource.
      */
     teamId?: pulumi.Input<string>;
     /**
-     * is a user email address that first will be invited, and after accepting an invitation,
-     * he or she becomes a member of a team.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
      */
     userEmail?: pulumi.Input<string>;
 }
@@ -151,30 +143,15 @@ export interface AccountTeamMemberState {
  */
 export interface AccountTeamMemberArgs {
     /**
-     * is a boolean flag that determines whether an invitation was accepted or not by the user. 
-     * `false` value means that the invitation was sent to the user but not yet accepted.
-     * `true` means that the user accepted the invitation and now a member of an account team.
-     */
-    accepted?: pulumi.Input<boolean>;
-    /**
-     * is a unique account id.
+     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
      */
     accountId: pulumi.Input<string>;
     /**
-     * time of creation.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
-     * team invited by user email.
-     */
-    invitedByUserEmail?: pulumi.Input<string>;
-    /**
-     * is an account team id.
+     * An account team id This property cannot be changed, doing so forces recreation of the resource.
      */
     teamId: pulumi.Input<string>;
     /**
-     * is a user email address that first will be invited, and after accepting an invitation,
-     * he or she becomes a member of a team.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
      */
     userEmail: pulumi.Input<string>;
 }

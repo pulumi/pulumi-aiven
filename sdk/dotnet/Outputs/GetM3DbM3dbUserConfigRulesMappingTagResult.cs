@@ -13,13 +13,7 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetM3DbM3dbUserConfigRulesMappingTagResult
     {
-        /// <summary>
-        /// The name of the namespace
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// Value of the tag.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

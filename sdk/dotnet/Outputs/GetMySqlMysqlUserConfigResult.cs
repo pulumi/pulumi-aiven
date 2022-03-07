@@ -13,75 +13,27 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetMySqlMysqlUserConfigResult
     {
-        /// <summary>
-        /// Custom password for admin user. Defaults to random string. 
-        /// This must be set only when a new service is being created.
-        /// </summary>
         public readonly string? AdminPassword;
-        /// <summary>
-        /// Custom username for admin user. This must be set only when a 
-        /// new service is being created.
-        /// </summary>
         public readonly string? AdminUsername;
-        /// <summary>
-        /// The hour of day (in UTC) when backup for the service is started. 
-        /// New backup is only started if previous backup has already completed.
-        /// </summary>
         public readonly string? BackupHour;
-        /// <summary>
-        /// The minute of an hour when backup for the service is started. 
-        /// New backup is only started if previous backup has already completed.
-        /// </summary>
         public readonly string? BackupMinute;
-        /// <summary>
-        /// The minimum amount of time in seconds to keep binlog entries
-        /// before deletion. This may be extended for services that require binlog entries for longer than the
-        /// default for example if using the MySQL Debezium Kafka connector.
-        /// </summary>
         public readonly string? BinlogRetentionPeriod;
-        /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Migrate data from existing server
-        /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigMigrationResult? Migration;
         /// <summary>
-        /// MySQL specific server provided values.
+        /// MySQL specific server provided values
         /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigMysqlResult? Mysql;
-        /// <summary>
-        /// MySQL major version
-        /// </summary>
         public readonly string? MysqlVersion;
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigPrivateAccessResult? PrivateAccess;
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
-        /// <summary>
-        /// Name of another project to fork a service from. This has
-        /// effect only when a new service is being created.
-        /// </summary>
         public readonly string? ProjectToForkFrom;
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigPublicAccessResult? PublicAccess;
-        /// <summary>
-        /// Recovery target time when forking a service. This has effect 
-        /// only when a new service is being created.
-        /// </summary>
         public readonly string? RecoveryTargetTime;
-        /// <summary>
-        /// Name of another service to fork from. This has effect only when 
-        /// a new service is being created.
-        /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

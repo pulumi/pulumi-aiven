@@ -10,12 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Elasticsearch ACL Resource
+    /// **This resource is deprecated, please use `aiven.ElasticSearchAclConfig`and `aiven.ElasticSearchAclRule`**
     /// 
-    /// ** This resource is deprecated, please use `aiven.ElasticSearchAclConfig` and `aiven.ElasticSearchAclRule` **
-    /// 
-    /// The Elasticsearch ACL resource allows the creation and management of ACLs
-    /// for an Aiven Elasticsearch service.
+    /// The Elasticsearch ACL resource allows the creation and management of ACLs for an Aiven Elasticsearch service.
     /// 
     /// ## Example Usage
     /// 
@@ -86,28 +83,25 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.ElasticSearchAclAcl>> Acls { get; private set; } = null!;
 
         /// <summary>
-        /// enables of disables Elasticsearch ACL's.
+        /// Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
-        /// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-        /// these APIs as long as all operations only target indexes they have been granted access to.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         /// </summary>
         [Output("extendedAcl")]
         public Output<bool?> ExtendedAcl { get; private set; } = null!;
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the ACL belongs to. 
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Service to link the Elasticsearch ACLs to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -171,28 +165,25 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// enables of disables Elasticsearch ACL's.
+        /// Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
-        /// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-        /// these APIs as long as all operations only target indexes they have been granted access to.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         /// </summary>
         [Input("extendedAcl")]
         public Input<bool>? ExtendedAcl { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the ACL belongs to. 
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Service to link the Elasticsearch ACLs to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -217,28 +208,25 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// enables of disables Elasticsearch ACL's.
+        /// Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
-        /// (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-        /// these APIs as long as all operations only target indexes they have been granted access to.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         /// </summary>
         [Input("extendedAcl")]
         public Input<bool>? ExtendedAcl { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the ACL belongs to. 
-        /// They should be defined using reference as shown above to set up dependencies correctly.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Service to link the Elasticsearch ACLs to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

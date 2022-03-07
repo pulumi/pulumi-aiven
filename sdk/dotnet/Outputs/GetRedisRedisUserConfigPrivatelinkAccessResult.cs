@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetRedisRedisUserConfigPrivatelinkAccessResult
     {
         /// <summary>
-        /// Redis specific server provided values.
+        /// Redis server provided values
         /// </summary>
         public readonly string? Redis;
 

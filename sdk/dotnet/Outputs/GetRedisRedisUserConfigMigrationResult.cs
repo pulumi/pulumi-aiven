@@ -13,34 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetRedisRedisUserConfigMigrationResult
     {
-        /// <summary>
-        /// Database name for bootstrapping the initial connection
-        /// </summary>
         public readonly string? Dbname;
-        /// <summary>
-        /// (Required) Hostname or IP address of the server where to migrate data from
-        /// </summary>
         public readonly string? Host;
-        /// <summary>
-        /// Comma-separated list of databases, which should be ignored during
-        /// migration (supported by MySQL only at the moment)
-        /// </summary>
         public readonly string? IgnoreDbs;
-        /// <summary>
-        /// Password for authentication with the server where to migrate data from
-        /// </summary>
+        public readonly string? Method;
         public readonly string? Password;
-        /// <summary>
-        /// (Required) Port number of the server where to migrate data from
-        /// </summary>
         public readonly string? Port;
-        /// <summary>
-        /// The server where to migrate data from is secured with SSL
-        /// </summary>
         public readonly string? Ssl;
-        /// <summary>
-        /// User name for authentication with the server where to migrate data from
-        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]
@@ -50,6 +29,8 @@ namespace Pulumi.Aiven.Outputs
             string? host,
 
             string? ignoreDbs,
+
+            string? method,
 
             string? password,
 
@@ -62,6 +43,7 @@ namespace Pulumi.Aiven.Outputs
             Dbname = dbname;
             Host = host;
             IgnoreDbs = ignoreDbs;
+            Method = method;
             Password = password;
             Port = port;
             Ssl = ssl;

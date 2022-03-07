@@ -13,89 +13,25 @@ __all__ = ['AccountArgs', 'Account']
 @pulumi.input_type
 class AccountArgs:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 owner_team_id: Optional[pulumi.Input[str]] = None,
-                 tenant_id: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Account resource.
-        :param pulumi.Input[str] create_time: time of creation.
-        :param pulumi.Input[str] name: defines an account name.
-        :param pulumi.Input[str] owner_team_id: is an owner team id.
-        :param pulumi.Input[str] tenant_id: is a tenant id.
-        :param pulumi.Input[str] update_time: time of last update.
+        :param pulumi.Input[str] name: Account name
         """
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if owner_team_id is not None:
-            pulumi.set(__self__, "owner_team_id", owner_team_id)
-        if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        time of creation.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        defines an account name.
+        Account name
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="ownerTeamId")
-    def owner_team_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        is an owner team id.
-        """
-        return pulumi.get(self, "owner_team_id")
-
-    @owner_team_id.setter
-    def owner_team_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "owner_team_id", value)
-
-    @property
-    @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        is a tenant id.
-        """
-        return pulumi.get(self, "tenant_id")
-
-    @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "tenant_id", value)
-
-    @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        time of last update.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
 
 
 @pulumi.input_type
@@ -109,12 +45,12 @@ class _AccountState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
-        :param pulumi.Input[str] account_id: is an auto-generated unique account id.
-        :param pulumi.Input[str] create_time: time of creation.
-        :param pulumi.Input[str] name: defines an account name.
-        :param pulumi.Input[str] owner_team_id: is an owner team id.
-        :param pulumi.Input[str] tenant_id: is a tenant id.
-        :param pulumi.Input[str] update_time: time of last update.
+        :param pulumi.Input[str] account_id: Account id
+        :param pulumi.Input[str] create_time: Time of creation
+        :param pulumi.Input[str] name: Account name
+        :param pulumi.Input[str] owner_team_id: Owner team id
+        :param pulumi.Input[str] tenant_id: Tenant id
+        :param pulumi.Input[str] update_time: Time of last update
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -133,7 +69,7 @@ class _AccountState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        is an auto-generated unique account id.
+        Account id
         """
         return pulumi.get(self, "account_id")
 
@@ -145,7 +81,7 @@ class _AccountState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        time of creation.
+        Time of creation
         """
         return pulumi.get(self, "create_time")
 
@@ -157,7 +93,7 @@ class _AccountState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        defines an account name.
+        Account name
         """
         return pulumi.get(self, "name")
 
@@ -169,7 +105,7 @@ class _AccountState:
     @pulumi.getter(name="ownerTeamId")
     def owner_team_id(self) -> Optional[pulumi.Input[str]]:
         """
-        is an owner team id.
+        Owner team id
         """
         return pulumi.get(self, "owner_team_id")
 
@@ -181,7 +117,7 @@ class _AccountState:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        is a tenant id.
+        Tenant id
         """
         return pulumi.get(self, "tenant_id")
 
@@ -193,7 +129,7 @@ class _AccountState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        time of last update.
+        Time of last update
         """
         return pulumi.get(self, "update_time")
 
@@ -207,15 +143,9 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 owner_team_id: Optional[pulumi.Input[str]] = None,
-                 tenant_id: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # Account Resource
-
         The Account resource allows the creation and management of an Aiven Account.
 
         ## Example Usage
@@ -229,11 +159,7 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: time of creation.
-        :param pulumi.Input[str] name: defines an account name.
-        :param pulumi.Input[str] owner_team_id: is an owner team id.
-        :param pulumi.Input[str] tenant_id: is a tenant id.
-        :param pulumi.Input[str] update_time: time of last update.
+        :param pulumi.Input[str] name: Account name
         """
         ...
     @overload
@@ -242,8 +168,6 @@ class Account(pulumi.CustomResource):
                  args: Optional[AccountArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # Account Resource
-
         The Account resource allows the creation and management of an Aiven Account.
 
         ## Example Usage
@@ -270,11 +194,7 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 owner_team_id: Optional[pulumi.Input[str]] = None,
-                 tenant_id: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -287,12 +207,12 @@ class Account(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccountArgs.__new__(AccountArgs)
 
-            __props__.__dict__["create_time"] = create_time
             __props__.__dict__["name"] = name
-            __props__.__dict__["owner_team_id"] = owner_team_id
-            __props__.__dict__["tenant_id"] = tenant_id
-            __props__.__dict__["update_time"] = update_time
             __props__.__dict__["account_id"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["owner_team_id"] = None
+            __props__.__dict__["tenant_id"] = None
+            __props__.__dict__["update_time"] = None
         super(Account, __self__).__init__(
             'aiven:index/account:Account',
             resource_name,
@@ -316,12 +236,12 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: is an auto-generated unique account id.
-        :param pulumi.Input[str] create_time: time of creation.
-        :param pulumi.Input[str] name: defines an account name.
-        :param pulumi.Input[str] owner_team_id: is an owner team id.
-        :param pulumi.Input[str] tenant_id: is a tenant id.
-        :param pulumi.Input[str] update_time: time of last update.
+        :param pulumi.Input[str] account_id: Account id
+        :param pulumi.Input[str] create_time: Time of creation
+        :param pulumi.Input[str] name: Account name
+        :param pulumi.Input[str] owner_team_id: Owner team id
+        :param pulumi.Input[str] tenant_id: Tenant id
+        :param pulumi.Input[str] update_time: Time of last update
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -339,7 +259,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        is an auto-generated unique account id.
+        Account id
         """
         return pulumi.get(self, "account_id")
 
@@ -347,7 +267,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        time of creation.
+        Time of creation
         """
         return pulumi.get(self, "create_time")
 
@@ -355,7 +275,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        defines an account name.
+        Account name
         """
         return pulumi.get(self, "name")
 
@@ -363,7 +283,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="ownerTeamId")
     def owner_team_id(self) -> pulumi.Output[str]:
         """
-        is an owner team id.
+        Owner team id
         """
         return pulumi.get(self, "owner_team_id")
 
@@ -371,7 +291,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
         """
-        is a tenant id.
+        Tenant id
         """
         return pulumi.get(self, "tenant_id")
 
@@ -379,7 +299,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        time of last update.
+        Time of last update
         """
         return pulumi.get(self, "update_time")
 

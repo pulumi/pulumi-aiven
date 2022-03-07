@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaTopicConfig
     {
         /// <summary>
-        /// cleanup.policy value, can be `create`, `delete` or `compact,delete`
+        /// cleanup.policy value
         /// </summary>
         public readonly string? CleanupPolicy;
         /// <summary>

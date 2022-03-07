@@ -14,16 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaConnectKafkaConnectUserConfig
     {
         /// <summary>
-        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// IP filter
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Allow clients to connect to kafka_connect from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network.
+        /// Kafka Connect configuration values
         /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect? KafkaConnect;
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
@@ -31,9 +30,12 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? PublicAccess;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

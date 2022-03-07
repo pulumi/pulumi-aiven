@@ -18,9 +18,9 @@ class ProjectUserArgs:
                  project: pulumi.Input[str]):
         """
         The set of arguments for constructing a ProjectUser resource.
-        :param pulumi.Input[str] email: identifies the email address of the user.
-        :param pulumi.Input[str] member_type: defines the access level the user has to the project.
-        :param pulumi.Input[str] project: defines the project the user is a member of.
+        :param pulumi.Input[str] email: Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] member_type: Project membership type. The possible values are `admin`, `developer` and `operator`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "member_type", member_type)
@@ -30,7 +30,7 @@ class ProjectUserArgs:
     @pulumi.getter
     def email(self) -> pulumi.Input[str]:
         """
-        identifies the email address of the user.
+        Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "email")
 
@@ -42,7 +42,7 @@ class ProjectUserArgs:
     @pulumi.getter(name="memberType")
     def member_type(self) -> pulumi.Input[str]:
         """
-        defines the access level the user has to the project.
+        Project membership type. The possible values are `admin`, `developer` and `operator`.
         """
         return pulumi.get(self, "member_type")
 
@@ -54,7 +54,7 @@ class ProjectUserArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        defines the project the user is a member of.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -72,13 +72,10 @@ class _ProjectUserState:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectUser resources.
-        :param pulumi.Input[bool] accepted: is a computed property tells whether the user has accepted the request to join
-               the project; adding user to a project sends an invitation to the target user and the
-               actual membership is only created once the user accepts the invitation. This property
-               cannot be set, only read.
-        :param pulumi.Input[str] email: identifies the email address of the user.
-        :param pulumi.Input[str] member_type: defines the access level the user has to the project.
-        :param pulumi.Input[str] project: defines the project the user is a member of.
+        :param pulumi.Input[bool] accepted: Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+        :param pulumi.Input[str] email: Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] member_type: Project membership type. The possible values are `admin`, `developer` and `operator`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         if accepted is not None:
             pulumi.set(__self__, "accepted", accepted)
@@ -93,10 +90,7 @@ class _ProjectUserState:
     @pulumi.getter
     def accepted(self) -> Optional[pulumi.Input[bool]]:
         """
-        is a computed property tells whether the user has accepted the request to join
-        the project; adding user to a project sends an invitation to the target user and the
-        actual membership is only created once the user accepts the invitation. This property
-        cannot be set, only read.
+        Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
         """
         return pulumi.get(self, "accepted")
 
@@ -108,7 +102,7 @@ class _ProjectUserState:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
         """
-        identifies the email address of the user.
+        Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "email")
 
@@ -120,7 +114,7 @@ class _ProjectUserState:
     @pulumi.getter(name="memberType")
     def member_type(self) -> Optional[pulumi.Input[str]]:
         """
-        defines the access level the user has to the project.
+        Project membership type. The possible values are `admin`, `developer` and `operator`.
         """
         return pulumi.get(self, "member_type")
 
@@ -132,7 +126,7 @@ class _ProjectUserState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        defines the project the user is a member of.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -151,8 +145,6 @@ class ProjectUser(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # Project User Resource
-
         The Project User resource allows the creation and management of Aiven Project Users.
 
         ## Example Usage
@@ -169,9 +161,9 @@ class ProjectUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] email: identifies the email address of the user.
-        :param pulumi.Input[str] member_type: defines the access level the user has to the project.
-        :param pulumi.Input[str] project: defines the project the user is a member of.
+        :param pulumi.Input[str] email: Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] member_type: Project membership type. The possible values are `admin`, `developer` and `operator`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         ...
     @overload
@@ -180,8 +172,6 @@ class ProjectUser(pulumi.CustomResource):
                  args: ProjectUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # Project User Resource
-
         The Project User resource allows the creation and management of Aiven Project Users.
 
         ## Example Usage
@@ -257,13 +247,10 @@ class ProjectUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] accepted: is a computed property tells whether the user has accepted the request to join
-               the project; adding user to a project sends an invitation to the target user and the
-               actual membership is only created once the user accepts the invitation. This property
-               cannot be set, only read.
-        :param pulumi.Input[str] email: identifies the email address of the user.
-        :param pulumi.Input[str] member_type: defines the access level the user has to the project.
-        :param pulumi.Input[str] project: defines the project the user is a member of.
+        :param pulumi.Input[bool] accepted: Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+        :param pulumi.Input[str] email: Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] member_type: Project membership type. The possible values are `admin`, `developer` and `operator`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -279,10 +266,7 @@ class ProjectUser(pulumi.CustomResource):
     @pulumi.getter
     def accepted(self) -> pulumi.Output[bool]:
         """
-        is a computed property tells whether the user has accepted the request to join
-        the project; adding user to a project sends an invitation to the target user and the
-        actual membership is only created once the user accepts the invitation. This property
-        cannot be set, only read.
+        Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
         """
         return pulumi.get(self, "accepted")
 
@@ -290,7 +274,7 @@ class ProjectUser(pulumi.CustomResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[str]:
         """
-        identifies the email address of the user.
+        Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "email")
 
@@ -298,7 +282,7 @@ class ProjectUser(pulumi.CustomResource):
     @pulumi.getter(name="memberType")
     def member_type(self) -> pulumi.Output[str]:
         """
-        defines the access level the user has to the project.
+        Project membership type. The possible values are `admin`, `developer` and `operator`.
         """
         return pulumi.get(self, "member_type")
 
@@ -306,7 +290,7 @@ class ProjectUser(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        defines the project the user is a member of.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 

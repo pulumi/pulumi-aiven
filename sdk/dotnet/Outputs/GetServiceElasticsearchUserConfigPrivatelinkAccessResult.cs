@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceElasticsearchUserConfigPrivatelinkAccessResult
     {
+        /// <summary>
+        /// Elasticsearch specific server provided values
+        /// </summary>
         public readonly string? Elasticsearch;
         public readonly string? Kibana;
 

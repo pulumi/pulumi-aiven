@@ -13,36 +13,15 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class M3DbM3dbUserConfigLimits
     {
-        /// <summary>
-        /// The maximum number of data points fetched during request
-        /// </summary>
-        public readonly string? GlobalDatapoints;
-        /// <summary>
-        /// The maximum number of data points fetched in single query
-        /// </summary>
-        public readonly string? QueryDatapoints;
-        /// <summary>
-        /// When query limits are exceeded, whether to return error 
-        /// (if True) or return partial results (False)
-        /// </summary>
         public readonly string? QueryRequireExhaustive;
-        /// <summary>
-        /// The maximum number of series fetched in single query
-        /// </summary>
         public readonly string? QuerySeries;
 
         [OutputConstructor]
         private M3DbM3dbUserConfigLimits(
-            string? globalDatapoints,
-
-            string? queryDatapoints,
-
             string? queryRequireExhaustive,
 
             string? querySeries)
         {
-            GlobalDatapoints = globalDatapoints;
-            QueryDatapoints = queryDatapoints;
             QueryRequireExhaustive = queryRequireExhaustive;
             QuerySeries = querySeries;
         }

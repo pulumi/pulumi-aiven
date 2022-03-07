@@ -79,12 +79,14 @@ func Provider() tfbridge.ProviderInfo {
 		TFProviderLicense: refProviderLicense(tfbridge.MITLicenseType),
 		Config:            map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"aiven_account":                {Tok: makeResource(mainMod, "Account")},
-			"aiven_account_authentication": {Tok: makeResource(mainMod, "AccountAuthentication")},
-			"aiven_account_team":           {Tok: makeResource(mainMod, "AccountTeam")},
-			"aiven_account_team_member":    {Tok: makeResource(mainMod, "AccountTeamMember")},
-			"aiven_account_team_project":   {Tok: makeResource(mainMod, "AccountTeamProject")},
-			"aiven_billing_group":          {Tok: makeResource(mainMod, "BillingGroup")},
+			"aiven_account":                               {Tok: makeResource(mainMod, "Account")},
+			"aiven_account_authentication":                {Tok: makeResource(mainMod, "AccountAuthentication")},
+			"aiven_account_team":                          {Tok: makeResource(mainMod, "AccountTeam")},
+			"aiven_account_team_member":                   {Tok: makeResource(mainMod, "AccountTeamMember")},
+			"aiven_account_team_project":                  {Tok: makeResource(mainMod, "AccountTeamProject")},
+			"aiven_azure_privatelink":                     {Tok: makeResource(mainMod, "AzurePrivatelink")},
+			"aiven_azure_privatelink_connection_approval": {Tok: makeResource(mainMod, "AzurePrivatelinkConnectionApproval")},
+			"aiven_billing_group":                         {Tok: makeResource(mainMod, "BillingGroup")},
 			"aiven_cassandra": {
 				Tok: makeResource(mainMod, "Cassandra"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -93,10 +95,15 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"aiven_connection_pool":   {Tok: makeResource(mainMod, "ConnectionPool")},
-			"aiven_database":          {Tok: makeResource(mainMod, "Database")},
-			"aiven_elasticsearch":     {Tok: makeResource(mainMod, "ElasticSearch")},
-			"aiven_elasticsearch_acl": {Tok: makeResource(mainMod, "ElasticSearchAcl")},
+			"aiven_connection_pool":     {Tok: makeResource(mainMod, "ConnectionPool")},
+			"aiven_clickhouse":          {Tok: makeResource(mainMod, "Clickhouse")},
+			"aiven_clickhouse_database": {Tok: makeResource(mainMod, "ClickhouseDatabase")},
+			"aiven_clickhouse_grant":    {Tok: makeResource(mainMod, "ClickhouseGrant")},
+			"aiven_clickhouse_role":     {Tok: makeResource(mainMod, "ClickhouseRole")},
+			"aiven_clickhouse_user":     {Tok: makeResource(mainMod, "ClickhouseUser")},
+			"aiven_database":            {Tok: makeResource(mainMod, "Database")},
+			"aiven_elasticsearch":       {Tok: makeResource(mainMod, "ElasticSearch")},
+			"aiven_elasticsearch_acl":   {Tok: makeResource(mainMod, "ElasticSearchAcl")},
 			"aiven_grafana": {
 				Tok: makeResource(mainMod, "Grafana"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -195,6 +202,17 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_opensearch":                     {Tok: makeResource(mainMod, "OpenSearch")},
 			"aiven_opensearch_acl_config":          {Tok: makeResource(mainMod, "OpenSearchAclConfig")},
 			"aiven_opensearch_acl_rule":            {Tok: makeResource(mainMod, "OpenSearchAclRule")},
+			"aiven_flink": {
+				Tok: makeResource(mainMod, "Flink"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"flink": {
+						CSharpName: "FlinkDetails",
+					},
+				},
+			},
+			"aiven_flink_job":   {Tok: makeResource(mainMod, "FlinkJob")},
+			"aiven_flink_table": {Tok: makeResource(mainMod, "FlinkJobTable")},
+			"aiven_static_ip":   {Tok: makeResource(mainMod, "StaticIp")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"aiven_account":                      {Tok: makeDataSource(mainMod, "getAccount")},
@@ -263,6 +281,12 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_opensearch":                     {Tok: makeDataSource(mainMod, "getOpenSearch")},
 			"aiven_opensearch_acl_config":          {Tok: makeDataSource(mainMod, "getOpenSearchAclConfig")},
 			"aiven_opensearch_acl_rule":            {Tok: makeDataSource(mainMod, "getOpenSearchAclRule")},
+			"aiven_azure_privatelink":              {Tok: makeDataSource(mainMod, "getAzurePrivatelink")},
+			"aiven_billing_group":                  {Tok: makeDataSource(mainMod, "getBillingGroup")},
+			"aiven_clickhouse":                     {Tok: makeDataSource(mainMod, "getClickhouse")},
+			"aiven_clickhouse_database":            {Tok: makeDataSource(mainMod, "getClickhouseDatabase")},
+			"aiven_clickhouse_user":                {Tok: makeDataSource(mainMod, "getClickhouseUser")},
+			"aiven_flink":                          {Tok: makeDataSource(mainMod, "getFlink")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

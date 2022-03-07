@@ -13,200 +13,44 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaKafkaUserConfigKafkaResult
     {
-        /// <summary>
-        /// Enable auto creation of topics
-        /// </summary>
         public readonly string? AutoCreateTopicsEnable;
-        /// <summary>
-        /// Specify the final compression type for a given topic. This 
-        /// configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd').
-        /// It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer'
-        /// which means retain the original compression codec set by the producer.
-        /// </summary>
         public readonly string? CompressionType;
-        /// <summary>
-        /// Idle connections timeout: the server socket processor 
-        /// threads close the connections that idle for longer than this.
-        /// </summary>
         public readonly string? ConnectionsMaxIdleMs;
-        /// <summary>
-        /// Replication factor for autocreated topics
-        /// </summary>
         public readonly string? DefaultReplicationFactor;
-        /// <summary>
-        /// The amount of time, in milliseconds, the group
-        /// coordinator will wait for more consumers to join a new group before performing the first rebalance.
-        /// A longer delay means potentially fewer rebalances, but increases the time until processing begins.
-        /// The default value for this is 3 seconds. During development and testing it might be desirable to set
-        /// this to 0 in order to not delay test execution time.
-        /// </summary>
         public readonly string? GroupInitialRebalanceDelayMs;
-        /// <summary>
-        /// The maximum allowed session timeout for registered 
-        /// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
-        /// at the cost of a longer time to detect failures.
-        /// </summary>
         public readonly string? GroupMaxSessionTimeoutMs;
-        /// <summary>
-        /// The minimum allowed session timeout for registered 
-        /// consumers. Longer timeouts give consumers more time to process messages in between heartbeats
-        /// at the cost of a longer time to detect failures.
-        /// </summary>
         public readonly string? GroupMinSessionTimeoutMs;
         public readonly string? LogCleanerDeleteRetentionMs;
-        /// <summary>
-        /// The maximum amount of time message will 
-        /// remain uncompacted. Only applicable for logs that are being compacted
-        /// </summary>
         public readonly string? LogCleanerMaxCompactionLagMs;
-        /// <summary>
-        /// Controls log compactor frequency. Larger 
-        /// value means more frequent compactions but also more space wasted for logs. Consider setting
-        /// log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very
-        /// high value for this option.
-        /// </summary>
         public readonly string? LogCleanerMinCleanableRatio;
-        /// <summary>
-        /// The minimum time a message will remain 
-        /// uncompacted in the log. Only applicable for logs that are being compacted.
-        /// </summary>
         public readonly string? LogCleanerMinCompactionLagMs;
-        /// <summary>
-        /// The default cleanup policy for segments beyond the retention window.
-        /// </summary>
         public readonly string? LogCleanupPolicy;
-        /// <summary>
-        /// The number of messages accumulated on a log partition 
-        /// before messages are flushed to disk.
-        /// </summary>
         public readonly string? LogFlushIntervalMessages;
-        /// <summary>
-        /// The maximum time in ms that a message in any topic is kept 
-        /// in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
-        /// </summary>
         public readonly string? LogFlushIntervalMs;
-        /// <summary>
-        /// The interval with which Kafka adds an entry to the offset index.
-        /// </summary>
         public readonly string? LogIndexIntervalBytes;
-        /// <summary>
-        /// The maximum size in bytes of the offset index.
-        /// </summary>
         public readonly string? LogIndexSizeMaxBytes;
-        /// <summary>
-        /// This configuration controls whether down-conversion 
-        /// of message formats is enabled to satisfy consume requests.
-        /// </summary>
         public readonly string? LogMessageDownconversionEnable;
-        /// <summary>
-        /// The maximum difference allowed between 
-        /// the timestamp when a broker receives a message and the timestamp specified in the message
-        /// </summary>
         public readonly string? LogMessageTimestampDifferenceMaxMs;
-        /// <summary>
-        /// Define whether the timestamp in the message is 
-        /// message create time or log append time.
-        /// </summary>
         public readonly string? LogMessageTimestampType;
-        /// <summary>
-        /// Should pre allocate file when create new segment?
-        /// </summary>
         public readonly string? LogPreallocate;
-        /// <summary>
-        /// The maximum size of the log before deleting messages
-        /// </summary>
         public readonly string? LogRetentionBytes;
-        /// <summary>
-        /// The number of hours to keep a log file before deleting it.
-        /// </summary>
         public readonly string? LogRetentionHours;
-        /// <summary>
-        /// The number of milliseconds to keep a log file before deleting it 
-        /// (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no
-        /// time limit is applied.
-        /// </summary>
         public readonly string? LogRetentionMs;
-        /// <summary>
-        /// The maximum jitter to subtract from logRollTimeMillis 
-        /// (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
-        /// </summary>
         public readonly string? LogRollJitterMs;
-        /// <summary>
-        /// The maximum time before a new log segment is rolled out (in milliseconds).
-        /// </summary>
         public readonly string? LogRollMs;
-        /// <summary>
-        /// The maximum size of a single log file
-        /// </summary>
         public readonly string? LogSegmentBytes;
-        /// <summary>
-        /// The amount of time to wait before deleting a file 
-        /// from the filesystem.
-        /// </summary>
         public readonly string? LogSegmentDeleteDelayMs;
-        /// <summary>
-        /// The maximum number of connections allowed from each ip 
-        /// address (defaults to 2147483647).
-        /// </summary>
         public readonly string? MaxConnectionsPerIp;
-        /// <summary>
-        /// The maximum number of incremental fetch 
-        /// sessions that the broker will maintain.
-        /// </summary>
         public readonly string? MaxIncrementalFetchSessionCacheSlots;
-        /// <summary>
-        /// The maximum size of message that the server can receive.
-        /// </summary>
         public readonly string? MessageMaxBytes;
-        /// <summary>
-        /// When a producer sets acks to 'all' (or '-1'), 
-        /// min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for
-        /// the write to be considered successful.
-        /// </summary>
         public readonly string? MinInsyncReplicas;
-        /// <summary>
-        /// Number of partitions for autocreated topics
-        /// </summary>
         public readonly string? NumPartitions;
-        /// <summary>
-        /// Log retention window in minutes for offsets topic.
-        /// </summary>
         public readonly string? OffsetsRetentionMinutes;
-        /// <summary>
-        /// The purge interval (in number of 
-        /// requests) of the producer request purgatory(defaults to 1000).
-        /// </summary>
         public readonly string? ProducerPurgatoryPurgeIntervalRequests;
-        /// <summary>
-        /// The number of bytes of messages to attempt to fetch 
-        /// for each partition (defaults to 1048576). This is not an absolute maximum, if the first record
-        /// batch in the first non-empty partition of the fetch is larger than this value, the record batch
-        /// will still be returned to ensure that progress can be made.
-        /// </summary>
         public readonly string? ReplicaFetchMaxBytes;
-        /// <summary>
-        /// Maximum bytes expected for the entire fetch 
-        /// response (defaults to 10485760). Records are fetched in batches, and if the first record batch
-        /// in the first non-empty partition of the fetch is larger than this value, the record batch will
-        /// still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
-        /// </summary>
         public readonly string? ReplicaFetchResponseMaxBytes;
-        /// <summary>
-        /// The maximum number of bytes in a socket request 
-        /// (defaults to 104857600).
-        /// </summary>
         public readonly string? SocketRequestMaxBytes;
-        /// <summary>
-        /// The interval at which 
-        /// to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults
-        /// to 3600000 (1 hour)).
-        /// </summary>
         public readonly string? TransactionRemoveExpiredTransactionCleanupIntervalMs;
-        /// <summary>
-        /// The transaction topic segment bytes should 
-        /// be kept relatively small in order to facilitate faster log compaction and cache loads (defaults
-        /// to 104857600 (100 mebibytes)).
-        /// </summary>
         public readonly string? TransactionStateLogSegmentBytes;
 
         [OutputConstructor]

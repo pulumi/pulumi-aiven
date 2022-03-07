@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The Opensearch ACL Rule data source provides information about an existing Aiven Opensearch ACL Rule.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const osAclRule = aiven.getOpenSearchAclRule({
+ *     project: aiven_opensearch_acl_config.os_acls_config.project,
+ *     serviceName: aiven_opensearch_acl_config.os_acls_config.service_name,
+ *     username: "<USERNAME>",
+ *     index: "<INDEX>",
+ * });
+ * ```
+ */
 export function getOpenSearchAclRule(args: GetOpenSearchAclRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchAclRuleResult> {
     if (!opts) {
         opts = {}
@@ -23,10 +40,25 @@ export function getOpenSearchAclRule(args: GetOpenSearchAclRuleArgs, opts?: pulu
  * A collection of arguments for invoking getOpenSearchAclRule.
  */
 export interface GetOpenSearchAclRuleArgs {
+    /**
+     * The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     */
     index: string;
+    /**
+     * The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     */
     permission: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: string;
+    /**
+     * The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     username: string;
 }
 
@@ -38,10 +70,25 @@ export interface GetOpenSearchAclRuleResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly index: string;
+    /**
+     * The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     */
     readonly permission: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
+    /**
+     * The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly username: string;
 }
 
@@ -53,9 +100,24 @@ export function getOpenSearchAclRuleOutput(args: GetOpenSearchAclRuleOutputArgs,
  * A collection of arguments for invoking getOpenSearchAclRule.
  */
 export interface GetOpenSearchAclRuleOutputArgs {
+    /**
+     * The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     */
     index: pulumi.Input<string>;
+    /**
+     * The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     */
     permission: pulumi.Input<string>;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: pulumi.Input<string>;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: pulumi.Input<string>;
+    /**
+     * The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     username: pulumi.Input<string>;
 }

@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Database Resource
-//
 // The Database resource allows the creation and management of Aiven Databases.
 //
 // ## Example Usage
@@ -42,19 +40,18 @@ import (
 type Database struct {
 	pulumi.CustomResourceState
 
-	// is the actual name of the database.
+	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
 	LcCollate pulumi.StringPtrOutput `pulumi:"lcCollate"`
-	// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
 	LcCtype pulumi.StringPtrOutput `pulumi:"lcCtype"`
-	// and `serviceName` - (Required) define the project and service the database belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Service to link the database to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-	// recommended to enable this for any production databases containing critical data.
+	// recommended to enable this for any production databases containing critical data. The default value is `false`.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
 
@@ -96,36 +93,34 @@ func GetDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Database resources.
 type databaseState struct {
-	// is the actual name of the database.
+	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName *string `pulumi:"databaseName"`
-	// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
 	LcCollate *string `pulumi:"lcCollate"`
-	// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
 	LcCtype *string `pulumi:"lcCtype"`
-	// and `serviceName` - (Required) define the project and service the database belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Service to link the database to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-	// recommended to enable this for any production databases containing critical data.
+	// recommended to enable this for any production databases containing critical data. The default value is `false`.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 type DatabaseState struct {
-	// is the actual name of the database.
+	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName pulumi.StringPtrInput
-	// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
 	LcCollate pulumi.StringPtrInput
-	// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
 	LcCtype pulumi.StringPtrInput
-	// and `serviceName` - (Required) define the project and service the database belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Service to link the database to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-	// recommended to enable this for any production databases containing critical data.
+	// recommended to enable this for any production databases containing critical data. The default value is `false`.
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -134,37 +129,35 @@ func (DatabaseState) ElementType() reflect.Type {
 }
 
 type databaseArgs struct {
-	// is the actual name of the database.
+	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
-	// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
 	LcCollate *string `pulumi:"lcCollate"`
-	// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
 	LcCtype *string `pulumi:"lcCtype"`
-	// and `serviceName` - (Required) define the project and service the database belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Service to link the database to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-	// recommended to enable this for any production databases containing critical data.
+	// recommended to enable this for any production databases containing critical data. The default value is `false`.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
-	// is the actual name of the database.
+	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName pulumi.StringInput
-	// default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
 	LcCollate pulumi.StringPtrInput
-	// default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
 	LcCtype pulumi.StringPtrInput
-	// and `serviceName` - (Required) define the project and service the database belongs to.
-	// They should be defined using reference as shown above to set up dependencies correctly.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Service to link the database to
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-	// recommended to enable this for any production databases containing critical data.
+	// recommended to enable this for any production databases containing critical data. The default value is `false`.
 	TerminationProtection pulumi.BoolPtrInput
 }
 

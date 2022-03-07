@@ -14,8 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaConnectKafkaConnectUserConfigPrivatelinkAccess
     {
         /// <summary>
-        /// Allow clients to connect to kafka_connect from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network.
+        /// Kafka Connect server provided values
         /// </summary>
         public readonly string? KafkaConnect;
 

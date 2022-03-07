@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// ## # Connection Pool Resource
-    /// 
     /// The Connection Pool resource allows the creation and management of Aiven Connection Pools.
     /// 
     /// ## Example Usage
@@ -33,12 +31,6 @@ namespace Pulumi.Aiven
     ///             PoolName = "mypool",
     ///             PoolSize = 10,
     ///             Username = aiven_service_user.Myserviceuser.Username,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 aiven_database.Mydatabase,
-    ///             },
     ///         });
     ///     }
     /// 
@@ -49,58 +41,49 @@ namespace Pulumi.Aiven
     public partial class ConnectionPool : Pulumi.CustomResource
     {
         /// <summary>
-        /// (Optional) is a computed property that tells the URI for connecting to the pool.
-        /// This value cannot be set, only read.
+        /// The URI for connecting to the pool
         /// </summary>
         [Output("connectionUri")]
         public Output<string> ConnectionUri { get; private set; } = null!;
 
         /// <summary>
-        /// is the name of the database the pool connects to. This should be
-        /// defined using reference as shown above to set up dependencies correctly.
+        /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("databaseName")]
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// is the mode the pool operates in (session, transaction, statement). The
-        /// default value for this is `transaction`.
+        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         /// </summary>
         [Output("poolMode")]
         public Output<string?> PoolMode { get; private set; } = null!;
 
         /// <summary>
-        /// is the name of the pool.
+        /// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("poolName")]
         public Output<string> PoolName { get; private set; } = null!;
 
         /// <summary>
-        /// is the number of connections the pool may create towards the backend
-        /// server. This does not affect the number of incoming connections, which is always a much
-        /// larger number. The default value for this is 10.
+        /// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
         /// </summary>
         [Output("poolSize")]
         public Output<int?> PoolSize { get; private set; } = null!;
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the connection pool
-        /// belongs to. They should be defined using reference as shown above to set up dependencies
-        /// correctly. These properties cannot be changed once the service is created. Doing so will
-        /// result in the connection pool being deleted and new one created instead.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Service to link the connection pool to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// is the name of the service user used to connect to the database. This should
-        /// be defined using reference as shown above to set up dependencies correctly.
+        /// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
@@ -152,51 +135,43 @@ namespace Pulumi.Aiven
     public sealed class ConnectionPoolArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// is the name of the database the pool connects to. This should be
-        /// defined using reference as shown above to set up dependencies correctly.
+        /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// is the mode the pool operates in (session, transaction, statement). The
-        /// default value for this is `transaction`.
+        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         /// </summary>
         [Input("poolMode")]
         public Input<string>? PoolMode { get; set; }
 
         /// <summary>
-        /// is the name of the pool.
+        /// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("poolName", required: true)]
         public Input<string> PoolName { get; set; } = null!;
 
         /// <summary>
-        /// is the number of connections the pool may create towards the backend
-        /// server. This does not affect the number of incoming connections, which is always a much
-        /// larger number. The default value for this is 10.
+        /// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
         /// </summary>
         [Input("poolSize")]
         public Input<int>? PoolSize { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the connection pool
-        /// belongs to. They should be defined using reference as shown above to set up dependencies
-        /// correctly. These properties cannot be changed once the service is created. Doing so will
-        /// result in the connection pool being deleted and new one created instead.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Service to link the connection pool to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// is the name of the service user used to connect to the database. This should
-        /// be defined using reference as shown above to set up dependencies correctly.
+        /// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -209,58 +184,49 @@ namespace Pulumi.Aiven
     public sealed class ConnectionPoolState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) is a computed property that tells the URI for connecting to the pool.
-        /// This value cannot be set, only read.
+        /// The URI for connecting to the pool
         /// </summary>
         [Input("connectionUri")]
         public Input<string>? ConnectionUri { get; set; }
 
         /// <summary>
-        /// is the name of the database the pool connects to. This should be
-        /// defined using reference as shown above to set up dependencies correctly.
+        /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// is the mode the pool operates in (session, transaction, statement). The
-        /// default value for this is `transaction`.
+        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         /// </summary>
         [Input("poolMode")]
         public Input<string>? PoolMode { get; set; }
 
         /// <summary>
-        /// is the name of the pool.
+        /// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("poolName")]
         public Input<string>? PoolName { get; set; }
 
         /// <summary>
-        /// is the number of connections the pool may create towards the backend
-        /// server. This does not affect the number of incoming connections, which is always a much
-        /// larger number. The default value for this is 10.
+        /// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
         /// </summary>
         [Input("poolSize")]
         public Input<int>? PoolSize { get; set; }
 
         /// <summary>
-        /// and `service_name` - (Required) define the project and service the connection pool
-        /// belongs to. They should be defined using reference as shown above to set up dependencies
-        /// correctly. These properties cannot be changed once the service is created. Doing so will
-        /// result in the connection pool being deleted and new one created instead.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Service to link the connection pool to
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// is the name of the service user used to connect to the database. This should
-        /// be defined using reference as shown above to set up dependencies correctly.
+        /// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

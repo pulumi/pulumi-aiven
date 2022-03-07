@@ -6,10 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # Elasticsearch ACL Data Source
- *
- * The Elasticsearch ACL data source provides information about the existing Aiven Elasticsearch ACL
- * for Elasticsearch service.
+ * The Elasticsearch ACL data source provides information about the existing Aiven Elasticsearch ACL for Elasticsearch service.
  *
  * ## Example Usage
  *
@@ -30,9 +27,6 @@ export function getElasticSearchAcl(args: GetElasticSearchAclArgs, opts?: pulumi
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getElasticSearchAcl:getElasticSearchAcl", {
-        "acls": args.acls,
-        "enabled": args.enabled,
-        "extendedAcl": args.extendedAcl,
         "project": args.project,
         "serviceName": args.serviceName,
     }, opts);
@@ -42,22 +36,13 @@ export function getElasticSearchAcl(args: GetElasticSearchAclArgs, opts?: pulumi
  * A collection of arguments for invoking getElasticSearchAcl.
  */
 export interface GetElasticSearchAclArgs {
-    acls?: inputs.GetElasticSearchAclAcl[];
     /**
-     * enables or disables Elasticsearch ACLs.
-     */
-    enabled?: boolean;
-    /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
-     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-     * these APIs as long as all operations only target indexes they have been granted access to.
-     */
-    extendedAcl?: boolean;
-    /**
-     * and `serviceName` - (Required) define the project and service the ACL belongs to. 
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: string;
 }
 
@@ -65,22 +50,29 @@ export interface GetElasticSearchAclArgs {
  * A collection of values returned by getElasticSearchAcl.
  */
 export interface GetElasticSearchAclResult {
-    readonly acls?: outputs.GetElasticSearchAclAcl[];
     /**
-     * enables or disables Elasticsearch ACLs.
+     * List of Elasticsearch ACLs
      */
-    readonly enabled?: boolean;
+    readonly acls: outputs.GetElasticSearchAclAcl[];
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
-     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-     * these APIs as long as all operations only target indexes they have been granted access to.
+     * Enable Elasticsearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      */
-    readonly extendedAcl?: boolean;
+    readonly enabled: boolean;
+    /**
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+     */
+    readonly extendedAcl: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
 }
 
@@ -92,21 +84,12 @@ export function getElasticSearchAclOutput(args: GetElasticSearchAclOutputArgs, o
  * A collection of arguments for invoking getElasticSearchAcl.
  */
 export interface GetElasticSearchAclOutputArgs {
-    acls?: pulumi.Input<pulumi.Input<inputs.GetElasticSearchAclAclArgs>[]>;
     /**
-     * enables or disables Elasticsearch ACLs.
-     */
-    enabled?: pulumi.Input<boolean>;
-    /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs 
-     * (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use
-     * these APIs as long as all operations only target indexes they have been granted access to.
-     */
-    extendedAcl?: pulumi.Input<boolean>;
-    /**
-     * and `serviceName` - (Required) define the project and service the ACL belongs to. 
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: pulumi.Input<string>;
 }

@@ -14,17 +14,10 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPgUserConfigPublicAccess
     {
         /// <summary>
-        /// Enable pg.
+        /// PostgreSQL specific server provided values
         /// </summary>
         public readonly string? Pg;
-        /// <summary>
-        /// Enable pgbouncer.
-        /// </summary>
         public readonly string? Pgbouncer;
-        /// <summary>
-        /// Allow clients to connect to prometheus from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network
-        /// </summary>
         public readonly string? Prometheus;
 
         [OutputConstructor]

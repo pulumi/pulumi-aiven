@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Database Data Source
- *
  * The Database data source provides information about the existing Aiven Database.
  *
  * ## Example Usage
@@ -30,11 +28,8 @@ export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions):
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getDatabase:getDatabase", {
         "databaseName": args.databaseName,
-        "lcCollate": args.lcCollate,
-        "lcCtype": args.lcCtype,
         "project": args.project,
         "serviceName": args.serviceName,
-        "terminationProtection": args.terminationProtection,
     }, opts);
 }
 
@@ -43,46 +38,48 @@ export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetDatabaseArgs {
     /**
-     * is the actual name of the database.
+     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
      */
     databaseName: string;
     /**
-     * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
-     */
-    lcCollate?: string;
-    /**
-     * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
-     */
-    lcCtype?: string;
-    /**
-     * and `serviceName` - (Required) define the project and service the database belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: string;
-    terminationProtection?: boolean;
 }
 
 /**
  * A collection of values returned by getDatabase.
  */
 export interface GetDatabaseResult {
+    /**
+     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly databaseName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
+     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      */
-    readonly lcCollate?: string;
+    readonly lcCollate: string;
     /**
-     * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
+     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      */
-    readonly lcCtype?: string;
+    readonly lcCtype: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
-    readonly terminationProtection?: boolean;
+    readonly terminationProtection: boolean;
 }
 
 export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
@@ -94,22 +91,15 @@ export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.Inv
  */
 export interface GetDatabaseOutputArgs {
     /**
-     * is the actual name of the database.
+     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
      */
     databaseName: pulumi.Input<string>;
     /**
-     * default string sort order (LC_COLLATE) of the database. Default value: en_US.UTF-8.
-     */
-    lcCollate?: pulumi.Input<string>;
-    /**
-     * default character classification (LC_CTYPE) of the database. Default value: en_US.UTF-8.
-     */
-    lcCtype?: pulumi.Input<string>;
-    /**
-     * and `serviceName` - (Required) define the project and service the database belongs to.
-     * They should be defined using reference as shown above to set up dependencies correctly.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: pulumi.Input<string>;
-    terminationProtection?: pulumi.Input<boolean>;
 }

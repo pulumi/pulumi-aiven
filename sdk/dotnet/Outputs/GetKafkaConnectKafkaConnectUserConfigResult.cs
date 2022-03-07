@@ -13,23 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaConnectKafkaConnectUserConfigResult
     {
-        /// <summary>
-        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Kafka Connect specific server provided values.
+        /// Kafka Connect server provided values
         /// </summary>
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult? KafkaConnect;
-        /// <summary>
-        /// Allow access to selected service ports from private networks.
-        /// </summary>
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult? PrivateAccess;
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccessResult? PublicAccess;
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

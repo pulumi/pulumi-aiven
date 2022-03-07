@@ -18,129 +18,109 @@ class ServiceArgs:
                  project: pulumi.Input[str],
                  service_name: pulumi.Input[str],
                  service_type: pulumi.Input[str],
-                 cassandra: Optional[pulumi.Input['ServiceCassandraArgs']] = None,
                  cassandra_user_config: Optional[pulumi.Input['ServiceCassandraUserConfigArgs']] = None,
+                 clickhouse_user_config: Optional[pulumi.Input['ServiceClickhouseUserConfigArgs']] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
-                 elasticsearch: Optional[pulumi.Input['ServiceElasticsearchArgs']] = None,
+                 disk_space: Optional[pulumi.Input[str]] = None,
                  elasticsearch_user_config: Optional[pulumi.Input['ServiceElasticsearchUserConfigArgs']] = None,
-                 grafana: Optional[pulumi.Input['ServiceGrafanaArgs']] = None,
+                 flink_user_config: Optional[pulumi.Input['ServiceFlinkUserConfigArgs']] = None,
+                 flinks: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceFlinkArgs']]]] = None,
                  grafana_user_config: Optional[pulumi.Input['ServiceGrafanaUserConfigArgs']] = None,
-                 influxdb: Optional[pulumi.Input['ServiceInfluxdbArgs']] = None,
                  influxdb_user_config: Optional[pulumi.Input['ServiceInfluxdbUserConfigArgs']] = None,
-                 kafka: Optional[pulumi.Input['ServiceKafkaArgs']] = None,
-                 kafka_connect: Optional[pulumi.Input['ServiceKafkaConnectArgs']] = None,
                  kafka_connect_user_config: Optional[pulumi.Input['ServiceKafkaConnectUserConfigArgs']] = None,
-                 kafka_mirrormaker: Optional[pulumi.Input['ServiceKafkaMirrormakerArgs']] = None,
                  kafka_mirrormaker_user_config: Optional[pulumi.Input['ServiceKafkaMirrormakerUserConfigArgs']] = None,
                  kafka_user_config: Optional[pulumi.Input['ServiceKafkaUserConfigArgs']] = None,
+                 kafkas: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceKafkaArgs']]]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input['ServiceMysqlArgs']] = None,
                  mysql_user_config: Optional[pulumi.Input['ServiceMysqlUserConfigArgs']] = None,
-                 opensearch: Optional[pulumi.Input['ServiceOpensearchArgs']] = None,
                  opensearch_user_config: Optional[pulumi.Input['ServiceOpensearchUserConfigArgs']] = None,
-                 pg: Optional[pulumi.Input['ServicePgArgs']] = None,
                  pg_user_config: Optional[pulumi.Input['ServicePgUserConfigArgs']] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
-                 redis: Optional[pulumi.Input['ServiceRedisArgs']] = None,
                  redis_user_config: Optional[pulumi.Input['ServiceRedisUserConfigArgs']] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceServiceIntegrationArgs']]]] = None,
+                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[str] project: Target project
         :param pulumi.Input[str] service_name: Service name
         :param pulumi.Input[str] service_type: Service type code
-        :param pulumi.Input['ServiceCassandraArgs'] cassandra: Cassandra specific server provided values
-        :param pulumi.Input['ServiceCassandraUserConfigArgs'] cassandra_user_config: Cassandra specific user configurable settings
+        :param pulumi.Input['ServiceCassandraUserConfigArgs'] cassandra_user_config: Cassandra user configurable settings
+        :param pulumi.Input['ServiceClickhouseUserConfigArgs'] clickhouse_user_config: Clickhouse user configurable settings
         :param pulumi.Input[str] cloud_name: Cloud the service runs in
-        :param pulumi.Input['ServiceElasticsearchArgs'] elasticsearch: Elasticsearch specific server provided values
-        :param pulumi.Input['ServiceElasticsearchUserConfigArgs'] elasticsearch_user_config: Elasticsearch specific user configurable settings
-        :param pulumi.Input['ServiceGrafanaArgs'] grafana: Grafana specific server provided values
-        :param pulumi.Input['ServiceGrafanaUserConfigArgs'] grafana_user_config: Grafana specific user configurable settings
-        :param pulumi.Input['ServiceInfluxdbArgs'] influxdb: InfluxDB specific server provided values
-        :param pulumi.Input['ServiceInfluxdbUserConfigArgs'] influxdb_user_config: InfluxDB specific user configurable settings
-        :param pulumi.Input['ServiceKafkaArgs'] kafka: Kafka specific server provided values
-        :param pulumi.Input['ServiceKafkaConnectArgs'] kafka_connect: Kafka Connect specific server provided values
-        :param pulumi.Input['ServiceKafkaConnectUserConfigArgs'] kafka_connect_user_config: Kafka Connect specific user configurable settings
-        :param pulumi.Input['ServiceKafkaMirrormakerArgs'] kafka_mirrormaker: Kafka MirrorMaker 2 specific server provided values
-        :param pulumi.Input['ServiceKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: Kafka MirrorMaker 2 specific user configurable settings
-        :param pulumi.Input['ServiceKafkaUserConfigArgs'] kafka_user_config: Kafka specific user configurable settings
+        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input['ServiceElasticsearchUserConfigArgs'] elasticsearch_user_config: Elasticsearch user configurable settings
+        :param pulumi.Input['ServiceFlinkUserConfigArgs'] flink_user_config: Flink user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceFlinkArgs']]] flinks: Flink specific server provided values
+        :param pulumi.Input['ServiceGrafanaUserConfigArgs'] grafana_user_config: Grafana user configurable settings
+        :param pulumi.Input['ServiceInfluxdbUserConfigArgs'] influxdb_user_config: Influxdb user configurable settings
+        :param pulumi.Input['ServiceKafkaConnectUserConfigArgs'] kafka_connect_user_config: Kafka*connect user configurable settings
+        :param pulumi.Input['ServiceKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: Kafka*mirrormaker user configurable settings
+        :param pulumi.Input['ServiceKafkaUserConfigArgs'] kafka_user_config: Kafka user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceKafkaArgs']]] kafkas: Kafka specific server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input['ServiceMysqlArgs'] mysql: MySQL specific server provided values
-        :param pulumi.Input['ServiceMysqlUserConfigArgs'] mysql_user_config: MySQL specific user configurable settings
-        :param pulumi.Input['ServiceOpensearchArgs'] opensearch: Opensearch specific server provided values
-        :param pulumi.Input['ServiceOpensearchUserConfigArgs'] opensearch_user_config: Opensearch specific user configurable settings
-        :param pulumi.Input['ServicePgArgs'] pg: PostgreSQL specific server provided values
-        :param pulumi.Input['ServicePgUserConfigArgs'] pg_user_config: PostgreSQL specific user configurable settings
+        :param pulumi.Input['ServiceMysqlUserConfigArgs'] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input['ServiceOpensearchUserConfigArgs'] opensearch_user_config: Opensearch user configurable settings
+        :param pulumi.Input['ServicePgUserConfigArgs'] pg_user_config: Pg user configurable settings
         :param pulumi.Input[str] plan: Subscription plan
         :param pulumi.Input[str] project_vpc_id: Identifier of the VPC the service should be in, if any
-        :param pulumi.Input['ServiceRedisArgs'] redis: Redis specific server provided values
-        :param pulumi.Input['ServiceRedisUserConfigArgs'] redis_user_config: Redis specific user configurable settings
+        :param pulumi.Input['ServiceRedisUserConfigArgs'] redis_user_config: Redis user configurable settings
         :param pulumi.Input[Sequence[pulumi.Input['ServiceServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[bool] termination_protection: Prevent service from being deleted. It is recommended to have this enabled for all services.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "service_type", service_type)
-        if cassandra is not None:
-            pulumi.set(__self__, "cassandra", cassandra)
         if cassandra_user_config is not None:
             pulumi.set(__self__, "cassandra_user_config", cassandra_user_config)
+        if clickhouse_user_config is not None:
+            pulumi.set(__self__, "clickhouse_user_config", clickhouse_user_config)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
-        if elasticsearch is not None:
-            pulumi.set(__self__, "elasticsearch", elasticsearch)
+        if disk_space is not None:
+            pulumi.set(__self__, "disk_space", disk_space)
         if elasticsearch_user_config is not None:
             pulumi.set(__self__, "elasticsearch_user_config", elasticsearch_user_config)
-        if grafana is not None:
-            pulumi.set(__self__, "grafana", grafana)
+        if flink_user_config is not None:
+            pulumi.set(__self__, "flink_user_config", flink_user_config)
+        if flinks is not None:
+            pulumi.set(__self__, "flinks", flinks)
         if grafana_user_config is not None:
             pulumi.set(__self__, "grafana_user_config", grafana_user_config)
-        if influxdb is not None:
-            pulumi.set(__self__, "influxdb", influxdb)
         if influxdb_user_config is not None:
             pulumi.set(__self__, "influxdb_user_config", influxdb_user_config)
-        if kafka is not None:
-            pulumi.set(__self__, "kafka", kafka)
-        if kafka_connect is not None:
-            pulumi.set(__self__, "kafka_connect", kafka_connect)
         if kafka_connect_user_config is not None:
             pulumi.set(__self__, "kafka_connect_user_config", kafka_connect_user_config)
-        if kafka_mirrormaker is not None:
-            pulumi.set(__self__, "kafka_mirrormaker", kafka_mirrormaker)
         if kafka_mirrormaker_user_config is not None:
             pulumi.set(__self__, "kafka_mirrormaker_user_config", kafka_mirrormaker_user_config)
         if kafka_user_config is not None:
             pulumi.set(__self__, "kafka_user_config", kafka_user_config)
+        if kafkas is not None:
+            pulumi.set(__self__, "kafkas", kafkas)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
             pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
-        if mysql is not None:
-            pulumi.set(__self__, "mysql", mysql)
         if mysql_user_config is not None:
             pulumi.set(__self__, "mysql_user_config", mysql_user_config)
-        if opensearch is not None:
-            pulumi.set(__self__, "opensearch", opensearch)
         if opensearch_user_config is not None:
             pulumi.set(__self__, "opensearch_user_config", opensearch_user_config)
-        if pg is not None:
-            pulumi.set(__self__, "pg", pg)
         if pg_user_config is not None:
             pulumi.set(__self__, "pg_user_config", pg_user_config)
         if plan is not None:
             pulumi.set(__self__, "plan", plan)
         if project_vpc_id is not None:
             pulumi.set(__self__, "project_vpc_id", project_vpc_id)
-        if redis is not None:
-            pulumi.set(__self__, "redis", redis)
         if redis_user_config is not None:
             pulumi.set(__self__, "redis_user_config", redis_user_config)
         if service_integrations is not None:
             pulumi.set(__self__, "service_integrations", service_integrations)
+        if static_ips is not None:
+            pulumi.set(__self__, "static_ips", static_ips)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -181,28 +161,28 @@ class ServiceArgs:
         pulumi.set(self, "service_type", value)
 
     @property
-    @pulumi.getter
-    def cassandra(self) -> Optional[pulumi.Input['ServiceCassandraArgs']]:
-        """
-        Cassandra specific server provided values
-        """
-        return pulumi.get(self, "cassandra")
-
-    @cassandra.setter
-    def cassandra(self, value: Optional[pulumi.Input['ServiceCassandraArgs']]):
-        pulumi.set(self, "cassandra", value)
-
-    @property
     @pulumi.getter(name="cassandraUserConfig")
     def cassandra_user_config(self) -> Optional[pulumi.Input['ServiceCassandraUserConfigArgs']]:
         """
-        Cassandra specific user configurable settings
+        Cassandra user configurable settings
         """
         return pulumi.get(self, "cassandra_user_config")
 
     @cassandra_user_config.setter
     def cassandra_user_config(self, value: Optional[pulumi.Input['ServiceCassandraUserConfigArgs']]):
         pulumi.set(self, "cassandra_user_config", value)
+
+    @property
+    @pulumi.getter(name="clickhouseUserConfig")
+    def clickhouse_user_config(self) -> Optional[pulumi.Input['ServiceClickhouseUserConfigArgs']]:
+        """
+        Clickhouse user configurable settings
+        """
+        return pulumi.get(self, "clickhouse_user_config")
+
+    @clickhouse_user_config.setter
+    def clickhouse_user_config(self, value: Optional[pulumi.Input['ServiceClickhouseUserConfigArgs']]):
+        pulumi.set(self, "clickhouse_user_config", value)
 
     @property
     @pulumi.getter(name="cloudName")
@@ -217,22 +197,22 @@ class ServiceArgs:
         pulumi.set(self, "cloud_name", value)
 
     @property
-    @pulumi.getter
-    def elasticsearch(self) -> Optional[pulumi.Input['ServiceElasticsearchArgs']]:
+    @pulumi.getter(name="diskSpace")
+    def disk_space(self) -> Optional[pulumi.Input[str]]:
         """
-        Elasticsearch specific server provided values
+        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         """
-        return pulumi.get(self, "elasticsearch")
+        return pulumi.get(self, "disk_space")
 
-    @elasticsearch.setter
-    def elasticsearch(self, value: Optional[pulumi.Input['ServiceElasticsearchArgs']]):
-        pulumi.set(self, "elasticsearch", value)
+    @disk_space.setter
+    def disk_space(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space", value)
 
     @property
     @pulumi.getter(name="elasticsearchUserConfig")
     def elasticsearch_user_config(self) -> Optional[pulumi.Input['ServiceElasticsearchUserConfigArgs']]:
         """
-        Elasticsearch specific user configurable settings
+        Elasticsearch user configurable settings
         """
         return pulumi.get(self, "elasticsearch_user_config")
 
@@ -241,22 +221,34 @@ class ServiceArgs:
         pulumi.set(self, "elasticsearch_user_config", value)
 
     @property
-    @pulumi.getter
-    def grafana(self) -> Optional[pulumi.Input['ServiceGrafanaArgs']]:
+    @pulumi.getter(name="flinkUserConfig")
+    def flink_user_config(self) -> Optional[pulumi.Input['ServiceFlinkUserConfigArgs']]:
         """
-        Grafana specific server provided values
+        Flink user configurable settings
         """
-        return pulumi.get(self, "grafana")
+        return pulumi.get(self, "flink_user_config")
 
-    @grafana.setter
-    def grafana(self, value: Optional[pulumi.Input['ServiceGrafanaArgs']]):
-        pulumi.set(self, "grafana", value)
+    @flink_user_config.setter
+    def flink_user_config(self, value: Optional[pulumi.Input['ServiceFlinkUserConfigArgs']]):
+        pulumi.set(self, "flink_user_config", value)
+
+    @property
+    @pulumi.getter
+    def flinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceFlinkArgs']]]]:
+        """
+        Flink specific server provided values
+        """
+        return pulumi.get(self, "flinks")
+
+    @flinks.setter
+    def flinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceFlinkArgs']]]]):
+        pulumi.set(self, "flinks", value)
 
     @property
     @pulumi.getter(name="grafanaUserConfig")
     def grafana_user_config(self) -> Optional[pulumi.Input['ServiceGrafanaUserConfigArgs']]:
         """
-        Grafana specific user configurable settings
+        Grafana user configurable settings
         """
         return pulumi.get(self, "grafana_user_config")
 
@@ -265,22 +257,10 @@ class ServiceArgs:
         pulumi.set(self, "grafana_user_config", value)
 
     @property
-    @pulumi.getter
-    def influxdb(self) -> Optional[pulumi.Input['ServiceInfluxdbArgs']]:
-        """
-        InfluxDB specific server provided values
-        """
-        return pulumi.get(self, "influxdb")
-
-    @influxdb.setter
-    def influxdb(self, value: Optional[pulumi.Input['ServiceInfluxdbArgs']]):
-        pulumi.set(self, "influxdb", value)
-
-    @property
     @pulumi.getter(name="influxdbUserConfig")
     def influxdb_user_config(self) -> Optional[pulumi.Input['ServiceInfluxdbUserConfigArgs']]:
         """
-        InfluxDB specific user configurable settings
+        Influxdb user configurable settings
         """
         return pulumi.get(self, "influxdb_user_config")
 
@@ -289,34 +269,10 @@ class ServiceArgs:
         pulumi.set(self, "influxdb_user_config", value)
 
     @property
-    @pulumi.getter
-    def kafka(self) -> Optional[pulumi.Input['ServiceKafkaArgs']]:
-        """
-        Kafka specific server provided values
-        """
-        return pulumi.get(self, "kafka")
-
-    @kafka.setter
-    def kafka(self, value: Optional[pulumi.Input['ServiceKafkaArgs']]):
-        pulumi.set(self, "kafka", value)
-
-    @property
-    @pulumi.getter(name="kafkaConnect")
-    def kafka_connect(self) -> Optional[pulumi.Input['ServiceKafkaConnectArgs']]:
-        """
-        Kafka Connect specific server provided values
-        """
-        return pulumi.get(self, "kafka_connect")
-
-    @kafka_connect.setter
-    def kafka_connect(self, value: Optional[pulumi.Input['ServiceKafkaConnectArgs']]):
-        pulumi.set(self, "kafka_connect", value)
-
-    @property
     @pulumi.getter(name="kafkaConnectUserConfig")
     def kafka_connect_user_config(self) -> Optional[pulumi.Input['ServiceKafkaConnectUserConfigArgs']]:
         """
-        Kafka Connect specific user configurable settings
+        Kafka*connect user configurable settings
         """
         return pulumi.get(self, "kafka_connect_user_config")
 
@@ -325,22 +281,10 @@ class ServiceArgs:
         pulumi.set(self, "kafka_connect_user_config", value)
 
     @property
-    @pulumi.getter(name="kafkaMirrormaker")
-    def kafka_mirrormaker(self) -> Optional[pulumi.Input['ServiceKafkaMirrormakerArgs']]:
-        """
-        Kafka MirrorMaker 2 specific server provided values
-        """
-        return pulumi.get(self, "kafka_mirrormaker")
-
-    @kafka_mirrormaker.setter
-    def kafka_mirrormaker(self, value: Optional[pulumi.Input['ServiceKafkaMirrormakerArgs']]):
-        pulumi.set(self, "kafka_mirrormaker", value)
-
-    @property
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
     def kafka_mirrormaker_user_config(self) -> Optional[pulumi.Input['ServiceKafkaMirrormakerUserConfigArgs']]:
         """
-        Kafka MirrorMaker 2 specific user configurable settings
+        Kafka*mirrormaker user configurable settings
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
 
@@ -352,13 +296,25 @@ class ServiceArgs:
     @pulumi.getter(name="kafkaUserConfig")
     def kafka_user_config(self) -> Optional[pulumi.Input['ServiceKafkaUserConfigArgs']]:
         """
-        Kafka specific user configurable settings
+        Kafka user configurable settings
         """
         return pulumi.get(self, "kafka_user_config")
 
     @kafka_user_config.setter
     def kafka_user_config(self, value: Optional[pulumi.Input['ServiceKafkaUserConfigArgs']]):
         pulumi.set(self, "kafka_user_config", value)
+
+    @property
+    @pulumi.getter
+    def kafkas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceKafkaArgs']]]]:
+        """
+        Kafka specific server provided values
+        """
+        return pulumi.get(self, "kafkas")
+
+    @kafkas.setter
+    def kafkas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceKafkaArgs']]]]):
+        pulumi.set(self, "kafkas", value)
 
     @property
     @pulumi.getter(name="maintenanceWindowDow")
@@ -385,22 +341,10 @@ class ServiceArgs:
         pulumi.set(self, "maintenance_window_time", value)
 
     @property
-    @pulumi.getter
-    def mysql(self) -> Optional[pulumi.Input['ServiceMysqlArgs']]:
-        """
-        MySQL specific server provided values
-        """
-        return pulumi.get(self, "mysql")
-
-    @mysql.setter
-    def mysql(self, value: Optional[pulumi.Input['ServiceMysqlArgs']]):
-        pulumi.set(self, "mysql", value)
-
-    @property
     @pulumi.getter(name="mysqlUserConfig")
     def mysql_user_config(self) -> Optional[pulumi.Input['ServiceMysqlUserConfigArgs']]:
         """
-        MySQL specific user configurable settings
+        Mysql user configurable settings
         """
         return pulumi.get(self, "mysql_user_config")
 
@@ -409,22 +353,10 @@ class ServiceArgs:
         pulumi.set(self, "mysql_user_config", value)
 
     @property
-    @pulumi.getter
-    def opensearch(self) -> Optional[pulumi.Input['ServiceOpensearchArgs']]:
-        """
-        Opensearch specific server provided values
-        """
-        return pulumi.get(self, "opensearch")
-
-    @opensearch.setter
-    def opensearch(self, value: Optional[pulumi.Input['ServiceOpensearchArgs']]):
-        pulumi.set(self, "opensearch", value)
-
-    @property
     @pulumi.getter(name="opensearchUserConfig")
     def opensearch_user_config(self) -> Optional[pulumi.Input['ServiceOpensearchUserConfigArgs']]:
         """
-        Opensearch specific user configurable settings
+        Opensearch user configurable settings
         """
         return pulumi.get(self, "opensearch_user_config")
 
@@ -433,22 +365,10 @@ class ServiceArgs:
         pulumi.set(self, "opensearch_user_config", value)
 
     @property
-    @pulumi.getter
-    def pg(self) -> Optional[pulumi.Input['ServicePgArgs']]:
-        """
-        PostgreSQL specific server provided values
-        """
-        return pulumi.get(self, "pg")
-
-    @pg.setter
-    def pg(self, value: Optional[pulumi.Input['ServicePgArgs']]):
-        pulumi.set(self, "pg", value)
-
-    @property
     @pulumi.getter(name="pgUserConfig")
     def pg_user_config(self) -> Optional[pulumi.Input['ServicePgUserConfigArgs']]:
         """
-        PostgreSQL specific user configurable settings
+        Pg user configurable settings
         """
         return pulumi.get(self, "pg_user_config")
 
@@ -481,22 +401,10 @@ class ServiceArgs:
         pulumi.set(self, "project_vpc_id", value)
 
     @property
-    @pulumi.getter
-    def redis(self) -> Optional[pulumi.Input['ServiceRedisArgs']]:
-        """
-        Redis specific server provided values
-        """
-        return pulumi.get(self, "redis")
-
-    @redis.setter
-    def redis(self, value: Optional[pulumi.Input['ServiceRedisArgs']]):
-        pulumi.set(self, "redis", value)
-
-    @property
     @pulumi.getter(name="redisUserConfig")
     def redis_user_config(self) -> Optional[pulumi.Input['ServiceRedisUserConfigArgs']]:
         """
-        Redis specific user configurable settings
+        Redis user configurable settings
         """
         return pulumi.get(self, "redis_user_config")
 
@@ -517,6 +425,18 @@ class ServiceArgs:
         pulumi.set(self, "service_integrations", value)
 
     @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
+        return pulumi.get(self, "static_ips")
+
+    @static_ips.setter
+    def static_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "static_ips", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -532,34 +452,43 @@ class ServiceArgs:
 @pulumi.input_type
 class _ServiceState:
     def __init__(__self__, *,
-                 cassandra: Optional[pulumi.Input['ServiceCassandraArgs']] = None,
                  cassandra_user_config: Optional[pulumi.Input['ServiceCassandraUserConfigArgs']] = None,
+                 cassandras: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCassandraArgs']]]] = None,
+                 clickhouse_user_config: Optional[pulumi.Input['ServiceClickhouseUserConfigArgs']] = None,
+                 clickhouses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceClickhouseArgs']]]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  components: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceComponentArgs']]]] = None,
-                 elasticsearch: Optional[pulumi.Input['ServiceElasticsearchArgs']] = None,
+                 disk_space: Optional[pulumi.Input[str]] = None,
+                 disk_space_cap: Optional[pulumi.Input[str]] = None,
+                 disk_space_default: Optional[pulumi.Input[str]] = None,
+                 disk_space_step: Optional[pulumi.Input[str]] = None,
+                 disk_space_used: Optional[pulumi.Input[str]] = None,
                  elasticsearch_user_config: Optional[pulumi.Input['ServiceElasticsearchUserConfigArgs']] = None,
-                 grafana: Optional[pulumi.Input['ServiceGrafanaArgs']] = None,
+                 elasticsearches: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceElasticsearchArgs']]]] = None,
+                 flink_user_config: Optional[pulumi.Input['ServiceFlinkUserConfigArgs']] = None,
+                 flinks: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceFlinkArgs']]]] = None,
                  grafana_user_config: Optional[pulumi.Input['ServiceGrafanaUserConfigArgs']] = None,
-                 influxdb: Optional[pulumi.Input['ServiceInfluxdbArgs']] = None,
+                 grafanas: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGrafanaArgs']]]] = None,
                  influxdb_user_config: Optional[pulumi.Input['ServiceInfluxdbUserConfigArgs']] = None,
-                 kafka: Optional[pulumi.Input['ServiceKafkaArgs']] = None,
-                 kafka_connect: Optional[pulumi.Input['ServiceKafkaConnectArgs']] = None,
+                 influxdbs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceInfluxdbArgs']]]] = None,
                  kafka_connect_user_config: Optional[pulumi.Input['ServiceKafkaConnectUserConfigArgs']] = None,
-                 kafka_mirrormaker: Optional[pulumi.Input['ServiceKafkaMirrormakerArgs']] = None,
+                 kafka_connects: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceKafkaConnectArgs']]]] = None,
                  kafka_mirrormaker_user_config: Optional[pulumi.Input['ServiceKafkaMirrormakerUserConfigArgs']] = None,
+                 kafka_mirrormakers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceKafkaMirrormakerArgs']]]] = None,
                  kafka_user_config: Optional[pulumi.Input['ServiceKafkaUserConfigArgs']] = None,
+                 kafkas: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceKafkaArgs']]]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input['ServiceMysqlArgs']] = None,
                  mysql_user_config: Optional[pulumi.Input['ServiceMysqlUserConfigArgs']] = None,
-                 opensearch: Optional[pulumi.Input['ServiceOpensearchArgs']] = None,
+                 mysqls: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceMysqlArgs']]]] = None,
                  opensearch_user_config: Optional[pulumi.Input['ServiceOpensearchUserConfigArgs']] = None,
-                 pg: Optional[pulumi.Input['ServicePgArgs']] = None,
+                 opensearches: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceOpensearchArgs']]]] = None,
                  pg_user_config: Optional[pulumi.Input['ServicePgUserConfigArgs']] = None,
+                 pgs: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePgArgs']]]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
-                 redis: Optional[pulumi.Input['ServiceRedisArgs']] = None,
+                 redis: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceRediArgs']]]] = None,
                  redis_user_config: Optional[pulumi.Input['ServiceRedisUserConfigArgs']] = None,
                  service_host: Optional[pulumi.Input[str]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceServiceIntegrationArgs']]]] = None,
@@ -570,38 +499,48 @@ class _ServiceState:
                  service_uri: Optional[pulumi.Input[str]] = None,
                  service_username: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Service resources.
-        :param pulumi.Input['ServiceCassandraArgs'] cassandra: Cassandra specific server provided values
-        :param pulumi.Input['ServiceCassandraUserConfigArgs'] cassandra_user_config: Cassandra specific user configurable settings
+        :param pulumi.Input['ServiceCassandraUserConfigArgs'] cassandra_user_config: Cassandra user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceCassandraArgs']]] cassandras: Cassandra specific server provided values
+        :param pulumi.Input['ServiceClickhouseUserConfigArgs'] clickhouse_user_config: Clickhouse user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceClickhouseArgs']]] clickhouses: Clickhouse specific server provided values
         :param pulumi.Input[str] cloud_name: Cloud the service runs in
         :param pulumi.Input[Sequence[pulumi.Input['ServiceComponentArgs']]] components: Service component information objects
-        :param pulumi.Input['ServiceElasticsearchArgs'] elasticsearch: Elasticsearch specific server provided values
-        :param pulumi.Input['ServiceElasticsearchUserConfigArgs'] elasticsearch_user_config: Elasticsearch specific user configurable settings
-        :param pulumi.Input['ServiceGrafanaArgs'] grafana: Grafana specific server provided values
-        :param pulumi.Input['ServiceGrafanaUserConfigArgs'] grafana_user_config: Grafana specific user configurable settings
-        :param pulumi.Input['ServiceInfluxdbArgs'] influxdb: InfluxDB specific server provided values
-        :param pulumi.Input['ServiceInfluxdbUserConfigArgs'] influxdb_user_config: InfluxDB specific user configurable settings
-        :param pulumi.Input['ServiceKafkaArgs'] kafka: Kafka specific server provided values
-        :param pulumi.Input['ServiceKafkaConnectArgs'] kafka_connect: Kafka Connect specific server provided values
-        :param pulumi.Input['ServiceKafkaConnectUserConfigArgs'] kafka_connect_user_config: Kafka Connect specific user configurable settings
-        :param pulumi.Input['ServiceKafkaMirrormakerArgs'] kafka_mirrormaker: Kafka MirrorMaker 2 specific server provided values
-        :param pulumi.Input['ServiceKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: Kafka MirrorMaker 2 specific user configurable settings
-        :param pulumi.Input['ServiceKafkaUserConfigArgs'] kafka_user_config: Kafka specific user configurable settings
+        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
+        :param pulumi.Input['ServiceElasticsearchUserConfigArgs'] elasticsearch_user_config: Elasticsearch user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceElasticsearchArgs']]] elasticsearches: Elasticsearch specific server provided values
+        :param pulumi.Input['ServiceFlinkUserConfigArgs'] flink_user_config: Flink user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceFlinkArgs']]] flinks: Flink specific server provided values
+        :param pulumi.Input['ServiceGrafanaUserConfigArgs'] grafana_user_config: Grafana user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceGrafanaArgs']]] grafanas: Grafana specific server provided values
+        :param pulumi.Input['ServiceInfluxdbUserConfigArgs'] influxdb_user_config: Influxdb user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceInfluxdbArgs']]] influxdbs: InfluxDB specific server provided values
+        :param pulumi.Input['ServiceKafkaConnectUserConfigArgs'] kafka_connect_user_config: Kafka*connect user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceKafkaConnectArgs']]] kafka_connects: Kafka Connect specific server provided values
+        :param pulumi.Input['ServiceKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: Kafka*mirrormaker user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceKafkaMirrormakerArgs']]] kafka_mirrormakers: Kafka MirrorMaker 2 specific server provided values
+        :param pulumi.Input['ServiceKafkaUserConfigArgs'] kafka_user_config: Kafka user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceKafkaArgs']]] kafkas: Kafka specific server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input['ServiceMysqlArgs'] mysql: MySQL specific server provided values
-        :param pulumi.Input['ServiceMysqlUserConfigArgs'] mysql_user_config: MySQL specific user configurable settings
-        :param pulumi.Input['ServiceOpensearchArgs'] opensearch: Opensearch specific server provided values
-        :param pulumi.Input['ServiceOpensearchUserConfigArgs'] opensearch_user_config: Opensearch specific user configurable settings
-        :param pulumi.Input['ServicePgArgs'] pg: PostgreSQL specific server provided values
-        :param pulumi.Input['ServicePgUserConfigArgs'] pg_user_config: PostgreSQL specific user configurable settings
+        :param pulumi.Input['ServiceMysqlUserConfigArgs'] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceMysqlArgs']]] mysqls: MySQL specific server provided values
+        :param pulumi.Input['ServiceOpensearchUserConfigArgs'] opensearch_user_config: Opensearch user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceOpensearchArgs']]] opensearches: Opensearch specific server provided values
+        :param pulumi.Input['ServicePgUserConfigArgs'] pg_user_config: Pg user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePgArgs']]] pgs: PostgreSQL specific server provided values
         :param pulumi.Input[str] plan: Subscription plan
         :param pulumi.Input[str] project: Target project
         :param pulumi.Input[str] project_vpc_id: Identifier of the VPC the service should be in, if any
-        :param pulumi.Input['ServiceRedisArgs'] redis: Redis specific server provided values
-        :param pulumi.Input['ServiceRedisUserConfigArgs'] redis_user_config: Redis specific user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceRediArgs']]] redis: Redis specific server provided values
+        :param pulumi.Input['ServiceRedisUserConfigArgs'] redis_user_config: Redis user configurable settings
         :param pulumi.Input[str] service_host: Service hostname
         :param pulumi.Input[Sequence[pulumi.Input['ServiceServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Service name
@@ -610,57 +549,76 @@ class _ServiceState:
         :param pulumi.Input[str] service_type: Service type code
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
-        :param pulumi.Input[str] state: Service state
+        :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[bool] termination_protection: Prevent service from being deleted. It is recommended to have this enabled for all services.
         """
-        if cassandra is not None:
-            pulumi.set(__self__, "cassandra", cassandra)
         if cassandra_user_config is not None:
             pulumi.set(__self__, "cassandra_user_config", cassandra_user_config)
+        if cassandras is not None:
+            pulumi.set(__self__, "cassandras", cassandras)
+        if clickhouse_user_config is not None:
+            pulumi.set(__self__, "clickhouse_user_config", clickhouse_user_config)
+        if clickhouses is not None:
+            pulumi.set(__self__, "clickhouses", clickhouses)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
         if components is not None:
             pulumi.set(__self__, "components", components)
-        if elasticsearch is not None:
-            pulumi.set(__self__, "elasticsearch", elasticsearch)
+        if disk_space is not None:
+            pulumi.set(__self__, "disk_space", disk_space)
+        if disk_space_cap is not None:
+            pulumi.set(__self__, "disk_space_cap", disk_space_cap)
+        if disk_space_default is not None:
+            pulumi.set(__self__, "disk_space_default", disk_space_default)
+        if disk_space_step is not None:
+            pulumi.set(__self__, "disk_space_step", disk_space_step)
+        if disk_space_used is not None:
+            pulumi.set(__self__, "disk_space_used", disk_space_used)
         if elasticsearch_user_config is not None:
             pulumi.set(__self__, "elasticsearch_user_config", elasticsearch_user_config)
-        if grafana is not None:
-            pulumi.set(__self__, "grafana", grafana)
+        if elasticsearches is not None:
+            pulumi.set(__self__, "elasticsearches", elasticsearches)
+        if flink_user_config is not None:
+            pulumi.set(__self__, "flink_user_config", flink_user_config)
+        if flinks is not None:
+            pulumi.set(__self__, "flinks", flinks)
         if grafana_user_config is not None:
             pulumi.set(__self__, "grafana_user_config", grafana_user_config)
-        if influxdb is not None:
-            pulumi.set(__self__, "influxdb", influxdb)
+        if grafanas is not None:
+            pulumi.set(__self__, "grafanas", grafanas)
         if influxdb_user_config is not None:
             pulumi.set(__self__, "influxdb_user_config", influxdb_user_config)
-        if kafka is not None:
-            pulumi.set(__self__, "kafka", kafka)
-        if kafka_connect is not None:
-            pulumi.set(__self__, "kafka_connect", kafka_connect)
+        if influxdbs is not None:
+            pulumi.set(__self__, "influxdbs", influxdbs)
         if kafka_connect_user_config is not None:
             pulumi.set(__self__, "kafka_connect_user_config", kafka_connect_user_config)
-        if kafka_mirrormaker is not None:
-            pulumi.set(__self__, "kafka_mirrormaker", kafka_mirrormaker)
+        if kafka_connects is not None:
+            pulumi.set(__self__, "kafka_connects", kafka_connects)
         if kafka_mirrormaker_user_config is not None:
             pulumi.set(__self__, "kafka_mirrormaker_user_config", kafka_mirrormaker_user_config)
+        if kafka_mirrormakers is not None:
+            pulumi.set(__self__, "kafka_mirrormakers", kafka_mirrormakers)
         if kafka_user_config is not None:
             pulumi.set(__self__, "kafka_user_config", kafka_user_config)
+        if kafkas is not None:
+            pulumi.set(__self__, "kafkas", kafkas)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
             pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
-        if mysql is not None:
-            pulumi.set(__self__, "mysql", mysql)
         if mysql_user_config is not None:
             pulumi.set(__self__, "mysql_user_config", mysql_user_config)
-        if opensearch is not None:
-            pulumi.set(__self__, "opensearch", opensearch)
+        if mysqls is not None:
+            pulumi.set(__self__, "mysqls", mysqls)
         if opensearch_user_config is not None:
             pulumi.set(__self__, "opensearch_user_config", opensearch_user_config)
-        if pg is not None:
-            pulumi.set(__self__, "pg", pg)
+        if opensearches is not None:
+            pulumi.set(__self__, "opensearches", opensearches)
         if pg_user_config is not None:
             pulumi.set(__self__, "pg_user_config", pg_user_config)
+        if pgs is not None:
+            pulumi.set(__self__, "pgs", pgs)
         if plan is not None:
             pulumi.set(__self__, "plan", plan)
         if project is not None:
@@ -689,32 +647,58 @@ class _ServiceState:
             pulumi.set(__self__, "service_username", service_username)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if static_ips is not None:
+            pulumi.set(__self__, "static_ips", static_ips)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
-
-    @property
-    @pulumi.getter
-    def cassandra(self) -> Optional[pulumi.Input['ServiceCassandraArgs']]:
-        """
-        Cassandra specific server provided values
-        """
-        return pulumi.get(self, "cassandra")
-
-    @cassandra.setter
-    def cassandra(self, value: Optional[pulumi.Input['ServiceCassandraArgs']]):
-        pulumi.set(self, "cassandra", value)
 
     @property
     @pulumi.getter(name="cassandraUserConfig")
     def cassandra_user_config(self) -> Optional[pulumi.Input['ServiceCassandraUserConfigArgs']]:
         """
-        Cassandra specific user configurable settings
+        Cassandra user configurable settings
         """
         return pulumi.get(self, "cassandra_user_config")
 
     @cassandra_user_config.setter
     def cassandra_user_config(self, value: Optional[pulumi.Input['ServiceCassandraUserConfigArgs']]):
         pulumi.set(self, "cassandra_user_config", value)
+
+    @property
+    @pulumi.getter
+    def cassandras(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCassandraArgs']]]]:
+        """
+        Cassandra specific server provided values
+        """
+        return pulumi.get(self, "cassandras")
+
+    @cassandras.setter
+    def cassandras(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCassandraArgs']]]]):
+        pulumi.set(self, "cassandras", value)
+
+    @property
+    @pulumi.getter(name="clickhouseUserConfig")
+    def clickhouse_user_config(self) -> Optional[pulumi.Input['ServiceClickhouseUserConfigArgs']]:
+        """
+        Clickhouse user configurable settings
+        """
+        return pulumi.get(self, "clickhouse_user_config")
+
+    @clickhouse_user_config.setter
+    def clickhouse_user_config(self, value: Optional[pulumi.Input['ServiceClickhouseUserConfigArgs']]):
+        pulumi.set(self, "clickhouse_user_config", value)
+
+    @property
+    @pulumi.getter
+    def clickhouses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceClickhouseArgs']]]]:
+        """
+        Clickhouse specific server provided values
+        """
+        return pulumi.get(self, "clickhouses")
+
+    @clickhouses.setter
+    def clickhouses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceClickhouseArgs']]]]):
+        pulumi.set(self, "clickhouses", value)
 
     @property
     @pulumi.getter(name="cloudName")
@@ -741,22 +725,70 @@ class _ServiceState:
         pulumi.set(self, "components", value)
 
     @property
-    @pulumi.getter
-    def elasticsearch(self) -> Optional[pulumi.Input['ServiceElasticsearchArgs']]:
+    @pulumi.getter(name="diskSpace")
+    def disk_space(self) -> Optional[pulumi.Input[str]]:
         """
-        Elasticsearch specific server provided values
+        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         """
-        return pulumi.get(self, "elasticsearch")
+        return pulumi.get(self, "disk_space")
 
-    @elasticsearch.setter
-    def elasticsearch(self, value: Optional[pulumi.Input['ServiceElasticsearchArgs']]):
-        pulumi.set(self, "elasticsearch", value)
+    @disk_space.setter
+    def disk_space(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space", value)
+
+    @property
+    @pulumi.getter(name="diskSpaceCap")
+    def disk_space_cap(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        """
+        return pulumi.get(self, "disk_space_cap")
+
+    @disk_space_cap.setter
+    def disk_space_cap(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space_cap", value)
+
+    @property
+    @pulumi.getter(name="diskSpaceDefault")
+    def disk_space_default(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        """
+        return pulumi.get(self, "disk_space_default")
+
+    @disk_space_default.setter
+    def disk_space_default(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space_default", value)
+
+    @property
+    @pulumi.getter(name="diskSpaceStep")
+    def disk_space_step(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        """
+        return pulumi.get(self, "disk_space_step")
+
+    @disk_space_step.setter
+    def disk_space_step(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space_step", value)
+
+    @property
+    @pulumi.getter(name="diskSpaceUsed")
+    def disk_space_used(self) -> Optional[pulumi.Input[str]]:
+        """
+        Disk space that service is currently using
+        """
+        return pulumi.get(self, "disk_space_used")
+
+    @disk_space_used.setter
+    def disk_space_used(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_space_used", value)
 
     @property
     @pulumi.getter(name="elasticsearchUserConfig")
     def elasticsearch_user_config(self) -> Optional[pulumi.Input['ServiceElasticsearchUserConfigArgs']]:
         """
-        Elasticsearch specific user configurable settings
+        Elasticsearch user configurable settings
         """
         return pulumi.get(self, "elasticsearch_user_config")
 
@@ -766,21 +798,45 @@ class _ServiceState:
 
     @property
     @pulumi.getter
-    def grafana(self) -> Optional[pulumi.Input['ServiceGrafanaArgs']]:
+    def elasticsearches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceElasticsearchArgs']]]]:
         """
-        Grafana specific server provided values
+        Elasticsearch specific server provided values
         """
-        return pulumi.get(self, "grafana")
+        return pulumi.get(self, "elasticsearches")
 
-    @grafana.setter
-    def grafana(self, value: Optional[pulumi.Input['ServiceGrafanaArgs']]):
-        pulumi.set(self, "grafana", value)
+    @elasticsearches.setter
+    def elasticsearches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceElasticsearchArgs']]]]):
+        pulumi.set(self, "elasticsearches", value)
+
+    @property
+    @pulumi.getter(name="flinkUserConfig")
+    def flink_user_config(self) -> Optional[pulumi.Input['ServiceFlinkUserConfigArgs']]:
+        """
+        Flink user configurable settings
+        """
+        return pulumi.get(self, "flink_user_config")
+
+    @flink_user_config.setter
+    def flink_user_config(self, value: Optional[pulumi.Input['ServiceFlinkUserConfigArgs']]):
+        pulumi.set(self, "flink_user_config", value)
+
+    @property
+    @pulumi.getter
+    def flinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceFlinkArgs']]]]:
+        """
+        Flink specific server provided values
+        """
+        return pulumi.get(self, "flinks")
+
+    @flinks.setter
+    def flinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceFlinkArgs']]]]):
+        pulumi.set(self, "flinks", value)
 
     @property
     @pulumi.getter(name="grafanaUserConfig")
     def grafana_user_config(self) -> Optional[pulumi.Input['ServiceGrafanaUserConfigArgs']]:
         """
-        Grafana specific user configurable settings
+        Grafana user configurable settings
         """
         return pulumi.get(self, "grafana_user_config")
 
@@ -790,21 +846,21 @@ class _ServiceState:
 
     @property
     @pulumi.getter
-    def influxdb(self) -> Optional[pulumi.Input['ServiceInfluxdbArgs']]:
+    def grafanas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGrafanaArgs']]]]:
         """
-        InfluxDB specific server provided values
+        Grafana specific server provided values
         """
-        return pulumi.get(self, "influxdb")
+        return pulumi.get(self, "grafanas")
 
-    @influxdb.setter
-    def influxdb(self, value: Optional[pulumi.Input['ServiceInfluxdbArgs']]):
-        pulumi.set(self, "influxdb", value)
+    @grafanas.setter
+    def grafanas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGrafanaArgs']]]]):
+        pulumi.set(self, "grafanas", value)
 
     @property
     @pulumi.getter(name="influxdbUserConfig")
     def influxdb_user_config(self) -> Optional[pulumi.Input['ServiceInfluxdbUserConfigArgs']]:
         """
-        InfluxDB specific user configurable settings
+        Influxdb user configurable settings
         """
         return pulumi.get(self, "influxdb_user_config")
 
@@ -814,33 +870,21 @@ class _ServiceState:
 
     @property
     @pulumi.getter
-    def kafka(self) -> Optional[pulumi.Input['ServiceKafkaArgs']]:
+    def influxdbs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceInfluxdbArgs']]]]:
         """
-        Kafka specific server provided values
+        InfluxDB specific server provided values
         """
-        return pulumi.get(self, "kafka")
+        return pulumi.get(self, "influxdbs")
 
-    @kafka.setter
-    def kafka(self, value: Optional[pulumi.Input['ServiceKafkaArgs']]):
-        pulumi.set(self, "kafka", value)
-
-    @property
-    @pulumi.getter(name="kafkaConnect")
-    def kafka_connect(self) -> Optional[pulumi.Input['ServiceKafkaConnectArgs']]:
-        """
-        Kafka Connect specific server provided values
-        """
-        return pulumi.get(self, "kafka_connect")
-
-    @kafka_connect.setter
-    def kafka_connect(self, value: Optional[pulumi.Input['ServiceKafkaConnectArgs']]):
-        pulumi.set(self, "kafka_connect", value)
+    @influxdbs.setter
+    def influxdbs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceInfluxdbArgs']]]]):
+        pulumi.set(self, "influxdbs", value)
 
     @property
     @pulumi.getter(name="kafkaConnectUserConfig")
     def kafka_connect_user_config(self) -> Optional[pulumi.Input['ServiceKafkaConnectUserConfigArgs']]:
         """
-        Kafka Connect specific user configurable settings
+        Kafka*connect user configurable settings
         """
         return pulumi.get(self, "kafka_connect_user_config")
 
@@ -849,22 +893,22 @@ class _ServiceState:
         pulumi.set(self, "kafka_connect_user_config", value)
 
     @property
-    @pulumi.getter(name="kafkaMirrormaker")
-    def kafka_mirrormaker(self) -> Optional[pulumi.Input['ServiceKafkaMirrormakerArgs']]:
+    @pulumi.getter(name="kafkaConnects")
+    def kafka_connects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceKafkaConnectArgs']]]]:
         """
-        Kafka MirrorMaker 2 specific server provided values
+        Kafka Connect specific server provided values
         """
-        return pulumi.get(self, "kafka_mirrormaker")
+        return pulumi.get(self, "kafka_connects")
 
-    @kafka_mirrormaker.setter
-    def kafka_mirrormaker(self, value: Optional[pulumi.Input['ServiceKafkaMirrormakerArgs']]):
-        pulumi.set(self, "kafka_mirrormaker", value)
+    @kafka_connects.setter
+    def kafka_connects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceKafkaConnectArgs']]]]):
+        pulumi.set(self, "kafka_connects", value)
 
     @property
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
     def kafka_mirrormaker_user_config(self) -> Optional[pulumi.Input['ServiceKafkaMirrormakerUserConfigArgs']]:
         """
-        Kafka MirrorMaker 2 specific user configurable settings
+        Kafka*mirrormaker user configurable settings
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
 
@@ -873,16 +917,40 @@ class _ServiceState:
         pulumi.set(self, "kafka_mirrormaker_user_config", value)
 
     @property
+    @pulumi.getter(name="kafkaMirrormakers")
+    def kafka_mirrormakers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceKafkaMirrormakerArgs']]]]:
+        """
+        Kafka MirrorMaker 2 specific server provided values
+        """
+        return pulumi.get(self, "kafka_mirrormakers")
+
+    @kafka_mirrormakers.setter
+    def kafka_mirrormakers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceKafkaMirrormakerArgs']]]]):
+        pulumi.set(self, "kafka_mirrormakers", value)
+
+    @property
     @pulumi.getter(name="kafkaUserConfig")
     def kafka_user_config(self) -> Optional[pulumi.Input['ServiceKafkaUserConfigArgs']]:
         """
-        Kafka specific user configurable settings
+        Kafka user configurable settings
         """
         return pulumi.get(self, "kafka_user_config")
 
     @kafka_user_config.setter
     def kafka_user_config(self, value: Optional[pulumi.Input['ServiceKafkaUserConfigArgs']]):
         pulumi.set(self, "kafka_user_config", value)
+
+    @property
+    @pulumi.getter
+    def kafkas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceKafkaArgs']]]]:
+        """
+        Kafka specific server provided values
+        """
+        return pulumi.get(self, "kafkas")
+
+    @kafkas.setter
+    def kafkas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceKafkaArgs']]]]):
+        pulumi.set(self, "kafkas", value)
 
     @property
     @pulumi.getter(name="maintenanceWindowDow")
@@ -909,22 +977,10 @@ class _ServiceState:
         pulumi.set(self, "maintenance_window_time", value)
 
     @property
-    @pulumi.getter
-    def mysql(self) -> Optional[pulumi.Input['ServiceMysqlArgs']]:
-        """
-        MySQL specific server provided values
-        """
-        return pulumi.get(self, "mysql")
-
-    @mysql.setter
-    def mysql(self, value: Optional[pulumi.Input['ServiceMysqlArgs']]):
-        pulumi.set(self, "mysql", value)
-
-    @property
     @pulumi.getter(name="mysqlUserConfig")
     def mysql_user_config(self) -> Optional[pulumi.Input['ServiceMysqlUserConfigArgs']]:
         """
-        MySQL specific user configurable settings
+        Mysql user configurable settings
         """
         return pulumi.get(self, "mysql_user_config")
 
@@ -934,21 +990,21 @@ class _ServiceState:
 
     @property
     @pulumi.getter
-    def opensearch(self) -> Optional[pulumi.Input['ServiceOpensearchArgs']]:
+    def mysqls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceMysqlArgs']]]]:
         """
-        Opensearch specific server provided values
+        MySQL specific server provided values
         """
-        return pulumi.get(self, "opensearch")
+        return pulumi.get(self, "mysqls")
 
-    @opensearch.setter
-    def opensearch(self, value: Optional[pulumi.Input['ServiceOpensearchArgs']]):
-        pulumi.set(self, "opensearch", value)
+    @mysqls.setter
+    def mysqls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceMysqlArgs']]]]):
+        pulumi.set(self, "mysqls", value)
 
     @property
     @pulumi.getter(name="opensearchUserConfig")
     def opensearch_user_config(self) -> Optional[pulumi.Input['ServiceOpensearchUserConfigArgs']]:
         """
-        Opensearch specific user configurable settings
+        Opensearch user configurable settings
         """
         return pulumi.get(self, "opensearch_user_config")
 
@@ -958,27 +1014,39 @@ class _ServiceState:
 
     @property
     @pulumi.getter
-    def pg(self) -> Optional[pulumi.Input['ServicePgArgs']]:
+    def opensearches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceOpensearchArgs']]]]:
         """
-        PostgreSQL specific server provided values
+        Opensearch specific server provided values
         """
-        return pulumi.get(self, "pg")
+        return pulumi.get(self, "opensearches")
 
-    @pg.setter
-    def pg(self, value: Optional[pulumi.Input['ServicePgArgs']]):
-        pulumi.set(self, "pg", value)
+    @opensearches.setter
+    def opensearches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceOpensearchArgs']]]]):
+        pulumi.set(self, "opensearches", value)
 
     @property
     @pulumi.getter(name="pgUserConfig")
     def pg_user_config(self) -> Optional[pulumi.Input['ServicePgUserConfigArgs']]:
         """
-        PostgreSQL specific user configurable settings
+        Pg user configurable settings
         """
         return pulumi.get(self, "pg_user_config")
 
     @pg_user_config.setter
     def pg_user_config(self, value: Optional[pulumi.Input['ServicePgUserConfigArgs']]):
         pulumi.set(self, "pg_user_config", value)
+
+    @property
+    @pulumi.getter
+    def pgs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePgArgs']]]]:
+        """
+        PostgreSQL specific server provided values
+        """
+        return pulumi.get(self, "pgs")
+
+    @pgs.setter
+    def pgs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePgArgs']]]]):
+        pulumi.set(self, "pgs", value)
 
     @property
     @pulumi.getter
@@ -1018,21 +1086,21 @@ class _ServiceState:
 
     @property
     @pulumi.getter
-    def redis(self) -> Optional[pulumi.Input['ServiceRedisArgs']]:
+    def redis(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceRediArgs']]]]:
         """
         Redis specific server provided values
         """
         return pulumi.get(self, "redis")
 
     @redis.setter
-    def redis(self, value: Optional[pulumi.Input['ServiceRedisArgs']]):
+    def redis(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceRediArgs']]]]):
         pulumi.set(self, "redis", value)
 
     @property
     @pulumi.getter(name="redisUserConfig")
     def redis_user_config(self) -> Optional[pulumi.Input['ServiceRedisUserConfigArgs']]:
         """
-        Redis specific user configurable settings
+        Redis user configurable settings
         """
         return pulumi.get(self, "redis_user_config")
 
@@ -1140,13 +1208,25 @@ class _ServiceState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Service state
+        Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
+        return pulumi.get(self, "static_ips")
+
+    @static_ips.setter
+    def static_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "static_ips", value)
 
     @property
     @pulumi.getter(name="terminationProtection")
@@ -1166,74 +1246,65 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cassandra: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraArgs']]] = None,
                  cassandra_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']]] = None,
+                 clickhouse_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceClickhouseUserConfigArgs']]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
-                 elasticsearch: Optional[pulumi.Input[pulumi.InputType['ServiceElasticsearchArgs']]] = None,
+                 disk_space: Optional[pulumi.Input[str]] = None,
                  elasticsearch_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceElasticsearchUserConfigArgs']]] = None,
-                 grafana: Optional[pulumi.Input[pulumi.InputType['ServiceGrafanaArgs']]] = None,
+                 flink_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceFlinkUserConfigArgs']]] = None,
+                 flinks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceFlinkArgs']]]]] = None,
                  grafana_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceGrafanaUserConfigArgs']]] = None,
-                 influxdb: Optional[pulumi.Input[pulumi.InputType['ServiceInfluxdbArgs']]] = None,
                  influxdb_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceInfluxdbUserConfigArgs']]] = None,
-                 kafka: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaArgs']]] = None,
-                 kafka_connect: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaConnectArgs']]] = None,
                  kafka_connect_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaConnectUserConfigArgs']]] = None,
-                 kafka_mirrormaker: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerArgs']]] = None,
                  kafka_mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerUserConfigArgs']]] = None,
                  kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaUserConfigArgs']]] = None,
+                 kafkas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceKafkaArgs']]]]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlArgs']]] = None,
                  mysql_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']]] = None,
-                 opensearch: Optional[pulumi.Input[pulumi.InputType['ServiceOpensearchArgs']]] = None,
                  opensearch_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceOpensearchUserConfigArgs']]] = None,
-                 pg: Optional[pulumi.Input[pulumi.InputType['ServicePgArgs']]] = None,
                  pg_user_config: Optional[pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
-                 redis: Optional[pulumi.Input[pulumi.InputType['ServiceRedisArgs']]] = None,
                  redis_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  service_type: Optional[pulumi.Input[str]] = None,
+                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a Service resource with the given unique name, props, and options.
+        The Service resource allows the creation and management of Aiven Services.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServiceCassandraArgs']] cassandra: Cassandra specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']] cassandra_user_config: Cassandra specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']] cassandra_user_config: Cassandra user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceClickhouseUserConfigArgs']] clickhouse_user_config: Clickhouse user configurable settings
         :param pulumi.Input[str] cloud_name: Cloud the service runs in
-        :param pulumi.Input[pulumi.InputType['ServiceElasticsearchArgs']] elasticsearch: Elasticsearch specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceElasticsearchUserConfigArgs']] elasticsearch_user_config: Elasticsearch specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceGrafanaArgs']] grafana: Grafana specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceGrafanaUserConfigArgs']] grafana_user_config: Grafana specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceInfluxdbArgs']] influxdb: InfluxDB specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceInfluxdbUserConfigArgs']] influxdb_user_config: InfluxDB specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceKafkaArgs']] kafka: Kafka specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceKafkaConnectArgs']] kafka_connect: Kafka Connect specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerArgs']] kafka_mirrormaker: Kafka MirrorMaker 2 specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Kafka MirrorMaker 2 specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceKafkaUserConfigArgs']] kafka_user_config: Kafka specific user configurable settings
+        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[pulumi.InputType['ServiceElasticsearchUserConfigArgs']] elasticsearch_user_config: Elasticsearch user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceFlinkUserConfigArgs']] flink_user_config: Flink user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceFlinkArgs']]]] flinks: Flink specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceGrafanaUserConfigArgs']] grafana_user_config: Grafana user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceInfluxdbUserConfigArgs']] influxdb_user_config: Influxdb user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka*connect user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Kafka*mirrormaker user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaUserConfigArgs']] kafka_user_config: Kafka user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceKafkaArgs']]]] kafkas: Kafka specific server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[pulumi.InputType['ServiceMysqlArgs']] mysql: MySQL specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']] mysql_user_config: MySQL specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceOpensearchArgs']] opensearch: Opensearch specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceOpensearchUserConfigArgs']] opensearch_user_config: Opensearch specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServicePgArgs']] pg: PostgreSQL specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']] pg_user_config: PostgreSQL specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceOpensearchUserConfigArgs']] opensearch_user_config: Opensearch user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']] pg_user_config: Pg user configurable settings
         :param pulumi.Input[str] plan: Subscription plan
         :param pulumi.Input[str] project: Target project
         :param pulumi.Input[str] project_vpc_id: Identifier of the VPC the service should be in, if any
-        :param pulumi.Input[pulumi.InputType['ServiceRedisArgs']] redis: Redis specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']] redis_user_config: Redis specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']] redis_user_config: Redis user configurable settings
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Service name
         :param pulumi.Input[str] service_type: Service type code
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[bool] termination_protection: Prevent service from being deleted. It is recommended to have this enabled for all services.
         """
         ...
@@ -1243,7 +1314,8 @@ class Service(pulumi.CustomResource):
                  args: ServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Service resource with the given unique name, props, and options.
+        The Service resource allows the creation and management of Aiven Services.
+
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1259,37 +1331,32 @@ class Service(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cassandra: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraArgs']]] = None,
                  cassandra_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']]] = None,
+                 clickhouse_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceClickhouseUserConfigArgs']]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
-                 elasticsearch: Optional[pulumi.Input[pulumi.InputType['ServiceElasticsearchArgs']]] = None,
+                 disk_space: Optional[pulumi.Input[str]] = None,
                  elasticsearch_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceElasticsearchUserConfigArgs']]] = None,
-                 grafana: Optional[pulumi.Input[pulumi.InputType['ServiceGrafanaArgs']]] = None,
+                 flink_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceFlinkUserConfigArgs']]] = None,
+                 flinks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceFlinkArgs']]]]] = None,
                  grafana_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceGrafanaUserConfigArgs']]] = None,
-                 influxdb: Optional[pulumi.Input[pulumi.InputType['ServiceInfluxdbArgs']]] = None,
                  influxdb_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceInfluxdbUserConfigArgs']]] = None,
-                 kafka: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaArgs']]] = None,
-                 kafka_connect: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaConnectArgs']]] = None,
                  kafka_connect_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaConnectUserConfigArgs']]] = None,
-                 kafka_mirrormaker: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerArgs']]] = None,
                  kafka_mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerUserConfigArgs']]] = None,
                  kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaUserConfigArgs']]] = None,
+                 kafkas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceKafkaArgs']]]]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlArgs']]] = None,
                  mysql_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']]] = None,
-                 opensearch: Optional[pulumi.Input[pulumi.InputType['ServiceOpensearchArgs']]] = None,
                  opensearch_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceOpensearchUserConfigArgs']]] = None,
-                 pg: Optional[pulumi.Input[pulumi.InputType['ServicePgArgs']]] = None,
                  pg_user_config: Optional[pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
-                 redis: Optional[pulumi.Input[pulumi.InputType['ServiceRedisArgs']]] = None,
                  redis_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  service_type: Optional[pulumi.Input[str]] = None,
+                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
@@ -1303,35 +1370,29 @@ class Service(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceArgs.__new__(ServiceArgs)
 
-            __props__.__dict__["cassandra"] = cassandra
             __props__.__dict__["cassandra_user_config"] = cassandra_user_config
+            __props__.__dict__["clickhouse_user_config"] = clickhouse_user_config
             __props__.__dict__["cloud_name"] = cloud_name
-            __props__.__dict__["elasticsearch"] = elasticsearch
+            __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["elasticsearch_user_config"] = elasticsearch_user_config
-            __props__.__dict__["grafana"] = grafana
+            __props__.__dict__["flink_user_config"] = flink_user_config
+            __props__.__dict__["flinks"] = flinks
             __props__.__dict__["grafana_user_config"] = grafana_user_config
-            __props__.__dict__["influxdb"] = influxdb
             __props__.__dict__["influxdb_user_config"] = influxdb_user_config
-            __props__.__dict__["kafka"] = kafka
-            __props__.__dict__["kafka_connect"] = kafka_connect
             __props__.__dict__["kafka_connect_user_config"] = kafka_connect_user_config
-            __props__.__dict__["kafka_mirrormaker"] = kafka_mirrormaker
             __props__.__dict__["kafka_mirrormaker_user_config"] = kafka_mirrormaker_user_config
             __props__.__dict__["kafka_user_config"] = kafka_user_config
+            __props__.__dict__["kafkas"] = kafkas
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
-            __props__.__dict__["mysql"] = mysql
             __props__.__dict__["mysql_user_config"] = mysql_user_config
-            __props__.__dict__["opensearch"] = opensearch
             __props__.__dict__["opensearch_user_config"] = opensearch_user_config
-            __props__.__dict__["pg"] = pg
             __props__.__dict__["pg_user_config"] = pg_user_config
             __props__.__dict__["plan"] = plan
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["project_vpc_id"] = project_vpc_id
-            __props__.__dict__["redis"] = redis
             __props__.__dict__["redis_user_config"] = redis_user_config
             __props__.__dict__["service_integrations"] = service_integrations
             if service_name is None and not opts.urn:
@@ -1340,8 +1401,24 @@ class Service(pulumi.CustomResource):
             if service_type is None and not opts.urn:
                 raise TypeError("Missing required property 'service_type'")
             __props__.__dict__["service_type"] = service_type
+            __props__.__dict__["static_ips"] = static_ips
             __props__.__dict__["termination_protection"] = termination_protection
+            __props__.__dict__["cassandras"] = None
+            __props__.__dict__["clickhouses"] = None
             __props__.__dict__["components"] = None
+            __props__.__dict__["disk_space_cap"] = None
+            __props__.__dict__["disk_space_default"] = None
+            __props__.__dict__["disk_space_step"] = None
+            __props__.__dict__["disk_space_used"] = None
+            __props__.__dict__["elasticsearches"] = None
+            __props__.__dict__["grafanas"] = None
+            __props__.__dict__["influxdbs"] = None
+            __props__.__dict__["kafka_connects"] = None
+            __props__.__dict__["kafka_mirrormakers"] = None
+            __props__.__dict__["mysqls"] = None
+            __props__.__dict__["opensearches"] = None
+            __props__.__dict__["pgs"] = None
+            __props__.__dict__["redis"] = None
             __props__.__dict__["service_host"] = None
             __props__.__dict__["service_password"] = None
             __props__.__dict__["service_port"] = None
@@ -1358,34 +1435,43 @@ class Service(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cassandra: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraArgs']]] = None,
             cassandra_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']]] = None,
+            cassandras: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceCassandraArgs']]]]] = None,
+            clickhouse_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceClickhouseUserConfigArgs']]] = None,
+            clickhouses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceClickhouseArgs']]]]] = None,
             cloud_name: Optional[pulumi.Input[str]] = None,
             components: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceComponentArgs']]]]] = None,
-            elasticsearch: Optional[pulumi.Input[pulumi.InputType['ServiceElasticsearchArgs']]] = None,
+            disk_space: Optional[pulumi.Input[str]] = None,
+            disk_space_cap: Optional[pulumi.Input[str]] = None,
+            disk_space_default: Optional[pulumi.Input[str]] = None,
+            disk_space_step: Optional[pulumi.Input[str]] = None,
+            disk_space_used: Optional[pulumi.Input[str]] = None,
             elasticsearch_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceElasticsearchUserConfigArgs']]] = None,
-            grafana: Optional[pulumi.Input[pulumi.InputType['ServiceGrafanaArgs']]] = None,
+            elasticsearches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceElasticsearchArgs']]]]] = None,
+            flink_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceFlinkUserConfigArgs']]] = None,
+            flinks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceFlinkArgs']]]]] = None,
             grafana_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceGrafanaUserConfigArgs']]] = None,
-            influxdb: Optional[pulumi.Input[pulumi.InputType['ServiceInfluxdbArgs']]] = None,
+            grafanas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceGrafanaArgs']]]]] = None,
             influxdb_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceInfluxdbUserConfigArgs']]] = None,
-            kafka: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaArgs']]] = None,
-            kafka_connect: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaConnectArgs']]] = None,
+            influxdbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceInfluxdbArgs']]]]] = None,
             kafka_connect_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaConnectUserConfigArgs']]] = None,
-            kafka_mirrormaker: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerArgs']]] = None,
+            kafka_connects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceKafkaConnectArgs']]]]] = None,
             kafka_mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerUserConfigArgs']]] = None,
+            kafka_mirrormakers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerArgs']]]]] = None,
             kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceKafkaUserConfigArgs']]] = None,
+            kafkas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceKafkaArgs']]]]] = None,
             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
             maintenance_window_time: Optional[pulumi.Input[str]] = None,
-            mysql: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlArgs']]] = None,
             mysql_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']]] = None,
-            opensearch: Optional[pulumi.Input[pulumi.InputType['ServiceOpensearchArgs']]] = None,
+            mysqls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceMysqlArgs']]]]] = None,
             opensearch_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceOpensearchUserConfigArgs']]] = None,
-            pg: Optional[pulumi.Input[pulumi.InputType['ServicePgArgs']]] = None,
+            opensearches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceOpensearchArgs']]]]] = None,
             pg_user_config: Optional[pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']]] = None,
+            pgs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePgArgs']]]]] = None,
             plan: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             project_vpc_id: Optional[pulumi.Input[str]] = None,
-            redis: Optional[pulumi.Input[pulumi.InputType['ServiceRedisArgs']]] = None,
+            redis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceRediArgs']]]]] = None,
             redis_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']]] = None,
             service_host: Optional[pulumi.Input[str]] = None,
             service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]]] = None,
@@ -1396,6 +1482,7 @@ class Service(pulumi.CustomResource):
             service_uri: Optional[pulumi.Input[str]] = None,
             service_username: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
@@ -1404,35 +1491,44 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServiceCassandraArgs']] cassandra: Cassandra specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']] cassandra_user_config: Cassandra specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceCassandraUserConfigArgs']] cassandra_user_config: Cassandra user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceCassandraArgs']]]] cassandras: Cassandra specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceClickhouseUserConfigArgs']] clickhouse_user_config: Clickhouse user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceClickhouseArgs']]]] clickhouses: Clickhouse specific server provided values
         :param pulumi.Input[str] cloud_name: Cloud the service runs in
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceComponentArgs']]]] components: Service component information objects
-        :param pulumi.Input[pulumi.InputType['ServiceElasticsearchArgs']] elasticsearch: Elasticsearch specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceElasticsearchUserConfigArgs']] elasticsearch_user_config: Elasticsearch specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceGrafanaArgs']] grafana: Grafana specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceGrafanaUserConfigArgs']] grafana_user_config: Grafana specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceInfluxdbArgs']] influxdb: InfluxDB specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceInfluxdbUserConfigArgs']] influxdb_user_config: InfluxDB specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceKafkaArgs']] kafka: Kafka specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceKafkaConnectArgs']] kafka_connect: Kafka Connect specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka Connect specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerArgs']] kafka_mirrormaker: Kafka MirrorMaker 2 specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Kafka MirrorMaker 2 specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceKafkaUserConfigArgs']] kafka_user_config: Kafka specific user configurable settings
+        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
+        :param pulumi.Input[pulumi.InputType['ServiceElasticsearchUserConfigArgs']] elasticsearch_user_config: Elasticsearch user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceElasticsearchArgs']]]] elasticsearches: Elasticsearch specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceFlinkUserConfigArgs']] flink_user_config: Flink user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceFlinkArgs']]]] flinks: Flink specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceGrafanaUserConfigArgs']] grafana_user_config: Grafana user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceGrafanaArgs']]]] grafanas: Grafana specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceInfluxdbUserConfigArgs']] influxdb_user_config: Influxdb user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceInfluxdbArgs']]]] influxdbs: InfluxDB specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaConnectUserConfigArgs']] kafka_connect_user_config: Kafka*connect user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceKafkaConnectArgs']]]] kafka_connects: Kafka Connect specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: Kafka*mirrormaker user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceKafkaMirrormakerArgs']]]] kafka_mirrormakers: Kafka MirrorMaker 2 specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceKafkaUserConfigArgs']] kafka_user_config: Kafka user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceKafkaArgs']]]] kafkas: Kafka specific server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[pulumi.InputType['ServiceMysqlArgs']] mysql: MySQL specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']] mysql_user_config: MySQL specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceOpensearchArgs']] opensearch: Opensearch specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceOpensearchUserConfigArgs']] opensearch_user_config: Opensearch specific user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServicePgArgs']] pg: PostgreSQL specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']] pg_user_config: PostgreSQL specific user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceMysqlUserConfigArgs']] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceMysqlArgs']]]] mysqls: MySQL specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceOpensearchUserConfigArgs']] opensearch_user_config: Opensearch user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceOpensearchArgs']]]] opensearches: Opensearch specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServicePgUserConfigArgs']] pg_user_config: Pg user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePgArgs']]]] pgs: PostgreSQL specific server provided values
         :param pulumi.Input[str] plan: Subscription plan
         :param pulumi.Input[str] project: Target project
         :param pulumi.Input[str] project_vpc_id: Identifier of the VPC the service should be in, if any
-        :param pulumi.Input[pulumi.InputType['ServiceRedisArgs']] redis: Redis specific server provided values
-        :param pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']] redis_user_config: Redis specific user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceRediArgs']]]] redis: Redis specific server provided values
+        :param pulumi.Input[pulumi.InputType['ServiceRedisUserConfigArgs']] redis_user_config: Redis user configurable settings
         :param pulumi.Input[str] service_host: Service hostname
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Service name
@@ -1441,37 +1537,47 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] service_type: Service type code
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
-        :param pulumi.Input[str] state: Service state
+        :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[bool] termination_protection: Prevent service from being deleted. It is recommended to have this enabled for all services.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ServiceState.__new__(_ServiceState)
 
-        __props__.__dict__["cassandra"] = cassandra
         __props__.__dict__["cassandra_user_config"] = cassandra_user_config
+        __props__.__dict__["cassandras"] = cassandras
+        __props__.__dict__["clickhouse_user_config"] = clickhouse_user_config
+        __props__.__dict__["clickhouses"] = clickhouses
         __props__.__dict__["cloud_name"] = cloud_name
         __props__.__dict__["components"] = components
-        __props__.__dict__["elasticsearch"] = elasticsearch
+        __props__.__dict__["disk_space"] = disk_space
+        __props__.__dict__["disk_space_cap"] = disk_space_cap
+        __props__.__dict__["disk_space_default"] = disk_space_default
+        __props__.__dict__["disk_space_step"] = disk_space_step
+        __props__.__dict__["disk_space_used"] = disk_space_used
         __props__.__dict__["elasticsearch_user_config"] = elasticsearch_user_config
-        __props__.__dict__["grafana"] = grafana
+        __props__.__dict__["elasticsearches"] = elasticsearches
+        __props__.__dict__["flink_user_config"] = flink_user_config
+        __props__.__dict__["flinks"] = flinks
         __props__.__dict__["grafana_user_config"] = grafana_user_config
-        __props__.__dict__["influxdb"] = influxdb
+        __props__.__dict__["grafanas"] = grafanas
         __props__.__dict__["influxdb_user_config"] = influxdb_user_config
-        __props__.__dict__["kafka"] = kafka
-        __props__.__dict__["kafka_connect"] = kafka_connect
+        __props__.__dict__["influxdbs"] = influxdbs
         __props__.__dict__["kafka_connect_user_config"] = kafka_connect_user_config
-        __props__.__dict__["kafka_mirrormaker"] = kafka_mirrormaker
+        __props__.__dict__["kafka_connects"] = kafka_connects
         __props__.__dict__["kafka_mirrormaker_user_config"] = kafka_mirrormaker_user_config
+        __props__.__dict__["kafka_mirrormakers"] = kafka_mirrormakers
         __props__.__dict__["kafka_user_config"] = kafka_user_config
+        __props__.__dict__["kafkas"] = kafkas
         __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
         __props__.__dict__["maintenance_window_time"] = maintenance_window_time
-        __props__.__dict__["mysql"] = mysql
         __props__.__dict__["mysql_user_config"] = mysql_user_config
-        __props__.__dict__["opensearch"] = opensearch
+        __props__.__dict__["mysqls"] = mysqls
         __props__.__dict__["opensearch_user_config"] = opensearch_user_config
-        __props__.__dict__["pg"] = pg
+        __props__.__dict__["opensearches"] = opensearches
         __props__.__dict__["pg_user_config"] = pg_user_config
+        __props__.__dict__["pgs"] = pgs
         __props__.__dict__["plan"] = plan
         __props__.__dict__["project"] = project
         __props__.__dict__["project_vpc_id"] = project_vpc_id
@@ -1486,24 +1592,41 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["service_uri"] = service_uri
         __props__.__dict__["service_username"] = service_username
         __props__.__dict__["state"] = state
+        __props__.__dict__["static_ips"] = static_ips
         __props__.__dict__["termination_protection"] = termination_protection
         return Service(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter
-    def cassandra(self) -> pulumi.Output['outputs.ServiceCassandra']:
-        """
-        Cassandra specific server provided values
-        """
-        return pulumi.get(self, "cassandra")
 
     @property
     @pulumi.getter(name="cassandraUserConfig")
     def cassandra_user_config(self) -> pulumi.Output[Optional['outputs.ServiceCassandraUserConfig']]:
         """
-        Cassandra specific user configurable settings
+        Cassandra user configurable settings
         """
         return pulumi.get(self, "cassandra_user_config")
+
+    @property
+    @pulumi.getter
+    def cassandras(self) -> pulumi.Output[Sequence['outputs.ServiceCassandra']]:
+        """
+        Cassandra specific server provided values
+        """
+        return pulumi.get(self, "cassandras")
+
+    @property
+    @pulumi.getter(name="clickhouseUserConfig")
+    def clickhouse_user_config(self) -> pulumi.Output[Optional['outputs.ServiceClickhouseUserConfig']]:
+        """
+        Clickhouse user configurable settings
+        """
+        return pulumi.get(self, "clickhouse_user_config")
+
+    @property
+    @pulumi.getter
+    def clickhouses(self) -> pulumi.Output[Sequence['outputs.ServiceClickhouse']]:
+        """
+        Clickhouse specific server provided values
+        """
+        return pulumi.get(self, "clickhouses")
 
     @property
     @pulumi.getter(name="cloudName")
@@ -1522,100 +1645,156 @@ class Service(pulumi.CustomResource):
         return pulumi.get(self, "components")
 
     @property
-    @pulumi.getter
-    def elasticsearch(self) -> pulumi.Output['outputs.ServiceElasticsearch']:
+    @pulumi.getter(name="diskSpace")
+    def disk_space(self) -> pulumi.Output[Optional[str]]:
         """
-        Elasticsearch specific server provided values
+        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         """
-        return pulumi.get(self, "elasticsearch")
+        return pulumi.get(self, "disk_space")
+
+    @property
+    @pulumi.getter(name="diskSpaceCap")
+    def disk_space_cap(self) -> pulumi.Output[str]:
+        """
+        The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        """
+        return pulumi.get(self, "disk_space_cap")
+
+    @property
+    @pulumi.getter(name="diskSpaceDefault")
+    def disk_space_default(self) -> pulumi.Output[str]:
+        """
+        The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        """
+        return pulumi.get(self, "disk_space_default")
+
+    @property
+    @pulumi.getter(name="diskSpaceStep")
+    def disk_space_step(self) -> pulumi.Output[str]:
+        """
+        The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        """
+        return pulumi.get(self, "disk_space_step")
+
+    @property
+    @pulumi.getter(name="diskSpaceUsed")
+    def disk_space_used(self) -> pulumi.Output[str]:
+        """
+        Disk space that service is currently using
+        """
+        return pulumi.get(self, "disk_space_used")
 
     @property
     @pulumi.getter(name="elasticsearchUserConfig")
     def elasticsearch_user_config(self) -> pulumi.Output[Optional['outputs.ServiceElasticsearchUserConfig']]:
         """
-        Elasticsearch specific user configurable settings
+        Elasticsearch user configurable settings
         """
         return pulumi.get(self, "elasticsearch_user_config")
 
     @property
     @pulumi.getter
-    def grafana(self) -> pulumi.Output['outputs.ServiceGrafana']:
+    def elasticsearches(self) -> pulumi.Output[Sequence['outputs.ServiceElasticsearch']]:
         """
-        Grafana specific server provided values
+        Elasticsearch specific server provided values
         """
-        return pulumi.get(self, "grafana")
+        return pulumi.get(self, "elasticsearches")
+
+    @property
+    @pulumi.getter(name="flinkUserConfig")
+    def flink_user_config(self) -> pulumi.Output[Optional['outputs.ServiceFlinkUserConfig']]:
+        """
+        Flink user configurable settings
+        """
+        return pulumi.get(self, "flink_user_config")
+
+    @property
+    @pulumi.getter
+    def flinks(self) -> pulumi.Output[Sequence['outputs.ServiceFlink']]:
+        """
+        Flink specific server provided values
+        """
+        return pulumi.get(self, "flinks")
 
     @property
     @pulumi.getter(name="grafanaUserConfig")
     def grafana_user_config(self) -> pulumi.Output[Optional['outputs.ServiceGrafanaUserConfig']]:
         """
-        Grafana specific user configurable settings
+        Grafana user configurable settings
         """
         return pulumi.get(self, "grafana_user_config")
 
     @property
     @pulumi.getter
-    def influxdb(self) -> pulumi.Output['outputs.ServiceInfluxdb']:
+    def grafanas(self) -> pulumi.Output[Sequence['outputs.ServiceGrafana']]:
         """
-        InfluxDB specific server provided values
+        Grafana specific server provided values
         """
-        return pulumi.get(self, "influxdb")
+        return pulumi.get(self, "grafanas")
 
     @property
     @pulumi.getter(name="influxdbUserConfig")
     def influxdb_user_config(self) -> pulumi.Output[Optional['outputs.ServiceInfluxdbUserConfig']]:
         """
-        InfluxDB specific user configurable settings
+        Influxdb user configurable settings
         """
         return pulumi.get(self, "influxdb_user_config")
 
     @property
     @pulumi.getter
-    def kafka(self) -> pulumi.Output['outputs.ServiceKafka']:
+    def influxdbs(self) -> pulumi.Output[Sequence['outputs.ServiceInfluxdb']]:
         """
-        Kafka specific server provided values
+        InfluxDB specific server provided values
         """
-        return pulumi.get(self, "kafka")
-
-    @property
-    @pulumi.getter(name="kafkaConnect")
-    def kafka_connect(self) -> pulumi.Output['outputs.ServiceKafkaConnect']:
-        """
-        Kafka Connect specific server provided values
-        """
-        return pulumi.get(self, "kafka_connect")
+        return pulumi.get(self, "influxdbs")
 
     @property
     @pulumi.getter(name="kafkaConnectUserConfig")
     def kafka_connect_user_config(self) -> pulumi.Output[Optional['outputs.ServiceKafkaConnectUserConfig']]:
         """
-        Kafka Connect specific user configurable settings
+        Kafka*connect user configurable settings
         """
         return pulumi.get(self, "kafka_connect_user_config")
 
     @property
-    @pulumi.getter(name="kafkaMirrormaker")
-    def kafka_mirrormaker(self) -> pulumi.Output['outputs.ServiceKafkaMirrormaker']:
+    @pulumi.getter(name="kafkaConnects")
+    def kafka_connects(self) -> pulumi.Output[Sequence['outputs.ServiceKafkaConnect']]:
         """
-        Kafka MirrorMaker 2 specific server provided values
+        Kafka Connect specific server provided values
         """
-        return pulumi.get(self, "kafka_mirrormaker")
+        return pulumi.get(self, "kafka_connects")
 
     @property
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
     def kafka_mirrormaker_user_config(self) -> pulumi.Output[Optional['outputs.ServiceKafkaMirrormakerUserConfig']]:
         """
-        Kafka MirrorMaker 2 specific user configurable settings
+        Kafka*mirrormaker user configurable settings
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
+
+    @property
+    @pulumi.getter(name="kafkaMirrormakers")
+    def kafka_mirrormakers(self) -> pulumi.Output[Sequence['outputs.ServiceKafkaMirrormaker']]:
+        """
+        Kafka MirrorMaker 2 specific server provided values
+        """
+        return pulumi.get(self, "kafka_mirrormakers")
 
     @property
     @pulumi.getter(name="kafkaUserConfig")
     def kafka_user_config(self) -> pulumi.Output[Optional['outputs.ServiceKafkaUserConfig']]:
         """
-        Kafka specific user configurable settings
+        Kafka user configurable settings
         """
         return pulumi.get(self, "kafka_user_config")
+
+    @property
+    @pulumi.getter
+    def kafkas(self) -> pulumi.Output[Sequence['outputs.ServiceKafka']]:
+        """
+        Kafka specific server provided values
+        """
+        return pulumi.get(self, "kafkas")
 
     @property
     @pulumi.getter(name="maintenanceWindowDow")
@@ -1634,52 +1813,52 @@ class Service(pulumi.CustomResource):
         return pulumi.get(self, "maintenance_window_time")
 
     @property
-    @pulumi.getter
-    def mysql(self) -> pulumi.Output['outputs.ServiceMysql']:
-        """
-        MySQL specific server provided values
-        """
-        return pulumi.get(self, "mysql")
-
-    @property
     @pulumi.getter(name="mysqlUserConfig")
     def mysql_user_config(self) -> pulumi.Output[Optional['outputs.ServiceMysqlUserConfig']]:
         """
-        MySQL specific user configurable settings
+        Mysql user configurable settings
         """
         return pulumi.get(self, "mysql_user_config")
 
     @property
     @pulumi.getter
-    def opensearch(self) -> pulumi.Output['outputs.ServiceOpensearch']:
+    def mysqls(self) -> pulumi.Output[Sequence['outputs.ServiceMysql']]:
         """
-        Opensearch specific server provided values
+        MySQL specific server provided values
         """
-        return pulumi.get(self, "opensearch")
+        return pulumi.get(self, "mysqls")
 
     @property
     @pulumi.getter(name="opensearchUserConfig")
     def opensearch_user_config(self) -> pulumi.Output[Optional['outputs.ServiceOpensearchUserConfig']]:
         """
-        Opensearch specific user configurable settings
+        Opensearch user configurable settings
         """
         return pulumi.get(self, "opensearch_user_config")
 
     @property
     @pulumi.getter
-    def pg(self) -> pulumi.Output['outputs.ServicePg']:
+    def opensearches(self) -> pulumi.Output[Sequence['outputs.ServiceOpensearch']]:
         """
-        PostgreSQL specific server provided values
+        Opensearch specific server provided values
         """
-        return pulumi.get(self, "pg")
+        return pulumi.get(self, "opensearches")
 
     @property
     @pulumi.getter(name="pgUserConfig")
     def pg_user_config(self) -> pulumi.Output[Optional['outputs.ServicePgUserConfig']]:
         """
-        PostgreSQL specific user configurable settings
+        Pg user configurable settings
         """
         return pulumi.get(self, "pg_user_config")
+
+    @property
+    @pulumi.getter
+    def pgs(self) -> pulumi.Output[Sequence['outputs.ServicePg']]:
+        """
+        PostgreSQL specific server provided values
+        """
+        return pulumi.get(self, "pgs")
 
     @property
     @pulumi.getter
@@ -1707,7 +1886,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def redis(self) -> pulumi.Output['outputs.ServiceRedis']:
+    def redis(self) -> pulumi.Output[Sequence['outputs.ServiceRedi']]:
         """
         Redis specific server provided values
         """
@@ -1717,7 +1896,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="redisUserConfig")
     def redis_user_config(self) -> pulumi.Output[Optional['outputs.ServiceRedisUserConfig']]:
         """
-        Redis specific user configurable settings
+        Redis user configurable settings
         """
         return pulumi.get(self, "redis_user_config")
 
@@ -1789,9 +1968,17 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Service state
+        Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` and `RUNNING`.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
+        return pulumi.get(self, "static_ips")
 
     @property
     @pulumi.getter(name="terminationProtection")

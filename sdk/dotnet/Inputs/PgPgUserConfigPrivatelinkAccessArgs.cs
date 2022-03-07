@@ -13,14 +13,11 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPrivatelinkAccessArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable pg.
+        /// PostgreSQL specific server provided values
         /// </summary>
         [Input("pg")]
         public Input<string>? Pg { get; set; }
 
-        /// <summary>
-        /// Enable pgbouncer.
-        /// </summary>
         [Input("pgbouncer")]
         public Input<string>? Pgbouncer { get; set; }
 

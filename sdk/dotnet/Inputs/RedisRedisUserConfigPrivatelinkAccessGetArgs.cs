@@ -13,8 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class RedisRedisUserConfigPrivatelinkAccessGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow clients to connect to redis from the public internet for service 
-        /// nodes that are in a project VPC or another type of private network
+        /// Redis server provided values
         /// </summary>
         [Input("redis")]
         public Input<string>? Redis { get; set; }

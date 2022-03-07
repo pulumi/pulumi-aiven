@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationPrometheusUserConfig
     {
+        /// <summary>
+        /// Configuration options for metrics where source service is MySQL
+        /// </summary>
         public readonly Outputs.ServiceIntegrationPrometheusUserConfigSourceMysql? SourceMysql;
 
         [OutputConstructor]

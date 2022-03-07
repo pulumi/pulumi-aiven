@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ElasticSearchAclAcl
     {
+        /// <summary>
+        /// Elasticsearch rules.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ElasticSearchAclAclRule> Rules;
+        /// <summary>
+        /// Username for the ACL entry. Maximum Length: `40`.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

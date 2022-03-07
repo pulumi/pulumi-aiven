@@ -14,12 +14,19 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("rules", required: true)]
         private InputList<Inputs.ElasticSearchAclAclRuleArgs>? _rules;
+
+        /// <summary>
+        /// Elasticsearch rules.
+        /// </summary>
         public InputList<Inputs.ElasticSearchAclAclRuleArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.ElasticSearchAclAclRuleArgs>());
             set => _rules = value;
         }
 
+        /// <summary>
+        /// Username for the ACL entry. Maximum Length: `40`.
+        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 

@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationKafkaLogsUserConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Topic name
+        /// </summary>
         [Input("kafkaTopic")]
         public Input<string>? KafkaTopic { get; set; }
 

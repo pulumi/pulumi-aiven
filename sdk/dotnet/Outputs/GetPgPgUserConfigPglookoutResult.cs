@@ -13,10 +13,6 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetPgPgUserConfigPglookoutResult
     {
-        /// <summary>
-        /// Number of seconds of master unavailability before 
-        /// triggering database failover to standby
-        /// </summary>
         public readonly string? MaxFailoverReplicationTimeLag;
 
         [OutputConstructor]

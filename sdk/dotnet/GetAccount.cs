@@ -12,8 +12,6 @@ namespace Pulumi.Aiven
     public static class GetAccount
     {
         /// <summary>
-        /// ## # Account Data Source
-        /// 
         /// The Account data source provides information about the existing Aiven Account.
         /// 
         /// {{% examples %}}
@@ -43,8 +41,6 @@ namespace Pulumi.Aiven
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("aiven:index/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # Account Data Source
-        /// 
         /// The Account data source provides information about the existing Aiven Account.
         /// 
         /// {{% examples %}}
@@ -78,40 +74,10 @@ namespace Pulumi.Aiven
     public sealed class GetAccountArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is an auto-generated unique account id.
-        /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
-
-        /// <summary>
-        /// time of creation.
-        /// </summary>
-        [Input("createTime")]
-        public string? CreateTime { get; set; }
-
-        /// <summary>
-        /// defines an account name.
+        /// Account name
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
-
-        /// <summary>
-        /// is an owner team id.
-        /// </summary>
-        [Input("ownerTeamId")]
-        public string? OwnerTeamId { get; set; }
-
-        /// <summary>
-        /// is a tenant id.
-        /// </summary>
-        [Input("tenantId")]
-        public string? TenantId { get; set; }
-
-        /// <summary>
-        /// time of last update.
-        /// </summary>
-        [Input("updateTime")]
-        public string? UpdateTime { get; set; }
 
         public GetAccountArgs()
         {
@@ -121,40 +87,10 @@ namespace Pulumi.Aiven
     public sealed class GetAccountInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// is an auto-generated unique account id.
-        /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
-
-        /// <summary>
-        /// time of creation.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// defines an account name.
+        /// Account name
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// is an owner team id.
-        /// </summary>
-        [Input("ownerTeamId")]
-        public Input<string>? OwnerTeamId { get; set; }
-
-        /// <summary>
-        /// is a tenant id.
-        /// </summary>
-        [Input("tenantId")]
-        public Input<string>? TenantId { get; set; }
-
-        /// <summary>
-        /// time of last update.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public GetAccountInvokeArgs()
         {
@@ -166,28 +102,31 @@ namespace Pulumi.Aiven
     public sealed class GetAccountResult
     {
         /// <summary>
-        /// is an auto-generated unique account id.
+        /// Account id
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// time of creation.
+        /// Time of creation
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Account name
+        /// </summary>
         public readonly string Name;
         /// <summary>
-        /// is an owner team id.
+        /// Owner team id
         /// </summary>
         public readonly string OwnerTeamId;
         /// <summary>
-        /// is a tenant id.
+        /// Tenant id
         /// </summary>
         public readonly string TenantId;
         /// <summary>
-        /// time of last update.
+        /// Time of last update
         /// </summary>
         public readonly string UpdateTime;
 

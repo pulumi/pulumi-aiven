@@ -12,30 +12,57 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationEndpointExternalKafkaUserConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Bootstrap servers
+        /// </summary>
         [Input("bootstrapServers")]
         public Input<string>? BootstrapServers { get; set; }
 
+        /// <summary>
+        /// The list of SASL mechanisms enabled in the Kafka server.
+        /// </summary>
         [Input("saslMechanism")]
         public Input<string>? SaslMechanism { get; set; }
 
+        /// <summary>
+        /// Password for SASL PLAIN mechanism in the Kafka server.
+        /// </summary>
         [Input("saslPlainPassword")]
         public Input<string>? SaslPlainPassword { get; set; }
 
+        /// <summary>
+        /// Username for SASL PLAIN mechanism in the Kafka server.
+        /// </summary>
         [Input("saslPlainUsername")]
         public Input<string>? SaslPlainUsername { get; set; }
 
+        /// <summary>
+        /// Security protocol
+        /// </summary>
         [Input("securityProtocol")]
         public Input<string>? SecurityProtocol { get; set; }
 
+        /// <summary>
+        /// PEM-encoded CA certificate
+        /// </summary>
         [Input("sslCaCert")]
         public Input<string>? SslCaCert { get; set; }
 
+        /// <summary>
+        /// PEM-encoded client certificate
+        /// </summary>
         [Input("sslClientCert")]
         public Input<string>? SslClientCert { get; set; }
 
+        /// <summary>
+        /// PEM-encoded client key
+        /// </summary>
         [Input("sslClientKey")]
         public Input<string>? SslClientKey { get; set; }
 
+        /// <summary>
+        /// The endpoint identification algorithm to validate server hostname using server certificate.
+        /// </summary>
         [Input("sslEndpointIdentificationAlgorithm")]
         public Input<string>? SslEndpointIdentificationAlgorithm { get; set; }
 

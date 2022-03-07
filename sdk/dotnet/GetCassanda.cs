@@ -22,72 +22,11 @@ namespace Pulumi.Aiven
 
     public sealed class GetCassandaArgs : Pulumi.InvokeArgs
     {
-        [Input("cassandra")]
-        public Inputs.GetCassandaCassandraArgs? Cassandra { get; set; }
-
-        [Input("cassandraUserConfig")]
-        public Inputs.GetCassandaCassandraUserConfigArgs? CassandraUserConfig { get; set; }
-
-        [Input("cloudName")]
-        public string? CloudName { get; set; }
-
-        [Input("components")]
-        private List<Inputs.GetCassandaComponentArgs>? _components;
-        public List<Inputs.GetCassandaComponentArgs> Components
-        {
-            get => _components ?? (_components = new List<Inputs.GetCassandaComponentArgs>());
-            set => _components = value;
-        }
-
-        [Input("maintenanceWindowDow")]
-        public string? MaintenanceWindowDow { get; set; }
-
-        [Input("maintenanceWindowTime")]
-        public string? MaintenanceWindowTime { get; set; }
-
-        [Input("plan")]
-        public string? Plan { get; set; }
-
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        [Input("projectVpcId")]
-        public string? ProjectVpcId { get; set; }
-
-        [Input("serviceHost")]
-        public string? ServiceHost { get; set; }
-
-        [Input("serviceIntegrations")]
-        private List<Inputs.GetCassandaServiceIntegrationArgs>? _serviceIntegrations;
-        public List<Inputs.GetCassandaServiceIntegrationArgs> ServiceIntegrations
-        {
-            get => _serviceIntegrations ?? (_serviceIntegrations = new List<Inputs.GetCassandaServiceIntegrationArgs>());
-            set => _serviceIntegrations = value;
-        }
-
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
-
-        [Input("servicePassword")]
-        public string? ServicePassword { get; set; }
-
-        [Input("servicePort")]
-        public int? ServicePort { get; set; }
-
-        [Input("serviceType")]
-        public string? ServiceType { get; set; }
-
-        [Input("serviceUri")]
-        public string? ServiceUri { get; set; }
-
-        [Input("serviceUsername")]
-        public string? ServiceUsername { get; set; }
-
-        [Input("state")]
-        public string? State { get; set; }
-
-        [Input("terminationProtection")]
-        public bool? TerminationProtection { get; set; }
 
         public GetCassandaArgs()
         {
@@ -96,72 +35,11 @@ namespace Pulumi.Aiven
 
     public sealed class GetCassandaInvokeArgs : Pulumi.InvokeArgs
     {
-        [Input("cassandra")]
-        public Input<Inputs.GetCassandaCassandraInputArgs>? Cassandra { get; set; }
-
-        [Input("cassandraUserConfig")]
-        public Input<Inputs.GetCassandaCassandraUserConfigInputArgs>? CassandraUserConfig { get; set; }
-
-        [Input("cloudName")]
-        public Input<string>? CloudName { get; set; }
-
-        [Input("components")]
-        private InputList<Inputs.GetCassandaComponentInputArgs>? _components;
-        public InputList<Inputs.GetCassandaComponentInputArgs> Components
-        {
-            get => _components ?? (_components = new InputList<Inputs.GetCassandaComponentInputArgs>());
-            set => _components = value;
-        }
-
-        [Input("maintenanceWindowDow")]
-        public Input<string>? MaintenanceWindowDow { get; set; }
-
-        [Input("maintenanceWindowTime")]
-        public Input<string>? MaintenanceWindowTime { get; set; }
-
-        [Input("plan")]
-        public Input<string>? Plan { get; set; }
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("projectVpcId")]
-        public Input<string>? ProjectVpcId { get; set; }
-
-        [Input("serviceHost")]
-        public Input<string>? ServiceHost { get; set; }
-
-        [Input("serviceIntegrations")]
-        private InputList<Inputs.GetCassandaServiceIntegrationInputArgs>? _serviceIntegrations;
-        public InputList<Inputs.GetCassandaServiceIntegrationInputArgs> ServiceIntegrations
-        {
-            get => _serviceIntegrations ?? (_serviceIntegrations = new InputList<Inputs.GetCassandaServiceIntegrationInputArgs>());
-            set => _serviceIntegrations = value;
-        }
-
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
-
-        [Input("servicePassword")]
-        public Input<string>? ServicePassword { get; set; }
-
-        [Input("servicePort")]
-        public Input<int>? ServicePort { get; set; }
-
-        [Input("serviceType")]
-        public Input<string>? ServiceType { get; set; }
-
-        [Input("serviceUri")]
-        public Input<string>? ServiceUri { get; set; }
-
-        [Input("serviceUsername")]
-        public Input<string>? ServiceUsername { get; set; }
-
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        [Input("terminationProtection")]
-        public Input<bool>? TerminationProtection { get; set; }
 
         public GetCassandaInvokeArgs()
         {
@@ -172,19 +50,24 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetCassandaResult
     {
-        public readonly Outputs.GetCassandaCassandraResult Cassandra;
-        public readonly Outputs.GetCassandaCassandraUserConfigResult? CassandraUserConfig;
-        public readonly string? CloudName;
+        public readonly ImmutableArray<Outputs.GetCassandaCassandraUserConfigResult> CassandraUserConfigs;
+        public readonly ImmutableArray<Outputs.GetCassandaCassandraResult> Cassandras;
+        public readonly string CloudName;
         public readonly ImmutableArray<Outputs.GetCassandaComponentResult> Components;
+        public readonly string DiskSpace;
+        public readonly string DiskSpaceCap;
+        public readonly string DiskSpaceDefault;
+        public readonly string DiskSpaceStep;
+        public readonly string DiskSpaceUsed;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string? MaintenanceWindowDow;
-        public readonly string? MaintenanceWindowTime;
-        public readonly string? Plan;
+        public readonly string MaintenanceWindowDow;
+        public readonly string MaintenanceWindowTime;
+        public readonly string Plan;
         public readonly string Project;
-        public readonly string? ProjectVpcId;
+        public readonly string ProjectVpcId;
         public readonly string ServiceHost;
         public readonly ImmutableArray<Outputs.GetCassandaServiceIntegrationResult> ServiceIntegrations;
         public readonly string ServiceName;
@@ -194,29 +77,40 @@ namespace Pulumi.Aiven
         public readonly string ServiceUri;
         public readonly string ServiceUsername;
         public readonly string State;
-        public readonly bool? TerminationProtection;
+        public readonly ImmutableArray<string> StaticIps;
+        public readonly bool TerminationProtection;
 
         [OutputConstructor]
         private GetCassandaResult(
-            Outputs.GetCassandaCassandraResult cassandra,
+            ImmutableArray<Outputs.GetCassandaCassandraUserConfigResult> cassandraUserConfigs,
 
-            Outputs.GetCassandaCassandraUserConfigResult? cassandraUserConfig,
+            ImmutableArray<Outputs.GetCassandaCassandraResult> cassandras,
 
-            string? cloudName,
+            string cloudName,
 
             ImmutableArray<Outputs.GetCassandaComponentResult> components,
 
+            string diskSpace,
+
+            string diskSpaceCap,
+
+            string diskSpaceDefault,
+
+            string diskSpaceStep,
+
+            string diskSpaceUsed,
+
             string id,
 
-            string? maintenanceWindowDow,
+            string maintenanceWindowDow,
 
-            string? maintenanceWindowTime,
+            string maintenanceWindowTime,
 
-            string? plan,
+            string plan,
 
             string project,
 
-            string? projectVpcId,
+            string projectVpcId,
 
             string serviceHost,
 
@@ -236,12 +130,19 @@ namespace Pulumi.Aiven
 
             string state,
 
-            bool? terminationProtection)
+            ImmutableArray<string> staticIps,
+
+            bool terminationProtection)
         {
-            Cassandra = cassandra;
-            CassandraUserConfig = cassandraUserConfig;
+            CassandraUserConfigs = cassandraUserConfigs;
+            Cassandras = cassandras;
             CloudName = cloudName;
             Components = components;
+            DiskSpace = diskSpace;
+            DiskSpaceCap = diskSpaceCap;
+            DiskSpaceDefault = diskSpaceDefault;
+            DiskSpaceStep = diskSpaceStep;
+            DiskSpaceUsed = diskSpaceUsed;
             Id = id;
             MaintenanceWindowDow = maintenanceWindowDow;
             MaintenanceWindowTime = maintenanceWindowTime;
@@ -257,6 +158,7 @@ namespace Pulumi.Aiven
             ServiceUri = serviceUri;
             ServiceUsername = serviceUsername;
             State = state;
+            StaticIps = staticIps;
             TerminationProtection = terminationProtection;
         }
     }

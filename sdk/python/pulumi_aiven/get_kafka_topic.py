@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetKafkaTopicResult',
@@ -22,13 +21,13 @@ class GetKafkaTopicResult:
     """
     A collection of values returned by getKafkaTopic.
     """
-    def __init__(__self__, cleanup_policy=None, config=None, id=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, tags=None, termination_protection=None, topic_name=None):
+    def __init__(__self__, cleanup_policy=None, configs=None, id=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, tags=None, termination_protection=None, topic_name=None):
         if cleanup_policy and not isinstance(cleanup_policy, str):
             raise TypeError("Expected argument 'cleanup_policy' to be a str")
         pulumi.set(__self__, "cleanup_policy", cleanup_policy)
-        if config and not isinstance(config, dict):
-            raise TypeError("Expected argument 'config' to be a dict")
-        pulumi.set(__self__, "config", config)
+        if configs and not isinstance(configs, list):
+            raise TypeError("Expected argument 'configs' to be a list")
+        pulumi.set(__self__, "configs", configs)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -65,19 +64,19 @@ class GetKafkaTopicResult:
 
     @property
     @pulumi.getter(name="cleanupPolicy")
-    def cleanup_policy(self) -> Optional[str]:
+    def cleanup_policy(self) -> str:
         """
-        cleanup.policy value, can be `create`, `delete` or `compact,delete`
+        **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
         """
         return pulumi.get(self, "cleanup_policy")
 
     @property
     @pulumi.getter
-    def config(self) -> Optional['outputs.GetKafkaTopicConfigResult']:
+    def configs(self) -> Sequence['outputs.GetKafkaTopicConfigResult']:
         """
         Kafka topic configuration
         """
-        return pulumi.get(self, "config")
+        return pulumi.get(self, "configs")
 
     @property
     @pulumi.getter
@@ -89,67 +88,79 @@ class GetKafkaTopicResult:
 
     @property
     @pulumi.getter(name="minimumInSyncReplicas")
-    def minimum_in_sync_replicas(self) -> Optional[int]:
+    def minimum_in_sync_replicas(self) -> int:
         """
-        Minimum required nodes in-sync replicas (ISR) to produce to a partition.
+        **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
         """
         return pulumi.get(self, "minimum_in_sync_replicas")
 
     @property
     @pulumi.getter
-    def partitions(self) -> Optional[int]:
+    def partitions(self) -> int:
         """
-        Number of partitions to create in the topic.
+        The number of partitions to create in the topic.
         """
         return pulumi.get(self, "partitions")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
-    def replication(self) -> Optional[int]:
+    def replication(self) -> int:
         """
-        Replication factor for the topic.
+        The replication factor for the topic.
         """
         return pulumi.get(self, "replication")
 
     @property
     @pulumi.getter(name="retentionBytes")
-    def retention_bytes(self) -> Optional[int]:
+    def retention_bytes(self) -> int:
         """
-        retention.bytes value
+        **DEPRECATED use config.retention_bytes instead** Retention bytes.
         """
         return pulumi.get(self, "retention_bytes")
 
     @property
     @pulumi.getter(name="retentionHours")
-    def retention_hours(self) -> Optional[int]:
+    def retention_hours(self) -> int:
         """
-        Retention period in hours, if -1 it is infinite.
+        **DEPRECATED use config.retention_ms instead** Retention period (hours).
         """
         return pulumi.get(self, "retention_hours")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Sequence['outputs.GetKafkaTopicTagResult']]:
+    def tags(self) -> Sequence['outputs.GetKafkaTopicTagResult']:
+        """
+        Kafka Topic tag.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> Optional[bool]:
+    def termination_protection(self) -> bool:
         return pulumi.get(self, "termination_protection")
 
     @property
     @pulumi.getter(name="topicName")
     def topic_name(self) -> str:
+        """
+        The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "topic_name")
 
 
@@ -160,7 +171,7 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
             yield self
         return GetKafkaTopicResult(
             cleanup_policy=self.cleanup_policy,
-            config=self.config,
+            configs=self.configs,
             id=self.id,
             minimum_in_sync_replicas=self.minimum_in_sync_replicas,
             partitions=self.partitions,
@@ -174,22 +185,11 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
             topic_name=self.topic_name)
 
 
-def get_kafka_topic(cleanup_policy: Optional[str] = None,
-                    config: Optional[pulumi.InputType['GetKafkaTopicConfigArgs']] = None,
-                    minimum_in_sync_replicas: Optional[int] = None,
-                    partitions: Optional[int] = None,
-                    project: Optional[str] = None,
-                    replication: Optional[int] = None,
-                    retention_bytes: Optional[int] = None,
-                    retention_hours: Optional[int] = None,
+def get_kafka_topic(project: Optional[str] = None,
                     service_name: Optional[str] = None,
-                    tags: Optional[Sequence[pulumi.InputType['GetKafkaTopicTagArgs']]] = None,
-                    termination_protection: Optional[bool] = None,
                     topic_name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaTopicResult:
     """
-    ## # Kafka Topic Data Source
-
     The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
 
     ## Example Usage
@@ -200,44 +200,17 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
 
     mytesttopic = aiven.get_kafka_topic(project=aiven_project["myproject"]["project"],
         service_name=aiven_service["myservice"]["service_name"],
-        topic_name="<TOPIC_NAME>",
-        partitions=3,
-        replication=1,
-        config=aiven.GetKafkaTopicConfigArgs(
-            flush_ms="10",
-            unclean_leader_election_enable="true",
-            cleanup_policy="compact",
-        ))
+        topic_name="<TOPIC_NAME>")
     ```
 
 
-    :param str cleanup_policy: cleanup.policy value, can be `create`, `delete` or `compact,delete`
-    :param pulumi.InputType['GetKafkaTopicConfigArgs'] config: Kafka topic configuration
-    :param int minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-    :param int partitions: Number of partitions to create in the topic.
-    :param str project: and `service_name` - (Required) define the project and service the topic belongs to.
-           They should be defined using reference as shown above to set up dependencies correctly.
-           These properties cannot be changed once the service is created. Doing so will result in
-           the topic being deleted and new one created instead.
-    :param int replication: Replication factor for the topic.
-    :param int retention_bytes: retention.bytes value
-    :param int retention_hours: Retention period in hours, if -1 it is infinite.
-    :param str topic_name: is the actual name of the topic account. This propery cannot be changed
-           once the service is created. Doing so will result in the topic being deleted and new one
-           created instead.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str topic_name: The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
-    __args__['cleanupPolicy'] = cleanup_policy
-    __args__['config'] = config
-    __args__['minimumInSyncReplicas'] = minimum_in_sync_replicas
-    __args__['partitions'] = partitions
     __args__['project'] = project
-    __args__['replication'] = replication
-    __args__['retentionBytes'] = retention_bytes
-    __args__['retentionHours'] = retention_hours
     __args__['serviceName'] = service_name
-    __args__['tags'] = tags
-    __args__['terminationProtection'] = termination_protection
     __args__['topicName'] = topic_name
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -247,7 +220,7 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
 
     return AwaitableGetKafkaTopicResult(
         cleanup_policy=__ret__.cleanup_policy,
-        config=__ret__.config,
+        configs=__ret__.configs,
         id=__ret__.id,
         minimum_in_sync_replicas=__ret__.minimum_in_sync_replicas,
         partitions=__ret__.partitions,
@@ -262,22 +235,11 @@ def get_kafka_topic(cleanup_policy: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_kafka_topic)
-def get_kafka_topic_output(cleanup_policy: Optional[pulumi.Input[Optional[str]]] = None,
-                           config: Optional[pulumi.Input[Optional[pulumi.InputType['GetKafkaTopicConfigArgs']]]] = None,
-                           minimum_in_sync_replicas: Optional[pulumi.Input[Optional[int]]] = None,
-                           partitions: Optional[pulumi.Input[Optional[int]]] = None,
-                           project: Optional[pulumi.Input[str]] = None,
-                           replication: Optional[pulumi.Input[Optional[int]]] = None,
-                           retention_bytes: Optional[pulumi.Input[Optional[int]]] = None,
-                           retention_hours: Optional[pulumi.Input[Optional[int]]] = None,
+def get_kafka_topic_output(project: Optional[pulumi.Input[str]] = None,
                            service_name: Optional[pulumi.Input[str]] = None,
-                           tags: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKafkaTopicTagArgs']]]]] = None,
-                           termination_protection: Optional[pulumi.Input[Optional[bool]]] = None,
                            topic_name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaTopicResult]:
     """
-    ## # Kafka Topic Data Source
-
     The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
 
     ## Example Usage
@@ -288,30 +250,12 @@ def get_kafka_topic_output(cleanup_policy: Optional[pulumi.Input[Optional[str]]]
 
     mytesttopic = aiven.get_kafka_topic(project=aiven_project["myproject"]["project"],
         service_name=aiven_service["myservice"]["service_name"],
-        topic_name="<TOPIC_NAME>",
-        partitions=3,
-        replication=1,
-        config=aiven.GetKafkaTopicConfigArgs(
-            flush_ms="10",
-            unclean_leader_election_enable="true",
-            cleanup_policy="compact",
-        ))
+        topic_name="<TOPIC_NAME>")
     ```
 
 
-    :param str cleanup_policy: cleanup.policy value, can be `create`, `delete` or `compact,delete`
-    :param pulumi.InputType['GetKafkaTopicConfigArgs'] config: Kafka topic configuration
-    :param int minimum_in_sync_replicas: Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-    :param int partitions: Number of partitions to create in the topic.
-    :param str project: and `service_name` - (Required) define the project and service the topic belongs to.
-           They should be defined using reference as shown above to set up dependencies correctly.
-           These properties cannot be changed once the service is created. Doing so will result in
-           the topic being deleted and new one created instead.
-    :param int replication: Replication factor for the topic.
-    :param int retention_bytes: retention.bytes value
-    :param int retention_hours: Retention period in hours, if -1 it is infinite.
-    :param str topic_name: is the actual name of the topic account. This propery cannot be changed
-           once the service is created. Doing so will result in the topic being deleted and new one
-           created instead.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str topic_name: The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

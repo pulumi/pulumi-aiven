@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        /// IP filter
         /// </summary>
         public InputList<string> IpFilters
         {
@@ -25,14 +25,13 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Allow clients to connect to kafka_connect from the public internet for 
-        /// service nodes that are in a project VPC or another type of private network.
+        /// Kafka Connect configuration values
         /// </summary>
         [Input("kafkaConnect")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigKafkaConnectGetArgs>? KafkaConnect { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
@@ -44,11 +43,14 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

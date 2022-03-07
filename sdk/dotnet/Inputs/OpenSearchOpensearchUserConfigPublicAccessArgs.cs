@@ -13,23 +13,14 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigPublicAccessArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow clients to connect to opensearch from the public internet for service nodes
-        /// that are in a project VPC or another type of private network.
+        /// Opensearch server provided values
         /// </summary>
         [Input("opensearch")]
         public Input<string>? Opensearch { get; set; }
 
-        /// <summary>
-        /// Allow clients to connect to opensearch_dashboards from the public
-        /// internet for service nodes that are in a project VPC or another type of private network.
-        /// </summary>
         [Input("opensearchDashboards")]
         public Input<string>? OpensearchDashboards { get; set; }
 
-        /// <summary>
-        /// Allow clients to connect to prometheus from the public internet for service nodes
-        /// that are in a project VPC or another type of private network.
-        /// </summary>
         [Input("prometheus")]
         public Input<string>? Prometheus { get; set; }
 

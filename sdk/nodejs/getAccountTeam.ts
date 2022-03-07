@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Account Team Data Source
- *
  * The Account Team data source provides information about the existing Account Team.
  */
 export function getAccountTeam(args: GetAccountTeamArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamResult> {
@@ -17,10 +15,7 @@ export function getAccountTeam(args: GetAccountTeamArgs, opts?: pulumi.InvokeOpt
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getAccountTeam:getAccountTeam", {
         "accountId": args.accountId,
-        "createTime": args.createTime,
         "name": args.name,
-        "teamId": args.teamId,
-        "updateTime": args.updateTime,
     }, opts);
 }
 
@@ -29,47 +24,41 @@ export function getAccountTeam(args: GetAccountTeamArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetAccountTeamArgs {
     /**
-     * is a unique account id.
+     * The unique account id
      */
     accountId: string;
     /**
-     * time of creation.
-     */
-    createTime?: string;
-    /**
-     * defines an account team name.
+     * The account team name
      */
     name: string;
-    /**
-     * is an auto-generated unique account team id.
-     */
-    teamId?: string;
-    /**
-     * time of last update.
-     */
-    updateTime?: string;
 }
 
 /**
  * A collection of values returned by getAccountTeam.
  */
 export interface GetAccountTeamResult {
+    /**
+     * The unique account id
+     */
     readonly accountId: string;
     /**
-     * time of creation.
+     * Time of creation
      */
     readonly createTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The account team name
+     */
     readonly name: string;
     /**
-     * is an auto-generated unique account team id.
+     * The auto-generated unique account team id
      */
     readonly teamId: string;
     /**
-     * time of last update.
+     * Time of last update
      */
     readonly updateTime: string;
 }
@@ -83,23 +72,11 @@ export function getAccountTeamOutput(args: GetAccountTeamOutputArgs, opts?: pulu
  */
 export interface GetAccountTeamOutputArgs {
     /**
-     * is a unique account id.
+     * The unique account id
      */
     accountId: pulumi.Input<string>;
     /**
-     * time of creation.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
-     * defines an account team name.
+     * The account team name
      */
     name: pulumi.Input<string>;
-    /**
-     * is an auto-generated unique account team id.
-     */
-    teamId?: pulumi.Input<string>;
-    /**
-     * time of last update.
-     */
-    updateTime?: pulumi.Input<string>;
 }

@@ -47,7 +47,7 @@ class GetAccountResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         """
-        is an auto-generated unique account id.
+        Account id
         """
         return pulumi.get(self, "account_id")
 
@@ -55,7 +55,7 @@ class GetAccountResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        time of creation.
+        Time of creation
         """
         return pulumi.get(self, "create_time")
 
@@ -70,13 +70,16 @@ class GetAccountResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Account name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="ownerTeamId")
     def owner_team_id(self) -> str:
         """
-        is an owner team id.
+        Owner team id
         """
         return pulumi.get(self, "owner_team_id")
 
@@ -84,7 +87,7 @@ class GetAccountResult:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
         """
-        is a tenant id.
+        Tenant id
         """
         return pulumi.get(self, "tenant_id")
 
@@ -92,7 +95,7 @@ class GetAccountResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        time of last update.
+        Time of last update
         """
         return pulumi.get(self, "update_time")
 
@@ -112,16 +115,9 @@ class AwaitableGetAccountResult(GetAccountResult):
             update_time=self.update_time)
 
 
-def get_account(account_id: Optional[str] = None,
-                create_time: Optional[str] = None,
-                name: Optional[str] = None,
-                owner_team_id: Optional[str] = None,
-                tenant_id: Optional[str] = None,
-                update_time: Optional[str] = None,
+def get_account(name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
-    ## # Account Data Source
-
     The Account data source provides information about the existing Aiven Account.
 
     ## Example Usage
@@ -134,20 +130,10 @@ def get_account(account_id: Optional[str] = None,
     ```
 
 
-    :param str account_id: is an auto-generated unique account id.
-    :param str create_time: time of creation.
-    :param str name: defines an account name.
-    :param str owner_team_id: is an owner team id.
-    :param str tenant_id: is a tenant id.
-    :param str update_time: time of last update.
+    :param str name: Account name
     """
     __args__ = dict()
-    __args__['accountId'] = account_id
-    __args__['createTime'] = create_time
     __args__['name'] = name
-    __args__['ownerTeamId'] = owner_team_id
-    __args__['tenantId'] = tenant_id
-    __args__['updateTime'] = update_time
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -165,16 +151,9 @@ def get_account(account_id: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_account)
-def get_account_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
-                       create_time: Optional[pulumi.Input[Optional[str]]] = None,
-                       name: Optional[pulumi.Input[str]] = None,
-                       owner_team_id: Optional[pulumi.Input[Optional[str]]] = None,
-                       tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
-                       update_time: Optional[pulumi.Input[Optional[str]]] = None,
+def get_account_output(name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
     """
-    ## # Account Data Source
-
     The Account data source provides information about the existing Aiven Account.
 
     ## Example Usage
@@ -187,11 +166,6 @@ def get_account_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
-    :param str account_id: is an auto-generated unique account id.
-    :param str create_time: time of creation.
-    :param str name: defines an account name.
-    :param str owner_team_id: is an owner team id.
-    :param str tenant_id: is a tenant id.
-    :param str update_time: time of last update.
+    :param str name: Account name
     """
     ...

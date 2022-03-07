@@ -10,8 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## # Account Team Member Data Source
-//
 // The Account Team Member data source provides information about the existing Aiven Account Team Member.
 func LookupAccountTeamMember(ctx *pulumi.Context, args *LookupAccountTeamMemberArgs, opts ...pulumi.InvokeOption) (*LookupAccountTeamMemberResult, error) {
 	var rv LookupAccountTeamMemberResult
@@ -24,38 +22,30 @@ func LookupAccountTeamMember(ctx *pulumi.Context, args *LookupAccountTeamMemberA
 
 // A collection of arguments for invoking getAccountTeamMember.
 type LookupAccountTeamMemberArgs struct {
-	// is a boolean flag that determines whether an invitation was accepted or not by the user.
-	// `false` value means that the invitation was sent to the user but not yet accepted.
-	// `true` means that the user accepted the invitation and is now a member of an account team.
-	Accepted *bool `pulumi:"accepted"`
-	// is a unique account id.
+	// The unique account id This property cannot be changed, doing so forces recreation of the resource.
 	AccountId string `pulumi:"accountId"`
-	// time of creation.
-	CreateTime *string `pulumi:"createTime"`
-	// team invited by user email.
-	InvitedByUserEmail *string `pulumi:"invitedByUserEmail"`
-	// is an account team id.
+	// An account team id This property cannot be changed, doing so forces recreation of the resource.
 	TeamId string `pulumi:"teamId"`
-	// is a user email address that first will be invited, and after accepting an invitation,
-	// he or she becomes a member of a team.
+	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail string `pulumi:"userEmail"`
 }
 
 // A collection of values returned by getAccountTeamMember.
 type LookupAccountTeamMemberResult struct {
-	// is a boolean flag that determines whether an invitation was accepted or not by the user.
-	// `false` value means that the invitation was sent to the user but not yet accepted.
-	// `true` means that the user accepted the invitation and is now a member of an account team.
-	Accepted  bool   `pulumi:"accepted"`
+	// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
+	Accepted bool `pulumi:"accepted"`
+	// The unique account id This property cannot be changed, doing so forces recreation of the resource.
 	AccountId string `pulumi:"accountId"`
-	// time of creation.
+	// Time of creation
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// team invited by user email.
+	// The email address that invited this user.
 	InvitedByUserEmail string `pulumi:"invitedByUserEmail"`
-	TeamId             string `pulumi:"teamId"`
-	UserEmail          string `pulumi:"userEmail"`
+	// An account team id This property cannot be changed, doing so forces recreation of the resource.
+	TeamId string `pulumi:"teamId"`
+	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+	UserEmail string `pulumi:"userEmail"`
 }
 
 func LookupAccountTeamMemberOutput(ctx *pulumi.Context, args LookupAccountTeamMemberOutputArgs, opts ...pulumi.InvokeOption) LookupAccountTeamMemberResultOutput {
@@ -69,20 +59,11 @@ func LookupAccountTeamMemberOutput(ctx *pulumi.Context, args LookupAccountTeamMe
 
 // A collection of arguments for invoking getAccountTeamMember.
 type LookupAccountTeamMemberOutputArgs struct {
-	// is a boolean flag that determines whether an invitation was accepted or not by the user.
-	// `false` value means that the invitation was sent to the user but not yet accepted.
-	// `true` means that the user accepted the invitation and is now a member of an account team.
-	Accepted pulumi.BoolPtrInput `pulumi:"accepted"`
-	// is a unique account id.
+	// The unique account id This property cannot be changed, doing so forces recreation of the resource.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// time of creation.
-	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// team invited by user email.
-	InvitedByUserEmail pulumi.StringPtrInput `pulumi:"invitedByUserEmail"`
-	// is an account team id.
+	// An account team id This property cannot be changed, doing so forces recreation of the resource.
 	TeamId pulumi.StringInput `pulumi:"teamId"`
-	// is a user email address that first will be invited, and after accepting an invitation,
-	// he or she becomes a member of a team.
+	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail pulumi.StringInput `pulumi:"userEmail"`
 }
 
@@ -105,18 +86,17 @@ func (o LookupAccountTeamMemberResultOutput) ToLookupAccountTeamMemberResultOutp
 	return o
 }
 
-// is a boolean flag that determines whether an invitation was accepted or not by the user.
-// `false` value means that the invitation was sent to the user but not yet accepted.
-// `true` means that the user accepted the invitation and is now a member of an account team.
+// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
 func (o LookupAccountTeamMemberResultOutput) Accepted() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAccountTeamMemberResult) bool { return v.Accepted }).(pulumi.BoolOutput)
 }
 
+// The unique account id This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupAccountTeamMemberResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// time of creation.
+// Time of creation
 func (o LookupAccountTeamMemberResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -126,15 +106,17 @@ func (o LookupAccountTeamMemberResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// team invited by user email.
+// The email address that invited this user.
 func (o LookupAccountTeamMemberResultOutput) InvitedByUserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.InvitedByUserEmail }).(pulumi.StringOutput)
 }
 
+// An account team id This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupAccountTeamMemberResultOutput) TeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.TeamId }).(pulumi.StringOutput)
 }
 
+// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupAccountTeamMemberResultOutput) UserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.UserEmail }).(pulumi.StringOutput)
 }

@@ -6,41 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * ## # Service Integration Endpoint Resource
- *
  * The Service Integration Endpoint resource allows the creation and management of Aiven Service Integration Endpoints.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const myendpoint = new aiven.ServiceIntegrationEndpoint("myendpoint", {
- *     project: aiven_project.myproject.project,
- *     endpointName: "<ENDPOINT_NAME>",
- *     endpointType: "datadog",
- *     datadogUserConfig: {
- *         datadogApiKey: "<DATADOG_API_KEY>",
- *     },
- * });
- * ```
- * ### Prometheus Integration Endpoint
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const prometheusIntegration = new aiven.ServiceIntegrationEndpoint("prometheusIntegration", {
- *     project: aiven_project.myproject.project,
- *     endpointName: "<ENDPOINT_NAME>",
- *     endpointType: "prometheus",
- *     prometheusUserConfig: {
- *         basicAuthUsername: "<USERNAME>",
- *         basicAuthPassword: "<PASSWORD>",
- *     },
- * });
- * ```
  */
 export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
     /**
@@ -79,13 +45,11 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpointConfig!: pulumi.Output<{[key: string]: string}>;
     /**
-     * is the name of the endpoint. This value has no effect beyond being used
-     * to identify different integration endpoints.
+     * Name of the service integration endpoint
      */
     public readonly endpointName!: pulumi.Output<string>;
     /**
-     * is the type of the external service this endpoint is associated with.
-     * Available options are `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
+     * Type of the service integration endpoint
      */
     public readonly endpointType!: pulumi.Output<string>;
     /**
@@ -117,7 +81,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly jolokiaUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointJolokiaUserConfig | undefined>;
     /**
-     * defines the project the endpoint is associated with.
+     * Project the service integration endpoint belongs to
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -206,13 +170,11 @@ export interface ServiceIntegrationEndpointState {
      */
     endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * is the name of the endpoint. This value has no effect beyond being used
-     * to identify different integration endpoints.
+     * Name of the service integration endpoint
      */
     endpointName?: pulumi.Input<string>;
     /**
-     * is the type of the external service this endpoint is associated with.
-     * Available options are `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
+     * Type of the service integration endpoint
      */
     endpointType?: pulumi.Input<string>;
     /**
@@ -244,7 +206,7 @@ export interface ServiceIntegrationEndpointState {
      */
     jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
     /**
-     * defines the project the endpoint is associated with.
+     * Project the service integration endpoint belongs to
      */
     project?: pulumi.Input<string>;
     /**
@@ -270,13 +232,11 @@ export interface ServiceIntegrationEndpointArgs {
      */
     datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfig>;
     /**
-     * is the name of the endpoint. This value has no effect beyond being used
-     * to identify different integration endpoints.
+     * Name of the service integration endpoint
      */
     endpointName: pulumi.Input<string>;
     /**
-     * is the type of the external service this endpoint is associated with.
-     * Available options are `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog` and `signalfx`.
+     * Type of the service integration endpoint
      */
     endpointType: pulumi.Input<string>;
     /**
@@ -308,7 +268,7 @@ export interface ServiceIntegrationEndpointArgs {
      */
     jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
     /**
-     * defines the project the endpoint is associated with.
+     * Project the service integration endpoint belongs to
      */
     project: pulumi.Input<string>;
     /**

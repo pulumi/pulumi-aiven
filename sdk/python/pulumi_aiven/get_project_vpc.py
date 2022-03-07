@@ -40,6 +40,9 @@ class GetProjectVpcResult:
     @property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> str:
+        """
+        Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "cloud_name")
 
     @property
@@ -52,23 +55,25 @@ class GetProjectVpcResult:
 
     @property
     @pulumi.getter(name="networkCidr")
-    def network_cidr(self) -> Optional[str]:
+    def network_cidr(self) -> str:
         """
-        defines the network CIDR of the VPC.
+        Network address range used by the VPC like 192.168.0.0/24
         """
         return pulumi.get(self, "network_cidr")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def state(self) -> str:
         """
-        ia a computed property that tells the current state of the VPC. This property cannot be
-        set, only read.
+        State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
         """
         return pulumi.get(self, "state")
 
@@ -87,13 +92,9 @@ class AwaitableGetProjectVpcResult(GetProjectVpcResult):
 
 
 def get_project_vpc(cloud_name: Optional[str] = None,
-                    network_cidr: Optional[str] = None,
                     project: Optional[str] = None,
-                    state: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectVpcResult:
     """
-    ## # Project VPC Data Source
-
     The Project VPC data source provides information about the existing Aiven Project VPC.
 
     ## Example Usage
@@ -107,18 +108,12 @@ def get_project_vpc(cloud_name: Optional[str] = None,
     ```
 
 
-    :param str cloud_name: defines where the cloud provider and region where the service is hosted
-           in. See the Service resource for additional information.
-    :param str network_cidr: defines the network CIDR of the VPC.
-    :param str project: defines the project the VPC belongs to.
-    :param str state: ia a computed property that tells the current state of the VPC. This property cannot be
-           set, only read.
+    :param str cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['cloudName'] = cloud_name
-    __args__['networkCidr'] = network_cidr
     __args__['project'] = project
-    __args__['state'] = state
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -135,13 +130,9 @@ def get_project_vpc(cloud_name: Optional[str] = None,
 
 @_utilities.lift_output_func(get_project_vpc)
 def get_project_vpc_output(cloud_name: Optional[pulumi.Input[str]] = None,
-                           network_cidr: Optional[pulumi.Input[Optional[str]]] = None,
                            project: Optional[pulumi.Input[str]] = None,
-                           state: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectVpcResult]:
     """
-    ## # Project VPC Data Source
-
     The Project VPC data source provides information about the existing Aiven Project VPC.
 
     ## Example Usage
@@ -155,11 +146,7 @@ def get_project_vpc_output(cloud_name: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str cloud_name: defines where the cloud provider and region where the service is hosted
-           in. See the Service resource for additional information.
-    :param str network_cidr: defines the network CIDR of the VPC.
-    :param str project: defines the project the VPC belongs to.
-    :param str state: ia a computed property that tells the current state of the VPC. This property cannot be
-           set, only read.
+    :param str cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

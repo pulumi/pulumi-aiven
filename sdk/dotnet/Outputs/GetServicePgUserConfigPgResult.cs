@@ -27,6 +27,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? BgwriterLruMaxpages;
         public readonly string? BgwriterLruMultiplier;
         public readonly string? DeadlockTimeout;
+        public readonly string? DefaultToastCompression;
         public readonly string? IdleInTransactionSessionTimeout;
         public readonly string? Jit;
         public readonly string? LogAutovacuumMinDuration;
@@ -41,6 +42,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? MaxPredLocksPerTransaction;
         public readonly string? MaxPreparedTransactions;
         public readonly string? MaxReplicationSlots;
+        public readonly string? MaxSlotWalKeepSize;
         public readonly string? MaxStackDepth;
         public readonly string? MaxStandbyArchiveDelay;
         public readonly string? MaxStandbyStreamingDelay;
@@ -88,6 +90,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? deadlockTimeout,
 
+            string? defaultToastCompression,
+
             string? idleInTransactionSessionTimeout,
 
             string? jit,
@@ -115,6 +119,8 @@ namespace Pulumi.Aiven.Outputs
             string? maxPreparedTransactions,
 
             string? maxReplicationSlots,
+
+            string? maxSlotWalKeepSize,
 
             string? maxStackDepth,
 
@@ -162,6 +168,7 @@ namespace Pulumi.Aiven.Outputs
             BgwriterLruMaxpages = bgwriterLruMaxpages;
             BgwriterLruMultiplier = bgwriterLruMultiplier;
             DeadlockTimeout = deadlockTimeout;
+            DefaultToastCompression = defaultToastCompression;
             IdleInTransactionSessionTimeout = idleInTransactionSessionTimeout;
             Jit = jit;
             LogAutovacuumMinDuration = logAutovacuumMinDuration;
@@ -176,6 +183,7 @@ namespace Pulumi.Aiven.Outputs
             MaxPredLocksPerTransaction = maxPredLocksPerTransaction;
             MaxPreparedTransactions = maxPreparedTransactions;
             MaxReplicationSlots = maxReplicationSlots;
+            MaxSlotWalKeepSize = maxSlotWalKeepSize;
             MaxStackDepth = maxStackDepth;
             MaxStandbyArchiveDelay = maxStandbyArchiveDelay;
             MaxStandbyStreamingDelay = maxStandbyStreamingDelay;

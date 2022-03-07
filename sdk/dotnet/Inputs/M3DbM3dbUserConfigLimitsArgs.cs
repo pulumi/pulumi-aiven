@@ -12,28 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3DbM3dbUserConfigLimitsArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The maximum number of data points fetched during request
-        /// </summary>
-        [Input("globalDatapoints")]
-        public Input<string>? GlobalDatapoints { get; set; }
-
-        /// <summary>
-        /// The maximum number of data points fetched in single query
-        /// </summary>
-        [Input("queryDatapoints")]
-        public Input<string>? QueryDatapoints { get; set; }
-
-        /// <summary>
-        /// When query limits are exceeded, whether to return error 
-        /// (if True) or return partial results (False)
-        /// </summary>
         [Input("queryRequireExhaustive")]
         public Input<string>? QueryRequireExhaustive { get; set; }
 
-        /// <summary>
-        /// The maximum number of series fetched in single query
-        /// </summary>
         [Input("querySeries")]
         public Input<string>? QuerySeries { get; set; }
 

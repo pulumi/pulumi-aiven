@@ -12,8 +12,6 @@ namespace Pulumi.Aiven
     public static class GetKafkaConnector
     {
         /// <summary>
-        /// ## # Kafka connector Data Source
-        /// 
         /// The Kafka connector data source provides information about the existing Aiven Kafka connector.
         /// 
         /// {{% examples %}}
@@ -38,12 +36,6 @@ namespace Pulumi.Aiven
         /// 
         /// }
         /// ```
-        /// 
-        /// 
-        /// * `project` and `service_name`- (Required) define the project and service the Kafka Connectors belongs to. 
-        /// They should be defined using reference as shown above to set up dependencies correctly.
-        /// 
-        /// * `connector_name`- (Required) is the Kafka connector name.
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -51,8 +43,6 @@ namespace Pulumi.Aiven
             => Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## # Kafka connector Data Source
-        /// 
         /// The Kafka connector data source provides information about the existing Aiven Kafka connector.
         /// 
         /// {{% examples %}}
@@ -77,12 +67,6 @@ namespace Pulumi.Aiven
         /// 
         /// }
         /// ```
-        /// 
-        /// 
-        /// * `project` and `service_name`- (Required) define the project and service the Kafka Connectors belongs to. 
-        /// They should be defined using reference as shown above to set up dependencies correctly.
-        /// 
-        /// * `connector_name`- (Required) is the Kafka connector name.
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -93,71 +77,23 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaConnectorArgs : Pulumi.InvokeArgs
     {
-        [Input("config")]
-        private Dictionary<string, string>? _config;
-        public Dictionary<string, string> Config
-        {
-            get => _config ?? (_config = new Dictionary<string, string>());
-            set => _config = value;
-        }
-
+        /// <summary>
+        /// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("connectorName", required: true)]
         public string ConnectorName { get; set; } = null!;
 
         /// <summary>
-        /// Kafka connector author.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
-        [Input("pluginAuthor")]
-        public string? PluginAuthor { get; set; }
-
-        /// <summary>
-        /// Kafka connector Java class.
-        /// </summary>
-        [Input("pluginClass")]
-        public string? PluginClass { get; set; }
-
-        /// <summary>
-        /// Kafka connector documentation URL.
-        /// </summary>
-        [Input("pluginDocUrl")]
-        public string? PluginDocUrl { get; set; }
-
-        /// <summary>
-        /// Kafka connector title.
-        /// </summary>
-        [Input("pluginTitle")]
-        public string? PluginTitle { get; set; }
-
-        /// <summary>
-        /// Kafka connector type.
-        /// </summary>
-        [Input("pluginType")]
-        public string? PluginType { get; set; }
-
-        /// <summary>
-        /// Kafka connector version.
-        /// </summary>
-        [Input("pluginVersion")]
-        public string? PluginVersion { get; set; }
-
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
-
-        [Input("tasks")]
-        private List<Inputs.GetKafkaConnectorTaskArgs>? _tasks;
-
-        /// <summary>
-        /// List of tasks of a connector, each element contains `connector` 
-        /// (Related connector name) and `task` (Task id / number).
-        /// </summary>
-        public List<Inputs.GetKafkaConnectorTaskArgs> Tasks
-        {
-            get => _tasks ?? (_tasks = new List<Inputs.GetKafkaConnectorTaskArgs>());
-            set => _tasks = value;
-        }
 
         public GetKafkaConnectorArgs()
         {
@@ -166,71 +102,23 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaConnectorInvokeArgs : Pulumi.InvokeArgs
     {
-        [Input("config")]
-        private InputMap<string>? _config;
-        public InputMap<string> Config
-        {
-            get => _config ?? (_config = new InputMap<string>());
-            set => _config = value;
-        }
-
+        /// <summary>
+        /// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("connectorName", required: true)]
         public Input<string> ConnectorName { get; set; } = null!;
 
         /// <summary>
-        /// Kafka connector author.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
-        [Input("pluginAuthor")]
-        public Input<string>? PluginAuthor { get; set; }
-
-        /// <summary>
-        /// Kafka connector Java class.
-        /// </summary>
-        [Input("pluginClass")]
-        public Input<string>? PluginClass { get; set; }
-
-        /// <summary>
-        /// Kafka connector documentation URL.
-        /// </summary>
-        [Input("pluginDocUrl")]
-        public Input<string>? PluginDocUrl { get; set; }
-
-        /// <summary>
-        /// Kafka connector title.
-        /// </summary>
-        [Input("pluginTitle")]
-        public Input<string>? PluginTitle { get; set; }
-
-        /// <summary>
-        /// Kafka connector type.
-        /// </summary>
-        [Input("pluginType")]
-        public Input<string>? PluginType { get; set; }
-
-        /// <summary>
-        /// Kafka connector version.
-        /// </summary>
-        [Input("pluginVersion")]
-        public Input<string>? PluginVersion { get; set; }
-
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
-
-        [Input("tasks")]
-        private InputList<Inputs.GetKafkaConnectorTaskInputArgs>? _tasks;
-
-        /// <summary>
-        /// List of tasks of a connector, each element contains `connector` 
-        /// (Related connector name) and `task` (Task id / number).
-        /// </summary>
-        public InputList<Inputs.GetKafkaConnectorTaskInputArgs> Tasks
-        {
-            get => _tasks ?? (_tasks = new InputList<Inputs.GetKafkaConnectorTaskInputArgs>());
-            set => _tasks = value;
-        }
 
         public GetKafkaConnectorInvokeArgs()
         {
@@ -241,47 +129,58 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetKafkaConnectorResult
     {
-        public readonly ImmutableDictionary<string, string>? Config;
+        /// <summary>
+        /// The Kafka Connector configuration parameters.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Config;
+        /// <summary>
+        /// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ConnectorName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Kafka connector author.
+        /// The Kafka connector author.
         /// </summary>
         public readonly string PluginAuthor;
         /// <summary>
-        /// Kafka connector Java class.
+        /// The Kafka connector Java class.
         /// </summary>
         public readonly string PluginClass;
         /// <summary>
-        /// Kafka connector documentation URL.
+        /// The Kafka connector documentation URL.
         /// </summary>
         public readonly string PluginDocUrl;
         /// <summary>
-        /// Kafka connector title.
+        /// The Kafka connector title.
         /// </summary>
         public readonly string PluginTitle;
         /// <summary>
-        /// Kafka connector type.
+        /// The Kafka connector type.
         /// </summary>
         public readonly string PluginType;
         /// <summary>
-        /// Kafka connector version.
+        /// The version of the kafka connector.
         /// </summary>
         public readonly string PluginVersion;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// List of tasks of a connector, each element contains `connector` 
-        /// (Related connector name) and `task` (Task id / number).
+        /// List of tasks of a connector.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaConnectorTaskResult> Tasks;
 
         [OutputConstructor]
         private GetKafkaConnectorResult(
-            ImmutableDictionary<string, string>? config,
+            ImmutableDictionary<string, string> config,
 
             string connectorName,
 

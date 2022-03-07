@@ -14,15 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaKafkaUserConfig
     {
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// Custom domain
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// IP filter
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Enable kafka
+        /// Kafka broker configuration values
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafka? Kafka;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods? KafkaAuthenticationMethods;
         /// <summary>
-        /// Enable kafka_connect
+        /// Enable Kafka Connect service
         /// </summary>
         public readonly string? KafkaConnect;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaConnectConfig? KafkaConnectConfig;
         /// <summary>
-        /// Enable kafka_rest
+        /// Enable Kafka-REST service
         /// </summary>
         public readonly string? KafkaRest;
         /// <summary>
-        /// Kafka-REST configuration
+        /// Kafka REST configuration
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaRestConfig? KafkaRestConfig;
         /// <summary>
@@ -69,6 +69,9 @@ namespace Pulumi.Aiven.Outputs
         /// Schema Registry configuration
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigSchemaRegistryConfig? SchemaRegistryConfig;
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

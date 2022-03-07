@@ -11,9 +11,63 @@ namespace Pulumi.Aiven
 {
     public static class GetOpenSearchAclConfig
     {
+        /// <summary>
+        /// The Opensearch ACL Config data source provides information about an existing Aiven Opensearch ACL Config.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var os_acl_config = Output.Create(Aiven.GetOpenSearchAclConfig.InvokeAsync(new Aiven.GetOpenSearchAclConfigArgs
+        ///         {
+        ///             Project = aiven_project.Os_project.Project,
+        ///             ServiceName = aiven_service.Os.Service_name,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetOpenSearchAclConfigResult> InvokeAsync(GetOpenSearchAclConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOpenSearchAclConfigResult>("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args ?? new GetOpenSearchAclConfigArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// The Opensearch ACL Config data source provides information about an existing Aiven Opensearch ACL Config.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var os_acl_config = Output.Create(Aiven.GetOpenSearchAclConfig.InvokeAsync(new Aiven.GetOpenSearchAclConfigArgs
+        ///         {
+        ///             Project = aiven_project.Os_project.Project,
+        ///             ServiceName = aiven_service.Os.Service_name,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetOpenSearchAclConfigResult> Invoke(GetOpenSearchAclConfigInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetOpenSearchAclConfigResult>("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args ?? new GetOpenSearchAclConfigInvokeArgs(), options.WithDefaults());
     }
@@ -21,15 +75,15 @@ namespace Pulumi.Aiven
 
     public sealed class GetOpenSearchAclConfigArgs : Pulumi.InvokeArgs
     {
-        [Input("enabled")]
-        public bool? Enabled { get; set; }
-
-        [Input("extendedAcl")]
-        public bool? ExtendedAcl { get; set; }
-
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -40,15 +94,15 @@ namespace Pulumi.Aiven
 
     public sealed class GetOpenSearchAclConfigInvokeArgs : Pulumi.InvokeArgs
     {
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
-
-        [Input("extendedAcl")]
-        public Input<bool>? ExtendedAcl { get; set; }
-
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -61,20 +115,32 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetOpenSearchAclConfigResult
     {
-        public readonly bool? Enabled;
-        public readonly bool? ExtendedAcl;
+        /// <summary>
+        /// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        /// </summary>
+        public readonly bool ExtendedAcl;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]
         private GetOpenSearchAclConfigResult(
-            bool? enabled,
+            bool enabled,
 
-            bool? extendedAcl,
+            bool extendedAcl,
 
             string id,
 

@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## # Account Resource
- *
  * The Account resource allows the creation and management of an Aiven Account.
  *
  * ## Example Usage
@@ -47,29 +45,29 @@ export class Account extends pulumi.CustomResource {
     }
 
     /**
-     * is an auto-generated unique account id.
+     * Account id
      */
     public /*out*/ readonly accountId!: pulumi.Output<string>;
     /**
-     * time of creation.
+     * Time of creation
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * defines an account name.
+     * Account name
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * is an owner team id.
+     * Owner team id
      */
-    public readonly ownerTeamId!: pulumi.Output<string>;
+    public /*out*/ readonly ownerTeamId!: pulumi.Output<string>;
     /**
-     * is a tenant id.
+     * Tenant id
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    public /*out*/ readonly tenantId!: pulumi.Output<string>;
     /**
-     * time of last update.
+     * Time of last update
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -92,12 +90,12 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            resourceInputs["createTime"] = args ? args.createTime : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["ownerTeamId"] = args ? args.ownerTeamId : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["updateTime"] = args ? args.updateTime : undefined;
             resourceInputs["accountId"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["ownerTeamId"] = undefined /*out*/;
+            resourceInputs["tenantId"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Account.__pulumiType, name, resourceInputs, opts);
@@ -109,27 +107,27 @@ export class Account extends pulumi.CustomResource {
  */
 export interface AccountState {
     /**
-     * is an auto-generated unique account id.
+     * Account id
      */
     accountId?: pulumi.Input<string>;
     /**
-     * time of creation.
+     * Time of creation
      */
     createTime?: pulumi.Input<string>;
     /**
-     * defines an account name.
+     * Account name
      */
     name?: pulumi.Input<string>;
     /**
-     * is an owner team id.
+     * Owner team id
      */
     ownerTeamId?: pulumi.Input<string>;
     /**
-     * is a tenant id.
+     * Tenant id
      */
     tenantId?: pulumi.Input<string>;
     /**
-     * time of last update.
+     * Time of last update
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -139,23 +137,7 @@ export interface AccountState {
  */
 export interface AccountArgs {
     /**
-     * time of creation.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
-     * defines an account name.
+     * Account name
      */
     name?: pulumi.Input<string>;
-    /**
-     * is an owner team id.
-     */
-    ownerTeamId?: pulumi.Input<string>;
-    /**
-     * is a tenant id.
-     */
-    tenantId?: pulumi.Input<string>;
-    /**
-     * time of last update.
-     */
-    updateTime?: pulumi.Input<string>;
 }
