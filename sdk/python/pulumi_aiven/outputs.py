@@ -21465,6 +21465,10 @@ class GetCassandaCassandraUserConfigResult(dict):
                  public_access: Optional['outputs.GetCassandaCassandraUserConfigPublicAccessResult'] = None,
                  service_to_fork_from: Optional[str] = None,
                  static_ips: Optional[str] = None):
+        """
+        :param 'GetCassandaCassandraUserConfigCassandraArgs' cassandra: Cassandra server provided values
+        :param str static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
         if cassandra is not None:
             pulumi.set(__self__, "cassandra", cassandra)
         if cassandra_version is not None:
@@ -21487,6 +21491,9 @@ class GetCassandaCassandraUserConfigResult(dict):
     @property
     @pulumi.getter
     def cassandra(self) -> Optional['outputs.GetCassandaCassandraUserConfigCassandraResult']:
+        """
+        Cassandra server provided values
+        """
         return pulumi.get(self, "cassandra")
 
     @property
@@ -21527,6 +21534,9 @@ class GetCassandaCassandraUserConfigResult(dict):
     @property
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Optional[str]:
+        """
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        """
         return pulumi.get(self, "static_ips")
 
 

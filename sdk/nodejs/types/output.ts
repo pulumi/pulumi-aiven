@@ -424,6 +424,9 @@ export interface GetCassandaCassandra {
 }
 
 export interface GetCassandaCassandraUserConfig {
+    /**
+     * Cassandra server provided values
+     */
     cassandra?: outputs.GetCassandaCassandraUserConfigCassandra;
     cassandraVersion?: string;
     ipFilters?: string[];
@@ -432,6 +435,9 @@ export interface GetCassandaCassandraUserConfig {
     projectToForkFrom?: string;
     publicAccess?: outputs.GetCassandaCassandraUserConfigPublicAccess;
     serviceToForkFrom?: string;
+    /**
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     */
     staticIps?: string;
 }
 
