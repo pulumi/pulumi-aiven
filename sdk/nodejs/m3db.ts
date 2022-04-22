@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     m3dbUserConfig: {
- *         m3dbVersion: 0.15,
+ *         m3dbVersion: "0.15",
  *         namespaces: [{
  *             name: "my-ns1",
  *             type: "unaggregated",

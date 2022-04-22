@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *             consumerIsolationLevel: "read_committed",
  *         },
  *         publicAccess: {
- *             kafkaConnect: true,
+ *             kafkaConnect: "true",
  *         },
  *     },
  * });

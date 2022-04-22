@@ -22,13 +22,13 @@ import * as utilities from "./utilities";
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     mysqlUserConfig: {
- *         mysqlVersion: 8,
+ *         mysqlVersion: "8",
  *         mysql: {
  *             sqlMode: "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
- *             sqlRequirePrimaryKey: true,
+ *             sqlRequirePrimaryKey: "true",
  *         },
  *         publicAccess: {
- *             mysql: true,
+ *             mysql: "true",
  *         },
  *     },
  * });
