@@ -22,9 +22,9 @@ import * as utilities from "./utilities";
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     grafanaUserConfig: {
- *         alertingEnabled: true,
+ *         alertingEnabled: "true",
  *         publicAccess: {
- *             grafana: true,
+ *             grafana: "true",
  *         },
  *     },
  * });

@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     flinkUserConfig: {
- *         flinkVersion: 1.13,
+ *         flinkVersion: "1.13",
  *     },
  * });
  * ```

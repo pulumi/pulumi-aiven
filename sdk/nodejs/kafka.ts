@@ -22,17 +22,17 @@ import * as utilities from "./utilities";
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     kafkaUserConfig: {
- *         kafkaRest: true,
- *         kafkaConnect: true,
- *         schemaRegistry: true,
+ *         kafkaRest: "true",
+ *         kafkaConnect: "true",
+ *         schemaRegistry: "true",
  *         kafkaVersion: "2.4",
  *         kafka: {
- *             groupMaxSessionTimeoutMs: 70000,
- *             logRetentionBytes: 1000000000,
+ *             groupMaxSessionTimeoutMs: "70000",
+ *             logRetentionBytes: "1000000000",
  *         },
  *         publicAccess: {
- *             kafkaRest: true,
- *             kafkaConnect: true,
+ *             kafkaRest: "true",
+ *             kafkaConnect: "true",
  *         },
  *     },
  * });

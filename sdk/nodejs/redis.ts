@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *     redisUserConfig: {
  *         redisMaxmemoryPolicy: "allkeys-random",
  *         publicAccess: {
- *             redis: true,
+ *             redis: "true",
  *         },
  *     },
  * });

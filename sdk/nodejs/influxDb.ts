@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *     maintenanceWindowTime: "10:00:00",
  *     influxdbUserConfig: {
  *         publicAccess: {
- *             influxdb: true,
+ *             influxdb: "true",
  *         },
  *     },
  * });

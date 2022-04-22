@@ -22,14 +22,14 @@ import * as utilities from "./utilities";
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     elasticsearchUserConfig: {
- *         elasticsearchVersion: 7,
+ *         elasticsearchVersion: "7",
  *         kibana: {
- *             enabled: true,
- *             elasticsearchRequestTimeout: 30000,
+ *             enabled: "true",
+ *             elasticsearchRequestTimeout: "30000",
  *         },
  *         publicAccess: {
- *             elasticsearch: true,
- *             kibana: true,
+ *             elasticsearch: "true",
+ *             kibana: "true",
  *         },
  *     },
  * });

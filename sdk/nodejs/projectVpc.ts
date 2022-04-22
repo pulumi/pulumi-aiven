@@ -6,22 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Project VPC resource allows the creation and management of Aiven Project VPCs.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const myvpc = new aiven.ProjectVpc("myvpc", {
- *     project: aiven_project.myproject.project,
- *     cloudName: "google-europe-west1",
- *     networkCidr: "192.168.0.1/24",
- *     timeouts: [{
- *         create: "5m",
- *     }],
- * });
- * ```
  */
 export class ProjectVpc extends pulumi.CustomResource {
     /**
