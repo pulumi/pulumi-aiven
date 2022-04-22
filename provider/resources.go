@@ -323,7 +323,11 @@ func Provider() tfbridge.ProviderInfo {
 	}
 
 	prov.RenameDataSource("aiven_cassandra", makeDataSource(mainMod, "getCassanda"),
-		makeDataSource(mainMod, "getCassandra"), mainMod, mainMod, nil)
+		makeDataSource(mainMod, "getCassandra"), mainMod, mainMod, &tfbridge.DataSourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "cassandra.md",
+			},
+		})
 
 	prov.SetAutonaming(255, "-")
 

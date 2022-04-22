@@ -14523,6 +14523,7 @@
             "properties": {
                 "cassandra": {
                     "$ref": "#/types/aiven:index/getCassandaCassandraUserConfigCassandra:getCassandaCassandraUserConfigCassandra",
+                    "description": "Cassandra server provided values\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14590,6 +14591,7 @@
                 },
                 "staticIps": {
                     "type": "string",
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -39147,14 +39149,17 @@
             }
         },
         "aiven:index/getCassanda:getCassanda": {
+            "description": "The Cassandra data source provides information about the existing Aiven Cassandra service.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst bar = aiven.getCassandra({\n    project: data.aiven_project.foo.project,\n    serviceName: \"\u003cSERVICE_NAME\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nbar = aiven.get_cassandra(project=data[\"aiven_project\"][\"foo\"][\"project\"],\n    service_name=\"\u003cSERVICE_NAME\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bar = Output.Create(Aiven.GetCassandra.InvokeAsync(new Aiven.GetCassandraArgs\n        {\n            Project = data.Aiven_project.Foo.Project,\n            ServiceName = \"\u003cSERVICE_NAME\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupCassandra(ctx, \u0026GetCassandraArgs{\n\t\t\tProject:     data.Aiven_project.Foo.Project,\n\t\t\tServiceName: \"\u003cSERVICE_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getCassanda.\n",
                 "properties": {
                     "project": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
                     },
                     "serviceName": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.\n"
                     }
                 },
                 "type": "object",
@@ -39170,95 +39175,120 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/aiven:index/getCassandaCassandraUserConfig:getCassandaCassandraUserConfig"
-                        }
+                        },
+                        "description": "Cassandra user configurable settings\n"
                     },
                     "cassandras": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/aiven:index/getCassandaCassandra:getCassandaCassandra"
-                        }
+                        },
+                        "description": "Cassandra server provided values\n"
                     },
                     "cloudName": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
                     },
                     "components": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/aiven:index/getCassandaComponent:getCassandaComponent"
-                        }
+                        },
+                        "description": "Service component information objects\n"
                     },
                     "diskSpace": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.\n"
                     },
                     "diskSpaceCap": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.\n"
                     },
                     "diskSpaceDefault": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`\n"
                     },
                     "diskSpaceStep": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.\n"
                     },
                     "diskSpaceUsed": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Disk space that service is currently using\n"
                     },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
                     "maintenanceWindowDow": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
                     },
                     "maintenanceWindowTime": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
                     },
                     "plan": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
                     },
                     "project": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.\n"
                     },
                     "projectVpcId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.\n"
                     },
                     "serviceHost": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The hostname of the service.\n"
                     },
                     "serviceIntegrations": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/aiven:index/getCassandaServiceIntegration:getCassandaServiceIntegration"
-                        }
+                        },
+                        "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n"
                     },
                     "serviceName": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.\n"
                     },
                     "servicePassword": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Password used for connecting to the service, if applicable\n"
                     },
                     "servicePort": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "The port of the service\n"
                     },
                     "serviceType": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Aiven internal service type code\n"
                     },
                     "serviceUri": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "URI for connecting to the service. Service specific info is under \"kafka\", \"pg\", etc.\n"
                     },
                     "serviceUsername": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Username used for connecting to the service, if applicable\n"
                     },
                     "state": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`\n"
                     },
                     "staticIps": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                     },
                     "terminationProtection": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
                     }
                 },
                 "type": "object",
