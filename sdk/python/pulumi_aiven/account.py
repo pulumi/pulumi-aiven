@@ -13,13 +13,17 @@ __all__ = ['AccountArgs', 'Account']
 @pulumi.input_type
 class AccountArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 primary_billing_group_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Account resource.
         :param pulumi.Input[str] name: Account name
+        :param pulumi.Input[str] primary_billing_group_id: Billing group id
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if primary_billing_group_id is not None:
+            pulumi.set(__self__, "primary_billing_group_id", primary_billing_group_id)
 
     @property
     @pulumi.getter
@@ -33,6 +37,18 @@ class AccountArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="primaryBillingGroupId")
+    def primary_billing_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Billing group id
+        """
+        return pulumi.get(self, "primary_billing_group_id")
+
+    @primary_billing_group_id.setter
+    def primary_billing_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_billing_group_id", value)
+
 
 @pulumi.input_type
 class _AccountState:
@@ -41,6 +57,7 @@ class _AccountState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner_team_id: Optional[pulumi.Input[str]] = None,
+                 primary_billing_group_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -49,6 +66,7 @@ class _AccountState:
         :param pulumi.Input[str] create_time: Time of creation
         :param pulumi.Input[str] name: Account name
         :param pulumi.Input[str] owner_team_id: Owner team id
+        :param pulumi.Input[str] primary_billing_group_id: Billing group id
         :param pulumi.Input[str] tenant_id: Tenant id
         :param pulumi.Input[str] update_time: Time of last update
         """
@@ -60,6 +78,8 @@ class _AccountState:
             pulumi.set(__self__, "name", name)
         if owner_team_id is not None:
             pulumi.set(__self__, "owner_team_id", owner_team_id)
+        if primary_billing_group_id is not None:
+            pulumi.set(__self__, "primary_billing_group_id", primary_billing_group_id)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if update_time is not None:
@@ -114,6 +134,18 @@ class _AccountState:
         pulumi.set(self, "owner_team_id", value)
 
     @property
+    @pulumi.getter(name="primaryBillingGroupId")
+    def primary_billing_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Billing group id
+        """
+        return pulumi.get(self, "primary_billing_group_id")
+
+    @primary_billing_group_id.setter
+    def primary_billing_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_billing_group_id", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -144,6 +176,7 @@ class Account(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 primary_billing_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The Account resource allows the creation and management of an Aiven Account.
@@ -160,6 +193,7 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Account name
+        :param pulumi.Input[str] primary_billing_group_id: Billing group id
         """
         ...
     @overload
@@ -195,6 +229,7 @@ class Account(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 primary_billing_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -208,6 +243,7 @@ class Account(pulumi.CustomResource):
             __props__ = AccountArgs.__new__(AccountArgs)
 
             __props__.__dict__["name"] = name
+            __props__.__dict__["primary_billing_group_id"] = primary_billing_group_id
             __props__.__dict__["account_id"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["owner_team_id"] = None
@@ -227,6 +263,7 @@ class Account(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner_team_id: Optional[pulumi.Input[str]] = None,
+            primary_billing_group_id: Optional[pulumi.Input[str]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Account':
         """
@@ -240,6 +277,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Time of creation
         :param pulumi.Input[str] name: Account name
         :param pulumi.Input[str] owner_team_id: Owner team id
+        :param pulumi.Input[str] primary_billing_group_id: Billing group id
         :param pulumi.Input[str] tenant_id: Tenant id
         :param pulumi.Input[str] update_time: Time of last update
         """
@@ -251,6 +289,7 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["name"] = name
         __props__.__dict__["owner_team_id"] = owner_team_id
+        __props__.__dict__["primary_billing_group_id"] = primary_billing_group_id
         __props__.__dict__["tenant_id"] = tenant_id
         __props__.__dict__["update_time"] = update_time
         return Account(resource_name, opts=opts, __props__=__props__)
@@ -286,6 +325,14 @@ class Account(pulumi.CustomResource):
         Owner team id
         """
         return pulumi.get(self, "owner_team_id")
+
+    @property
+    @pulumi.getter(name="primaryBillingGroupId")
+    def primary_billing_group_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Billing group id
+        """
+        return pulumi.get(self, "primary_billing_group_id")
 
     @property
     @pulumi.getter(name="tenantId")

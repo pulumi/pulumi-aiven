@@ -267,13 +267,13 @@ export interface ElasticSearchElasticsearchUserConfigElasticsearch {
     indicesQueryBoolMaxClauseCount?: string;
     overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
+    scriptMaxCompilationsRate?: string;
     searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
     threadPoolAnalyzeSize?: string;
     threadPoolForceMergeSize?: string;
     threadPoolGetQueueSize?: string;
     threadPoolGetSize?: string;
-    threadPoolIndexQueueSize?: string;
     threadPoolIndexSize?: string;
     threadPoolSearchQueueSize?: string;
     threadPoolSearchSize?: string;
@@ -316,6 +316,7 @@ export interface ElasticSearchElasticsearchUserConfigPrivatelinkAccess {
      */
     elasticsearch?: string;
     kibana?: string;
+    prometheus?: string;
 }
 
 export interface ElasticSearchElasticsearchUserConfigPublicAccess {
@@ -407,6 +408,7 @@ export interface FlinkFlinkUserConfigPrivatelinkAccess {
      * Flink server provided values
      */
     flink?: string;
+    prometheus?: string;
 }
 
 export interface FlinkServiceIntegration {
@@ -606,13 +608,13 @@ export interface GetElasticSearchElasticsearchUserConfigElasticsearch {
     indicesQueryBoolMaxClauseCount?: string;
     overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
+    scriptMaxCompilationsRate?: string;
     searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
     threadPoolAnalyzeSize?: string;
     threadPoolForceMergeSize?: string;
     threadPoolGetQueueSize?: string;
     threadPoolGetSize?: string;
-    threadPoolIndexQueueSize?: string;
     threadPoolIndexSize?: string;
     threadPoolSearchQueueSize?: string;
     threadPoolSearchSize?: string;
@@ -655,6 +657,7 @@ export interface GetElasticSearchElasticsearchUserConfigPrivatelinkAccess {
      */
     elasticsearch?: string;
     kibana?: string;
+    prometheus?: string;
 }
 
 export interface GetElasticSearchElasticsearchUserConfigPublicAccess {
@@ -704,6 +707,7 @@ export interface GetFlinkFlinkUserConfigPrivatelinkAccess {
      * Flink server provided values
      */
     flink?: string;
+    prometheus?: string;
 }
 
 export interface GetFlinkServiceIntegration {
@@ -997,10 +1001,12 @@ export interface GetKafkaConnectKafkaConnectUserConfigPrivateAccess {
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
+    jolokia?: string;
     /**
      * Kafka Connect server provided values
      */
     kafkaConnect?: string;
+    prometheus?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
@@ -1131,12 +1137,14 @@ export interface GetKafkaKafkaUserConfigPrivateAccess {
 }
 
 export interface GetKafkaKafkaUserConfigPrivatelinkAccess {
+    jolokia?: string;
     /**
      * Kafka server provided values
      */
     kafka?: string;
     kafkaConnect?: string;
     kafkaRest?: string;
+    prometheus?: string;
     schemaRegistry?: string;
 }
 
@@ -1451,6 +1459,7 @@ export interface GetMySqlMysqlUserConfigPrivatelinkAccess {
      */
     mysql?: string;
     mysqlx?: string;
+    prometheus?: string;
 }
 
 export interface GetMySqlMysqlUserConfigPublicAccess {
@@ -1532,6 +1541,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
     indicesQueryBoolMaxClauseCount?: string;
     overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
+    scriptMaxCompilationsRate?: string;
     searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
     threadPoolAnalyzeSize?: string;
@@ -1568,6 +1578,7 @@ export interface GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
      */
     opensearch?: string;
     opensearchDashboards?: string;
+    prometheus?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPublicAccess {
@@ -1610,6 +1621,7 @@ export interface GetPgPgUserConfig {
     adminUsername?: string;
     backupHour?: string;
     backupMinute?: string;
+    enableIpv6?: string;
     ipFilters?: string[];
     migration?: outputs.GetPgPgUserConfigMigration;
     /**
@@ -1729,6 +1741,7 @@ export interface GetPgPgUserConfigPrivatelinkAccess {
      */
     pg?: string;
     pgbouncer?: string;
+    prometheus?: string;
 }
 
 export interface GetPgPgUserConfigPublicAccess {
@@ -1808,6 +1821,7 @@ export interface GetRedisRedisUserConfigPrivateAccess {
 }
 
 export interface GetRedisRedisUserConfigPrivatelinkAccess {
+    prometheus?: string;
     /**
      * Redis server provided values
      */
@@ -1924,13 +1938,13 @@ export interface GetServiceElasticsearchUserConfigElasticsearch {
     indicesQueryBoolMaxClauseCount?: string;
     overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
+    scriptMaxCompilationsRate?: string;
     searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
     threadPoolAnalyzeSize?: string;
     threadPoolForceMergeSize?: string;
     threadPoolGetQueueSize?: string;
     threadPoolGetSize?: string;
-    threadPoolIndexQueueSize?: string;
     threadPoolIndexSize?: string;
     threadPoolSearchQueueSize?: string;
     threadPoolSearchSize?: string;
@@ -1973,6 +1987,7 @@ export interface GetServiceElasticsearchUserConfigPrivatelinkAccess {
      */
     elasticsearch?: string;
     kibana?: string;
+    prometheus?: string;
 }
 
 export interface GetServiceElasticsearchUserConfigPublicAccess {
@@ -2007,6 +2022,7 @@ export interface GetServiceFlinkUserConfigPrivatelinkAccess {
      * Flink specific server provided values
      */
     flink?: string;
+    prometheus?: string;
 }
 
 export interface GetServiceGrafana {
@@ -2449,10 +2465,12 @@ export interface GetServiceKafkaConnectUserConfigPrivateAccess {
 }
 
 export interface GetServiceKafkaConnectUserConfigPrivatelinkAccess {
+    jolokia?: string;
     /**
      * Kafka Connect specific server provided values
      */
     kafkaConnect?: string;
+    prometheus?: string;
 }
 
 export interface GetServiceKafkaConnectUserConfigPublicAccess {
@@ -2593,6 +2611,7 @@ export interface GetServiceKafkaUserConfigPrivateAccess {
 }
 
 export interface GetServiceKafkaUserConfigPrivatelinkAccess {
+    jolokia?: string;
     /**
      * Kafka specific server provided values
      */
@@ -2602,6 +2621,7 @@ export interface GetServiceKafkaUserConfigPrivatelinkAccess {
      */
     kafkaConnect?: string;
     kafkaRest?: string;
+    prometheus?: string;
     schemaRegistry?: string;
 }
 
@@ -2705,6 +2725,7 @@ export interface GetServiceMysqlUserConfigPrivatelinkAccess {
      */
     mysql?: string;
     mysqlx?: string;
+    prometheus?: string;
 }
 
 export interface GetServiceMysqlUserConfigPublicAccess {
@@ -2771,6 +2792,7 @@ export interface GetServiceOpensearchUserConfigOpensearch {
     indicesQueryBoolMaxClauseCount?: string;
     overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
+    scriptMaxCompilationsRate?: string;
     searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
     threadPoolAnalyzeSize?: string;
@@ -2807,6 +2829,7 @@ export interface GetServiceOpensearchUserConfigPrivatelinkAccess {
      */
     opensearch?: string;
     opensearchDashboards?: string;
+    prometheus?: string;
 }
 
 export interface GetServiceOpensearchUserConfigPublicAccess {
@@ -2834,6 +2857,7 @@ export interface GetServicePgUserConfig {
     adminUsername?: string;
     backupHour?: string;
     backupMinute?: string;
+    enableIpv6?: string;
     ipFilters?: string[];
     migration?: outputs.GetServicePgUserConfigMigration;
     /**
@@ -2953,6 +2977,7 @@ export interface GetServicePgUserConfigPrivatelinkAccess {
      */
     pg?: string;
     pgbouncer?: string;
+    prometheus?: string;
 }
 
 export interface GetServicePgUserConfigPublicAccess {
@@ -3017,6 +3042,7 @@ export interface GetServiceRedisUserConfigPrivateAccess {
 }
 
 export interface GetServiceRedisUserConfigPrivatelinkAccess {
+    prometheus?: string;
     /**
      * Redis specific server provided values
      */
@@ -3472,10 +3498,12 @@ export interface KafkaConnectKafkaConnectUserConfigPrivateAccess {
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
+    jolokia?: string;
     /**
      * Kafka Connect server provided values
      */
     kafkaConnect?: string;
+    prometheus?: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
@@ -3666,12 +3694,14 @@ export interface KafkaKafkaUserConfigPrivateAccess {
 }
 
 export interface KafkaKafkaUserConfigPrivatelinkAccess {
+    jolokia?: string;
     /**
      * Kafka server provided values
      */
     kafka?: string;
     kafkaConnect?: string;
     kafkaRest?: string;
+    prometheus?: string;
     schemaRegistry?: string;
 }
 
@@ -4175,6 +4205,7 @@ export interface MySqlMysqlUserConfigPrivatelinkAccess {
      */
     mysql?: string;
     mysqlx?: string;
+    prometheus?: string;
 }
 
 export interface MySqlMysqlUserConfigPublicAccess {
@@ -4307,6 +4338,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
     indicesQueryBoolMaxClauseCount?: string;
     overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
+    scriptMaxCompilationsRate?: string;
     searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
     threadPoolAnalyzeSize?: string;
@@ -4343,6 +4375,7 @@ export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
      */
     opensearch?: string;
     opensearchDashboards?: string;
+    prometheus?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigPublicAccess {
@@ -4427,6 +4460,10 @@ export interface PgPgUserConfig {
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
      */
     backupMinute?: string;
+    /**
+     * Enable IPv6
+     */
+    enableIpv6?: string;
     /**
      * IP filter
      */
@@ -4600,6 +4637,7 @@ export interface PgPgUserConfigPrivatelinkAccess {
      */
     pg?: string;
     pgbouncer?: string;
+    prometheus?: string;
 }
 
 export interface PgPgUserConfigPublicAccess {
@@ -4709,7 +4747,7 @@ export interface RedisRedisUserConfig {
      */
     redisSsl?: string;
     /**
-     * Redis idle connection timeout
+     * Redis idle connection timeout in seconds
      */
     redisTimeout?: string;
     /**
@@ -4742,6 +4780,7 @@ export interface RedisRedisUserConfigPrivateAccess {
 }
 
 export interface RedisRedisUserConfigPrivatelinkAccess {
+    prometheus?: string;
     /**
      * Redis server provided values
      */
@@ -4942,13 +4981,13 @@ export interface ServiceElasticsearchUserConfigElasticsearch {
     indicesQueryBoolMaxClauseCount?: string;
     overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
+    scriptMaxCompilationsRate?: string;
     searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
     threadPoolAnalyzeSize?: string;
     threadPoolForceMergeSize?: string;
     threadPoolGetQueueSize?: string;
     threadPoolGetSize?: string;
-    threadPoolIndexQueueSize?: string;
     threadPoolIndexSize?: string;
     threadPoolSearchQueueSize?: string;
     threadPoolSearchSize?: string;
@@ -4991,6 +5030,7 @@ export interface ServiceElasticsearchUserConfigPrivatelinkAccess {
      */
     elasticsearch?: string;
     kibana?: string;
+    prometheus?: string;
 }
 
 export interface ServiceElasticsearchUserConfigPublicAccess {
@@ -5061,6 +5101,7 @@ export interface ServiceFlinkUserConfigPrivatelinkAccess {
      * Flink specific server provided values
      */
     flink?: string;
+    prometheus?: string;
 }
 
 export interface ServiceGrafana {
@@ -5872,10 +5913,12 @@ export interface ServiceKafkaConnectUserConfigPrivateAccess {
 }
 
 export interface ServiceKafkaConnectUserConfigPrivatelinkAccess {
+    jolokia?: string;
     /**
      * Kafka Connect specific server provided values
      */
     kafkaConnect?: string;
+    prometheus?: string;
 }
 
 export interface ServiceKafkaConnectUserConfigPublicAccess {
@@ -6055,6 +6098,7 @@ export interface ServiceKafkaUserConfigPrivateAccess {
 }
 
 export interface ServiceKafkaUserConfigPrivatelinkAccess {
+    jolokia?: string;
     /**
      * Kafka specific server provided values
      */
@@ -6064,6 +6108,7 @@ export interface ServiceKafkaUserConfigPrivatelinkAccess {
      */
     kafkaConnect?: string;
     kafkaRest?: string;
+    prometheus?: string;
     schemaRegistry?: string;
 }
 
@@ -6209,6 +6254,7 @@ export interface ServiceMysqlUserConfigPrivatelinkAccess {
      */
     mysql?: string;
     mysqlx?: string;
+    prometheus?: string;
 }
 
 export interface ServiceMysqlUserConfigPublicAccess {
@@ -6320,6 +6366,7 @@ export interface ServiceOpensearchUserConfigOpensearch {
     indicesQueryBoolMaxClauseCount?: string;
     overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
+    scriptMaxCompilationsRate?: string;
     searchMaxBuckets?: string;
     threadPoolAnalyzeQueueSize?: string;
     threadPoolAnalyzeSize?: string;
@@ -6356,6 +6403,7 @@ export interface ServiceOpensearchUserConfigPrivatelinkAccess {
      */
     opensearch?: string;
     opensearchDashboards?: string;
+    prometheus?: string;
 }
 
 export interface ServiceOpensearchUserConfigPublicAccess {
@@ -6395,6 +6443,10 @@ export interface ServicePgUserConfig {
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
      */
     backupMinute?: string;
+    /**
+     * Enable IPv6
+     */
+    enableIpv6?: string;
     /**
      * IP filter
      */
@@ -6568,6 +6620,7 @@ export interface ServicePgUserConfigPrivatelinkAccess {
      */
     pg?: string;
     pgbouncer?: string;
+    prometheus?: string;
 }
 
 export interface ServicePgUserConfigPublicAccess {
@@ -6656,7 +6709,7 @@ export interface ServiceRedisUserConfig {
      */
     redisSsl?: string;
     /**
-     * Redis idle connection timeout
+     * Redis idle connection timeout in seconds
      */
     redisTimeout?: string;
     /**
@@ -6689,6 +6742,7 @@ export interface ServiceRedisUserConfigPrivateAccess {
 }
 
 export interface ServiceRedisUserConfigPrivatelinkAccess {
+    prometheus?: string;
     /**
      * Redis specific server provided values
      */

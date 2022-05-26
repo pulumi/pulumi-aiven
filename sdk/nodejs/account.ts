@@ -61,6 +61,10 @@ export class Account extends pulumi.CustomResource {
      */
     public /*out*/ readonly ownerTeamId!: pulumi.Output<string>;
     /**
+     * Billing group id
+     */
+    public readonly primaryBillingGroupId!: pulumi.Output<string | undefined>;
+    /**
      * Tenant id
      */
     public /*out*/ readonly tenantId!: pulumi.Output<string>;
@@ -86,11 +90,13 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["ownerTeamId"] = state ? state.ownerTeamId : undefined;
+            resourceInputs["primaryBillingGroupId"] = state ? state.primaryBillingGroupId : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["primaryBillingGroupId"] = args ? args.primaryBillingGroupId : undefined;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["ownerTeamId"] = undefined /*out*/;
@@ -123,6 +129,10 @@ export interface AccountState {
      */
     ownerTeamId?: pulumi.Input<string>;
     /**
+     * Billing group id
+     */
+    primaryBillingGroupId?: pulumi.Input<string>;
+    /**
      * Tenant id
      */
     tenantId?: pulumi.Input<string>;
@@ -140,4 +150,8 @@ export interface AccountArgs {
      * Account name
      */
     name?: pulumi.Input<string>;
+    /**
+     * Billing group id
+     */
+    primaryBillingGroupId?: pulumi.Input<string>;
 }

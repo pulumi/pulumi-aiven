@@ -1628,6 +1628,8 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
             suggest = "override_main_response_version"
         elif key == "reindexRemoteWhitelists":
             suggest = "reindex_remote_whitelists"
+        elif key == "scriptMaxCompilationsRate":
+            suggest = "script_max_compilations_rate"
         elif key == "searchMaxBuckets":
             suggest = "search_max_buckets"
         elif key == "threadPoolAnalyzeQueueSize":
@@ -1640,8 +1642,6 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
             suggest = "thread_pool_get_queue_size"
         elif key == "threadPoolGetSize":
             suggest = "thread_pool_get_size"
-        elif key == "threadPoolIndexQueueSize":
-            suggest = "thread_pool_index_queue_size"
         elif key == "threadPoolIndexSize":
             suggest = "thread_pool_index_size"
         elif key == "threadPoolSearchQueueSize":
@@ -1681,13 +1681,13 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
                  indices_query_bool_max_clause_count: Optional[str] = None,
                  override_main_response_version: Optional[str] = None,
                  reindex_remote_whitelists: Optional[Sequence[str]] = None,
+                 script_max_compilations_rate: Optional[str] = None,
                  search_max_buckets: Optional[str] = None,
                  thread_pool_analyze_queue_size: Optional[str] = None,
                  thread_pool_analyze_size: Optional[str] = None,
                  thread_pool_force_merge_size: Optional[str] = None,
                  thread_pool_get_queue_size: Optional[str] = None,
                  thread_pool_get_size: Optional[str] = None,
-                 thread_pool_index_queue_size: Optional[str] = None,
                  thread_pool_index_size: Optional[str] = None,
                  thread_pool_search_queue_size: Optional[str] = None,
                  thread_pool_search_size: Optional[str] = None,
@@ -1719,6 +1719,8 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
             pulumi.set(__self__, "override_main_response_version", override_main_response_version)
         if reindex_remote_whitelists is not None:
             pulumi.set(__self__, "reindex_remote_whitelists", reindex_remote_whitelists)
+        if script_max_compilations_rate is not None:
+            pulumi.set(__self__, "script_max_compilations_rate", script_max_compilations_rate)
         if search_max_buckets is not None:
             pulumi.set(__self__, "search_max_buckets", search_max_buckets)
         if thread_pool_analyze_queue_size is not None:
@@ -1731,8 +1733,6 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
             pulumi.set(__self__, "thread_pool_get_queue_size", thread_pool_get_queue_size)
         if thread_pool_get_size is not None:
             pulumi.set(__self__, "thread_pool_get_size", thread_pool_get_size)
-        if thread_pool_index_queue_size is not None:
-            pulumi.set(__self__, "thread_pool_index_queue_size", thread_pool_index_queue_size)
         if thread_pool_index_size is not None:
             pulumi.set(__self__, "thread_pool_index_size", thread_pool_index_size)
         if thread_pool_search_queue_size is not None:
@@ -1809,6 +1809,11 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
         return pulumi.get(self, "reindex_remote_whitelists")
 
     @property
+    @pulumi.getter(name="scriptMaxCompilationsRate")
+    def script_max_compilations_rate(self) -> Optional[str]:
+        return pulumi.get(self, "script_max_compilations_rate")
+
+    @property
     @pulumi.getter(name="searchMaxBuckets")
     def search_max_buckets(self) -> Optional[str]:
         return pulumi.get(self, "search_max_buckets")
@@ -1837,11 +1842,6 @@ class ElasticSearchElasticsearchUserConfigElasticsearch(dict):
     @pulumi.getter(name="threadPoolGetSize")
     def thread_pool_get_size(self) -> Optional[str]:
         return pulumi.get(self, "thread_pool_get_size")
-
-    @property
-    @pulumi.getter(name="threadPoolIndexQueueSize")
-    def thread_pool_index_queue_size(self) -> Optional[str]:
-        return pulumi.get(self, "thread_pool_index_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolIndexSize")
@@ -2064,7 +2064,8 @@ class ElasticSearchElasticsearchUserConfigPrivateAccess(dict):
 class ElasticSearchElasticsearchUserConfigPrivatelinkAccess(dict):
     def __init__(__self__, *,
                  elasticsearch: Optional[str] = None,
-                 kibana: Optional[str] = None):
+                 kibana: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str elasticsearch: Elasticsearch server provided values
         """
@@ -2072,6 +2073,8 @@ class ElasticSearchElasticsearchUserConfigPrivatelinkAccess(dict):
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if kibana is not None:
             pulumi.set(__self__, "kibana", kibana)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -2085,6 +2088,11 @@ class ElasticSearchElasticsearchUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def kibana(self) -> Optional[str]:
         return pulumi.get(self, "kibana")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -2463,12 +2471,15 @@ class FlinkFlinkUserConfig(dict):
 @pulumi.output_type
 class FlinkFlinkUserConfigPrivatelinkAccess(dict):
     def __init__(__self__, *,
-                 flink: Optional[str] = None):
+                 flink: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str flink: Flink server provided values
         """
         if flink is not None:
             pulumi.set(__self__, "flink", flink)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -2477,6 +2488,11 @@ class FlinkFlinkUserConfigPrivatelinkAccess(dict):
         Flink server provided values
         """
         return pulumi.get(self, "flink")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -4819,12 +4835,23 @@ class KafkaConnectKafkaConnectUserConfigPrivatelinkAccess(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 kafka_connect: Optional[str] = None):
+                 jolokia: Optional[str] = None,
+                 kafka_connect: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str kafka_connect: Kafka Connect server provided values
         """
+        if jolokia is not None:
+            pulumi.set(__self__, "jolokia", jolokia)
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+
+    @property
+    @pulumi.getter
+    def jolokia(self) -> Optional[str]:
+        return pulumi.get(self, "jolokia")
 
     @property
     @pulumi.getter(name="kafkaConnect")
@@ -4833,6 +4860,11 @@ class KafkaConnectKafkaConnectUserConfigPrivatelinkAccess(dict):
         Kafka Connect server provided values
         """
         return pulumi.get(self, "kafka_connect")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -5954,21 +5986,32 @@ class KafkaKafkaUserConfigPrivatelinkAccess(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 jolokia: Optional[str] = None,
                  kafka: Optional[str] = None,
                  kafka_connect: Optional[str] = None,
                  kafka_rest: Optional[str] = None,
+                 prometheus: Optional[str] = None,
                  schema_registry: Optional[str] = None):
         """
         :param str kafka: Kafka server provided values
         """
+        if jolokia is not None:
+            pulumi.set(__self__, "jolokia", jolokia)
         if kafka is not None:
             pulumi.set(__self__, "kafka", kafka)
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if kafka_rest is not None:
             pulumi.set(__self__, "kafka_rest", kafka_rest)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
         if schema_registry is not None:
             pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @property
+    @pulumi.getter
+    def jolokia(self) -> Optional[str]:
+        return pulumi.get(self, "jolokia")
 
     @property
     @pulumi.getter
@@ -5987,6 +6030,11 @@ class KafkaKafkaUserConfigPrivatelinkAccess(dict):
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[str]:
         return pulumi.get(self, "kafka_rest")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter(name="schemaRegistry")
@@ -8431,7 +8479,8 @@ class MySqlMysqlUserConfigPrivateAccess(dict):
 class MySqlMysqlUserConfigPrivatelinkAccess(dict):
     def __init__(__self__, *,
                  mysql: Optional[str] = None,
-                 mysqlx: Optional[str] = None):
+                 mysqlx: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str mysql: MySQL specific server provided values
         """
@@ -8439,6 +8488,8 @@ class MySqlMysqlUserConfigPrivatelinkAccess(dict):
             pulumi.set(__self__, "mysql", mysql)
         if mysqlx is not None:
             pulumi.set(__self__, "mysqlx", mysqlx)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -8452,6 +8503,11 @@ class MySqlMysqlUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def mysqlx(self) -> Optional[str]:
         return pulumi.get(self, "mysqlx")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -9030,6 +9086,8 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             suggest = "override_main_response_version"
         elif key == "reindexRemoteWhitelists":
             suggest = "reindex_remote_whitelists"
+        elif key == "scriptMaxCompilationsRate":
+            suggest = "script_max_compilations_rate"
         elif key == "searchMaxBuckets":
             suggest = "search_max_buckets"
         elif key == "threadPoolAnalyzeQueueSize":
@@ -9081,6 +9139,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
                  indices_query_bool_max_clause_count: Optional[str] = None,
                  override_main_response_version: Optional[str] = None,
                  reindex_remote_whitelists: Optional[Sequence[str]] = None,
+                 script_max_compilations_rate: Optional[str] = None,
                  search_max_buckets: Optional[str] = None,
                  thread_pool_analyze_queue_size: Optional[str] = None,
                  thread_pool_analyze_size: Optional[str] = None,
@@ -9118,6 +9177,8 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             pulumi.set(__self__, "override_main_response_version", override_main_response_version)
         if reindex_remote_whitelists is not None:
             pulumi.set(__self__, "reindex_remote_whitelists", reindex_remote_whitelists)
+        if script_max_compilations_rate is not None:
+            pulumi.set(__self__, "script_max_compilations_rate", script_max_compilations_rate)
         if search_max_buckets is not None:
             pulumi.set(__self__, "search_max_buckets", search_max_buckets)
         if thread_pool_analyze_queue_size is not None:
@@ -9204,6 +9265,11 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="reindexRemoteWhitelists")
     def reindex_remote_whitelists(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "reindex_remote_whitelists")
+
+    @property
+    @pulumi.getter(name="scriptMaxCompilationsRate")
+    def script_max_compilations_rate(self) -> Optional[str]:
+        return pulumi.get(self, "script_max_compilations_rate")
 
     @property
     @pulumi.getter(name="searchMaxBuckets")
@@ -9392,7 +9458,8 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccess(dict):
 
     def __init__(__self__, *,
                  opensearch: Optional[str] = None,
-                 opensearch_dashboards: Optional[str] = None):
+                 opensearch_dashboards: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str opensearch: Opensearch server provided values
         """
@@ -9400,6 +9467,8 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccess(dict):
             pulumi.set(__self__, "opensearch", opensearch)
         if opensearch_dashboards is not None:
             pulumi.set(__self__, "opensearch_dashboards", opensearch_dashboards)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -9413,6 +9482,11 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccess(dict):
     @pulumi.getter(name="opensearchDashboards")
     def opensearch_dashboards(self) -> Optional[str]:
         return pulumi.get(self, "opensearch_dashboards")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -9726,6 +9800,8 @@ class PgPgUserConfig(dict):
             suggest = "backup_hour"
         elif key == "backupMinute":
             suggest = "backup_minute"
+        elif key == "enableIpv6":
+            suggest = "enable_ipv6"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "pgReadReplica":
@@ -9771,6 +9847,7 @@ class PgPgUserConfig(dict):
                  admin_username: Optional[str] = None,
                  backup_hour: Optional[str] = None,
                  backup_minute: Optional[str] = None,
+                 enable_ipv6: Optional[str] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.PgPgUserConfigMigration'] = None,
                  pg: Optional['outputs.PgPgUserConfigPg'] = None,
@@ -9796,6 +9873,7 @@ class PgPgUserConfig(dict):
         :param str admin_username: Custom username for admin user. This must be set only when a new service is being created.
         :param str backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param str backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+        :param str enable_ipv6: Enable IPv6
         :param Sequence[str] ip_filters: IP filter
         :param 'PgPgUserConfigMigrationArgs' migration: Migrate data from existing server
         :param 'PgPgUserConfigPgArgs' pg: postgresql.conf configuration values
@@ -9825,6 +9903,8 @@ class PgPgUserConfig(dict):
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if enable_ipv6 is not None:
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -9897,6 +9977,14 @@ class PgPgUserConfig(dict):
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         """
         return pulumi.get(self, "backup_minute")
+
+    @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> Optional[str]:
+        """
+        Enable IPv6
+        """
+        return pulumi.get(self, "enable_ipv6")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -10800,7 +10888,8 @@ class PgPgUserConfigPrivateAccess(dict):
 class PgPgUserConfigPrivatelinkAccess(dict):
     def __init__(__self__, *,
                  pg: Optional[str] = None,
-                 pgbouncer: Optional[str] = None):
+                 pgbouncer: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str pg: PostgreSQL specific server provided values
         """
@@ -10808,6 +10897,8 @@ class PgPgUserConfigPrivatelinkAccess(dict):
             pulumi.set(__self__, "pg", pg)
         if pgbouncer is not None:
             pulumi.set(__self__, "pgbouncer", pgbouncer)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -10821,6 +10912,11 @@ class PgPgUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[str]:
         return pulumi.get(self, "pgbouncer")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -11114,7 +11210,7 @@ class RedisRedisUserConfig(dict):
         :param str redis_persistence: Redis persistence
         :param str redis_pubsub_client_output_buffer_limit: Pub/sub client output buffer hard limit in MB
         :param str redis_ssl: Require SSL to access Redis
-        :param str redis_timeout: Redis idle connection timeout
+        :param str redis_timeout: Redis idle connection timeout in seconds
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param str static_ips: Static IP addresses
         """
@@ -11299,7 +11395,7 @@ class RedisRedisUserConfig(dict):
     @pulumi.getter(name="redisTimeout")
     def redis_timeout(self) -> Optional[str]:
         """
-        Redis idle connection timeout
+        Redis idle connection timeout in seconds
         """
         return pulumi.get(self, "redis_timeout")
 
@@ -11436,12 +11532,20 @@ class RedisRedisUserConfigPrivateAccess(dict):
 @pulumi.output_type
 class RedisRedisUserConfigPrivatelinkAccess(dict):
     def __init__(__self__, *,
+                 prometheus: Optional[str] = None,
                  redis: Optional[str] = None):
         """
         :param str redis: Redis server provided values
         """
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
         if redis is not None:
             pulumi.set(__self__, "redis", redis)
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter
@@ -12222,6 +12326,8 @@ class ServiceElasticsearchUserConfigElasticsearch(dict):
             suggest = "override_main_response_version"
         elif key == "reindexRemoteWhitelists":
             suggest = "reindex_remote_whitelists"
+        elif key == "scriptMaxCompilationsRate":
+            suggest = "script_max_compilations_rate"
         elif key == "searchMaxBuckets":
             suggest = "search_max_buckets"
         elif key == "threadPoolAnalyzeQueueSize":
@@ -12234,8 +12340,6 @@ class ServiceElasticsearchUserConfigElasticsearch(dict):
             suggest = "thread_pool_get_queue_size"
         elif key == "threadPoolGetSize":
             suggest = "thread_pool_get_size"
-        elif key == "threadPoolIndexQueueSize":
-            suggest = "thread_pool_index_queue_size"
         elif key == "threadPoolIndexSize":
             suggest = "thread_pool_index_size"
         elif key == "threadPoolSearchQueueSize":
@@ -12275,13 +12379,13 @@ class ServiceElasticsearchUserConfigElasticsearch(dict):
                  indices_query_bool_max_clause_count: Optional[str] = None,
                  override_main_response_version: Optional[str] = None,
                  reindex_remote_whitelists: Optional[Sequence[str]] = None,
+                 script_max_compilations_rate: Optional[str] = None,
                  search_max_buckets: Optional[str] = None,
                  thread_pool_analyze_queue_size: Optional[str] = None,
                  thread_pool_analyze_size: Optional[str] = None,
                  thread_pool_force_merge_size: Optional[str] = None,
                  thread_pool_get_queue_size: Optional[str] = None,
                  thread_pool_get_size: Optional[str] = None,
-                 thread_pool_index_queue_size: Optional[str] = None,
                  thread_pool_index_size: Optional[str] = None,
                  thread_pool_search_queue_size: Optional[str] = None,
                  thread_pool_search_size: Optional[str] = None,
@@ -12313,6 +12417,8 @@ class ServiceElasticsearchUserConfigElasticsearch(dict):
             pulumi.set(__self__, "override_main_response_version", override_main_response_version)
         if reindex_remote_whitelists is not None:
             pulumi.set(__self__, "reindex_remote_whitelists", reindex_remote_whitelists)
+        if script_max_compilations_rate is not None:
+            pulumi.set(__self__, "script_max_compilations_rate", script_max_compilations_rate)
         if search_max_buckets is not None:
             pulumi.set(__self__, "search_max_buckets", search_max_buckets)
         if thread_pool_analyze_queue_size is not None:
@@ -12325,8 +12431,6 @@ class ServiceElasticsearchUserConfigElasticsearch(dict):
             pulumi.set(__self__, "thread_pool_get_queue_size", thread_pool_get_queue_size)
         if thread_pool_get_size is not None:
             pulumi.set(__self__, "thread_pool_get_size", thread_pool_get_size)
-        if thread_pool_index_queue_size is not None:
-            pulumi.set(__self__, "thread_pool_index_queue_size", thread_pool_index_queue_size)
         if thread_pool_index_size is not None:
             pulumi.set(__self__, "thread_pool_index_size", thread_pool_index_size)
         if thread_pool_search_queue_size is not None:
@@ -12403,6 +12507,11 @@ class ServiceElasticsearchUserConfigElasticsearch(dict):
         return pulumi.get(self, "reindex_remote_whitelists")
 
     @property
+    @pulumi.getter(name="scriptMaxCompilationsRate")
+    def script_max_compilations_rate(self) -> Optional[str]:
+        return pulumi.get(self, "script_max_compilations_rate")
+
+    @property
     @pulumi.getter(name="searchMaxBuckets")
     def search_max_buckets(self) -> Optional[str]:
         return pulumi.get(self, "search_max_buckets")
@@ -12431,11 +12540,6 @@ class ServiceElasticsearchUserConfigElasticsearch(dict):
     @pulumi.getter(name="threadPoolGetSize")
     def thread_pool_get_size(self) -> Optional[str]:
         return pulumi.get(self, "thread_pool_get_size")
-
-    @property
-    @pulumi.getter(name="threadPoolIndexQueueSize")
-    def thread_pool_index_queue_size(self) -> Optional[str]:
-        return pulumi.get(self, "thread_pool_index_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolIndexSize")
@@ -12658,7 +12762,8 @@ class ServiceElasticsearchUserConfigPrivateAccess(dict):
 class ServiceElasticsearchUserConfigPrivatelinkAccess(dict):
     def __init__(__self__, *,
                  elasticsearch: Optional[str] = None,
-                 kibana: Optional[str] = None):
+                 kibana: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str elasticsearch: Elasticsearch specific server provided values
         """
@@ -12666,6 +12771,8 @@ class ServiceElasticsearchUserConfigPrivatelinkAccess(dict):
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if kibana is not None:
             pulumi.set(__self__, "kibana", kibana)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -12679,6 +12786,11 @@ class ServiceElasticsearchUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def kibana(self) -> Optional[str]:
         return pulumi.get(self, "kibana")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -12931,12 +13043,15 @@ class ServiceFlinkUserConfig(dict):
 @pulumi.output_type
 class ServiceFlinkUserConfigPrivatelinkAccess(dict):
     def __init__(__self__, *,
-                 flink: Optional[str] = None):
+                 flink: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str flink: Flink specific server provided values
         """
         if flink is not None:
             pulumi.set(__self__, "flink", flink)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -12945,6 +13060,11 @@ class ServiceFlinkUserConfigPrivatelinkAccess(dict):
         Flink specific server provided values
         """
         return pulumi.get(self, "flink")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -16812,12 +16932,23 @@ class ServiceKafkaConnectUserConfigPrivatelinkAccess(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 kafka_connect: Optional[str] = None):
+                 jolokia: Optional[str] = None,
+                 kafka_connect: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str kafka_connect: Kafka Connect specific server provided values
         """
+        if jolokia is not None:
+            pulumi.set(__self__, "jolokia", jolokia)
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+
+    @property
+    @pulumi.getter
+    def jolokia(self) -> Optional[str]:
+        return pulumi.get(self, "jolokia")
 
     @property
     @pulumi.getter(name="kafkaConnect")
@@ -16826,6 +16957,11 @@ class ServiceKafkaConnectUserConfigPrivatelinkAccess(dict):
         Kafka Connect specific server provided values
         """
         return pulumi.get(self, "kafka_connect")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -17970,22 +18106,33 @@ class ServiceKafkaUserConfigPrivatelinkAccess(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 jolokia: Optional[str] = None,
                  kafka: Optional[str] = None,
                  kafka_connect: Optional[str] = None,
                  kafka_rest: Optional[str] = None,
+                 prometheus: Optional[str] = None,
                  schema_registry: Optional[str] = None):
         """
         :param str kafka: Kafka specific server provided values
         :param str kafka_connect: Kafka Connect specific server provided values
         """
+        if jolokia is not None:
+            pulumi.set(__self__, "jolokia", jolokia)
         if kafka is not None:
             pulumi.set(__self__, "kafka", kafka)
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if kafka_rest is not None:
             pulumi.set(__self__, "kafka_rest", kafka_rest)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
         if schema_registry is not None:
             pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @property
+    @pulumi.getter
+    def jolokia(self) -> Optional[str]:
+        return pulumi.get(self, "jolokia")
 
     @property
     @pulumi.getter
@@ -18007,6 +18154,11 @@ class ServiceKafkaUserConfigPrivatelinkAccess(dict):
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[str]:
         return pulumi.get(self, "kafka_rest")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter(name="schemaRegistry")
@@ -18763,7 +18915,8 @@ class ServiceMysqlUserConfigPrivateAccess(dict):
 class ServiceMysqlUserConfigPrivatelinkAccess(dict):
     def __init__(__self__, *,
                  mysql: Optional[str] = None,
-                 mysqlx: Optional[str] = None):
+                 mysqlx: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str mysql: MySQL specific server provided values
         """
@@ -18771,6 +18924,8 @@ class ServiceMysqlUserConfigPrivatelinkAccess(dict):
             pulumi.set(__self__, "mysql", mysql)
         if mysqlx is not None:
             pulumi.set(__self__, "mysqlx", mysqlx)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -18784,6 +18939,11 @@ class ServiceMysqlUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def mysqlx(self) -> Optional[str]:
         return pulumi.get(self, "mysqlx")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -19236,6 +19396,8 @@ class ServiceOpensearchUserConfigOpensearch(dict):
             suggest = "override_main_response_version"
         elif key == "reindexRemoteWhitelists":
             suggest = "reindex_remote_whitelists"
+        elif key == "scriptMaxCompilationsRate":
+            suggest = "script_max_compilations_rate"
         elif key == "searchMaxBuckets":
             suggest = "search_max_buckets"
         elif key == "threadPoolAnalyzeQueueSize":
@@ -19287,6 +19449,7 @@ class ServiceOpensearchUserConfigOpensearch(dict):
                  indices_query_bool_max_clause_count: Optional[str] = None,
                  override_main_response_version: Optional[str] = None,
                  reindex_remote_whitelists: Optional[Sequence[str]] = None,
+                 script_max_compilations_rate: Optional[str] = None,
                  search_max_buckets: Optional[str] = None,
                  thread_pool_analyze_queue_size: Optional[str] = None,
                  thread_pool_analyze_size: Optional[str] = None,
@@ -19324,6 +19487,8 @@ class ServiceOpensearchUserConfigOpensearch(dict):
             pulumi.set(__self__, "override_main_response_version", override_main_response_version)
         if reindex_remote_whitelists is not None:
             pulumi.set(__self__, "reindex_remote_whitelists", reindex_remote_whitelists)
+        if script_max_compilations_rate is not None:
+            pulumi.set(__self__, "script_max_compilations_rate", script_max_compilations_rate)
         if search_max_buckets is not None:
             pulumi.set(__self__, "search_max_buckets", search_max_buckets)
         if thread_pool_analyze_queue_size is not None:
@@ -19410,6 +19575,11 @@ class ServiceOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="reindexRemoteWhitelists")
     def reindex_remote_whitelists(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "reindex_remote_whitelists")
+
+    @property
+    @pulumi.getter(name="scriptMaxCompilationsRate")
+    def script_max_compilations_rate(self) -> Optional[str]:
+        return pulumi.get(self, "script_max_compilations_rate")
 
     @property
     @pulumi.getter(name="searchMaxBuckets")
@@ -19598,7 +19768,8 @@ class ServiceOpensearchUserConfigPrivatelinkAccess(dict):
 
     def __init__(__self__, *,
                  opensearch: Optional[str] = None,
-                 opensearch_dashboards: Optional[str] = None):
+                 opensearch_dashboards: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str opensearch: Opensearch specific server provided values
         """
@@ -19606,6 +19777,8 @@ class ServiceOpensearchUserConfigPrivatelinkAccess(dict):
             pulumi.set(__self__, "opensearch", opensearch)
         if opensearch_dashboards is not None:
             pulumi.set(__self__, "opensearch_dashboards", opensearch_dashboards)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -19619,6 +19792,11 @@ class ServiceOpensearchUserConfigPrivatelinkAccess(dict):
     @pulumi.getter(name="opensearchDashboards")
     def opensearch_dashboards(self) -> Optional[str]:
         return pulumi.get(self, "opensearch_dashboards")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -19772,6 +19950,8 @@ class ServicePgUserConfig(dict):
             suggest = "backup_hour"
         elif key == "backupMinute":
             suggest = "backup_minute"
+        elif key == "enableIpv6":
+            suggest = "enable_ipv6"
         elif key == "ipFilters":
             suggest = "ip_filters"
         elif key == "pgReadReplica":
@@ -19817,6 +19997,7 @@ class ServicePgUserConfig(dict):
                  admin_username: Optional[str] = None,
                  backup_hour: Optional[str] = None,
                  backup_minute: Optional[str] = None,
+                 enable_ipv6: Optional[str] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.ServicePgUserConfigMigration'] = None,
                  pg: Optional['outputs.ServicePgUserConfigPg'] = None,
@@ -19842,6 +20023,7 @@ class ServicePgUserConfig(dict):
         :param str admin_username: Custom username for admin user. This must be set only when a new service is being created.
         :param str backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param str backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+        :param str enable_ipv6: Enable IPv6
         :param Sequence[str] ip_filters: IP filter
         :param 'ServicePgUserConfigMigrationArgs' migration: Migrate data from existing server
         :param 'ServicePgUserConfigPgArgs' pg: postgresql.conf configuration values
@@ -19871,6 +20053,8 @@ class ServicePgUserConfig(dict):
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if enable_ipv6 is not None:
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -19943,6 +20127,14 @@ class ServicePgUserConfig(dict):
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         """
         return pulumi.get(self, "backup_minute")
+
+    @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> Optional[str]:
+        """
+        Enable IPv6
+        """
+        return pulumi.get(self, "enable_ipv6")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -20846,7 +21038,8 @@ class ServicePgUserConfigPrivateAccess(dict):
 class ServicePgUserConfigPrivatelinkAccess(dict):
     def __init__(__self__, *,
                  pg: Optional[str] = None,
-                 pgbouncer: Optional[str] = None):
+                 pgbouncer: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str pg: PostgreSQL specific server provided values
         """
@@ -20854,6 +21047,8 @@ class ServicePgUserConfigPrivatelinkAccess(dict):
             pulumi.set(__self__, "pg", pg)
         if pgbouncer is not None:
             pulumi.set(__self__, "pgbouncer", pgbouncer)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -20867,6 +21062,11 @@ class ServicePgUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[str]:
         return pulumi.get(self, "pgbouncer")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -21034,7 +21234,7 @@ class ServiceRedisUserConfig(dict):
         :param str redis_persistence: Redis persistence
         :param str redis_pubsub_client_output_buffer_limit: Pub/sub client output buffer hard limit in MB
         :param str redis_ssl: Require SSL to access Redis
-        :param str redis_timeout: Redis idle connection timeout
+        :param str redis_timeout: Redis idle connection timeout in seconds
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param str static_ips: Static IP addresses
         """
@@ -21219,7 +21419,7 @@ class ServiceRedisUserConfig(dict):
     @pulumi.getter(name="redisTimeout")
     def redis_timeout(self) -> Optional[str]:
         """
-        Redis idle connection timeout
+        Redis idle connection timeout in seconds
         """
         return pulumi.get(self, "redis_timeout")
 
@@ -21356,12 +21556,20 @@ class ServiceRedisUserConfigPrivateAccess(dict):
 @pulumi.output_type
 class ServiceRedisUserConfigPrivatelinkAccess(dict):
     def __init__(__self__, *,
+                 prometheus: Optional[str] = None,
                  redis: Optional[str] = None):
         """
         :param str redis: Redis specific server provided values
         """
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
         if redis is not None:
             pulumi.set(__self__, "redis", redis)
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter
@@ -22259,13 +22467,13 @@ class GetElasticSearchElasticsearchUserConfigElasticsearchResult(dict):
                  indices_query_bool_max_clause_count: Optional[str] = None,
                  override_main_response_version: Optional[str] = None,
                  reindex_remote_whitelists: Optional[Sequence[str]] = None,
+                 script_max_compilations_rate: Optional[str] = None,
                  search_max_buckets: Optional[str] = None,
                  thread_pool_analyze_queue_size: Optional[str] = None,
                  thread_pool_analyze_size: Optional[str] = None,
                  thread_pool_force_merge_size: Optional[str] = None,
                  thread_pool_get_queue_size: Optional[str] = None,
                  thread_pool_get_size: Optional[str] = None,
-                 thread_pool_index_queue_size: Optional[str] = None,
                  thread_pool_index_size: Optional[str] = None,
                  thread_pool_search_queue_size: Optional[str] = None,
                  thread_pool_search_size: Optional[str] = None,
@@ -22297,6 +22505,8 @@ class GetElasticSearchElasticsearchUserConfigElasticsearchResult(dict):
             pulumi.set(__self__, "override_main_response_version", override_main_response_version)
         if reindex_remote_whitelists is not None:
             pulumi.set(__self__, "reindex_remote_whitelists", reindex_remote_whitelists)
+        if script_max_compilations_rate is not None:
+            pulumi.set(__self__, "script_max_compilations_rate", script_max_compilations_rate)
         if search_max_buckets is not None:
             pulumi.set(__self__, "search_max_buckets", search_max_buckets)
         if thread_pool_analyze_queue_size is not None:
@@ -22309,8 +22519,6 @@ class GetElasticSearchElasticsearchUserConfigElasticsearchResult(dict):
             pulumi.set(__self__, "thread_pool_get_queue_size", thread_pool_get_queue_size)
         if thread_pool_get_size is not None:
             pulumi.set(__self__, "thread_pool_get_size", thread_pool_get_size)
-        if thread_pool_index_queue_size is not None:
-            pulumi.set(__self__, "thread_pool_index_queue_size", thread_pool_index_queue_size)
         if thread_pool_index_size is not None:
             pulumi.set(__self__, "thread_pool_index_size", thread_pool_index_size)
         if thread_pool_search_queue_size is not None:
@@ -22387,6 +22595,11 @@ class GetElasticSearchElasticsearchUserConfigElasticsearchResult(dict):
         return pulumi.get(self, "reindex_remote_whitelists")
 
     @property
+    @pulumi.getter(name="scriptMaxCompilationsRate")
+    def script_max_compilations_rate(self) -> Optional[str]:
+        return pulumi.get(self, "script_max_compilations_rate")
+
+    @property
     @pulumi.getter(name="searchMaxBuckets")
     def search_max_buckets(self) -> Optional[str]:
         return pulumi.get(self, "search_max_buckets")
@@ -22415,11 +22628,6 @@ class GetElasticSearchElasticsearchUserConfigElasticsearchResult(dict):
     @pulumi.getter(name="threadPoolGetSize")
     def thread_pool_get_size(self) -> Optional[str]:
         return pulumi.get(self, "thread_pool_get_size")
-
-    @property
-    @pulumi.getter(name="threadPoolIndexQueueSize")
-    def thread_pool_index_queue_size(self) -> Optional[str]:
-        return pulumi.get(self, "thread_pool_index_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolIndexSize")
@@ -22583,7 +22791,8 @@ class GetElasticSearchElasticsearchUserConfigPrivateAccessResult(dict):
 class GetElasticSearchElasticsearchUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
                  elasticsearch: Optional[str] = None,
-                 kibana: Optional[str] = None):
+                 kibana: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str elasticsearch: Elasticsearch server provided values
         """
@@ -22591,6 +22800,8 @@ class GetElasticSearchElasticsearchUserConfigPrivatelinkAccessResult(dict):
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if kibana is not None:
             pulumi.set(__self__, "kibana", kibana)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -22604,6 +22815,11 @@ class GetElasticSearchElasticsearchUserConfigPrivatelinkAccessResult(dict):
     @pulumi.getter
     def kibana(self) -> Optional[str]:
         return pulumi.get(self, "kibana")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -22822,12 +23038,15 @@ class GetFlinkFlinkUserConfigResult(dict):
 @pulumi.output_type
 class GetFlinkFlinkUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
-                 flink: Optional[str] = None):
+                 flink: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str flink: Flink server provided values
         """
         if flink is not None:
             pulumi.set(__self__, "flink", flink)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -22836,6 +23055,11 @@ class GetFlinkFlinkUserConfigPrivatelinkAccessResult(dict):
         Flink server provided values
         """
         return pulumi.get(self, "flink")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -24338,12 +24562,23 @@ class GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult(dict):
 @pulumi.output_type
 class GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
-                 kafka_connect: Optional[str] = None):
+                 jolokia: Optional[str] = None,
+                 kafka_connect: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str kafka_connect: Kafka Connect server provided values
         """
+        if jolokia is not None:
+            pulumi.set(__self__, "jolokia", jolokia)
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+
+    @property
+    @pulumi.getter
+    def jolokia(self) -> Optional[str]:
+        return pulumi.get(self, "jolokia")
 
     @property
     @pulumi.getter(name="kafkaConnect")
@@ -24352,6 +24587,11 @@ class GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessResult(dict):
         Kafka Connect server provided values
         """
         return pulumi.get(self, "kafka_connect")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -25100,21 +25340,32 @@ class GetKafkaKafkaUserConfigPrivateAccessResult(dict):
 @pulumi.output_type
 class GetKafkaKafkaUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
+                 jolokia: Optional[str] = None,
                  kafka: Optional[str] = None,
                  kafka_connect: Optional[str] = None,
                  kafka_rest: Optional[str] = None,
+                 prometheus: Optional[str] = None,
                  schema_registry: Optional[str] = None):
         """
         :param str kafka: Kafka server provided values
         """
+        if jolokia is not None:
+            pulumi.set(__self__, "jolokia", jolokia)
         if kafka is not None:
             pulumi.set(__self__, "kafka", kafka)
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if kafka_rest is not None:
             pulumi.set(__self__, "kafka_rest", kafka_rest)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
         if schema_registry is not None:
             pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @property
+    @pulumi.getter
+    def jolokia(self) -> Optional[str]:
+        return pulumi.get(self, "jolokia")
 
     @property
     @pulumi.getter
@@ -25133,6 +25384,11 @@ class GetKafkaKafkaUserConfigPrivatelinkAccessResult(dict):
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[str]:
         return pulumi.get(self, "kafka_rest")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter(name="schemaRegistry")
@@ -26738,7 +26994,8 @@ class GetMySqlMysqlUserConfigPrivateAccessResult(dict):
 class GetMySqlMysqlUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
                  mysql: Optional[str] = None,
-                 mysqlx: Optional[str] = None):
+                 mysqlx: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str mysql: MySQL specific server provided values
         """
@@ -26746,6 +27003,8 @@ class GetMySqlMysqlUserConfigPrivatelinkAccessResult(dict):
             pulumi.set(__self__, "mysql", mysql)
         if mysqlx is not None:
             pulumi.set(__self__, "mysqlx", mysqlx)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -26759,6 +27018,11 @@ class GetMySqlMysqlUserConfigPrivatelinkAccessResult(dict):
     @pulumi.getter
     def mysqlx(self) -> Optional[str]:
         return pulumi.get(self, "mysqlx")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -27105,6 +27369,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
                  indices_query_bool_max_clause_count: Optional[str] = None,
                  override_main_response_version: Optional[str] = None,
                  reindex_remote_whitelists: Optional[Sequence[str]] = None,
+                 script_max_compilations_rate: Optional[str] = None,
                  search_max_buckets: Optional[str] = None,
                  thread_pool_analyze_queue_size: Optional[str] = None,
                  thread_pool_analyze_size: Optional[str] = None,
@@ -27142,6 +27407,8 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
             pulumi.set(__self__, "override_main_response_version", override_main_response_version)
         if reindex_remote_whitelists is not None:
             pulumi.set(__self__, "reindex_remote_whitelists", reindex_remote_whitelists)
+        if script_max_compilations_rate is not None:
+            pulumi.set(__self__, "script_max_compilations_rate", script_max_compilations_rate)
         if search_max_buckets is not None:
             pulumi.set(__self__, "search_max_buckets", search_max_buckets)
         if thread_pool_analyze_queue_size is not None:
@@ -27228,6 +27495,11 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="reindexRemoteWhitelists")
     def reindex_remote_whitelists(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "reindex_remote_whitelists")
+
+    @property
+    @pulumi.getter(name="scriptMaxCompilationsRate")
+    def script_max_compilations_rate(self) -> Optional[str]:
+        return pulumi.get(self, "script_max_compilations_rate")
 
     @property
     @pulumi.getter(name="searchMaxBuckets")
@@ -27363,7 +27635,8 @@ class GetOpenSearchOpensearchUserConfigPrivateAccessResult(dict):
 class GetOpenSearchOpensearchUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
                  opensearch: Optional[str] = None,
-                 opensearch_dashboards: Optional[str] = None):
+                 opensearch_dashboards: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str opensearch: Opensearch server provided values
         """
@@ -27371,6 +27644,8 @@ class GetOpenSearchOpensearchUserConfigPrivatelinkAccessResult(dict):
             pulumi.set(__self__, "opensearch", opensearch)
         if opensearch_dashboards is not None:
             pulumi.set(__self__, "opensearch_dashboards", opensearch_dashboards)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -27384,6 +27659,11 @@ class GetOpenSearchOpensearchUserConfigPrivatelinkAccessResult(dict):
     @pulumi.getter(name="opensearchDashboards")
     def opensearch_dashboards(self) -> Optional[str]:
         return pulumi.get(self, "opensearch_dashboards")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -27562,6 +27842,7 @@ class GetPgPgUserConfigResult(dict):
                  admin_username: Optional[str] = None,
                  backup_hour: Optional[str] = None,
                  backup_minute: Optional[str] = None,
+                 enable_ipv6: Optional[str] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.GetPgPgUserConfigMigrationResult'] = None,
                  pg: Optional['outputs.GetPgPgUserConfigPgResult'] = None,
@@ -27594,6 +27875,8 @@ class GetPgPgUserConfigResult(dict):
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if enable_ipv6 is not None:
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -27654,6 +27937,11 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter(name="backupMinute")
     def backup_minute(self) -> Optional[str]:
         return pulumi.get(self, "backup_minute")
+
+    @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> Optional[str]:
+        return pulumi.get(self, "enable_ipv6")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -28333,7 +28621,8 @@ class GetPgPgUserConfigPrivateAccessResult(dict):
 class GetPgPgUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
                  pg: Optional[str] = None,
-                 pgbouncer: Optional[str] = None):
+                 pgbouncer: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str pg: PostgreSQL specific server provided values
         """
@@ -28341,6 +28630,8 @@ class GetPgPgUserConfigPrivatelinkAccessResult(dict):
             pulumi.set(__self__, "pg", pg)
         if pgbouncer is not None:
             pulumi.set(__self__, "pgbouncer", pgbouncer)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -28354,6 +28645,11 @@ class GetPgPgUserConfigPrivatelinkAccessResult(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[str]:
         return pulumi.get(self, "pgbouncer")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -28753,12 +29049,20 @@ class GetRedisRedisUserConfigPrivateAccessResult(dict):
 @pulumi.output_type
 class GetRedisRedisUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
+                 prometheus: Optional[str] = None,
                  redis: Optional[str] = None):
         """
         :param str redis: Redis server provided values
         """
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
         if redis is not None:
             pulumi.set(__self__, "redis", redis)
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter
@@ -29230,13 +29534,13 @@ class GetServiceElasticsearchUserConfigElasticsearchResult(dict):
                  indices_query_bool_max_clause_count: Optional[str] = None,
                  override_main_response_version: Optional[str] = None,
                  reindex_remote_whitelists: Optional[Sequence[str]] = None,
+                 script_max_compilations_rate: Optional[str] = None,
                  search_max_buckets: Optional[str] = None,
                  thread_pool_analyze_queue_size: Optional[str] = None,
                  thread_pool_analyze_size: Optional[str] = None,
                  thread_pool_force_merge_size: Optional[str] = None,
                  thread_pool_get_queue_size: Optional[str] = None,
                  thread_pool_get_size: Optional[str] = None,
-                 thread_pool_index_queue_size: Optional[str] = None,
                  thread_pool_index_size: Optional[str] = None,
                  thread_pool_search_queue_size: Optional[str] = None,
                  thread_pool_search_size: Optional[str] = None,
@@ -29268,6 +29572,8 @@ class GetServiceElasticsearchUserConfigElasticsearchResult(dict):
             pulumi.set(__self__, "override_main_response_version", override_main_response_version)
         if reindex_remote_whitelists is not None:
             pulumi.set(__self__, "reindex_remote_whitelists", reindex_remote_whitelists)
+        if script_max_compilations_rate is not None:
+            pulumi.set(__self__, "script_max_compilations_rate", script_max_compilations_rate)
         if search_max_buckets is not None:
             pulumi.set(__self__, "search_max_buckets", search_max_buckets)
         if thread_pool_analyze_queue_size is not None:
@@ -29280,8 +29586,6 @@ class GetServiceElasticsearchUserConfigElasticsearchResult(dict):
             pulumi.set(__self__, "thread_pool_get_queue_size", thread_pool_get_queue_size)
         if thread_pool_get_size is not None:
             pulumi.set(__self__, "thread_pool_get_size", thread_pool_get_size)
-        if thread_pool_index_queue_size is not None:
-            pulumi.set(__self__, "thread_pool_index_queue_size", thread_pool_index_queue_size)
         if thread_pool_index_size is not None:
             pulumi.set(__self__, "thread_pool_index_size", thread_pool_index_size)
         if thread_pool_search_queue_size is not None:
@@ -29358,6 +29662,11 @@ class GetServiceElasticsearchUserConfigElasticsearchResult(dict):
         return pulumi.get(self, "reindex_remote_whitelists")
 
     @property
+    @pulumi.getter(name="scriptMaxCompilationsRate")
+    def script_max_compilations_rate(self) -> Optional[str]:
+        return pulumi.get(self, "script_max_compilations_rate")
+
+    @property
     @pulumi.getter(name="searchMaxBuckets")
     def search_max_buckets(self) -> Optional[str]:
         return pulumi.get(self, "search_max_buckets")
@@ -29386,11 +29695,6 @@ class GetServiceElasticsearchUserConfigElasticsearchResult(dict):
     @pulumi.getter(name="threadPoolGetSize")
     def thread_pool_get_size(self) -> Optional[str]:
         return pulumi.get(self, "thread_pool_get_size")
-
-    @property
-    @pulumi.getter(name="threadPoolIndexQueueSize")
-    def thread_pool_index_queue_size(self) -> Optional[str]:
-        return pulumi.get(self, "thread_pool_index_queue_size")
 
     @property
     @pulumi.getter(name="threadPoolIndexSize")
@@ -29554,7 +29858,8 @@ class GetServiceElasticsearchUserConfigPrivateAccessResult(dict):
 class GetServiceElasticsearchUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
                  elasticsearch: Optional[str] = None,
-                 kibana: Optional[str] = None):
+                 kibana: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str elasticsearch: Elasticsearch specific server provided values
         """
@@ -29562,6 +29867,8 @@ class GetServiceElasticsearchUserConfigPrivatelinkAccessResult(dict):
             pulumi.set(__self__, "elasticsearch", elasticsearch)
         if kibana is not None:
             pulumi.set(__self__, "kibana", kibana)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -29575,6 +29882,11 @@ class GetServiceElasticsearchUserConfigPrivatelinkAccessResult(dict):
     @pulumi.getter
     def kibana(self) -> Optional[str]:
         return pulumi.get(self, "kibana")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -29720,12 +30032,15 @@ class GetServiceFlinkUserConfigResult(dict):
 @pulumi.output_type
 class GetServiceFlinkUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
-                 flink: Optional[str] = None):
+                 flink: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str flink: Flink specific server provided values
         """
         if flink is not None:
             pulumi.set(__self__, "flink", flink)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -29734,6 +30049,11 @@ class GetServiceFlinkUserConfigPrivatelinkAccessResult(dict):
         Flink specific server provided values
         """
         return pulumi.get(self, "flink")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -32058,12 +32378,23 @@ class GetServiceKafkaConnectUserConfigPrivateAccessResult(dict):
 @pulumi.output_type
 class GetServiceKafkaConnectUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
-                 kafka_connect: Optional[str] = None):
+                 jolokia: Optional[str] = None,
+                 kafka_connect: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str kafka_connect: Kafka Connect specific server provided values
         """
+        if jolokia is not None:
+            pulumi.set(__self__, "jolokia", jolokia)
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+
+    @property
+    @pulumi.getter
+    def jolokia(self) -> Optional[str]:
+        return pulumi.get(self, "jolokia")
 
     @property
     @pulumi.getter(name="kafkaConnect")
@@ -32072,6 +32403,11 @@ class GetServiceKafkaConnectUserConfigPrivatelinkAccessResult(dict):
         Kafka Connect specific server provided values
         """
         return pulumi.get(self, "kafka_connect")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -32870,22 +33206,33 @@ class GetServiceKafkaUserConfigPrivateAccessResult(dict):
 @pulumi.output_type
 class GetServiceKafkaUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
+                 jolokia: Optional[str] = None,
                  kafka: Optional[str] = None,
                  kafka_connect: Optional[str] = None,
                  kafka_rest: Optional[str] = None,
+                 prometheus: Optional[str] = None,
                  schema_registry: Optional[str] = None):
         """
         :param str kafka: Kafka specific server provided values
         :param str kafka_connect: Kafka Connect specific server provided values
         """
+        if jolokia is not None:
+            pulumi.set(__self__, "jolokia", jolokia)
         if kafka is not None:
             pulumi.set(__self__, "kafka", kafka)
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if kafka_rest is not None:
             pulumi.set(__self__, "kafka_rest", kafka_rest)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
         if schema_registry is not None:
             pulumi.set(__self__, "schema_registry", schema_registry)
+
+    @property
+    @pulumi.getter
+    def jolokia(self) -> Optional[str]:
+        return pulumi.get(self, "jolokia")
 
     @property
     @pulumi.getter
@@ -32907,6 +33254,11 @@ class GetServiceKafkaUserConfigPrivatelinkAccessResult(dict):
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[str]:
         return pulumi.get(self, "kafka_rest")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter(name="schemaRegistry")
@@ -33444,7 +33796,8 @@ class GetServiceMysqlUserConfigPrivateAccessResult(dict):
 class GetServiceMysqlUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
                  mysql: Optional[str] = None,
-                 mysqlx: Optional[str] = None):
+                 mysqlx: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str mysql: MySQL specific server provided values
         """
@@ -33452,6 +33805,8 @@ class GetServiceMysqlUserConfigPrivatelinkAccessResult(dict):
             pulumi.set(__self__, "mysql", mysql)
         if mysqlx is not None:
             pulumi.set(__self__, "mysqlx", mysqlx)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -33465,6 +33820,11 @@ class GetServiceMysqlUserConfigPrivatelinkAccessResult(dict):
     @pulumi.getter
     def mysqlx(self) -> Optional[str]:
         return pulumi.get(self, "mysqlx")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -33738,6 +34098,7 @@ class GetServiceOpensearchUserConfigOpensearchResult(dict):
                  indices_query_bool_max_clause_count: Optional[str] = None,
                  override_main_response_version: Optional[str] = None,
                  reindex_remote_whitelists: Optional[Sequence[str]] = None,
+                 script_max_compilations_rate: Optional[str] = None,
                  search_max_buckets: Optional[str] = None,
                  thread_pool_analyze_queue_size: Optional[str] = None,
                  thread_pool_analyze_size: Optional[str] = None,
@@ -33775,6 +34136,8 @@ class GetServiceOpensearchUserConfigOpensearchResult(dict):
             pulumi.set(__self__, "override_main_response_version", override_main_response_version)
         if reindex_remote_whitelists is not None:
             pulumi.set(__self__, "reindex_remote_whitelists", reindex_remote_whitelists)
+        if script_max_compilations_rate is not None:
+            pulumi.set(__self__, "script_max_compilations_rate", script_max_compilations_rate)
         if search_max_buckets is not None:
             pulumi.set(__self__, "search_max_buckets", search_max_buckets)
         if thread_pool_analyze_queue_size is not None:
@@ -33861,6 +34224,11 @@ class GetServiceOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="reindexRemoteWhitelists")
     def reindex_remote_whitelists(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "reindex_remote_whitelists")
+
+    @property
+    @pulumi.getter(name="scriptMaxCompilationsRate")
+    def script_max_compilations_rate(self) -> Optional[str]:
+        return pulumi.get(self, "script_max_compilations_rate")
 
     @property
     @pulumi.getter(name="searchMaxBuckets")
@@ -33996,7 +34364,8 @@ class GetServiceOpensearchUserConfigPrivateAccessResult(dict):
 class GetServiceOpensearchUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
                  opensearch: Optional[str] = None,
-                 opensearch_dashboards: Optional[str] = None):
+                 opensearch_dashboards: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str opensearch: Opensearch specific server provided values
         """
@@ -34004,6 +34373,8 @@ class GetServiceOpensearchUserConfigPrivatelinkAccessResult(dict):
             pulumi.set(__self__, "opensearch", opensearch)
         if opensearch_dashboards is not None:
             pulumi.set(__self__, "opensearch_dashboards", opensearch_dashboards)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -34017,6 +34388,11 @@ class GetServiceOpensearchUserConfigPrivatelinkAccessResult(dict):
     @pulumi.getter(name="opensearchDashboards")
     def opensearch_dashboards(self) -> Optional[str]:
         return pulumi.get(self, "opensearch_dashboards")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -34122,6 +34498,7 @@ class GetServicePgUserConfigResult(dict):
                  admin_username: Optional[str] = None,
                  backup_hour: Optional[str] = None,
                  backup_minute: Optional[str] = None,
+                 enable_ipv6: Optional[str] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  migration: Optional['outputs.GetServicePgUserConfigMigrationResult'] = None,
                  pg: Optional['outputs.GetServicePgUserConfigPgResult'] = None,
@@ -34154,6 +34531,8 @@ class GetServicePgUserConfigResult(dict):
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if enable_ipv6 is not None:
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ip_filters is not None:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if migration is not None:
@@ -34214,6 +34593,11 @@ class GetServicePgUserConfigResult(dict):
     @pulumi.getter(name="backupMinute")
     def backup_minute(self) -> Optional[str]:
         return pulumi.get(self, "backup_minute")
+
+    @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> Optional[str]:
+        return pulumi.get(self, "enable_ipv6")
 
     @property
     @pulumi.getter(name="ipFilters")
@@ -34893,7 +35277,8 @@ class GetServicePgUserConfigPrivateAccessResult(dict):
 class GetServicePgUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
                  pg: Optional[str] = None,
-                 pgbouncer: Optional[str] = None):
+                 pgbouncer: Optional[str] = None,
+                 prometheus: Optional[str] = None):
         """
         :param str pg: PostgreSQL specific server provided values
         """
@@ -34901,6 +35286,8 @@ class GetServicePgUserConfigPrivatelinkAccessResult(dict):
             pulumi.set(__self__, "pg", pg)
         if pgbouncer is not None:
             pulumi.set(__self__, "pgbouncer", pgbouncer)
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
 
     @property
     @pulumi.getter
@@ -34914,6 +35301,11 @@ class GetServicePgUserConfigPrivatelinkAccessResult(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[str]:
         return pulumi.get(self, "pgbouncer")
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
 
 @pulumi.output_type
@@ -35240,12 +35632,20 @@ class GetServiceRedisUserConfigPrivateAccessResult(dict):
 @pulumi.output_type
 class GetServiceRedisUserConfigPrivatelinkAccessResult(dict):
     def __init__(__self__, *,
+                 prometheus: Optional[str] = None,
                  redis: Optional[str] = None):
         """
         :param str redis: Redis specific server provided values
         """
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
         if redis is not None:
             pulumi.set(__self__, "redis", redis)
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[str]:
+        return pulumi.get(self, "prometheus")
 
     @property
     @pulumi.getter

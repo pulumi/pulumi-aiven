@@ -61,6 +61,8 @@ type LookupAccountResult struct {
 	Name string `pulumi:"name"`
 	// Owner team id
 	OwnerTeamId string `pulumi:"ownerTeamId"`
+	// Billing group id
+	PrimaryBillingGroupId string `pulumi:"primaryBillingGroupId"`
 	// Tenant id
 	TenantId string `pulumi:"tenantId"`
 	// Time of last update
@@ -128,6 +130,11 @@ func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
 // Owner team id
 func (o LookupAccountResultOutput) OwnerTeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.OwnerTeamId }).(pulumi.StringOutput)
+}
+
+// Billing group id
+func (o LookupAccountResultOutput) PrimaryBillingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.PrimaryBillingGroupId }).(pulumi.StringOutput)
 }
 
 // Tenant id

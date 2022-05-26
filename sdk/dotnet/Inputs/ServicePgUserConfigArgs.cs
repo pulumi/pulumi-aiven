@@ -36,6 +36,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("backupMinute")]
         public Input<string>? BackupMinute { get; set; }
 
+        /// <summary>
+        /// Enable IPv6
+        /// </summary>
+        [Input("enableIpv6")]
+        public Input<string>? EnableIpv6 { get; set; }
+
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
 

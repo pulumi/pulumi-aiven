@@ -13,14 +13,19 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetRedisRedisUserConfigPrivatelinkAccessResult
     {
+        public readonly string? Prometheus;
         /// <summary>
         /// Redis server provided values
         /// </summary>
         public readonly string? Redis;
 
         [OutputConstructor]
-        private GetRedisRedisUserConfigPrivatelinkAccessResult(string? redis)
+        private GetRedisRedisUserConfigPrivatelinkAccessResult(
+            string? prometheus,
+
+            string? redis)
         {
+            Prometheus = prometheus;
             Redis = redis;
         }
     }

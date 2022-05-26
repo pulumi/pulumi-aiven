@@ -18,15 +18,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Opensearch;
         public readonly string? OpensearchDashboards;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
         private ServiceOpensearchUserConfigPrivatelinkAccess(
             string? opensearch,
 
-            string? opensearchDashboards)
+            string? opensearchDashboards,
+
+            string? prometheus)
         {
             Opensearch = opensearch;
             OpensearchDashboards = opensearchDashboards;
+            Prometheus = prometheus;
         }
     }
 }

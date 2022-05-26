@@ -56,6 +56,8 @@ type Project struct {
 	// The current accumulated bill for this project in the current billing period.
 	EstimatedBalance pulumi.StringOutput `pulumi:"estimatedBalance"`
 	// The method of invoicing used for payments for this project, e.g. `card`.
+	//
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	PaymentMethod pulumi.StringOutput `pulumi:"paymentMethod"`
 	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -142,6 +144,8 @@ type projectState struct {
 	// The current accumulated bill for this project in the current billing period.
 	EstimatedBalance *string `pulumi:"estimatedBalance"`
 	// The method of invoicing used for payments for this project, e.g. `card`.
+	//
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	PaymentMethod *string `pulumi:"paymentMethod"`
 	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project *string `pulumi:"project"`
@@ -197,6 +201,8 @@ type ProjectState struct {
 	// The current accumulated bill for this project in the current billing period.
 	EstimatedBalance pulumi.StringPtrInput
 	// The method of invoicing used for payments for this project, e.g. `card`.
+	//
+	// Deprecated: Please use aiven_billing_group resource to set this value.
 	PaymentMethod pulumi.StringPtrInput
 	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project pulumi.StringPtrInput

@@ -18,15 +18,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Pg;
         public readonly string? Pgbouncer;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
         private ServicePgUserConfigPrivatelinkAccess(
             string? pg,
 
-            string? pgbouncer)
+            string? pgbouncer,
+
+            string? prometheus)
         {
             Pg = pg;
             Pgbouncer = pgbouncer;
+            Prometheus = prometheus;
         }
     }
 }

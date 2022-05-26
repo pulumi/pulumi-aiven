@@ -53,6 +53,9 @@ namespace Pulumi.Aiven.Inputs
             set => _reindexRemoteWhitelists = value;
         }
 
+        [Input("scriptMaxCompilationsRate")]
+        public Input<string>? ScriptMaxCompilationsRate { get; set; }
+
         [Input("searchMaxBuckets")]
         public Input<string>? SearchMaxBuckets { get; set; }
 

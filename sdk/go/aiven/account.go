@@ -43,6 +43,8 @@ type Account struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Owner team id
 	OwnerTeamId pulumi.StringOutput `pulumi:"ownerTeamId"`
+	// Billing group id
+	PrimaryBillingGroupId pulumi.StringPtrOutput `pulumi:"primaryBillingGroupId"`
 	// Tenant id
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Time of last update
@@ -86,6 +88,8 @@ type accountState struct {
 	Name *string `pulumi:"name"`
 	// Owner team id
 	OwnerTeamId *string `pulumi:"ownerTeamId"`
+	// Billing group id
+	PrimaryBillingGroupId *string `pulumi:"primaryBillingGroupId"`
 	// Tenant id
 	TenantId *string `pulumi:"tenantId"`
 	// Time of last update
@@ -101,6 +105,8 @@ type AccountState struct {
 	Name pulumi.StringPtrInput
 	// Owner team id
 	OwnerTeamId pulumi.StringPtrInput
+	// Billing group id
+	PrimaryBillingGroupId pulumi.StringPtrInput
 	// Tenant id
 	TenantId pulumi.StringPtrInput
 	// Time of last update
@@ -114,12 +120,16 @@ func (AccountState) ElementType() reflect.Type {
 type accountArgs struct {
 	// Account name
 	Name *string `pulumi:"name"`
+	// Billing group id
+	PrimaryBillingGroupId *string `pulumi:"primaryBillingGroupId"`
 }
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
 	// Account name
 	Name pulumi.StringPtrInput
+	// Billing group id
+	PrimaryBillingGroupId pulumi.StringPtrInput
 }
 
 func (AccountArgs) ElementType() reflect.Type {

@@ -21,6 +21,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("pgbouncer")]
         public Input<string>? Pgbouncer { get; set; }
 
+        [Input("prometheus")]
+        public Input<string>? Prometheus { get; set; }
+
         public PgPgUserConfigPrivatelinkAccessArgs()
         {
         }

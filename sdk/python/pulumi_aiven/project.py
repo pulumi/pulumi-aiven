@@ -385,6 +385,9 @@ class _ProjectState:
         if estimated_balance is not None:
             pulumi.set(__self__, "estimated_balance", estimated_balance)
         if payment_method is not None:
+            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
+            pulumi.log.warn("""payment_method is deprecated: Please use aiven_billing_group resource to set this value.""")
+        if payment_method is not None:
             pulumi.set(__self__, "payment_method", payment_method)
         if project is not None:
             pulumi.set(__self__, "project", project)

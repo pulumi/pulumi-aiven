@@ -58,6 +58,12 @@ namespace Pulumi.Aiven
         public Output<string> OwnerTeamId { get; private set; } = null!;
 
         /// <summary>
+        /// Billing group id
+        /// </summary>
+        [Output("primaryBillingGroupId")]
+        public Output<string?> PrimaryBillingGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// Tenant id
         /// </summary>
         [Output("tenantId")]
@@ -121,6 +127,12 @@ namespace Pulumi.Aiven
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Billing group id
+        /// </summary>
+        [Input("primaryBillingGroupId")]
+        public Input<string>? PrimaryBillingGroupId { get; set; }
+
         public AccountArgs()
         {
         }
@@ -151,6 +163,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("ownerTeamId")]
         public Input<string>? OwnerTeamId { get; set; }
+
+        /// <summary>
+        /// Billing group id
+        /// </summary>
+        [Input("primaryBillingGroupId")]
+        public Input<string>? PrimaryBillingGroupId { get; set; }
 
         /// <summary>
         /// Tenant id

@@ -82,7 +82,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RedisSsl;
         /// <summary>
-        /// Redis idle connection timeout
+        /// Redis idle connection timeout in seconds
         /// </summary>
         public readonly string? RedisTimeout;
         /// <summary>

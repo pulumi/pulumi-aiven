@@ -18,15 +18,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Mysql;
         public readonly string? Mysqlx;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
         private MySqlMysqlUserConfigPrivatelinkAccess(
             string? mysql,
 
-            string? mysqlx)
+            string? mysqlx,
+
+            string? prometheus)
         {
             Mysql = mysql;
             Mysqlx = mysqlx;
+            Prometheus = prometheus;
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? IndicesQueryBoolMaxClauseCount;
         public readonly string? OverrideMainResponseVersion;
         public readonly ImmutableArray<string> ReindexRemoteWhitelists;
+        public readonly string? ScriptMaxCompilationsRate;
         public readonly string? SearchMaxBuckets;
         public readonly string? ThreadPoolAnalyzeQueueSize;
         public readonly string? ThreadPoolAnalyzeSize;
@@ -65,6 +66,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> reindexRemoteWhitelists,
 
+            string? scriptMaxCompilationsRate,
+
             string? searchMaxBuckets,
 
             string? threadPoolAnalyzeQueueSize,
@@ -103,6 +106,7 @@ namespace Pulumi.Aiven.Outputs
             IndicesQueryBoolMaxClauseCount = indicesQueryBoolMaxClauseCount;
             OverrideMainResponseVersion = overrideMainResponseVersion;
             ReindexRemoteWhitelists = reindexRemoteWhitelists;
+            ScriptMaxCompilationsRate = scriptMaxCompilationsRate;
             SearchMaxBuckets = searchMaxBuckets;
             ThreadPoolAnalyzeQueueSize = threadPoolAnalyzeQueueSize;
             ThreadPoolAnalyzeSize = threadPoolAnalyzeSize;
