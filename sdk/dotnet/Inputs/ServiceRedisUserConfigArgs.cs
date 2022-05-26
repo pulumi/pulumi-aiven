@@ -121,7 +121,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? RedisSsl { get; set; }
 
         /// <summary>
-        /// Redis idle connection timeout
+        /// Redis idle connection timeout in seconds
         /// </summary>
         [Input("redisTimeout")]
         public Input<string>? RedisTimeout { get; set; }

@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaKafkaUserConfigPrivatelinkAccessArgs : Pulumi.ResourceArgs
     {
+        [Input("jolokia")]
+        public Input<string>? Jolokia { get; set; }
+
         /// <summary>
         /// Kafka server provided values
         /// </summary>
@@ -23,6 +26,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("kafkaRest")]
         public Input<string>? KafkaRest { get; set; }
+
+        [Input("prometheus")]
+        public Input<string>? Prometheus { get; set; }
 
         [Input("schemaRegistry")]
         public Input<string>? SchemaRegistry { get; set; }

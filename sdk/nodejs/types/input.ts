@@ -267,13 +267,13 @@ export interface ElasticSearchElasticsearchUserConfigElasticsearch {
     indicesQueryBoolMaxClauseCount?: pulumi.Input<string>;
     overrideMainResponseVersion?: pulumi.Input<string>;
     reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    scriptMaxCompilationsRate?: pulumi.Input<string>;
     searchMaxBuckets?: pulumi.Input<string>;
     threadPoolAnalyzeQueueSize?: pulumi.Input<string>;
     threadPoolAnalyzeSize?: pulumi.Input<string>;
     threadPoolForceMergeSize?: pulumi.Input<string>;
     threadPoolGetQueueSize?: pulumi.Input<string>;
     threadPoolGetSize?: pulumi.Input<string>;
-    threadPoolIndexQueueSize?: pulumi.Input<string>;
     threadPoolIndexSize?: pulumi.Input<string>;
     threadPoolSearchQueueSize?: pulumi.Input<string>;
     threadPoolSearchSize?: pulumi.Input<string>;
@@ -316,6 +316,7 @@ export interface ElasticSearchElasticsearchUserConfigPrivatelinkAccess {
      */
     elasticsearch?: pulumi.Input<string>;
     kibana?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ElasticSearchElasticsearchUserConfigPublicAccess {
@@ -407,6 +408,7 @@ export interface FlinkFlinkUserConfigPrivatelinkAccess {
      * Flink server provided values
      */
     flink?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface FlinkServiceIntegration {
@@ -856,10 +858,12 @@ export interface KafkaConnectKafkaConnectUserConfigPrivateAccess {
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
+    jolokia?: pulumi.Input<string>;
     /**
      * Kafka Connect server provided values
      */
     kafkaConnect?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
@@ -1050,12 +1054,14 @@ export interface KafkaKafkaUserConfigPrivateAccess {
 }
 
 export interface KafkaKafkaUserConfigPrivatelinkAccess {
+    jolokia?: pulumi.Input<string>;
     /**
      * Kafka server provided values
      */
     kafka?: pulumi.Input<string>;
     kafkaConnect?: pulumi.Input<string>;
     kafkaRest?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
     schemaRegistry?: pulumi.Input<string>;
 }
 
@@ -1559,6 +1565,7 @@ export interface MySqlMysqlUserConfigPrivatelinkAccess {
      */
     mysql?: pulumi.Input<string>;
     mysqlx?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface MySqlMysqlUserConfigPublicAccess {
@@ -1691,6 +1698,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
     indicesQueryBoolMaxClauseCount?: pulumi.Input<string>;
     overrideMainResponseVersion?: pulumi.Input<string>;
     reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    scriptMaxCompilationsRate?: pulumi.Input<string>;
     searchMaxBuckets?: pulumi.Input<string>;
     threadPoolAnalyzeQueueSize?: pulumi.Input<string>;
     threadPoolAnalyzeSize?: pulumi.Input<string>;
@@ -1727,6 +1735,7 @@ export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
      */
     opensearch?: pulumi.Input<string>;
     opensearchDashboards?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfigPublicAccess {
@@ -1811,6 +1820,10 @@ export interface PgPgUserConfig {
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
      */
     backupMinute?: pulumi.Input<string>;
+    /**
+     * Enable IPv6
+     */
+    enableIpv6?: pulumi.Input<string>;
     /**
      * IP filter
      */
@@ -1984,6 +1997,7 @@ export interface PgPgUserConfigPrivatelinkAccess {
      */
     pg?: pulumi.Input<string>;
     pgbouncer?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigPublicAccess {
@@ -2093,7 +2107,7 @@ export interface RedisRedisUserConfig {
      */
     redisSsl?: pulumi.Input<string>;
     /**
-     * Redis idle connection timeout
+     * Redis idle connection timeout in seconds
      */
     redisTimeout?: pulumi.Input<string>;
     /**
@@ -2126,6 +2140,7 @@ export interface RedisRedisUserConfigPrivateAccess {
 }
 
 export interface RedisRedisUserConfigPrivatelinkAccess {
+    prometheus?: pulumi.Input<string>;
     /**
      * Redis server provided values
      */
@@ -2326,13 +2341,13 @@ export interface ServiceElasticsearchUserConfigElasticsearch {
     indicesQueryBoolMaxClauseCount?: pulumi.Input<string>;
     overrideMainResponseVersion?: pulumi.Input<string>;
     reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    scriptMaxCompilationsRate?: pulumi.Input<string>;
     searchMaxBuckets?: pulumi.Input<string>;
     threadPoolAnalyzeQueueSize?: pulumi.Input<string>;
     threadPoolAnalyzeSize?: pulumi.Input<string>;
     threadPoolForceMergeSize?: pulumi.Input<string>;
     threadPoolGetQueueSize?: pulumi.Input<string>;
     threadPoolGetSize?: pulumi.Input<string>;
-    threadPoolIndexQueueSize?: pulumi.Input<string>;
     threadPoolIndexSize?: pulumi.Input<string>;
     threadPoolSearchQueueSize?: pulumi.Input<string>;
     threadPoolSearchSize?: pulumi.Input<string>;
@@ -2375,6 +2390,7 @@ export interface ServiceElasticsearchUserConfigPrivatelinkAccess {
      */
     elasticsearch?: pulumi.Input<string>;
     kibana?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServiceElasticsearchUserConfigPublicAccess {
@@ -2445,6 +2461,7 @@ export interface ServiceFlinkUserConfigPrivatelinkAccess {
      * Flink specific server provided values
      */
     flink?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServiceGrafana {
@@ -3256,10 +3273,12 @@ export interface ServiceKafkaConnectUserConfigPrivateAccess {
 }
 
 export interface ServiceKafkaConnectUserConfigPrivatelinkAccess {
+    jolokia?: pulumi.Input<string>;
     /**
      * Kafka Connect specific server provided values
      */
     kafkaConnect?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServiceKafkaConnectUserConfigPublicAccess {
@@ -3439,6 +3458,7 @@ export interface ServiceKafkaUserConfigPrivateAccess {
 }
 
 export interface ServiceKafkaUserConfigPrivatelinkAccess {
+    jolokia?: pulumi.Input<string>;
     /**
      * Kafka specific server provided values
      */
@@ -3448,6 +3468,7 @@ export interface ServiceKafkaUserConfigPrivatelinkAccess {
      */
     kafkaConnect?: pulumi.Input<string>;
     kafkaRest?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
     schemaRegistry?: pulumi.Input<string>;
 }
 
@@ -3593,6 +3614,7 @@ export interface ServiceMysqlUserConfigPrivatelinkAccess {
      */
     mysql?: pulumi.Input<string>;
     mysqlx?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServiceMysqlUserConfigPublicAccess {
@@ -3704,6 +3726,7 @@ export interface ServiceOpensearchUserConfigOpensearch {
     indicesQueryBoolMaxClauseCount?: pulumi.Input<string>;
     overrideMainResponseVersion?: pulumi.Input<string>;
     reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    scriptMaxCompilationsRate?: pulumi.Input<string>;
     searchMaxBuckets?: pulumi.Input<string>;
     threadPoolAnalyzeQueueSize?: pulumi.Input<string>;
     threadPoolAnalyzeSize?: pulumi.Input<string>;
@@ -3740,6 +3763,7 @@ export interface ServiceOpensearchUserConfigPrivatelinkAccess {
      */
     opensearch?: pulumi.Input<string>;
     opensearchDashboards?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServiceOpensearchUserConfigPublicAccess {
@@ -3779,6 +3803,10 @@ export interface ServicePgUserConfig {
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
      */
     backupMinute?: pulumi.Input<string>;
+    /**
+     * Enable IPv6
+     */
+    enableIpv6?: pulumi.Input<string>;
     /**
      * IP filter
      */
@@ -3952,6 +3980,7 @@ export interface ServicePgUserConfigPrivatelinkAccess {
      */
     pg?: pulumi.Input<string>;
     pgbouncer?: pulumi.Input<string>;
+    prometheus?: pulumi.Input<string>;
 }
 
 export interface ServicePgUserConfigPublicAccess {
@@ -4040,7 +4069,7 @@ export interface ServiceRedisUserConfig {
      */
     redisSsl?: pulumi.Input<string>;
     /**
-     * Redis idle connection timeout
+     * Redis idle connection timeout in seconds
      */
     redisTimeout?: pulumi.Input<string>;
     /**
@@ -4073,6 +4102,7 @@ export interface ServiceRedisUserConfigPrivateAccess {
 }
 
 export interface ServiceRedisUserConfigPrivatelinkAccess {
+    prometheus?: pulumi.Input<string>;
     /**
      * Redis specific server provided values
      */

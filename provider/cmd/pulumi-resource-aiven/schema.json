@@ -893,6 +893,14 @@
                         }
                     }
                 },
+                "scriptMaxCompilationsRate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "searchMaxBuckets": {
                     "type": "string",
                     "language": {
@@ -934,14 +942,6 @@
                     }
                 },
                 "threadPoolGetSize": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "threadPoolIndexQueueSize": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -1137,6 +1137,14 @@
                     }
                 },
                 "kibana": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -1414,6 +1422,14 @@
                 "flink": {
                     "type": "string",
                     "description": "Flink server provided values\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3054,9 +3070,25 @@
         },
         "aiven:index/KafkaConnectKafkaConnectUserConfigPrivatelinkAccess:KafkaConnectKafkaConnectUserConfigPrivatelinkAccess": {
             "properties": {
+                "jolokia": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "kafkaConnect": {
                     "type": "string",
                     "description": "Kafka Connect server provided values\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3848,6 +3880,14 @@
         },
         "aiven:index/KafkaKafkaUserConfigPrivatelinkAccess:KafkaKafkaUserConfigPrivatelinkAccess": {
             "properties": {
+                "jolokia": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "kafka": {
                     "type": "string",
                     "description": "Kafka server provided values\n",
@@ -3866,6 +3906,14 @@
                     }
                 },
                 "kafkaRest": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -5638,6 +5686,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -6116,6 +6172,14 @@
                         }
                     }
                 },
+                "scriptMaxCompilationsRate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "searchMaxBuckets": {
                     "type": "string",
                     "language": {
@@ -6294,6 +6358,14 @@
                     }
                 },
                 "opensearchDashboards": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -6558,6 +6630,15 @@
                 "backupMinute": {
                     "type": "string",
                     "description": "The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableIpv6": {
+                    "type": "string",
+                    "description": "Enable IPv6\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -7333,6 +7414,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -7644,7 +7733,7 @@
                 },
                 "redisTimeout": {
                     "type": "string",
-                    "description": "Redis idle connection timeout\n",
+                    "description": "Redis idle connection timeout in seconds\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -7765,6 +7854,14 @@
         },
         "aiven:index/RedisRedisUserConfigPrivatelinkAccess:RedisRedisUserConfigPrivatelinkAccess": {
             "properties": {
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "redis": {
                     "type": "string",
                     "description": "Redis server provided values\n",
@@ -8371,6 +8468,14 @@
                         }
                     }
                 },
+                "scriptMaxCompilationsRate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "searchMaxBuckets": {
                     "type": "string",
                     "language": {
@@ -8412,14 +8517,6 @@
                     }
                 },
                 "threadPoolGetSize": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "threadPoolIndexQueueSize": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -8621,6 +8718,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -8791,6 +8896,14 @@
                 "flink": {
                     "type": "string",
                     "description": "Flink specific server provided values\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11266,9 +11379,25 @@
         },
         "aiven:index/ServiceKafkaConnectUserConfigPrivatelinkAccess:ServiceKafkaConnectUserConfigPrivatelinkAccess": {
             "properties": {
+                "jolokia": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "kafkaConnect": {
                     "type": "string",
                     "description": "Kafka Connect specific server provided values\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -12065,6 +12194,14 @@
         },
         "aiven:index/ServiceKafkaUserConfigPrivatelinkAccess:ServiceKafkaUserConfigPrivatelinkAccess": {
             "properties": {
+                "jolokia": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "kafka": {
                     "type": "string",
                     "description": "Kafka specific server provided values\n",
@@ -12084,6 +12221,14 @@
                     }
                 },
                 "kafkaRest": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -12639,6 +12784,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -13016,6 +13169,14 @@
                         }
                     }
                 },
+                "scriptMaxCompilationsRate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "searchMaxBuckets": {
                     "type": "string",
                     "language": {
@@ -13200,6 +13361,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -13349,6 +13518,15 @@
                 "backupMinute": {
                     "type": "string",
                     "description": "The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableIpv6": {
+                    "type": "string",
+                    "description": "Enable IPv6\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14124,6 +14302,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -14334,7 +14520,7 @@
                 },
                 "redisTimeout": {
                     "type": "string",
-                    "description": "Redis idle connection timeout\n",
+                    "description": "Redis idle connection timeout in seconds\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14455,6 +14641,14 @@
         },
         "aiven:index/ServiceRedisUserConfigPrivatelinkAccess:ServiceRedisUserConfigPrivatelinkAccess": {
             "properties": {
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "redis": {
                     "type": "string",
                     "description": "Redis specific server provided values\n",
@@ -15547,6 +15741,14 @@
                         }
                     }
                 },
+                "scriptMaxCompilationsRate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "searchMaxBuckets": {
                     "type": "string",
                     "language": {
@@ -15588,14 +15790,6 @@
                     }
                 },
                 "threadPoolGetSize": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "threadPoolIndexQueueSize": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -15791,6 +15985,14 @@
                     }
                 },
                 "kibana": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -16061,6 +16263,14 @@
                 "flink": {
                     "type": "string",
                     "description": "Flink server provided values\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -17669,9 +17879,25 @@
         },
         "aiven:index/getKafkaConnectKafkaConnectUserConfigPrivatelinkAccess:getKafkaConnectKafkaConnectUserConfigPrivatelinkAccess": {
             "properties": {
+                "jolokia": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "kafkaConnect": {
                     "type": "string",
                     "description": "Kafka Connect server provided values\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -18450,6 +18676,14 @@
         },
         "aiven:index/getKafkaKafkaUserConfigPrivatelinkAccess:getKafkaKafkaUserConfigPrivatelinkAccess": {
             "properties": {
+                "jolokia": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "kafka": {
                     "type": "string",
                     "description": "Kafka server provided values\n",
@@ -18468,6 +18702,14 @@
                     }
                 },
                 "kafkaRest": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -20206,6 +20448,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -20674,6 +20924,14 @@
                         }
                     }
                 },
+                "scriptMaxCompilationsRate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "searchMaxBuckets": {
                     "type": "string",
                     "language": {
@@ -20852,6 +21110,14 @@
                     }
                 },
                 "opensearchDashboards": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -21108,6 +21374,14 @@
                     }
                 },
                 "backupMinute": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableIpv6": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -21866,6 +22140,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -22283,6 +22565,14 @@
         },
         "aiven:index/getRedisRedisUserConfigPrivatelinkAccess:getRedisRedisUserConfigPrivatelinkAccess": {
             "properties": {
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "redis": {
                     "type": "string",
                     "description": "Redis server provided values\n",
@@ -22868,6 +23158,14 @@
                         }
                     }
                 },
+                "scriptMaxCompilationsRate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "searchMaxBuckets": {
                     "type": "string",
                     "language": {
@@ -22909,14 +23207,6 @@
                     }
                 },
                 "threadPoolGetSize": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "threadPoolIndexQueueSize": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -23118,6 +23408,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -23277,6 +23575,14 @@
                 "flink": {
                     "type": "string",
                     "description": "Flink specific server provided values\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -25631,9 +25937,25 @@
         },
         "aiven:index/getServiceKafkaConnectUserConfigPrivatelinkAccess:getServiceKafkaConnectUserConfigPrivatelinkAccess": {
             "properties": {
+                "jolokia": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "kafkaConnect": {
                     "type": "string",
                     "description": "Kafka Connect specific server provided values\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -26417,6 +26739,14 @@
         },
         "aiven:index/getServiceKafkaUserConfigPrivatelinkAccess:getServiceKafkaUserConfigPrivatelinkAccess": {
             "properties": {
+                "jolokia": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "kafka": {
                     "type": "string",
                     "description": "Kafka specific server provided values\n",
@@ -26436,6 +26766,14 @@
                     }
                 },
                 "kafkaRest": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prometheus": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -26977,6 +27315,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -27340,6 +27686,14 @@
                         }
                     }
                 },
+                "scriptMaxCompilationsRate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "searchMaxBuckets": {
                     "type": "string",
                     "language": {
@@ -27524,6 +27878,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -27669,6 +28031,14 @@
                     }
                 },
                 "backupMinute": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableIpv6": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -28427,6 +28797,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -28739,6 +29117,14 @@
         },
         "aiven:index/getServiceRedisUserConfigPrivatelinkAccess:getServiceRedisUserConfigPrivatelinkAccess": {
             "properties": {
+                "prometheus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "redis": {
                     "type": "string",
                     "description": "Redis specific server provided values\n",
@@ -28845,6 +29231,10 @@
                     "type": "string",
                     "description": "Owner team id\n"
                 },
+                "primaryBillingGroupId": {
+                    "type": "string",
+                    "description": "Billing group id\n"
+                },
                 "tenantId": {
                     "type": "string",
                     "description": "Tenant id\n"
@@ -28866,6 +29256,10 @@
                 "name": {
                     "type": "string",
                     "description": "Account name\n"
+                },
+                "primaryBillingGroupId": {
+                    "type": "string",
+                    "description": "Billing group id\n"
                 }
             },
             "stateInputs": {
@@ -28886,6 +29280,10 @@
                     "ownerTeamId": {
                         "type": "string",
                         "description": "Owner team id\n"
+                    },
+                    "primaryBillingGroupId": {
+                        "type": "string",
+                        "description": "Billing group id\n"
                     },
                     "tenantId": {
                         "type": "string",
@@ -36276,7 +36674,8 @@
                 },
                 "paymentMethod": {
                     "type": "string",
-                    "description": "The method of invoicing used for payments for this project, e.g. `card`.\n"
+                    "description": "The method of invoicing used for payments for this project, e.g. `card`.\n",
+                    "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                 },
                 "project": {
                     "type": "string",
@@ -36468,7 +36867,8 @@
                     },
                     "paymentMethod": {
                         "type": "string",
-                        "description": "The method of invoicing used for payments for this project, e.g. `card`.\n"
+                        "description": "The method of invoicing used for payments for this project, e.g. `card`.\n",
+                        "deprecationMessage": "Please use aiven_billing_group resource to set this value."
                     },
                     "project": {
                         "type": "string",
@@ -38612,6 +39012,10 @@
                         "type": "string",
                         "description": "Owner team id\n"
                     },
+                    "primaryBillingGroupId": {
+                        "type": "string",
+                        "description": "Billing group id\n"
+                    },
                     "tenantId": {
                         "type": "string",
                         "description": "Tenant id\n"
@@ -38627,6 +39031,7 @@
                     "createTime",
                     "name",
                     "ownerTeamId",
+                    "primaryBillingGroupId",
                     "tenantId",
                     "updateTime",
                     "id"

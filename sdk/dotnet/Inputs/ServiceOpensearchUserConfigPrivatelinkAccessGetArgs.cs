@@ -21,6 +21,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("opensearchDashboards")]
         public Input<string>? OpensearchDashboards { get; set; }
 
+        [Input("prometheus")]
+        public Input<string>? Prometheus { get; set; }
+
         public ServiceOpensearchUserConfigPrivatelinkAccessGetArgs()
         {
         }

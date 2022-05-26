@@ -64,6 +64,10 @@ export interface GetAccountResult {
      */
     readonly ownerTeamId: string;
     /**
+     * Billing group id
+     */
+    readonly primaryBillingGroupId: string;
+    /**
      * Tenant id
      */
     readonly tenantId: string;

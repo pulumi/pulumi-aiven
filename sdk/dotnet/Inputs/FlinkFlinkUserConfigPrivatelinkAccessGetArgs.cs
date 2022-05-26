@@ -18,6 +18,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("flink")]
         public Input<string>? Flink { get; set; }
 
+        [Input("prometheus")]
+        public Input<string>? Prometheus { get; set; }
+
         public FlinkFlinkUserConfigPrivatelinkAccessGetArgs()
         {
         }

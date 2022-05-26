@@ -13,15 +13,24 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessResult
     {
+        public readonly string? Jolokia;
         /// <summary>
         /// Kafka Connect server provided values
         /// </summary>
         public readonly string? KafkaConnect;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
-        private GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessResult(string? kafkaConnect)
+        private GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessResult(
+            string? jolokia,
+
+            string? kafkaConnect,
+
+            string? prometheus)
         {
+            Jolokia = jolokia;
             KafkaConnect = kafkaConnect;
+            Prometheus = prometheus;
         }
     }
 }

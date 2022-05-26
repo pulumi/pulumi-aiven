@@ -18,15 +18,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Elasticsearch;
         public readonly string? Kibana;
+        public readonly string? Prometheus;
 
         [OutputConstructor]
         private ElasticSearchElasticsearchUserConfigPrivatelinkAccess(
             string? elasticsearch,
 
-            string? kibana)
+            string? kibana,
+
+            string? prometheus)
         {
             Elasticsearch = elasticsearch;
             Kibana = kibana;
+            Prometheus = prometheus;
         }
     }
 }

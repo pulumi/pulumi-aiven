@@ -21,6 +21,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("kibana")]
         public Input<string>? Kibana { get; set; }
 
+        [Input("prometheus")]
+        public Input<string>? Prometheus { get; set; }
+
         public ElasticSearchElasticsearchUserConfigPrivatelinkAccessArgs()
         {
         }

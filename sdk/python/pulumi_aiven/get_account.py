@@ -20,7 +20,7 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, account_id=None, create_time=None, id=None, name=None, owner_team_id=None, tenant_id=None, update_time=None):
+    def __init__(__self__, account_id=None, create_time=None, id=None, name=None, owner_team_id=None, primary_billing_group_id=None, tenant_id=None, update_time=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -36,6 +36,9 @@ class GetAccountResult:
         if owner_team_id and not isinstance(owner_team_id, str):
             raise TypeError("Expected argument 'owner_team_id' to be a str")
         pulumi.set(__self__, "owner_team_id", owner_team_id)
+        if primary_billing_group_id and not isinstance(primary_billing_group_id, str):
+            raise TypeError("Expected argument 'primary_billing_group_id' to be a str")
+        pulumi.set(__self__, "primary_billing_group_id", primary_billing_group_id)
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")
         pulumi.set(__self__, "tenant_id", tenant_id)
@@ -84,6 +87,14 @@ class GetAccountResult:
         return pulumi.get(self, "owner_team_id")
 
     @property
+    @pulumi.getter(name="primaryBillingGroupId")
+    def primary_billing_group_id(self) -> str:
+        """
+        Billing group id
+        """
+        return pulumi.get(self, "primary_billing_group_id")
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
         """
@@ -111,6 +122,7 @@ class AwaitableGetAccountResult(GetAccountResult):
             id=self.id,
             name=self.name,
             owner_team_id=self.owner_team_id,
+            primary_billing_group_id=self.primary_billing_group_id,
             tenant_id=self.tenant_id,
             update_time=self.update_time)
 
@@ -146,6 +158,7 @@ def get_account(name: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         owner_team_id=__ret__.owner_team_id,
+        primary_billing_group_id=__ret__.primary_billing_group_id,
         tenant_id=__ret__.tenant_id,
         update_time=__ret__.update_time)
 

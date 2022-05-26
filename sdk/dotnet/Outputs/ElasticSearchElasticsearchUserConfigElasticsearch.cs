@@ -25,13 +25,13 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? IndicesQueryBoolMaxClauseCount;
         public readonly string? OverrideMainResponseVersion;
         public readonly ImmutableArray<string> ReindexRemoteWhitelists;
+        public readonly string? ScriptMaxCompilationsRate;
         public readonly string? SearchMaxBuckets;
         public readonly string? ThreadPoolAnalyzeQueueSize;
         public readonly string? ThreadPoolAnalyzeSize;
         public readonly string? ThreadPoolForceMergeSize;
         public readonly string? ThreadPoolGetQueueSize;
         public readonly string? ThreadPoolGetSize;
-        public readonly string? ThreadPoolIndexQueueSize;
         public readonly string? ThreadPoolIndexSize;
         public readonly string? ThreadPoolSearchQueueSize;
         public readonly string? ThreadPoolSearchSize;
@@ -66,6 +66,8 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> reindexRemoteWhitelists,
 
+            string? scriptMaxCompilationsRate,
+
             string? searchMaxBuckets,
 
             string? threadPoolAnalyzeQueueSize,
@@ -77,8 +79,6 @@ namespace Pulumi.Aiven.Outputs
             string? threadPoolGetQueueSize,
 
             string? threadPoolGetSize,
-
-            string? threadPoolIndexQueueSize,
 
             string? threadPoolIndexSize,
 
@@ -106,13 +106,13 @@ namespace Pulumi.Aiven.Outputs
             IndicesQueryBoolMaxClauseCount = indicesQueryBoolMaxClauseCount;
             OverrideMainResponseVersion = overrideMainResponseVersion;
             ReindexRemoteWhitelists = reindexRemoteWhitelists;
+            ScriptMaxCompilationsRate = scriptMaxCompilationsRate;
             SearchMaxBuckets = searchMaxBuckets;
             ThreadPoolAnalyzeQueueSize = threadPoolAnalyzeQueueSize;
             ThreadPoolAnalyzeSize = threadPoolAnalyzeSize;
             ThreadPoolForceMergeSize = threadPoolForceMergeSize;
             ThreadPoolGetQueueSize = threadPoolGetQueueSize;
             ThreadPoolGetSize = threadPoolGetSize;
-            ThreadPoolIndexQueueSize = threadPoolIndexQueueSize;
             ThreadPoolIndexSize = threadPoolIndexSize;
             ThreadPoolSearchQueueSize = threadPoolSearchQueueSize;
             ThreadPoolSearchSize = threadPoolSearchSize;

@@ -105,6 +105,8 @@ export class Project extends pulumi.CustomResource {
     public /*out*/ readonly estimatedBalance!: pulumi.Output<string>;
     /**
      * The method of invoicing used for payments for this project, e.g. `card`.
+     *
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     public /*out*/ readonly paymentMethod!: pulumi.Output<string>;
     /**
@@ -262,6 +264,8 @@ export interface ProjectState {
     estimatedBalance?: pulumi.Input<string>;
     /**
      * The method of invoicing used for payments for this project, e.g. `card`.
+     *
+     * @deprecated Please use aiven_billing_group resource to set this value.
      */
     paymentMethod?: pulumi.Input<string>;
     /**

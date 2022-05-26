@@ -122,6 +122,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string OwnerTeamId;
         /// <summary>
+        /// Billing group id
+        /// </summary>
+        public readonly string PrimaryBillingGroupId;
+        /// <summary>
         /// Tenant id
         /// </summary>
         public readonly string TenantId;
@@ -142,6 +146,8 @@ namespace Pulumi.Aiven
 
             string ownerTeamId,
 
+            string primaryBillingGroupId,
+
             string tenantId,
 
             string updateTime)
@@ -151,6 +157,7 @@ namespace Pulumi.Aiven
             Id = id;
             Name = name;
             OwnerTeamId = ownerTeamId;
+            PrimaryBillingGroupId = primaryBillingGroupId;
             TenantId = tenantId;
             UpdateTime = updateTime;
         }

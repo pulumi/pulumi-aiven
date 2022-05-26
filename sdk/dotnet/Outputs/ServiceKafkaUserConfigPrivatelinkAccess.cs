@@ -13,6 +13,7 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceKafkaUserConfigPrivatelinkAccess
     {
+        public readonly string? Jolokia;
         /// <summary>
         /// Kafka specific server provided values
         /// </summary>
@@ -22,21 +23,28 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? KafkaConnect;
         public readonly string? KafkaRest;
+        public readonly string? Prometheus;
         public readonly string? SchemaRegistry;
 
         [OutputConstructor]
         private ServiceKafkaUserConfigPrivatelinkAccess(
+            string? jolokia,
+
             string? kafka,
 
             string? kafkaConnect,
 
             string? kafkaRest,
 
+            string? prometheus,
+
             string? schemaRegistry)
         {
+            Jolokia = jolokia;
             Kafka = kafka;
             KafkaConnect = kafkaConnect;
             KafkaRest = kafkaRest;
+            Prometheus = prometheus;
             SchemaRegistry = schemaRegistry;
         }
     }
