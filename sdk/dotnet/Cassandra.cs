@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
     ///             Project = data.Aiven_project.Foo.Project,
     ///             CloudName = "google-europe-west1",
     ///             Plan = "startup-4",
-    ///             ServiceName = "test-acc-sr-%s",
+    ///             ServiceName = "test-service-name",
     ///             MaintenanceWindowDow = "monday",
     ///             MaintenanceWindowTime = "10:00:00",
     ///             CassandraUserConfig = new Aiven.Inputs.CassandraCassandraUserConfigArgs
@@ -42,6 +42,12 @@ namespace Pulumi.Aiven
     ///     }
     /// 
     /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/cassandra:Cassandra bar project/service_name
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/cassandra:Cassandra")]
@@ -192,6 +198,12 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
 
         /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.CassandraTag>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Output("terminationProtection")]
@@ -319,6 +331,18 @@ namespace Pulumi.Aiven
         {
             get => _staticIps ?? (_staticIps = new InputList<string>());
             set => _staticIps = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.CassandraTagArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        public InputList<Inputs.CassandraTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.CassandraTagArgs>());
+            set => _tags = value;
         }
 
         /// <summary>
@@ -500,6 +524,18 @@ namespace Pulumi.Aiven
         {
             get => _staticIps ?? (_staticIps = new InputList<string>());
             set => _staticIps = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.CassandraTagGetArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        public InputList<Inputs.CassandraTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.CassandraTagGetArgs>());
+            set => _tags = value;
         }
 
         /// <summary>

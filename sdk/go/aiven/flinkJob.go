@@ -21,7 +21,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -256,6 +256,41 @@ func (o FlinkJobOutput) ToFlinkJobOutput() FlinkJobOutput {
 
 func (o FlinkJobOutput) ToFlinkJobOutputWithContext(ctx context.Context) FlinkJobOutput {
 	return o
+}
+
+// The Job ID of the flink job in the flink service.
+func (o FlinkJobOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkJob) pulumi.StringOutput { return v.JobId }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobOutput) JobName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkJob) pulumi.StringOutput { return v.JobName }).(pulumi.StringOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkJob) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkJob) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The current state of the flink job in the flink service
+func (o FlinkJobOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkJob) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The SQL statement to define the job. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobOutput) Statement() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkJob) pulumi.StringOutput { return v.Statement }).(pulumi.StringOutput)
+}
+
+// A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobOutput) TableIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlinkJob) pulumi.StringArrayOutput { return v.TableIds }).(pulumi.StringArrayOutput)
 }
 
 type FlinkJobArrayOutput struct{ *pulumi.OutputState }

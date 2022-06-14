@@ -68,6 +68,10 @@ export interface GetKafkaAclArgs {
  */
 export interface GetKafkaAclResult {
     /**
+     * Kafka ACL ID
+     */
+    readonly aclId: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

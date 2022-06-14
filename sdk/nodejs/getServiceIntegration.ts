@@ -51,10 +51,6 @@ export interface GetServiceIntegrationArgs {
  */
 export interface GetServiceIntegrationResult {
     /**
-     * Dashboard specific user configurable settings
-     */
-    readonly datadogUserConfigs: outputs.GetServiceIntegrationDatadogUserConfig[];
-    /**
      * Destination endpoint for the integration (if any)
      */
     readonly destinationEndpointId: string;
@@ -102,10 +98,6 @@ export interface GetServiceIntegrationResult {
      * Project the integration belongs to
      */
     readonly project: string;
-    /**
-     * Prometheus coordinator specific user configurable settings
-     */
-    readonly prometheusUserConfigs: outputs.GetServiceIntegrationPrometheusUserConfig[];
     /**
      * Source endpoint for the integration (if any)
      */

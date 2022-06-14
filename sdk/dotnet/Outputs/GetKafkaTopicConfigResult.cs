@@ -13,9 +13,6 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaTopicConfigResult
     {
-        /// <summary>
-        /// **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
-        /// </summary>
         public readonly string? CleanupPolicy;
         public readonly string? CompressionType;
         public readonly string? DeleteRetentionMs;
@@ -33,9 +30,6 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? MinCompactionLagMs;
         public readonly string? MinInsyncReplicas;
         public readonly string? Preallocate;
-        /// <summary>
-        /// **DEPRECATED use config.retention_bytes instead** Retention bytes.
-        /// </summary>
         public readonly string? RetentionBytes;
         public readonly string? RetentionMs;
         public readonly string? SegmentBytes;

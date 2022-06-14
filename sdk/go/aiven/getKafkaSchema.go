@@ -18,7 +18,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -64,6 +64,8 @@ type LookupKafkaSchemaResult struct {
 	Project string `pulumi:"project"`
 	// Kafka Schema configuration should be a valid Avro Schema JSON format.
 	Schema string `pulumi:"schema"`
+	// Kafka Schema type JSON or AVRO
+	SchemaType string `pulumi:"schemaType"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
@@ -132,6 +134,11 @@ func (o LookupKafkaSchemaResultOutput) Project() pulumi.StringOutput {
 // Kafka Schema configuration should be a valid Avro Schema JSON format.
 func (o LookupKafkaSchemaResultOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaSchemaResult) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// Kafka Schema type JSON or AVRO
+func (o LookupKafkaSchemaResultOutput) SchemaType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaSchemaResult) string { return v.SchemaType }).(pulumi.StringOutput)
 }
 
 // Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

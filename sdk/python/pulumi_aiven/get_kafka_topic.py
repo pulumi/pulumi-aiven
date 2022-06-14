@@ -21,19 +21,13 @@ class GetKafkaTopicResult:
     """
     A collection of values returned by getKafkaTopic.
     """
-    def __init__(__self__, cleanup_policy=None, configs=None, id=None, minimum_in_sync_replicas=None, partitions=None, project=None, replication=None, retention_bytes=None, retention_hours=None, service_name=None, tags=None, termination_protection=None, topic_name=None):
-        if cleanup_policy and not isinstance(cleanup_policy, str):
-            raise TypeError("Expected argument 'cleanup_policy' to be a str")
-        pulumi.set(__self__, "cleanup_policy", cleanup_policy)
+    def __init__(__self__, configs=None, id=None, partitions=None, project=None, replication=None, service_name=None, tags=None, termination_protection=None, topic_name=None):
         if configs and not isinstance(configs, list):
             raise TypeError("Expected argument 'configs' to be a list")
         pulumi.set(__self__, "configs", configs)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if minimum_in_sync_replicas and not isinstance(minimum_in_sync_replicas, int):
-            raise TypeError("Expected argument 'minimum_in_sync_replicas' to be a int")
-        pulumi.set(__self__, "minimum_in_sync_replicas", minimum_in_sync_replicas)
         if partitions and not isinstance(partitions, int):
             raise TypeError("Expected argument 'partitions' to be a int")
         pulumi.set(__self__, "partitions", partitions)
@@ -43,12 +37,6 @@ class GetKafkaTopicResult:
         if replication and not isinstance(replication, int):
             raise TypeError("Expected argument 'replication' to be a int")
         pulumi.set(__self__, "replication", replication)
-        if retention_bytes and not isinstance(retention_bytes, int):
-            raise TypeError("Expected argument 'retention_bytes' to be a int")
-        pulumi.set(__self__, "retention_bytes", retention_bytes)
-        if retention_hours and not isinstance(retention_hours, int):
-            raise TypeError("Expected argument 'retention_hours' to be a int")
-        pulumi.set(__self__, "retention_hours", retention_hours)
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
@@ -61,14 +49,6 @@ class GetKafkaTopicResult:
         if topic_name and not isinstance(topic_name, str):
             raise TypeError("Expected argument 'topic_name' to be a str")
         pulumi.set(__self__, "topic_name", topic_name)
-
-    @property
-    @pulumi.getter(name="cleanupPolicy")
-    def cleanup_policy(self) -> str:
-        """
-        **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
-        """
-        return pulumi.get(self, "cleanup_policy")
 
     @property
     @pulumi.getter
@@ -85,14 +65,6 @@ class GetKafkaTopicResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="minimumInSyncReplicas")
-    def minimum_in_sync_replicas(self) -> int:
-        """
-        **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-        """
-        return pulumi.get(self, "minimum_in_sync_replicas")
 
     @property
     @pulumi.getter
@@ -117,22 +89,6 @@ class GetKafkaTopicResult:
         The replication factor for the topic.
         """
         return pulumi.get(self, "replication")
-
-    @property
-    @pulumi.getter(name="retentionBytes")
-    def retention_bytes(self) -> int:
-        """
-        **DEPRECATED use config.retention_bytes instead** Retention bytes.
-        """
-        return pulumi.get(self, "retention_bytes")
-
-    @property
-    @pulumi.getter(name="retentionHours")
-    def retention_hours(self) -> int:
-        """
-        **DEPRECATED use config.retention_ms instead** Retention period (hours).
-        """
-        return pulumi.get(self, "retention_hours")
 
     @property
     @pulumi.getter(name="serviceName")
@@ -170,15 +126,11 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
         if False:
             yield self
         return GetKafkaTopicResult(
-            cleanup_policy=self.cleanup_policy,
             configs=self.configs,
             id=self.id,
-            minimum_in_sync_replicas=self.minimum_in_sync_replicas,
             partitions=self.partitions,
             project=self.project,
             replication=self.replication,
-            retention_bytes=self.retention_bytes,
-            retention_hours=self.retention_hours,
             service_name=self.service_name,
             tags=self.tags,
             termination_protection=self.termination_protection,
@@ -219,15 +171,11 @@ def get_kafka_topic(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaTopic:getKafkaTopic', __args__, opts=opts, typ=GetKafkaTopicResult).value
 
     return AwaitableGetKafkaTopicResult(
-        cleanup_policy=__ret__.cleanup_policy,
         configs=__ret__.configs,
         id=__ret__.id,
-        minimum_in_sync_replicas=__ret__.minimum_in_sync_replicas,
         partitions=__ret__.partitions,
         project=__ret__.project,
         replication=__ret__.replication,
-        retention_bytes=__ret__.retention_bytes,
-        retention_hours=__ret__.retention_hours,
         service_name=__ret__.service_name,
         tags=__ret__.tags,
         termination_protection=__ret__.termination_protection,

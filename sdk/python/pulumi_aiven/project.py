@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ProjectArgs', 'Project']
 
@@ -17,36 +19,24 @@ class ProjectArgs:
                  account_id: Optional[pulumi.Input[str]] = None,
                  add_account_owners_admin_access: Optional[pulumi.Input[bool]] = None,
                  available_credits: Optional[pulumi.Input[str]] = None,
-                 billing_address: Optional[pulumi.Input[str]] = None,
-                 billing_currency: Optional[pulumi.Input[str]] = None,
-                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 billing_extra_text: Optional[pulumi.Input[str]] = None,
                  billing_group: Optional[pulumi.Input[str]] = None,
-                 card_id: Optional[pulumi.Input[str]] = None,
                  copy_from_project: Optional[pulumi.Input[str]] = None,
-                 country_code: Optional[pulumi.Input[str]] = None,
                  default_cloud: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
-                 vat_id: Optional[pulumi.Input[str]] = None):
+                 use_source_project_billing_group: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[str] project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         :param pulumi.Input[str] account_id: An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[bool] add_account_owners_admin_access: If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
         :param pulumi.Input[str] available_credits: The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-        :param pulumi.Input[str] billing_address: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-        :param pulumi.Input[str] billing_currency: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-        :param pulumi.Input[str] billing_extra_text: **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
         :param pulumi.Input[str] billing_group: The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] card_id: **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copy_from_project` is used to copy billing info from another project.
         :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] country_code: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
         :param pulumi.Input[str] default_cloud: Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
-        :param pulumi.Input[str] vat_id: **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
         """
         pulumi.set(__self__, "project", project)
         if account_id is not None:
@@ -55,51 +45,18 @@ class ProjectArgs:
             pulumi.set(__self__, "add_account_owners_admin_access", add_account_owners_admin_access)
         if available_credits is not None:
             pulumi.set(__self__, "available_credits", available_credits)
-        if billing_address is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""billing_address is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if billing_address is not None:
-            pulumi.set(__self__, "billing_address", billing_address)
-        if billing_currency is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""billing_currency is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if billing_currency is not None:
-            pulumi.set(__self__, "billing_currency", billing_currency)
-        if billing_emails is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""billing_emails is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if billing_emails is not None:
-            pulumi.set(__self__, "billing_emails", billing_emails)
-        if billing_extra_text is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""billing_extra_text is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if billing_extra_text is not None:
-            pulumi.set(__self__, "billing_extra_text", billing_extra_text)
         if billing_group is not None:
             pulumi.set(__self__, "billing_group", billing_group)
-        if card_id is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""card_id is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if card_id is not None:
-            pulumi.set(__self__, "card_id", card_id)
         if copy_from_project is not None:
             pulumi.set(__self__, "copy_from_project", copy_from_project)
-        if country_code is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""country_code is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if country_code is not None:
-            pulumi.set(__self__, "country_code", country_code)
         if default_cloud is not None:
             pulumi.set(__self__, "default_cloud", default_cloud)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if technical_emails is not None:
             pulumi.set(__self__, "technical_emails", technical_emails)
         if use_source_project_billing_group is not None:
             pulumi.set(__self__, "use_source_project_billing_group", use_source_project_billing_group)
-        if vat_id is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""vat_id is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if vat_id is not None:
-            pulumi.set(__self__, "vat_id", vat_id)
 
     @property
     @pulumi.getter
@@ -150,54 +107,6 @@ class ProjectArgs:
         pulumi.set(self, "available_credits", value)
 
     @property
-    @pulumi.getter(name="billingAddress")
-    def billing_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-        """
-        return pulumi.get(self, "billing_address")
-
-    @billing_address.setter
-    def billing_address(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "billing_address", value)
-
-    @property
-    @pulumi.getter(name="billingCurrency")
-    def billing_currency(self) -> Optional[pulumi.Input[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-        """
-        return pulumi.get(self, "billing_currency")
-
-    @billing_currency.setter
-    def billing_currency(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "billing_currency", value)
-
-    @property
-    @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-        """
-        return pulumi.get(self, "billing_emails")
-
-    @billing_emails.setter
-    def billing_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "billing_emails", value)
-
-    @property
-    @pulumi.getter(name="billingExtraText")
-    def billing_extra_text(self) -> Optional[pulumi.Input[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
-        """
-        return pulumi.get(self, "billing_extra_text")
-
-    @billing_extra_text.setter
-    def billing_extra_text(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "billing_extra_text", value)
-
-    @property
     @pulumi.getter(name="billingGroup")
     def billing_group(self) -> Optional[pulumi.Input[str]]:
         """
@@ -208,18 +117,6 @@ class ProjectArgs:
     @billing_group.setter
     def billing_group(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "billing_group", value)
-
-    @property
-    @pulumi.getter(name="cardId")
-    def card_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copy_from_project` is used to copy billing info from another project.
-        """
-        return pulumi.get(self, "card_id")
-
-    @card_id.setter
-    def card_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "card_id", value)
 
     @property
     @pulumi.getter(name="copyFromProject")
@@ -234,18 +131,6 @@ class ProjectArgs:
         pulumi.set(self, "copy_from_project", value)
 
     @property
-    @pulumi.getter(name="countryCode")
-    def country_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
-        """
-        return pulumi.get(self, "country_code")
-
-    @country_code.setter
-    def country_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "country_code", value)
-
-    @property
     @pulumi.getter(name="defaultCloud")
     def default_cloud(self) -> Optional[pulumi.Input[str]]:
         """
@@ -256,6 +141,18 @@ class ProjectArgs:
     @default_cloud.setter
     def default_cloud(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "default_cloud", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]]:
+        """
+        Tags are key-value pairs that allow you to categorize projects.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="technicalEmails")
@@ -281,18 +178,6 @@ class ProjectArgs:
     def use_source_project_billing_group(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_source_project_billing_group", value)
 
-    @property
-    @pulumi.getter(name="vatId")
-    def vat_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
-        """
-        return pulumi.get(self, "vat_id")
-
-    @vat_id.setter
-    def vat_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "vat_id", value)
-
 
 @pulumi.input_type
 class _ProjectState:
@@ -300,43 +185,31 @@ class _ProjectState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  add_account_owners_admin_access: Optional[pulumi.Input[bool]] = None,
                  available_credits: Optional[pulumi.Input[str]] = None,
-                 billing_address: Optional[pulumi.Input[str]] = None,
-                 billing_currency: Optional[pulumi.Input[str]] = None,
-                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 billing_extra_text: Optional[pulumi.Input[str]] = None,
                  billing_group: Optional[pulumi.Input[str]] = None,
                  ca_cert: Optional[pulumi.Input[str]] = None,
-                 card_id: Optional[pulumi.Input[str]] = None,
                  copy_from_project: Optional[pulumi.Input[str]] = None,
-                 country_code: Optional[pulumi.Input[str]] = None,
                  default_cloud: Optional[pulumi.Input[str]] = None,
                  estimated_balance: Optional[pulumi.Input[str]] = None,
                  payment_method: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
-                 vat_id: Optional[pulumi.Input[str]] = None):
+                 use_source_project_billing_group: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[str] account_id: An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[bool] add_account_owners_admin_access: If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
         :param pulumi.Input[str] available_credits: The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-        :param pulumi.Input[str] billing_address: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-        :param pulumi.Input[str] billing_currency: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-        :param pulumi.Input[str] billing_extra_text: **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
         :param pulumi.Input[str] billing_group: The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] ca_cert: The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
-        :param pulumi.Input[str] card_id: **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copy_from_project` is used to copy billing info from another project.
         :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] country_code: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
         :param pulumi.Input[str] default_cloud: Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         :param pulumi.Input[str] estimated_balance: The current accumulated bill for this project in the current billing period.
         :param pulumi.Input[str] payment_method: The method of invoicing used for payments for this project, e.g. `card`.
         :param pulumi.Input[str] project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
-        :param pulumi.Input[str] vat_id: **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -344,62 +217,26 @@ class _ProjectState:
             pulumi.set(__self__, "add_account_owners_admin_access", add_account_owners_admin_access)
         if available_credits is not None:
             pulumi.set(__self__, "available_credits", available_credits)
-        if billing_address is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""billing_address is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if billing_address is not None:
-            pulumi.set(__self__, "billing_address", billing_address)
-        if billing_currency is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""billing_currency is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if billing_currency is not None:
-            pulumi.set(__self__, "billing_currency", billing_currency)
-        if billing_emails is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""billing_emails is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if billing_emails is not None:
-            pulumi.set(__self__, "billing_emails", billing_emails)
-        if billing_extra_text is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""billing_extra_text is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if billing_extra_text is not None:
-            pulumi.set(__self__, "billing_extra_text", billing_extra_text)
         if billing_group is not None:
             pulumi.set(__self__, "billing_group", billing_group)
         if ca_cert is not None:
             pulumi.set(__self__, "ca_cert", ca_cert)
-        if card_id is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""card_id is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if card_id is not None:
-            pulumi.set(__self__, "card_id", card_id)
         if copy_from_project is not None:
             pulumi.set(__self__, "copy_from_project", copy_from_project)
-        if country_code is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""country_code is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if country_code is not None:
-            pulumi.set(__self__, "country_code", country_code)
         if default_cloud is not None:
             pulumi.set(__self__, "default_cloud", default_cloud)
         if estimated_balance is not None:
             pulumi.set(__self__, "estimated_balance", estimated_balance)
         if payment_method is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""payment_method is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if payment_method is not None:
             pulumi.set(__self__, "payment_method", payment_method)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if technical_emails is not None:
             pulumi.set(__self__, "technical_emails", technical_emails)
         if use_source_project_billing_group is not None:
             pulumi.set(__self__, "use_source_project_billing_group", use_source_project_billing_group)
-        if vat_id is not None:
-            warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-            pulumi.log.warn("""vat_id is deprecated: Please use aiven_billing_group resource to set this value.""")
-        if vat_id is not None:
-            pulumi.set(__self__, "vat_id", vat_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -438,54 +275,6 @@ class _ProjectState:
         pulumi.set(self, "available_credits", value)
 
     @property
-    @pulumi.getter(name="billingAddress")
-    def billing_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-        """
-        return pulumi.get(self, "billing_address")
-
-    @billing_address.setter
-    def billing_address(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "billing_address", value)
-
-    @property
-    @pulumi.getter(name="billingCurrency")
-    def billing_currency(self) -> Optional[pulumi.Input[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-        """
-        return pulumi.get(self, "billing_currency")
-
-    @billing_currency.setter
-    def billing_currency(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "billing_currency", value)
-
-    @property
-    @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-        """
-        return pulumi.get(self, "billing_emails")
-
-    @billing_emails.setter
-    def billing_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "billing_emails", value)
-
-    @property
-    @pulumi.getter(name="billingExtraText")
-    def billing_extra_text(self) -> Optional[pulumi.Input[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
-        """
-        return pulumi.get(self, "billing_extra_text")
-
-    @billing_extra_text.setter
-    def billing_extra_text(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "billing_extra_text", value)
-
-    @property
     @pulumi.getter(name="billingGroup")
     def billing_group(self) -> Optional[pulumi.Input[str]]:
         """
@@ -510,18 +299,6 @@ class _ProjectState:
         pulumi.set(self, "ca_cert", value)
 
     @property
-    @pulumi.getter(name="cardId")
-    def card_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copy_from_project` is used to copy billing info from another project.
-        """
-        return pulumi.get(self, "card_id")
-
-    @card_id.setter
-    def card_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "card_id", value)
-
-    @property
     @pulumi.getter(name="copyFromProject")
     def copy_from_project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -532,18 +309,6 @@ class _ProjectState:
     @copy_from_project.setter
     def copy_from_project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "copy_from_project", value)
-
-    @property
-    @pulumi.getter(name="countryCode")
-    def country_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
-        """
-        return pulumi.get(self, "country_code")
-
-    @country_code.setter
-    def country_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "country_code", value)
 
     @property
     @pulumi.getter(name="defaultCloud")
@@ -594,6 +359,18 @@ class _ProjectState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]]:
+        """
+        Tags are key-value pairs that allow you to categorize projects.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="technicalEmails")
     def technical_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -617,18 +394,6 @@ class _ProjectState:
     def use_source_project_billing_group(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_source_project_billing_group", value)
 
-    @property
-    @pulumi.getter(name="vatId")
-    def vat_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
-        """
-        return pulumi.get(self, "vat_id")
-
-    @vat_id.setter
-    def vat_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "vat_id", value)
-
 
 class Project(pulumi.CustomResource):
     @overload
@@ -638,41 +403,35 @@ class Project(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  add_account_owners_admin_access: Optional[pulumi.Input[bool]] = None,
                  available_credits: Optional[pulumi.Input[str]] = None,
-                 billing_address: Optional[pulumi.Input[str]] = None,
-                 billing_currency: Optional[pulumi.Input[str]] = None,
-                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 billing_extra_text: Optional[pulumi.Input[str]] = None,
                  billing_group: Optional[pulumi.Input[str]] = None,
-                 card_id: Optional[pulumi.Input[str]] = None,
                  copy_from_project: Optional[pulumi.Input[str]] = None,
-                 country_code: Optional[pulumi.Input[str]] = None,
                  default_cloud: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagArgs']]]]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
-                 vat_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The Project resource allows the creation and management of Aiven Projects.
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/project:Project myproject project
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[bool] add_account_owners_admin_access: If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
         :param pulumi.Input[str] available_credits: The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-        :param pulumi.Input[str] billing_address: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-        :param pulumi.Input[str] billing_currency: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-        :param pulumi.Input[str] billing_extra_text: **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
         :param pulumi.Input[str] billing_group: The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] card_id: **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copy_from_project` is used to copy billing info from another project.
         :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] country_code: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
         :param pulumi.Input[str] default_cloud: Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         :param pulumi.Input[str] project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
-        :param pulumi.Input[str] vat_id: **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
         """
         ...
     @overload
@@ -682,6 +441,12 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Project resource allows the creation and management of Aiven Projects.
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/project:Project myproject project
+        ```
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
@@ -701,19 +466,13 @@ class Project(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  add_account_owners_admin_access: Optional[pulumi.Input[bool]] = None,
                  available_credits: Optional[pulumi.Input[str]] = None,
-                 billing_address: Optional[pulumi.Input[str]] = None,
-                 billing_currency: Optional[pulumi.Input[str]] = None,
-                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 billing_extra_text: Optional[pulumi.Input[str]] = None,
                  billing_group: Optional[pulumi.Input[str]] = None,
-                 card_id: Optional[pulumi.Input[str]] = None,
                  copy_from_project: Optional[pulumi.Input[str]] = None,
-                 country_code: Optional[pulumi.Input[str]] = None,
                  default_cloud: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagArgs']]]]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
-                 vat_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -729,42 +488,15 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["add_account_owners_admin_access"] = add_account_owners_admin_access
             __props__.__dict__["available_credits"] = available_credits
-            if billing_address is not None and not opts.urn:
-                warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("""billing_address is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__.__dict__["billing_address"] = billing_address
-            if billing_currency is not None and not opts.urn:
-                warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("""billing_currency is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__.__dict__["billing_currency"] = billing_currency
-            if billing_emails is not None and not opts.urn:
-                warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("""billing_emails is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__.__dict__["billing_emails"] = billing_emails
-            if billing_extra_text is not None and not opts.urn:
-                warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("""billing_extra_text is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__.__dict__["billing_extra_text"] = billing_extra_text
             __props__.__dict__["billing_group"] = billing_group
-            if card_id is not None and not opts.urn:
-                warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("""card_id is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__.__dict__["card_id"] = card_id
             __props__.__dict__["copy_from_project"] = copy_from_project
-            if country_code is not None and not opts.urn:
-                warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("""country_code is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__.__dict__["country_code"] = country_code
             __props__.__dict__["default_cloud"] = default_cloud
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["technical_emails"] = technical_emails
             __props__.__dict__["use_source_project_billing_group"] = use_source_project_billing_group
-            if vat_id is not None and not opts.urn:
-                warnings.warn("""Please use aiven_billing_group resource to set this value.""", DeprecationWarning)
-                pulumi.log.warn("""vat_id is deprecated: Please use aiven_billing_group resource to set this value.""")
-            __props__.__dict__["vat_id"] = vat_id
             __props__.__dict__["ca_cert"] = None
             __props__.__dict__["estimated_balance"] = None
             __props__.__dict__["payment_method"] = None
@@ -781,22 +513,16 @@ class Project(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             add_account_owners_admin_access: Optional[pulumi.Input[bool]] = None,
             available_credits: Optional[pulumi.Input[str]] = None,
-            billing_address: Optional[pulumi.Input[str]] = None,
-            billing_currency: Optional[pulumi.Input[str]] = None,
-            billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            billing_extra_text: Optional[pulumi.Input[str]] = None,
             billing_group: Optional[pulumi.Input[str]] = None,
             ca_cert: Optional[pulumi.Input[str]] = None,
-            card_id: Optional[pulumi.Input[str]] = None,
             copy_from_project: Optional[pulumi.Input[str]] = None,
-            country_code: Optional[pulumi.Input[str]] = None,
             default_cloud: Optional[pulumi.Input[str]] = None,
             estimated_balance: Optional[pulumi.Input[str]] = None,
             payment_method: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagArgs']]]]] = None,
             technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
-            vat_id: Optional[pulumi.Input[str]] = None) -> 'Project':
+            use_source_project_billing_group: Optional[pulumi.Input[bool]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -807,22 +533,16 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[bool] add_account_owners_admin_access: If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
         :param pulumi.Input[str] available_credits: The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-        :param pulumi.Input[str] billing_address: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-        :param pulumi.Input[str] billing_currency: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-        :param pulumi.Input[str] billing_extra_text: **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
         :param pulumi.Input[str] billing_group: The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] ca_cert: The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
-        :param pulumi.Input[str] card_id: **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copy_from_project` is used to copy billing info from another project.
         :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] country_code: **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
         :param pulumi.Input[str] default_cloud: Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         :param pulumi.Input[str] estimated_balance: The current accumulated bill for this project in the current billing period.
         :param pulumi.Input[str] payment_method: The method of invoicing used for payments for this project, e.g. `card`.
         :param pulumi.Input[str] project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
-        :param pulumi.Input[str] vat_id: **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -831,22 +551,16 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["add_account_owners_admin_access"] = add_account_owners_admin_access
         __props__.__dict__["available_credits"] = available_credits
-        __props__.__dict__["billing_address"] = billing_address
-        __props__.__dict__["billing_currency"] = billing_currency
-        __props__.__dict__["billing_emails"] = billing_emails
-        __props__.__dict__["billing_extra_text"] = billing_extra_text
         __props__.__dict__["billing_group"] = billing_group
         __props__.__dict__["ca_cert"] = ca_cert
-        __props__.__dict__["card_id"] = card_id
         __props__.__dict__["copy_from_project"] = copy_from_project
-        __props__.__dict__["country_code"] = country_code
         __props__.__dict__["default_cloud"] = default_cloud
         __props__.__dict__["estimated_balance"] = estimated_balance
         __props__.__dict__["payment_method"] = payment_method
         __props__.__dict__["project"] = project
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["technical_emails"] = technical_emails
         __props__.__dict__["use_source_project_billing_group"] = use_source_project_billing_group
-        __props__.__dict__["vat_id"] = vat_id
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -874,38 +588,6 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "available_credits")
 
     @property
-    @pulumi.getter(name="billingAddress")
-    def billing_address(self) -> pulumi.Output[Optional[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-        """
-        return pulumi.get(self, "billing_address")
-
-    @property
-    @pulumi.getter(name="billingCurrency")
-    def billing_currency(self) -> pulumi.Output[Optional[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-        """
-        return pulumi.get(self, "billing_currency")
-
-    @property
-    @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-        """
-        return pulumi.get(self, "billing_emails")
-
-    @property
-    @pulumi.getter(name="billingExtraText")
-    def billing_extra_text(self) -> pulumi.Output[Optional[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
-        """
-        return pulumi.get(self, "billing_extra_text")
-
-    @property
     @pulumi.getter(name="billingGroup")
     def billing_group(self) -> pulumi.Output[Optional[str]]:
         """
@@ -922,28 +604,12 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "ca_cert")
 
     @property
-    @pulumi.getter(name="cardId")
-    def card_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copy_from_project` is used to copy billing info from another project.
-        """
-        return pulumi.get(self, "card_id")
-
-    @property
     @pulumi.getter(name="copyFromProject")
     def copy_from_project(self) -> pulumi.Output[Optional[str]]:
         """
         is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "copy_from_project")
-
-    @property
-    @pulumi.getter(name="countryCode")
-    def country_code(self) -> pulumi.Output[Optional[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
-        """
-        return pulumi.get(self, "country_code")
 
     @property
     @pulumi.getter(name="defaultCloud")
@@ -978,6 +644,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ProjectTag']]]:
+        """
+        Tags are key-value pairs that allow you to categorize projects.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="technicalEmails")
     def technical_emails(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -992,12 +666,4 @@ class Project(pulumi.CustomResource):
         Use the same billing group that is used in source project.
         """
         return pulumi.get(self, "use_source_project_billing_group")
-
-    @property
-    @pulumi.getter(name="vatId")
-    def vat_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
-        """
-        return pulumi.get(self, "vat_id")
 

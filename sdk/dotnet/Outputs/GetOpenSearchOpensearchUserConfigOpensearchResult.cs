@@ -16,6 +16,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ActionAutoCreateIndexEnabled;
         public readonly string? ActionDestructiveRequiresName;
         public readonly string? ClusterMaxShardsPerNode;
+        public readonly string? ClusterRoutingAllocationNodeConcurrentRecoveries;
         public readonly string? HttpMaxContentLength;
         public readonly string? HttpMaxHeaderSize;
         public readonly string? HttpMaxInitialLineLength;
@@ -23,6 +24,8 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? IndicesMemoryIndexBufferSize;
         public readonly string? IndicesQueriesCacheSize;
         public readonly string? IndicesQueryBoolMaxClauseCount;
+        public readonly string? IndicesRecoveryMaxBytesPerSec;
+        public readonly string? IndicesRecoveryMaxConcurrentFileChunks;
         public readonly string? OverrideMainResponseVersion;
         public readonly ImmutableArray<string> ReindexRemoteWhitelists;
         public readonly string? ScriptMaxCompilationsRate;
@@ -32,7 +35,6 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ThreadPoolForceMergeSize;
         public readonly string? ThreadPoolGetQueueSize;
         public readonly string? ThreadPoolGetSize;
-        public readonly string? ThreadPoolIndexSize;
         public readonly string? ThreadPoolSearchQueueSize;
         public readonly string? ThreadPoolSearchSize;
         public readonly string? ThreadPoolSearchThrottledQueueSize;
@@ -48,6 +50,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? clusterMaxShardsPerNode,
 
+            string? clusterRoutingAllocationNodeConcurrentRecoveries,
+
             string? httpMaxContentLength,
 
             string? httpMaxHeaderSize,
@@ -61,6 +65,10 @@ namespace Pulumi.Aiven.Outputs
             string? indicesQueriesCacheSize,
 
             string? indicesQueryBoolMaxClauseCount,
+
+            string? indicesRecoveryMaxBytesPerSec,
+
+            string? indicesRecoveryMaxConcurrentFileChunks,
 
             string? overrideMainResponseVersion,
 
@@ -80,8 +88,6 @@ namespace Pulumi.Aiven.Outputs
 
             string? threadPoolGetSize,
 
-            string? threadPoolIndexSize,
-
             string? threadPoolSearchQueueSize,
 
             string? threadPoolSearchSize,
@@ -97,6 +103,7 @@ namespace Pulumi.Aiven.Outputs
             ActionAutoCreateIndexEnabled = actionAutoCreateIndexEnabled;
             ActionDestructiveRequiresName = actionDestructiveRequiresName;
             ClusterMaxShardsPerNode = clusterMaxShardsPerNode;
+            ClusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
             HttpMaxContentLength = httpMaxContentLength;
             HttpMaxHeaderSize = httpMaxHeaderSize;
             HttpMaxInitialLineLength = httpMaxInitialLineLength;
@@ -104,6 +111,8 @@ namespace Pulumi.Aiven.Outputs
             IndicesMemoryIndexBufferSize = indicesMemoryIndexBufferSize;
             IndicesQueriesCacheSize = indicesQueriesCacheSize;
             IndicesQueryBoolMaxClauseCount = indicesQueryBoolMaxClauseCount;
+            IndicesRecoveryMaxBytesPerSec = indicesRecoveryMaxBytesPerSec;
+            IndicesRecoveryMaxConcurrentFileChunks = indicesRecoveryMaxConcurrentFileChunks;
             OverrideMainResponseVersion = overrideMainResponseVersion;
             ReindexRemoteWhitelists = reindexRemoteWhitelists;
             ScriptMaxCompilationsRate = scriptMaxCompilationsRate;
@@ -113,7 +122,6 @@ namespace Pulumi.Aiven.Outputs
             ThreadPoolForceMergeSize = threadPoolForceMergeSize;
             ThreadPoolGetQueueSize = threadPoolGetQueueSize;
             ThreadPoolGetSize = threadPoolGetSize;
-            ThreadPoolIndexSize = threadPoolIndexSize;
             ThreadPoolSearchQueueSize = threadPoolSearchQueueSize;
             ThreadPoolSearchSize = threadPoolSearchSize;
             ThreadPoolSearchThrottledQueueSize = threadPoolSearchThrottledQueueSize;

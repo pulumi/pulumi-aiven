@@ -21,6 +21,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("clusterMaxShardsPerNode")]
         public Input<string>? ClusterMaxShardsPerNode { get; set; }
 
+        [Input("clusterRoutingAllocationNodeConcurrentRecoveries")]
+        public Input<string>? ClusterRoutingAllocationNodeConcurrentRecoveries { get; set; }
+
         [Input("httpMaxContentLength")]
         public Input<string>? HttpMaxContentLength { get; set; }
 
@@ -41,6 +44,12 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("indicesQueryBoolMaxClauseCount")]
         public Input<string>? IndicesQueryBoolMaxClauseCount { get; set; }
+
+        [Input("indicesRecoveryMaxBytesPerSec")]
+        public Input<string>? IndicesRecoveryMaxBytesPerSec { get; set; }
+
+        [Input("indicesRecoveryMaxConcurrentFileChunks")]
+        public Input<string>? IndicesRecoveryMaxConcurrentFileChunks { get; set; }
 
         [Input("overrideMainResponseVersion")]
         public Input<string>? OverrideMainResponseVersion { get; set; }
@@ -73,9 +82,6 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("threadPoolGetSize")]
         public Input<string>? ThreadPoolGetSize { get; set; }
-
-        [Input("threadPoolIndexSize")]
-        public Input<string>? ThreadPoolIndexSize { get; set; }
 
         [Input("threadPoolSearchQueueSize")]
         public Input<string>? ThreadPoolSearchQueueSize { get; set; }

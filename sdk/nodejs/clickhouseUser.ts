@@ -19,6 +19,12 @@ import * as utilities from "./utilities";
  *     username: "<USERNAME>",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/id
+ * ```
  */
 export class ClickhouseUser extends pulumi.CustomResource {
     /**

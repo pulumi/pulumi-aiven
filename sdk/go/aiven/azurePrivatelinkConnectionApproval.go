@@ -12,6 +12,12 @@ import (
 )
 
 // The Azure privatelink approve resource waits for an aiven privatelink connection on a service and approves it with associated endpoint IP
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+// ```
 type AzurePrivatelinkConnectionApproval struct {
 	pulumi.CustomResourceState
 
@@ -195,6 +201,31 @@ func (o AzurePrivatelinkConnectionApprovalOutput) ToAzurePrivatelinkConnectionAp
 
 func (o AzurePrivatelinkConnectionApprovalOutput) ToAzurePrivatelinkConnectionApprovalOutputWithContext(ctx context.Context) AzurePrivatelinkConnectionApprovalOutput {
 	return o
+}
+
+// IP address of Azure private endpoint
+func (o AzurePrivatelinkConnectionApprovalOutput) EndpointIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzurePrivatelinkConnectionApproval) pulumi.StringPtrOutput { return v.EndpointIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Privatelink connection id
+func (o AzurePrivatelinkConnectionApprovalOutput) PrivatelinkConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzurePrivatelinkConnectionApproval) pulumi.StringOutput { return v.PrivatelinkConnectionId }).(pulumi.StringOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o AzurePrivatelinkConnectionApprovalOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzurePrivatelinkConnectionApproval) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o AzurePrivatelinkConnectionApprovalOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzurePrivatelinkConnectionApproval) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Privatelink connection state
+func (o AzurePrivatelinkConnectionApprovalOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzurePrivatelinkConnectionApproval) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 type AzurePrivatelinkConnectionApprovalArrayOutput struct{ *pulumi.OutputState }

@@ -18,7 +18,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -67,6 +67,8 @@ type LookupBillingGroupResult struct {
 	City string `pulumi:"city"`
 	// Company name
 	Company string `pulumi:"company"`
+	// ID of the billing group to copy from
+	CopyFromBillingGroup string `pulumi:"copyFromBillingGroup"`
 	// Country code
 	CountryCode string `pulumi:"countryCode"`
 	// The provider-assigned unique ID for this managed resource.
@@ -157,6 +159,11 @@ func (o LookupBillingGroupResultOutput) City() pulumi.StringOutput {
 // Company name
 func (o LookupBillingGroupResultOutput) Company() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.Company }).(pulumi.StringOutput)
+}
+
+// ID of the billing group to copy from
+func (o LookupBillingGroupResultOutput) CopyFromBillingGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.CopyFromBillingGroup }).(pulumi.StringOutput)
 }
 
 // Country code

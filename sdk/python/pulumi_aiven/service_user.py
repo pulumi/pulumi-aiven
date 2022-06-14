@@ -422,6 +422,12 @@ class ServiceUser(pulumi.CustomResource):
             username="<USERNAME>")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/serviceUser:ServiceUser myserviceuser project/service_name/username
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication: Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
@@ -454,6 +460,12 @@ class ServiceUser(pulumi.CustomResource):
             project=aiven_project["myproject"]["project"],
             service_name=aiven_service["myservice"]["service_name"],
             username="<USERNAME>")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/serviceUser:ServiceUser myserviceuser project/service_name/username
         ```
 
         :param str resource_name: The name of the resource.

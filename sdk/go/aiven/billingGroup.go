@@ -18,7 +18,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -42,6 +42,12 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+// ```
 type BillingGroup struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +67,8 @@ type BillingGroup struct {
 	City pulumi.StringPtrOutput `pulumi:"city"`
 	// Company name
 	Company pulumi.StringPtrOutput `pulumi:"company"`
+	// ID of the billing group to copy from
+	CopyFromBillingGroup pulumi.StringPtrOutput `pulumi:"copyFromBillingGroup"`
 	// Country code
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
 	// Billing Group name
@@ -118,6 +126,8 @@ type billingGroupState struct {
 	City *string `pulumi:"city"`
 	// Company name
 	Company *string `pulumi:"company"`
+	// ID of the billing group to copy from
+	CopyFromBillingGroup *string `pulumi:"copyFromBillingGroup"`
 	// Country code
 	CountryCode *string `pulumi:"countryCode"`
 	// Billing Group name
@@ -147,6 +157,8 @@ type BillingGroupState struct {
 	City pulumi.StringPtrInput
 	// Company name
 	Company pulumi.StringPtrInput
+	// ID of the billing group to copy from
+	CopyFromBillingGroup pulumi.StringPtrInput
 	// Country code
 	CountryCode pulumi.StringPtrInput
 	// Billing Group name
@@ -180,6 +192,8 @@ type billingGroupArgs struct {
 	City *string `pulumi:"city"`
 	// Company name
 	Company *string `pulumi:"company"`
+	// ID of the billing group to copy from
+	CopyFromBillingGroup *string `pulumi:"copyFromBillingGroup"`
 	// Country code
 	CountryCode *string `pulumi:"countryCode"`
 	// Billing Group name
@@ -210,6 +224,8 @@ type BillingGroupArgs struct {
 	City pulumi.StringPtrInput
 	// Company name
 	Company pulumi.StringPtrInput
+	// ID of the billing group to copy from
+	CopyFromBillingGroup pulumi.StringPtrInput
 	// Country code
 	CountryCode pulumi.StringPtrInput
 	// Billing Group name
@@ -307,6 +323,76 @@ func (o BillingGroupOutput) ToBillingGroupOutput() BillingGroupOutput {
 
 func (o BillingGroupOutput) ToBillingGroupOutputWithContext(ctx context.Context) BillingGroupOutput {
 	return o
+}
+
+// Account id
+func (o BillingGroupOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Address lines
+func (o BillingGroupOutput) AddressLines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringArrayOutput { return v.AddressLines }).(pulumi.StringArrayOutput)
+}
+
+// Billing currency
+func (o BillingGroupOutput) BillingCurrency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.BillingCurrency }).(pulumi.StringPtrOutput)
+}
+
+// Billing contact emails
+func (o BillingGroupOutput) BillingEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringArrayOutput { return v.BillingEmails }).(pulumi.StringArrayOutput)
+}
+
+// Billing extra text
+func (o BillingGroupOutput) BillingExtraText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.BillingExtraText }).(pulumi.StringPtrOutput)
+}
+
+// Credit card id
+func (o BillingGroupOutput) CardId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.CardId }).(pulumi.StringPtrOutput)
+}
+
+// City
+func (o BillingGroupOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.City }).(pulumi.StringPtrOutput)
+}
+
+// Company name
+func (o BillingGroupOutput) Company() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.Company }).(pulumi.StringPtrOutput)
+}
+
+// ID of the billing group to copy from
+func (o BillingGroupOutput) CopyFromBillingGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.CopyFromBillingGroup }).(pulumi.StringPtrOutput)
+}
+
+// Country code
+func (o BillingGroupOutput) CountryCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.CountryCode }).(pulumi.StringPtrOutput)
+}
+
+// Billing Group name
+func (o BillingGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// State
+func (o BillingGroupOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// VAT id
+func (o BillingGroupOutput) VatId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.VatId }).(pulumi.StringPtrOutput)
+}
+
+// Zip Code
+func (o BillingGroupOutput) ZipCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.ZipCode }).(pulumi.StringPtrOutput)
 }
 
 type BillingGroupArrayOutput struct{ *pulumi.OutputState }

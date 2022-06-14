@@ -12,6 +12,48 @@ import (
 )
 
 // The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bar, err := aiven.NewClickhouse(ctx, "bar", &aiven.ClickhouseArgs{
+// 			Project:               pulumi.String("example-project"),
+// 			CloudName:             pulumi.String("google-europe-west1"),
+// 			Plan:                  pulumi.String("startup-beta-8"),
+// 			ServiceName:           pulumi.String("example-service"),
+// 			MaintenanceWindowDow:  pulumi.String("monday"),
+// 			MaintenanceWindowTime: pulumi.String("10:00:00"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = aiven.NewClickhouseRole(ctx, "foo", &aiven.ClickhouseRoleArgs{
+// 			ServiceName: bar.ServiceName,
+// 			Project:     bar.Project,
+// 			Role:        pulumi.String("writer"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo project/service_name/role
+// ```
 type ClickhouseRole struct {
 	pulumi.CustomResourceState
 
@@ -186,6 +228,21 @@ func (o ClickhouseRoleOutput) ToClickhouseRoleOutput() ClickhouseRoleOutput {
 
 func (o ClickhouseRoleOutput) ToClickhouseRoleOutputWithContext(ctx context.Context) ClickhouseRoleOutput {
 	return o
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ClickhouseRoleOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickhouseRole) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The role that is to be created. This property cannot be changed, doing so forces recreation of the resource.
+func (o ClickhouseRoleOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickhouseRole) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ClickhouseRoleOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickhouseRole) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 type ClickhouseRoleArrayOutput struct{ *pulumi.OutputState }

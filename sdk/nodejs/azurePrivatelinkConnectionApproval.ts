@@ -6,6 +6,12 @@ import * as utilities from "./utilities";
 
 /**
  * The Azure privatelink approve resource waits for an aiven privatelink connection on a service and approves it with associated endpoint IP
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+ * ```
  */
 export class AzurePrivatelinkConnectionApproval extends pulumi.CustomResource {
     /**

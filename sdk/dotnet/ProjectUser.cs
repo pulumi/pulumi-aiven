@@ -32,6 +32,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/projectUser:ProjectUser")]
     public partial class ProjectUser : Pulumi.CustomResource

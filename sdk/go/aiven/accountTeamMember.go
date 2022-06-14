@@ -18,6 +18,12 @@ import (
 // a member of the account team. The deletion of `AccountTeamMember` will not only
 // delete the invitation if one was sent but not yet accepted by the user, it will also
 // eliminate an account team member if one has accepted an invitation previously.
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/accountTeamMember:AccountTeamMember foo account_id/team_id/user_email
+// ```
 type AccountTeamMember struct {
 	pulumi.CustomResourceState
 
@@ -210,6 +216,36 @@ func (o AccountTeamMemberOutput) ToAccountTeamMemberOutput() AccountTeamMemberOu
 
 func (o AccountTeamMemberOutput) ToAccountTeamMemberOutputWithContext(ctx context.Context) AccountTeamMemberOutput {
 	return o
+}
+
+// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
+func (o AccountTeamMemberOutput) Accepted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccountTeamMember) pulumi.BoolOutput { return v.Accepted }).(pulumi.BoolOutput)
+}
+
+// The unique account id This property cannot be changed, doing so forces recreation of the resource.
+func (o AccountTeamMemberOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountTeamMember) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Time of creation
+func (o AccountTeamMemberOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountTeamMember) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The email address that invited this user.
+func (o AccountTeamMemberOutput) InvitedByUserEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountTeamMember) pulumi.StringOutput { return v.InvitedByUserEmail }).(pulumi.StringOutput)
+}
+
+// An account team id This property cannot be changed, doing so forces recreation of the resource.
+func (o AccountTeamMemberOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountTeamMember) pulumi.StringOutput { return v.TeamId }).(pulumi.StringOutput)
+}
+
+// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+func (o AccountTeamMemberOutput) UserEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountTeamMember) pulumi.StringOutput { return v.UserEmail }).(pulumi.StringOutput)
 }
 
 type AccountTeamMemberArrayOutput struct{ *pulumi.OutputState }

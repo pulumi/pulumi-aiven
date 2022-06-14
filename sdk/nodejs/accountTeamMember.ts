@@ -12,6 +12,12 @@ import * as utilities from "./utilities";
  * a member of the account team. The deletion of `aiven.AccountTeamMember` will not only
  * delete the invitation if one was sent but not yet accepted by the user, it will also
  * eliminate an account team member if one has accepted an invitation previously.
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/accountTeamMember:AccountTeamMember foo account_id/team_id/user_email
+ * ```
  */
 export class AccountTeamMember extends pulumi.CustomResource {
     /**

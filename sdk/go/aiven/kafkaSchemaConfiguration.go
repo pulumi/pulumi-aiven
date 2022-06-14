@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -36,6 +36,12 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration config project/service_name
 // ```
 type KafkaSchemaConfiguration struct {
 	pulumi.CustomResourceState
@@ -208,6 +214,21 @@ func (o KafkaSchemaConfigurationOutput) ToKafkaSchemaConfigurationOutput() Kafka
 
 func (o KafkaSchemaConfigurationOutput) ToKafkaSchemaConfigurationOutputWithContext(ctx context.Context) KafkaSchemaConfigurationOutput {
 	return o
+}
+
+// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
+func (o KafkaSchemaConfigurationOutput) CompatibilityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaSchemaConfiguration) pulumi.StringPtrOutput { return v.CompatibilityLevel }).(pulumi.StringPtrOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o KafkaSchemaConfigurationOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaSchemaConfiguration) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o KafkaSchemaConfigurationOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaSchemaConfiguration) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 type KafkaSchemaConfigurationArrayOutput struct{ *pulumi.OutputState }

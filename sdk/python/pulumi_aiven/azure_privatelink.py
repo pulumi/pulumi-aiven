@@ -207,6 +207,12 @@ class AzurePrivatelink(pulumi.CustomResource):
             user_subscription_ids=["xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"])
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink foo project/service_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -232,6 +238,12 @@ class AzurePrivatelink(pulumi.CustomResource):
             project=data["aiven_project"]["foo"]["project"],
             service_name=aiven_kafka["bar"]["service_name"],
             user_subscription_ids=["xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"])
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink foo project/service_name
         ```
 
         :param str resource_name: The name of the resource.

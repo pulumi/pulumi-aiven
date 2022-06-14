@@ -257,6 +257,12 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
             user_peer_network_cidrs=["10.0.0.0/24"])
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment project/vpc_id/peer_cloud_account/peer_vpc/peer_region
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
@@ -286,6 +292,12 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
             peer_vpc="google-project1",
             peer_region="aws-eu-west-1",
             user_peer_network_cidrs=["10.0.0.0/24"])
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment project/vpc_id/peer_cloud_account/peer_vpc/peer_region
         ```
 
         :param str resource_name: The name of the resource.

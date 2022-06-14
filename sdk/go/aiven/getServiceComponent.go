@@ -13,8 +13,8 @@ import (
 // The Service Component data source provides information about the existing Aiven service Component.
 //
 // Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
-func LookupServiceComponent(ctx *pulumi.Context, args *LookupServiceComponentArgs, opts ...pulumi.InvokeOption) (*LookupServiceComponentResult, error) {
-	var rv LookupServiceComponentResult
+func GetServiceComponent(ctx *pulumi.Context, args *GetServiceComponentArgs, opts ...pulumi.InvokeOption) (*GetServiceComponentResult, error) {
+	var rv GetServiceComponentResult
 	err := ctx.Invoke("aiven:index/getServiceComponent:getServiceComponent", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -23,7 +23,7 @@ func LookupServiceComponent(ctx *pulumi.Context, args *LookupServiceComponentArg
 }
 
 // A collection of arguments for invoking getServiceComponent.
-type LookupServiceComponentArgs struct {
+type GetServiceComponentArgs struct {
 	// Service component name
 	Component string `pulumi:"component"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component
@@ -41,7 +41,7 @@ type LookupServiceComponentArgs struct {
 }
 
 // A collection of values returned by getServiceComponent.
-type LookupServiceComponentResult struct {
+type GetServiceComponentResult struct {
 	// Service component name
 	Component string `pulumi:"component"`
 	// DNS name for connecting to the service component
@@ -64,21 +64,21 @@ type LookupServiceComponentResult struct {
 	Usage *string `pulumi:"usage"`
 }
 
-func LookupServiceComponentOutput(ctx *pulumi.Context, args LookupServiceComponentOutputArgs, opts ...pulumi.InvokeOption) LookupServiceComponentResultOutput {
+func GetServiceComponentOutput(ctx *pulumi.Context, args GetServiceComponentOutputArgs, opts ...pulumi.InvokeOption) GetServiceComponentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServiceComponentResult, error) {
-			args := v.(LookupServiceComponentArgs)
-			r, err := LookupServiceComponent(ctx, &args, opts...)
-			var s LookupServiceComponentResult
+		ApplyT(func(v interface{}) (GetServiceComponentResult, error) {
+			args := v.(GetServiceComponentArgs)
+			r, err := GetServiceComponent(ctx, &args, opts...)
+			var s GetServiceComponentResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupServiceComponentResultOutput)
+		}).(GetServiceComponentResultOutput)
 }
 
 // A collection of arguments for invoking getServiceComponent.
-type LookupServiceComponentOutputArgs struct {
+type GetServiceComponentOutputArgs struct {
 	// Service component name
 	Component pulumi.StringInput `pulumi:"component"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component
@@ -95,75 +95,75 @@ type LookupServiceComponentOutputArgs struct {
 	Usage pulumi.StringPtrInput `pulumi:"usage"`
 }
 
-func (LookupServiceComponentOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupServiceComponentArgs)(nil)).Elem()
+func (GetServiceComponentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceComponentArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getServiceComponent.
-type LookupServiceComponentResultOutput struct{ *pulumi.OutputState }
+type GetServiceComponentResultOutput struct{ *pulumi.OutputState }
 
-func (LookupServiceComponentResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupServiceComponentResult)(nil)).Elem()
+func (GetServiceComponentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceComponentResult)(nil)).Elem()
 }
 
-func (o LookupServiceComponentResultOutput) ToLookupServiceComponentResultOutput() LookupServiceComponentResultOutput {
+func (o GetServiceComponentResultOutput) ToGetServiceComponentResultOutput() GetServiceComponentResultOutput {
 	return o
 }
 
-func (o LookupServiceComponentResultOutput) ToLookupServiceComponentResultOutputWithContext(ctx context.Context) LookupServiceComponentResultOutput {
+func (o GetServiceComponentResultOutput) ToGetServiceComponentResultOutputWithContext(ctx context.Context) GetServiceComponentResultOutput {
 	return o
 }
 
 // Service component name
-func (o LookupServiceComponentResultOutput) Component() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServiceComponentResult) string { return v.Component }).(pulumi.StringOutput)
+func (o GetServiceComponentResultOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceComponentResult) string { return v.Component }).(pulumi.StringOutput)
 }
 
 // DNS name for connecting to the service component
-func (o LookupServiceComponentResultOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServiceComponentResult) string { return v.Host }).(pulumi.StringOutput)
+func (o GetServiceComponentResultOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceComponentResult) string { return v.Host }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o LookupServiceComponentResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServiceComponentResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetServiceComponentResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceComponentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kafka authentication method. This is a value specific to the 'kafka' service component
-func (o LookupServiceComponentResultOutput) KafkaAuthenticationMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceComponentResult) *string { return v.KafkaAuthenticationMethod }).(pulumi.StringPtrOutput)
+func (o GetServiceComponentResultOutput) KafkaAuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceComponentResult) *string { return v.KafkaAuthenticationMethod }).(pulumi.StringPtrOutput)
 }
 
 // Port number for connecting to the service component
-func (o LookupServiceComponentResultOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupServiceComponentResult) int { return v.Port }).(pulumi.IntOutput)
+func (o GetServiceComponentResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceComponentResult) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // Project name
-func (o LookupServiceComponentResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServiceComponentResult) string { return v.Project }).(pulumi.StringOutput)
+func (o GetServiceComponentResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceComponentResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // Network access route
-func (o LookupServiceComponentResultOutput) Route() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceComponentResult) *string { return v.Route }).(pulumi.StringPtrOutput)
+func (o GetServiceComponentResultOutput) Route() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceComponentResult) *string { return v.Route }).(pulumi.StringPtrOutput)
 }
 
 // Service name
-func (o LookupServiceComponentResultOutput) ServiceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceComponentResult) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+func (o GetServiceComponentResultOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceComponentResult) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 // Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
-func (o LookupServiceComponentResultOutput) Ssl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupServiceComponentResult) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
+func (o GetServiceComponentResultOutput) Ssl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceComponentResult) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
 }
 
 // DNS usage name
-func (o LookupServiceComponentResultOutput) Usage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceComponentResult) *string { return v.Usage }).(pulumi.StringPtrOutput)
+func (o GetServiceComponentResultOutput) Usage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceComponentResult) *string { return v.Usage }).(pulumi.StringPtrOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupServiceComponentResultOutput{})
+	pulumi.RegisterOutputType(GetServiceComponentResultOutput{})
 }

@@ -11,6 +11,12 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// The Project VPC resource allows the creation and management of Aiven Project VPCs.
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/projectVpc:ProjectVpc")]
     public partial class ProjectVpc : Pulumi.CustomResource

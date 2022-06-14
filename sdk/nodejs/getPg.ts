@@ -151,6 +151,10 @@ export interface GetPgResult {
      */
     readonly staticIps: string[];
     /**
+     * Tags are key-value pairs that allow you to categorize services.
+     */
+    readonly tags: outputs.GetPgTag[];
+    /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
     readonly terminationProtection: boolean;

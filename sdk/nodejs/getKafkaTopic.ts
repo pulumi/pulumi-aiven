@@ -57,10 +57,6 @@ export interface GetKafkaTopicArgs {
  */
 export interface GetKafkaTopicResult {
     /**
-     * **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
-     */
-    readonly cleanupPolicy: string;
-    /**
      * Kafka topic configuration
      */
     readonly configs: outputs.GetKafkaTopicConfig[];
@@ -68,10 +64,6 @@ export interface GetKafkaTopicResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-     */
-    readonly minimumInSyncReplicas: number;
     /**
      * The number of partitions to create in the topic.
      */
@@ -84,14 +76,6 @@ export interface GetKafkaTopicResult {
      * The replication factor for the topic.
      */
     readonly replication: number;
-    /**
-     * **DEPRECATED use config.retention_bytes instead** Retention bytes.
-     */
-    readonly retentionBytes: number;
-    /**
-     * **DEPRECATED use config.retention_ms instead** Retention period (hours).
-     */
-    readonly retentionHours: number;
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */

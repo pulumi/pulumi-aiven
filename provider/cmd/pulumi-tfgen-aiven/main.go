@@ -15,8 +15,8 @@
 package main
 
 import (
-	aiven "github.com/pulumi/pulumi-aiven/provider/v4"
-	"github.com/pulumi/pulumi-aiven/provider/v4/pkg/version"
+	aiven "github.com/pulumi/pulumi-aiven/provider/v5"
+	"github.com/pulumi/pulumi-aiven/provider/v5/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 

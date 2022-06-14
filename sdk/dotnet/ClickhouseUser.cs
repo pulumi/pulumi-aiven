@@ -32,6 +32,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/id
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouseUser:ClickhouseUser")]
     public partial class ClickhouseUser : Pulumi.CustomResource

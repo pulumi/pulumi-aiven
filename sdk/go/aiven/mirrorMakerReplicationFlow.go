@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -46,6 +46,12 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow f1 project/service_name/source_cluster/target_cluster
 // ```
 type MirrorMakerReplicationFlow struct {
 	pulumi.CustomResourceState
@@ -307,6 +313,61 @@ func (o MirrorMakerReplicationFlowOutput) ToMirrorMakerReplicationFlowOutput() M
 
 func (o MirrorMakerReplicationFlowOutput) ToMirrorMakerReplicationFlowOutputWithContext(ctx context.Context) MirrorMakerReplicationFlowOutput {
 	return o
+}
+
+// Emit heartbeats enabled. The default value is `false`.
+func (o MirrorMakerReplicationFlowOutput) EmitHeartbeatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolPtrOutput { return v.EmitHeartbeatsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enable of disable replication flows for a service.
+func (o MirrorMakerReplicationFlowOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolOutput { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o MirrorMakerReplicationFlowOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+func (o MirrorMakerReplicationFlowOutput) ReplicationPolicyClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringPtrOutput { return v.ReplicationPolicyClass }).(pulumi.StringPtrOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o MirrorMakerReplicationFlowOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Source cluster alias. Maximum Length: `128`.
+func (o MirrorMakerReplicationFlowOutput) SourceCluster() pulumi.StringOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.SourceCluster }).(pulumi.StringOutput)
+}
+
+// Sync consumer group offsets. The default value is `false`.
+func (o MirrorMakerReplicationFlowOutput) SyncGroupOffsetsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolPtrOutput { return v.SyncGroupOffsetsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Frequency of consumer group offset sync. The default value is `1`.
+func (o MirrorMakerReplicationFlowOutput) SyncGroupOffsetsIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.IntPtrOutput { return v.SyncGroupOffsetsIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Target cluster alias. Maximum Length: `128`.
+func (o MirrorMakerReplicationFlowOutput) TargetCluster() pulumi.StringOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.TargetCluster }).(pulumi.StringOutput)
+}
+
+// List of topics and/or regular expressions to replicate
+func (o MirrorMakerReplicationFlowOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringArrayOutput { return v.Topics }).(pulumi.StringArrayOutput)
+}
+
+// List of topics and/or regular expressions to not replicate.
+func (o MirrorMakerReplicationFlowOutput) TopicsBlacklists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringArrayOutput { return v.TopicsBlacklists }).(pulumi.StringArrayOutput)
 }
 
 type MirrorMakerReplicationFlowArrayOutput struct{ *pulumi.OutputState }

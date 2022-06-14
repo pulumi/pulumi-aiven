@@ -21,7 +21,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -47,6 +47,12 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-con1 project/service_name/connector_name
 // ```
 type KafkaConnector struct {
 	pulumi.CustomResourceState
@@ -277,6 +283,61 @@ func (o KafkaConnectorOutput) ToKafkaConnectorOutput() KafkaConnectorOutput {
 
 func (o KafkaConnectorOutput) ToKafkaConnectorOutputWithContext(ctx context.Context) KafkaConnectorOutput {
 	return o
+}
+
+// The Kafka Connector configuration parameters.
+func (o KafkaConnectorOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *KafkaConnector) pulumi.StringMapOutput { return v.Config }).(pulumi.StringMapOutput)
+}
+
+// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+func (o KafkaConnectorOutput) ConnectorName() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.ConnectorName }).(pulumi.StringOutput)
+}
+
+// The Kafka connector author.
+func (o KafkaConnectorOutput) PluginAuthor() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.PluginAuthor }).(pulumi.StringOutput)
+}
+
+// The Kafka connector Java class.
+func (o KafkaConnectorOutput) PluginClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.PluginClass }).(pulumi.StringOutput)
+}
+
+// The Kafka connector documentation URL.
+func (o KafkaConnectorOutput) PluginDocUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.PluginDocUrl }).(pulumi.StringOutput)
+}
+
+// The Kafka connector title.
+func (o KafkaConnectorOutput) PluginTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.PluginTitle }).(pulumi.StringOutput)
+}
+
+// The Kafka connector type.
+func (o KafkaConnectorOutput) PluginType() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.PluginType }).(pulumi.StringOutput)
+}
+
+// The version of the kafka connector.
+func (o KafkaConnectorOutput) PluginVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.PluginVersion }).(pulumi.StringOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o KafkaConnectorOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o KafkaConnectorOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// List of tasks of a connector.
+func (o KafkaConnectorOutput) Tasks() KafkaConnectorTaskArrayOutput {
+	return o.ApplyT(func(v *KafkaConnector) KafkaConnectorTaskArrayOutput { return v.Tasks }).(KafkaConnectorTaskArrayOutput)
 }
 
 type KafkaConnectorArrayOutput struct{ *pulumi.OutputState }

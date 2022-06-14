@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -38,6 +38,12 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink foo project/service_name
 // ```
 type AwsPrivatelink struct {
 	pulumi.CustomResourceState
@@ -225,6 +231,31 @@ func (o AwsPrivatelinkOutput) ToAwsPrivatelinkOutput() AwsPrivatelinkOutput {
 
 func (o AwsPrivatelinkOutput) ToAwsPrivatelinkOutputWithContext(ctx context.Context) AwsPrivatelinkOutput {
 	return o
+}
+
+// AWS service ID
+func (o AwsPrivatelinkOutput) AwsServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.AwsServiceId }).(pulumi.StringOutput)
+}
+
+// AWS service name
+func (o AwsPrivatelinkOutput) AwsServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.AwsServiceName }).(pulumi.StringOutput)
+}
+
+// List of allowed principals
+func (o AwsPrivatelinkOutput) Principals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringArrayOutput { return v.Principals }).(pulumi.StringArrayOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o AwsPrivatelinkOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o AwsPrivatelinkOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 type AwsPrivatelinkArrayOutput struct{ *pulumi.OutputState }

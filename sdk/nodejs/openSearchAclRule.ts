@@ -67,6 +67,12 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index
+ * ```
  */
 export class OpenSearchAclRule extends pulumi.CustomResource {
     /**

@@ -7,6 +7,12 @@ import * as utilities from "./utilities";
 
 /**
  * The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
+ * ```
  */
 export class KafkaTopic extends pulumi.CustomResource {
     /**
@@ -37,21 +43,9 @@ export class KafkaTopic extends pulumi.CustomResource {
     }
 
     /**
-     * **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
-     *
-     * @deprecated use config.cleanup_policy instead
-     */
-    public readonly cleanupPolicy!: pulumi.Output<string | undefined>;
-    /**
      * Kafka topic configuration
      */
     public readonly config!: pulumi.Output<outputs.KafkaTopicConfig | undefined>;
-    /**
-     * **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-     *
-     * @deprecated use config.min_insync_replicas instead
-     */
-    public readonly minimumInSyncReplicas!: pulumi.Output<number | undefined>;
     /**
      * The number of partitions to create in the topic.
      */
@@ -64,18 +58,6 @@ export class KafkaTopic extends pulumi.CustomResource {
      * The replication factor for the topic.
      */
     public readonly replication!: pulumi.Output<number>;
-    /**
-     * **DEPRECATED use config.retention_bytes instead** Retention bytes.
-     *
-     * @deprecated use config.retention_bytes instead
-     */
-    public readonly retentionBytes!: pulumi.Output<number | undefined>;
-    /**
-     * **DEPRECATED use config.retention_ms instead** Retention period (hours).
-     *
-     * @deprecated use config.retention_ms instead
-     */
-    public readonly retentionHours!: pulumi.Output<number | undefined>;
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
@@ -107,14 +89,10 @@ export class KafkaTopic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaTopicState | undefined;
-            resourceInputs["cleanupPolicy"] = state ? state.cleanupPolicy : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["minimumInSyncReplicas"] = state ? state.minimumInSyncReplicas : undefined;
             resourceInputs["partitions"] = state ? state.partitions : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["replication"] = state ? state.replication : undefined;
-            resourceInputs["retentionBytes"] = state ? state.retentionBytes : undefined;
-            resourceInputs["retentionHours"] = state ? state.retentionHours : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
@@ -136,14 +114,10 @@ export class KafkaTopic extends pulumi.CustomResource {
             if ((!args || args.topicName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
-            resourceInputs["cleanupPolicy"] = args ? args.cleanupPolicy : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["minimumInSyncReplicas"] = args ? args.minimumInSyncReplicas : undefined;
             resourceInputs["partitions"] = args ? args.partitions : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["replication"] = args ? args.replication : undefined;
-            resourceInputs["retentionBytes"] = args ? args.retentionBytes : undefined;
-            resourceInputs["retentionHours"] = args ? args.retentionHours : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
@@ -159,21 +133,9 @@ export class KafkaTopic extends pulumi.CustomResource {
  */
 export interface KafkaTopicState {
     /**
-     * **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
-     *
-     * @deprecated use config.cleanup_policy instead
-     */
-    cleanupPolicy?: pulumi.Input<string>;
-    /**
      * Kafka topic configuration
      */
     config?: pulumi.Input<inputs.KafkaTopicConfig>;
-    /**
-     * **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-     *
-     * @deprecated use config.min_insync_replicas instead
-     */
-    minimumInSyncReplicas?: pulumi.Input<number>;
     /**
      * The number of partitions to create in the topic.
      */
@@ -186,18 +148,6 @@ export interface KafkaTopicState {
      * The replication factor for the topic.
      */
     replication?: pulumi.Input<number>;
-    /**
-     * **DEPRECATED use config.retention_bytes instead** Retention bytes.
-     *
-     * @deprecated use config.retention_bytes instead
-     */
-    retentionBytes?: pulumi.Input<number>;
-    /**
-     * **DEPRECATED use config.retention_ms instead** Retention period (hours).
-     *
-     * @deprecated use config.retention_ms instead
-     */
-    retentionHours?: pulumi.Input<number>;
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
@@ -222,21 +172,9 @@ export interface KafkaTopicState {
  */
 export interface KafkaTopicArgs {
     /**
-     * **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
-     *
-     * @deprecated use config.cleanup_policy instead
-     */
-    cleanupPolicy?: pulumi.Input<string>;
-    /**
      * Kafka topic configuration
      */
     config?: pulumi.Input<inputs.KafkaTopicConfig>;
-    /**
-     * **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-     *
-     * @deprecated use config.min_insync_replicas instead
-     */
-    minimumInSyncReplicas?: pulumi.Input<number>;
     /**
      * The number of partitions to create in the topic.
      */
@@ -249,18 +187,6 @@ export interface KafkaTopicArgs {
      * The replication factor for the topic.
      */
     replication: pulumi.Input<number>;
-    /**
-     * **DEPRECATED use config.retention_bytes instead** Retention bytes.
-     *
-     * @deprecated use config.retention_bytes instead
-     */
-    retentionBytes?: pulumi.Input<number>;
-    /**
-     * **DEPRECATED use config.retention_ms instead** Retention period (hours).
-     *
-     * @deprecated use config.retention_ms instead
-     */
-    retentionHours?: pulumi.Input<number>;
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */

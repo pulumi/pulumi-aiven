@@ -29,6 +29,12 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-con1 project/service_name/connector_name
+ * ```
  */
 export class KafkaConnector extends pulumi.CustomResource {
     /**

@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -36,6 +36,12 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
 // ```
 type ProjectUser struct {
 	pulumi.CustomResourceState
@@ -217,6 +223,26 @@ func (o ProjectUserOutput) ToProjectUserOutput() ProjectUserOutput {
 
 func (o ProjectUserOutput) ToProjectUserOutputWithContext(ctx context.Context) ProjectUserOutput {
 	return o
+}
+
+// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+func (o ProjectUserOutput) Accepted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectUser) pulumi.BoolOutput { return v.Accepted }).(pulumi.BoolOutput)
+}
+
+// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+func (o ProjectUserOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectUser) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// Project membership type. The possible values are `admin`, `developer` and `operator`.
+func (o ProjectUserOutput) MemberType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectUser) pulumi.StringOutput { return v.MemberType }).(pulumi.StringOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ProjectUserOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 type ProjectUserArrayOutput struct{ *pulumi.OutputState }

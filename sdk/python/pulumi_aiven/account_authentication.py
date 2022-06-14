@@ -344,6 +344,12 @@ class AccountAuthentication(pulumi.CustomResource):
         """
         The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo account_id/authentication_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The unique id of the account.
@@ -362,6 +368,12 @@ class AccountAuthentication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo account_id/authentication_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccountAuthenticationArgs args: The arguments to use to populate this resource's properties.

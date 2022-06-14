@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -56,22 +57,6 @@ export interface GetProjectResult {
      */
     readonly availableCredits: string;
     /**
-     * **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-     */
-    readonly billingAddress: string;
-    /**
-     * **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-     */
-    readonly billingCurrency: string;
-    /**
-     * **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-     */
-    readonly billingEmails: string[];
-    /**
-     * **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
-     */
-    readonly billingExtraText: string;
-    /**
      * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
      */
     readonly billingGroup: string;
@@ -80,17 +65,9 @@ export interface GetProjectResult {
      */
     readonly caCert: string;
     /**
-     * **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copyFromProject` is used to copy billing info from another project.
-     */
-    readonly cardId: string;
-    /**
      * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
      */
     readonly copyFromProject: string;
-    /**
-     * **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
-     */
-    readonly countryCode: string;
     /**
      * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
      */
@@ -112,6 +89,10 @@ export interface GetProjectResult {
      */
     readonly project: string;
     /**
+     * Tags are key-value pairs that allow you to categorize projects.
+     */
+    readonly tags: outputs.GetProjectTag[];
+    /**
      * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
      */
     readonly technicalEmails: string[];
@@ -119,10 +100,6 @@ export interface GetProjectResult {
      * Use the same billing group that is used in source project.
      */
     readonly useSourceProjectBillingGroup: boolean;
-    /**
-     * **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
-     */
-    readonly vatId: string;
 }
 
 export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {

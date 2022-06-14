@@ -36,8 +36,6 @@ type LookupServiceIntegrationArgs struct {
 
 // A collection of values returned by getServiceIntegration.
 type LookupServiceIntegrationResult struct {
-	// Dashboard specific user configurable settings
-	DatadogUserConfigs []GetServiceIntegrationDatadogUserConfig `pulumi:"datadogUserConfigs"`
 	// Destination endpoint for the integration (if any)
 	DestinationEndpointId string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
@@ -62,8 +60,6 @@ type LookupServiceIntegrationResult struct {
 	MirrormakerUserConfigs []GetServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfigs"`
 	// Project the integration belongs to
 	Project string `pulumi:"project"`
-	// Prometheus coordinator specific user configurable settings
-	PrometheusUserConfigs []GetServiceIntegrationPrometheusUserConfig `pulumi:"prometheusUserConfigs"`
 	// Source endpoint for the integration (if any)
 	SourceEndpointId string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
@@ -112,13 +108,6 @@ func (o LookupServiceIntegrationResultOutput) ToLookupServiceIntegrationResultOu
 
 func (o LookupServiceIntegrationResultOutput) ToLookupServiceIntegrationResultOutputWithContext(ctx context.Context) LookupServiceIntegrationResultOutput {
 	return o
-}
-
-// Dashboard specific user configurable settings
-func (o LookupServiceIntegrationResultOutput) DatadogUserConfigs() GetServiceIntegrationDatadogUserConfigArrayOutput {
-	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationDatadogUserConfig {
-		return v.DatadogUserConfigs
-	}).(GetServiceIntegrationDatadogUserConfigArrayOutput)
 }
 
 // Destination endpoint for the integration (if any)
@@ -189,13 +178,6 @@ func (o LookupServiceIntegrationResultOutput) MirrormakerUserConfigs() GetServic
 // Project the integration belongs to
 func (o LookupServiceIntegrationResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.Project }).(pulumi.StringOutput)
-}
-
-// Prometheus coordinator specific user configurable settings
-func (o LookupServiceIntegrationResultOutput) PrometheusUserConfigs() GetServiceIntegrationPrometheusUserConfigArrayOutput {
-	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationPrometheusUserConfig {
-		return v.PrometheusUserConfigs
-	}).(GetServiceIntegrationPrometheusUserConfigArrayOutput)
 }
 
 // Source endpoint for the integration (if any)

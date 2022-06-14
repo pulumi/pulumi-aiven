@@ -76,6 +76,10 @@ export interface GetBillingGroupResult {
      */
     readonly company: string;
     /**
+     * ID of the billing group to copy from
+     */
+    readonly copyFromBillingGroup: string;
+    /**
      * Country code
      */
     readonly countryCode: string;

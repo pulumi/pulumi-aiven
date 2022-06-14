@@ -294,6 +294,12 @@ class ConnectionPool(pulumi.CustomResource):
             username=aiven_service_user["myserviceuser"]["username"])
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -327,6 +333,12 @@ class ConnectionPool(pulumi.CustomResource):
             pool_name="mypool",
             pool_size=10,
             username=aiven_service_user["myserviceuser"]["username"])
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
         ```
 
         :param str resource_name: The name of the resource.

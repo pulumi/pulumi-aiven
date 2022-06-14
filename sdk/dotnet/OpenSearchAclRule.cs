@@ -11,6 +11,12 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// The Opensearch ACL Rule resource models a single ACL Rule for an Aiven Opensearch service.
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/openSearchAclRule:OpenSearchAclRule")]
     public partial class OpenSearchAclRule : Pulumi.CustomResource

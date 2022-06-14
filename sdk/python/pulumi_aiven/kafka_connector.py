@@ -298,6 +298,12 @@ class KafkaConnector(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-con1 project/service_name/connector_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The Kafka Connector configuration parameters.
@@ -333,6 +339,12 @@ class KafkaConnector(pulumi.CustomResource):
                 "connection.username": aiven_opensearch["os-service1"]["service_username"],
                 "connection.password": aiven_opensearch["os-service1"]["service_password"],
             })
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-con1 project/service_name/connector_name
         ```
 
         :param str resource_name: The name of the resource.

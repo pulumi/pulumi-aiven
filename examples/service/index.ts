@@ -21,12 +21,11 @@ const projectName = config.require("projectName");
 
 const randomName = new random.RandomPet("my-service-name");
 
-const service = new aiven.Service("my-new-service", {
+const service = new aiven.Grafana("my-new-service", {
     project: projectName,
     cloudName: "google-europe-west1",
     plan:"startup-4",
     serviceName: randomName.id,
-    serviceType: "grafana",
     grafanaUserConfig: {
         publicAccess: {
             grafana: "true",

@@ -13,25 +13,34 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const os1 = new aiven.OpenSearch("os1", {
- *     project: data.aiven_project.pr1.project,
+ * const fooProject = aiven.getProject({
+ *     project: "example_project",
+ * });
+ * const bar = new aiven.OpenSearch("bar", {
+ *     project: fooProject.then(fooProject => fooProject.project),
  *     cloudName: "google-europe-west1",
  *     plan: "startup-4",
- *     serviceName: "my-os1",
+ *     serviceName: "example_service_name",
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
- *     opensearchUserConfig: {
- *         opensearchVersion: "1",
- *         opensearchDashboards: {
- *             enabled: "true",
- *             opensearchRequestTimeout: "30000",
- *         },
- *         publicAccess: {
- *             opensearch: "true",
- *             opensearchDashboards: "true",
- *         },
- *     },
  * });
+ * const fooServiceUser = new aiven.ServiceUser("fooServiceUser", {
+ *     serviceName: bar.serviceName,
+ *     project: fooProject.then(fooProject => fooProject.project),
+ *     username: "user-example",
+ * });
+ * const fooOpenSearchAclConfig = new aiven.OpenSearchAclConfig("fooOpenSearchAclConfig", {
+ *     project: fooProject.then(fooProject => fooProject.project),
+ *     serviceName: bar.serviceName,
+ *     enabled: true,
+ *     extendedAcl: false,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
  * ```
  */
 export class OpenSearchAclConfig extends pulumi.CustomResource {

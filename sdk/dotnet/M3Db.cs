@@ -47,6 +47,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/m3Db:M3Db m3 project/service_name
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/m3Db:M3Db")]
     public partial class M3Db : Pulumi.CustomResource
@@ -196,6 +202,12 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
 
         /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.M3DbTag>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Output("terminationProtection")]
@@ -323,6 +335,18 @@ namespace Pulumi.Aiven
         {
             get => _staticIps ?? (_staticIps = new InputList<string>());
             set => _staticIps = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.M3DbTagArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        public InputList<Inputs.M3DbTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.M3DbTagArgs>());
+            set => _tags = value;
         }
 
         /// <summary>
@@ -504,6 +528,18 @@ namespace Pulumi.Aiven
         {
             get => _staticIps ?? (_staticIps = new InputList<string>());
             set => _staticIps = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.M3DbTagGetArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        public InputList<Inputs.M3DbTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.M3DbTagGetArgs>());
+            set => _tags = value;
         }
 
         /// <summary>

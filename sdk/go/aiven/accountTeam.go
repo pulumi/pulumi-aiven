@@ -12,6 +12,12 @@ import (
 )
 
 // The Account Team resource allows the creation and management of an Account Team.
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/accountTeam:AccountTeam account_team1 account_id/team_id
+// ```
 type AccountTeam struct {
 	pulumi.CustomResourceState
 
@@ -188,6 +194,31 @@ func (o AccountTeamOutput) ToAccountTeamOutput() AccountTeamOutput {
 
 func (o AccountTeamOutput) ToAccountTeamOutputWithContext(ctx context.Context) AccountTeamOutput {
 	return o
+}
+
+// The unique account id
+func (o AccountTeamOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountTeam) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Time of creation
+func (o AccountTeamOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountTeam) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The account team name
+func (o AccountTeamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountTeam) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The auto-generated unique account team id
+func (o AccountTeamOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountTeam) pulumi.StringOutput { return v.TeamId }).(pulumi.StringOutput)
+}
+
+// Time of last update
+func (o AccountTeamOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountTeam) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 type AccountTeamArrayOutput struct{ *pulumi.OutputState }

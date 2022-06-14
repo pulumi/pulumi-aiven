@@ -20,7 +20,10 @@ class GetKafkaAclResult:
     """
     A collection of values returned by getKafkaAcl.
     """
-    def __init__(__self__, id=None, permission=None, project=None, service_name=None, topic=None, username=None):
+    def __init__(__self__, acl_id=None, id=None, permission=None, project=None, service_name=None, topic=None, username=None):
+        if acl_id and not isinstance(acl_id, str):
+            raise TypeError("Expected argument 'acl_id' to be a str")
+        pulumi.set(__self__, "acl_id", acl_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,6 +42,14 @@ class GetKafkaAclResult:
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="aclId")
+    def acl_id(self) -> str:
+        """
+        Kafka ACL ID
+        """
+        return pulumi.get(self, "acl_id")
 
     @property
     @pulumi.getter
@@ -95,6 +106,7 @@ class AwaitableGetKafkaAclResult(GetKafkaAclResult):
         if False:
             yield self
         return GetKafkaAclResult(
+            acl_id=self.acl_id,
             id=self.id,
             permission=self.permission,
             project=self.project,
@@ -145,6 +157,7 @@ def get_kafka_acl(permission: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaAcl:getKafkaAcl', __args__, opts=opts, typ=GetKafkaAclResult).value
 
     return AwaitableGetKafkaAclResult(
+        acl_id=__ret__.acl_id,
         id=__ret__.id,
         permission=__ret__.permission,
         project=__ret__.project,

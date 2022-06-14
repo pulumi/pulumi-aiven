@@ -304,6 +304,103 @@ func (o ServiceIntegrationEndpointOutput) ToServiceIntegrationEndpointOutputWith
 	return o
 }
 
+// Datadog specific user configurable settings
+func (o ServiceIntegrationEndpointOutput) DatadogUserConfig() ServiceIntegrationEndpointDatadogUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointDatadogUserConfigPtrOutput {
+		return v.DatadogUserConfig
+	}).(ServiceIntegrationEndpointDatadogUserConfigPtrOutput)
+}
+
+// Integration endpoint specific backend configuration
+func (o ServiceIntegrationEndpointOutput) EndpointConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) pulumi.StringMapOutput { return v.EndpointConfig }).(pulumi.StringMapOutput)
+}
+
+// Name of the service integration endpoint
+func (o ServiceIntegrationEndpointOutput) EndpointName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) pulumi.StringOutput { return v.EndpointName }).(pulumi.StringOutput)
+}
+
+// Type of the service integration endpoint
+func (o ServiceIntegrationEndpointOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// external AWS CloudWatch Logs specific user configurable settings
+func (o ServiceIntegrationEndpointOutput) ExternalAwsCloudwatchLogsUserConfig() ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput {
+		return v.ExternalAwsCloudwatchLogsUserConfig
+	}).(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput)
+}
+
+// External AWS cloudwatch mertrics specific user configurable settings
+func (o ServiceIntegrationEndpointOutput) ExternalAwsCloudwatchMetricsUserConfig() ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput {
+		return v.ExternalAwsCloudwatchMetricsUserConfig
+	}).(ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput)
+}
+
+// external elasticsearch specific user configurable settings
+func (o ServiceIntegrationEndpointOutput) ExternalElasticsearchLogsUserConfig() ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput {
+		return v.ExternalElasticsearchLogsUserConfig
+	}).(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput)
+}
+
+// external Google Cloud Logginig specific user configurable settings
+func (o ServiceIntegrationEndpointOutput) ExternalGoogleCloudLoggingUserConfig() ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput {
+		return v.ExternalGoogleCloudLoggingUserConfig
+	}).(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
+}
+
+// external Kafka specific user configurable settings
+func (o ServiceIntegrationEndpointOutput) ExternalKafkaUserConfig() ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput {
+		return v.ExternalKafkaUserConfig
+	}).(ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput)
+}
+
+// External schema registry specific user configurable settings
+func (o ServiceIntegrationEndpointOutput) ExternalSchemaRegistryUserConfig() ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput {
+		return v.ExternalSchemaRegistryUserConfig
+	}).(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput)
+}
+
+// Jolokia specific user configurable settings
+func (o ServiceIntegrationEndpointOutput) JolokiaUserConfig() ServiceIntegrationEndpointJolokiaUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointJolokiaUserConfigPtrOutput {
+		return v.JolokiaUserConfig
+	}).(ServiceIntegrationEndpointJolokiaUserConfigPtrOutput)
+}
+
+// Project the service integration endpoint belongs to
+func (o ServiceIntegrationEndpointOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Prometheus specific user configurable settings
+func (o ServiceIntegrationEndpointOutput) PrometheusUserConfig() ServiceIntegrationEndpointPrometheusUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointPrometheusUserConfigPtrOutput {
+		return v.PrometheusUserConfig
+	}).(ServiceIntegrationEndpointPrometheusUserConfigPtrOutput)
+}
+
+// rsyslog specific user configurable settings
+func (o ServiceIntegrationEndpointOutput) RsyslogUserConfig() ServiceIntegrationEndpointRsyslogUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointRsyslogUserConfigPtrOutput {
+		return v.RsyslogUserConfig
+	}).(ServiceIntegrationEndpointRsyslogUserConfigPtrOutput)
+}
+
+// Signalfx specific user configurable settings
+func (o ServiceIntegrationEndpointOutput) SignalfxUserConfig() ServiceIntegrationEndpointSignalfxUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointSignalfxUserConfigPtrOutput {
+		return v.SignalfxUserConfig
+	}).(ServiceIntegrationEndpointSignalfxUserConfigPtrOutput)
+}
+
 type ServiceIntegrationEndpointArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceIntegrationEndpointArrayOutput) ElementType() reflect.Type {

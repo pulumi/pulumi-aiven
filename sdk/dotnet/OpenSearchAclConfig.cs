@@ -22,32 +22,41 @@ namespace Pulumi.Aiven
     /// {
     ///     public MyStack()
     ///     {
-    ///         var os1 = new Aiven.OpenSearch("os1", new Aiven.OpenSearchArgs
+    ///         var fooProject = Output.Create(Aiven.GetProject.InvokeAsync(new Aiven.GetProjectArgs
     ///         {
-    ///             Project = data.Aiven_project.Pr1.Project,
+    ///             Project = "example_project",
+    ///         }));
+    ///         var bar = new Aiven.OpenSearch("bar", new Aiven.OpenSearchArgs
+    ///         {
+    ///             Project = fooProject.Apply(fooProject =&gt; fooProject.Project),
     ///             CloudName = "google-europe-west1",
     ///             Plan = "startup-4",
-    ///             ServiceName = "my-os1",
+    ///             ServiceName = "example_service_name",
     ///             MaintenanceWindowDow = "monday",
     ///             MaintenanceWindowTime = "10:00:00",
-    ///             OpensearchUserConfig = new Aiven.Inputs.OpenSearchOpensearchUserConfigArgs
-    ///             {
-    ///                 OpensearchVersion = "1",
-    ///                 OpensearchDashboards = new Aiven.Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs
-    ///                 {
-    ///                     Enabled = "true",
-    ///                     OpensearchRequestTimeout = "30000",
-    ///                 },
-    ///                 PublicAccess = new Aiven.Inputs.OpenSearchOpensearchUserConfigPublicAccessArgs
-    ///                 {
-    ///                     Opensearch = "true",
-    ///                     OpensearchDashboards = "true",
-    ///                 },
-    ///             },
+    ///         });
+    ///         var fooServiceUser = new Aiven.ServiceUser("fooServiceUser", new Aiven.ServiceUserArgs
+    ///         {
+    ///             ServiceName = bar.ServiceName,
+    ///             Project = fooProject.Apply(fooProject =&gt; fooProject.Project),
+    ///             Username = "user-example",
+    ///         });
+    ///         var fooOpenSearchAclConfig = new Aiven.OpenSearchAclConfig("fooOpenSearchAclConfig", new Aiven.OpenSearchAclConfigArgs
+    ///         {
+    ///             Project = fooProject.Apply(fooProject =&gt; fooProject.Project),
+    ///             ServiceName = bar.ServiceName,
+    ///             Enabled = true,
+    ///             ExtendedAcl = false,
     ///         });
     ///     }
     /// 
     /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/openSearchAclConfig:OpenSearchAclConfig")]

@@ -19,6 +19,12 @@ import * as utilities from "./utilities";
  *     username: "<USERNAME>",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/serviceUser:ServiceUser myserviceuser project/service_name/username
+ * ```
  */
 export class ServiceUser extends pulumi.CustomResource {
     /**

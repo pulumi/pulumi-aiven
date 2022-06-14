@@ -6,6 +6,12 @@ import * as utilities from "./utilities";
 
 /**
  * The Account Team resource allows the creation and management of an Account Team.
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/accountTeam:AccountTeam account_team1 account_id/team_id
+ * ```
  */
 export class AccountTeam extends pulumi.CustomResource {
     /**

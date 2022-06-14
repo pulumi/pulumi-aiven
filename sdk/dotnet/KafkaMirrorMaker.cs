@@ -46,6 +46,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/kafkaMirrorMaker:KafkaMirrorMaker mm1 project/service_name
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaMirrorMaker:KafkaMirrorMaker")]
     public partial class KafkaMirrorMaker : Pulumi.CustomResource
@@ -195,6 +201,12 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
 
         /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.KafkaMirrorMakerTag>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Output("terminationProtection")]
@@ -322,6 +334,18 @@ namespace Pulumi.Aiven
         {
             get => _staticIps ?? (_staticIps = new InputList<string>());
             set => _staticIps = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.KafkaMirrorMakerTagArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        public InputList<Inputs.KafkaMirrorMakerTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.KafkaMirrorMakerTagArgs>());
+            set => _tags = value;
         }
 
         /// <summary>
@@ -503,6 +527,18 @@ namespace Pulumi.Aiven
         {
             get => _staticIps ?? (_staticIps = new InputList<string>());
             set => _staticIps = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.KafkaMirrorMakerTagGetArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        public InputList<Inputs.KafkaMirrorMakerTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.KafkaMirrorMakerTagGetArgs>());
+            set => _tags = value;
         }
 
         /// <summary>

@@ -18,7 +18,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -104,6 +104,8 @@ type LookupPgResult struct {
 	State string `pulumi:"state"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
+	// Tags are key-value pairs that allow you to categorize services.
+	Tags []GetPgTag `pulumi:"tags"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
 }
@@ -271,6 +273,11 @@ func (o LookupPgResultOutput) State() pulumi.StringOutput {
 // Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o LookupPgResultOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPgResult) []string { return v.StaticIps }).(pulumi.StringArrayOutput)
+}
+
+// Tags are key-value pairs that allow you to categorize services.
+func (o LookupPgResultOutput) Tags() GetPgTagArrayOutput {
+	return o.ApplyT(func(v LookupPgResult) []GetPgTag { return v.Tags }).(GetPgTagArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.

@@ -169,6 +169,12 @@ class AccountTeamProject(pulumi.CustomResource):
         It is important to note that the project should have an `account_id` property set equal to the
         account team you are trying to link to this project.
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/accountTeamProject:AccountTeamProject account_team_project1 account_id/team_id/project_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The unique account id
@@ -188,6 +194,12 @@ class AccountTeamProject(pulumi.CustomResource):
         It is intended to link an existing project to the existing account team.
         It is important to note that the project should have an `account_id` property set equal to the
         account team you are trying to link to this project.
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/accountTeamProject:AccountTeamProject account_team_project1 account_id/team_id/project_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccountTeamProjectArgs args: The arguments to use to populate this resource's properties.

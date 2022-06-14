@@ -35,6 +35,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink foo project/service_name
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/azurePrivatelink:AzurePrivatelink")]
     public partial class AzurePrivatelink : Pulumi.CustomResource

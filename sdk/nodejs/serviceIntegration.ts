@@ -44,10 +44,6 @@ export class ServiceIntegration extends pulumi.CustomResource {
     }
 
     /**
-     * Dashboard specific user configurable settings
-     */
-    public readonly datadogUserConfig!: pulumi.Output<outputs.ServiceIntegrationDatadogUserConfig | undefined>;
-    /**
      * Destination endpoint for the integration (if any)
      */
     public readonly destinationEndpointId!: pulumi.Output<string | undefined>;
@@ -92,10 +88,6 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Prometheus coordinator specific user configurable settings
-     */
-    public readonly prometheusUserConfig!: pulumi.Output<outputs.ServiceIntegrationPrometheusUserConfig | undefined>;
-    /**
      * Source endpoint for the integration (if any)
      */
     public readonly sourceEndpointId!: pulumi.Output<string | undefined>;
@@ -117,7 +109,6 @@ export class ServiceIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceIntegrationState | undefined;
-            resourceInputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
             resourceInputs["destinationEndpointId"] = state ? state.destinationEndpointId : undefined;
             resourceInputs["destinationServiceName"] = state ? state.destinationServiceName : undefined;
             resourceInputs["integrationId"] = state ? state.integrationId : undefined;
@@ -129,7 +120,6 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["metricsUserConfig"] = state ? state.metricsUserConfig : undefined;
             resourceInputs["mirrormakerUserConfig"] = state ? state.mirrormakerUserConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["prometheusUserConfig"] = state ? state.prometheusUserConfig : undefined;
             resourceInputs["sourceEndpointId"] = state ? state.sourceEndpointId : undefined;
             resourceInputs["sourceServiceName"] = state ? state.sourceServiceName : undefined;
         } else {
@@ -140,7 +130,6 @@ export class ServiceIntegration extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
             resourceInputs["destinationEndpointId"] = args ? args.destinationEndpointId : undefined;
             resourceInputs["destinationServiceName"] = args ? args.destinationServiceName : undefined;
             resourceInputs["integrationType"] = args ? args.integrationType : undefined;
@@ -151,7 +140,6 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["metricsUserConfig"] = args ? args.metricsUserConfig : undefined;
             resourceInputs["mirrormakerUserConfig"] = args ? args.mirrormakerUserConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["prometheusUserConfig"] = args ? args.prometheusUserConfig : undefined;
             resourceInputs["sourceEndpointId"] = args ? args.sourceEndpointId : undefined;
             resourceInputs["sourceServiceName"] = args ? args.sourceServiceName : undefined;
             resourceInputs["integrationId"] = undefined /*out*/;
@@ -165,10 +153,6 @@ export class ServiceIntegration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServiceIntegration resources.
  */
 export interface ServiceIntegrationState {
-    /**
-     * Dashboard specific user configurable settings
-     */
-    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig>;
     /**
      * Destination endpoint for the integration (if any)
      */
@@ -214,10 +198,6 @@ export interface ServiceIntegrationState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Prometheus coordinator specific user configurable settings
-     */
-    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig>;
-    /**
      * Source endpoint for the integration (if any)
      */
     sourceEndpointId?: pulumi.Input<string>;
@@ -231,10 +211,6 @@ export interface ServiceIntegrationState {
  * The set of arguments for constructing a ServiceIntegration resource.
  */
 export interface ServiceIntegrationArgs {
-    /**
-     * Dashboard specific user configurable settings
-     */
-    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig>;
     /**
      * Destination endpoint for the integration (if any)
      */
@@ -275,10 +251,6 @@ export interface ServiceIntegrationArgs {
      * Project the integration belongs to
      */
     project: pulumi.Input<string>;
-    /**
-     * Prometheus coordinator specific user configurable settings
-     */
-    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig>;
     /**
      * Source endpoint for the integration (if any)
      */

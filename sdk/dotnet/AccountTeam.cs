@@ -11,6 +11,12 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// The Account Team resource allows the creation and management of an Account Team.
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/accountTeam:AccountTeam account_team1 account_id/team_id
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/accountTeam:AccountTeam")]
     public partial class AccountTeam : Pulumi.CustomResource

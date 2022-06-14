@@ -19,6 +19,12 @@ import * as utilities from "./utilities";
  *     databaseName: "<DATABASE_NAME>",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/database:Database mydatabase project/service_name/database_name
+ * ```
  */
 export class Database extends pulumi.CustomResource {
     /**

@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -40,6 +40,12 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
 // ```
 type ConnectionPool struct {
 	pulumi.CustomResourceState
@@ -264,6 +270,46 @@ func (o ConnectionPoolOutput) ToConnectionPoolOutput() ConnectionPoolOutput {
 
 func (o ConnectionPoolOutput) ToConnectionPoolOutputWithContext(ctx context.Context) ConnectionPoolOutput {
 	return o
+}
+
+// The URI for connecting to the pool
+func (o ConnectionPoolOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.ConnectionUri }).(pulumi.StringOutput)
+}
+
+// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ConnectionPoolOutput) DatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
+}
+
+// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+func (o ConnectionPoolOutput) PoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionPool) pulumi.StringPtrOutput { return v.PoolMode }).(pulumi.StringPtrOutput)
+}
+
+// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+func (o ConnectionPoolOutput) PoolName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.PoolName }).(pulumi.StringOutput)
+}
+
+// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+func (o ConnectionPoolOutput) PoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionPool) pulumi.IntPtrOutput { return v.PoolSize }).(pulumi.IntPtrOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ConnectionPoolOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ConnectionPoolOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+func (o ConnectionPoolOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionPool) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type ConnectionPoolArrayOutput struct{ *pulumi.OutputState }

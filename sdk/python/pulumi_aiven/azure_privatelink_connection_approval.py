@@ -164,6 +164,12 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
         """
         The Azure privatelink approve resource waits for an aiven privatelink connection on a service and approves it with associated endpoint IP
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint_ip_address: IP address of Azure private endpoint
@@ -178,6 +184,12 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Azure privatelink approve resource waits for an aiven privatelink connection on a service and approves it with associated endpoint IP
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param AzurePrivatelinkConnectionApprovalArgs args: The arguments to use to populate this resource's properties.

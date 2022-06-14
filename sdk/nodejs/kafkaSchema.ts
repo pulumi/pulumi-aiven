@@ -34,6 +34,12 @@ import * as utilities from "./utilities";
  * `,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/kafkaSchema:KafkaSchema kafka-schema1 project/service_name/subject_name
+ * ```
  */
 export class KafkaSchema extends pulumi.CustomResource {
     /**
@@ -76,6 +82,10 @@ export class KafkaSchema extends pulumi.CustomResource {
      */
     public readonly schema!: pulumi.Output<string>;
     /**
+     * Kafka Schema type JSON or AVRO
+     */
+    public readonly schemaType!: pulumi.Output<string | undefined>;
+    /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
@@ -104,6 +114,7 @@ export class KafkaSchema extends pulumi.CustomResource {
             resourceInputs["compatibilityLevel"] = state ? state.compatibilityLevel : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["schemaType"] = state ? state.schemaType : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["subjectName"] = state ? state.subjectName : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
@@ -124,6 +135,7 @@ export class KafkaSchema extends pulumi.CustomResource {
             resourceInputs["compatibilityLevel"] = args ? args.compatibilityLevel : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["schemaType"] = args ? args.schemaType : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["subjectName"] = args ? args.subjectName : undefined;
             resourceInputs["version"] = undefined /*out*/;
@@ -149,6 +161,10 @@ export interface KafkaSchemaState {
      * Kafka Schema configuration should be a valid Avro Schema JSON format.
      */
     schema?: pulumi.Input<string>;
+    /**
+     * Kafka Schema type JSON or AVRO
+     */
+    schemaType?: pulumi.Input<string>;
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
@@ -179,6 +195,10 @@ export interface KafkaSchemaArgs {
      * Kafka Schema configuration should be a valid Avro Schema JSON format.
      */
     schema: pulumi.Input<string>;
+    /**
+     * Kafka Schema type JSON or AVRO
+     */
+    schemaType?: pulumi.Input<string>;
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */

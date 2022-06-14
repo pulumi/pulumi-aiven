@@ -20,7 +20,7 @@ class GetKafkaSchemaConfigurationResult:
     """
     A collection of values returned by getKafkaSchemaConfiguration.
     """
-    def __init__(__self__, compatibility_level=None, id=None, project=None, schema=None, service_name=None, subject_name=None, version=None):
+    def __init__(__self__, compatibility_level=None, id=None, project=None, schema=None, schema_type=None, service_name=None, subject_name=None, version=None):
         if compatibility_level and not isinstance(compatibility_level, str):
             raise TypeError("Expected argument 'compatibility_level' to be a str")
         pulumi.set(__self__, "compatibility_level", compatibility_level)
@@ -33,6 +33,9 @@ class GetKafkaSchemaConfigurationResult:
         if schema and not isinstance(schema, str):
             raise TypeError("Expected argument 'schema' to be a str")
         pulumi.set(__self__, "schema", schema)
+        if schema_type and not isinstance(schema_type, str):
+            raise TypeError("Expected argument 'schema_type' to be a str")
+        pulumi.set(__self__, "schema_type", schema_type)
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
@@ -76,6 +79,14 @@ class GetKafkaSchemaConfigurationResult:
         return pulumi.get(self, "schema")
 
     @property
+    @pulumi.getter(name="schemaType")
+    def schema_type(self) -> str:
+        """
+        Kafka Schema type JSON or AVRO
+        """
+        return pulumi.get(self, "schema_type")
+
+    @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
@@ -110,6 +121,7 @@ class AwaitableGetKafkaSchemaConfigurationResult(GetKafkaSchemaConfigurationResu
             id=self.id,
             project=self.project,
             schema=self.schema,
+            schema_type=self.schema_type,
             service_name=self.service_name,
             subject_name=self.subject_name,
             version=self.version)
@@ -151,6 +163,7 @@ def get_kafka_schema_configuration(project: Optional[str] = None,
         id=__ret__.id,
         project=__ret__.project,
         schema=__ret__.schema,
+        schema_type=__ret__.schema_type,
         service_name=__ret__.service_name,
         subject_name=__ret__.subject_name,
         version=__ret__.version)

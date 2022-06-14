@@ -147,6 +147,12 @@ class ProjectVpc(pulumi.CustomResource):
         """
         The Project VPC resource allows the creation and management of Aiven Project VPCs.
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
@@ -161,6 +167,12 @@ class ProjectVpc(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Project VPC resource allows the creation and management of Aiven Project VPCs.
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+        ```
 
         :param str resource_name: The name of the resource.
         :param ProjectVpcArgs args: The arguments to use to populate this resource's properties.

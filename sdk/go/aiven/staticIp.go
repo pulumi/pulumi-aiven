@@ -199,6 +199,36 @@ func (o StaticIpOutput) ToStaticIpOutputWithContext(ctx context.Context) StaticI
 	return o
 }
 
+// Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
+func (o StaticIpOutput) CloudName() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.CloudName }).(pulumi.StringOutput)
+}
+
+// The address of the static ip
+func (o StaticIpOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o StaticIpOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The service name the static ip is associated with.
+func (o StaticIpOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The state the static ip is in.
+func (o StaticIpOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The static ip id of the resource. Should be used as a reference elsewhere.
+func (o StaticIpOutput) StaticIpAddressId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.StaticIpAddressId }).(pulumi.StringOutput)
+}
+
 type StaticIpArrayOutput struct{ *pulumi.OutputState }
 
 func (StaticIpArrayOutput) ElementType() reflect.Type {

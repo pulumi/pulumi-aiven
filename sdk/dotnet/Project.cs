@@ -11,6 +11,12 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// The Project resource allows the creation and management of Aiven Projects.
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/project:Project myproject project
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/project:Project")]
     public partial class Project : Pulumi.CustomResource
@@ -34,30 +40,6 @@ namespace Pulumi.Aiven
         public Output<string> AvailableCredits { get; private set; } = null!;
 
         /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-        /// </summary>
-        [Output("billingAddress")]
-        public Output<string?> BillingAddress { get; private set; } = null!;
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-        /// </summary>
-        [Output("billingCurrency")]
-        public Output<string?> BillingCurrency { get; private set; } = null!;
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-        /// </summary>
-        [Output("billingEmails")]
-        public Output<ImmutableArray<string>> BillingEmails { get; private set; } = null!;
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
-        /// </summary>
-        [Output("billingExtraText")]
-        public Output<string?> BillingExtraText { get; private set; } = null!;
-
-        /// <summary>
         /// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Output("billingGroup")]
@@ -70,22 +52,10 @@ namespace Pulumi.Aiven
         public Output<string> CaCert { get; private set; } = null!;
 
         /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copy_from_project` is used to copy billing info from another project.
-        /// </summary>
-        [Output("cardId")]
-        public Output<string?> CardId { get; private set; } = null!;
-
-        /// <summary>
         /// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Output("copyFromProject")]
         public Output<string?> CopyFromProject { get; private set; } = null!;
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
-        /// </summary>
-        [Output("countryCode")]
-        public Output<string?> CountryCode { get; private set; } = null!;
 
         /// <summary>
         /// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
@@ -112,6 +82,12 @@ namespace Pulumi.Aiven
         public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
+        /// Tags are key-value pairs that allow you to categorize projects.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.ProjectTag>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         /// </summary>
         [Output("technicalEmails")]
@@ -122,12 +98,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("useSourceProjectBillingGroup")]
         public Output<bool?> UseSourceProjectBillingGroup { get; private set; } = null!;
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
-        /// </summary>
-        [Output("vatId")]
-        public Output<string?> VatId { get; private set; } = null!;
 
 
         /// <summary>
@@ -194,59 +164,16 @@ namespace Pulumi.Aiven
         public Input<string>? AvailableCredits { get; set; }
 
         /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-        /// </summary>
-        [Input("billingAddress")]
-        public Input<string>? BillingAddress { get; set; }
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-        /// </summary>
-        [Input("billingCurrency")]
-        public Input<string>? BillingCurrency { get; set; }
-
-        [Input("billingEmails")]
-        private InputList<string>? _billingEmails;
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-        /// </summary>
-        [Obsolete(@"Please use aiven_billing_group resource to set this value.")]
-        public InputList<string> BillingEmails
-        {
-            get => _billingEmails ?? (_billingEmails = new InputList<string>());
-            set => _billingEmails = value;
-        }
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
-        /// </summary>
-        [Input("billingExtraText")]
-        public Input<string>? BillingExtraText { get; set; }
-
-        /// <summary>
         /// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("billingGroup")]
         public Input<string>? BillingGroup { get; set; }
 
         /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copy_from_project` is used to copy billing info from another project.
-        /// </summary>
-        [Input("cardId")]
-        public Input<string>? CardId { get; set; }
-
-        /// <summary>
         /// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("copyFromProject")]
         public Input<string>? CopyFromProject { get; set; }
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
-        /// </summary>
-        [Input("countryCode")]
-        public Input<string>? CountryCode { get; set; }
 
         /// <summary>
         /// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
@@ -259,6 +186,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("project", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
+
+        [Input("tags")]
+        private InputList<Inputs.ProjectTagArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize projects.
+        /// </summary>
+        public InputList<Inputs.ProjectTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.ProjectTagArgs>());
+            set => _tags = value;
+        }
 
         [Input("technicalEmails")]
         private InputList<string>? _technicalEmails;
@@ -277,12 +216,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("useSourceProjectBillingGroup")]
         public Input<bool>? UseSourceProjectBillingGroup { get; set; }
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
-        /// </summary>
-        [Input("vatId")]
-        public Input<string>? VatId { get; set; }
 
         public ProjectArgs()
         {
@@ -310,37 +243,6 @@ namespace Pulumi.Aiven
         public Input<string>? AvailableCredits { get; set; }
 
         /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-        /// </summary>
-        [Input("billingAddress")]
-        public Input<string>? BillingAddress { get; set; }
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-        /// </summary>
-        [Input("billingCurrency")]
-        public Input<string>? BillingCurrency { get; set; }
-
-        [Input("billingEmails")]
-        private InputList<string>? _billingEmails;
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-        /// </summary>
-        [Obsolete(@"Please use aiven_billing_group resource to set this value.")]
-        public InputList<string> BillingEmails
-        {
-            get => _billingEmails ?? (_billingEmails = new InputList<string>());
-            set => _billingEmails = value;
-        }
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
-        /// </summary>
-        [Input("billingExtraText")]
-        public Input<string>? BillingExtraText { get; set; }
-
-        /// <summary>
         /// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("billingGroup")]
@@ -353,22 +255,10 @@ namespace Pulumi.Aiven
         public Input<string>? CaCert { get; set; }
 
         /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copy_from_project` is used to copy billing info from another project.
-        /// </summary>
-        [Input("cardId")]
-        public Input<string>? CardId { get; set; }
-
-        /// <summary>
         /// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("copyFromProject")]
         public Input<string>? CopyFromProject { get; set; }
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
-        /// </summary>
-        [Input("countryCode")]
-        public Input<string>? CountryCode { get; set; }
 
         /// <summary>
         /// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
@@ -394,6 +284,18 @@ namespace Pulumi.Aiven
         [Input("project")]
         public Input<string>? ProjectName { get; set; }
 
+        [Input("tags")]
+        private InputList<Inputs.ProjectTagGetArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize projects.
+        /// </summary>
+        public InputList<Inputs.ProjectTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.ProjectTagGetArgs>());
+            set => _tags = value;
+        }
+
         [Input("technicalEmails")]
         private InputList<string>? _technicalEmails;
 
@@ -411,12 +313,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("useSourceProjectBillingGroup")]
         public Input<bool>? UseSourceProjectBillingGroup { get; set; }
-
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
-        /// </summary>
-        [Input("vatId")]
-        public Input<string>? VatId { get; set; }
 
         public ProjectState()
         {

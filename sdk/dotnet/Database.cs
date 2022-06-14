@@ -32,6 +32,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/database:Database mydatabase project/service_name/database_name
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/database:Database")]
     public partial class Database : Pulumi.CustomResource

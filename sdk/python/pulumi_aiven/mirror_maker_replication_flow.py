@@ -413,6 +413,12 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow f1 project/service_name/source_cluster/target_cluster
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled. The default value is `false`.
@@ -454,6 +460,12 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                 ".*\\.replica",
                 "__.*",
             ])
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow f1 project/service_name/source_cluster/target_cluster
         ```
 
         :param str resource_name: The name of the resource.

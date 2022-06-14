@@ -21,6 +21,7 @@ class BillingGroupArgs:
                  card_id: Optional[pulumi.Input[str]] = None,
                  city: Optional[pulumi.Input[str]] = None,
                  company: Optional[pulumi.Input[str]] = None,
+                 copy_from_billing_group: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -36,6 +37,7 @@ class BillingGroupArgs:
         :param pulumi.Input[str] card_id: Credit card id
         :param pulumi.Input[str] city: City
         :param pulumi.Input[str] company: Company name
+        :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy from
         :param pulumi.Input[str] country_code: Country code
         :param pulumi.Input[str] name: Billing Group name
         :param pulumi.Input[str] state: State
@@ -58,6 +60,8 @@ class BillingGroupArgs:
             pulumi.set(__self__, "city", city)
         if company is not None:
             pulumi.set(__self__, "company", company)
+        if copy_from_billing_group is not None:
+            pulumi.set(__self__, "copy_from_billing_group", copy_from_billing_group)
         if country_code is not None:
             pulumi.set(__self__, "country_code", country_code)
         if name is not None:
@@ -164,6 +168,18 @@ class BillingGroupArgs:
     @company.setter
     def company(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "company", value)
+
+    @property
+    @pulumi.getter(name="copyFromBillingGroup")
+    def copy_from_billing_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the billing group to copy from
+        """
+        return pulumi.get(self, "copy_from_billing_group")
+
+    @copy_from_billing_group.setter
+    def copy_from_billing_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "copy_from_billing_group", value)
 
     @property
     @pulumi.getter(name="countryCode")
@@ -237,6 +253,7 @@ class _BillingGroupState:
                  card_id: Optional[pulumi.Input[str]] = None,
                  city: Optional[pulumi.Input[str]] = None,
                  company: Optional[pulumi.Input[str]] = None,
+                 copy_from_billing_group: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -252,6 +269,7 @@ class _BillingGroupState:
         :param pulumi.Input[str] card_id: Credit card id
         :param pulumi.Input[str] city: City
         :param pulumi.Input[str] company: Company name
+        :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy from
         :param pulumi.Input[str] country_code: Country code
         :param pulumi.Input[str] name: Billing Group name
         :param pulumi.Input[str] state: State
@@ -274,6 +292,8 @@ class _BillingGroupState:
             pulumi.set(__self__, "city", city)
         if company is not None:
             pulumi.set(__self__, "company", company)
+        if copy_from_billing_group is not None:
+            pulumi.set(__self__, "copy_from_billing_group", copy_from_billing_group)
         if country_code is not None:
             pulumi.set(__self__, "country_code", country_code)
         if name is not None:
@@ -380,6 +400,18 @@ class _BillingGroupState:
     @company.setter
     def company(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "company", value)
+
+    @property
+    @pulumi.getter(name="copyFromBillingGroup")
+    def copy_from_billing_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the billing group to copy from
+        """
+        return pulumi.get(self, "copy_from_billing_group")
+
+    @copy_from_billing_group.setter
+    def copy_from_billing_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "copy_from_billing_group", value)
 
     @property
     @pulumi.getter(name="countryCode")
@@ -455,6 +487,7 @@ class BillingGroup(pulumi.CustomResource):
                  card_id: Optional[pulumi.Input[str]] = None,
                  city: Optional[pulumi.Input[str]] = None,
                  company: Optional[pulumi.Input[str]] = None,
+                 copy_from_billing_group: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -478,6 +511,12 @@ class BillingGroup(pulumi.CustomResource):
             billing_group=bybg1.id)
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account id
@@ -488,6 +527,7 @@ class BillingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] card_id: Credit card id
         :param pulumi.Input[str] city: City
         :param pulumi.Input[str] company: Company name
+        :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy from
         :param pulumi.Input[str] country_code: Country code
         :param pulumi.Input[str] name: Billing Group name
         :param pulumi.Input[str] state: State
@@ -517,6 +557,12 @@ class BillingGroup(pulumi.CustomResource):
             billing_group=bybg1.id)
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+        ```
+
         :param str resource_name: The name of the resource.
         :param BillingGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -540,6 +586,7 @@ class BillingGroup(pulumi.CustomResource):
                  card_id: Optional[pulumi.Input[str]] = None,
                  city: Optional[pulumi.Input[str]] = None,
                  company: Optional[pulumi.Input[str]] = None,
+                 copy_from_billing_group: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -565,6 +612,7 @@ class BillingGroup(pulumi.CustomResource):
             __props__.__dict__["card_id"] = card_id
             __props__.__dict__["city"] = city
             __props__.__dict__["company"] = company
+            __props__.__dict__["copy_from_billing_group"] = copy_from_billing_group
             __props__.__dict__["country_code"] = country_code
             __props__.__dict__["name"] = name
             __props__.__dict__["state"] = state
@@ -588,6 +636,7 @@ class BillingGroup(pulumi.CustomResource):
             card_id: Optional[pulumi.Input[str]] = None,
             city: Optional[pulumi.Input[str]] = None,
             company: Optional[pulumi.Input[str]] = None,
+            copy_from_billing_group: Optional[pulumi.Input[str]] = None,
             country_code: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
@@ -608,6 +657,7 @@ class BillingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] card_id: Credit card id
         :param pulumi.Input[str] city: City
         :param pulumi.Input[str] company: Company name
+        :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy from
         :param pulumi.Input[str] country_code: Country code
         :param pulumi.Input[str] name: Billing Group name
         :param pulumi.Input[str] state: State
@@ -626,6 +676,7 @@ class BillingGroup(pulumi.CustomResource):
         __props__.__dict__["card_id"] = card_id
         __props__.__dict__["city"] = city
         __props__.__dict__["company"] = company
+        __props__.__dict__["copy_from_billing_group"] = copy_from_billing_group
         __props__.__dict__["country_code"] = country_code
         __props__.__dict__["name"] = name
         __props__.__dict__["state"] = state
@@ -696,6 +747,14 @@ class BillingGroup(pulumi.CustomResource):
         Company name
         """
         return pulumi.get(self, "company")
+
+    @property
+    @pulumi.getter(name="copyFromBillingGroup")
+    def copy_from_billing_group(self) -> pulumi.Output[Optional[str]]:
+        """
+        ID of the billing group to copy from
+        """
+        return pulumi.get(self, "copy_from_billing_group")
 
     @property
     @pulumi.getter(name="countryCode")

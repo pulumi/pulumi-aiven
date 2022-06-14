@@ -34,10 +34,22 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl project/service_name/id
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaAcl:KafkaAcl")]
     public partial class KafkaAcl : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Kafka ACL ID
+        /// </summary>
+        [Output("aclId")]
+        public Output<string> AclId { get; private set; } = null!;
+
         /// <summary>
         /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
@@ -115,6 +127,12 @@ namespace Pulumi.Aiven
     public sealed class KafkaAclArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Kafka ACL ID
+        /// </summary>
+        [Input("aclId")]
+        public Input<string>? AclId { get; set; }
+
+        /// <summary>
         /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]
@@ -151,6 +169,12 @@ namespace Pulumi.Aiven
 
     public sealed class KafkaAclState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Kafka ACL ID
+        /// </summary>
+        [Input("aclId")]
+        public Input<string>? AclId { get; set; }
+
         /// <summary>
         /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>

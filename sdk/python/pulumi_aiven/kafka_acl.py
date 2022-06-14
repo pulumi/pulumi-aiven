@@ -17,7 +17,8 @@ class KafkaAclArgs:
                  project: pulumi.Input[str],
                  service_name: pulumi.Input[str],
                  topic: pulumi.Input[str],
-                 username: pulumi.Input[str]):
+                 username: pulumi.Input[str],
+                 acl_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a KafkaAcl resource.
         :param pulumi.Input[str] permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
@@ -25,12 +26,15 @@ class KafkaAclArgs:
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] topic: Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] username: Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] acl_id: Kafka ACL ID
         """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "topic", topic)
         pulumi.set(__self__, "username", username)
+        if acl_id is not None:
+            pulumi.set(__self__, "acl_id", acl_id)
 
     @property
     @pulumi.getter
@@ -92,10 +96,23 @@ class KafkaAclArgs:
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
+    @property
+    @pulumi.getter(name="aclId")
+    def acl_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kafka ACL ID
+        """
+        return pulumi.get(self, "acl_id")
+
+    @acl_id.setter
+    def acl_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_id", value)
+
 
 @pulumi.input_type
 class _KafkaAclState:
     def __init__(__self__, *,
+                 acl_id: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -103,12 +120,15 @@ class _KafkaAclState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KafkaAcl resources.
+        :param pulumi.Input[str] acl_id: Kafka ACL ID
         :param pulumi.Input[str] permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] topic: Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] username: Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
         """
+        if acl_id is not None:
+            pulumi.set(__self__, "acl_id", acl_id)
         if permission is not None:
             pulumi.set(__self__, "permission", permission)
         if project is not None:
@@ -119,6 +139,18 @@ class _KafkaAclState:
             pulumi.set(__self__, "topic", topic)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="aclId")
+    def acl_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kafka ACL ID
+        """
+        return pulumi.get(self, "acl_id")
+
+    @acl_id.setter
+    def acl_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_id", value)
 
     @property
     @pulumi.getter
@@ -186,6 +218,7 @@ class KafkaAcl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_id: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -209,8 +242,15 @@ class KafkaAcl(pulumi.CustomResource):
             username="<USERNAME_PATTERN>")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl project/service_name/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl_id: Kafka ACL ID
         :param pulumi.Input[str] permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -240,6 +280,12 @@ class KafkaAcl(pulumi.CustomResource):
             username="<USERNAME_PATTERN>")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl project/service_name/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param KafkaAclArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -255,6 +301,7 @@ class KafkaAcl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_id: Optional[pulumi.Input[str]] = None,
                  permission: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -272,6 +319,7 @@ class KafkaAcl(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KafkaAclArgs.__new__(KafkaAclArgs)
 
+            __props__.__dict__["acl_id"] = acl_id
             if permission is None and not opts.urn:
                 raise TypeError("Missing required property 'permission'")
             __props__.__dict__["permission"] = permission
@@ -297,6 +345,7 @@ class KafkaAcl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acl_id: Optional[pulumi.Input[str]] = None,
             permission: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
@@ -309,6 +358,7 @@ class KafkaAcl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl_id: Kafka ACL ID
         :param pulumi.Input[str] permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -319,12 +369,21 @@ class KafkaAcl(pulumi.CustomResource):
 
         __props__ = _KafkaAclState.__new__(_KafkaAclState)
 
+        __props__.__dict__["acl_id"] = acl_id
         __props__.__dict__["permission"] = permission
         __props__.__dict__["project"] = project
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["topic"] = topic
         __props__.__dict__["username"] = username
         return KafkaAcl(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="aclId")
+    def acl_id(self) -> pulumi.Output[str]:
+        """
+        Kafka ACL ID
+        """
+        return pulumi.get(self, "acl_id")
 
     @property
     @pulumi.getter

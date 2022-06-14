@@ -159,6 +159,12 @@ class ProjectUser(pulumi.CustomResource):
             member_type="admin")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] email: Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
@@ -184,6 +190,12 @@ class ProjectUser(pulumi.CustomResource):
             project=aiven_project["myproject"]["project"],
             email="john.doe@example.com",
             member_type="admin")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
         ```
 
         :param str resource_name: The name of the resource.

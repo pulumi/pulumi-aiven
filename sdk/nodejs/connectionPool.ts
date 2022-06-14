@@ -23,6 +23,12 @@ import * as utilities from "./utilities";
  *     username: aiven_service_user.myserviceuser.username,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
+ * ```
  */
 export class ConnectionPool extends pulumi.CustomResource {
     /**

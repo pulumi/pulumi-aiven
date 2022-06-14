@@ -158,6 +158,10 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaAclResult
     {
         /// <summary>
+        /// Kafka ACL ID
+        /// </summary>
+        public readonly string AclId;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -184,6 +188,8 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetKafkaAclResult(
+            string aclId,
+
             string id,
 
             string permission,
@@ -196,6 +202,7 @@ namespace Pulumi.Aiven
 
             string username)
         {
+            AclId = aclId;
             Id = id;
             Permission = permission;
             Project = project;

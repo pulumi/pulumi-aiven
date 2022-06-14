@@ -21,21 +21,18 @@ const projectName = config.require("projectName");
 
 const randomName = new random.RandomPet("my-service-name");
 
-const pgUserConfig: aiven.types.input.ServicePgUserConfig = {
-    adminUsername: 'master',
-    adminPassword: 'demoPassword1234-',
-    pgVersion: '12',
-    backupHour: '2',
-    backupMinute: '0',
-};
-
-const service = new aiven.Service("my-new-service", {
+const service = new aiven.Pg("my-new-service", {
         project: projectName,
         cloudName: 'google-us-east4',
         plan: 'business-4',
         serviceName: randomName.id,
-        serviceType: 'pg',
-        pgUserConfig,
+        pgUserConfig: {
+            adminUsername: 'master',
+            adminPassword: 'demoPassword1234-',
+            pgVersion: '12',
+            backupHour: '2',
+            backupMinute: '0',
+        },
         maintenanceWindowDow: 'sunday',
         maintenanceWindowTime: '14:00:00',
     },

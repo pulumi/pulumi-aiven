@@ -36,6 +36,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/connectionPool:ConnectionPool")]
     public partial class ConnectionPool : Pulumi.CustomResource

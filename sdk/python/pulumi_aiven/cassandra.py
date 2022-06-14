@@ -26,6 +26,7 @@ class CassandraArgs:
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Cassandra resource.
@@ -40,6 +41,7 @@ class CassandraArgs:
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         pulumi.set(__self__, "project", project)
@@ -62,6 +64,8 @@ class CassandraArgs:
             pulumi.set(__self__, "service_integrations", service_integrations)
         if static_ips is not None:
             pulumi.set(__self__, "static_ips", static_ips)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -198,6 +202,18 @@ class CassandraArgs:
         pulumi.set(self, "static_ips", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]]:
+        """
+        Tags are key-value pairs that allow you to categorize services.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -237,6 +253,7 @@ class _CassandraState:
                  service_username: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Cassandra resources.
@@ -264,6 +281,7 @@ class _CassandraState:
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         if cassandra_user_config is not None:
@@ -314,6 +332,8 @@ class _CassandraState:
             pulumi.set(__self__, "state", state)
         if static_ips is not None:
             pulumi.set(__self__, "static_ips", static_ips)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -606,6 +626,18 @@ class _CassandraState:
         pulumi.set(self, "static_ips", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]]:
+        """
+        Tags are key-value pairs that allow you to categorize services.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -634,6 +666,7 @@ class Cassandra(pulumi.CustomResource):
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraServiceIntegrationArgs']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraTagArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -649,7 +682,7 @@ class Cassandra(pulumi.CustomResource):
             project=data["aiven_project"]["foo"]["project"],
             cloud_name="google-europe-west1",
             plan="startup-4",
-            service_name="test-acc-sr-%s",
+            service_name="test-service-name",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             cassandra_user_config=aiven.CassandraCassandraUserConfigArgs(
@@ -658,6 +691,12 @@ class Cassandra(pulumi.CustomResource):
                     prometheus="true",
                 ),
             ))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/cassandra:Cassandra bar project/service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -673,6 +712,7 @@ class Cassandra(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         ...
@@ -694,7 +734,7 @@ class Cassandra(pulumi.CustomResource):
             project=data["aiven_project"]["foo"]["project"],
             cloud_name="google-europe-west1",
             plan="startup-4",
-            service_name="test-acc-sr-%s",
+            service_name="test-service-name",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             cassandra_user_config=aiven.CassandraCassandraUserConfigArgs(
@@ -703,6 +743,12 @@ class Cassandra(pulumi.CustomResource):
                     prometheus="true",
                 ),
             ))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/cassandra:Cassandra bar project/service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -731,6 +777,7 @@ class Cassandra(pulumi.CustomResource):
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraServiceIntegrationArgs']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraTagArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
@@ -759,6 +806,7 @@ class Cassandra(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["static_ips"] = static_ips
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["termination_protection"] = termination_protection
             __props__.__dict__["cassandras"] = None
             __props__.__dict__["components"] = None
@@ -807,6 +855,7 @@ class Cassandra(pulumi.CustomResource):
             service_username: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraTagArgs']]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None) -> 'Cassandra':
         """
         Get an existing Cassandra resource's state with the given name, id, and optional extra
@@ -839,6 +888,7 @@ class Cassandra(pulumi.CustomResource):
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -869,6 +919,7 @@ class Cassandra(pulumi.CustomResource):
         __props__.__dict__["service_username"] = service_username
         __props__.__dict__["state"] = state
         __props__.__dict__["static_ips"] = static_ips
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["termination_protection"] = termination_protection
         return Cassandra(resource_name, opts=opts, __props__=__props__)
 
@@ -1063,6 +1114,14 @@ class Cassandra(pulumi.CustomResource):
         Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.CassandraTag']]]:
+        """
+        Tags are key-value pairs that allow you to categorize services.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="terminationProtection")
