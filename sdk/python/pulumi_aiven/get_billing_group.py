@@ -20,7 +20,7 @@ class GetBillingGroupResult:
     """
     A collection of values returned by getBillingGroup.
     """
-    def __init__(__self__, account_id=None, address_lines=None, billing_currency=None, billing_emails=None, billing_extra_text=None, card_id=None, city=None, company=None, country_code=None, id=None, name=None, state=None, vat_id=None, zip_code=None):
+    def __init__(__self__, account_id=None, address_lines=None, billing_currency=None, billing_emails=None, billing_extra_text=None, card_id=None, city=None, company=None, copy_from_billing_group=None, country_code=None, id=None, name=None, state=None, vat_id=None, zip_code=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -45,6 +45,9 @@ class GetBillingGroupResult:
         if company and not isinstance(company, str):
             raise TypeError("Expected argument 'company' to be a str")
         pulumi.set(__self__, "company", company)
+        if copy_from_billing_group and not isinstance(copy_from_billing_group, str):
+            raise TypeError("Expected argument 'copy_from_billing_group' to be a str")
+        pulumi.set(__self__, "copy_from_billing_group", copy_from_billing_group)
         if country_code and not isinstance(country_code, str):
             raise TypeError("Expected argument 'country_code' to be a str")
         pulumi.set(__self__, "country_code", country_code)
@@ -129,6 +132,14 @@ class GetBillingGroupResult:
         return pulumi.get(self, "company")
 
     @property
+    @pulumi.getter(name="copyFromBillingGroup")
+    def copy_from_billing_group(self) -> str:
+        """
+        ID of the billing group to copy from
+        """
+        return pulumi.get(self, "copy_from_billing_group")
+
+    @property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> str:
         """
@@ -191,6 +202,7 @@ class AwaitableGetBillingGroupResult(GetBillingGroupResult):
             card_id=self.card_id,
             city=self.city,
             company=self.company,
+            copy_from_billing_group=self.copy_from_billing_group,
             country_code=self.country_code,
             id=self.id,
             name=self.name,
@@ -233,6 +245,7 @@ def get_billing_group(name: Optional[str] = None,
         card_id=__ret__.card_id,
         city=__ret__.city,
         company=__ret__.company,
+        copy_from_billing_group=__ret__.copy_from_billing_group,
         country_code=__ret__.country_code,
         id=__ret__.id,
         name=__ret__.name,

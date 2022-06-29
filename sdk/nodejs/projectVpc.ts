@@ -6,6 +6,12 @@ import * as utilities from "./utilities";
 
 /**
  * The Project VPC resource allows the creation and management of Aiven Project VPCs.
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+ * ```
  */
 export class ProjectVpc extends pulumi.CustomResource {
     /**

@@ -119,6 +119,8 @@ def get_database(database_name: Optional[str] = None,
     """
     The Database data source provides information about the existing Aiven Database.
 
+    ~>**Deprecated** The Database data source is deprecated, please use service-specific data sources instead, for example: `PgDatabase`, `MysqlDatabase` etc.
+
     ## Example Usage
 
     ```python
@@ -162,6 +164,8 @@ def get_database_output(database_name: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseResult]:
     """
     The Database data source provides information about the existing Aiven Database.
+
+    ~>**Deprecated** The Database data source is deprecated, please use service-specific data sources instead, for example: `PgDatabase`, `MysqlDatabase` etc.
 
     ## Example Usage
 

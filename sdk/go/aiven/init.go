@@ -32,14 +32,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountTeamProject{}
 	case "aiven:index/awsPrivatelink:AwsPrivatelink":
 		r = &AwsPrivatelink{}
+	case "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection":
+		r = &AwsVpcPeeringConnection{}
 	case "aiven:index/azurePrivatelink:AzurePrivatelink":
 		r = &AzurePrivatelink{}
 	case "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval":
 		r = &AzurePrivatelinkConnectionApproval{}
+	case "aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection":
+		r = &AzureVpcPeeringConnection{}
 	case "aiven:index/billingGroup:BillingGroup":
 		r = &BillingGroup{}
 	case "aiven:index/cassandra:Cassandra":
 		r = &Cassandra{}
+	case "aiven:index/cassandraUser:CassandraUser":
+		r = &CassandraUser{}
 	case "aiven:index/clickhouse:Clickhouse":
 		r = &Clickhouse{}
 	case "aiven:index/clickhouseDatabase:ClickhouseDatabase":
@@ -54,24 +60,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectionPool{}
 	case "aiven:index/database:Database":
 		r = &Database{}
-	case "aiven:index/elasticSearch:ElasticSearch":
-		r = &ElasticSearch{}
-	case "aiven:index/elasticSearchAcl:ElasticSearchAcl":
-		r = &ElasticSearchAcl{}
-	case "aiven:index/elasticSearchAclConfig:ElasticSearchAclConfig":
-		r = &ElasticSearchAclConfig{}
-	case "aiven:index/elasticSearchAclRule:ElasticSearchAclRule":
-		r = &ElasticSearchAclRule{}
 	case "aiven:index/flink:Flink":
 		r = &Flink{}
 	case "aiven:index/flinkJob:FlinkJob":
 		r = &FlinkJob{}
 	case "aiven:index/flinkJobTable:FlinkJobTable":
 		r = &FlinkJobTable{}
+	case "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection":
+		r = &GcpVpcPeeringConnection{}
 	case "aiven:index/grafana:Grafana":
 		r = &Grafana{}
 	case "aiven:index/influxDb:InfluxDb":
 		r = &InfluxDb{}
+	case "aiven:index/influxdbDatabase:InfluxdbDatabase":
+		r = &InfluxdbDatabase{}
+	case "aiven:index/influxdbUser:InfluxdbUser":
+		r = &InfluxdbUser{}
 	case "aiven:index/kafka:Kafka":
 		r = &Kafka{}
 	case "aiven:index/kafkaAcl:KafkaAcl":
@@ -88,22 +92,36 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KafkaSchemaConfiguration{}
 	case "aiven:index/kafkaTopic:KafkaTopic":
 		r = &KafkaTopic{}
+	case "aiven:index/kafkaUser:KafkaUser":
+		r = &KafkaUser{}
 	case "aiven:index/m3Aggregator:M3Aggregator":
 		r = &M3Aggregator{}
 	case "aiven:index/m3Db:M3Db":
 		r = &M3Db{}
+	case "aiven:index/m3dbUser:M3dbUser":
+		r = &M3dbUser{}
 	case "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow":
 		r = &MirrorMakerReplicationFlow{}
 	case "aiven:index/mySql:MySql":
 		r = &MySql{}
+	case "aiven:index/mysqlDatabase:MysqlDatabase":
+		r = &MysqlDatabase{}
+	case "aiven:index/mysqlUser:MysqlUser":
+		r = &MysqlUser{}
 	case "aiven:index/openSearch:OpenSearch":
 		r = &OpenSearch{}
 	case "aiven:index/openSearchAclConfig:OpenSearchAclConfig":
 		r = &OpenSearchAclConfig{}
 	case "aiven:index/openSearchAclRule:OpenSearchAclRule":
 		r = &OpenSearchAclRule{}
+	case "aiven:index/opensearchUser:OpensearchUser":
+		r = &OpensearchUser{}
 	case "aiven:index/pg:Pg":
 		r = &Pg{}
+	case "aiven:index/pgDatabase:PgDatabase":
+		r = &PgDatabase{}
+	case "aiven:index/pgUser:PgUser":
+		r = &PgUser{}
 	case "aiven:index/project:Project":
 		r = &Project{}
 	case "aiven:index/projectUser:ProjectUser":
@@ -112,8 +130,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectVpc{}
 	case "aiven:index/redis:Redis":
 		r = &Redis{}
-	case "aiven:index/service:Service":
-		r = &Service{}
+	case "aiven:index/redisUser:RedisUser":
+		r = &RedisUser{}
 	case "aiven:index/serviceIntegration:ServiceIntegration":
 		r = &ServiceIntegration{}
 	case "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint":
@@ -186,6 +204,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
+		"index/awsVpcPeeringConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
 		"index/azurePrivatelink",
 		&module{version},
 	)
@@ -196,12 +219,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
+		"index/azureVpcPeeringConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
 		"index/billingGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/cassandra",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/cassandraUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -241,26 +274,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
-		"index/elasticSearch",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/elasticSearchAcl",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/elasticSearchAclConfig",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/elasticSearchAclRule",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
 		"index/flink",
 		&module{version},
 	)
@@ -276,12 +289,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
+		"index/gcpVpcPeeringConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
 		"index/grafana",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/influxDb",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/influxdbDatabase",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/influxdbUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -326,6 +354,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
+		"index/kafkaUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
 		"index/m3Aggregator",
 		&module{version},
 	)
@@ -336,12 +369,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
+		"index/m3dbUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
 		"index/mirrorMakerReplicationFlow",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/mySql",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/mysqlDatabase",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/mysqlUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -361,7 +409,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
+		"index/opensearchUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
 		"index/pg",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/pgDatabase",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/pgUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -386,7 +449,7 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
-		"index/service",
+		"index/redisUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

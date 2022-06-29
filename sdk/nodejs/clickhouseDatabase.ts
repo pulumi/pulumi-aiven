@@ -18,6 +18,12 @@ import * as utilities from "./utilities";
  *     serviceName: aiven_clickhouse.ch.service_name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db project/service_name/name
+ * ```
  */
 export class ClickhouseDatabase extends pulumi.CustomResource {
     /**

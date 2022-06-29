@@ -47,6 +47,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/kafkaSchema:KafkaSchema kafka-schema1 project/service_name/subject_name
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaSchema:KafkaSchema")]
     public partial class KafkaSchema : Pulumi.CustomResource
@@ -68,6 +74,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("schema")]
         public Output<string> Schema { get; private set; } = null!;
+
+        /// <summary>
+        /// Kafka Schema type JSON or AVRO
+        /// </summary>
+        [Output("schemaType")]
+        public Output<string?> SchemaType { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -152,6 +164,12 @@ namespace Pulumi.Aiven
         public Input<string> Schema { get; set; } = null!;
 
         /// <summary>
+        /// Kafka Schema type JSON or AVRO
+        /// </summary>
+        [Input("schemaType")]
+        public Input<string>? SchemaType { get; set; }
+
+        /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
@@ -187,6 +205,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        /// <summary>
+        /// Kafka Schema type JSON or AVRO
+        /// </summary>
+        [Input("schemaType")]
+        public Input<string>? SchemaType { get; set; }
 
         /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

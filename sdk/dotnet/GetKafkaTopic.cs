@@ -130,10 +130,6 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicResult
     {
         /// <summary>
-        /// **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
-        /// </summary>
-        public readonly string CleanupPolicy;
-        /// <summary>
         /// Kafka topic configuration
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaTopicConfigResult> Configs;
@@ -141,10 +137,6 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-        /// </summary>
-        public readonly int MinimumInSyncReplicas;
         /// <summary>
         /// The number of partitions to create in the topic.
         /// </summary>
@@ -157,14 +149,6 @@ namespace Pulumi.Aiven
         /// The replication factor for the topic.
         /// </summary>
         public readonly int Replication;
-        /// <summary>
-        /// **DEPRECATED use config.retention_bytes instead** Retention bytes.
-        /// </summary>
-        public readonly int RetentionBytes;
-        /// <summary>
-        /// **DEPRECATED use config.retention_ms instead** Retention period (hours).
-        /// </summary>
-        public readonly int RetentionHours;
         /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
@@ -181,23 +165,15 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetKafkaTopicResult(
-            string cleanupPolicy,
-
             ImmutableArray<Outputs.GetKafkaTopicConfigResult> configs,
 
             string id,
-
-            int minimumInSyncReplicas,
 
             int partitions,
 
             string project,
 
             int replication,
-
-            int retentionBytes,
-
-            int retentionHours,
 
             string serviceName,
 
@@ -207,15 +183,11 @@ namespace Pulumi.Aiven
 
             string topicName)
         {
-            CleanupPolicy = cleanupPolicy;
             Configs = configs;
             Id = id;
-            MinimumInSyncReplicas = minimumInSyncReplicas;
             Partitions = partitions;
             Project = project;
             Replication = replication;
-            RetentionBytes = retentionBytes;
-            RetentionHours = retentionHours;
             ServiceName = serviceName;
             Tags = tags;
             TerminationProtection = terminationProtection;

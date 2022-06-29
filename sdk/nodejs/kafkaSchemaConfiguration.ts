@@ -19,6 +19,12 @@ import * as utilities from "./utilities";
  *     compatibilityLevel: "BACKWARD",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration config project/service_name
+ * ```
  */
 export class KafkaSchemaConfiguration extends pulumi.CustomResource {
     /**

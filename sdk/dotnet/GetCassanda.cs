@@ -217,6 +217,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<string> StaticIps;
         /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetCassandaTagResult> Tags;
+        /// <summary>
         /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         public readonly bool TerminationProtection;
@@ -273,6 +277,8 @@ namespace Pulumi.Aiven
 
             ImmutableArray<string> staticIps,
 
+            ImmutableArray<Outputs.GetCassandaTagResult> tags,
+
             bool terminationProtection)
         {
             CassandraUserConfigs = cassandraUserConfigs;
@@ -300,6 +306,7 @@ namespace Pulumi.Aiven
             ServiceUsername = serviceUsername;
             State = state;
             StaticIps = staticIps;
+            Tags = tags;
             TerminationProtection = terminationProtection;
         }
     }

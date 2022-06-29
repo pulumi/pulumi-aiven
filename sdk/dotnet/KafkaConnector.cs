@@ -42,6 +42,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-con1 project/service_name/connector_name
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaConnector:KafkaConnector")]
     public partial class KafkaConnector : Pulumi.CustomResource

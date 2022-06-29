@@ -134,6 +134,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Schema;
         /// <summary>
+        /// Kafka Schema type JSON or AVRO
+        /// </summary>
+        public readonly string SchemaType;
+        /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public readonly string ServiceName;
@@ -156,6 +160,8 @@ namespace Pulumi.Aiven
 
             string schema,
 
+            string schemaType,
+
             string serviceName,
 
             string subjectName,
@@ -166,6 +172,7 @@ namespace Pulumi.Aiven
             Id = id;
             Project = project;
             Schema = schema;
+            SchemaType = schemaType;
             ServiceName = serviceName;
             SubjectName = subjectName;
             Version = version;

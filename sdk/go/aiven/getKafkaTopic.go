@@ -18,7 +18,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -57,24 +57,16 @@ type LookupKafkaTopicArgs struct {
 
 // A collection of values returned by getKafkaTopic.
 type LookupKafkaTopicResult struct {
-	// **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
-	CleanupPolicy string `pulumi:"cleanupPolicy"`
 	// Kafka topic configuration
 	Configs []GetKafkaTopicConfig `pulumi:"configs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-	MinimumInSyncReplicas int `pulumi:"minimumInSyncReplicas"`
 	// The number of partitions to create in the topic.
 	Partitions int `pulumi:"partitions"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The replication factor for the topic.
 	Replication int `pulumi:"replication"`
-	// **DEPRECATED use config.retention_bytes instead** Retention bytes.
-	RetentionBytes int `pulumi:"retentionBytes"`
-	// **DEPRECATED use config.retention_ms instead** Retention period (hours).
-	RetentionHours int `pulumi:"retentionHours"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// Kafka Topic tag.
@@ -126,11 +118,6 @@ func (o LookupKafkaTopicResultOutput) ToLookupKafkaTopicResultOutputWithContext(
 	return o
 }
 
-// **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
-func (o LookupKafkaTopicResultOutput) CleanupPolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.CleanupPolicy }).(pulumi.StringOutput)
-}
-
 // Kafka topic configuration
 func (o LookupKafkaTopicResultOutput) Configs() GetKafkaTopicConfigArrayOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) []GetKafkaTopicConfig { return v.Configs }).(GetKafkaTopicConfigArrayOutput)
@@ -139,11 +126,6 @@ func (o LookupKafkaTopicResultOutput) Configs() GetKafkaTopicConfigArrayOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupKafkaTopicResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-func (o LookupKafkaTopicResultOutput) MinimumInSyncReplicas() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupKafkaTopicResult) int { return v.MinimumInSyncReplicas }).(pulumi.IntOutput)
 }
 
 // The number of partitions to create in the topic.
@@ -159,16 +141,6 @@ func (o LookupKafkaTopicResultOutput) Project() pulumi.StringOutput {
 // The replication factor for the topic.
 func (o LookupKafkaTopicResultOutput) Replication() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) int { return v.Replication }).(pulumi.IntOutput)
-}
-
-// **DEPRECATED use config.retention_bytes instead** Retention bytes.
-func (o LookupKafkaTopicResultOutput) RetentionBytes() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupKafkaTopicResult) int { return v.RetentionBytes }).(pulumi.IntOutput)
-}
-
-// **DEPRECATED use config.retention_ms instead** Retention period (hours).
-func (o LookupKafkaTopicResultOutput) RetentionHours() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupKafkaTopicResult) int { return v.RetentionHours }).(pulumi.IntOutput)
 }
 
 // Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

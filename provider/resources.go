@@ -19,8 +19,8 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/aiven/terraform-provider-aiven/aiven"
-	"github.com/pulumi/pulumi-aiven/provider/v4/pkg/version"
+	providerShim "github.com/aiven/terraform-provider-aiven/shim"
+	"github.com/pulumi/pulumi-aiven/provider/v5/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -65,7 +65,7 @@ func refProviderLicense(license tfbridge.TFProviderLicense) *tfbridge.TFProvider
 }
 
 func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(aiven.Provider())
+	p := shimv2.NewProvider(providerShim.NewProvider())
 
 	prov := tfbridge.ProviderInfo{
 		P:                 p,
@@ -102,8 +102,6 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_clickhouse_role":     {Tok: makeResource(mainMod, "ClickhouseRole")},
 			"aiven_clickhouse_user":     {Tok: makeResource(mainMod, "ClickhouseUser")},
 			"aiven_database":            {Tok: makeResource(mainMod, "Database")},
-			"aiven_elasticsearch":       {Tok: makeResource(mainMod, "ElasticSearch")},
-			"aiven_elasticsearch_acl":   {Tok: makeResource(mainMod, "ElasticSearchAcl")},
 			"aiven_grafana": {
 				Tok: makeResource(mainMod, "Grafana"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -163,32 +161,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"aiven_service": {
-				Tok: makeResource(mainMod, "Service"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"pg_user_config": {
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"pg": {
-									Elem: &tfbridge.SchemaInfo{
-										Fields: map[string]*tfbridge.SchemaInfo{
-											"pg_stat_statements_dot_track": {
-												Name: "pgStatStatementsTrack",
-											},
-											"pg_partman_bgw_dot_role": {
-												Name: "pgPartmanBgwRole",
-											},
-											"pg_partman_bgw_dot_interval": {
-												Name: "pgPartmanBgwInterval",
-											},
-										},
-									},
-								},
-							},
-						},
-					},
-				},
-			},
 			"aiven_service_integration":            {Tok: makeResource(mainMod, "ServiceIntegration")},
 			"aiven_service_integration_endpoint":   {Tok: makeResource(mainMod, "ServiceIntegrationEndpoint")},
 			"aiven_service_user":                   {Tok: makeResource(mainMod, "ServiceUser")},
@@ -197,8 +169,6 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_m3aggregator":                   {Tok: makeResource(mainMod, "M3Aggregator")},
 			"aiven_m3db":                           {Tok: makeResource(mainMod, "M3Db")},
 			"aiven_aws_privatelink":                {Tok: makeResource(mainMod, "AwsPrivatelink")},
-			"aiven_elasticsearch_acl_config":       {Tok: makeResource(mainMod, "ElasticSearchAclConfig")},
-			"aiven_elasticsearch_acl_rule":         {Tok: makeResource(mainMod, "ElasticSearchAclRule")},
 			"aiven_opensearch":                     {Tok: makeResource(mainMod, "OpenSearch")},
 			"aiven_opensearch_acl_config":          {Tok: makeResource(mainMod, "OpenSearchAclConfig")},
 			"aiven_opensearch_acl_rule":            {Tok: makeResource(mainMod, "OpenSearchAclRule")},
@@ -210,63 +180,49 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"aiven_flink_job":   {Tok: makeResource(mainMod, "FlinkJob")},
-			"aiven_flink_table": {Tok: makeResource(mainMod, "FlinkJobTable")},
-			"aiven_static_ip":   {Tok: makeResource(mainMod, "StaticIp")},
+			"aiven_flink_job":                    {Tok: makeResource(mainMod, "FlinkJob")},
+			"aiven_flink_table":                  {Tok: makeResource(mainMod, "FlinkJobTable")},
+			"aiven_static_ip":                    {Tok: makeResource(mainMod, "StaticIp")},
+			"aiven_aws_vpc_peering_connection":   {Tok: makeResource(mainMod, "AwsVpcPeeringConnection")},
+			"aiven_azure_vpc_peering_connection": {Tok: makeResource(mainMod, "AzureVpcPeeringConnection")},
+			"aiven_gcp_vpc_peering_connection":   {Tok: makeResource(mainMod, "GcpVpcPeeringConnection")},
+			"aiven_cassandra_user":               {Tok: makeResource(mainMod, "CassandraUser")},
+			"aiven_influxdb_database":            {Tok: makeResource(mainMod, "InfluxdbDatabase")},
+			"aiven_influxdb_user":                {Tok: makeResource(mainMod, "InfluxdbUser")},
+			"aiven_kafka_user":                   {Tok: makeResource(mainMod, "KafkaUser")},
+			"aiven_m3db_user":                    {Tok: makeResource(mainMod, "M3dbUser")},
+			"aiven_mysql_database":               {Tok: makeResource(mainMod, "MysqlDatabase")},
+			"aiven_mysql_user":                   {Tok: makeResource(mainMod, "MysqlUser")},
+			"aiven_opensearch_user":              {Tok: makeResource(mainMod, "OpensearchUser")},
+			"aiven_pg_database":                  {Tok: makeResource(mainMod, "PgDatabase")},
+			"aiven_pg_user":                      {Tok: makeResource(mainMod, "PgUser")},
+			"aiven_redis_user":                   {Tok: makeResource(mainMod, "RedisUser")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"aiven_account":                      {Tok: makeDataSource(mainMod, "getAccount")},
-			"aiven_account_team":                 {Tok: makeDataSource(mainMod, "getAccountTeam")},
-			"aiven_account_team_member":          {Tok: makeDataSource(mainMod, "getAccountTeamMember")},
-			"aiven_account_team_project":         {Tok: makeDataSource(mainMod, "getAccountTeamProject")},
-			"aiven_account_authentication":       {Tok: makeDataSource(mainMod, "getAccountAuthentication")},
-			"aiven_connection_pool":              {Tok: makeDataSource(mainMod, "getConnectionPool")},
-			"aiven_database":                     {Tok: makeDataSource(mainMod, "getDatabase")},
-			"aiven_elasticsearch":                {Tok: makeDataSource(mainMod, "getElasticSearch")},
-			"aiven_elasticsearch_acl":            {Tok: makeDataSource(mainMod, "getElasticSearchAcl")},
-			"aiven_grafana":                      {Tok: makeDataSource(mainMod, "getGrafana")},
-			"aiven_influxdb":                     {Tok: makeDataSource(mainMod, "getInfluxDb")},
-			"aiven_kafka":                        {Tok: makeDataSource(mainMod, "getKafka")},
-			"aiven_kafka_acl":                    {Tok: makeDataSource(mainMod, "getKafkaAcl")},
-			"aiven_kafka_topic":                  {Tok: makeDataSource(mainMod, "getKafkaTopic")},
-			"aiven_kafka_connect":                {Tok: makeDataSource(mainMod, "getKafkaConnect")},
-			"aiven_kafka_connector":              {Tok: makeDataSource(mainMod, "getKafkaConnector")},
-			"aiven_kafka_mirrormaker":            {Tok: makeDataSource(mainMod, "getKafkaMirrorMaker")},
-			"aiven_kafka_schema":                 {Tok: makeDataSource(mainMod, "getKafkaSchema")},
-			"aiven_kafka_schema_configuration":   {Tok: makeDataSource(mainMod, "getKafkaSchemaConfiguration")},
-			"aiven_mirrormaker_replication_flow": {Tok: makeDataSource(mainMod, "getMirrorMakerReplicationFlow")},
-			"aiven_mysql":                        {Tok: makeDataSource(mainMod, "getMySql")},
-			"aiven_pg":                           {Tok: makeDataSource(mainMod, "getPg")},
-			"aiven_project":                      {Tok: makeDataSource(mainMod, "getProject")},
-			"aiven_project_user":                 {Tok: makeDataSource(mainMod, "getProjectUser")},
-			"aiven_project_vpc":                  {Tok: makeDataSource(mainMod, "getProjectVpc")},
-			"aiven_redis":                        {Tok: makeDataSource(mainMod, "getRedis")},
-			"aiven_service": {
-				Tok: makeDataSource(mainMod, "getService"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"pg_user_config": {
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"pg": {
-									Elem: &tfbridge.SchemaInfo{
-										Fields: map[string]*tfbridge.SchemaInfo{
-											"pg_stat_statements_dot_track": {
-												Name: "pgStatStatementsTrack",
-											},
-											"pg_partman_bgw_dot_role": {
-												Name: "pgPartmanBgwRole",
-											},
-											"pg_partman_bgw_dot_interval": {
-												Name: "pgPartmanBgwInterval",
-											},
-										},
-									},
-								},
-							},
-						},
-					},
-				},
-			},
+			"aiven_account":                        {Tok: makeDataSource(mainMod, "getAccount")},
+			"aiven_account_team":                   {Tok: makeDataSource(mainMod, "getAccountTeam")},
+			"aiven_account_team_member":            {Tok: makeDataSource(mainMod, "getAccountTeamMember")},
+			"aiven_account_team_project":           {Tok: makeDataSource(mainMod, "getAccountTeamProject")},
+			"aiven_account_authentication":         {Tok: makeDataSource(mainMod, "getAccountAuthentication")},
+			"aiven_connection_pool":                {Tok: makeDataSource(mainMod, "getConnectionPool")},
+			"aiven_database":                       {Tok: makeDataSource(mainMod, "getDatabase")},
+			"aiven_grafana":                        {Tok: makeDataSource(mainMod, "getGrafana")},
+			"aiven_influxdb":                       {Tok: makeDataSource(mainMod, "getInfluxDb")},
+			"aiven_kafka":                          {Tok: makeDataSource(mainMod, "getKafka")},
+			"aiven_kafka_acl":                      {Tok: makeDataSource(mainMod, "getKafkaAcl")},
+			"aiven_kafka_topic":                    {Tok: makeDataSource(mainMod, "getKafkaTopic")},
+			"aiven_kafka_connect":                  {Tok: makeDataSource(mainMod, "getKafkaConnect")},
+			"aiven_kafka_connector":                {Tok: makeDataSource(mainMod, "getKafkaConnector")},
+			"aiven_kafka_mirrormaker":              {Tok: makeDataSource(mainMod, "getKafkaMirrorMaker")},
+			"aiven_kafka_schema":                   {Tok: makeDataSource(mainMod, "getKafkaSchema")},
+			"aiven_kafka_schema_configuration":     {Tok: makeDataSource(mainMod, "getKafkaSchemaConfiguration")},
+			"aiven_mirrormaker_replication_flow":   {Tok: makeDataSource(mainMod, "getMirrorMakerReplicationFlow")},
+			"aiven_mysql":                          {Tok: makeDataSource(mainMod, "getMySql")},
+			"aiven_pg":                             {Tok: makeDataSource(mainMod, "getPg")},
+			"aiven_project":                        {Tok: makeDataSource(mainMod, "getProject")},
+			"aiven_project_user":                   {Tok: makeDataSource(mainMod, "getProjectUser")},
+			"aiven_project_vpc":                    {Tok: makeDataSource(mainMod, "getProjectVpc")},
+			"aiven_redis":                          {Tok: makeDataSource(mainMod, "getRedis")},
 			"aiven_service_component":              {Tok: makeDataSource(mainMod, "getServiceComponent")},
 			"aiven_service_integration":            {Tok: makeDataSource(mainMod, "getServiceIntegration")},
 			"aiven_service_integration_endpoint":   {Tok: makeDataSource(mainMod, "getServiceIntegrationEndpoint")},
@@ -276,8 +232,6 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_m3aggregator":                   {Tok: makeDataSource(mainMod, "getM3Aggregator")},
 			"aiven_m3db":                           {Tok: makeDataSource(mainMod, "getM3Db")},
 			"aiven_aws_privatelink":                {Tok: makeDataSource(mainMod, "getAwsPrivatelink")},
-			"aiven_elasticsearch_acl_config":       {Tok: makeDataSource(mainMod, "getElasticSearchAclConfig")},
-			"aiven_elasticsearch_acl_rule":         {Tok: makeDataSource(mainMod, "getElasticSearchAclRule")},
 			"aiven_opensearch":                     {Tok: makeDataSource(mainMod, "getOpenSearch")},
 			"aiven_opensearch_acl_config":          {Tok: makeDataSource(mainMod, "getOpenSearchAclConfig")},
 			"aiven_opensearch_acl_rule":            {Tok: makeDataSource(mainMod, "getOpenSearchAclRule")},
@@ -287,6 +241,20 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_clickhouse_database":            {Tok: makeDataSource(mainMod, "getClickhouseDatabase")},
 			"aiven_clickhouse_user":                {Tok: makeDataSource(mainMod, "getClickhouseUser")},
 			"aiven_flink":                          {Tok: makeDataSource(mainMod, "getFlink")},
+			"aiven_aws_vpc_peering_connection":     {Tok: makeDataSource(mainMod, "getAwsVpcPeeringConnection")},
+			"aiven_azure_vpc_peering_connection":   {Tok: makeDataSource(mainMod, "getAzureVpcPeeringConnection")},
+			"aiven_gcp_vpc_peering_connection":     {Tok: makeDataSource(mainMod, "getGcpVpcPeeringConnection")},
+			"aiven_cassandra_user":                 {Tok: makeDataSource(mainMod, "getCassandraUser")},
+			"aiven_influxdb_database":              {Tok: makeDataSource(mainMod, "getInfluxdbDatabase")},
+			"aiven_influxdb_user":                  {Tok: makeDataSource(mainMod, "getInfluxdbUser")},
+			"aiven_kafka_user":                     {Tok: makeDataSource(mainMod, "getKafkaUser")},
+			"aiven_m3db_user":                      {Tok: makeDataSource(mainMod, "getM3dbUser")},
+			"aiven_mysql_database":                 {Tok: makeDataSource(mainMod, "getMysqlDatabase")},
+			"aiven_mysql_user":                     {Tok: makeDataSource(mainMod, "getMysqlUser")},
+			"aiven_opensearch_user":                {Tok: makeDataSource(mainMod, "getOpensearchUser")},
+			"aiven_pg_database":                    {Tok: makeDataSource(mainMod, "getPgDatabase")},
+			"aiven_pg_user":                        {Tok: makeDataSource(mainMod, "getPgUser")},
+			"aiven_redis_user":                     {Tok: makeDataSource(mainMod, "getRedisUser")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

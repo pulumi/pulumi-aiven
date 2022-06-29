@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetProjectResult',
@@ -20,7 +21,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, account_id=None, add_account_owners_admin_access=None, available_credits=None, billing_address=None, billing_currency=None, billing_emails=None, billing_extra_text=None, billing_group=None, ca_cert=None, card_id=None, copy_from_project=None, country_code=None, default_cloud=None, estimated_balance=None, id=None, payment_method=None, project=None, technical_emails=None, use_source_project_billing_group=None, vat_id=None):
+    def __init__(__self__, account_id=None, add_account_owners_admin_access=None, available_credits=None, billing_group=None, ca_cert=None, copy_from_project=None, default_cloud=None, estimated_balance=None, id=None, payment_method=None, project=None, tags=None, technical_emails=None, use_source_project_billing_group=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -30,33 +31,15 @@ class GetProjectResult:
         if available_credits and not isinstance(available_credits, str):
             raise TypeError("Expected argument 'available_credits' to be a str")
         pulumi.set(__self__, "available_credits", available_credits)
-        if billing_address and not isinstance(billing_address, str):
-            raise TypeError("Expected argument 'billing_address' to be a str")
-        pulumi.set(__self__, "billing_address", billing_address)
-        if billing_currency and not isinstance(billing_currency, str):
-            raise TypeError("Expected argument 'billing_currency' to be a str")
-        pulumi.set(__self__, "billing_currency", billing_currency)
-        if billing_emails and not isinstance(billing_emails, list):
-            raise TypeError("Expected argument 'billing_emails' to be a list")
-        pulumi.set(__self__, "billing_emails", billing_emails)
-        if billing_extra_text and not isinstance(billing_extra_text, str):
-            raise TypeError("Expected argument 'billing_extra_text' to be a str")
-        pulumi.set(__self__, "billing_extra_text", billing_extra_text)
         if billing_group and not isinstance(billing_group, str):
             raise TypeError("Expected argument 'billing_group' to be a str")
         pulumi.set(__self__, "billing_group", billing_group)
         if ca_cert and not isinstance(ca_cert, str):
             raise TypeError("Expected argument 'ca_cert' to be a str")
         pulumi.set(__self__, "ca_cert", ca_cert)
-        if card_id and not isinstance(card_id, str):
-            raise TypeError("Expected argument 'card_id' to be a str")
-        pulumi.set(__self__, "card_id", card_id)
         if copy_from_project and not isinstance(copy_from_project, str):
             raise TypeError("Expected argument 'copy_from_project' to be a str")
         pulumi.set(__self__, "copy_from_project", copy_from_project)
-        if country_code and not isinstance(country_code, str):
-            raise TypeError("Expected argument 'country_code' to be a str")
-        pulumi.set(__self__, "country_code", country_code)
         if default_cloud and not isinstance(default_cloud, str):
             raise TypeError("Expected argument 'default_cloud' to be a str")
         pulumi.set(__self__, "default_cloud", default_cloud)
@@ -72,15 +55,15 @@ class GetProjectResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
         if technical_emails and not isinstance(technical_emails, list):
             raise TypeError("Expected argument 'technical_emails' to be a list")
         pulumi.set(__self__, "technical_emails", technical_emails)
         if use_source_project_billing_group and not isinstance(use_source_project_billing_group, bool):
             raise TypeError("Expected argument 'use_source_project_billing_group' to be a bool")
         pulumi.set(__self__, "use_source_project_billing_group", use_source_project_billing_group)
-        if vat_id and not isinstance(vat_id, str):
-            raise TypeError("Expected argument 'vat_id' to be a str")
-        pulumi.set(__self__, "vat_id", vat_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -107,38 +90,6 @@ class GetProjectResult:
         return pulumi.get(self, "available_credits")
 
     @property
-    @pulumi.getter(name="billingAddress")
-    def billing_address(self) -> str:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-        """
-        return pulumi.get(self, "billing_address")
-
-    @property
-    @pulumi.getter(name="billingCurrency")
-    def billing_currency(self) -> str:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-        """
-        return pulumi.get(self, "billing_currency")
-
-    @property
-    @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> Sequence[str]:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-        """
-        return pulumi.get(self, "billing_emails")
-
-    @property
-    @pulumi.getter(name="billingExtraText")
-    def billing_extra_text(self) -> str:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
-        """
-        return pulumi.get(self, "billing_extra_text")
-
-    @property
     @pulumi.getter(name="billingGroup")
     def billing_group(self) -> str:
         """
@@ -155,28 +106,12 @@ class GetProjectResult:
         return pulumi.get(self, "ca_cert")
 
     @property
-    @pulumi.getter(name="cardId")
-    def card_id(self) -> str:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copy_from_project` is used to copy billing info from another project.
-        """
-        return pulumi.get(self, "card_id")
-
-    @property
     @pulumi.getter(name="copyFromProject")
     def copy_from_project(self) -> str:
         """
         is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "copy_from_project")
-
-    @property
-    @pulumi.getter(name="countryCode")
-    def country_code(self) -> str:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
-        """
-        return pulumi.get(self, "country_code")
 
     @property
     @pulumi.getter(name="defaultCloud")
@@ -219,6 +154,14 @@ class GetProjectResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter
+    def tags(self) -> Sequence['outputs.GetProjectTagResult']:
+        """
+        Tags are key-value pairs that allow you to categorize projects.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="technicalEmails")
     def technical_emails(self) -> Sequence[str]:
         """
@@ -234,14 +177,6 @@ class GetProjectResult:
         """
         return pulumi.get(self, "use_source_project_billing_group")
 
-    @property
-    @pulumi.getter(name="vatId")
-    def vat_id(self) -> str:
-        """
-        **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
-        """
-        return pulumi.get(self, "vat_id")
-
 
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
@@ -252,23 +187,17 @@ class AwaitableGetProjectResult(GetProjectResult):
             account_id=self.account_id,
             add_account_owners_admin_access=self.add_account_owners_admin_access,
             available_credits=self.available_credits,
-            billing_address=self.billing_address,
-            billing_currency=self.billing_currency,
-            billing_emails=self.billing_emails,
-            billing_extra_text=self.billing_extra_text,
             billing_group=self.billing_group,
             ca_cert=self.ca_cert,
-            card_id=self.card_id,
             copy_from_project=self.copy_from_project,
-            country_code=self.country_code,
             default_cloud=self.default_cloud,
             estimated_balance=self.estimated_balance,
             id=self.id,
             payment_method=self.payment_method,
             project=self.project,
+            tags=self.tags,
             technical_emails=self.technical_emails,
-            use_source_project_billing_group=self.use_source_project_billing_group,
-            vat_id=self.vat_id)
+            use_source_project_billing_group=self.use_source_project_billing_group)
 
 
 def get_project(project: Optional[str] = None,
@@ -300,23 +229,17 @@ def get_project(project: Optional[str] = None,
         account_id=__ret__.account_id,
         add_account_owners_admin_access=__ret__.add_account_owners_admin_access,
         available_credits=__ret__.available_credits,
-        billing_address=__ret__.billing_address,
-        billing_currency=__ret__.billing_currency,
-        billing_emails=__ret__.billing_emails,
-        billing_extra_text=__ret__.billing_extra_text,
         billing_group=__ret__.billing_group,
         ca_cert=__ret__.ca_cert,
-        card_id=__ret__.card_id,
         copy_from_project=__ret__.copy_from_project,
-        country_code=__ret__.country_code,
         default_cloud=__ret__.default_cloud,
         estimated_balance=__ret__.estimated_balance,
         id=__ret__.id,
         payment_method=__ret__.payment_method,
         project=__ret__.project,
+        tags=__ret__.tags,
         technical_emails=__ret__.technical_emails,
-        use_source_project_billing_group=__ret__.use_source_project_billing_group,
-        vat_id=__ret__.vat_id)
+        use_source_project_billing_group=__ret__.use_source_project_billing_group)
 
 
 @_utilities.lift_output_func(get_project)

@@ -18,7 +18,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -63,6 +63,8 @@ type LookupKafkaAclArgs struct {
 
 // A collection of values returned by getKafkaAcl.
 type LookupKafkaAclResult struct {
+	// Kafka ACL ID
+	AclId string `pulumi:"aclId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
@@ -121,6 +123,11 @@ func (o LookupKafkaAclResultOutput) ToLookupKafkaAclResultOutput() LookupKafkaAc
 
 func (o LookupKafkaAclResultOutput) ToLookupKafkaAclResultOutputWithContext(ctx context.Context) LookupKafkaAclResultOutput {
 	return o
+}
+
+// Kafka ACL ID
+func (o LookupKafkaAclResultOutput) AclId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.AclId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

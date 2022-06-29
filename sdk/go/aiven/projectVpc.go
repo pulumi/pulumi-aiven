@@ -12,6 +12,12 @@ import (
 )
 
 // The Project VPC resource allows the creation and management of Aiven Project VPCs.
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+// ```
 type ProjectVpc struct {
 	pulumi.CustomResourceState
 
@@ -192,6 +198,26 @@ func (o ProjectVpcOutput) ToProjectVpcOutput() ProjectVpcOutput {
 
 func (o ProjectVpcOutput) ToProjectVpcOutputWithContext(ctx context.Context) ProjectVpcOutput {
 	return o
+}
+
+// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+func (o ProjectVpcOutput) CloudName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectVpc) pulumi.StringOutput { return v.CloudName }).(pulumi.StringOutput)
+}
+
+// Network address range used by the VPC like 192.168.0.0/24
+func (o ProjectVpcOutput) NetworkCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectVpc) pulumi.StringOutput { return v.NetworkCidr }).(pulumi.StringOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ProjectVpcOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectVpc) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+func (o ProjectVpcOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectVpc) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 type ProjectVpcArrayOutput struct{ *pulumi.OutputState }

@@ -16,6 +16,12 @@ import (
 // It is intended to link an existing project to the existing account team.
 // It is important to note that the project should have an `accountId` property set equal to the
 // account team you are trying to link to this project.
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/accountTeamProject:AccountTeamProject account_team_project1 account_id/team_id/project_name
+// ```
 type AccountTeamProject struct {
 	pulumi.CustomResourceState
 
@@ -197,6 +203,26 @@ func (o AccountTeamProjectOutput) ToAccountTeamProjectOutput() AccountTeamProjec
 
 func (o AccountTeamProjectOutput) ToAccountTeamProjectOutputWithContext(ctx context.Context) AccountTeamProjectOutput {
 	return o
+}
+
+// The unique account id
+func (o AccountTeamProjectOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountTeamProject) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The name of an already existing project
+func (o AccountTeamProjectOutput) ProjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountTeamProject) pulumi.StringPtrOutput { return v.ProjectName }).(pulumi.StringPtrOutput)
+}
+
+// An account team id
+func (o AccountTeamProjectOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountTeamProject) pulumi.StringOutput { return v.TeamId }).(pulumi.StringOutput)
+}
+
+// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
+func (o AccountTeamProjectOutput) TeamType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountTeamProject) pulumi.StringPtrOutput { return v.TeamType }).(pulumi.StringPtrOutput)
 }
 
 type AccountTeamProjectArrayOutput struct{ *pulumi.OutputState }

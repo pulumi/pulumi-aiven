@@ -21,7 +21,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -43,6 +43,12 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/flinkJobTable:FlinkJobTable table project/service_name/table_id
+// ```
 type FlinkJobTable struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +66,8 @@ type FlinkJobTable struct {
 	KafkaStartupMode pulumi.StringPtrOutput `pulumi:"kafkaStartupMode"`
 	// Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
 	KafkaTopic pulumi.StringPtrOutput `pulumi:"kafkaTopic"`
+	// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+	KafkaValueFieldsInclude pulumi.StringPtrOutput `pulumi:"kafkaValueFieldsInclude"`
 	// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
 	KafkaValueFormat pulumi.StringPtrOutput `pulumi:"kafkaValueFormat"`
 	// [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
@@ -74,6 +82,8 @@ type FlinkJobTable struct {
 	TableId pulumi.StringOutput `pulumi:"tableId"`
 	// Specifies the name of the table. This property cannot be changed, doing so forces recreation of the resource.
 	TableName pulumi.StringOutput `pulumi:"tableName"`
+	// Kafka upsert connector configuration.
+	UpsertKafka FlinkJobTableUpsertKafkaPtrOutput `pulumi:"upsertKafka"`
 }
 
 // NewFlinkJobTable registers a new resource with the given unique name, arguments, and options.
@@ -134,6 +144,8 @@ type flinkJobTableState struct {
 	KafkaStartupMode *string `pulumi:"kafkaStartupMode"`
 	// Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
 	KafkaTopic *string `pulumi:"kafkaTopic"`
+	// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+	KafkaValueFieldsInclude *string `pulumi:"kafkaValueFieldsInclude"`
 	// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
 	KafkaValueFormat *string `pulumi:"kafkaValueFormat"`
 	// [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
@@ -148,6 +160,8 @@ type flinkJobTableState struct {
 	TableId *string `pulumi:"tableId"`
 	// Specifies the name of the table. This property cannot be changed, doing so forces recreation of the resource.
 	TableName *string `pulumi:"tableName"`
+	// Kafka upsert connector configuration.
+	UpsertKafka *FlinkJobTableUpsertKafka `pulumi:"upsertKafka"`
 }
 
 type FlinkJobTableState struct {
@@ -165,6 +179,8 @@ type FlinkJobTableState struct {
 	KafkaStartupMode pulumi.StringPtrInput
 	// Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
 	KafkaTopic pulumi.StringPtrInput
+	// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+	KafkaValueFieldsInclude pulumi.StringPtrInput
 	// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
 	KafkaValueFormat pulumi.StringPtrInput
 	// [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
@@ -179,6 +195,8 @@ type FlinkJobTableState struct {
 	TableId pulumi.StringPtrInput
 	// Specifies the name of the table. This property cannot be changed, doing so forces recreation of the resource.
 	TableName pulumi.StringPtrInput
+	// Kafka upsert connector configuration.
+	UpsertKafka FlinkJobTableUpsertKafkaPtrInput
 }
 
 func (FlinkJobTableState) ElementType() reflect.Type {
@@ -200,6 +218,8 @@ type flinkJobTableArgs struct {
 	KafkaStartupMode *string `pulumi:"kafkaStartupMode"`
 	// Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
 	KafkaTopic *string `pulumi:"kafkaTopic"`
+	// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+	KafkaValueFieldsInclude *string `pulumi:"kafkaValueFieldsInclude"`
 	// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
 	KafkaValueFormat *string `pulumi:"kafkaValueFormat"`
 	// [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
@@ -212,6 +232,8 @@ type flinkJobTableArgs struct {
 	ServiceName string `pulumi:"serviceName"`
 	// Specifies the name of the table. This property cannot be changed, doing so forces recreation of the resource.
 	TableName string `pulumi:"tableName"`
+	// Kafka upsert connector configuration.
+	UpsertKafka *FlinkJobTableUpsertKafka `pulumi:"upsertKafka"`
 }
 
 // The set of arguments for constructing a FlinkJobTable resource.
@@ -230,6 +252,8 @@ type FlinkJobTableArgs struct {
 	KafkaStartupMode pulumi.StringPtrInput
 	// Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
 	KafkaTopic pulumi.StringPtrInput
+	// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+	KafkaValueFieldsInclude pulumi.StringPtrInput
 	// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
 	KafkaValueFormat pulumi.StringPtrInput
 	// [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
@@ -242,6 +266,8 @@ type FlinkJobTableArgs struct {
 	ServiceName pulumi.StringInput
 	// Specifies the name of the table. This property cannot be changed, doing so forces recreation of the resource.
 	TableName pulumi.StringInput
+	// Kafka upsert connector configuration.
+	UpsertKafka FlinkJobTableUpsertKafkaPtrInput
 }
 
 func (FlinkJobTableArgs) ElementType() reflect.Type {
@@ -329,6 +355,86 @@ func (o FlinkJobTableOutput) ToFlinkJobTableOutput() FlinkJobTableOutput {
 
 func (o FlinkJobTableOutput) ToFlinkJobTableOutputWithContext(ctx context.Context) FlinkJobTableOutput {
 	return o
+}
+
+// The id of the service integration that is used with this table. It must have the service integration type `flink`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) IntegrationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringOutput { return v.IntegrationId }).(pulumi.StringOutput)
+}
+
+// Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or postgres service. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) JdbcTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringPtrOutput { return v.JdbcTable }).(pulumi.StringPtrOutput)
+}
+
+// When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null. For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) KafkaConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringPtrOutput { return v.KafkaConnectorType }).(pulumi.StringPtrOutput)
+}
+
+// Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) KafkaKeyFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringArrayOutput { return v.KafkaKeyFields }).(pulumi.StringArrayOutput)
+}
+
+// Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) KafkaKeyFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringPtrOutput { return v.KafkaKeyFormat }).(pulumi.StringPtrOutput)
+}
+
+// Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) KafkaStartupMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringPtrOutput { return v.KafkaStartupMode }).(pulumi.StringPtrOutput)
+}
+
+// Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) KafkaTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringPtrOutput { return v.KafkaTopic }).(pulumi.StringPtrOutput)
+}
+
+// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) KafkaValueFieldsInclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringPtrOutput { return v.KafkaValueFieldsInclude }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) KafkaValueFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringPtrOutput { return v.KafkaValueFormat }).(pulumi.StringPtrOutput)
+}
+
+// [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) LikeOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringPtrOutput { return v.LikeOptions }).(pulumi.StringPtrOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The SQL statement to create the table. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) SchemaSql() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringOutput { return v.SchemaSql }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The Table ID of the flink table in the flink service.
+func (o FlinkJobTableOutput) TableId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringOutput { return v.TableId }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the table. This property cannot be changed, doing so forces recreation of the resource.
+func (o FlinkJobTableOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkJobTable) pulumi.StringOutput { return v.TableName }).(pulumi.StringOutput)
+}
+
+// Kafka upsert connector configuration.
+func (o FlinkJobTableOutput) UpsertKafka() FlinkJobTableUpsertKafkaPtrOutput {
+	return o.ApplyT(func(v *FlinkJobTable) FlinkJobTableUpsertKafkaPtrOutput { return v.UpsertKafka }).(FlinkJobTableUpsertKafkaPtrOutput)
 }
 
 type FlinkJobTableArrayOutput struct{ *pulumi.OutputState }

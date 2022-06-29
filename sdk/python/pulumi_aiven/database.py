@@ -246,6 +246,12 @@ class Database(pulumi.CustomResource):
             database_name="<DATABASE_NAME>")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/database:Database mydatabase project/service_name/database_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
@@ -275,6 +281,12 @@ class Database(pulumi.CustomResource):
             project=aiven_project["myproject"]["project"],
             service_name=aiven_service["myservice"]["service_name"],
             database_name="<DATABASE_NAME>")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/database:Database mydatabase project/service_name/database_name
         ```
 
         :param str resource_name: The name of the resource.

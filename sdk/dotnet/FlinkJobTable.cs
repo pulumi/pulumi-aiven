@@ -40,6 +40,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/flinkJobTable:FlinkJobTable table project/service_name/table_id
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/flinkJobTable:FlinkJobTable")]
     public partial class FlinkJobTable : Pulumi.CustomResource
@@ -87,6 +93,12 @@ namespace Pulumi.Aiven
         public Output<string?> KafkaTopic { get; private set; } = null!;
 
         /// <summary>
+        /// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
+        [Output("kafkaValueFieldsInclude")]
+        public Output<string?> KafkaValueFieldsInclude { get; private set; } = null!;
+
+        /// <summary>
         /// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("kafkaValueFormat")]
@@ -127,6 +139,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("tableName")]
         public Output<string> TableName { get; private set; } = null!;
+
+        /// <summary>
+        /// Kafka upsert connector configuration.
+        /// </summary>
+        [Output("upsertKafka")]
+        public Output<Outputs.FlinkJobTableUpsertKafka?> UpsertKafka { get; private set; } = null!;
 
 
         /// <summary>
@@ -223,6 +241,12 @@ namespace Pulumi.Aiven
         public Input<string>? KafkaTopic { get; set; }
 
         /// <summary>
+        /// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
+        [Input("kafkaValueFieldsInclude")]
+        public Input<string>? KafkaValueFieldsInclude { get; set; }
+
+        /// <summary>
         /// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaValueFormat")]
@@ -257,6 +281,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("tableName", required: true)]
         public Input<string> TableName { get; set; } = null!;
+
+        /// <summary>
+        /// Kafka upsert connector configuration.
+        /// </summary>
+        [Input("upsertKafka")]
+        public Input<Inputs.FlinkJobTableUpsertKafkaArgs>? UpsertKafka { get; set; }
 
         public FlinkJobTableArgs()
         {
@@ -314,6 +344,12 @@ namespace Pulumi.Aiven
         public Input<string>? KafkaTopic { get; set; }
 
         /// <summary>
+        /// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
+        [Input("kafkaValueFieldsInclude")]
+        public Input<string>? KafkaValueFieldsInclude { get; set; }
+
+        /// <summary>
         /// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaValueFormat")]
@@ -354,6 +390,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("tableName")]
         public Input<string>? TableName { get; set; }
+
+        /// <summary>
+        /// Kafka upsert connector configuration.
+        /// </summary>
+        [Input("upsertKafka")]
+        public Input<Inputs.FlinkJobTableUpsertKafkaGetArgs>? UpsertKafka { get; set; }
 
         public FlinkJobTableState()
         {

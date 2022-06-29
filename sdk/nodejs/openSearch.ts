@@ -34,6 +34,12 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name
+ * ```
  */
 export class OpenSearch extends pulumi.CustomResource {
     /**
@@ -160,6 +166,10 @@ export class OpenSearch extends pulumi.CustomResource {
      */
     public readonly staticIps!: pulumi.Output<string[] | undefined>;
     /**
+     * Tags are key-value pairs that allow you to categorize services.
+     */
+    public readonly tags!: pulumi.Output<outputs.OpenSearchTag[] | undefined>;
+    /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
     public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
@@ -201,6 +211,7 @@ export class OpenSearch extends pulumi.CustomResource {
             resourceInputs["serviceUsername"] = state ? state.serviceUsername : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["staticIps"] = state ? state.staticIps : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as OpenSearchArgs | undefined;
@@ -221,6 +232,7 @@ export class OpenSearch extends pulumi.CustomResource {
             resourceInputs["serviceIntegrations"] = args ? args.serviceIntegrations : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["staticIps"] = args ? args.staticIps : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
             resourceInputs["components"] = undefined /*out*/;
             resourceInputs["diskSpaceCap"] = undefined /*out*/;
@@ -342,6 +354,10 @@ export interface OpenSearchState {
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Tags are key-value pairs that allow you to categorize services.
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.OpenSearchTag>[]>;
+    /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
     terminationProtection?: pulumi.Input<boolean>;
@@ -395,6 +411,10 @@ export interface OpenSearchArgs {
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Tags are key-value pairs that allow you to categorize services.
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.OpenSearchTag>[]>;
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */

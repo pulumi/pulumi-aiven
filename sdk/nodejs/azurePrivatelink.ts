@@ -19,6 +19,12 @@ import * as utilities from "./utilities";
  *     userSubscriptionIds: ["xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink foo project/service_name
+ * ```
  */
 export class AzurePrivatelink extends pulumi.CustomResource {
     /**

@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -36,6 +36,12 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/serviceUser:ServiceUser myserviceuser project/service_name/username
 // ```
 type ServiceUser struct {
 	pulumi.CustomResourceState
@@ -299,6 +305,71 @@ func (o ServiceUserOutput) ToServiceUserOutput() ServiceUserOutput {
 
 func (o ServiceUserOutput) ToServiceUserOutputWithContext(ctx context.Context) ServiceUserOutput {
 	return o
+}
+
+// Access certificate for the user if applicable for the service in question
+func (o ServiceUserOutput) AccessCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceUser) pulumi.StringOutput { return v.AccessCert }).(pulumi.StringOutput)
+}
+
+// Access certificate key for the user if applicable for the service in question
+func (o ServiceUserOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+func (o ServiceUserOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceUser) pulumi.StringPtrOutput { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+// The password of the service user ( not applicable for all services ).
+func (o ServiceUserOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+func (o ServiceUserOutput) PgAllowReplication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceUser) pulumi.BoolPtrOutput { return v.PgAllowReplication }).(pulumi.BoolPtrOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ServiceUserOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+func (o ServiceUserOutput) RedisAclCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceUser) pulumi.StringArrayOutput { return v.RedisAclCategories }).(pulumi.StringArrayOutput)
+}
+
+// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+func (o ServiceUserOutput) RedisAclChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceUser) pulumi.StringArrayOutput { return v.RedisAclChannels }).(pulumi.StringArrayOutput)
+}
+
+// Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+func (o ServiceUserOutput) RedisAclCommands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceUser) pulumi.StringArrayOutput { return v.RedisAclCommands }).(pulumi.StringArrayOutput)
+}
+
+// Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+func (o ServiceUserOutput) RedisAclKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceUser) pulumi.StringArrayOutput { return v.RedisAclKeys }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ServiceUserOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Type of the user account. Tells wether the user is the primary account or a regular account.
+func (o ServiceUserOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ServiceUserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
 type ServiceUserArrayOutput struct{ *pulumi.OutputState }

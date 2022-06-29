@@ -12,6 +12,12 @@ import (
 )
 
 // The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo account_id/authentication_id
+// ```
 type AccountAuthentication struct {
 	pulumi.CustomResourceState
 
@@ -253,6 +259,66 @@ func (o AccountAuthenticationOutput) ToAccountAuthenticationOutput() AccountAuth
 
 func (o AccountAuthenticationOutput) ToAccountAuthenticationOutputWithContext(ctx context.Context) AccountAuthenticationOutput {
 	return o
+}
+
+// The unique id of the account.
+func (o AccountAuthenticationOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Account authentication id
+func (o AccountAuthenticationOutput) AuthenticationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringOutput { return v.AuthenticationId }).(pulumi.StringOutput)
+}
+
+// Time of creation
+func (o AccountAuthenticationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Status of account authentication method. The default value is `false`.
+func (o AccountAuthenticationOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the account authentication.
+func (o AccountAuthenticationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// SAML Assertion Consumer Service URL
+func (o AccountAuthenticationOutput) SamlAcsUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringOutput { return v.SamlAcsUrl }).(pulumi.StringOutput)
+}
+
+// SAML Certificate
+func (o AccountAuthenticationOutput) SamlCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringPtrOutput { return v.SamlCertificate }).(pulumi.StringPtrOutput)
+}
+
+// SAML Entity id
+func (o AccountAuthenticationOutput) SamlEntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringPtrOutput { return v.SamlEntityId }).(pulumi.StringPtrOutput)
+}
+
+// SAML Idp URL
+func (o AccountAuthenticationOutput) SamlIdpUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringPtrOutput { return v.SamlIdpUrl }).(pulumi.StringPtrOutput)
+}
+
+// SAML Metadata URL
+func (o AccountAuthenticationOutput) SamlMetadataUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringOutput { return v.SamlMetadataUrl }).(pulumi.StringOutput)
+}
+
+// The account authentication type. The possible values are `internal` and `saml`.
+func (o AccountAuthenticationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Time of last update
+func (o AccountAuthenticationOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 type AccountAuthenticationArrayOutput struct{ *pulumi.OutputState }

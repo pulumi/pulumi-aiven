@@ -71,6 +71,10 @@ export interface GetKafkaSchemaResult {
      */
     readonly schema: string;
     /**
+     * Kafka Schema type JSON or AVRO
+     */
+    readonly schemaType: string;
+    /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     readonly serviceName: string;

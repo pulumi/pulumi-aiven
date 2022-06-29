@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * The Database data source provides information about the existing Aiven Database.
  *
+ * ~>**Deprecated** The Database data source is deprecated, please use service-specific data sources instead, for example: `aiven.PgDatabase`, `aiven.MysqlDatabase` etc.
+ *
  * ## Example Usage
  *
  * ```typescript

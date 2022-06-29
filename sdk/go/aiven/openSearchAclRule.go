@@ -12,6 +12,12 @@ import (
 )
 
 // The Opensearch ACL Rule resource models a single ACL Rule for an Aiven Opensearch service.
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index
+// ```
 type OpenSearchAclRule struct {
 	pulumi.CustomResourceState
 
@@ -212,6 +218,31 @@ func (o OpenSearchAclRuleOutput) ToOpenSearchAclRuleOutput() OpenSearchAclRuleOu
 
 func (o OpenSearchAclRuleOutput) ToOpenSearchAclRuleOutputWithContext(ctx context.Context) OpenSearchAclRuleOutput {
 	return o
+}
+
+// The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+func (o OpenSearchAclRuleOutput) Index() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenSearchAclRule) pulumi.StringOutput { return v.Index }).(pulumi.StringOutput)
+}
+
+// The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+func (o OpenSearchAclRuleOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenSearchAclRule) pulumi.StringOutput { return v.Permission }).(pulumi.StringOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o OpenSearchAclRuleOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenSearchAclRule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o OpenSearchAclRuleOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenSearchAclRule) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o OpenSearchAclRuleOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenSearchAclRule) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
 type OpenSearchAclRuleArrayOutput struct{ *pulumi.OutputState }

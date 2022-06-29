@@ -27,6 +27,7 @@ class PgArgs:
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['PgServiceIntegrationArgs']]]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Pg resource.
@@ -42,6 +43,7 @@ class PgArgs:
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['PgServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         pulumi.set(__self__, "project", project)
@@ -66,6 +68,8 @@ class PgArgs:
             pulumi.set(__self__, "service_integrations", service_integrations)
         if static_ips is not None:
             pulumi.set(__self__, "static_ips", static_ips)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -214,6 +218,18 @@ class PgArgs:
         pulumi.set(self, "static_ips", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]]]:
+        """
+        Tags are key-value pairs that allow you to categorize services.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -253,6 +269,7 @@ class _PgState:
                  service_username: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Pg resources.
@@ -280,6 +297,7 @@ class _PgState:
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         if cloud_name is not None:
@@ -330,6 +348,8 @@ class _PgState:
             pulumi.set(__self__, "state", state)
         if static_ips is not None:
             pulumi.set(__self__, "static_ips", static_ips)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -622,6 +642,18 @@ class _PgState:
         pulumi.set(self, "static_ips", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]]]:
+        """
+        Tags are key-value pairs that allow you to categorize services.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -651,10 +683,17 @@ class Pg(pulumi.CustomResource):
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PgServiceIntegrationArgs']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PgTagArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         The PG resource allows the creation and management of Aiven PostgreSQL services.
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/pg:Pg pg project/service_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -670,6 +709,7 @@ class Pg(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PgServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PgTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         ...
@@ -680,6 +720,12 @@ class Pg(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The PG resource allows the creation and management of Aiven PostgreSQL services.
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/pg:Pg pg project/service_name
+        ```
 
         :param str resource_name: The name of the resource.
         :param PgArgs args: The arguments to use to populate this resource's properties.
@@ -708,6 +754,7 @@ class Pg(pulumi.CustomResource):
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PgServiceIntegrationArgs']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PgTagArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
@@ -737,6 +784,7 @@ class Pg(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["static_ips"] = static_ips
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["termination_protection"] = termination_protection
             __props__.__dict__["components"] = None
             __props__.__dict__["disk_space_cap"] = None
@@ -784,6 +832,7 @@ class Pg(pulumi.CustomResource):
             service_username: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PgTagArgs']]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None) -> 'Pg':
         """
         Get an existing Pg resource's state with the given name, id, and optional extra
@@ -816,6 +865,7 @@ class Pg(pulumi.CustomResource):
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PgTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -846,6 +896,7 @@ class Pg(pulumi.CustomResource):
         __props__.__dict__["service_username"] = service_username
         __props__.__dict__["state"] = state
         __props__.__dict__["static_ips"] = static_ips
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["termination_protection"] = termination_protection
         return Pg(resource_name, opts=opts, __props__=__props__)
 
@@ -1040,6 +1091,14 @@ class Pg(pulumi.CustomResource):
         Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.PgTag']]]:
+        """
+        Tags are key-value pairs that allow you to categorize services.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="terminationProtection")

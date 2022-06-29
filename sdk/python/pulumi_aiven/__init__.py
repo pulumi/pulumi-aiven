@@ -11,10 +11,13 @@ from .account_team import *
 from .account_team_member import *
 from .account_team_project import *
 from .aws_privatelink import *
+from .aws_vpc_peering_connection import *
 from .azure_privatelink import *
 from .azure_privatelink_connection_approval import *
+from .azure_vpc_peering_connection import *
 from .billing_group import *
 from .cassandra import *
+from .cassandra_user import *
 from .clickhouse import *
 from .clickhouse_database import *
 from .clickhouse_grant import *
@@ -22,35 +25,34 @@ from .clickhouse_role import *
 from .clickhouse_user import *
 from .connection_pool import *
 from .database import *
-from .elastic_search import *
-from .elastic_search_acl import *
-from .elastic_search_acl_config import *
-from .elastic_search_acl_rule import *
 from .flink import *
 from .flink_job import *
 from .flink_job_table import *
+from .gcp_vpc_peering_connection import *
 from .get_account import *
 from .get_account_authentication import *
 from .get_account_team import *
 from .get_account_team_member import *
 from .get_account_team_project import *
 from .get_aws_privatelink import *
+from .get_aws_vpc_peering_connection import *
 from .get_azure_privatelink import *
+from .get_azure_vpc_peering_connection import *
 from .get_billing_group import *
 from .get_cassanda import *
 from .get_cassandra import *
+from .get_cassandra_user import *
 from .get_clickhouse import *
 from .get_clickhouse_database import *
 from .get_clickhouse_user import *
 from .get_connection_pool import *
 from .get_database import *
-from .get_elastic_search import *
-from .get_elastic_search_acl import *
-from .get_elastic_search_acl_config import *
-from .get_elastic_search_acl_rule import *
 from .get_flink import *
+from .get_gcp_vpc_peering_connection import *
 from .get_grafana import *
 from .get_influx_db import *
+from .get_influxdb_database import *
+from .get_influxdb_user import *
 from .get_kafka import *
 from .get_kafka_acl import *
 from .get_kafka_connect import *
@@ -59,19 +61,26 @@ from .get_kafka_mirror_maker import *
 from .get_kafka_schema import *
 from .get_kafka_schema_configuration import *
 from .get_kafka_topic import *
+from .get_kafka_user import *
 from .get_m3_aggregator import *
 from .get_m3_db import *
+from .get_m3db_user import *
 from .get_mirror_maker_replication_flow import *
 from .get_my_sql import *
+from .get_mysql_database import *
+from .get_mysql_user import *
 from .get_open_search import *
 from .get_open_search_acl_config import *
 from .get_open_search_acl_rule import *
+from .get_opensearch_user import *
 from .get_pg import *
+from .get_pg_database import *
+from .get_pg_user import *
 from .get_project import *
 from .get_project_user import *
 from .get_project_vpc import *
 from .get_redis import *
-from .get_service import *
+from .get_redis_user import *
 from .get_service_component import *
 from .get_service_integration import *
 from .get_service_integration_endpoint import *
@@ -80,6 +89,8 @@ from .get_transit_gateway_vpc_attachment import *
 from .get_vpc_peering_connection import *
 from .grafana import *
 from .influx_db import *
+from .influxdb_database import *
+from .influxdb_user import *
 from .kafka import *
 from .kafka_acl import *
 from .kafka_connect import *
@@ -88,20 +99,27 @@ from .kafka_mirror_maker import *
 from .kafka_schema import *
 from .kafka_schema_configuration import *
 from .kafka_topic import *
+from .kafka_user import *
 from .m3_aggregator import *
 from .m3_db import *
+from .m3db_user import *
 from .mirror_maker_replication_flow import *
 from .my_sql import *
+from .mysql_database import *
+from .mysql_user import *
 from .open_search import *
 from .open_search_acl_config import *
 from .open_search_acl_rule import *
+from .opensearch_user import *
 from .pg import *
+from .pg_database import *
+from .pg_user import *
 from .project import *
 from .project_user import *
 from .project_vpc import *
 from .provider import *
 from .redis import *
-from .service import *
+from .redis_user import *
 from .service_integration import *
 from .service_integration_endpoint import *
 from .service_user import *
@@ -171,6 +189,14 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
+  "mod": "index/awsVpcPeeringConnection",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection": "AwsVpcPeeringConnection"
+  }
+ },
+ {
+  "pkg": "aiven",
   "mod": "index/azurePrivatelink",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -187,6 +213,14 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
+  "mod": "index/azureVpcPeeringConnection",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection": "AzureVpcPeeringConnection"
+  }
+ },
+ {
+  "pkg": "aiven",
   "mod": "index/billingGroup",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -199,6 +233,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/cassandra:Cassandra": "Cassandra"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/cassandraUser",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/cassandraUser:CassandraUser": "CassandraUser"
   }
  },
  {
@@ -259,38 +301,6 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
-  "mod": "index/elasticSearch",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/elasticSearch:ElasticSearch": "ElasticSearch"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/elasticSearchAcl",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/elasticSearchAcl:ElasticSearchAcl": "ElasticSearchAcl"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/elasticSearchAclConfig",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/elasticSearchAclConfig:ElasticSearchAclConfig": "ElasticSearchAclConfig"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/elasticSearchAclRule",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/elasticSearchAclRule:ElasticSearchAclRule": "ElasticSearchAclRule"
-  }
- },
- {
-  "pkg": "aiven",
   "mod": "index/flink",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -315,6 +325,14 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
+  "mod": "index/gcpVpcPeeringConnection",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection": "GcpVpcPeeringConnection"
+  }
+ },
+ {
+  "pkg": "aiven",
   "mod": "index/grafana",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -327,6 +345,22 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/influxDb:InfluxDb": "InfluxDb"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/influxdbDatabase",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/influxdbDatabase:InfluxdbDatabase": "InfluxdbDatabase"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/influxdbUser",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/influxdbUser:InfluxdbUser": "InfluxdbUser"
   }
  },
  {
@@ -395,6 +429,14 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
+  "mod": "index/kafkaUser",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/kafkaUser:KafkaUser": "KafkaUser"
+  }
+ },
+ {
+  "pkg": "aiven",
   "mod": "index/m3Aggregator",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -411,6 +453,14 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
+  "mod": "index/m3dbUser",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/m3dbUser:M3dbUser": "M3dbUser"
+  }
+ },
+ {
+  "pkg": "aiven",
   "mod": "index/mirrorMakerReplicationFlow",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -423,6 +473,22 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/mySql:MySql": "MySql"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/mysqlDatabase",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/mysqlDatabase:MysqlDatabase": "MysqlDatabase"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/mysqlUser",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/mysqlUser:MysqlUser": "MysqlUser"
   }
  },
  {
@@ -451,10 +517,34 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
+  "mod": "index/opensearchUser",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/opensearchUser:OpensearchUser": "OpensearchUser"
+  }
+ },
+ {
+  "pkg": "aiven",
   "mod": "index/pg",
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/pg:Pg": "Pg"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/pgDatabase",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/pgDatabase:PgDatabase": "PgDatabase"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/pgUser",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/pgUser:PgUser": "PgUser"
   }
  },
  {
@@ -491,10 +581,10 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
-  "mod": "index/service",
+  "mod": "index/redisUser",
   "fqn": "pulumi_aiven",
   "classes": {
-   "aiven:index/service:Service": "Service"
+   "aiven:index/redisUser:RedisUser": "RedisUser"
   }
  },
  {

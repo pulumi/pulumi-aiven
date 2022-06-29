@@ -6,6 +6,33 @@ import * as utilities from "./utilities";
 
 /**
  * The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const bar = new aiven.Clickhouse("bar", {
+ *     project: "example-project",
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-beta-8",
+ *     serviceName: "example-service",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ * });
+ * const foo = new aiven.ClickhouseRole("foo", {
+ *     serviceName: bar.serviceName,
+ *     project: bar.project,
+ *     role: "writer",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo project/service_name/role
+ * ```
  */
 export class ClickhouseRole extends pulumi.CustomResource {
     /**

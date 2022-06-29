@@ -43,6 +43,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/grafana:Grafana gr1 project/service_name
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/grafana:Grafana")]
     public partial class Grafana : Pulumi.CustomResource
@@ -192,6 +198,12 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
 
         /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.GrafanaTag>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Output("terminationProtection")]
@@ -319,6 +331,18 @@ namespace Pulumi.Aiven
         {
             get => _staticIps ?? (_staticIps = new InputList<string>());
             set => _staticIps = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.GrafanaTagArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        public InputList<Inputs.GrafanaTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.GrafanaTagArgs>());
+            set => _tags = value;
         }
 
         /// <summary>
@@ -500,6 +524,18 @@ namespace Pulumi.Aiven
         {
             get => _staticIps ?? (_staticIps = new InputList<string>());
             set => _staticIps = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.GrafanaTagGetArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        public InputList<Inputs.GrafanaTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.GrafanaTagGetArgs>());
+            set => _tags = value;
         }
 
         /// <summary>

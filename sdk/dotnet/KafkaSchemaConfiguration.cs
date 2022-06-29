@@ -32,6 +32,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration config project/service_name
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration")]
     public partial class KafkaSchemaConfiguration : Pulumi.CustomResource

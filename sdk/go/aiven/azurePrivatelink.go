@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -38,6 +38,12 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink foo project/service_name
 // ```
 type AzurePrivatelink struct {
 	pulumi.CustomResourceState
@@ -237,6 +243,41 @@ func (o AzurePrivatelinkOutput) ToAzurePrivatelinkOutput() AzurePrivatelinkOutpu
 
 func (o AzurePrivatelinkOutput) ToAzurePrivatelinkOutputWithContext(ctx context.Context) AzurePrivatelinkOutput {
 	return o
+}
+
+// Azure Privatelink service alias
+func (o AzurePrivatelinkOutput) AzureServiceAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.AzureServiceAlias }).(pulumi.StringOutput)
+}
+
+// Azure Privatelink service ID
+func (o AzurePrivatelinkOutput) AzureServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.AzureServiceId }).(pulumi.StringOutput)
+}
+
+// Printable result of the Azure Privatelink request
+func (o AzurePrivatelinkOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.Message }).(pulumi.StringOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o AzurePrivatelinkOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o AzurePrivatelinkOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Privatelink resource state
+func (o AzurePrivatelinkOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// A List of allowed Subscription IDs Maximum Length: `16`.
+func (o AzurePrivatelinkOutput) UserSubscriptionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringArrayOutput { return v.UserSubscriptionIds }).(pulumi.StringArrayOutput)
 }
 
 type AzurePrivatelinkArrayOutput struct{ *pulumi.OutputState }

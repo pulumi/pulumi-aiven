@@ -6,6 +6,12 @@ import * as utilities from "./utilities";
 
 /**
  * The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo account_id/authentication_id
+ * ```
  */
 export class AccountAuthentication extends pulumi.CustomResource {
     /**

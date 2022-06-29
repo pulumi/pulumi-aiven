@@ -21,7 +21,7 @@ class GetOpenSearchResult:
     """
     A collection of values returned by getOpenSearch.
     """
-    def __init__(__self__, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, opensearch_user_configs=None, opensearches=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, termination_protection=None):
+    def __init__(__self__, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, opensearch_user_configs=None, opensearches=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, termination_protection=None):
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
         pulumi.set(__self__, "cloud_name", cloud_name)
@@ -97,6 +97,9 @@ class GetOpenSearchResult:
         if static_ips and not isinstance(static_ips, list):
             raise TypeError("Expected argument 'static_ips' to be a list")
         pulumi.set(__self__, "static_ips", static_ips)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
         if termination_protection and not isinstance(termination_protection, bool):
             raise TypeError("Expected argument 'termination_protection' to be a bool")
         pulumi.set(__self__, "termination_protection", termination_protection)
@@ -302,6 +305,14 @@ class GetOpenSearchResult:
         return pulumi.get(self, "static_ips")
 
     @property
+    @pulumi.getter
+    def tags(self) -> Sequence['outputs.GetOpenSearchTagResult']:
+        """
+        Tags are key-value pairs that allow you to categorize services.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> bool:
         """
@@ -341,6 +352,7 @@ class AwaitableGetOpenSearchResult(GetOpenSearchResult):
             service_username=self.service_username,
             state=self.state,
             static_ips=self.static_ips,
+            tags=self.tags,
             termination_protection=self.termination_protection)
 
 
@@ -399,6 +411,7 @@ def get_open_search(project: Optional[str] = None,
         service_username=__ret__.service_username,
         state=__ret__.state,
         static_ips=__ret__.static_ips,
+        tags=__ret__.tags,
         termination_protection=__ret__.termination_protection)
 
 

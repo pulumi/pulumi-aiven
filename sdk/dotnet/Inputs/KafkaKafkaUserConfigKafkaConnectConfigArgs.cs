@@ -39,6 +39,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("offsetFlushTimeoutMs")]
         public Input<string>? OffsetFlushTimeoutMs { get; set; }
 
+        [Input("producerCompressionType")]
+        public Input<string>? ProducerCompressionType { get; set; }
+
         [Input("producerMaxRequestSize")]
         public Input<string>? ProducerMaxRequestSize { get; set; }
 

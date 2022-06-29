@@ -14,6 +14,8 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Database data source provides information about the existing Aiven Database.
         /// 
+        /// ~&gt;**Deprecated** The Database data source is deprecated, please use service-specific data sources instead, for example: `aiven.PgDatabase`, `aiven.MysqlDatabase` etc.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -44,6 +46,8 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// The Database data source provides information about the existing Aiven Database.
+        /// 
+        /// ~&gt;**Deprecated** The Database data source is deprecated, please use service-specific data sources instead, for example: `aiven.PgDatabase`, `aiven.MysqlDatabase` etc.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

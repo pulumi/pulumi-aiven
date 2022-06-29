@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -26,6 +27,12 @@ import * as utilities from "./utilities";
  *       WATERMARK FOR `+"`occurred_at`"+` AS `+"`occurred_at`"+` - INTERVAL '5' SECOND
  * `,
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/flinkJobTable:FlinkJobTable table project/service_name/table_id
  * ```
  */
 export class FlinkJobTable extends pulumi.CustomResource {
@@ -85,6 +92,10 @@ export class FlinkJobTable extends pulumi.CustomResource {
      */
     public readonly kafkaTopic!: pulumi.Output<string | undefined>;
     /**
+     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    public readonly kafkaValueFieldsInclude!: pulumi.Output<string | undefined>;
+    /**
      * Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly kafkaValueFormat!: pulumi.Output<string | undefined>;
@@ -112,6 +123,10 @@ export class FlinkJobTable extends pulumi.CustomResource {
      * Specifies the name of the table. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly tableName!: pulumi.Output<string>;
+    /**
+     * Kafka upsert connector configuration.
+     */
+    public readonly upsertKafka!: pulumi.Output<outputs.FlinkJobTableUpsertKafka | undefined>;
 
     /**
      * Create a FlinkJobTable resource with the given unique name, arguments, and options.
@@ -133,6 +148,7 @@ export class FlinkJobTable extends pulumi.CustomResource {
             resourceInputs["kafkaKeyFormat"] = state ? state.kafkaKeyFormat : undefined;
             resourceInputs["kafkaStartupMode"] = state ? state.kafkaStartupMode : undefined;
             resourceInputs["kafkaTopic"] = state ? state.kafkaTopic : undefined;
+            resourceInputs["kafkaValueFieldsInclude"] = state ? state.kafkaValueFieldsInclude : undefined;
             resourceInputs["kafkaValueFormat"] = state ? state.kafkaValueFormat : undefined;
             resourceInputs["likeOptions"] = state ? state.likeOptions : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -140,6 +156,7 @@ export class FlinkJobTable extends pulumi.CustomResource {
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["tableId"] = state ? state.tableId : undefined;
             resourceInputs["tableName"] = state ? state.tableName : undefined;
+            resourceInputs["upsertKafka"] = state ? state.upsertKafka : undefined;
         } else {
             const args = argsOrState as FlinkJobTableArgs | undefined;
             if ((!args || args.integrationId === undefined) && !opts.urn) {
@@ -164,12 +181,14 @@ export class FlinkJobTable extends pulumi.CustomResource {
             resourceInputs["kafkaKeyFormat"] = args ? args.kafkaKeyFormat : undefined;
             resourceInputs["kafkaStartupMode"] = args ? args.kafkaStartupMode : undefined;
             resourceInputs["kafkaTopic"] = args ? args.kafkaTopic : undefined;
+            resourceInputs["kafkaValueFieldsInclude"] = args ? args.kafkaValueFieldsInclude : undefined;
             resourceInputs["kafkaValueFormat"] = args ? args.kafkaValueFormat : undefined;
             resourceInputs["likeOptions"] = args ? args.likeOptions : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["schemaSql"] = args ? args.schemaSql : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["tableName"] = args ? args.tableName : undefined;
+            resourceInputs["upsertKafka"] = args ? args.upsertKafka : undefined;
             resourceInputs["tableId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -210,6 +229,10 @@ export interface FlinkJobTableState {
      */
     kafkaTopic?: pulumi.Input<string>;
     /**
+     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    kafkaValueFieldsInclude?: pulumi.Input<string>;
+    /**
      * Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
      */
     kafkaValueFormat?: pulumi.Input<string>;
@@ -237,6 +260,10 @@ export interface FlinkJobTableState {
      * Specifies the name of the table. This property cannot be changed, doing so forces recreation of the resource.
      */
     tableName?: pulumi.Input<string>;
+    /**
+     * Kafka upsert connector configuration.
+     */
+    upsertKafka?: pulumi.Input<inputs.FlinkJobTableUpsertKafka>;
 }
 
 /**
@@ -272,6 +299,10 @@ export interface FlinkJobTableArgs {
      */
     kafkaTopic?: pulumi.Input<string>;
     /**
+     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    kafkaValueFieldsInclude?: pulumi.Input<string>;
+    /**
      * Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
      */
     kafkaValueFormat?: pulumi.Input<string>;
@@ -295,4 +326,8 @@ export interface FlinkJobTableArgs {
      * Specifies the name of the table. This property cannot be changed, doing so forces recreation of the resource.
      */
     tableName: pulumi.Input<string>;
+    /**
+     * Kafka upsert connector configuration.
+     */
+    upsertKafka?: pulumi.Input<inputs.FlinkJobTableUpsertKafka>;
 }

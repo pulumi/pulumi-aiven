@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -299,6 +299,36 @@ func (o ClickhouseGrantOutput) ToClickhouseGrantOutput() ClickhouseGrantOutput {
 
 func (o ClickhouseGrantOutput) ToClickhouseGrantOutputWithContext(ctx context.Context) ClickhouseGrantOutput {
 	return o
+}
+
+// Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
+func (o ClickhouseGrantOutput) PrivilegeGrants() ClickhouseGrantPrivilegeGrantArrayOutput {
+	return o.ApplyT(func(v *ClickhouseGrant) ClickhouseGrantPrivilegeGrantArrayOutput { return v.PrivilegeGrants }).(ClickhouseGrantPrivilegeGrantArrayOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ClickhouseGrantOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickhouseGrant) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ClickhouseGrantOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClickhouseGrant) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
+func (o ClickhouseGrantOutput) RoleGrants() ClickhouseGrantRoleGrantArrayOutput {
+	return o.ApplyT(func(v *ClickhouseGrant) ClickhouseGrantRoleGrantArrayOutput { return v.RoleGrants }).(ClickhouseGrantRoleGrantArrayOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ClickhouseGrantOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickhouseGrant) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ClickhouseGrantOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClickhouseGrant) pulumi.StringPtrOutput { return v.User }).(pulumi.StringPtrOutput)
 }
 
 type ClickhouseGrantArrayOutput struct{ *pulumi.OutputState }

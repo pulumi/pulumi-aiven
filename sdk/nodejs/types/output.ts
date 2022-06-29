@@ -80,6 +80,17 @@ export interface CassandraServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface CassandraTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
 export interface ClickhouseClickhouse {
 }
 
@@ -149,194 +160,15 @@ export interface ClickhouseServiceIntegration {
     sourceServiceName: string;
 }
 
-export interface ElasticSearchAclAcl {
+export interface ClickhouseTag {
     /**
-     * Elasticsearch rules.
+     * Service tag key
      */
-    rules: outputs.ElasticSearchAclAclRule[];
+    key: string;
     /**
-     * Username for the ACL entry. Maximum Length: `40`.
+     * Service tag value
      */
-    username: string;
-}
-
-export interface ElasticSearchAclAclRule {
-    index: string;
-    permission: string;
-}
-
-export interface ElasticSearchComponent {
-    component: string;
-    host: string;
-    kafkaAuthenticationMethod: string;
-    port: number;
-    route: string;
-    ssl: boolean;
-    usage: string;
-}
-
-export interface ElasticSearchElasticsearch {
-    kibanaUri: string;
-}
-
-export interface ElasticSearchElasticsearchUserConfig {
-    /**
-     * Custom domain
-     */
-    customDomain?: string;
-    /**
-     * Disable replication factor adjustment
-     */
-    disableReplicationFactorAdjustment?: string;
-    /**
-     * Elasticsearch settings
-     */
-    elasticsearch?: outputs.ElasticSearchElasticsearchUserConfigElasticsearch;
-    /**
-     * Elasticsearch major version
-     */
-    elasticsearchVersion?: string;
-    /**
-     * Index patterns
-     */
-    indexPatterns?: outputs.ElasticSearchElasticsearchUserConfigIndexPattern[];
-    /**
-     * Template settings for all new indexes
-     */
-    indexTemplate?: outputs.ElasticSearchElasticsearchUserConfigIndexTemplate;
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Don't reset index.refresh_interval to the default value
-     */
-    keepIndexRefreshInterval?: string;
-    /**
-     * Kibana settings
-     */
-    kibana?: outputs.ElasticSearchElasticsearchUserConfigKibana;
-    /**
-     * Maximum index count
-     */
-    maxIndexCount?: string;
-    /**
-     * OpenSearch major version
-     */
-    opensearchVersion?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.ElasticSearchElasticsearchUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.ElasticSearchElasticsearchUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.ElasticSearchElasticsearchUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service
-     */
-    recoveryBasebackupName?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Static IP addresses
-     */
-    staticIps?: string;
-}
-
-export interface ElasticSearchElasticsearchUserConfigElasticsearch {
-    actionAutoCreateIndexEnabled?: string;
-    actionDestructiveRequiresName?: string;
-    clusterMaxShardsPerNode?: string;
-    httpMaxContentLength?: string;
-    httpMaxHeaderSize?: string;
-    httpMaxInitialLineLength?: string;
-    indicesFielddataCacheSize?: string;
-    indicesMemoryIndexBufferSize?: string;
-    indicesQueriesCacheSize?: string;
-    indicesQueryBoolMaxClauseCount?: string;
-    overrideMainResponseVersion?: string;
-    reindexRemoteWhitelists?: string[];
-    scriptMaxCompilationsRate?: string;
-    searchMaxBuckets?: string;
-    threadPoolAnalyzeQueueSize?: string;
-    threadPoolAnalyzeSize?: string;
-    threadPoolForceMergeSize?: string;
-    threadPoolGetQueueSize?: string;
-    threadPoolGetSize?: string;
-    threadPoolIndexSize?: string;
-    threadPoolSearchQueueSize?: string;
-    threadPoolSearchSize?: string;
-    threadPoolSearchThrottledQueueSize?: string;
-    threadPoolSearchThrottledSize?: string;
-    threadPoolWriteQueueSize?: string;
-    threadPoolWriteSize?: string;
-}
-
-export interface ElasticSearchElasticsearchUserConfigIndexPattern {
-    maxIndexCount?: string;
-    pattern?: string;
-    sortingAlgorithm?: string;
-}
-
-export interface ElasticSearchElasticsearchUserConfigIndexTemplate {
-    mappingNestedObjectsLimit?: string;
-    numberOfReplicas?: string;
-    numberOfShards?: string;
-}
-
-export interface ElasticSearchElasticsearchUserConfigKibana {
-    elasticsearchRequestTimeout?: string;
-    enabled?: string;
-    maxOldSpaceSize?: string;
-}
-
-export interface ElasticSearchElasticsearchUserConfigPrivateAccess {
-    /**
-     * Elasticsearch server provided values
-     */
-    elasticsearch?: string;
-    kibana?: string;
-    prometheus?: string;
-}
-
-export interface ElasticSearchElasticsearchUserConfigPrivatelinkAccess {
-    /**
-     * Elasticsearch server provided values
-     */
-    elasticsearch?: string;
-    kibana?: string;
-    prometheus?: string;
-}
-
-export interface ElasticSearchElasticsearchUserConfigPublicAccess {
-    /**
-     * Elasticsearch server provided values
-     */
-    elasticsearch?: string;
-    kibana?: string;
-    prometheus?: string;
-}
-
-export interface ElasticSearchServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
+    value: string;
 }
 
 export interface FlinkComponent {
@@ -411,6 +243,33 @@ export interface FlinkFlinkUserConfigPrivatelinkAccess {
     prometheus?: string;
 }
 
+export interface FlinkJobTableUpsertKafka {
+    /**
+     * Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    keyFields?: string[];
+    /**
+     * Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    keyFormat?: string;
+    /**
+     * Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    scanStartupMode?: string;
+    /**
+     * Topic name This property cannot be changed, doing so forces recreation of the resource.
+     */
+    topic?: string;
+    /**
+     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    valueFieldsInclude?: string;
+    /**
+     * Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     */
+    valueFormat?: string;
+}
+
 export interface FlinkServiceIntegration {
     /**
      * Type of the service integration. The only supported value at the moment is `readReplica`
@@ -420,6 +279,17 @@ export interface FlinkServiceIntegration {
      * Name of the source service
      */
     sourceServiceName: string;
+}
+
+export interface FlinkTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
 }
 
 export interface GetCassandaCassandra {
@@ -471,6 +341,11 @@ export interface GetCassandaServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface GetCassandaTag {
+    key: string;
+    value: string;
+}
+
 export interface GetCassandraCassandra {
 }
 
@@ -520,6 +395,11 @@ export interface GetCassandraServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface GetCassandraTag {
+    key: string;
+    value: string;
+}
+
 export interface GetClickhouseClickhouse {
 }
 
@@ -544,134 +424,9 @@ export interface GetClickhouseServiceIntegration {
     sourceServiceName: string;
 }
 
-export interface GetElasticSearchAclAcl {
-    rules: outputs.GetElasticSearchAclAclRule[];
-    username: string;
-}
-
-export interface GetElasticSearchAclAclRule {
-    index: string;
-    permission: string;
-}
-
-export interface GetElasticSearchComponent {
-    component: string;
-    host: string;
-    kafkaAuthenticationMethod: string;
-    port: number;
-    route: string;
-    ssl: boolean;
-    usage: string;
-}
-
-export interface GetElasticSearchElasticsearch {
-    kibanaUri: string;
-}
-
-export interface GetElasticSearchElasticsearchUserConfig {
-    customDomain?: string;
-    disableReplicationFactorAdjustment?: string;
-    /**
-     * Elasticsearch server provided values
-     */
-    elasticsearch?: outputs.GetElasticSearchElasticsearchUserConfigElasticsearch;
-    elasticsearchVersion?: string;
-    indexPatterns?: outputs.GetElasticSearchElasticsearchUserConfigIndexPattern[];
-    indexTemplate?: outputs.GetElasticSearchElasticsearchUserConfigIndexTemplate;
-    ipFilters?: string[];
-    keepIndexRefreshInterval?: string;
-    kibana?: outputs.GetElasticSearchElasticsearchUserConfigKibana;
-    maxIndexCount?: string;
-    opensearchVersion?: string;
-    privateAccess?: outputs.GetElasticSearchElasticsearchUserConfigPrivateAccess;
-    privatelinkAccess?: outputs.GetElasticSearchElasticsearchUserConfigPrivatelinkAccess;
-    projectToForkFrom?: string;
-    publicAccess?: outputs.GetElasticSearchElasticsearchUserConfigPublicAccess;
-    recoveryBasebackupName?: string;
-    serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
-    staticIps?: string;
-}
-
-export interface GetElasticSearchElasticsearchUserConfigElasticsearch {
-    actionAutoCreateIndexEnabled?: string;
-    actionDestructiveRequiresName?: string;
-    clusterMaxShardsPerNode?: string;
-    httpMaxContentLength?: string;
-    httpMaxHeaderSize?: string;
-    httpMaxInitialLineLength?: string;
-    indicesFielddataCacheSize?: string;
-    indicesMemoryIndexBufferSize?: string;
-    indicesQueriesCacheSize?: string;
-    indicesQueryBoolMaxClauseCount?: string;
-    overrideMainResponseVersion?: string;
-    reindexRemoteWhitelists?: string[];
-    scriptMaxCompilationsRate?: string;
-    searchMaxBuckets?: string;
-    threadPoolAnalyzeQueueSize?: string;
-    threadPoolAnalyzeSize?: string;
-    threadPoolForceMergeSize?: string;
-    threadPoolGetQueueSize?: string;
-    threadPoolGetSize?: string;
-    threadPoolIndexSize?: string;
-    threadPoolSearchQueueSize?: string;
-    threadPoolSearchSize?: string;
-    threadPoolSearchThrottledQueueSize?: string;
-    threadPoolSearchThrottledSize?: string;
-    threadPoolWriteQueueSize?: string;
-    threadPoolWriteSize?: string;
-}
-
-export interface GetElasticSearchElasticsearchUserConfigIndexPattern {
-    maxIndexCount?: string;
-    pattern?: string;
-    sortingAlgorithm?: string;
-}
-
-export interface GetElasticSearchElasticsearchUserConfigIndexTemplate {
-    mappingNestedObjectsLimit?: string;
-    numberOfReplicas?: string;
-    numberOfShards?: string;
-}
-
-export interface GetElasticSearchElasticsearchUserConfigKibana {
-    elasticsearchRequestTimeout?: string;
-    enabled?: string;
-    maxOldSpaceSize?: string;
-}
-
-export interface GetElasticSearchElasticsearchUserConfigPrivateAccess {
-    /**
-     * Elasticsearch server provided values
-     */
-    elasticsearch?: string;
-    kibana?: string;
-    prometheus?: string;
-}
-
-export interface GetElasticSearchElasticsearchUserConfigPrivatelinkAccess {
-    /**
-     * Elasticsearch server provided values
-     */
-    elasticsearch?: string;
-    kibana?: string;
-    prometheus?: string;
-}
-
-export interface GetElasticSearchElasticsearchUserConfigPublicAccess {
-    /**
-     * Elasticsearch server provided values
-     */
-    elasticsearch?: string;
-    kibana?: string;
-    prometheus?: string;
-}
-
-export interface GetElasticSearchServiceIntegration {
-    integrationType: string;
-    sourceServiceName: string;
+export interface GetClickhouseTag {
+    key: string;
+    value: string;
 }
 
 export interface GetFlinkComponent {
@@ -713,6 +468,11 @@ export interface GetFlinkFlinkUserConfigPrivatelinkAccess {
 export interface GetFlinkServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
+}
+
+export interface GetFlinkTag {
+    key: string;
+    value: string;
 }
 
 export interface GetGrafanaComponent {
@@ -872,6 +632,11 @@ export interface GetGrafanaServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface GetGrafanaTag {
+    key: string;
+    value: string;
+}
+
 export interface GetInfluxDbComponent {
     component: string;
     host: string;
@@ -940,6 +705,11 @@ export interface GetInfluxDbServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface GetInfluxDbTag {
+    key: string;
+    value: string;
+}
+
 export interface GetKafkaComponent {
     component: string;
     host: string;
@@ -988,6 +758,7 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
     consumerMaxPollRecords?: string;
     offsetFlushIntervalMs?: string;
     offsetFlushTimeoutMs?: string;
+    producerCompressionType?: string;
     producerMaxRequestSize?: string;
     sessionTimeoutMs?: string;
 }
@@ -1020,6 +791,11 @@ export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
 export interface GetKafkaConnectServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
+}
+
+export interface GetKafkaConnectTag {
+    key: string;
+    value: string;
 }
 
 export interface GetKafkaConnectorTask {
@@ -1119,6 +895,7 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
     consumerMaxPollRecords?: string;
     offsetFlushIntervalMs?: string;
     offsetFlushTimeoutMs?: string;
+    producerCompressionType?: string;
     producerMaxRequestSize?: string;
     sessionTimeoutMs?: string;
 }
@@ -1207,15 +984,22 @@ export interface GetKafkaMirrorMakerServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface GetKafkaMirrorMakerTag {
+    key: string;
+    value: string;
+}
+
 export interface GetKafkaServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
 }
 
+export interface GetKafkaTag {
+    key: string;
+    value: string;
+}
+
 export interface GetKafkaTopicConfig {
-    /**
-     * **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
-     */
     cleanupPolicy?: string;
     compressionType?: string;
     deleteRetentionMs?: string;
@@ -1233,9 +1017,6 @@ export interface GetKafkaTopicConfig {
     minCompactionLagMs?: string;
     minInsyncReplicas?: string;
     preallocate?: string;
-    /**
-     * **DEPRECATED use config.retention_bytes instead** Retention bytes.
-     */
     retentionBytes?: string;
     retentionMs?: string;
     segmentBytes?: string;
@@ -1277,6 +1058,11 @@ export interface GetM3AggregatorM3aggregatorUserConfig {
 export interface GetM3AggregatorServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
+}
+
+export interface GetM3AggregatorTag {
+    key: string;
+    value: string;
 }
 
 export interface GetM3DbComponent {
@@ -1366,6 +1152,11 @@ export interface GetM3DbM3dbUserConfigRulesMappingTag {
 export interface GetM3DbServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
+}
+
+export interface GetM3DbTag {
+    key: string;
+    value: string;
 }
 
 export interface GetMySqlComponent {
@@ -1476,6 +1267,11 @@ export interface GetMySqlServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface GetMySqlTag {
+    key: string;
+    value: string;
+}
+
 export interface GetOpenSearchComponent {
     component: string;
     host: string;
@@ -1532,6 +1328,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
     actionAutoCreateIndexEnabled?: string;
     actionDestructiveRequiresName?: string;
     clusterMaxShardsPerNode?: string;
+    clusterRoutingAllocationNodeConcurrentRecoveries?: string;
     httpMaxContentLength?: string;
     httpMaxHeaderSize?: string;
     httpMaxInitialLineLength?: string;
@@ -1539,6 +1336,8 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
     indicesMemoryIndexBufferSize?: string;
     indicesQueriesCacheSize?: string;
     indicesQueryBoolMaxClauseCount?: string;
+    indicesRecoveryMaxBytesPerSec?: string;
+    indicesRecoveryMaxConcurrentFileChunks?: string;
     overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
     scriptMaxCompilationsRate?: string;
@@ -1548,7 +1347,6 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
     threadPoolForceMergeSize?: string;
     threadPoolGetQueueSize?: string;
     threadPoolGetSize?: string;
-    threadPoolIndexSize?: string;
     threadPoolSearchQueueSize?: string;
     threadPoolSearchSize?: string;
     threadPoolSearchThrottledQueueSize?: string;
@@ -1593,6 +1391,11 @@ export interface GetOpenSearchOpensearchUserConfigPublicAccess {
 export interface GetOpenSearchServiceIntegration {
     integrationType: string;
     sourceServiceName: string;
+}
+
+export interface GetOpenSearchTag {
+    key: string;
+    value: string;
 }
 
 export interface GetPgComponent {
@@ -1762,6 +1565,16 @@ export interface GetPgServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface GetPgTag {
+    key: string;
+    value: string;
+}
+
+export interface GetProjectTag {
+    key: string;
+    value: string;
+}
+
 export interface GetRedisComponent {
     component: string;
     host: string;
@@ -1841,398 +1654,9 @@ export interface GetRedisServiceIntegration {
     sourceServiceName: string;
 }
 
-export interface GetServiceCassandra {
-}
-
-export interface GetServiceCassandraUserConfig {
-    /**
-     * Cassandra specific server provided values
-     */
-    cassandra?: outputs.GetServiceCassandraUserConfigCassandra;
-    cassandraVersion?: string;
-    ipFilters?: string[];
-    migrateSstableloader?: string;
-    privateAccess?: outputs.GetServiceCassandraUserConfigPrivateAccess;
-    projectToForkFrom?: string;
-    publicAccess?: outputs.GetServiceCassandraUserConfigPublicAccess;
-    serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
-    staticIps?: string;
-}
-
-export interface GetServiceCassandraUserConfigCassandra {
-    batchSizeFailThresholdInKb?: string;
-    batchSizeWarnThresholdInKb?: string;
-}
-
-export interface GetServiceCassandraUserConfigPrivateAccess {
-    prometheus?: string;
-}
-
-export interface GetServiceCassandraUserConfigPublicAccess {
-    prometheus?: string;
-}
-
-export interface GetServiceClickhouse {
-}
-
-export interface GetServiceClickhouseUserConfig {
-    ipFilters?: string[];
-    projectToForkFrom?: string;
-    serviceToForkFrom?: string;
-}
-
-export interface GetServiceComponent {
-    component: string;
-    host: string;
-    kafkaAuthenticationMethod: string;
-    port: number;
-    route: string;
-    ssl: boolean;
-    usage: string;
-}
-
-export interface GetServiceElasticsearch {
-    kibanaUri: string;
-}
-
-export interface GetServiceElasticsearchUserConfig {
-    customDomain?: string;
-    disableReplicationFactorAdjustment?: string;
-    /**
-     * Elasticsearch specific server provided values
-     */
-    elasticsearch?: outputs.GetServiceElasticsearchUserConfigElasticsearch;
-    elasticsearchVersion?: string;
-    indexPatterns?: outputs.GetServiceElasticsearchUserConfigIndexPattern[];
-    indexTemplate?: outputs.GetServiceElasticsearchUserConfigIndexTemplate;
-    ipFilters?: string[];
-    keepIndexRefreshInterval?: string;
-    kibana?: outputs.GetServiceElasticsearchUserConfigKibana;
-    maxIndexCount?: string;
-    opensearchVersion?: string;
-    privateAccess?: outputs.GetServiceElasticsearchUserConfigPrivateAccess;
-    privatelinkAccess?: outputs.GetServiceElasticsearchUserConfigPrivatelinkAccess;
-    projectToForkFrom?: string;
-    publicAccess?: outputs.GetServiceElasticsearchUserConfigPublicAccess;
-    recoveryBasebackupName?: string;
-    serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
-    staticIps?: string;
-}
-
-export interface GetServiceElasticsearchUserConfigElasticsearch {
-    actionAutoCreateIndexEnabled?: string;
-    actionDestructiveRequiresName?: string;
-    clusterMaxShardsPerNode?: string;
-    httpMaxContentLength?: string;
-    httpMaxHeaderSize?: string;
-    httpMaxInitialLineLength?: string;
-    indicesFielddataCacheSize?: string;
-    indicesMemoryIndexBufferSize?: string;
-    indicesQueriesCacheSize?: string;
-    indicesQueryBoolMaxClauseCount?: string;
-    overrideMainResponseVersion?: string;
-    reindexRemoteWhitelists?: string[];
-    scriptMaxCompilationsRate?: string;
-    searchMaxBuckets?: string;
-    threadPoolAnalyzeQueueSize?: string;
-    threadPoolAnalyzeSize?: string;
-    threadPoolForceMergeSize?: string;
-    threadPoolGetQueueSize?: string;
-    threadPoolGetSize?: string;
-    threadPoolIndexSize?: string;
-    threadPoolSearchQueueSize?: string;
-    threadPoolSearchSize?: string;
-    threadPoolSearchThrottledQueueSize?: string;
-    threadPoolSearchThrottledSize?: string;
-    threadPoolWriteQueueSize?: string;
-    threadPoolWriteSize?: string;
-}
-
-export interface GetServiceElasticsearchUserConfigIndexPattern {
-    maxIndexCount?: string;
-    pattern?: string;
-    sortingAlgorithm?: string;
-}
-
-export interface GetServiceElasticsearchUserConfigIndexTemplate {
-    mappingNestedObjectsLimit?: string;
-    numberOfReplicas?: string;
-    numberOfShards?: string;
-}
-
-export interface GetServiceElasticsearchUserConfigKibana {
-    elasticsearchRequestTimeout?: string;
-    enabled?: string;
-    maxOldSpaceSize?: string;
-}
-
-export interface GetServiceElasticsearchUserConfigPrivateAccess {
-    /**
-     * Elasticsearch specific server provided values
-     */
-    elasticsearch?: string;
-    kibana?: string;
-    prometheus?: string;
-}
-
-export interface GetServiceElasticsearchUserConfigPrivatelinkAccess {
-    /**
-     * Elasticsearch specific server provided values
-     */
-    elasticsearch?: string;
-    kibana?: string;
-    prometheus?: string;
-}
-
-export interface GetServiceElasticsearchUserConfigPublicAccess {
-    /**
-     * Elasticsearch specific server provided values
-     */
-    elasticsearch?: string;
-    kibana?: string;
-    prometheus?: string;
-}
-
-export interface GetServiceFlink {
-    hostPorts: string[];
-}
-
-export interface GetServiceFlinkUserConfig {
-    executionCheckpointingIntervalMs?: string;
-    executionCheckpointingTimeoutMs?: string;
-    flinkVersion?: string;
-    ipFilters?: string[];
-    numberOfTaskSlots?: string;
-    parallelismDefault?: string;
-    privatelinkAccess?: outputs.GetServiceFlinkUserConfigPrivatelinkAccess;
-    restartStrategy?: string;
-    restartStrategyDelaySec?: string;
-    restartStrategyFailureRateIntervalMin?: string;
-    restartStrategyMaxFailures?: string;
-}
-
-export interface GetServiceFlinkUserConfigPrivatelinkAccess {
-    /**
-     * Flink specific server provided values
-     */
-    flink?: string;
-    prometheus?: string;
-}
-
-export interface GetServiceGrafana {
-}
-
-export interface GetServiceGrafanaUserConfig {
-    alertingEnabled?: string;
-    alertingErrorOrTimeout?: string;
-    alertingMaxAnnotationsToKeep?: string;
-    alertingNodataOrNullvalues?: string;
-    allowEmbedding?: string;
-    authAzuread?: outputs.GetServiceGrafanaUserConfigAuthAzuread;
-    authBasicEnabled?: string;
-    authGenericOauth?: outputs.GetServiceGrafanaUserConfigAuthGenericOauth;
-    authGithub?: outputs.GetServiceGrafanaUserConfigAuthGithub;
-    authGitlab?: outputs.GetServiceGrafanaUserConfigAuthGitlab;
-    authGoogle?: outputs.GetServiceGrafanaUserConfigAuthGoogle;
-    cookieSamesite?: string;
-    customDomain?: string;
-    dashboardsMinRefreshInterval?: string;
-    dashboardsVersionsToKeep?: string;
-    dataproxySendUserHeader?: string;
-    dataproxyTimeout?: string;
-    dateFormats?: outputs.GetServiceGrafanaUserConfigDateFormats;
-    disableGravatar?: string;
-    editorsCanAdmin?: string;
-    externalImageStorage?: outputs.GetServiceGrafanaUserConfigExternalImageStorage;
-    googleAnalyticsUaId?: string;
-    ipFilters?: string[];
-    metricsEnabled?: string;
-    privateAccess?: outputs.GetServiceGrafanaUserConfigPrivateAccess;
-    privatelinkAccess?: outputs.GetServiceGrafanaUserConfigPrivatelinkAccess;
-    projectToForkFrom?: string;
-    publicAccess?: outputs.GetServiceGrafanaUserConfigPublicAccess;
-    recoveryBasebackupName?: string;
-    serviceToForkFrom?: string;
-    smtpServer?: outputs.GetServiceGrafanaUserConfigSmtpServer;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
-    staticIps?: string;
-    userAutoAssignOrg?: string;
-    userAutoAssignOrgRole?: string;
-    viewersCanEdit?: string;
-}
-
-export interface GetServiceGrafanaUserConfigAuthAzuread {
-    allowSignUp?: string;
-    allowedDomains?: string[];
-    allowedGroups?: string[];
-    authUrl?: string;
-    clientId?: string;
-    clientSecret?: string;
-    tokenUrl?: string;
-}
-
-export interface GetServiceGrafanaUserConfigAuthGenericOauth {
-    allowSignUp?: string;
-    allowedDomains?: string[];
-    allowedOrganizations?: string[];
-    apiUrl?: string;
-    authUrl?: string;
-    clientId?: string;
-    clientSecret?: string;
-    name?: string;
-    scopes?: string[];
-    tokenUrl?: string;
-}
-
-export interface GetServiceGrafanaUserConfigAuthGithub {
-    allowSignUp?: string;
-    allowedOrganizations?: string[];
-    clientId?: string;
-    clientSecret?: string;
-    teamIds?: string[];
-}
-
-export interface GetServiceGrafanaUserConfigAuthGitlab {
-    allowSignUp?: string;
-    allowedGroups?: string[];
-    apiUrl?: string;
-    authUrl?: string;
-    clientId?: string;
-    clientSecret?: string;
-    tokenUrl?: string;
-}
-
-export interface GetServiceGrafanaUserConfigAuthGoogle {
-    allowSignUp?: string;
-    allowedDomains?: string[];
-    clientId?: string;
-    clientSecret?: string;
-}
-
-export interface GetServiceGrafanaUserConfigDateFormats {
-    defaultTimezone?: string;
-    fullDate?: string;
-    intervalDay?: string;
-    intervalHour?: string;
-    intervalMinute?: string;
-    intervalMonth?: string;
-    intervalSecond?: string;
-    intervalYear?: string;
-}
-
-export interface GetServiceGrafanaUserConfigExternalImageStorage {
-    accessKey?: string;
-    bucketUrl?: string;
-    provider?: string;
-    secretKey?: string;
-}
-
-export interface GetServiceGrafanaUserConfigPrivateAccess {
-    /**
-     * Grafana specific server provided values
-     */
-    grafana?: string;
-}
-
-export interface GetServiceGrafanaUserConfigPrivatelinkAccess {
-    /**
-     * Grafana specific server provided values
-     */
-    grafana?: string;
-}
-
-export interface GetServiceGrafanaUserConfigPublicAccess {
-    /**
-     * Grafana specific server provided values
-     */
-    grafana?: string;
-}
-
-export interface GetServiceGrafanaUserConfigSmtpServer {
-    fromAddress?: string;
-    fromName?: string;
-    host?: string;
-    password?: string;
-    port?: string;
-    skipVerify?: string;
-    starttlsPolicy?: string;
-    username?: string;
-}
-
-export interface GetServiceInfluxdb {
-    databaseName: string;
-}
-
-export interface GetServiceInfluxdbUserConfig {
-    customDomain?: string;
-    /**
-     * InfluxDB specific server provided values
-     */
-    influxdb?: outputs.GetServiceInfluxdbUserConfigInfluxdb;
-    ipFilters?: string[];
-    privateAccess?: outputs.GetServiceInfluxdbUserConfigPrivateAccess;
-    privatelinkAccess?: outputs.GetServiceInfluxdbUserConfigPrivatelinkAccess;
-    projectToForkFrom?: string;
-    publicAccess?: outputs.GetServiceInfluxdbUserConfigPublicAccess;
-    recoveryBasebackupName?: string;
-    serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
-    staticIps?: string;
-}
-
-export interface GetServiceInfluxdbUserConfigInfluxdb {
-    logQueriesAfter?: string;
-    maxConnectionLimit?: string;
-    maxRowLimit?: string;
-    maxSelectBuckets?: string;
-    maxSelectPoint?: string;
-    queryTimeout?: string;
-}
-
-export interface GetServiceInfluxdbUserConfigPrivateAccess {
-    /**
-     * InfluxDB specific server provided values
-     */
-    influxdb?: string;
-}
-
-export interface GetServiceInfluxdbUserConfigPrivatelinkAccess {
-    /**
-     * InfluxDB specific server provided values
-     */
-    influxdb?: string;
-}
-
-export interface GetServiceInfluxdbUserConfigPublicAccess {
-    /**
-     * InfluxDB specific server provided values
-     */
-    influxdb?: string;
-}
-
-export interface GetServiceIntegrationDatadogUserConfig {
-    datadogTags?: outputs.GetServiceIntegrationDatadogUserConfigDatadogTag[];
-    excludeConsumerGroups?: string[];
-    excludeTopics?: string[];
-    includeConsumerGroups?: string[];
-    includeTopics?: string[];
-    kafkaCustomMetrics?: string[];
-    maxJmxMetrics?: string;
-}
-
-export interface GetServiceIntegrationDatadogUserConfigDatadogTag {
-    comment?: string;
-    tag?: string;
+export interface GetRedisTag {
+    key: string;
+    value: string;
 }
 
 export interface GetServiceIntegrationEndpointDatadogUserConfig {
@@ -2389,677 +1813,6 @@ export interface GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
 
 export interface GetServiceIntegrationMirrormakerUserConfig {
     mirrormakerWhitelist?: string;
-}
-
-export interface GetServiceIntegrationPrometheusUserConfig {
-    sourceMysql?: outputs.GetServiceIntegrationPrometheusUserConfigSourceMysql;
-}
-
-export interface GetServiceIntegrationPrometheusUserConfigSourceMysql {
-    telegraf?: outputs.GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf;
-}
-
-export interface GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
-    gatherEventWaits?: string;
-    gatherFileEventsStats?: string;
-    gatherIndexIoWaits?: string;
-    gatherInfoSchemaAutoInc?: string;
-    gatherInnodbMetrics?: string;
-    gatherPerfEventsStatements?: string;
-    gatherProcessList?: string;
-    gatherSlaveStatus?: string;
-    gatherTableIoWaits?: string;
-    gatherTableLockWaits?: string;
-    gatherTableSchema?: string;
-    perfEventsStatementsDigestTextLimit?: string;
-    perfEventsStatementsLimit?: string;
-    perfEventsStatementsTimeLimit?: string;
-}
-
-export interface GetServiceKafka {
-    accessCert: string;
-    accessKey: string;
-    connectUri: string;
-    restUri: string;
-    schemaRegistryUri: string;
-}
-
-export interface GetServiceKafkaConnect {
-}
-
-export interface GetServiceKafkaConnectUserConfig {
-    ipFilters?: string[];
-    /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: outputs.GetServiceKafkaConnectUserConfigKafkaConnect;
-    privateAccess?: outputs.GetServiceKafkaConnectUserConfigPrivateAccess;
-    privatelinkAccess?: outputs.GetServiceKafkaConnectUserConfigPrivatelinkAccess;
-    publicAccess?: outputs.GetServiceKafkaConnectUserConfigPublicAccess;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
-    staticIps?: string;
-}
-
-export interface GetServiceKafkaConnectUserConfigKafkaConnect {
-    connectorClientConfigOverridePolicy?: string;
-    consumerAutoOffsetReset?: string;
-    consumerFetchMaxBytes?: string;
-    consumerIsolationLevel?: string;
-    consumerMaxPartitionFetchBytes?: string;
-    consumerMaxPollIntervalMs?: string;
-    consumerMaxPollRecords?: string;
-    offsetFlushIntervalMs?: string;
-    offsetFlushTimeoutMs?: string;
-    producerMaxRequestSize?: string;
-    sessionTimeoutMs?: string;
-}
-
-export interface GetServiceKafkaConnectUserConfigPrivateAccess {
-    /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: string;
-    prometheus?: string;
-}
-
-export interface GetServiceKafkaConnectUserConfigPrivatelinkAccess {
-    jolokia?: string;
-    /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: string;
-    prometheus?: string;
-}
-
-export interface GetServiceKafkaConnectUserConfigPublicAccess {
-    /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: string;
-    prometheus?: string;
-}
-
-export interface GetServiceKafkaMirrormaker {
-}
-
-export interface GetServiceKafkaMirrormakerUserConfig {
-    ipFilters?: string[];
-    /**
-     * Kafka MirrorMaker 2 specific server provided values
-     */
-    kafkaMirrormaker?: outputs.GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
-    staticIps?: string;
-}
-
-export interface GetServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
-    emitCheckpointsEnabled?: string;
-    emitCheckpointsIntervalSeconds?: string;
-    refreshGroupsEnabled?: string;
-    refreshGroupsIntervalSeconds?: string;
-    refreshTopicsEnabled?: string;
-    refreshTopicsIntervalSeconds?: string;
-    syncGroupOffsetsEnabled?: string;
-    syncGroupOffsetsIntervalSeconds?: string;
-    syncTopicConfigsEnabled?: string;
-    tasksMaxPerCpu?: string;
-}
-
-export interface GetServiceKafkaUserConfig {
-    customDomain?: string;
-    ipFilters?: string[];
-    /**
-     * Kafka specific server provided values
-     */
-    kafka?: outputs.GetServiceKafkaUserConfigKafka;
-    kafkaAuthenticationMethods?: outputs.GetServiceKafkaUserConfigKafkaAuthenticationMethods;
-    /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: string;
-    kafkaConnectConfig?: outputs.GetServiceKafkaUserConfigKafkaConnectConfig;
-    kafkaRest?: string;
-    kafkaRestConfig?: outputs.GetServiceKafkaUserConfigKafkaRestConfig;
-    kafkaVersion?: string;
-    privateAccess?: outputs.GetServiceKafkaUserConfigPrivateAccess;
-    privatelinkAccess?: outputs.GetServiceKafkaUserConfigPrivatelinkAccess;
-    publicAccess?: outputs.GetServiceKafkaUserConfigPublicAccess;
-    schemaRegistry?: string;
-    schemaRegistryConfig?: outputs.GetServiceKafkaUserConfigSchemaRegistryConfig;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
-    staticIps?: string;
-}
-
-export interface GetServiceKafkaUserConfigKafka {
-    autoCreateTopicsEnable?: string;
-    compressionType?: string;
-    connectionsMaxIdleMs?: string;
-    defaultReplicationFactor?: string;
-    groupInitialRebalanceDelayMs?: string;
-    groupMaxSessionTimeoutMs?: string;
-    groupMinSessionTimeoutMs?: string;
-    logCleanerDeleteRetentionMs?: string;
-    logCleanerMaxCompactionLagMs?: string;
-    logCleanerMinCleanableRatio?: string;
-    logCleanerMinCompactionLagMs?: string;
-    logCleanupPolicy?: string;
-    logFlushIntervalMessages?: string;
-    logFlushIntervalMs?: string;
-    logIndexIntervalBytes?: string;
-    logIndexSizeMaxBytes?: string;
-    logMessageDownconversionEnable?: string;
-    logMessageTimestampDifferenceMaxMs?: string;
-    logMessageTimestampType?: string;
-    logPreallocate?: string;
-    logRetentionBytes?: string;
-    logRetentionHours?: string;
-    logRetentionMs?: string;
-    logRollJitterMs?: string;
-    logRollMs?: string;
-    logSegmentBytes?: string;
-    logSegmentDeleteDelayMs?: string;
-    maxConnectionsPerIp?: string;
-    maxIncrementalFetchSessionCacheSlots?: string;
-    messageMaxBytes?: string;
-    minInsyncReplicas?: string;
-    numPartitions?: string;
-    offsetsRetentionMinutes?: string;
-    producerPurgatoryPurgeIntervalRequests?: string;
-    replicaFetchMaxBytes?: string;
-    replicaFetchResponseMaxBytes?: string;
-    socketRequestMaxBytes?: string;
-    transactionRemoveExpiredTransactionCleanupIntervalMs?: string;
-    transactionStateLogSegmentBytes?: string;
-}
-
-export interface GetServiceKafkaUserConfigKafkaAuthenticationMethods {
-    certificate?: string;
-    sasl?: string;
-}
-
-export interface GetServiceKafkaUserConfigKafkaConnectConfig {
-    connectorClientConfigOverridePolicy?: string;
-    consumerAutoOffsetReset?: string;
-    consumerFetchMaxBytes?: string;
-    consumerIsolationLevel?: string;
-    consumerMaxPartitionFetchBytes?: string;
-    consumerMaxPollIntervalMs?: string;
-    consumerMaxPollRecords?: string;
-    offsetFlushIntervalMs?: string;
-    offsetFlushTimeoutMs?: string;
-    producerMaxRequestSize?: string;
-    sessionTimeoutMs?: string;
-}
-
-export interface GetServiceKafkaUserConfigKafkaRestConfig {
-    consumerEnableAutoCommit?: string;
-    consumerRequestMaxBytes?: string;
-    consumerRequestTimeoutMs?: string;
-    producerAcks?: string;
-    producerLingerMs?: string;
-    simpleconsumerPoolSizeMax?: string;
-}
-
-export interface GetServiceKafkaUserConfigPrivateAccess {
-    prometheus?: string;
-}
-
-export interface GetServiceKafkaUserConfigPrivatelinkAccess {
-    jolokia?: string;
-    /**
-     * Kafka specific server provided values
-     */
-    kafka?: string;
-    /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: string;
-    kafkaRest?: string;
-    prometheus?: string;
-    schemaRegistry?: string;
-}
-
-export interface GetServiceKafkaUserConfigPublicAccess {
-    /**
-     * Kafka specific server provided values
-     */
-    kafka?: string;
-    /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: string;
-    kafkaRest?: string;
-    prometheus?: string;
-    schemaRegistry?: string;
-}
-
-export interface GetServiceKafkaUserConfigSchemaRegistryConfig {
-    leaderEligibility?: string;
-    topicName?: string;
-}
-
-export interface GetServiceMysql {
-}
-
-export interface GetServiceMysqlUserConfig {
-    adminPassword?: string;
-    adminUsername?: string;
-    backupHour?: string;
-    backupMinute?: string;
-    binlogRetentionPeriod?: string;
-    ipFilters?: string[];
-    migration?: outputs.GetServiceMysqlUserConfigMigration;
-    /**
-     * MySQL specific server provided values
-     */
-    mysql?: outputs.GetServiceMysqlUserConfigMysql;
-    mysqlVersion?: string;
-    privateAccess?: outputs.GetServiceMysqlUserConfigPrivateAccess;
-    privatelinkAccess?: outputs.GetServiceMysqlUserConfigPrivatelinkAccess;
-    projectToForkFrom?: string;
-    publicAccess?: outputs.GetServiceMysqlUserConfigPublicAccess;
-    recoveryTargetTime?: string;
-    serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
-    staticIps?: string;
-}
-
-export interface GetServiceMysqlUserConfigMigration {
-    dbname?: string;
-    host?: string;
-    ignoreDbs?: string;
-    method?: string;
-    password?: string;
-    port?: string;
-    ssl?: string;
-    username?: string;
-}
-
-export interface GetServiceMysqlUserConfigMysql {
-    connectTimeout?: string;
-    defaultTimeZone?: string;
-    groupConcatMaxLen?: string;
-    informationSchemaStatsExpiry?: string;
-    innodbFtMinTokenSize?: string;
-    innodbFtServerStopwordTable?: string;
-    innodbLockWaitTimeout?: string;
-    innodbLogBufferSize?: string;
-    innodbOnlineAlterLogMaxSize?: string;
-    innodbPrintAllDeadlocks?: string;
-    innodbRollbackOnTimeout?: string;
-    interactiveTimeout?: string;
-    internalTmpMemStorageEngine?: string;
-    longQueryTime?: string;
-    maxAllowedPacket?: string;
-    maxHeapTableSize?: string;
-    netReadTimeout?: string;
-    netWriteTimeout?: string;
-    slowQueryLog?: string;
-    sortBufferSize?: string;
-    sqlMode?: string;
-    sqlRequirePrimaryKey?: string;
-    tmpTableSize?: string;
-    waitTimeout?: string;
-}
-
-export interface GetServiceMysqlUserConfigPrivateAccess {
-    /**
-     * MySQL specific server provided values
-     */
-    mysql?: string;
-    mysqlx?: string;
-    prometheus?: string;
-}
-
-export interface GetServiceMysqlUserConfigPrivatelinkAccess {
-    /**
-     * MySQL specific server provided values
-     */
-    mysql?: string;
-    mysqlx?: string;
-    prometheus?: string;
-}
-
-export interface GetServiceMysqlUserConfigPublicAccess {
-    /**
-     * MySQL specific server provided values
-     */
-    mysql?: string;
-    mysqlx?: string;
-    prometheus?: string;
-}
-
-export interface GetServiceOpensearch {
-    opensearchDashboardsUri: string;
-}
-
-export interface GetServiceOpensearchUserConfig {
-    customDomain?: string;
-    disableReplicationFactorAdjustment?: string;
-    indexPatterns?: outputs.GetServiceOpensearchUserConfigIndexPattern[];
-    indexTemplate?: outputs.GetServiceOpensearchUserConfigIndexTemplate;
-    ipFilters?: string[];
-    keepIndexRefreshInterval?: string;
-    maxIndexCount?: string;
-    /**
-     * Opensearch specific server provided values
-     */
-    opensearch?: outputs.GetServiceOpensearchUserConfigOpensearch;
-    opensearchDashboards?: outputs.GetServiceOpensearchUserConfigOpensearchDashboards;
-    opensearchVersion?: string;
-    privateAccess?: outputs.GetServiceOpensearchUserConfigPrivateAccess;
-    privatelinkAccess?: outputs.GetServiceOpensearchUserConfigPrivatelinkAccess;
-    projectToForkFrom?: string;
-    publicAccess?: outputs.GetServiceOpensearchUserConfigPublicAccess;
-    recoveryBasebackupName?: string;
-    serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
-    staticIps?: string;
-}
-
-export interface GetServiceOpensearchUserConfigIndexPattern {
-    maxIndexCount?: string;
-    pattern?: string;
-    sortingAlgorithm?: string;
-}
-
-export interface GetServiceOpensearchUserConfigIndexTemplate {
-    mappingNestedObjectsLimit?: string;
-    numberOfReplicas?: string;
-    numberOfShards?: string;
-}
-
-export interface GetServiceOpensearchUserConfigOpensearch {
-    actionAutoCreateIndexEnabled?: string;
-    actionDestructiveRequiresName?: string;
-    clusterMaxShardsPerNode?: string;
-    httpMaxContentLength?: string;
-    httpMaxHeaderSize?: string;
-    httpMaxInitialLineLength?: string;
-    indicesFielddataCacheSize?: string;
-    indicesMemoryIndexBufferSize?: string;
-    indicesQueriesCacheSize?: string;
-    indicesQueryBoolMaxClauseCount?: string;
-    overrideMainResponseVersion?: string;
-    reindexRemoteWhitelists?: string[];
-    scriptMaxCompilationsRate?: string;
-    searchMaxBuckets?: string;
-    threadPoolAnalyzeQueueSize?: string;
-    threadPoolAnalyzeSize?: string;
-    threadPoolForceMergeSize?: string;
-    threadPoolGetQueueSize?: string;
-    threadPoolGetSize?: string;
-    threadPoolIndexSize?: string;
-    threadPoolSearchQueueSize?: string;
-    threadPoolSearchSize?: string;
-    threadPoolSearchThrottledQueueSize?: string;
-    threadPoolSearchThrottledSize?: string;
-    threadPoolWriteQueueSize?: string;
-    threadPoolWriteSize?: string;
-}
-
-export interface GetServiceOpensearchUserConfigOpensearchDashboards {
-    enabled?: string;
-    maxOldSpaceSize?: string;
-    opensearchRequestTimeout?: string;
-}
-
-export interface GetServiceOpensearchUserConfigPrivateAccess {
-    /**
-     * Opensearch specific server provided values
-     */
-    opensearch?: string;
-    opensearchDashboards?: string;
-    prometheus?: string;
-}
-
-export interface GetServiceOpensearchUserConfigPrivatelinkAccess {
-    /**
-     * Opensearch specific server provided values
-     */
-    opensearch?: string;
-    opensearchDashboards?: string;
-    prometheus?: string;
-}
-
-export interface GetServiceOpensearchUserConfigPublicAccess {
-    /**
-     * Opensearch specific server provided values
-     */
-    opensearch?: string;
-    opensearchDashboards?: string;
-    prometheus?: string;
-}
-
-export interface GetServicePg {
-    dbname: string;
-    host: string;
-    password: string;
-    port: number;
-    replicaUri: string;
-    sslmode: string;
-    uri: string;
-    user: string;
-}
-
-export interface GetServicePgUserConfig {
-    adminPassword?: string;
-    adminUsername?: string;
-    backupHour?: string;
-    backupMinute?: string;
-    enableIpv6?: string;
-    ipFilters?: string[];
-    migration?: outputs.GetServicePgUserConfigMigration;
-    /**
-     * PostgreSQL specific server provided values
-     */
-    pg?: outputs.GetServicePgUserConfigPg;
-    pgReadReplica?: string;
-    pgServiceToForkFrom?: string;
-    pgVersion?: string;
-    pgbouncer?: outputs.GetServicePgUserConfigPgbouncer;
-    pglookout?: outputs.GetServicePgUserConfigPglookout;
-    privateAccess?: outputs.GetServicePgUserConfigPrivateAccess;
-    privatelinkAccess?: outputs.GetServicePgUserConfigPrivatelinkAccess;
-    projectToForkFrom?: string;
-    publicAccess?: outputs.GetServicePgUserConfigPublicAccess;
-    recoveryTargetTime?: string;
-    serviceToForkFrom?: string;
-    sharedBuffersPercentage?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
-    staticIps?: string;
-    synchronousReplication?: string;
-    timescaledb?: outputs.GetServicePgUserConfigTimescaledb;
-    variant?: string;
-    workMem?: string;
-}
-
-export interface GetServicePgUserConfigMigration {
-    dbname?: string;
-    host?: string;
-    ignoreDbs?: string;
-    method?: string;
-    password?: string;
-    port?: string;
-    ssl?: string;
-    username?: string;
-}
-
-export interface GetServicePgUserConfigPg {
-    autovacuumAnalyzeScaleFactor?: string;
-    autovacuumAnalyzeThreshold?: string;
-    autovacuumFreezeMaxAge?: string;
-    autovacuumMaxWorkers?: string;
-    autovacuumNaptime?: string;
-    autovacuumVacuumCostDelay?: string;
-    autovacuumVacuumCostLimit?: string;
-    autovacuumVacuumScaleFactor?: string;
-    autovacuumVacuumThreshold?: string;
-    bgwriterDelay?: string;
-    bgwriterFlushAfter?: string;
-    bgwriterLruMaxpages?: string;
-    bgwriterLruMultiplier?: string;
-    deadlockTimeout?: string;
-    defaultToastCompression?: string;
-    idleInTransactionSessionTimeout?: string;
-    jit?: string;
-    logAutovacuumMinDuration?: string;
-    logErrorVerbosity?: string;
-    logLinePrefix?: string;
-    logMinDurationStatement?: string;
-    maxFilesPerProcess?: string;
-    maxLocksPerTransaction?: string;
-    maxLogicalReplicationWorkers?: string;
-    maxParallelWorkers?: string;
-    maxParallelWorkersPerGather?: string;
-    maxPredLocksPerTransaction?: string;
-    maxPreparedTransactions?: string;
-    maxReplicationSlots?: string;
-    maxSlotWalKeepSize?: string;
-    maxStackDepth?: string;
-    maxStandbyArchiveDelay?: string;
-    maxStandbyStreamingDelay?: string;
-    maxWalSenders?: string;
-    maxWorkerProcesses?: string;
-    pgPartmanBgwInterval?: string;
-    pgPartmanBgwRole?: string;
-    pgStatStatementsTrack?: string;
-    tempFileLimit?: string;
-    timezone?: string;
-    trackActivityQuerySize?: string;
-    trackCommitTimestamp?: string;
-    trackFunctions?: string;
-    trackIoTiming?: string;
-    walSenderTimeout?: string;
-    walWriterDelay?: string;
-}
-
-export interface GetServicePgUserConfigPgbouncer {
-    autodbIdleTimeout?: string;
-    autodbMaxDbConnections?: string;
-    autodbPoolMode?: string;
-    autodbPoolSize?: string;
-    ignoreStartupParameters?: string[];
-    minPoolSize?: string;
-    serverIdleTimeout?: string;
-    serverLifetime?: string;
-    serverResetQueryAlways?: string;
-}
-
-export interface GetServicePgUserConfigPglookout {
-    maxFailoverReplicationTimeLag?: string;
-}
-
-export interface GetServicePgUserConfigPrivateAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
-    pg?: string;
-    pgbouncer?: string;
-    prometheus?: string;
-}
-
-export interface GetServicePgUserConfigPrivatelinkAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
-    pg?: string;
-    pgbouncer?: string;
-    prometheus?: string;
-}
-
-export interface GetServicePgUserConfigPublicAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
-    pg?: string;
-    pgbouncer?: string;
-    prometheus?: string;
-}
-
-export interface GetServicePgUserConfigTimescaledb {
-    maxBackgroundWorkers?: string;
-}
-
-export interface GetServiceRedi {
-}
-
-export interface GetServiceRedisUserConfig {
-    ipFilters?: string[];
-    migration?: outputs.GetServiceRedisUserConfigMigration;
-    privateAccess?: outputs.GetServiceRedisUserConfigPrivateAccess;
-    privatelinkAccess?: outputs.GetServiceRedisUserConfigPrivatelinkAccess;
-    projectToForkFrom?: string;
-    publicAccess?: outputs.GetServiceRedisUserConfigPublicAccess;
-    recoveryBasebackupName?: string;
-    redisAclChannelsDefault?: string;
-    redisIoThreads?: string;
-    redisLfuDecayTime?: string;
-    redisLfuLogFactor?: string;
-    redisMaxmemoryPolicy?: string;
-    redisNotifyKeyspaceEvents?: string;
-    redisNumberOfDatabases?: string;
-    redisPersistence?: string;
-    redisPubsubClientOutputBufferLimit?: string;
-    redisSsl?: string;
-    redisTimeout?: string;
-    serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
-    staticIps?: string;
-}
-
-export interface GetServiceRedisUserConfigMigration {
-    dbname?: string;
-    host?: string;
-    ignoreDbs?: string;
-    method?: string;
-    password?: string;
-    port?: string;
-    ssl?: string;
-    username?: string;
-}
-
-export interface GetServiceRedisUserConfigPrivateAccess {
-    prometheus?: string;
-    /**
-     * Redis specific server provided values
-     */
-    redis?: string;
-}
-
-export interface GetServiceRedisUserConfigPrivatelinkAccess {
-    prometheus?: string;
-    /**
-     * Redis specific server provided values
-     */
-    redis?: string;
-}
-
-export interface GetServiceRedisUserConfigPublicAccess {
-    prometheus?: string;
-    /**
-     * Redis specific server provided values
-     */
-    redis?: string;
-}
-
-export interface GetServiceServiceIntegration {
-    integrationType: string;
-    sourceServiceName: string;
 }
 
 export interface GrafanaComponent {
@@ -3327,6 +2080,17 @@ export interface GrafanaServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface GrafanaTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
 export interface InfluxDbComponent {
     component: string;
     host: string;
@@ -3425,6 +2189,17 @@ export interface InfluxDbServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface InfluxDbTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
 export interface KafkaComponent {
     component: string;
     host: string;
@@ -3485,6 +2260,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
     consumerMaxPollRecords?: string;
     offsetFlushIntervalMs?: string;
     offsetFlushTimeoutMs?: string;
+    producerCompressionType?: string;
     producerMaxRequestSize?: string;
     sessionTimeoutMs?: string;
 }
@@ -3523,6 +2299,17 @@ export interface KafkaConnectServiceIntegration {
      * Name of the source service
      */
     sourceServiceName: string;
+}
+
+export interface KafkaConnectTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
 }
 
 export interface KafkaConnectorTask {
@@ -3676,6 +2463,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
     consumerMaxPollRecords?: string;
     offsetFlushIntervalMs?: string;
     offsetFlushTimeoutMs?: string;
+    producerCompressionType?: string;
     producerMaxRequestSize?: string;
     sessionTimeoutMs?: string;
 }
@@ -3773,6 +2561,17 @@ export interface KafkaMirrorMakerServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface KafkaMirrorMakerTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
 export interface KafkaServiceIntegration {
     /**
      * Type of the service integration. The only supported value at the moment is `readReplica`
@@ -3782,6 +2581,17 @@ export interface KafkaServiceIntegration {
      * Name of the source service
      */
     sourceServiceName: string;
+}
+
+export interface KafkaTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
 }
 
 export interface KafkaTopicConfig {
@@ -3941,6 +2751,17 @@ export interface M3AggregatorServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface M3AggregatorTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
 export interface M3DbComponent {
     component: string;
     host: string;
@@ -4070,6 +2891,17 @@ export interface M3DbServiceIntegration {
      * Name of the source service
      */
     sourceServiceName: string;
+}
+
+export interface M3DbTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
 }
 
 export interface MySqlComponent {
@@ -4228,6 +3060,17 @@ export interface MySqlServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface MySqlTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
 export interface OpenSearchComponent {
     component: string;
     host: string;
@@ -4329,6 +3172,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
     actionAutoCreateIndexEnabled?: string;
     actionDestructiveRequiresName?: string;
     clusterMaxShardsPerNode?: string;
+    clusterRoutingAllocationNodeConcurrentRecoveries?: string;
     httpMaxContentLength?: string;
     httpMaxHeaderSize?: string;
     httpMaxInitialLineLength?: string;
@@ -4336,6 +3180,8 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
     indicesMemoryIndexBufferSize?: string;
     indicesQueriesCacheSize?: string;
     indicesQueryBoolMaxClauseCount?: string;
+    indicesRecoveryMaxBytesPerSec?: string;
+    indicesRecoveryMaxConcurrentFileChunks?: string;
     overrideMainResponseVersion?: string;
     reindexRemoteWhitelists?: string[];
     scriptMaxCompilationsRate?: string;
@@ -4345,7 +3191,6 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
     threadPoolForceMergeSize?: string;
     threadPoolGetQueueSize?: string;
     threadPoolGetSize?: string;
-    threadPoolIndexSize?: string;
     threadPoolSearchQueueSize?: string;
     threadPoolSearchSize?: string;
     threadPoolSearchThrottledQueueSize?: string;
@@ -4396,6 +3241,17 @@ export interface OpenSearchServiceIntegration {
      * Name of the source service
      */
     sourceServiceName: string;
+}
+
+export interface OpenSearchTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
 }
 
 export interface PgComponent {
@@ -4664,6 +3520,28 @@ export interface PgServiceIntegration {
     sourceServiceName: string;
 }
 
+export interface PgTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
+export interface ProjectTag {
+    /**
+     * Project tag key
+     */
+    key: string;
+    /**
+     * Project tag value
+     */
+    value: string;
+}
+
 export interface RedisComponent {
     component: string;
     host: string;
@@ -4806,659 +3684,15 @@ export interface RedisServiceIntegration {
     sourceServiceName: string;
 }
 
-export interface ServiceCassandra {
-}
-
-export interface ServiceCassandraUserConfig {
+export interface RedisTag {
     /**
-     * cassandra configuration values
+     * Service tag key
      */
-    cassandra?: outputs.ServiceCassandraUserConfigCassandra;
+    key: string;
     /**
-     * Cassandra major version
+     * Service tag value
      */
-    cassandraVersion?: string;
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Migration mode for the sstableloader utility
-     */
-    migrateSstableloader?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.ServiceCassandraUserConfigPrivateAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.ServiceCassandraUserConfigPublicAccess;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Static IP addresses
-     */
-    staticIps?: string;
-}
-
-export interface ServiceCassandraUserConfigCassandra {
-    batchSizeFailThresholdInKb?: string;
-    batchSizeWarnThresholdInKb?: string;
-}
-
-export interface ServiceCassandraUserConfigPrivateAccess {
-    prometheus?: string;
-}
-
-export interface ServiceCassandraUserConfigPublicAccess {
-    prometheus?: string;
-}
-
-export interface ServiceClickhouse {
-}
-
-export interface ServiceClickhouseUserConfig {
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
-    serviceToForkFrom?: string;
-}
-
-export interface ServiceComponent {
-    component: string;
-    host: string;
-    kafkaAuthenticationMethod: string;
-    port: number;
-    route: string;
-    ssl: boolean;
-    usage: string;
-}
-
-export interface ServiceElasticsearch {
-    kibanaUri: string;
-}
-
-export interface ServiceElasticsearchUserConfig {
-    /**
-     * Custom domain
-     */
-    customDomain?: string;
-    /**
-     * Disable replication factor adjustment
-     */
-    disableReplicationFactorAdjustment?: string;
-    /**
-     * Elasticsearch settings
-     */
-    elasticsearch?: outputs.ServiceElasticsearchUserConfigElasticsearch;
-    /**
-     * Elasticsearch major version
-     */
-    elasticsearchVersion?: string;
-    /**
-     * Index patterns
-     */
-    indexPatterns?: outputs.ServiceElasticsearchUserConfigIndexPattern[];
-    /**
-     * Template settings for all new indexes
-     */
-    indexTemplate?: outputs.ServiceElasticsearchUserConfigIndexTemplate;
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Don't reset index.refresh_interval to the default value
-     */
-    keepIndexRefreshInterval?: string;
-    /**
-     * Kibana settings
-     */
-    kibana?: outputs.ServiceElasticsearchUserConfigKibana;
-    /**
-     * Maximum index count
-     */
-    maxIndexCount?: string;
-    /**
-     * OpenSearch major version
-     */
-    opensearchVersion?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.ServiceElasticsearchUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.ServiceElasticsearchUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.ServiceElasticsearchUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service
-     */
-    recoveryBasebackupName?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Static IP addresses
-     */
-    staticIps?: string;
-}
-
-export interface ServiceElasticsearchUserConfigElasticsearch {
-    actionAutoCreateIndexEnabled?: string;
-    actionDestructiveRequiresName?: string;
-    clusterMaxShardsPerNode?: string;
-    httpMaxContentLength?: string;
-    httpMaxHeaderSize?: string;
-    httpMaxInitialLineLength?: string;
-    indicesFielddataCacheSize?: string;
-    indicesMemoryIndexBufferSize?: string;
-    indicesQueriesCacheSize?: string;
-    indicesQueryBoolMaxClauseCount?: string;
-    overrideMainResponseVersion?: string;
-    reindexRemoteWhitelists?: string[];
-    scriptMaxCompilationsRate?: string;
-    searchMaxBuckets?: string;
-    threadPoolAnalyzeQueueSize?: string;
-    threadPoolAnalyzeSize?: string;
-    threadPoolForceMergeSize?: string;
-    threadPoolGetQueueSize?: string;
-    threadPoolGetSize?: string;
-    threadPoolIndexSize?: string;
-    threadPoolSearchQueueSize?: string;
-    threadPoolSearchSize?: string;
-    threadPoolSearchThrottledQueueSize?: string;
-    threadPoolSearchThrottledSize?: string;
-    threadPoolWriteQueueSize?: string;
-    threadPoolWriteSize?: string;
-}
-
-export interface ServiceElasticsearchUserConfigIndexPattern {
-    maxIndexCount?: string;
-    pattern?: string;
-    sortingAlgorithm?: string;
-}
-
-export interface ServiceElasticsearchUserConfigIndexTemplate {
-    mappingNestedObjectsLimit?: string;
-    numberOfReplicas?: string;
-    numberOfShards?: string;
-}
-
-export interface ServiceElasticsearchUserConfigKibana {
-    elasticsearchRequestTimeout?: string;
-    enabled?: string;
-    maxOldSpaceSize?: string;
-}
-
-export interface ServiceElasticsearchUserConfigPrivateAccess {
-    /**
-     * Elasticsearch specific server provided values
-     */
-    elasticsearch?: string;
-    kibana?: string;
-    prometheus?: string;
-}
-
-export interface ServiceElasticsearchUserConfigPrivatelinkAccess {
-    /**
-     * Elasticsearch specific server provided values
-     */
-    elasticsearch?: string;
-    kibana?: string;
-    prometheus?: string;
-}
-
-export interface ServiceElasticsearchUserConfigPublicAccess {
-    /**
-     * Elasticsearch specific server provided values
-     */
-    elasticsearch?: string;
-    kibana?: string;
-    prometheus?: string;
-}
-
-export interface ServiceFlink {
-    /**
-     * Host and Port of a Flink server
-     */
-    hostPorts: string[];
-}
-
-export interface ServiceFlinkUserConfig {
-    /**
-     * Flink execution.checkpointing.interval in milliseconds
-     */
-    executionCheckpointingIntervalMs?: string;
-    /**
-     * Flink execution.checkpointing.timeout in milliseconds
-     */
-    executionCheckpointingTimeoutMs?: string;
-    /**
-     * Flink major version
-     */
-    flinkVersion?: string;
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Flink taskmanager.numberOfTaskSlots
-     */
-    numberOfTaskSlots?: string;
-    /**
-     * Flink parallelism.default
-     */
-    parallelismDefault?: string;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.ServiceFlinkUserConfigPrivatelinkAccess;
-    /**
-     * Flink restart-strategy
-     */
-    restartStrategy?: string;
-    /**
-     * Flink restart-strategy.failure-rate.delay in seconds
-     */
-    restartStrategyDelaySec?: string;
-    /**
-     * Flink restart-strategy.failure-rate.failure-rate-interval in minutes
-     */
-    restartStrategyFailureRateIntervalMin?: string;
-    /**
-     * Flink restart-strategy.failure-rate.max-failures-per-interval
-     */
-    restartStrategyMaxFailures?: string;
-}
-
-export interface ServiceFlinkUserConfigPrivatelinkAccess {
-    /**
-     * Flink specific server provided values
-     */
-    flink?: string;
-    prometheus?: string;
-}
-
-export interface ServiceGrafana {
-}
-
-export interface ServiceGrafanaUserConfig {
-    /**
-     * Enable or disable Grafana alerting functionality
-     */
-    alertingEnabled?: string;
-    /**
-     * Default error or timeout setting for new alerting rules
-     */
-    alertingErrorOrTimeout?: string;
-    /**
-     * Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
-     */
-    alertingMaxAnnotationsToKeep?: string;
-    /**
-     * Default value for 'no data or null values' for new alerting rules
-     */
-    alertingNodataOrNullvalues?: string;
-    /**
-     * Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
-     */
-    allowEmbedding?: string;
-    /**
-     * Azure AD OAuth integration
-     */
-    authAzuread?: outputs.ServiceGrafanaUserConfigAuthAzuread;
-    /**
-     * Enable or disable basic authentication form, used by Grafana built-in login
-     */
-    authBasicEnabled?: string;
-    /**
-     * Generic OAuth integration
-     */
-    authGenericOauth?: outputs.ServiceGrafanaUserConfigAuthGenericOauth;
-    /**
-     * Github Auth integration
-     */
-    authGithub?: outputs.ServiceGrafanaUserConfigAuthGithub;
-    /**
-     * GitLab Auth integration
-     */
-    authGitlab?: outputs.ServiceGrafanaUserConfigAuthGitlab;
-    /**
-     * Google Auth integration
-     */
-    authGoogle?: outputs.ServiceGrafanaUserConfigAuthGoogle;
-    /**
-     * Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
-     */
-    cookieSamesite?: string;
-    /**
-     * Custom domain
-     */
-    customDomain?: string;
-    /**
-     * Minimum refresh interval
-     */
-    dashboardsMinRefreshInterval?: string;
-    /**
-     * Dashboard versions to keep per dashboard
-     */
-    dashboardsVersionsToKeep?: string;
-    /**
-     * Send 'X-Grafana-User' header to data source
-     */
-    dataproxySendUserHeader?: string;
-    /**
-     * Timeout for data proxy requests in seconds
-     */
-    dataproxyTimeout?: string;
-    /**
-     * Grafana date format specifications
-     */
-    dateFormats?: outputs.ServiceGrafanaUserConfigDateFormats;
-    /**
-     * Set to true to disable gravatar. Defaults to false (gravatar is enabled)
-     */
-    disableGravatar?: string;
-    /**
-     * Editors can manage folders, teams and dashboards created by them
-     */
-    editorsCanAdmin?: string;
-    /**
-     * External image store settings
-     */
-    externalImageStorage?: outputs.ServiceGrafanaUserConfigExternalImageStorage;
-    /**
-     * Google Analytics ID
-     */
-    googleAnalyticsUaId?: string;
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Enable Grafana /metrics endpoint
-     */
-    metricsEnabled?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.ServiceGrafanaUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.ServiceGrafanaUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.ServiceGrafanaUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service
-     */
-    recoveryBasebackupName?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * SMTP server settings
-     */
-    smtpServer?: outputs.ServiceGrafanaUserConfigSmtpServer;
-    /**
-     * Static IP addresses
-     */
-    staticIps?: string;
-    /**
-     * Auto-assign new users on signup to main organization. Defaults to false
-     */
-    userAutoAssignOrg?: string;
-    /**
-     * Set role for new signups. Defaults to Viewer
-     */
-    userAutoAssignOrgRole?: string;
-    /**
-     * Users with view-only permission can edit but not save dashboards
-     */
-    viewersCanEdit?: string;
-}
-
-export interface ServiceGrafanaUserConfigAuthAzuread {
-    allowSignUp?: string;
-    allowedDomains?: string[];
-    allowedGroups?: string[];
-    authUrl?: string;
-    clientId?: string;
-    clientSecret?: string;
-    tokenUrl?: string;
-}
-
-export interface ServiceGrafanaUserConfigAuthGenericOauth {
-    allowSignUp?: string;
-    allowedDomains?: string[];
-    allowedOrganizations?: string[];
-    apiUrl?: string;
-    authUrl?: string;
-    clientId?: string;
-    clientSecret?: string;
-    name?: string;
-    scopes?: string[];
-    tokenUrl?: string;
-}
-
-export interface ServiceGrafanaUserConfigAuthGithub {
-    allowSignUp?: string;
-    allowedOrganizations?: string[];
-    clientId?: string;
-    clientSecret?: string;
-    teamIds?: string[];
-}
-
-export interface ServiceGrafanaUserConfigAuthGitlab {
-    allowSignUp?: string;
-    allowedGroups?: string[];
-    apiUrl?: string;
-    authUrl?: string;
-    clientId?: string;
-    clientSecret?: string;
-    tokenUrl?: string;
-}
-
-export interface ServiceGrafanaUserConfigAuthGoogle {
-    allowSignUp?: string;
-    allowedDomains?: string[];
-    clientId?: string;
-    clientSecret?: string;
-}
-
-export interface ServiceGrafanaUserConfigDateFormats {
-    defaultTimezone?: string;
-    fullDate?: string;
-    intervalDay?: string;
-    intervalHour?: string;
-    intervalMinute?: string;
-    intervalMonth?: string;
-    intervalSecond?: string;
-    intervalYear?: string;
-}
-
-export interface ServiceGrafanaUserConfigExternalImageStorage {
-    accessKey?: string;
-    bucketUrl?: string;
-    provider?: string;
-    secretKey?: string;
-}
-
-export interface ServiceGrafanaUserConfigPrivateAccess {
-    /**
-     * Grafana specific server provided values
-     */
-    grafana?: string;
-}
-
-export interface ServiceGrafanaUserConfigPrivatelinkAccess {
-    /**
-     * Grafana specific server provided values
-     */
-    grafana?: string;
-}
-
-export interface ServiceGrafanaUserConfigPublicAccess {
-    /**
-     * Grafana specific server provided values
-     */
-    grafana?: string;
-}
-
-export interface ServiceGrafanaUserConfigSmtpServer {
-    fromAddress?: string;
-    fromName?: string;
-    host?: string;
-    password?: string;
-    port?: string;
-    skipVerify?: string;
-    starttlsPolicy?: string;
-    username?: string;
-}
-
-export interface ServiceInfluxdb {
-    databaseName: string;
-}
-
-export interface ServiceInfluxdbUserConfig {
-    /**
-     * Custom domain
-     */
-    customDomain?: string;
-    /**
-     * influxdb.conf configuration values
-     */
-    influxdb?: outputs.ServiceInfluxdbUserConfigInfluxdb;
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.ServiceInfluxdbUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.ServiceInfluxdbUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.ServiceInfluxdbUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service
-     */
-    recoveryBasebackupName?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Static IP addresses
-     */
-    staticIps?: string;
-}
-
-export interface ServiceInfluxdbUserConfigInfluxdb {
-    logQueriesAfter?: string;
-    maxConnectionLimit?: string;
-    maxRowLimit?: string;
-    maxSelectBuckets?: string;
-    maxSelectPoint?: string;
-    queryTimeout?: string;
-}
-
-export interface ServiceInfluxdbUserConfigPrivateAccess {
-    /**
-     * InfluxDB specific server provided values
-     */
-    influxdb?: string;
-}
-
-export interface ServiceInfluxdbUserConfigPrivatelinkAccess {
-    /**
-     * InfluxDB specific server provided values
-     */
-    influxdb?: string;
-}
-
-export interface ServiceInfluxdbUserConfigPublicAccess {
-    /**
-     * InfluxDB specific server provided values
-     */
-    influxdb?: string;
-}
-
-export interface ServiceIntegrationDatadogUserConfig {
-    /**
-     * Custom tags provided by user
-     */
-    datadogTags?: outputs.ServiceIntegrationDatadogUserConfigDatadogTag[];
-    /**
-     * List of custom metrics
-     */
-    excludeConsumerGroups?: string[];
-    /**
-     * List of topics to exclude
-     */
-    excludeTopics?: string[];
-    /**
-     * List of custom metrics
-     */
-    includeConsumerGroups?: string[];
-    /**
-     * List of topics to include
-     */
-    includeTopics?: string[];
-    /**
-     * List of custom metrics
-     */
-    kafkaCustomMetrics?: string[];
-    /**
-     * Maximum number of JMX metrics to send
-     */
-    maxJmxMetrics?: string;
-}
-
-export interface ServiceIntegrationDatadogUserConfigDatadogTag {
-    comment?: string;
-    tag?: string;
+    value: string;
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfig {
@@ -5807,963 +4041,4 @@ export interface ServiceIntegrationMirrormakerUserConfig {
      * Mirrormaker topic whitelist
      */
     mirrormakerWhitelist?: string;
-}
-
-export interface ServiceIntegrationPrometheusUserConfig {
-    /**
-     * Configuration options for metrics where source service is MySQL
-     */
-    sourceMysql?: outputs.ServiceIntegrationPrometheusUserConfigSourceMysql;
-}
-
-export interface ServiceIntegrationPrometheusUserConfigSourceMysql {
-    telegraf?: outputs.ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf;
-}
-
-export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
-    gatherEventWaits?: string;
-    gatherFileEventsStats?: string;
-    gatherIndexIoWaits?: string;
-    gatherInfoSchemaAutoInc?: string;
-    gatherInnodbMetrics?: string;
-    gatherPerfEventsStatements?: string;
-    gatherProcessList?: string;
-    gatherSlaveStatus?: string;
-    gatherTableIoWaits?: string;
-    gatherTableLockWaits?: string;
-    gatherTableSchema?: string;
-    perfEventsStatementsDigestTextLimit?: string;
-    perfEventsStatementsLimit?: string;
-    perfEventsStatementsTimeLimit?: string;
-}
-
-export interface ServiceKafka {
-    /**
-     * The Kafka client certificate
-     */
-    accessCert: string;
-    /**
-     * The Kafka client certificate key
-     */
-    accessKey: string;
-    /**
-     * The Kafka Connect URI, if any
-     */
-    connectUri: string;
-    /**
-     * The Kafka REST URI, if any
-     */
-    restUri: string;
-    /**
-     * The Schema Registry URI, if any
-     */
-    schemaRegistryUri: string;
-}
-
-export interface ServiceKafkaConnect {
-}
-
-export interface ServiceKafkaConnectUserConfig {
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Kafka Connect configuration values
-     */
-    kafkaConnect?: outputs.ServiceKafkaConnectUserConfigKafkaConnect;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.ServiceKafkaConnectUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.ServiceKafkaConnectUserConfigPrivatelinkAccess;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.ServiceKafkaConnectUserConfigPublicAccess;
-    /**
-     * Static IP addresses
-     */
-    staticIps?: string;
-}
-
-export interface ServiceKafkaConnectUserConfigKafkaConnect {
-    connectorClientConfigOverridePolicy?: string;
-    consumerAutoOffsetReset?: string;
-    consumerFetchMaxBytes?: string;
-    consumerIsolationLevel?: string;
-    consumerMaxPartitionFetchBytes?: string;
-    consumerMaxPollIntervalMs?: string;
-    consumerMaxPollRecords?: string;
-    offsetFlushIntervalMs?: string;
-    offsetFlushTimeoutMs?: string;
-    producerMaxRequestSize?: string;
-    sessionTimeoutMs?: string;
-}
-
-export interface ServiceKafkaConnectUserConfigPrivateAccess {
-    /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: string;
-    prometheus?: string;
-}
-
-export interface ServiceKafkaConnectUserConfigPrivatelinkAccess {
-    jolokia?: string;
-    /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: string;
-    prometheus?: string;
-}
-
-export interface ServiceKafkaConnectUserConfigPublicAccess {
-    /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: string;
-    prometheus?: string;
-}
-
-export interface ServiceKafkaMirrormaker {
-}
-
-export interface ServiceKafkaMirrormakerUserConfig {
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Kafka MirrorMaker configuration values
-     */
-    kafkaMirrormaker?: outputs.ServiceKafkaMirrormakerUserConfigKafkaMirrormaker;
-    /**
-     * Static IP addresses
-     */
-    staticIps?: string;
-}
-
-export interface ServiceKafkaMirrormakerUserConfigKafkaMirrormaker {
-    emitCheckpointsEnabled?: string;
-    emitCheckpointsIntervalSeconds?: string;
-    refreshGroupsEnabled?: string;
-    refreshGroupsIntervalSeconds?: string;
-    refreshTopicsEnabled?: string;
-    refreshTopicsIntervalSeconds?: string;
-    syncGroupOffsetsEnabled?: string;
-    syncGroupOffsetsIntervalSeconds?: string;
-    syncTopicConfigsEnabled?: string;
-    tasksMaxPerCpu?: string;
-}
-
-export interface ServiceKafkaUserConfig {
-    /**
-     * Custom domain
-     */
-    customDomain?: string;
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Kafka broker configuration values
-     */
-    kafka?: outputs.ServiceKafkaUserConfigKafka;
-    /**
-     * Kafka authentication methods
-     */
-    kafkaAuthenticationMethods?: outputs.ServiceKafkaUserConfigKafkaAuthenticationMethods;
-    /**
-     * Enable Kafka Connect service
-     */
-    kafkaConnect?: string;
-    /**
-     * Kafka Connect configuration values
-     */
-    kafkaConnectConfig?: outputs.ServiceKafkaUserConfigKafkaConnectConfig;
-    /**
-     * Enable Kafka-REST service
-     */
-    kafkaRest?: string;
-    /**
-     * Kafka REST configuration
-     */
-    kafkaRestConfig?: outputs.ServiceKafkaUserConfigKafkaRestConfig;
-    /**
-     * Kafka major version
-     */
-    kafkaVersion?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.ServiceKafkaUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.ServiceKafkaUserConfigPrivatelinkAccess;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.ServiceKafkaUserConfigPublicAccess;
-    /**
-     * Enable Schema-Registry service
-     */
-    schemaRegistry?: string;
-    /**
-     * Schema Registry configuration
-     */
-    schemaRegistryConfig?: outputs.ServiceKafkaUserConfigSchemaRegistryConfig;
-    /**
-     * Static IP addresses
-     */
-    staticIps?: string;
-}
-
-export interface ServiceKafkaUserConfigKafka {
-    autoCreateTopicsEnable?: string;
-    compressionType?: string;
-    connectionsMaxIdleMs?: string;
-    defaultReplicationFactor?: string;
-    groupInitialRebalanceDelayMs?: string;
-    groupMaxSessionTimeoutMs?: string;
-    groupMinSessionTimeoutMs?: string;
-    logCleanerDeleteRetentionMs?: string;
-    logCleanerMaxCompactionLagMs?: string;
-    logCleanerMinCleanableRatio?: string;
-    logCleanerMinCompactionLagMs?: string;
-    logCleanupPolicy?: string;
-    logFlushIntervalMessages?: string;
-    logFlushIntervalMs?: string;
-    logIndexIntervalBytes?: string;
-    logIndexSizeMaxBytes?: string;
-    logMessageDownconversionEnable?: string;
-    logMessageTimestampDifferenceMaxMs?: string;
-    logMessageTimestampType?: string;
-    logPreallocate?: string;
-    logRetentionBytes?: string;
-    logRetentionHours?: string;
-    logRetentionMs?: string;
-    logRollJitterMs?: string;
-    logRollMs?: string;
-    logSegmentBytes?: string;
-    logSegmentDeleteDelayMs?: string;
-    maxConnectionsPerIp?: string;
-    maxIncrementalFetchSessionCacheSlots?: string;
-    messageMaxBytes?: string;
-    minInsyncReplicas?: string;
-    numPartitions?: string;
-    offsetsRetentionMinutes?: string;
-    producerPurgatoryPurgeIntervalRequests?: string;
-    replicaFetchMaxBytes?: string;
-    replicaFetchResponseMaxBytes?: string;
-    socketRequestMaxBytes?: string;
-    transactionRemoveExpiredTransactionCleanupIntervalMs?: string;
-    transactionStateLogSegmentBytes?: string;
-}
-
-export interface ServiceKafkaUserConfigKafkaAuthenticationMethods {
-    certificate?: string;
-    sasl?: string;
-}
-
-export interface ServiceKafkaUserConfigKafkaConnectConfig {
-    connectorClientConfigOverridePolicy?: string;
-    consumerAutoOffsetReset?: string;
-    consumerFetchMaxBytes?: string;
-    consumerIsolationLevel?: string;
-    consumerMaxPartitionFetchBytes?: string;
-    consumerMaxPollIntervalMs?: string;
-    consumerMaxPollRecords?: string;
-    offsetFlushIntervalMs?: string;
-    offsetFlushTimeoutMs?: string;
-    producerMaxRequestSize?: string;
-    sessionTimeoutMs?: string;
-}
-
-export interface ServiceKafkaUserConfigKafkaRestConfig {
-    consumerEnableAutoCommit?: string;
-    consumerRequestMaxBytes?: string;
-    consumerRequestTimeoutMs?: string;
-    producerAcks?: string;
-    producerLingerMs?: string;
-    simpleconsumerPoolSizeMax?: string;
-}
-
-export interface ServiceKafkaUserConfigPrivateAccess {
-    prometheus?: string;
-}
-
-export interface ServiceKafkaUserConfigPrivatelinkAccess {
-    jolokia?: string;
-    /**
-     * Kafka specific server provided values
-     */
-    kafka?: string;
-    /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: string;
-    kafkaRest?: string;
-    prometheus?: string;
-    schemaRegistry?: string;
-}
-
-export interface ServiceKafkaUserConfigPublicAccess {
-    /**
-     * Kafka specific server provided values
-     */
-    kafka?: string;
-    /**
-     * Kafka Connect specific server provided values
-     */
-    kafkaConnect?: string;
-    kafkaRest?: string;
-    prometheus?: string;
-    schemaRegistry?: string;
-}
-
-export interface ServiceKafkaUserConfigSchemaRegistryConfig {
-    leaderEligibility?: string;
-    topicName?: string;
-}
-
-export interface ServiceMysql {
-}
-
-export interface ServiceMysqlUserConfig {
-    /**
-     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-     */
-    adminPassword?: string;
-    /**
-     * Custom username for admin user. This must be set only when a new service is being created.
-     */
-    adminUsername?: string;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-     */
-    backupHour?: string;
-    /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-     */
-    backupMinute?: string;
-    /**
-     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
-     */
-    binlogRetentionPeriod?: string;
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Migrate data from existing server
-     */
-    migration?: outputs.ServiceMysqlUserConfigMigration;
-    /**
-     * mysql.conf configuration values
-     */
-    mysql?: outputs.ServiceMysqlUserConfigMysql;
-    /**
-     * MySQL major version
-     */
-    mysqlVersion?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.ServiceMysqlUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.ServiceMysqlUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.ServiceMysqlUserConfigPublicAccess;
-    /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created.
-     */
-    recoveryTargetTime?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Static IP addresses
-     */
-    staticIps?: string;
-}
-
-export interface ServiceMysqlUserConfigMigration {
-    dbname?: string;
-    host?: string;
-    ignoreDbs?: string;
-    method?: string;
-    password?: string;
-    port?: string;
-    ssl?: string;
-    username?: string;
-}
-
-export interface ServiceMysqlUserConfigMysql {
-    connectTimeout?: string;
-    defaultTimeZone?: string;
-    groupConcatMaxLen?: string;
-    informationSchemaStatsExpiry?: string;
-    innodbFtMinTokenSize?: string;
-    innodbFtServerStopwordTable?: string;
-    innodbLockWaitTimeout?: string;
-    innodbLogBufferSize?: string;
-    innodbOnlineAlterLogMaxSize?: string;
-    innodbPrintAllDeadlocks?: string;
-    innodbRollbackOnTimeout?: string;
-    interactiveTimeout?: string;
-    internalTmpMemStorageEngine?: string;
-    longQueryTime?: string;
-    maxAllowedPacket?: string;
-    maxHeapTableSize?: string;
-    netReadTimeout?: string;
-    netWriteTimeout?: string;
-    slowQueryLog?: string;
-    sortBufferSize?: string;
-    sqlMode?: string;
-    sqlRequirePrimaryKey?: string;
-    tmpTableSize?: string;
-    waitTimeout?: string;
-}
-
-export interface ServiceMysqlUserConfigPrivateAccess {
-    /**
-     * MySQL specific server provided values
-     */
-    mysql?: string;
-    mysqlx?: string;
-    prometheus?: string;
-}
-
-export interface ServiceMysqlUserConfigPrivatelinkAccess {
-    /**
-     * MySQL specific server provided values
-     */
-    mysql?: string;
-    mysqlx?: string;
-    prometheus?: string;
-}
-
-export interface ServiceMysqlUserConfigPublicAccess {
-    /**
-     * MySQL specific server provided values
-     */
-    mysql?: string;
-    mysqlx?: string;
-    prometheus?: string;
-}
-
-export interface ServiceOpensearch {
-    opensearchDashboardsUri: string;
-}
-
-export interface ServiceOpensearchUserConfig {
-    /**
-     * Custom domain
-     */
-    customDomain?: string;
-    /**
-     * Disable replication factor adjustment
-     */
-    disableReplicationFactorAdjustment?: string;
-    /**
-     * Index patterns
-     */
-    indexPatterns?: outputs.ServiceOpensearchUserConfigIndexPattern[];
-    /**
-     * Template settings for all new indexes
-     */
-    indexTemplate?: outputs.ServiceOpensearchUserConfigIndexTemplate;
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Don't reset index.refresh_interval to the default value
-     */
-    keepIndexRefreshInterval?: string;
-    /**
-     * Maximum index count
-     */
-    maxIndexCount?: string;
-    /**
-     * OpenSearch settings
-     */
-    opensearch?: outputs.ServiceOpensearchUserConfigOpensearch;
-    /**
-     * OpenSearch Dashboards settings
-     */
-    opensearchDashboards?: outputs.ServiceOpensearchUserConfigOpensearchDashboards;
-    /**
-     * OpenSearch major version
-     */
-    opensearchVersion?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.ServiceOpensearchUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.ServiceOpensearchUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.ServiceOpensearchUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service
-     */
-    recoveryBasebackupName?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Static IP addresses
-     */
-    staticIps?: string;
-}
-
-export interface ServiceOpensearchUserConfigIndexPattern {
-    maxIndexCount?: string;
-    pattern?: string;
-    sortingAlgorithm?: string;
-}
-
-export interface ServiceOpensearchUserConfigIndexTemplate {
-    mappingNestedObjectsLimit?: string;
-    numberOfReplicas?: string;
-    numberOfShards?: string;
-}
-
-export interface ServiceOpensearchUserConfigOpensearch {
-    actionAutoCreateIndexEnabled?: string;
-    actionDestructiveRequiresName?: string;
-    clusterMaxShardsPerNode?: string;
-    httpMaxContentLength?: string;
-    httpMaxHeaderSize?: string;
-    httpMaxInitialLineLength?: string;
-    indicesFielddataCacheSize?: string;
-    indicesMemoryIndexBufferSize?: string;
-    indicesQueriesCacheSize?: string;
-    indicesQueryBoolMaxClauseCount?: string;
-    overrideMainResponseVersion?: string;
-    reindexRemoteWhitelists?: string[];
-    scriptMaxCompilationsRate?: string;
-    searchMaxBuckets?: string;
-    threadPoolAnalyzeQueueSize?: string;
-    threadPoolAnalyzeSize?: string;
-    threadPoolForceMergeSize?: string;
-    threadPoolGetQueueSize?: string;
-    threadPoolGetSize?: string;
-    threadPoolIndexSize?: string;
-    threadPoolSearchQueueSize?: string;
-    threadPoolSearchSize?: string;
-    threadPoolSearchThrottledQueueSize?: string;
-    threadPoolSearchThrottledSize?: string;
-    threadPoolWriteQueueSize?: string;
-    threadPoolWriteSize?: string;
-}
-
-export interface ServiceOpensearchUserConfigOpensearchDashboards {
-    enabled?: string;
-    maxOldSpaceSize?: string;
-    opensearchRequestTimeout?: string;
-}
-
-export interface ServiceOpensearchUserConfigPrivateAccess {
-    /**
-     * Opensearch specific server provided values
-     */
-    opensearch?: string;
-    opensearchDashboards?: string;
-    prometheus?: string;
-}
-
-export interface ServiceOpensearchUserConfigPrivatelinkAccess {
-    /**
-     * Opensearch specific server provided values
-     */
-    opensearch?: string;
-    opensearchDashboards?: string;
-    prometheus?: string;
-}
-
-export interface ServiceOpensearchUserConfigPublicAccess {
-    /**
-     * Opensearch specific server provided values
-     */
-    opensearch?: string;
-    opensearchDashboards?: string;
-    prometheus?: string;
-}
-
-export interface ServicePg {
-    dbname: string;
-    host: string;
-    password: string;
-    port: number;
-    replicaUri: string;
-    sslmode: string;
-    uri: string;
-    user: string;
-}
-
-export interface ServicePgUserConfig {
-    /**
-     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-     */
-    adminPassword?: string;
-    /**
-     * Custom username for admin user. This must be set only when a new service is being created.
-     */
-    adminUsername?: string;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-     */
-    backupHour?: string;
-    /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-     */
-    backupMinute?: string;
-    /**
-     * Enable IPv6
-     */
-    enableIpv6?: string;
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Migrate data from existing server
-     */
-    migration?: outputs.ServicePgUserConfigMigration;
-    /**
-     * postgresql.conf configuration values
-     */
-    pg?: outputs.ServicePgUserConfigPg;
-    /**
-     * Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
-     */
-    pgReadReplica?: string;
-    /**
-     * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
-     */
-    pgServiceToForkFrom?: string;
-    /**
-     * PostgreSQL major version
-     */
-    pgVersion?: string;
-    /**
-     * PGBouncer connection pooling settings
-     */
-    pgbouncer?: outputs.ServicePgUserConfigPgbouncer;
-    /**
-     * PGLookout settings
-     */
-    pglookout?: outputs.ServicePgUserConfigPglookout;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.ServicePgUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.ServicePgUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.ServicePgUserConfigPublicAccess;
-    /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created.
-     */
-    recoveryTargetTime?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * shared*buffers*percentage
-     */
-    sharedBuffersPercentage?: string;
-    /**
-     * Static IP addresses
-     */
-    staticIps?: string;
-    /**
-     * Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-     */
-    synchronousReplication?: string;
-    /**
-     * TimescaleDB extension configuration values
-     */
-    timescaledb?: outputs.ServicePgUserConfigTimescaledb;
-    /**
-     * Variant of the PostgreSQL service, may affect the features that are exposed by default
-     */
-    variant?: string;
-    /**
-     * work_mem
-     */
-    workMem?: string;
-}
-
-export interface ServicePgUserConfigMigration {
-    dbname?: string;
-    host?: string;
-    ignoreDbs?: string;
-    method?: string;
-    password?: string;
-    port?: string;
-    ssl?: string;
-    username?: string;
-}
-
-export interface ServicePgUserConfigPg {
-    autovacuumAnalyzeScaleFactor?: string;
-    autovacuumAnalyzeThreshold?: string;
-    autovacuumFreezeMaxAge?: string;
-    autovacuumMaxWorkers?: string;
-    autovacuumNaptime?: string;
-    autovacuumVacuumCostDelay?: string;
-    autovacuumVacuumCostLimit?: string;
-    autovacuumVacuumScaleFactor?: string;
-    autovacuumVacuumThreshold?: string;
-    bgwriterDelay?: string;
-    bgwriterFlushAfter?: string;
-    bgwriterLruMaxpages?: string;
-    bgwriterLruMultiplier?: string;
-    deadlockTimeout?: string;
-    defaultToastCompression?: string;
-    idleInTransactionSessionTimeout?: string;
-    jit?: string;
-    logAutovacuumMinDuration?: string;
-    logErrorVerbosity?: string;
-    logLinePrefix?: string;
-    logMinDurationStatement?: string;
-    maxFilesPerProcess?: string;
-    maxLocksPerTransaction?: string;
-    maxLogicalReplicationWorkers?: string;
-    maxParallelWorkers?: string;
-    maxParallelWorkersPerGather?: string;
-    maxPredLocksPerTransaction?: string;
-    maxPreparedTransactions?: string;
-    maxReplicationSlots?: string;
-    maxSlotWalKeepSize?: string;
-    maxStackDepth?: string;
-    maxStandbyArchiveDelay?: string;
-    maxStandbyStreamingDelay?: string;
-    maxWalSenders?: string;
-    maxWorkerProcesses?: string;
-    pgPartmanBgwInterval?: string;
-    pgPartmanBgwRole?: string;
-    pgStatStatementsTrack?: string;
-    tempFileLimit?: string;
-    timezone?: string;
-    trackActivityQuerySize?: string;
-    trackCommitTimestamp?: string;
-    trackFunctions?: string;
-    trackIoTiming?: string;
-    walSenderTimeout?: string;
-    walWriterDelay?: string;
-}
-
-export interface ServicePgUserConfigPgbouncer {
-    autodbIdleTimeout?: string;
-    autodbMaxDbConnections?: string;
-    autodbPoolMode?: string;
-    autodbPoolSize?: string;
-    ignoreStartupParameters?: string[];
-    minPoolSize?: string;
-    serverIdleTimeout?: string;
-    serverLifetime?: string;
-    serverResetQueryAlways?: string;
-}
-
-export interface ServicePgUserConfigPglookout {
-    maxFailoverReplicationTimeLag?: string;
-}
-
-export interface ServicePgUserConfigPrivateAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
-    pg?: string;
-    pgbouncer?: string;
-    prometheus?: string;
-}
-
-export interface ServicePgUserConfigPrivatelinkAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
-    pg?: string;
-    pgbouncer?: string;
-    prometheus?: string;
-}
-
-export interface ServicePgUserConfigPublicAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
-    pg?: string;
-    pgbouncer?: string;
-    prometheus?: string;
-}
-
-export interface ServicePgUserConfigTimescaledb {
-    maxBackgroundWorkers?: string;
-}
-
-export interface ServiceRedi {
-}
-
-export interface ServiceRedisUserConfig {
-    /**
-     * IP filter
-     */
-    ipFilters?: string[];
-    /**
-     * Migrate data from existing server
-     */
-    migration?: outputs.ServiceRedisUserConfigMigration;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.ServiceRedisUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.ServiceRedisUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.ServiceRedisUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service
-     */
-    recoveryBasebackupName?: string;
-    /**
-     * Default ACL for pub/sub channels used when Redis user is created
-     */
-    redisAclChannelsDefault?: string;
-    /**
-     * Redis IO thread count
-     */
-    redisIoThreads?: string;
-    /**
-     * LFU maxmemory-policy counter decay time in minutes
-     */
-    redisLfuDecayTime?: string;
-    /**
-     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
-     */
-    redisLfuLogFactor?: string;
-    /**
-     * Redis maxmemory-policy
-     */
-    redisMaxmemoryPolicy?: string;
-    /**
-     * Set notify-keyspace-events option
-     */
-    redisNotifyKeyspaceEvents?: string;
-    /**
-     * Number of redis databases
-     */
-    redisNumberOfDatabases?: string;
-    /**
-     * Redis persistence
-     */
-    redisPersistence?: string;
-    /**
-     * Pub/sub client output buffer hard limit in MB
-     */
-    redisPubsubClientOutputBufferLimit?: string;
-    /**
-     * Require SSL to access Redis
-     */
-    redisSsl?: string;
-    /**
-     * Redis idle connection timeout in seconds
-     */
-    redisTimeout?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Static IP addresses
-     */
-    staticIps?: string;
-}
-
-export interface ServiceRedisUserConfigMigration {
-    dbname?: string;
-    host?: string;
-    ignoreDbs?: string;
-    method?: string;
-    password?: string;
-    port?: string;
-    ssl?: string;
-    username?: string;
-}
-
-export interface ServiceRedisUserConfigPrivateAccess {
-    prometheus?: string;
-    /**
-     * Redis specific server provided values
-     */
-    redis?: string;
-}
-
-export interface ServiceRedisUserConfigPrivatelinkAccess {
-    prometheus?: string;
-    /**
-     * Redis specific server provided values
-     */
-    redis?: string;
-}
-
-export interface ServiceRedisUserConfigPublicAccess {
-    prometheus?: string;
-    /**
-     * Redis specific server provided values
-     */
-    redis?: string;
-}
-
-export interface ServiceServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is 'read_replica'
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
 }

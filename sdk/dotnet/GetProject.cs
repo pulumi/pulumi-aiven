@@ -114,22 +114,6 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string AvailableCredits;
         /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-        /// </summary>
-        public readonly string BillingAddress;
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-        /// </summary>
-        public readonly string BillingCurrency;
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-        /// </summary>
-        public readonly ImmutableArray<string> BillingEmails;
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
-        /// </summary>
-        public readonly string BillingExtraText;
-        /// <summary>
         /// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         public readonly string BillingGroup;
@@ -138,17 +122,9 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string CaCert;
         /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copy_from_project` is used to copy billing info from another project.
-        /// </summary>
-        public readonly string CardId;
-        /// <summary>
         /// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         public readonly string CopyFromProject;
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
-        /// </summary>
-        public readonly string CountryCode;
         /// <summary>
         /// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         /// </summary>
@@ -170,6 +146,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Project;
         /// <summary>
+        /// Tags are key-value pairs that allow you to categorize projects.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetProjectTagResult> Tags;
+        /// <summary>
         /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         /// </summary>
         public readonly ImmutableArray<string> TechnicalEmails;
@@ -177,10 +157,6 @@ namespace Pulumi.Aiven
         /// Use the same billing group that is used in source project.
         /// </summary>
         public readonly bool UseSourceProjectBillingGroup;
-        /// <summary>
-        /// **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
-        /// </summary>
-        public readonly string VatId;
 
         [OutputConstructor]
         private GetProjectResult(
@@ -190,23 +166,11 @@ namespace Pulumi.Aiven
 
             string availableCredits,
 
-            string billingAddress,
-
-            string billingCurrency,
-
-            ImmutableArray<string> billingEmails,
-
-            string billingExtraText,
-
             string billingGroup,
 
             string caCert,
 
-            string cardId,
-
             string copyFromProject,
-
-            string countryCode,
 
             string defaultCloud,
 
@@ -218,32 +182,26 @@ namespace Pulumi.Aiven
 
             string project,
 
+            ImmutableArray<Outputs.GetProjectTagResult> tags,
+
             ImmutableArray<string> technicalEmails,
 
-            bool useSourceProjectBillingGroup,
-
-            string vatId)
+            bool useSourceProjectBillingGroup)
         {
             AccountId = accountId;
             AddAccountOwnersAdminAccess = addAccountOwnersAdminAccess;
             AvailableCredits = availableCredits;
-            BillingAddress = billingAddress;
-            BillingCurrency = billingCurrency;
-            BillingEmails = billingEmails;
-            BillingExtraText = billingExtraText;
             BillingGroup = billingGroup;
             CaCert = caCert;
-            CardId = cardId;
             CopyFromProject = copyFromProject;
-            CountryCode = countryCode;
             DefaultCloud = defaultCloud;
             EstimatedBalance = estimatedBalance;
             Id = id;
             PaymentMethod = paymentMethod;
             Project = project;
+            Tags = tags;
             TechnicalEmails = technicalEmails;
             UseSourceProjectBillingGroup = useSourceProjectBillingGroup;
-            VatId = vatId;
         }
     }
 }

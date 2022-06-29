@@ -190,6 +190,12 @@ class Account(pulumi.CustomResource):
         account1 = aiven.Account("account1")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/account:Account account1 account_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Account name
@@ -211,6 +217,12 @@ class Account(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         account1 = aiven.Account("account1")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/account:Account account1 account_id
         ```
 
         :param str resource_name: The name of the resource.

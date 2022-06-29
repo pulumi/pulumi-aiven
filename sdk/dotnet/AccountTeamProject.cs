@@ -15,6 +15,12 @@ namespace Pulumi.Aiven
     /// It is intended to link an existing project to the existing account team.
     /// It is important to note that the project should have an `account_id` property set equal to the
     /// account team you are trying to link to this project.
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/accountTeamProject:AccountTeamProject account_team_project1 account_id/team_id/project_name
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/accountTeamProject:AccountTeamProject")]
     public partial class AccountTeamProject : Pulumi.CustomResource

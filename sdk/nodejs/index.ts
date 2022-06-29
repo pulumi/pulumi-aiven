@@ -11,10 +11,13 @@ export * from "./accountTeam";
 export * from "./accountTeamMember";
 export * from "./accountTeamProject";
 export * from "./awsPrivatelink";
+export * from "./awsVpcPeeringConnection";
 export * from "./azurePrivatelink";
 export * from "./azurePrivatelinkConnectionApproval";
+export * from "./azureVpcPeeringConnection";
 export * from "./billingGroup";
 export * from "./cassandra";
+export * from "./cassandraUser";
 export * from "./clickhouse";
 export * from "./clickhouseDatabase";
 export * from "./clickhouseGrant";
@@ -22,35 +25,34 @@ export * from "./clickhouseRole";
 export * from "./clickhouseUser";
 export * from "./connectionPool";
 export * from "./database";
-export * from "./elasticSearch";
-export * from "./elasticSearchAcl";
-export * from "./elasticSearchAclConfig";
-export * from "./elasticSearchAclRule";
 export * from "./flink";
 export * from "./flinkJob";
 export * from "./flinkJobTable";
+export * from "./gcpVpcPeeringConnection";
 export * from "./getAccount";
 export * from "./getAccountAuthentication";
 export * from "./getAccountTeam";
 export * from "./getAccountTeamMember";
 export * from "./getAccountTeamProject";
 export * from "./getAwsPrivatelink";
+export * from "./getAwsVpcPeeringConnection";
 export * from "./getAzurePrivatelink";
+export * from "./getAzureVpcPeeringConnection";
 export * from "./getBillingGroup";
 export * from "./getCassanda";
 export * from "./getCassandra";
+export * from "./getCassandraUser";
 export * from "./getClickhouse";
 export * from "./getClickhouseDatabase";
 export * from "./getClickhouseUser";
 export * from "./getConnectionPool";
 export * from "./getDatabase";
-export * from "./getElasticSearch";
-export * from "./getElasticSearchAcl";
-export * from "./getElasticSearchAclConfig";
-export * from "./getElasticSearchAclRule";
 export * from "./getFlink";
+export * from "./getGcpVpcPeeringConnection";
 export * from "./getGrafana";
 export * from "./getInfluxDb";
+export * from "./getInfluxdbDatabase";
+export * from "./getInfluxdbUser";
 export * from "./getKafka";
 export * from "./getKafkaAcl";
 export * from "./getKafkaConnect";
@@ -59,19 +61,26 @@ export * from "./getKafkaMirrorMaker";
 export * from "./getKafkaSchema";
 export * from "./getKafkaSchemaConfiguration";
 export * from "./getKafkaTopic";
+export * from "./getKafkaUser";
 export * from "./getM3Aggregator";
 export * from "./getM3Db";
+export * from "./getM3dbUser";
 export * from "./getMirrorMakerReplicationFlow";
 export * from "./getMySql";
+export * from "./getMysqlDatabase";
+export * from "./getMysqlUser";
 export * from "./getOpenSearch";
 export * from "./getOpenSearchAclConfig";
 export * from "./getOpenSearchAclRule";
+export * from "./getOpensearchUser";
 export * from "./getPg";
+export * from "./getPgDatabase";
+export * from "./getPgUser";
 export * from "./getProject";
 export * from "./getProjectUser";
 export * from "./getProjectVpc";
 export * from "./getRedis";
-export * from "./getService";
+export * from "./getRedisUser";
 export * from "./getServiceComponent";
 export * from "./getServiceIntegration";
 export * from "./getServiceIntegrationEndpoint";
@@ -80,6 +89,8 @@ export * from "./getTransitGatewayVpcAttachment";
 export * from "./getVpcPeeringConnection";
 export * from "./grafana";
 export * from "./influxDb";
+export * from "./influxdbDatabase";
+export * from "./influxdbUser";
 export * from "./kafka";
 export * from "./kafkaAcl";
 export * from "./kafkaConnect";
@@ -88,20 +99,27 @@ export * from "./kafkaMirrorMaker";
 export * from "./kafkaSchema";
 export * from "./kafkaSchemaConfiguration";
 export * from "./kafkaTopic";
+export * from "./kafkaUser";
 export * from "./m3aggregator";
 export * from "./m3db";
+export * from "./m3dbUser";
 export * from "./mirrorMakerReplicationFlow";
 export * from "./mySql";
+export * from "./mysqlDatabase";
+export * from "./mysqlUser";
 export * from "./openSearch";
 export * from "./openSearchAclConfig";
 export * from "./openSearchAclRule";
+export * from "./opensearchUser";
 export * from "./pg";
+export * from "./pgDatabase";
+export * from "./pgUser";
 export * from "./project";
 export * from "./projectUser";
 export * from "./projectVpc";
 export * from "./provider";
 export * from "./redis";
-export * from "./service";
+export * from "./redisUser";
 export * from "./serviceIntegration";
 export * from "./serviceIntegrationEndpoint";
 export * from "./serviceUser";
@@ -125,10 +143,13 @@ import { AccountTeam } from "./accountTeam";
 import { AccountTeamMember } from "./accountTeamMember";
 import { AccountTeamProject } from "./accountTeamProject";
 import { AwsPrivatelink } from "./awsPrivatelink";
+import { AwsVpcPeeringConnection } from "./awsVpcPeeringConnection";
 import { AzurePrivatelink } from "./azurePrivatelink";
 import { AzurePrivatelinkConnectionApproval } from "./azurePrivatelinkConnectionApproval";
+import { AzureVpcPeeringConnection } from "./azureVpcPeeringConnection";
 import { BillingGroup } from "./billingGroup";
 import { Cassandra } from "./cassandra";
+import { CassandraUser } from "./cassandraUser";
 import { Clickhouse } from "./clickhouse";
 import { ClickhouseDatabase } from "./clickhouseDatabase";
 import { ClickhouseGrant } from "./clickhouseGrant";
@@ -136,15 +157,14 @@ import { ClickhouseRole } from "./clickhouseRole";
 import { ClickhouseUser } from "./clickhouseUser";
 import { ConnectionPool } from "./connectionPool";
 import { Database } from "./database";
-import { ElasticSearch } from "./elasticSearch";
-import { ElasticSearchAcl } from "./elasticSearchAcl";
-import { ElasticSearchAclConfig } from "./elasticSearchAclConfig";
-import { ElasticSearchAclRule } from "./elasticSearchAclRule";
 import { Flink } from "./flink";
 import { FlinkJob } from "./flinkJob";
 import { FlinkJobTable } from "./flinkJobTable";
+import { GcpVpcPeeringConnection } from "./gcpVpcPeeringConnection";
 import { Grafana } from "./grafana";
 import { InfluxDb } from "./influxDb";
+import { InfluxdbDatabase } from "./influxdbDatabase";
+import { InfluxdbUser } from "./influxdbUser";
 import { Kafka } from "./kafka";
 import { KafkaAcl } from "./kafkaAcl";
 import { KafkaConnect } from "./kafkaConnect";
@@ -153,19 +173,26 @@ import { KafkaMirrorMaker } from "./kafkaMirrorMaker";
 import { KafkaSchema } from "./kafkaSchema";
 import { KafkaSchemaConfiguration } from "./kafkaSchemaConfiguration";
 import { KafkaTopic } from "./kafkaTopic";
+import { KafkaUser } from "./kafkaUser";
 import { M3Aggregator } from "./m3aggregator";
 import { M3Db } from "./m3db";
+import { M3dbUser } from "./m3dbUser";
 import { MirrorMakerReplicationFlow } from "./mirrorMakerReplicationFlow";
 import { MySql } from "./mySql";
+import { MysqlDatabase } from "./mysqlDatabase";
+import { MysqlUser } from "./mysqlUser";
 import { OpenSearch } from "./openSearch";
 import { OpenSearchAclConfig } from "./openSearchAclConfig";
 import { OpenSearchAclRule } from "./openSearchAclRule";
+import { OpensearchUser } from "./opensearchUser";
 import { Pg } from "./pg";
+import { PgDatabase } from "./pgDatabase";
+import { PgUser } from "./pgUser";
 import { Project } from "./project";
 import { ProjectUser } from "./projectUser";
 import { ProjectVpc } from "./projectVpc";
 import { Redis } from "./redis";
-import { Service } from "./service";
+import { RedisUser } from "./redisUser";
 import { ServiceIntegration } from "./serviceIntegration";
 import { ServiceIntegrationEndpoint } from "./serviceIntegrationEndpoint";
 import { ServiceUser } from "./serviceUser";
@@ -189,14 +216,20 @@ const _module = {
                 return new AccountTeamProject(name, <any>undefined, { urn })
             case "aiven:index/awsPrivatelink:AwsPrivatelink":
                 return new AwsPrivatelink(name, <any>undefined, { urn })
+            case "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection":
+                return new AwsVpcPeeringConnection(name, <any>undefined, { urn })
             case "aiven:index/azurePrivatelink:AzurePrivatelink":
                 return new AzurePrivatelink(name, <any>undefined, { urn })
             case "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval":
                 return new AzurePrivatelinkConnectionApproval(name, <any>undefined, { urn })
+            case "aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection":
+                return new AzureVpcPeeringConnection(name, <any>undefined, { urn })
             case "aiven:index/billingGroup:BillingGroup":
                 return new BillingGroup(name, <any>undefined, { urn })
             case "aiven:index/cassandra:Cassandra":
                 return new Cassandra(name, <any>undefined, { urn })
+            case "aiven:index/cassandraUser:CassandraUser":
+                return new CassandraUser(name, <any>undefined, { urn })
             case "aiven:index/clickhouse:Clickhouse":
                 return new Clickhouse(name, <any>undefined, { urn })
             case "aiven:index/clickhouseDatabase:ClickhouseDatabase":
@@ -211,24 +244,22 @@ const _module = {
                 return new ConnectionPool(name, <any>undefined, { urn })
             case "aiven:index/database:Database":
                 return new Database(name, <any>undefined, { urn })
-            case "aiven:index/elasticSearch:ElasticSearch":
-                return new ElasticSearch(name, <any>undefined, { urn })
-            case "aiven:index/elasticSearchAcl:ElasticSearchAcl":
-                return new ElasticSearchAcl(name, <any>undefined, { urn })
-            case "aiven:index/elasticSearchAclConfig:ElasticSearchAclConfig":
-                return new ElasticSearchAclConfig(name, <any>undefined, { urn })
-            case "aiven:index/elasticSearchAclRule:ElasticSearchAclRule":
-                return new ElasticSearchAclRule(name, <any>undefined, { urn })
             case "aiven:index/flink:Flink":
                 return new Flink(name, <any>undefined, { urn })
             case "aiven:index/flinkJob:FlinkJob":
                 return new FlinkJob(name, <any>undefined, { urn })
             case "aiven:index/flinkJobTable:FlinkJobTable":
                 return new FlinkJobTable(name, <any>undefined, { urn })
+            case "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection":
+                return new GcpVpcPeeringConnection(name, <any>undefined, { urn })
             case "aiven:index/grafana:Grafana":
                 return new Grafana(name, <any>undefined, { urn })
             case "aiven:index/influxDb:InfluxDb":
                 return new InfluxDb(name, <any>undefined, { urn })
+            case "aiven:index/influxdbDatabase:InfluxdbDatabase":
+                return new InfluxdbDatabase(name, <any>undefined, { urn })
+            case "aiven:index/influxdbUser:InfluxdbUser":
+                return new InfluxdbUser(name, <any>undefined, { urn })
             case "aiven:index/kafka:Kafka":
                 return new Kafka(name, <any>undefined, { urn })
             case "aiven:index/kafkaAcl:KafkaAcl":
@@ -245,22 +276,36 @@ const _module = {
                 return new KafkaSchemaConfiguration(name, <any>undefined, { urn })
             case "aiven:index/kafkaTopic:KafkaTopic":
                 return new KafkaTopic(name, <any>undefined, { urn })
+            case "aiven:index/kafkaUser:KafkaUser":
+                return new KafkaUser(name, <any>undefined, { urn })
             case "aiven:index/m3Aggregator:M3Aggregator":
                 return new M3Aggregator(name, <any>undefined, { urn })
             case "aiven:index/m3Db:M3Db":
                 return new M3Db(name, <any>undefined, { urn })
+            case "aiven:index/m3dbUser:M3dbUser":
+                return new M3dbUser(name, <any>undefined, { urn })
             case "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow":
                 return new MirrorMakerReplicationFlow(name, <any>undefined, { urn })
             case "aiven:index/mySql:MySql":
                 return new MySql(name, <any>undefined, { urn })
+            case "aiven:index/mysqlDatabase:MysqlDatabase":
+                return new MysqlDatabase(name, <any>undefined, { urn })
+            case "aiven:index/mysqlUser:MysqlUser":
+                return new MysqlUser(name, <any>undefined, { urn })
             case "aiven:index/openSearch:OpenSearch":
                 return new OpenSearch(name, <any>undefined, { urn })
             case "aiven:index/openSearchAclConfig:OpenSearchAclConfig":
                 return new OpenSearchAclConfig(name, <any>undefined, { urn })
             case "aiven:index/openSearchAclRule:OpenSearchAclRule":
                 return new OpenSearchAclRule(name, <any>undefined, { urn })
+            case "aiven:index/opensearchUser:OpensearchUser":
+                return new OpensearchUser(name, <any>undefined, { urn })
             case "aiven:index/pg:Pg":
                 return new Pg(name, <any>undefined, { urn })
+            case "aiven:index/pgDatabase:PgDatabase":
+                return new PgDatabase(name, <any>undefined, { urn })
+            case "aiven:index/pgUser:PgUser":
+                return new PgUser(name, <any>undefined, { urn })
             case "aiven:index/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "aiven:index/projectUser:ProjectUser":
@@ -269,8 +314,8 @@ const _module = {
                 return new ProjectVpc(name, <any>undefined, { urn })
             case "aiven:index/redis:Redis":
                 return new Redis(name, <any>undefined, { urn })
-            case "aiven:index/service:Service":
-                return new Service(name, <any>undefined, { urn })
+            case "aiven:index/redisUser:RedisUser":
+                return new RedisUser(name, <any>undefined, { urn })
             case "aiven:index/serviceIntegration:ServiceIntegration":
                 return new ServiceIntegration(name, <any>undefined, { urn })
             case "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint":
@@ -294,10 +339,13 @@ pulumi.runtime.registerResourceModule("aiven", "index/accountTeam", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/accountTeamMember", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/accountTeamProject", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/awsPrivatelink", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/awsVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/azurePrivatelink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/azurePrivatelinkConnectionApproval", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/azureVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/billingGroup", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/cassandra", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/cassandraUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouse", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouseDatabase", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouseGrant", _module)
@@ -305,15 +353,14 @@ pulumi.runtime.registerResourceModule("aiven", "index/clickhouseRole", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouseUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/connectionPool", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/database", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/elasticSearch", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/elasticSearchAcl", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/elasticSearchAclConfig", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/elasticSearchAclRule", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkJob", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkJobTable", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/gcpVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/grafana", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/influxDb", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/influxdbDatabase", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/influxdbUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafka", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaAcl", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaConnect", _module)
@@ -322,19 +369,26 @@ pulumi.runtime.registerResourceModule("aiven", "index/kafkaMirrorMaker", _module
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaSchema", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaSchemaConfiguration", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaTopic", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/kafkaUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/m3Aggregator", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/m3Db", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/m3dbUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/mirrorMakerReplicationFlow", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/mySql", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/mysqlDatabase", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/mysqlUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/openSearch", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/openSearchAclConfig", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/openSearchAclRule", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/opensearchUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/pg", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/pgDatabase", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/pgUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/project", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/projectUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/projectVpc", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/redis", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/service", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/redisUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/serviceIntegration", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/serviceIntegrationEndpoint", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/serviceUser", _module)

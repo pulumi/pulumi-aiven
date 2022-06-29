@@ -36,6 +36,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/billingGroup:BillingGroup")]
     public partial class BillingGroup : Pulumi.CustomResource
@@ -87,6 +93,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("company")]
         public Output<string?> Company { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the billing group to copy from
+        /// </summary>
+        [Output("copyFromBillingGroup")]
+        public Output<string?> CopyFromBillingGroup { get; private set; } = null!;
 
         /// <summary>
         /// Country code
@@ -225,6 +237,12 @@ namespace Pulumi.Aiven
         public Input<string>? Company { get; set; }
 
         /// <summary>
+        /// ID of the billing group to copy from
+        /// </summary>
+        [Input("copyFromBillingGroup")]
+        public Input<string>? CopyFromBillingGroup { get; set; }
+
+        /// <summary>
         /// Country code
         /// </summary>
         [Input("countryCode")]
@@ -320,6 +338,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("company")]
         public Input<string>? Company { get; set; }
+
+        /// <summary>
+        /// ID of the billing group to copy from
+        /// </summary>
+        [Input("copyFromBillingGroup")]
+        public Input<string>? CopyFromBillingGroup { get; set; }
 
         /// <summary>
         /// Country code

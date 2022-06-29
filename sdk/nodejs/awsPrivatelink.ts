@@ -19,6 +19,12 @@ import * as utilities from "./utilities";
  *     principals: ["arn:aws:iam::012345678901:user/mwf"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink foo project/service_name
+ * ```
  */
 export class AwsPrivatelink extends pulumi.CustomResource {
     /**

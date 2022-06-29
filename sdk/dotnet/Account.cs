@@ -29,6 +29,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/account:Account account1 account_id
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/account:Account")]
     public partial class Account : Pulumi.CustomResource

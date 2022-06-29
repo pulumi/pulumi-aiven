@@ -19,6 +19,12 @@ import * as utilities from "./utilities";
  *     memberType: "admin",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
+ * ```
  */
 export class ProjectUser extends pulumi.CustomResource {
     /**

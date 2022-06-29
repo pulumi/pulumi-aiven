@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -36,6 +36,12 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/id
 // ```
 type ClickhouseUser struct {
 	pulumi.CustomResourceState
@@ -229,6 +235,36 @@ func (o ClickhouseUserOutput) ToClickhouseUserOutput() ClickhouseUserOutput {
 
 func (o ClickhouseUserOutput) ToClickhouseUserOutputWithContext(ctx context.Context) ClickhouseUserOutput {
 	return o
+}
+
+// The password of the clickhouse user.
+func (o ClickhouseUserOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ClickhouseUserOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Indicates if a clickhouse user is required
+func (o ClickhouseUserOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ClickhouseUser) pulumi.BoolOutput { return v.Required }).(pulumi.BoolOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o ClickhouseUserOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
+func (o ClickhouseUserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+}
+
+// UUID of the clickhouse user.
+func (o ClickhouseUserOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type ClickhouseUserArrayOutput struct{ *pulumi.OutputState }

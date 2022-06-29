@@ -11,27 +11,21 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaTopic:KafkaTopic")]
     public partial class KafkaTopic : Pulumi.CustomResource
     {
         /// <summary>
-        /// **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
-        /// </summary>
-        [Output("cleanupPolicy")]
-        public Output<string?> CleanupPolicy { get; private set; } = null!;
-
-        /// <summary>
         /// Kafka topic configuration
         /// </summary>
         [Output("config")]
         public Output<Outputs.KafkaTopicConfig?> Config { get; private set; } = null!;
-
-        /// <summary>
-        /// **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-        /// </summary>
-        [Output("minimumInSyncReplicas")]
-        public Output<int?> MinimumInSyncReplicas { get; private set; } = null!;
 
         /// <summary>
         /// The number of partitions to create in the topic.
@@ -50,18 +44,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("replication")]
         public Output<int> Replication { get; private set; } = null!;
-
-        /// <summary>
-        /// **DEPRECATED use config.retention_bytes instead** Retention bytes.
-        /// </summary>
-        [Output("retentionBytes")]
-        public Output<int?> RetentionBytes { get; private set; } = null!;
-
-        /// <summary>
-        /// **DEPRECATED use config.retention_ms instead** Retention period (hours).
-        /// </summary>
-        [Output("retentionHours")]
-        public Output<int?> RetentionHours { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -135,22 +117,10 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
-        /// </summary>
-        [Input("cleanupPolicy")]
-        public Input<string>? CleanupPolicy { get; set; }
-
-        /// <summary>
         /// Kafka topic configuration
         /// </summary>
         [Input("config")]
         public Input<Inputs.KafkaTopicConfigArgs>? Config { get; set; }
-
-        /// <summary>
-        /// **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-        /// </summary>
-        [Input("minimumInSyncReplicas")]
-        public Input<int>? MinimumInSyncReplicas { get; set; }
 
         /// <summary>
         /// The number of partitions to create in the topic.
@@ -169,18 +139,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("replication", required: true)]
         public Input<int> Replication { get; set; } = null!;
-
-        /// <summary>
-        /// **DEPRECATED use config.retention_bytes instead** Retention bytes.
-        /// </summary>
-        [Input("retentionBytes")]
-        public Input<int>? RetentionBytes { get; set; }
-
-        /// <summary>
-        /// **DEPRECATED use config.retention_ms instead** Retention period (hours).
-        /// </summary>
-        [Input("retentionHours")]
-        public Input<int>? RetentionHours { get; set; }
 
         /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -221,22 +179,10 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// **DEPRECATED use config.cleanup_policy instead** Topic cleanup policy. The possible values are `delete` and `compact`.
-        /// </summary>
-        [Input("cleanupPolicy")]
-        public Input<string>? CleanupPolicy { get; set; }
-
-        /// <summary>
         /// Kafka topic configuration
         /// </summary>
         [Input("config")]
         public Input<Inputs.KafkaTopicConfigGetArgs>? Config { get; set; }
-
-        /// <summary>
-        /// **DEPRECATED use config.min*insync*replicas instead** Minimum required nodes in-sync replicas (ISR) to produce to a partition.
-        /// </summary>
-        [Input("minimumInSyncReplicas")]
-        public Input<int>? MinimumInSyncReplicas { get; set; }
 
         /// <summary>
         /// The number of partitions to create in the topic.
@@ -255,18 +201,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("replication")]
         public Input<int>? Replication { get; set; }
-
-        /// <summary>
-        /// **DEPRECATED use config.retention_bytes instead** Retention bytes.
-        /// </summary>
-        [Input("retentionBytes")]
-        public Input<int>? RetentionBytes { get; set; }
-
-        /// <summary>
-        /// **DEPRECATED use config.retention_ms instead** Retention period (hours).
-        /// </summary>
-        [Input("retentionHours")]
-        public Input<int>? RetentionHours { get; set; }
 
         /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

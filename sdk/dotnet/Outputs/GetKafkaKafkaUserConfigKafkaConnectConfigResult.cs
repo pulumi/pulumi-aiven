@@ -22,6 +22,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ConsumerMaxPollRecords;
         public readonly string? OffsetFlushIntervalMs;
         public readonly string? OffsetFlushTimeoutMs;
+        public readonly string? ProducerCompressionType;
         public readonly string? ProducerMaxRequestSize;
         public readonly string? SessionTimeoutMs;
 
@@ -45,6 +46,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? offsetFlushTimeoutMs,
 
+            string? producerCompressionType,
+
             string? producerMaxRequestSize,
 
             string? sessionTimeoutMs)
@@ -58,6 +61,7 @@ namespace Pulumi.Aiven.Outputs
             ConsumerMaxPollRecords = consumerMaxPollRecords;
             OffsetFlushIntervalMs = offsetFlushIntervalMs;
             OffsetFlushTimeoutMs = offsetFlushTimeoutMs;
+            ProducerCompressionType = producerCompressionType;
             ProducerMaxRequestSize = producerMaxRequestSize;
             SessionTimeoutMs = sessionTimeoutMs;
         }

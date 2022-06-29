@@ -134,6 +134,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Company;
         /// <summary>
+        /// ID of the billing group to copy from
+        /// </summary>
+        public readonly string CopyFromBillingGroup;
+        /// <summary>
         /// Country code
         /// </summary>
         public readonly string CountryCode;
@@ -176,6 +180,8 @@ namespace Pulumi.Aiven
 
             string company,
 
+            string copyFromBillingGroup,
+
             string countryCode,
 
             string id,
@@ -196,6 +202,7 @@ namespace Pulumi.Aiven
             CardId = cardId;
             City = city;
             Company = company;
+            CopyFromBillingGroup = copyFromBillingGroup;
             CountryCode = countryCode;
             Id = id;
             Name = name;

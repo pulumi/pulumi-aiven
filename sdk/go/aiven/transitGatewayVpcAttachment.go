@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -40,6 +40,12 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment project/vpc_id/peer_cloud_account/peer_vpc/peer_region
 // ```
 type TransitGatewayVpcAttachment struct {
 	pulumi.CustomResourceState
@@ -259,6 +265,46 @@ func (o TransitGatewayVpcAttachmentOutput) ToTransitGatewayVpcAttachmentOutput()
 
 func (o TransitGatewayVpcAttachmentOutput) ToTransitGatewayVpcAttachmentOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentOutput {
 	return o
+}
+
+// AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+func (o TransitGatewayVpcAttachmentOutput) PeerCloudAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachment) pulumi.StringOutput { return v.PeerCloudAccount }).(pulumi.StringOutput)
+}
+
+// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+func (o TransitGatewayVpcAttachmentOutput) PeerRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachment) pulumi.StringOutput { return v.PeerRegion }).(pulumi.StringOutput)
+}
+
+// Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+func (o TransitGatewayVpcAttachmentOutput) PeerVpc() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachment) pulumi.StringOutput { return v.PeerVpc }).(pulumi.StringOutput)
+}
+
+// Cloud provider identifier for the peering connection if available
+func (o TransitGatewayVpcAttachmentOutput) PeeringConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachment) pulumi.StringOutput { return v.PeeringConnectionId }).(pulumi.StringOutput)
+}
+
+// State of the peering connection
+func (o TransitGatewayVpcAttachmentOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// State-specific help or error information
+func (o TransitGatewayVpcAttachmentOutput) StateInfo() pulumi.MapOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachment) pulumi.MapOutput { return v.StateInfo }).(pulumi.MapOutput)
+}
+
+// List of private IPv4 ranges to route through the peering connection
+func (o TransitGatewayVpcAttachmentOutput) UserPeerNetworkCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachment) pulumi.StringArrayOutput { return v.UserPeerNetworkCidrs }).(pulumi.StringArrayOutput)
+}
+
+// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o TransitGatewayVpcAttachmentOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachment) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
 type TransitGatewayVpcAttachmentArrayOutput struct{ *pulumi.OutputState }

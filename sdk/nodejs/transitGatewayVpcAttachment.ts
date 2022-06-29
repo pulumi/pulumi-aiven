@@ -21,6 +21,12 @@ import * as utilities from "./utilities";
  *     userPeerNetworkCidrs: ["10.0.0.0/24"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment project/vpc_id/peer_cloud_account/peer_vpc/peer_region
+ * ```
  */
 export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
     /**

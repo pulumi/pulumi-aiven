@@ -27,6 +27,12 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow f1 project/service_name/source_cluster/target_cluster
+ * ```
  */
 export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
     /**

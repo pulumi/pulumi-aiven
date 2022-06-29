@@ -15,6 +15,12 @@ import * as utilities from "./utilities";
  *
  * const account1 = new aiven.Account("account1", {});
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/account:Account account1 account_id
+ * ```
  */
 export class Account extends pulumi.CustomResource {
     /**

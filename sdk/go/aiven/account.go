@@ -18,7 +18,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -31,6 +31,12 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/account:Account account1 account_id
 // ```
 type Account struct {
 	pulumi.CustomResourceState
@@ -217,6 +223,41 @@ func (o AccountOutput) ToAccountOutput() AccountOutput {
 
 func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
 	return o
+}
+
+// Account id
+func (o AccountOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Time of creation
+func (o AccountOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Account name
+func (o AccountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Owner team id
+func (o AccountOutput) OwnerTeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.OwnerTeamId }).(pulumi.StringOutput)
+}
+
+// Billing group id
+func (o AccountOutput) PrimaryBillingGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.PrimaryBillingGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Tenant id
+func (o AccountOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Time of last update
+func (o AccountOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 type AccountArrayOutput struct{ *pulumi.OutputState }

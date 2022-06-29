@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -47,6 +47,12 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/kafkaMirrorMaker:KafkaMirrorMaker mm1 project/service_name
 // ```
 type KafkaMirrorMaker struct {
 	pulumi.CustomResourceState
@@ -99,6 +105,8 @@ type KafkaMirrorMaker struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
+	// Tags are key-value pairs that allow you to categorize services.
+	Tags KafkaMirrorMakerTagArrayOutput `pulumi:"tags"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
@@ -186,6 +194,8 @@ type kafkaMirrorMakerState struct {
 	State *string `pulumi:"state"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
+	// Tags are key-value pairs that allow you to categorize services.
+	Tags []KafkaMirrorMakerTag `pulumi:"tags"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
@@ -239,6 +249,8 @@ type KafkaMirrorMakerState struct {
 	State pulumi.StringPtrInput
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
+	// Tags are key-value pairs that allow you to categorize services.
+	Tags KafkaMirrorMakerTagArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
@@ -270,6 +282,8 @@ type kafkaMirrorMakerArgs struct {
 	ServiceName string `pulumi:"serviceName"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
+	// Tags are key-value pairs that allow you to categorize services.
+	Tags []KafkaMirrorMakerTag `pulumi:"tags"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
@@ -298,6 +312,8 @@ type KafkaMirrorMakerArgs struct {
 	ServiceName pulumi.StringInput
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
+	// Tags are key-value pairs that allow you to categorize services.
+	Tags KafkaMirrorMakerTagArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
@@ -387,6 +403,138 @@ func (o KafkaMirrorMakerOutput) ToKafkaMirrorMakerOutput() KafkaMirrorMakerOutpu
 
 func (o KafkaMirrorMakerOutput) ToKafkaMirrorMakerOutputWithContext(ctx context.Context) KafkaMirrorMakerOutput {
 	return o
+}
+
+// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+func (o KafkaMirrorMakerOutput) CloudName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringPtrOutput { return v.CloudName }).(pulumi.StringPtrOutput)
+}
+
+// Service component information objects
+func (o KafkaMirrorMakerOutput) Components() KafkaMirrorMakerComponentArrayOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) KafkaMirrorMakerComponentArrayOutput { return v.Components }).(KafkaMirrorMakerComponentArrayOutput)
+}
+
+// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+func (o KafkaMirrorMakerOutput) DiskSpace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
+}
+
+// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+func (o KafkaMirrorMakerOutput) DiskSpaceCap() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.DiskSpaceCap }).(pulumi.StringOutput)
+}
+
+// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+func (o KafkaMirrorMakerOutput) DiskSpaceDefault() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.DiskSpaceDefault }).(pulumi.StringOutput)
+}
+
+// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+func (o KafkaMirrorMakerOutput) DiskSpaceStep() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.DiskSpaceStep }).(pulumi.StringOutput)
+}
+
+// Disk space that service is currently using
+func (o KafkaMirrorMakerOutput) DiskSpaceUsed() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
+}
+
+// Kafka*mirrormaker user configurable settings
+func (o KafkaMirrorMakerOutput) KafkaMirrormakerUserConfig() KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput {
+		return v.KafkaMirrormakerUserConfig
+	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput)
+}
+
+// Kafka MirrorMaker 2 server provided values
+func (o KafkaMirrorMakerOutput) KafkaMirrormakers() KafkaMirrorMakerKafkaMirrormakerArrayOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) KafkaMirrorMakerKafkaMirrormakerArrayOutput { return v.KafkaMirrormakers }).(KafkaMirrorMakerKafkaMirrormakerArrayOutput)
+}
+
+// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+func (o KafkaMirrorMakerOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringPtrOutput { return v.MaintenanceWindowDow }).(pulumi.StringPtrOutput)
+}
+
+// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+func (o KafkaMirrorMakerOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringPtrOutput { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
+}
+
+// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+func (o KafkaMirrorMakerOutput) Plan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringPtrOutput { return v.Plan }).(pulumi.StringPtrOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o KafkaMirrorMakerOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+func (o KafkaMirrorMakerOutput) ProjectVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringPtrOutput { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+}
+
+// The hostname of the service.
+func (o KafkaMirrorMakerOutput) ServiceHost() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.ServiceHost }).(pulumi.StringOutput)
+}
+
+// Service integrations to specify when creating a service. Not applied after initial service creation
+func (o KafkaMirrorMakerOutput) ServiceIntegrations() KafkaMirrorMakerServiceIntegrationArrayOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) KafkaMirrorMakerServiceIntegrationArrayOutput { return v.ServiceIntegrations }).(KafkaMirrorMakerServiceIntegrationArrayOutput)
+}
+
+// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+func (o KafkaMirrorMakerOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Password used for connecting to the service, if applicable
+func (o KafkaMirrorMakerOutput) ServicePassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.ServicePassword }).(pulumi.StringOutput)
+}
+
+// The port of the service
+func (o KafkaMirrorMakerOutput) ServicePort() pulumi.IntOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.IntOutput { return v.ServicePort }).(pulumi.IntOutput)
+}
+
+// Aiven internal service type code
+func (o KafkaMirrorMakerOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+func (o KafkaMirrorMakerOutput) ServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.ServiceUri }).(pulumi.StringOutput)
+}
+
+// Username used for connecting to the service, if applicable
+func (o KafkaMirrorMakerOutput) ServiceUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.ServiceUsername }).(pulumi.StringOutput)
+}
+
+// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
+func (o KafkaMirrorMakerOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+func (o KafkaMirrorMakerOutput) StaticIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringArrayOutput { return v.StaticIps }).(pulumi.StringArrayOutput)
+}
+
+// Tags are key-value pairs that allow you to categorize services.
+func (o KafkaMirrorMakerOutput) Tags() KafkaMirrorMakerTagArrayOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) KafkaMirrorMakerTagArrayOutput { return v.Tags }).(KafkaMirrorMakerTagArrayOutput)
+}
+
+// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+func (o KafkaMirrorMakerOutput) TerminationProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
 }
 
 type KafkaMirrorMakerArrayOutput struct{ *pulumi.OutputState }

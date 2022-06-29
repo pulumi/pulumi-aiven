@@ -96,10 +96,6 @@ namespace Pulumi.Aiven
     public sealed class GetServiceIntegrationResult
     {
         /// <summary>
-        /// Dashboard specific user configurable settings
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigResult> DatadogUserConfigs;
-        /// <summary>
         /// Destination endpoint for the integration (if any)
         /// </summary>
         public readonly string DestinationEndpointId;
@@ -148,10 +144,6 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Prometheus coordinator specific user configurable settings
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetServiceIntegrationPrometheusUserConfigResult> PrometheusUserConfigs;
-        /// <summary>
         /// Source endpoint for the integration (if any)
         /// </summary>
         public readonly string SourceEndpointId;
@@ -162,8 +154,6 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetServiceIntegrationResult(
-            ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigResult> datadogUserConfigs,
-
             string destinationEndpointId,
 
             string destinationServiceName,
@@ -188,13 +178,10 @@ namespace Pulumi.Aiven
 
             string project,
 
-            ImmutableArray<Outputs.GetServiceIntegrationPrometheusUserConfigResult> prometheusUserConfigs,
-
             string sourceEndpointId,
 
             string sourceServiceName)
         {
-            DatadogUserConfigs = datadogUserConfigs;
             DestinationEndpointId = destinationEndpointId;
             DestinationServiceName = destinationServiceName;
             Id = id;
@@ -207,7 +194,6 @@ namespace Pulumi.Aiven
             MetricsUserConfigs = metricsUserConfigs;
             MirrormakerUserConfigs = mirrormakerUserConfigs;
             Project = project;
-            PrometheusUserConfigs = prometheusUserConfigs;
             SourceEndpointId = sourceEndpointId;
             SourceServiceName = sourceServiceName;
         }

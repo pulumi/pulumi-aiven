@@ -22,6 +22,12 @@ import * as utilities from "./utilities";
  *     billingGroup: bybg1.id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+ * ```
  */
 export class BillingGroup extends pulumi.CustomResource {
     /**
@@ -84,6 +90,10 @@ export class BillingGroup extends pulumi.CustomResource {
      */
     public readonly company!: pulumi.Output<string | undefined>;
     /**
+     * ID of the billing group to copy from
+     */
+    public readonly copyFromBillingGroup!: pulumi.Output<string | undefined>;
+    /**
      * Country code
      */
     public readonly countryCode!: pulumi.Output<string | undefined>;
@@ -125,6 +135,7 @@ export class BillingGroup extends pulumi.CustomResource {
             resourceInputs["cardId"] = state ? state.cardId : undefined;
             resourceInputs["city"] = state ? state.city : undefined;
             resourceInputs["company"] = state ? state.company : undefined;
+            resourceInputs["copyFromBillingGroup"] = state ? state.copyFromBillingGroup : undefined;
             resourceInputs["countryCode"] = state ? state.countryCode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
@@ -140,6 +151,7 @@ export class BillingGroup extends pulumi.CustomResource {
             resourceInputs["cardId"] = args ? args.cardId : undefined;
             resourceInputs["city"] = args ? args.city : undefined;
             resourceInputs["company"] = args ? args.company : undefined;
+            resourceInputs["copyFromBillingGroup"] = args ? args.copyFromBillingGroup : undefined;
             resourceInputs["countryCode"] = args ? args.countryCode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
@@ -187,6 +199,10 @@ export interface BillingGroupState {
      * Company name
      */
     company?: pulumi.Input<string>;
+    /**
+     * ID of the billing group to copy from
+     */
+    copyFromBillingGroup?: pulumi.Input<string>;
     /**
      * Country code
      */
@@ -245,6 +261,10 @@ export interface BillingGroupArgs {
      * Company name
      */
     company?: pulumi.Input<string>;
+    /**
+     * ID of the billing group to copy from
+     */
+    copyFromBillingGroup?: pulumi.Input<string>;
     /**
      * Country code
      */

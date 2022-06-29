@@ -27,13 +27,19 @@ namespace Pulumi.Aiven
     ///             Project = data.Aiven_project.Pr1.Project,
     ///             CloudName = "google-europe-west1",
     ///             Plan = "business-4",
-    ///             ServiceName = "my-flink",
+    ///             ServiceName = "my-clickhouse",
     ///             MaintenanceWindowDow = "monday",
     ///             MaintenanceWindowTime = "10:00:00",
     ///         });
     ///     }
     /// 
     /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/clickhouse:Clickhouse clickhouse project/service_name
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouse:Clickhouse")]
@@ -184,6 +190,12 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
 
         /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.ClickhouseTag>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Output("terminationProtection")]
@@ -311,6 +323,18 @@ namespace Pulumi.Aiven
         {
             get => _staticIps ?? (_staticIps = new InputList<string>());
             set => _staticIps = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.ClickhouseTagArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        public InputList<Inputs.ClickhouseTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.ClickhouseTagArgs>());
+            set => _tags = value;
         }
 
         /// <summary>
@@ -492,6 +516,18 @@ namespace Pulumi.Aiven
         {
             get => _staticIps ?? (_staticIps = new InputList<string>());
             set => _staticIps = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.ClickhouseTagGetArgs>? _tags;
+
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
+        public InputList<Inputs.ClickhouseTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.ClickhouseTagGetArgs>());
+            set => _tags = value;
         }
 
         /// <summary>

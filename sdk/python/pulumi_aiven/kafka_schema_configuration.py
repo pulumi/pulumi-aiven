@@ -144,6 +144,12 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
             compatibility_level="BACKWARD")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration config project/service_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
@@ -169,6 +175,12 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
             project=aiven_project["kafka-schemas-project1"]["project"],
             service_name=aiven_kafka["kafka-service1"]["service_name"],
             compatibility_level="BACKWARD")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration config project/service_name
         ```
 
         :param str resource_name: The name of the resource.

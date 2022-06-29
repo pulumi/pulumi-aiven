@@ -251,6 +251,12 @@ class OpenSearchAclRule(pulumi.CustomResource):
                 permission=range["value"]["permission"]))
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] index: The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
@@ -322,6 +328,12 @@ class OpenSearchAclRule(pulumi.CustomResource):
                 username=range["value"]["username"],
                 index=range["value"]["index"],
                 permission=range["value"]["permission"]))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index
         ```
 
         :param str resource_name: The name of the resource.

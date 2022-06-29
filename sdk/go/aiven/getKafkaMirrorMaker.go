@@ -18,7 +18,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -104,6 +104,8 @@ type LookupKafkaMirrorMakerResult struct {
 	State string `pulumi:"state"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
+	// Tags are key-value pairs that allow you to categorize services.
+	Tags []GetKafkaMirrorMakerTag `pulumi:"tags"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
 }
@@ -275,6 +277,11 @@ func (o LookupKafkaMirrorMakerResultOutput) State() pulumi.StringOutput {
 // Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o LookupKafkaMirrorMakerResultOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) []string { return v.StaticIps }).(pulumi.StringArrayOutput)
+}
+
+// Tags are key-value pairs that allow you to categorize services.
+func (o LookupKafkaMirrorMakerResultOutput) Tags() GetKafkaMirrorMakerTagArrayOutput {
+	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) []GetKafkaMirrorMakerTag { return v.Tags }).(GetKafkaMirrorMakerTagArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.

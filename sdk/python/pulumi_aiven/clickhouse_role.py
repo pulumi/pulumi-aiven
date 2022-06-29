@@ -131,6 +131,31 @@ class ClickhouseRole(pulumi.CustomResource):
         """
         The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        bar = aiven.Clickhouse("bar",
+            project="example-project",
+            cloud_name="google-europe-west1",
+            plan="startup-beta-8",
+            service_name="example-service",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00")
+        foo = aiven.ClickhouseRole("foo",
+            service_name=bar.service_name,
+            project=bar.project,
+            role="writer")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo project/service_name/role
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -145,6 +170,31 @@ class ClickhouseRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        bar = aiven.Clickhouse("bar",
+            project="example-project",
+            cloud_name="google-europe-west1",
+            plan="startup-beta-8",
+            service_name="example-service",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00")
+        foo = aiven.ClickhouseRole("foo",
+            service_name=bar.service_name,
+            project=bar.project,
+            role="writer")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo project/service_name/role
+        ```
 
         :param str resource_name: The name of the resource.
         :param ClickhouseRoleArgs args: The arguments to use to populate this resource's properties.

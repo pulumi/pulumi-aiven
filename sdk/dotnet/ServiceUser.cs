@@ -32,6 +32,12 @@ namespace Pulumi.Aiven
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/serviceUser:ServiceUser myserviceuser project/service_name/username
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/serviceUser:ServiceUser")]
     public partial class ServiceUser : Pulumi.CustomResource

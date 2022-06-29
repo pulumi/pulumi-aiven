@@ -11,6 +11,12 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// The Azure privatelink approve resource waits for an aiven privatelink connection on a service and approves it with associated endpoint IP
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval")]
     public partial class AzurePrivatelinkConnectionApproval : Pulumi.CustomResource

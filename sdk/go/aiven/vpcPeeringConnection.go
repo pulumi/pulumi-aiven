@@ -245,6 +245,56 @@ func (o VpcPeeringConnectionOutput) ToVpcPeeringConnectionOutputWithContext(ctx 
 	return o
 }
 
+// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
+func (o VpcPeeringConnectionOutput) PeerAzureAppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcPeeringConnection) pulumi.StringPtrOutput { return v.PeerAzureAppId }).(pulumi.StringPtrOutput)
+}
+
+// Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+func (o VpcPeeringConnectionOutput) PeerAzureTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcPeeringConnection) pulumi.StringPtrOutput { return v.PeerAzureTenantId }).(pulumi.StringPtrOutput)
+}
+
+// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+func (o VpcPeeringConnectionOutput) PeerCloudAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcPeeringConnection) pulumi.StringOutput { return v.PeerCloudAccount }).(pulumi.StringOutput)
+}
+
+// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+func (o VpcPeeringConnectionOutput) PeerRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcPeeringConnection) pulumi.StringPtrOutput { return v.PeerRegion }).(pulumi.StringPtrOutput)
+}
+
+// Azure resource group name of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+func (o VpcPeeringConnectionOutput) PeerResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcPeeringConnection) pulumi.StringPtrOutput { return v.PeerResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+func (o VpcPeeringConnectionOutput) PeerVpc() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcPeeringConnection) pulumi.StringOutput { return v.PeerVpc }).(pulumi.StringOutput)
+}
+
+// Cloud provider identifier for the peering connection if available
+func (o VpcPeeringConnectionOutput) PeeringConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcPeeringConnection) pulumi.StringOutput { return v.PeeringConnectionId }).(pulumi.StringOutput)
+}
+
+// State of the peering connection
+func (o VpcPeeringConnectionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcPeeringConnection) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// State-specific help or error information
+func (o VpcPeeringConnectionOutput) StateInfo() pulumi.MapOutput {
+	return o.ApplyT(func(v *VpcPeeringConnection) pulumi.MapOutput { return v.StateInfo }).(pulumi.MapOutput)
+}
+
+// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+func (o VpcPeeringConnectionOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcPeeringConnection) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
 type VpcPeeringConnectionArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcPeeringConnectionArrayOutput) ElementType() reflect.Type {

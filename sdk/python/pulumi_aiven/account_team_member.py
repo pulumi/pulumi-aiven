@@ -185,6 +185,12 @@ class AccountTeamMember(pulumi.CustomResource):
         delete the invitation if one was sent but not yet accepted by the user, it will also
         eliminate an account team member if one has accepted an invitation previously.
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/accountTeamMember:AccountTeamMember foo account_id/team_id/user_email
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The unique account id This property cannot be changed, doing so forces recreation of the resource.
@@ -205,6 +211,12 @@ class AccountTeamMember(pulumi.CustomResource):
         a member of the account team. The deletion of `AccountTeamMember` will not only
         delete the invitation if one was sent but not yet accepted by the user, it will also
         eliminate an account team member if one has accepted an invitation previously.
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/accountTeamMember:AccountTeamMember foo account_id/team_id/user_email
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccountTeamMemberArgs args: The arguments to use to populate this resource's properties.

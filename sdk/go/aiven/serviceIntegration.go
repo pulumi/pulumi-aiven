@@ -22,8 +22,6 @@ import (
 type ServiceIntegration struct {
 	pulumi.CustomResourceState
 
-	// Dashboard specific user configurable settings
-	DatadogUserConfig ServiceIntegrationDatadogUserConfigPtrOutput `pulumi:"datadogUserConfig"`
 	// Destination endpoint for the integration (if any)
 	DestinationEndpointId pulumi.StringPtrOutput `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
@@ -46,8 +44,6 @@ type ServiceIntegration struct {
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrOutput `pulumi:"mirrormakerUserConfig"`
 	// Project the integration belongs to
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Prometheus coordinator specific user configurable settings
-	PrometheusUserConfig ServiceIntegrationPrometheusUserConfigPtrOutput `pulumi:"prometheusUserConfig"`
 	// Source endpoint for the integration (if any)
 	SourceEndpointId pulumi.StringPtrOutput `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
@@ -89,8 +85,6 @@ func GetServiceIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceIntegration resources.
 type serviceIntegrationState struct {
-	// Dashboard specific user configurable settings
-	DatadogUserConfig *ServiceIntegrationDatadogUserConfig `pulumi:"datadogUserConfig"`
 	// Destination endpoint for the integration (if any)
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
@@ -113,8 +107,6 @@ type serviceIntegrationState struct {
 	MirrormakerUserConfig *ServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfig"`
 	// Project the integration belongs to
 	Project *string `pulumi:"project"`
-	// Prometheus coordinator specific user configurable settings
-	PrometheusUserConfig *ServiceIntegrationPrometheusUserConfig `pulumi:"prometheusUserConfig"`
 	// Source endpoint for the integration (if any)
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
@@ -122,8 +114,6 @@ type serviceIntegrationState struct {
 }
 
 type ServiceIntegrationState struct {
-	// Dashboard specific user configurable settings
-	DatadogUserConfig ServiceIntegrationDatadogUserConfigPtrInput
 	// Destination endpoint for the integration (if any)
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
@@ -146,8 +136,6 @@ type ServiceIntegrationState struct {
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrInput
 	// Project the integration belongs to
 	Project pulumi.StringPtrInput
-	// Prometheus coordinator specific user configurable settings
-	PrometheusUserConfig ServiceIntegrationPrometheusUserConfigPtrInput
 	// Source endpoint for the integration (if any)
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
@@ -159,8 +147,6 @@ func (ServiceIntegrationState) ElementType() reflect.Type {
 }
 
 type serviceIntegrationArgs struct {
-	// Dashboard specific user configurable settings
-	DatadogUserConfig *ServiceIntegrationDatadogUserConfig `pulumi:"datadogUserConfig"`
 	// Destination endpoint for the integration (if any)
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
@@ -181,8 +167,6 @@ type serviceIntegrationArgs struct {
 	MirrormakerUserConfig *ServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfig"`
 	// Project the integration belongs to
 	Project string `pulumi:"project"`
-	// Prometheus coordinator specific user configurable settings
-	PrometheusUserConfig *ServiceIntegrationPrometheusUserConfig `pulumi:"prometheusUserConfig"`
 	// Source endpoint for the integration (if any)
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
@@ -191,8 +175,6 @@ type serviceIntegrationArgs struct {
 
 // The set of arguments for constructing a ServiceIntegration resource.
 type ServiceIntegrationArgs struct {
-	// Dashboard specific user configurable settings
-	DatadogUserConfig ServiceIntegrationDatadogUserConfigPtrInput
 	// Destination endpoint for the integration (if any)
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
@@ -213,8 +195,6 @@ type ServiceIntegrationArgs struct {
 	MirrormakerUserConfig ServiceIntegrationMirrormakerUserConfigPtrInput
 	// Project the integration belongs to
 	Project pulumi.StringInput
-	// Prometheus coordinator specific user configurable settings
-	PrometheusUserConfig ServiceIntegrationPrometheusUserConfigPtrInput
 	// Source endpoint for the integration (if any)
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
@@ -306,6 +286,79 @@ func (o ServiceIntegrationOutput) ToServiceIntegrationOutput() ServiceIntegratio
 
 func (o ServiceIntegrationOutput) ToServiceIntegrationOutputWithContext(ctx context.Context) ServiceIntegrationOutput {
 	return o
+}
+
+// Destination endpoint for the integration (if any)
+func (o ServiceIntegrationOutput) DestinationEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringPtrOutput { return v.DestinationEndpointId }).(pulumi.StringPtrOutput)
+}
+
+// Destination service for the integration (if any)
+func (o ServiceIntegrationOutput) DestinationServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringPtrOutput { return v.DestinationServiceName }).(pulumi.StringPtrOutput)
+}
+
+// Service Integration Id at aiven
+func (o ServiceIntegrationOutput) IntegrationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringOutput { return v.IntegrationId }).(pulumi.StringOutput)
+}
+
+// Type of the service integration
+func (o ServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringOutput { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+// Kafka Connect specific user configurable settings
+func (o ServiceIntegrationOutput) KafkaConnectUserConfig() ServiceIntegrationKafkaConnectUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationKafkaConnectUserConfigPtrOutput {
+		return v.KafkaConnectUserConfig
+	}).(ServiceIntegrationKafkaConnectUserConfigPtrOutput)
+}
+
+// Kafka Logs specific user configurable settings
+func (o ServiceIntegrationOutput) KafkaLogsUserConfig() ServiceIntegrationKafkaLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationKafkaLogsUserConfigPtrOutput {
+		return v.KafkaLogsUserConfig
+	}).(ServiceIntegrationKafkaLogsUserConfigPtrOutput)
+}
+
+// Mirrormaker 2 integration specific user configurable settings
+func (o ServiceIntegrationOutput) KafkaMirrormakerUserConfig() ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput {
+		return v.KafkaMirrormakerUserConfig
+	}).(ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput)
+}
+
+// Log integration specific user configurable settings
+func (o ServiceIntegrationOutput) LogsUserConfig() ServiceIntegrationLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationLogsUserConfigPtrOutput { return v.LogsUserConfig }).(ServiceIntegrationLogsUserConfigPtrOutput)
+}
+
+// Metrics specific user configurable settings
+func (o ServiceIntegrationOutput) MetricsUserConfig() ServiceIntegrationMetricsUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationMetricsUserConfigPtrOutput { return v.MetricsUserConfig }).(ServiceIntegrationMetricsUserConfigPtrOutput)
+}
+
+// Mirrormaker 1 integration specific user configurable settings
+func (o ServiceIntegrationOutput) MirrormakerUserConfig() ServiceIntegrationMirrormakerUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationMirrormakerUserConfigPtrOutput {
+		return v.MirrormakerUserConfig
+	}).(ServiceIntegrationMirrormakerUserConfigPtrOutput)
+}
+
+// Project the integration belongs to
+func (o ServiceIntegrationOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Source endpoint for the integration (if any)
+func (o ServiceIntegrationOutput) SourceEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringPtrOutput { return v.SourceEndpointId }).(pulumi.StringPtrOutput)
+}
+
+// Source service for the integration (if any)
+func (o ServiceIntegrationOutput) SourceServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringPtrOutput { return v.SourceServiceName }).(pulumi.StringPtrOutput)
 }
 
 type ServiceIntegrationArrayOutput struct{ *pulumi.OutputState }

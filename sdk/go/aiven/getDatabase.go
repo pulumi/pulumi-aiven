@@ -12,13 +12,15 @@ import (
 
 // The Database data source provides information about the existing Aiven Database.
 //
+// ~>**Deprecated** The Database data source is deprecated, please use service-specific data sources instead, for example: `PgDatabase`, `MysqlDatabase` etc.
+//
 // ## Example Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //

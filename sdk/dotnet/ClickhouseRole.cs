@@ -11,6 +11,42 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bar = new Aiven.Clickhouse("bar", new Aiven.ClickhouseArgs
+    ///         {
+    ///             Project = "example-project",
+    ///             CloudName = "google-europe-west1",
+    ///             Plan = "startup-beta-8",
+    ///             ServiceName = "example-service",
+    ///             MaintenanceWindowDow = "monday",
+    ///             MaintenanceWindowTime = "10:00:00",
+    ///         });
+    ///         var foo = new Aiven.ClickhouseRole("foo", new Aiven.ClickhouseRoleArgs
+    ///         {
+    ///             ServiceName = bar.ServiceName,
+    ///             Project = bar.Project,
+    ///             Role = "writer",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo project/service_name/role
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouseRole:ClickhouseRole")]
     public partial class ClickhouseRole : Pulumi.CustomResource

@@ -23,12 +23,6 @@ namespace Pulumi.Aiven
     public partial class ServiceIntegration : Pulumi.CustomResource
     {
         /// <summary>
-        /// Dashboard specific user configurable settings
-        /// </summary>
-        [Output("datadogUserConfig")]
-        public Output<Outputs.ServiceIntegrationDatadogUserConfig?> DatadogUserConfig { get; private set; } = null!;
-
-        /// <summary>
         /// Destination endpoint for the integration (if any)
         /// </summary>
         [Output("destinationEndpointId")]
@@ -95,12 +89,6 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Prometheus coordinator specific user configurable settings
-        /// </summary>
-        [Output("prometheusUserConfig")]
-        public Output<Outputs.ServiceIntegrationPrometheusUserConfig?> PrometheusUserConfig { get; private set; } = null!;
-
-        /// <summary>
         /// Source endpoint for the integration (if any)
         /// </summary>
         [Output("sourceEndpointId")]
@@ -158,12 +146,6 @@ namespace Pulumi.Aiven
 
     public sealed class ServiceIntegrationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Dashboard specific user configurable settings
-        /// </summary>
-        [Input("datadogUserConfig")]
-        public Input<Inputs.ServiceIntegrationDatadogUserConfigArgs>? DatadogUserConfig { get; set; }
-
         /// <summary>
         /// Destination endpoint for the integration (if any)
         /// </summary>
@@ -225,12 +207,6 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Prometheus coordinator specific user configurable settings
-        /// </summary>
-        [Input("prometheusUserConfig")]
-        public Input<Inputs.ServiceIntegrationPrometheusUserConfigArgs>? PrometheusUserConfig { get; set; }
-
-        /// <summary>
         /// Source endpoint for the integration (if any)
         /// </summary>
         [Input("sourceEndpointId")]
@@ -249,12 +225,6 @@ namespace Pulumi.Aiven
 
     public sealed class ServiceIntegrationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Dashboard specific user configurable settings
-        /// </summary>
-        [Input("datadogUserConfig")]
-        public Input<Inputs.ServiceIntegrationDatadogUserConfigGetArgs>? DatadogUserConfig { get; set; }
-
         /// <summary>
         /// Destination endpoint for the integration (if any)
         /// </summary>
@@ -320,12 +290,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// Prometheus coordinator specific user configurable settings
-        /// </summary>
-        [Input("prometheusUserConfig")]
-        public Input<Inputs.ServiceIntegrationPrometheusUserConfigGetArgs>? PrometheusUserConfig { get; set; }
 
         /// <summary>
         /// Source endpoint for the integration (if any)

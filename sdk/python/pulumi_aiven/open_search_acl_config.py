@@ -171,24 +171,29 @@ class OpenSearchAclConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        os1 = aiven.OpenSearch("os1",
-            project=data["aiven_project"]["pr1"]["project"],
+        foo_project = aiven.get_project(project="example_project")
+        bar = aiven.OpenSearch("bar",
+            project=foo_project.project,
             cloud_name="google-europe-west1",
             plan="startup-4",
-            service_name="my-os1",
+            service_name="example_service_name",
             maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
-            opensearch_user_config=aiven.OpenSearchOpensearchUserConfigArgs(
-                opensearch_version="1",
-                opensearch_dashboards=aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(
-                    enabled="true",
-                    opensearch_request_timeout="30000",
-                ),
-                public_access=aiven.OpenSearchOpensearchUserConfigPublicAccessArgs(
-                    opensearch="true",
-                    opensearch_dashboards="true",
-                ),
-            ))
+            maintenance_window_time="10:00:00")
+        foo_service_user = aiven.ServiceUser("fooServiceUser",
+            service_name=bar.service_name,
+            project=foo_project.project,
+            username="user-example")
+        foo_open_search_acl_config = aiven.OpenSearchAclConfig("fooOpenSearchAclConfig",
+            project=foo_project.project,
+            service_name=bar.service_name,
+            enabled=True,
+            extended_acl=False)
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -213,24 +218,29 @@ class OpenSearchAclConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        os1 = aiven.OpenSearch("os1",
-            project=data["aiven_project"]["pr1"]["project"],
+        foo_project = aiven.get_project(project="example_project")
+        bar = aiven.OpenSearch("bar",
+            project=foo_project.project,
             cloud_name="google-europe-west1",
             plan="startup-4",
-            service_name="my-os1",
+            service_name="example_service_name",
             maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
-            opensearch_user_config=aiven.OpenSearchOpensearchUserConfigArgs(
-                opensearch_version="1",
-                opensearch_dashboards=aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(
-                    enabled="true",
-                    opensearch_request_timeout="30000",
-                ),
-                public_access=aiven.OpenSearchOpensearchUserConfigPublicAccessArgs(
-                    opensearch="true",
-                    opensearch_dashboards="true",
-                ),
-            ))
+            maintenance_window_time="10:00:00")
+        foo_service_user = aiven.ServiceUser("fooServiceUser",
+            service_name=bar.service_name,
+            project=foo_project.project,
+            username="user-example")
+        foo_open_search_acl_config = aiven.OpenSearchAclConfig("fooOpenSearchAclConfig",
+            project=foo_project.project,
+            service_name=bar.service_name,
+            enabled=True,
+            extended_acl=False)
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
         ```
 
         :param str resource_name: The name of the resource.

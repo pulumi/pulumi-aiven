@@ -18,7 +18,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -57,24 +57,12 @@ type LookupProjectResult struct {
 	AddAccountOwnersAdminAccess bool `pulumi:"addAccountOwnersAdminAccess"`
 	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
 	AvailableCredits string `pulumi:"availableCredits"`
-	// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-	BillingAddress string `pulumi:"billingAddress"`
-	// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-	BillingCurrency string `pulumi:"billingCurrency"`
-	// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-	BillingEmails []string `pulumi:"billingEmails"`
-	// **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
-	BillingExtraText string `pulumi:"billingExtraText"`
 	// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup string `pulumi:"billingGroup"`
 	// The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
 	CaCert string `pulumi:"caCert"`
-	// **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copyFromProject` is used to copy billing info from another project.
-	CardId string `pulumi:"cardId"`
 	// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
 	CopyFromProject string `pulumi:"copyFromProject"`
-	// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
-	CountryCode string `pulumi:"countryCode"`
 	// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
 	DefaultCloud string `pulumi:"defaultCloud"`
 	// The current accumulated bill for this project in the current billing period.
@@ -85,12 +73,12 @@ type LookupProjectResult struct {
 	PaymentMethod string `pulumi:"paymentMethod"`
 	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project string `pulumi:"project"`
+	// Tags are key-value pairs that allow you to categorize projects.
+	Tags []GetProjectTag `pulumi:"tags"`
 	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// Use the same billing group that is used in source project.
 	UseSourceProjectBillingGroup bool `pulumi:"useSourceProjectBillingGroup"`
-	// **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
-	VatId string `pulumi:"vatId"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -146,26 +134,6 @@ func (o LookupProjectResultOutput) AvailableCredits() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.AvailableCredits }).(pulumi.StringOutput)
 }
 
-// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing name and address of the project.
-func (o LookupProjectResultOutput) BillingAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectResult) string { return v.BillingAddress }).(pulumi.StringOutput)
-}
-
-// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing currency.
-func (o LookupProjectResultOutput) BillingCurrency() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectResult) string { return v.BillingCurrency }).(pulumi.StringOutput)
-}
-
-// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing contact emails of the project.
-func (o LookupProjectResultOutput) BillingEmails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupProjectResult) []string { return v.BillingEmails }).(pulumi.StringArrayOutput)
-}
-
-// **DEPRECATED Please use aiven*billing*group resource to set this value.** Extra text to be included in all project invoices, e.g. purchase order or cost center number.
-func (o LookupProjectResultOutput) BillingExtraText() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectResult) string { return v.BillingExtraText }).(pulumi.StringOutput)
-}
-
 // The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
 func (o LookupProjectResultOutput) BillingGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.BillingGroup }).(pulumi.StringOutput)
@@ -176,19 +144,9 @@ func (o LookupProjectResultOutput) CaCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.CaCert }).(pulumi.StringOutput)
 }
 
-// **DEPRECATED Please use aiven*billing*group resource to set this value.** Either the full card UUID or the last 4 digits of the card. As the full UUID is not shown in the UI it is typically easier to use the last 4 digits to identify the card. This can be omitted if `copyFromProject` is used to copy billing info from another project.
-func (o LookupProjectResultOutput) CardId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectResult) string { return v.CardId }).(pulumi.StringOutput)
-}
-
 // is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
 func (o LookupProjectResultOutput) CopyFromProject() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.CopyFromProject }).(pulumi.StringOutput)
-}
-
-// **DEPRECATED Please use aiven*billing*group resource to set this value.** Billing country code of the project.
-func (o LookupProjectResultOutput) CountryCode() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectResult) string { return v.CountryCode }).(pulumi.StringOutput)
 }
 
 // Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
@@ -216,6 +174,11 @@ func (o LookupProjectResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Tags are key-value pairs that allow you to categorize projects.
+func (o LookupProjectResultOutput) Tags() GetProjectTagArrayOutput {
+	return o.ApplyT(func(v LookupProjectResult) []GetProjectTag { return v.Tags }).(GetProjectTagArrayOutput)
+}
+
 // Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
 func (o LookupProjectResultOutput) TechnicalEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupProjectResult) []string { return v.TechnicalEmails }).(pulumi.StringArrayOutput)
@@ -224,11 +187,6 @@ func (o LookupProjectResultOutput) TechnicalEmails() pulumi.StringArrayOutput {
 // Use the same billing group that is used in source project.
 func (o LookupProjectResultOutput) UseSourceProjectBillingGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.UseSourceProjectBillingGroup }).(pulumi.BoolOutput)
-}
-
-// **DEPRECATED Please use aiven*billing*group resource to set this value.** EU VAT Identification Number.
-func (o LookupProjectResultOutput) VatId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectResult) string { return v.VatId }).(pulumi.StringOutput)
 }
 
 func init() {

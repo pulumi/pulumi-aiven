@@ -184,6 +184,12 @@ class ClickhouseDatabase(pulumi.CustomResource):
             service_name=aiven_clickhouse["ch"]["service_name"])
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db project/service_name/name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.
@@ -211,6 +217,12 @@ class ClickhouseDatabase(pulumi.CustomResource):
         clickhouse_db = aiven.ClickhouseDatabase("clickhouseDb",
             project=aiven_clickhouse["ch"]["project"],
             service_name=aiven_clickhouse["ch"]["service_name"])
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db project/service_name/name
         ```
 
         :param str resource_name: The name of the resource.

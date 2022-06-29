@@ -17,7 +17,6 @@ class ServiceIntegrationArgs:
     def __init__(__self__, *,
                  integration_type: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
                  kafka_connect_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']] = None,
@@ -26,14 +25,12 @@ class ServiceIntegrationArgs:
                  logs_user_config: Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']] = None,
                  metrics_user_config: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']] = None,
                  mirrormaker_user_config: Optional[pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs']] = None,
-                 prometheus_user_config: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceIntegration resource.
         :param pulumi.Input[str] integration_type: Type of the service integration
         :param pulumi.Input[str] project: Project the integration belongs to
-        :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Dashboard specific user configurable settings
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs'] kafka_connect_user_config: Kafka Connect specific user configurable settings
@@ -42,14 +39,11 @@ class ServiceIntegrationArgs:
         :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Log integration specific user configurable settings
         :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics specific user configurable settings
         :param pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs'] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
-        :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus coordinator specific user configurable settings
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
         pulumi.set(__self__, "integration_type", integration_type)
         pulumi.set(__self__, "project", project)
-        if datadog_user_config is not None:
-            pulumi.set(__self__, "datadog_user_config", datadog_user_config)
         if destination_endpoint_id is not None:
             pulumi.set(__self__, "destination_endpoint_id", destination_endpoint_id)
         if destination_service_name is not None:
@@ -66,8 +60,6 @@ class ServiceIntegrationArgs:
             pulumi.set(__self__, "metrics_user_config", metrics_user_config)
         if mirrormaker_user_config is not None:
             pulumi.set(__self__, "mirrormaker_user_config", mirrormaker_user_config)
-        if prometheus_user_config is not None:
-            pulumi.set(__self__, "prometheus_user_config", prometheus_user_config)
         if source_endpoint_id is not None:
             pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
         if source_service_name is not None:
@@ -96,18 +88,6 @@ class ServiceIntegrationArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="datadogUserConfig")
-    def datadog_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]:
-        """
-        Dashboard specific user configurable settings
-        """
-        return pulumi.get(self, "datadog_user_config")
-
-    @datadog_user_config.setter
-    def datadog_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]):
-        pulumi.set(self, "datadog_user_config", value)
 
     @property
     @pulumi.getter(name="destinationEndpointId")
@@ -206,18 +186,6 @@ class ServiceIntegrationArgs:
         pulumi.set(self, "mirrormaker_user_config", value)
 
     @property
-    @pulumi.getter(name="prometheusUserConfig")
-    def prometheus_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]:
-        """
-        Prometheus coordinator specific user configurable settings
-        """
-        return pulumi.get(self, "prometheus_user_config")
-
-    @prometheus_user_config.setter
-    def prometheus_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]):
-        pulumi.set(self, "prometheus_user_config", value)
-
-    @property
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -245,7 +213,6 @@ class ServiceIntegrationArgs:
 @pulumi.input_type
 class _ServiceIntegrationState:
     def __init__(__self__, *,
-                 datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
                  integration_id: Optional[pulumi.Input[str]] = None,
@@ -257,12 +224,10 @@ class _ServiceIntegrationState:
                  metrics_user_config: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']] = None,
                  mirrormaker_user_config: Optional[pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 prometheus_user_config: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceIntegration resources.
-        :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Dashboard specific user configurable settings
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input[str] integration_id: Service Integration Id at aiven
@@ -274,12 +239,9 @@ class _ServiceIntegrationState:
         :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics specific user configurable settings
         :param pulumi.Input['ServiceIntegrationMirrormakerUserConfigArgs'] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
-        :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus coordinator specific user configurable settings
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
-        if datadog_user_config is not None:
-            pulumi.set(__self__, "datadog_user_config", datadog_user_config)
         if destination_endpoint_id is not None:
             pulumi.set(__self__, "destination_endpoint_id", destination_endpoint_id)
         if destination_service_name is not None:
@@ -302,24 +264,10 @@ class _ServiceIntegrationState:
             pulumi.set(__self__, "mirrormaker_user_config", mirrormaker_user_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if prometheus_user_config is not None:
-            pulumi.set(__self__, "prometheus_user_config", prometheus_user_config)
         if source_endpoint_id is not None:
             pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
         if source_service_name is not None:
             pulumi.set(__self__, "source_service_name", source_service_name)
-
-    @property
-    @pulumi.getter(name="datadogUserConfig")
-    def datadog_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]:
-        """
-        Dashboard specific user configurable settings
-        """
-        return pulumi.get(self, "datadog_user_config")
-
-    @datadog_user_config.setter
-    def datadog_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]):
-        pulumi.set(self, "datadog_user_config", value)
 
     @property
     @pulumi.getter(name="destinationEndpointId")
@@ -454,18 +402,6 @@ class _ServiceIntegrationState:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="prometheusUserConfig")
-    def prometheus_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]:
-        """
-        Prometheus coordinator specific user configurable settings
-        """
-        return pulumi.get(self, "prometheus_user_config")
-
-    @prometheus_user_config.setter
-    def prometheus_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]):
-        pulumi.set(self, "prometheus_user_config", value)
-
-    @property
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -495,7 +431,6 @@ class ServiceIntegration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']]] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
                  integration_type: Optional[pulumi.Input[str]] = None,
@@ -506,7 +441,6 @@ class ServiceIntegration(pulumi.CustomResource):
                  metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']]] = None,
                  mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']]] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -522,7 +456,6 @@ class ServiceIntegration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']] datadog_user_config: Dashboard specific user configurable settings
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input[str] integration_type: Type of the service integration
@@ -533,7 +466,6 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']] metrics_user_config: Metrics specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']] prometheus_user_config: Prometheus coordinator specific user configurable settings
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
@@ -568,7 +500,6 @@ class ServiceIntegration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']]] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
                  integration_type: Optional[pulumi.Input[str]] = None,
@@ -579,7 +510,6 @@ class ServiceIntegration(pulumi.CustomResource):
                  metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']]] = None,
                  mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']]] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -594,7 +524,6 @@ class ServiceIntegration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceIntegrationArgs.__new__(ServiceIntegrationArgs)
 
-            __props__.__dict__["datadog_user_config"] = datadog_user_config
             __props__.__dict__["destination_endpoint_id"] = destination_endpoint_id
             __props__.__dict__["destination_service_name"] = destination_service_name
             if integration_type is None and not opts.urn:
@@ -609,7 +538,6 @@ class ServiceIntegration(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["prometheus_user_config"] = prometheus_user_config
             __props__.__dict__["source_endpoint_id"] = source_endpoint_id
             __props__.__dict__["source_service_name"] = source_service_name
             __props__.__dict__["integration_id"] = None
@@ -623,7 +551,6 @@ class ServiceIntegration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']]] = None,
             destination_endpoint_id: Optional[pulumi.Input[str]] = None,
             destination_service_name: Optional[pulumi.Input[str]] = None,
             integration_id: Optional[pulumi.Input[str]] = None,
@@ -635,7 +562,6 @@ class ServiceIntegration(pulumi.CustomResource):
             metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']]] = None,
             mirrormaker_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']]] = None,
             source_endpoint_id: Optional[pulumi.Input[str]] = None,
             source_service_name: Optional[pulumi.Input[str]] = None) -> 'ServiceIntegration':
         """
@@ -645,7 +571,6 @@ class ServiceIntegration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']] datadog_user_config: Dashboard specific user configurable settings
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
         :param pulumi.Input[str] integration_id: Service Integration Id at aiven
@@ -657,7 +582,6 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']] metrics_user_config: Metrics specific user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationMirrormakerUserConfigArgs']] mirrormaker_user_config: Mirrormaker 1 integration specific user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']] prometheus_user_config: Prometheus coordinator specific user configurable settings
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
@@ -665,7 +589,6 @@ class ServiceIntegration(pulumi.CustomResource):
 
         __props__ = _ServiceIntegrationState.__new__(_ServiceIntegrationState)
 
-        __props__.__dict__["datadog_user_config"] = datadog_user_config
         __props__.__dict__["destination_endpoint_id"] = destination_endpoint_id
         __props__.__dict__["destination_service_name"] = destination_service_name
         __props__.__dict__["integration_id"] = integration_id
@@ -677,18 +600,9 @@ class ServiceIntegration(pulumi.CustomResource):
         __props__.__dict__["metrics_user_config"] = metrics_user_config
         __props__.__dict__["mirrormaker_user_config"] = mirrormaker_user_config
         __props__.__dict__["project"] = project
-        __props__.__dict__["prometheus_user_config"] = prometheus_user_config
         __props__.__dict__["source_endpoint_id"] = source_endpoint_id
         __props__.__dict__["source_service_name"] = source_service_name
         return ServiceIntegration(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="datadogUserConfig")
-    def datadog_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationDatadogUserConfig']]:
-        """
-        Dashboard specific user configurable settings
-        """
-        return pulumi.get(self, "datadog_user_config")
 
     @property
     @pulumi.getter(name="destinationEndpointId")
@@ -777,14 +691,6 @@ class ServiceIntegration(pulumi.CustomResource):
         Project the integration belongs to
         """
         return pulumi.get(self, "project")
-
-    @property
-    @pulumi.getter(name="prometheusUserConfig")
-    def prometheus_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationPrometheusUserConfig']]:
-        """
-        Prometheus coordinator specific user configurable settings
-        """
-        return pulumi.get(self, "prometheus_user_config")
 
     @property
     @pulumi.getter(name="sourceEndpointId")

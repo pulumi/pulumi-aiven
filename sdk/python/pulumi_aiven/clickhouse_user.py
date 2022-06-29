@@ -191,6 +191,12 @@ class ClickhouseUser(pulumi.CustomResource):
             username="<USERNAME>")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -216,6 +222,12 @@ class ClickhouseUser(pulumi.CustomResource):
             project=aiven_project["myproject"]["project"],
             service_name=aiven_clickhouse["myservice"]["service_name"],
             username="<USERNAME>")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/id
         ```
 
         :param str resource_name: The name of the resource.

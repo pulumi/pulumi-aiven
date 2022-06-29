@@ -19,30 +19,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v4/go/aiven"
+// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewOpenSearch(ctx, "os1", &aiven.OpenSearchArgs{
-// 			Project:               pulumi.Any(data.Aiven_project.Pr1.Project),
+// 		fooProject, err := aiven.LookupProject(ctx, &GetProjectArgs{
+// 			Project: "example_project",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		bar, err := aiven.NewOpenSearch(ctx, "bar", &aiven.OpenSearchArgs{
+// 			Project:               pulumi.String(fooProject.Project),
 // 			CloudName:             pulumi.String("google-europe-west1"),
 // 			Plan:                  pulumi.String("startup-4"),
-// 			ServiceName:           pulumi.String("my-os1"),
+// 			ServiceName:           pulumi.String("example_service_name"),
 // 			MaintenanceWindowDow:  pulumi.String("monday"),
 // 			MaintenanceWindowTime: pulumi.String("10:00:00"),
-// 			OpensearchUserConfig: &OpenSearchOpensearchUserConfigArgs{
-// 				OpensearchVersion: pulumi.String("1"),
-// 				OpensearchDashboards: &OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{
-// 					Enabled:                  pulumi.String("true"),
-// 					OpensearchRequestTimeout: pulumi.String("30000"),
-// 				},
-// 				PublicAccess: &OpenSearchOpensearchUserConfigPublicAccessArgs{
-// 					Opensearch:           pulumi.String("true"),
-// 					OpensearchDashboards: pulumi.String("true"),
-// 				},
-// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = aiven.NewServiceUser(ctx, "fooServiceUser", &aiven.ServiceUserArgs{
+// 			ServiceName: bar.ServiceName,
+// 			Project:     pulumi.String(fooProject.Project),
+// 			Username:    pulumi.String("user-example"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = aiven.NewOpenSearchAclConfig(ctx, "fooOpenSearchAclConfig", &aiven.OpenSearchAclConfigArgs{
+// 			Project:     pulumi.String(fooProject.Project),
+// 			ServiceName: bar.ServiceName,
+// 			Enabled:     pulumi.Bool(true),
+// 			ExtendedAcl: pulumi.Bool(false),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -50,6 +62,12 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
 // ```
 type OpenSearchAclConfig struct {
 	pulumi.CustomResourceState
@@ -232,6 +250,26 @@ func (o OpenSearchAclConfigOutput) ToOpenSearchAclConfigOutput() OpenSearchAclCo
 
 func (o OpenSearchAclConfigOutput) ToOpenSearchAclConfigOutputWithContext(ctx context.Context) OpenSearchAclConfigOutput {
 	return o
+}
+
+// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+func (o OpenSearchAclConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenSearchAclConfig) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+func (o OpenSearchAclConfigOutput) ExtendedAcl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenSearchAclConfig) pulumi.BoolPtrOutput { return v.ExtendedAcl }).(pulumi.BoolPtrOutput)
+}
+
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o OpenSearchAclConfigOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenSearchAclConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+func (o OpenSearchAclConfigOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenSearchAclConfig) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 type OpenSearchAclConfigArrayOutput struct{ *pulumi.OutputState }

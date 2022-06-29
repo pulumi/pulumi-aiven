@@ -148,6 +148,12 @@ class AccountTeam(pulumi.CustomResource):
         """
         The Account Team resource allows the creation and management of an Account Team.
 
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/accountTeam:AccountTeam account_team1 account_id/team_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The unique account id
@@ -161,6 +167,12 @@ class AccountTeam(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Account Team resource allows the creation and management of an Account Team.
+
+        ## Import
+
+        ```sh
+         $ pulumi import aiven:index/accountTeam:AccountTeam account_team1 account_id/team_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccountTeamArgs args: The arguments to use to populate this resource's properties.
