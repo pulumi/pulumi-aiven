@@ -36,7 +36,7 @@ import (
 // 				KafkaRest:      pulumi.String("true"),
 // 				KafkaConnect:   pulumi.String("true"),
 // 				SchemaRegistry: pulumi.String("true"),
-// 				KafkaVersion:   pulumi.String("2.4"),
+// 				KafkaVersion:   pulumi.String("3.1"),
 // 				Kafka: &KafkaKafkaUserConfigKafkaArgs{
 // 					GroupMaxSessionTimeoutMs: pulumi.String("70000"),
 // 					LogRetentionBytes:        pulumi.String("1000000000"),

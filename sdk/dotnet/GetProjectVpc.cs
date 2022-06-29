@@ -13,60 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Project VPC data source provides information about the existing Aiven Project VPC.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var myvpc = Output.Create(Aiven.GetProjectVpc.InvokeAsync(new Aiven.GetProjectVpcArgs
-        ///         {
-        ///             Project = aiven_project.Myproject.Project,
-        ///             CloudName = "google-europe-west1",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectVpcResult> InvokeAsync(GetProjectVpcArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectVpcResult>("aiven:index/getProjectVpc:getProjectVpc", args ?? new GetProjectVpcArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Project VPC data source provides information about the existing Aiven Project VPC.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var myvpc = Output.Create(Aiven.GetProjectVpc.InvokeAsync(new Aiven.GetProjectVpcArgs
-        ///         {
-        ///             Project = aiven_project.Myproject.Project,
-        ///             CloudName = "google-europe-west1",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectVpcResult> Invoke(GetProjectVpcInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetProjectVpcResult>("aiven:index/getProjectVpc:getProjectVpc", args ?? new GetProjectVpcInvokeArgs(), options.WithDefaults());
@@ -80,6 +32,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("cloudName", required: true)]
         public string CloudName { get; set; } = null!;
+
+        /// <summary>
+        /// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
 
         /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -101,6 +59,12 @@ namespace Pulumi.Aiven
         public Input<string> CloudName { get; set; } = null!;
 
         /// <summary>
+        /// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
@@ -120,9 +84,9 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string CloudName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
         /// </summary>
-        public readonly string Id;
+        public readonly string? Id;
         /// <summary>
         /// Network address range used by the VPC like 192.168.0.0/24
         /// </summary>
@@ -140,7 +104,7 @@ namespace Pulumi.Aiven
         private GetProjectVpcResult(
             string cloudName,
 
-            string id,
+            string? id,
 
             string networkCidr,
 

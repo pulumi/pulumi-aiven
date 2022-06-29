@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection foo project_name/vpc_id/aws_account_id
+ *  $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection foo project_name/vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region
  * ```
  */
 export class AwsVpcPeeringConnection extends pulumi.CustomResource {
@@ -69,7 +69,7 @@ export class AwsVpcPeeringConnection extends pulumi.CustomResource {
     /**
      * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      */
-    public readonly awsVpcRegion!: pulumi.Output<string | undefined>;
+    public readonly awsVpcRegion!: pulumi.Output<string>;
     /**
      * State of the peering connection
      */
@@ -110,6 +110,9 @@ export class AwsVpcPeeringConnection extends pulumi.CustomResource {
             }
             if ((!args || args.awsVpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'awsVpcId'");
+            }
+            if ((!args || args.awsVpcRegion === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'awsVpcRegion'");
             }
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
@@ -176,7 +179,7 @@ export interface AwsVpcPeeringConnectionArgs {
     /**
      * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      */
-    awsVpcRegion?: pulumi.Input<string>;
+    awsVpcRegion: pulumi.Input<string>;
     /**
      * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
      */

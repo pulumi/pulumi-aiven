@@ -6,18 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Project VPC data source provides information about the existing Aiven Project VPC.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const myvpc = aiven.getProjectVpc({
- *     project: aiven_project.myproject.project,
- *     cloudName: "google-europe-west1",
- * });
- * ```
  */
 export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectVpcResult> {
     if (!opts) {
@@ -27,6 +15,7 @@ export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptio
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getProjectVpc:getProjectVpc", {
         "cloudName": args.cloudName,
+        "id": args.id,
         "project": args.project,
     }, opts);
 }
@@ -39,6 +28,10 @@ export interface GetProjectVpcArgs {
      * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      */
     cloudName: string;
+    /**
+     * ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     */
+    id?: string;
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
@@ -54,9 +47,9 @@ export interface GetProjectVpcResult {
      */
     readonly cloudName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
      */
-    readonly id: string;
+    readonly id?: string;
     /**
      * Network address range used by the VPC like 192.168.0.0/24
      */
@@ -83,6 +76,10 @@ export interface GetProjectVpcOutputArgs {
      * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      */
     cloudName: pulumi.Input<string>;
+    /**
+     * ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     */
+    id?: pulumi.Input<string>;
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */

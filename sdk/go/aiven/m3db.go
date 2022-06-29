@@ -33,10 +33,10 @@ import (
 // 			MaintenanceWindowDow:  pulumi.String("monday"),
 // 			MaintenanceWindowTime: pulumi.String("10:00:00"),
 // 			M3dbUserConfig: &M3DbM3dbUserConfigArgs{
-// 				M3dbVersion: pulumi.String("0.15"),
+// 				M3dbVersion: pulumi.String("1.1"),
 // 				Namespaces: M3DbM3dbUserConfigNamespaceArray{
 // 					&M3DbM3dbUserConfigNamespaceArgs{
-// 						Name: pulumi.String("my-ns1"),
+// 						Name: pulumi.String("my_ns1"),
 // 						Type: pulumi.String("unaggregated"),
 // 					},
 // 				},

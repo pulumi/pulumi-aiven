@@ -58,4 +58,4 @@ require (
 	google.golang.org/protobuf v1.28.0 // indirect
 )
 
-replace github.com/aiven/terraform-provider-aiven => github.com/pulumi/terraform-provider-aiven v1.0.18-0.20220614104438-59182ed9207e
+replace github.com/aiven/terraform-provider-aiven => github.com/pulumi/terraform-provider-aiven v1.0.18-0.20220629222756-0c0792985992
