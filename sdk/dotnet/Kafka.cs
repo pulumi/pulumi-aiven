@@ -35,7 +35,7 @@ namespace Pulumi.Aiven
     ///                 KafkaRest = "true",
     ///                 KafkaConnect = "true",
     ///                 SchemaRegistry = "true",
-    ///                 KafkaVersion = "2.4",
+    ///                 KafkaVersion = "3.1",
     ///                 Kafka = new Aiven.Inputs.KafkaKafkaUserConfigKafkaArgs
     ///                 {
     ///                     GroupMaxSessionTimeoutMs = "70000",

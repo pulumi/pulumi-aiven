@@ -686,9 +686,9 @@ class M3Db(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             m3db_user_config=aiven.M3DbM3dbUserConfigArgs(
-                m3db_version="0.15",
+                m3db_version="1.1",
                 namespaces=[aiven.M3DbM3dbUserConfigNamespaceArgs(
-                    name="my-ns1",
+                    name="my_ns1",
                     type="unaggregated",
                 )],
             ))
@@ -739,9 +739,9 @@ class M3Db(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             m3db_user_config=aiven.M3DbM3dbUserConfigArgs(
-                m3db_version="0.15",
+                m3db_version="1.1",
                 namespaces=[aiven.M3DbM3dbUserConfigNamespaceArgs(
-                    name="my-ns1",
+                    name="my_ns1",
                     type="unaggregated",
                 )],
             ))

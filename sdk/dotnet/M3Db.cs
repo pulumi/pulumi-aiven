@@ -32,12 +32,12 @@ namespace Pulumi.Aiven
     ///             MaintenanceWindowTime = "10:00:00",
     ///             M3dbUserConfig = new Aiven.Inputs.M3DbM3dbUserConfigArgs
     ///             {
-    ///                 M3dbVersion = "0.15",
+    ///                 M3dbVersion = "1.1",
     ///                 Namespaces = 
     ///                 {
     ///                     new Aiven.Inputs.M3DbM3dbUserConfigNamespaceArgs
     ///                     {
-    ///                         Name = "my-ns1",
+    ///                         Name = "my_ns1",
     ///                         Type = "unaggregated",
     ///                     },
     ///                 },

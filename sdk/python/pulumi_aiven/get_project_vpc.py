@@ -47,9 +47,9 @@ class GetProjectVpcResult:
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
-        The provider-assigned unique ID for this managed resource.
+        ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
         """
         return pulumi.get(self, "id")
 
@@ -92,27 +92,20 @@ class AwaitableGetProjectVpcResult(GetProjectVpcResult):
 
 
 def get_project_vpc(cloud_name: Optional[str] = None,
+                    id: Optional[str] = None,
                     project: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectVpcResult:
     """
     The Project VPC data source provides information about the existing Aiven Project VPC.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    myvpc = aiven.get_project_vpc(project=aiven_project["myproject"]["project"],
-        cloud_name="google-europe-west1")
-    ```
-
 
     :param str cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+    :param str id: ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['cloudName'] = cloud_name
+    __args__['id'] = id
     __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -130,23 +123,15 @@ def get_project_vpc(cloud_name: Optional[str] = None,
 
 @_utilities.lift_output_func(get_project_vpc)
 def get_project_vpc_output(cloud_name: Optional[pulumi.Input[str]] = None,
+                           id: Optional[pulumi.Input[Optional[str]]] = None,
                            project: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectVpcResult]:
     """
     The Project VPC data source provides information about the existing Aiven Project VPC.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    myvpc = aiven.get_project_vpc(project=aiven_project["myproject"]["project"],
-        cloud_name="google-europe-west1")
-    ```
-
 
     :param str cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+    :param str id: ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

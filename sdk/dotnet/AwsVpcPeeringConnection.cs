@@ -36,7 +36,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection foo project_name/vpc_id/aws_account_id
+    ///  $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection foo project_name/vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection")]
@@ -64,7 +64,7 @@ namespace Pulumi.Aiven
         /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("awsVpcRegion")]
-        public Output<string?> AwsVpcRegion { get; private set; } = null!;
+        public Output<string> AwsVpcRegion { get; private set; } = null!;
 
         /// <summary>
         /// State of the peering connection
@@ -145,8 +145,8 @@ namespace Pulumi.Aiven
         /// <summary>
         /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
-        [Input("awsVpcRegion")]
-        public Input<string>? AwsVpcRegion { get; set; }
+        [Input("awsVpcRegion", required: true)]
+        public Input<string> AwsVpcRegion { get; set; } = null!;
 
         /// <summary>
         /// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.

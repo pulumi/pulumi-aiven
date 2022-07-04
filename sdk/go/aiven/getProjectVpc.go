@@ -11,30 +11,6 @@ import (
 )
 
 // The Project VPC data source provides information about the existing Aiven Project VPC.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupProjectVpc(ctx, &GetProjectVpcArgs{
-// 			Project:   aiven_project.Myproject.Project,
-// 			CloudName: "google-europe-west1",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupProjectVpc(ctx *pulumi.Context, args *LookupProjectVpcArgs, opts ...pulumi.InvokeOption) (*LookupProjectVpcResult, error) {
 	var rv LookupProjectVpcResult
 	err := ctx.Invoke("aiven:index/getProjectVpc:getProjectVpc", args, &rv, opts...)
@@ -48,6 +24,8 @@ func LookupProjectVpc(ctx *pulumi.Context, args *LookupProjectVpcArgs, opts ...p
 type LookupProjectVpcArgs struct {
 	// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
 	CloudName string `pulumi:"cloudName"`
+	// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+	Id *string `pulumi:"id"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
 }
@@ -56,8 +34,8 @@ type LookupProjectVpcArgs struct {
 type LookupProjectVpcResult struct {
 	// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
 	CloudName string `pulumi:"cloudName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+	Id *string `pulumi:"id"`
 	// Network address range used by the VPC like 192.168.0.0/24
 	NetworkCidr string `pulumi:"networkCidr"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -83,6 +61,8 @@ func LookupProjectVpcOutput(ctx *pulumi.Context, args LookupProjectVpcOutputArgs
 type LookupProjectVpcOutputArgs struct {
 	// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
 	CloudName pulumi.StringInput `pulumi:"cloudName"`
+	// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
 }
@@ -111,9 +91,9 @@ func (o LookupProjectVpcResultOutput) CloudName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.CloudName }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
-func (o LookupProjectVpcResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.Id }).(pulumi.StringOutput)
+// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+func (o LookupProjectVpcResultOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectVpcResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Network address range used by the VPC like 192.168.0.0/24

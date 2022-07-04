@@ -4,7 +4,7 @@ go 1.18
 
 replace (
 	cloud.google.com/go/storage => cloud.google.com/go/storage v1.15.0
-	github.com/aiven/terraform-provider-aiven => github.com/pulumi/terraform-provider-aiven v1.0.18-0.20220614104438-59182ed9207e
+	github.com/aiven/terraform-provider-aiven => github.com/pulumi/terraform-provider-aiven v1.0.18-0.20220629222756-0c0792985992
 	github.com/aiven/terraform-provider-aiven/shim => ./shim
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.15.0

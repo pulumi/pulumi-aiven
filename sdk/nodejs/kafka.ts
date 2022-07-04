@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *         kafkaRest: "true",
  *         kafkaConnect: "true",
  *         schemaRegistry: "true",
- *         kafkaVersion: "2.4",
+ *         kafkaVersion: "3.1",
  *         kafka: {
  *             groupMaxSessionTimeoutMs: "70000",
  *             logRetentionBytes: "1000000000",
