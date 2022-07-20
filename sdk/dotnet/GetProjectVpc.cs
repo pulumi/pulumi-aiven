@@ -27,21 +27,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetProjectVpcArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("cloudName", required: true)]
         public string CloudName { get; set; } = null!;
 
-        /// <summary>
-        /// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -52,21 +43,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetProjectVpcInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("cloudName", required: true)]
         public Input<string> CloudName { get; set; } = null!;
 
-        /// <summary>
-        /// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -79,25 +61,10 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetProjectVpcResult
     {
-        /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string CloudName;
-        /// <summary>
-        /// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// Network address range used by the VPC like 192.168.0.0/24
-        /// </summary>
         public readonly string NetworkCidr;
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string Project;
-        /// <summary>
-        /// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
-        /// </summary>
         public readonly string State;
 
         [OutputConstructor]

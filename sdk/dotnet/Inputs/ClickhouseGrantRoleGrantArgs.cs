@@ -12,9 +12,6 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ClickhouseGrantRoleGrantArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 

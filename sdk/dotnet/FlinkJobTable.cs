@@ -51,67 +51,83 @@ namespace Pulumi.Aiven
     public partial class FlinkJobTable : Pulumi.CustomResource
     {
         /// <summary>
-        /// The id of the service integration that is used with this table. It must have the service integration type `flink`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The id of the service integration that is used with this table. It must have the service integration type `flink`. To
+        /// set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so
+        /// forces recreation of the resource.
         /// </summary>
         [Output("integrationId")]
         public Output<string> IntegrationId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or postgres service. This property cannot be changed, doing so forces recreation of the resource.
+        /// Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or
+        /// postgres service. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("jdbcTable")]
         public Output<string?> JdbcTable { get; private set; } = null!;
 
         /// <summary>
-        /// When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null. For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
+        /// When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null.
+        /// For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is
+        /// found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values
+        /// are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("kafkaConnectorType")]
         public Output<string?> KafkaConnectorType { get; private set; } = null!;
 
         /// <summary>
-        /// Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This
+        /// property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("kafkaKeyFields")]
         public Output<ImmutableArray<string>> KafkaKeyFields { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
+        /// `json`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("kafkaKeyFormat")]
         public Output<string?> KafkaKeyFormat { get; private set; } = null!;
 
         /// <summary>
-        /// Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property
+        /// cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("kafkaStartupMode")]
         public Output<string?> KafkaStartupMode { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
+        /// Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka
+        /// service. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("kafkaTopic")]
         public Output<string?> KafkaTopic { get; private set; } = null!;
 
         /// <summary>
-        /// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table
+        /// schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message
+        /// value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot
+        /// be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("kafkaValueFieldsInclude")]
         public Output<string?> KafkaValueFieldsInclude { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
+        /// `json`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("kafkaValueFormat")]
         public Output<string?> KafkaValueFormat { get; private set; } = null!;
 
         /// <summary>
-        /// [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
+        /// [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table
+        /// creation. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("likeOptions")]
         public Output<string?> LikeOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -123,7 +139,8 @@ namespace Pulumi.Aiven
         public Output<string> SchemaSql { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -193,19 +210,25 @@ namespace Pulumi.Aiven
     public sealed class FlinkJobTableArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The id of the service integration that is used with this table. It must have the service integration type `flink`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The id of the service integration that is used with this table. It must have the service integration type `flink`. To
+        /// set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so
+        /// forces recreation of the resource.
         /// </summary>
         [Input("integrationId", required: true)]
         public Input<string> IntegrationId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or postgres service. This property cannot be changed, doing so forces recreation of the resource.
+        /// Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or
+        /// postgres service. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("jdbcTable")]
         public Input<string>? JdbcTable { get; set; }
 
         /// <summary>
-        /// When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null. For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
+        /// When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null.
+        /// For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is
+        /// found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values
+        /// are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaConnectorType")]
         public Input<string>? KafkaConnectorType { get; set; }
@@ -214,7 +237,8 @@ namespace Pulumi.Aiven
         private InputList<string>? _kafkaKeyFields;
 
         /// <summary>
-        /// Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This
+        /// property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public InputList<string> KafkaKeyFields
         {
@@ -223,43 +247,52 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
+        /// `json`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaKeyFormat")]
         public Input<string>? KafkaKeyFormat { get; set; }
 
         /// <summary>
-        /// Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property
+        /// cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaStartupMode")]
         public Input<string>? KafkaStartupMode { get; set; }
 
         /// <summary>
-        /// Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
+        /// Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka
+        /// service. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaTopic")]
         public Input<string>? KafkaTopic { get; set; }
 
         /// <summary>
-        /// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table
+        /// schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message
+        /// value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot
+        /// be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaValueFieldsInclude")]
         public Input<string>? KafkaValueFieldsInclude { get; set; }
 
         /// <summary>
-        /// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
+        /// `json`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaValueFormat")]
         public Input<string>? KafkaValueFormat { get; set; }
 
         /// <summary>
-        /// [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
+        /// [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table
+        /// creation. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("likeOptions")]
         public Input<string>? LikeOptions { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -271,7 +304,8 @@ namespace Pulumi.Aiven
         public Input<string> SchemaSql { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -296,19 +330,25 @@ namespace Pulumi.Aiven
     public sealed class FlinkJobTableState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The id of the service integration that is used with this table. It must have the service integration type `flink`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The id of the service integration that is used with this table. It must have the service integration type `flink`. To
+        /// set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so
+        /// forces recreation of the resource.
         /// </summary>
         [Input("integrationId")]
         public Input<string>? IntegrationId { get; set; }
 
         /// <summary>
-        /// Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or postgres service. This property cannot be changed, doing so forces recreation of the resource.
+        /// Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or
+        /// postgres service. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("jdbcTable")]
         public Input<string>? JdbcTable { get; set; }
 
         /// <summary>
-        /// When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null. For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
+        /// When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null.
+        /// For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is
+        /// found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values
+        /// are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaConnectorType")]
         public Input<string>? KafkaConnectorType { get; set; }
@@ -317,7 +357,8 @@ namespace Pulumi.Aiven
         private InputList<string>? _kafkaKeyFields;
 
         /// <summary>
-        /// Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This
+        /// property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public InputList<string> KafkaKeyFields
         {
@@ -326,43 +367,52 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
+        /// `json`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaKeyFormat")]
         public Input<string>? KafkaKeyFormat { get; set; }
 
         /// <summary>
-        /// Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property
+        /// cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaStartupMode")]
         public Input<string>? KafkaStartupMode { get; set; }
 
         /// <summary>
-        /// Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
+        /// Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka
+        /// service. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaTopic")]
         public Input<string>? KafkaTopic { get; set; }
 
         /// <summary>
-        /// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table
+        /// schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message
+        /// value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot
+        /// be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaValueFieldsInclude")]
         public Input<string>? KafkaValueFieldsInclude { get; set; }
 
         /// <summary>
-        /// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
+        /// `json`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("kafkaValueFormat")]
         public Input<string>? KafkaValueFormat { get; set; }
 
         /// <summary>
-        /// [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
+        /// [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table
+        /// creation. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("likeOptions")]
         public Input<string>? LikeOptions { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -374,7 +424,8 @@ namespace Pulumi.Aiven
         public Input<string>? SchemaSql { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

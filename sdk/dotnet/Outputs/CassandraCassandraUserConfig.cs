@@ -13,41 +13,14 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class CassandraCassandraUserConfig
     {
-        /// <summary>
-        /// cassandra configuration values
-        /// </summary>
         public readonly Outputs.CassandraCassandraUserConfigCassandra? Cassandra;
-        /// <summary>
-        /// Cassandra major version
-        /// </summary>
         public readonly string? CassandraVersion;
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Migration mode for the sstableloader utility
-        /// </summary>
         public readonly string? MigrateSstableloader;
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         public readonly Outputs.CassandraCassandraUserConfigPrivateAccess? PrivateAccess;
-        /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ProjectToForkFrom;
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         public readonly Outputs.CassandraCassandraUserConfigPublicAccess? PublicAccess;
-        /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ServiceToForkFrom;
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

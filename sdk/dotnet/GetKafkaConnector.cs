@@ -77,21 +77,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaConnectorArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("connectorName", required: true)]
         public string ConnectorName { get; set; } = null!;
 
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -102,21 +93,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaConnectorInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("connectorName", required: true)]
         public Input<string> ConnectorName { get; set; } = null!;
 
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -129,53 +111,20 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetKafkaConnectorResult
     {
-        /// <summary>
-        /// The Kafka Connector configuration parameters.
-        /// </summary>
         public readonly ImmutableDictionary<string, string> Config;
-        /// <summary>
-        /// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string ConnectorName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The Kafka connector author.
-        /// </summary>
         public readonly string PluginAuthor;
-        /// <summary>
-        /// The Kafka connector Java class.
-        /// </summary>
         public readonly string PluginClass;
-        /// <summary>
-        /// The Kafka connector documentation URL.
-        /// </summary>
         public readonly string PluginDocUrl;
-        /// <summary>
-        /// The Kafka connector title.
-        /// </summary>
         public readonly string PluginTitle;
-        /// <summary>
-        /// The Kafka connector type.
-        /// </summary>
         public readonly string PluginType;
-        /// <summary>
-        /// The version of the kafka connector.
-        /// </summary>
         public readonly string PluginVersion;
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string Project;
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// List of tasks of a connector.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaConnectorTaskResult> Tasks;
 
         [OutputConstructor]

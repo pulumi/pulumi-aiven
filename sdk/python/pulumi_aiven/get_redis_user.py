@@ -63,73 +63,46 @@ class GetRedisUserResult:
     @property
     @pulumi.getter
     def password(self) -> str:
-        """
-        The password of the Redis User.
-        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="redisAclCategories")
     def redis_acl_categories(self) -> Sequence[str]:
-        """
-        Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "redis_acl_categories")
 
     @property
     @pulumi.getter(name="redisAclChannels")
     def redis_acl_channels(self) -> Sequence[str]:
-        """
-        Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "redis_acl_channels")
 
     @property
     @pulumi.getter(name="redisAclCommands")
     def redis_acl_commands(self) -> Sequence[str]:
-        """
-        Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "redis_acl_commands")
 
     @property
     @pulumi.getter(name="redisAclKeys")
     def redis_acl_keys(self) -> Sequence[str]:
-        """
-        Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "redis_acl_keys")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def username(self) -> str:
-        """
-        The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "username")
 
 
@@ -168,11 +141,6 @@ def get_redis_user(project: Optional[str] = None,
         service_name="my-service",
         username="user1")
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -215,10 +183,5 @@ def get_redis_user_output(project: Optional[pulumi.Input[str]] = None,
         service_name="my-service",
         username="user1")
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

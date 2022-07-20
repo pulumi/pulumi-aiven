@@ -54,27 +54,33 @@ export class RedisUser extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
+     * cannot be changed, doing so forces recreation of the resource.
      */
     public readonly redisAclCategories!: pulumi.Output<string[] | undefined>;
     /**
-     * Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
+     * resource.
      */
     public readonly redisAclChannels!: pulumi.Output<string[] | undefined>;
     /**
-     * Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
+     * property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly redisAclCommands!: pulumi.Output<string[] | undefined>;
     /**
-     * Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
+     * changed, doing so forces recreation of the resource.
      */
     public readonly redisAclKeys!: pulumi.Output<string[] | undefined>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -82,7 +88,8 @@ export class RedisUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
+     * property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -143,27 +150,33 @@ export interface RedisUserState {
      */
     password?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
+     * cannot be changed, doing so forces recreation of the resource.
      */
     redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
+     * resource.
      */
     redisAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
+     * property cannot be changed, doing so forces recreation of the resource.
      */
     redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
+     * changed, doing so forces recreation of the resource.
      */
     redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -171,7 +184,8 @@ export interface RedisUserState {
      */
     type?: pulumi.Input<string>;
     /**
-     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
+     * property cannot be changed, doing so forces recreation of the resource.
      */
     username?: pulumi.Input<string>;
 }
@@ -185,31 +199,38 @@ export interface RedisUserArgs {
      */
     password?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
+     * cannot be changed, doing so forces recreation of the resource.
      */
     redisAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
+     * resource.
      */
     redisAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
+     * property cannot be changed, doing so forces recreation of the resource.
      */
     redisAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
+     * changed, doing so forces recreation of the resource.
      */
     redisAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
+     * property cannot be changed, doing so forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

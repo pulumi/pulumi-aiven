@@ -75,15 +75,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetServiceIntegrationEndpointArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Name of the service integration endpoint
-        /// </summary>
         [Input("endpointName", required: true)]
         public string EndpointName { get; set; } = null!;
 
-        /// <summary>
-        /// Project the service integration endpoint belongs to
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -94,15 +88,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetServiceIntegrationEndpointInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Name of the service integration endpoint
-        /// </summary>
         [Input("endpointName", required: true)]
         public Input<string> EndpointName { get; set; } = null!;
 
-        /// <summary>
-        /// Project the service integration endpoint belongs to
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -115,69 +103,24 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetServiceIntegrationEndpointResult
     {
-        /// <summary>
-        /// Datadog specific user configurable settings
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointDatadogUserConfigResult> DatadogUserConfigs;
-        /// <summary>
-        /// Integration endpoint specific backend configuration
-        /// </summary>
         public readonly ImmutableDictionary<string, string> EndpointConfig;
-        /// <summary>
-        /// Name of the service integration endpoint
-        /// </summary>
         public readonly string EndpointName;
-        /// <summary>
-        /// Type of the service integration endpoint
-        /// </summary>
         public readonly string EndpointType;
-        /// <summary>
-        /// external AWS CloudWatch Logs specific user configurable settings
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult> ExternalAwsCloudwatchLogsUserConfigs;
-        /// <summary>
-        /// External AWS cloudwatch mertrics specific user configurable settings
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult> ExternalAwsCloudwatchMetricsUserConfigs;
-        /// <summary>
-        /// external elasticsearch specific user configurable settings
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult> ExternalElasticsearchLogsUserConfigs;
-        /// <summary>
-        /// external Google Cloud Logginig specific user configurable settings
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult> ExternalGoogleCloudLoggingUserConfigs;
-        /// <summary>
-        /// external Kafka specific user configurable settings
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult> ExternalKafkaUserConfigs;
-        /// <summary>
-        /// External schema registry specific user configurable settings
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult> ExternalSchemaRegistryUserConfigs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Jolokia specific user configurable settings
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult> JolokiaUserConfigs;
-        /// <summary>
-        /// Project the service integration endpoint belongs to
-        /// </summary>
         public readonly string Project;
-        /// <summary>
-        /// Prometheus specific user configurable settings
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult> PrometheusUserConfigs;
-        /// <summary>
-        /// rsyslog specific user configurable settings
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult> RsyslogUserConfigs;
-        /// <summary>
-        /// Signalfx specific user configurable settings
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointSignalfxUserConfigResult> SignalfxUserConfigs;
 
         [OutputConstructor]

@@ -40,9 +40,6 @@ class GetAccountTeamProjectResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
-        """
-        The unique account id
-        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -56,25 +53,16 @@ class GetAccountTeamProjectResult:
     @property
     @pulumi.getter(name="projectName")
     def project_name(self) -> str:
-        """
-        The name of an already existing project
-        """
         return pulumi.get(self, "project_name")
 
     @property
     @pulumi.getter(name="teamId")
     def team_id(self) -> str:
-        """
-        An account team id
-        """
         return pulumi.get(self, "team_id")
 
     @property
     @pulumi.getter(name="teamType")
     def team_type(self) -> str:
-        """
-        The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
-        """
         return pulumi.get(self, "team_type")
 
 
@@ -97,11 +85,6 @@ def get_account_team_project(account_id: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountTeamProjectResult:
     """
     The Account Team Project data source provides information about the existing Account Team Project.
-
-
-    :param str account_id: The unique account id
-    :param str project_name: The name of an already existing project
-    :param str team_id: An account team id
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -128,10 +111,5 @@ def get_account_team_project_output(account_id: Optional[pulumi.Input[str]] = No
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountTeamProjectResult]:
     """
     The Account Team Project data source provides information about the existing Account Team Project.
-
-
-    :param str account_id: The unique account id
-    :param str project_name: The name of an already existing project
-    :param str team_id: An account team id
     """
     ...

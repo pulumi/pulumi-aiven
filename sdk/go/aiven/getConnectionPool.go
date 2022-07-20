@@ -47,34 +47,23 @@ func LookupConnectionPool(ctx *pulumi.Context, args *LookupConnectionPoolArgs, o
 
 // A collection of arguments for invoking getConnectionPool.
 type LookupConnectionPoolArgs struct {
-	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
-	PoolName string `pulumi:"poolName"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	PoolName    string `pulumi:"poolName"`
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getConnectionPool.
 type LookupConnectionPoolResult struct {
-	// The URI for connecting to the pool
 	ConnectionUri string `pulumi:"connectionUri"`
-	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	DatabaseName string `pulumi:"databaseName"`
+	DatabaseName  string `pulumi:"databaseName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
-	PoolMode string `pulumi:"poolMode"`
-	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
-	PoolName string `pulumi:"poolName"`
-	// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
-	PoolSize int `pulumi:"poolSize"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Id          string `pulumi:"id"`
+	PoolMode    string `pulumi:"poolMode"`
+	PoolName    string `pulumi:"poolName"`
+	PoolSize    int    `pulumi:"poolSize"`
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
-	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
-	Username string `pulumi:"username"`
+	Username    string `pulumi:"username"`
 }
 
 func LookupConnectionPoolOutput(ctx *pulumi.Context, args LookupConnectionPoolOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionPoolResultOutput {
@@ -92,11 +81,8 @@ func LookupConnectionPoolOutput(ctx *pulumi.Context, args LookupConnectionPoolOu
 
 // A collection of arguments for invoking getConnectionPool.
 type LookupConnectionPoolOutputArgs struct {
-	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
-	PoolName pulumi.StringInput `pulumi:"poolName"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	PoolName    pulumi.StringInput `pulumi:"poolName"`
+	Project     pulumi.StringInput `pulumi:"project"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -119,12 +105,10 @@ func (o LookupConnectionPoolResultOutput) ToLookupConnectionPoolResultOutputWith
 	return o
 }
 
-// The URI for connecting to the pool
 func (o LookupConnectionPoolResultOutput) ConnectionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
-// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupConnectionPoolResultOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.DatabaseName }).(pulumi.StringOutput)
 }
@@ -134,32 +118,26 @@ func (o LookupConnectionPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 func (o LookupConnectionPoolResultOutput) PoolMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.PoolMode }).(pulumi.StringOutput)
 }
 
-// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupConnectionPoolResultOutput) PoolName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.PoolName }).(pulumi.StringOutput)
 }
 
-// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
 func (o LookupConnectionPoolResultOutput) PoolSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) int { return v.PoolSize }).(pulumi.IntOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupConnectionPoolResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupConnectionPoolResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
 func (o LookupConnectionPoolResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.Username }).(pulumi.StringOutput)
 }

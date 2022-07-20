@@ -60,6 +60,7 @@ export * from "./getKafkaConnector";
 export * from "./getKafkaMirrorMaker";
 export * from "./getKafkaSchema";
 export * from "./getKafkaSchemaConfiguration";
+export * from "./getKafkaSchemaRegistryAcl";
 export * from "./getKafkaTopic";
 export * from "./getKafkaUser";
 export * from "./getM3Aggregator";
@@ -98,6 +99,7 @@ export * from "./kafkaConnector";
 export * from "./kafkaMirrorMaker";
 export * from "./kafkaSchema";
 export * from "./kafkaSchemaConfiguration";
+export * from "./kafkaSchemaRegistryAcl";
 export * from "./kafkaTopic";
 export * from "./kafkaUser";
 export * from "./m3aggregator";
@@ -172,6 +174,7 @@ import { KafkaConnector } from "./kafkaConnector";
 import { KafkaMirrorMaker } from "./kafkaMirrorMaker";
 import { KafkaSchema } from "./kafkaSchema";
 import { KafkaSchemaConfiguration } from "./kafkaSchemaConfiguration";
+import { KafkaSchemaRegistryAcl } from "./kafkaSchemaRegistryAcl";
 import { KafkaTopic } from "./kafkaTopic";
 import { KafkaUser } from "./kafkaUser";
 import { M3Aggregator } from "./m3aggregator";
@@ -274,6 +277,8 @@ const _module = {
                 return new KafkaSchema(name, <any>undefined, { urn })
             case "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration":
                 return new KafkaSchemaConfiguration(name, <any>undefined, { urn })
+            case "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl":
+                return new KafkaSchemaRegistryAcl(name, <any>undefined, { urn })
             case "aiven:index/kafkaTopic:KafkaTopic":
                 return new KafkaTopic(name, <any>undefined, { urn })
             case "aiven:index/kafkaUser:KafkaUser":
@@ -368,6 +373,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/kafkaConnector", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaMirrorMaker", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaSchema", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaSchemaConfiguration", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/kafkaSchemaRegistryAcl", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaTopic", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/m3Aggregator", _module)

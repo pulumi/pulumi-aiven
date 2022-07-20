@@ -13,49 +13,16 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class FlinkFlinkUserConfig
     {
-        /// <summary>
-        /// Flink execution.checkpointing.interval in milliseconds
-        /// </summary>
         public readonly string? ExecutionCheckpointingIntervalMs;
-        /// <summary>
-        /// Flink execution.checkpointing.timeout in milliseconds
-        /// </summary>
         public readonly string? ExecutionCheckpointingTimeoutMs;
-        /// <summary>
-        /// Flink major version
-        /// </summary>
         public readonly string? FlinkVersion;
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Flink taskmanager.numberOfTaskSlots
-        /// </summary>
         public readonly string? NumberOfTaskSlots;
-        /// <summary>
-        /// Flink parallelism.default
-        /// </summary>
         public readonly string? ParallelismDefault;
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         public readonly Outputs.FlinkFlinkUserConfigPrivatelinkAccess? PrivatelinkAccess;
-        /// <summary>
-        /// Flink restart-strategy
-        /// </summary>
         public readonly string? RestartStrategy;
-        /// <summary>
-        /// Flink restart-strategy.failure-rate.delay in seconds
-        /// </summary>
         public readonly string? RestartStrategyDelaySec;
-        /// <summary>
-        /// Flink restart-strategy.failure-rate.failure-rate-interval in minutes
-        /// </summary>
         public readonly string? RestartStrategyFailureRateIntervalMin;
-        /// <summary>
-        /// Flink restart-strategy.failure-rate.max-failures-per-interval
-        /// </summary>
         public readonly string? RestartStrategyMaxFailures;
 
         [OutputConstructor]

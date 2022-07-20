@@ -37,17 +37,8 @@ export function getMysqlUser(args: GetMysqlUserArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getMysqlUser.
  */
 export interface GetMysqlUserArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: string;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: string;
-    /**
-     * The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     username: string;
 }
 
@@ -55,41 +46,17 @@ export interface GetMysqlUserArgs {
  * A collection of values returned by getMysqlUser.
  */
 export interface GetMysqlUserResult {
-    /**
-     * Access certificate for the user
-     */
     readonly accessCert: string;
-    /**
-     * Access certificate key for the user
-     */
     readonly accessKey: string;
-    /**
-     * Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
-     */
     readonly authentication: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The password of the MySQL User ( not applicable for all services ).
-     */
     readonly password: string;
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly project: string;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly serviceName: string;
-    /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
-     */
     readonly type: string;
-    /**
-     * The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly username: string;
 }
 
@@ -101,16 +68,7 @@ export function getMysqlUserOutput(args: GetMysqlUserOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getMysqlUser.
  */
 export interface GetMysqlUserOutputArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: pulumi.Input<string>;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     username: pulumi.Input<string>;
 }

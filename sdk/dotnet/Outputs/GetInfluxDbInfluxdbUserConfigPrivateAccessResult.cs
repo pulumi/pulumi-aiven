@@ -13,9 +13,6 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetInfluxDbInfluxdbUserConfigPrivateAccessResult
     {
-        /// <summary>
-        /// InfluxDB server provided values
-        /// </summary>
         public readonly string? Influxdb;
 
         [OutputConstructor]

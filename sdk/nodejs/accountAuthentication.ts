@@ -50,6 +50,10 @@ export class AccountAuthentication extends pulumi.CustomResource {
      */
     public /*out*/ readonly authenticationId!: pulumi.Output<string>;
     /**
+     * Team ID
+     */
+    public readonly autoJoinTeamId!: pulumi.Output<string | undefined>;
+    /**
      * Time of creation
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -105,6 +109,7 @@ export class AccountAuthentication extends pulumi.CustomResource {
             const state = argsOrState as AccountAuthenticationState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["authenticationId"] = state ? state.authenticationId : undefined;
+            resourceInputs["autoJoinTeamId"] = state ? state.autoJoinTeamId : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -124,6 +129,7 @@ export class AccountAuthentication extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["autoJoinTeamId"] = args ? args.autoJoinTeamId : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["samlCertificate"] = args ? args.samlCertificate : undefined;
@@ -153,6 +159,10 @@ export interface AccountAuthenticationState {
      * Account authentication id
      */
     authenticationId?: pulumi.Input<string>;
+    /**
+     * Team ID
+     */
+    autoJoinTeamId?: pulumi.Input<string>;
     /**
      * Time of creation
      */
@@ -203,6 +213,10 @@ export interface AccountAuthenticationArgs {
      * The unique id of the account.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Team ID
+     */
+    autoJoinTeamId?: pulumi.Input<string>;
     /**
      * Status of account authentication method. The default value is `false`.
      */

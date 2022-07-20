@@ -8,12 +8,20 @@ import * as utilities from "./utilities";
 /**
  * The Service Integration resource allows the creation and management of Aiven Service Integrations.
  *
- * **Note** For services running on `hobbiest` plan service integrations are not supported.
+ * **Note** For services running on `hobbyist` plan service integrations are not supported.
  *
  * Service Integration defines an integration between two Aiven services or between Aiven service and an external
  * integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service,
  * getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to
  * Elasticsearch, etc.
+ *
+ * ## Example Usage
+ *
+ * {{tffile "examples/resources/aiven_service_integration/resource.tf"}}
+ *
+ * ## Import
+ *
+ * {{codefile "shell" "examples/resources/aiven_service_integration/import.sh"}}
  */
 export class ServiceIntegration extends pulumi.CustomResource {
     /**

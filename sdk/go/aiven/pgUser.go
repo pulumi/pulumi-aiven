@@ -51,13 +51,16 @@ type PgUser struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
 	PgAllowReplication pulumi.BoolPtrOutput `pulumi:"pgAllowReplication"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This
+	// property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -107,13 +110,16 @@ type pgUserState struct {
 	Password *string `pulumi:"password"`
 	// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
 	PgAllowReplication *bool `pulumi:"pgAllowReplication"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type *string `pulumi:"type"`
-	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This
+	// property cannot be changed, doing so forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
@@ -126,13 +132,16 @@ type PgUserState struct {
 	Password pulumi.StringPtrInput
 	// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
 	PgAllowReplication pulumi.BoolPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type pulumi.StringPtrInput
-	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This
+	// property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -145,11 +154,14 @@ type pgUserArgs struct {
 	Password *string `pulumi:"password"`
 	// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
 	PgAllowReplication *bool `pulumi:"pgAllowReplication"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This
+	// property cannot be changed, doing so forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
@@ -159,11 +171,14 @@ type PgUserArgs struct {
 	Password pulumi.StringPtrInput
 	// Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
 	PgAllowReplication pulumi.BoolPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This
+	// property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -274,12 +289,14 @@ func (o PgUserOutput) PgAllowReplication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.BoolPtrOutput { return v.PgAllowReplication }).(pulumi.BoolPtrOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+// reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o PgUserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o PgUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -289,7 +306,8 @@ func (o PgUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This
+// property cannot be changed, doing so forces recreation of the resource.
 func (o PgUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

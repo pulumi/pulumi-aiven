@@ -14,9 +14,6 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaKafkaUserConfigPrivatelinkAccess
     {
         public readonly string? Jolokia;
-        /// <summary>
-        /// Kafka server provided values
-        /// </summary>
         public readonly string? Kafka;
         public readonly string? KafkaConnect;
         public readonly string? KafkaRest;

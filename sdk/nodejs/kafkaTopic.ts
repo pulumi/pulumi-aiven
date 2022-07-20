@@ -51,7 +51,8 @@ export class KafkaTopic extends pulumi.CustomResource {
      */
     public readonly partitions!: pulumi.Output<number>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -59,7 +60,8 @@ export class KafkaTopic extends pulumi.CustomResource {
      */
     public readonly replication!: pulumi.Output<number>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -141,7 +143,8 @@ export interface KafkaTopicState {
      */
     partitions?: pulumi.Input<number>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -149,7 +152,8 @@ export interface KafkaTopicState {
      */
     replication?: pulumi.Input<number>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -180,7 +184,8 @@ export interface KafkaTopicArgs {
      */
     partitions: pulumi.Input<number>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
@@ -188,7 +193,8 @@ export interface KafkaTopicArgs {
      */
     replication: pulumi.Input<number>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**

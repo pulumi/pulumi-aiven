@@ -12,27 +12,15 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Authentication method
-        /// </summary>
         [Input("authentication")]
         public Input<string>? Authentication { get; set; }
 
-        /// <summary>
-        /// Basic authentication password
-        /// </summary>
         [Input("basicAuthPassword")]
         public Input<string>? BasicAuthPassword { get; set; }
 
-        /// <summary>
-        /// Basic authentication user name
-        /// </summary>
         [Input("basicAuthUsername")]
         public Input<string>? BasicAuthUsername { get; set; }
 
-        /// <summary>
-        /// Schema Registry URL
-        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

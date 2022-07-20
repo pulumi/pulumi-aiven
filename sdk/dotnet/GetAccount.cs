@@ -73,9 +73,6 @@ namespace Pulumi.Aiven
 
     public sealed class GetAccountArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Account name
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -86,9 +83,6 @@ namespace Pulumi.Aiven
 
     public sealed class GetAccountInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Account name
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -101,37 +95,16 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetAccountResult
     {
-        /// <summary>
-        /// Account id
-        /// </summary>
         public readonly string AccountId;
-        /// <summary>
-        /// Time of creation
-        /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Account name
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Owner team id
-        /// </summary>
         public readonly string OwnerTeamId;
-        /// <summary>
-        /// Billing group id
-        /// </summary>
         public readonly string PrimaryBillingGroupId;
-        /// <summary>
-        /// Tenant id
-        /// </summary>
         public readonly string TenantId;
-        /// <summary>
-        /// Time of last update
-        /// </summary>
         public readonly string UpdateTime;
 
         [OutputConstructor]

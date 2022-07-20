@@ -35,13 +35,7 @@ export function getOpenSearchAclConfig(args: GetOpenSearchAclConfigArgs, opts?: 
  * A collection of arguments for invoking getOpenSearchAclConfig.
  */
 export interface GetOpenSearchAclConfigArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: string;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: string;
 }
 
@@ -49,25 +43,13 @@ export interface GetOpenSearchAclConfigArgs {
  * A collection of values returned by getOpenSearchAclConfig.
  */
 export interface GetOpenSearchAclConfigResult {
-    /**
-     * Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
-     */
     readonly enabled: boolean;
-    /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
-     */
     readonly extendedAcl: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly project: string;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly serviceName: string;
 }
 
@@ -79,12 +61,6 @@ export function getOpenSearchAclConfigOutput(args: GetOpenSearchAclConfigOutputA
  * A collection of arguments for invoking getOpenSearchAclConfig.
  */
 export interface GetOpenSearchAclConfigOutputArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: pulumi.Input<string>;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: pulumi.Input<string>;
 }

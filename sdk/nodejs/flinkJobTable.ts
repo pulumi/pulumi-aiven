@@ -64,47 +64,63 @@ export class FlinkJobTable extends pulumi.CustomResource {
     }
 
     /**
-     * The id of the service integration that is used with this table. It must have the service integration type `flink`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The id of the service integration that is used with this table. It must have the service integration type `flink`. To
+     * set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so
+     * forces recreation of the resource.
      */
     public readonly integrationId!: pulumi.Output<string>;
     /**
-     * Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or postgres service. This property cannot be changed, doing so forces recreation of the resource.
+     * Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or
+     * postgres service. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly jdbcTable!: pulumi.Output<string | undefined>;
     /**
-     * When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null. For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
+     * When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null.
+     * For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is
+     * found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values
+     * are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly kafkaConnectorType!: pulumi.Output<string | undefined>;
     /**
-     * Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This
+     * property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly kafkaKeyFields!: pulumi.Output<string[] | undefined>;
     /**
-     * Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
+     * `json`. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly kafkaKeyFormat!: pulumi.Output<string | undefined>;
     /**
-     * Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+     * Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property
+     * cannot be changed, doing so forces recreation of the resource.
      */
     public readonly kafkaStartupMode!: pulumi.Output<string | undefined>;
     /**
-     * Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
+     * Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka
+     * service. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly kafkaTopic!: pulumi.Output<string | undefined>;
     /**
-     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table
+     * schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message
+     * value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot
+     * be changed, doing so forces recreation of the resource.
      */
     public readonly kafkaValueFieldsInclude!: pulumi.Output<string | undefined>;
     /**
-     * Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
+     * `json`. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly kafkaValueFormat!: pulumi.Output<string | undefined>;
     /**
-     * [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
+     * [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table
+     * creation. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly likeOptions!: pulumi.Output<string | undefined>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -112,7 +128,8 @@ export class FlinkJobTable extends pulumi.CustomResource {
      */
     public readonly schemaSql!: pulumi.Output<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -201,47 +218,63 @@ export class FlinkJobTable extends pulumi.CustomResource {
  */
 export interface FlinkJobTableState {
     /**
-     * The id of the service integration that is used with this table. It must have the service integration type `flink`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The id of the service integration that is used with this table. It must have the service integration type `flink`. To
+     * set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so
+     * forces recreation of the resource.
      */
     integrationId?: pulumi.Input<string>;
     /**
-     * Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or postgres service. This property cannot be changed, doing so forces recreation of the resource.
+     * Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or
+     * postgres service. This property cannot be changed, doing so forces recreation of the resource.
      */
     jdbcTable?: pulumi.Input<string>;
     /**
-     * When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null. For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
+     * When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null.
+     * For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is
+     * found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values
+     * are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
      */
     kafkaConnectorType?: pulumi.Input<string>;
     /**
-     * Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This
+     * property cannot be changed, doing so forces recreation of the resource.
      */
     kafkaKeyFields?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
+     * `json`. This property cannot be changed, doing so forces recreation of the resource.
      */
     kafkaKeyFormat?: pulumi.Input<string>;
     /**
-     * Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+     * Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property
+     * cannot be changed, doing so forces recreation of the resource.
      */
     kafkaStartupMode?: pulumi.Input<string>;
     /**
-     * Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
+     * Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka
+     * service. This property cannot be changed, doing so forces recreation of the resource.
      */
     kafkaTopic?: pulumi.Input<string>;
     /**
-     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table
+     * schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message
+     * value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot
+     * be changed, doing so forces recreation of the resource.
      */
     kafkaValueFieldsInclude?: pulumi.Input<string>;
     /**
-     * Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
+     * `json`. This property cannot be changed, doing so forces recreation of the resource.
      */
     kafkaValueFormat?: pulumi.Input<string>;
     /**
-     * [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
+     * [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table
+     * creation. This property cannot be changed, doing so forces recreation of the resource.
      */
     likeOptions?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -249,7 +282,8 @@ export interface FlinkJobTableState {
      */
     schemaSql?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -271,47 +305,63 @@ export interface FlinkJobTableState {
  */
 export interface FlinkJobTableArgs {
     /**
-     * The id of the service integration that is used with this table. It must have the service integration type `flink`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The id of the service integration that is used with this table. It must have the service integration type `flink`. To
+     * set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so
+     * forces recreation of the resource.
      */
     integrationId: pulumi.Input<string>;
     /**
-     * Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or postgres service. This property cannot be changed, doing so forces recreation of the resource.
+     * Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or
+     * postgres service. This property cannot be changed, doing so forces recreation of the resource.
      */
     jdbcTable?: pulumi.Input<string>;
     /**
-     * When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null. For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
+     * When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null.
+     * For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is
+     * found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values
+     * are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
      */
     kafkaConnectorType?: pulumi.Input<string>;
     /**
-     * Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This
+     * property cannot be changed, doing so forces recreation of the resource.
      */
     kafkaKeyFields?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
+     * `json`. This property cannot be changed, doing so forces recreation of the resource.
      */
     kafkaKeyFormat?: pulumi.Input<string>;
     /**
-     * Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+     * Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property
+     * cannot be changed, doing so forces recreation of the resource.
      */
     kafkaStartupMode?: pulumi.Input<string>;
     /**
-     * Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
+     * Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka
+     * service. This property cannot be changed, doing so forces recreation of the resource.
      */
     kafkaTopic?: pulumi.Input<string>;
     /**
-     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table
+     * schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message
+     * value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot
+     * be changed, doing so forces recreation of the resource.
      */
     kafkaValueFieldsInclude?: pulumi.Input<string>;
     /**
-     * Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
+     * `json`. This property cannot be changed, doing so forces recreation of the resource.
      */
     kafkaValueFormat?: pulumi.Input<string>;
     /**
-     * [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
+     * [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table
+     * creation. This property cannot be changed, doing so forces recreation of the resource.
      */
     likeOptions?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
@@ -319,7 +369,8 @@ export interface FlinkJobTableArgs {
      */
     schemaSql: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**

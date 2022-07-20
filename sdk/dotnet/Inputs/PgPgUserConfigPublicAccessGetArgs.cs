@@ -12,9 +12,6 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class PgPgUserConfigPublicAccessGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// PostgreSQL specific server provided values
-        /// </summary>
         [Input("pg")]
         public Input<string>? Pg { get; set; }
 

@@ -55,17 +55,11 @@ class GetServiceComponentResult:
     @property
     @pulumi.getter
     def component(self) -> str:
-        """
-        Service component name
-        """
         return pulumi.get(self, "component")
 
     @property
     @pulumi.getter
     def host(self) -> str:
-        """
-        DNS name for connecting to the service component
-        """
         return pulumi.get(self, "host")
 
     @property
@@ -79,57 +73,36 @@ class GetServiceComponentResult:
     @property
     @pulumi.getter(name="kafkaAuthenticationMethod")
     def kafka_authentication_method(self) -> Optional[str]:
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
         return pulumi.get(self, "kafka_authentication_method")
 
     @property
     @pulumi.getter
     def port(self) -> int:
-        """
-        Port number for connecting to the service component
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Project name
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def route(self) -> Optional[str]:
-        """
-        Network access route
-        """
         return pulumi.get(self, "route")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[str]:
-        """
-        Service name
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def ssl(self) -> Optional[bool]:
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
-        """
         return pulumi.get(self, "ssl")
 
     @property
     @pulumi.getter
     def usage(self) -> Optional[str]:
-        """
-        DNS usage name
-        """
         return pulumi.get(self, "usage")
 
 
@@ -164,14 +137,9 @@ def get_service_component(component: Optional[str] = None,
 
     Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
 
+    ## Example Usage
 
-    :param str component: Service component name
-    :param str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
-    :param str project: Project name
-    :param str route: Network access route
-    :param str service_name: Service name
-    :param bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
-    :param str usage: DNS usage name
+    {{tffile "examples/data-sources/aiven_service_component/data-source.tf"}}
     """
     __args__ = dict()
     __args__['component'] = component
@@ -214,13 +182,8 @@ def get_service_component_output(component: Optional[pulumi.Input[str]] = None,
 
     Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
 
+    ## Example Usage
 
-    :param str component: Service component name
-    :param str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
-    :param str project: Project name
-    :param str route: Network access route
-    :param str service_name: Service name
-    :param bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
-    :param str usage: DNS usage name
+    {{tffile "examples/data-sources/aiven_service_component/data-source.tf"}}
     """
     ...

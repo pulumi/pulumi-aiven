@@ -49,17 +49,11 @@ class GetCassandraUserResult:
     @property
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> str:
-        """
-        Access certificate for the user if applicable for the service in question
-        """
         return pulumi.get(self, "access_cert")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> str:
-        """
-        Access certificate key for the user if applicable for the service in question
-        """
         return pulumi.get(self, "access_key")
 
     @property
@@ -73,41 +67,26 @@ class GetCassandraUserResult:
     @property
     @pulumi.getter
     def password(self) -> str:
-        """
-        The password of the Cassandra User.
-        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def username(self) -> str:
-        """
-        The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "username")
 
 
@@ -144,11 +123,6 @@ def get_cassandra_user(project: Optional[str] = None,
         service_name="my-service",
         username="user1")
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -189,10 +163,5 @@ def get_cassandra_user_output(project: Optional[pulumi.Input[str]] = None,
         service_name="my-service",
         username="user1")
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

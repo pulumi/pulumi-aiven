@@ -22,13 +22,19 @@ class ConnectionPoolArgs:
                  username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConnectionPool resource.
-        :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] pool_mode: The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
-        :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
-        :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] pool_mode: The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
+               `transaction`.
+        :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming
+               connections, which is always a much larger number. The default value is `10`.
+        :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this
+               variable as a reference.
         """
         pulumi.set(__self__, "database_name", database_name)
         pulumi.set(__self__, "pool_name", pool_name)
@@ -45,7 +51,8 @@ class ConnectionPoolArgs:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Input[str]:
         """
-        The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -69,7 +76,8 @@ class ConnectionPoolArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -81,7 +89,8 @@ class ConnectionPoolArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -93,7 +102,8 @@ class ConnectionPoolArgs:
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
+        `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
@@ -105,7 +115,8 @@ class ConnectionPoolArgs:
     @pulumi.getter(name="poolSize")
     def pool_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        The number of connections the pool may create towards the backend server. This does not affect the number of incoming
+        connections, which is always a much larger number. The default value is `10`.
         """
         return pulumi.get(self, "pool_size")
 
@@ -117,7 +128,8 @@ class ConnectionPoolArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        The name of the service user used to connect to the database. To set up proper dependencies please refer to this
+        variable as a reference.
         """
         return pulumi.get(self, "username")
 
@@ -140,13 +152,19 @@ class _ConnectionPoolState:
         """
         Input properties used for looking up and filtering ConnectionPool resources.
         :param pulumi.Input[str] connection_uri: The URI for connecting to the pool
-        :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] pool_mode: The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] pool_mode: The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
+               `transaction`.
         :param pulumi.Input[str] pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming
+               connections, which is always a much larger number. The default value is `10`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this
+               variable as a reference.
         """
         if connection_uri is not None:
             pulumi.set(__self__, "connection_uri", connection_uri)
@@ -181,7 +199,8 @@ class _ConnectionPoolState:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -193,7 +212,8 @@ class _ConnectionPoolState:
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
+        `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
@@ -217,7 +237,8 @@ class _ConnectionPoolState:
     @pulumi.getter(name="poolSize")
     def pool_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        The number of connections the pool may create towards the backend server. This does not affect the number of incoming
+        connections, which is always a much larger number. The default value is `10`.
         """
         return pulumi.get(self, "pool_size")
 
@@ -229,7 +250,8 @@ class _ConnectionPoolState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -241,7 +263,8 @@ class _ConnectionPoolState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -253,7 +276,8 @@ class _ConnectionPoolState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        The name of the service user used to connect to the database. To set up proper dependencies please refer to this
+        variable as a reference.
         """
         return pulumi.get(self, "username")
 
@@ -302,13 +326,19 @@ class ConnectionPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] pool_mode: The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] pool_mode: The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
+               `transaction`.
         :param pulumi.Input[str] pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming
+               connections, which is always a much larger number. The default value is `10`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this
+               variable as a reference.
         """
         ...
     @overload
@@ -417,13 +447,19 @@ class ConnectionPool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_uri: The URI for connecting to the pool
-        :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] pool_mode: The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] pool_mode: The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
+               `transaction`.
         :param pulumi.Input[str] pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming
+               connections, which is always a much larger number. The default value is `10`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this
+               variable as a reference.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -451,7 +487,8 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[str]:
         """
-        The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -459,7 +496,8 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
+        `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
@@ -475,7 +513,8 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="poolSize")
     def pool_size(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        The number of connections the pool may create towards the backend server. This does not affect the number of incoming
+        connections, which is always a much larger number. The default value is `10`.
         """
         return pulumi.get(self, "pool_size")
 
@@ -483,7 +522,8 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -491,7 +531,8 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -499,7 +540,8 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        The name of the service user used to connect to the database. To set up proper dependencies please refer to this
+        variable as a reference.
         """
         return pulumi.get(self, "username")
 

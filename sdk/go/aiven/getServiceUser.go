@@ -47,44 +47,28 @@ func LookupServiceUser(ctx *pulumi.Context, args *LookupServiceUserArgs, opts ..
 
 // A collection of arguments for invoking getServiceUser.
 type LookupServiceUserArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Username string `pulumi:"username"`
+	Username    string `pulumi:"username"`
 }
 
 // A collection of values returned by getServiceUser.
 type LookupServiceUserResult struct {
-	// Access certificate for the user if applicable for the service in question
-	AccessCert string `pulumi:"accessCert"`
-	// Access certificate key for the user if applicable for the service in question
-	AccessKey string `pulumi:"accessKey"`
-	// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+	AccessCert     string `pulumi:"accessCert"`
+	AccessKey      string `pulumi:"accessKey"`
 	Authentication string `pulumi:"authentication"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The password of the service user ( not applicable for all services ).
-	Password string `pulumi:"password"`
-	// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
-	PgAllowReplication bool `pulumi:"pgAllowReplication"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+	Id                 string   `pulumi:"id"`
+	Password           string   `pulumi:"password"`
+	PgAllowReplication bool     `pulumi:"pgAllowReplication"`
+	Project            string   `pulumi:"project"`
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
-	// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
-	RedisAclChannels []string `pulumi:"redisAclChannels"`
-	// Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
-	RedisAclCommands []string `pulumi:"redisAclCommands"`
-	// Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
-	RedisAclKeys []string `pulumi:"redisAclKeys"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// Type of the user account. Tells wether the user is the primary account or a regular account.
-	Type string `pulumi:"type"`
-	// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Username string `pulumi:"username"`
+	RedisAclChannels   []string `pulumi:"redisAclChannels"`
+	RedisAclCommands   []string `pulumi:"redisAclCommands"`
+	RedisAclKeys       []string `pulumi:"redisAclKeys"`
+	ServiceName        string   `pulumi:"serviceName"`
+	Type               string   `pulumi:"type"`
+	Username           string   `pulumi:"username"`
 }
 
 func LookupServiceUserOutput(ctx *pulumi.Context, args LookupServiceUserOutputArgs, opts ...pulumi.InvokeOption) LookupServiceUserResultOutput {
@@ -102,12 +86,9 @@ func LookupServiceUserOutput(ctx *pulumi.Context, args LookupServiceUserOutputAr
 
 // A collection of arguments for invoking getServiceUser.
 type LookupServiceUserOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project     pulumi.StringInput `pulumi:"project"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Username pulumi.StringInput `pulumi:"username"`
+	Username    pulumi.StringInput `pulumi:"username"`
 }
 
 func (LookupServiceUserOutputArgs) ElementType() reflect.Type {
@@ -129,17 +110,14 @@ func (o LookupServiceUserResultOutput) ToLookupServiceUserResultOutputWithContex
 	return o
 }
 
-// Access certificate for the user if applicable for the service in question
 func (o LookupServiceUserResultOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) string { return v.AccessCert }).(pulumi.StringOutput)
 }
 
-// Access certificate key for the user if applicable for the service in question
 func (o LookupServiceUserResultOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) string { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 func (o LookupServiceUserResultOutput) Authentication() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) string { return v.Authentication }).(pulumi.StringOutput)
 }
@@ -149,52 +127,42 @@ func (o LookupServiceUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The password of the service user ( not applicable for all services ).
 func (o LookupServiceUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupServiceUserResultOutput) PgAllowReplication() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) bool { return v.PgAllowReplication }).(pulumi.BoolOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupServiceUserResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupServiceUserResultOutput) RedisAclCategories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) []string { return v.RedisAclCategories }).(pulumi.StringArrayOutput)
 }
 
-// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupServiceUserResultOutput) RedisAclChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) []string { return v.RedisAclChannels }).(pulumi.StringArrayOutput)
 }
 
-// Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupServiceUserResultOutput) RedisAclCommands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) []string { return v.RedisAclCommands }).(pulumi.StringArrayOutput)
 }
 
-// Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupServiceUserResultOutput) RedisAclKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) []string { return v.RedisAclKeys }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupServiceUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Type of the user account. Tells wether the user is the primary account or a regular account.
 func (o LookupServiceUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupServiceUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

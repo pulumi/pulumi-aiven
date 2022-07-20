@@ -90,6 +90,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KafkaSchema{}
 	case "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration":
 		r = &KafkaSchemaConfiguration{}
+	case "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl":
+		r = &KafkaSchemaRegistryAcl{}
 	case "aiven:index/kafkaTopic:KafkaTopic":
 		r = &KafkaTopic{}
 	case "aiven:index/kafkaUser:KafkaUser":
@@ -345,6 +347,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/kafkaSchemaConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/kafkaSchemaRegistryAcl",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

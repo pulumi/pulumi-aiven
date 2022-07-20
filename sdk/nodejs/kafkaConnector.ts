@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *         "connector.class": "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector",
  *         "type.name": "os-connector",
  *         name: "kafka-os-con1",
- *         "connection.url": `${aiven_opensearch["os-service1"].service_host}:${aiven_opensearch["os-service1"].service_port}`,
+ *         "connection.url": aiven_elasticsearch["os-service1"].service_uri,
  *         "connection.username": aiven_opensearch["os-service1"].service_username,
  *         "connection.password": aiven_opensearch["os-service1"].service_password,
  *     },
@@ -97,11 +97,13 @@ export class KafkaConnector extends pulumi.CustomResource {
      */
     public /*out*/ readonly pluginVersion!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -201,11 +203,13 @@ export interface KafkaConnectorState {
      */
     pluginVersion?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -227,11 +231,13 @@ export interface KafkaConnectorArgs {
      */
     connectorName: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

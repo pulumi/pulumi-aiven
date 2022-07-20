@@ -13,45 +13,15 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class InfluxDbInfluxdbUserConfig
     {
-        /// <summary>
-        /// Custom domain
-        /// </summary>
         public readonly string? CustomDomain;
-        /// <summary>
-        /// influxdb.conf configuration values
-        /// </summary>
         public readonly Outputs.InfluxDbInfluxdbUserConfigInfluxdb? Influxdb;
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         public readonly Outputs.InfluxDbInfluxdbUserConfigPrivateAccess? PrivateAccess;
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         public readonly Outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess? PrivatelinkAccess;
-        /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ProjectToForkFrom;
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         public readonly Outputs.InfluxDbInfluxdbUserConfigPublicAccess? PublicAccess;
-        /// <summary>
-        /// Name of the basebackup to restore in forked service
-        /// </summary>
         public readonly string? RecoveryBasebackupName;
-        /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ServiceToForkFrom;
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

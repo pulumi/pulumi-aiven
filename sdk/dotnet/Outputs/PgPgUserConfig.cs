@@ -13,105 +13,30 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class PgPgUserConfig
     {
-        /// <summary>
-        /// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-        /// </summary>
         public readonly string? AdminPassword;
-        /// <summary>
-        /// Custom username for admin user. This must be set only when a new service is being created.
-        /// </summary>
         public readonly string? AdminUsername;
-        /// <summary>
-        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-        /// </summary>
         public readonly string? BackupHour;
-        /// <summary>
-        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-        /// </summary>
         public readonly string? BackupMinute;
-        /// <summary>
-        /// Enable IPv6
-        /// </summary>
         public readonly string? EnableIpv6;
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Migrate data from existing server
-        /// </summary>
         public readonly Outputs.PgPgUserConfigMigration? Migration;
-        /// <summary>
-        /// postgresql.conf configuration values
-        /// </summary>
         public readonly Outputs.PgPgUserConfigPg? Pg;
-        /// <summary>
-        /// Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
-        /// </summary>
         public readonly string? PgReadReplica;
-        /// <summary>
-        /// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? PgServiceToForkFrom;
-        /// <summary>
-        /// PostgreSQL major version
-        /// </summary>
         public readonly string? PgVersion;
-        /// <summary>
-        /// PGBouncer connection pooling settings
-        /// </summary>
         public readonly Outputs.PgPgUserConfigPgbouncer? Pgbouncer;
-        /// <summary>
-        /// PGLookout settings
-        /// </summary>
         public readonly Outputs.PgPgUserConfigPglookout? Pglookout;
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         public readonly Outputs.PgPgUserConfigPrivateAccess? PrivateAccess;
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         public readonly Outputs.PgPgUserConfigPrivatelinkAccess? PrivatelinkAccess;
-        /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ProjectToForkFrom;
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         public readonly Outputs.PgPgUserConfigPublicAccess? PublicAccess;
-        /// <summary>
-        /// Recovery target time when forking a service. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? RecoveryTargetTime;
-        /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ServiceToForkFrom;
-        /// <summary>
-        /// shared*buffers*percentage
-        /// </summary>
         public readonly string? SharedBuffersPercentage;
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         public readonly string? StaticIps;
-        /// <summary>
-        /// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-        /// </summary>
         public readonly string? SynchronousReplication;
-        /// <summary>
-        /// TimescaleDB extension configuration values
-        /// </summary>
         public readonly Outputs.PgPgUserConfigTimescaledb? Timescaledb;
-        /// <summary>
-        /// Variant of the PostgreSQL service, may affect the features that are exposed by default
-        /// </summary>
         public readonly string? Variant;
-        /// <summary>
-        /// work_mem
-        /// </summary>
         public readonly string? WorkMem;
 
         [OutputConstructor]

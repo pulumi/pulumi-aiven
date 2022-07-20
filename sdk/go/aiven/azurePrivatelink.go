@@ -54,9 +54,11 @@ type AzurePrivatelink struct {
 	AzureServiceId pulumi.StringOutput `pulumi:"azureServiceId"`
 	// Printable result of the Azure Privatelink request
 	Message pulumi.StringOutput `pulumi:"message"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Privatelink resource state
 	State pulumi.StringOutput `pulumi:"state"`
@@ -108,9 +110,11 @@ type azurePrivatelinkState struct {
 	AzureServiceId *string `pulumi:"azureServiceId"`
 	// Printable result of the Azure Privatelink request
 	Message *string `pulumi:"message"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// Privatelink resource state
 	State *string `pulumi:"state"`
@@ -125,9 +129,11 @@ type AzurePrivatelinkState struct {
 	AzureServiceId pulumi.StringPtrInput
 	// Printable result of the Azure Privatelink request
 	Message pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// Privatelink resource state
 	State pulumi.StringPtrInput
@@ -140,9 +146,11 @@ func (AzurePrivatelinkState) ElementType() reflect.Type {
 }
 
 type azurePrivatelinkArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// A List of allowed Subscription IDs Maximum Length: `16`.
 	UserSubscriptionIds []string `pulumi:"userSubscriptionIds"`
@@ -150,9 +158,11 @@ type azurePrivatelinkArgs struct {
 
 // The set of arguments for constructing a AzurePrivatelink resource.
 type AzurePrivatelinkArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// A List of allowed Subscription IDs Maximum Length: `16`.
 	UserSubscriptionIds pulumi.StringArrayInput
@@ -260,12 +270,14 @@ func (o AzurePrivatelinkOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.Message }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+// reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o AzurePrivatelinkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o AzurePrivatelinkOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

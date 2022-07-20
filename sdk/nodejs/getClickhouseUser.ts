@@ -37,17 +37,8 @@ export function getClickhouseUser(args: GetClickhouseUserArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getClickhouseUser.
  */
 export interface GetClickhouseUserArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: string;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: string;
-    /**
-     * The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
-     */
     username: string;
 }
 
@@ -59,29 +50,11 @@ export interface GetClickhouseUserResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The password of the clickhouse user.
-     */
     readonly password: string;
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly project: string;
-    /**
-     * Indicates if a clickhouse user is required
-     */
     readonly required: boolean;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly serviceName: string;
-    /**
-     * The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly username: string;
-    /**
-     * UUID of the clickhouse user.
-     */
     readonly uuid: string;
 }
 
@@ -93,16 +66,7 @@ export function getClickhouseUserOutput(args: GetClickhouseUserOutputArgs, opts?
  * A collection of arguments for invoking getClickhouseUser.
  */
 export interface GetClickhouseUserOutputArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: pulumi.Input<string>;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
-     */
     username: pulumi.Input<string>;
 }

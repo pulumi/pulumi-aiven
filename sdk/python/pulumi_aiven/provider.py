@@ -92,7 +92,9 @@ class Provider(pulumi.ProviderResource):
 
             if api_token is None and not opts.urn:
                 raise TypeError("Missing required property 'api_token'")
-            __props__.__dict__["api_token"] = api_token
+            __props__.__dict__["api_token"] = None if api_token is None else pulumi.Output.secret(api_token)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiToken"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'aiven',
             resource_name,

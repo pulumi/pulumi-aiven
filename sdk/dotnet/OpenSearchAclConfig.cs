@@ -69,19 +69,23 @@ namespace Pulumi.Aiven
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
+        /// ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
+        /// indexes they have been granted access to. The default value is `true`.
         /// </summary>
         [Output("extendedAcl")]
         public Output<bool?> ExtendedAcl { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -139,19 +143,23 @@ namespace Pulumi.Aiven
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
+        /// ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
+        /// indexes they have been granted access to. The default value is `true`.
         /// </summary>
         [Input("extendedAcl")]
         public Input<bool>? ExtendedAcl { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -170,19 +178,23 @@ namespace Pulumi.Aiven
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
+        /// ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
+        /// indexes they have been granted access to. The default value is `true`.
         /// </summary>
         [Input("extendedAcl")]
         public Input<bool>? ExtendedAcl { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

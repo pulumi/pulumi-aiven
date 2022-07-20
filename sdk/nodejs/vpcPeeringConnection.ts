@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * {{tffile "examples/resources/aiven_vpc_peering_connection/resource.tf"}}
+ *
+ * ## Import
+ *
+ * {{codefile "shell" "examples/resources/aiven_vpc_peering_connection/import.sh"}}
+ */
 export class VpcPeeringConnection extends pulumi.CustomResource {
     /**
      * Get an existing VpcPeeringConnection resource's state with the given name, ID, and optional extra
@@ -33,7 +42,8 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
     }
 
     /**
-     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
+     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
+     * changed, doing so forces recreation of the resource.
      */
     public readonly peerAzureAppId!: pulumi.Output<string | undefined>;
     /**
@@ -41,11 +51,13 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
      */
     public readonly peerAzureTenantId!: pulumi.Output<string | undefined>;
     /**
-     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
+     * resource.
      */
     public readonly peerCloudAccount!: pulumi.Output<string>;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
+     * recreation of the resource.
      */
     public readonly peerRegion!: pulumi.Output<string | undefined>;
     /**
@@ -53,7 +65,8 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
      */
     public readonly peerResourceGroup!: pulumi.Output<string | undefined>;
     /**
-     * AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
+     * resource.
      */
     public readonly peerVpc!: pulumi.Output<string>;
     /**
@@ -128,7 +141,8 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
  */
 export interface VpcPeeringConnectionState {
     /**
-     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
+     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
+     * changed, doing so forces recreation of the resource.
      */
     peerAzureAppId?: pulumi.Input<string>;
     /**
@@ -136,11 +150,13 @@ export interface VpcPeeringConnectionState {
      */
     peerAzureTenantId?: pulumi.Input<string>;
     /**
-     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
+     * resource.
      */
     peerCloudAccount?: pulumi.Input<string>;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
+     * recreation of the resource.
      */
     peerRegion?: pulumi.Input<string>;
     /**
@@ -148,7 +164,8 @@ export interface VpcPeeringConnectionState {
      */
     peerResourceGroup?: pulumi.Input<string>;
     /**
-     * AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
+     * resource.
      */
     peerVpc?: pulumi.Input<string>;
     /**
@@ -174,7 +191,8 @@ export interface VpcPeeringConnectionState {
  */
 export interface VpcPeeringConnectionArgs {
     /**
-     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
+     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
+     * changed, doing so forces recreation of the resource.
      */
     peerAzureAppId?: pulumi.Input<string>;
     /**
@@ -182,11 +200,13 @@ export interface VpcPeeringConnectionArgs {
      */
     peerAzureTenantId?: pulumi.Input<string>;
     /**
-     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
+     * resource.
      */
     peerCloudAccount: pulumi.Input<string>;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
+     * recreation of the resource.
      */
     peerRegion?: pulumi.Input<string>;
     /**
@@ -194,7 +214,8 @@ export interface VpcPeeringConnectionArgs {
      */
     peerResourceGroup?: pulumi.Input<string>;
     /**
-     * AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
+     * resource.
      */
     peerVpc: pulumi.Input<string>;
     /**

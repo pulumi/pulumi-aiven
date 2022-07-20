@@ -22,40 +22,27 @@ func LookupAccountAuthentication(ctx *pulumi.Context, args *LookupAccountAuthent
 
 // A collection of arguments for invoking getAccountAuthentication.
 type LookupAccountAuthenticationArgs struct {
-	// The unique id of the account.
 	AccountId string `pulumi:"accountId"`
-	// The name of the account authentication.
-	Name string `pulumi:"name"`
+	Name      string `pulumi:"name"`
 }
 
 // A collection of values returned by getAccountAuthentication.
 type LookupAccountAuthenticationResult struct {
-	// The unique id of the account.
-	AccountId string `pulumi:"accountId"`
-	// Account authentication id
+	AccountId        string `pulumi:"accountId"`
 	AuthenticationId string `pulumi:"authenticationId"`
-	// Time of creation
-	CreateTime string `pulumi:"createTime"`
-	// Status of account authentication method. The default value is `false`.
-	Enabled bool `pulumi:"enabled"`
+	AutoJoinTeamId   string `pulumi:"autoJoinTeamId"`
+	CreateTime       string `pulumi:"createTime"`
+	Enabled          bool   `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The name of the account authentication.
-	Name string `pulumi:"name"`
-	// SAML Assertion Consumer Service URL
-	SamlAcsUrl string `pulumi:"samlAcsUrl"`
-	// SAML Certificate
+	Id              string `pulumi:"id"`
+	Name            string `pulumi:"name"`
+	SamlAcsUrl      string `pulumi:"samlAcsUrl"`
 	SamlCertificate string `pulumi:"samlCertificate"`
-	// SAML Entity id
-	SamlEntityId string `pulumi:"samlEntityId"`
-	// SAML Idp URL
-	SamlIdpUrl string `pulumi:"samlIdpUrl"`
-	// SAML Metadata URL
+	SamlEntityId    string `pulumi:"samlEntityId"`
+	SamlIdpUrl      string `pulumi:"samlIdpUrl"`
 	SamlMetadataUrl string `pulumi:"samlMetadataUrl"`
-	// The account authentication type. The possible values are `internal` and `saml`.
-	Type string `pulumi:"type"`
-	// Time of last update
-	UpdateTime string `pulumi:"updateTime"`
+	Type            string `pulumi:"type"`
+	UpdateTime      string `pulumi:"updateTime"`
 }
 
 func LookupAccountAuthenticationOutput(ctx *pulumi.Context, args LookupAccountAuthenticationOutputArgs, opts ...pulumi.InvokeOption) LookupAccountAuthenticationResultOutput {
@@ -73,10 +60,8 @@ func LookupAccountAuthenticationOutput(ctx *pulumi.Context, args LookupAccountAu
 
 // A collection of arguments for invoking getAccountAuthentication.
 type LookupAccountAuthenticationOutputArgs struct {
-	// The unique id of the account.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// The name of the account authentication.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name      pulumi.StringInput `pulumi:"name"`
 }
 
 func (LookupAccountAuthenticationOutputArgs) ElementType() reflect.Type {
@@ -98,22 +83,22 @@ func (o LookupAccountAuthenticationResultOutput) ToLookupAccountAuthenticationRe
 	return o
 }
 
-// The unique id of the account.
 func (o LookupAccountAuthenticationResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Account authentication id
 func (o LookupAccountAuthenticationResultOutput) AuthenticationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.AuthenticationId }).(pulumi.StringOutput)
 }
 
-// Time of creation
+func (o LookupAccountAuthenticationResultOutput) AutoJoinTeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.AutoJoinTeamId }).(pulumi.StringOutput)
+}
+
 func (o LookupAccountAuthenticationResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Status of account authentication method. The default value is `false`.
 func (o LookupAccountAuthenticationResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -123,42 +108,34 @@ func (o LookupAccountAuthenticationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the account authentication.
 func (o LookupAccountAuthenticationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// SAML Assertion Consumer Service URL
 func (o LookupAccountAuthenticationResultOutput) SamlAcsUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlAcsUrl }).(pulumi.StringOutput)
 }
 
-// SAML Certificate
 func (o LookupAccountAuthenticationResultOutput) SamlCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlCertificate }).(pulumi.StringOutput)
 }
 
-// SAML Entity id
 func (o LookupAccountAuthenticationResultOutput) SamlEntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlEntityId }).(pulumi.StringOutput)
 }
 
-// SAML Idp URL
 func (o LookupAccountAuthenticationResultOutput) SamlIdpUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlIdpUrl }).(pulumi.StringOutput)
 }
 
-// SAML Metadata URL
 func (o LookupAccountAuthenticationResultOutput) SamlMetadataUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlMetadataUrl }).(pulumi.StringOutput)
 }
 
-// The account authentication type. The possible values are `internal` and `saml`.
 func (o LookupAccountAuthenticationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Time of last update
 func (o LookupAccountAuthenticationResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

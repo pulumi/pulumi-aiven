@@ -67,7 +67,8 @@ export class AwsVpcPeeringConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly awsVpcPeeringConnectionId!: pulumi.Output<string>;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
+     * recreation of the resource.
      */
     public readonly awsVpcRegion!: pulumi.Output<string>;
     /**
@@ -147,7 +148,8 @@ export interface AwsVpcPeeringConnectionState {
      */
     awsVpcPeeringConnectionId?: pulumi.Input<string>;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
+     * recreation of the resource.
      */
     awsVpcRegion?: pulumi.Input<string>;
     /**
@@ -177,7 +179,8 @@ export interface AwsVpcPeeringConnectionArgs {
      */
     awsVpcId: pulumi.Input<string>;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
+     * recreation of the resource.
      */
     awsVpcRegion: pulumi.Input<string>;
     /**

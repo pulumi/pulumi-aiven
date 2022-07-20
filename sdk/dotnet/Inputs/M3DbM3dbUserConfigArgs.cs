@@ -12,93 +12,52 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3DbM3dbUserConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Custom domain
-        /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
-
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
-        /// <summary>
-        /// M3 limits
-        /// </summary>
         [Input("limits")]
         public Input<Inputs.M3DbM3dbUserConfigLimitsArgs>? Limits { get; set; }
 
-        /// <summary>
-        /// M3 major version (deprecated, use m3db_version)
-        /// </summary>
         [Input("m3Version")]
         public Input<string>? M3Version { get; set; }
 
-        /// <summary>
-        /// Enable Graphite ingestion using Carbon plaintext protocol
-        /// </summary>
         [Input("m3coordinatorEnableGraphiteCarbonIngest")]
         public Input<string>? M3coordinatorEnableGraphiteCarbonIngest { get; set; }
 
-        /// <summary>
-        /// M3 major version (the minimum compatible version)
-        /// </summary>
         [Input("m3dbVersion")]
         public Input<string>? M3dbVersion { get; set; }
 
         [Input("namespaces")]
         private InputList<Inputs.M3DbM3dbUserConfigNamespaceArgs>? _namespaces;
-
-        /// <summary>
-        /// List of M3 namespaces
-        /// </summary>
         public InputList<Inputs.M3DbM3dbUserConfigNamespaceArgs> Namespaces
         {
             get => _namespaces ?? (_namespaces = new InputList<Inputs.M3DbM3dbUserConfigNamespaceArgs>());
             set => _namespaces = value;
         }
 
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.M3DbM3dbUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
-        /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
-        /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.M3DbM3dbUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
-        /// <summary>
-        /// M3 rules
-        /// </summary>
         [Input("rules")]
         public Input<Inputs.M3DbM3dbUserConfigRulesArgs>? Rules { get; set; }
 
-        /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
-        /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

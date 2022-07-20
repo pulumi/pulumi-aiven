@@ -13,13 +13,7 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationLogsUserConfig
     {
-        /// <summary>
-        /// Elasticsearch index retention limit
-        /// </summary>
         public readonly string? ElasticsearchIndexDaysMax;
-        /// <summary>
-        /// Elasticsearch index prefix
-        /// </summary>
         public readonly string? ElasticsearchIndexPrefix;
 
         [OutputConstructor]

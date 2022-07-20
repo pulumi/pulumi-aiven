@@ -25,6 +25,8 @@ type AccountAuthentication struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Account authentication id
 	AuthenticationId pulumi.StringOutput `pulumi:"authenticationId"`
+	// Team ID
+	AutoJoinTeamId pulumi.StringPtrOutput `pulumi:"autoJoinTeamId"`
 	// Time of creation
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Status of account authentication method. The default value is `false`.
@@ -86,6 +88,8 @@ type accountAuthenticationState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Account authentication id
 	AuthenticationId *string `pulumi:"authenticationId"`
+	// Team ID
+	AutoJoinTeamId *string `pulumi:"autoJoinTeamId"`
 	// Time of creation
 	CreateTime *string `pulumi:"createTime"`
 	// Status of account authentication method. The default value is `false`.
@@ -113,6 +117,8 @@ type AccountAuthenticationState struct {
 	AccountId pulumi.StringPtrInput
 	// Account authentication id
 	AuthenticationId pulumi.StringPtrInput
+	// Team ID
+	AutoJoinTeamId pulumi.StringPtrInput
 	// Time of creation
 	CreateTime pulumi.StringPtrInput
 	// Status of account authentication method. The default value is `false`.
@@ -142,6 +148,8 @@ func (AccountAuthenticationState) ElementType() reflect.Type {
 type accountAuthenticationArgs struct {
 	// The unique id of the account.
 	AccountId string `pulumi:"accountId"`
+	// Team ID
+	AutoJoinTeamId *string `pulumi:"autoJoinTeamId"`
 	// Status of account authentication method. The default value is `false`.
 	Enabled *bool `pulumi:"enabled"`
 	// The name of the account authentication.
@@ -160,6 +168,8 @@ type accountAuthenticationArgs struct {
 type AccountAuthenticationArgs struct {
 	// The unique id of the account.
 	AccountId pulumi.StringInput
+	// Team ID
+	AutoJoinTeamId pulumi.StringPtrInput
 	// Status of account authentication method. The default value is `false`.
 	Enabled pulumi.BoolPtrInput
 	// The name of the account authentication.
@@ -269,6 +279,11 @@ func (o AccountAuthenticationOutput) AccountId() pulumi.StringOutput {
 // Account authentication id
 func (o AccountAuthenticationOutput) AuthenticationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringOutput { return v.AuthenticationId }).(pulumi.StringOutput)
+}
+
+// Team ID
+func (o AccountAuthenticationOutput) AutoJoinTeamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringPtrOutput { return v.AutoJoinTeamId }).(pulumi.StringPtrOutput)
 }
 
 // Time of creation

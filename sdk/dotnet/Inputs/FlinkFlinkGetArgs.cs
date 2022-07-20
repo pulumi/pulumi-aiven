@@ -14,10 +14,6 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("hostPorts")]
         private InputList<string>? _hostPorts;
-
-        /// <summary>
-        /// Host and Port of a Flink server
-        /// </summary>
         public InputList<string> HostPorts
         {
             get => _hostPorts ?? (_hostPorts = new InputList<string>());

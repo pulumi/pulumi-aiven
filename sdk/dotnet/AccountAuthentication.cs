@@ -34,6 +34,12 @@ namespace Pulumi.Aiven
         public Output<string> AuthenticationId { get; private set; } = null!;
 
         /// <summary>
+        /// Team ID
+        /// </summary>
+        [Output("autoJoinTeamId")]
+        public Output<string?> AutoJoinTeamId { get; private set; } = null!;
+
+        /// <summary>
         /// Time of creation
         /// </summary>
         [Output("createTime")]
@@ -146,6 +152,12 @@ namespace Pulumi.Aiven
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Team ID
+        /// </summary>
+        [Input("autoJoinTeamId")]
+        public Input<string>? AutoJoinTeamId { get; set; }
+
+        /// <summary>
         /// Status of account authentication method. The default value is `false`.
         /// </summary>
         [Input("enabled")]
@@ -199,6 +211,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("authenticationId")]
         public Input<string>? AuthenticationId { get; set; }
+
+        /// <summary>
+        /// Team ID
+        /// </summary>
+        [Input("autoJoinTeamId")]
+        public Input<string>? AutoJoinTeamId { get; set; }
 
         /// <summary>
         /// Time of creation

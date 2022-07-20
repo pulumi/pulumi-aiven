@@ -13,41 +13,14 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationEndpointExternalKafkaUserConfig
     {
-        /// <summary>
-        /// Bootstrap servers
-        /// </summary>
         public readonly string? BootstrapServers;
-        /// <summary>
-        /// The list of SASL mechanisms enabled in the Kafka server.
-        /// </summary>
         public readonly string? SaslMechanism;
-        /// <summary>
-        /// Password for SASL PLAIN mechanism in the Kafka server.
-        /// </summary>
         public readonly string? SaslPlainPassword;
-        /// <summary>
-        /// Username for SASL PLAIN mechanism in the Kafka server.
-        /// </summary>
         public readonly string? SaslPlainUsername;
-        /// <summary>
-        /// Security protocol
-        /// </summary>
         public readonly string? SecurityProtocol;
-        /// <summary>
-        /// PEM-encoded CA certificate
-        /// </summary>
         public readonly string? SslCaCert;
-        /// <summary>
-        /// PEM-encoded client certificate
-        /// </summary>
         public readonly string? SslClientCert;
-        /// <summary>
-        /// PEM-encoded client key
-        /// </summary>
         public readonly string? SslClientKey;
-        /// <summary>
-        /// The endpoint identification algorithm to validate server hostname using server certificate.
-        /// </summary>
         public readonly string? SslEndpointIdentificationAlgorithm;
 
         [OutputConstructor]

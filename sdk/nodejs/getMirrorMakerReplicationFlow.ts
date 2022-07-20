@@ -39,21 +39,9 @@ export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlo
  * A collection of arguments for invoking getMirrorMakerReplicationFlow.
  */
 export interface GetMirrorMakerReplicationFlowArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: string;
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: string;
-    /**
-     * Source cluster alias. Maximum Length: `128`.
-     */
     sourceCluster: string;
-    /**
-     * Target cluster alias. Maximum Length: `128`.
-     */
     targetCluster: string;
 }
 
@@ -61,53 +49,20 @@ export interface GetMirrorMakerReplicationFlowArgs {
  * A collection of values returned by getMirrorMakerReplicationFlow.
  */
 export interface GetMirrorMakerReplicationFlowResult {
-    /**
-     * Emit heartbeats enabled. The default value is `false`.
-     */
     readonly emitHeartbeatsEnabled: boolean;
-    /**
-     * Enable of disable replication flows for a service.
-     */
     readonly enable: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly project: string;
-    /**
-     * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
-     */
     readonly replicationPolicyClass: string;
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly serviceName: string;
-    /**
-     * Source cluster alias. Maximum Length: `128`.
-     */
     readonly sourceCluster: string;
-    /**
-     * Sync consumer group offsets. The default value is `false`.
-     */
     readonly syncGroupOffsetsEnabled: boolean;
-    /**
-     * Frequency of consumer group offset sync. The default value is `1`.
-     */
     readonly syncGroupOffsetsIntervalSeconds: number;
-    /**
-     * Target cluster alias. Maximum Length: `128`.
-     */
     readonly targetCluster: string;
-    /**
-     * List of topics and/or regular expressions to replicate
-     */
     readonly topics: string[];
-    /**
-     * List of topics and/or regular expressions to not replicate.
-     */
     readonly topicsBlacklists: string[];
 }
 
@@ -119,20 +74,8 @@ export function getMirrorMakerReplicationFlowOutput(args: GetMirrorMakerReplicat
  * A collection of arguments for invoking getMirrorMakerReplicationFlow.
  */
 export interface GetMirrorMakerReplicationFlowOutputArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: pulumi.Input<string>;
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * Source cluster alias. Maximum Length: `128`.
-     */
     sourceCluster: pulumi.Input<string>;
-    /**
-     * Target cluster alias. Maximum Length: `128`.
-     */
     targetCluster: pulumi.Input<string>;
 }

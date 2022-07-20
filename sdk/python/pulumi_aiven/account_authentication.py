@@ -15,6 +15,7 @@ class AccountAuthenticationArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  type: pulumi.Input[str],
+                 auto_join_team_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  saml_certificate: Optional[pulumi.Input[str]] = None,
@@ -24,6 +25,7 @@ class AccountAuthenticationArgs:
         The set of arguments for constructing a AccountAuthentication resource.
         :param pulumi.Input[str] account_id: The unique id of the account.
         :param pulumi.Input[str] type: The account authentication type. The possible values are `internal` and `saml`.
+        :param pulumi.Input[str] auto_join_team_id: Team ID
         :param pulumi.Input[bool] enabled: Status of account authentication method. The default value is `false`.
         :param pulumi.Input[str] name: The name of the account authentication.
         :param pulumi.Input[str] saml_certificate: SAML Certificate
@@ -32,6 +34,8 @@ class AccountAuthenticationArgs:
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "type", type)
+        if auto_join_team_id is not None:
+            pulumi.set(__self__, "auto_join_team_id", auto_join_team_id)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if name is not None:
@@ -66,6 +70,18 @@ class AccountAuthenticationArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="autoJoinTeamId")
+    def auto_join_team_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Team ID
+        """
+        return pulumi.get(self, "auto_join_team_id")
+
+    @auto_join_team_id.setter
+    def auto_join_team_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_join_team_id", value)
 
     @property
     @pulumi.getter
@@ -133,6 +149,7 @@ class _AccountAuthenticationState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  authentication_id: Optional[pulumi.Input[str]] = None,
+                 auto_join_team_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -147,6 +164,7 @@ class _AccountAuthenticationState:
         Input properties used for looking up and filtering AccountAuthentication resources.
         :param pulumi.Input[str] account_id: The unique id of the account.
         :param pulumi.Input[str] authentication_id: Account authentication id
+        :param pulumi.Input[str] auto_join_team_id: Team ID
         :param pulumi.Input[str] create_time: Time of creation
         :param pulumi.Input[bool] enabled: Status of account authentication method. The default value is `false`.
         :param pulumi.Input[str] name: The name of the account authentication.
@@ -162,6 +180,8 @@ class _AccountAuthenticationState:
             pulumi.set(__self__, "account_id", account_id)
         if authentication_id is not None:
             pulumi.set(__self__, "authentication_id", authentication_id)
+        if auto_join_team_id is not None:
+            pulumi.set(__self__, "auto_join_team_id", auto_join_team_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if enabled is not None:
@@ -206,6 +226,18 @@ class _AccountAuthenticationState:
     @authentication_id.setter
     def authentication_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "authentication_id", value)
+
+    @property
+    @pulumi.getter(name="autoJoinTeamId")
+    def auto_join_team_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Team ID
+        """
+        return pulumi.get(self, "auto_join_team_id")
+
+    @auto_join_team_id.setter
+    def auto_join_team_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_join_team_id", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -334,6 +366,7 @@ class AccountAuthentication(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 auto_join_team_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  saml_certificate: Optional[pulumi.Input[str]] = None,
@@ -353,6 +386,7 @@ class AccountAuthentication(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The unique id of the account.
+        :param pulumi.Input[str] auto_join_team_id: Team ID
         :param pulumi.Input[bool] enabled: Status of account authentication method. The default value is `false`.
         :param pulumi.Input[str] name: The name of the account authentication.
         :param pulumi.Input[str] saml_certificate: SAML Certificate
@@ -391,6 +425,7 @@ class AccountAuthentication(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 auto_join_team_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  saml_certificate: Optional[pulumi.Input[str]] = None,
@@ -412,6 +447,7 @@ class AccountAuthentication(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["auto_join_team_id"] = auto_join_team_id
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["name"] = name
             __props__.__dict__["saml_certificate"] = saml_certificate
@@ -437,6 +473,7 @@ class AccountAuthentication(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             authentication_id: Optional[pulumi.Input[str]] = None,
+            auto_join_team_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -456,6 +493,7 @@ class AccountAuthentication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The unique id of the account.
         :param pulumi.Input[str] authentication_id: Account authentication id
+        :param pulumi.Input[str] auto_join_team_id: Team ID
         :param pulumi.Input[str] create_time: Time of creation
         :param pulumi.Input[bool] enabled: Status of account authentication method. The default value is `false`.
         :param pulumi.Input[str] name: The name of the account authentication.
@@ -473,6 +511,7 @@ class AccountAuthentication(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["authentication_id"] = authentication_id
+        __props__.__dict__["auto_join_team_id"] = auto_join_team_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["name"] = name
@@ -500,6 +539,14 @@ class AccountAuthentication(pulumi.CustomResource):
         Account authentication id
         """
         return pulumi.get(self, "authentication_id")
+
+    @property
+    @pulumi.getter(name="autoJoinTeamId")
+    def auto_join_team_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Team ID
+        """
+        return pulumi.get(self, "auto_join_team_id")
 
     @property
     @pulumi.getter(name="createTime")

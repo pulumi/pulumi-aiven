@@ -40,17 +40,11 @@ class GetOpenSearchAclConfigResult:
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="extendedAcl")
     def extended_acl(self) -> bool:
-        """
-        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
-        """
         return pulumi.get(self, "extended_acl")
 
     @property
@@ -64,17 +58,11 @@ class GetOpenSearchAclConfigResult:
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
 
@@ -106,10 +94,6 @@ def get_open_search_acl_config(project: Optional[str] = None,
     os_acl_config = aiven.get_open_search_acl_config(project=aiven_project["os-project"]["project"],
         service_name=aiven_service["os"]["service_name"])
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -144,9 +128,5 @@ def get_open_search_acl_config_output(project: Optional[pulumi.Input[str]] = Non
     os_acl_config = aiven.get_open_search_acl_config(project=aiven_project["os-project"]["project"],
         service_name=aiven_service["os"]["service_name"])
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

@@ -12,9 +12,6 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class MySqlMysqlUserConfigPrivateAccessArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// MySQL specific server provided values
-        /// </summary>
         [Input("mysql")]
         public Input<string>? Mysql { get; set; }
 

@@ -49,9 +49,6 @@ class GetKafkaSchemaResult:
     @property
     @pulumi.getter(name="compatibilityLevel")
     def compatibility_level(self) -> str:
-        """
-        Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
-        """
         return pulumi.get(self, "compatibility_level")
 
     @property
@@ -65,49 +62,31 @@ class GetKafkaSchemaResult:
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def schema(self) -> str:
-        """
-        Kafka Schema configuration should be a valid Avro Schema JSON format.
-        """
         return pulumi.get(self, "schema")
 
     @property
     @pulumi.getter(name="schemaType")
     def schema_type(self) -> str:
-        """
-        Kafka Schema type JSON or AVRO
-        """
         return pulumi.get(self, "schema_type")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="subjectName")
     def subject_name(self) -> str:
-        """
-        The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "subject_name")
 
     @property
     @pulumi.getter
     def version(self) -> int:
-        """
-        Kafka Schema configuration version.
-        """
         return pulumi.get(self, "version")
 
 
@@ -143,11 +122,6 @@ def get_kafka_schema(project: Optional[str] = None,
     config = aiven.get_kafka_schema_configuration(project=aiven_project["kafka-schemas-project1"]["project"],
         service_name=aiven_service["kafka-service1"]["service_name"])
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str subject_name: The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -187,10 +161,5 @@ def get_kafka_schema_output(project: Optional[pulumi.Input[str]] = None,
     config = aiven.get_kafka_schema_configuration(project=aiven_project["kafka-schemas-project1"]["project"],
         service_name=aiven_service["kafka-service1"]["service_name"])
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str subject_name: The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

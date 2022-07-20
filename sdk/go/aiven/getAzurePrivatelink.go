@@ -46,29 +46,20 @@ func LookupAzurePrivatelink(ctx *pulumi.Context, args *LookupAzurePrivatelinkArg
 
 // A collection of arguments for invoking getAzurePrivatelink.
 type LookupAzurePrivatelinkArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getAzurePrivatelink.
 type LookupAzurePrivatelinkResult struct {
-	// Azure Privatelink service alias
 	AzureServiceAlias string `pulumi:"azureServiceAlias"`
-	// Azure Privatelink service ID
-	AzureServiceId string `pulumi:"azureServiceId"`
+	AzureServiceId    string `pulumi:"azureServiceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Printable result of the Azure Privatelink request
-	Message string `pulumi:"message"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// Privatelink resource state
-	State string `pulumi:"state"`
-	// A List of allowed Subscription IDs Maximum Length: `16`.
+	Id                  string   `pulumi:"id"`
+	Message             string   `pulumi:"message"`
+	Project             string   `pulumi:"project"`
+	ServiceName         string   `pulumi:"serviceName"`
+	State               string   `pulumi:"state"`
 	UserSubscriptionIds []string `pulumi:"userSubscriptionIds"`
 }
 
@@ -87,9 +78,7 @@ func LookupAzurePrivatelinkOutput(ctx *pulumi.Context, args LookupAzurePrivateli
 
 // A collection of arguments for invoking getAzurePrivatelink.
 type LookupAzurePrivatelinkOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project     pulumi.StringInput `pulumi:"project"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -112,12 +101,10 @@ func (o LookupAzurePrivatelinkResultOutput) ToLookupAzurePrivatelinkResultOutput
 	return o
 }
 
-// Azure Privatelink service alias
 func (o LookupAzurePrivatelinkResultOutput) AzureServiceAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePrivatelinkResult) string { return v.AzureServiceAlias }).(pulumi.StringOutput)
 }
 
-// Azure Privatelink service ID
 func (o LookupAzurePrivatelinkResultOutput) AzureServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePrivatelinkResult) string { return v.AzureServiceId }).(pulumi.StringOutput)
 }
@@ -127,27 +114,22 @@ func (o LookupAzurePrivatelinkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePrivatelinkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Printable result of the Azure Privatelink request
 func (o LookupAzurePrivatelinkResultOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePrivatelinkResult) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupAzurePrivatelinkResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePrivatelinkResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupAzurePrivatelinkResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePrivatelinkResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Privatelink resource state
 func (o LookupAzurePrivatelinkResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePrivatelinkResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// A List of allowed Subscription IDs Maximum Length: `16`.
 func (o LookupAzurePrivatelinkResultOutput) UserSubscriptionIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAzurePrivatelinkResult) []string { return v.UserSubscriptionIds }).(pulumi.StringArrayOutput)
 }

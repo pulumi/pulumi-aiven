@@ -60,6 +60,7 @@ from .get_kafka_connector import *
 from .get_kafka_mirror_maker import *
 from .get_kafka_schema import *
 from .get_kafka_schema_configuration import *
+from .get_kafka_schema_registry_acl import *
 from .get_kafka_topic import *
 from .get_kafka_user import *
 from .get_m3_aggregator import *
@@ -98,6 +99,7 @@ from .kafka_connector import *
 from .kafka_mirror_maker import *
 from .kafka_schema import *
 from .kafka_schema_configuration import *
+from .kafka_schema_registry_acl import *
 from .kafka_topic import *
 from .kafka_user import *
 from .m3_aggregator import *
@@ -417,6 +419,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration": "KafkaSchemaConfiguration"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/kafkaSchemaRegistryAcl",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl": "KafkaSchemaRegistryAcl"
   }
  },
  {

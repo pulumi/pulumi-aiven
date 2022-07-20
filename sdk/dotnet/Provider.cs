@@ -42,6 +42,10 @@ namespace Pulumi.Aiven
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "apiToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -52,11 +56,21 @@ namespace Pulumi.Aiven
 
     public sealed class ProviderArgs : Pulumi.ResourceArgs
     {
+        [Input("apiToken", required: true)]
+        private Input<string>? _apiToken;
+
         /// <summary>
         /// Aiven Authentication Token
         /// </summary>
-        [Input("apiToken", required: true)]
-        public Input<string> ApiToken { get; set; } = null!;
+        public Input<string>? ApiToken
+        {
+            get => _apiToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ProviderArgs()
         {

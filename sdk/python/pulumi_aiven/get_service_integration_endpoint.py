@@ -74,81 +74,51 @@ class GetServiceIntegrationEndpointResult:
     @property
     @pulumi.getter(name="datadogUserConfigs")
     def datadog_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointDatadogUserConfigResult']:
-        """
-        Datadog specific user configurable settings
-        """
         return pulumi.get(self, "datadog_user_configs")
 
     @property
     @pulumi.getter(name="endpointConfig")
     def endpoint_config(self) -> Mapping[str, str]:
-        """
-        Integration endpoint specific backend configuration
-        """
         return pulumi.get(self, "endpoint_config")
 
     @property
     @pulumi.getter(name="endpointName")
     def endpoint_name(self) -> str:
-        """
-        Name of the service integration endpoint
-        """
         return pulumi.get(self, "endpoint_name")
 
     @property
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> str:
-        """
-        Type of the service integration endpoint
-        """
         return pulumi.get(self, "endpoint_type")
 
     @property
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfigs")
     def external_aws_cloudwatch_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult']:
-        """
-        external AWS CloudWatch Logs specific user configurable settings
-        """
         return pulumi.get(self, "external_aws_cloudwatch_logs_user_configs")
 
     @property
     @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfigs")
     def external_aws_cloudwatch_metrics_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult']:
-        """
-        External AWS cloudwatch mertrics specific user configurable settings
-        """
         return pulumi.get(self, "external_aws_cloudwatch_metrics_user_configs")
 
     @property
     @pulumi.getter(name="externalElasticsearchLogsUserConfigs")
     def external_elasticsearch_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult']:
-        """
-        external elasticsearch specific user configurable settings
-        """
         return pulumi.get(self, "external_elasticsearch_logs_user_configs")
 
     @property
     @pulumi.getter(name="externalGoogleCloudLoggingUserConfigs")
     def external_google_cloud_logging_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult']:
-        """
-        external Google Cloud Logginig specific user configurable settings
-        """
         return pulumi.get(self, "external_google_cloud_logging_user_configs")
 
     @property
     @pulumi.getter(name="externalKafkaUserConfigs")
     def external_kafka_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult']:
-        """
-        external Kafka specific user configurable settings
-        """
         return pulumi.get(self, "external_kafka_user_configs")
 
     @property
     @pulumi.getter(name="externalSchemaRegistryUserConfigs")
     def external_schema_registry_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult']:
-        """
-        External schema registry specific user configurable settings
-        """
         return pulumi.get(self, "external_schema_registry_user_configs")
 
     @property
@@ -162,41 +132,26 @@ class GetServiceIntegrationEndpointResult:
     @property
     @pulumi.getter(name="jolokiaUserConfigs")
     def jolokia_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult']:
-        """
-        Jolokia specific user configurable settings
-        """
         return pulumi.get(self, "jolokia_user_configs")
 
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Project the service integration endpoint belongs to
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="prometheusUserConfigs")
     def prometheus_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult']:
-        """
-        Prometheus specific user configurable settings
-        """
         return pulumi.get(self, "prometheus_user_configs")
 
     @property
     @pulumi.getter(name="rsyslogUserConfigs")
     def rsyslog_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult']:
-        """
-        rsyslog specific user configurable settings
-        """
         return pulumi.get(self, "rsyslog_user_configs")
 
     @property
     @pulumi.getter(name="signalfxUserConfigs")
     def signalfx_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointSignalfxUserConfigResult']:
-        """
-        Signalfx specific user configurable settings
-        """
         return pulumi.get(self, "signalfx_user_configs")
 
 
@@ -239,10 +194,6 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
     myendpoint = aiven.get_service_integration_endpoint(project=aiven_project["myproject"]["project"],
         endpoint_name="<ENDPOINT_NAME>")
     ```
-
-
-    :param str endpoint_name: Name of the service integration endpoint
-    :param str project: Project the service integration endpoint belongs to
     """
     __args__ = dict()
     __args__['endpointName'] = endpoint_name
@@ -288,9 +239,5 @@ def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input
     myendpoint = aiven.get_service_integration_endpoint(project=aiven_project["myproject"]["project"],
         endpoint_name="<ENDPOINT_NAME>")
     ```
-
-
-    :param str endpoint_name: Name of the service integration endpoint
-    :param str project: Project the service integration endpoint belongs to
     """
     ...

@@ -47,32 +47,22 @@ func LookupKafkaUser(ctx *pulumi.Context, args *LookupKafkaUserArgs, opts ...pul
 
 // A collection of arguments for invoking getKafkaUser.
 type LookupKafkaUserArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Username string `pulumi:"username"`
+	Username    string `pulumi:"username"`
 }
 
 // A collection of values returned by getKafkaUser.
 type LookupKafkaUserResult struct {
-	// Access certificate for the user
 	AccessCert string `pulumi:"accessCert"`
-	// Access certificate key for the user
-	AccessKey string `pulumi:"accessKey"`
+	AccessKey  string `pulumi:"accessKey"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The password of the Kafka User.
-	Password string `pulumi:"password"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Id          string `pulumi:"id"`
+	Password    string `pulumi:"password"`
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
-	Type string `pulumi:"type"`
-	// The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Username string `pulumi:"username"`
+	Type        string `pulumi:"type"`
+	Username    string `pulumi:"username"`
 }
 
 func LookupKafkaUserOutput(ctx *pulumi.Context, args LookupKafkaUserOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaUserResultOutput {
@@ -90,12 +80,9 @@ func LookupKafkaUserOutput(ctx *pulumi.Context, args LookupKafkaUserOutputArgs, 
 
 // A collection of arguments for invoking getKafkaUser.
 type LookupKafkaUserOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project     pulumi.StringInput `pulumi:"project"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Username pulumi.StringInput `pulumi:"username"`
+	Username    pulumi.StringInput `pulumi:"username"`
 }
 
 func (LookupKafkaUserOutputArgs) ElementType() reflect.Type {
@@ -117,12 +104,10 @@ func (o LookupKafkaUserResultOutput) ToLookupKafkaUserResultOutputWithContext(ct
 	return o
 }
 
-// Access certificate for the user
 func (o LookupKafkaUserResultOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.AccessCert }).(pulumi.StringOutput)
 }
 
-// Access certificate key for the user
 func (o LookupKafkaUserResultOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.AccessKey }).(pulumi.StringOutput)
 }
@@ -132,27 +117,22 @@ func (o LookupKafkaUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The password of the Kafka User.
 func (o LookupKafkaUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaUserResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Type of the user account. Tells whether the user is the primary account or a regular account.
 func (o LookupKafkaUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

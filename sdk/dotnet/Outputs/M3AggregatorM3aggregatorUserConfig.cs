@@ -13,25 +13,10 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class M3AggregatorM3aggregatorUserConfig
     {
-        /// <summary>
-        /// Custom domain
-        /// </summary>
         public readonly string? CustomDomain;
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// M3 major version (deprecated, use m3aggregator_version)
-        /// </summary>
         public readonly string? M3Version;
-        /// <summary>
-        /// M3 major version (the minimum compatible version)
-        /// </summary>
         public readonly string? M3aggregatorVersion;
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

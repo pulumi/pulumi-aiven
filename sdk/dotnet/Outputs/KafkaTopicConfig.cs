@@ -13,101 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaTopicConfig
     {
-        /// <summary>
-        /// cleanup.policy value
-        /// </summary>
         public readonly string? CleanupPolicy;
-        /// <summary>
-        /// compression.type value
-        /// </summary>
         public readonly string? CompressionType;
-        /// <summary>
-        /// delete.retention.ms value
-        /// </summary>
         public readonly string? DeleteRetentionMs;
-        /// <summary>
-        /// file.delete.delay.ms value
-        /// </summary>
         public readonly string? FileDeleteDelayMs;
-        /// <summary>
-        /// flush.messages value
-        /// </summary>
         public readonly string? FlushMessages;
-        /// <summary>
-        /// flush.ms value
-        /// </summary>
         public readonly string? FlushMs;
-        /// <summary>
-        /// index.interval.bytes value
-        /// </summary>
         public readonly string? IndexIntervalBytes;
-        /// <summary>
-        /// max.compaction.lag.ms value
-        /// </summary>
         public readonly string? MaxCompactionLagMs;
-        /// <summary>
-        /// max.message.bytes value
-        /// </summary>
         public readonly string? MaxMessageBytes;
-        /// <summary>
-        /// message.downconversion.enable value
-        /// </summary>
         public readonly string? MessageDownconversionEnable;
-        /// <summary>
-        /// message.format.version value
-        /// </summary>
         public readonly string? MessageFormatVersion;
-        /// <summary>
-        /// message.timestamp.difference.max.ms value
-        /// </summary>
         public readonly string? MessageTimestampDifferenceMaxMs;
-        /// <summary>
-        /// message.timestamp.type value
-        /// </summary>
         public readonly string? MessageTimestampType;
-        /// <summary>
-        /// min.cleanable.dirty.ratio value
-        /// </summary>
         public readonly string? MinCleanableDirtyRatio;
-        /// <summary>
-        /// min.compaction.lag.ms value
-        /// </summary>
         public readonly string? MinCompactionLagMs;
-        /// <summary>
-        /// min.insync.replicas value
-        /// </summary>
         public readonly string? MinInsyncReplicas;
-        /// <summary>
-        /// preallocate value
-        /// </summary>
         public readonly string? Preallocate;
-        /// <summary>
-        /// retention.bytes value
-        /// </summary>
         public readonly string? RetentionBytes;
-        /// <summary>
-        /// retention.ms value
-        /// </summary>
         public readonly string? RetentionMs;
-        /// <summary>
-        /// segment.bytes value
-        /// </summary>
         public readonly string? SegmentBytes;
-        /// <summary>
-        /// segment.index.bytes value
-        /// </summary>
         public readonly string? SegmentIndexBytes;
-        /// <summary>
-        /// segment.jitter.ms value
-        /// </summary>
         public readonly string? SegmentJitterMs;
-        /// <summary>
-        /// segment.ms value
-        /// </summary>
         public readonly string? SegmentMs;
-        /// <summary>
-        /// unclean.leader.election.enable value
-        /// </summary>
         public readonly string? UncleanLeaderElectionEnable;
 
         [OutputConstructor]

@@ -34,9 +34,6 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectArgs {
-    /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
-     */
     project: string;
 }
 
@@ -44,61 +41,22 @@ export interface GetProjectArgs {
  * A collection of values returned by getProject.
  */
 export interface GetProjectResult {
-    /**
-     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
-     */
     readonly accountId: string;
-    /**
-     * If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
-     */
     readonly addAccountOwnersAdminAccess: boolean;
-    /**
-     * The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-     */
     readonly availableCredits: string;
-    /**
-     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
-     */
     readonly billingGroup: string;
-    /**
-     * The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
-     */
     readonly caCert: string;
-    /**
-     * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
-     */
     readonly copyFromProject: string;
-    /**
-     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
-     */
     readonly defaultCloud: string;
-    /**
-     * The current accumulated bill for this project in the current billing period.
-     */
     readonly estimatedBalance: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The method of invoicing used for payments for this project, e.g. `card`.
-     */
     readonly paymentMethod: string;
-    /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
-     */
     readonly project: string;
-    /**
-     * Tags are key-value pairs that allow you to categorize projects.
-     */
     readonly tags: outputs.GetProjectTag[];
-    /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
-     */
     readonly technicalEmails: string[];
-    /**
-     * Use the same billing group that is used in source project.
-     */
     readonly useSourceProjectBillingGroup: boolean;
 }
 
@@ -110,8 +68,5 @@ export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectOutputArgs {
-    /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
-     */
     project: pulumi.Input<string>;
 }

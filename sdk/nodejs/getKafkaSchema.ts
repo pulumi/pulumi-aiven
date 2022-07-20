@@ -36,17 +36,8 @@ export function getKafkaSchema(args: GetKafkaSchemaArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getKafkaSchema.
  */
 export interface GetKafkaSchemaArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: string;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: string;
-    /**
-     * The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
-     */
     subjectName: string;
 }
 
@@ -54,37 +45,16 @@ export interface GetKafkaSchemaArgs {
  * A collection of values returned by getKafkaSchema.
  */
 export interface GetKafkaSchemaResult {
-    /**
-     * Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
-     */
     readonly compatibilityLevel: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly project: string;
-    /**
-     * Kafka Schema configuration should be a valid Avro Schema JSON format.
-     */
     readonly schema: string;
-    /**
-     * Kafka Schema type JSON or AVRO
-     */
     readonly schemaType: string;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly serviceName: string;
-    /**
-     * The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly subjectName: string;
-    /**
-     * Kafka Schema configuration version.
-     */
     readonly version: number;
 }
 
@@ -96,16 +66,7 @@ export function getKafkaSchemaOutput(args: GetKafkaSchemaOutputArgs, opts?: pulu
  * A collection of arguments for invoking getKafkaSchema.
  */
 export interface GetKafkaSchemaOutputArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: pulumi.Input<string>;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
-     */
     subjectName: pulumi.Input<string>;
 }

@@ -44,37 +44,43 @@ namespace Pulumi.Aiven
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
+        /// cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("redisAclCategories")]
         public Output<ImmutableArray<string>> RedisAclCategories { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
+        /// resource.
         /// </summary>
         [Output("redisAclChannels")]
         public Output<ImmutableArray<string>> RedisAclChannels { get; private set; } = null!;
 
         /// <summary>
-        /// Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
+        /// property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("redisAclCommands")]
         public Output<ImmutableArray<string>> RedisAclCommands { get; private set; } = null!;
 
         /// <summary>
-        /// Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
+        /// changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("redisAclKeys")]
         public Output<ImmutableArray<string>> RedisAclKeys { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -86,7 +92,8 @@ namespace Pulumi.Aiven
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
+        /// property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -144,7 +151,8 @@ namespace Pulumi.Aiven
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -153,7 +161,8 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclCategories;
 
         /// <summary>
-        /// Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
+        /// cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public InputList<string> RedisAclCategories
         {
@@ -165,7 +174,8 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclChannels;
 
         /// <summary>
-        /// Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
+        /// resource.
         /// </summary>
         public InputList<string> RedisAclChannels
         {
@@ -177,7 +187,8 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclCommands;
 
         /// <summary>
-        /// Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
+        /// property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public InputList<string> RedisAclCommands
         {
@@ -189,7 +200,8 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclKeys;
 
         /// <summary>
-        /// Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
+        /// changed, doing so forces recreation of the resource.
         /// </summary>
         public InputList<string> RedisAclKeys
         {
@@ -198,13 +210,15 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
+        /// property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -223,7 +237,8 @@ namespace Pulumi.Aiven
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -232,7 +247,8 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclCategories;
 
         /// <summary>
-        /// Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
+        /// cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public InputList<string> RedisAclCategories
         {
@@ -244,7 +260,8 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclChannels;
 
         /// <summary>
-        /// Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
+        /// resource.
         /// </summary>
         public InputList<string> RedisAclChannels
         {
@@ -256,7 +273,8 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclCommands;
 
         /// <summary>
-        /// Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
+        /// property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         public InputList<string> RedisAclCommands
         {
@@ -268,7 +286,8 @@ namespace Pulumi.Aiven
         private InputList<string>? _redisAclKeys;
 
         /// <summary>
-        /// Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
+        /// changed, doing so forces recreation of the resource.
         /// </summary>
         public InputList<string> RedisAclKeys
         {
@@ -277,7 +296,8 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -289,7 +309,8 @@ namespace Pulumi.Aiven
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
+        /// property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

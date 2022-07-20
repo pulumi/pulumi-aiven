@@ -77,27 +77,15 @@ namespace Pulumi.Aiven
 
     public sealed class GetAwsVpcPeeringConnectionArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("awsAccountId", required: true)]
         public string AwsAccountId { get; set; } = null!;
 
-        /// <summary>
-        /// AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("awsVpcId", required: true)]
         public string AwsVpcId { get; set; } = null!;
 
-        /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("awsVpcRegion", required: true)]
         public string AwsVpcRegion { get; set; } = null!;
 
-        /// <summary>
-        /// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("vpcId", required: true)]
         public string VpcId { get; set; } = null!;
 
@@ -108,27 +96,15 @@ namespace Pulumi.Aiven
 
     public sealed class GetAwsVpcPeeringConnectionInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("awsAccountId", required: true)]
         public Input<string> AwsAccountId { get; set; } = null!;
 
-        /// <summary>
-        /// AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("awsVpcId", required: true)]
         public Input<string> AwsVpcId { get; set; } = null!;
 
-        /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("awsVpcRegion", required: true)]
         public Input<string> AwsVpcRegion { get; set; } = null!;
 
-        /// <summary>
-        /// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
@@ -141,37 +117,16 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetAwsVpcPeeringConnectionResult
     {
-        /// <summary>
-        /// AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string AwsAccountId;
-        /// <summary>
-        /// AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string AwsVpcId;
-        /// <summary>
-        /// AWS VPC peering connection ID
-        /// </summary>
         public readonly string AwsVpcPeeringConnectionId;
-        /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string AwsVpcRegion;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// State of the peering connection
-        /// </summary>
         public readonly string State;
-        /// <summary>
-        /// State-specific help or error information
-        /// </summary>
         public readonly ImmutableDictionary<string, object> StateInfo;
-        /// <summary>
-        /// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string VpcId;
 
         [OutputConstructor]

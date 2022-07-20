@@ -53,9 +53,6 @@ class GetKafkaTopicResult:
     @property
     @pulumi.getter
     def configs(self) -> Sequence['outputs.GetKafkaTopicConfigResult']:
-        """
-        Kafka topic configuration
-        """
         return pulumi.get(self, "configs")
 
     @property
@@ -69,41 +66,26 @@ class GetKafkaTopicResult:
     @property
     @pulumi.getter
     def partitions(self) -> int:
-        """
-        The number of partitions to create in the topic.
-        """
         return pulumi.get(self, "partitions")
 
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def replication(self) -> int:
-        """
-        The replication factor for the topic.
-        """
         return pulumi.get(self, "replication")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetKafkaTopicTagResult']:
-        """
-        Kafka Topic tag.
-        """
         return pulumi.get(self, "tags")
 
     @property
@@ -114,9 +96,6 @@ class GetKafkaTopicResult:
     @property
     @pulumi.getter(name="topicName")
     def topic_name(self) -> str:
-        """
-        The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "topic_name")
 
 
@@ -154,11 +133,6 @@ def get_kafka_topic(project: Optional[str] = None,
         service_name=aiven_service["myservice"]["service_name"],
         topic_name="<TOPIC_NAME>")
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str topic_name: The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -200,10 +174,5 @@ def get_kafka_topic_output(project: Optional[pulumi.Input[str]] = None,
         service_name=aiven_service["myservice"]["service_name"],
         topic_name="<TOPIC_NAME>")
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str topic_name: The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...
