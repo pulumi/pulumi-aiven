@@ -22,25 +22,18 @@ func LookupAccountTeam(ctx *pulumi.Context, args *LookupAccountTeamArgs, opts ..
 
 // A collection of arguments for invoking getAccountTeam.
 type LookupAccountTeamArgs struct {
-	// The unique account id
 	AccountId string `pulumi:"accountId"`
-	// The account team name
-	Name string `pulumi:"name"`
+	Name      string `pulumi:"name"`
 }
 
 // A collection of values returned by getAccountTeam.
 type LookupAccountTeamResult struct {
-	// The unique account id
-	AccountId string `pulumi:"accountId"`
-	// Time of creation
+	AccountId  string `pulumi:"accountId"`
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The account team name
-	Name string `pulumi:"name"`
-	// The auto-generated unique account team id
-	TeamId string `pulumi:"teamId"`
-	// Time of last update
+	Id         string `pulumi:"id"`
+	Name       string `pulumi:"name"`
+	TeamId     string `pulumi:"teamId"`
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -59,10 +52,8 @@ func LookupAccountTeamOutput(ctx *pulumi.Context, args LookupAccountTeamOutputAr
 
 // A collection of arguments for invoking getAccountTeam.
 type LookupAccountTeamOutputArgs struct {
-	// The unique account id
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// The account team name
-	Name pulumi.StringInput `pulumi:"name"`
+	Name      pulumi.StringInput `pulumi:"name"`
 }
 
 func (LookupAccountTeamOutputArgs) ElementType() reflect.Type {
@@ -84,12 +75,10 @@ func (o LookupAccountTeamResultOutput) ToLookupAccountTeamResultOutputWithContex
 	return o
 }
 
-// The unique account id
 func (o LookupAccountTeamResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Time of creation
 func (o LookupAccountTeamResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -99,17 +88,14 @@ func (o LookupAccountTeamResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The account team name
 func (o LookupAccountTeamResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The auto-generated unique account team id
 func (o LookupAccountTeamResultOutput) TeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamResult) string { return v.TeamId }).(pulumi.StringOutput)
 }
 
-// Time of last update
 func (o LookupAccountTeamResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

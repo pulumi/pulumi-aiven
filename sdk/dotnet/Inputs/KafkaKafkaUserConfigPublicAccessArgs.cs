@@ -12,9 +12,6 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaKafkaUserConfigPublicAccessArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Kafka server provided values
-        /// </summary>
         [Input("kafka")]
         public Input<string>? Kafka { get; set; }
 

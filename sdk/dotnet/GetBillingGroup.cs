@@ -73,11 +73,8 @@ namespace Pulumi.Aiven
 
     public sealed class GetBillingGroupArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Billing Group name
-        /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("billingGroupId", required: true)]
+        public string BillingGroupId { get; set; } = null!;
 
         public GetBillingGroupArgs()
         {
@@ -86,11 +83,8 @@ namespace Pulumi.Aiven
 
     public sealed class GetBillingGroupInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Billing Group name
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("billingGroupId", required: true)]
+        public Input<string> BillingGroupId { get; set; } = null!;
 
         public GetBillingGroupInvokeArgs()
         {
@@ -101,65 +95,24 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetBillingGroupResult
     {
-        /// <summary>
-        /// Account id
-        /// </summary>
         public readonly string AccountId;
-        /// <summary>
-        /// Address lines
-        /// </summary>
         public readonly ImmutableArray<string> AddressLines;
-        /// <summary>
-        /// Billing currency
-        /// </summary>
         public readonly string BillingCurrency;
-        /// <summary>
-        /// Billing contact emails
-        /// </summary>
         public readonly ImmutableArray<string> BillingEmails;
-        /// <summary>
-        /// Billing extra text
-        /// </summary>
         public readonly string BillingExtraText;
-        /// <summary>
-        /// Credit card id
-        /// </summary>
+        public readonly string BillingGroupId;
         public readonly string CardId;
-        /// <summary>
-        /// City
-        /// </summary>
         public readonly string City;
-        /// <summary>
-        /// Company name
-        /// </summary>
         public readonly string Company;
-        /// <summary>
-        /// ID of the billing group to copy from
-        /// </summary>
         public readonly string CopyFromBillingGroup;
-        /// <summary>
-        /// Country code
-        /// </summary>
         public readonly string CountryCode;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Billing Group name
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// State
-        /// </summary>
         public readonly string State;
-        /// <summary>
-        /// VAT id
-        /// </summary>
         public readonly string VatId;
-        /// <summary>
-        /// Zip Code
-        /// </summary>
         public readonly string ZipCode;
 
         [OutputConstructor]
@@ -173,6 +126,8 @@ namespace Pulumi.Aiven
             ImmutableArray<string> billingEmails,
 
             string billingExtraText,
+
+            string billingGroupId,
 
             string cardId,
 
@@ -199,6 +154,7 @@ namespace Pulumi.Aiven
             BillingCurrency = billingCurrency;
             BillingEmails = billingEmails;
             BillingExtraText = billingExtraText;
+            BillingGroupId = billingGroupId;
             CardId = cardId;
             City = city;
             Company = company;

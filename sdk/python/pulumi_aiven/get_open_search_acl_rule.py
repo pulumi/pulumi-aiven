@@ -51,41 +51,26 @@ class GetOpenSearchAclRuleResult:
     @property
     @pulumi.getter
     def index(self) -> str:
-        """
-        The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "index")
 
     @property
     @pulumi.getter
     def permission(self) -> str:
-        """
-        The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
-        """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def username(self) -> str:
-        """
-        The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "username")
 
 
@@ -123,13 +108,6 @@ def get_open_search_acl_rule(index: Optional[str] = None,
         username="<USERNAME>",
         index="<INDEX>")
     ```
-
-
-    :param str index: The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
-    :param str permission: The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['index'] = index
@@ -173,12 +151,5 @@ def get_open_search_acl_rule_output(index: Optional[pulumi.Input[str]] = None,
         username="<USERNAME>",
         index="<INDEX>")
     ```
-
-
-    :param str index: The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
-    :param str permission: The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

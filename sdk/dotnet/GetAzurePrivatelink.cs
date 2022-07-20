@@ -75,15 +75,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetAzurePrivatelinkArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -94,15 +88,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetAzurePrivatelinkInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -115,37 +103,16 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetAzurePrivatelinkResult
     {
-        /// <summary>
-        /// Azure Privatelink service alias
-        /// </summary>
         public readonly string AzureServiceAlias;
-        /// <summary>
-        /// Azure Privatelink service ID
-        /// </summary>
         public readonly string AzureServiceId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Printable result of the Azure Privatelink request
-        /// </summary>
         public readonly string Message;
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string Project;
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// Privatelink resource state
-        /// </summary>
         public readonly string State;
-        /// <summary>
-        /// A List of allowed Subscription IDs Maximum Length: `16`.
-        /// </summary>
         public readonly ImmutableArray<string> UserSubscriptionIds;
 
         [OutputConstructor]

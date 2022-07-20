@@ -20,7 +20,7 @@ class GetBillingGroupResult:
     """
     A collection of values returned by getBillingGroup.
     """
-    def __init__(__self__, account_id=None, address_lines=None, billing_currency=None, billing_emails=None, billing_extra_text=None, card_id=None, city=None, company=None, copy_from_billing_group=None, country_code=None, id=None, name=None, state=None, vat_id=None, zip_code=None):
+    def __init__(__self__, account_id=None, address_lines=None, billing_currency=None, billing_emails=None, billing_extra_text=None, billing_group_id=None, card_id=None, city=None, company=None, copy_from_billing_group=None, country_code=None, id=None, name=None, state=None, vat_id=None, zip_code=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -36,6 +36,9 @@ class GetBillingGroupResult:
         if billing_extra_text and not isinstance(billing_extra_text, str):
             raise TypeError("Expected argument 'billing_extra_text' to be a str")
         pulumi.set(__self__, "billing_extra_text", billing_extra_text)
+        if billing_group_id and not isinstance(billing_group_id, str):
+            raise TypeError("Expected argument 'billing_group_id' to be a str")
+        pulumi.set(__self__, "billing_group_id", billing_group_id)
         if card_id and not isinstance(card_id, str):
             raise TypeError("Expected argument 'card_id' to be a str")
         pulumi.set(__self__, "card_id", card_id)
@@ -70,81 +73,56 @@ class GetBillingGroupResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
-        """
-        Account id
-        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="addressLines")
     def address_lines(self) -> Sequence[str]:
-        """
-        Address lines
-        """
         return pulumi.get(self, "address_lines")
 
     @property
     @pulumi.getter(name="billingCurrency")
     def billing_currency(self) -> str:
-        """
-        Billing currency
-        """
         return pulumi.get(self, "billing_currency")
 
     @property
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Sequence[str]:
-        """
-        Billing contact emails
-        """
         return pulumi.get(self, "billing_emails")
 
     @property
     @pulumi.getter(name="billingExtraText")
     def billing_extra_text(self) -> str:
-        """
-        Billing extra text
-        """
         return pulumi.get(self, "billing_extra_text")
+
+    @property
+    @pulumi.getter(name="billingGroupId")
+    def billing_group_id(self) -> str:
+        return pulumi.get(self, "billing_group_id")
 
     @property
     @pulumi.getter(name="cardId")
     def card_id(self) -> str:
-        """
-        Credit card id
-        """
         return pulumi.get(self, "card_id")
 
     @property
     @pulumi.getter
     def city(self) -> str:
-        """
-        City
-        """
         return pulumi.get(self, "city")
 
     @property
     @pulumi.getter
     def company(self) -> str:
-        """
-        Company name
-        """
         return pulumi.get(self, "company")
 
     @property
     @pulumi.getter(name="copyFromBillingGroup")
     def copy_from_billing_group(self) -> str:
-        """
-        ID of the billing group to copy from
-        """
         return pulumi.get(self, "copy_from_billing_group")
 
     @property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> str:
-        """
-        Country code
-        """
         return pulumi.get(self, "country_code")
 
     @property
@@ -158,33 +136,21 @@ class GetBillingGroupResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Billing Group name
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        State
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="vatId")
     def vat_id(self) -> str:
-        """
-        VAT id
-        """
         return pulumi.get(self, "vat_id")
 
     @property
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> str:
-        """
-        Zip Code
-        """
         return pulumi.get(self, "zip_code")
 
 
@@ -199,6 +165,7 @@ class AwaitableGetBillingGroupResult(GetBillingGroupResult):
             billing_currency=self.billing_currency,
             billing_emails=self.billing_emails,
             billing_extra_text=self.billing_extra_text,
+            billing_group_id=self.billing_group_id,
             card_id=self.card_id,
             city=self.city,
             company=self.company,
@@ -211,7 +178,7 @@ class AwaitableGetBillingGroupResult(GetBillingGroupResult):
             zip_code=self.zip_code)
 
 
-def get_billing_group(name: Optional[str] = None,
+def get_billing_group(billing_group_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBillingGroupResult:
     """
     The Billing Group data source provides information about the existing Aiven Account.
@@ -224,12 +191,9 @@ def get_billing_group(name: Optional[str] = None,
 
     foo = aiven.get_billing_group(name="<BILLING_GROUP_NAME>")
     ```
-
-
-    :param str name: Billing Group name
     """
     __args__ = dict()
-    __args__['name'] = name
+    __args__['billingGroupId'] = billing_group_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -242,6 +206,7 @@ def get_billing_group(name: Optional[str] = None,
         billing_currency=__ret__.billing_currency,
         billing_emails=__ret__.billing_emails,
         billing_extra_text=__ret__.billing_extra_text,
+        billing_group_id=__ret__.billing_group_id,
         card_id=__ret__.card_id,
         city=__ret__.city,
         company=__ret__.company,
@@ -255,7 +220,7 @@ def get_billing_group(name: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_billing_group)
-def get_billing_group_output(name: Optional[pulumi.Input[str]] = None,
+def get_billing_group_output(billing_group_id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingGroupResult]:
     """
     The Billing Group data source provides information about the existing Aiven Account.
@@ -268,8 +233,5 @@ def get_billing_group_output(name: Optional[pulumi.Input[str]] = None,
 
     foo = aiven.get_billing_group(name="<BILLING_GROUP_NAME>")
     ```
-
-
-    :param str name: Billing Group name
     """
     ...

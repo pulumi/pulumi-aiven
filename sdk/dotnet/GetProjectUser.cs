@@ -75,15 +75,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetProjectUserArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("email", required: true)]
         public string Email { get; set; } = null!;
 
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -94,15 +88,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetProjectUserInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -115,25 +103,13 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetProjectUserResult
     {
-        /// <summary>
-        /// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
-        /// </summary>
         public readonly bool Accepted;
-        /// <summary>
-        /// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string Email;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Project membership type. The possible values are `admin`, `developer` and `operator`.
-        /// </summary>
         public readonly string MemberType;
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string Project;
 
         [OutputConstructor]

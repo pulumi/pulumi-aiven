@@ -54,49 +54,31 @@ class GetClickhouseUserResult:
     @property
     @pulumi.getter
     def password(self) -> str:
-        """
-        The password of the clickhouse user.
-        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def required(self) -> bool:
-        """
-        Indicates if a clickhouse user is required
-        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def username(self) -> str:
-        """
-        The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
-        """
-        UUID of the clickhouse user.
-        """
         return pulumi.get(self, "uuid")
 
 
@@ -132,11 +114,6 @@ def get_clickhouse_user(project: Optional[str] = None,
         service_name=aiven_clickhouse["myservice"]["service_name"],
         username="<USERNAME>")
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -176,10 +153,5 @@ def get_clickhouse_user_output(project: Optional[pulumi.Input[str]] = None,
         service_name=aiven_clickhouse["myservice"]["service_name"],
         username="<USERNAME>")
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

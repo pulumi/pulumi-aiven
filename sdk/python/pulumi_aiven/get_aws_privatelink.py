@@ -43,17 +43,11 @@ class GetAwsPrivatelinkResult:
     @property
     @pulumi.getter(name="awsServiceId")
     def aws_service_id(self) -> str:
-        """
-        AWS service ID
-        """
         return pulumi.get(self, "aws_service_id")
 
     @property
     @pulumi.getter(name="awsServiceName")
     def aws_service_name(self) -> str:
-        """
-        AWS service name
-        """
         return pulumi.get(self, "aws_service_name")
 
     @property
@@ -67,25 +61,16 @@ class GetAwsPrivatelinkResult:
     @property
     @pulumi.getter
     def principals(self) -> Sequence[str]:
-        """
-        List of allowed principals
-        """
         return pulumi.get(self, "principals")
 
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
 
@@ -118,10 +103,6 @@ def get_aws_privatelink(project: Optional[str] = None,
     foo = aiven.get_aws_privatelink(project=data["aiven_project"]["foo"]["project"],
         service_name=aiven_kafka["bar"]["service_name"])
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -157,9 +138,5 @@ def get_aws_privatelink_output(project: Optional[pulumi.Input[str]] = None,
     foo = aiven.get_aws_privatelink(project=data["aiven_project"]["foo"]["project"],
         service_name=aiven_kafka["bar"]["service_name"])
     ```
-
-
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

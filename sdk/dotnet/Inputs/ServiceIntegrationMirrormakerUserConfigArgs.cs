@@ -12,9 +12,6 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationMirrormakerUserConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Mirrormaker topic whitelist
-        /// </summary>
         [Input("mirrormakerWhitelist")]
         public Input<string>? MirrormakerWhitelist { get; set; }
 

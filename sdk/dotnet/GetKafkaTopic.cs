@@ -77,21 +77,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaTopicArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("topicName", required: true)]
         public string TopicName { get; set; } = null!;
 
@@ -102,21 +93,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaTopicInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("topicName", required: true)]
         public Input<string> TopicName { get; set; } = null!;
 
@@ -129,38 +111,17 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetKafkaTopicResult
     {
-        /// <summary>
-        /// Kafka topic configuration
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaTopicConfigResult> Configs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The number of partitions to create in the topic.
-        /// </summary>
         public readonly int Partitions;
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string Project;
-        /// <summary>
-        /// The replication factor for the topic.
-        /// </summary>
         public readonly int Replication;
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// Kafka Topic tag.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaTopicTagResult> Tags;
         public readonly bool TerminationProtection;
-        /// <summary>
-        /// The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string TopicName;
 
         [OutputConstructor]

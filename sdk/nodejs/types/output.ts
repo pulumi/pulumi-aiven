@@ -8,41 +8,14 @@ export interface CassandraCassandra {
 }
 
 export interface CassandraCassandraUserConfig {
-    /**
-     * cassandra configuration values
-     */
     cassandra?: outputs.CassandraCassandraUserConfigCassandra;
-    /**
-     * Cassandra major version
-     */
     cassandraVersion?: string;
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * Migration mode for the sstableloader utility
-     */
     migrateSstableloader?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.CassandraCassandraUserConfigPrivateAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.CassandraCassandraUserConfigPublicAccess;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
     serviceToForkFrom?: string;
-    /**
-     * Static IP addresses
-     */
     staticIps?: string;
 }
 
@@ -70,24 +43,12 @@ export interface CassandraComponent {
 }
 
 export interface CassandraServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface CassandraTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
@@ -95,17 +56,8 @@ export interface ClickhouseClickhouse {
 }
 
 export interface ClickhouseClickhouseUserConfig {
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
     serviceToForkFrom?: string;
 }
 
@@ -120,54 +72,24 @@ export interface ClickhouseComponent {
 }
 
 export interface ClickhouseGrantPrivilegeGrant {
-    /**
-     * The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
-     */
     column?: string;
-    /**
-     * The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     database: string;
-    /**
-     * The privilege to grant, i.e. 'INSERT', 'SELECT', etc. This property cannot be changed, doing so forces recreation of the resource.
-     */
     privilege?: string;
-    /**
-     * The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
-     */
     table?: string;
-    /**
-     * If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
-     */
     withGrant?: boolean;
 }
 
 export interface ClickhouseGrantRoleGrant {
-    /**
-     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     role?: string;
 }
 
 export interface ClickhouseServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface ClickhouseTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
@@ -182,113 +104,44 @@ export interface FlinkComponent {
 }
 
 export interface FlinkFlink {
-    /**
-     * Host and Port of a Flink server
-     */
     hostPorts: string[];
 }
 
 export interface FlinkFlinkUserConfig {
-    /**
-     * Flink execution.checkpointing.interval in milliseconds
-     */
     executionCheckpointingIntervalMs?: string;
-    /**
-     * Flink execution.checkpointing.timeout in milliseconds
-     */
     executionCheckpointingTimeoutMs?: string;
-    /**
-     * Flink major version
-     */
     flinkVersion?: string;
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * Flink taskmanager.numberOfTaskSlots
-     */
     numberOfTaskSlots?: string;
-    /**
-     * Flink parallelism.default
-     */
     parallelismDefault?: string;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.FlinkFlinkUserConfigPrivatelinkAccess;
-    /**
-     * Flink restart-strategy
-     */
     restartStrategy?: string;
-    /**
-     * Flink restart-strategy.failure-rate.delay in seconds
-     */
     restartStrategyDelaySec?: string;
-    /**
-     * Flink restart-strategy.failure-rate.failure-rate-interval in minutes
-     */
     restartStrategyFailureRateIntervalMin?: string;
-    /**
-     * Flink restart-strategy.failure-rate.max-failures-per-interval
-     */
     restartStrategyMaxFailures?: string;
 }
 
 export interface FlinkFlinkUserConfigPrivatelinkAccess {
-    /**
-     * Flink server provided values
-     */
     flink?: string;
     prometheus?: string;
 }
 
 export interface FlinkJobTableUpsertKafka {
-    /**
-     * Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
-     */
     keyFields?: string[];
-    /**
-     * Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-     */
     keyFormat?: string;
-    /**
-     * Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
-     */
     scanStartupMode?: string;
-    /**
-     * Topic name This property cannot be changed, doing so forces recreation of the resource.
-     */
     topic?: string;
-    /**
-     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
-     */
     valueFieldsInclude?: string;
-    /**
-     * Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-     */
     valueFormat?: string;
 }
 
 export interface FlinkServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface FlinkTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
@@ -296,9 +149,6 @@ export interface GetCassandaCassandra {
 }
 
 export interface GetCassandaCassandraUserConfig {
-    /**
-     * Cassandra server provided values
-     */
     cassandra?: outputs.GetCassandaCassandraUserConfigCassandra;
     cassandraVersion?: string;
     ipFilters?: string[];
@@ -307,9 +157,6 @@ export interface GetCassandaCassandraUserConfig {
     projectToForkFrom?: string;
     publicAccess?: outputs.GetCassandaCassandraUserConfigPublicAccess;
     serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: string;
 }
 
@@ -350,9 +197,6 @@ export interface GetCassandraCassandra {
 }
 
 export interface GetCassandraCassandraUserConfig {
-    /**
-     * Cassandra server provided values
-     */
     cassandra?: outputs.GetCassandraCassandraUserConfigCassandra;
     cassandraVersion?: string;
     ipFilters?: string[];
@@ -361,9 +205,6 @@ export interface GetCassandraCassandraUserConfig {
     projectToForkFrom?: string;
     publicAccess?: outputs.GetCassandraCassandraUserConfigPublicAccess;
     serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: string;
 }
 
@@ -458,9 +299,6 @@ export interface GetFlinkFlinkUserConfig {
 }
 
 export interface GetFlinkFlinkUserConfigPrivatelinkAccess {
-    /**
-     * Flink server provided values
-     */
     flink?: string;
     prometheus?: string;
 }
@@ -520,9 +358,6 @@ export interface GetGrafanaGrafanaUserConfig {
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
     smtpServer?: outputs.GetGrafanaGrafanaUserConfigSmtpServer;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: string;
     userAutoAssignOrg?: string;
     userAutoAssignOrgRole?: string;
@@ -596,23 +431,14 @@ export interface GetGrafanaGrafanaUserConfigExternalImageStorage {
 }
 
 export interface GetGrafanaGrafanaUserConfigPrivateAccess {
-    /**
-     * Grafana server provided values
-     */
     grafana?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigPrivatelinkAccess {
-    /**
-     * Grafana server provided values
-     */
     grafana?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigPublicAccess {
-    /**
-     * Grafana server provided values
-     */
     grafana?: string;
 }
 
@@ -653,9 +479,6 @@ export interface GetInfluxDbInfluxdb {
 
 export interface GetInfluxDbInfluxdbUserConfig {
     customDomain?: string;
-    /**
-     * InfluxDB server provided values
-     */
     influxdb?: outputs.GetInfluxDbInfluxdbUserConfigInfluxdb;
     ipFilters?: string[];
     privateAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
@@ -664,9 +487,6 @@ export interface GetInfluxDbInfluxdbUserConfig {
     publicAccess?: outputs.GetInfluxDbInfluxdbUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: string;
 }
 
@@ -680,23 +500,14 @@ export interface GetInfluxDbInfluxdbUserConfigInfluxdb {
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPrivateAccess {
-    /**
-     * InfluxDB server provided values
-     */
     influxdb?: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPrivatelinkAccess {
-    /**
-     * InfluxDB server provided values
-     */
     influxdb?: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfigPublicAccess {
-    /**
-     * InfluxDB server provided values
-     */
     influxdb?: string;
 }
 
@@ -735,16 +546,10 @@ export interface GetKafkaConnectKafkaConnect {
 
 export interface GetKafkaConnectKafkaConnectUserConfig {
     ipFilters?: string[];
-    /**
-     * Kafka Connect server provided values
-     */
     kafkaConnect?: outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnect;
     privateAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccess;
     privatelinkAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
     publicAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccess;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: string;
 }
 
@@ -764,26 +569,17 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPrivateAccess {
-    /**
-     * Kafka Connect server provided values
-     */
     kafkaConnect?: string;
     prometheus?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
     jolokia?: string;
-    /**
-     * Kafka Connect server provided values
-     */
     kafkaConnect?: string;
     prometheus?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
-    /**
-     * Kafka Connect server provided values
-     */
     kafkaConnect?: string;
     prometheus?: string;
 }
@@ -800,9 +596,6 @@ export interface GetKafkaConnectTag {
 
 export interface GetKafkaConnectorTask {
     connector: string;
-    /**
-     * List of tasks of a connector.
-     */
     task: number;
 }
 
@@ -817,9 +610,6 @@ export interface GetKafkaKafka {
 export interface GetKafkaKafkaUserConfig {
     customDomain?: string;
     ipFilters?: string[];
-    /**
-     * Kafka server provided values
-     */
     kafka?: outputs.GetKafkaKafkaUserConfigKafka;
     kafkaAuthenticationMethods?: outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
     kafkaConnect?: string;
@@ -832,9 +622,6 @@ export interface GetKafkaKafkaUserConfig {
     publicAccess?: outputs.GetKafkaKafkaUserConfigPublicAccess;
     schemaRegistry?: string;
     schemaRegistryConfig?: outputs.GetKafkaKafkaUserConfigSchemaRegistryConfig;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: string;
 }
 
@@ -915,9 +702,6 @@ export interface GetKafkaKafkaUserConfigPrivateAccess {
 
 export interface GetKafkaKafkaUserConfigPrivatelinkAccess {
     jolokia?: string;
-    /**
-     * Kafka server provided values
-     */
     kafka?: string;
     kafkaConnect?: string;
     kafkaRest?: string;
@@ -926,9 +710,6 @@ export interface GetKafkaKafkaUserConfigPrivatelinkAccess {
 }
 
 export interface GetKafkaKafkaUserConfigPublicAccess {
-    /**
-     * Kafka server provided values
-     */
     kafka?: string;
     kafkaConnect?: string;
     kafkaRest?: string;
@@ -956,13 +737,7 @@ export interface GetKafkaMirrorMakerKafkaMirrormaker {
 
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     ipFilters?: string[];
-    /**
-     * Kafka MirrorMaker 2 server provided values
-     */
     kafkaMirrormaker?: outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: string;
 }
 
@@ -1049,9 +824,6 @@ export interface GetM3AggregatorM3aggregatorUserConfig {
     ipFilters?: string[];
     m3Version?: string;
     m3aggregatorVersion?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: string;
 }
 
@@ -1091,9 +863,6 @@ export interface GetM3DbM3dbUserConfig {
     publicAccess?: outputs.GetM3DbM3dbUserConfigPublicAccess;
     rules?: outputs.GetM3DbM3dbUserConfigRules;
     serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: string;
 }
 
@@ -1180,9 +949,6 @@ export interface GetMySqlMysqlUserConfig {
     binlogRetentionPeriod?: string;
     ipFilters?: string[];
     migration?: outputs.GetMySqlMysqlUserConfigMigration;
-    /**
-     * MySQL specific server provided values
-     */
     mysql?: outputs.GetMySqlMysqlUserConfigMysql;
     mysqlVersion?: string;
     privateAccess?: outputs.GetMySqlMysqlUserConfigPrivateAccess;
@@ -1191,9 +957,6 @@ export interface GetMySqlMysqlUserConfig {
     publicAccess?: outputs.GetMySqlMysqlUserConfigPublicAccess;
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: string;
 }
 
@@ -1236,27 +999,18 @@ export interface GetMySqlMysqlUserConfigMysql {
 }
 
 export interface GetMySqlMysqlUserConfigPrivateAccess {
-    /**
-     * MySQL specific server provided values
-     */
     mysql?: string;
     mysqlx?: string;
     prometheus?: string;
 }
 
 export interface GetMySqlMysqlUserConfigPrivatelinkAccess {
-    /**
-     * MySQL specific server provided values
-     */
     mysql?: string;
     mysqlx?: string;
     prometheus?: string;
 }
 
 export interface GetMySqlMysqlUserConfigPublicAccess {
-    /**
-     * MySQL specific server provided values
-     */
     mysql?: string;
     mysqlx?: string;
     prometheus?: string;
@@ -1294,9 +1048,6 @@ export interface GetOpenSearchOpensearchUserConfig {
     ipFilters?: string[];
     keepIndexRefreshInterval?: string;
     maxIndexCount?: string;
-    /**
-     * Opensearch server provided values
-     */
     opensearch?: outputs.GetOpenSearchOpensearchUserConfigOpensearch;
     opensearchDashboards?: outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboards;
     opensearchVersion?: string;
@@ -1306,9 +1057,6 @@ export interface GetOpenSearchOpensearchUserConfig {
     publicAccess?: outputs.GetOpenSearchOpensearchUserConfigPublicAccess;
     recoveryBasebackupName?: string;
     serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: string;
 }
 
@@ -1362,27 +1110,18 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchDashboards {
 }
 
 export interface GetOpenSearchOpensearchUserConfigPrivateAccess {
-    /**
-     * Opensearch server provided values
-     */
     opensearch?: string;
     opensearchDashboards?: string;
     prometheus?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
-    /**
-     * Opensearch server provided values
-     */
     opensearch?: string;
     opensearchDashboards?: string;
     prometheus?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPublicAccess {
-    /**
-     * Opensearch server provided values
-     */
     opensearch?: string;
     opensearchDashboards?: string;
     prometheus?: string;
@@ -1427,9 +1166,6 @@ export interface GetPgPgUserConfig {
     enableIpv6?: string;
     ipFilters?: string[];
     migration?: outputs.GetPgPgUserConfigMigration;
-    /**
-     * PostgreSQL specific server provided values
-     */
     pg?: outputs.GetPgPgUserConfigPg;
     pgReadReplica?: string;
     pgServiceToForkFrom?: string;
@@ -1443,9 +1179,6 @@ export interface GetPgPgUserConfig {
     recoveryTargetTime?: string;
     serviceToForkFrom?: string;
     sharedBuffersPercentage?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: string;
     synchronousReplication?: string;
     timescaledb?: outputs.GetPgPgUserConfigTimescaledb;
@@ -1530,27 +1263,18 @@ export interface GetPgPgUserConfigPglookout {
 }
 
 export interface GetPgPgUserConfigPrivateAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
     pg?: string;
     pgbouncer?: string;
     prometheus?: string;
 }
 
 export interface GetPgPgUserConfigPrivatelinkAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
     pg?: string;
     pgbouncer?: string;
     prometheus?: string;
 }
 
 export interface GetPgPgUserConfigPublicAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
     pg?: string;
     pgbouncer?: string;
     prometheus?: string;
@@ -1608,9 +1332,6 @@ export interface GetRedisRedisUserConfig {
     redisSsl?: string;
     redisTimeout?: string;
     serviceToForkFrom?: string;
-    /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-     */
     staticIps?: string;
 }
 
@@ -1627,25 +1348,16 @@ export interface GetRedisRedisUserConfigMigration {
 
 export interface GetRedisRedisUserConfigPrivateAccess {
     prometheus?: string;
-    /**
-     * Redis server provided values
-     */
     redis?: string;
 }
 
 export interface GetRedisRedisUserConfigPrivatelinkAccess {
     prometheus?: string;
-    /**
-     * Redis server provided values
-     */
     redis?: string;
 }
 
 export interface GetRedisRedisUserConfigPublicAccess {
     prometheus?: string;
-    /**
-     * Redis server provided values
-     */
     redis?: string;
 }
 
@@ -1829,145 +1541,40 @@ export interface GrafanaGrafana {
 }
 
 export interface GrafanaGrafanaUserConfig {
-    /**
-     * Enable or disable Grafana alerting functionality
-     */
     alertingEnabled?: string;
-    /**
-     * Default error or timeout setting for new alerting rules
-     */
     alertingErrorOrTimeout?: string;
-    /**
-     * Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
-     */
     alertingMaxAnnotationsToKeep?: string;
-    /**
-     * Default value for 'no data or null values' for new alerting rules
-     */
     alertingNodataOrNullvalues?: string;
-    /**
-     * Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
-     */
     allowEmbedding?: string;
-    /**
-     * Azure AD OAuth integration
-     */
     authAzuread?: outputs.GrafanaGrafanaUserConfigAuthAzuread;
-    /**
-     * Enable or disable basic authentication form, used by Grafana built-in login
-     */
     authBasicEnabled?: string;
-    /**
-     * Generic OAuth integration
-     */
     authGenericOauth?: outputs.GrafanaGrafanaUserConfigAuthGenericOauth;
-    /**
-     * Github Auth integration
-     */
     authGithub?: outputs.GrafanaGrafanaUserConfigAuthGithub;
-    /**
-     * GitLab Auth integration
-     */
     authGitlab?: outputs.GrafanaGrafanaUserConfigAuthGitlab;
-    /**
-     * Google Auth integration
-     */
     authGoogle?: outputs.GrafanaGrafanaUserConfigAuthGoogle;
-    /**
-     * Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
-     */
     cookieSamesite?: string;
-    /**
-     * Custom domain
-     */
     customDomain?: string;
-    /**
-     * Minimum refresh interval
-     */
     dashboardsMinRefreshInterval?: string;
-    /**
-     * Dashboard versions to keep per dashboard
-     */
     dashboardsVersionsToKeep?: string;
-    /**
-     * Send 'X-Grafana-User' header to data source
-     */
     dataproxySendUserHeader?: string;
-    /**
-     * Timeout for data proxy requests in seconds
-     */
     dataproxyTimeout?: string;
-    /**
-     * Grafana date format specifications
-     */
     dateFormats?: outputs.GrafanaGrafanaUserConfigDateFormats;
-    /**
-     * Set to true to disable gravatar. Defaults to false (gravatar is enabled)
-     */
     disableGravatar?: string;
-    /**
-     * Editors can manage folders, teams and dashboards created by them
-     */
     editorsCanAdmin?: string;
-    /**
-     * External image store settings
-     */
     externalImageStorage?: outputs.GrafanaGrafanaUserConfigExternalImageStorage;
-    /**
-     * Google Analytics ID
-     */
     googleAnalyticsUaId?: string;
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * Enable Grafana /metrics endpoint
-     */
     metricsEnabled?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.GrafanaGrafanaUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.GrafanaGrafanaUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.GrafanaGrafanaUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service
-     */
     recoveryBasebackupName?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
     serviceToForkFrom?: string;
-    /**
-     * SMTP server settings
-     */
     smtpServer?: outputs.GrafanaGrafanaUserConfigSmtpServer;
-    /**
-     * Static IP addresses
-     */
     staticIps?: string;
-    /**
-     * Auto-assign new users on signup to main organization. Defaults to false
-     */
     userAutoAssignOrg?: string;
-    /**
-     * Set role for new signups. Defaults to Viewer
-     */
     userAutoAssignOrgRole?: string;
-    /**
-     * Users with view-only permission can edit but not save dashboards
-     */
     viewersCanEdit?: string;
 }
 
@@ -2038,23 +1645,14 @@ export interface GrafanaGrafanaUserConfigExternalImageStorage {
 }
 
 export interface GrafanaGrafanaUserConfigPrivateAccess {
-    /**
-     * Grafana server provided values
-     */
     grafana?: string;
 }
 
 export interface GrafanaGrafanaUserConfigPrivatelinkAccess {
-    /**
-     * Grafana server provided values
-     */
     grafana?: string;
 }
 
 export interface GrafanaGrafanaUserConfigPublicAccess {
-    /**
-     * Grafana server provided values
-     */
     grafana?: string;
 }
 
@@ -2070,24 +1668,12 @@ export interface GrafanaGrafanaUserConfigSmtpServer {
 }
 
 export interface GrafanaServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface GrafanaTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
@@ -2106,45 +1692,15 @@ export interface InfluxDbInfluxdb {
 }
 
 export interface InfluxDbInfluxdbUserConfig {
-    /**
-     * Custom domain
-     */
     customDomain?: string;
-    /**
-     * influxdb.conf configuration values
-     */
     influxdb?: outputs.InfluxDbInfluxdbUserConfigInfluxdb;
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.InfluxDbInfluxdbUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.InfluxDbInfluxdbUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service
-     */
     recoveryBasebackupName?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
     serviceToForkFrom?: string;
-    /**
-     * Static IP addresses
-     */
     staticIps?: string;
 }
 
@@ -2158,45 +1714,24 @@ export interface InfluxDbInfluxdbUserConfigInfluxdb {
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivateAccess {
-    /**
-     * InfluxDB server provided values
-     */
     influxdb?: string;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivatelinkAccess {
-    /**
-     * InfluxDB server provided values
-     */
     influxdb?: string;
 }
 
 export interface InfluxDbInfluxdbUserConfigPublicAccess {
-    /**
-     * InfluxDB server provided values
-     */
     influxdb?: string;
 }
 
 export interface InfluxDbServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface InfluxDbTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
@@ -2224,29 +1759,11 @@ export interface KafkaConnectKafkaConnect {
 }
 
 export interface KafkaConnectKafkaConnectUserConfig {
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * Kafka Connect configuration values
-     */
     kafkaConnect?: outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect;
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.KafkaConnectKafkaConnectUserConfigPublicAccess;
-    /**
-     * Static IP addresses
-     */
     staticIps?: string;
 }
 
@@ -2266,143 +1783,59 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivateAccess {
-    /**
-     * Kafka Connect server provided values
-     */
     kafkaConnect?: string;
     prometheus?: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
     jolokia?: string;
-    /**
-     * Kafka Connect server provided values
-     */
     kafkaConnect?: string;
     prometheus?: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
-    /**
-     * Kafka Connect server provided values
-     */
     kafkaConnect?: string;
     prometheus?: string;
 }
 
 export interface KafkaConnectServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface KafkaConnectTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
 export interface KafkaConnectorTask {
     connector: string;
-    /**
-     * List of tasks of a connector.
-     */
     task: number;
 }
 
 export interface KafkaKafka {
-    /**
-     * The Kafka client certificate
-     */
     accessCert: string;
-    /**
-     * The Kafka client certificate key
-     */
     accessKey: string;
-    /**
-     * The Kafka Connect URI, if any
-     */
     connectUri: string;
-    /**
-     * The Kafka REST URI, if any
-     */
     restUri: string;
-    /**
-     * The Schema Registry URI, if any
-     */
     schemaRegistryUri: string;
 }
 
 export interface KafkaKafkaUserConfig {
-    /**
-     * Custom domain
-     */
     customDomain?: string;
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * Kafka broker configuration values
-     */
     kafka?: outputs.KafkaKafkaUserConfigKafka;
-    /**
-     * Kafka authentication methods
-     */
     kafkaAuthenticationMethods?: outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods;
-    /**
-     * Enable Kafka Connect service
-     */
     kafkaConnect?: string;
-    /**
-     * Kafka Connect configuration values
-     */
     kafkaConnectConfig?: outputs.KafkaKafkaUserConfigKafkaConnectConfig;
-    /**
-     * Enable Kafka-REST service
-     */
     kafkaRest?: string;
-    /**
-     * Kafka REST configuration
-     */
     kafkaRestConfig?: outputs.KafkaKafkaUserConfigKafkaRestConfig;
-    /**
-     * Kafka major version
-     */
     kafkaVersion?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.KafkaKafkaUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.KafkaKafkaUserConfigPrivatelinkAccess;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.KafkaKafkaUserConfigPublicAccess;
-    /**
-     * Enable Schema-Registry service
-     */
     schemaRegistry?: string;
-    /**
-     * Schema Registry configuration
-     */
     schemaRegistryConfig?: outputs.KafkaKafkaUserConfigSchemaRegistryConfig;
-    /**
-     * Static IP addresses
-     */
     staticIps?: string;
 }
 
@@ -2483,9 +1916,6 @@ export interface KafkaKafkaUserConfigPrivateAccess {
 
 export interface KafkaKafkaUserConfigPrivatelinkAccess {
     jolokia?: string;
-    /**
-     * Kafka server provided values
-     */
     kafka?: string;
     kafkaConnect?: string;
     kafkaRest?: string;
@@ -2494,9 +1924,6 @@ export interface KafkaKafkaUserConfigPrivatelinkAccess {
 }
 
 export interface KafkaKafkaUserConfigPublicAccess {
-    /**
-     * Kafka server provided values
-     */
     kafka?: string;
     kafkaConnect?: string;
     kafkaRest?: string;
@@ -2523,17 +1950,8 @@ export interface KafkaMirrorMakerKafkaMirrormaker {
 }
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * Kafka MirrorMaker configuration values
-     */
     kafkaMirrormaker?: outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
-    /**
-     * Static IP addresses
-     */
     staticIps?: string;
 }
 
@@ -2551,156 +1969,54 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 }
 
 export interface KafkaMirrorMakerServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface KafkaMirrorMakerTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
 export interface KafkaServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface KafkaTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
 export interface KafkaTopicConfig {
-    /**
-     * cleanup.policy value
-     */
     cleanupPolicy?: string;
-    /**
-     * compression.type value
-     */
     compressionType?: string;
-    /**
-     * delete.retention.ms value
-     */
     deleteRetentionMs?: string;
-    /**
-     * file.delete.delay.ms value
-     */
     fileDeleteDelayMs?: string;
-    /**
-     * flush.messages value
-     */
     flushMessages?: string;
-    /**
-     * flush.ms value
-     */
     flushMs?: string;
-    /**
-     * index.interval.bytes value
-     */
     indexIntervalBytes?: string;
-    /**
-     * max.compaction.lag.ms value
-     */
     maxCompactionLagMs?: string;
-    /**
-     * max.message.bytes value
-     */
     maxMessageBytes?: string;
-    /**
-     * message.downconversion.enable value
-     */
     messageDownconversionEnable?: string;
-    /**
-     * message.format.version value
-     */
     messageFormatVersion?: string;
-    /**
-     * message.timestamp.difference.max.ms value
-     */
     messageTimestampDifferenceMaxMs?: string;
-    /**
-     * message.timestamp.type value
-     */
     messageTimestampType?: string;
-    /**
-     * min.cleanable.dirty.ratio value
-     */
     minCleanableDirtyRatio?: string;
-    /**
-     * min.compaction.lag.ms value
-     */
     minCompactionLagMs?: string;
-    /**
-     * min.insync.replicas value
-     */
     minInsyncReplicas?: string;
-    /**
-     * preallocate value
-     */
     preallocate?: string;
-    /**
-     * retention.bytes value
-     */
     retentionBytes?: string;
-    /**
-     * retention.ms value
-     */
     retentionMs?: string;
-    /**
-     * segment.bytes value
-     */
     segmentBytes?: string;
-    /**
-     * segment.index.bytes value
-     */
     segmentIndexBytes?: string;
-    /**
-     * segment.jitter.ms value
-     */
     segmentJitterMs?: string;
-    /**
-     * segment.ms value
-     */
     segmentMs?: string;
-    /**
-     * unclean.leader.election.enable value
-     */
     uncleanLeaderElectionEnable?: string;
 }
 
 export interface KafkaTopicTag {
-    /**
-     * Topic tag key. Maximum Length: `64`.
-     */
     key: string;
-    /**
-     * Topic tag value. Maximum Length: `256`.
-     */
     value?: string;
 }
 
@@ -2718,47 +2034,20 @@ export interface M3AggregatorM3aggregator {
 }
 
 export interface M3AggregatorM3aggregatorUserConfig {
-    /**
-     * Custom domain
-     */
     customDomain?: string;
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * M3 major version (deprecated, use m3aggregator_version)
-     */
     m3Version?: string;
-    /**
-     * M3 major version (the minimum compatible version)
-     */
     m3aggregatorVersion?: string;
-    /**
-     * Static IP addresses
-     */
     staticIps?: string;
 }
 
 export interface M3AggregatorServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface M3AggregatorTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
@@ -2776,57 +2065,18 @@ export interface M3DbM3db {
 }
 
 export interface M3DbM3dbUserConfig {
-    /**
-     * Custom domain
-     */
     customDomain?: string;
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * M3 limits
-     */
     limits?: outputs.M3DbM3dbUserConfigLimits;
-    /**
-     * M3 major version (deprecated, use m3db_version)
-     */
     m3Version?: string;
-    /**
-     * Enable Graphite ingestion using Carbon plaintext protocol
-     */
     m3coordinatorEnableGraphiteCarbonIngest?: string;
-    /**
-     * M3 major version (the minimum compatible version)
-     */
     m3dbVersion?: string;
-    /**
-     * List of M3 namespaces
-     */
     namespaces?: outputs.M3DbM3dbUserConfigNamespace[];
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.M3DbM3dbUserConfigPrivateAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.M3DbM3dbUserConfigPublicAccess;
-    /**
-     * M3 rules
-     */
     rules?: outputs.M3DbM3dbUserConfigRules;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
     serviceToForkFrom?: string;
-    /**
-     * Static IP addresses
-     */
     staticIps?: string;
 }
 
@@ -2883,24 +2133,12 @@ export interface M3DbM3dbUserConfigRulesMappingTag {
 }
 
 export interface M3DbServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface M3DbTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
@@ -2918,69 +2156,21 @@ export interface MySqlMysql {
 }
 
 export interface MySqlMysqlUserConfig {
-    /**
-     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-     */
     adminPassword?: string;
-    /**
-     * Custom username for admin user. This must be set only when a new service is being created.
-     */
     adminUsername?: string;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-     */
     backupHour?: string;
-    /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-     */
     backupMinute?: string;
-    /**
-     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
-     */
     binlogRetentionPeriod?: string;
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * Migrate data from existing server
-     */
     migration?: outputs.MySqlMysqlUserConfigMigration;
-    /**
-     * mysql.conf configuration values
-     */
     mysql?: outputs.MySqlMysqlUserConfigMysql;
-    /**
-     * MySQL major version
-     */
     mysqlVersion?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.MySqlMysqlUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.MySqlMysqlUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.MySqlMysqlUserConfigPublicAccess;
-    /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created.
-     */
     recoveryTargetTime?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
     serviceToForkFrom?: string;
-    /**
-     * Static IP addresses
-     */
     staticIps?: string;
 }
 
@@ -3023,51 +2213,30 @@ export interface MySqlMysqlUserConfigMysql {
 }
 
 export interface MySqlMysqlUserConfigPrivateAccess {
-    /**
-     * MySQL specific server provided values
-     */
     mysql?: string;
     mysqlx?: string;
     prometheus?: string;
 }
 
 export interface MySqlMysqlUserConfigPrivatelinkAccess {
-    /**
-     * MySQL specific server provided values
-     */
     mysql?: string;
     mysqlx?: string;
     prometheus?: string;
 }
 
 export interface MySqlMysqlUserConfigPublicAccess {
-    /**
-     * MySQL specific server provided values
-     */
     mysql?: string;
     mysqlx?: string;
     prometheus?: string;
 }
 
 export interface MySqlServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface MySqlTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
@@ -3086,73 +2255,22 @@ export interface OpenSearchOpensearch {
 }
 
 export interface OpenSearchOpensearchUserConfig {
-    /**
-     * Custom domain
-     */
     customDomain?: string;
-    /**
-     * Disable replication factor adjustment
-     */
     disableReplicationFactorAdjustment?: string;
-    /**
-     * Index patterns
-     */
     indexPatterns?: outputs.OpenSearchOpensearchUserConfigIndexPattern[];
-    /**
-     * Template settings for all new indexes
-     */
     indexTemplate?: outputs.OpenSearchOpensearchUserConfigIndexTemplate;
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * Don't reset index.refresh_interval to the default value
-     */
     keepIndexRefreshInterval?: string;
-    /**
-     * Maximum index count
-     */
     maxIndexCount?: string;
-    /**
-     * OpenSearch settings
-     */
     opensearch?: outputs.OpenSearchOpensearchUserConfigOpensearch;
-    /**
-     * OpenSearch Dashboards settings
-     */
     opensearchDashboards?: outputs.OpenSearchOpensearchUserConfigOpensearchDashboards;
-    /**
-     * OpenSearch major version
-     */
     opensearchVersion?: string;
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.OpenSearchOpensearchUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.OpenSearchOpensearchUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.OpenSearchOpensearchUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service
-     */
     recoveryBasebackupName?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
     serviceToForkFrom?: string;
-    /**
-     * Static IP addresses
-     */
     staticIps?: string;
 }
 
@@ -3206,51 +2324,30 @@ export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
 }
 
 export interface OpenSearchOpensearchUserConfigPrivateAccess {
-    /**
-     * Opensearch server provided values
-     */
     opensearch?: string;
     opensearchDashboards?: string;
     prometheus?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
-    /**
-     * Opensearch server provided values
-     */
     opensearch?: string;
     opensearchDashboards?: string;
     prometheus?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigPublicAccess {
-    /**
-     * Opensearch server provided values
-     */
     opensearch?: string;
     opensearchDashboards?: string;
     prometheus?: string;
 }
 
 export interface OpenSearchServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface OpenSearchTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
@@ -3265,140 +2362,41 @@ export interface PgComponent {
 }
 
 export interface PgPg {
-    /**
-     * Primary PostgreSQL database name
-     */
     dbname: string;
-    /**
-     * PostgreSQL master node host IP or name
-     */
     host: string;
-    /**
-     * PostgreSQL admin user password
-     */
     password: string;
-    /**
-     * PostgreSQL port
-     */
     port: number;
-    /**
-     * PostgreSQL replica URI for services with a replica
-     */
     replicaUri: string;
-    /**
-     * PostgreSQL sslmode setting (currently always "require")
-     */
     sslmode: string;
-    /**
-     * PostgreSQL master connection URI
-     */
     uri: string;
-    /**
-     * PostgreSQL admin user name
-     */
     user: string;
 }
 
 export interface PgPgUserConfig {
-    /**
-     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-     */
     adminPassword?: string;
-    /**
-     * Custom username for admin user. This must be set only when a new service is being created.
-     */
     adminUsername?: string;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-     */
     backupHour?: string;
-    /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-     */
     backupMinute?: string;
-    /**
-     * Enable IPv6
-     */
     enableIpv6?: string;
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * Migrate data from existing server
-     */
     migration?: outputs.PgPgUserConfigMigration;
-    /**
-     * postgresql.conf configuration values
-     */
     pg?: outputs.PgPgUserConfigPg;
-    /**
-     * Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
-     */
     pgReadReplica?: string;
-    /**
-     * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
-     */
     pgServiceToForkFrom?: string;
-    /**
-     * PostgreSQL major version
-     */
     pgVersion?: string;
-    /**
-     * PGBouncer connection pooling settings
-     */
     pgbouncer?: outputs.PgPgUserConfigPgbouncer;
-    /**
-     * PGLookout settings
-     */
     pglookout?: outputs.PgPgUserConfigPglookout;
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.PgPgUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.PgPgUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.PgPgUserConfigPublicAccess;
-    /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created.
-     */
     recoveryTargetTime?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
     serviceToForkFrom?: string;
-    /**
-     * shared*buffers*percentage
-     */
     sharedBuffersPercentage?: string;
-    /**
-     * Static IP addresses
-     */
     staticIps?: string;
-    /**
-     * Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-     */
     synchronousReplication?: string;
-    /**
-     * TimescaleDB extension configuration values
-     */
     timescaledb?: outputs.PgPgUserConfigTimescaledb;
-    /**
-     * Variant of the PostgreSQL service, may affect the features that are exposed by default
-     */
     variant?: string;
-    /**
-     * work_mem
-     */
     workMem?: string;
 }
 
@@ -3479,27 +2477,18 @@ export interface PgPgUserConfigPglookout {
 }
 
 export interface PgPgUserConfigPrivateAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
     pg?: string;
     pgbouncer?: string;
     prometheus?: string;
 }
 
 export interface PgPgUserConfigPrivatelinkAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
     pg?: string;
     pgbouncer?: string;
     prometheus?: string;
 }
 
 export interface PgPgUserConfigPublicAccess {
-    /**
-     * PostgreSQL specific server provided values
-     */
     pg?: string;
     pgbouncer?: string;
     prometheus?: string;
@@ -3510,35 +2499,17 @@ export interface PgPgUserConfigTimescaledb {
 }
 
 export interface PgServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface PgTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
 export interface ProjectTag {
-    /**
-     * Project tag key
-     */
     key: string;
-    /**
-     * Project tag value
-     */
     value: string;
 }
 
@@ -3556,85 +2527,25 @@ export interface RedisRedi {
 }
 
 export interface RedisRedisUserConfig {
-    /**
-     * IP filter
-     */
     ipFilters?: string[];
-    /**
-     * Migrate data from existing server
-     */
     migration?: outputs.RedisRedisUserConfigMigration;
-    /**
-     * Allow access to selected service ports from private networks
-     */
     privateAccess?: outputs.RedisRedisUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
     privatelinkAccess?: outputs.RedisRedisUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
-     */
     projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
     publicAccess?: outputs.RedisRedisUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service
-     */
     recoveryBasebackupName?: string;
-    /**
-     * Default ACL for pub/sub channels used when Redis user is created
-     */
     redisAclChannelsDefault?: string;
-    /**
-     * Redis IO thread count
-     */
     redisIoThreads?: string;
-    /**
-     * LFU maxmemory-policy counter decay time in minutes
-     */
     redisLfuDecayTime?: string;
-    /**
-     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
-     */
     redisLfuLogFactor?: string;
-    /**
-     * Redis maxmemory-policy
-     */
     redisMaxmemoryPolicy?: string;
-    /**
-     * Set notify-keyspace-events option
-     */
     redisNotifyKeyspaceEvents?: string;
-    /**
-     * Number of redis databases
-     */
     redisNumberOfDatabases?: string;
-    /**
-     * Redis persistence
-     */
     redisPersistence?: string;
-    /**
-     * Pub/sub client output buffer hard limit in MB
-     */
     redisPubsubClientOutputBufferLimit?: string;
-    /**
-     * Require SSL to access Redis
-     */
     redisSsl?: string;
-    /**
-     * Redis idle connection timeout in seconds
-     */
     redisTimeout?: string;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
-     */
     serviceToForkFrom?: string;
-    /**
-     * Static IP addresses
-     */
     staticIps?: string;
 }
 
@@ -3651,78 +2562,36 @@ export interface RedisRedisUserConfigMigration {
 
 export interface RedisRedisUserConfigPrivateAccess {
     prometheus?: string;
-    /**
-     * Redis server provided values
-     */
     redis?: string;
 }
 
 export interface RedisRedisUserConfigPrivatelinkAccess {
     prometheus?: string;
-    /**
-     * Redis server provided values
-     */
     redis?: string;
 }
 
 export interface RedisRedisUserConfigPublicAccess {
     prometheus?: string;
-    /**
-     * Redis server provided values
-     */
     redis?: string;
 }
 
 export interface RedisServiceIntegration {
-    /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
-     */
     integrationType: string;
-    /**
-     * Name of the source service
-     */
     sourceServiceName: string;
 }
 
 export interface RedisTag {
-    /**
-     * Service tag key
-     */
     key: string;
-    /**
-     * Service tag value
-     */
     value: string;
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfig {
-    /**
-     * Datadog API key
-     */
     datadogApiKey?: string;
-    /**
-     * Custom tags provided by user
-     */
     datadogTags?: outputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag[];
-    /**
-     * Disable consumer group metrics
-     */
     disableConsumerStats?: string;
-    /**
-     * Number of separate instances to fetch kafka consumer statistics with
-     */
     kafkaConsumerCheckInstances?: string;
-    /**
-     * Number of seconds that datadog will wait to get consumer statistics from brokers
-     */
     kafkaConsumerStatsTimeout?: string;
-    /**
-     * Maximum number of partition contexts to send
-     */
     maxPartitionContexts?: string;
-    /**
-     * Datadog intake site. Defaults to datadoghq.com
-     */
     site?: string;
 }
 
@@ -3732,219 +2601,81 @@ export interface ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
-    /**
-     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
-     */
     accessKey?: string;
-    /**
-     * AWS CloudWatch log group name
-     */
     logGroupName?: string;
-    /**
-     * AWS region
-     */
     region?: string;
-    /**
-     * AWS secret key
-     */
     secretKey?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
-    /**
-     * AWS access key. Required permissions are cloudwatch:PutMetricData
-     */
     accessKey?: string;
-    /**
-     * AWS CloudWatch Metrics Namespace
-     */
     namespace?: string;
-    /**
-     * AWS region
-     */
     region?: string;
-    /**
-     * AWS secret key
-     */
     secretKey?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
-    /**
-     * PEM encoded CA certificate
-     */
     ca?: string;
-    /**
-     * Maximum number of days of logs to keep
-     */
     indexDaysMax?: string;
-    /**
-     * Elasticsearch index prefix
-     */
     indexPrefix?: string;
-    /**
-     * Elasticsearch request timeout limit
-     */
     timeout?: string;
-    /**
-     * Elasticsearch connection URL
-     */
     url?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
-    /**
-     * Google Cloud Logging log id
-     */
     logId?: string;
-    /**
-     * GCP project id.
-     */
     projectId?: string;
-    /**
-     * Google Service Account Credentials
-     */
     serviceAccountCredentials?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
-    /**
-     * Bootstrap servers
-     */
     bootstrapServers?: string;
-    /**
-     * The list of SASL mechanisms enabled in the Kafka server.
-     */
     saslMechanism?: string;
-    /**
-     * Password for SASL PLAIN mechanism in the Kafka server.
-     */
     saslPlainPassword?: string;
-    /**
-     * Username for SASL PLAIN mechanism in the Kafka server.
-     */
     saslPlainUsername?: string;
-    /**
-     * Security protocol
-     */
     securityProtocol?: string;
-    /**
-     * PEM-encoded CA certificate
-     */
     sslCaCert?: string;
-    /**
-     * PEM-encoded client certificate
-     */
     sslClientCert?: string;
-    /**
-     * PEM-encoded client key
-     */
     sslClientKey?: string;
-    /**
-     * The endpoint identification algorithm to validate server hostname using server certificate.
-     */
     sslEndpointIdentificationAlgorithm?: string;
 }
 
 export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
-    /**
-     * Authentication method
-     */
     authentication?: string;
-    /**
-     * Basic authentication password
-     */
     basicAuthPassword?: string;
-    /**
-     * Basic authentication user name
-     */
     basicAuthUsername?: string;
-    /**
-     * Schema Registry URL
-     */
     url?: string;
 }
 
 export interface ServiceIntegrationEndpointJolokiaUserConfig {
-    /**
-     * Jolokia basic authentication password
-     */
     basicAuthPassword?: string;
-    /**
-     * Jolokia basic authentication username
-     */
     basicAuthUsername?: string;
 }
 
 export interface ServiceIntegrationEndpointPrometheusUserConfig {
-    /**
-     * Prometheus basic authentication password
-     */
     basicAuthPassword?: string;
-    /**
-     * Prometheus basic authentication username
-     */
     basicAuthUsername?: string;
 }
 
 export interface ServiceIntegrationEndpointRsyslogUserConfig {
-    /**
-     * PEM encoded CA certificate
-     */
     ca?: string;
-    /**
-     * PEM encoded client certificate
-     */
     cert?: string;
-    /**
-     * message format
-     */
     format?: string;
-    /**
-     * PEM encoded client key
-     */
     key?: string;
-    /**
-     * custom syslog message format
-     */
     logline?: string;
-    /**
-     * rsyslog server port
-     */
     port?: string;
-    /**
-     * Structured data block for log message
-     */
     sd?: string;
-    /**
-     * rsyslog server IP address or hostname
-     */
     server?: string;
-    /**
-     * Require TLS
-     */
     tls?: string;
 }
 
 export interface ServiceIntegrationEndpointSignalfxUserConfig {
-    /**
-     * list of metrics to send
-     */
     enabledMetrics?: string[];
-    /**
-     * SignalFX API key
-     */
     signalfxApiKey?: string;
-    /**
-     * SignalFX realm
-     */
     signalfxRealm?: string;
 }
 
 export interface ServiceIntegrationKafkaConnectUserConfig {
-    /**
-     * Kafka Connect service configuration values
-     */
     kafkaConnect?: outputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnect;
 }
 
@@ -3956,20 +2687,11 @@ export interface ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
 }
 
 export interface ServiceIntegrationKafkaLogsUserConfig {
-    /**
-     * Topic name
-     */
     kafkaTopic?: string;
 }
 
 export interface ServiceIntegrationKafkaMirrormakerUserConfig {
-    /**
-     * Kafka cluster alias
-     */
     clusterAlias?: string;
-    /**
-     * Kafka MirrorMaker configuration values
-     */
     kafkaMirrormaker?: outputs.ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker;
 }
 
@@ -3982,36 +2704,15 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
 }
 
 export interface ServiceIntegrationLogsUserConfig {
-    /**
-     * Elasticsearch index retention limit
-     */
     elasticsearchIndexDaysMax?: string;
-    /**
-     * Elasticsearch index prefix
-     */
     elasticsearchIndexPrefix?: string;
 }
 
 export interface ServiceIntegrationMetricsUserConfig {
-    /**
-     * Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-     */
     database?: string;
-    /**
-     * Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
-     */
     retentionDays?: string;
-    /**
-     * Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-     */
     roUsername?: string;
-    /**
-     * Configuration options for metrics where source service is MySQL
-     */
     sourceMysql?: outputs.ServiceIntegrationMetricsUserConfigSourceMysql;
-    /**
-     * Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-     */
     username?: string;
 }
 
@@ -4037,8 +2738,5 @@ export interface ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
 }
 
 export interface ServiceIntegrationMirrormakerUserConfig {
-    /**
-     * Mirrormaker topic whitelist
-     */
     mirrormakerWhitelist?: string;
 }

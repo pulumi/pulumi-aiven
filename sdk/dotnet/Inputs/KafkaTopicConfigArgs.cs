@@ -12,147 +12,75 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaTopicConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// cleanup.policy value
-        /// </summary>
         [Input("cleanupPolicy")]
         public Input<string>? CleanupPolicy { get; set; }
 
-        /// <summary>
-        /// compression.type value
-        /// </summary>
         [Input("compressionType")]
         public Input<string>? CompressionType { get; set; }
 
-        /// <summary>
-        /// delete.retention.ms value
-        /// </summary>
         [Input("deleteRetentionMs")]
         public Input<string>? DeleteRetentionMs { get; set; }
 
-        /// <summary>
-        /// file.delete.delay.ms value
-        /// </summary>
         [Input("fileDeleteDelayMs")]
         public Input<string>? FileDeleteDelayMs { get; set; }
 
-        /// <summary>
-        /// flush.messages value
-        /// </summary>
         [Input("flushMessages")]
         public Input<string>? FlushMessages { get; set; }
 
-        /// <summary>
-        /// flush.ms value
-        /// </summary>
         [Input("flushMs")]
         public Input<string>? FlushMs { get; set; }
 
-        /// <summary>
-        /// index.interval.bytes value
-        /// </summary>
         [Input("indexIntervalBytes")]
         public Input<string>? IndexIntervalBytes { get; set; }
 
-        /// <summary>
-        /// max.compaction.lag.ms value
-        /// </summary>
         [Input("maxCompactionLagMs")]
         public Input<string>? MaxCompactionLagMs { get; set; }
 
-        /// <summary>
-        /// max.message.bytes value
-        /// </summary>
         [Input("maxMessageBytes")]
         public Input<string>? MaxMessageBytes { get; set; }
 
-        /// <summary>
-        /// message.downconversion.enable value
-        /// </summary>
         [Input("messageDownconversionEnable")]
         public Input<string>? MessageDownconversionEnable { get; set; }
 
-        /// <summary>
-        /// message.format.version value
-        /// </summary>
         [Input("messageFormatVersion")]
         public Input<string>? MessageFormatVersion { get; set; }
 
-        /// <summary>
-        /// message.timestamp.difference.max.ms value
-        /// </summary>
         [Input("messageTimestampDifferenceMaxMs")]
         public Input<string>? MessageTimestampDifferenceMaxMs { get; set; }
 
-        /// <summary>
-        /// message.timestamp.type value
-        /// </summary>
         [Input("messageTimestampType")]
         public Input<string>? MessageTimestampType { get; set; }
 
-        /// <summary>
-        /// min.cleanable.dirty.ratio value
-        /// </summary>
         [Input("minCleanableDirtyRatio")]
         public Input<string>? MinCleanableDirtyRatio { get; set; }
 
-        /// <summary>
-        /// min.compaction.lag.ms value
-        /// </summary>
         [Input("minCompactionLagMs")]
         public Input<string>? MinCompactionLagMs { get; set; }
 
-        /// <summary>
-        /// min.insync.replicas value
-        /// </summary>
         [Input("minInsyncReplicas")]
         public Input<string>? MinInsyncReplicas { get; set; }
 
-        /// <summary>
-        /// preallocate value
-        /// </summary>
         [Input("preallocate")]
         public Input<string>? Preallocate { get; set; }
 
-        /// <summary>
-        /// retention.bytes value
-        /// </summary>
         [Input("retentionBytes")]
         public Input<string>? RetentionBytes { get; set; }
 
-        /// <summary>
-        /// retention.ms value
-        /// </summary>
         [Input("retentionMs")]
         public Input<string>? RetentionMs { get; set; }
 
-        /// <summary>
-        /// segment.bytes value
-        /// </summary>
         [Input("segmentBytes")]
         public Input<string>? SegmentBytes { get; set; }
 
-        /// <summary>
-        /// segment.index.bytes value
-        /// </summary>
         [Input("segmentIndexBytes")]
         public Input<string>? SegmentIndexBytes { get; set; }
 
-        /// <summary>
-        /// segment.jitter.ms value
-        /// </summary>
         [Input("segmentJitterMs")]
         public Input<string>? SegmentJitterMs { get; set; }
 
-        /// <summary>
-        /// segment.ms value
-        /// </summary>
         [Input("segmentMs")]
         public Input<string>? SegmentMs { get; set; }
 
-        /// <summary>
-        /// unclean.leader.election.enable value
-        /// </summary>
         [Input("uncleanLeaderElectionEnable")]
         public Input<string>? UncleanLeaderElectionEnable { get; set; }
 

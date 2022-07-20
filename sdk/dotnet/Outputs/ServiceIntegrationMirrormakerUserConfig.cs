@@ -13,9 +13,6 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationMirrormakerUserConfig
     {
-        /// <summary>
-        /// Mirrormaker topic whitelist
-        /// </summary>
         public readonly string? MirrormakerWhitelist;
 
         [OutputConstructor]

@@ -43,9 +43,6 @@ class GetGcpVpcPeeringConnectionResult:
     @property
     @pulumi.getter(name="gcpProjectId")
     def gcp_project_id(self) -> str:
-        """
-        GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "gcp_project_id")
 
     @property
@@ -59,33 +56,21 @@ class GetGcpVpcPeeringConnectionResult:
     @property
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> str:
-        """
-        GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "peer_vpc")
 
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        State of the peering connection
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="stateInfo")
     def state_info(self) -> Mapping[str, Any]:
-        """
-        State-specific help or error information
-        """
         return pulumi.get(self, "state_info")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
-        """
-        The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -120,11 +105,6 @@ def get_gcp_vpc_peering_connection(gcp_project_id: Optional[str] = None,
         gcp_project_id="xxxx",
         peer_vpc="xxxx")
     ```
-
-
-    :param str gcp_project_id: GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
-    :param str peer_vpc: GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
-    :param str vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['gcpProjectId'] = gcp_project_id
@@ -163,10 +143,5 @@ def get_gcp_vpc_peering_connection_output(gcp_project_id: Optional[pulumi.Input[
         gcp_project_id="xxxx",
         peer_vpc="xxxx")
     ```
-
-
-    :param str gcp_project_id: GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
-    :param str peer_vpc: GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
-    :param str vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

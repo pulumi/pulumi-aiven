@@ -54,9 +54,11 @@ type AwsPrivatelink struct {
 	AwsServiceName pulumi.StringOutput `pulumi:"awsServiceName"`
 	// List of allowed principals
 	Principals pulumi.StringArrayOutput `pulumi:"principals"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -104,9 +106,11 @@ type awsPrivatelinkState struct {
 	AwsServiceName *string `pulumi:"awsServiceName"`
 	// List of allowed principals
 	Principals []string `pulumi:"principals"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -117,9 +121,11 @@ type AwsPrivatelinkState struct {
 	AwsServiceName pulumi.StringPtrInput
 	// List of allowed principals
 	Principals pulumi.StringArrayInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -130,9 +136,11 @@ func (AwsPrivatelinkState) ElementType() reflect.Type {
 type awsPrivatelinkArgs struct {
 	// List of allowed principals
 	Principals []string `pulumi:"principals"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -140,9 +148,11 @@ type awsPrivatelinkArgs struct {
 type AwsPrivatelinkArgs struct {
 	// List of allowed principals
 	Principals pulumi.StringArrayInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
 }
 
@@ -248,12 +258,14 @@ func (o AwsPrivatelinkOutput) Principals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringArrayOutput { return v.Principals }).(pulumi.StringArrayOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+// reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o AwsPrivatelinkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o AwsPrivatelinkOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

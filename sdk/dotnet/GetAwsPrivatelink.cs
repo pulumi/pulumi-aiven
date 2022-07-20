@@ -75,15 +75,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetAwsPrivatelinkArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -94,15 +88,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetAwsPrivatelinkInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -115,29 +103,14 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetAwsPrivatelinkResult
     {
-        /// <summary>
-        /// AWS service ID
-        /// </summary>
         public readonly string AwsServiceId;
-        /// <summary>
-        /// AWS service name
-        /// </summary>
         public readonly string AwsServiceName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// List of allowed principals
-        /// </summary>
         public readonly ImmutableArray<string> Principals;
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string Project;
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

@@ -61,7 +61,8 @@ namespace Pulumi.Aiven
         public Output<string> AwsVpcPeeringConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
+        /// recreation of the resource.
         /// </summary>
         [Output("awsVpcRegion")]
         public Output<string> AwsVpcRegion { get; private set; } = null!;
@@ -143,7 +144,8 @@ namespace Pulumi.Aiven
         public Input<string> AwsVpcId { get; set; } = null!;
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
+        /// recreation of the resource.
         /// </summary>
         [Input("awsVpcRegion", required: true)]
         public Input<string> AwsVpcRegion { get; set; } = null!;
@@ -180,7 +182,8 @@ namespace Pulumi.Aiven
         public Input<string>? AwsVpcPeeringConnectionId { get; set; }
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
+        /// recreation of the resource.
         /// </summary>
         [Input("awsVpcRegion")]
         public Input<string>? AwsVpcRegion { get; set; }

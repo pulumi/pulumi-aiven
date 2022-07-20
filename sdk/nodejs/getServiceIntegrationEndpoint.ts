@@ -36,13 +36,7 @@ export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpoin
  * A collection of arguments for invoking getServiceIntegrationEndpoint.
  */
 export interface GetServiceIntegrationEndpointArgs {
-    /**
-     * Name of the service integration endpoint
-     */
     endpointName: string;
-    /**
-     * Project the service integration endpoint belongs to
-     */
     project: string;
 }
 
@@ -50,69 +44,24 @@ export interface GetServiceIntegrationEndpointArgs {
  * A collection of values returned by getServiceIntegrationEndpoint.
  */
 export interface GetServiceIntegrationEndpointResult {
-    /**
-     * Datadog specific user configurable settings
-     */
     readonly datadogUserConfigs: outputs.GetServiceIntegrationEndpointDatadogUserConfig[];
-    /**
-     * Integration endpoint specific backend configuration
-     */
     readonly endpointConfig: {[key: string]: string};
-    /**
-     * Name of the service integration endpoint
-     */
     readonly endpointName: string;
-    /**
-     * Type of the service integration endpoint
-     */
     readonly endpointType: string;
-    /**
-     * external AWS CloudWatch Logs specific user configurable settings
-     */
     readonly externalAwsCloudwatchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig[];
-    /**
-     * External AWS cloudwatch mertrics specific user configurable settings
-     */
     readonly externalAwsCloudwatchMetricsUserConfigs: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig[];
-    /**
-     * external elasticsearch specific user configurable settings
-     */
     readonly externalElasticsearchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig[];
-    /**
-     * external Google Cloud Logginig specific user configurable settings
-     */
     readonly externalGoogleCloudLoggingUserConfigs: outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig[];
-    /**
-     * external Kafka specific user configurable settings
-     */
     readonly externalKafkaUserConfigs: outputs.GetServiceIntegrationEndpointExternalKafkaUserConfig[];
-    /**
-     * External schema registry specific user configurable settings
-     */
     readonly externalSchemaRegistryUserConfigs: outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Jolokia specific user configurable settings
-     */
     readonly jolokiaUserConfigs: outputs.GetServiceIntegrationEndpointJolokiaUserConfig[];
-    /**
-     * Project the service integration endpoint belongs to
-     */
     readonly project: string;
-    /**
-     * Prometheus specific user configurable settings
-     */
     readonly prometheusUserConfigs: outputs.GetServiceIntegrationEndpointPrometheusUserConfig[];
-    /**
-     * rsyslog specific user configurable settings
-     */
     readonly rsyslogUserConfigs: outputs.GetServiceIntegrationEndpointRsyslogUserConfig[];
-    /**
-     * Signalfx specific user configurable settings
-     */
     readonly signalfxUserConfigs: outputs.GetServiceIntegrationEndpointSignalfxUserConfig[];
 }
 
@@ -124,12 +73,6 @@ export function getServiceIntegrationEndpointOutput(args: GetServiceIntegrationE
  * A collection of arguments for invoking getServiceIntegrationEndpoint.
  */
 export interface GetServiceIntegrationEndpointOutputArgs {
-    /**
-     * Name of the service integration endpoint
-     */
     endpointName: pulumi.Input<string>;
-    /**
-     * Project the service integration endpoint belongs to
-     */
     project: pulumi.Input<string>;
 }

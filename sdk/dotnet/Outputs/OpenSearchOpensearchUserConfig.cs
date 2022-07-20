@@ -13,73 +13,22 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class OpenSearchOpensearchUserConfig
     {
-        /// <summary>
-        /// Custom domain
-        /// </summary>
         public readonly string? CustomDomain;
-        /// <summary>
-        /// Disable replication factor adjustment
-        /// </summary>
         public readonly string? DisableReplicationFactorAdjustment;
-        /// <summary>
-        /// Index patterns
-        /// </summary>
         public readonly ImmutableArray<Outputs.OpenSearchOpensearchUserConfigIndexPattern> IndexPatterns;
-        /// <summary>
-        /// Template settings for all new indexes
-        /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigIndexTemplate? IndexTemplate;
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Don't reset index.refresh_interval to the default value
-        /// </summary>
         public readonly string? KeepIndexRefreshInterval;
-        /// <summary>
-        /// Maximum index count
-        /// </summary>
         public readonly string? MaxIndexCount;
-        /// <summary>
-        /// OpenSearch settings
-        /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpensearch? Opensearch;
-        /// <summary>
-        /// OpenSearch Dashboards settings
-        /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchDashboards? OpensearchDashboards;
-        /// <summary>
-        /// OpenSearch major version
-        /// </summary>
         public readonly string? OpensearchVersion;
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigPrivateAccess? PrivateAccess;
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigPrivatelinkAccess? PrivatelinkAccess;
-        /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ProjectToForkFrom;
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigPublicAccess? PublicAccess;
-        /// <summary>
-        /// Name of the basebackup to restore in forked service
-        /// </summary>
         public readonly string? RecoveryBasebackupName;
-        /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ServiceToForkFrom;
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

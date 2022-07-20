@@ -49,34 +49,23 @@ func LookupKafkaAcl(ctx *pulumi.Context, args *LookupKafkaAclArgs, opts ...pulum
 
 // A collection of arguments for invoking getKafkaAcl.
 type LookupKafkaAclArgs struct {
-	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
-	Permission string `pulumi:"permission"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Permission  string `pulumi:"permission"`
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
-	// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
-	Topic string `pulumi:"topic"`
-	// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
-	Username string `pulumi:"username"`
+	Topic       string `pulumi:"topic"`
+	Username    string `pulumi:"username"`
 }
 
 // A collection of values returned by getKafkaAcl.
 type LookupKafkaAclResult struct {
-	// Kafka ACL ID
 	AclId string `pulumi:"aclId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
-	Permission string `pulumi:"permission"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Id          string `pulumi:"id"`
+	Permission  string `pulumi:"permission"`
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
-	// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
-	Topic string `pulumi:"topic"`
-	// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
-	Username string `pulumi:"username"`
+	Topic       string `pulumi:"topic"`
+	Username    string `pulumi:"username"`
 }
 
 func LookupKafkaAclOutput(ctx *pulumi.Context, args LookupKafkaAclOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaAclResultOutput {
@@ -94,16 +83,11 @@ func LookupKafkaAclOutput(ctx *pulumi.Context, args LookupKafkaAclOutputArgs, op
 
 // A collection of arguments for invoking getKafkaAcl.
 type LookupKafkaAclOutputArgs struct {
-	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
-	Permission pulumi.StringInput `pulumi:"permission"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Permission  pulumi.StringInput `pulumi:"permission"`
+	Project     pulumi.StringInput `pulumi:"project"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
-	Topic pulumi.StringInput `pulumi:"topic"`
-	// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
-	Username pulumi.StringInput `pulumi:"username"`
+	Topic       pulumi.StringInput `pulumi:"topic"`
+	Username    pulumi.StringInput `pulumi:"username"`
 }
 
 func (LookupKafkaAclOutputArgs) ElementType() reflect.Type {
@@ -125,7 +109,6 @@ func (o LookupKafkaAclResultOutput) ToLookupKafkaAclResultOutputWithContext(ctx 
 	return o
 }
 
-// Kafka ACL ID
 func (o LookupKafkaAclResultOutput) AclId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.AclId }).(pulumi.StringOutput)
 }
@@ -135,27 +118,22 @@ func (o LookupKafkaAclResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaAclResultOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Permission }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaAclResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaAclResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaAclResultOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Topic }).(pulumi.StringOutput)
 }
 
-// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaAclResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Username }).(pulumi.StringOutput)
 }

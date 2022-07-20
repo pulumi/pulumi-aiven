@@ -37,17 +37,8 @@ export function getServiceUser(args: GetServiceUserArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getServiceUser.
  */
 export interface GetServiceUserArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: string;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: string;
-    /**
-     * The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     username: string;
 }
 
@@ -55,61 +46,22 @@ export interface GetServiceUserArgs {
  * A collection of values returned by getServiceUser.
  */
 export interface GetServiceUserResult {
-    /**
-     * Access certificate for the user if applicable for the service in question
-     */
     readonly accessCert: string;
-    /**
-     * Access certificate key for the user if applicable for the service in question
-     */
     readonly accessKey: string;
-    /**
-     * Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
-     */
     readonly authentication: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The password of the service user ( not applicable for all services ).
-     */
     readonly password: string;
-    /**
-     * Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly pgAllowReplication: boolean;
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly project: string;
-    /**
-     * Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly redisAclCategories: string[];
-    /**
-     * Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly redisAclChannels: string[];
-    /**
-     * Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly redisAclCommands: string[];
-    /**
-     * Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly redisAclKeys: string[];
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly serviceName: string;
-    /**
-     * Type of the user account. Tells wether the user is the primary account or a regular account.
-     */
     readonly type: string;
-    /**
-     * The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly username: string;
 }
 
@@ -121,16 +73,7 @@ export function getServiceUserOutput(args: GetServiceUserOutputArgs, opts?: pulu
  * A collection of arguments for invoking getServiceUser.
  */
 export interface GetServiceUserOutputArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: pulumi.Input<string>;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: pulumi.Input<string>;
-    /**
-     * The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     username: pulumi.Input<string>;
 }

@@ -50,11 +50,14 @@ type KafkaAcl struct {
 
 	// Kafka ACL ID
 	AclId pulumi.StringOutput `pulumi:"aclId"`
-	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be
+	// changed, doing so forces recreation of the resource.
 	Permission pulumi.StringOutput `pulumi:"permission"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Topic pulumi.StringOutput `pulumi:"topic"`
@@ -108,11 +111,14 @@ func GetKafkaAcl(ctx *pulumi.Context,
 type kafkaAclState struct {
 	// Kafka ACL ID
 	AclId *string `pulumi:"aclId"`
-	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be
+	// changed, doing so forces recreation of the resource.
 	Permission *string `pulumi:"permission"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Topic *string `pulumi:"topic"`
@@ -123,11 +129,14 @@ type kafkaAclState struct {
 type KafkaAclState struct {
 	// Kafka ACL ID
 	AclId pulumi.StringPtrInput
-	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be
+	// changed, doing so forces recreation of the resource.
 	Permission pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Topic pulumi.StringPtrInput
@@ -142,11 +151,14 @@ func (KafkaAclState) ElementType() reflect.Type {
 type kafkaAclArgs struct {
 	// Kafka ACL ID
 	AclId *string `pulumi:"aclId"`
-	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be
+	// changed, doing so forces recreation of the resource.
 	Permission string `pulumi:"permission"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Topic string `pulumi:"topic"`
@@ -158,11 +170,14 @@ type kafkaAclArgs struct {
 type KafkaAclArgs struct {
 	// Kafka ACL ID
 	AclId pulumi.StringPtrInput
-	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be
+	// changed, doing so forces recreation of the resource.
 	Permission pulumi.StringInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
 	Topic pulumi.StringInput
@@ -262,17 +277,20 @@ func (o KafkaAclOutput) AclId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.AclId }).(pulumi.StringOutput)
 }
 
-// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be
+// changed, doing so forces recreation of the resource.
 func (o KafkaAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.Permission }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+// reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o KafkaAclOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o KafkaAclOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

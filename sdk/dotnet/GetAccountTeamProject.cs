@@ -27,21 +27,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetAccountTeamProjectArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The unique account id
-        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// The name of an already existing project
-        /// </summary>
         [Input("projectName", required: true)]
         public string ProjectName { get; set; } = null!;
 
-        /// <summary>
-        /// An account team id
-        /// </summary>
         [Input("teamId", required: true)]
         public string TeamId { get; set; } = null!;
 
@@ -52,21 +43,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetAccountTeamProjectInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The unique account id
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// The name of an already existing project
-        /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
 
-        /// <summary>
-        /// An account team id
-        /// </summary>
         [Input("teamId", required: true)]
         public Input<string> TeamId { get; set; } = null!;
 
@@ -79,25 +61,13 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetAccountTeamProjectResult
     {
-        /// <summary>
-        /// The unique account id
-        /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The name of an already existing project
-        /// </summary>
         public readonly string ProjectName;
-        /// <summary>
-        /// An account team id
-        /// </summary>
         public readonly string TeamId;
-        /// <summary>
-        /// The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
-        /// </summary>
         public readonly string TeamType;
 
         [OutputConstructor]

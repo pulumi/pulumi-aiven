@@ -23,14 +23,21 @@ class RedisUserArgs:
                  redis_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a RedisUser resource.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
+               property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] password: The password of the Redis User.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_channels: Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
+               cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_channels: Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
+               resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
+               property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
+               changed, doing so forces recreation of the resource.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -50,7 +57,8 @@ class RedisUserArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -62,7 +70,8 @@ class RedisUserArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -74,7 +83,8 @@ class RedisUserArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
-        The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
+        property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -98,7 +108,8 @@ class RedisUserArgs:
     @pulumi.getter(name="redisAclCategories")
     def redis_acl_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
+        cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_categories")
 
@@ -110,7 +121,8 @@ class RedisUserArgs:
     @pulumi.getter(name="redisAclChannels")
     def redis_acl_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+        Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
+        resource.
         """
         return pulumi.get(self, "redis_acl_channels")
 
@@ -122,7 +134,8 @@ class RedisUserArgs:
     @pulumi.getter(name="redisAclCommands")
     def redis_acl_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
+        property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_commands")
 
@@ -134,7 +147,8 @@ class RedisUserArgs:
     @pulumi.getter(name="redisAclKeys")
     def redis_acl_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
+        changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_keys")
 
@@ -158,14 +172,21 @@ class _RedisUserState:
         """
         Input properties used for looking up and filtering RedisUser resources.
         :param pulumi.Input[str] password: The password of the Redis User.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_channels: Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
+               cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_channels: Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
+               resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
+               property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
+               changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
-        :param pulumi.Input[str] username: The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
+               property cannot be changed, doing so forces recreation of the resource.
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -202,7 +223,8 @@ class _RedisUserState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -214,7 +236,8 @@ class _RedisUserState:
     @pulumi.getter(name="redisAclCategories")
     def redis_acl_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
+        cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_categories")
 
@@ -226,7 +249,8 @@ class _RedisUserState:
     @pulumi.getter(name="redisAclChannels")
     def redis_acl_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+        Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
+        resource.
         """
         return pulumi.get(self, "redis_acl_channels")
 
@@ -238,7 +262,8 @@ class _RedisUserState:
     @pulumi.getter(name="redisAclCommands")
     def redis_acl_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
+        property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_commands")
 
@@ -250,7 +275,8 @@ class _RedisUserState:
     @pulumi.getter(name="redisAclKeys")
     def redis_acl_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
+        changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_keys")
 
@@ -262,7 +288,8 @@ class _RedisUserState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -286,7 +313,8 @@ class _RedisUserState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
+        property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -328,13 +356,20 @@ class RedisUser(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] password: The password of the Redis User.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_channels: Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
+               cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_channels: Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
+               resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
+               property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
+               changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
+               property cannot be changed, doing so forces recreation of the resource.
         """
         ...
     @overload
@@ -435,14 +470,21 @@ class RedisUser(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] password: The password of the Redis User.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_channels: Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_categories: Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
+               cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_channels: Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
+               resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_commands: Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
+               property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redis_acl_keys: Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
+               changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
-        :param pulumi.Input[str] username: The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] username: The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
+               property cannot be changed, doing so forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -471,7 +513,8 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -479,7 +522,8 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter(name="redisAclCategories")
     def redis_acl_categories(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
+        cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_categories")
 
@@ -487,7 +531,8 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter(name="redisAclChannels")
     def redis_acl_channels(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+        Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
+        resource.
         """
         return pulumi.get(self, "redis_acl_channels")
 
@@ -495,7 +540,8 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter(name="redisAclCommands")
     def redis_acl_commands(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
+        property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_commands")
 
@@ -503,7 +549,8 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter(name="redisAclKeys")
     def redis_acl_keys(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
+        changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "redis_acl_keys")
 
@@ -511,7 +558,8 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -527,7 +575,8 @@ class RedisUser(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
+        property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 

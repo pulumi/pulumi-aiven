@@ -46,25 +46,16 @@ class GetAccountTeamMemberResult:
     @property
     @pulumi.getter
     def accepted(self) -> bool:
-        """
-        is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
-        """
         return pulumi.get(self, "accepted")
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
-        """
-        The unique account id This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
-        """
-        Time of creation
-        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -78,25 +69,16 @@ class GetAccountTeamMemberResult:
     @property
     @pulumi.getter(name="invitedByUserEmail")
     def invited_by_user_email(self) -> str:
-        """
-        The email address that invited this user.
-        """
         return pulumi.get(self, "invited_by_user_email")
 
     @property
     @pulumi.getter(name="teamId")
     def team_id(self) -> str:
-        """
-        An account team id This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "team_id")
 
     @property
     @pulumi.getter(name="userEmail")
     def user_email(self) -> str:
-        """
-        Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "user_email")
 
 
@@ -121,11 +103,6 @@ def get_account_team_member(account_id: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountTeamMemberResult:
     """
     The Account Team Member data source provides information about the existing Aiven Account Team Member.
-
-
-    :param str account_id: The unique account id This property cannot be changed, doing so forces recreation of the resource.
-    :param str team_id: An account team id This property cannot be changed, doing so forces recreation of the resource.
-    :param str user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -154,10 +131,5 @@ def get_account_team_member_output(account_id: Optional[pulumi.Input[str]] = Non
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountTeamMemberResult]:
     """
     The Account Team Member data source provides information about the existing Aiven Account Team Member.
-
-
-    :param str account_id: The unique account id This property cannot be changed, doing so forces recreation of the resource.
-    :param str team_id: An account team id This property cannot be changed, doing so forces recreation of the resource.
-    :param str user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

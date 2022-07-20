@@ -77,7 +77,11 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:          "https://pulumi.io",
 		Repository:        "https://github.com/pulumi/pulumi-aiven",
 		TFProviderLicense: refProviderLicense(tfbridge.MITLicenseType),
-		Config:            map[string]*tfbridge.SchemaInfo{},
+		Config: map[string]*tfbridge.SchemaInfo{
+			"api_token": {
+				Secret: tfbridge.True(),
+			},
+		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"aiven_account":                               {Tok: makeResource(mainMod, "Account")},
 			"aiven_account_authentication":                {Tok: makeResource(mainMod, "AccountAuthentication")},
@@ -197,6 +201,7 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_pg_database":                  {Tok: makeResource(mainMod, "PgDatabase")},
 			"aiven_pg_user":                      {Tok: makeResource(mainMod, "PgUser")},
 			"aiven_redis_user":                   {Tok: makeResource(mainMod, "RedisUser")},
+			"aiven_kafka_schema_registry_acl":    {Tok: makeResource(mainMod, "KafkaSchemaRegistryAcl")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"aiven_account":                        {Tok: makeDataSource(mainMod, "getAccount")},
@@ -255,6 +260,7 @@ func Provider() tfbridge.ProviderInfo {
 			"aiven_pg_database":                    {Tok: makeDataSource(mainMod, "getPgDatabase")},
 			"aiven_pg_user":                        {Tok: makeDataSource(mainMod, "getPgUser")},
 			"aiven_redis_user":                     {Tok: makeDataSource(mainMod, "getRedisUser")},
+			"aiven_kafka_schema_registry_acl":      {Tok: makeDataSource(mainMod, "getKafkaSchemaRegistryAcl")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

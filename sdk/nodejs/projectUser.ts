@@ -55,7 +55,8 @@ export class ProjectUser extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+     * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the
+     * target user and the actual membership is only created once the user accepts the invitation.
      */
     public /*out*/ readonly accepted!: pulumi.Output<boolean>;
     /**
@@ -67,7 +68,8 @@ export class ProjectUser extends pulumi.CustomResource {
      */
     public readonly memberType!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
 
@@ -114,7 +116,8 @@ export class ProjectUser extends pulumi.CustomResource {
  */
 export interface ProjectUserState {
     /**
-     * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+     * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the
+     * target user and the actual membership is only created once the user accepts the invitation.
      */
     accepted?: pulumi.Input<boolean>;
     /**
@@ -126,7 +129,8 @@ export interface ProjectUserState {
      */
     memberType?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
 }
@@ -144,7 +148,8 @@ export interface ProjectUserArgs {
      */
     memberType: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
 }

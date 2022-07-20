@@ -12,15 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ProjectTagGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Project tag key
-        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
-        /// <summary>
-        /// Project tag value
-        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

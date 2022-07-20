@@ -19,10 +19,14 @@ class OpenSearchAclConfigArgs:
                  extended_acl: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a OpenSearchAclConfig resource.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[bool] enabled: Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
-        :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
+               ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
+               indexes they have been granted access to. The default value is `true`.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -35,7 +39,8 @@ class OpenSearchAclConfigArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -47,7 +52,8 @@ class OpenSearchAclConfigArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -71,7 +77,9 @@ class OpenSearchAclConfigArgs:
     @pulumi.getter(name="extendedAcl")
     def extended_acl(self) -> Optional[pulumi.Input[bool]]:
         """
-        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
+        ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
+        indexes they have been granted access to. The default value is `true`.
         """
         return pulumi.get(self, "extended_acl")
 
@@ -90,9 +98,13 @@ class _OpenSearchAclConfigState:
         """
         Input properties used for looking up and filtering OpenSearchAclConfig resources.
         :param pulumi.Input[bool] enabled: Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
-        :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
+               ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
+               indexes they have been granted access to. The default value is `true`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -119,7 +131,9 @@ class _OpenSearchAclConfigState:
     @pulumi.getter(name="extendedAcl")
     def extended_acl(self) -> Optional[pulumi.Input[bool]]:
         """
-        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
+        ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
+        indexes they have been granted access to. The default value is `true`.
         """
         return pulumi.get(self, "extended_acl")
 
@@ -131,7 +145,8 @@ class _OpenSearchAclConfigState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -143,7 +158,8 @@ class _OpenSearchAclConfigState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -199,9 +215,13 @@ class OpenSearchAclConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
-        :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
+               ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
+               indexes they have been granted access to. The default value is `true`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         ...
     @overload
@@ -304,9 +324,13 @@ class OpenSearchAclConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
-        :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[bool] extended_acl: Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
+               ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
+               indexes they have been granted access to. The default value is `true`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -330,7 +354,9 @@ class OpenSearchAclConfig(pulumi.CustomResource):
     @pulumi.getter(name="extendedAcl")
     def extended_acl(self) -> pulumi.Output[Optional[bool]]:
         """
-        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+        Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
+        ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
+        indexes they have been granted access to. The default value is `true`.
         """
         return pulumi.get(self, "extended_acl")
 
@@ -338,7 +364,8 @@ class OpenSearchAclConfig(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -346,7 +373,8 @@ class OpenSearchAclConfig(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 

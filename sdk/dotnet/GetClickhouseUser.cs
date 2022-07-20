@@ -77,21 +77,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetClickhouseUserArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
 
@@ -102,21 +93,12 @@ namespace Pulumi.Aiven
 
     public sealed class GetClickhouseUserInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
@@ -133,29 +115,11 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The password of the clickhouse user.
-        /// </summary>
         public readonly string Password;
-        /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string Project;
-        /// <summary>
-        /// Indicates if a clickhouse user is required
-        /// </summary>
         public readonly bool Required;
-        /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         public readonly string Username;
-        /// <summary>
-        /// UUID of the clickhouse user.
-        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]

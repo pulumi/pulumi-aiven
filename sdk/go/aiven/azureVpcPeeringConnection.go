@@ -51,11 +51,13 @@ type AzureVpcPeeringConnection struct {
 
 	// Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
 	AzureSubscriptionId pulumi.StringOutput `pulumi:"azureSubscriptionId"`
-	// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+	// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
+	// changed, doing so forces recreation of the resource.
 	PeerAzureAppId pulumi.StringOutput `pulumi:"peerAzureAppId"`
 	// Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
 	PeerAzureTenantId pulumi.StringOutput `pulumi:"peerAzureTenantId"`
-	// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+	// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
+	// resource.
 	PeerResourceGroup pulumi.StringOutput `pulumi:"peerResourceGroup"`
 	// Cloud provider identifier for the peering connection if available
 	PeeringConnectionId pulumi.StringOutput `pulumi:"peeringConnectionId"`
@@ -118,11 +120,13 @@ func GetAzureVpcPeeringConnection(ctx *pulumi.Context,
 type azureVpcPeeringConnectionState struct {
 	// Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
 	AzureSubscriptionId *string `pulumi:"azureSubscriptionId"`
-	// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+	// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
+	// changed, doing so forces recreation of the resource.
 	PeerAzureAppId *string `pulumi:"peerAzureAppId"`
 	// Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
 	PeerAzureTenantId *string `pulumi:"peerAzureTenantId"`
-	// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+	// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
+	// resource.
 	PeerResourceGroup *string `pulumi:"peerResourceGroup"`
 	// Cloud provider identifier for the peering connection if available
 	PeeringConnectionId *string `pulumi:"peeringConnectionId"`
@@ -139,11 +143,13 @@ type azureVpcPeeringConnectionState struct {
 type AzureVpcPeeringConnectionState struct {
 	// Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
 	AzureSubscriptionId pulumi.StringPtrInput
-	// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+	// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
+	// changed, doing so forces recreation of the resource.
 	PeerAzureAppId pulumi.StringPtrInput
 	// Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
 	PeerAzureTenantId pulumi.StringPtrInput
-	// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+	// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
+	// resource.
 	PeerResourceGroup pulumi.StringPtrInput
 	// Cloud provider identifier for the peering connection if available
 	PeeringConnectionId pulumi.StringPtrInput
@@ -164,11 +170,13 @@ func (AzureVpcPeeringConnectionState) ElementType() reflect.Type {
 type azureVpcPeeringConnectionArgs struct {
 	// Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
 	AzureSubscriptionId string `pulumi:"azureSubscriptionId"`
-	// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+	// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
+	// changed, doing so forces recreation of the resource.
 	PeerAzureAppId string `pulumi:"peerAzureAppId"`
 	// Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
 	PeerAzureTenantId string `pulumi:"peerAzureTenantId"`
-	// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+	// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
+	// resource.
 	PeerResourceGroup string `pulumi:"peerResourceGroup"`
 	// Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
 	VnetName string `pulumi:"vnetName"`
@@ -180,11 +188,13 @@ type azureVpcPeeringConnectionArgs struct {
 type AzureVpcPeeringConnectionArgs struct {
 	// Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
 	AzureSubscriptionId pulumi.StringInput
-	// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+	// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
+	// changed, doing so forces recreation of the resource.
 	PeerAzureAppId pulumi.StringInput
 	// Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
 	PeerAzureTenantId pulumi.StringInput
-	// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+	// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
+	// resource.
 	PeerResourceGroup pulumi.StringInput
 	// Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
 	VnetName pulumi.StringInput
@@ -284,7 +294,8 @@ func (o AzureVpcPeeringConnectionOutput) AzureSubscriptionId() pulumi.StringOutp
 	return o.ApplyT(func(v *AzureVpcPeeringConnection) pulumi.StringOutput { return v.AzureSubscriptionId }).(pulumi.StringOutput)
 }
 
-// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
+// changed, doing so forces recreation of the resource.
 func (o AzureVpcPeeringConnectionOutput) PeerAzureAppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureVpcPeeringConnection) pulumi.StringOutput { return v.PeerAzureAppId }).(pulumi.StringOutput)
 }
@@ -294,7 +305,8 @@ func (o AzureVpcPeeringConnectionOutput) PeerAzureTenantId() pulumi.StringOutput
 	return o.ApplyT(func(v *AzureVpcPeeringConnection) pulumi.StringOutput { return v.PeerAzureTenantId }).(pulumi.StringOutput)
 }
 
-// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
+// resource.
 func (o AzureVpcPeeringConnectionOutput) PeerResourceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureVpcPeeringConnection) pulumi.StringOutput { return v.PeerResourceGroup }).(pulumi.StringOutput)
 }

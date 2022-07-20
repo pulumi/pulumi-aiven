@@ -12,9 +12,6 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class FlinkFlinkUserConfigPrivatelinkAccessArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Flink server provided values
-        /// </summary>
         [Input("flink")]
         public Input<string>? Flink { get; set; }
 

@@ -13,6 +13,10 @@ import (
 // The Service Component data source provides information about the existing Aiven service Component.
 //
 // Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
+//
+// ## Example Usage
+//
+// {{tffile "examples/data-sources/aiven_service_component/data-source.tf"}}
 func GetServiceComponent(ctx *pulumi.Context, args *GetServiceComponentArgs, opts ...pulumi.InvokeOption) (*GetServiceComponentResult, error) {
 	var rv GetServiceComponentResult
 	err := ctx.Invoke("aiven:index/getServiceComponent:getServiceComponent", args, &rv, opts...)
@@ -24,44 +28,28 @@ func GetServiceComponent(ctx *pulumi.Context, args *GetServiceComponentArgs, opt
 
 // A collection of arguments for invoking getServiceComponent.
 type GetServiceComponentArgs struct {
-	// Service component name
-	Component string `pulumi:"component"`
-	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	Component                 string  `pulumi:"component"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
-	// Project name
-	Project string `pulumi:"project"`
-	// Network access route
-	Route *string `pulumi:"route"`
-	// Service name
-	ServiceName *string `pulumi:"serviceName"`
-	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
-	Ssl *bool `pulumi:"ssl"`
-	// DNS usage name
-	Usage *string `pulumi:"usage"`
+	Project                   string  `pulumi:"project"`
+	Route                     *string `pulumi:"route"`
+	ServiceName               *string `pulumi:"serviceName"`
+	Ssl                       *bool   `pulumi:"ssl"`
+	Usage                     *string `pulumi:"usage"`
 }
 
 // A collection of values returned by getServiceComponent.
 type GetServiceComponentResult struct {
-	// Service component name
 	Component string `pulumi:"component"`
-	// DNS name for connecting to the service component
-	Host string `pulumi:"host"`
+	Host      string `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	Id                        string  `pulumi:"id"`
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
-	// Port number for connecting to the service component
-	Port int `pulumi:"port"`
-	// Project name
-	Project string `pulumi:"project"`
-	// Network access route
-	Route *string `pulumi:"route"`
-	// Service name
-	ServiceName *string `pulumi:"serviceName"`
-	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
-	Ssl *bool `pulumi:"ssl"`
-	// DNS usage name
-	Usage *string `pulumi:"usage"`
+	Port                      int     `pulumi:"port"`
+	Project                   string  `pulumi:"project"`
+	Route                     *string `pulumi:"route"`
+	ServiceName               *string `pulumi:"serviceName"`
+	Ssl                       *bool   `pulumi:"ssl"`
+	Usage                     *string `pulumi:"usage"`
 }
 
 func GetServiceComponentOutput(ctx *pulumi.Context, args GetServiceComponentOutputArgs, opts ...pulumi.InvokeOption) GetServiceComponentResultOutput {
@@ -79,20 +67,13 @@ func GetServiceComponentOutput(ctx *pulumi.Context, args GetServiceComponentOutp
 
 // A collection of arguments for invoking getServiceComponent.
 type GetServiceComponentOutputArgs struct {
-	// Service component name
-	Component pulumi.StringInput `pulumi:"component"`
-	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	Component                 pulumi.StringInput    `pulumi:"component"`
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
-	// Project name
-	Project pulumi.StringInput `pulumi:"project"`
-	// Network access route
-	Route pulumi.StringPtrInput `pulumi:"route"`
-	// Service name
-	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
-	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
-	Ssl pulumi.BoolPtrInput `pulumi:"ssl"`
-	// DNS usage name
-	Usage pulumi.StringPtrInput `pulumi:"usage"`
+	Project                   pulumi.StringInput    `pulumi:"project"`
+	Route                     pulumi.StringPtrInput `pulumi:"route"`
+	ServiceName               pulumi.StringPtrInput `pulumi:"serviceName"`
+	Ssl                       pulumi.BoolPtrInput   `pulumi:"ssl"`
+	Usage                     pulumi.StringPtrInput `pulumi:"usage"`
 }
 
 func (GetServiceComponentOutputArgs) ElementType() reflect.Type {
@@ -114,12 +95,10 @@ func (o GetServiceComponentResultOutput) ToGetServiceComponentResultOutputWithCo
 	return o
 }
 
-// Service component name
 func (o GetServiceComponentResultOutput) Component() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) string { return v.Component }).(pulumi.StringOutput)
 }
 
-// DNS name for connecting to the service component
 func (o GetServiceComponentResultOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -129,37 +108,30 @@ func (o GetServiceComponentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Kafka authentication method. This is a value specific to the 'kafka' service component
 func (o GetServiceComponentResultOutput) KafkaAuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) *string { return v.KafkaAuthenticationMethod }).(pulumi.StringPtrOutput)
 }
 
-// Port number for connecting to the service component
 func (o GetServiceComponentResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Project name
 func (o GetServiceComponentResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Network access route
 func (o GetServiceComponentResultOutput) Route() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) *string { return v.Route }).(pulumi.StringPtrOutput)
 }
 
-// Service name
 func (o GetServiceComponentResultOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
-// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
 func (o GetServiceComponentResultOutput) Ssl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
 }
 
-// DNS usage name
 func (o GetServiceComponentResultOutput) Usage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) *string { return v.Usage }).(pulumi.StringPtrOutput)
 }

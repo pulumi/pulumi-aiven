@@ -62,17 +62,11 @@ class GetKafkaConnectorResult:
     @property
     @pulumi.getter
     def config(self) -> Mapping[str, str]:
-        """
-        The Kafka Connector configuration parameters.
-        """
         return pulumi.get(self, "config")
 
     @property
     @pulumi.getter(name="connectorName")
     def connector_name(self) -> str:
-        """
-        The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "connector_name")
 
     @property
@@ -86,73 +80,46 @@ class GetKafkaConnectorResult:
     @property
     @pulumi.getter(name="pluginAuthor")
     def plugin_author(self) -> str:
-        """
-        The Kafka connector author.
-        """
         return pulumi.get(self, "plugin_author")
 
     @property
     @pulumi.getter(name="pluginClass")
     def plugin_class(self) -> str:
-        """
-        The Kafka connector Java class.
-        """
         return pulumi.get(self, "plugin_class")
 
     @property
     @pulumi.getter(name="pluginDocUrl")
     def plugin_doc_url(self) -> str:
-        """
-        The Kafka connector documentation URL.
-        """
         return pulumi.get(self, "plugin_doc_url")
 
     @property
     @pulumi.getter(name="pluginTitle")
     def plugin_title(self) -> str:
-        """
-        The Kafka connector title.
-        """
         return pulumi.get(self, "plugin_title")
 
     @property
     @pulumi.getter(name="pluginType")
     def plugin_type(self) -> str:
-        """
-        The Kafka connector type.
-        """
         return pulumi.get(self, "plugin_type")
 
     @property
     @pulumi.getter(name="pluginVersion")
     def plugin_version(self) -> str:
-        """
-        The version of the kafka connector.
-        """
         return pulumi.get(self, "plugin_version")
 
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def tasks(self) -> Sequence['outputs.GetKafkaConnectorTaskResult']:
-        """
-        List of tasks of a connector.
-        """
         return pulumi.get(self, "tasks")
 
 
@@ -193,11 +160,6 @@ def get_kafka_connector(connector_name: Optional[str] = None,
         service_name=aiven_service["kafka-service1"]["service_name"],
         connector_name="kafka-es-con1")
     ```
-
-
-    :param str connector_name: The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['connectorName'] = connector_name
@@ -242,10 +204,5 @@ def get_kafka_connector_output(connector_name: Optional[pulumi.Input[str]] = Non
         service_name=aiven_service["kafka-service1"]["service_name"],
         connector_name="kafka-es-con1")
     ```
-
-
-    :param str connector_name: The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

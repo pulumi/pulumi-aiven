@@ -58,7 +58,7 @@ export class AccountTeamProject extends pulumi.CustomResource {
      */
     public readonly teamId!: pulumi.Output<string>;
     /**
-     * The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
+     * The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
      */
     public readonly teamType!: pulumi.Output<string | undefined>;
 
@@ -114,7 +114,7 @@ export interface AccountTeamProjectState {
      */
     teamId?: pulumi.Input<string>;
     /**
-     * The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
+     * The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
      */
     teamType?: pulumi.Input<string>;
 }
@@ -136,7 +136,7 @@ export interface AccountTeamProjectArgs {
      */
     teamId: pulumi.Input<string>;
     /**
-     * The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
+     * The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
      */
     teamType?: pulumi.Input<string>;
 }

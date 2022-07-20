@@ -12,69 +12,38 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class InfluxDbInfluxdbUserConfigGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Custom domain
-        /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
 
-        /// <summary>
-        /// influxdb.conf configuration values
-        /// </summary>
         [Input("influxdb")]
         public Input<Inputs.InfluxDbInfluxdbUserConfigInfluxdbGetArgs>? Influxdb { get; set; }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
-
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
-        /// <summary>
-        /// Allow access to selected service ports from private networks
-        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.InfluxDbInfluxdbUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service components through Privatelink
-        /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.InfluxDbInfluxdbUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
-        /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
-        /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
 
-        /// <summary>
-        /// Allow access to selected service ports from the public Internet
-        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.InfluxDbInfluxdbUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
-        /// <summary>
-        /// Name of the basebackup to restore in forked service
-        /// </summary>
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
 
-        /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
-        /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
-        /// <summary>
-        /// Static IP addresses
-        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 

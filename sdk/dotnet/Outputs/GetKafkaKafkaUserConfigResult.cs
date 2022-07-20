@@ -15,9 +15,6 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string? CustomDomain;
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Kafka server provided values
-        /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaResult? Kafka;
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethodsResult? KafkaAuthenticationMethods;
         public readonly string? KafkaConnect;
@@ -30,9 +27,6 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetKafkaKafkaUserConfigPublicAccessResult? PublicAccess;
         public readonly string? SchemaRegistry;
         public readonly Outputs.GetKafkaKafkaUserConfigSchemaRegistryConfigResult? SchemaRegistryConfig;
-        /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-        /// </summary>
         public readonly string? StaticIps;
 
         [OutputConstructor]

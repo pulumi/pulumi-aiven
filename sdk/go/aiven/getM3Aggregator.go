@@ -46,68 +46,40 @@ func LookupM3Aggregator(ctx *pulumi.Context, args *LookupM3AggregatorArgs, opts 
 
 // A collection of arguments for invoking getM3Aggregator.
 type LookupM3AggregatorArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	Project     string `pulumi:"project"`
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getM3Aggregator.
 type LookupM3AggregatorResult struct {
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-	CloudName string `pulumi:"cloudName"`
-	// Service component information objects
-	Components []GetM3AggregatorComponent `pulumi:"components"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
-	DiskSpace string `pulumi:"diskSpace"`
-	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
-	DiskSpaceCap string `pulumi:"diskSpaceCap"`
-	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
-	DiskSpaceDefault string `pulumi:"diskSpaceDefault"`
-	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
-	DiskSpaceStep string `pulumi:"diskSpaceStep"`
-	// Disk space that service is currently using
-	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
+	CloudName        string                     `pulumi:"cloudName"`
+	Components       []GetM3AggregatorComponent `pulumi:"components"`
+	DiskSpace        string                     `pulumi:"diskSpace"`
+	DiskSpaceCap     string                     `pulumi:"diskSpaceCap"`
+	DiskSpaceDefault string                     `pulumi:"diskSpaceDefault"`
+	DiskSpaceStep    string                     `pulumi:"diskSpaceStep"`
+	DiskSpaceUsed    string                     `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// M3aggregator user configurable settings
+	Id                      string                                  `pulumi:"id"`
 	M3aggregatorUserConfigs []GetM3AggregatorM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfigs"`
-	// M3 aggregator specific server provided values
-	M3aggregators []GetM3AggregatorM3aggregator `pulumi:"m3aggregators"`
-	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
-	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
-	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-	Plan string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project string `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
-	ProjectVpcId string `pulumi:"projectVpcId"`
-	// The hostname of the service.
-	ServiceHost string `pulumi:"serviceHost"`
-	// Service integrations to specify when creating a service. Not applied after initial service creation
-	ServiceIntegrations []GetM3AggregatorServiceIntegration `pulumi:"serviceIntegrations"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-	ServiceName string `pulumi:"serviceName"`
-	// Password used for connecting to the service, if applicable
-	ServicePassword string `pulumi:"servicePassword"`
-	// The port of the service
-	ServicePort int `pulumi:"servicePort"`
-	// Aiven internal service type code
-	ServiceType string `pulumi:"serviceType"`
-	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
-	ServiceUri string `pulumi:"serviceUri"`
-	// Username used for connecting to the service, if applicable
-	ServiceUsername string `pulumi:"serviceUsername"`
-	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-	State string `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps []string `pulumi:"staticIps"`
-	// Tags are key-value pairs that allow you to categorize services.
-	Tags []GetM3AggregatorTag `pulumi:"tags"`
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
-	TerminationProtection bool `pulumi:"terminationProtection"`
+	M3aggregators           []GetM3AggregatorM3aggregator           `pulumi:"m3aggregators"`
+	MaintenanceWindowDow    string                                  `pulumi:"maintenanceWindowDow"`
+	MaintenanceWindowTime   string                                  `pulumi:"maintenanceWindowTime"`
+	Plan                    string                                  `pulumi:"plan"`
+	Project                 string                                  `pulumi:"project"`
+	ProjectVpcId            string                                  `pulumi:"projectVpcId"`
+	ServiceHost             string                                  `pulumi:"serviceHost"`
+	ServiceIntegrations     []GetM3AggregatorServiceIntegration     `pulumi:"serviceIntegrations"`
+	ServiceName             string                                  `pulumi:"serviceName"`
+	ServicePassword         string                                  `pulumi:"servicePassword"`
+	ServicePort             int                                     `pulumi:"servicePort"`
+	ServiceType             string                                  `pulumi:"serviceType"`
+	ServiceUri              string                                  `pulumi:"serviceUri"`
+	ServiceUsername         string                                  `pulumi:"serviceUsername"`
+	State                   string                                  `pulumi:"state"`
+	StaticIps               []string                                `pulumi:"staticIps"`
+	Tags                    []GetM3AggregatorTag                    `pulumi:"tags"`
+	TerminationProtection   bool                                    `pulumi:"terminationProtection"`
 }
 
 func LookupM3AggregatorOutput(ctx *pulumi.Context, args LookupM3AggregatorOutputArgs, opts ...pulumi.InvokeOption) LookupM3AggregatorResultOutput {
@@ -125,9 +97,7 @@ func LookupM3AggregatorOutput(ctx *pulumi.Context, args LookupM3AggregatorOutput
 
 // A collection of arguments for invoking getM3Aggregator.
 type LookupM3AggregatorOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	Project     pulumi.StringInput `pulumi:"project"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -150,37 +120,30 @@ func (o LookupM3AggregatorResultOutput) ToLookupM3AggregatorResultOutputWithCont
 	return o
 }
 
-// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 func (o LookupM3AggregatorResultOutput) CloudName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.CloudName }).(pulumi.StringOutput)
 }
 
-// Service component information objects
 func (o LookupM3AggregatorResultOutput) Components() GetM3AggregatorComponentArrayOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) []GetM3AggregatorComponent { return v.Components }).(GetM3AggregatorComponentArrayOutput)
 }
 
-// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
 func (o LookupM3AggregatorResultOutput) DiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.DiskSpace }).(pulumi.StringOutput)
 }
 
-// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 func (o LookupM3AggregatorResultOutput) DiskSpaceCap() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.DiskSpaceCap }).(pulumi.StringOutput)
 }
 
-// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
 func (o LookupM3AggregatorResultOutput) DiskSpaceDefault() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.DiskSpaceDefault }).(pulumi.StringOutput)
 }
 
-// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 func (o LookupM3AggregatorResultOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
 
-// Disk space that service is currently using
 func (o LookupM3AggregatorResultOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
@@ -190,99 +153,80 @@ func (o LookupM3AggregatorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// M3aggregator user configurable settings
 func (o LookupM3AggregatorResultOutput) M3aggregatorUserConfigs() GetM3AggregatorM3aggregatorUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) []GetM3AggregatorM3aggregatorUserConfig {
 		return v.M3aggregatorUserConfigs
 	}).(GetM3AggregatorM3aggregatorUserConfigArrayOutput)
 }
 
-// M3 aggregator specific server provided values
 func (o LookupM3AggregatorResultOutput) M3aggregators() GetM3AggregatorM3aggregatorArrayOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) []GetM3AggregatorM3aggregator { return v.M3aggregators }).(GetM3AggregatorM3aggregatorArrayOutput)
 }
 
-// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 func (o LookupM3AggregatorResultOutput) MaintenanceWindowDow() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.MaintenanceWindowDow }).(pulumi.StringOutput)
 }
 
-// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 func (o LookupM3AggregatorResultOutput) MaintenanceWindowTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.MaintenanceWindowTime }).(pulumi.StringOutput)
 }
 
-// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 func (o LookupM3AggregatorResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupM3AggregatorResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 func (o LookupM3AggregatorResultOutput) ProjectVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.ProjectVpcId }).(pulumi.StringOutput)
 }
 
-// The hostname of the service.
 func (o LookupM3AggregatorResultOutput) ServiceHost() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.ServiceHost }).(pulumi.StringOutput)
 }
 
-// Service integrations to specify when creating a service. Not applied after initial service creation
 func (o LookupM3AggregatorResultOutput) ServiceIntegrations() GetM3AggregatorServiceIntegrationArrayOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) []GetM3AggregatorServiceIntegration { return v.ServiceIntegrations }).(GetM3AggregatorServiceIntegrationArrayOutput)
 }
 
-// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 func (o LookupM3AggregatorResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Password used for connecting to the service, if applicable
 func (o LookupM3AggregatorResultOutput) ServicePassword() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.ServicePassword }).(pulumi.StringOutput)
 }
 
-// The port of the service
 func (o LookupM3AggregatorResultOutput) ServicePort() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) int { return v.ServicePort }).(pulumi.IntOutput)
 }
 
-// Aiven internal service type code
 func (o LookupM3AggregatorResultOutput) ServiceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.ServiceType }).(pulumi.StringOutput)
 }
 
-// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
 func (o LookupM3AggregatorResultOutput) ServiceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.ServiceUri }).(pulumi.StringOutput)
 }
 
-// Username used for connecting to the service, if applicable
 func (o LookupM3AggregatorResultOutput) ServiceUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.ServiceUsername }).(pulumi.StringOutput)
 }
 
-// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 func (o LookupM3AggregatorResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o LookupM3AggregatorResultOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) []string { return v.StaticIps }).(pulumi.StringArrayOutput)
 }
 
-// Tags are key-value pairs that allow you to categorize services.
 func (o LookupM3AggregatorResultOutput) Tags() GetM3AggregatorTagArrayOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) []GetM3AggregatorTag { return v.Tags }).(GetM3AggregatorTagArrayOutput)
 }
 
-// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 func (o LookupM3AggregatorResultOutput) TerminationProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
 }

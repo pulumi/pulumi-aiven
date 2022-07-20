@@ -27,15 +27,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetAccountAuthenticationArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The unique id of the account.
-        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the account authentication.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -46,15 +40,9 @@ namespace Pulumi.Aiven
 
     public sealed class GetAccountAuthenticationInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The unique id of the account.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the account authentication.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -67,57 +55,22 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetAccountAuthenticationResult
     {
-        /// <summary>
-        /// The unique id of the account.
-        /// </summary>
         public readonly string AccountId;
-        /// <summary>
-        /// Account authentication id
-        /// </summary>
         public readonly string AuthenticationId;
-        /// <summary>
-        /// Time of creation
-        /// </summary>
+        public readonly string AutoJoinTeamId;
         public readonly string CreateTime;
-        /// <summary>
-        /// Status of account authentication method. The default value is `false`.
-        /// </summary>
         public readonly bool Enabled;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The name of the account authentication.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// SAML Assertion Consumer Service URL
-        /// </summary>
         public readonly string SamlAcsUrl;
-        /// <summary>
-        /// SAML Certificate
-        /// </summary>
         public readonly string SamlCertificate;
-        /// <summary>
-        /// SAML Entity id
-        /// </summary>
         public readonly string SamlEntityId;
-        /// <summary>
-        /// SAML Idp URL
-        /// </summary>
         public readonly string SamlIdpUrl;
-        /// <summary>
-        /// SAML Metadata URL
-        /// </summary>
         public readonly string SamlMetadataUrl;
-        /// <summary>
-        /// The account authentication type. The possible values are `internal` and `saml`.
-        /// </summary>
         public readonly string Type;
-        /// <summary>
-        /// Time of last update
-        /// </summary>
         public readonly string UpdateTime;
 
         [OutputConstructor]
@@ -125,6 +78,8 @@ namespace Pulumi.Aiven
             string accountId,
 
             string authenticationId,
+
+            string autoJoinTeamId,
 
             string createTime,
 
@@ -150,6 +105,7 @@ namespace Pulumi.Aiven
         {
             AccountId = accountId;
             AuthenticationId = authenticationId;
+            AutoJoinTeamId = autoJoinTeamId;
             CreateTime = createTime;
             Enabled = enabled;
             Id = id;

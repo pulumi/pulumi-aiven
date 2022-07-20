@@ -24,17 +24,8 @@ export function getAccountTeamProject(args: GetAccountTeamProjectArgs, opts?: pu
  * A collection of arguments for invoking getAccountTeamProject.
  */
 export interface GetAccountTeamProjectArgs {
-    /**
-     * The unique account id
-     */
     accountId: string;
-    /**
-     * The name of an already existing project
-     */
     projectName: string;
-    /**
-     * An account team id
-     */
     teamId: string;
 }
 
@@ -42,25 +33,13 @@ export interface GetAccountTeamProjectArgs {
  * A collection of values returned by getAccountTeamProject.
  */
 export interface GetAccountTeamProjectResult {
-    /**
-     * The unique account id
-     */
     readonly accountId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The name of an already existing project
-     */
     readonly projectName: string;
-    /**
-     * An account team id
-     */
     readonly teamId: string;
-    /**
-     * The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
-     */
     readonly teamType: string;
 }
 
@@ -72,16 +51,7 @@ export function getAccountTeamProjectOutput(args: GetAccountTeamProjectOutputArg
  * A collection of arguments for invoking getAccountTeamProject.
  */
 export interface GetAccountTeamProjectOutputArgs {
-    /**
-     * The unique account id
-     */
     accountId: pulumi.Input<string>;
-    /**
-     * The name of an already existing project
-     */
     projectName: pulumi.Input<string>;
-    /**
-     * An account team id
-     */
     teamId: pulumi.Input<string>;
 }

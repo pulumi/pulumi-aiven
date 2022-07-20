@@ -48,7 +48,9 @@ export class AccountTeamMember extends pulumi.CustomResource {
     }
 
     /**
-     * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
+     * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
+     * invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
+     * member of an account team.
      */
     public /*out*/ readonly accepted!: pulumi.Output<boolean>;
     /**
@@ -68,7 +70,8 @@ export class AccountTeamMember extends pulumi.CustomResource {
      */
     public readonly teamId!: pulumi.Output<string>;
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
+     * team. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly userEmail!: pulumi.Output<string>;
 
@@ -119,7 +122,9 @@ export class AccountTeamMember extends pulumi.CustomResource {
  */
 export interface AccountTeamMemberState {
     /**
-     * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
+     * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
+     * invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
+     * member of an account team.
      */
     accepted?: pulumi.Input<boolean>;
     /**
@@ -139,7 +144,8 @@ export interface AccountTeamMemberState {
      */
     teamId?: pulumi.Input<string>;
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
+     * team. This property cannot be changed, doing so forces recreation of the resource.
      */
     userEmail?: pulumi.Input<string>;
 }
@@ -157,7 +163,8 @@ export interface AccountTeamMemberArgs {
      */
     teamId: pulumi.Input<string>;
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
+     * team. This property cannot be changed, doing so forces recreation of the resource.
      */
     userEmail: pulumi.Input<string>;
 }

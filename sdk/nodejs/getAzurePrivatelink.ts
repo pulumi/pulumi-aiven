@@ -35,13 +35,7 @@ export function getAzurePrivatelink(args: GetAzurePrivatelinkArgs, opts?: pulumi
  * A collection of arguments for invoking getAzurePrivatelink.
  */
 export interface GetAzurePrivatelinkArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: string;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: string;
 }
 
@@ -49,37 +43,16 @@ export interface GetAzurePrivatelinkArgs {
  * A collection of values returned by getAzurePrivatelink.
  */
 export interface GetAzurePrivatelinkResult {
-    /**
-     * Azure Privatelink service alias
-     */
     readonly azureServiceAlias: string;
-    /**
-     * Azure Privatelink service ID
-     */
     readonly azureServiceId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Printable result of the Azure Privatelink request
-     */
     readonly message: string;
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly project: string;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     readonly serviceName: string;
-    /**
-     * Privatelink resource state
-     */
     readonly state: string;
-    /**
-     * A List of allowed Subscription IDs Maximum Length: `16`.
-     */
     readonly userSubscriptionIds: string[];
 }
 
@@ -91,12 +64,6 @@ export function getAzurePrivatelinkOutput(args: GetAzurePrivatelinkOutputArgs, o
  * A collection of arguments for invoking getAzurePrivatelink.
  */
 export interface GetAzurePrivatelinkOutputArgs {
-    /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     project: pulumi.Input<string>;
-    /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     */
     serviceName: pulumi.Input<string>;
 }

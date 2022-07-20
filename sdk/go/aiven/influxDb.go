@@ -54,17 +54,25 @@ import (
 type InfluxDb struct {
 	pulumi.CustomResourceState
 
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
+	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
+	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
+	// are documented on each Cloud provider's own support articles, like [here for
+	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
+	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components InfluxDbComponentArrayOutput `pulumi:"components"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing
+	// will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
-	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
+	// Its also the minimum value for `disk_space`
 	DiskSpaceDefault pulumi.StringOutput `pulumi:"diskSpaceDefault"`
-	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
+	// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
@@ -76,17 +84,27 @@ type InfluxDb struct {
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrOutput `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
+	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
+	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
+	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations InfluxDbServiceIntegrationArrayOutput `pulumi:"serviceIntegrations"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+	// service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Password used for connecting to the service, if applicable
 	ServicePassword pulumi.StringOutput `pulumi:"servicePassword"`
@@ -100,11 +118,14 @@ type InfluxDb struct {
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
+	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags InfluxDbTagArrayOutput `pulumi:"tags"`
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
+	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
+	// much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
 
@@ -143,17 +164,25 @@ func GetInfluxDb(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InfluxDb resources.
 type influxDbState struct {
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
+	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
+	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
+	// are documented on each Cloud provider's own support articles, like [here for
+	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
+	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []InfluxDbComponent `pulumi:"components"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing
+	// will result in the service rebalancing.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
-	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
+	// Its also the minimum value for `disk_space`
 	DiskSpaceDefault *string `pulumi:"diskSpaceDefault"`
-	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
+	// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
@@ -165,17 +194,27 @@ type influxDbState struct {
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
+	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
+	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
+	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost *string `pulumi:"serviceHost"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []InfluxDbServiceIntegration `pulumi:"serviceIntegrations"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+	// service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName *string `pulumi:"serviceName"`
 	// Password used for connecting to the service, if applicable
 	ServicePassword *string `pulumi:"servicePassword"`
@@ -189,26 +228,37 @@ type influxDbState struct {
 	ServiceUsername *string `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State *string `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
+	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []InfluxDbTag `pulumi:"tags"`
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
+	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
+	// much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 type InfluxDbState struct {
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
+	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
+	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
+	// are documented on each Cloud provider's own support articles, like [here for
+	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
+	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components InfluxDbComponentArrayInput
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing
+	// will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
-	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
+	// Its also the minimum value for `disk_space`
 	DiskSpaceDefault pulumi.StringPtrInput
-	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
+	// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringPtrInput
@@ -220,17 +270,27 @@ type InfluxDbState struct {
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
+	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
+	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
+	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
 	// The hostname of the service.
 	ServiceHost pulumi.StringPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations InfluxDbServiceIntegrationArrayInput
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+	// service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringPtrInput
 	// Password used for connecting to the service, if applicable
 	ServicePassword pulumi.StringPtrInput
@@ -244,11 +304,14 @@ type InfluxDbState struct {
 	ServiceUsername pulumi.StringPtrInput
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringPtrInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
+	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags InfluxDbTagArrayInput
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
+	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
+	// much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -257,9 +320,15 @@ func (InfluxDbState) ElementType() reflect.Type {
 }
 
 type influxDbArgs struct {
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
+	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
+	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
+	// are documented on each Cloud provider's own support articles, like [here for
+	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
+	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing
+	// will result in the service rebalancing.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Influxdb user configurable settings
 	InfluxdbUserConfig *InfluxDbInfluxdbUserConfig `pulumi:"influxdbUserConfig"`
@@ -267,29 +336,48 @@ type influxDbArgs struct {
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
+	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
+	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
+	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []InfluxDbServiceIntegration `pulumi:"serviceIntegrations"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+	// service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
+	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []InfluxDbTag `pulumi:"tags"`
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
+	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
+	// much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 // The set of arguments for constructing a InfluxDb resource.
 type InfluxDbArgs struct {
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
+	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
+	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
+	// are documented on each Cloud provider's own support articles, like [here for
+	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
+	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing
+	// will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrInput
 	// Influxdb user configurable settings
 	InfluxdbUserConfig InfluxDbInfluxdbUserConfigPtrInput
@@ -297,21 +385,34 @@ type InfluxDbArgs struct {
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
+	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
+	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
+	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations InfluxDbServiceIntegrationArrayInput
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+	// service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
+	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags InfluxDbTagArrayInput
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
+	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
+	// much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -402,7 +503,12 @@ func (o InfluxDbOutput) ToInfluxDbOutputWithContext(ctx context.Context) InfluxD
 	return o
 }
 
-// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
+// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
+// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
+// are documented on each Cloud provider's own support articles, like [here for
+// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
+// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 func (o InfluxDbOutput) CloudName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringPtrOutput { return v.CloudName }).(pulumi.StringPtrOutput)
 }
@@ -412,7 +518,8 @@ func (o InfluxDbOutput) Components() InfluxDbComponentArrayOutput {
 	return o.ApplyT(func(v *InfluxDb) InfluxDbComponentArrayOutput { return v.Components }).(InfluxDbComponentArrayOutput)
 }
 
-// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing
+// will result in the service rebalancing.
 func (o InfluxDbOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }
@@ -422,12 +529,14 @@ func (o InfluxDbOutput) DiskSpaceCap() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.DiskSpaceCap }).(pulumi.StringOutput)
 }
 
-// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
+// Its also the minimum value for `disk_space`
 func (o InfluxDbOutput) DiskSpaceDefault() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.DiskSpaceDefault }).(pulumi.StringOutput)
 }
 
-// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
+// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
 func (o InfluxDbOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
@@ -457,17 +566,26 @@ func (o InfluxDbOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringPtrOutput { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
 }
 
-// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 func (o InfluxDbOutput) Plan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringPtrOutput { return v.Plan }).(pulumi.StringPtrOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+// reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o InfluxDbOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
+// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
+// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
+// servers so the operation can take significant amount of time to complete if the service has a lot of data.
 func (o InfluxDbOutput) ProjectVpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringPtrOutput { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
 }
@@ -482,7 +600,8 @@ func (o InfluxDbOutput) ServiceIntegrations() InfluxDbServiceIntegrationArrayOut
 	return o.ApplyT(func(v *InfluxDb) InfluxDbServiceIntegrationArrayOutput { return v.ServiceIntegrations }).(InfluxDbServiceIntegrationArrayOutput)
 }
 
-// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+// service so name should be picked based on intended service usage rather than current attributes.
 func (o InfluxDbOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -517,7 +636,8 @@ func (o InfluxDbOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
+// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o InfluxDbOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringArrayOutput { return v.StaticIps }).(pulumi.StringArrayOutput)
 }
@@ -527,7 +647,9 @@ func (o InfluxDbOutput) Tags() InfluxDbTagArrayOutput {
 	return o.ApplyT(func(v *InfluxDb) InfluxDbTagArrayOutput { return v.Tags }).(InfluxDbTagArrayOutput)
 }
 
-// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
+// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
+// much of the content can at least be restored from backup in case accidental deletion is done.
 func (o InfluxDbOutput) TerminationProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
 }

@@ -48,9 +48,11 @@ type MysqlDatabase struct {
 
 	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
 	// recommended to enable this for any production databases containing critical data. The default value is `false`.
@@ -97,9 +99,11 @@ func GetMysqlDatabase(ctx *pulumi.Context,
 type mysqlDatabaseState struct {
 	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName *string `pulumi:"databaseName"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
 	// recommended to enable this for any production databases containing critical data. The default value is `false`.
@@ -109,9 +113,11 @@ type mysqlDatabaseState struct {
 type MysqlDatabaseState struct {
 	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
 	// recommended to enable this for any production databases containing critical data. The default value is `false`.
@@ -125,9 +131,11 @@ func (MysqlDatabaseState) ElementType() reflect.Type {
 type mysqlDatabaseArgs struct {
 	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
 	// recommended to enable this for any production databases containing critical data. The default value is `false`.
@@ -138,9 +146,11 @@ type mysqlDatabaseArgs struct {
 type MysqlDatabaseArgs struct {
 	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName pulumi.StringInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
 	// recommended to enable this for any production databases containing critical data. The default value is `false`.
@@ -239,12 +249,14 @@ func (o MysqlDatabaseOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+// reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o MysqlDatabaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o MysqlDatabaseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

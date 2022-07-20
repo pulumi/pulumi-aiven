@@ -27,7 +27,9 @@ import (
 type AccountTeamMember struct {
 	pulumi.CustomResourceState
 
-	// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
+	// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
+	// invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
+	// member of an account team.
 	Accepted pulumi.BoolOutput `pulumi:"accepted"`
 	// The unique account id This property cannot be changed, doing so forces recreation of the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
@@ -37,7 +39,8 @@ type AccountTeamMember struct {
 	InvitedByUserEmail pulumi.StringOutput `pulumi:"invitedByUserEmail"`
 	// An account team id This property cannot be changed, doing so forces recreation of the resource.
 	TeamId pulumi.StringOutput `pulumi:"teamId"`
-	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
+	// team. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail pulumi.StringOutput `pulumi:"userEmail"`
 }
 
@@ -79,7 +82,9 @@ func GetAccountTeamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountTeamMember resources.
 type accountTeamMemberState struct {
-	// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
+	// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
+	// invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
+	// member of an account team.
 	Accepted *bool `pulumi:"accepted"`
 	// The unique account id This property cannot be changed, doing so forces recreation of the resource.
 	AccountId *string `pulumi:"accountId"`
@@ -89,12 +94,15 @@ type accountTeamMemberState struct {
 	InvitedByUserEmail *string `pulumi:"invitedByUserEmail"`
 	// An account team id This property cannot be changed, doing so forces recreation of the resource.
 	TeamId *string `pulumi:"teamId"`
-	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
+	// team. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail *string `pulumi:"userEmail"`
 }
 
 type AccountTeamMemberState struct {
-	// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
+	// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
+	// invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
+	// member of an account team.
 	Accepted pulumi.BoolPtrInput
 	// The unique account id This property cannot be changed, doing so forces recreation of the resource.
 	AccountId pulumi.StringPtrInput
@@ -104,7 +112,8 @@ type AccountTeamMemberState struct {
 	InvitedByUserEmail pulumi.StringPtrInput
 	// An account team id This property cannot be changed, doing so forces recreation of the resource.
 	TeamId pulumi.StringPtrInput
-	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
+	// team. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail pulumi.StringPtrInput
 }
 
@@ -117,7 +126,8 @@ type accountTeamMemberArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// An account team id This property cannot be changed, doing so forces recreation of the resource.
 	TeamId string `pulumi:"teamId"`
-	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
+	// team. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail string `pulumi:"userEmail"`
 }
 
@@ -127,7 +137,8 @@ type AccountTeamMemberArgs struct {
 	AccountId pulumi.StringInput
 	// An account team id This property cannot be changed, doing so forces recreation of the resource.
 	TeamId pulumi.StringInput
-	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
+	// team. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail pulumi.StringInput
 }
 
@@ -218,7 +229,9 @@ func (o AccountTeamMemberOutput) ToAccountTeamMemberOutputWithContext(ctx contex
 	return o
 }
 
-// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
+// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
+// invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
+// member of an account team.
 func (o AccountTeamMemberOutput) Accepted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccountTeamMember) pulumi.BoolOutput { return v.Accepted }).(pulumi.BoolOutput)
 }
@@ -243,7 +256,8 @@ func (o AccountTeamMemberOutput) TeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountTeamMember) pulumi.StringOutput { return v.TeamId }).(pulumi.StringOutput)
 }
 
-// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
+// team. This property cannot be changed, doing so forces recreation of the resource.
 func (o AccountTeamMemberOutput) UserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountTeamMember) pulumi.StringOutput { return v.UserEmail }).(pulumi.StringOutput)
 }

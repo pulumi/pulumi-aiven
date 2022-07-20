@@ -32,6 +32,13 @@ func NewProvider(ctx *pulumi.Context,
 	if args.ApiToken == nil {
 		return nil, errors.New("invalid value for required argument 'ApiToken'")
 	}
+	if args.ApiToken != nil {
+		args.ApiToken = pulumi.ToSecret(args.ApiToken).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"apiToken",
+	})
+	opts = append(opts, secrets)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:aiven", name, args, &resource, opts...)
 	if err != nil {

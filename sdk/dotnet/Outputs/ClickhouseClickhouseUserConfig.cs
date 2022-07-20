@@ -13,17 +13,8 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ClickhouseClickhouseUserConfig
     {
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
-        /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ProjectToForkFrom;
-        /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
-        /// </summary>
         public readonly string? ServiceToForkFrom;
 
         [OutputConstructor]

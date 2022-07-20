@@ -14,25 +14,15 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
-
-        /// <summary>
-        /// IP filter
-        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
-        /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
-        /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
 
-        /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
-        /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 

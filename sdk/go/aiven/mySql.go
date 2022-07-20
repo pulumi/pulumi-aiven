@@ -59,17 +59,25 @@ import (
 type MySql struct {
 	pulumi.CustomResourceState
 
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
+	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
+	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
+	// are documented on each Cloud provider's own support articles, like [here for
+	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
+	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components MySqlComponentArrayOutput `pulumi:"components"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing
+	// will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
-	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
+	// Its also the minimum value for `disk_space`
 	DiskSpaceDefault pulumi.StringOutput `pulumi:"diskSpaceDefault"`
-	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
+	// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
@@ -81,17 +89,27 @@ type MySql struct {
 	MysqlUserConfig MySqlMysqlUserConfigPtrOutput `pulumi:"mysqlUserConfig"`
 	// MySQL specific server provided values
 	Mysqls MySqlMysqlArrayOutput `pulumi:"mysqls"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrOutput `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
+	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
+	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
+	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations MySqlServiceIntegrationArrayOutput `pulumi:"serviceIntegrations"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+	// service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Password used for connecting to the service, if applicable
 	ServicePassword pulumi.StringOutput `pulumi:"servicePassword"`
@@ -105,11 +123,14 @@ type MySql struct {
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
+	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags MySqlTagArrayOutput `pulumi:"tags"`
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
+	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
+	// much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
 
@@ -148,17 +169,25 @@ func GetMySql(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MySql resources.
 type mySqlState struct {
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
+	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
+	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
+	// are documented on each Cloud provider's own support articles, like [here for
+	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
+	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []MySqlComponent `pulumi:"components"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing
+	// will result in the service rebalancing.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
-	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
+	// Its also the minimum value for `disk_space`
 	DiskSpaceDefault *string `pulumi:"diskSpaceDefault"`
-	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
+	// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
@@ -170,17 +199,27 @@ type mySqlState struct {
 	MysqlUserConfig *MySqlMysqlUserConfig `pulumi:"mysqlUserConfig"`
 	// MySQL specific server provided values
 	Mysqls []MySqlMysql `pulumi:"mysqls"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
+	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
+	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
+	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost *string `pulumi:"serviceHost"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []MySqlServiceIntegration `pulumi:"serviceIntegrations"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+	// service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName *string `pulumi:"serviceName"`
 	// Password used for connecting to the service, if applicable
 	ServicePassword *string `pulumi:"servicePassword"`
@@ -194,26 +233,37 @@ type mySqlState struct {
 	ServiceUsername *string `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State *string `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
+	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []MySqlTag `pulumi:"tags"`
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
+	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
+	// much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 type MySqlState struct {
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
+	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
+	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
+	// are documented on each Cloud provider's own support articles, like [here for
+	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
+	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components MySqlComponentArrayInput
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing
+	// will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
-	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
+	// Its also the minimum value for `disk_space`
 	DiskSpaceDefault pulumi.StringPtrInput
-	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
+	// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringPtrInput
@@ -225,17 +275,27 @@ type MySqlState struct {
 	MysqlUserConfig MySqlMysqlUserConfigPtrInput
 	// MySQL specific server provided values
 	Mysqls MySqlMysqlArrayInput
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
+	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
+	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
+	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
 	// The hostname of the service.
 	ServiceHost pulumi.StringPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations MySqlServiceIntegrationArrayInput
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+	// service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringPtrInput
 	// Password used for connecting to the service, if applicable
 	ServicePassword pulumi.StringPtrInput
@@ -249,11 +309,14 @@ type MySqlState struct {
 	ServiceUsername pulumi.StringPtrInput
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringPtrInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
+	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags MySqlTagArrayInput
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
+	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
+	// much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -262,9 +325,15 @@ func (MySqlState) ElementType() reflect.Type {
 }
 
 type mySqlArgs struct {
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
+	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
+	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
+	// are documented on each Cloud provider's own support articles, like [here for
+	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
+	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing
+	// will result in the service rebalancing.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -272,29 +341,48 @@ type mySqlArgs struct {
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
 	// Mysql user configurable settings
 	MysqlUserConfig *MySqlMysqlUserConfig `pulumi:"mysqlUserConfig"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
+	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
+	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
+	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []MySqlServiceIntegration `pulumi:"serviceIntegrations"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+	// service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
+	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []MySqlTag `pulumi:"tags"`
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
+	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
+	// much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 // The set of arguments for constructing a MySql resource.
 type MySqlArgs struct {
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
+	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
+	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
+	// are documented on each Cloud provider's own support articles, like [here for
+	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
+	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing
+	// will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -302,21 +390,34 @@ type MySqlArgs struct {
 	MaintenanceWindowTime pulumi.StringPtrInput
 	// Mysql user configurable settings
 	MysqlUserConfig MySqlMysqlUserConfigPtrInput
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
+	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
+	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
+	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations MySqlServiceIntegrationArrayInput
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+	// service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
+	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags MySqlTagArrayInput
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
+	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
+	// much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -407,7 +508,12 @@ func (o MySqlOutput) ToMySqlOutputWithContext(ctx context.Context) MySqlOutput {
 	return o
 }
 
-// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
+// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
+// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
+// are documented on each Cloud provider's own support articles, like [here for
+// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
+// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 func (o MySqlOutput) CloudName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringPtrOutput { return v.CloudName }).(pulumi.StringPtrOutput)
 }
@@ -417,7 +523,8 @@ func (o MySqlOutput) Components() MySqlComponentArrayOutput {
 	return o.ApplyT(func(v *MySql) MySqlComponentArrayOutput { return v.Components }).(MySqlComponentArrayOutput)
 }
 
-// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing
+// will result in the service rebalancing.
 func (o MySqlOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }
@@ -427,12 +534,14 @@ func (o MySqlOutput) DiskSpaceCap() pulumi.StringOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringOutput { return v.DiskSpaceCap }).(pulumi.StringOutput)
 }
 
-// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
+// Its also the minimum value for `disk_space`
 func (o MySqlOutput) DiskSpaceDefault() pulumi.StringOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringOutput { return v.DiskSpaceDefault }).(pulumi.StringOutput)
 }
 
-// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
+// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
 func (o MySqlOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringOutput { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
@@ -462,17 +571,26 @@ func (o MySqlOutput) Mysqls() MySqlMysqlArrayOutput {
 	return o.ApplyT(func(v *MySql) MySqlMysqlArrayOutput { return v.Mysqls }).(MySqlMysqlArrayOutput)
 }
 
-// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
+// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
+// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
+// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
+// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
+// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 func (o MySqlOutput) Plan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringPtrOutput { return v.Plan }).(pulumi.StringPtrOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+// reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o MySqlOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
+// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
+// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
+// servers so the operation can take significant amount of time to complete if the service has a lot of data.
 func (o MySqlOutput) ProjectVpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringPtrOutput { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
 }
@@ -487,7 +605,8 @@ func (o MySqlOutput) ServiceIntegrations() MySqlServiceIntegrationArrayOutput {
 	return o.ApplyT(func(v *MySql) MySqlServiceIntegrationArrayOutput { return v.ServiceIntegrations }).(MySqlServiceIntegrationArrayOutput)
 }
 
-// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+// service so name should be picked based on intended service usage rather than current attributes.
 func (o MySqlOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -522,7 +641,8 @@ func (o MySqlOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
+// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o MySqlOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringArrayOutput { return v.StaticIps }).(pulumi.StringArrayOutput)
 }
@@ -532,7 +652,9 @@ func (o MySqlOutput) Tags() MySqlTagArrayOutput {
 	return o.ApplyT(func(v *MySql) MySqlTagArrayOutput { return v.Tags }).(MySqlTagArrayOutput)
 }
 
-// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
+// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
+// much of the content can at least be restored from backup in case accidental deletion is done.
 func (o MySqlOutput) TerminationProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MySql) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
 }

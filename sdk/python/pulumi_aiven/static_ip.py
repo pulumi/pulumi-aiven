@@ -17,8 +17,10 @@ class StaticIpArgs:
                  project: pulumi.Input[str]):
         """
         The set of arguments for constructing a StaticIp resource.
-        :param pulumi.Input[str] cloud_name: Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] cloud_name: Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the
+               resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         pulumi.set(__self__, "cloud_name", cloud_name)
         pulumi.set(__self__, "project", project)
@@ -27,7 +29,8 @@ class StaticIpArgs:
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Input[str]:
         """
-        Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the
+        resource.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -39,7 +42,8 @@ class StaticIpArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -59,9 +63,11 @@ class _StaticIpState:
                  static_ip_address_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering StaticIp resources.
-        :param pulumi.Input[str] cloud_name: Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] cloud_name: Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the
+               resource.
         :param pulumi.Input[str] ip_address: The address of the static ip
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: The service name the static ip is associated with.
         :param pulumi.Input[str] state: The state the static ip is in.
         :param pulumi.Input[str] static_ip_address_id: The static ip id of the resource. Should be used as a reference elsewhere.
@@ -83,7 +89,8 @@ class _StaticIpState:
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the
+        resource.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -107,7 +114,8 @@ class _StaticIpState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -165,8 +173,10 @@ class StaticIp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_name: Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] cloud_name: Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the
+               resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         ...
     @overload
@@ -239,9 +249,11 @@ class StaticIp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_name: Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] cloud_name: Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the
+               resource.
         :param pulumi.Input[str] ip_address: The address of the static ip
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+               reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: The service name the static ip is associated with.
         :param pulumi.Input[str] state: The state the static ip is in.
         :param pulumi.Input[str] static_ip_address_id: The static ip id of the resource. Should be used as a reference elsewhere.
@@ -262,7 +274,8 @@ class StaticIp(pulumi.CustomResource):
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Output[str]:
         """
-        Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the
+        resource.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -278,7 +291,8 @@ class StaticIp(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 

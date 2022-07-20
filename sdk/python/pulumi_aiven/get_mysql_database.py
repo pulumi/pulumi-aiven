@@ -40,9 +40,6 @@ class GetMysqlDatabaseResult:
     @property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> str:
-        """
-        The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "database_name")
 
     @property
@@ -56,17 +53,11 @@ class GetMysqlDatabaseResult:
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
     @property
@@ -105,11 +96,6 @@ def get_mysql_database(database_name: Optional[str] = None,
         service_name=aiven_service["myservice"]["service_name"],
         database_name="<DATABASE_NAME>")
     ```
-
-
-    :param str database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['databaseName'] = database_name
@@ -147,10 +133,5 @@ def get_mysql_database_output(database_name: Optional[pulumi.Input[str]] = None,
         service_name=aiven_service["myservice"]["service_name"],
         database_name="<DATABASE_NAME>")
     ```
-
-
-    :param str database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

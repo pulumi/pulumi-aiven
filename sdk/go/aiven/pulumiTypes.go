@@ -99,24 +99,15 @@ func (o CassandraCassandraArrayOutput) Index(i pulumi.IntInput) CassandraCassand
 }
 
 type CassandraCassandraUserConfig struct {
-	// cassandra configuration values
-	Cassandra *CassandraCassandraUserConfigCassandra `pulumi:"cassandra"`
-	// Cassandra major version
-	CassandraVersion *string `pulumi:"cassandraVersion"`
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// Migration mode for the sstableloader utility
-	MigrateSstableloader *string `pulumi:"migrateSstableloader"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess *CassandraCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess *CassandraCassandraUserConfigPublicAccess `pulumi:"publicAccess"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
-	// Static IP addresses
-	StaticIps *string `pulumi:"staticIps"`
+	Cassandra            *CassandraCassandraUserConfigCassandra     `pulumi:"cassandra"`
+	CassandraVersion     *string                                    `pulumi:"cassandraVersion"`
+	IpFilters            []string                                   `pulumi:"ipFilters"`
+	MigrateSstableloader *string                                    `pulumi:"migrateSstableloader"`
+	PrivateAccess        *CassandraCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom    *string                                    `pulumi:"projectToForkFrom"`
+	PublicAccess         *CassandraCassandraUserConfigPublicAccess  `pulumi:"publicAccess"`
+	ServiceToForkFrom    *string                                    `pulumi:"serviceToForkFrom"`
+	StaticIps            *string                                    `pulumi:"staticIps"`
 }
 
 // CassandraCassandraUserConfigInput is an input type that accepts CassandraCassandraUserConfigArgs and CassandraCassandraUserConfigOutput values.
@@ -131,24 +122,15 @@ type CassandraCassandraUserConfigInput interface {
 }
 
 type CassandraCassandraUserConfigArgs struct {
-	// cassandra configuration values
-	Cassandra CassandraCassandraUserConfigCassandraPtrInput `pulumi:"cassandra"`
-	// Cassandra major version
-	CassandraVersion pulumi.StringPtrInput `pulumi:"cassandraVersion"`
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Migration mode for the sstableloader utility
-	MigrateSstableloader pulumi.StringPtrInput `pulumi:"migrateSstableloader"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess CassandraCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess CassandraCassandraUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
-	// Static IP addresses
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	Cassandra            CassandraCassandraUserConfigCassandraPtrInput     `pulumi:"cassandra"`
+	CassandraVersion     pulumi.StringPtrInput                             `pulumi:"cassandraVersion"`
+	IpFilters            pulumi.StringArrayInput                           `pulumi:"ipFilters"`
+	MigrateSstableloader pulumi.StringPtrInput                             `pulumi:"migrateSstableloader"`
+	PrivateAccess        CassandraCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom    pulumi.StringPtrInput                             `pulumi:"projectToForkFrom"`
+	PublicAccess         CassandraCassandraUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	ServiceToForkFrom    pulumi.StringPtrInput                             `pulumi:"serviceToForkFrom"`
+	StaticIps            pulumi.StringPtrInput                             `pulumi:"staticIps"`
 }
 
 func (CassandraCassandraUserConfigArgs) ElementType() reflect.Type {
@@ -228,49 +210,40 @@ func (o CassandraCassandraUserConfigOutput) ToCassandraCassandraUserConfigPtrOut
 	}).(CassandraCassandraUserConfigPtrOutput)
 }
 
-// cassandra configuration values
 func (o CassandraCassandraUserConfigOutput) Cassandra() CassandraCassandraUserConfigCassandraPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *CassandraCassandraUserConfigCassandra { return v.Cassandra }).(CassandraCassandraUserConfigCassandraPtrOutput)
 }
 
-// Cassandra major version
 func (o CassandraCassandraUserConfigOutput) CassandraVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.CassandraVersion }).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o CassandraCassandraUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Migration mode for the sstableloader utility
 func (o CassandraCassandraUserConfigOutput) MigrateSstableloader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.MigrateSstableloader }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o CassandraCassandraUserConfigOutput) PrivateAccess() CassandraCassandraUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *CassandraCassandraUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(CassandraCassandraUserConfigPrivateAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o CassandraCassandraUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o CassandraCassandraUserConfigOutput) PublicAccess() CassandraCassandraUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *CassandraCassandraUserConfigPublicAccess { return v.PublicAccess }).(CassandraCassandraUserConfigPublicAccessPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o CassandraCassandraUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o CassandraCassandraUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -299,7 +272,6 @@ func (o CassandraCassandraUserConfigPtrOutput) Elem() CassandraCassandraUserConf
 	}).(CassandraCassandraUserConfigOutput)
 }
 
-// cassandra configuration values
 func (o CassandraCassandraUserConfigPtrOutput) Cassandra() CassandraCassandraUserConfigCassandraPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *CassandraCassandraUserConfigCassandra {
 		if v == nil {
@@ -309,7 +281,6 @@ func (o CassandraCassandraUserConfigPtrOutput) Cassandra() CassandraCassandraUse
 	}).(CassandraCassandraUserConfigCassandraPtrOutput)
 }
 
-// Cassandra major version
 func (o CassandraCassandraUserConfigPtrOutput) CassandraVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
 		if v == nil {
@@ -319,7 +290,6 @@ func (o CassandraCassandraUserConfigPtrOutput) CassandraVersion() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o CassandraCassandraUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) []string {
 		if v == nil {
@@ -329,7 +299,6 @@ func (o CassandraCassandraUserConfigPtrOutput) IpFilters() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
-// Migration mode for the sstableloader utility
 func (o CassandraCassandraUserConfigPtrOutput) MigrateSstableloader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
 		if v == nil {
@@ -339,7 +308,6 @@ func (o CassandraCassandraUserConfigPtrOutput) MigrateSstableloader() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o CassandraCassandraUserConfigPtrOutput) PrivateAccess() CassandraCassandraUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *CassandraCassandraUserConfigPrivateAccess {
 		if v == nil {
@@ -349,7 +317,6 @@ func (o CassandraCassandraUserConfigPtrOutput) PrivateAccess() CassandraCassandr
 	}).(CassandraCassandraUserConfigPrivateAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o CassandraCassandraUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
 		if v == nil {
@@ -359,7 +326,6 @@ func (o CassandraCassandraUserConfigPtrOutput) ProjectToForkFrom() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o CassandraCassandraUserConfigPtrOutput) PublicAccess() CassandraCassandraUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *CassandraCassandraUserConfigPublicAccess {
 		if v == nil {
@@ -369,7 +335,6 @@ func (o CassandraCassandraUserConfigPtrOutput) PublicAccess() CassandraCassandra
 	}).(CassandraCassandraUserConfigPublicAccessPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o CassandraCassandraUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
 		if v == nil {
@@ -379,7 +344,6 @@ func (o CassandraCassandraUserConfigPtrOutput) ServiceToForkFrom() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o CassandraCassandraUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
 		if v == nil {
@@ -934,9 +898,7 @@ func (o CassandraComponentArrayOutput) Index(i pulumi.IntInput) CassandraCompone
 }
 
 type CassandraServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -952,9 +914,7 @@ type CassandraServiceIntegrationInput interface {
 }
 
 type CassandraServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -1009,12 +969,10 @@ func (o CassandraServiceIntegrationOutput) ToCassandraServiceIntegrationOutputWi
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o CassandraServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v CassandraServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o CassandraServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v CassandraServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -1040,9 +998,7 @@ func (o CassandraServiceIntegrationArrayOutput) Index(i pulumi.IntInput) Cassand
 }
 
 type CassandraTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -1058,9 +1014,7 @@ type CassandraTagInput interface {
 }
 
 type CassandraTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1115,12 +1069,10 @@ func (o CassandraTagOutput) ToCassandraTagOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Service tag key
 func (o CassandraTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v CassandraTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o CassandraTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v CassandraTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1234,12 +1186,9 @@ func (o ClickhouseClickhouseArrayOutput) Index(i pulumi.IntInput) ClickhouseClic
 }
 
 type ClickhouseClickhouseUserConfig struct {
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	IpFilters         []string `pulumi:"ipFilters"`
+	ProjectToForkFrom *string  `pulumi:"projectToForkFrom"`
+	ServiceToForkFrom *string  `pulumi:"serviceToForkFrom"`
 }
 
 // ClickhouseClickhouseUserConfigInput is an input type that accepts ClickhouseClickhouseUserConfigArgs and ClickhouseClickhouseUserConfigOutput values.
@@ -1254,12 +1203,9 @@ type ClickhouseClickhouseUserConfigInput interface {
 }
 
 type ClickhouseClickhouseUserConfigArgs struct {
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	IpFilters         pulumi.StringArrayInput `pulumi:"ipFilters"`
+	ProjectToForkFrom pulumi.StringPtrInput   `pulumi:"projectToForkFrom"`
+	ServiceToForkFrom pulumi.StringPtrInput   `pulumi:"serviceToForkFrom"`
 }
 
 func (ClickhouseClickhouseUserConfigArgs) ElementType() reflect.Type {
@@ -1339,17 +1285,14 @@ func (o ClickhouseClickhouseUserConfigOutput) ToClickhouseClickhouseUserConfigPt
 	}).(ClickhouseClickhouseUserConfigPtrOutput)
 }
 
-// IP filter
 func (o ClickhouseClickhouseUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o ClickhouseClickhouseUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o ClickhouseClickhouseUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
@@ -1378,7 +1321,6 @@ func (o ClickhouseClickhouseUserConfigPtrOutput) Elem() ClickhouseClickhouseUser
 	}).(ClickhouseClickhouseUserConfigOutput)
 }
 
-// IP filter
 func (o ClickhouseClickhouseUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) []string {
 		if v == nil {
@@ -1388,7 +1330,6 @@ func (o ClickhouseClickhouseUserConfigPtrOutput) IpFilters() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o ClickhouseClickhouseUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) *string {
 		if v == nil {
@@ -1398,7 +1339,6 @@ func (o ClickhouseClickhouseUserConfigPtrOutput) ProjectToForkFrom() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o ClickhouseClickhouseUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) *string {
 		if v == nil {
@@ -1539,16 +1479,11 @@ func (o ClickhouseComponentArrayOutput) Index(i pulumi.IntInput) ClickhouseCompo
 }
 
 type ClickhouseGrantPrivilegeGrant struct {
-	// The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
-	Column *string `pulumi:"column"`
-	// The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Database string `pulumi:"database"`
-	// The privilege to grant, i.e. 'INSERT', 'SELECT', etc. This property cannot be changed, doing so forces recreation of the resource.
+	Column    *string `pulumi:"column"`
+	Database  string  `pulumi:"database"`
 	Privilege *string `pulumi:"privilege"`
-	// The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
-	Table *string `pulumi:"table"`
-	// If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
-	WithGrant *bool `pulumi:"withGrant"`
+	Table     *string `pulumi:"table"`
+	WithGrant *bool   `pulumi:"withGrant"`
 }
 
 // ClickhouseGrantPrivilegeGrantInput is an input type that accepts ClickhouseGrantPrivilegeGrantArgs and ClickhouseGrantPrivilegeGrantOutput values.
@@ -1563,16 +1498,11 @@ type ClickhouseGrantPrivilegeGrantInput interface {
 }
 
 type ClickhouseGrantPrivilegeGrantArgs struct {
-	// The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
-	Column pulumi.StringPtrInput `pulumi:"column"`
-	// The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-	Database pulumi.StringInput `pulumi:"database"`
-	// The privilege to grant, i.e. 'INSERT', 'SELECT', etc. This property cannot be changed, doing so forces recreation of the resource.
+	Column    pulumi.StringPtrInput `pulumi:"column"`
+	Database  pulumi.StringInput    `pulumi:"database"`
 	Privilege pulumi.StringPtrInput `pulumi:"privilege"`
-	// The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
-	Table pulumi.StringPtrInput `pulumi:"table"`
-	// If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
-	WithGrant pulumi.BoolPtrInput `pulumi:"withGrant"`
+	Table     pulumi.StringPtrInput `pulumi:"table"`
+	WithGrant pulumi.BoolPtrInput   `pulumi:"withGrant"`
 }
 
 func (ClickhouseGrantPrivilegeGrantArgs) ElementType() reflect.Type {
@@ -1626,27 +1556,22 @@ func (o ClickhouseGrantPrivilegeGrantOutput) ToClickhouseGrantPrivilegeGrantOutp
 	return o
 }
 
-// The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseGrantPrivilegeGrantOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseGrantPrivilegeGrant) *string { return v.Column }).(pulumi.StringPtrOutput)
 }
 
-// The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseGrantPrivilegeGrantOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v ClickhouseGrantPrivilegeGrant) string { return v.Database }).(pulumi.StringOutput)
 }
 
-// The privilege to grant, i.e. 'INSERT', 'SELECT', etc. This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseGrantPrivilegeGrantOutput) Privilege() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseGrantPrivilegeGrant) *string { return v.Privilege }).(pulumi.StringPtrOutput)
 }
 
-// The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseGrantPrivilegeGrantOutput) Table() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseGrantPrivilegeGrant) *string { return v.Table }).(pulumi.StringPtrOutput)
 }
 
-// If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseGrantPrivilegeGrantOutput) WithGrant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClickhouseGrantPrivilegeGrant) *bool { return v.WithGrant }).(pulumi.BoolPtrOutput)
 }
@@ -1672,7 +1597,6 @@ func (o ClickhouseGrantPrivilegeGrantArrayOutput) Index(i pulumi.IntInput) Click
 }
 
 type ClickhouseGrantRoleGrant struct {
-	// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Role *string `pulumi:"role"`
 }
 
@@ -1688,7 +1612,6 @@ type ClickhouseGrantRoleGrantInput interface {
 }
 
 type ClickhouseGrantRoleGrantArgs struct {
-	// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -1743,7 +1666,6 @@ func (o ClickhouseGrantRoleGrantOutput) ToClickhouseGrantRoleGrantOutputWithCont
 	return o
 }
 
-// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseGrantRoleGrantOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseGrantRoleGrant) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -1769,9 +1691,7 @@ func (o ClickhouseGrantRoleGrantArrayOutput) Index(i pulumi.IntInput) Clickhouse
 }
 
 type ClickhouseServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -1787,9 +1707,7 @@ type ClickhouseServiceIntegrationInput interface {
 }
 
 type ClickhouseServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -1844,12 +1762,10 @@ func (o ClickhouseServiceIntegrationOutput) ToClickhouseServiceIntegrationOutput
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o ClickhouseServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClickhouseServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o ClickhouseServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClickhouseServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -1875,9 +1791,7 @@ func (o ClickhouseServiceIntegrationArrayOutput) Index(i pulumi.IntInput) Clickh
 }
 
 type ClickhouseTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -1893,9 +1807,7 @@ type ClickhouseTagInput interface {
 }
 
 type ClickhouseTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1950,12 +1862,10 @@ func (o ClickhouseTagOutput) ToClickhouseTagOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Service tag key
 func (o ClickhouseTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ClickhouseTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o ClickhouseTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ClickhouseTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2111,7 +2021,6 @@ func (o FlinkComponentArrayOutput) Index(i pulumi.IntInput) FlinkComponentOutput
 }
 
 type FlinkFlink struct {
-	// Host and Port of a Flink server
 	HostPorts []string `pulumi:"hostPorts"`
 }
 
@@ -2127,7 +2036,6 @@ type FlinkFlinkInput interface {
 }
 
 type FlinkFlinkArgs struct {
-	// Host and Port of a Flink server
 	HostPorts pulumi.StringArrayInput `pulumi:"hostPorts"`
 }
 
@@ -2208,7 +2116,6 @@ func (o FlinkFlinkOutput) ToFlinkFlinkPtrOutputWithContext(ctx context.Context) 
 	}).(FlinkFlinkPtrOutput)
 }
 
-// Host and Port of a Flink server
 func (o FlinkFlinkOutput) HostPorts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FlinkFlink) []string { return v.HostPorts }).(pulumi.StringArrayOutput)
 }
@@ -2237,7 +2144,6 @@ func (o FlinkFlinkPtrOutput) Elem() FlinkFlinkOutput {
 	}).(FlinkFlinkOutput)
 }
 
-// Host and Port of a Flink server
 func (o FlinkFlinkPtrOutput) HostPorts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FlinkFlink) []string {
 		if v == nil {
@@ -2248,28 +2154,17 @@ func (o FlinkFlinkPtrOutput) HostPorts() pulumi.StringArrayOutput {
 }
 
 type FlinkFlinkUserConfig struct {
-	// Flink execution.checkpointing.interval in milliseconds
-	ExecutionCheckpointingIntervalMs *string `pulumi:"executionCheckpointingIntervalMs"`
-	// Flink execution.checkpointing.timeout in milliseconds
-	ExecutionCheckpointingTimeoutMs *string `pulumi:"executionCheckpointingTimeoutMs"`
-	// Flink major version
-	FlinkVersion *string `pulumi:"flinkVersion"`
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// Flink taskmanager.numberOfTaskSlots
-	NumberOfTaskSlots *string `pulumi:"numberOfTaskSlots"`
-	// Flink parallelism.default
-	ParallelismDefault *string `pulumi:"parallelismDefault"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess *FlinkFlinkUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	// Flink restart-strategy
-	RestartStrategy *string `pulumi:"restartStrategy"`
-	// Flink restart-strategy.failure-rate.delay in seconds
-	RestartStrategyDelaySec *string `pulumi:"restartStrategyDelaySec"`
-	// Flink restart-strategy.failure-rate.failure-rate-interval in minutes
-	RestartStrategyFailureRateIntervalMin *string `pulumi:"restartStrategyFailureRateIntervalMin"`
-	// Flink restart-strategy.failure-rate.max-failures-per-interval
-	RestartStrategyMaxFailures *string `pulumi:"restartStrategyMaxFailures"`
+	ExecutionCheckpointingIntervalMs      *string                                `pulumi:"executionCheckpointingIntervalMs"`
+	ExecutionCheckpointingTimeoutMs       *string                                `pulumi:"executionCheckpointingTimeoutMs"`
+	FlinkVersion                          *string                                `pulumi:"flinkVersion"`
+	IpFilters                             []string                               `pulumi:"ipFilters"`
+	NumberOfTaskSlots                     *string                                `pulumi:"numberOfTaskSlots"`
+	ParallelismDefault                    *string                                `pulumi:"parallelismDefault"`
+	PrivatelinkAccess                     *FlinkFlinkUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	RestartStrategy                       *string                                `pulumi:"restartStrategy"`
+	RestartStrategyDelaySec               *string                                `pulumi:"restartStrategyDelaySec"`
+	RestartStrategyFailureRateIntervalMin *string                                `pulumi:"restartStrategyFailureRateIntervalMin"`
+	RestartStrategyMaxFailures            *string                                `pulumi:"restartStrategyMaxFailures"`
 }
 
 // FlinkFlinkUserConfigInput is an input type that accepts FlinkFlinkUserConfigArgs and FlinkFlinkUserConfigOutput values.
@@ -2284,28 +2179,17 @@ type FlinkFlinkUserConfigInput interface {
 }
 
 type FlinkFlinkUserConfigArgs struct {
-	// Flink execution.checkpointing.interval in milliseconds
-	ExecutionCheckpointingIntervalMs pulumi.StringPtrInput `pulumi:"executionCheckpointingIntervalMs"`
-	// Flink execution.checkpointing.timeout in milliseconds
-	ExecutionCheckpointingTimeoutMs pulumi.StringPtrInput `pulumi:"executionCheckpointingTimeoutMs"`
-	// Flink major version
-	FlinkVersion pulumi.StringPtrInput `pulumi:"flinkVersion"`
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Flink taskmanager.numberOfTaskSlots
-	NumberOfTaskSlots pulumi.StringPtrInput `pulumi:"numberOfTaskSlots"`
-	// Flink parallelism.default
-	ParallelismDefault pulumi.StringPtrInput `pulumi:"parallelismDefault"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess FlinkFlinkUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	// Flink restart-strategy
-	RestartStrategy pulumi.StringPtrInput `pulumi:"restartStrategy"`
-	// Flink restart-strategy.failure-rate.delay in seconds
-	RestartStrategyDelaySec pulumi.StringPtrInput `pulumi:"restartStrategyDelaySec"`
-	// Flink restart-strategy.failure-rate.failure-rate-interval in minutes
-	RestartStrategyFailureRateIntervalMin pulumi.StringPtrInput `pulumi:"restartStrategyFailureRateIntervalMin"`
-	// Flink restart-strategy.failure-rate.max-failures-per-interval
-	RestartStrategyMaxFailures pulumi.StringPtrInput `pulumi:"restartStrategyMaxFailures"`
+	ExecutionCheckpointingIntervalMs      pulumi.StringPtrInput                         `pulumi:"executionCheckpointingIntervalMs"`
+	ExecutionCheckpointingTimeoutMs       pulumi.StringPtrInput                         `pulumi:"executionCheckpointingTimeoutMs"`
+	FlinkVersion                          pulumi.StringPtrInput                         `pulumi:"flinkVersion"`
+	IpFilters                             pulumi.StringArrayInput                       `pulumi:"ipFilters"`
+	NumberOfTaskSlots                     pulumi.StringPtrInput                         `pulumi:"numberOfTaskSlots"`
+	ParallelismDefault                    pulumi.StringPtrInput                         `pulumi:"parallelismDefault"`
+	PrivatelinkAccess                     FlinkFlinkUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	RestartStrategy                       pulumi.StringPtrInput                         `pulumi:"restartStrategy"`
+	RestartStrategyDelaySec               pulumi.StringPtrInput                         `pulumi:"restartStrategyDelaySec"`
+	RestartStrategyFailureRateIntervalMin pulumi.StringPtrInput                         `pulumi:"restartStrategyFailureRateIntervalMin"`
+	RestartStrategyMaxFailures            pulumi.StringPtrInput                         `pulumi:"restartStrategyMaxFailures"`
 }
 
 func (FlinkFlinkUserConfigArgs) ElementType() reflect.Type {
@@ -2385,57 +2269,46 @@ func (o FlinkFlinkUserConfigOutput) ToFlinkFlinkUserConfigPtrOutputWithContext(c
 	}).(FlinkFlinkUserConfigPtrOutput)
 }
 
-// Flink execution.checkpointing.interval in milliseconds
 func (o FlinkFlinkUserConfigOutput) ExecutionCheckpointingIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.ExecutionCheckpointingIntervalMs }).(pulumi.StringPtrOutput)
 }
 
-// Flink execution.checkpointing.timeout in milliseconds
 func (o FlinkFlinkUserConfigOutput) ExecutionCheckpointingTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.ExecutionCheckpointingTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
-// Flink major version
 func (o FlinkFlinkUserConfigOutput) FlinkVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.FlinkVersion }).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o FlinkFlinkUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Flink taskmanager.numberOfTaskSlots
 func (o FlinkFlinkUserConfigOutput) NumberOfTaskSlots() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.NumberOfTaskSlots }).(pulumi.StringPtrOutput)
 }
 
-// Flink parallelism.default
 func (o FlinkFlinkUserConfigOutput) ParallelismDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.ParallelismDefault }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o FlinkFlinkUserConfigOutput) PrivatelinkAccess() FlinkFlinkUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *FlinkFlinkUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(FlinkFlinkUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Flink restart-strategy
 func (o FlinkFlinkUserConfigOutput) RestartStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.RestartStrategy }).(pulumi.StringPtrOutput)
 }
 
-// Flink restart-strategy.failure-rate.delay in seconds
 func (o FlinkFlinkUserConfigOutput) RestartStrategyDelaySec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.RestartStrategyDelaySec }).(pulumi.StringPtrOutput)
 }
 
-// Flink restart-strategy.failure-rate.failure-rate-interval in minutes
 func (o FlinkFlinkUserConfigOutput) RestartStrategyFailureRateIntervalMin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.RestartStrategyFailureRateIntervalMin }).(pulumi.StringPtrOutput)
 }
 
-// Flink restart-strategy.failure-rate.max-failures-per-interval
 func (o FlinkFlinkUserConfigOutput) RestartStrategyMaxFailures() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.RestartStrategyMaxFailures }).(pulumi.StringPtrOutput)
 }
@@ -2464,7 +2337,6 @@ func (o FlinkFlinkUserConfigPtrOutput) Elem() FlinkFlinkUserConfigOutput {
 	}).(FlinkFlinkUserConfigOutput)
 }
 
-// Flink execution.checkpointing.interval in milliseconds
 func (o FlinkFlinkUserConfigPtrOutput) ExecutionCheckpointingIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2474,7 +2346,6 @@ func (o FlinkFlinkUserConfigPtrOutput) ExecutionCheckpointingIntervalMs() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Flink execution.checkpointing.timeout in milliseconds
 func (o FlinkFlinkUserConfigPtrOutput) ExecutionCheckpointingTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2484,7 +2355,6 @@ func (o FlinkFlinkUserConfigPtrOutput) ExecutionCheckpointingTimeoutMs() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Flink major version
 func (o FlinkFlinkUserConfigPtrOutput) FlinkVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2494,7 +2364,6 @@ func (o FlinkFlinkUserConfigPtrOutput) FlinkVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o FlinkFlinkUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) []string {
 		if v == nil {
@@ -2504,7 +2373,6 @@ func (o FlinkFlinkUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Flink taskmanager.numberOfTaskSlots
 func (o FlinkFlinkUserConfigPtrOutput) NumberOfTaskSlots() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2514,7 +2382,6 @@ func (o FlinkFlinkUserConfigPtrOutput) NumberOfTaskSlots() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Flink parallelism.default
 func (o FlinkFlinkUserConfigPtrOutput) ParallelismDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2524,7 +2391,6 @@ func (o FlinkFlinkUserConfigPtrOutput) ParallelismDefault() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o FlinkFlinkUserConfigPtrOutput) PrivatelinkAccess() FlinkFlinkUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *FlinkFlinkUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -2534,7 +2400,6 @@ func (o FlinkFlinkUserConfigPtrOutput) PrivatelinkAccess() FlinkFlinkUserConfigP
 	}).(FlinkFlinkUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Flink restart-strategy
 func (o FlinkFlinkUserConfigPtrOutput) RestartStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2544,7 +2409,6 @@ func (o FlinkFlinkUserConfigPtrOutput) RestartStrategy() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Flink restart-strategy.failure-rate.delay in seconds
 func (o FlinkFlinkUserConfigPtrOutput) RestartStrategyDelaySec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2554,7 +2418,6 @@ func (o FlinkFlinkUserConfigPtrOutput) RestartStrategyDelaySec() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Flink restart-strategy.failure-rate.failure-rate-interval in minutes
 func (o FlinkFlinkUserConfigPtrOutput) RestartStrategyFailureRateIntervalMin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2564,7 +2427,6 @@ func (o FlinkFlinkUserConfigPtrOutput) RestartStrategyFailureRateIntervalMin() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Flink restart-strategy.failure-rate.max-failures-per-interval
 func (o FlinkFlinkUserConfigPtrOutput) RestartStrategyMaxFailures() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2575,7 +2437,6 @@ func (o FlinkFlinkUserConfigPtrOutput) RestartStrategyMaxFailures() pulumi.Strin
 }
 
 type FlinkFlinkUserConfigPrivatelinkAccess struct {
-	// Flink server provided values
 	Flink      *string `pulumi:"flink"`
 	Prometheus *string `pulumi:"prometheus"`
 }
@@ -2592,7 +2453,6 @@ type FlinkFlinkUserConfigPrivatelinkAccessInput interface {
 }
 
 type FlinkFlinkUserConfigPrivatelinkAccessArgs struct {
-	// Flink server provided values
 	Flink      pulumi.StringPtrInput `pulumi:"flink"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -2674,7 +2534,6 @@ func (o FlinkFlinkUserConfigPrivatelinkAccessOutput) ToFlinkFlinkUserConfigPriva
 	}).(FlinkFlinkUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Flink server provided values
 func (o FlinkFlinkUserConfigPrivatelinkAccessOutput) Flink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfigPrivatelinkAccess) *string { return v.Flink }).(pulumi.StringPtrOutput)
 }
@@ -2707,7 +2566,6 @@ func (o FlinkFlinkUserConfigPrivatelinkAccessPtrOutput) Elem() FlinkFlinkUserCon
 	}).(FlinkFlinkUserConfigPrivatelinkAccessOutput)
 }
 
-// Flink server provided values
 func (o FlinkFlinkUserConfigPrivatelinkAccessPtrOutput) Flink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -2727,18 +2585,12 @@ func (o FlinkFlinkUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.Stri
 }
 
 type FlinkJobTableUpsertKafka struct {
-	// Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
-	KeyFields []string `pulumi:"keyFields"`
-	// Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-	KeyFormat *string `pulumi:"keyFormat"`
-	// Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
-	ScanStartupMode *string `pulumi:"scanStartupMode"`
-	// Topic name This property cannot be changed, doing so forces recreation of the resource.
-	Topic *string `pulumi:"topic"`
-	// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
-	ValueFieldsInclude *string `pulumi:"valueFieldsInclude"`
-	// Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-	ValueFormat *string `pulumi:"valueFormat"`
+	KeyFields          []string `pulumi:"keyFields"`
+	KeyFormat          *string  `pulumi:"keyFormat"`
+	ScanStartupMode    *string  `pulumi:"scanStartupMode"`
+	Topic              *string  `pulumi:"topic"`
+	ValueFieldsInclude *string  `pulumi:"valueFieldsInclude"`
+	ValueFormat        *string  `pulumi:"valueFormat"`
 }
 
 // FlinkJobTableUpsertKafkaInput is an input type that accepts FlinkJobTableUpsertKafkaArgs and FlinkJobTableUpsertKafkaOutput values.
@@ -2753,18 +2605,12 @@ type FlinkJobTableUpsertKafkaInput interface {
 }
 
 type FlinkJobTableUpsertKafkaArgs struct {
-	// Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
-	KeyFields pulumi.StringArrayInput `pulumi:"keyFields"`
-	// Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-	KeyFormat pulumi.StringPtrInput `pulumi:"keyFormat"`
-	// Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
-	ScanStartupMode pulumi.StringPtrInput `pulumi:"scanStartupMode"`
-	// Topic name This property cannot be changed, doing so forces recreation of the resource.
-	Topic pulumi.StringPtrInput `pulumi:"topic"`
-	// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
-	ValueFieldsInclude pulumi.StringPtrInput `pulumi:"valueFieldsInclude"`
-	// Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
-	ValueFormat pulumi.StringPtrInput `pulumi:"valueFormat"`
+	KeyFields          pulumi.StringArrayInput `pulumi:"keyFields"`
+	KeyFormat          pulumi.StringPtrInput   `pulumi:"keyFormat"`
+	ScanStartupMode    pulumi.StringPtrInput   `pulumi:"scanStartupMode"`
+	Topic              pulumi.StringPtrInput   `pulumi:"topic"`
+	ValueFieldsInclude pulumi.StringPtrInput   `pulumi:"valueFieldsInclude"`
+	ValueFormat        pulumi.StringPtrInput   `pulumi:"valueFormat"`
 }
 
 func (FlinkJobTableUpsertKafkaArgs) ElementType() reflect.Type {
@@ -2844,32 +2690,26 @@ func (o FlinkJobTableUpsertKafkaOutput) ToFlinkJobTableUpsertKafkaPtrOutputWithC
 	}).(FlinkJobTableUpsertKafkaPtrOutput)
 }
 
-// Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaOutput) KeyFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FlinkJobTableUpsertKafka) []string { return v.KeyFields }).(pulumi.StringArrayOutput)
 }
 
-// Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaOutput) KeyFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkJobTableUpsertKafka) *string { return v.KeyFormat }).(pulumi.StringPtrOutput)
 }
 
-// Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaOutput) ScanStartupMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkJobTableUpsertKafka) *string { return v.ScanStartupMode }).(pulumi.StringPtrOutput)
 }
 
-// Topic name This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkJobTableUpsertKafka) *string { return v.Topic }).(pulumi.StringPtrOutput)
 }
 
-// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaOutput) ValueFieldsInclude() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkJobTableUpsertKafka) *string { return v.ValueFieldsInclude }).(pulumi.StringPtrOutput)
 }
 
-// Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaOutput) ValueFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkJobTableUpsertKafka) *string { return v.ValueFormat }).(pulumi.StringPtrOutput)
 }
@@ -2898,7 +2738,6 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) Elem() FlinkJobTableUpsertKafkaOutput
 	}).(FlinkJobTableUpsertKafkaOutput)
 }
 
-// Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaPtrOutput) KeyFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FlinkJobTableUpsertKafka) []string {
 		if v == nil {
@@ -2908,7 +2747,6 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) KeyFields() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaPtrOutput) KeyFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkJobTableUpsertKafka) *string {
 		if v == nil {
@@ -2918,7 +2756,6 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) KeyFormat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaPtrOutput) ScanStartupMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkJobTableUpsertKafka) *string {
 		if v == nil {
@@ -2928,7 +2765,6 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) ScanStartupMode() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Topic name This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaPtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkJobTableUpsertKafka) *string {
 		if v == nil {
@@ -2938,7 +2774,6 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) Topic() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaPtrOutput) ValueFieldsInclude() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkJobTableUpsertKafka) *string {
 		if v == nil {
@@ -2948,7 +2783,6 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) ValueFieldsInclude() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaPtrOutput) ValueFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkJobTableUpsertKafka) *string {
 		if v == nil {
@@ -2959,9 +2793,7 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) ValueFormat() pulumi.StringPtrOutput 
 }
 
 type FlinkServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -2977,9 +2809,7 @@ type FlinkServiceIntegrationInput interface {
 }
 
 type FlinkServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -3034,12 +2864,10 @@ func (o FlinkServiceIntegrationOutput) ToFlinkServiceIntegrationOutputWithContex
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o FlinkServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v FlinkServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o FlinkServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v FlinkServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -3065,9 +2893,7 @@ func (o FlinkServiceIntegrationArrayOutput) Index(i pulumi.IntInput) FlinkServic
 }
 
 type FlinkTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -3083,9 +2909,7 @@ type FlinkTagInput interface {
 }
 
 type FlinkTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -3140,12 +2964,10 @@ func (o FlinkTagOutput) ToFlinkTagOutputWithContext(ctx context.Context) FlinkTa
 	return o
 }
 
-// Service tag key
 func (o FlinkTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v FlinkTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o FlinkTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v FlinkTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -3389,76 +3211,41 @@ func (o GrafanaGrafanaArrayOutput) Index(i pulumi.IntInput) GrafanaGrafanaOutput
 }
 
 type GrafanaGrafanaUserConfig struct {
-	// Enable or disable Grafana alerting functionality
-	AlertingEnabled *string `pulumi:"alertingEnabled"`
-	// Default error or timeout setting for new alerting rules
-	AlertingErrorOrTimeout *string `pulumi:"alertingErrorOrTimeout"`
-	// Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
-	AlertingMaxAnnotationsToKeep *string `pulumi:"alertingMaxAnnotationsToKeep"`
-	// Default value for 'no data or null values' for new alerting rules
-	AlertingNodataOrNullvalues *string `pulumi:"alertingNodataOrNullvalues"`
-	// Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
-	AllowEmbedding *string `pulumi:"allowEmbedding"`
-	// Azure AD OAuth integration
-	AuthAzuread *GrafanaGrafanaUserConfigAuthAzuread `pulumi:"authAzuread"`
-	// Enable or disable basic authentication form, used by Grafana built-in login
-	AuthBasicEnabled *string `pulumi:"authBasicEnabled"`
-	// Generic OAuth integration
-	AuthGenericOauth *GrafanaGrafanaUserConfigAuthGenericOauth `pulumi:"authGenericOauth"`
-	// Github Auth integration
-	AuthGithub *GrafanaGrafanaUserConfigAuthGithub `pulumi:"authGithub"`
-	// GitLab Auth integration
-	AuthGitlab *GrafanaGrafanaUserConfigAuthGitlab `pulumi:"authGitlab"`
-	// Google Auth integration
-	AuthGoogle *GrafanaGrafanaUserConfigAuthGoogle `pulumi:"authGoogle"`
-	// Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
-	CookieSamesite *string `pulumi:"cookieSamesite"`
-	// Custom domain
-	CustomDomain *string `pulumi:"customDomain"`
-	// Minimum refresh interval
-	DashboardsMinRefreshInterval *string `pulumi:"dashboardsMinRefreshInterval"`
-	// Dashboard versions to keep per dashboard
-	DashboardsVersionsToKeep *string `pulumi:"dashboardsVersionsToKeep"`
-	// Send 'X-Grafana-User' header to data source
-	DataproxySendUserHeader *string `pulumi:"dataproxySendUserHeader"`
-	// Timeout for data proxy requests in seconds
-	DataproxyTimeout *string `pulumi:"dataproxyTimeout"`
-	// Grafana date format specifications
-	DateFormats *GrafanaGrafanaUserConfigDateFormats `pulumi:"dateFormats"`
-	// Set to true to disable gravatar. Defaults to false (gravatar is enabled)
-	DisableGravatar *string `pulumi:"disableGravatar"`
-	// Editors can manage folders, teams and dashboards created by them
-	EditorsCanAdmin *string `pulumi:"editorsCanAdmin"`
-	// External image store settings
-	ExternalImageStorage *GrafanaGrafanaUserConfigExternalImageStorage `pulumi:"externalImageStorage"`
-	// Google Analytics ID
-	GoogleAnalyticsUaId *string `pulumi:"googleAnalyticsUaId"`
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// Enable Grafana /metrics endpoint
-	MetricsEnabled *string `pulumi:"metricsEnabled"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess *GrafanaGrafanaUserConfigPrivateAccess `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess *GrafanaGrafanaUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess *GrafanaGrafanaUserConfigPublicAccess `pulumi:"publicAccess"`
-	// Name of the basebackup to restore in forked service
-	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
-	// SMTP server settings
-	SmtpServer *GrafanaGrafanaUserConfigSmtpServer `pulumi:"smtpServer"`
-	// Static IP addresses
-	StaticIps *string `pulumi:"staticIps"`
-	// Auto-assign new users on signup to main organization. Defaults to false
-	UserAutoAssignOrg *string `pulumi:"userAutoAssignOrg"`
-	// Set role for new signups. Defaults to Viewer
-	UserAutoAssignOrgRole *string `pulumi:"userAutoAssignOrgRole"`
-	// Users with view-only permission can edit but not save dashboards
-	ViewersCanEdit *string `pulumi:"viewersCanEdit"`
+	AlertingEnabled              *string                                       `pulumi:"alertingEnabled"`
+	AlertingErrorOrTimeout       *string                                       `pulumi:"alertingErrorOrTimeout"`
+	AlertingMaxAnnotationsToKeep *string                                       `pulumi:"alertingMaxAnnotationsToKeep"`
+	AlertingNodataOrNullvalues   *string                                       `pulumi:"alertingNodataOrNullvalues"`
+	AllowEmbedding               *string                                       `pulumi:"allowEmbedding"`
+	AuthAzuread                  *GrafanaGrafanaUserConfigAuthAzuread          `pulumi:"authAzuread"`
+	AuthBasicEnabled             *string                                       `pulumi:"authBasicEnabled"`
+	AuthGenericOauth             *GrafanaGrafanaUserConfigAuthGenericOauth     `pulumi:"authGenericOauth"`
+	AuthGithub                   *GrafanaGrafanaUserConfigAuthGithub           `pulumi:"authGithub"`
+	AuthGitlab                   *GrafanaGrafanaUserConfigAuthGitlab           `pulumi:"authGitlab"`
+	AuthGoogle                   *GrafanaGrafanaUserConfigAuthGoogle           `pulumi:"authGoogle"`
+	CookieSamesite               *string                                       `pulumi:"cookieSamesite"`
+	CustomDomain                 *string                                       `pulumi:"customDomain"`
+	DashboardsMinRefreshInterval *string                                       `pulumi:"dashboardsMinRefreshInterval"`
+	DashboardsVersionsToKeep     *string                                       `pulumi:"dashboardsVersionsToKeep"`
+	DataproxySendUserHeader      *string                                       `pulumi:"dataproxySendUserHeader"`
+	DataproxyTimeout             *string                                       `pulumi:"dataproxyTimeout"`
+	DateFormats                  *GrafanaGrafanaUserConfigDateFormats          `pulumi:"dateFormats"`
+	DisableGravatar              *string                                       `pulumi:"disableGravatar"`
+	EditorsCanAdmin              *string                                       `pulumi:"editorsCanAdmin"`
+	ExternalImageStorage         *GrafanaGrafanaUserConfigExternalImageStorage `pulumi:"externalImageStorage"`
+	GoogleAnalyticsUaId          *string                                       `pulumi:"googleAnalyticsUaId"`
+	IpFilters                    []string                                      `pulumi:"ipFilters"`
+	MetricsEnabled               *string                                       `pulumi:"metricsEnabled"`
+	PrivateAccess                *GrafanaGrafanaUserConfigPrivateAccess        `pulumi:"privateAccess"`
+	PrivatelinkAccess            *GrafanaGrafanaUserConfigPrivatelinkAccess    `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom            *string                                       `pulumi:"projectToForkFrom"`
+	PublicAccess                 *GrafanaGrafanaUserConfigPublicAccess         `pulumi:"publicAccess"`
+	RecoveryBasebackupName       *string                                       `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom            *string                                       `pulumi:"serviceToForkFrom"`
+	SmtpServer                   *GrafanaGrafanaUserConfigSmtpServer           `pulumi:"smtpServer"`
+	StaticIps                    *string                                       `pulumi:"staticIps"`
+	UserAutoAssignOrg            *string                                       `pulumi:"userAutoAssignOrg"`
+	UserAutoAssignOrgRole        *string                                       `pulumi:"userAutoAssignOrgRole"`
+	ViewersCanEdit               *string                                       `pulumi:"viewersCanEdit"`
 }
 
 // GrafanaGrafanaUserConfigInput is an input type that accepts GrafanaGrafanaUserConfigArgs and GrafanaGrafanaUserConfigOutput values.
@@ -3473,76 +3260,41 @@ type GrafanaGrafanaUserConfigInput interface {
 }
 
 type GrafanaGrafanaUserConfigArgs struct {
-	// Enable or disable Grafana alerting functionality
-	AlertingEnabled pulumi.StringPtrInput `pulumi:"alertingEnabled"`
-	// Default error or timeout setting for new alerting rules
-	AlertingErrorOrTimeout pulumi.StringPtrInput `pulumi:"alertingErrorOrTimeout"`
-	// Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
-	AlertingMaxAnnotationsToKeep pulumi.StringPtrInput `pulumi:"alertingMaxAnnotationsToKeep"`
-	// Default value for 'no data or null values' for new alerting rules
-	AlertingNodataOrNullvalues pulumi.StringPtrInput `pulumi:"alertingNodataOrNullvalues"`
-	// Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
-	AllowEmbedding pulumi.StringPtrInput `pulumi:"allowEmbedding"`
-	// Azure AD OAuth integration
-	AuthAzuread GrafanaGrafanaUserConfigAuthAzureadPtrInput `pulumi:"authAzuread"`
-	// Enable or disable basic authentication form, used by Grafana built-in login
-	AuthBasicEnabled pulumi.StringPtrInput `pulumi:"authBasicEnabled"`
-	// Generic OAuth integration
-	AuthGenericOauth GrafanaGrafanaUserConfigAuthGenericOauthPtrInput `pulumi:"authGenericOauth"`
-	// Github Auth integration
-	AuthGithub GrafanaGrafanaUserConfigAuthGithubPtrInput `pulumi:"authGithub"`
-	// GitLab Auth integration
-	AuthGitlab GrafanaGrafanaUserConfigAuthGitlabPtrInput `pulumi:"authGitlab"`
-	// Google Auth integration
-	AuthGoogle GrafanaGrafanaUserConfigAuthGooglePtrInput `pulumi:"authGoogle"`
-	// Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
-	CookieSamesite pulumi.StringPtrInput `pulumi:"cookieSamesite"`
-	// Custom domain
-	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
-	// Minimum refresh interval
-	DashboardsMinRefreshInterval pulumi.StringPtrInput `pulumi:"dashboardsMinRefreshInterval"`
-	// Dashboard versions to keep per dashboard
-	DashboardsVersionsToKeep pulumi.StringPtrInput `pulumi:"dashboardsVersionsToKeep"`
-	// Send 'X-Grafana-User' header to data source
-	DataproxySendUserHeader pulumi.StringPtrInput `pulumi:"dataproxySendUserHeader"`
-	// Timeout for data proxy requests in seconds
-	DataproxyTimeout pulumi.StringPtrInput `pulumi:"dataproxyTimeout"`
-	// Grafana date format specifications
-	DateFormats GrafanaGrafanaUserConfigDateFormatsPtrInput `pulumi:"dateFormats"`
-	// Set to true to disable gravatar. Defaults to false (gravatar is enabled)
-	DisableGravatar pulumi.StringPtrInput `pulumi:"disableGravatar"`
-	// Editors can manage folders, teams and dashboards created by them
-	EditorsCanAdmin pulumi.StringPtrInput `pulumi:"editorsCanAdmin"`
-	// External image store settings
-	ExternalImageStorage GrafanaGrafanaUserConfigExternalImageStoragePtrInput `pulumi:"externalImageStorage"`
-	// Google Analytics ID
-	GoogleAnalyticsUaId pulumi.StringPtrInput `pulumi:"googleAnalyticsUaId"`
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Enable Grafana /metrics endpoint
-	MetricsEnabled pulumi.StringPtrInput `pulumi:"metricsEnabled"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess GrafanaGrafanaUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess GrafanaGrafanaUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess GrafanaGrafanaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
-	// Name of the basebackup to restore in forked service
-	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
-	// SMTP server settings
-	SmtpServer GrafanaGrafanaUserConfigSmtpServerPtrInput `pulumi:"smtpServer"`
-	// Static IP addresses
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
-	// Auto-assign new users on signup to main organization. Defaults to false
-	UserAutoAssignOrg pulumi.StringPtrInput `pulumi:"userAutoAssignOrg"`
-	// Set role for new signups. Defaults to Viewer
-	UserAutoAssignOrgRole pulumi.StringPtrInput `pulumi:"userAutoAssignOrgRole"`
-	// Users with view-only permission can edit but not save dashboards
-	ViewersCanEdit pulumi.StringPtrInput `pulumi:"viewersCanEdit"`
+	AlertingEnabled              pulumi.StringPtrInput                                `pulumi:"alertingEnabled"`
+	AlertingErrorOrTimeout       pulumi.StringPtrInput                                `pulumi:"alertingErrorOrTimeout"`
+	AlertingMaxAnnotationsToKeep pulumi.StringPtrInput                                `pulumi:"alertingMaxAnnotationsToKeep"`
+	AlertingNodataOrNullvalues   pulumi.StringPtrInput                                `pulumi:"alertingNodataOrNullvalues"`
+	AllowEmbedding               pulumi.StringPtrInput                                `pulumi:"allowEmbedding"`
+	AuthAzuread                  GrafanaGrafanaUserConfigAuthAzureadPtrInput          `pulumi:"authAzuread"`
+	AuthBasicEnabled             pulumi.StringPtrInput                                `pulumi:"authBasicEnabled"`
+	AuthGenericOauth             GrafanaGrafanaUserConfigAuthGenericOauthPtrInput     `pulumi:"authGenericOauth"`
+	AuthGithub                   GrafanaGrafanaUserConfigAuthGithubPtrInput           `pulumi:"authGithub"`
+	AuthGitlab                   GrafanaGrafanaUserConfigAuthGitlabPtrInput           `pulumi:"authGitlab"`
+	AuthGoogle                   GrafanaGrafanaUserConfigAuthGooglePtrInput           `pulumi:"authGoogle"`
+	CookieSamesite               pulumi.StringPtrInput                                `pulumi:"cookieSamesite"`
+	CustomDomain                 pulumi.StringPtrInput                                `pulumi:"customDomain"`
+	DashboardsMinRefreshInterval pulumi.StringPtrInput                                `pulumi:"dashboardsMinRefreshInterval"`
+	DashboardsVersionsToKeep     pulumi.StringPtrInput                                `pulumi:"dashboardsVersionsToKeep"`
+	DataproxySendUserHeader      pulumi.StringPtrInput                                `pulumi:"dataproxySendUserHeader"`
+	DataproxyTimeout             pulumi.StringPtrInput                                `pulumi:"dataproxyTimeout"`
+	DateFormats                  GrafanaGrafanaUserConfigDateFormatsPtrInput          `pulumi:"dateFormats"`
+	DisableGravatar              pulumi.StringPtrInput                                `pulumi:"disableGravatar"`
+	EditorsCanAdmin              pulumi.StringPtrInput                                `pulumi:"editorsCanAdmin"`
+	ExternalImageStorage         GrafanaGrafanaUserConfigExternalImageStoragePtrInput `pulumi:"externalImageStorage"`
+	GoogleAnalyticsUaId          pulumi.StringPtrInput                                `pulumi:"googleAnalyticsUaId"`
+	IpFilters                    pulumi.StringArrayInput                              `pulumi:"ipFilters"`
+	MetricsEnabled               pulumi.StringPtrInput                                `pulumi:"metricsEnabled"`
+	PrivateAccess                GrafanaGrafanaUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
+	PrivatelinkAccess            GrafanaGrafanaUserConfigPrivatelinkAccessPtrInput    `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom            pulumi.StringPtrInput                                `pulumi:"projectToForkFrom"`
+	PublicAccess                 GrafanaGrafanaUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
+	RecoveryBasebackupName       pulumi.StringPtrInput                                `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom            pulumi.StringPtrInput                                `pulumi:"serviceToForkFrom"`
+	SmtpServer                   GrafanaGrafanaUserConfigSmtpServerPtrInput           `pulumi:"smtpServer"`
+	StaticIps                    pulumi.StringPtrInput                                `pulumi:"staticIps"`
+	UserAutoAssignOrg            pulumi.StringPtrInput                                `pulumi:"userAutoAssignOrg"`
+	UserAutoAssignOrgRole        pulumi.StringPtrInput                                `pulumi:"userAutoAssignOrgRole"`
+	ViewersCanEdit               pulumi.StringPtrInput                                `pulumi:"viewersCanEdit"`
 }
 
 func (GrafanaGrafanaUserConfigArgs) ElementType() reflect.Type {
@@ -3622,181 +3374,146 @@ func (o GrafanaGrafanaUserConfigOutput) ToGrafanaGrafanaUserConfigPtrOutputWithC
 	}).(GrafanaGrafanaUserConfigPtrOutput)
 }
 
-// Enable or disable Grafana alerting functionality
 func (o GrafanaGrafanaUserConfigOutput) AlertingEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AlertingEnabled }).(pulumi.StringPtrOutput)
 }
 
-// Default error or timeout setting for new alerting rules
 func (o GrafanaGrafanaUserConfigOutput) AlertingErrorOrTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AlertingErrorOrTimeout }).(pulumi.StringPtrOutput)
 }
 
-// Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
 func (o GrafanaGrafanaUserConfigOutput) AlertingMaxAnnotationsToKeep() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AlertingMaxAnnotationsToKeep }).(pulumi.StringPtrOutput)
 }
 
-// Default value for 'no data or null values' for new alerting rules
 func (o GrafanaGrafanaUserConfigOutput) AlertingNodataOrNullvalues() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AlertingNodataOrNullvalues }).(pulumi.StringPtrOutput)
 }
 
-// Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
 func (o GrafanaGrafanaUserConfigOutput) AllowEmbedding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AllowEmbedding }).(pulumi.StringPtrOutput)
 }
 
-// Azure AD OAuth integration
 func (o GrafanaGrafanaUserConfigOutput) AuthAzuread() GrafanaGrafanaUserConfigAuthAzureadPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthAzuread { return v.AuthAzuread }).(GrafanaGrafanaUserConfigAuthAzureadPtrOutput)
 }
 
-// Enable or disable basic authentication form, used by Grafana built-in login
 func (o GrafanaGrafanaUserConfigOutput) AuthBasicEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AuthBasicEnabled }).(pulumi.StringPtrOutput)
 }
 
-// Generic OAuth integration
 func (o GrafanaGrafanaUserConfigOutput) AuthGenericOauth() GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGenericOauth { return v.AuthGenericOauth }).(GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput)
 }
 
-// Github Auth integration
 func (o GrafanaGrafanaUserConfigOutput) AuthGithub() GrafanaGrafanaUserConfigAuthGithubPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGithub { return v.AuthGithub }).(GrafanaGrafanaUserConfigAuthGithubPtrOutput)
 }
 
-// GitLab Auth integration
 func (o GrafanaGrafanaUserConfigOutput) AuthGitlab() GrafanaGrafanaUserConfigAuthGitlabPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGitlab { return v.AuthGitlab }).(GrafanaGrafanaUserConfigAuthGitlabPtrOutput)
 }
 
-// Google Auth integration
 func (o GrafanaGrafanaUserConfigOutput) AuthGoogle() GrafanaGrafanaUserConfigAuthGooglePtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGoogle { return v.AuthGoogle }).(GrafanaGrafanaUserConfigAuthGooglePtrOutput)
 }
 
-// Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
 func (o GrafanaGrafanaUserConfigOutput) CookieSamesite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.CookieSamesite }).(pulumi.StringPtrOutput)
 }
 
-// Custom domain
 func (o GrafanaGrafanaUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
-// Minimum refresh interval
 func (o GrafanaGrafanaUserConfigOutput) DashboardsMinRefreshInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DashboardsMinRefreshInterval }).(pulumi.StringPtrOutput)
 }
 
-// Dashboard versions to keep per dashboard
 func (o GrafanaGrafanaUserConfigOutput) DashboardsVersionsToKeep() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DashboardsVersionsToKeep }).(pulumi.StringPtrOutput)
 }
 
-// Send 'X-Grafana-User' header to data source
 func (o GrafanaGrafanaUserConfigOutput) DataproxySendUserHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DataproxySendUserHeader }).(pulumi.StringPtrOutput)
 }
 
-// Timeout for data proxy requests in seconds
 func (o GrafanaGrafanaUserConfigOutput) DataproxyTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DataproxyTimeout }).(pulumi.StringPtrOutput)
 }
 
-// Grafana date format specifications
 func (o GrafanaGrafanaUserConfigOutput) DateFormats() GrafanaGrafanaUserConfigDateFormatsPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigDateFormats { return v.DateFormats }).(GrafanaGrafanaUserConfigDateFormatsPtrOutput)
 }
 
-// Set to true to disable gravatar. Defaults to false (gravatar is enabled)
 func (o GrafanaGrafanaUserConfigOutput) DisableGravatar() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DisableGravatar }).(pulumi.StringPtrOutput)
 }
 
-// Editors can manage folders, teams and dashboards created by them
 func (o GrafanaGrafanaUserConfigOutput) EditorsCanAdmin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.EditorsCanAdmin }).(pulumi.StringPtrOutput)
 }
 
-// External image store settings
 func (o GrafanaGrafanaUserConfigOutput) ExternalImageStorage() GrafanaGrafanaUserConfigExternalImageStoragePtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigExternalImageStorage {
 		return v.ExternalImageStorage
 	}).(GrafanaGrafanaUserConfigExternalImageStoragePtrOutput)
 }
 
-// Google Analytics ID
 func (o GrafanaGrafanaUserConfigOutput) GoogleAnalyticsUaId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.GoogleAnalyticsUaId }).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o GrafanaGrafanaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Enable Grafana /metrics endpoint
 func (o GrafanaGrafanaUserConfigOutput) MetricsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.MetricsEnabled }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o GrafanaGrafanaUserConfigOutput) PrivateAccess() GrafanaGrafanaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPrivateAccess { return v.PrivateAccess }).(GrafanaGrafanaUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o GrafanaGrafanaUserConfigOutput) PrivatelinkAccess() GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPrivatelinkAccess {
 		return v.PrivatelinkAccess
 	}).(GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o GrafanaGrafanaUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o GrafanaGrafanaUserConfigOutput) PublicAccess() GrafanaGrafanaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPublicAccess { return v.PublicAccess }).(GrafanaGrafanaUserConfigPublicAccessPtrOutput)
 }
 
-// Name of the basebackup to restore in forked service
 func (o GrafanaGrafanaUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o GrafanaGrafanaUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// SMTP server settings
 func (o GrafanaGrafanaUserConfigOutput) SmtpServer() GrafanaGrafanaUserConfigSmtpServerPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigSmtpServer { return v.SmtpServer }).(GrafanaGrafanaUserConfigSmtpServerPtrOutput)
 }
 
-// Static IP addresses
 func (o GrafanaGrafanaUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
 
-// Auto-assign new users on signup to main organization. Defaults to false
 func (o GrafanaGrafanaUserConfigOutput) UserAutoAssignOrg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.UserAutoAssignOrg }).(pulumi.StringPtrOutput)
 }
 
-// Set role for new signups. Defaults to Viewer
 func (o GrafanaGrafanaUserConfigOutput) UserAutoAssignOrgRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.UserAutoAssignOrgRole }).(pulumi.StringPtrOutput)
 }
 
-// Users with view-only permission can edit but not save dashboards
 func (o GrafanaGrafanaUserConfigOutput) ViewersCanEdit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.ViewersCanEdit }).(pulumi.StringPtrOutput)
 }
@@ -3825,7 +3542,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) Elem() GrafanaGrafanaUserConfigOutput
 	}).(GrafanaGrafanaUserConfigOutput)
 }
 
-// Enable or disable Grafana alerting functionality
 func (o GrafanaGrafanaUserConfigPtrOutput) AlertingEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3835,7 +3551,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AlertingEnabled() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Default error or timeout setting for new alerting rules
 func (o GrafanaGrafanaUserConfigPtrOutput) AlertingErrorOrTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3845,7 +3560,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AlertingErrorOrTimeout() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
 func (o GrafanaGrafanaUserConfigPtrOutput) AlertingMaxAnnotationsToKeep() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3855,7 +3569,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AlertingMaxAnnotationsToKeep() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Default value for 'no data or null values' for new alerting rules
 func (o GrafanaGrafanaUserConfigPtrOutput) AlertingNodataOrNullvalues() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3865,7 +3578,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AlertingNodataOrNullvalues() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
 func (o GrafanaGrafanaUserConfigPtrOutput) AllowEmbedding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3875,7 +3587,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AllowEmbedding() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Azure AD OAuth integration
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthAzuread() GrafanaGrafanaUserConfigAuthAzureadPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthAzuread {
 		if v == nil {
@@ -3885,7 +3596,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthAzuread() GrafanaGrafanaUserConfi
 	}).(GrafanaGrafanaUserConfigAuthAzureadPtrOutput)
 }
 
-// Enable or disable basic authentication form, used by Grafana built-in login
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthBasicEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3895,7 +3605,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthBasicEnabled() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Generic OAuth integration
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthGenericOauth() GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGenericOauth {
 		if v == nil {
@@ -3905,7 +3614,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthGenericOauth() GrafanaGrafanaUser
 	}).(GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput)
 }
 
-// Github Auth integration
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthGithub() GrafanaGrafanaUserConfigAuthGithubPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGithub {
 		if v == nil {
@@ -3915,7 +3623,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthGithub() GrafanaGrafanaUserConfig
 	}).(GrafanaGrafanaUserConfigAuthGithubPtrOutput)
 }
 
-// GitLab Auth integration
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthGitlab() GrafanaGrafanaUserConfigAuthGitlabPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGitlab {
 		if v == nil {
@@ -3925,7 +3632,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthGitlab() GrafanaGrafanaUserConfig
 	}).(GrafanaGrafanaUserConfigAuthGitlabPtrOutput)
 }
 
-// Google Auth integration
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthGoogle() GrafanaGrafanaUserConfigAuthGooglePtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGoogle {
 		if v == nil {
@@ -3935,7 +3641,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthGoogle() GrafanaGrafanaUserConfig
 	}).(GrafanaGrafanaUserConfigAuthGooglePtrOutput)
 }
 
-// Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
 func (o GrafanaGrafanaUserConfigPtrOutput) CookieSamesite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3945,7 +3650,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) CookieSamesite() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Custom domain
 func (o GrafanaGrafanaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3955,7 +3659,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Minimum refresh interval
 func (o GrafanaGrafanaUserConfigPtrOutput) DashboardsMinRefreshInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3965,7 +3668,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DashboardsMinRefreshInterval() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Dashboard versions to keep per dashboard
 func (o GrafanaGrafanaUserConfigPtrOutput) DashboardsVersionsToKeep() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3975,7 +3677,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DashboardsVersionsToKeep() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Send 'X-Grafana-User' header to data source
 func (o GrafanaGrafanaUserConfigPtrOutput) DataproxySendUserHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3985,7 +3686,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DataproxySendUserHeader() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Timeout for data proxy requests in seconds
 func (o GrafanaGrafanaUserConfigPtrOutput) DataproxyTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3995,7 +3695,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DataproxyTimeout() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Grafana date format specifications
 func (o GrafanaGrafanaUserConfigPtrOutput) DateFormats() GrafanaGrafanaUserConfigDateFormatsPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigDateFormats {
 		if v == nil {
@@ -4005,7 +3704,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DateFormats() GrafanaGrafanaUserConfi
 	}).(GrafanaGrafanaUserConfigDateFormatsPtrOutput)
 }
 
-// Set to true to disable gravatar. Defaults to false (gravatar is enabled)
 func (o GrafanaGrafanaUserConfigPtrOutput) DisableGravatar() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -4015,7 +3713,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DisableGravatar() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Editors can manage folders, teams and dashboards created by them
 func (o GrafanaGrafanaUserConfigPtrOutput) EditorsCanAdmin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -4025,7 +3722,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) EditorsCanAdmin() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// External image store settings
 func (o GrafanaGrafanaUserConfigPtrOutput) ExternalImageStorage() GrafanaGrafanaUserConfigExternalImageStoragePtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigExternalImageStorage {
 		if v == nil {
@@ -4035,7 +3731,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) ExternalImageStorage() GrafanaGrafana
 	}).(GrafanaGrafanaUserConfigExternalImageStoragePtrOutput)
 }
 
-// Google Analytics ID
 func (o GrafanaGrafanaUserConfigPtrOutput) GoogleAnalyticsUaId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -4045,7 +3740,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) GoogleAnalyticsUaId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o GrafanaGrafanaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) []string {
 		if v == nil {
@@ -4055,7 +3749,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// Enable Grafana /metrics endpoint
 func (o GrafanaGrafanaUserConfigPtrOutput) MetricsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -4065,7 +3758,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) MetricsEnabled() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o GrafanaGrafanaUserConfigPtrOutput) PrivateAccess() GrafanaGrafanaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPrivateAccess {
 		if v == nil {
@@ -4075,7 +3767,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) PrivateAccess() GrafanaGrafanaUserCon
 	}).(GrafanaGrafanaUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o GrafanaGrafanaUserConfigPtrOutput) PrivatelinkAccess() GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -4085,7 +3776,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) PrivatelinkAccess() GrafanaGrafanaUse
 	}).(GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o GrafanaGrafanaUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -4095,7 +3785,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o GrafanaGrafanaUserConfigPtrOutput) PublicAccess() GrafanaGrafanaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPublicAccess {
 		if v == nil {
@@ -4105,7 +3794,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) PublicAccess() GrafanaGrafanaUserConf
 	}).(GrafanaGrafanaUserConfigPublicAccessPtrOutput)
 }
 
-// Name of the basebackup to restore in forked service
 func (o GrafanaGrafanaUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -4115,7 +3803,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) RecoveryBasebackupName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o GrafanaGrafanaUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -4125,7 +3812,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// SMTP server settings
 func (o GrafanaGrafanaUserConfigPtrOutput) SmtpServer() GrafanaGrafanaUserConfigSmtpServerPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigSmtpServer {
 		if v == nil {
@@ -4135,7 +3821,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) SmtpServer() GrafanaGrafanaUserConfig
 	}).(GrafanaGrafanaUserConfigSmtpServerPtrOutput)
 }
 
-// Static IP addresses
 func (o GrafanaGrafanaUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -4145,7 +3830,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Auto-assign new users on signup to main organization. Defaults to false
 func (o GrafanaGrafanaUserConfigPtrOutput) UserAutoAssignOrg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -4155,7 +3839,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) UserAutoAssignOrg() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Set role for new signups. Defaults to Viewer
 func (o GrafanaGrafanaUserConfigPtrOutput) UserAutoAssignOrgRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -4165,7 +3848,6 @@ func (o GrafanaGrafanaUserConfigPtrOutput) UserAutoAssignOrgRole() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Users with view-only permission can edit but not save dashboards
 func (o GrafanaGrafanaUserConfigPtrOutput) ViewersCanEdit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -5677,7 +5359,6 @@ func (o GrafanaGrafanaUserConfigExternalImageStoragePtrOutput) SecretKey() pulum
 }
 
 type GrafanaGrafanaUserConfigPrivateAccess struct {
-	// Grafana server provided values
 	Grafana *string `pulumi:"grafana"`
 }
 
@@ -5693,7 +5374,6 @@ type GrafanaGrafanaUserConfigPrivateAccessInput interface {
 }
 
 type GrafanaGrafanaUserConfigPrivateAccessArgs struct {
-	// Grafana server provided values
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -5774,7 +5454,6 @@ func (o GrafanaGrafanaUserConfigPrivateAccessOutput) ToGrafanaGrafanaUserConfigP
 	}).(GrafanaGrafanaUserConfigPrivateAccessPtrOutput)
 }
 
-// Grafana server provided values
 func (o GrafanaGrafanaUserConfigPrivateAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigPrivateAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -5803,7 +5482,6 @@ func (o GrafanaGrafanaUserConfigPrivateAccessPtrOutput) Elem() GrafanaGrafanaUse
 	}).(GrafanaGrafanaUserConfigPrivateAccessOutput)
 }
 
-// Grafana server provided values
 func (o GrafanaGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -5814,7 +5492,6 @@ func (o GrafanaGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.StringP
 }
 
 type GrafanaGrafanaUserConfigPrivatelinkAccess struct {
-	// Grafana server provided values
 	Grafana *string `pulumi:"grafana"`
 }
 
@@ -5830,7 +5507,6 @@ type GrafanaGrafanaUserConfigPrivatelinkAccessInput interface {
 }
 
 type GrafanaGrafanaUserConfigPrivatelinkAccessArgs struct {
-	// Grafana server provided values
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -5911,7 +5587,6 @@ func (o GrafanaGrafanaUserConfigPrivatelinkAccessOutput) ToGrafanaGrafanaUserCon
 	}).(GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Grafana server provided values
 func (o GrafanaGrafanaUserConfigPrivatelinkAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigPrivatelinkAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -5940,7 +5615,6 @@ func (o GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput) Elem() GrafanaGrafan
 	}).(GrafanaGrafanaUserConfigPrivatelinkAccessOutput)
 }
 
-// Grafana server provided values
 func (o GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -5951,7 +5625,6 @@ func (o GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput) Grafana() pulumi.Str
 }
 
 type GrafanaGrafanaUserConfigPublicAccess struct {
-	// Grafana server provided values
 	Grafana *string `pulumi:"grafana"`
 }
 
@@ -5967,7 +5640,6 @@ type GrafanaGrafanaUserConfigPublicAccessInput interface {
 }
 
 type GrafanaGrafanaUserConfigPublicAccessArgs struct {
-	// Grafana server provided values
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -6048,7 +5720,6 @@ func (o GrafanaGrafanaUserConfigPublicAccessOutput) ToGrafanaGrafanaUserConfigPu
 	}).(GrafanaGrafanaUserConfigPublicAccessPtrOutput)
 }
 
-// Grafana server provided values
 func (o GrafanaGrafanaUserConfigPublicAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigPublicAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -6077,7 +5748,6 @@ func (o GrafanaGrafanaUserConfigPublicAccessPtrOutput) Elem() GrafanaGrafanaUser
 	}).(GrafanaGrafanaUserConfigPublicAccessOutput)
 }
 
-// Grafana server provided values
 func (o GrafanaGrafanaUserConfigPublicAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -6326,9 +5996,7 @@ func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) Username() pulumi.StringPtr
 }
 
 type GrafanaServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -6344,9 +6012,7 @@ type GrafanaServiceIntegrationInput interface {
 }
 
 type GrafanaServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -6401,12 +6067,10 @@ func (o GrafanaServiceIntegrationOutput) ToGrafanaServiceIntegrationOutputWithCo
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o GrafanaServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GrafanaServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o GrafanaServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GrafanaServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -6432,9 +6096,7 @@ func (o GrafanaServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GrafanaSe
 }
 
 type GrafanaTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -6450,9 +6112,7 @@ type GrafanaTagInput interface {
 }
 
 type GrafanaTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -6507,12 +6167,10 @@ func (o GrafanaTagOutput) ToGrafanaTagOutputWithContext(ctx context.Context) Gra
 	return o
 }
 
-// Service tag key
 func (o GrafanaTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GrafanaTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o GrafanaTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GrafanaTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -6762,26 +6420,16 @@ func (o InfluxDbInfluxdbArrayOutput) Index(i pulumi.IntInput) InfluxDbInfluxdbOu
 }
 
 type InfluxDbInfluxdbUserConfig struct {
-	// Custom domain
-	CustomDomain *string `pulumi:"customDomain"`
-	// influxdb.conf configuration values
-	Influxdb *InfluxDbInfluxdbUserConfigInfluxdb `pulumi:"influxdb"`
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess *InfluxDbInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess *InfluxDbInfluxdbUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess *InfluxDbInfluxdbUserConfigPublicAccess `pulumi:"publicAccess"`
-	// Name of the basebackup to restore in forked service
-	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
-	// Static IP addresses
-	StaticIps *string `pulumi:"staticIps"`
+	CustomDomain           *string                                      `pulumi:"customDomain"`
+	Influxdb               *InfluxDbInfluxdbUserConfigInfluxdb          `pulumi:"influxdb"`
+	IpFilters              []string                                     `pulumi:"ipFilters"`
+	PrivateAccess          *InfluxDbInfluxdbUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	PrivatelinkAccess      *InfluxDbInfluxdbUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom      *string                                      `pulumi:"projectToForkFrom"`
+	PublicAccess           *InfluxDbInfluxdbUserConfigPublicAccess      `pulumi:"publicAccess"`
+	RecoveryBasebackupName *string                                      `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom      *string                                      `pulumi:"serviceToForkFrom"`
+	StaticIps              *string                                      `pulumi:"staticIps"`
 }
 
 // InfluxDbInfluxdbUserConfigInput is an input type that accepts InfluxDbInfluxdbUserConfigArgs and InfluxDbInfluxdbUserConfigOutput values.
@@ -6796,26 +6444,16 @@ type InfluxDbInfluxdbUserConfigInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigArgs struct {
-	// Custom domain
-	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
-	// influxdb.conf configuration values
-	Influxdb InfluxDbInfluxdbUserConfigInfluxdbPtrInput `pulumi:"influxdb"`
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess InfluxDbInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess InfluxDbInfluxdbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
-	// Name of the basebackup to restore in forked service
-	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
-	// Static IP addresses
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	CustomDomain           pulumi.StringPtrInput                               `pulumi:"customDomain"`
+	Influxdb               InfluxDbInfluxdbUserConfigInfluxdbPtrInput          `pulumi:"influxdb"`
+	IpFilters              pulumi.StringArrayInput                             `pulumi:"ipFilters"`
+	PrivateAccess          InfluxDbInfluxdbUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	PrivatelinkAccess      InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom      pulumi.StringPtrInput                               `pulumi:"projectToForkFrom"`
+	PublicAccess           InfluxDbInfluxdbUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	RecoveryBasebackupName pulumi.StringPtrInput                               `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom      pulumi.StringPtrInput                               `pulumi:"serviceToForkFrom"`
+	StaticIps              pulumi.StringPtrInput                               `pulumi:"staticIps"`
 }
 
 func (InfluxDbInfluxdbUserConfigArgs) ElementType() reflect.Type {
@@ -6895,54 +6533,44 @@ func (o InfluxDbInfluxdbUserConfigOutput) ToInfluxDbInfluxdbUserConfigPtrOutputW
 	}).(InfluxDbInfluxdbUserConfigPtrOutput)
 }
 
-// Custom domain
 func (o InfluxDbInfluxdbUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
-// influxdb.conf configuration values
 func (o InfluxDbInfluxdbUserConfigOutput) Influxdb() InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigInfluxdb { return v.Influxdb }).(InfluxDbInfluxdbUserConfigInfluxdbPtrOutput)
 }
 
-// IP filter
 func (o InfluxDbInfluxdbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o InfluxDbInfluxdbUserConfigOutput) PrivateAccess() InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPrivateAccess { return v.PrivateAccess }).(InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o InfluxDbInfluxdbUserConfigOutput) PrivatelinkAccess() InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPrivatelinkAccess {
 		return v.PrivatelinkAccess
 	}).(InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o InfluxDbInfluxdbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o InfluxDbInfluxdbUserConfigOutput) PublicAccess() InfluxDbInfluxdbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPublicAccess { return v.PublicAccess }).(InfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
-// Name of the basebackup to restore in forked service
 func (o InfluxDbInfluxdbUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o InfluxDbInfluxdbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o InfluxDbInfluxdbUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -6971,7 +6599,6 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) Elem() InfluxDbInfluxdbUserConfigOu
 	}).(InfluxDbInfluxdbUserConfigOutput)
 }
 
-// Custom domain
 func (o InfluxDbInfluxdbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
 		if v == nil {
@@ -6981,7 +6608,6 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// influxdb.conf configuration values
 func (o InfluxDbInfluxdbUserConfigPtrOutput) Influxdb() InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigInfluxdb {
 		if v == nil {
@@ -6991,7 +6617,6 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) Influxdb() InfluxDbInfluxdbUserConf
 	}).(InfluxDbInfluxdbUserConfigInfluxdbPtrOutput)
 }
 
-// IP filter
 func (o InfluxDbInfluxdbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) []string {
 		if v == nil {
@@ -7001,7 +6626,6 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o InfluxDbInfluxdbUserConfigPtrOutput) PrivateAccess() InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPrivateAccess {
 		if v == nil {
@@ -7011,7 +6635,6 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) PrivateAccess() InfluxDbInfluxdbUse
 	}).(InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o InfluxDbInfluxdbUserConfigPtrOutput) PrivatelinkAccess() InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -7021,7 +6644,6 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) PrivatelinkAccess() InfluxDbInfluxd
 	}).(InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o InfluxDbInfluxdbUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
 		if v == nil {
@@ -7031,7 +6653,6 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o InfluxDbInfluxdbUserConfigPtrOutput) PublicAccess() InfluxDbInfluxdbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPublicAccess {
 		if v == nil {
@@ -7041,7 +6662,6 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) PublicAccess() InfluxDbInfluxdbUser
 	}).(InfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
-// Name of the basebackup to restore in forked service
 func (o InfluxDbInfluxdbUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
 		if v == nil {
@@ -7051,7 +6671,6 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) RecoveryBasebackupName() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o InfluxDbInfluxdbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
 		if v == nil {
@@ -7061,7 +6680,6 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o InfluxDbInfluxdbUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
 		if v == nil {
@@ -7280,7 +6898,6 @@ func (o InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) QueryTimeout() pulumi.Strin
 }
 
 type InfluxDbInfluxdbUserConfigPrivateAccess struct {
-	// InfluxDB server provided values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
@@ -7296,7 +6913,6 @@ type InfluxDbInfluxdbUserConfigPrivateAccessInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigPrivateAccessArgs struct {
-	// InfluxDB server provided values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -7377,7 +6993,6 @@ func (o InfluxDbInfluxdbUserConfigPrivateAccessOutput) ToInfluxDbInfluxdbUserCon
 	}).(InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
-// InfluxDB server provided values
 func (o InfluxDbInfluxdbUserConfigPrivateAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigPrivateAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -7406,7 +7021,6 @@ func (o InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Elem() InfluxDbInfluxd
 	}).(InfluxDbInfluxdbUserConfigPrivateAccessOutput)
 }
 
-// InfluxDB server provided values
 func (o InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -7417,7 +7031,6 @@ func (o InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.Stri
 }
 
 type InfluxDbInfluxdbUserConfigPrivatelinkAccess struct {
-	// InfluxDB server provided values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
@@ -7433,7 +7046,6 @@ type InfluxDbInfluxdbUserConfigPrivatelinkAccessInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs struct {
-	// InfluxDB server provided values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -7514,7 +7126,6 @@ func (o InfluxDbInfluxdbUserConfigPrivatelinkAccessOutput) ToInfluxDbInfluxdbUse
 	}).(InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// InfluxDB server provided values
 func (o InfluxDbInfluxdbUserConfigPrivatelinkAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigPrivatelinkAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -7543,7 +7154,6 @@ func (o InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput) Elem() InfluxDbInf
 	}).(InfluxDbInfluxdbUserConfigPrivatelinkAccessOutput)
 }
 
-// InfluxDB server provided values
 func (o InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -7554,7 +7164,6 @@ func (o InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput) Influxdb() pulumi.
 }
 
 type InfluxDbInfluxdbUserConfigPublicAccess struct {
-	// InfluxDB server provided values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
@@ -7570,7 +7179,6 @@ type InfluxDbInfluxdbUserConfigPublicAccessInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigPublicAccessArgs struct {
-	// InfluxDB server provided values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -7651,7 +7259,6 @@ func (o InfluxDbInfluxdbUserConfigPublicAccessOutput) ToInfluxDbInfluxdbUserConf
 	}).(InfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
-// InfluxDB server provided values
 func (o InfluxDbInfluxdbUserConfigPublicAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigPublicAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -7680,7 +7287,6 @@ func (o InfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Elem() InfluxDbInfluxdb
 	}).(InfluxDbInfluxdbUserConfigPublicAccessOutput)
 }
 
-// InfluxDB server provided values
 func (o InfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPublicAccess) *string {
 		if v == nil {
@@ -7691,9 +7297,7 @@ func (o InfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.Strin
 }
 
 type InfluxDbServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -7709,9 +7313,7 @@ type InfluxDbServiceIntegrationInput interface {
 }
 
 type InfluxDbServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -7766,12 +7368,10 @@ func (o InfluxDbServiceIntegrationOutput) ToInfluxDbServiceIntegrationOutputWith
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o InfluxDbServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v InfluxDbServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o InfluxDbServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v InfluxDbServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -7797,9 +7397,7 @@ func (o InfluxDbServiceIntegrationArrayOutput) Index(i pulumi.IntInput) InfluxDb
 }
 
 type InfluxDbTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -7815,9 +7413,7 @@ type InfluxDbTagInput interface {
 }
 
 type InfluxDbTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -7872,12 +7468,10 @@ func (o InfluxDbTagOutput) ToInfluxDbTagOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// Service tag key
 func (o InfluxDbTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v InfluxDbTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o InfluxDbTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v InfluxDbTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -8251,18 +7845,12 @@ func (o KafkaConnectKafkaConnectArrayOutput) Index(i pulumi.IntInput) KafkaConne
 }
 
 type KafkaConnectKafkaConnectUserConfig struct {
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// Kafka Connect configuration values
-	KafkaConnect *KafkaConnectKafkaConnectUserConfigKafkaConnect `pulumi:"kafkaConnect"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess *KafkaConnectKafkaConnectUserConfigPrivateAccess `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
+	IpFilters         []string                                             `pulumi:"ipFilters"`
+	KafkaConnect      *KafkaConnectKafkaConnectUserConfigKafkaConnect      `pulumi:"kafkaConnect"`
+	PrivateAccess     *KafkaConnectKafkaConnectUserConfigPrivateAccess     `pulumi:"privateAccess"`
 	PrivatelinkAccess *KafkaConnectKafkaConnectUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess *KafkaConnectKafkaConnectUserConfigPublicAccess `pulumi:"publicAccess"`
-	// Static IP addresses
-	StaticIps *string `pulumi:"staticIps"`
+	PublicAccess      *KafkaConnectKafkaConnectUserConfigPublicAccess      `pulumi:"publicAccess"`
+	StaticIps         *string                                              `pulumi:"staticIps"`
 }
 
 // KafkaConnectKafkaConnectUserConfigInput is an input type that accepts KafkaConnectKafkaConnectUserConfigArgs and KafkaConnectKafkaConnectUserConfigOutput values.
@@ -8277,18 +7865,12 @@ type KafkaConnectKafkaConnectUserConfigInput interface {
 }
 
 type KafkaConnectKafkaConnectUserConfigArgs struct {
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Kafka Connect configuration values
-	KafkaConnect KafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput `pulumi:"kafkaConnect"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess KafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
+	IpFilters         pulumi.StringArrayInput                                     `pulumi:"ipFilters"`
+	KafkaConnect      KafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput      `pulumi:"kafkaConnect"`
+	PrivateAccess     KafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
 	PrivatelinkAccess KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess KafkaConnectKafkaConnectUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
-	// Static IP addresses
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	PublicAccess      KafkaConnectKafkaConnectUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	StaticIps         pulumi.StringPtrInput                                       `pulumi:"staticIps"`
 }
 
 func (KafkaConnectKafkaConnectUserConfigArgs) ElementType() reflect.Type {
@@ -8368,40 +7950,34 @@ func (o KafkaConnectKafkaConnectUserConfigOutput) ToKafkaConnectKafkaConnectUser
 	}).(KafkaConnectKafkaConnectUserConfigPtrOutput)
 }
 
-// IP filter
 func (o KafkaConnectKafkaConnectUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Kafka Connect configuration values
 func (o KafkaConnectKafkaConnectUserConfigOutput) KafkaConnect() KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigKafkaConnect {
 		return v.KafkaConnect
 	}).(KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o KafkaConnectKafkaConnectUserConfigOutput) PrivateAccess() KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o KafkaConnectKafkaConnectUserConfigOutput) PrivatelinkAccess() KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
 		return v.PrivatelinkAccess
 	}).(KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o KafkaConnectKafkaConnectUserConfigOutput) PublicAccess() KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPublicAccess {
 		return v.PublicAccess
 	}).(KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
 }
 
-// Static IP addresses
 func (o KafkaConnectKafkaConnectUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -8430,7 +8006,6 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) Elem() KafkaConnectKafkaCon
 	}).(KafkaConnectKafkaConnectUserConfigOutput)
 }
 
-// IP filter
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) []string {
 		if v == nil {
@@ -8440,7 +8015,6 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) IpFilters() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
-// Kafka Connect configuration values
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) KafkaConnect() KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigKafkaConnect {
 		if v == nil {
@@ -8450,7 +8024,6 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) KafkaConnect() KafkaConnect
 	}).(KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PrivateAccess() KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPrivateAccess {
 		if v == nil {
@@ -8460,7 +8033,6 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PrivateAccess() KafkaConnec
 	}).(KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PrivatelinkAccess() KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -8470,7 +8042,6 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PrivatelinkAccess() KafkaCo
 	}).(KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PublicAccess() KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPublicAccess {
 		if v == nil {
@@ -8480,7 +8051,6 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PublicAccess() KafkaConnect
 	}).(KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
 }
 
-// Static IP addresses
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *string {
 		if v == nil {
@@ -8793,7 +8363,6 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) SessionTimeoutM
 }
 
 type KafkaConnectKafkaConnectUserConfigPrivateAccess struct {
-	// Kafka Connect server provided values
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -8810,7 +8379,6 @@ type KafkaConnectKafkaConnectUserConfigPrivateAccessInput interface {
 }
 
 type KafkaConnectKafkaConnectUserConfigPrivateAccessArgs struct {
-	// Kafka Connect server provided values
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -8892,7 +8460,6 @@ func (o KafkaConnectKafkaConnectUserConfigPrivateAccessOutput) ToKafkaConnectKaf
 	}).(KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput)
 }
 
-// Kafka Connect server provided values
 func (o KafkaConnectKafkaConnectUserConfigPrivateAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigPrivateAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -8925,7 +8492,6 @@ func (o KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) Elem() KafkaCo
 	}).(KafkaConnectKafkaConnectUserConfigPrivateAccessOutput)
 }
 
-// Kafka Connect server provided values
 func (o KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -8945,8 +8511,7 @@ func (o KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) Prometheus() p
 }
 
 type KafkaConnectKafkaConnectUserConfigPrivatelinkAccess struct {
-	Jolokia *string `pulumi:"jolokia"`
-	// Kafka Connect server provided values
+	Jolokia      *string `pulumi:"jolokia"`
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -8963,8 +8528,7 @@ type KafkaConnectKafkaConnectUserConfigPrivatelinkAccessInput interface {
 }
 
 type KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs struct {
-	Jolokia pulumi.StringPtrInput `pulumi:"jolokia"`
-	// Kafka Connect server provided values
+	Jolokia      pulumi.StringPtrInput `pulumi:"jolokia"`
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -9050,7 +8614,6 @@ func (o KafkaConnectKafkaConnectUserConfigPrivatelinkAccessOutput) Jolokia() pul
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigPrivatelinkAccess) *string { return v.Jolokia }).(pulumi.StringPtrOutput)
 }
 
-// Kafka Connect server provided values
 func (o KafkaConnectKafkaConnectUserConfigPrivatelinkAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigPrivatelinkAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -9092,7 +8655,6 @@ func (o KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput) Jolokia() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Kafka Connect server provided values
 func (o KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -9112,7 +8674,6 @@ func (o KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput) Prometheus
 }
 
 type KafkaConnectKafkaConnectUserConfigPublicAccess struct {
-	// Kafka Connect server provided values
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -9129,7 +8690,6 @@ type KafkaConnectKafkaConnectUserConfigPublicAccessInput interface {
 }
 
 type KafkaConnectKafkaConnectUserConfigPublicAccessArgs struct {
-	// Kafka Connect server provided values
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -9211,7 +8771,6 @@ func (o KafkaConnectKafkaConnectUserConfigPublicAccessOutput) ToKafkaConnectKafk
 	}).(KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
 }
 
-// Kafka Connect server provided values
 func (o KafkaConnectKafkaConnectUserConfigPublicAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -9244,7 +8803,6 @@ func (o KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) Elem() KafkaCon
 	}).(KafkaConnectKafkaConnectUserConfigPublicAccessOutput)
 }
 
-// Kafka Connect server provided values
 func (o KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigPublicAccess) *string {
 		if v == nil {
@@ -9264,9 +8822,7 @@ func (o KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) Prometheus() pu
 }
 
 type KafkaConnectServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -9282,9 +8838,7 @@ type KafkaConnectServiceIntegrationInput interface {
 }
 
 type KafkaConnectServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -9339,12 +8893,10 @@ func (o KafkaConnectServiceIntegrationOutput) ToKafkaConnectServiceIntegrationOu
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o KafkaConnectServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaConnectServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o KafkaConnectServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaConnectServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -9370,9 +8922,7 @@ func (o KafkaConnectServiceIntegrationArrayOutput) Index(i pulumi.IntInput) Kafk
 }
 
 type KafkaConnectTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -9388,9 +8938,7 @@ type KafkaConnectTagInput interface {
 }
 
 type KafkaConnectTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -9445,12 +8993,10 @@ func (o KafkaConnectTagOutput) ToKafkaConnectTagOutputWithContext(ctx context.Co
 	return o
 }
 
-// Service tag key
 func (o KafkaConnectTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaConnectTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o KafkaConnectTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaConnectTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -9477,8 +9023,7 @@ func (o KafkaConnectTagArrayOutput) Index(i pulumi.IntInput) KafkaConnectTagOutp
 
 type KafkaConnectorTask struct {
 	Connector *string `pulumi:"connector"`
-	// List of tasks of a connector.
-	Task *int `pulumi:"task"`
+	Task      *int    `pulumi:"task"`
 }
 
 // KafkaConnectorTaskInput is an input type that accepts KafkaConnectorTaskArgs and KafkaConnectorTaskOutput values.
@@ -9494,8 +9039,7 @@ type KafkaConnectorTaskInput interface {
 
 type KafkaConnectorTaskArgs struct {
 	Connector pulumi.StringPtrInput `pulumi:"connector"`
-	// List of tasks of a connector.
-	Task pulumi.IntPtrInput `pulumi:"task"`
+	Task      pulumi.IntPtrInput    `pulumi:"task"`
 }
 
 func (KafkaConnectorTaskArgs) ElementType() reflect.Type {
@@ -9553,7 +9097,6 @@ func (o KafkaConnectorTaskOutput) Connector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectorTask) *string { return v.Connector }).(pulumi.StringPtrOutput)
 }
 
-// List of tasks of a connector.
 func (o KafkaConnectorTaskOutput) Task() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KafkaConnectorTask) *int { return v.Task }).(pulumi.IntPtrOutput)
 }
@@ -9579,15 +9122,10 @@ func (o KafkaConnectorTaskArrayOutput) Index(i pulumi.IntInput) KafkaConnectorTa
 }
 
 type KafkaKafka struct {
-	// The Kafka client certificate
-	AccessCert *string `pulumi:"accessCert"`
-	// The Kafka client certificate key
-	AccessKey *string `pulumi:"accessKey"`
-	// The Kafka Connect URI, if any
-	ConnectUri *string `pulumi:"connectUri"`
-	// The Kafka REST URI, if any
-	RestUri *string `pulumi:"restUri"`
-	// The Schema Registry URI, if any
+	AccessCert        *string `pulumi:"accessCert"`
+	AccessKey         *string `pulumi:"accessKey"`
+	ConnectUri        *string `pulumi:"connectUri"`
+	RestUri           *string `pulumi:"restUri"`
 	SchemaRegistryUri *string `pulumi:"schemaRegistryUri"`
 }
 
@@ -9603,15 +9141,10 @@ type KafkaKafkaInput interface {
 }
 
 type KafkaKafkaArgs struct {
-	// The Kafka client certificate
-	AccessCert pulumi.StringPtrInput `pulumi:"accessCert"`
-	// The Kafka client certificate key
-	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	// The Kafka Connect URI, if any
-	ConnectUri pulumi.StringPtrInput `pulumi:"connectUri"`
-	// The Kafka REST URI, if any
-	RestUri pulumi.StringPtrInput `pulumi:"restUri"`
-	// The Schema Registry URI, if any
+	AccessCert        pulumi.StringPtrInput `pulumi:"accessCert"`
+	AccessKey         pulumi.StringPtrInput `pulumi:"accessKey"`
+	ConnectUri        pulumi.StringPtrInput `pulumi:"connectUri"`
+	RestUri           pulumi.StringPtrInput `pulumi:"restUri"`
 	SchemaRegistryUri pulumi.StringPtrInput `pulumi:"schemaRegistryUri"`
 }
 
@@ -9692,27 +9225,22 @@ func (o KafkaKafkaOutput) ToKafkaKafkaPtrOutputWithContext(ctx context.Context) 
 	}).(KafkaKafkaPtrOutput)
 }
 
-// The Kafka client certificate
 func (o KafkaKafkaOutput) AccessCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.AccessCert }).(pulumi.StringPtrOutput)
 }
 
-// The Kafka client certificate key
 func (o KafkaKafkaOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
-// The Kafka Connect URI, if any
 func (o KafkaKafkaOutput) ConnectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.ConnectUri }).(pulumi.StringPtrOutput)
 }
 
-// The Kafka REST URI, if any
 func (o KafkaKafkaOutput) RestUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.RestUri }).(pulumi.StringPtrOutput)
 }
 
-// The Schema Registry URI, if any
 func (o KafkaKafkaOutput) SchemaRegistryUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.SchemaRegistryUri }).(pulumi.StringPtrOutput)
 }
@@ -9741,7 +9269,6 @@ func (o KafkaKafkaPtrOutput) Elem() KafkaKafkaOutput {
 	}).(KafkaKafkaOutput)
 }
 
-// The Kafka client certificate
 func (o KafkaKafkaPtrOutput) AccessCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -9751,7 +9278,6 @@ func (o KafkaKafkaPtrOutput) AccessCert() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Kafka client certificate key
 func (o KafkaKafkaPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -9761,7 +9287,6 @@ func (o KafkaKafkaPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Kafka Connect URI, if any
 func (o KafkaKafkaPtrOutput) ConnectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -9771,7 +9296,6 @@ func (o KafkaKafkaPtrOutput) ConnectUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Kafka REST URI, if any
 func (o KafkaKafkaPtrOutput) RestUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -9781,7 +9305,6 @@ func (o KafkaKafkaPtrOutput) RestUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Schema Registry URI, if any
 func (o KafkaKafkaPtrOutput) SchemaRegistryUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -9792,36 +9315,21 @@ func (o KafkaKafkaPtrOutput) SchemaRegistryUri() pulumi.StringPtrOutput {
 }
 
 type KafkaKafkaUserConfig struct {
-	// Custom domain
-	CustomDomain *string `pulumi:"customDomain"`
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// Kafka broker configuration values
-	Kafka *KafkaKafkaUserConfigKafka `pulumi:"kafka"`
-	// Kafka authentication methods
+	CustomDomain               *string                                         `pulumi:"customDomain"`
+	IpFilters                  []string                                        `pulumi:"ipFilters"`
+	Kafka                      *KafkaKafkaUserConfigKafka                      `pulumi:"kafka"`
 	KafkaAuthenticationMethods *KafkaKafkaUserConfigKafkaAuthenticationMethods `pulumi:"kafkaAuthenticationMethods"`
-	// Enable Kafka Connect service
-	KafkaConnect *string `pulumi:"kafkaConnect"`
-	// Kafka Connect configuration values
-	KafkaConnectConfig *KafkaKafkaUserConfigKafkaConnectConfig `pulumi:"kafkaConnectConfig"`
-	// Enable Kafka-REST service
-	KafkaRest *string `pulumi:"kafkaRest"`
-	// Kafka REST configuration
-	KafkaRestConfig *KafkaKafkaUserConfigKafkaRestConfig `pulumi:"kafkaRestConfig"`
-	// Kafka major version
-	KafkaVersion *string `pulumi:"kafkaVersion"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess *KafkaKafkaUserConfigPrivateAccess `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess *KafkaKafkaUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess *KafkaKafkaUserConfigPublicAccess `pulumi:"publicAccess"`
-	// Enable Schema-Registry service
-	SchemaRegistry *string `pulumi:"schemaRegistry"`
-	// Schema Registry configuration
-	SchemaRegistryConfig *KafkaKafkaUserConfigSchemaRegistryConfig `pulumi:"schemaRegistryConfig"`
-	// Static IP addresses
-	StaticIps *string `pulumi:"staticIps"`
+	KafkaConnect               *string                                         `pulumi:"kafkaConnect"`
+	KafkaConnectConfig         *KafkaKafkaUserConfigKafkaConnectConfig         `pulumi:"kafkaConnectConfig"`
+	KafkaRest                  *string                                         `pulumi:"kafkaRest"`
+	KafkaRestConfig            *KafkaKafkaUserConfigKafkaRestConfig            `pulumi:"kafkaRestConfig"`
+	KafkaVersion               *string                                         `pulumi:"kafkaVersion"`
+	PrivateAccess              *KafkaKafkaUserConfigPrivateAccess              `pulumi:"privateAccess"`
+	PrivatelinkAccess          *KafkaKafkaUserConfigPrivatelinkAccess          `pulumi:"privatelinkAccess"`
+	PublicAccess               *KafkaKafkaUserConfigPublicAccess               `pulumi:"publicAccess"`
+	SchemaRegistry             *string                                         `pulumi:"schemaRegistry"`
+	SchemaRegistryConfig       *KafkaKafkaUserConfigSchemaRegistryConfig       `pulumi:"schemaRegistryConfig"`
+	StaticIps                  *string                                         `pulumi:"staticIps"`
 }
 
 // KafkaKafkaUserConfigInput is an input type that accepts KafkaKafkaUserConfigArgs and KafkaKafkaUserConfigOutput values.
@@ -9836,36 +9344,21 @@ type KafkaKafkaUserConfigInput interface {
 }
 
 type KafkaKafkaUserConfigArgs struct {
-	// Custom domain
-	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Kafka broker configuration values
-	Kafka KafkaKafkaUserConfigKafkaPtrInput `pulumi:"kafka"`
-	// Kafka authentication methods
+	CustomDomain               pulumi.StringPtrInput                                  `pulumi:"customDomain"`
+	IpFilters                  pulumi.StringArrayInput                                `pulumi:"ipFilters"`
+	Kafka                      KafkaKafkaUserConfigKafkaPtrInput                      `pulumi:"kafka"`
 	KafkaAuthenticationMethods KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput `pulumi:"kafkaAuthenticationMethods"`
-	// Enable Kafka Connect service
-	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
-	// Kafka Connect configuration values
-	KafkaConnectConfig KafkaKafkaUserConfigKafkaConnectConfigPtrInput `pulumi:"kafkaConnectConfig"`
-	// Enable Kafka-REST service
-	KafkaRest pulumi.StringPtrInput `pulumi:"kafkaRest"`
-	// Kafka REST configuration
-	KafkaRestConfig KafkaKafkaUserConfigKafkaRestConfigPtrInput `pulumi:"kafkaRestConfig"`
-	// Kafka major version
-	KafkaVersion pulumi.StringPtrInput `pulumi:"kafkaVersion"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess KafkaKafkaUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess KafkaKafkaUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess KafkaKafkaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
-	// Enable Schema-Registry service
-	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
-	// Schema Registry configuration
-	SchemaRegistryConfig KafkaKafkaUserConfigSchemaRegistryConfigPtrInput `pulumi:"schemaRegistryConfig"`
-	// Static IP addresses
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	KafkaConnect               pulumi.StringPtrInput                                  `pulumi:"kafkaConnect"`
+	KafkaConnectConfig         KafkaKafkaUserConfigKafkaConnectConfigPtrInput         `pulumi:"kafkaConnectConfig"`
+	KafkaRest                  pulumi.StringPtrInput                                  `pulumi:"kafkaRest"`
+	KafkaRestConfig            KafkaKafkaUserConfigKafkaRestConfigPtrInput            `pulumi:"kafkaRestConfig"`
+	KafkaVersion               pulumi.StringPtrInput                                  `pulumi:"kafkaVersion"`
+	PrivateAccess              KafkaKafkaUserConfigPrivateAccessPtrInput              `pulumi:"privateAccess"`
+	PrivatelinkAccess          KafkaKafkaUserConfigPrivatelinkAccessPtrInput          `pulumi:"privatelinkAccess"`
+	PublicAccess               KafkaKafkaUserConfigPublicAccessPtrInput               `pulumi:"publicAccess"`
+	SchemaRegistry             pulumi.StringPtrInput                                  `pulumi:"schemaRegistry"`
+	SchemaRegistryConfig       KafkaKafkaUserConfigSchemaRegistryConfigPtrInput       `pulumi:"schemaRegistryConfig"`
+	StaticIps                  pulumi.StringPtrInput                                  `pulumi:"staticIps"`
 }
 
 func (KafkaKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -9945,79 +9438,64 @@ func (o KafkaKafkaUserConfigOutput) ToKafkaKafkaUserConfigPtrOutputWithContext(c
 	}).(KafkaKafkaUserConfigPtrOutput)
 }
 
-// Custom domain
 func (o KafkaKafkaUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o KafkaKafkaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Kafka broker configuration values
 func (o KafkaKafkaUserConfigOutput) Kafka() KafkaKafkaUserConfigKafkaPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafka { return v.Kafka }).(KafkaKafkaUserConfigKafkaPtrOutput)
 }
 
-// Kafka authentication methods
 func (o KafkaKafkaUserConfigOutput) KafkaAuthenticationMethods() KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaAuthenticationMethods {
 		return v.KafkaAuthenticationMethods
 	}).(KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
-// Enable Kafka Connect service
 func (o KafkaKafkaUserConfigOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
 
-// Kafka Connect configuration values
 func (o KafkaKafkaUserConfigOutput) KafkaConnectConfig() KafkaKafkaUserConfigKafkaConnectConfigPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaConnectConfig { return v.KafkaConnectConfig }).(KafkaKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
-// Enable Kafka-REST service
 func (o KafkaKafkaUserConfigOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
 }
 
-// Kafka REST configuration
 func (o KafkaKafkaUserConfigOutput) KafkaRestConfig() KafkaKafkaUserConfigKafkaRestConfigPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaRestConfig { return v.KafkaRestConfig }).(KafkaKafkaUserConfigKafkaRestConfigPtrOutput)
 }
 
-// Kafka major version
 func (o KafkaKafkaUserConfigOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KafkaVersion }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o KafkaKafkaUserConfigOutput) PrivateAccess() KafkaKafkaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigPrivateAccess { return v.PrivateAccess }).(KafkaKafkaUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o KafkaKafkaUserConfigOutput) PrivatelinkAccess() KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(KafkaKafkaUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o KafkaKafkaUserConfigOutput) PublicAccess() KafkaKafkaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigPublicAccess { return v.PublicAccess }).(KafkaKafkaUserConfigPublicAccessPtrOutput)
 }
 
-// Enable Schema-Registry service
 func (o KafkaKafkaUserConfigOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
 
-// Schema Registry configuration
 func (o KafkaKafkaUserConfigOutput) SchemaRegistryConfig() KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigSchemaRegistryConfig { return v.SchemaRegistryConfig }).(KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
 }
 
-// Static IP addresses
 func (o KafkaKafkaUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -10046,7 +9524,6 @@ func (o KafkaKafkaUserConfigPtrOutput) Elem() KafkaKafkaUserConfigOutput {
 	}).(KafkaKafkaUserConfigOutput)
 }
 
-// Custom domain
 func (o KafkaKafkaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -10056,7 +9533,6 @@ func (o KafkaKafkaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o KafkaKafkaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) []string {
 		if v == nil {
@@ -10066,7 +9542,6 @@ func (o KafkaKafkaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Kafka broker configuration values
 func (o KafkaKafkaUserConfigPtrOutput) Kafka() KafkaKafkaUserConfigKafkaPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafka {
 		if v == nil {
@@ -10076,7 +9551,6 @@ func (o KafkaKafkaUserConfigPtrOutput) Kafka() KafkaKafkaUserConfigKafkaPtrOutpu
 	}).(KafkaKafkaUserConfigKafkaPtrOutput)
 }
 
-// Kafka authentication methods
 func (o KafkaKafkaUserConfigPtrOutput) KafkaAuthenticationMethods() KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaAuthenticationMethods {
 		if v == nil {
@@ -10086,7 +9560,6 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaAuthenticationMethods() KafkaKafkaUs
 	}).(KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
-// Enable Kafka Connect service
 func (o KafkaKafkaUserConfigPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -10096,7 +9569,6 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Kafka Connect configuration values
 func (o KafkaKafkaUserConfigPtrOutput) KafkaConnectConfig() KafkaKafkaUserConfigKafkaConnectConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaConnectConfig {
 		if v == nil {
@@ -10106,7 +9578,6 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaConnectConfig() KafkaKafkaUserConfig
 	}).(KafkaKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
-// Enable Kafka-REST service
 func (o KafkaKafkaUserConfigPtrOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -10116,7 +9587,6 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaRest() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Kafka REST configuration
 func (o KafkaKafkaUserConfigPtrOutput) KafkaRestConfig() KafkaKafkaUserConfigKafkaRestConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaRestConfig {
 		if v == nil {
@@ -10126,7 +9596,6 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaRestConfig() KafkaKafkaUserConfigKaf
 	}).(KafkaKafkaUserConfigKafkaRestConfigPtrOutput)
 }
 
-// Kafka major version
 func (o KafkaKafkaUserConfigPtrOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -10136,7 +9605,6 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o KafkaKafkaUserConfigPtrOutput) PrivateAccess() KafkaKafkaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigPrivateAccess {
 		if v == nil {
@@ -10146,7 +9614,6 @@ func (o KafkaKafkaUserConfigPtrOutput) PrivateAccess() KafkaKafkaUserConfigPriva
 	}).(KafkaKafkaUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o KafkaKafkaUserConfigPtrOutput) PrivatelinkAccess() KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -10156,7 +9623,6 @@ func (o KafkaKafkaUserConfigPtrOutput) PrivatelinkAccess() KafkaKafkaUserConfigP
 	}).(KafkaKafkaUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o KafkaKafkaUserConfigPtrOutput) PublicAccess() KafkaKafkaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigPublicAccess {
 		if v == nil {
@@ -10166,7 +9632,6 @@ func (o KafkaKafkaUserConfigPtrOutput) PublicAccess() KafkaKafkaUserConfigPublic
 	}).(KafkaKafkaUserConfigPublicAccessPtrOutput)
 }
 
-// Enable Schema-Registry service
 func (o KafkaKafkaUserConfigPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -10176,7 +9641,6 @@ func (o KafkaKafkaUserConfigPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Schema Registry configuration
 func (o KafkaKafkaUserConfigPtrOutput) SchemaRegistryConfig() KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigSchemaRegistryConfig {
 		if v == nil {
@@ -10186,7 +9650,6 @@ func (o KafkaKafkaUserConfigPtrOutput) SchemaRegistryConfig() KafkaKafkaUserConf
 	}).(KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
 }
 
-// Static IP addresses
 func (o KafkaKafkaUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -11689,8 +11152,7 @@ func (o KafkaKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPt
 }
 
 type KafkaKafkaUserConfigPrivatelinkAccess struct {
-	Jolokia *string `pulumi:"jolokia"`
-	// Kafka server provided values
+	Jolokia        *string `pulumi:"jolokia"`
 	Kafka          *string `pulumi:"kafka"`
 	KafkaConnect   *string `pulumi:"kafkaConnect"`
 	KafkaRest      *string `pulumi:"kafkaRest"`
@@ -11710,8 +11172,7 @@ type KafkaKafkaUserConfigPrivatelinkAccessInput interface {
 }
 
 type KafkaKafkaUserConfigPrivatelinkAccessArgs struct {
-	Jolokia pulumi.StringPtrInput `pulumi:"jolokia"`
-	// Kafka server provided values
+	Jolokia        pulumi.StringPtrInput `pulumi:"jolokia"`
 	Kafka          pulumi.StringPtrInput `pulumi:"kafka"`
 	KafkaConnect   pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	KafkaRest      pulumi.StringPtrInput `pulumi:"kafkaRest"`
@@ -11800,7 +11261,6 @@ func (o KafkaKafkaUserConfigPrivatelinkAccessOutput) Jolokia() pulumi.StringPtrO
 	return o.ApplyT(func(v KafkaKafkaUserConfigPrivatelinkAccess) *string { return v.Jolokia }).(pulumi.StringPtrOutput)
 }
 
-// Kafka server provided values
 func (o KafkaKafkaUserConfigPrivatelinkAccessOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigPrivatelinkAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
 }
@@ -11854,7 +11314,6 @@ func (o KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) Jolokia() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Kafka server provided values
 func (o KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -11901,7 +11360,6 @@ func (o KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) SchemaRegistry() pulumi.
 }
 
 type KafkaKafkaUserConfigPublicAccess struct {
-	// Kafka server provided values
 	Kafka          *string `pulumi:"kafka"`
 	KafkaConnect   *string `pulumi:"kafkaConnect"`
 	KafkaRest      *string `pulumi:"kafkaRest"`
@@ -11921,7 +11379,6 @@ type KafkaKafkaUserConfigPublicAccessInput interface {
 }
 
 type KafkaKafkaUserConfigPublicAccessArgs struct {
-	// Kafka server provided values
 	Kafka          pulumi.StringPtrInput `pulumi:"kafka"`
 	KafkaConnect   pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	KafkaRest      pulumi.StringPtrInput `pulumi:"kafkaRest"`
@@ -12006,7 +11463,6 @@ func (o KafkaKafkaUserConfigPublicAccessOutput) ToKafkaKafkaUserConfigPublicAcce
 	}).(KafkaKafkaUserConfigPublicAccessPtrOutput)
 }
 
-// Kafka server provided values
 func (o KafkaKafkaUserConfigPublicAccessOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigPublicAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
 }
@@ -12051,7 +11507,6 @@ func (o KafkaKafkaUserConfigPublicAccessPtrOutput) Elem() KafkaKafkaUserConfigPu
 	}).(KafkaKafkaUserConfigPublicAccessOutput)
 }
 
-// Kafka server provided values
 func (o KafkaKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -12464,12 +11919,9 @@ func (o KafkaMirrorMakerKafkaMirrormakerArrayOutput) Index(i pulumi.IntInput) Ka
 }
 
 type KafkaMirrorMakerKafkaMirrormakerUserConfig struct {
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// Kafka MirrorMaker configuration values
+	IpFilters        []string                                                    `pulumi:"ipFilters"`
 	KafkaMirrormaker *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
-	// Static IP addresses
-	StaticIps *string `pulumi:"staticIps"`
+	StaticIps        *string                                                     `pulumi:"staticIps"`
 }
 
 // KafkaMirrorMakerKafkaMirrormakerUserConfigInput is an input type that accepts KafkaMirrorMakerKafkaMirrormakerUserConfigArgs and KafkaMirrorMakerKafkaMirrormakerUserConfigOutput values.
@@ -12484,12 +11936,9 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfigInput interface {
 }
 
 type KafkaMirrorMakerKafkaMirrormakerUserConfigArgs struct {
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Kafka MirrorMaker configuration values
+	IpFilters        pulumi.StringArrayInput                                            `pulumi:"ipFilters"`
 	KafkaMirrormaker KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
-	// Static IP addresses
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	StaticIps        pulumi.StringPtrInput                                              `pulumi:"staticIps"`
 }
 
 func (KafkaMirrorMakerKafkaMirrormakerUserConfigArgs) ElementType() reflect.Type {
@@ -12569,19 +12018,16 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) ToKafkaMirrorMakerKafk
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput)
 }
 
-// IP filter
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Kafka MirrorMaker configuration values
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfig) *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return v.KafkaMirrormaker
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
 }
 
-// Static IP addresses
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -12610,7 +12056,6 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) Elem() KafkaMirrorM
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigOutput)
 }
 
-// IP filter
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfig) []string {
 		if v == nil {
@@ -12620,7 +12065,6 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) IpFilters() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
-// Kafka MirrorMaker configuration values
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) KafkaMirrormaker() KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfig) *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		if v == nil {
@@ -12630,7 +12074,6 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) KafkaMirrormaker() 
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
 }
 
-// Static IP addresses
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfig) *string {
 		if v == nil {
@@ -12927,9 +12370,7 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Tas
 }
 
 type KafkaMirrorMakerServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -12945,9 +12386,7 @@ type KafkaMirrorMakerServiceIntegrationInput interface {
 }
 
 type KafkaMirrorMakerServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -13002,12 +12441,10 @@ func (o KafkaMirrorMakerServiceIntegrationOutput) ToKafkaMirrorMakerServiceInteg
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o KafkaMirrorMakerServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o KafkaMirrorMakerServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -13033,9 +12470,7 @@ func (o KafkaMirrorMakerServiceIntegrationArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type KafkaMirrorMakerTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -13051,9 +12486,7 @@ type KafkaMirrorMakerTagInput interface {
 }
 
 type KafkaMirrorMakerTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -13108,12 +12541,10 @@ func (o KafkaMirrorMakerTagOutput) ToKafkaMirrorMakerTagOutputWithContext(ctx co
 	return o
 }
 
-// Service tag key
 func (o KafkaMirrorMakerTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o KafkaMirrorMakerTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -13139,9 +12570,7 @@ func (o KafkaMirrorMakerTagArrayOutput) Index(i pulumi.IntInput) KafkaMirrorMake
 }
 
 type KafkaServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -13157,9 +12586,7 @@ type KafkaServiceIntegrationInput interface {
 }
 
 type KafkaServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -13214,12 +12641,10 @@ func (o KafkaServiceIntegrationOutput) ToKafkaServiceIntegrationOutputWithContex
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o KafkaServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o KafkaServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -13245,9 +12670,7 @@ func (o KafkaServiceIntegrationArrayOutput) Index(i pulumi.IntInput) KafkaServic
 }
 
 type KafkaTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -13263,9 +12686,7 @@ type KafkaTagInput interface {
 }
 
 type KafkaTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -13320,12 +12741,10 @@ func (o KafkaTagOutput) ToKafkaTagOutputWithContext(ctx context.Context) KafkaTa
 	return o
 }
 
-// Service tag key
 func (o KafkaTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o KafkaTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -13351,54 +12770,30 @@ func (o KafkaTagArrayOutput) Index(i pulumi.IntInput) KafkaTagOutput {
 }
 
 type KafkaTopicConfig struct {
-	// cleanup.policy value
-	CleanupPolicy *string `pulumi:"cleanupPolicy"`
-	// compression.type value
-	CompressionType *string `pulumi:"compressionType"`
-	// delete.retention.ms value
-	DeleteRetentionMs *string `pulumi:"deleteRetentionMs"`
-	// file.delete.delay.ms value
-	FileDeleteDelayMs *string `pulumi:"fileDeleteDelayMs"`
-	// flush.messages value
-	FlushMessages *string `pulumi:"flushMessages"`
-	// flush.ms value
-	FlushMs *string `pulumi:"flushMs"`
-	// index.interval.bytes value
-	IndexIntervalBytes *string `pulumi:"indexIntervalBytes"`
-	// max.compaction.lag.ms value
-	MaxCompactionLagMs *string `pulumi:"maxCompactionLagMs"`
-	// max.message.bytes value
-	MaxMessageBytes *string `pulumi:"maxMessageBytes"`
-	// message.downconversion.enable value
-	MessageDownconversionEnable *string `pulumi:"messageDownconversionEnable"`
-	// message.format.version value
-	MessageFormatVersion *string `pulumi:"messageFormatVersion"`
-	// message.timestamp.difference.max.ms value
+	CleanupPolicy                   *string `pulumi:"cleanupPolicy"`
+	CompressionType                 *string `pulumi:"compressionType"`
+	DeleteRetentionMs               *string `pulumi:"deleteRetentionMs"`
+	FileDeleteDelayMs               *string `pulumi:"fileDeleteDelayMs"`
+	FlushMessages                   *string `pulumi:"flushMessages"`
+	FlushMs                         *string `pulumi:"flushMs"`
+	IndexIntervalBytes              *string `pulumi:"indexIntervalBytes"`
+	MaxCompactionLagMs              *string `pulumi:"maxCompactionLagMs"`
+	MaxMessageBytes                 *string `pulumi:"maxMessageBytes"`
+	MessageDownconversionEnable     *string `pulumi:"messageDownconversionEnable"`
+	MessageFormatVersion            *string `pulumi:"messageFormatVersion"`
 	MessageTimestampDifferenceMaxMs *string `pulumi:"messageTimestampDifferenceMaxMs"`
-	// message.timestamp.type value
-	MessageTimestampType *string `pulumi:"messageTimestampType"`
-	// min.cleanable.dirty.ratio value
-	MinCleanableDirtyRatio *string `pulumi:"minCleanableDirtyRatio"`
-	// min.compaction.lag.ms value
-	MinCompactionLagMs *string `pulumi:"minCompactionLagMs"`
-	// min.insync.replicas value
-	MinInsyncReplicas *string `pulumi:"minInsyncReplicas"`
-	// preallocate value
-	Preallocate *string `pulumi:"preallocate"`
-	// retention.bytes value
-	RetentionBytes *string `pulumi:"retentionBytes"`
-	// retention.ms value
-	RetentionMs *string `pulumi:"retentionMs"`
-	// segment.bytes value
-	SegmentBytes *string `pulumi:"segmentBytes"`
-	// segment.index.bytes value
-	SegmentIndexBytes *string `pulumi:"segmentIndexBytes"`
-	// segment.jitter.ms value
-	SegmentJitterMs *string `pulumi:"segmentJitterMs"`
-	// segment.ms value
-	SegmentMs *string `pulumi:"segmentMs"`
-	// unclean.leader.election.enable value
-	UncleanLeaderElectionEnable *string `pulumi:"uncleanLeaderElectionEnable"`
+	MessageTimestampType            *string `pulumi:"messageTimestampType"`
+	MinCleanableDirtyRatio          *string `pulumi:"minCleanableDirtyRatio"`
+	MinCompactionLagMs              *string `pulumi:"minCompactionLagMs"`
+	MinInsyncReplicas               *string `pulumi:"minInsyncReplicas"`
+	Preallocate                     *string `pulumi:"preallocate"`
+	RetentionBytes                  *string `pulumi:"retentionBytes"`
+	RetentionMs                     *string `pulumi:"retentionMs"`
+	SegmentBytes                    *string `pulumi:"segmentBytes"`
+	SegmentIndexBytes               *string `pulumi:"segmentIndexBytes"`
+	SegmentJitterMs                 *string `pulumi:"segmentJitterMs"`
+	SegmentMs                       *string `pulumi:"segmentMs"`
+	UncleanLeaderElectionEnable     *string `pulumi:"uncleanLeaderElectionEnable"`
 }
 
 // KafkaTopicConfigInput is an input type that accepts KafkaTopicConfigArgs and KafkaTopicConfigOutput values.
@@ -13413,54 +12808,30 @@ type KafkaTopicConfigInput interface {
 }
 
 type KafkaTopicConfigArgs struct {
-	// cleanup.policy value
-	CleanupPolicy pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
-	// compression.type value
-	CompressionType pulumi.StringPtrInput `pulumi:"compressionType"`
-	// delete.retention.ms value
-	DeleteRetentionMs pulumi.StringPtrInput `pulumi:"deleteRetentionMs"`
-	// file.delete.delay.ms value
-	FileDeleteDelayMs pulumi.StringPtrInput `pulumi:"fileDeleteDelayMs"`
-	// flush.messages value
-	FlushMessages pulumi.StringPtrInput `pulumi:"flushMessages"`
-	// flush.ms value
-	FlushMs pulumi.StringPtrInput `pulumi:"flushMs"`
-	// index.interval.bytes value
-	IndexIntervalBytes pulumi.StringPtrInput `pulumi:"indexIntervalBytes"`
-	// max.compaction.lag.ms value
-	MaxCompactionLagMs pulumi.StringPtrInput `pulumi:"maxCompactionLagMs"`
-	// max.message.bytes value
-	MaxMessageBytes pulumi.StringPtrInput `pulumi:"maxMessageBytes"`
-	// message.downconversion.enable value
-	MessageDownconversionEnable pulumi.StringPtrInput `pulumi:"messageDownconversionEnable"`
-	// message.format.version value
-	MessageFormatVersion pulumi.StringPtrInput `pulumi:"messageFormatVersion"`
-	// message.timestamp.difference.max.ms value
+	CleanupPolicy                   pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
+	CompressionType                 pulumi.StringPtrInput `pulumi:"compressionType"`
+	DeleteRetentionMs               pulumi.StringPtrInput `pulumi:"deleteRetentionMs"`
+	FileDeleteDelayMs               pulumi.StringPtrInput `pulumi:"fileDeleteDelayMs"`
+	FlushMessages                   pulumi.StringPtrInput `pulumi:"flushMessages"`
+	FlushMs                         pulumi.StringPtrInput `pulumi:"flushMs"`
+	IndexIntervalBytes              pulumi.StringPtrInput `pulumi:"indexIntervalBytes"`
+	MaxCompactionLagMs              pulumi.StringPtrInput `pulumi:"maxCompactionLagMs"`
+	MaxMessageBytes                 pulumi.StringPtrInput `pulumi:"maxMessageBytes"`
+	MessageDownconversionEnable     pulumi.StringPtrInput `pulumi:"messageDownconversionEnable"`
+	MessageFormatVersion            pulumi.StringPtrInput `pulumi:"messageFormatVersion"`
 	MessageTimestampDifferenceMaxMs pulumi.StringPtrInput `pulumi:"messageTimestampDifferenceMaxMs"`
-	// message.timestamp.type value
-	MessageTimestampType pulumi.StringPtrInput `pulumi:"messageTimestampType"`
-	// min.cleanable.dirty.ratio value
-	MinCleanableDirtyRatio pulumi.StringPtrInput `pulumi:"minCleanableDirtyRatio"`
-	// min.compaction.lag.ms value
-	MinCompactionLagMs pulumi.StringPtrInput `pulumi:"minCompactionLagMs"`
-	// min.insync.replicas value
-	MinInsyncReplicas pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
-	// preallocate value
-	Preallocate pulumi.StringPtrInput `pulumi:"preallocate"`
-	// retention.bytes value
-	RetentionBytes pulumi.StringPtrInput `pulumi:"retentionBytes"`
-	// retention.ms value
-	RetentionMs pulumi.StringPtrInput `pulumi:"retentionMs"`
-	// segment.bytes value
-	SegmentBytes pulumi.StringPtrInput `pulumi:"segmentBytes"`
-	// segment.index.bytes value
-	SegmentIndexBytes pulumi.StringPtrInput `pulumi:"segmentIndexBytes"`
-	// segment.jitter.ms value
-	SegmentJitterMs pulumi.StringPtrInput `pulumi:"segmentJitterMs"`
-	// segment.ms value
-	SegmentMs pulumi.StringPtrInput `pulumi:"segmentMs"`
-	// unclean.leader.election.enable value
-	UncleanLeaderElectionEnable pulumi.StringPtrInput `pulumi:"uncleanLeaderElectionEnable"`
+	MessageTimestampType            pulumi.StringPtrInput `pulumi:"messageTimestampType"`
+	MinCleanableDirtyRatio          pulumi.StringPtrInput `pulumi:"minCleanableDirtyRatio"`
+	MinCompactionLagMs              pulumi.StringPtrInput `pulumi:"minCompactionLagMs"`
+	MinInsyncReplicas               pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
+	Preallocate                     pulumi.StringPtrInput `pulumi:"preallocate"`
+	RetentionBytes                  pulumi.StringPtrInput `pulumi:"retentionBytes"`
+	RetentionMs                     pulumi.StringPtrInput `pulumi:"retentionMs"`
+	SegmentBytes                    pulumi.StringPtrInput `pulumi:"segmentBytes"`
+	SegmentIndexBytes               pulumi.StringPtrInput `pulumi:"segmentIndexBytes"`
+	SegmentJitterMs                 pulumi.StringPtrInput `pulumi:"segmentJitterMs"`
+	SegmentMs                       pulumi.StringPtrInput `pulumi:"segmentMs"`
+	UncleanLeaderElectionEnable     pulumi.StringPtrInput `pulumi:"uncleanLeaderElectionEnable"`
 }
 
 func (KafkaTopicConfigArgs) ElementType() reflect.Type {
@@ -13540,122 +12911,98 @@ func (o KafkaTopicConfigOutput) ToKafkaTopicConfigPtrOutputWithContext(ctx conte
 	}).(KafkaTopicConfigPtrOutput)
 }
 
-// cleanup.policy value
 func (o KafkaTopicConfigOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
 }
 
-// compression.type value
 func (o KafkaTopicConfigOutput) CompressionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
 }
 
-// delete.retention.ms value
 func (o KafkaTopicConfigOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.DeleteRetentionMs }).(pulumi.StringPtrOutput)
 }
 
-// file.delete.delay.ms value
 func (o KafkaTopicConfigOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.FileDeleteDelayMs }).(pulumi.StringPtrOutput)
 }
 
-// flush.messages value
 func (o KafkaTopicConfigOutput) FlushMessages() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.FlushMessages }).(pulumi.StringPtrOutput)
 }
 
-// flush.ms value
 func (o KafkaTopicConfigOutput) FlushMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.FlushMs }).(pulumi.StringPtrOutput)
 }
 
-// index.interval.bytes value
 func (o KafkaTopicConfigOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.IndexIntervalBytes }).(pulumi.StringPtrOutput)
 }
 
-// max.compaction.lag.ms value
 func (o KafkaTopicConfigOutput) MaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MaxCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
-// max.message.bytes value
 func (o KafkaTopicConfigOutput) MaxMessageBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MaxMessageBytes }).(pulumi.StringPtrOutput)
 }
 
-// message.downconversion.enable value
 func (o KafkaTopicConfigOutput) MessageDownconversionEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MessageDownconversionEnable }).(pulumi.StringPtrOutput)
 }
 
-// message.format.version value
 func (o KafkaTopicConfigOutput) MessageFormatVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MessageFormatVersion }).(pulumi.StringPtrOutput)
 }
 
-// message.timestamp.difference.max.ms value
 func (o KafkaTopicConfigOutput) MessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MessageTimestampDifferenceMaxMs }).(pulumi.StringPtrOutput)
 }
 
-// message.timestamp.type value
 func (o KafkaTopicConfigOutput) MessageTimestampType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MessageTimestampType }).(pulumi.StringPtrOutput)
 }
 
-// min.cleanable.dirty.ratio value
 func (o KafkaTopicConfigOutput) MinCleanableDirtyRatio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MinCleanableDirtyRatio }).(pulumi.StringPtrOutput)
 }
 
-// min.compaction.lag.ms value
 func (o KafkaTopicConfigOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MinCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
-// min.insync.replicas value
 func (o KafkaTopicConfigOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MinInsyncReplicas }).(pulumi.StringPtrOutput)
 }
 
-// preallocate value
 func (o KafkaTopicConfigOutput) Preallocate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.Preallocate }).(pulumi.StringPtrOutput)
 }
 
-// retention.bytes value
 func (o KafkaTopicConfigOutput) RetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.RetentionBytes }).(pulumi.StringPtrOutput)
 }
 
-// retention.ms value
 func (o KafkaTopicConfigOutput) RetentionMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.RetentionMs }).(pulumi.StringPtrOutput)
 }
 
-// segment.bytes value
 func (o KafkaTopicConfigOutput) SegmentBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.SegmentBytes }).(pulumi.StringPtrOutput)
 }
 
-// segment.index.bytes value
 func (o KafkaTopicConfigOutput) SegmentIndexBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.SegmentIndexBytes }).(pulumi.StringPtrOutput)
 }
 
-// segment.jitter.ms value
 func (o KafkaTopicConfigOutput) SegmentJitterMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.SegmentJitterMs }).(pulumi.StringPtrOutput)
 }
 
-// segment.ms value
 func (o KafkaTopicConfigOutput) SegmentMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.SegmentMs }).(pulumi.StringPtrOutput)
 }
 
-// unclean.leader.election.enable value
 func (o KafkaTopicConfigOutput) UncleanLeaderElectionEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.UncleanLeaderElectionEnable }).(pulumi.StringPtrOutput)
 }
@@ -13684,7 +13031,6 @@ func (o KafkaTopicConfigPtrOutput) Elem() KafkaTopicConfigOutput {
 	}).(KafkaTopicConfigOutput)
 }
 
-// cleanup.policy value
 func (o KafkaTopicConfigPtrOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13694,7 +13040,6 @@ func (o KafkaTopicConfigPtrOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// compression.type value
 func (o KafkaTopicConfigPtrOutput) CompressionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13704,7 +13049,6 @@ func (o KafkaTopicConfigPtrOutput) CompressionType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// delete.retention.ms value
 func (o KafkaTopicConfigPtrOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13714,7 +13058,6 @@ func (o KafkaTopicConfigPtrOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// file.delete.delay.ms value
 func (o KafkaTopicConfigPtrOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13724,7 +13067,6 @@ func (o KafkaTopicConfigPtrOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// flush.messages value
 func (o KafkaTopicConfigPtrOutput) FlushMessages() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13734,7 +13076,6 @@ func (o KafkaTopicConfigPtrOutput) FlushMessages() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// flush.ms value
 func (o KafkaTopicConfigPtrOutput) FlushMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13744,7 +13085,6 @@ func (o KafkaTopicConfigPtrOutput) FlushMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// index.interval.bytes value
 func (o KafkaTopicConfigPtrOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13754,7 +13094,6 @@ func (o KafkaTopicConfigPtrOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// max.compaction.lag.ms value
 func (o KafkaTopicConfigPtrOutput) MaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13764,7 +13103,6 @@ func (o KafkaTopicConfigPtrOutput) MaxCompactionLagMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// max.message.bytes value
 func (o KafkaTopicConfigPtrOutput) MaxMessageBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13774,7 +13112,6 @@ func (o KafkaTopicConfigPtrOutput) MaxMessageBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// message.downconversion.enable value
 func (o KafkaTopicConfigPtrOutput) MessageDownconversionEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13784,7 +13121,6 @@ func (o KafkaTopicConfigPtrOutput) MessageDownconversionEnable() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// message.format.version value
 func (o KafkaTopicConfigPtrOutput) MessageFormatVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13794,7 +13130,6 @@ func (o KafkaTopicConfigPtrOutput) MessageFormatVersion() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// message.timestamp.difference.max.ms value
 func (o KafkaTopicConfigPtrOutput) MessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13804,7 +13139,6 @@ func (o KafkaTopicConfigPtrOutput) MessageTimestampDifferenceMaxMs() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// message.timestamp.type value
 func (o KafkaTopicConfigPtrOutput) MessageTimestampType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13814,7 +13148,6 @@ func (o KafkaTopicConfigPtrOutput) MessageTimestampType() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// min.cleanable.dirty.ratio value
 func (o KafkaTopicConfigPtrOutput) MinCleanableDirtyRatio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13824,7 +13157,6 @@ func (o KafkaTopicConfigPtrOutput) MinCleanableDirtyRatio() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// min.compaction.lag.ms value
 func (o KafkaTopicConfigPtrOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13834,7 +13166,6 @@ func (o KafkaTopicConfigPtrOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// min.insync.replicas value
 func (o KafkaTopicConfigPtrOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13844,7 +13175,6 @@ func (o KafkaTopicConfigPtrOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// preallocate value
 func (o KafkaTopicConfigPtrOutput) Preallocate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13854,7 +13184,6 @@ func (o KafkaTopicConfigPtrOutput) Preallocate() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// retention.bytes value
 func (o KafkaTopicConfigPtrOutput) RetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13864,7 +13193,6 @@ func (o KafkaTopicConfigPtrOutput) RetentionBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// retention.ms value
 func (o KafkaTopicConfigPtrOutput) RetentionMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13874,7 +13202,6 @@ func (o KafkaTopicConfigPtrOutput) RetentionMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// segment.bytes value
 func (o KafkaTopicConfigPtrOutput) SegmentBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13884,7 +13211,6 @@ func (o KafkaTopicConfigPtrOutput) SegmentBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// segment.index.bytes value
 func (o KafkaTopicConfigPtrOutput) SegmentIndexBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13894,7 +13220,6 @@ func (o KafkaTopicConfigPtrOutput) SegmentIndexBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// segment.jitter.ms value
 func (o KafkaTopicConfigPtrOutput) SegmentJitterMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13904,7 +13229,6 @@ func (o KafkaTopicConfigPtrOutput) SegmentJitterMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// segment.ms value
 func (o KafkaTopicConfigPtrOutput) SegmentMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13914,7 +13238,6 @@ func (o KafkaTopicConfigPtrOutput) SegmentMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// unclean.leader.election.enable value
 func (o KafkaTopicConfigPtrOutput) UncleanLeaderElectionEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13925,9 +13248,7 @@ func (o KafkaTopicConfigPtrOutput) UncleanLeaderElectionEnable() pulumi.StringPt
 }
 
 type KafkaTopicTag struct {
-	// Topic tag key. Maximum Length: `64`.
-	Key string `pulumi:"key"`
-	// Topic tag value. Maximum Length: `256`.
+	Key   string  `pulumi:"key"`
 	Value *string `pulumi:"value"`
 }
 
@@ -13943,9 +13264,7 @@ type KafkaTopicTagInput interface {
 }
 
 type KafkaTopicTagArgs struct {
-	// Topic tag key. Maximum Length: `64`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Topic tag value. Maximum Length: `256`.
+	Key   pulumi.StringInput    `pulumi:"key"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -14000,12 +13319,10 @@ func (o KafkaTopicTagOutput) ToKafkaTopicTagOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Topic tag key. Maximum Length: `64`.
 func (o KafkaTopicTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaTopicTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Topic tag value. Maximum Length: `256`.
 func (o KafkaTopicTagOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicTag) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -14249,16 +13566,11 @@ func (o M3AggregatorM3aggregatorArrayOutput) Index(i pulumi.IntInput) M3Aggregat
 }
 
 type M3AggregatorM3aggregatorUserConfig struct {
-	// Custom domain
-	CustomDomain *string `pulumi:"customDomain"`
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// M3 major version (deprecated, use m3aggregator_version)
-	M3Version *string `pulumi:"m3Version"`
-	// M3 major version (the minimum compatible version)
-	M3aggregatorVersion *string `pulumi:"m3aggregatorVersion"`
-	// Static IP addresses
-	StaticIps *string `pulumi:"staticIps"`
+	CustomDomain        *string  `pulumi:"customDomain"`
+	IpFilters           []string `pulumi:"ipFilters"`
+	M3Version           *string  `pulumi:"m3Version"`
+	M3aggregatorVersion *string  `pulumi:"m3aggregatorVersion"`
+	StaticIps           *string  `pulumi:"staticIps"`
 }
 
 // M3AggregatorM3aggregatorUserConfigInput is an input type that accepts M3AggregatorM3aggregatorUserConfigArgs and M3AggregatorM3aggregatorUserConfigOutput values.
@@ -14273,16 +13585,11 @@ type M3AggregatorM3aggregatorUserConfigInput interface {
 }
 
 type M3AggregatorM3aggregatorUserConfigArgs struct {
-	// Custom domain
-	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// M3 major version (deprecated, use m3aggregator_version)
-	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
-	// M3 major version (the minimum compatible version)
-	M3aggregatorVersion pulumi.StringPtrInput `pulumi:"m3aggregatorVersion"`
-	// Static IP addresses
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	CustomDomain        pulumi.StringPtrInput   `pulumi:"customDomain"`
+	IpFilters           pulumi.StringArrayInput `pulumi:"ipFilters"`
+	M3Version           pulumi.StringPtrInput   `pulumi:"m3Version"`
+	M3aggregatorVersion pulumi.StringPtrInput   `pulumi:"m3aggregatorVersion"`
+	StaticIps           pulumi.StringPtrInput   `pulumi:"staticIps"`
 }
 
 func (M3AggregatorM3aggregatorUserConfigArgs) ElementType() reflect.Type {
@@ -14362,27 +13669,22 @@ func (o M3AggregatorM3aggregatorUserConfigOutput) ToM3AggregatorM3aggregatorUser
 	}).(M3AggregatorM3aggregatorUserConfigPtrOutput)
 }
 
-// Custom domain
 func (o M3AggregatorM3aggregatorUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o M3AggregatorM3aggregatorUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// M3 major version (deprecated, use m3aggregator_version)
 func (o M3AggregatorM3aggregatorUserConfigOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
 }
 
-// M3 major version (the minimum compatible version)
 func (o M3AggregatorM3aggregatorUserConfigOutput) M3aggregatorVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *string { return v.M3aggregatorVersion }).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o M3AggregatorM3aggregatorUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -14411,7 +13713,6 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) Elem() M3AggregatorM3aggreg
 	}).(M3AggregatorM3aggregatorUserConfigOutput)
 }
 
-// Custom domain
 func (o M3AggregatorM3aggregatorUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) *string {
 		if v == nil {
@@ -14421,7 +13722,6 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) CustomDomain() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o M3AggregatorM3aggregatorUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) []string {
 		if v == nil {
@@ -14431,7 +13731,6 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) IpFilters() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
-// M3 major version (deprecated, use m3aggregator_version)
 func (o M3AggregatorM3aggregatorUserConfigPtrOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) *string {
 		if v == nil {
@@ -14441,7 +13740,6 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) M3Version() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// M3 major version (the minimum compatible version)
 func (o M3AggregatorM3aggregatorUserConfigPtrOutput) M3aggregatorVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) *string {
 		if v == nil {
@@ -14451,7 +13749,6 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) M3aggregatorVersion() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o M3AggregatorM3aggregatorUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) *string {
 		if v == nil {
@@ -14462,9 +13759,7 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) StaticIps() pulumi.StringPt
 }
 
 type M3AggregatorServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -14480,9 +13775,7 @@ type M3AggregatorServiceIntegrationInput interface {
 }
 
 type M3AggregatorServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -14537,12 +13830,10 @@ func (o M3AggregatorServiceIntegrationOutput) ToM3AggregatorServiceIntegrationOu
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o M3AggregatorServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v M3AggregatorServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o M3AggregatorServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v M3AggregatorServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -14568,9 +13859,7 @@ func (o M3AggregatorServiceIntegrationArrayOutput) Index(i pulumi.IntInput) M3Ag
 }
 
 type M3AggregatorTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -14586,9 +13875,7 @@ type M3AggregatorTagInput interface {
 }
 
 type M3AggregatorTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -14643,12 +13930,10 @@ func (o M3AggregatorTagOutput) ToM3AggregatorTagOutputWithContext(ctx context.Co
 	return o
 }
 
-// Service tag key
 func (o M3AggregatorTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v M3AggregatorTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o M3AggregatorTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v M3AggregatorTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -14892,32 +14177,19 @@ func (o M3DbM3dbArrayOutput) Index(i pulumi.IntInput) M3DbM3dbOutput {
 }
 
 type M3DbM3dbUserConfig struct {
-	// Custom domain
-	CustomDomain *string `pulumi:"customDomain"`
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// M3 limits
-	Limits *M3DbM3dbUserConfigLimits `pulumi:"limits"`
-	// M3 major version (deprecated, use m3db_version)
-	M3Version *string `pulumi:"m3Version"`
-	// Enable Graphite ingestion using Carbon plaintext protocol
-	M3coordinatorEnableGraphiteCarbonIngest *string `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
-	// M3 major version (the minimum compatible version)
-	M3dbVersion *string `pulumi:"m3dbVersion"`
-	// List of M3 namespaces
-	Namespaces []M3DbM3dbUserConfigNamespace `pulumi:"namespaces"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess *M3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess *M3DbM3dbUserConfigPublicAccess `pulumi:"publicAccess"`
-	// M3 rules
-	Rules *M3DbM3dbUserConfigRules `pulumi:"rules"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
-	// Static IP addresses
-	StaticIps *string `pulumi:"staticIps"`
+	CustomDomain                            *string                          `pulumi:"customDomain"`
+	IpFilters                               []string                         `pulumi:"ipFilters"`
+	Limits                                  *M3DbM3dbUserConfigLimits        `pulumi:"limits"`
+	M3Version                               *string                          `pulumi:"m3Version"`
+	M3coordinatorEnableGraphiteCarbonIngest *string                          `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	M3dbVersion                             *string                          `pulumi:"m3dbVersion"`
+	Namespaces                              []M3DbM3dbUserConfigNamespace    `pulumi:"namespaces"`
+	PrivateAccess                           *M3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	ProjectToForkFrom                       *string                          `pulumi:"projectToForkFrom"`
+	PublicAccess                            *M3DbM3dbUserConfigPublicAccess  `pulumi:"publicAccess"`
+	Rules                                   *M3DbM3dbUserConfigRules         `pulumi:"rules"`
+	ServiceToForkFrom                       *string                          `pulumi:"serviceToForkFrom"`
+	StaticIps                               *string                          `pulumi:"staticIps"`
 }
 
 // M3DbM3dbUserConfigInput is an input type that accepts M3DbM3dbUserConfigArgs and M3DbM3dbUserConfigOutput values.
@@ -14932,32 +14204,19 @@ type M3DbM3dbUserConfigInput interface {
 }
 
 type M3DbM3dbUserConfigArgs struct {
-	// Custom domain
-	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// M3 limits
-	Limits M3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
-	// M3 major version (deprecated, use m3db_version)
-	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
-	// Enable Graphite ingestion using Carbon plaintext protocol
-	M3coordinatorEnableGraphiteCarbonIngest pulumi.StringPtrInput `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
-	// M3 major version (the minimum compatible version)
-	M3dbVersion pulumi.StringPtrInput `pulumi:"m3dbVersion"`
-	// List of M3 namespaces
-	Namespaces M3DbM3dbUserConfigNamespaceArrayInput `pulumi:"namespaces"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess M3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess M3DbM3dbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
-	// M3 rules
-	Rules M3DbM3dbUserConfigRulesPtrInput `pulumi:"rules"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
-	// Static IP addresses
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	CustomDomain                            pulumi.StringPtrInput                   `pulumi:"customDomain"`
+	IpFilters                               pulumi.StringArrayInput                 `pulumi:"ipFilters"`
+	Limits                                  M3DbM3dbUserConfigLimitsPtrInput        `pulumi:"limits"`
+	M3Version                               pulumi.StringPtrInput                   `pulumi:"m3Version"`
+	M3coordinatorEnableGraphiteCarbonIngest pulumi.StringPtrInput                   `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	M3dbVersion                             pulumi.StringPtrInput                   `pulumi:"m3dbVersion"`
+	Namespaces                              M3DbM3dbUserConfigNamespaceArrayInput   `pulumi:"namespaces"`
+	PrivateAccess                           M3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	ProjectToForkFrom                       pulumi.StringPtrInput                   `pulumi:"projectToForkFrom"`
+	PublicAccess                            M3DbM3dbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
+	Rules                                   M3DbM3dbUserConfigRulesPtrInput         `pulumi:"rules"`
+	ServiceToForkFrom                       pulumi.StringPtrInput                   `pulumi:"serviceToForkFrom"`
+	StaticIps                               pulumi.StringPtrInput                   `pulumi:"staticIps"`
 }
 
 func (M3DbM3dbUserConfigArgs) ElementType() reflect.Type {
@@ -15037,67 +14296,54 @@ func (o M3DbM3dbUserConfigOutput) ToM3DbM3dbUserConfigPtrOutputWithContext(ctx c
 	}).(M3DbM3dbUserConfigPtrOutput)
 }
 
-// Custom domain
 func (o M3DbM3dbUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o M3DbM3dbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// M3 limits
 func (o M3DbM3dbUserConfigOutput) Limits() M3DbM3dbUserConfigLimitsPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigLimits { return v.Limits }).(M3DbM3dbUserConfigLimitsPtrOutput)
 }
 
-// M3 major version (deprecated, use m3db_version)
 func (o M3DbM3dbUserConfigOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
 }
 
-// Enable Graphite ingestion using Carbon plaintext protocol
 func (o M3DbM3dbUserConfigOutput) M3coordinatorEnableGraphiteCarbonIngest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.M3coordinatorEnableGraphiteCarbonIngest }).(pulumi.StringPtrOutput)
 }
 
-// M3 major version (the minimum compatible version)
 func (o M3DbM3dbUserConfigOutput) M3dbVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.M3dbVersion }).(pulumi.StringPtrOutput)
 }
 
-// List of M3 namespaces
 func (o M3DbM3dbUserConfigOutput) Namespaces() M3DbM3dbUserConfigNamespaceArrayOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) []M3DbM3dbUserConfigNamespace { return v.Namespaces }).(M3DbM3dbUserConfigNamespaceArrayOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o M3DbM3dbUserConfigOutput) PrivateAccess() M3DbM3dbUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigPrivateAccess { return v.PrivateAccess }).(M3DbM3dbUserConfigPrivateAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o M3DbM3dbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o M3DbM3dbUserConfigOutput) PublicAccess() M3DbM3dbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigPublicAccess { return v.PublicAccess }).(M3DbM3dbUserConfigPublicAccessPtrOutput)
 }
 
-// M3 rules
 func (o M3DbM3dbUserConfigOutput) Rules() M3DbM3dbUserConfigRulesPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigRules { return v.Rules }).(M3DbM3dbUserConfigRulesPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o M3DbM3dbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o M3DbM3dbUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -15126,7 +14372,6 @@ func (o M3DbM3dbUserConfigPtrOutput) Elem() M3DbM3dbUserConfigOutput {
 	}).(M3DbM3dbUserConfigOutput)
 }
 
-// Custom domain
 func (o M3DbM3dbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -15136,7 +14381,6 @@ func (o M3DbM3dbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o M3DbM3dbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) []string {
 		if v == nil {
@@ -15146,7 +14390,6 @@ func (o M3DbM3dbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// M3 limits
 func (o M3DbM3dbUserConfigPtrOutput) Limits() M3DbM3dbUserConfigLimitsPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigLimits {
 		if v == nil {
@@ -15156,7 +14399,6 @@ func (o M3DbM3dbUserConfigPtrOutput) Limits() M3DbM3dbUserConfigLimitsPtrOutput 
 	}).(M3DbM3dbUserConfigLimitsPtrOutput)
 }
 
-// M3 major version (deprecated, use m3db_version)
 func (o M3DbM3dbUserConfigPtrOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -15166,7 +14408,6 @@ func (o M3DbM3dbUserConfigPtrOutput) M3Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enable Graphite ingestion using Carbon plaintext protocol
 func (o M3DbM3dbUserConfigPtrOutput) M3coordinatorEnableGraphiteCarbonIngest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -15176,7 +14417,6 @@ func (o M3DbM3dbUserConfigPtrOutput) M3coordinatorEnableGraphiteCarbonIngest() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// M3 major version (the minimum compatible version)
 func (o M3DbM3dbUserConfigPtrOutput) M3dbVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -15186,7 +14426,6 @@ func (o M3DbM3dbUserConfigPtrOutput) M3dbVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of M3 namespaces
 func (o M3DbM3dbUserConfigPtrOutput) Namespaces() M3DbM3dbUserConfigNamespaceArrayOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) []M3DbM3dbUserConfigNamespace {
 		if v == nil {
@@ -15196,7 +14435,6 @@ func (o M3DbM3dbUserConfigPtrOutput) Namespaces() M3DbM3dbUserConfigNamespaceArr
 	}).(M3DbM3dbUserConfigNamespaceArrayOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o M3DbM3dbUserConfigPtrOutput) PrivateAccess() M3DbM3dbUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigPrivateAccess {
 		if v == nil {
@@ -15206,7 +14444,6 @@ func (o M3DbM3dbUserConfigPtrOutput) PrivateAccess() M3DbM3dbUserConfigPrivateAc
 	}).(M3DbM3dbUserConfigPrivateAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o M3DbM3dbUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -15216,7 +14453,6 @@ func (o M3DbM3dbUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o M3DbM3dbUserConfigPtrOutput) PublicAccess() M3DbM3dbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigPublicAccess {
 		if v == nil {
@@ -15226,7 +14462,6 @@ func (o M3DbM3dbUserConfigPtrOutput) PublicAccess() M3DbM3dbUserConfigPublicAcce
 	}).(M3DbM3dbUserConfigPublicAccessPtrOutput)
 }
 
-// M3 rules
 func (o M3DbM3dbUserConfigPtrOutput) Rules() M3DbM3dbUserConfigRulesPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigRules {
 		if v == nil {
@@ -15236,7 +14471,6 @@ func (o M3DbM3dbUserConfigPtrOutput) Rules() M3DbM3dbUserConfigRulesPtrOutput {
 	}).(M3DbM3dbUserConfigRulesPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o M3DbM3dbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -15246,7 +14480,6 @@ func (o M3DbM3dbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o M3DbM3dbUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -16498,9 +15731,7 @@ func (o M3DbM3dbUserConfigRulesMappingTagArrayOutput) Index(i pulumi.IntInput) M
 }
 
 type M3DbServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -16516,9 +15747,7 @@ type M3DbServiceIntegrationInput interface {
 }
 
 type M3DbServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -16573,12 +15802,10 @@ func (o M3DbServiceIntegrationOutput) ToM3DbServiceIntegrationOutputWithContext(
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o M3DbServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v M3DbServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o M3DbServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v M3DbServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -16604,9 +15831,7 @@ func (o M3DbServiceIntegrationArrayOutput) Index(i pulumi.IntInput) M3DbServiceI
 }
 
 type M3DbTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -16622,9 +15847,7 @@ type M3DbTagInput interface {
 }
 
 type M3DbTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -16679,12 +15902,10 @@ func (o M3DbTagOutput) ToM3DbTagOutputWithContext(ctx context.Context) M3DbTagOu
 	return o
 }
 
-// Service tag key
 func (o M3DbTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v M3DbTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o M3DbTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v M3DbTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -16928,38 +16149,22 @@ func (o MySqlMysqlArrayOutput) Index(i pulumi.IntInput) MySqlMysqlOutput {
 }
 
 type MySqlMysqlUserConfig struct {
-	// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-	AdminPassword *string `pulumi:"adminPassword"`
-	// Custom username for admin user. This must be set only when a new service is being created.
-	AdminUsername *string `pulumi:"adminUsername"`
-	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-	BackupHour *string `pulumi:"backupHour"`
-	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-	BackupMinute *string `pulumi:"backupMinute"`
-	// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
-	BinlogRetentionPeriod *string `pulumi:"binlogRetentionPeriod"`
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// Migrate data from existing server
-	Migration *MySqlMysqlUserConfigMigration `pulumi:"migration"`
-	// mysql.conf configuration values
-	Mysql *MySqlMysqlUserConfigMysql `pulumi:"mysql"`
-	// MySQL major version
-	MysqlVersion *string `pulumi:"mysqlVersion"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess *MySqlMysqlUserConfigPrivateAccess `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess *MySqlMysqlUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess *MySqlMysqlUserConfigPublicAccess `pulumi:"publicAccess"`
-	// Recovery target time when forking a service. This has effect only when a new service is being created.
-	RecoveryTargetTime *string `pulumi:"recoveryTargetTime"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
-	// Static IP addresses
-	StaticIps *string `pulumi:"staticIps"`
+	AdminPassword         *string                                `pulumi:"adminPassword"`
+	AdminUsername         *string                                `pulumi:"adminUsername"`
+	BackupHour            *string                                `pulumi:"backupHour"`
+	BackupMinute          *string                                `pulumi:"backupMinute"`
+	BinlogRetentionPeriod *string                                `pulumi:"binlogRetentionPeriod"`
+	IpFilters             []string                               `pulumi:"ipFilters"`
+	Migration             *MySqlMysqlUserConfigMigration         `pulumi:"migration"`
+	Mysql                 *MySqlMysqlUserConfigMysql             `pulumi:"mysql"`
+	MysqlVersion          *string                                `pulumi:"mysqlVersion"`
+	PrivateAccess         *MySqlMysqlUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	PrivatelinkAccess     *MySqlMysqlUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom     *string                                `pulumi:"projectToForkFrom"`
+	PublicAccess          *MySqlMysqlUserConfigPublicAccess      `pulumi:"publicAccess"`
+	RecoveryTargetTime    *string                                `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom     *string                                `pulumi:"serviceToForkFrom"`
+	StaticIps             *string                                `pulumi:"staticIps"`
 }
 
 // MySqlMysqlUserConfigInput is an input type that accepts MySqlMysqlUserConfigArgs and MySqlMysqlUserConfigOutput values.
@@ -16974,38 +16179,22 @@ type MySqlMysqlUserConfigInput interface {
 }
 
 type MySqlMysqlUserConfigArgs struct {
-	// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
-	// Custom username for admin user. This must be set only when a new service is being created.
-	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
-	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-	BackupHour pulumi.StringPtrInput `pulumi:"backupHour"`
-	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-	BackupMinute pulumi.StringPtrInput `pulumi:"backupMinute"`
-	// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
-	BinlogRetentionPeriod pulumi.StringPtrInput `pulumi:"binlogRetentionPeriod"`
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Migrate data from existing server
-	Migration MySqlMysqlUserConfigMigrationPtrInput `pulumi:"migration"`
-	// mysql.conf configuration values
-	Mysql MySqlMysqlUserConfigMysqlPtrInput `pulumi:"mysql"`
-	// MySQL major version
-	MysqlVersion pulumi.StringPtrInput `pulumi:"mysqlVersion"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess MySqlMysqlUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess MySqlMysqlUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess MySqlMysqlUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
-	// Recovery target time when forking a service. This has effect only when a new service is being created.
-	RecoveryTargetTime pulumi.StringPtrInput `pulumi:"recoveryTargetTime"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
-	// Static IP addresses
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	AdminPassword         pulumi.StringPtrInput                         `pulumi:"adminPassword"`
+	AdminUsername         pulumi.StringPtrInput                         `pulumi:"adminUsername"`
+	BackupHour            pulumi.StringPtrInput                         `pulumi:"backupHour"`
+	BackupMinute          pulumi.StringPtrInput                         `pulumi:"backupMinute"`
+	BinlogRetentionPeriod pulumi.StringPtrInput                         `pulumi:"binlogRetentionPeriod"`
+	IpFilters             pulumi.StringArrayInput                       `pulumi:"ipFilters"`
+	Migration             MySqlMysqlUserConfigMigrationPtrInput         `pulumi:"migration"`
+	Mysql                 MySqlMysqlUserConfigMysqlPtrInput             `pulumi:"mysql"`
+	MysqlVersion          pulumi.StringPtrInput                         `pulumi:"mysqlVersion"`
+	PrivateAccess         MySqlMysqlUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	PrivatelinkAccess     MySqlMysqlUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom     pulumi.StringPtrInput                         `pulumi:"projectToForkFrom"`
+	PublicAccess          MySqlMysqlUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	RecoveryTargetTime    pulumi.StringPtrInput                         `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom     pulumi.StringPtrInput                         `pulumi:"serviceToForkFrom"`
+	StaticIps             pulumi.StringPtrInput                         `pulumi:"staticIps"`
 }
 
 func (MySqlMysqlUserConfigArgs) ElementType() reflect.Type {
@@ -17085,82 +16274,66 @@ func (o MySqlMysqlUserConfigOutput) ToMySqlMysqlUserConfigPtrOutputWithContext(c
 	}).(MySqlMysqlUserConfigPtrOutput)
 }
 
-// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
 func (o MySqlMysqlUserConfigOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
 
-// Custom username for admin user. This must be set only when a new service is being created.
 func (o MySqlMysqlUserConfigOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
-// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o MySqlMysqlUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.BackupHour }).(pulumi.StringPtrOutput)
 }
 
-// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o MySqlMysqlUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
-// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
 func (o MySqlMysqlUserConfigOutput) BinlogRetentionPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.BinlogRetentionPeriod }).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o MySqlMysqlUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Migrate data from existing server
 func (o MySqlMysqlUserConfigOutput) Migration() MySqlMysqlUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigMigration { return v.Migration }).(MySqlMysqlUserConfigMigrationPtrOutput)
 }
 
-// mysql.conf configuration values
 func (o MySqlMysqlUserConfigOutput) Mysql() MySqlMysqlUserConfigMysqlPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigMysql { return v.Mysql }).(MySqlMysqlUserConfigMysqlPtrOutput)
 }
 
-// MySQL major version
 func (o MySqlMysqlUserConfigOutput) MysqlVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.MysqlVersion }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o MySqlMysqlUserConfigOutput) PrivateAccess() MySqlMysqlUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigPrivateAccess { return v.PrivateAccess }).(MySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o MySqlMysqlUserConfigOutput) PrivatelinkAccess() MySqlMysqlUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(MySqlMysqlUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o MySqlMysqlUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o MySqlMysqlUserConfigOutput) PublicAccess() MySqlMysqlUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigPublicAccess { return v.PublicAccess }).(MySqlMysqlUserConfigPublicAccessPtrOutput)
 }
 
-// Recovery target time when forking a service. This has effect only when a new service is being created.
 func (o MySqlMysqlUserConfigOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o MySqlMysqlUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o MySqlMysqlUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -17189,7 +16362,6 @@ func (o MySqlMysqlUserConfigPtrOutput) Elem() MySqlMysqlUserConfigOutput {
 	}).(MySqlMysqlUserConfigOutput)
 }
 
-// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -17199,7 +16371,6 @@ func (o MySqlMysqlUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Custom username for admin user. This must be set only when a new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -17209,7 +16380,6 @@ func (o MySqlMysqlUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o MySqlMysqlUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -17219,7 +16389,6 @@ func (o MySqlMysqlUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o MySqlMysqlUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -17229,7 +16398,6 @@ func (o MySqlMysqlUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
 func (o MySqlMysqlUserConfigPtrOutput) BinlogRetentionPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -17239,7 +16407,6 @@ func (o MySqlMysqlUserConfigPtrOutput) BinlogRetentionPeriod() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o MySqlMysqlUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) []string {
 		if v == nil {
@@ -17249,7 +16416,6 @@ func (o MySqlMysqlUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Migrate data from existing server
 func (o MySqlMysqlUserConfigPtrOutput) Migration() MySqlMysqlUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *MySqlMysqlUserConfigMigration {
 		if v == nil {
@@ -17259,7 +16425,6 @@ func (o MySqlMysqlUserConfigPtrOutput) Migration() MySqlMysqlUserConfigMigration
 	}).(MySqlMysqlUserConfigMigrationPtrOutput)
 }
 
-// mysql.conf configuration values
 func (o MySqlMysqlUserConfigPtrOutput) Mysql() MySqlMysqlUserConfigMysqlPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *MySqlMysqlUserConfigMysql {
 		if v == nil {
@@ -17269,7 +16434,6 @@ func (o MySqlMysqlUserConfigPtrOutput) Mysql() MySqlMysqlUserConfigMysqlPtrOutpu
 	}).(MySqlMysqlUserConfigMysqlPtrOutput)
 }
 
-// MySQL major version
 func (o MySqlMysqlUserConfigPtrOutput) MysqlVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -17279,7 +16443,6 @@ func (o MySqlMysqlUserConfigPtrOutput) MysqlVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o MySqlMysqlUserConfigPtrOutput) PrivateAccess() MySqlMysqlUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *MySqlMysqlUserConfigPrivateAccess {
 		if v == nil {
@@ -17289,7 +16452,6 @@ func (o MySqlMysqlUserConfigPtrOutput) PrivateAccess() MySqlMysqlUserConfigPriva
 	}).(MySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o MySqlMysqlUserConfigPtrOutput) PrivatelinkAccess() MySqlMysqlUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *MySqlMysqlUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -17299,7 +16461,6 @@ func (o MySqlMysqlUserConfigPtrOutput) PrivatelinkAccess() MySqlMysqlUserConfigP
 	}).(MySqlMysqlUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -17309,7 +16470,6 @@ func (o MySqlMysqlUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o MySqlMysqlUserConfigPtrOutput) PublicAccess() MySqlMysqlUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *MySqlMysqlUserConfigPublicAccess {
 		if v == nil {
@@ -17319,7 +16479,6 @@ func (o MySqlMysqlUserConfigPtrOutput) PublicAccess() MySqlMysqlUserConfigPublic
 	}).(MySqlMysqlUserConfigPublicAccessPtrOutput)
 }
 
-// Recovery target time when forking a service. This has effect only when a new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -17329,7 +16488,6 @@ func (o MySqlMysqlUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -17339,7 +16497,6 @@ func (o MySqlMysqlUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o MySqlMysqlUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -18066,7 +17223,6 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.StringPtrOutput
 }
 
 type MySqlMysqlUserConfigPrivateAccess struct {
-	// MySQL specific server provided values
 	Mysql      *string `pulumi:"mysql"`
 	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -18084,7 +17240,6 @@ type MySqlMysqlUserConfigPrivateAccessInput interface {
 }
 
 type MySqlMysqlUserConfigPrivateAccessArgs struct {
-	// MySQL specific server provided values
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
 	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -18167,7 +17322,6 @@ func (o MySqlMysqlUserConfigPrivateAccessOutput) ToMySqlMysqlUserConfigPrivateAc
 	}).(MySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
 
-// MySQL specific server provided values
 func (o MySqlMysqlUserConfigPrivateAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigPrivateAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
@@ -18204,7 +17358,6 @@ func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Elem() MySqlMysqlUserConfigP
 	}).(MySqlMysqlUserConfigPrivateAccessOutput)
 }
 
-// MySQL specific server provided values
 func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -18233,7 +17386,6 @@ func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPt
 }
 
 type MySqlMysqlUserConfigPrivatelinkAccess struct {
-	// MySQL specific server provided values
 	Mysql      *string `pulumi:"mysql"`
 	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -18251,7 +17403,6 @@ type MySqlMysqlUserConfigPrivatelinkAccessInput interface {
 }
 
 type MySqlMysqlUserConfigPrivatelinkAccessArgs struct {
-	// MySQL specific server provided values
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
 	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -18334,7 +17485,6 @@ func (o MySqlMysqlUserConfigPrivatelinkAccessOutput) ToMySqlMysqlUserConfigPriva
 	}).(MySqlMysqlUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// MySQL specific server provided values
 func (o MySqlMysqlUserConfigPrivatelinkAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigPrivatelinkAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
@@ -18371,7 +17521,6 @@ func (o MySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Elem() MySqlMysqlUserCon
 	}).(MySqlMysqlUserConfigPrivatelinkAccessOutput)
 }
 
-// MySQL specific server provided values
 func (o MySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -18400,7 +17549,6 @@ func (o MySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.Stri
 }
 
 type MySqlMysqlUserConfigPublicAccess struct {
-	// MySQL specific server provided values
 	Mysql      *string `pulumi:"mysql"`
 	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -18418,7 +17566,6 @@ type MySqlMysqlUserConfigPublicAccessInput interface {
 }
 
 type MySqlMysqlUserConfigPublicAccessArgs struct {
-	// MySQL specific server provided values
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
 	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -18501,7 +17648,6 @@ func (o MySqlMysqlUserConfigPublicAccessOutput) ToMySqlMysqlUserConfigPublicAcce
 	}).(MySqlMysqlUserConfigPublicAccessPtrOutput)
 }
 
-// MySQL specific server provided values
 func (o MySqlMysqlUserConfigPublicAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigPublicAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
@@ -18538,7 +17684,6 @@ func (o MySqlMysqlUserConfigPublicAccessPtrOutput) Elem() MySqlMysqlUserConfigPu
 	}).(MySqlMysqlUserConfigPublicAccessOutput)
 }
 
-// MySQL specific server provided values
 func (o MySqlMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigPublicAccess) *string {
 		if v == nil {
@@ -18567,9 +17712,7 @@ func (o MySqlMysqlUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtr
 }
 
 type MySqlServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -18585,9 +17728,7 @@ type MySqlServiceIntegrationInput interface {
 }
 
 type MySqlServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -18642,12 +17783,10 @@ func (o MySqlServiceIntegrationOutput) ToMySqlServiceIntegrationOutputWithContex
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o MySqlServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o MySqlServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -18673,9 +17812,7 @@ func (o MySqlServiceIntegrationArrayOutput) Index(i pulumi.IntInput) MySqlServic
 }
 
 type MySqlTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -18691,9 +17828,7 @@ type MySqlTagInput interface {
 }
 
 type MySqlTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -18748,12 +17883,10 @@ func (o MySqlTagOutput) ToMySqlTagOutputWithContext(ctx context.Context) MySqlTa
 	return o
 }
 
-// Service tag key
 func (o MySqlTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o MySqlTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -19003,40 +18136,23 @@ func (o OpenSearchOpensearchArrayOutput) Index(i pulumi.IntInput) OpenSearchOpen
 }
 
 type OpenSearchOpensearchUserConfig struct {
-	// Custom domain
-	CustomDomain *string `pulumi:"customDomain"`
-	// Disable replication factor adjustment
-	DisableReplicationFactorAdjustment *string `pulumi:"disableReplicationFactorAdjustment"`
-	// Index patterns
-	IndexPatterns []OpenSearchOpensearchUserConfigIndexPattern `pulumi:"indexPatterns"`
-	// Template settings for all new indexes
-	IndexTemplate *OpenSearchOpensearchUserConfigIndexTemplate `pulumi:"indexTemplate"`
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// Don't reset index.refresh_interval to the default value
-	KeepIndexRefreshInterval *string `pulumi:"keepIndexRefreshInterval"`
-	// Maximum index count
-	MaxIndexCount *string `pulumi:"maxIndexCount"`
-	// OpenSearch settings
-	Opensearch *OpenSearchOpensearchUserConfigOpensearch `pulumi:"opensearch"`
-	// OpenSearch Dashboards settings
-	OpensearchDashboards *OpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
-	// OpenSearch major version
-	OpensearchVersion *string `pulumi:"opensearchVersion"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess *OpenSearchOpensearchUserConfigPrivateAccess `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess *OpenSearchOpensearchUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess *OpenSearchOpensearchUserConfigPublicAccess `pulumi:"publicAccess"`
-	// Name of the basebackup to restore in forked service
-	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
-	// Static IP addresses
-	StaticIps *string `pulumi:"staticIps"`
+	CustomDomain                       *string                                             `pulumi:"customDomain"`
+	DisableReplicationFactorAdjustment *string                                             `pulumi:"disableReplicationFactorAdjustment"`
+	IndexPatterns                      []OpenSearchOpensearchUserConfigIndexPattern        `pulumi:"indexPatterns"`
+	IndexTemplate                      *OpenSearchOpensearchUserConfigIndexTemplate        `pulumi:"indexTemplate"`
+	IpFilters                          []string                                            `pulumi:"ipFilters"`
+	KeepIndexRefreshInterval           *string                                             `pulumi:"keepIndexRefreshInterval"`
+	MaxIndexCount                      *string                                             `pulumi:"maxIndexCount"`
+	Opensearch                         *OpenSearchOpensearchUserConfigOpensearch           `pulumi:"opensearch"`
+	OpensearchDashboards               *OpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
+	OpensearchVersion                  *string                                             `pulumi:"opensearchVersion"`
+	PrivateAccess                      *OpenSearchOpensearchUserConfigPrivateAccess        `pulumi:"privateAccess"`
+	PrivatelinkAccess                  *OpenSearchOpensearchUserConfigPrivatelinkAccess    `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom                  *string                                             `pulumi:"projectToForkFrom"`
+	PublicAccess                       *OpenSearchOpensearchUserConfigPublicAccess         `pulumi:"publicAccess"`
+	RecoveryBasebackupName             *string                                             `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom                  *string                                             `pulumi:"serviceToForkFrom"`
+	StaticIps                          *string                                             `pulumi:"staticIps"`
 }
 
 // OpenSearchOpensearchUserConfigInput is an input type that accepts OpenSearchOpensearchUserConfigArgs and OpenSearchOpensearchUserConfigOutput values.
@@ -19051,40 +18167,23 @@ type OpenSearchOpensearchUserConfigInput interface {
 }
 
 type OpenSearchOpensearchUserConfigArgs struct {
-	// Custom domain
-	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
-	// Disable replication factor adjustment
-	DisableReplicationFactorAdjustment pulumi.StringPtrInput `pulumi:"disableReplicationFactorAdjustment"`
-	// Index patterns
-	IndexPatterns OpenSearchOpensearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
-	// Template settings for all new indexes
-	IndexTemplate OpenSearchOpensearchUserConfigIndexTemplatePtrInput `pulumi:"indexTemplate"`
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Don't reset index.refresh_interval to the default value
-	KeepIndexRefreshInterval pulumi.StringPtrInput `pulumi:"keepIndexRefreshInterval"`
-	// Maximum index count
-	MaxIndexCount pulumi.StringPtrInput `pulumi:"maxIndexCount"`
-	// OpenSearch settings
-	Opensearch OpenSearchOpensearchUserConfigOpensearchPtrInput `pulumi:"opensearch"`
-	// OpenSearch Dashboards settings
-	OpensearchDashboards OpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
-	// OpenSearch major version
-	OpensearchVersion pulumi.StringPtrInput `pulumi:"opensearchVersion"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess OpenSearchOpensearchUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess OpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess OpenSearchOpensearchUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
-	// Name of the basebackup to restore in forked service
-	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
-	// Static IP addresses
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	CustomDomain                       pulumi.StringPtrInput                                      `pulumi:"customDomain"`
+	DisableReplicationFactorAdjustment pulumi.StringPtrInput                                      `pulumi:"disableReplicationFactorAdjustment"`
+	IndexPatterns                      OpenSearchOpensearchUserConfigIndexPatternArrayInput       `pulumi:"indexPatterns"`
+	IndexTemplate                      OpenSearchOpensearchUserConfigIndexTemplatePtrInput        `pulumi:"indexTemplate"`
+	IpFilters                          pulumi.StringArrayInput                                    `pulumi:"ipFilters"`
+	KeepIndexRefreshInterval           pulumi.StringPtrInput                                      `pulumi:"keepIndexRefreshInterval"`
+	MaxIndexCount                      pulumi.StringPtrInput                                      `pulumi:"maxIndexCount"`
+	Opensearch                         OpenSearchOpensearchUserConfigOpensearchPtrInput           `pulumi:"opensearch"`
+	OpensearchDashboards               OpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
+	OpensearchVersion                  pulumi.StringPtrInput                                      `pulumi:"opensearchVersion"`
+	PrivateAccess                      OpenSearchOpensearchUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
+	PrivatelinkAccess                  OpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput    `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom                  pulumi.StringPtrInput                                      `pulumi:"projectToForkFrom"`
+	PublicAccess                       OpenSearchOpensearchUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
+	RecoveryBasebackupName             pulumi.StringPtrInput                                      `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom                  pulumi.StringPtrInput                                      `pulumi:"serviceToForkFrom"`
+	StaticIps                          pulumi.StringPtrInput                                      `pulumi:"staticIps"`
 }
 
 func (OpenSearchOpensearchUserConfigArgs) ElementType() reflect.Type {
@@ -19164,99 +18263,82 @@ func (o OpenSearchOpensearchUserConfigOutput) ToOpenSearchOpensearchUserConfigPt
 	}).(OpenSearchOpensearchUserConfigPtrOutput)
 }
 
-// Custom domain
 func (o OpenSearchOpensearchUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
-// Disable replication factor adjustment
 func (o OpenSearchOpensearchUserConfigOutput) DisableReplicationFactorAdjustment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.DisableReplicationFactorAdjustment }).(pulumi.StringPtrOutput)
 }
 
-// Index patterns
 func (o OpenSearchOpensearchUserConfigOutput) IndexPatterns() OpenSearchOpensearchUserConfigIndexPatternArrayOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) []OpenSearchOpensearchUserConfigIndexPattern {
 		return v.IndexPatterns
 	}).(OpenSearchOpensearchUserConfigIndexPatternArrayOutput)
 }
 
-// Template settings for all new indexes
 func (o OpenSearchOpensearchUserConfigOutput) IndexTemplate() OpenSearchOpensearchUserConfigIndexTemplatePtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigIndexTemplate {
 		return v.IndexTemplate
 	}).(OpenSearchOpensearchUserConfigIndexTemplatePtrOutput)
 }
 
-// IP filter
 func (o OpenSearchOpensearchUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Don't reset index.refresh_interval to the default value
 func (o OpenSearchOpensearchUserConfigOutput) KeepIndexRefreshInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.KeepIndexRefreshInterval }).(pulumi.StringPtrOutput)
 }
 
-// Maximum index count
 func (o OpenSearchOpensearchUserConfigOutput) MaxIndexCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.MaxIndexCount }).(pulumi.StringPtrOutput)
 }
 
-// OpenSearch settings
 func (o OpenSearchOpensearchUserConfigOutput) Opensearch() OpenSearchOpensearchUserConfigOpensearchPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigOpensearch { return v.Opensearch }).(OpenSearchOpensearchUserConfigOpensearchPtrOutput)
 }
 
-// OpenSearch Dashboards settings
 func (o OpenSearchOpensearchUserConfigOutput) OpensearchDashboards() OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigOpensearchDashboards {
 		return v.OpensearchDashboards
 	}).(OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
 }
 
-// OpenSearch major version
 func (o OpenSearchOpensearchUserConfigOutput) OpensearchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.OpensearchVersion }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o OpenSearchOpensearchUserConfigOutput) PrivateAccess() OpenSearchOpensearchUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(OpenSearchOpensearchUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o OpenSearchOpensearchUserConfigOutput) PrivatelinkAccess() OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigPrivatelinkAccess {
 		return v.PrivatelinkAccess
 	}).(OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o OpenSearchOpensearchUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o OpenSearchOpensearchUserConfigOutput) PublicAccess() OpenSearchOpensearchUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigPublicAccess {
 		return v.PublicAccess
 	}).(OpenSearchOpensearchUserConfigPublicAccessPtrOutput)
 }
 
-// Name of the basebackup to restore in forked service
 func (o OpenSearchOpensearchUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o OpenSearchOpensearchUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o OpenSearchOpensearchUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -19285,7 +18367,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) Elem() OpenSearchOpensearchUser
 	}).(OpenSearchOpensearchUserConfigOutput)
 }
 
-// Custom domain
 func (o OpenSearchOpensearchUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -19295,7 +18376,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) CustomDomain() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Disable replication factor adjustment
 func (o OpenSearchOpensearchUserConfigPtrOutput) DisableReplicationFactorAdjustment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -19305,7 +18385,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) DisableReplicationFactorAdjustm
 	}).(pulumi.StringPtrOutput)
 }
 
-// Index patterns
 func (o OpenSearchOpensearchUserConfigPtrOutput) IndexPatterns() OpenSearchOpensearchUserConfigIndexPatternArrayOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) []OpenSearchOpensearchUserConfigIndexPattern {
 		if v == nil {
@@ -19315,7 +18394,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) IndexPatterns() OpenSearchOpens
 	}).(OpenSearchOpensearchUserConfigIndexPatternArrayOutput)
 }
 
-// Template settings for all new indexes
 func (o OpenSearchOpensearchUserConfigPtrOutput) IndexTemplate() OpenSearchOpensearchUserConfigIndexTemplatePtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigIndexTemplate {
 		if v == nil {
@@ -19325,7 +18403,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) IndexTemplate() OpenSearchOpens
 	}).(OpenSearchOpensearchUserConfigIndexTemplatePtrOutput)
 }
 
-// IP filter
 func (o OpenSearchOpensearchUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) []string {
 		if v == nil {
@@ -19335,7 +18412,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) IpFilters() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
-// Don't reset index.refresh_interval to the default value
 func (o OpenSearchOpensearchUserConfigPtrOutput) KeepIndexRefreshInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -19345,7 +18421,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) KeepIndexRefreshInterval() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Maximum index count
 func (o OpenSearchOpensearchUserConfigPtrOutput) MaxIndexCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -19355,7 +18430,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) MaxIndexCount() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// OpenSearch settings
 func (o OpenSearchOpensearchUserConfigPtrOutput) Opensearch() OpenSearchOpensearchUserConfigOpensearchPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigOpensearch {
 		if v == nil {
@@ -19365,7 +18439,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) Opensearch() OpenSearchOpensear
 	}).(OpenSearchOpensearchUserConfigOpensearchPtrOutput)
 }
 
-// OpenSearch Dashboards settings
 func (o OpenSearchOpensearchUserConfigPtrOutput) OpensearchDashboards() OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigOpensearchDashboards {
 		if v == nil {
@@ -19375,7 +18448,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) OpensearchDashboards() OpenSear
 	}).(OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
 }
 
-// OpenSearch major version
 func (o OpenSearchOpensearchUserConfigPtrOutput) OpensearchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -19385,7 +18457,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) OpensearchVersion() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o OpenSearchOpensearchUserConfigPtrOutput) PrivateAccess() OpenSearchOpensearchUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigPrivateAccess {
 		if v == nil {
@@ -19395,7 +18466,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) PrivateAccess() OpenSearchOpens
 	}).(OpenSearchOpensearchUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o OpenSearchOpensearchUserConfigPtrOutput) PrivatelinkAccess() OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -19405,7 +18475,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) PrivatelinkAccess() OpenSearchO
 	}).(OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o OpenSearchOpensearchUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -19415,7 +18484,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) ProjectToForkFrom() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o OpenSearchOpensearchUserConfigPtrOutput) PublicAccess() OpenSearchOpensearchUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigPublicAccess {
 		if v == nil {
@@ -19425,7 +18493,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) PublicAccess() OpenSearchOpense
 	}).(OpenSearchOpensearchUserConfigPublicAccessPtrOutput)
 }
 
-// Name of the basebackup to restore in forked service
 func (o OpenSearchOpensearchUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -19435,7 +18502,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) RecoveryBasebackupName() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o OpenSearchOpensearchUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -19445,7 +18511,6 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) ServiceToForkFrom() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o OpenSearchOpensearchUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -20430,7 +19495,6 @@ func (o OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) OpensearchR
 }
 
 type OpenSearchOpensearchUserConfigPrivateAccess struct {
-	// Opensearch server provided values
 	Opensearch           *string `pulumi:"opensearch"`
 	OpensearchDashboards *string `pulumi:"opensearchDashboards"`
 	Prometheus           *string `pulumi:"prometheus"`
@@ -20448,7 +19512,6 @@ type OpenSearchOpensearchUserConfigPrivateAccessInput interface {
 }
 
 type OpenSearchOpensearchUserConfigPrivateAccessArgs struct {
-	// Opensearch server provided values
 	Opensearch           pulumi.StringPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.StringPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -20531,7 +19594,6 @@ func (o OpenSearchOpensearchUserConfigPrivateAccessOutput) ToOpenSearchOpensearc
 	}).(OpenSearchOpensearchUserConfigPrivateAccessPtrOutput)
 }
 
-// Opensearch server provided values
 func (o OpenSearchOpensearchUserConfigPrivateAccessOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigPrivateAccess) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
 }
@@ -20568,7 +19630,6 @@ func (o OpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Elem() OpenSearchO
 	}).(OpenSearchOpensearchUserConfigPrivateAccessOutput)
 }
 
-// Opensearch server provided values
 func (o OpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -20597,7 +19658,6 @@ func (o OpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Prometheus() pulum
 }
 
 type OpenSearchOpensearchUserConfigPrivatelinkAccess struct {
-	// Opensearch server provided values
 	Opensearch           *string `pulumi:"opensearch"`
 	OpensearchDashboards *string `pulumi:"opensearchDashboards"`
 	Prometheus           *string `pulumi:"prometheus"`
@@ -20615,7 +19675,6 @@ type OpenSearchOpensearchUserConfigPrivatelinkAccessInput interface {
 }
 
 type OpenSearchOpensearchUserConfigPrivatelinkAccessArgs struct {
-	// Opensearch server provided values
 	Opensearch           pulumi.StringPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.StringPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -20698,7 +19757,6 @@ func (o OpenSearchOpensearchUserConfigPrivatelinkAccessOutput) ToOpenSearchOpens
 	}).(OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Opensearch server provided values
 func (o OpenSearchOpensearchUserConfigPrivatelinkAccessOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigPrivatelinkAccess) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
 }
@@ -20735,7 +19793,6 @@ func (o OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Elem() OpenSea
 	}).(OpenSearchOpensearchUserConfigPrivatelinkAccessOutput)
 }
 
-// Opensearch server provided values
 func (o OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -20764,7 +19821,6 @@ func (o OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Prometheus() p
 }
 
 type OpenSearchOpensearchUserConfigPublicAccess struct {
-	// Opensearch server provided values
 	Opensearch           *string `pulumi:"opensearch"`
 	OpensearchDashboards *string `pulumi:"opensearchDashboards"`
 	Prometheus           *string `pulumi:"prometheus"`
@@ -20782,7 +19838,6 @@ type OpenSearchOpensearchUserConfigPublicAccessInput interface {
 }
 
 type OpenSearchOpensearchUserConfigPublicAccessArgs struct {
-	// Opensearch server provided values
 	Opensearch           pulumi.StringPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.StringPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -20865,7 +19920,6 @@ func (o OpenSearchOpensearchUserConfigPublicAccessOutput) ToOpenSearchOpensearch
 	}).(OpenSearchOpensearchUserConfigPublicAccessPtrOutput)
 }
 
-// Opensearch server provided values
 func (o OpenSearchOpensearchUserConfigPublicAccessOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigPublicAccess) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
 }
@@ -20902,7 +19956,6 @@ func (o OpenSearchOpensearchUserConfigPublicAccessPtrOutput) Elem() OpenSearchOp
 	}).(OpenSearchOpensearchUserConfigPublicAccessOutput)
 }
 
-// Opensearch server provided values
 func (o OpenSearchOpensearchUserConfigPublicAccessPtrOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigPublicAccess) *string {
 		if v == nil {
@@ -20931,9 +19984,7 @@ func (o OpenSearchOpensearchUserConfigPublicAccessPtrOutput) Prometheus() pulumi
 }
 
 type OpenSearchServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -20949,9 +20000,7 @@ type OpenSearchServiceIntegrationInput interface {
 }
 
 type OpenSearchServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -21006,12 +20055,10 @@ func (o OpenSearchServiceIntegrationOutput) ToOpenSearchServiceIntegrationOutput
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o OpenSearchServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v OpenSearchServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o OpenSearchServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v OpenSearchServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -21037,9 +20084,7 @@ func (o OpenSearchServiceIntegrationArrayOutput) Index(i pulumi.IntInput) OpenSe
 }
 
 type OpenSearchTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -21055,9 +20100,7 @@ type OpenSearchTagInput interface {
 }
 
 type OpenSearchTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -21112,12 +20155,10 @@ func (o OpenSearchTagOutput) ToOpenSearchTagOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Service tag key
 func (o OpenSearchTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v OpenSearchTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o OpenSearchTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OpenSearchTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -21273,22 +20314,14 @@ func (o PgComponentArrayOutput) Index(i pulumi.IntInput) PgComponentOutput {
 }
 
 type PgPg struct {
-	// Primary PostgreSQL database name
-	Dbname *string `pulumi:"dbname"`
-	// PostgreSQL master node host IP or name
-	Host *string `pulumi:"host"`
-	// PostgreSQL admin user password
-	Password *string `pulumi:"password"`
-	// PostgreSQL port
-	Port *int `pulumi:"port"`
-	// PostgreSQL replica URI for services with a replica
+	Dbname     *string `pulumi:"dbname"`
+	Host       *string `pulumi:"host"`
+	Password   *string `pulumi:"password"`
+	Port       *int    `pulumi:"port"`
 	ReplicaUri *string `pulumi:"replicaUri"`
-	// PostgreSQL sslmode setting (currently always "require")
-	Sslmode *string `pulumi:"sslmode"`
-	// PostgreSQL master connection URI
-	Uri *string `pulumi:"uri"`
-	// PostgreSQL admin user name
-	User *string `pulumi:"user"`
+	Sslmode    *string `pulumi:"sslmode"`
+	Uri        *string `pulumi:"uri"`
+	User       *string `pulumi:"user"`
 }
 
 // PgPgInput is an input type that accepts PgPgArgs and PgPgOutput values.
@@ -21303,22 +20336,14 @@ type PgPgInput interface {
 }
 
 type PgPgArgs struct {
-	// Primary PostgreSQL database name
-	Dbname pulumi.StringPtrInput `pulumi:"dbname"`
-	// PostgreSQL master node host IP or name
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// PostgreSQL admin user password
-	Password pulumi.StringPtrInput `pulumi:"password"`
-	// PostgreSQL port
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// PostgreSQL replica URI for services with a replica
+	Dbname     pulumi.StringPtrInput `pulumi:"dbname"`
+	Host       pulumi.StringPtrInput `pulumi:"host"`
+	Password   pulumi.StringPtrInput `pulumi:"password"`
+	Port       pulumi.IntPtrInput    `pulumi:"port"`
 	ReplicaUri pulumi.StringPtrInput `pulumi:"replicaUri"`
-	// PostgreSQL sslmode setting (currently always "require")
-	Sslmode pulumi.StringPtrInput `pulumi:"sslmode"`
-	// PostgreSQL master connection URI
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
-	// PostgreSQL admin user name
-	User pulumi.StringPtrInput `pulumi:"user"`
+	Sslmode    pulumi.StringPtrInput `pulumi:"sslmode"`
+	Uri        pulumi.StringPtrInput `pulumi:"uri"`
+	User       pulumi.StringPtrInput `pulumi:"user"`
 }
 
 func (PgPgArgs) ElementType() reflect.Type {
@@ -21398,42 +20423,34 @@ func (o PgPgOutput) ToPgPgPtrOutputWithContext(ctx context.Context) PgPgPtrOutpu
 	}).(PgPgPtrOutput)
 }
 
-// Primary PostgreSQL database name
 func (o PgPgOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Dbname }).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL master node host IP or name
 func (o PgPgOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL admin user password
 func (o PgPgOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL port
 func (o PgPgOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PgPg) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL replica URI for services with a replica
 func (o PgPgOutput) ReplicaUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.ReplicaUri }).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL sslmode setting (currently always "require")
 func (o PgPgOutput) Sslmode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Sslmode }).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL master connection URI
 func (o PgPgOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL admin user name
 func (o PgPgOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.User }).(pulumi.StringPtrOutput)
 }
@@ -21462,7 +20479,6 @@ func (o PgPgPtrOutput) Elem() PgPgOutput {
 	}).(PgPgOutput)
 }
 
-// Primary PostgreSQL database name
 func (o PgPgPtrOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -21472,7 +20488,6 @@ func (o PgPgPtrOutput) Dbname() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL master node host IP or name
 func (o PgPgPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -21482,7 +20497,6 @@ func (o PgPgPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL admin user password
 func (o PgPgPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -21492,7 +20506,6 @@ func (o PgPgPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL port
 func (o PgPgPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PgPg) *int {
 		if v == nil {
@@ -21502,7 +20515,6 @@ func (o PgPgPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL replica URI for services with a replica
 func (o PgPgPtrOutput) ReplicaUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -21512,7 +20524,6 @@ func (o PgPgPtrOutput) ReplicaUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL sslmode setting (currently always "require")
 func (o PgPgPtrOutput) Sslmode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -21522,7 +20533,6 @@ func (o PgPgPtrOutput) Sslmode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL master connection URI
 func (o PgPgPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -21532,7 +20542,6 @@ func (o PgPgPtrOutput) Uri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL admin user name
 func (o PgPgPtrOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -21543,56 +20552,31 @@ func (o PgPgPtrOutput) User() pulumi.StringPtrOutput {
 }
 
 type PgPgUserConfig struct {
-	// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-	AdminPassword *string `pulumi:"adminPassword"`
-	// Custom username for admin user. This must be set only when a new service is being created.
-	AdminUsername *string `pulumi:"adminUsername"`
-	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-	BackupHour *string `pulumi:"backupHour"`
-	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-	BackupMinute *string `pulumi:"backupMinute"`
-	// Enable IPv6
-	EnableIpv6 *string `pulumi:"enableIpv6"`
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// Migrate data from existing server
-	Migration *PgPgUserConfigMigration `pulumi:"migration"`
-	// postgresql.conf configuration values
-	Pg *PgPgUserConfigPg `pulumi:"pg"`
-	// Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
-	PgReadReplica *string `pulumi:"pgReadReplica"`
-	// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
-	PgServiceToForkFrom *string `pulumi:"pgServiceToForkFrom"`
-	// PostgreSQL major version
-	PgVersion *string `pulumi:"pgVersion"`
-	// PGBouncer connection pooling settings
-	Pgbouncer *PgPgUserConfigPgbouncer `pulumi:"pgbouncer"`
-	// PGLookout settings
-	Pglookout *PgPgUserConfigPglookout `pulumi:"pglookout"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess *PgPgUserConfigPrivateAccess `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess *PgPgUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess *PgPgUserConfigPublicAccess `pulumi:"publicAccess"`
-	// Recovery target time when forking a service. This has effect only when a new service is being created.
-	RecoveryTargetTime *string `pulumi:"recoveryTargetTime"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
-	// shared*buffers*percentage
-	SharedBuffersPercentage *string `pulumi:"sharedBuffersPercentage"`
-	// Static IP addresses
-	StaticIps *string `pulumi:"staticIps"`
-	// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-	SynchronousReplication *string `pulumi:"synchronousReplication"`
-	// TimescaleDB extension configuration values
-	Timescaledb *PgPgUserConfigTimescaledb `pulumi:"timescaledb"`
-	// Variant of the PostgreSQL service, may affect the features that are exposed by default
-	Variant *string `pulumi:"variant"`
-	// work_mem
-	WorkMem *string `pulumi:"workMem"`
+	AdminPassword           *string                          `pulumi:"adminPassword"`
+	AdminUsername           *string                          `pulumi:"adminUsername"`
+	BackupHour              *string                          `pulumi:"backupHour"`
+	BackupMinute            *string                          `pulumi:"backupMinute"`
+	EnableIpv6              *string                          `pulumi:"enableIpv6"`
+	IpFilters               []string                         `pulumi:"ipFilters"`
+	Migration               *PgPgUserConfigMigration         `pulumi:"migration"`
+	Pg                      *PgPgUserConfigPg                `pulumi:"pg"`
+	PgReadReplica           *string                          `pulumi:"pgReadReplica"`
+	PgServiceToForkFrom     *string                          `pulumi:"pgServiceToForkFrom"`
+	PgVersion               *string                          `pulumi:"pgVersion"`
+	Pgbouncer               *PgPgUserConfigPgbouncer         `pulumi:"pgbouncer"`
+	Pglookout               *PgPgUserConfigPglookout         `pulumi:"pglookout"`
+	PrivateAccess           *PgPgUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	PrivatelinkAccess       *PgPgUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom       *string                          `pulumi:"projectToForkFrom"`
+	PublicAccess            *PgPgUserConfigPublicAccess      `pulumi:"publicAccess"`
+	RecoveryTargetTime      *string                          `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom       *string                          `pulumi:"serviceToForkFrom"`
+	SharedBuffersPercentage *string                          `pulumi:"sharedBuffersPercentage"`
+	StaticIps               *string                          `pulumi:"staticIps"`
+	SynchronousReplication  *string                          `pulumi:"synchronousReplication"`
+	Timescaledb             *PgPgUserConfigTimescaledb       `pulumi:"timescaledb"`
+	Variant                 *string                          `pulumi:"variant"`
+	WorkMem                 *string                          `pulumi:"workMem"`
 }
 
 // PgPgUserConfigInput is an input type that accepts PgPgUserConfigArgs and PgPgUserConfigOutput values.
@@ -21607,56 +20591,31 @@ type PgPgUserConfigInput interface {
 }
 
 type PgPgUserConfigArgs struct {
-	// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
-	// Custom username for admin user. This must be set only when a new service is being created.
-	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
-	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
-	BackupHour pulumi.StringPtrInput `pulumi:"backupHour"`
-	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-	BackupMinute pulumi.StringPtrInput `pulumi:"backupMinute"`
-	// Enable IPv6
-	EnableIpv6 pulumi.StringPtrInput `pulumi:"enableIpv6"`
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Migrate data from existing server
-	Migration PgPgUserConfigMigrationPtrInput `pulumi:"migration"`
-	// postgresql.conf configuration values
-	Pg PgPgUserConfigPgPtrInput `pulumi:"pg"`
-	// Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
-	PgReadReplica pulumi.StringPtrInput `pulumi:"pgReadReplica"`
-	// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
-	PgServiceToForkFrom pulumi.StringPtrInput `pulumi:"pgServiceToForkFrom"`
-	// PostgreSQL major version
-	PgVersion pulumi.StringPtrInput `pulumi:"pgVersion"`
-	// PGBouncer connection pooling settings
-	Pgbouncer PgPgUserConfigPgbouncerPtrInput `pulumi:"pgbouncer"`
-	// PGLookout settings
-	Pglookout PgPgUserConfigPglookoutPtrInput `pulumi:"pglookout"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess PgPgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess PgPgUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess PgPgUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
-	// Recovery target time when forking a service. This has effect only when a new service is being created.
-	RecoveryTargetTime pulumi.StringPtrInput `pulumi:"recoveryTargetTime"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
-	// shared*buffers*percentage
-	SharedBuffersPercentage pulumi.StringPtrInput `pulumi:"sharedBuffersPercentage"`
-	// Static IP addresses
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
-	// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-	SynchronousReplication pulumi.StringPtrInput `pulumi:"synchronousReplication"`
-	// TimescaleDB extension configuration values
-	Timescaledb PgPgUserConfigTimescaledbPtrInput `pulumi:"timescaledb"`
-	// Variant of the PostgreSQL service, may affect the features that are exposed by default
-	Variant pulumi.StringPtrInput `pulumi:"variant"`
-	// work_mem
-	WorkMem pulumi.StringPtrInput `pulumi:"workMem"`
+	AdminPassword           pulumi.StringPtrInput                   `pulumi:"adminPassword"`
+	AdminUsername           pulumi.StringPtrInput                   `pulumi:"adminUsername"`
+	BackupHour              pulumi.StringPtrInput                   `pulumi:"backupHour"`
+	BackupMinute            pulumi.StringPtrInput                   `pulumi:"backupMinute"`
+	EnableIpv6              pulumi.StringPtrInput                   `pulumi:"enableIpv6"`
+	IpFilters               pulumi.StringArrayInput                 `pulumi:"ipFilters"`
+	Migration               PgPgUserConfigMigrationPtrInput         `pulumi:"migration"`
+	Pg                      PgPgUserConfigPgPtrInput                `pulumi:"pg"`
+	PgReadReplica           pulumi.StringPtrInput                   `pulumi:"pgReadReplica"`
+	PgServiceToForkFrom     pulumi.StringPtrInput                   `pulumi:"pgServiceToForkFrom"`
+	PgVersion               pulumi.StringPtrInput                   `pulumi:"pgVersion"`
+	Pgbouncer               PgPgUserConfigPgbouncerPtrInput         `pulumi:"pgbouncer"`
+	Pglookout               PgPgUserConfigPglookoutPtrInput         `pulumi:"pglookout"`
+	PrivateAccess           PgPgUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	PrivatelinkAccess       PgPgUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom       pulumi.StringPtrInput                   `pulumi:"projectToForkFrom"`
+	PublicAccess            PgPgUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	RecoveryTargetTime      pulumi.StringPtrInput                   `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom       pulumi.StringPtrInput                   `pulumi:"serviceToForkFrom"`
+	SharedBuffersPercentage pulumi.StringPtrInput                   `pulumi:"sharedBuffersPercentage"`
+	StaticIps               pulumi.StringPtrInput                   `pulumi:"staticIps"`
+	SynchronousReplication  pulumi.StringPtrInput                   `pulumi:"synchronousReplication"`
+	Timescaledb             PgPgUserConfigTimescaledbPtrInput       `pulumi:"timescaledb"`
+	Variant                 pulumi.StringPtrInput                   `pulumi:"variant"`
+	WorkMem                 pulumi.StringPtrInput                   `pulumi:"workMem"`
 }
 
 func (PgPgUserConfigArgs) ElementType() reflect.Type {
@@ -21736,127 +20695,102 @@ func (o PgPgUserConfigOutput) ToPgPgUserConfigPtrOutputWithContext(ctx context.C
 	}).(PgPgUserConfigPtrOutput)
 }
 
-// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
 func (o PgPgUserConfigOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
 
-// Custom username for admin user. This must be set only when a new service is being created.
 func (o PgPgUserConfigOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
-// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o PgPgUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.BackupHour }).(pulumi.StringPtrOutput)
 }
 
-// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o PgPgUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
-// Enable IPv6
 func (o PgPgUserConfigOutput) EnableIpv6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.EnableIpv6 }).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o PgPgUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PgPgUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Migrate data from existing server
 func (o PgPgUserConfigOutput) Migration() PgPgUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigMigration { return v.Migration }).(PgPgUserConfigMigrationPtrOutput)
 }
 
-// postgresql.conf configuration values
 func (o PgPgUserConfigOutput) Pg() PgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPg { return v.Pg }).(PgPgUserConfigPgPtrOutput)
 }
 
-// Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
 func (o PgPgUserConfigOutput) PgReadReplica() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.PgReadReplica }).(pulumi.StringPtrOutput)
 }
 
-// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
 func (o PgPgUserConfigOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.PgServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL major version
 func (o PgPgUserConfigOutput) PgVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.PgVersion }).(pulumi.StringPtrOutput)
 }
 
-// PGBouncer connection pooling settings
 func (o PgPgUserConfigOutput) Pgbouncer() PgPgUserConfigPgbouncerPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPgbouncer { return v.Pgbouncer }).(PgPgUserConfigPgbouncerPtrOutput)
 }
 
-// PGLookout settings
 func (o PgPgUserConfigOutput) Pglookout() PgPgUserConfigPglookoutPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPglookout { return v.Pglookout }).(PgPgUserConfigPglookoutPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o PgPgUserConfigOutput) PrivateAccess() PgPgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPrivateAccess { return v.PrivateAccess }).(PgPgUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o PgPgUserConfigOutput) PrivatelinkAccess() PgPgUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(PgPgUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o PgPgUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o PgPgUserConfigOutput) PublicAccess() PgPgUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPublicAccess { return v.PublicAccess }).(PgPgUserConfigPublicAccessPtrOutput)
 }
 
-// Recovery target time when forking a service. This has effect only when a new service is being created.
 func (o PgPgUserConfigOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o PgPgUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// shared*buffers*percentage
 func (o PgPgUserConfigOutput) SharedBuffersPercentage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.SharedBuffersPercentage }).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o PgPgUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
 
-// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
 func (o PgPgUserConfigOutput) SynchronousReplication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.SynchronousReplication }).(pulumi.StringPtrOutput)
 }
 
-// TimescaleDB extension configuration values
 func (o PgPgUserConfigOutput) Timescaledb() PgPgUserConfigTimescaledbPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigTimescaledb { return v.Timescaledb }).(PgPgUserConfigTimescaledbPtrOutput)
 }
 
-// Variant of the PostgreSQL service, may affect the features that are exposed by default
 func (o PgPgUserConfigOutput) Variant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.Variant }).(pulumi.StringPtrOutput)
 }
 
-// work_mem
 func (o PgPgUserConfigOutput) WorkMem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.WorkMem }).(pulumi.StringPtrOutput)
 }
@@ -21885,7 +20819,6 @@ func (o PgPgUserConfigPtrOutput) Elem() PgPgUserConfigOutput {
 	}).(PgPgUserConfigOutput)
 }
 
-// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -21895,7 +20828,6 @@ func (o PgPgUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Custom username for admin user. This must be set only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -21905,7 +20837,6 @@ func (o PgPgUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o PgPgUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -21915,7 +20846,6 @@ func (o PgPgUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o PgPgUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -21925,7 +20855,6 @@ func (o PgPgUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enable IPv6
 func (o PgPgUserConfigPtrOutput) EnableIpv6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -21935,7 +20864,6 @@ func (o PgPgUserConfigPtrOutput) EnableIpv6() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// IP filter
 func (o PgPgUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) []string {
 		if v == nil {
@@ -21945,7 +20873,6 @@ func (o PgPgUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Migrate data from existing server
 func (o PgPgUserConfigPtrOutput) Migration() PgPgUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigMigration {
 		if v == nil {
@@ -21955,7 +20882,6 @@ func (o PgPgUserConfigPtrOutput) Migration() PgPgUserConfigMigrationPtrOutput {
 	}).(PgPgUserConfigMigrationPtrOutput)
 }
 
-// postgresql.conf configuration values
 func (o PgPgUserConfigPtrOutput) Pg() PgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPg {
 		if v == nil {
@@ -21965,7 +20891,6 @@ func (o PgPgUserConfigPtrOutput) Pg() PgPgUserConfigPgPtrOutput {
 	}).(PgPgUserConfigPgPtrOutput)
 }
 
-// Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
 func (o PgPgUserConfigPtrOutput) PgReadReplica() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -21975,7 +20900,6 @@ func (o PgPgUserConfigPtrOutput) PgReadReplica() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -21985,7 +20909,6 @@ func (o PgPgUserConfigPtrOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// PostgreSQL major version
 func (o PgPgUserConfigPtrOutput) PgVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -21995,7 +20918,6 @@ func (o PgPgUserConfigPtrOutput) PgVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// PGBouncer connection pooling settings
 func (o PgPgUserConfigPtrOutput) Pgbouncer() PgPgUserConfigPgbouncerPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPgbouncer {
 		if v == nil {
@@ -22005,7 +20927,6 @@ func (o PgPgUserConfigPtrOutput) Pgbouncer() PgPgUserConfigPgbouncerPtrOutput {
 	}).(PgPgUserConfigPgbouncerPtrOutput)
 }
 
-// PGLookout settings
 func (o PgPgUserConfigPtrOutput) Pglookout() PgPgUserConfigPglookoutPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPglookout {
 		if v == nil {
@@ -22015,7 +20936,6 @@ func (o PgPgUserConfigPtrOutput) Pglookout() PgPgUserConfigPglookoutPtrOutput {
 	}).(PgPgUserConfigPglookoutPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o PgPgUserConfigPtrOutput) PrivateAccess() PgPgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPrivateAccess {
 		if v == nil {
@@ -22025,7 +20945,6 @@ func (o PgPgUserConfigPtrOutput) PrivateAccess() PgPgUserConfigPrivateAccessPtrO
 	}).(PgPgUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o PgPgUserConfigPtrOutput) PrivatelinkAccess() PgPgUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -22035,7 +20954,6 @@ func (o PgPgUserConfigPtrOutput) PrivatelinkAccess() PgPgUserConfigPrivatelinkAc
 	}).(PgPgUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -22045,7 +20963,6 @@ func (o PgPgUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o PgPgUserConfigPtrOutput) PublicAccess() PgPgUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPublicAccess {
 		if v == nil {
@@ -22055,7 +20972,6 @@ func (o PgPgUserConfigPtrOutput) PublicAccess() PgPgUserConfigPublicAccessPtrOut
 	}).(PgPgUserConfigPublicAccessPtrOutput)
 }
 
-// Recovery target time when forking a service. This has effect only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -22065,7 +20981,6 @@ func (o PgPgUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -22075,7 +20990,6 @@ func (o PgPgUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// shared*buffers*percentage
 func (o PgPgUserConfigPtrOutput) SharedBuffersPercentage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -22085,7 +20999,6 @@ func (o PgPgUserConfigPtrOutput) SharedBuffersPercentage() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o PgPgUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -22095,7 +21008,6 @@ func (o PgPgUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
 func (o PgPgUserConfigPtrOutput) SynchronousReplication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -22105,7 +21017,6 @@ func (o PgPgUserConfigPtrOutput) SynchronousReplication() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// TimescaleDB extension configuration values
 func (o PgPgUserConfigPtrOutput) Timescaledb() PgPgUserConfigTimescaledbPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigTimescaledb {
 		if v == nil {
@@ -22115,7 +21026,6 @@ func (o PgPgUserConfigPtrOutput) Timescaledb() PgPgUserConfigTimescaledbPtrOutpu
 	}).(PgPgUserConfigTimescaledbPtrOutput)
 }
 
-// Variant of the PostgreSQL service, may affect the features that are exposed by default
 func (o PgPgUserConfigPtrOutput) Variant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -22125,7 +21035,6 @@ func (o PgPgUserConfigPtrOutput) Variant() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// work_mem
 func (o PgPgUserConfigPtrOutput) WorkMem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -23568,7 +22477,6 @@ func (o PgPgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pulumi
 }
 
 type PgPgUserConfigPrivateAccess struct {
-	// PostgreSQL specific server provided values
 	Pg         *string `pulumi:"pg"`
 	Pgbouncer  *string `pulumi:"pgbouncer"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -23586,7 +22494,6 @@ type PgPgUserConfigPrivateAccessInput interface {
 }
 
 type PgPgUserConfigPrivateAccessArgs struct {
-	// PostgreSQL specific server provided values
 	Pg         pulumi.StringPtrInput `pulumi:"pg"`
 	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -23669,7 +22576,6 @@ func (o PgPgUserConfigPrivateAccessOutput) ToPgPgUserConfigPrivateAccessPtrOutpu
 	}).(PgPgUserConfigPrivateAccessPtrOutput)
 }
 
-// PostgreSQL specific server provided values
 func (o PgPgUserConfigPrivateAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPrivateAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
@@ -23706,7 +22612,6 @@ func (o PgPgUserConfigPrivateAccessPtrOutput) Elem() PgPgUserConfigPrivateAccess
 	}).(PgPgUserConfigPrivateAccessOutput)
 }
 
-// PostgreSQL specific server provided values
 func (o PgPgUserConfigPrivateAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -23735,7 +22640,6 @@ func (o PgPgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutpu
 }
 
 type PgPgUserConfigPrivatelinkAccess struct {
-	// PostgreSQL specific server provided values
 	Pg         *string `pulumi:"pg"`
 	Pgbouncer  *string `pulumi:"pgbouncer"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -23753,7 +22657,6 @@ type PgPgUserConfigPrivatelinkAccessInput interface {
 }
 
 type PgPgUserConfigPrivatelinkAccessArgs struct {
-	// PostgreSQL specific server provided values
 	Pg         pulumi.StringPtrInput `pulumi:"pg"`
 	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -23836,7 +22739,6 @@ func (o PgPgUserConfigPrivatelinkAccessOutput) ToPgPgUserConfigPrivatelinkAccess
 	}).(PgPgUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// PostgreSQL specific server provided values
 func (o PgPgUserConfigPrivatelinkAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPrivatelinkAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
@@ -23873,7 +22775,6 @@ func (o PgPgUserConfigPrivatelinkAccessPtrOutput) Elem() PgPgUserConfigPrivateli
 	}).(PgPgUserConfigPrivatelinkAccessOutput)
 }
 
-// PostgreSQL specific server provided values
 func (o PgPgUserConfigPrivatelinkAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -23902,7 +22803,6 @@ func (o PgPgUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.StringPtrO
 }
 
 type PgPgUserConfigPublicAccess struct {
-	// PostgreSQL specific server provided values
 	Pg         *string `pulumi:"pg"`
 	Pgbouncer  *string `pulumi:"pgbouncer"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -23920,7 +22820,6 @@ type PgPgUserConfigPublicAccessInput interface {
 }
 
 type PgPgUserConfigPublicAccessArgs struct {
-	// PostgreSQL specific server provided values
 	Pg         pulumi.StringPtrInput `pulumi:"pg"`
 	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -24003,7 +22902,6 @@ func (o PgPgUserConfigPublicAccessOutput) ToPgPgUserConfigPublicAccessPtrOutputW
 	}).(PgPgUserConfigPublicAccessPtrOutput)
 }
 
-// PostgreSQL specific server provided values
 func (o PgPgUserConfigPublicAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPublicAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
@@ -24040,7 +22938,6 @@ func (o PgPgUserConfigPublicAccessPtrOutput) Elem() PgPgUserConfigPublicAccessOu
 	}).(PgPgUserConfigPublicAccessOutput)
 }
 
-// PostgreSQL specific server provided values
 func (o PgPgUserConfigPublicAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPublicAccess) *string {
 		if v == nil {
@@ -24202,9 +23099,7 @@ func (o PgPgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.String
 }
 
 type PgServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -24220,9 +23115,7 @@ type PgServiceIntegrationInput interface {
 }
 
 type PgServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -24277,12 +23170,10 @@ func (o PgServiceIntegrationOutput) ToPgServiceIntegrationOutputWithContext(ctx 
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o PgServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v PgServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o PgServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v PgServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -24308,9 +23199,7 @@ func (o PgServiceIntegrationArrayOutput) Index(i pulumi.IntInput) PgServiceInteg
 }
 
 type PgTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -24326,9 +23215,7 @@ type PgTagInput interface {
 }
 
 type PgTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -24383,12 +23270,10 @@ func (o PgTagOutput) ToPgTagOutputWithContext(ctx context.Context) PgTagOutput {
 	return o
 }
 
-// Service tag key
 func (o PgTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v PgTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o PgTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v PgTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -24414,9 +23299,7 @@ func (o PgTagArrayOutput) Index(i pulumi.IntInput) PgTagOutput {
 }
 
 type ProjectTag struct {
-	// Project tag key
-	Key string `pulumi:"key"`
-	// Project tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -24432,9 +23315,7 @@ type ProjectTagInput interface {
 }
 
 type ProjectTagArgs struct {
-	// Project tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Project tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -24489,12 +23370,10 @@ func (o ProjectTagOutput) ToProjectTagOutputWithContext(ctx context.Context) Pro
 	return o
 }
 
-// Project tag key
 func (o ProjectTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Project tag value
 func (o ProjectTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -24738,46 +23617,26 @@ func (o RedisRediArrayOutput) Index(i pulumi.IntInput) RedisRediOutput {
 }
 
 type RedisRedisUserConfig struct {
-	// IP filter
-	IpFilters []string `pulumi:"ipFilters"`
-	// Migrate data from existing server
-	Migration *RedisRedisUserConfigMigration `pulumi:"migration"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess *RedisRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess *RedisRedisUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess *RedisRedisUserConfigPublicAccess `pulumi:"publicAccess"`
-	// Name of the basebackup to restore in forked service
-	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
-	// Default ACL for pub/sub channels used when Redis user is created
-	RedisAclChannelsDefault *string `pulumi:"redisAclChannelsDefault"`
-	// Redis IO thread count
-	RedisIoThreads *string `pulumi:"redisIoThreads"`
-	// LFU maxmemory-policy counter decay time in minutes
-	RedisLfuDecayTime *string `pulumi:"redisLfuDecayTime"`
-	// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
-	RedisLfuLogFactor *string `pulumi:"redisLfuLogFactor"`
-	// Redis maxmemory-policy
-	RedisMaxmemoryPolicy *string `pulumi:"redisMaxmemoryPolicy"`
-	// Set notify-keyspace-events option
-	RedisNotifyKeyspaceEvents *string `pulumi:"redisNotifyKeyspaceEvents"`
-	// Number of redis databases
-	RedisNumberOfDatabases *string `pulumi:"redisNumberOfDatabases"`
-	// Redis persistence
-	RedisPersistence *string `pulumi:"redisPersistence"`
-	// Pub/sub client output buffer hard limit in MB
-	RedisPubsubClientOutputBufferLimit *string `pulumi:"redisPubsubClientOutputBufferLimit"`
-	// Require SSL to access Redis
-	RedisSsl *string `pulumi:"redisSsl"`
-	// Redis idle connection timeout in seconds
-	RedisTimeout *string `pulumi:"redisTimeout"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
-	// Static IP addresses
-	StaticIps *string `pulumi:"staticIps"`
+	IpFilters                          []string                               `pulumi:"ipFilters"`
+	Migration                          *RedisRedisUserConfigMigration         `pulumi:"migration"`
+	PrivateAccess                      *RedisRedisUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	PrivatelinkAccess                  *RedisRedisUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom                  *string                                `pulumi:"projectToForkFrom"`
+	PublicAccess                       *RedisRedisUserConfigPublicAccess      `pulumi:"publicAccess"`
+	RecoveryBasebackupName             *string                                `pulumi:"recoveryBasebackupName"`
+	RedisAclChannelsDefault            *string                                `pulumi:"redisAclChannelsDefault"`
+	RedisIoThreads                     *string                                `pulumi:"redisIoThreads"`
+	RedisLfuDecayTime                  *string                                `pulumi:"redisLfuDecayTime"`
+	RedisLfuLogFactor                  *string                                `pulumi:"redisLfuLogFactor"`
+	RedisMaxmemoryPolicy               *string                                `pulumi:"redisMaxmemoryPolicy"`
+	RedisNotifyKeyspaceEvents          *string                                `pulumi:"redisNotifyKeyspaceEvents"`
+	RedisNumberOfDatabases             *string                                `pulumi:"redisNumberOfDatabases"`
+	RedisPersistence                   *string                                `pulumi:"redisPersistence"`
+	RedisPubsubClientOutputBufferLimit *string                                `pulumi:"redisPubsubClientOutputBufferLimit"`
+	RedisSsl                           *string                                `pulumi:"redisSsl"`
+	RedisTimeout                       *string                                `pulumi:"redisTimeout"`
+	ServiceToForkFrom                  *string                                `pulumi:"serviceToForkFrom"`
+	StaticIps                          *string                                `pulumi:"staticIps"`
 }
 
 // RedisRedisUserConfigInput is an input type that accepts RedisRedisUserConfigArgs and RedisRedisUserConfigOutput values.
@@ -24792,46 +23651,26 @@ type RedisRedisUserConfigInput interface {
 }
 
 type RedisRedisUserConfigArgs struct {
-	// IP filter
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Migrate data from existing server
-	Migration RedisRedisUserConfigMigrationPtrInput `pulumi:"migration"`
-	// Allow access to selected service ports from private networks
-	PrivateAccess RedisRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	// Allow access to selected service components through Privatelink
-	PrivatelinkAccess RedisRedisUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	// Name of another project to fork a service from. This has effect only when a new service is being created.
-	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
-	// Allow access to selected service ports from the public Internet
-	PublicAccess RedisRedisUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
-	// Name of the basebackup to restore in forked service
-	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
-	// Default ACL for pub/sub channels used when Redis user is created
-	RedisAclChannelsDefault pulumi.StringPtrInput `pulumi:"redisAclChannelsDefault"`
-	// Redis IO thread count
-	RedisIoThreads pulumi.StringPtrInput `pulumi:"redisIoThreads"`
-	// LFU maxmemory-policy counter decay time in minutes
-	RedisLfuDecayTime pulumi.StringPtrInput `pulumi:"redisLfuDecayTime"`
-	// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
-	RedisLfuLogFactor pulumi.StringPtrInput `pulumi:"redisLfuLogFactor"`
-	// Redis maxmemory-policy
-	RedisMaxmemoryPolicy pulumi.StringPtrInput `pulumi:"redisMaxmemoryPolicy"`
-	// Set notify-keyspace-events option
-	RedisNotifyKeyspaceEvents pulumi.StringPtrInput `pulumi:"redisNotifyKeyspaceEvents"`
-	// Number of redis databases
-	RedisNumberOfDatabases pulumi.StringPtrInput `pulumi:"redisNumberOfDatabases"`
-	// Redis persistence
-	RedisPersistence pulumi.StringPtrInput `pulumi:"redisPersistence"`
-	// Pub/sub client output buffer hard limit in MB
-	RedisPubsubClientOutputBufferLimit pulumi.StringPtrInput `pulumi:"redisPubsubClientOutputBufferLimit"`
-	// Require SSL to access Redis
-	RedisSsl pulumi.StringPtrInput `pulumi:"redisSsl"`
-	// Redis idle connection timeout in seconds
-	RedisTimeout pulumi.StringPtrInput `pulumi:"redisTimeout"`
-	// Name of another service to fork from. This has effect only when a new service is being created.
-	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
-	// Static IP addresses
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	IpFilters                          pulumi.StringArrayInput                       `pulumi:"ipFilters"`
+	Migration                          RedisRedisUserConfigMigrationPtrInput         `pulumi:"migration"`
+	PrivateAccess                      RedisRedisUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	PrivatelinkAccess                  RedisRedisUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom                  pulumi.StringPtrInput                         `pulumi:"projectToForkFrom"`
+	PublicAccess                       RedisRedisUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	RecoveryBasebackupName             pulumi.StringPtrInput                         `pulumi:"recoveryBasebackupName"`
+	RedisAclChannelsDefault            pulumi.StringPtrInput                         `pulumi:"redisAclChannelsDefault"`
+	RedisIoThreads                     pulumi.StringPtrInput                         `pulumi:"redisIoThreads"`
+	RedisLfuDecayTime                  pulumi.StringPtrInput                         `pulumi:"redisLfuDecayTime"`
+	RedisLfuLogFactor                  pulumi.StringPtrInput                         `pulumi:"redisLfuLogFactor"`
+	RedisMaxmemoryPolicy               pulumi.StringPtrInput                         `pulumi:"redisMaxmemoryPolicy"`
+	RedisNotifyKeyspaceEvents          pulumi.StringPtrInput                         `pulumi:"redisNotifyKeyspaceEvents"`
+	RedisNumberOfDatabases             pulumi.StringPtrInput                         `pulumi:"redisNumberOfDatabases"`
+	RedisPersistence                   pulumi.StringPtrInput                         `pulumi:"redisPersistence"`
+	RedisPubsubClientOutputBufferLimit pulumi.StringPtrInput                         `pulumi:"redisPubsubClientOutputBufferLimit"`
+	RedisSsl                           pulumi.StringPtrInput                         `pulumi:"redisSsl"`
+	RedisTimeout                       pulumi.StringPtrInput                         `pulumi:"redisTimeout"`
+	ServiceToForkFrom                  pulumi.StringPtrInput                         `pulumi:"serviceToForkFrom"`
+	StaticIps                          pulumi.StringPtrInput                         `pulumi:"staticIps"`
 }
 
 func (RedisRedisUserConfigArgs) ElementType() reflect.Type {
@@ -24911,102 +23750,82 @@ func (o RedisRedisUserConfigOutput) ToRedisRedisUserConfigPtrOutputWithContext(c
 	}).(RedisRedisUserConfigPtrOutput)
 }
 
-// IP filter
 func (o RedisRedisUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Migrate data from existing server
 func (o RedisRedisUserConfigOutput) Migration() RedisRedisUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigMigration { return v.Migration }).(RedisRedisUserConfigMigrationPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o RedisRedisUserConfigOutput) PrivateAccess() RedisRedisUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigPrivateAccess { return v.PrivateAccess }).(RedisRedisUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o RedisRedisUserConfigOutput) PrivatelinkAccess() RedisRedisUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(RedisRedisUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o RedisRedisUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o RedisRedisUserConfigOutput) PublicAccess() RedisRedisUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigPublicAccess { return v.PublicAccess }).(RedisRedisUserConfigPublicAccessPtrOutput)
 }
 
-// Name of the basebackup to restore in forked service
 func (o RedisRedisUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
-// Default ACL for pub/sub channels used when Redis user is created
 func (o RedisRedisUserConfigOutput) RedisAclChannelsDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisAclChannelsDefault }).(pulumi.StringPtrOutput)
 }
 
-// Redis IO thread count
 func (o RedisRedisUserConfigOutput) RedisIoThreads() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisIoThreads }).(pulumi.StringPtrOutput)
 }
 
-// LFU maxmemory-policy counter decay time in minutes
 func (o RedisRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisLfuDecayTime }).(pulumi.StringPtrOutput)
 }
 
-// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
 func (o RedisRedisUserConfigOutput) RedisLfuLogFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisLfuLogFactor }).(pulumi.StringPtrOutput)
 }
 
-// Redis maxmemory-policy
 func (o RedisRedisUserConfigOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisMaxmemoryPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Set notify-keyspace-events option
 func (o RedisRedisUserConfigOutput) RedisNotifyKeyspaceEvents() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisNotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
 }
 
-// Number of redis databases
 func (o RedisRedisUserConfigOutput) RedisNumberOfDatabases() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisNumberOfDatabases }).(pulumi.StringPtrOutput)
 }
 
-// Redis persistence
 func (o RedisRedisUserConfigOutput) RedisPersistence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisPersistence }).(pulumi.StringPtrOutput)
 }
 
-// Pub/sub client output buffer hard limit in MB
 func (o RedisRedisUserConfigOutput) RedisPubsubClientOutputBufferLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisPubsubClientOutputBufferLimit }).(pulumi.StringPtrOutput)
 }
 
-// Require SSL to access Redis
 func (o RedisRedisUserConfigOutput) RedisSsl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisSsl }).(pulumi.StringPtrOutput)
 }
 
-// Redis idle connection timeout in seconds
 func (o RedisRedisUserConfigOutput) RedisTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisTimeout }).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o RedisRedisUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o RedisRedisUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -25035,7 +23854,6 @@ func (o RedisRedisUserConfigPtrOutput) Elem() RedisRedisUserConfigOutput {
 	}).(RedisRedisUserConfigOutput)
 }
 
-// IP filter
 func (o RedisRedisUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) []string {
 		if v == nil {
@@ -25045,7 +23863,6 @@ func (o RedisRedisUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Migrate data from existing server
 func (o RedisRedisUserConfigPtrOutput) Migration() RedisRedisUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *RedisRedisUserConfigMigration {
 		if v == nil {
@@ -25055,7 +23872,6 @@ func (o RedisRedisUserConfigPtrOutput) Migration() RedisRedisUserConfigMigration
 	}).(RedisRedisUserConfigMigrationPtrOutput)
 }
 
-// Allow access to selected service ports from private networks
 func (o RedisRedisUserConfigPtrOutput) PrivateAccess() RedisRedisUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *RedisRedisUserConfigPrivateAccess {
 		if v == nil {
@@ -25065,7 +23881,6 @@ func (o RedisRedisUserConfigPtrOutput) PrivateAccess() RedisRedisUserConfigPriva
 	}).(RedisRedisUserConfigPrivateAccessPtrOutput)
 }
 
-// Allow access to selected service components through Privatelink
 func (o RedisRedisUserConfigPtrOutput) PrivatelinkAccess() RedisRedisUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *RedisRedisUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -25075,7 +23890,6 @@ func (o RedisRedisUserConfigPtrOutput) PrivatelinkAccess() RedisRedisUserConfigP
 	}).(RedisRedisUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o RedisRedisUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25085,7 +23899,6 @@ func (o RedisRedisUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allow access to selected service ports from the public Internet
 func (o RedisRedisUserConfigPtrOutput) PublicAccess() RedisRedisUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *RedisRedisUserConfigPublicAccess {
 		if v == nil {
@@ -25095,7 +23908,6 @@ func (o RedisRedisUserConfigPtrOutput) PublicAccess() RedisRedisUserConfigPublic
 	}).(RedisRedisUserConfigPublicAccessPtrOutput)
 }
 
-// Name of the basebackup to restore in forked service
 func (o RedisRedisUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25105,7 +23917,6 @@ func (o RedisRedisUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Default ACL for pub/sub channels used when Redis user is created
 func (o RedisRedisUserConfigPtrOutput) RedisAclChannelsDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25115,7 +23926,6 @@ func (o RedisRedisUserConfigPtrOutput) RedisAclChannelsDefault() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Redis IO thread count
 func (o RedisRedisUserConfigPtrOutput) RedisIoThreads() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25125,7 +23935,6 @@ func (o RedisRedisUserConfigPtrOutput) RedisIoThreads() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// LFU maxmemory-policy counter decay time in minutes
 func (o RedisRedisUserConfigPtrOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25135,7 +23944,6 @@ func (o RedisRedisUserConfigPtrOutput) RedisLfuDecayTime() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
 func (o RedisRedisUserConfigPtrOutput) RedisLfuLogFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25145,7 +23953,6 @@ func (o RedisRedisUserConfigPtrOutput) RedisLfuLogFactor() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Redis maxmemory-policy
 func (o RedisRedisUserConfigPtrOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25155,7 +23962,6 @@ func (o RedisRedisUserConfigPtrOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Set notify-keyspace-events option
 func (o RedisRedisUserConfigPtrOutput) RedisNotifyKeyspaceEvents() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25165,7 +23971,6 @@ func (o RedisRedisUserConfigPtrOutput) RedisNotifyKeyspaceEvents() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of redis databases
 func (o RedisRedisUserConfigPtrOutput) RedisNumberOfDatabases() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25175,7 +23980,6 @@ func (o RedisRedisUserConfigPtrOutput) RedisNumberOfDatabases() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Redis persistence
 func (o RedisRedisUserConfigPtrOutput) RedisPersistence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25185,7 +23989,6 @@ func (o RedisRedisUserConfigPtrOutput) RedisPersistence() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Pub/sub client output buffer hard limit in MB
 func (o RedisRedisUserConfigPtrOutput) RedisPubsubClientOutputBufferLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25195,7 +23998,6 @@ func (o RedisRedisUserConfigPtrOutput) RedisPubsubClientOutputBufferLimit() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Require SSL to access Redis
 func (o RedisRedisUserConfigPtrOutput) RedisSsl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25205,7 +24007,6 @@ func (o RedisRedisUserConfigPtrOutput) RedisSsl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Redis idle connection timeout in seconds
 func (o RedisRedisUserConfigPtrOutput) RedisTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25215,7 +24016,6 @@ func (o RedisRedisUserConfigPtrOutput) RedisTimeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of another service to fork from. This has effect only when a new service is being created.
 func (o RedisRedisUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25225,7 +24025,6 @@ func (o RedisRedisUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Static IP addresses
 func (o RedisRedisUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -25475,8 +24274,7 @@ func (o RedisRedisUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutpu
 
 type RedisRedisUserConfigPrivateAccess struct {
 	Prometheus *string `pulumi:"prometheus"`
-	// Redis server provided values
-	Redis *string `pulumi:"redis"`
+	Redis      *string `pulumi:"redis"`
 }
 
 // RedisRedisUserConfigPrivateAccessInput is an input type that accepts RedisRedisUserConfigPrivateAccessArgs and RedisRedisUserConfigPrivateAccessOutput values.
@@ -25492,8 +24290,7 @@ type RedisRedisUserConfigPrivateAccessInput interface {
 
 type RedisRedisUserConfigPrivateAccessArgs struct {
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	// Redis server provided values
-	Redis pulumi.StringPtrInput `pulumi:"redis"`
+	Redis      pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (RedisRedisUserConfigPrivateAccessArgs) ElementType() reflect.Type {
@@ -25577,7 +24374,6 @@ func (o RedisRedisUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOu
 	return o.ApplyT(func(v RedisRedisUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
-// Redis server provided values
 func (o RedisRedisUserConfigPrivateAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigPrivateAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -25615,7 +24411,6 @@ func (o RedisRedisUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Redis server provided values
 func (o RedisRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -25627,8 +24422,7 @@ func (o RedisRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrOutp
 
 type RedisRedisUserConfigPrivatelinkAccess struct {
 	Prometheus *string `pulumi:"prometheus"`
-	// Redis server provided values
-	Redis *string `pulumi:"redis"`
+	Redis      *string `pulumi:"redis"`
 }
 
 // RedisRedisUserConfigPrivatelinkAccessInput is an input type that accepts RedisRedisUserConfigPrivatelinkAccessArgs and RedisRedisUserConfigPrivatelinkAccessOutput values.
@@ -25644,8 +24438,7 @@ type RedisRedisUserConfigPrivatelinkAccessInput interface {
 
 type RedisRedisUserConfigPrivatelinkAccessArgs struct {
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	// Redis server provided values
-	Redis pulumi.StringPtrInput `pulumi:"redis"`
+	Redis      pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (RedisRedisUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
@@ -25729,7 +24522,6 @@ func (o RedisRedisUserConfigPrivatelinkAccessOutput) Prometheus() pulumi.StringP
 	return o.ApplyT(func(v RedisRedisUserConfigPrivatelinkAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
-// Redis server provided values
 func (o RedisRedisUserConfigPrivatelinkAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigPrivatelinkAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -25767,7 +24559,6 @@ func (o RedisRedisUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Redis server provided values
 func (o RedisRedisUserConfigPrivatelinkAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -25779,8 +24570,7 @@ func (o RedisRedisUserConfigPrivatelinkAccessPtrOutput) Redis() pulumi.StringPtr
 
 type RedisRedisUserConfigPublicAccess struct {
 	Prometheus *string `pulumi:"prometheus"`
-	// Redis server provided values
-	Redis *string `pulumi:"redis"`
+	Redis      *string `pulumi:"redis"`
 }
 
 // RedisRedisUserConfigPublicAccessInput is an input type that accepts RedisRedisUserConfigPublicAccessArgs and RedisRedisUserConfigPublicAccessOutput values.
@@ -25796,8 +24586,7 @@ type RedisRedisUserConfigPublicAccessInput interface {
 
 type RedisRedisUserConfigPublicAccessArgs struct {
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	// Redis server provided values
-	Redis pulumi.StringPtrInput `pulumi:"redis"`
+	Redis      pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (RedisRedisUserConfigPublicAccessArgs) ElementType() reflect.Type {
@@ -25881,7 +24670,6 @@ func (o RedisRedisUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOut
 	return o.ApplyT(func(v RedisRedisUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
-// Redis server provided values
 func (o RedisRedisUserConfigPublicAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigPublicAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -25919,7 +24707,6 @@ func (o RedisRedisUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Redis server provided values
 func (o RedisRedisUserConfigPublicAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigPublicAccess) *string {
 		if v == nil {
@@ -25930,9 +24717,7 @@ func (o RedisRedisUserConfigPublicAccessPtrOutput) Redis() pulumi.StringPtrOutpu
 }
 
 type RedisServiceIntegration struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType string `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   string `pulumi:"integrationType"`
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
@@ -25948,9 +24733,7 @@ type RedisServiceIntegrationInput interface {
 }
 
 type RedisServiceIntegrationArgs struct {
-	// Type of the service integration. The only supported value at the moment is `readReplica`
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Name of the source service
+	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -26005,12 +24788,10 @@ func (o RedisServiceIntegrationOutput) ToRedisServiceIntegrationOutputWithContex
 	return o
 }
 
-// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o RedisServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v RedisServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
-// Name of the source service
 func (o RedisServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v RedisServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -26036,9 +24817,7 @@ func (o RedisServiceIntegrationArrayOutput) Index(i pulumi.IntInput) RedisServic
 }
 
 type RedisTag struct {
-	// Service tag key
-	Key string `pulumi:"key"`
-	// Service tag value
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -26054,9 +24833,7 @@ type RedisTagInput interface {
 }
 
 type RedisTagArgs struct {
-	// Service tag key
-	Key pulumi.StringInput `pulumi:"key"`
-	// Service tag value
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -26111,12 +24888,10 @@ func (o RedisTagOutput) ToRedisTagOutputWithContext(ctx context.Context) RedisTa
 	return o
 }
 
-// Service tag key
 func (o RedisTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v RedisTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Service tag value
 func (o RedisTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v RedisTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -26142,20 +24917,13 @@ func (o RedisTagArrayOutput) Index(i pulumi.IntInput) RedisTagOutput {
 }
 
 type ServiceIntegrationEndpointDatadogUserConfig struct {
-	// Datadog API key
-	DatadogApiKey *string `pulumi:"datadogApiKey"`
-	// Custom tags provided by user
-	DatadogTags []ServiceIntegrationEndpointDatadogUserConfigDatadogTag `pulumi:"datadogTags"`
-	// Disable consumer group metrics
-	DisableConsumerStats *string `pulumi:"disableConsumerStats"`
-	// Number of separate instances to fetch kafka consumer statistics with
-	KafkaConsumerCheckInstances *string `pulumi:"kafkaConsumerCheckInstances"`
-	// Number of seconds that datadog will wait to get consumer statistics from brokers
-	KafkaConsumerStatsTimeout *string `pulumi:"kafkaConsumerStatsTimeout"`
-	// Maximum number of partition contexts to send
-	MaxPartitionContexts *string `pulumi:"maxPartitionContexts"`
-	// Datadog intake site. Defaults to datadoghq.com
-	Site *string `pulumi:"site"`
+	DatadogApiKey               *string                                                 `pulumi:"datadogApiKey"`
+	DatadogTags                 []ServiceIntegrationEndpointDatadogUserConfigDatadogTag `pulumi:"datadogTags"`
+	DisableConsumerStats        *string                                                 `pulumi:"disableConsumerStats"`
+	KafkaConsumerCheckInstances *string                                                 `pulumi:"kafkaConsumerCheckInstances"`
+	KafkaConsumerStatsTimeout   *string                                                 `pulumi:"kafkaConsumerStatsTimeout"`
+	MaxPartitionContexts        *string                                                 `pulumi:"maxPartitionContexts"`
+	Site                        *string                                                 `pulumi:"site"`
 }
 
 // ServiceIntegrationEndpointDatadogUserConfigInput is an input type that accepts ServiceIntegrationEndpointDatadogUserConfigArgs and ServiceIntegrationEndpointDatadogUserConfigOutput values.
@@ -26170,20 +24938,13 @@ type ServiceIntegrationEndpointDatadogUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointDatadogUserConfigArgs struct {
-	// Datadog API key
-	DatadogApiKey pulumi.StringPtrInput `pulumi:"datadogApiKey"`
-	// Custom tags provided by user
-	DatadogTags ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput `pulumi:"datadogTags"`
-	// Disable consumer group metrics
-	DisableConsumerStats pulumi.StringPtrInput `pulumi:"disableConsumerStats"`
-	// Number of separate instances to fetch kafka consumer statistics with
-	KafkaConsumerCheckInstances pulumi.StringPtrInput `pulumi:"kafkaConsumerCheckInstances"`
-	// Number of seconds that datadog will wait to get consumer statistics from brokers
-	KafkaConsumerStatsTimeout pulumi.StringPtrInput `pulumi:"kafkaConsumerStatsTimeout"`
-	// Maximum number of partition contexts to send
-	MaxPartitionContexts pulumi.StringPtrInput `pulumi:"maxPartitionContexts"`
-	// Datadog intake site. Defaults to datadoghq.com
-	Site pulumi.StringPtrInput `pulumi:"site"`
+	DatadogApiKey               pulumi.StringPtrInput                                           `pulumi:"datadogApiKey"`
+	DatadogTags                 ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput `pulumi:"datadogTags"`
+	DisableConsumerStats        pulumi.StringPtrInput                                           `pulumi:"disableConsumerStats"`
+	KafkaConsumerCheckInstances pulumi.StringPtrInput                                           `pulumi:"kafkaConsumerCheckInstances"`
+	KafkaConsumerStatsTimeout   pulumi.StringPtrInput                                           `pulumi:"kafkaConsumerStatsTimeout"`
+	MaxPartitionContexts        pulumi.StringPtrInput                                           `pulumi:"maxPartitionContexts"`
+	Site                        pulumi.StringPtrInput                                           `pulumi:"site"`
 }
 
 func (ServiceIntegrationEndpointDatadogUserConfigArgs) ElementType() reflect.Type {
@@ -26263,39 +25024,32 @@ func (o ServiceIntegrationEndpointDatadogUserConfigOutput) ToServiceIntegrationE
 	}).(ServiceIntegrationEndpointDatadogUserConfigPtrOutput)
 }
 
-// Datadog API key
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) DatadogApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.DatadogApiKey }).(pulumi.StringPtrOutput)
 }
 
-// Custom tags provided by user
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) DatadogTags() ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) []ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
 		return v.DatadogTags
 	}).(ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput)
 }
 
-// Disable consumer group metrics
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) DisableConsumerStats() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.DisableConsumerStats }).(pulumi.StringPtrOutput)
 }
 
-// Number of separate instances to fetch kafka consumer statistics with
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) KafkaConsumerCheckInstances() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.KafkaConsumerCheckInstances }).(pulumi.StringPtrOutput)
 }
 
-// Number of seconds that datadog will wait to get consumer statistics from brokers
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) KafkaConsumerStatsTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.KafkaConsumerStatsTimeout }).(pulumi.StringPtrOutput)
 }
 
-// Maximum number of partition contexts to send
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) MaxPartitionContexts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.MaxPartitionContexts }).(pulumi.StringPtrOutput)
 }
 
-// Datadog intake site. Defaults to datadoghq.com
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) Site() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.Site }).(pulumi.StringPtrOutput)
 }
@@ -26324,7 +25078,6 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) Elem() ServiceInte
 	}).(ServiceIntegrationEndpointDatadogUserConfigOutput)
 }
 
-// Datadog API key
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DatadogApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
@@ -26334,7 +25087,6 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DatadogApiKey() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Custom tags provided by user
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DatadogTags() ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) []ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
 		if v == nil {
@@ -26344,7 +25096,6 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DatadogTags() Serv
 	}).(ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput)
 }
 
-// Disable consumer group metrics
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DisableConsumerStats() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
@@ -26354,7 +25105,6 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DisableConsumerSta
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of separate instances to fetch kafka consumer statistics with
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) KafkaConsumerCheckInstances() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
@@ -26364,7 +25114,6 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) KafkaConsumerCheck
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of seconds that datadog will wait to get consumer statistics from brokers
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) KafkaConsumerStatsTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
@@ -26374,7 +25123,6 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) KafkaConsumerStats
 	}).(pulumi.StringPtrOutput)
 }
 
-// Maximum number of partition contexts to send
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) MaxPartitionContexts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
@@ -26384,7 +25132,6 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) MaxPartitionContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// Datadog intake site. Defaults to datadoghq.com
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) Site() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
@@ -26495,14 +25242,10 @@ func (o ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) Index(
 }
 
 type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig struct {
-	// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
-	AccessKey *string `pulumi:"accessKey"`
-	// AWS CloudWatch log group name
+	AccessKey    *string `pulumi:"accessKey"`
 	LogGroupName *string `pulumi:"logGroupName"`
-	// AWS region
-	Region *string `pulumi:"region"`
-	// AWS secret key
-	SecretKey *string `pulumi:"secretKey"`
+	Region       *string `pulumi:"region"`
+	SecretKey    *string `pulumi:"secretKey"`
 }
 
 // ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs and ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput values.
@@ -26517,14 +25260,10 @@ type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput interfac
 }
 
 type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs struct {
-	// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
-	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	// AWS CloudWatch log group name
+	AccessKey    pulumi.StringPtrInput `pulumi:"accessKey"`
 	LogGroupName pulumi.StringPtrInput `pulumi:"logGroupName"`
-	// AWS region
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// AWS secret key
-	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
+	SecretKey    pulumi.StringPtrInput `pulumi:"secretKey"`
 }
 
 func (ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ElementType() reflect.Type {
@@ -26604,22 +25343,18 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) ToS
 	}).(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput)
 }
 
-// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
-// AWS CloudWatch log group name
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) LogGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.LogGroupName }).(pulumi.StringPtrOutput)
 }
 
-// AWS region
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// AWS secret key
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
@@ -26648,7 +25383,6 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) 
 	}).(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput)
 }
 
-// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
 		if v == nil {
@@ -26658,7 +25392,6 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// AWS CloudWatch log group name
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) LogGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
 		if v == nil {
@@ -26668,7 +25401,6 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// AWS region
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
 		if v == nil {
@@ -26678,7 +25410,6 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// AWS secret key
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
 		if v == nil {
@@ -26689,13 +25420,9 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) 
 }
 
 type ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig struct {
-	// AWS access key. Required permissions are cloudwatch:PutMetricData
 	AccessKey *string `pulumi:"accessKey"`
-	// AWS CloudWatch Metrics Namespace
 	Namespace *string `pulumi:"namespace"`
-	// AWS region
-	Region *string `pulumi:"region"`
-	// AWS secret key
+	Region    *string `pulumi:"region"`
 	SecretKey *string `pulumi:"secretKey"`
 }
 
@@ -26711,13 +25438,9 @@ type ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput inter
 }
 
 type ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs struct {
-	// AWS access key. Required permissions are cloudwatch:PutMetricData
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	// AWS CloudWatch Metrics Namespace
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	// AWS region
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// AWS secret key
+	Region    pulumi.StringPtrInput `pulumi:"region"`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
 }
 
@@ -26798,22 +25521,18 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) 
 	}).(ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput)
 }
 
-// AWS access key. Required permissions are cloudwatch:PutMetricData
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
-// AWS CloudWatch Metrics Namespace
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// AWS region
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// AWS secret key
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
@@ -26842,7 +25561,6 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutpu
 	}).(ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput)
 }
 
-// AWS access key. Required permissions are cloudwatch:PutMetricData
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string {
 		if v == nil {
@@ -26852,7 +25570,6 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// AWS CloudWatch Metrics Namespace
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string {
 		if v == nil {
@@ -26862,7 +25579,6 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// AWS region
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string {
 		if v == nil {
@@ -26872,7 +25588,6 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// AWS secret key
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string {
 		if v == nil {
@@ -26883,16 +25598,11 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutpu
 }
 
 type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig struct {
-	// PEM encoded CA certificate
-	Ca *string `pulumi:"ca"`
-	// Maximum number of days of logs to keep
+	Ca           *string `pulumi:"ca"`
 	IndexDaysMax *string `pulumi:"indexDaysMax"`
-	// Elasticsearch index prefix
-	IndexPrefix *string `pulumi:"indexPrefix"`
-	// Elasticsearch request timeout limit
-	Timeout *string `pulumi:"timeout"`
-	// Elasticsearch connection URL
-	Url *string `pulumi:"url"`
+	IndexPrefix  *string `pulumi:"indexPrefix"`
+	Timeout      *string `pulumi:"timeout"`
+	Url          *string `pulumi:"url"`
 }
 
 // ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs and ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput values.
@@ -26907,16 +25617,11 @@ type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput interfac
 }
 
 type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs struct {
-	// PEM encoded CA certificate
-	Ca pulumi.StringPtrInput `pulumi:"ca"`
-	// Maximum number of days of logs to keep
+	Ca           pulumi.StringPtrInput `pulumi:"ca"`
 	IndexDaysMax pulumi.StringPtrInput `pulumi:"indexDaysMax"`
-	// Elasticsearch index prefix
-	IndexPrefix pulumi.StringPtrInput `pulumi:"indexPrefix"`
-	// Elasticsearch request timeout limit
-	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
-	// Elasticsearch connection URL
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	IndexPrefix  pulumi.StringPtrInput `pulumi:"indexPrefix"`
+	Timeout      pulumi.StringPtrInput `pulumi:"timeout"`
+	Url          pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs) ElementType() reflect.Type {
@@ -26996,27 +25701,22 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) ToS
 	}).(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput)
 }
 
-// PEM encoded CA certificate
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Ca() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Ca }).(pulumi.StringPtrOutput)
 }
 
-// Maximum number of days of logs to keep
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) IndexDaysMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.IndexDaysMax }).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch index prefix
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) IndexPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.IndexPrefix }).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch request timeout limit
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch connection URL
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -27045,7 +25745,6 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 	}).(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput)
 }
 
-// PEM encoded CA certificate
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) Ca() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
 		if v == nil {
@@ -27055,7 +25754,6 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Maximum number of days of logs to keep
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) IndexDaysMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
 		if v == nil {
@@ -27065,7 +25763,6 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch index prefix
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) IndexPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
 		if v == nil {
@@ -27075,7 +25772,6 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch request timeout limit
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
 		if v == nil {
@@ -27085,7 +25781,6 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch connection URL
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
 		if v == nil {
@@ -27096,11 +25791,8 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 }
 
 type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig struct {
-	// Google Cloud Logging log id
-	LogId *string `pulumi:"logId"`
-	// GCP project id.
-	ProjectId *string `pulumi:"projectId"`
-	// Google Service Account Credentials
+	LogId                     *string `pulumi:"logId"`
+	ProjectId                 *string `pulumi:"projectId"`
 	ServiceAccountCredentials *string `pulumi:"serviceAccountCredentials"`
 }
 
@@ -27116,11 +25808,8 @@ type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput interfa
 }
 
 type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs struct {
-	// Google Cloud Logging log id
-	LogId pulumi.StringPtrInput `pulumi:"logId"`
-	// GCP project id.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Google Service Account Credentials
+	LogId                     pulumi.StringPtrInput `pulumi:"logId"`
+	ProjectId                 pulumi.StringPtrInput `pulumi:"projectId"`
 	ServiceAccountCredentials pulumi.StringPtrInput `pulumi:"serviceAccountCredentials"`
 }
 
@@ -27201,17 +25890,14 @@ func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) To
 	}).(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
 }
 
-// Google Cloud Logging log id
 func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) LogId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string { return v.LogId }).(pulumi.StringPtrOutput)
 }
 
-// GCP project id.
 func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Google Service Account Credentials
 func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ServiceAccountCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string {
 		return v.ServiceAccountCredentials
@@ -27242,7 +25928,6 @@ func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
 	}).(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput)
 }
 
-// Google Cloud Logging log id
 func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput) LogId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string {
 		if v == nil {
@@ -27252,7 +25937,6 @@ func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// GCP project id.
 func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string {
 		if v == nil {
@@ -27262,7 +25946,6 @@ func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// Google Service Account Credentials
 func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput) ServiceAccountCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string {
 		if v == nil {
@@ -27273,23 +25956,14 @@ func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
 }
 
 type ServiceIntegrationEndpointExternalKafkaUserConfig struct {
-	// Bootstrap servers
-	BootstrapServers *string `pulumi:"bootstrapServers"`
-	// The list of SASL mechanisms enabled in the Kafka server.
-	SaslMechanism *string `pulumi:"saslMechanism"`
-	// Password for SASL PLAIN mechanism in the Kafka server.
-	SaslPlainPassword *string `pulumi:"saslPlainPassword"`
-	// Username for SASL PLAIN mechanism in the Kafka server.
-	SaslPlainUsername *string `pulumi:"saslPlainUsername"`
-	// Security protocol
-	SecurityProtocol *string `pulumi:"securityProtocol"`
-	// PEM-encoded CA certificate
-	SslCaCert *string `pulumi:"sslCaCert"`
-	// PEM-encoded client certificate
-	SslClientCert *string `pulumi:"sslClientCert"`
-	// PEM-encoded client key
-	SslClientKey *string `pulumi:"sslClientKey"`
-	// The endpoint identification algorithm to validate server hostname using server certificate.
+	BootstrapServers                   *string `pulumi:"bootstrapServers"`
+	SaslMechanism                      *string `pulumi:"saslMechanism"`
+	SaslPlainPassword                  *string `pulumi:"saslPlainPassword"`
+	SaslPlainUsername                  *string `pulumi:"saslPlainUsername"`
+	SecurityProtocol                   *string `pulumi:"securityProtocol"`
+	SslCaCert                          *string `pulumi:"sslCaCert"`
+	SslClientCert                      *string `pulumi:"sslClientCert"`
+	SslClientKey                       *string `pulumi:"sslClientKey"`
 	SslEndpointIdentificationAlgorithm *string `pulumi:"sslEndpointIdentificationAlgorithm"`
 }
 
@@ -27305,23 +25979,14 @@ type ServiceIntegrationEndpointExternalKafkaUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointExternalKafkaUserConfigArgs struct {
-	// Bootstrap servers
-	BootstrapServers pulumi.StringPtrInput `pulumi:"bootstrapServers"`
-	// The list of SASL mechanisms enabled in the Kafka server.
-	SaslMechanism pulumi.StringPtrInput `pulumi:"saslMechanism"`
-	// Password for SASL PLAIN mechanism in the Kafka server.
-	SaslPlainPassword pulumi.StringPtrInput `pulumi:"saslPlainPassword"`
-	// Username for SASL PLAIN mechanism in the Kafka server.
-	SaslPlainUsername pulumi.StringPtrInput `pulumi:"saslPlainUsername"`
-	// Security protocol
-	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
-	// PEM-encoded CA certificate
-	SslCaCert pulumi.StringPtrInput `pulumi:"sslCaCert"`
-	// PEM-encoded client certificate
-	SslClientCert pulumi.StringPtrInput `pulumi:"sslClientCert"`
-	// PEM-encoded client key
-	SslClientKey pulumi.StringPtrInput `pulumi:"sslClientKey"`
-	// The endpoint identification algorithm to validate server hostname using server certificate.
+	BootstrapServers                   pulumi.StringPtrInput `pulumi:"bootstrapServers"`
+	SaslMechanism                      pulumi.StringPtrInput `pulumi:"saslMechanism"`
+	SaslPlainPassword                  pulumi.StringPtrInput `pulumi:"saslPlainPassword"`
+	SaslPlainUsername                  pulumi.StringPtrInput `pulumi:"saslPlainUsername"`
+	SecurityProtocol                   pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	SslCaCert                          pulumi.StringPtrInput `pulumi:"sslCaCert"`
+	SslClientCert                      pulumi.StringPtrInput `pulumi:"sslClientCert"`
+	SslClientKey                       pulumi.StringPtrInput `pulumi:"sslClientKey"`
 	SslEndpointIdentificationAlgorithm pulumi.StringPtrInput `pulumi:"sslEndpointIdentificationAlgorithm"`
 }
 
@@ -27402,47 +26067,38 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) ToServiceIntegr
 	}).(ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput)
 }
 
-// Bootstrap servers
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) BootstrapServers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.BootstrapServers }).(pulumi.StringPtrOutput)
 }
 
-// The list of SASL mechanisms enabled in the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslMechanism() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslMechanism }).(pulumi.StringPtrOutput)
 }
 
-// Password for SASL PLAIN mechanism in the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslPlainPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslPlainPassword }).(pulumi.StringPtrOutput)
 }
 
-// Username for SASL PLAIN mechanism in the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslPlainUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslPlainUsername }).(pulumi.StringPtrOutput)
 }
 
-// Security protocol
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SecurityProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SecurityProtocol }).(pulumi.StringPtrOutput)
 }
 
-// PEM-encoded CA certificate
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslCaCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslCaCert }).(pulumi.StringPtrOutput)
 }
 
-// PEM-encoded client certificate
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslClientCert }).(pulumi.StringPtrOutput)
 }
 
-// PEM-encoded client key
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslClientKey }).(pulumi.StringPtrOutput)
 }
 
-// The endpoint identification algorithm to validate server hostname using server certificate.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslEndpointIdentificationAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		return v.SslEndpointIdentificationAlgorithm
@@ -27473,7 +26129,6 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) Elem() Servi
 	}).(ServiceIntegrationEndpointExternalKafkaUserConfigOutput)
 }
 
-// Bootstrap servers
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) BootstrapServers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -27483,7 +26138,6 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) BootstrapSer
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of SASL mechanisms enabled in the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslMechanism() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -27493,7 +26147,6 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslMechanis
 	}).(pulumi.StringPtrOutput)
 }
 
-// Password for SASL PLAIN mechanism in the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslPlainPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -27503,7 +26156,6 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslPlainPas
 	}).(pulumi.StringPtrOutput)
 }
 
-// Username for SASL PLAIN mechanism in the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslPlainUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -27513,7 +26165,6 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslPlainUse
 	}).(pulumi.StringPtrOutput)
 }
 
-// Security protocol
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -27523,7 +26174,6 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SecurityProt
 	}).(pulumi.StringPtrOutput)
 }
 
-// PEM-encoded CA certificate
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslCaCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -27533,7 +26183,6 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslCaCert() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// PEM-encoded client certificate
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -27543,7 +26192,6 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslClientCer
 	}).(pulumi.StringPtrOutput)
 }
 
-// PEM-encoded client key
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -27553,7 +26201,6 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslClientKey
 	}).(pulumi.StringPtrOutput)
 }
 
-// The endpoint identification algorithm to validate server hostname using server certificate.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslEndpointIdentificationAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -27564,14 +26211,10 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslEndpointI
 }
 
 type ServiceIntegrationEndpointExternalSchemaRegistryUserConfig struct {
-	// Authentication method
-	Authentication *string `pulumi:"authentication"`
-	// Basic authentication password
+	Authentication    *string `pulumi:"authentication"`
 	BasicAuthPassword *string `pulumi:"basicAuthPassword"`
-	// Basic authentication user name
 	BasicAuthUsername *string `pulumi:"basicAuthUsername"`
-	// Schema Registry URL
-	Url *string `pulumi:"url"`
+	Url               *string `pulumi:"url"`
 }
 
 // ServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs and ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput values.
@@ -27586,14 +26229,10 @@ type ServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs struct {
-	// Authentication method
-	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
-	// Basic authentication password
+	Authentication    pulumi.StringPtrInput `pulumi:"authentication"`
 	BasicAuthPassword pulumi.StringPtrInput `pulumi:"basicAuthPassword"`
-	// Basic authentication user name
 	BasicAuthUsername pulumi.StringPtrInput `pulumi:"basicAuthUsername"`
-	// Schema Registry URL
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	Url               pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ElementType() reflect.Type {
@@ -27673,22 +26312,18 @@ func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) ToServ
 	}).(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput)
 }
 
-// Authentication method
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) Authentication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.Authentication }).(pulumi.StringPtrOutput)
 }
 
-// Basic authentication password
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) BasicAuthPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.BasicAuthPassword }).(pulumi.StringPtrOutput)
 }
 
-// Basic authentication user name
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) BasicAuthUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.BasicAuthUsername }).(pulumi.StringPtrOutput)
 }
 
-// Schema Registry URL
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -27717,7 +26352,6 @@ func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Ele
 	}).(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput)
 }
 
-// Authentication method
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Authentication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
 		if v == nil {
@@ -27727,7 +26361,6 @@ func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Aut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Basic authentication password
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) BasicAuthPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
 		if v == nil {
@@ -27737,7 +26370,6 @@ func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Bas
 	}).(pulumi.StringPtrOutput)
 }
 
-// Basic authentication user name
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) BasicAuthUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
 		if v == nil {
@@ -27747,7 +26379,6 @@ func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Bas
 	}).(pulumi.StringPtrOutput)
 }
 
-// Schema Registry URL
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
 		if v == nil {
@@ -27758,9 +26389,7 @@ func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Url
 }
 
 type ServiceIntegrationEndpointJolokiaUserConfig struct {
-	// Jolokia basic authentication password
 	BasicAuthPassword *string `pulumi:"basicAuthPassword"`
-	// Jolokia basic authentication username
 	BasicAuthUsername *string `pulumi:"basicAuthUsername"`
 }
 
@@ -27776,9 +26405,7 @@ type ServiceIntegrationEndpointJolokiaUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointJolokiaUserConfigArgs struct {
-	// Jolokia basic authentication password
 	BasicAuthPassword pulumi.StringPtrInput `pulumi:"basicAuthPassword"`
-	// Jolokia basic authentication username
 	BasicAuthUsername pulumi.StringPtrInput `pulumi:"basicAuthUsername"`
 }
 
@@ -27859,12 +26486,10 @@ func (o ServiceIntegrationEndpointJolokiaUserConfigOutput) ToServiceIntegrationE
 	}).(ServiceIntegrationEndpointJolokiaUserConfigPtrOutput)
 }
 
-// Jolokia basic authentication password
 func (o ServiceIntegrationEndpointJolokiaUserConfigOutput) BasicAuthPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointJolokiaUserConfig) *string { return v.BasicAuthPassword }).(pulumi.StringPtrOutput)
 }
 
-// Jolokia basic authentication username
 func (o ServiceIntegrationEndpointJolokiaUserConfigOutput) BasicAuthUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointJolokiaUserConfig) *string { return v.BasicAuthUsername }).(pulumi.StringPtrOutput)
 }
@@ -27893,7 +26518,6 @@ func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) Elem() ServiceInte
 	}).(ServiceIntegrationEndpointJolokiaUserConfigOutput)
 }
 
-// Jolokia basic authentication password
 func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) BasicAuthPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointJolokiaUserConfig) *string {
 		if v == nil {
@@ -27903,7 +26527,6 @@ func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) BasicAuthPassword(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Jolokia basic authentication username
 func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) BasicAuthUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointJolokiaUserConfig) *string {
 		if v == nil {
@@ -27914,9 +26537,7 @@ func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) BasicAuthUsername(
 }
 
 type ServiceIntegrationEndpointPrometheusUserConfig struct {
-	// Prometheus basic authentication password
 	BasicAuthPassword *string `pulumi:"basicAuthPassword"`
-	// Prometheus basic authentication username
 	BasicAuthUsername *string `pulumi:"basicAuthUsername"`
 }
 
@@ -27932,9 +26553,7 @@ type ServiceIntegrationEndpointPrometheusUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointPrometheusUserConfigArgs struct {
-	// Prometheus basic authentication password
 	BasicAuthPassword pulumi.StringPtrInput `pulumi:"basicAuthPassword"`
-	// Prometheus basic authentication username
 	BasicAuthUsername pulumi.StringPtrInput `pulumi:"basicAuthUsername"`
 }
 
@@ -28015,12 +26634,10 @@ func (o ServiceIntegrationEndpointPrometheusUserConfigOutput) ToServiceIntegrati
 	}).(ServiceIntegrationEndpointPrometheusUserConfigPtrOutput)
 }
 
-// Prometheus basic authentication password
 func (o ServiceIntegrationEndpointPrometheusUserConfigOutput) BasicAuthPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointPrometheusUserConfig) *string { return v.BasicAuthPassword }).(pulumi.StringPtrOutput)
 }
 
-// Prometheus basic authentication username
 func (o ServiceIntegrationEndpointPrometheusUserConfigOutput) BasicAuthUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointPrometheusUserConfig) *string { return v.BasicAuthUsername }).(pulumi.StringPtrOutput)
 }
@@ -28049,7 +26666,6 @@ func (o ServiceIntegrationEndpointPrometheusUserConfigPtrOutput) Elem() ServiceI
 	}).(ServiceIntegrationEndpointPrometheusUserConfigOutput)
 }
 
-// Prometheus basic authentication password
 func (o ServiceIntegrationEndpointPrometheusUserConfigPtrOutput) BasicAuthPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointPrometheusUserConfig) *string {
 		if v == nil {
@@ -28059,7 +26675,6 @@ func (o ServiceIntegrationEndpointPrometheusUserConfigPtrOutput) BasicAuthPasswo
 	}).(pulumi.StringPtrOutput)
 }
 
-// Prometheus basic authentication username
 func (o ServiceIntegrationEndpointPrometheusUserConfigPtrOutput) BasicAuthUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointPrometheusUserConfig) *string {
 		if v == nil {
@@ -28070,24 +26685,15 @@ func (o ServiceIntegrationEndpointPrometheusUserConfigPtrOutput) BasicAuthUserna
 }
 
 type ServiceIntegrationEndpointRsyslogUserConfig struct {
-	// PEM encoded CA certificate
-	Ca *string `pulumi:"ca"`
-	// PEM encoded client certificate
-	Cert *string `pulumi:"cert"`
-	// message format
-	Format *string `pulumi:"format"`
-	// PEM encoded client key
-	Key *string `pulumi:"key"`
-	// custom syslog message format
+	Ca      *string `pulumi:"ca"`
+	Cert    *string `pulumi:"cert"`
+	Format  *string `pulumi:"format"`
+	Key     *string `pulumi:"key"`
 	Logline *string `pulumi:"logline"`
-	// rsyslog server port
-	Port *string `pulumi:"port"`
-	// Structured data block for log message
-	Sd *string `pulumi:"sd"`
-	// rsyslog server IP address or hostname
-	Server *string `pulumi:"server"`
-	// Require TLS
-	Tls *string `pulumi:"tls"`
+	Port    *string `pulumi:"port"`
+	Sd      *string `pulumi:"sd"`
+	Server  *string `pulumi:"server"`
+	Tls     *string `pulumi:"tls"`
 }
 
 // ServiceIntegrationEndpointRsyslogUserConfigInput is an input type that accepts ServiceIntegrationEndpointRsyslogUserConfigArgs and ServiceIntegrationEndpointRsyslogUserConfigOutput values.
@@ -28102,24 +26708,15 @@ type ServiceIntegrationEndpointRsyslogUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointRsyslogUserConfigArgs struct {
-	// PEM encoded CA certificate
-	Ca pulumi.StringPtrInput `pulumi:"ca"`
-	// PEM encoded client certificate
-	Cert pulumi.StringPtrInput `pulumi:"cert"`
-	// message format
-	Format pulumi.StringPtrInput `pulumi:"format"`
-	// PEM encoded client key
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// custom syslog message format
+	Ca      pulumi.StringPtrInput `pulumi:"ca"`
+	Cert    pulumi.StringPtrInput `pulumi:"cert"`
+	Format  pulumi.StringPtrInput `pulumi:"format"`
+	Key     pulumi.StringPtrInput `pulumi:"key"`
 	Logline pulumi.StringPtrInput `pulumi:"logline"`
-	// rsyslog server port
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// Structured data block for log message
-	Sd pulumi.StringPtrInput `pulumi:"sd"`
-	// rsyslog server IP address or hostname
-	Server pulumi.StringPtrInput `pulumi:"server"`
-	// Require TLS
-	Tls pulumi.StringPtrInput `pulumi:"tls"`
+	Port    pulumi.StringPtrInput `pulumi:"port"`
+	Sd      pulumi.StringPtrInput `pulumi:"sd"`
+	Server  pulumi.StringPtrInput `pulumi:"server"`
+	Tls     pulumi.StringPtrInput `pulumi:"tls"`
 }
 
 func (ServiceIntegrationEndpointRsyslogUserConfigArgs) ElementType() reflect.Type {
@@ -28199,47 +26796,38 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) ToServiceIntegrationE
 	}).(ServiceIntegrationEndpointRsyslogUserConfigPtrOutput)
 }
 
-// PEM encoded CA certificate
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Ca() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Ca }).(pulumi.StringPtrOutput)
 }
 
-// PEM encoded client certificate
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Cert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Cert }).(pulumi.StringPtrOutput)
 }
 
-// message format
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
-// PEM encoded client key
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// custom syslog message format
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Logline() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Logline }).(pulumi.StringPtrOutput)
 }
 
-// rsyslog server port
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// Structured data block for log message
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Sd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Sd }).(pulumi.StringPtrOutput)
 }
 
-// rsyslog server IP address or hostname
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
 
-// Require TLS
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Tls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Tls }).(pulumi.StringPtrOutput)
 }
@@ -28268,7 +26856,6 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Elem() ServiceInte
 	}).(ServiceIntegrationEndpointRsyslogUserConfigOutput)
 }
 
-// PEM encoded CA certificate
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Ca() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -28278,7 +26865,6 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Ca() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// PEM encoded client certificate
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Cert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -28288,7 +26874,6 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Cert() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// message format
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -28298,7 +26883,6 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Format() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// PEM encoded client key
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -28308,7 +26892,6 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Key() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// custom syslog message format
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Logline() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -28318,7 +26901,6 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Logline() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// rsyslog server port
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -28328,7 +26910,6 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Port() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Structured data block for log message
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Sd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -28338,7 +26919,6 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Sd() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// rsyslog server IP address or hostname
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -28348,7 +26928,6 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Server() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Require TLS
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Tls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -28359,12 +26938,9 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Tls() pulumi.Strin
 }
 
 type ServiceIntegrationEndpointSignalfxUserConfig struct {
-	// list of metrics to send
 	EnabledMetrics []string `pulumi:"enabledMetrics"`
-	// SignalFX API key
-	SignalfxApiKey *string `pulumi:"signalfxApiKey"`
-	// SignalFX realm
-	SignalfxRealm *string `pulumi:"signalfxRealm"`
+	SignalfxApiKey *string  `pulumi:"signalfxApiKey"`
+	SignalfxRealm  *string  `pulumi:"signalfxRealm"`
 }
 
 // ServiceIntegrationEndpointSignalfxUserConfigInput is an input type that accepts ServiceIntegrationEndpointSignalfxUserConfigArgs and ServiceIntegrationEndpointSignalfxUserConfigOutput values.
@@ -28379,12 +26955,9 @@ type ServiceIntegrationEndpointSignalfxUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointSignalfxUserConfigArgs struct {
-	// list of metrics to send
 	EnabledMetrics pulumi.StringArrayInput `pulumi:"enabledMetrics"`
-	// SignalFX API key
-	SignalfxApiKey pulumi.StringPtrInput `pulumi:"signalfxApiKey"`
-	// SignalFX realm
-	SignalfxRealm pulumi.StringPtrInput `pulumi:"signalfxRealm"`
+	SignalfxApiKey pulumi.StringPtrInput   `pulumi:"signalfxApiKey"`
+	SignalfxRealm  pulumi.StringPtrInput   `pulumi:"signalfxRealm"`
 }
 
 func (ServiceIntegrationEndpointSignalfxUserConfigArgs) ElementType() reflect.Type {
@@ -28464,17 +27037,14 @@ func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) ToServiceIntegration
 	}).(ServiceIntegrationEndpointSignalfxUserConfigPtrOutput)
 }
 
-// list of metrics to send
 func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) EnabledMetrics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointSignalfxUserConfig) []string { return v.EnabledMetrics }).(pulumi.StringArrayOutput)
 }
 
-// SignalFX API key
 func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) SignalfxApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointSignalfxUserConfig) *string { return v.SignalfxApiKey }).(pulumi.StringPtrOutput)
 }
 
-// SignalFX realm
 func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) SignalfxRealm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointSignalfxUserConfig) *string { return v.SignalfxRealm }).(pulumi.StringPtrOutput)
 }
@@ -28503,7 +27073,6 @@ func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) Elem() ServiceInt
 	}).(ServiceIntegrationEndpointSignalfxUserConfigOutput)
 }
 
-// list of metrics to send
 func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) EnabledMetrics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointSignalfxUserConfig) []string {
 		if v == nil {
@@ -28513,7 +27082,6 @@ func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) EnabledMetrics() 
 	}).(pulumi.StringArrayOutput)
 }
 
-// SignalFX API key
 func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) SignalfxApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointSignalfxUserConfig) *string {
 		if v == nil {
@@ -28523,7 +27091,6 @@ func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) SignalfxApiKey() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// SignalFX realm
 func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) SignalfxRealm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointSignalfxUserConfig) *string {
 		if v == nil {
@@ -28534,7 +27101,6 @@ func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) SignalfxRealm() p
 }
 
 type ServiceIntegrationKafkaConnectUserConfig struct {
-	// Kafka Connect service configuration values
 	KafkaConnect *ServiceIntegrationKafkaConnectUserConfigKafkaConnect `pulumi:"kafkaConnect"`
 }
 
@@ -28550,7 +27116,6 @@ type ServiceIntegrationKafkaConnectUserConfigInput interface {
 }
 
 type ServiceIntegrationKafkaConnectUserConfigArgs struct {
-	// Kafka Connect service configuration values
 	KafkaConnect ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput `pulumi:"kafkaConnect"`
 }
 
@@ -28631,7 +27196,6 @@ func (o ServiceIntegrationKafkaConnectUserConfigOutput) ToServiceIntegrationKafk
 	}).(ServiceIntegrationKafkaConnectUserConfigPtrOutput)
 }
 
-// Kafka Connect service configuration values
 func (o ServiceIntegrationKafkaConnectUserConfigOutput) KafkaConnect() ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationKafkaConnectUserConfig) *ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
 		return v.KafkaConnect
@@ -28662,7 +27226,6 @@ func (o ServiceIntegrationKafkaConnectUserConfigPtrOutput) Elem() ServiceIntegra
 	}).(ServiceIntegrationKafkaConnectUserConfigOutput)
 }
 
-// Kafka Connect service configuration values
 func (o ServiceIntegrationKafkaConnectUserConfigPtrOutput) KafkaConnect() ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationKafkaConnectUserConfig) *ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
 		if v == nil {
@@ -28851,7 +27414,6 @@ func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) StatusSto
 }
 
 type ServiceIntegrationKafkaLogsUserConfig struct {
-	// Topic name
 	KafkaTopic *string `pulumi:"kafkaTopic"`
 }
 
@@ -28867,7 +27429,6 @@ type ServiceIntegrationKafkaLogsUserConfigInput interface {
 }
 
 type ServiceIntegrationKafkaLogsUserConfigArgs struct {
-	// Topic name
 	KafkaTopic pulumi.StringPtrInput `pulumi:"kafkaTopic"`
 }
 
@@ -28948,7 +27509,6 @@ func (o ServiceIntegrationKafkaLogsUserConfigOutput) ToServiceIntegrationKafkaLo
 	}).(ServiceIntegrationKafkaLogsUserConfigPtrOutput)
 }
 
-// Topic name
 func (o ServiceIntegrationKafkaLogsUserConfigOutput) KafkaTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationKafkaLogsUserConfig) *string { return v.KafkaTopic }).(pulumi.StringPtrOutput)
 }
@@ -28977,7 +27537,6 @@ func (o ServiceIntegrationKafkaLogsUserConfigPtrOutput) Elem() ServiceIntegratio
 	}).(ServiceIntegrationKafkaLogsUserConfigOutput)
 }
 
-// Topic name
 func (o ServiceIntegrationKafkaLogsUserConfigPtrOutput) KafkaTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationKafkaLogsUserConfig) *string {
 		if v == nil {
@@ -28988,9 +27547,7 @@ func (o ServiceIntegrationKafkaLogsUserConfigPtrOutput) KafkaTopic() pulumi.Stri
 }
 
 type ServiceIntegrationKafkaMirrormakerUserConfig struct {
-	// Kafka cluster alias
-	ClusterAlias *string `pulumi:"clusterAlias"`
-	// Kafka MirrorMaker configuration values
+	ClusterAlias     *string                                                       `pulumi:"clusterAlias"`
 	KafkaMirrormaker *ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
 }
 
@@ -29006,9 +27563,7 @@ type ServiceIntegrationKafkaMirrormakerUserConfigInput interface {
 }
 
 type ServiceIntegrationKafkaMirrormakerUserConfigArgs struct {
-	// Kafka cluster alias
-	ClusterAlias pulumi.StringPtrInput `pulumi:"clusterAlias"`
-	// Kafka MirrorMaker configuration values
+	ClusterAlias     pulumi.StringPtrInput                                                `pulumi:"clusterAlias"`
 	KafkaMirrormaker ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
 }
 
@@ -29089,12 +27644,10 @@ func (o ServiceIntegrationKafkaMirrormakerUserConfigOutput) ToServiceIntegration
 	}).(ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput)
 }
 
-// Kafka cluster alias
 func (o ServiceIntegrationKafkaMirrormakerUserConfigOutput) ClusterAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationKafkaMirrormakerUserConfig) *string { return v.ClusterAlias }).(pulumi.StringPtrOutput)
 }
 
-// Kafka MirrorMaker configuration values
 func (o ServiceIntegrationKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationKafkaMirrormakerUserConfig) *ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return v.KafkaMirrormaker
@@ -29125,7 +27678,6 @@ func (o ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) Elem() ServiceInt
 	}).(ServiceIntegrationKafkaMirrormakerUserConfigOutput)
 }
 
-// Kafka cluster alias
 func (o ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) ClusterAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationKafkaMirrormakerUserConfig) *string {
 		if v == nil {
@@ -29135,7 +27687,6 @@ func (o ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) ClusterAlias() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Kafka MirrorMaker configuration values
 func (o ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) KafkaMirrormaker() ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationKafkaMirrormakerUserConfig) *ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
 		if v == nil {
@@ -29349,10 +27900,8 @@ func (o ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) P
 }
 
 type ServiceIntegrationLogsUserConfig struct {
-	// Elasticsearch index retention limit
 	ElasticsearchIndexDaysMax *string `pulumi:"elasticsearchIndexDaysMax"`
-	// Elasticsearch index prefix
-	ElasticsearchIndexPrefix *string `pulumi:"elasticsearchIndexPrefix"`
+	ElasticsearchIndexPrefix  *string `pulumi:"elasticsearchIndexPrefix"`
 }
 
 // ServiceIntegrationLogsUserConfigInput is an input type that accepts ServiceIntegrationLogsUserConfigArgs and ServiceIntegrationLogsUserConfigOutput values.
@@ -29367,10 +27916,8 @@ type ServiceIntegrationLogsUserConfigInput interface {
 }
 
 type ServiceIntegrationLogsUserConfigArgs struct {
-	// Elasticsearch index retention limit
 	ElasticsearchIndexDaysMax pulumi.StringPtrInput `pulumi:"elasticsearchIndexDaysMax"`
-	// Elasticsearch index prefix
-	ElasticsearchIndexPrefix pulumi.StringPtrInput `pulumi:"elasticsearchIndexPrefix"`
+	ElasticsearchIndexPrefix  pulumi.StringPtrInput `pulumi:"elasticsearchIndexPrefix"`
 }
 
 func (ServiceIntegrationLogsUserConfigArgs) ElementType() reflect.Type {
@@ -29450,12 +27997,10 @@ func (o ServiceIntegrationLogsUserConfigOutput) ToServiceIntegrationLogsUserConf
 	}).(ServiceIntegrationLogsUserConfigPtrOutput)
 }
 
-// Elasticsearch index retention limit
 func (o ServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexDaysMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationLogsUserConfig) *string { return v.ElasticsearchIndexDaysMax }).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch index prefix
 func (o ServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationLogsUserConfig) *string { return v.ElasticsearchIndexPrefix }).(pulumi.StringPtrOutput)
 }
@@ -29484,7 +28029,6 @@ func (o ServiceIntegrationLogsUserConfigPtrOutput) Elem() ServiceIntegrationLogs
 	}).(ServiceIntegrationLogsUserConfigOutput)
 }
 
-// Elasticsearch index retention limit
 func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexDaysMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationLogsUserConfig) *string {
 		if v == nil {
@@ -29494,7 +28038,6 @@ func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexDaysMax() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Elasticsearch index prefix
 func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationLogsUserConfig) *string {
 		if v == nil {
@@ -29505,16 +28048,11 @@ func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexPrefix() pu
 }
 
 type ServiceIntegrationMetricsUserConfig struct {
-	// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-	Database *string `pulumi:"database"`
-	// Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
-	RetentionDays *string `pulumi:"retentionDays"`
-	// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-	RoUsername *string `pulumi:"roUsername"`
-	// Configuration options for metrics where source service is MySQL
-	SourceMysql *ServiceIntegrationMetricsUserConfigSourceMysql `pulumi:"sourceMysql"`
-	// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-	Username *string `pulumi:"username"`
+	Database      *string                                         `pulumi:"database"`
+	RetentionDays *string                                         `pulumi:"retentionDays"`
+	RoUsername    *string                                         `pulumi:"roUsername"`
+	SourceMysql   *ServiceIntegrationMetricsUserConfigSourceMysql `pulumi:"sourceMysql"`
+	Username      *string                                         `pulumi:"username"`
 }
 
 // ServiceIntegrationMetricsUserConfigInput is an input type that accepts ServiceIntegrationMetricsUserConfigArgs and ServiceIntegrationMetricsUserConfigOutput values.
@@ -29529,16 +28067,11 @@ type ServiceIntegrationMetricsUserConfigInput interface {
 }
 
 type ServiceIntegrationMetricsUserConfigArgs struct {
-	// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-	Database pulumi.StringPtrInput `pulumi:"database"`
-	// Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
-	RetentionDays pulumi.StringPtrInput `pulumi:"retentionDays"`
-	// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-	RoUsername pulumi.StringPtrInput `pulumi:"roUsername"`
-	// Configuration options for metrics where source service is MySQL
-	SourceMysql ServiceIntegrationMetricsUserConfigSourceMysqlPtrInput `pulumi:"sourceMysql"`
-	// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Database      pulumi.StringPtrInput                                  `pulumi:"database"`
+	RetentionDays pulumi.StringPtrInput                                  `pulumi:"retentionDays"`
+	RoUsername    pulumi.StringPtrInput                                  `pulumi:"roUsername"`
+	SourceMysql   ServiceIntegrationMetricsUserConfigSourceMysqlPtrInput `pulumi:"sourceMysql"`
+	Username      pulumi.StringPtrInput                                  `pulumi:"username"`
 }
 
 func (ServiceIntegrationMetricsUserConfigArgs) ElementType() reflect.Type {
@@ -29618,29 +28151,24 @@ func (o ServiceIntegrationMetricsUserConfigOutput) ToServiceIntegrationMetricsUs
 	}).(ServiceIntegrationMetricsUserConfigPtrOutput)
 }
 
-// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
 func (o ServiceIntegrationMetricsUserConfigOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
-// Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
 func (o ServiceIntegrationMetricsUserConfigOutput) RetentionDays() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *string { return v.RetentionDays }).(pulumi.StringPtrOutput)
 }
 
-// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
 func (o ServiceIntegrationMetricsUserConfigOutput) RoUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *string { return v.RoUsername }).(pulumi.StringPtrOutput)
 }
 
-// Configuration options for metrics where source service is MySQL
 func (o ServiceIntegrationMetricsUserConfigOutput) SourceMysql() ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *ServiceIntegrationMetricsUserConfigSourceMysql {
 		return v.SourceMysql
 	}).(ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
 }
 
-// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
 func (o ServiceIntegrationMetricsUserConfigOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -29669,7 +28197,6 @@ func (o ServiceIntegrationMetricsUserConfigPtrOutput) Elem() ServiceIntegrationM
 	}).(ServiceIntegrationMetricsUserConfigOutput)
 }
 
-// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
 func (o ServiceIntegrationMetricsUserConfigPtrOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *string {
 		if v == nil {
@@ -29679,7 +28206,6 @@ func (o ServiceIntegrationMetricsUserConfigPtrOutput) Database() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
 func (o ServiceIntegrationMetricsUserConfigPtrOutput) RetentionDays() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *string {
 		if v == nil {
@@ -29689,7 +28215,6 @@ func (o ServiceIntegrationMetricsUserConfigPtrOutput) RetentionDays() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
 func (o ServiceIntegrationMetricsUserConfigPtrOutput) RoUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *string {
 		if v == nil {
@@ -29699,7 +28224,6 @@ func (o ServiceIntegrationMetricsUserConfigPtrOutput) RoUsername() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configuration options for metrics where source service is MySQL
 func (o ServiceIntegrationMetricsUserConfigPtrOutput) SourceMysql() ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *ServiceIntegrationMetricsUserConfigSourceMysql {
 		if v == nil {
@@ -29709,7 +28233,6 @@ func (o ServiceIntegrationMetricsUserConfigPtrOutput) SourceMysql() ServiceInteg
 	}).(ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
 }
 
-// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
 func (o ServiceIntegrationMetricsUserConfigPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *string {
 		if v == nil {
@@ -30193,7 +28716,6 @@ func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) PerfEve
 }
 
 type ServiceIntegrationMirrormakerUserConfig struct {
-	// Mirrormaker topic whitelist
 	MirrormakerWhitelist *string `pulumi:"mirrormakerWhitelist"`
 }
 
@@ -30209,7 +28731,6 @@ type ServiceIntegrationMirrormakerUserConfigInput interface {
 }
 
 type ServiceIntegrationMirrormakerUserConfigArgs struct {
-	// Mirrormaker topic whitelist
 	MirrormakerWhitelist pulumi.StringPtrInput `pulumi:"mirrormakerWhitelist"`
 }
 
@@ -30290,7 +28811,6 @@ func (o ServiceIntegrationMirrormakerUserConfigOutput) ToServiceIntegrationMirro
 	}).(ServiceIntegrationMirrormakerUserConfigPtrOutput)
 }
 
-// Mirrormaker topic whitelist
 func (o ServiceIntegrationMirrormakerUserConfigOutput) MirrormakerWhitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationMirrormakerUserConfig) *string { return v.MirrormakerWhitelist }).(pulumi.StringPtrOutput)
 }
@@ -30319,7 +28839,6 @@ func (o ServiceIntegrationMirrormakerUserConfigPtrOutput) Elem() ServiceIntegrat
 	}).(ServiceIntegrationMirrormakerUserConfigOutput)
 }
 
-// Mirrormaker topic whitelist
 func (o ServiceIntegrationMirrormakerUserConfigPtrOutput) MirrormakerWhitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationMirrormakerUserConfig) *string {
 		if v == nil {
@@ -30418,7 +28937,6 @@ func (o GetCassandaCassandraArrayOutput) Index(i pulumi.IntInput) GetCassandaCas
 }
 
 type GetCassandaCassandraUserConfig struct {
-	// Cassandra server provided values
 	Cassandra            *GetCassandaCassandraUserConfigCassandra     `pulumi:"cassandra"`
 	CassandraVersion     *string                                      `pulumi:"cassandraVersion"`
 	IpFilters            []string                                     `pulumi:"ipFilters"`
@@ -30427,8 +28945,7 @@ type GetCassandaCassandraUserConfig struct {
 	ProjectToForkFrom    *string                                      `pulumi:"projectToForkFrom"`
 	PublicAccess         *GetCassandaCassandraUserConfigPublicAccess  `pulumi:"publicAccess"`
 	ServiceToForkFrom    *string                                      `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps *string `pulumi:"staticIps"`
+	StaticIps            *string                                      `pulumi:"staticIps"`
 }
 
 // GetCassandaCassandraUserConfigInput is an input type that accepts GetCassandaCassandraUserConfigArgs and GetCassandaCassandraUserConfigOutput values.
@@ -30443,7 +28960,6 @@ type GetCassandaCassandraUserConfigInput interface {
 }
 
 type GetCassandaCassandraUserConfigArgs struct {
-	// Cassandra server provided values
 	Cassandra            GetCassandaCassandraUserConfigCassandraPtrInput     `pulumi:"cassandra"`
 	CassandraVersion     pulumi.StringPtrInput                               `pulumi:"cassandraVersion"`
 	IpFilters            pulumi.StringArrayInput                             `pulumi:"ipFilters"`
@@ -30452,8 +28968,7 @@ type GetCassandaCassandraUserConfigArgs struct {
 	ProjectToForkFrom    pulumi.StringPtrInput                               `pulumi:"projectToForkFrom"`
 	PublicAccess         GetCassandaCassandraUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	ServiceToForkFrom    pulumi.StringPtrInput                               `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	StaticIps            pulumi.StringPtrInput                               `pulumi:"staticIps"`
 }
 
 func (GetCassandaCassandraUserConfigArgs) ElementType() reflect.Type {
@@ -30507,7 +29022,6 @@ func (o GetCassandaCassandraUserConfigOutput) ToGetCassandaCassandraUserConfigOu
 	return o
 }
 
-// Cassandra server provided values
 func (o GetCassandaCassandraUserConfigOutput) Cassandra() GetCassandaCassandraUserConfigCassandraPtrOutput {
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *GetCassandaCassandraUserConfigCassandra { return v.Cassandra }).(GetCassandaCassandraUserConfigCassandraPtrOutput)
 }
@@ -30544,7 +29058,6 @@ func (o GetCassandaCassandraUserConfigOutput) ServiceToForkFrom() pulumi.StringP
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetCassandaCassandraUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -31402,7 +29915,6 @@ func (o GetCassandraCassandraArrayOutput) Index(i pulumi.IntInput) GetCassandraC
 }
 
 type GetCassandraCassandraUserConfig struct {
-	// Cassandra server provided values
 	Cassandra            *GetCassandraCassandraUserConfigCassandra     `pulumi:"cassandra"`
 	CassandraVersion     *string                                       `pulumi:"cassandraVersion"`
 	IpFilters            []string                                      `pulumi:"ipFilters"`
@@ -31411,8 +29923,7 @@ type GetCassandraCassandraUserConfig struct {
 	ProjectToForkFrom    *string                                       `pulumi:"projectToForkFrom"`
 	PublicAccess         *GetCassandraCassandraUserConfigPublicAccess  `pulumi:"publicAccess"`
 	ServiceToForkFrom    *string                                       `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps *string `pulumi:"staticIps"`
+	StaticIps            *string                                       `pulumi:"staticIps"`
 }
 
 // GetCassandraCassandraUserConfigInput is an input type that accepts GetCassandraCassandraUserConfigArgs and GetCassandraCassandraUserConfigOutput values.
@@ -31427,7 +29938,6 @@ type GetCassandraCassandraUserConfigInput interface {
 }
 
 type GetCassandraCassandraUserConfigArgs struct {
-	// Cassandra server provided values
 	Cassandra            GetCassandraCassandraUserConfigCassandraPtrInput     `pulumi:"cassandra"`
 	CassandraVersion     pulumi.StringPtrInput                                `pulumi:"cassandraVersion"`
 	IpFilters            pulumi.StringArrayInput                              `pulumi:"ipFilters"`
@@ -31436,8 +29946,7 @@ type GetCassandraCassandraUserConfigArgs struct {
 	ProjectToForkFrom    pulumi.StringPtrInput                                `pulumi:"projectToForkFrom"`
 	PublicAccess         GetCassandraCassandraUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	ServiceToForkFrom    pulumi.StringPtrInput                                `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	StaticIps            pulumi.StringPtrInput                                `pulumi:"staticIps"`
 }
 
 func (GetCassandraCassandraUserConfigArgs) ElementType() reflect.Type {
@@ -31491,7 +30000,6 @@ func (o GetCassandraCassandraUserConfigOutput) ToGetCassandraCassandraUserConfig
 	return o
 }
 
-// Cassandra server provided values
 func (o GetCassandraCassandraUserConfigOutput) Cassandra() GetCassandraCassandraUserConfigCassandraPtrOutput {
 	return o.ApplyT(func(v GetCassandraCassandraUserConfig) *GetCassandraCassandraUserConfigCassandra { return v.Cassandra }).(GetCassandraCassandraUserConfigCassandraPtrOutput)
 }
@@ -31528,7 +30036,6 @@ func (o GetCassandraCassandraUserConfigOutput) ServiceToForkFrom() pulumi.String
 	return o.ApplyT(func(v GetCassandraCassandraUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetCassandraCassandraUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandraCassandraUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -33200,7 +31707,6 @@ func (o GetFlinkFlinkUserConfigArrayOutput) Index(i pulumi.IntInput) GetFlinkFli
 }
 
 type GetFlinkFlinkUserConfigPrivatelinkAccess struct {
-	// Flink server provided values
 	Flink      *string `pulumi:"flink"`
 	Prometheus *string `pulumi:"prometheus"`
 }
@@ -33217,7 +31723,6 @@ type GetFlinkFlinkUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetFlinkFlinkUserConfigPrivatelinkAccessArgs struct {
-	// Flink server provided values
 	Flink      pulumi.StringPtrInput `pulumi:"flink"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -33299,7 +31804,6 @@ func (o GetFlinkFlinkUserConfigPrivatelinkAccessOutput) ToGetFlinkFlinkUserConfi
 	}).(GetFlinkFlinkUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Flink server provided values
 func (o GetFlinkFlinkUserConfigPrivatelinkAccessOutput) Flink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlinkFlinkUserConfigPrivatelinkAccess) *string { return v.Flink }).(pulumi.StringPtrOutput)
 }
@@ -33332,7 +31836,6 @@ func (o GetFlinkFlinkUserConfigPrivatelinkAccessPtrOutput) Elem() GetFlinkFlinkU
 	}).(GetFlinkFlinkUserConfigPrivatelinkAccessOutput)
 }
 
-// Flink server provided values
 func (o GetFlinkFlinkUserConfigPrivatelinkAccessPtrOutput) Flink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetFlinkFlinkUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -33801,11 +32304,10 @@ type GetGrafanaGrafanaUserConfig struct {
 	RecoveryBasebackupName       *string                                          `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom            *string                                          `pulumi:"serviceToForkFrom"`
 	SmtpServer                   *GetGrafanaGrafanaUserConfigSmtpServer           `pulumi:"smtpServer"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps             *string `pulumi:"staticIps"`
-	UserAutoAssignOrg     *string `pulumi:"userAutoAssignOrg"`
-	UserAutoAssignOrgRole *string `pulumi:"userAutoAssignOrgRole"`
-	ViewersCanEdit        *string `pulumi:"viewersCanEdit"`
+	StaticIps                    *string                                          `pulumi:"staticIps"`
+	UserAutoAssignOrg            *string                                          `pulumi:"userAutoAssignOrg"`
+	UserAutoAssignOrgRole        *string                                          `pulumi:"userAutoAssignOrgRole"`
+	ViewersCanEdit               *string                                          `pulumi:"viewersCanEdit"`
 }
 
 // GetGrafanaGrafanaUserConfigInput is an input type that accepts GetGrafanaGrafanaUserConfigArgs and GetGrafanaGrafanaUserConfigOutput values.
@@ -33851,11 +32353,10 @@ type GetGrafanaGrafanaUserConfigArgs struct {
 	RecoveryBasebackupName       pulumi.StringPtrInput                                   `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom            pulumi.StringPtrInput                                   `pulumi:"serviceToForkFrom"`
 	SmtpServer                   GetGrafanaGrafanaUserConfigSmtpServerPtrInput           `pulumi:"smtpServer"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps             pulumi.StringPtrInput `pulumi:"staticIps"`
-	UserAutoAssignOrg     pulumi.StringPtrInput `pulumi:"userAutoAssignOrg"`
-	UserAutoAssignOrgRole pulumi.StringPtrInput `pulumi:"userAutoAssignOrgRole"`
-	ViewersCanEdit        pulumi.StringPtrInput `pulumi:"viewersCanEdit"`
+	StaticIps                    pulumi.StringPtrInput                                   `pulumi:"staticIps"`
+	UserAutoAssignOrg            pulumi.StringPtrInput                                   `pulumi:"userAutoAssignOrg"`
+	UserAutoAssignOrgRole        pulumi.StringPtrInput                                   `pulumi:"userAutoAssignOrgRole"`
+	ViewersCanEdit               pulumi.StringPtrInput                                   `pulumi:"viewersCanEdit"`
 }
 
 func (GetGrafanaGrafanaUserConfigArgs) ElementType() reflect.Type {
@@ -34039,7 +32540,6 @@ func (o GetGrafanaGrafanaUserConfigOutput) SmtpServer() GetGrafanaGrafanaUserCon
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *GetGrafanaGrafanaUserConfigSmtpServer { return v.SmtpServer }).(GetGrafanaGrafanaUserConfigSmtpServerPtrOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetGrafanaGrafanaUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -35578,7 +34078,6 @@ func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) SecretKey() pu
 }
 
 type GetGrafanaGrafanaUserConfigPrivateAccess struct {
-	// Grafana server provided values
 	Grafana *string `pulumi:"grafana"`
 }
 
@@ -35594,7 +34093,6 @@ type GetGrafanaGrafanaUserConfigPrivateAccessInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigPrivateAccessArgs struct {
-	// Grafana server provided values
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -35675,7 +34173,6 @@ func (o GetGrafanaGrafanaUserConfigPrivateAccessOutput) ToGetGrafanaGrafanaUserC
 	}).(GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput)
 }
 
-// Grafana server provided values
 func (o GetGrafanaGrafanaUserConfigPrivateAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigPrivateAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -35704,7 +34201,6 @@ func (o GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput) Elem() GetGrafanaGraf
 	}).(GetGrafanaGrafanaUserConfigPrivateAccessOutput)
 }
 
-// Grafana server provided values
 func (o GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -35715,7 +34211,6 @@ func (o GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.Stri
 }
 
 type GetGrafanaGrafanaUserConfigPrivatelinkAccess struct {
-	// Grafana server provided values
 	Grafana *string `pulumi:"grafana"`
 }
 
@@ -35731,7 +34226,6 @@ type GetGrafanaGrafanaUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigPrivatelinkAccessArgs struct {
-	// Grafana server provided values
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -35812,7 +34306,6 @@ func (o GetGrafanaGrafanaUserConfigPrivatelinkAccessOutput) ToGetGrafanaGrafanaU
 	}).(GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Grafana server provided values
 func (o GetGrafanaGrafanaUserConfigPrivatelinkAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigPrivatelinkAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -35841,7 +34334,6 @@ func (o GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput) Elem() GetGrafana
 	}).(GetGrafanaGrafanaUserConfigPrivatelinkAccessOutput)
 }
 
-// Grafana server provided values
 func (o GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -35852,7 +34344,6 @@ func (o GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput) Grafana() pulumi.
 }
 
 type GetGrafanaGrafanaUserConfigPublicAccess struct {
-	// Grafana server provided values
 	Grafana *string `pulumi:"grafana"`
 }
 
@@ -35868,7 +34359,6 @@ type GetGrafanaGrafanaUserConfigPublicAccessInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigPublicAccessArgs struct {
-	// Grafana server provided values
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -35949,7 +34439,6 @@ func (o GetGrafanaGrafanaUserConfigPublicAccessOutput) ToGetGrafanaGrafanaUserCo
 	}).(GetGrafanaGrafanaUserConfigPublicAccessPtrOutput)
 }
 
-// Grafana server provided values
 func (o GetGrafanaGrafanaUserConfigPublicAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigPublicAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -35978,7 +34467,6 @@ func (o GetGrafanaGrafanaUserConfigPublicAccessPtrOutput) Elem() GetGrafanaGrafa
 	}).(GetGrafanaGrafanaUserConfigPublicAccessOutput)
 }
 
-// Grafana server provided values
 func (o GetGrafanaGrafanaUserConfigPublicAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -36651,8 +35139,7 @@ func (o GetInfluxDbInfluxdbArrayOutput) Index(i pulumi.IntInput) GetInfluxDbInfl
 }
 
 type GetInfluxDbInfluxdbUserConfig struct {
-	CustomDomain *string `pulumi:"customDomain"`
-	// InfluxDB server provided values
+	CustomDomain           *string                                         `pulumi:"customDomain"`
 	Influxdb               *GetInfluxDbInfluxdbUserConfigInfluxdb          `pulumi:"influxdb"`
 	IpFilters              []string                                        `pulumi:"ipFilters"`
 	PrivateAccess          *GetInfluxDbInfluxdbUserConfigPrivateAccess     `pulumi:"privateAccess"`
@@ -36661,8 +35148,7 @@ type GetInfluxDbInfluxdbUserConfig struct {
 	PublicAccess           *GetInfluxDbInfluxdbUserConfigPublicAccess      `pulumi:"publicAccess"`
 	RecoveryBasebackupName *string                                         `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom      *string                                         `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps *string `pulumi:"staticIps"`
+	StaticIps              *string                                         `pulumi:"staticIps"`
 }
 
 // GetInfluxDbInfluxdbUserConfigInput is an input type that accepts GetInfluxDbInfluxdbUserConfigArgs and GetInfluxDbInfluxdbUserConfigOutput values.
@@ -36677,8 +35163,7 @@ type GetInfluxDbInfluxdbUserConfigInput interface {
 }
 
 type GetInfluxDbInfluxdbUserConfigArgs struct {
-	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
-	// InfluxDB server provided values
+	CustomDomain           pulumi.StringPtrInput                                  `pulumi:"customDomain"`
 	Influxdb               GetInfluxDbInfluxdbUserConfigInfluxdbPtrInput          `pulumi:"influxdb"`
 	IpFilters              pulumi.StringArrayInput                                `pulumi:"ipFilters"`
 	PrivateAccess          GetInfluxDbInfluxdbUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
@@ -36687,8 +35172,7 @@ type GetInfluxDbInfluxdbUserConfigArgs struct {
 	PublicAccess           GetInfluxDbInfluxdbUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
 	RecoveryBasebackupName pulumi.StringPtrInput                                  `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom      pulumi.StringPtrInput                                  `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	StaticIps              pulumi.StringPtrInput                                  `pulumi:"staticIps"`
 }
 
 func (GetInfluxDbInfluxdbUserConfigArgs) ElementType() reflect.Type {
@@ -36746,7 +35230,6 @@ func (o GetInfluxDbInfluxdbUserConfigOutput) CustomDomain() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
-// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigOutput) Influxdb() GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *GetInfluxDbInfluxdbUserConfigInfluxdb { return v.Influxdb }).(GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput)
 }
@@ -36785,7 +35268,6 @@ func (o GetInfluxDbInfluxdbUserConfigOutput) ServiceToForkFrom() pulumi.StringPt
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetInfluxDbInfluxdbUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -37019,7 +35501,6 @@ func (o GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) QueryTimeout() pulumi.St
 }
 
 type GetInfluxDbInfluxdbUserConfigPrivateAccess struct {
-	// InfluxDB server provided values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
@@ -37035,7 +35516,6 @@ type GetInfluxDbInfluxdbUserConfigPrivateAccessInput interface {
 }
 
 type GetInfluxDbInfluxdbUserConfigPrivateAccessArgs struct {
-	// InfluxDB server provided values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -37116,7 +35596,6 @@ func (o GetInfluxDbInfluxdbUserConfigPrivateAccessOutput) ToGetInfluxDbInfluxdbU
 	}).(GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
-// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigPrivateAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigPrivateAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -37145,7 +35624,6 @@ func (o GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Elem() GetInfluxDbI
 	}).(GetInfluxDbInfluxdbUserConfigPrivateAccessOutput)
 }
 
-// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -37156,7 +35634,6 @@ func (o GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.S
 }
 
 type GetInfluxDbInfluxdbUserConfigPrivatelinkAccess struct {
-	// InfluxDB server provided values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
@@ -37172,7 +35649,6 @@ type GetInfluxDbInfluxdbUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetInfluxDbInfluxdbUserConfigPrivatelinkAccessArgs struct {
-	// InfluxDB server provided values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -37253,7 +35729,6 @@ func (o GetInfluxDbInfluxdbUserConfigPrivatelinkAccessOutput) ToGetInfluxDbInflu
 	}).(GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigPrivatelinkAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigPrivatelinkAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -37282,7 +35757,6 @@ func (o GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput) Elem() GetInflu
 	}).(GetInfluxDbInfluxdbUserConfigPrivatelinkAccessOutput)
 }
 
-// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -37293,7 +35767,6 @@ func (o GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput) Influxdb() pulu
 }
 
 type GetInfluxDbInfluxdbUserConfigPublicAccess struct {
-	// InfluxDB server provided values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
@@ -37309,7 +35782,6 @@ type GetInfluxDbInfluxdbUserConfigPublicAccessInput interface {
 }
 
 type GetInfluxDbInfluxdbUserConfigPublicAccessArgs struct {
-	// InfluxDB server provided values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -37390,7 +35862,6 @@ func (o GetInfluxDbInfluxdbUserConfigPublicAccessOutput) ToGetInfluxDbInfluxdbUs
 	}).(GetInfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
-// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigPublicAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigPublicAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -37419,7 +35890,6 @@ func (o GetInfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Elem() GetInfluxDbIn
 	}).(GetInfluxDbInfluxdbUserConfigPublicAccessOutput)
 }
 
-// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigPublicAccess) *string {
 		if v == nil {
@@ -37978,14 +36448,12 @@ func (o GetKafkaConnectKafkaConnectArrayOutput) Index(i pulumi.IntInput) GetKafk
 }
 
 type GetKafkaConnectKafkaConnectUserConfig struct {
-	IpFilters []string `pulumi:"ipFilters"`
-	// Kafka Connect server provided values
+	IpFilters         []string                                                `pulumi:"ipFilters"`
 	KafkaConnect      *GetKafkaConnectKafkaConnectUserConfigKafkaConnect      `pulumi:"kafkaConnect"`
 	PrivateAccess     *GetKafkaConnectKafkaConnectUserConfigPrivateAccess     `pulumi:"privateAccess"`
 	PrivatelinkAccess *GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
 	PublicAccess      *GetKafkaConnectKafkaConnectUserConfigPublicAccess      `pulumi:"publicAccess"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps *string `pulumi:"staticIps"`
+	StaticIps         *string                                                 `pulumi:"staticIps"`
 }
 
 // GetKafkaConnectKafkaConnectUserConfigInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigArgs and GetKafkaConnectKafkaConnectUserConfigOutput values.
@@ -38000,14 +36468,12 @@ type GetKafkaConnectKafkaConnectUserConfigInput interface {
 }
 
 type GetKafkaConnectKafkaConnectUserConfigArgs struct {
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Kafka Connect server provided values
+	IpFilters         pulumi.StringArrayInput                                        `pulumi:"ipFilters"`
 	KafkaConnect      GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput      `pulumi:"kafkaConnect"`
 	PrivateAccess     GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
 	PrivatelinkAccess GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
 	PublicAccess      GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	StaticIps         pulumi.StringPtrInput                                          `pulumi:"staticIps"`
 }
 
 func (GetKafkaConnectKafkaConnectUserConfigArgs) ElementType() reflect.Type {
@@ -38065,7 +36531,6 @@ func (o GetKafkaConnectKafkaConnectUserConfigOutput) IpFilters() pulumi.StringAr
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigOutput) KafkaConnect() GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) *GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
 		return v.KafkaConnect
@@ -38090,7 +36555,6 @@ func (o GetKafkaConnectKafkaConnectUserConfigOutput) PublicAccess() GetKafkaConn
 	}).(GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetKafkaConnectKafkaConnectUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -38418,7 +36882,6 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) SessionTimeo
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPrivateAccess struct {
-	// Kafka Connect server provided values
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -38435,7 +36898,6 @@ type GetKafkaConnectKafkaConnectUserConfigPrivateAccessInput interface {
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs struct {
-	// Kafka Connect server provided values
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -38517,7 +36979,6 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessOutput) ToGetKafkaConn
 	}).(GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput)
 }
 
-// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigPrivateAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -38550,7 +37011,6 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) Elem() GetK
 	}).(GetKafkaConnectKafkaConnectUserConfigPrivateAccessOutput)
 }
 
-// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -38570,8 +37030,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) Prometheus(
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess struct {
-	Jolokia *string `pulumi:"jolokia"`
-	// Kafka Connect server provided values
+	Jolokia      *string `pulumi:"jolokia"`
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -38588,8 +37047,7 @@ type GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs struct {
-	Jolokia pulumi.StringPtrInput `pulumi:"jolokia"`
-	// Kafka Connect server provided values
+	Jolokia      pulumi.StringPtrInput `pulumi:"jolokia"`
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -38675,7 +37133,6 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessOutput) Jolokia() 
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess) *string { return v.Jolokia }).(pulumi.StringPtrOutput)
 }
 
-// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -38717,7 +37174,6 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput) Jolokia
 	}).(pulumi.StringPtrOutput)
 }
 
-// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -38737,7 +37193,6 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput) Prometh
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPublicAccess struct {
-	// Kafka Connect server provided values
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -38754,7 +37209,6 @@ type GetKafkaConnectKafkaConnectUserConfigPublicAccessInput interface {
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs struct {
-	// Kafka Connect server provided values
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -38836,7 +37290,6 @@ func (o GetKafkaConnectKafkaConnectUserConfigPublicAccessOutput) ToGetKafkaConne
 	}).(GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
 }
 
-// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigPublicAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -38869,7 +37322,6 @@ func (o GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) Elem() GetKa
 	}).(GetKafkaConnectKafkaConnectUserConfigPublicAccessOutput)
 }
 
-// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigPublicAccess) *string {
 		if v == nil {
@@ -39090,8 +37542,7 @@ func (o GetKafkaConnectTagArrayOutput) Index(i pulumi.IntInput) GetKafkaConnectT
 
 type GetKafkaConnectorTask struct {
 	Connector string `pulumi:"connector"`
-	// List of tasks of a connector.
-	Task int `pulumi:"task"`
+	Task      int    `pulumi:"task"`
 }
 
 // GetKafkaConnectorTaskInput is an input type that accepts GetKafkaConnectorTaskArgs and GetKafkaConnectorTaskOutput values.
@@ -39107,8 +37558,7 @@ type GetKafkaConnectorTaskInput interface {
 
 type GetKafkaConnectorTaskArgs struct {
 	Connector pulumi.StringInput `pulumi:"connector"`
-	// List of tasks of a connector.
-	Task pulumi.IntInput `pulumi:"task"`
+	Task      pulumi.IntInput    `pulumi:"task"`
 }
 
 func (GetKafkaConnectorTaskArgs) ElementType() reflect.Type {
@@ -39166,7 +37616,6 @@ func (o GetKafkaConnectorTaskOutput) Connector() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaConnectorTask) string { return v.Connector }).(pulumi.StringOutput)
 }
 
-// List of tasks of a connector.
 func (o GetKafkaConnectorTaskOutput) Task() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKafkaConnectorTask) int { return v.Task }).(pulumi.IntOutput)
 }
@@ -39310,9 +37759,8 @@ func (o GetKafkaKafkaArrayOutput) Index(i pulumi.IntInput) GetKafkaKafkaOutput {
 }
 
 type GetKafkaKafkaUserConfig struct {
-	CustomDomain *string  `pulumi:"customDomain"`
-	IpFilters    []string `pulumi:"ipFilters"`
-	// Kafka server provided values
+	CustomDomain               *string                                            `pulumi:"customDomain"`
+	IpFilters                  []string                                           `pulumi:"ipFilters"`
 	Kafka                      *GetKafkaKafkaUserConfigKafka                      `pulumi:"kafka"`
 	KafkaAuthenticationMethods *GetKafkaKafkaUserConfigKafkaAuthenticationMethods `pulumi:"kafkaAuthenticationMethods"`
 	KafkaConnect               *string                                            `pulumi:"kafkaConnect"`
@@ -39325,8 +37773,7 @@ type GetKafkaKafkaUserConfig struct {
 	PublicAccess               *GetKafkaKafkaUserConfigPublicAccess               `pulumi:"publicAccess"`
 	SchemaRegistry             *string                                            `pulumi:"schemaRegistry"`
 	SchemaRegistryConfig       *GetKafkaKafkaUserConfigSchemaRegistryConfig       `pulumi:"schemaRegistryConfig"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps *string `pulumi:"staticIps"`
+	StaticIps                  *string                                            `pulumi:"staticIps"`
 }
 
 // GetKafkaKafkaUserConfigInput is an input type that accepts GetKafkaKafkaUserConfigArgs and GetKafkaKafkaUserConfigOutput values.
@@ -39341,9 +37788,8 @@ type GetKafkaKafkaUserConfigInput interface {
 }
 
 type GetKafkaKafkaUserConfigArgs struct {
-	CustomDomain pulumi.StringPtrInput   `pulumi:"customDomain"`
-	IpFilters    pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Kafka server provided values
+	CustomDomain               pulumi.StringPtrInput                                     `pulumi:"customDomain"`
+	IpFilters                  pulumi.StringArrayInput                                   `pulumi:"ipFilters"`
 	Kafka                      GetKafkaKafkaUserConfigKafkaPtrInput                      `pulumi:"kafka"`
 	KafkaAuthenticationMethods GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput `pulumi:"kafkaAuthenticationMethods"`
 	KafkaConnect               pulumi.StringPtrInput                                     `pulumi:"kafkaConnect"`
@@ -39356,8 +37802,7 @@ type GetKafkaKafkaUserConfigArgs struct {
 	PublicAccess               GetKafkaKafkaUserConfigPublicAccessPtrInput               `pulumi:"publicAccess"`
 	SchemaRegistry             pulumi.StringPtrInput                                     `pulumi:"schemaRegistry"`
 	SchemaRegistryConfig       GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput       `pulumi:"schemaRegistryConfig"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	StaticIps                  pulumi.StringPtrInput                                     `pulumi:"staticIps"`
 }
 
 func (GetKafkaKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -39419,7 +37864,6 @@ func (o GetKafkaKafkaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Kafka server provided values
 func (o GetKafkaKafkaUserConfigOutput) Kafka() GetKafkaKafkaUserConfigKafkaPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *GetKafkaKafkaUserConfigKafka { return v.Kafka }).(GetKafkaKafkaUserConfigKafkaPtrOutput)
 }
@@ -39474,7 +37918,6 @@ func (o GetKafkaKafkaUserConfigOutput) SchemaRegistryConfig() GetKafkaKafkaUserC
 	}).(GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetKafkaKafkaUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -40994,8 +39437,7 @@ func (o GetKafkaKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.Strin
 }
 
 type GetKafkaKafkaUserConfigPrivatelinkAccess struct {
-	Jolokia *string `pulumi:"jolokia"`
-	// Kafka server provided values
+	Jolokia        *string `pulumi:"jolokia"`
 	Kafka          *string `pulumi:"kafka"`
 	KafkaConnect   *string `pulumi:"kafkaConnect"`
 	KafkaRest      *string `pulumi:"kafkaRest"`
@@ -41015,8 +39457,7 @@ type GetKafkaKafkaUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetKafkaKafkaUserConfigPrivatelinkAccessArgs struct {
-	Jolokia pulumi.StringPtrInput `pulumi:"jolokia"`
-	// Kafka server provided values
+	Jolokia        pulumi.StringPtrInput `pulumi:"jolokia"`
 	Kafka          pulumi.StringPtrInput `pulumi:"kafka"`
 	KafkaConnect   pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	KafkaRest      pulumi.StringPtrInput `pulumi:"kafkaRest"`
@@ -41105,7 +39546,6 @@ func (o GetKafkaKafkaUserConfigPrivatelinkAccessOutput) Jolokia() pulumi.StringP
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPrivatelinkAccess) *string { return v.Jolokia }).(pulumi.StringPtrOutput)
 }
 
-// Kafka server provided values
 func (o GetKafkaKafkaUserConfigPrivatelinkAccessOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPrivatelinkAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
 }
@@ -41159,7 +39599,6 @@ func (o GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) Jolokia() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Kafka server provided values
 func (o GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -41206,7 +39645,6 @@ func (o GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) SchemaRegistry() pulu
 }
 
 type GetKafkaKafkaUserConfigPublicAccess struct {
-	// Kafka server provided values
 	Kafka          *string `pulumi:"kafka"`
 	KafkaConnect   *string `pulumi:"kafkaConnect"`
 	KafkaRest      *string `pulumi:"kafkaRest"`
@@ -41226,7 +39664,6 @@ type GetKafkaKafkaUserConfigPublicAccessInput interface {
 }
 
 type GetKafkaKafkaUserConfigPublicAccessArgs struct {
-	// Kafka server provided values
 	Kafka          pulumi.StringPtrInput `pulumi:"kafka"`
 	KafkaConnect   pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	KafkaRest      pulumi.StringPtrInput `pulumi:"kafkaRest"`
@@ -41311,7 +39748,6 @@ func (o GetKafkaKafkaUserConfigPublicAccessOutput) ToGetKafkaKafkaUserConfigPubl
 	}).(GetKafkaKafkaUserConfigPublicAccessPtrOutput)
 }
 
-// Kafka server provided values
 func (o GetKafkaKafkaUserConfigPublicAccessOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
 }
@@ -41356,7 +39792,6 @@ func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Elem() GetKafkaKafkaUserCo
 	}).(GetKafkaKafkaUserConfigPublicAccessOutput)
 }
 
-// Kafka server provided values
 func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -41769,11 +40204,9 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfig struct {
-	IpFilters []string `pulumi:"ipFilters"`
-	// Kafka MirrorMaker 2 server provided values
+	IpFilters        []string                                                       `pulumi:"ipFilters"`
 	KafkaMirrormaker *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps *string `pulumi:"staticIps"`
+	StaticIps        *string                                                        `pulumi:"staticIps"`
 }
 
 // GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs and GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput values.
@@ -41788,11 +40221,9 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput interface {
 }
 
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs struct {
-	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
-	// Kafka MirrorMaker 2 server provided values
+	IpFilters        pulumi.StringArrayInput                                               `pulumi:"ipFilters"`
 	KafkaMirrormaker GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	StaticIps        pulumi.StringPtrInput                                                 `pulumi:"staticIps"`
 }
 
 func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs) ElementType() reflect.Type {
@@ -41850,14 +40281,12 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilters() pulumi.
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
-// Kafka MirrorMaker 2 server provided values
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return v.KafkaMirrormaker
 	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -43123,8 +41552,7 @@ type GetM3AggregatorM3aggregatorUserConfig struct {
 	IpFilters           []string `pulumi:"ipFilters"`
 	M3Version           *string  `pulumi:"m3Version"`
 	M3aggregatorVersion *string  `pulumi:"m3aggregatorVersion"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps *string `pulumi:"staticIps"`
+	StaticIps           *string  `pulumi:"staticIps"`
 }
 
 // GetM3AggregatorM3aggregatorUserConfigInput is an input type that accepts GetM3AggregatorM3aggregatorUserConfigArgs and GetM3AggregatorM3aggregatorUserConfigOutput values.
@@ -43143,8 +41571,7 @@ type GetM3AggregatorM3aggregatorUserConfigArgs struct {
 	IpFilters           pulumi.StringArrayInput `pulumi:"ipFilters"`
 	M3Version           pulumi.StringPtrInput   `pulumi:"m3Version"`
 	M3aggregatorVersion pulumi.StringPtrInput   `pulumi:"m3aggregatorVersion"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	StaticIps           pulumi.StringPtrInput   `pulumi:"staticIps"`
 }
 
 func (GetM3AggregatorM3aggregatorUserConfigArgs) ElementType() reflect.Type {
@@ -43214,7 +41641,6 @@ func (o GetM3AggregatorM3aggregatorUserConfigOutput) M3aggregatorVersion() pulum
 	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *string { return v.M3aggregatorVersion }).(pulumi.StringPtrOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetM3AggregatorM3aggregatorUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -43670,8 +42096,7 @@ type GetM3DbM3dbUserConfig struct {
 	PublicAccess                            *GetM3DbM3dbUserConfigPublicAccess  `pulumi:"publicAccess"`
 	Rules                                   *GetM3DbM3dbUserConfigRules         `pulumi:"rules"`
 	ServiceToForkFrom                       *string                             `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps *string `pulumi:"staticIps"`
+	StaticIps                               *string                             `pulumi:"staticIps"`
 }
 
 // GetM3DbM3dbUserConfigInput is an input type that accepts GetM3DbM3dbUserConfigArgs and GetM3DbM3dbUserConfigOutput values.
@@ -43698,8 +42123,7 @@ type GetM3DbM3dbUserConfigArgs struct {
 	PublicAccess                            GetM3DbM3dbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	Rules                                   GetM3DbM3dbUserConfigRulesPtrInput         `pulumi:"rules"`
 	ServiceToForkFrom                       pulumi.StringPtrInput                      `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	StaticIps                               pulumi.StringPtrInput                      `pulumi:"staticIps"`
 }
 
 func (GetM3DbM3dbUserConfigArgs) ElementType() reflect.Type {
@@ -43801,7 +42225,6 @@ func (o GetM3DbM3dbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetM3DbM3dbUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -45490,24 +43913,22 @@ func (o GetMySqlMysqlArrayOutput) Index(i pulumi.IntInput) GetMySqlMysqlOutput {
 }
 
 type GetMySqlMysqlUserConfig struct {
-	AdminPassword         *string                           `pulumi:"adminPassword"`
-	AdminUsername         *string                           `pulumi:"adminUsername"`
-	BackupHour            *string                           `pulumi:"backupHour"`
-	BackupMinute          *string                           `pulumi:"backupMinute"`
-	BinlogRetentionPeriod *string                           `pulumi:"binlogRetentionPeriod"`
-	IpFilters             []string                          `pulumi:"ipFilters"`
-	Migration             *GetMySqlMysqlUserConfigMigration `pulumi:"migration"`
-	// MySQL specific server provided values
-	Mysql              *GetMySqlMysqlUserConfigMysql             `pulumi:"mysql"`
-	MysqlVersion       *string                                   `pulumi:"mysqlVersion"`
-	PrivateAccess      *GetMySqlMysqlUserConfigPrivateAccess     `pulumi:"privateAccess"`
-	PrivatelinkAccess  *GetMySqlMysqlUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom  *string                                   `pulumi:"projectToForkFrom"`
-	PublicAccess       *GetMySqlMysqlUserConfigPublicAccess      `pulumi:"publicAccess"`
-	RecoveryTargetTime *string                                   `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom  *string                                   `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps *string `pulumi:"staticIps"`
+	AdminPassword         *string                                   `pulumi:"adminPassword"`
+	AdminUsername         *string                                   `pulumi:"adminUsername"`
+	BackupHour            *string                                   `pulumi:"backupHour"`
+	BackupMinute          *string                                   `pulumi:"backupMinute"`
+	BinlogRetentionPeriod *string                                   `pulumi:"binlogRetentionPeriod"`
+	IpFilters             []string                                  `pulumi:"ipFilters"`
+	Migration             *GetMySqlMysqlUserConfigMigration         `pulumi:"migration"`
+	Mysql                 *GetMySqlMysqlUserConfigMysql             `pulumi:"mysql"`
+	MysqlVersion          *string                                   `pulumi:"mysqlVersion"`
+	PrivateAccess         *GetMySqlMysqlUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	PrivatelinkAccess     *GetMySqlMysqlUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom     *string                                   `pulumi:"projectToForkFrom"`
+	PublicAccess          *GetMySqlMysqlUserConfigPublicAccess      `pulumi:"publicAccess"`
+	RecoveryTargetTime    *string                                   `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom     *string                                   `pulumi:"serviceToForkFrom"`
+	StaticIps             *string                                   `pulumi:"staticIps"`
 }
 
 // GetMySqlMysqlUserConfigInput is an input type that accepts GetMySqlMysqlUserConfigArgs and GetMySqlMysqlUserConfigOutput values.
@@ -45522,24 +43943,22 @@ type GetMySqlMysqlUserConfigInput interface {
 }
 
 type GetMySqlMysqlUserConfigArgs struct {
-	AdminPassword         pulumi.StringPtrInput                    `pulumi:"adminPassword"`
-	AdminUsername         pulumi.StringPtrInput                    `pulumi:"adminUsername"`
-	BackupHour            pulumi.StringPtrInput                    `pulumi:"backupHour"`
-	BackupMinute          pulumi.StringPtrInput                    `pulumi:"backupMinute"`
-	BinlogRetentionPeriod pulumi.StringPtrInput                    `pulumi:"binlogRetentionPeriod"`
-	IpFilters             pulumi.StringArrayInput                  `pulumi:"ipFilters"`
-	Migration             GetMySqlMysqlUserConfigMigrationPtrInput `pulumi:"migration"`
-	// MySQL specific server provided values
-	Mysql              GetMySqlMysqlUserConfigMysqlPtrInput             `pulumi:"mysql"`
-	MysqlVersion       pulumi.StringPtrInput                            `pulumi:"mysqlVersion"`
-	PrivateAccess      GetMySqlMysqlUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
-	PrivatelinkAccess  GetMySqlMysqlUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom  pulumi.StringPtrInput                            `pulumi:"projectToForkFrom"`
-	PublicAccess       GetMySqlMysqlUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
-	RecoveryTargetTime pulumi.StringPtrInput                            `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom  pulumi.StringPtrInput                            `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	AdminPassword         pulumi.StringPtrInput                            `pulumi:"adminPassword"`
+	AdminUsername         pulumi.StringPtrInput                            `pulumi:"adminUsername"`
+	BackupHour            pulumi.StringPtrInput                            `pulumi:"backupHour"`
+	BackupMinute          pulumi.StringPtrInput                            `pulumi:"backupMinute"`
+	BinlogRetentionPeriod pulumi.StringPtrInput                            `pulumi:"binlogRetentionPeriod"`
+	IpFilters             pulumi.StringArrayInput                          `pulumi:"ipFilters"`
+	Migration             GetMySqlMysqlUserConfigMigrationPtrInput         `pulumi:"migration"`
+	Mysql                 GetMySqlMysqlUserConfigMysqlPtrInput             `pulumi:"mysql"`
+	MysqlVersion          pulumi.StringPtrInput                            `pulumi:"mysqlVersion"`
+	PrivateAccess         GetMySqlMysqlUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	PrivatelinkAccess     GetMySqlMysqlUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom     pulumi.StringPtrInput                            `pulumi:"projectToForkFrom"`
+	PublicAccess          GetMySqlMysqlUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	RecoveryTargetTime    pulumi.StringPtrInput                            `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom     pulumi.StringPtrInput                            `pulumi:"serviceToForkFrom"`
+	StaticIps             pulumi.StringPtrInput                            `pulumi:"staticIps"`
 }
 
 func (GetMySqlMysqlUserConfigArgs) ElementType() reflect.Type {
@@ -45621,7 +44040,6 @@ func (o GetMySqlMysqlUserConfigOutput) Migration() GetMySqlMysqlUserConfigMigrat
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigMigration { return v.Migration }).(GetMySqlMysqlUserConfigMigrationPtrOutput)
 }
 
-// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigOutput) Mysql() GetMySqlMysqlUserConfigMysqlPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigMysql { return v.Mysql }).(GetMySqlMysqlUserConfigMysqlPtrOutput)
 }
@@ -45654,7 +44072,6 @@ func (o GetMySqlMysqlUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetMySqlMysqlUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -46396,7 +44813,6 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.StringPtrOut
 }
 
 type GetMySqlMysqlUserConfigPrivateAccess struct {
-	// MySQL specific server provided values
 	Mysql      *string `pulumi:"mysql"`
 	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -46414,7 +44830,6 @@ type GetMySqlMysqlUserConfigPrivateAccessInput interface {
 }
 
 type GetMySqlMysqlUserConfigPrivateAccessArgs struct {
-	// MySQL specific server provided values
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
 	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -46497,7 +44912,6 @@ func (o GetMySqlMysqlUserConfigPrivateAccessOutput) ToGetMySqlMysqlUserConfigPri
 	}).(GetMySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
 
-// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigPrivateAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivateAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
@@ -46534,7 +44948,6 @@ func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Elem() GetMySqlMysqlUserC
 	}).(GetMySqlMysqlUserConfigPrivateAccessOutput)
 }
 
-// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -46563,7 +44976,6 @@ func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.Strin
 }
 
 type GetMySqlMysqlUserConfigPrivatelinkAccess struct {
-	// MySQL specific server provided values
 	Mysql      *string `pulumi:"mysql"`
 	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -46581,7 +44993,6 @@ type GetMySqlMysqlUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetMySqlMysqlUserConfigPrivatelinkAccessArgs struct {
-	// MySQL specific server provided values
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
 	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -46664,7 +45075,6 @@ func (o GetMySqlMysqlUserConfigPrivatelinkAccessOutput) ToGetMySqlMysqlUserConfi
 	}).(GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigPrivatelinkAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivatelinkAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
@@ -46701,7 +45111,6 @@ func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Elem() GetMySqlMysqlU
 	}).(GetMySqlMysqlUserConfigPrivatelinkAccessOutput)
 }
 
-// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -46730,7 +45139,6 @@ func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.S
 }
 
 type GetMySqlMysqlUserConfigPublicAccess struct {
-	// MySQL specific server provided values
 	Mysql      *string `pulumi:"mysql"`
 	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -46748,7 +45156,6 @@ type GetMySqlMysqlUserConfigPublicAccessInput interface {
 }
 
 type GetMySqlMysqlUserConfigPublicAccessArgs struct {
-	// MySQL specific server provided values
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
 	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -46831,7 +45238,6 @@ func (o GetMySqlMysqlUserConfigPublicAccessOutput) ToGetMySqlMysqlUserConfigPubl
 	}).(GetMySqlMysqlUserConfigPublicAccessPtrOutput)
 }
 
-// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigPublicAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigPublicAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
@@ -46868,7 +45274,6 @@ func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Elem() GetMySqlMysqlUserCo
 	}).(GetMySqlMysqlUserConfigPublicAccessOutput)
 }
 
-// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPublicAccess) *string {
 		if v == nil {
@@ -47321,25 +45726,23 @@ func (o GetOpenSearchOpensearchArrayOutput) Index(i pulumi.IntInput) GetOpenSear
 }
 
 type GetOpenSearchOpensearchUserConfig struct {
-	CustomDomain                       *string                                         `pulumi:"customDomain"`
-	DisableReplicationFactorAdjustment *string                                         `pulumi:"disableReplicationFactorAdjustment"`
-	IndexPatterns                      []GetOpenSearchOpensearchUserConfigIndexPattern `pulumi:"indexPatterns"`
-	IndexTemplate                      *GetOpenSearchOpensearchUserConfigIndexTemplate `pulumi:"indexTemplate"`
-	IpFilters                          []string                                        `pulumi:"ipFilters"`
-	KeepIndexRefreshInterval           *string                                         `pulumi:"keepIndexRefreshInterval"`
-	MaxIndexCount                      *string                                         `pulumi:"maxIndexCount"`
-	// Opensearch server provided values
-	Opensearch             *GetOpenSearchOpensearchUserConfigOpensearch           `pulumi:"opensearch"`
-	OpensearchDashboards   *GetOpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
-	OpensearchVersion      *string                                                `pulumi:"opensearchVersion"`
-	PrivateAccess          *GetOpenSearchOpensearchUserConfigPrivateAccess        `pulumi:"privateAccess"`
-	PrivatelinkAccess      *GetOpenSearchOpensearchUserConfigPrivatelinkAccess    `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom      *string                                                `pulumi:"projectToForkFrom"`
-	PublicAccess           *GetOpenSearchOpensearchUserConfigPublicAccess         `pulumi:"publicAccess"`
-	RecoveryBasebackupName *string                                                `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom      *string                                                `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps *string `pulumi:"staticIps"`
+	CustomDomain                       *string                                                `pulumi:"customDomain"`
+	DisableReplicationFactorAdjustment *string                                                `pulumi:"disableReplicationFactorAdjustment"`
+	IndexPatterns                      []GetOpenSearchOpensearchUserConfigIndexPattern        `pulumi:"indexPatterns"`
+	IndexTemplate                      *GetOpenSearchOpensearchUserConfigIndexTemplate        `pulumi:"indexTemplate"`
+	IpFilters                          []string                                               `pulumi:"ipFilters"`
+	KeepIndexRefreshInterval           *string                                                `pulumi:"keepIndexRefreshInterval"`
+	MaxIndexCount                      *string                                                `pulumi:"maxIndexCount"`
+	Opensearch                         *GetOpenSearchOpensearchUserConfigOpensearch           `pulumi:"opensearch"`
+	OpensearchDashboards               *GetOpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
+	OpensearchVersion                  *string                                                `pulumi:"opensearchVersion"`
+	PrivateAccess                      *GetOpenSearchOpensearchUserConfigPrivateAccess        `pulumi:"privateAccess"`
+	PrivatelinkAccess                  *GetOpenSearchOpensearchUserConfigPrivatelinkAccess    `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom                  *string                                                `pulumi:"projectToForkFrom"`
+	PublicAccess                       *GetOpenSearchOpensearchUserConfigPublicAccess         `pulumi:"publicAccess"`
+	RecoveryBasebackupName             *string                                                `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom                  *string                                                `pulumi:"serviceToForkFrom"`
+	StaticIps                          *string                                                `pulumi:"staticIps"`
 }
 
 // GetOpenSearchOpensearchUserConfigInput is an input type that accepts GetOpenSearchOpensearchUserConfigArgs and GetOpenSearchOpensearchUserConfigOutput values.
@@ -47354,25 +45757,23 @@ type GetOpenSearchOpensearchUserConfigInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigArgs struct {
-	CustomDomain                       pulumi.StringPtrInput                                   `pulumi:"customDomain"`
-	DisableReplicationFactorAdjustment pulumi.StringPtrInput                                   `pulumi:"disableReplicationFactorAdjustment"`
-	IndexPatterns                      GetOpenSearchOpensearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
-	IndexTemplate                      GetOpenSearchOpensearchUserConfigIndexTemplatePtrInput  `pulumi:"indexTemplate"`
-	IpFilters                          pulumi.StringArrayInput                                 `pulumi:"ipFilters"`
-	KeepIndexRefreshInterval           pulumi.StringPtrInput                                   `pulumi:"keepIndexRefreshInterval"`
-	MaxIndexCount                      pulumi.StringPtrInput                                   `pulumi:"maxIndexCount"`
-	// Opensearch server provided values
-	Opensearch             GetOpenSearchOpensearchUserConfigOpensearchPtrInput           `pulumi:"opensearch"`
-	OpensearchDashboards   GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
-	OpensearchVersion      pulumi.StringPtrInput                                         `pulumi:"opensearchVersion"`
-	PrivateAccess          GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
-	PrivatelinkAccess      GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput    `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom      pulumi.StringPtrInput                                         `pulumi:"projectToForkFrom"`
-	PublicAccess           GetOpenSearchOpensearchUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
-	RecoveryBasebackupName pulumi.StringPtrInput                                         `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom      pulumi.StringPtrInput                                         `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	CustomDomain                       pulumi.StringPtrInput                                         `pulumi:"customDomain"`
+	DisableReplicationFactorAdjustment pulumi.StringPtrInput                                         `pulumi:"disableReplicationFactorAdjustment"`
+	IndexPatterns                      GetOpenSearchOpensearchUserConfigIndexPatternArrayInput       `pulumi:"indexPatterns"`
+	IndexTemplate                      GetOpenSearchOpensearchUserConfigIndexTemplatePtrInput        `pulumi:"indexTemplate"`
+	IpFilters                          pulumi.StringArrayInput                                       `pulumi:"ipFilters"`
+	KeepIndexRefreshInterval           pulumi.StringPtrInput                                         `pulumi:"keepIndexRefreshInterval"`
+	MaxIndexCount                      pulumi.StringPtrInput                                         `pulumi:"maxIndexCount"`
+	Opensearch                         GetOpenSearchOpensearchUserConfigOpensearchPtrInput           `pulumi:"opensearch"`
+	OpensearchDashboards               GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
+	OpensearchVersion                  pulumi.StringPtrInput                                         `pulumi:"opensearchVersion"`
+	PrivateAccess                      GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
+	PrivatelinkAccess                  GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput    `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom                  pulumi.StringPtrInput                                         `pulumi:"projectToForkFrom"`
+	PublicAccess                       GetOpenSearchOpensearchUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
+	RecoveryBasebackupName             pulumi.StringPtrInput                                         `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom                  pulumi.StringPtrInput                                         `pulumi:"serviceToForkFrom"`
+	StaticIps                          pulumi.StringPtrInput                                         `pulumi:"staticIps"`
 }
 
 func (GetOpenSearchOpensearchUserConfigArgs) ElementType() reflect.Type {
@@ -47458,7 +45859,6 @@ func (o GetOpenSearchOpensearchUserConfigOutput) MaxIndexCount() pulumi.StringPt
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.MaxIndexCount }).(pulumi.StringPtrOutput)
 }
 
-// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigOutput) Opensearch() GetOpenSearchOpensearchUserConfigOpensearchPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigOpensearch {
 		return v.Opensearch
@@ -47505,7 +45905,6 @@ func (o GetOpenSearchOpensearchUserConfigOutput) ServiceToForkFrom() pulumi.Stri
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetOpenSearchOpensearchUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -48509,7 +46908,6 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) Opensear
 }
 
 type GetOpenSearchOpensearchUserConfigPrivateAccess struct {
-	// Opensearch server provided values
 	Opensearch           *string `pulumi:"opensearch"`
 	OpensearchDashboards *string `pulumi:"opensearchDashboards"`
 	Prometheus           *string `pulumi:"prometheus"`
@@ -48527,7 +46925,6 @@ type GetOpenSearchOpensearchUserConfigPrivateAccessInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigPrivateAccessArgs struct {
-	// Opensearch server provided values
 	Opensearch           pulumi.StringPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.StringPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -48610,7 +47007,6 @@ func (o GetOpenSearchOpensearchUserConfigPrivateAccessOutput) ToGetOpenSearchOpe
 	}).(GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput)
 }
 
-// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPrivateAccessOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPrivateAccess) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
 }
@@ -48647,7 +47043,6 @@ func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Elem() GetOpenS
 	}).(GetOpenSearchOpensearchUserConfigPrivateAccessOutput)
 }
 
-// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -48676,7 +47071,6 @@ func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Prometheus() pu
 }
 
 type GetOpenSearchOpensearchUserConfigPrivatelinkAccess struct {
-	// Opensearch server provided values
 	Opensearch           *string `pulumi:"opensearch"`
 	OpensearchDashboards *string `pulumi:"opensearchDashboards"`
 	Prometheus           *string `pulumi:"prometheus"`
@@ -48694,7 +47088,6 @@ type GetOpenSearchOpensearchUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs struct {
-	// Opensearch server provided values
 	Opensearch           pulumi.StringPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.StringPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -48777,7 +47170,6 @@ func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) ToGetOpenSearc
 	}).(GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPrivatelinkAccess) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
 }
@@ -48814,7 +47206,6 @@ func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Elem() GetO
 	}).(GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput)
 }
 
-// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -48843,7 +47234,6 @@ func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Prometheus(
 }
 
 type GetOpenSearchOpensearchUserConfigPublicAccess struct {
-	// Opensearch server provided values
 	Opensearch           *string `pulumi:"opensearch"`
 	OpensearchDashboards *string `pulumi:"opensearchDashboards"`
 	Prometheus           *string `pulumi:"prometheus"`
@@ -48861,7 +47251,6 @@ type GetOpenSearchOpensearchUserConfigPublicAccessInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigPublicAccessArgs struct {
-	// Opensearch server provided values
 	Opensearch           pulumi.StringPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.StringPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -48944,7 +47333,6 @@ func (o GetOpenSearchOpensearchUserConfigPublicAccessOutput) ToGetOpenSearchOpen
 	}).(GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput)
 }
 
-// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPublicAccessOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPublicAccess) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
 }
@@ -48981,7 +47369,6 @@ func (o GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) Elem() GetOpenSe
 	}).(GetOpenSearchOpensearchUserConfigPublicAccessOutput)
 }
 
-// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPublicAccess) *string {
 		if v == nil {
@@ -49476,14 +47863,13 @@ func (o GetPgPgArrayOutput) Index(i pulumi.IntInput) GetPgPgOutput {
 }
 
 type GetPgPgUserConfig struct {
-	AdminPassword *string                     `pulumi:"adminPassword"`
-	AdminUsername *string                     `pulumi:"adminUsername"`
-	BackupHour    *string                     `pulumi:"backupHour"`
-	BackupMinute  *string                     `pulumi:"backupMinute"`
-	EnableIpv6    *string                     `pulumi:"enableIpv6"`
-	IpFilters     []string                    `pulumi:"ipFilters"`
-	Migration     *GetPgPgUserConfigMigration `pulumi:"migration"`
-	// PostgreSQL specific server provided values
+	AdminPassword           *string                             `pulumi:"adminPassword"`
+	AdminUsername           *string                             `pulumi:"adminUsername"`
+	BackupHour              *string                             `pulumi:"backupHour"`
+	BackupMinute            *string                             `pulumi:"backupMinute"`
+	EnableIpv6              *string                             `pulumi:"enableIpv6"`
+	IpFilters               []string                            `pulumi:"ipFilters"`
+	Migration               *GetPgPgUserConfigMigration         `pulumi:"migration"`
 	Pg                      *GetPgPgUserConfigPg                `pulumi:"pg"`
 	PgReadReplica           *string                             `pulumi:"pgReadReplica"`
 	PgServiceToForkFrom     *string                             `pulumi:"pgServiceToForkFrom"`
@@ -49497,12 +47883,11 @@ type GetPgPgUserConfig struct {
 	RecoveryTargetTime      *string                             `pulumi:"recoveryTargetTime"`
 	ServiceToForkFrom       *string                             `pulumi:"serviceToForkFrom"`
 	SharedBuffersPercentage *string                             `pulumi:"sharedBuffersPercentage"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps              *string                       `pulumi:"staticIps"`
-	SynchronousReplication *string                       `pulumi:"synchronousReplication"`
-	Timescaledb            *GetPgPgUserConfigTimescaledb `pulumi:"timescaledb"`
-	Variant                *string                       `pulumi:"variant"`
-	WorkMem                *string                       `pulumi:"workMem"`
+	StaticIps               *string                             `pulumi:"staticIps"`
+	SynchronousReplication  *string                             `pulumi:"synchronousReplication"`
+	Timescaledb             *GetPgPgUserConfigTimescaledb       `pulumi:"timescaledb"`
+	Variant                 *string                             `pulumi:"variant"`
+	WorkMem                 *string                             `pulumi:"workMem"`
 }
 
 // GetPgPgUserConfigInput is an input type that accepts GetPgPgUserConfigArgs and GetPgPgUserConfigOutput values.
@@ -49517,14 +47902,13 @@ type GetPgPgUserConfigInput interface {
 }
 
 type GetPgPgUserConfigArgs struct {
-	AdminPassword pulumi.StringPtrInput              `pulumi:"adminPassword"`
-	AdminUsername pulumi.StringPtrInput              `pulumi:"adminUsername"`
-	BackupHour    pulumi.StringPtrInput              `pulumi:"backupHour"`
-	BackupMinute  pulumi.StringPtrInput              `pulumi:"backupMinute"`
-	EnableIpv6    pulumi.StringPtrInput              `pulumi:"enableIpv6"`
-	IpFilters     pulumi.StringArrayInput            `pulumi:"ipFilters"`
-	Migration     GetPgPgUserConfigMigrationPtrInput `pulumi:"migration"`
-	// PostgreSQL specific server provided values
+	AdminPassword           pulumi.StringPtrInput                      `pulumi:"adminPassword"`
+	AdminUsername           pulumi.StringPtrInput                      `pulumi:"adminUsername"`
+	BackupHour              pulumi.StringPtrInput                      `pulumi:"backupHour"`
+	BackupMinute            pulumi.StringPtrInput                      `pulumi:"backupMinute"`
+	EnableIpv6              pulumi.StringPtrInput                      `pulumi:"enableIpv6"`
+	IpFilters               pulumi.StringArrayInput                    `pulumi:"ipFilters"`
+	Migration               GetPgPgUserConfigMigrationPtrInput         `pulumi:"migration"`
 	Pg                      GetPgPgUserConfigPgPtrInput                `pulumi:"pg"`
 	PgReadReplica           pulumi.StringPtrInput                      `pulumi:"pgReadReplica"`
 	PgServiceToForkFrom     pulumi.StringPtrInput                      `pulumi:"pgServiceToForkFrom"`
@@ -49538,12 +47922,11 @@ type GetPgPgUserConfigArgs struct {
 	RecoveryTargetTime      pulumi.StringPtrInput                      `pulumi:"recoveryTargetTime"`
 	ServiceToForkFrom       pulumi.StringPtrInput                      `pulumi:"serviceToForkFrom"`
 	SharedBuffersPercentage pulumi.StringPtrInput                      `pulumi:"sharedBuffersPercentage"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps              pulumi.StringPtrInput                `pulumi:"staticIps"`
-	SynchronousReplication pulumi.StringPtrInput                `pulumi:"synchronousReplication"`
-	Timescaledb            GetPgPgUserConfigTimescaledbPtrInput `pulumi:"timescaledb"`
-	Variant                pulumi.StringPtrInput                `pulumi:"variant"`
-	WorkMem                pulumi.StringPtrInput                `pulumi:"workMem"`
+	StaticIps               pulumi.StringPtrInput                      `pulumi:"staticIps"`
+	SynchronousReplication  pulumi.StringPtrInput                      `pulumi:"synchronousReplication"`
+	Timescaledb             GetPgPgUserConfigTimescaledbPtrInput       `pulumi:"timescaledb"`
+	Variant                 pulumi.StringPtrInput                      `pulumi:"variant"`
+	WorkMem                 pulumi.StringPtrInput                      `pulumi:"workMem"`
 }
 
 func (GetPgPgUserConfigArgs) ElementType() reflect.Type {
@@ -49625,7 +48008,6 @@ func (o GetPgPgUserConfigOutput) Migration() GetPgPgUserConfigMigrationPtrOutput
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigMigration { return v.Migration }).(GetPgPgUserConfigMigrationPtrOutput)
 }
 
-// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigOutput) Pg() GetPgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPg { return v.Pg }).(GetPgPgUserConfigPgPtrOutput)
 }
@@ -49678,7 +48060,6 @@ func (o GetPgPgUserConfigOutput) SharedBuffersPercentage() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.SharedBuffersPercentage }).(pulumi.StringPtrOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetPgPgUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -51152,7 +49533,6 @@ func (o GetPgPgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pul
 }
 
 type GetPgPgUserConfigPrivateAccess struct {
-	// PostgreSQL specific server provided values
 	Pg         *string `pulumi:"pg"`
 	Pgbouncer  *string `pulumi:"pgbouncer"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -51170,7 +49550,6 @@ type GetPgPgUserConfigPrivateAccessInput interface {
 }
 
 type GetPgPgUserConfigPrivateAccessArgs struct {
-	// PostgreSQL specific server provided values
 	Pg         pulumi.StringPtrInput `pulumi:"pg"`
 	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -51253,7 +49632,6 @@ func (o GetPgPgUserConfigPrivateAccessOutput) ToGetPgPgUserConfigPrivateAccessPt
 	}).(GetPgPgUserConfigPrivateAccessPtrOutput)
 }
 
-// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigPrivateAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPrivateAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
@@ -51290,7 +49668,6 @@ func (o GetPgPgUserConfigPrivateAccessPtrOutput) Elem() GetPgPgUserConfigPrivate
 	}).(GetPgPgUserConfigPrivateAccessOutput)
 }
 
-// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigPrivateAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -51319,7 +49696,6 @@ func (o GetPgPgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOu
 }
 
 type GetPgPgUserConfigPrivatelinkAccess struct {
-	// PostgreSQL specific server provided values
 	Pg         *string `pulumi:"pg"`
 	Pgbouncer  *string `pulumi:"pgbouncer"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -51337,7 +49713,6 @@ type GetPgPgUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetPgPgUserConfigPrivatelinkAccessArgs struct {
-	// PostgreSQL specific server provided values
 	Pg         pulumi.StringPtrInput `pulumi:"pg"`
 	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -51420,7 +49795,6 @@ func (o GetPgPgUserConfigPrivatelinkAccessOutput) ToGetPgPgUserConfigPrivatelink
 	}).(GetPgPgUserConfigPrivatelinkAccessPtrOutput)
 }
 
-// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigPrivatelinkAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPrivatelinkAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
@@ -51457,7 +49831,6 @@ func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) Elem() GetPgPgUserConfigPri
 	}).(GetPgPgUserConfigPrivatelinkAccessOutput)
 }
 
-// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -51486,7 +49859,6 @@ func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.StringP
 }
 
 type GetPgPgUserConfigPublicAccess struct {
-	// PostgreSQL specific server provided values
 	Pg         *string `pulumi:"pg"`
 	Pgbouncer  *string `pulumi:"pgbouncer"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -51504,7 +49876,6 @@ type GetPgPgUserConfigPublicAccessInput interface {
 }
 
 type GetPgPgUserConfigPublicAccessArgs struct {
-	// PostgreSQL specific server provided values
 	Pg         pulumi.StringPtrInput `pulumi:"pg"`
 	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -51587,7 +49958,6 @@ func (o GetPgPgUserConfigPublicAccessOutput) ToGetPgPgUserConfigPublicAccessPtrO
 	}).(GetPgPgUserConfigPublicAccessPtrOutput)
 }
 
-// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigPublicAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPublicAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
@@ -51624,7 +49994,6 @@ func (o GetPgPgUserConfigPublicAccessPtrOutput) Elem() GetPgPgUserConfigPublicAc
 	}).(GetPgPgUserConfigPublicAccessOutput)
 }
 
-// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigPublicAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPublicAccess) *string {
 		if v == nil {
@@ -52323,8 +50692,7 @@ type GetRedisRedisUserConfig struct {
 	RedisSsl                           *string                                   `pulumi:"redisSsl"`
 	RedisTimeout                       *string                                   `pulumi:"redisTimeout"`
 	ServiceToForkFrom                  *string                                   `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps *string `pulumi:"staticIps"`
+	StaticIps                          *string                                   `pulumi:"staticIps"`
 }
 
 // GetRedisRedisUserConfigInput is an input type that accepts GetRedisRedisUserConfigArgs and GetRedisRedisUserConfigOutput values.
@@ -52358,8 +50726,7 @@ type GetRedisRedisUserConfigArgs struct {
 	RedisSsl                           pulumi.StringPtrInput                            `pulumi:"redisSsl"`
 	RedisTimeout                       pulumi.StringPtrInput                            `pulumi:"redisTimeout"`
 	ServiceToForkFrom                  pulumi.StringPtrInput                            `pulumi:"serviceToForkFrom"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	StaticIps                          pulumi.StringPtrInput                            `pulumi:"staticIps"`
 }
 
 func (GetRedisRedisUserConfigArgs) ElementType() reflect.Type {
@@ -52489,7 +50856,6 @@ func (o GetRedisRedisUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetRedisRedisUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -52754,8 +51120,7 @@ func (o GetRedisRedisUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOu
 
 type GetRedisRedisUserConfigPrivateAccess struct {
 	Prometheus *string `pulumi:"prometheus"`
-	// Redis server provided values
-	Redis *string `pulumi:"redis"`
+	Redis      *string `pulumi:"redis"`
 }
 
 // GetRedisRedisUserConfigPrivateAccessInput is an input type that accepts GetRedisRedisUserConfigPrivateAccessArgs and GetRedisRedisUserConfigPrivateAccessOutput values.
@@ -52771,8 +51136,7 @@ type GetRedisRedisUserConfigPrivateAccessInput interface {
 
 type GetRedisRedisUserConfigPrivateAccessArgs struct {
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	// Redis server provided values
-	Redis pulumi.StringPtrInput `pulumi:"redis"`
+	Redis      pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (GetRedisRedisUserConfigPrivateAccessArgs) ElementType() reflect.Type {
@@ -52856,7 +51220,6 @@ func (o GetRedisRedisUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPt
 	return o.ApplyT(func(v GetRedisRedisUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
-// Redis server provided values
 func (o GetRedisRedisUserConfigPrivateAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigPrivateAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -52894,7 +51257,6 @@ func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Redis server provided values
 func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -52906,8 +51268,7 @@ func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrO
 
 type GetRedisRedisUserConfigPrivatelinkAccess struct {
 	Prometheus *string `pulumi:"prometheus"`
-	// Redis server provided values
-	Redis *string `pulumi:"redis"`
+	Redis      *string `pulumi:"redis"`
 }
 
 // GetRedisRedisUserConfigPrivatelinkAccessInput is an input type that accepts GetRedisRedisUserConfigPrivatelinkAccessArgs and GetRedisRedisUserConfigPrivatelinkAccessOutput values.
@@ -52923,8 +51284,7 @@ type GetRedisRedisUserConfigPrivatelinkAccessInput interface {
 
 type GetRedisRedisUserConfigPrivatelinkAccessArgs struct {
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	// Redis server provided values
-	Redis pulumi.StringPtrInput `pulumi:"redis"`
+	Redis      pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (GetRedisRedisUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
@@ -53008,7 +51368,6 @@ func (o GetRedisRedisUserConfigPrivatelinkAccessOutput) Prometheus() pulumi.Stri
 	return o.ApplyT(func(v GetRedisRedisUserConfigPrivatelinkAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
-// Redis server provided values
 func (o GetRedisRedisUserConfigPrivatelinkAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigPrivatelinkAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -53046,7 +51405,6 @@ func (o GetRedisRedisUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Redis server provided values
 func (o GetRedisRedisUserConfigPrivatelinkAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -53058,8 +51416,7 @@ func (o GetRedisRedisUserConfigPrivatelinkAccessPtrOutput) Redis() pulumi.String
 
 type GetRedisRedisUserConfigPublicAccess struct {
 	Prometheus *string `pulumi:"prometheus"`
-	// Redis server provided values
-	Redis *string `pulumi:"redis"`
+	Redis      *string `pulumi:"redis"`
 }
 
 // GetRedisRedisUserConfigPublicAccessInput is an input type that accepts GetRedisRedisUserConfigPublicAccessArgs and GetRedisRedisUserConfigPublicAccessOutput values.
@@ -53075,8 +51432,7 @@ type GetRedisRedisUserConfigPublicAccessInput interface {
 
 type GetRedisRedisUserConfigPublicAccessArgs struct {
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	// Redis server provided values
-	Redis pulumi.StringPtrInput `pulumi:"redis"`
+	Redis      pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (GetRedisRedisUserConfigPublicAccessArgs) ElementType() reflect.Type {
@@ -53160,7 +51516,6 @@ func (o GetRedisRedisUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtr
 	return o.ApplyT(func(v GetRedisRedisUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
-// Redis server provided values
 func (o GetRedisRedisUserConfigPublicAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigPublicAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -53198,7 +51553,6 @@ func (o GetRedisRedisUserConfigPublicAccessPtrOutput) Prometheus() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Redis server provided values
 func (o GetRedisRedisUserConfigPublicAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigPublicAccess) *string {
 		if v == nil {

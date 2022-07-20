@@ -25,7 +25,7 @@ export function getBillingGroup(args: GetBillingGroupArgs, opts?: pulumi.InvokeO
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aiven:index/getBillingGroup:getBillingGroup", {
-        "name": args.name,
+        "billingGroupId": args.billingGroupId,
     }, opts);
 }
 
@@ -33,75 +33,31 @@ export function getBillingGroup(args: GetBillingGroupArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getBillingGroup.
  */
 export interface GetBillingGroupArgs {
-    /**
-     * Billing Group name
-     */
-    name: string;
+    billingGroupId: string;
 }
 
 /**
  * A collection of values returned by getBillingGroup.
  */
 export interface GetBillingGroupResult {
-    /**
-     * Account id
-     */
     readonly accountId: string;
-    /**
-     * Address lines
-     */
     readonly addressLines: string[];
-    /**
-     * Billing currency
-     */
     readonly billingCurrency: string;
-    /**
-     * Billing contact emails
-     */
     readonly billingEmails: string[];
-    /**
-     * Billing extra text
-     */
     readonly billingExtraText: string;
-    /**
-     * Credit card id
-     */
+    readonly billingGroupId: string;
     readonly cardId: string;
-    /**
-     * City
-     */
     readonly city: string;
-    /**
-     * Company name
-     */
     readonly company: string;
-    /**
-     * ID of the billing group to copy from
-     */
     readonly copyFromBillingGroup: string;
-    /**
-     * Country code
-     */
     readonly countryCode: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Billing Group name
-     */
     readonly name: string;
-    /**
-     * State
-     */
     readonly state: string;
-    /**
-     * VAT id
-     */
     readonly vatId: string;
-    /**
-     * Zip Code
-     */
     readonly zipCode: string;
 }
 
@@ -113,8 +69,5 @@ export function getBillingGroupOutput(args: GetBillingGroupOutputArgs, opts?: pu
  * A collection of arguments for invoking getBillingGroup.
  */
 export interface GetBillingGroupOutputArgs {
-    /**
-     * Billing Group name
-     */
-    name: pulumi.Input<string>;
+    billingGroupId: pulumi.Input<string>;
 }

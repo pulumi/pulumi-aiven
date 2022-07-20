@@ -23,13 +23,7 @@ export function getAccountAuthentication(args: GetAccountAuthenticationArgs, opt
  * A collection of arguments for invoking getAccountAuthentication.
  */
 export interface GetAccountAuthenticationArgs {
-    /**
-     * The unique id of the account.
-     */
     accountId: string;
-    /**
-     * The name of the account authentication.
-     */
     name: string;
 }
 
@@ -37,57 +31,22 @@ export interface GetAccountAuthenticationArgs {
  * A collection of values returned by getAccountAuthentication.
  */
 export interface GetAccountAuthenticationResult {
-    /**
-     * The unique id of the account.
-     */
     readonly accountId: string;
-    /**
-     * Account authentication id
-     */
     readonly authenticationId: string;
-    /**
-     * Time of creation
-     */
+    readonly autoJoinTeamId: string;
     readonly createTime: string;
-    /**
-     * Status of account authentication method. The default value is `false`.
-     */
     readonly enabled: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The name of the account authentication.
-     */
     readonly name: string;
-    /**
-     * SAML Assertion Consumer Service URL
-     */
     readonly samlAcsUrl: string;
-    /**
-     * SAML Certificate
-     */
     readonly samlCertificate: string;
-    /**
-     * SAML Entity id
-     */
     readonly samlEntityId: string;
-    /**
-     * SAML Idp URL
-     */
     readonly samlIdpUrl: string;
-    /**
-     * SAML Metadata URL
-     */
     readonly samlMetadataUrl: string;
-    /**
-     * The account authentication type. The possible values are `internal` and `saml`.
-     */
     readonly type: string;
-    /**
-     * Time of last update
-     */
     readonly updateTime: string;
 }
 
@@ -99,12 +58,6 @@ export function getAccountAuthenticationOutput(args: GetAccountAuthenticationOut
  * A collection of arguments for invoking getAccountAuthentication.
  */
 export interface GetAccountAuthenticationOutputArgs {
-    /**
-     * The unique id of the account.
-     */
     accountId: pulumi.Input<string>;
-    /**
-     * The name of the account authentication.
-     */
     name: pulumi.Input<string>;
 }

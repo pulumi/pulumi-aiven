@@ -40,17 +40,11 @@ class GetProjectUserResult:
     @property
     @pulumi.getter
     def accepted(self) -> bool:
-        """
-        Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
-        """
         return pulumi.get(self, "accepted")
 
     @property
     @pulumi.getter
     def email(self) -> str:
-        """
-        Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "email")
 
     @property
@@ -64,17 +58,11 @@ class GetProjectUserResult:
     @property
     @pulumi.getter(name="memberType")
     def member_type(self) -> str:
-        """
-        Project membership type. The possible values are `admin`, `developer` and `operator`.
-        """
         return pulumi.get(self, "member_type")
 
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
 
@@ -106,10 +94,6 @@ def get_project_user(email: Optional[str] = None,
     mytestuser = aiven.get_project_user(project=aiven_project["myproject"]["project"],
         email="john.doe@example.com")
     ```
-
-
-    :param str email: Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['email'] = email
@@ -144,9 +128,5 @@ def get_project_user_output(email: Optional[pulumi.Input[str]] = None,
     mytestuser = aiven.get_project_user(project=aiven_project["myproject"]["project"],
         email="john.doe@example.com")
     ```
-
-
-    :param str email: Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

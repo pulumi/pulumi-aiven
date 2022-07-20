@@ -20,13 +20,16 @@ class GetAccountAuthenticationResult:
     """
     A collection of values returned by getAccountAuthentication.
     """
-    def __init__(__self__, account_id=None, authentication_id=None, create_time=None, enabled=None, id=None, name=None, saml_acs_url=None, saml_certificate=None, saml_entity_id=None, saml_idp_url=None, saml_metadata_url=None, type=None, update_time=None):
+    def __init__(__self__, account_id=None, authentication_id=None, auto_join_team_id=None, create_time=None, enabled=None, id=None, name=None, saml_acs_url=None, saml_certificate=None, saml_entity_id=None, saml_idp_url=None, saml_metadata_url=None, type=None, update_time=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if authentication_id and not isinstance(authentication_id, str):
             raise TypeError("Expected argument 'authentication_id' to be a str")
         pulumi.set(__self__, "authentication_id", authentication_id)
+        if auto_join_team_id and not isinstance(auto_join_team_id, str):
+            raise TypeError("Expected argument 'auto_join_team_id' to be a str")
+        pulumi.set(__self__, "auto_join_team_id", auto_join_team_id)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -64,33 +67,26 @@ class GetAccountAuthenticationResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
-        """
-        The unique id of the account.
-        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="authenticationId")
     def authentication_id(self) -> str:
-        """
-        Account authentication id
-        """
         return pulumi.get(self, "authentication_id")
+
+    @property
+    @pulumi.getter(name="autoJoinTeamId")
+    def auto_join_team_id(self) -> str:
+        return pulumi.get(self, "auto_join_team_id")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
-        """
-        Time of creation
-        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        Status of account authentication method. The default value is `false`.
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -104,65 +100,41 @@ class GetAccountAuthenticationResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the account authentication.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="samlAcsUrl")
     def saml_acs_url(self) -> str:
-        """
-        SAML Assertion Consumer Service URL
-        """
         return pulumi.get(self, "saml_acs_url")
 
     @property
     @pulumi.getter(name="samlCertificate")
     def saml_certificate(self) -> str:
-        """
-        SAML Certificate
-        """
         return pulumi.get(self, "saml_certificate")
 
     @property
     @pulumi.getter(name="samlEntityId")
     def saml_entity_id(self) -> str:
-        """
-        SAML Entity id
-        """
         return pulumi.get(self, "saml_entity_id")
 
     @property
     @pulumi.getter(name="samlIdpUrl")
     def saml_idp_url(self) -> str:
-        """
-        SAML Idp URL
-        """
         return pulumi.get(self, "saml_idp_url")
 
     @property
     @pulumi.getter(name="samlMetadataUrl")
     def saml_metadata_url(self) -> str:
-        """
-        SAML Metadata URL
-        """
         return pulumi.get(self, "saml_metadata_url")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        The account authentication type. The possible values are `internal` and `saml`.
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
-        """
-        Time of last update
-        """
         return pulumi.get(self, "update_time")
 
 
@@ -174,6 +146,7 @@ class AwaitableGetAccountAuthenticationResult(GetAccountAuthenticationResult):
         return GetAccountAuthenticationResult(
             account_id=self.account_id,
             authentication_id=self.authentication_id,
+            auto_join_team_id=self.auto_join_team_id,
             create_time=self.create_time,
             enabled=self.enabled,
             id=self.id,
@@ -192,10 +165,6 @@ def get_account_authentication(account_id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountAuthenticationResult:
     """
     The Account Authentication data source provides information about the existing Aiven Account Authentication.
-
-
-    :param str account_id: The unique id of the account.
-    :param str name: The name of the account authentication.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -209,6 +178,7 @@ def get_account_authentication(account_id: Optional[str] = None,
     return AwaitableGetAccountAuthenticationResult(
         account_id=__ret__.account_id,
         authentication_id=__ret__.authentication_id,
+        auto_join_team_id=__ret__.auto_join_team_id,
         create_time=__ret__.create_time,
         enabled=__ret__.enabled,
         id=__ret__.id,
@@ -228,9 +198,5 @@ def get_account_authentication_output(account_id: Optional[pulumi.Input[str]] = 
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAuthenticationResult]:
     """
     The Account Authentication data source provides information about the existing Aiven Account Authentication.
-
-
-    :param str account_id: The unique id of the account.
-    :param str name: The name of the account authentication.
     """
     ...

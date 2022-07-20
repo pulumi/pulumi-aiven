@@ -57,7 +57,8 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the
+     * resource.
      */
     public readonly peerCloudAccount!: pulumi.Output<string>;
     /**
@@ -85,7 +86,8 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
      */
     public readonly userPeerNetworkCidrs!: pulumi.Output<string[]>;
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference.
+     * This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly vpcId!: pulumi.Output<string>;
 
@@ -146,7 +148,8 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
  */
 export interface TransitGatewayVpcAttachmentState {
     /**
-     * AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the
+     * resource.
      */
     peerCloudAccount?: pulumi.Input<string>;
     /**
@@ -174,7 +177,8 @@ export interface TransitGatewayVpcAttachmentState {
      */
     userPeerNetworkCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference.
+     * This property cannot be changed, doing so forces recreation of the resource.
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -184,7 +188,8 @@ export interface TransitGatewayVpcAttachmentState {
  */
 export interface TransitGatewayVpcAttachmentArgs {
     /**
-     * AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the
+     * resource.
      */
     peerCloudAccount: pulumi.Input<string>;
     /**
@@ -200,7 +205,8 @@ export interface TransitGatewayVpcAttachmentArgs {
      */
     userPeerNetworkCidrs: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference.
+     * This property cannot be changed, doing so forces recreation of the resource.
      */
     vpcId: pulumi.Input<string>;
 }

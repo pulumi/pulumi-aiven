@@ -13,13 +13,7 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ProjectTag
     {
-        /// <summary>
-        /// Project tag key
-        /// </summary>
         public readonly string Key;
-        /// <summary>
-        /// Project tag value
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

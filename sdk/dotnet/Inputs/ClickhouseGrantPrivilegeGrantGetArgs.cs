@@ -12,33 +12,18 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ClickhouseGrantPrivilegeGrantGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("column")]
         public Input<string>? Column { get; set; }
 
-        /// <summary>
-        /// The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("database", required: true)]
         public Input<string> Database { get; set; } = null!;
 
-        /// <summary>
-        /// The privilege to grant, i.e. 'INSERT', 'SELECT', etc. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("privilege")]
         public Input<string>? Privilege { get; set; }
 
-        /// <summary>
-        /// The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("table")]
         public Input<string>? Table { get; set; }
 
-        /// <summary>
-        /// If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
-        /// </summary>
         [Input("withGrant")]
         public Input<bool>? WithGrant { get; set; }
 
