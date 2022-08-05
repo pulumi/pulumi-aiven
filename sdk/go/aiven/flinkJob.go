@@ -35,7 +35,7 @@ import (
 // 				pulumi.Any(aiven_flink_table.Source.Table_id),
 // 				pulumi.Any(aiven_flink_table.Sink.Table_id),
 // 			},
-// 			Statement: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "        INSERT INTO ", aiven_flink_table.Sink.Table_name, "                                            \n", "        SELECT * FROM ", aiven_flink_table.Source.Table_name, "                                        \n", "        WHERE `cpu` > 50                                                                            \n")),
+// 			Statement: pulumi.String(fmt.Sprintf("        INSERT INTO %v                                            \n        SELECT * FROM %v                                        \n        WHERE `cpu` > 50                                                                            \n", aiven_flink_table.Sink.Table_name, aiven_flink_table.Source.Table_name)),
 // 		})
 // 		if err != nil {
 // 			return err

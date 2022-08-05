@@ -13,58 +13,12 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// The Billing Group data source provides information about the existing Aiven Account.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Aiven.GetBillingGroup.InvokeAsync(new Aiven.GetBillingGroupArgs
-        ///         {
-        ///             Name = "&lt;BILLING_GROUP_NAME&gt;",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBillingGroupResult> InvokeAsync(GetBillingGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBillingGroupResult>("aiven:index/getBillingGroup:getBillingGroup", args ?? new GetBillingGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Billing Group data source provides information about the existing Aiven Account.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var foo = Output.Create(Aiven.GetBillingGroup.InvokeAsync(new Aiven.GetBillingGroupArgs
-        ///         {
-        ///             Name = "&lt;BILLING_GROUP_NAME&gt;",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBillingGroupResult> Invoke(GetBillingGroupInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetBillingGroupResult>("aiven:index/getBillingGroup:getBillingGroup", args ?? new GetBillingGroupInvokeArgs(), options.WithDefaults());

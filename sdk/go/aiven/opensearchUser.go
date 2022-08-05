@@ -31,7 +31,7 @@ import (
 // 			ServiceName: pulumi.Any(aiven_opensearch.Bar.Service_name),
 // 			Project:     pulumi.String("my-project"),
 // 			Username:    pulumi.String("user-1"),
-// 			Password:    pulumi.String(fmt.Sprintf("%v%v%v", "Test", "$", "1234")),
+// 			Password:    pulumi.String(fmt.Sprintf("Test$1234")),
 // 		})
 // 		if err != nil {
 // 			return err

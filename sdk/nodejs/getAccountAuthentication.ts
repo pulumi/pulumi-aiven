@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -43,9 +44,14 @@ export interface GetAccountAuthenticationResult {
     readonly name: string;
     readonly samlAcsUrl: string;
     readonly samlCertificate: string;
+    readonly samlDigestAlgorithm: string;
     readonly samlEntityId: string;
+    readonly samlFieldMappings: outputs.GetAccountAuthenticationSamlFieldMapping[];
+    readonly samlIdpLoginAllowed: boolean;
     readonly samlIdpUrl: string;
     readonly samlMetadataUrl: string;
+    readonly samlSignatureAlgorithm: string;
+    readonly samlVariant: string;
     readonly type: string;
     readonly updateTime: string;
 }

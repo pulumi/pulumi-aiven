@@ -37,12 +37,22 @@ type AccountAuthentication struct {
 	SamlAcsUrl pulumi.StringOutput `pulumi:"samlAcsUrl"`
 	// SAML Certificate
 	SamlCertificate pulumi.StringPtrOutput `pulumi:"samlCertificate"`
+	// Digest algorithm. This is an advanced option that typically does not need to be set.
+	SamlDigestAlgorithm pulumi.StringPtrOutput `pulumi:"samlDigestAlgorithm"`
 	// SAML Entity id
 	SamlEntityId pulumi.StringPtrOutput `pulumi:"samlEntityId"`
+	// Map IdP fields
+	SamlFieldMapping AccountAuthenticationSamlFieldMappingPtrOutput `pulumi:"samlFieldMapping"`
+	// Set to 'true' to enable IdP initiated login
+	SamlIdpLoginAllowed pulumi.BoolPtrOutput `pulumi:"samlIdpLoginAllowed"`
 	// SAML Idp URL
 	SamlIdpUrl pulumi.StringPtrOutput `pulumi:"samlIdpUrl"`
 	// SAML Metadata URL
 	SamlMetadataUrl pulumi.StringOutput `pulumi:"samlMetadataUrl"`
+	// Signature algorithm. This is an advanced option that typically does not need to be set.
+	SamlSignatureAlgorithm pulumi.StringPtrOutput `pulumi:"samlSignatureAlgorithm"`
+	// SAML server variant
+	SamlVariant pulumi.StringPtrOutput `pulumi:"samlVariant"`
 	// The account authentication type. The possible values are `internal` and `saml`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Time of last update
@@ -100,12 +110,22 @@ type accountAuthenticationState struct {
 	SamlAcsUrl *string `pulumi:"samlAcsUrl"`
 	// SAML Certificate
 	SamlCertificate *string `pulumi:"samlCertificate"`
+	// Digest algorithm. This is an advanced option that typically does not need to be set.
+	SamlDigestAlgorithm *string `pulumi:"samlDigestAlgorithm"`
 	// SAML Entity id
 	SamlEntityId *string `pulumi:"samlEntityId"`
+	// Map IdP fields
+	SamlFieldMapping *AccountAuthenticationSamlFieldMapping `pulumi:"samlFieldMapping"`
+	// Set to 'true' to enable IdP initiated login
+	SamlIdpLoginAllowed *bool `pulumi:"samlIdpLoginAllowed"`
 	// SAML Idp URL
 	SamlIdpUrl *string `pulumi:"samlIdpUrl"`
 	// SAML Metadata URL
 	SamlMetadataUrl *string `pulumi:"samlMetadataUrl"`
+	// Signature algorithm. This is an advanced option that typically does not need to be set.
+	SamlSignatureAlgorithm *string `pulumi:"samlSignatureAlgorithm"`
+	// SAML server variant
+	SamlVariant *string `pulumi:"samlVariant"`
 	// The account authentication type. The possible values are `internal` and `saml`.
 	Type *string `pulumi:"type"`
 	// Time of last update
@@ -129,12 +149,22 @@ type AccountAuthenticationState struct {
 	SamlAcsUrl pulumi.StringPtrInput
 	// SAML Certificate
 	SamlCertificate pulumi.StringPtrInput
+	// Digest algorithm. This is an advanced option that typically does not need to be set.
+	SamlDigestAlgorithm pulumi.StringPtrInput
 	// SAML Entity id
 	SamlEntityId pulumi.StringPtrInput
+	// Map IdP fields
+	SamlFieldMapping AccountAuthenticationSamlFieldMappingPtrInput
+	// Set to 'true' to enable IdP initiated login
+	SamlIdpLoginAllowed pulumi.BoolPtrInput
 	// SAML Idp URL
 	SamlIdpUrl pulumi.StringPtrInput
 	// SAML Metadata URL
 	SamlMetadataUrl pulumi.StringPtrInput
+	// Signature algorithm. This is an advanced option that typically does not need to be set.
+	SamlSignatureAlgorithm pulumi.StringPtrInput
+	// SAML server variant
+	SamlVariant pulumi.StringPtrInput
 	// The account authentication type. The possible values are `internal` and `saml`.
 	Type pulumi.StringPtrInput
 	// Time of last update
@@ -156,10 +186,20 @@ type accountAuthenticationArgs struct {
 	Name *string `pulumi:"name"`
 	// SAML Certificate
 	SamlCertificate *string `pulumi:"samlCertificate"`
+	// Digest algorithm. This is an advanced option that typically does not need to be set.
+	SamlDigestAlgorithm *string `pulumi:"samlDigestAlgorithm"`
 	// SAML Entity id
 	SamlEntityId *string `pulumi:"samlEntityId"`
+	// Map IdP fields
+	SamlFieldMapping *AccountAuthenticationSamlFieldMapping `pulumi:"samlFieldMapping"`
+	// Set to 'true' to enable IdP initiated login
+	SamlIdpLoginAllowed *bool `pulumi:"samlIdpLoginAllowed"`
 	// SAML Idp URL
 	SamlIdpUrl *string `pulumi:"samlIdpUrl"`
+	// Signature algorithm. This is an advanced option that typically does not need to be set.
+	SamlSignatureAlgorithm *string `pulumi:"samlSignatureAlgorithm"`
+	// SAML server variant
+	SamlVariant *string `pulumi:"samlVariant"`
 	// The account authentication type. The possible values are `internal` and `saml`.
 	Type string `pulumi:"type"`
 }
@@ -176,10 +216,20 @@ type AccountAuthenticationArgs struct {
 	Name pulumi.StringPtrInput
 	// SAML Certificate
 	SamlCertificate pulumi.StringPtrInput
+	// Digest algorithm. This is an advanced option that typically does not need to be set.
+	SamlDigestAlgorithm pulumi.StringPtrInput
 	// SAML Entity id
 	SamlEntityId pulumi.StringPtrInput
+	// Map IdP fields
+	SamlFieldMapping AccountAuthenticationSamlFieldMappingPtrInput
+	// Set to 'true' to enable IdP initiated login
+	SamlIdpLoginAllowed pulumi.BoolPtrInput
 	// SAML Idp URL
 	SamlIdpUrl pulumi.StringPtrInput
+	// Signature algorithm. This is an advanced option that typically does not need to be set.
+	SamlSignatureAlgorithm pulumi.StringPtrInput
+	// SAML server variant
+	SamlVariant pulumi.StringPtrInput
 	// The account authentication type. The possible values are `internal` and `saml`.
 	Type pulumi.StringInput
 }
@@ -311,9 +361,26 @@ func (o AccountAuthenticationOutput) SamlCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringPtrOutput { return v.SamlCertificate }).(pulumi.StringPtrOutput)
 }
 
+// Digest algorithm. This is an advanced option that typically does not need to be set.
+func (o AccountAuthenticationOutput) SamlDigestAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringPtrOutput { return v.SamlDigestAlgorithm }).(pulumi.StringPtrOutput)
+}
+
 // SAML Entity id
 func (o AccountAuthenticationOutput) SamlEntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringPtrOutput { return v.SamlEntityId }).(pulumi.StringPtrOutput)
+}
+
+// Map IdP fields
+func (o AccountAuthenticationOutput) SamlFieldMapping() AccountAuthenticationSamlFieldMappingPtrOutput {
+	return o.ApplyT(func(v *AccountAuthentication) AccountAuthenticationSamlFieldMappingPtrOutput {
+		return v.SamlFieldMapping
+	}).(AccountAuthenticationSamlFieldMappingPtrOutput)
+}
+
+// Set to 'true' to enable IdP initiated login
+func (o AccountAuthenticationOutput) SamlIdpLoginAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.BoolPtrOutput { return v.SamlIdpLoginAllowed }).(pulumi.BoolPtrOutput)
 }
 
 // SAML Idp URL
@@ -324,6 +391,16 @@ func (o AccountAuthenticationOutput) SamlIdpUrl() pulumi.StringPtrOutput {
 // SAML Metadata URL
 func (o AccountAuthenticationOutput) SamlMetadataUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringOutput { return v.SamlMetadataUrl }).(pulumi.StringOutput)
+}
+
+// Signature algorithm. This is an advanced option that typically does not need to be set.
+func (o AccountAuthenticationOutput) SamlSignatureAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringPtrOutput { return v.SamlSignatureAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// SAML server variant
+func (o AccountAuthenticationOutput) SamlVariant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthentication) pulumi.StringPtrOutput { return v.SamlVariant }).(pulumi.StringPtrOutput)
 }
 
 // The account authentication type. The possible values are `internal` and `saml`.

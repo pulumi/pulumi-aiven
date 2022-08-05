@@ -67,9 +67,14 @@ namespace Pulumi.Aiven
         public readonly string Name;
         public readonly string SamlAcsUrl;
         public readonly string SamlCertificate;
+        public readonly string SamlDigestAlgorithm;
         public readonly string SamlEntityId;
+        public readonly ImmutableArray<Outputs.GetAccountAuthenticationSamlFieldMappingResult> SamlFieldMappings;
+        public readonly bool SamlIdpLoginAllowed;
         public readonly string SamlIdpUrl;
         public readonly string SamlMetadataUrl;
+        public readonly string SamlSignatureAlgorithm;
+        public readonly string SamlVariant;
         public readonly string Type;
         public readonly string UpdateTime;
 
@@ -93,11 +98,21 @@ namespace Pulumi.Aiven
 
             string samlCertificate,
 
+            string samlDigestAlgorithm,
+
             string samlEntityId,
+
+            ImmutableArray<Outputs.GetAccountAuthenticationSamlFieldMappingResult> samlFieldMappings,
+
+            bool samlIdpLoginAllowed,
 
             string samlIdpUrl,
 
             string samlMetadataUrl,
+
+            string samlSignatureAlgorithm,
+
+            string samlVariant,
 
             string type,
 
@@ -112,9 +127,14 @@ namespace Pulumi.Aiven
             Name = name;
             SamlAcsUrl = samlAcsUrl;
             SamlCertificate = samlCertificate;
+            SamlDigestAlgorithm = samlDigestAlgorithm;
             SamlEntityId = samlEntityId;
+            SamlFieldMappings = samlFieldMappings;
+            SamlIdpLoginAllowed = samlIdpLoginAllowed;
             SamlIdpUrl = samlIdpUrl;
             SamlMetadataUrl = samlMetadataUrl;
+            SamlSignatureAlgorithm = samlSignatureAlgorithm;
+            SamlVariant = samlVariant;
             Type = type;
             UpdateTime = updateTime;
         }

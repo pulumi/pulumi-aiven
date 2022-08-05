@@ -11,29 +11,6 @@ import (
 )
 
 // The Billing Group data source provides information about the existing Aiven Account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupBillingGroup(ctx, &GetBillingGroupArgs{
-// 			Name: "<BILLING_GROUP_NAME>",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupBillingGroup(ctx *pulumi.Context, args *LookupBillingGroupArgs, opts ...pulumi.InvokeOption) (*LookupBillingGroupResult, error) {
 	var rv LookupBillingGroupResult
 	err := ctx.Invoke("aiven:index/getBillingGroup:getBillingGroup", args, &rv, opts...)

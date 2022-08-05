@@ -34,7 +34,7 @@ import (
 // 			IntegrationId: pulumi.Any(aiven_service_integration.Flink_kafka.Service_id),
 // 			JdbcTable:     pulumi.String("<JDBC_TABLE_NAME>"),
 // 			KafkaTopic:    pulumi.Any(aiven_kafka_topic.Table_topic.Topic_name),
-// 			SchemaSql:     pulumi.String(fmt.Sprintf("%v%v%v%v", "      `+\"`cpu`\"+` INT,\n", "      `+\"`node`\"+` INT,\n", "      `+\"`occurred_at`\"+` TIMESTAMP(3) METADATA FROM 'timestamp',\n", "      WATERMARK FOR `+\"`occurred_at`\"+` AS `+\"`occurred_at`\"+` - INTERVAL '5' SECOND\n")),
+// 			SchemaSql:     pulumi.String(fmt.Sprintf("      `+\"`cpu`\"+` INT,\n      `+\"`node`\"+` INT,\n      `+\"`occurred_at`\"+` TIMESTAMP(3) METADATA FROM 'timestamp',\n      WATERMARK FOR `+\"`occurred_at`\"+` AS `+\"`occurred_at`\"+` - INTERVAL '5' SECOND\n")),
 // 		})
 // 		if err != nil {
 // 			return err

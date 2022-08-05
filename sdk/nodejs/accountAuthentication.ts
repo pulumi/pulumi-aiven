@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -74,9 +75,21 @@ export class AccountAuthentication extends pulumi.CustomResource {
      */
     public readonly samlCertificate!: pulumi.Output<string | undefined>;
     /**
+     * Digest algorithm. This is an advanced option that typically does not need to be set.
+     */
+    public readonly samlDigestAlgorithm!: pulumi.Output<string | undefined>;
+    /**
      * SAML Entity id
      */
     public readonly samlEntityId!: pulumi.Output<string | undefined>;
+    /**
+     * Map IdP fields
+     */
+    public readonly samlFieldMapping!: pulumi.Output<outputs.AccountAuthenticationSamlFieldMapping | undefined>;
+    /**
+     * Set to 'true' to enable IdP initiated login
+     */
+    public readonly samlIdpLoginAllowed!: pulumi.Output<boolean | undefined>;
     /**
      * SAML Idp URL
      */
@@ -85,6 +98,14 @@ export class AccountAuthentication extends pulumi.CustomResource {
      * SAML Metadata URL
      */
     public /*out*/ readonly samlMetadataUrl!: pulumi.Output<string>;
+    /**
+     * Signature algorithm. This is an advanced option that typically does not need to be set.
+     */
+    public readonly samlSignatureAlgorithm!: pulumi.Output<string | undefined>;
+    /**
+     * SAML server variant
+     */
+    public readonly samlVariant!: pulumi.Output<string | undefined>;
     /**
      * The account authentication type. The possible values are `internal` and `saml`.
      */
@@ -115,9 +136,14 @@ export class AccountAuthentication extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["samlAcsUrl"] = state ? state.samlAcsUrl : undefined;
             resourceInputs["samlCertificate"] = state ? state.samlCertificate : undefined;
+            resourceInputs["samlDigestAlgorithm"] = state ? state.samlDigestAlgorithm : undefined;
             resourceInputs["samlEntityId"] = state ? state.samlEntityId : undefined;
+            resourceInputs["samlFieldMapping"] = state ? state.samlFieldMapping : undefined;
+            resourceInputs["samlIdpLoginAllowed"] = state ? state.samlIdpLoginAllowed : undefined;
             resourceInputs["samlIdpUrl"] = state ? state.samlIdpUrl : undefined;
             resourceInputs["samlMetadataUrl"] = state ? state.samlMetadataUrl : undefined;
+            resourceInputs["samlSignatureAlgorithm"] = state ? state.samlSignatureAlgorithm : undefined;
+            resourceInputs["samlVariant"] = state ? state.samlVariant : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -133,8 +159,13 @@ export class AccountAuthentication extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["samlCertificate"] = args ? args.samlCertificate : undefined;
+            resourceInputs["samlDigestAlgorithm"] = args ? args.samlDigestAlgorithm : undefined;
             resourceInputs["samlEntityId"] = args ? args.samlEntityId : undefined;
+            resourceInputs["samlFieldMapping"] = args ? args.samlFieldMapping : undefined;
+            resourceInputs["samlIdpLoginAllowed"] = args ? args.samlIdpLoginAllowed : undefined;
             resourceInputs["samlIdpUrl"] = args ? args.samlIdpUrl : undefined;
+            resourceInputs["samlSignatureAlgorithm"] = args ? args.samlSignatureAlgorithm : undefined;
+            resourceInputs["samlVariant"] = args ? args.samlVariant : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["authenticationId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -184,9 +215,21 @@ export interface AccountAuthenticationState {
      */
     samlCertificate?: pulumi.Input<string>;
     /**
+     * Digest algorithm. This is an advanced option that typically does not need to be set.
+     */
+    samlDigestAlgorithm?: pulumi.Input<string>;
+    /**
      * SAML Entity id
      */
     samlEntityId?: pulumi.Input<string>;
+    /**
+     * Map IdP fields
+     */
+    samlFieldMapping?: pulumi.Input<inputs.AccountAuthenticationSamlFieldMapping>;
+    /**
+     * Set to 'true' to enable IdP initiated login
+     */
+    samlIdpLoginAllowed?: pulumi.Input<boolean>;
     /**
      * SAML Idp URL
      */
@@ -195,6 +238,14 @@ export interface AccountAuthenticationState {
      * SAML Metadata URL
      */
     samlMetadataUrl?: pulumi.Input<string>;
+    /**
+     * Signature algorithm. This is an advanced option that typically does not need to be set.
+     */
+    samlSignatureAlgorithm?: pulumi.Input<string>;
+    /**
+     * SAML server variant
+     */
+    samlVariant?: pulumi.Input<string>;
     /**
      * The account authentication type. The possible values are `internal` and `saml`.
      */
@@ -230,13 +281,33 @@ export interface AccountAuthenticationArgs {
      */
     samlCertificate?: pulumi.Input<string>;
     /**
+     * Digest algorithm. This is an advanced option that typically does not need to be set.
+     */
+    samlDigestAlgorithm?: pulumi.Input<string>;
+    /**
      * SAML Entity id
      */
     samlEntityId?: pulumi.Input<string>;
     /**
+     * Map IdP fields
+     */
+    samlFieldMapping?: pulumi.Input<inputs.AccountAuthenticationSamlFieldMapping>;
+    /**
+     * Set to 'true' to enable IdP initiated login
+     */
+    samlIdpLoginAllowed?: pulumi.Input<boolean>;
+    /**
      * SAML Idp URL
      */
     samlIdpUrl?: pulumi.Input<string>;
+    /**
+     * Signature algorithm. This is an advanced option that typically does not need to be set.
+     */
+    samlSignatureAlgorithm?: pulumi.Input<string>;
+    /**
+     * SAML server variant
+     */
+    samlVariant?: pulumi.Input<string>;
     /**
      * The account authentication type. The possible values are `internal` and `saml`.
      */

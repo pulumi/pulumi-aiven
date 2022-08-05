@@ -34,15 +34,20 @@ type LookupAccountAuthenticationResult struct {
 	CreateTime       string `pulumi:"createTime"`
 	Enabled          bool   `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string `pulumi:"id"`
-	Name            string `pulumi:"name"`
-	SamlAcsUrl      string `pulumi:"samlAcsUrl"`
-	SamlCertificate string `pulumi:"samlCertificate"`
-	SamlEntityId    string `pulumi:"samlEntityId"`
-	SamlIdpUrl      string `pulumi:"samlIdpUrl"`
-	SamlMetadataUrl string `pulumi:"samlMetadataUrl"`
-	Type            string `pulumi:"type"`
-	UpdateTime      string `pulumi:"updateTime"`
+	Id                     string                                     `pulumi:"id"`
+	Name                   string                                     `pulumi:"name"`
+	SamlAcsUrl             string                                     `pulumi:"samlAcsUrl"`
+	SamlCertificate        string                                     `pulumi:"samlCertificate"`
+	SamlDigestAlgorithm    string                                     `pulumi:"samlDigestAlgorithm"`
+	SamlEntityId           string                                     `pulumi:"samlEntityId"`
+	SamlFieldMappings      []GetAccountAuthenticationSamlFieldMapping `pulumi:"samlFieldMappings"`
+	SamlIdpLoginAllowed    bool                                       `pulumi:"samlIdpLoginAllowed"`
+	SamlIdpUrl             string                                     `pulumi:"samlIdpUrl"`
+	SamlMetadataUrl        string                                     `pulumi:"samlMetadataUrl"`
+	SamlSignatureAlgorithm string                                     `pulumi:"samlSignatureAlgorithm"`
+	SamlVariant            string                                     `pulumi:"samlVariant"`
+	Type                   string                                     `pulumi:"type"`
+	UpdateTime             string                                     `pulumi:"updateTime"`
 }
 
 func LookupAccountAuthenticationOutput(ctx *pulumi.Context, args LookupAccountAuthenticationOutputArgs, opts ...pulumi.InvokeOption) LookupAccountAuthenticationResultOutput {
@@ -120,8 +125,22 @@ func (o LookupAccountAuthenticationResultOutput) SamlCertificate() pulumi.String
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlCertificate }).(pulumi.StringOutput)
 }
 
+func (o LookupAccountAuthenticationResultOutput) SamlDigestAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlDigestAlgorithm }).(pulumi.StringOutput)
+}
+
 func (o LookupAccountAuthenticationResultOutput) SamlEntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlEntityId }).(pulumi.StringOutput)
+}
+
+func (o LookupAccountAuthenticationResultOutput) SamlFieldMappings() GetAccountAuthenticationSamlFieldMappingArrayOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) []GetAccountAuthenticationSamlFieldMapping {
+		return v.SamlFieldMappings
+	}).(GetAccountAuthenticationSamlFieldMappingArrayOutput)
+}
+
+func (o LookupAccountAuthenticationResultOutput) SamlIdpLoginAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) bool { return v.SamlIdpLoginAllowed }).(pulumi.BoolOutput)
 }
 
 func (o LookupAccountAuthenticationResultOutput) SamlIdpUrl() pulumi.StringOutput {
@@ -130,6 +149,14 @@ func (o LookupAccountAuthenticationResultOutput) SamlIdpUrl() pulumi.StringOutpu
 
 func (o LookupAccountAuthenticationResultOutput) SamlMetadataUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlMetadataUrl }).(pulumi.StringOutput)
+}
+
+func (o LookupAccountAuthenticationResultOutput) SamlSignatureAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlSignatureAlgorithm }).(pulumi.StringOutput)
+}
+
+func (o LookupAccountAuthenticationResultOutput) SamlVariant() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlVariant }).(pulumi.StringOutput)
 }
 
 func (o LookupAccountAuthenticationResultOutput) Type() pulumi.StringOutput {

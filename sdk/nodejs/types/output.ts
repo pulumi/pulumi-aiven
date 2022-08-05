@@ -4,6 +4,14 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface AccountAuthenticationSamlFieldMapping {
+    email?: string;
+    firstName?: string;
+    identity?: string;
+    lastName?: string;
+    realName?: string;
+}
+
 export interface CassandraCassandra {
 }
 
@@ -143,6 +151,14 @@ export interface FlinkServiceIntegration {
 export interface FlinkTag {
     key: string;
     value: string;
+}
+
+export interface GetAccountAuthenticationSamlFieldMapping {
+    email?: string;
+    firstName?: string;
+    identity?: string;
+    lastName?: string;
+    realName?: string;
 }
 
 export interface GetCassandaCassandra {
@@ -2740,3 +2756,4 @@ export interface ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
 export interface ServiceIntegrationMirrormakerUserConfig {
     mirrormakerWhitelist?: string;
 }
+

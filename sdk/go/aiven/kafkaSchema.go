@@ -32,7 +32,20 @@ import (
 // 			ServiceName:        pulumi.Any(aiven_kafka.Kafka - service1.Service_name),
 // 			SubjectName:        pulumi.String("kafka-schema1"),
 // 			CompatibilityLevel: pulumi.String("FORWARD"),
-// 			Schema:             pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "    {\n", "       \"doc\": \"example\",\n", "       \"fields\": [{\n", "           \"default\": 5,\n", "           \"doc\": \"my test number\",\n", "           \"name\": \"test\",\n", "           \"namespace\": \"test\",\n", "           \"type\": \"int\"\n", "       }],\n", "       \"name\": \"example\",\n", "       \"namespace\": \"example\",\n", "       \"type\": \"record\"\n", "    }\n")),
+// 			Schema: pulumi.String(fmt.Sprintf(`    {
+//        "doc": "example",
+//        "fields": [{
+//            "default": 5,
+//            "doc": "my test number",
+//            "name": "test",
+//            "namespace": "test",
+//            "type": "int"
+//        }],
+//        "name": "example",
+//        "namespace": "example",
+//        "type": "record"
+//     }
+// `)),
 // 		})
 // 		if err != nil {
 // 			return err

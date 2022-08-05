@@ -10,6 +10,199 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AccountAuthenticationSamlFieldMapping struct {
+	Email     *string `pulumi:"email"`
+	FirstName *string `pulumi:"firstName"`
+	Identity  *string `pulumi:"identity"`
+	LastName  *string `pulumi:"lastName"`
+	RealName  *string `pulumi:"realName"`
+}
+
+// AccountAuthenticationSamlFieldMappingInput is an input type that accepts AccountAuthenticationSamlFieldMappingArgs and AccountAuthenticationSamlFieldMappingOutput values.
+// You can construct a concrete instance of `AccountAuthenticationSamlFieldMappingInput` via:
+//
+//          AccountAuthenticationSamlFieldMappingArgs{...}
+type AccountAuthenticationSamlFieldMappingInput interface {
+	pulumi.Input
+
+	ToAccountAuthenticationSamlFieldMappingOutput() AccountAuthenticationSamlFieldMappingOutput
+	ToAccountAuthenticationSamlFieldMappingOutputWithContext(context.Context) AccountAuthenticationSamlFieldMappingOutput
+}
+
+type AccountAuthenticationSamlFieldMappingArgs struct {
+	Email     pulumi.StringPtrInput `pulumi:"email"`
+	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
+	Identity  pulumi.StringPtrInput `pulumi:"identity"`
+	LastName  pulumi.StringPtrInput `pulumi:"lastName"`
+	RealName  pulumi.StringPtrInput `pulumi:"realName"`
+}
+
+func (AccountAuthenticationSamlFieldMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (i AccountAuthenticationSamlFieldMappingArgs) ToAccountAuthenticationSamlFieldMappingOutput() AccountAuthenticationSamlFieldMappingOutput {
+	return i.ToAccountAuthenticationSamlFieldMappingOutputWithContext(context.Background())
+}
+
+func (i AccountAuthenticationSamlFieldMappingArgs) ToAccountAuthenticationSamlFieldMappingOutputWithContext(ctx context.Context) AccountAuthenticationSamlFieldMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationSamlFieldMappingOutput)
+}
+
+func (i AccountAuthenticationSamlFieldMappingArgs) ToAccountAuthenticationSamlFieldMappingPtrOutput() AccountAuthenticationSamlFieldMappingPtrOutput {
+	return i.ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(context.Background())
+}
+
+func (i AccountAuthenticationSamlFieldMappingArgs) ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(ctx context.Context) AccountAuthenticationSamlFieldMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationSamlFieldMappingOutput).ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(ctx)
+}
+
+// AccountAuthenticationSamlFieldMappingPtrInput is an input type that accepts AccountAuthenticationSamlFieldMappingArgs, AccountAuthenticationSamlFieldMappingPtr and AccountAuthenticationSamlFieldMappingPtrOutput values.
+// You can construct a concrete instance of `AccountAuthenticationSamlFieldMappingPtrInput` via:
+//
+//          AccountAuthenticationSamlFieldMappingArgs{...}
+//
+//  or:
+//
+//          nil
+type AccountAuthenticationSamlFieldMappingPtrInput interface {
+	pulumi.Input
+
+	ToAccountAuthenticationSamlFieldMappingPtrOutput() AccountAuthenticationSamlFieldMappingPtrOutput
+	ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(context.Context) AccountAuthenticationSamlFieldMappingPtrOutput
+}
+
+type accountAuthenticationSamlFieldMappingPtrType AccountAuthenticationSamlFieldMappingArgs
+
+func AccountAuthenticationSamlFieldMappingPtr(v *AccountAuthenticationSamlFieldMappingArgs) AccountAuthenticationSamlFieldMappingPtrInput {
+	return (*accountAuthenticationSamlFieldMappingPtrType)(v)
+}
+
+func (*accountAuthenticationSamlFieldMappingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (i *accountAuthenticationSamlFieldMappingPtrType) ToAccountAuthenticationSamlFieldMappingPtrOutput() AccountAuthenticationSamlFieldMappingPtrOutput {
+	return i.ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(context.Background())
+}
+
+func (i *accountAuthenticationSamlFieldMappingPtrType) ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(ctx context.Context) AccountAuthenticationSamlFieldMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationSamlFieldMappingPtrOutput)
+}
+
+type AccountAuthenticationSamlFieldMappingOutput struct{ *pulumi.OutputState }
+
+func (AccountAuthenticationSamlFieldMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (o AccountAuthenticationSamlFieldMappingOutput) ToAccountAuthenticationSamlFieldMappingOutput() AccountAuthenticationSamlFieldMappingOutput {
+	return o
+}
+
+func (o AccountAuthenticationSamlFieldMappingOutput) ToAccountAuthenticationSamlFieldMappingOutputWithContext(ctx context.Context) AccountAuthenticationSamlFieldMappingOutput {
+	return o
+}
+
+func (o AccountAuthenticationSamlFieldMappingOutput) ToAccountAuthenticationSamlFieldMappingPtrOutput() AccountAuthenticationSamlFieldMappingPtrOutput {
+	return o.ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(context.Background())
+}
+
+func (o AccountAuthenticationSamlFieldMappingOutput) ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(ctx context.Context) AccountAuthenticationSamlFieldMappingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountAuthenticationSamlFieldMapping) *AccountAuthenticationSamlFieldMapping {
+		return &v
+	}).(AccountAuthenticationSamlFieldMappingPtrOutput)
+}
+
+func (o AccountAuthenticationSamlFieldMappingOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountAuthenticationSamlFieldMapping) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountAuthenticationSamlFieldMappingOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountAuthenticationSamlFieldMapping) *string { return v.FirstName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountAuthenticationSamlFieldMappingOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountAuthenticationSamlFieldMapping) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountAuthenticationSamlFieldMappingOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountAuthenticationSamlFieldMapping) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountAuthenticationSamlFieldMappingOutput) RealName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountAuthenticationSamlFieldMapping) *string { return v.RealName }).(pulumi.StringPtrOutput)
+}
+
+type AccountAuthenticationSamlFieldMappingPtrOutput struct{ *pulumi.OutputState }
+
+func (AccountAuthenticationSamlFieldMappingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) ToAccountAuthenticationSamlFieldMappingPtrOutput() AccountAuthenticationSamlFieldMappingPtrOutput {
+	return o
+}
+
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(ctx context.Context) AccountAuthenticationSamlFieldMappingPtrOutput {
+	return o
+}
+
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) Elem() AccountAuthenticationSamlFieldMappingOutput {
+	return o.ApplyT(func(v *AccountAuthenticationSamlFieldMapping) AccountAuthenticationSamlFieldMapping {
+		if v != nil {
+			return *v
+		}
+		var ret AccountAuthenticationSamlFieldMapping
+		return ret
+	}).(AccountAuthenticationSamlFieldMappingOutput)
+}
+
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthenticationSamlFieldMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthenticationSamlFieldMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirstName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthenticationSamlFieldMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthenticationSamlFieldMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) RealName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthenticationSamlFieldMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RealName
+	}).(pulumi.StringPtrOutput)
+}
+
 type CassandraCassandra struct {
 }
 
@@ -28848,6 +29041,124 @@ func (o ServiceIntegrationMirrormakerUserConfigPtrOutput) MirrormakerWhitelist()
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAccountAuthenticationSamlFieldMapping struct {
+	Email     *string `pulumi:"email"`
+	FirstName *string `pulumi:"firstName"`
+	Identity  *string `pulumi:"identity"`
+	LastName  *string `pulumi:"lastName"`
+	RealName  *string `pulumi:"realName"`
+}
+
+// GetAccountAuthenticationSamlFieldMappingInput is an input type that accepts GetAccountAuthenticationSamlFieldMappingArgs and GetAccountAuthenticationSamlFieldMappingOutput values.
+// You can construct a concrete instance of `GetAccountAuthenticationSamlFieldMappingInput` via:
+//
+//          GetAccountAuthenticationSamlFieldMappingArgs{...}
+type GetAccountAuthenticationSamlFieldMappingInput interface {
+	pulumi.Input
+
+	ToGetAccountAuthenticationSamlFieldMappingOutput() GetAccountAuthenticationSamlFieldMappingOutput
+	ToGetAccountAuthenticationSamlFieldMappingOutputWithContext(context.Context) GetAccountAuthenticationSamlFieldMappingOutput
+}
+
+type GetAccountAuthenticationSamlFieldMappingArgs struct {
+	Email     pulumi.StringPtrInput `pulumi:"email"`
+	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
+	Identity  pulumi.StringPtrInput `pulumi:"identity"`
+	LastName  pulumi.StringPtrInput `pulumi:"lastName"`
+	RealName  pulumi.StringPtrInput `pulumi:"realName"`
+}
+
+func (GetAccountAuthenticationSamlFieldMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (i GetAccountAuthenticationSamlFieldMappingArgs) ToGetAccountAuthenticationSamlFieldMappingOutput() GetAccountAuthenticationSamlFieldMappingOutput {
+	return i.ToGetAccountAuthenticationSamlFieldMappingOutputWithContext(context.Background())
+}
+
+func (i GetAccountAuthenticationSamlFieldMappingArgs) ToGetAccountAuthenticationSamlFieldMappingOutputWithContext(ctx context.Context) GetAccountAuthenticationSamlFieldMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAuthenticationSamlFieldMappingOutput)
+}
+
+// GetAccountAuthenticationSamlFieldMappingArrayInput is an input type that accepts GetAccountAuthenticationSamlFieldMappingArray and GetAccountAuthenticationSamlFieldMappingArrayOutput values.
+// You can construct a concrete instance of `GetAccountAuthenticationSamlFieldMappingArrayInput` via:
+//
+//          GetAccountAuthenticationSamlFieldMappingArray{ GetAccountAuthenticationSamlFieldMappingArgs{...} }
+type GetAccountAuthenticationSamlFieldMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetAccountAuthenticationSamlFieldMappingArrayOutput() GetAccountAuthenticationSamlFieldMappingArrayOutput
+	ToGetAccountAuthenticationSamlFieldMappingArrayOutputWithContext(context.Context) GetAccountAuthenticationSamlFieldMappingArrayOutput
+}
+
+type GetAccountAuthenticationSamlFieldMappingArray []GetAccountAuthenticationSamlFieldMappingInput
+
+func (GetAccountAuthenticationSamlFieldMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (i GetAccountAuthenticationSamlFieldMappingArray) ToGetAccountAuthenticationSamlFieldMappingArrayOutput() GetAccountAuthenticationSamlFieldMappingArrayOutput {
+	return i.ToGetAccountAuthenticationSamlFieldMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccountAuthenticationSamlFieldMappingArray) ToGetAccountAuthenticationSamlFieldMappingArrayOutputWithContext(ctx context.Context) GetAccountAuthenticationSamlFieldMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAuthenticationSamlFieldMappingArrayOutput)
+}
+
+type GetAccountAuthenticationSamlFieldMappingOutput struct{ *pulumi.OutputState }
+
+func (GetAccountAuthenticationSamlFieldMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) ToGetAccountAuthenticationSamlFieldMappingOutput() GetAccountAuthenticationSamlFieldMappingOutput {
+	return o
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) ToGetAccountAuthenticationSamlFieldMappingOutputWithContext(ctx context.Context) GetAccountAuthenticationSamlFieldMappingOutput {
+	return o
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAuthenticationSamlFieldMapping) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAuthenticationSamlFieldMapping) *string { return v.FirstName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAuthenticationSamlFieldMapping) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAuthenticationSamlFieldMapping) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) RealName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAuthenticationSamlFieldMapping) *string { return v.RealName }).(pulumi.StringPtrOutput)
+}
+
+type GetAccountAuthenticationSamlFieldMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccountAuthenticationSamlFieldMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingArrayOutput) ToGetAccountAuthenticationSamlFieldMappingArrayOutput() GetAccountAuthenticationSamlFieldMappingArrayOutput {
+	return o
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingArrayOutput) ToGetAccountAuthenticationSamlFieldMappingArrayOutputWithContext(ctx context.Context) GetAccountAuthenticationSamlFieldMappingArrayOutput {
+	return o
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingArrayOutput) Index(i pulumi.IntInput) GetAccountAuthenticationSamlFieldMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountAuthenticationSamlFieldMapping {
+		return vs[0].([]GetAccountAuthenticationSamlFieldMapping)[vs[1].(int)]
+	}).(GetAccountAuthenticationSamlFieldMappingOutput)
+}
+
 type GetCassandaCassandra struct {
 }
 
@@ -54629,6 +54940,8 @@ func (o GetServiceIntegrationMirrormakerUserConfigArrayOutput) Index(i pulumi.In
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationSamlFieldMappingInput)(nil)).Elem(), AccountAuthenticationSamlFieldMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationSamlFieldMappingPtrInput)(nil)).Elem(), AccountAuthenticationSamlFieldMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CassandraCassandraInput)(nil)).Elem(), CassandraCassandraArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CassandraCassandraArrayInput)(nil)).Elem(), CassandraCassandraArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CassandraCassandraUserConfigInput)(nil)).Elem(), CassandraCassandraUserConfigArgs{})
@@ -54957,6 +55270,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput)(nil)).Elem(), ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationMirrormakerUserConfigInput)(nil)).Elem(), ServiceIntegrationMirrormakerUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationMirrormakerUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationMirrormakerUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAuthenticationSamlFieldMappingInput)(nil)).Elem(), GetAccountAuthenticationSamlFieldMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAuthenticationSamlFieldMappingArrayInput)(nil)).Elem(), GetAccountAuthenticationSamlFieldMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandaCassandraInput)(nil)).Elem(), GetCassandaCassandraArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandaCassandraArrayInput)(nil)).Elem(), GetCassandaCassandraArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandaCassandraUserConfigInput)(nil)).Elem(), GetCassandaCassandraUserConfigArgs{})
@@ -55295,6 +55610,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput)(nil)).Elem(), GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationMirrormakerUserConfigInput)(nil)).Elem(), GetServiceIntegrationMirrormakerUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationMirrormakerUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationMirrormakerUserConfigArray{})
+	pulumi.RegisterOutputType(AccountAuthenticationSamlFieldMappingOutput{})
+	pulumi.RegisterOutputType(AccountAuthenticationSamlFieldMappingPtrOutput{})
 	pulumi.RegisterOutputType(CassandraCassandraOutput{})
 	pulumi.RegisterOutputType(CassandraCassandraArrayOutput{})
 	pulumi.RegisterOutputType(CassandraCassandraUserConfigOutput{})
@@ -55623,6 +55940,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationMirrormakerUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationMirrormakerUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetAccountAuthenticationSamlFieldMappingOutput{})
+	pulumi.RegisterOutputType(GetAccountAuthenticationSamlFieldMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetCassandaCassandraOutput{})
 	pulumi.RegisterOutputType(GetCassandaCassandraArrayOutput{})
 	pulumi.RegisterOutputType(GetCassandaCassandraUserConfigOutput{})

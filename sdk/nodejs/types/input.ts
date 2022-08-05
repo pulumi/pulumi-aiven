@@ -4,6 +4,14 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface AccountAuthenticationSamlFieldMapping {
+    email?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string>;
+    identity?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string>;
+    realName?: pulumi.Input<string>;
+}
+
 export interface CassandraCassandra {
 }
 

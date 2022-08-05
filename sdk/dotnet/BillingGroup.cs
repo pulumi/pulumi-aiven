@@ -29,7 +29,7 @@ namespace Pulumi.Aiven
     ///         });
     ///         var pr1 = new Aiven.Project("pr1", new Aiven.ProjectArgs
     ///         {
-    ///             Project = "pr1",
+    ///             ProjectName = "pr1",
     ///             BillingGroup = bybg1.Id,
     ///         });
     ///     }
