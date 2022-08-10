@@ -25134,8 +25134,7 @@
                 }
             },
             "requiredInputs": [
-                "project",
-                "serviceName"
+                "project"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Pg resources.\n",

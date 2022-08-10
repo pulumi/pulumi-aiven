@@ -14,18 +14,15 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as aiven from "@pulumi/aiven";
-import * as random from "@pulumi/random";
 
 const config = new pulumi.Config();
 const projectName = config.require("projectName");
 
-const randomName = new random.RandomPet("my-service-name");
 
 const service = new aiven.Grafana("my-new-service", {
     project: projectName,
     cloudName: "google-europe-west1",
     plan:"startup-4",
-    serviceName: randomName.id,
     grafanaUserConfig: {
         publicAccess: {
             grafana: "true",

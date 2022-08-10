@@ -145,6 +145,7 @@ func Provider() tfbridge.ProviderInfo {
 					"pg": {
 						CSharpName: "PgServer",
 					},
+					"service_name": tfbridge.AutoName("serviceName", 255, "-"),
 				},
 			},
 			"aiven_project": {

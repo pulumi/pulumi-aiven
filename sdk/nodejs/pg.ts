@@ -212,9 +212,6 @@ export class Pg extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
-            }
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
@@ -441,7 +438,7 @@ export interface PgArgs {
      * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
      * service so name should be picked based on intended service usage rather than current attributes.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
      * static ip resource is in the 'assigned' state it cannot be unbound from the node again
