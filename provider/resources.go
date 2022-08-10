@@ -112,6 +112,7 @@ func Provider() tfbridge.ProviderInfo {
 					"grafana": {
 						CSharpName: "GrafanaServer",
 					},
+					"service_name": tfbridge.AutoName("serviceName", 255, "-"),
 				},
 			},
 			"aiven_influxdb": {Tok: makeResource(mainMod, "InfluxDb")},

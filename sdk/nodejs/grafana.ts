@@ -18,7 +18,6 @@ import * as utilities from "./utilities";
  *     project: data.aiven_project.ps1.project,
  *     cloudName: "google-europe-west1",
  *     plan: "startup-1",
- *     serviceName: "my-gr1",
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     grafanaUserConfig: {
@@ -233,9 +232,6 @@ export class Grafana extends pulumi.CustomResource {
             const args = argsOrState as GrafanaArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
-            }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
@@ -459,7 +455,7 @@ export interface GrafanaArgs {
      * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
      * service so name should be picked based on intended service usage rather than current attributes.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
      * static ip resource is in the 'assigned' state it cannot be unbound from the node again
