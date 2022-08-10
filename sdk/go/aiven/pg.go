@@ -106,9 +106,6 @@ func NewPg(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
-	}
 	var resource Pg
 	err := ctx.RegisterResource("aiven:index/pg:Pg", name, args, &resource, opts...)
 	if err != nil {
@@ -324,7 +321,7 @@ type pgArgs struct {
 	ServiceIntegrations []PgServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
 	// service so name should be picked based on intended service usage rather than current attributes.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName *string `pulumi:"serviceName"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
 	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
@@ -375,7 +372,7 @@ type PgArgs struct {
 	ServiceIntegrations PgServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
 	// service so name should be picked based on intended service usage rather than current attributes.
-	ServiceName pulumi.StringInput
+	ServiceName pulumi.StringPtrInput
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
 	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput

@@ -29,7 +29,6 @@ import (
 // 			Project:               pulumi.Any(data.Aiven_project.Ps1.Project),
 // 			CloudName:             pulumi.String("google-europe-west1"),
 // 			Plan:                  pulumi.String("startup-1"),
-// 			ServiceName:           pulumi.String("my-gr1"),
 // 			MaintenanceWindowDow:  pulumi.String("monday"),
 // 			MaintenanceWindowTime: pulumi.String("10:00:00"),
 // 			GrafanaUserConfig: &GrafanaGrafanaUserConfigArgs{
@@ -139,9 +138,6 @@ func NewGrafana(ctx *pulumi.Context,
 
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource Grafana
 	err := ctx.RegisterResource("aiven:index/grafana:Grafana", name, args, &resource, opts...)
@@ -356,7 +352,7 @@ type grafanaArgs struct {
 	ServiceIntegrations []GrafanaServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
 	// service so name should be picked based on intended service usage rather than current attributes.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName *string `pulumi:"serviceName"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
 	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
@@ -405,7 +401,7 @@ type GrafanaArgs struct {
 	ServiceIntegrations GrafanaServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
 	// service so name should be picked based on intended service usage rather than current attributes.
-	ServiceName pulumi.StringInput
+	ServiceName pulumi.StringPtrInput
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
 	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput

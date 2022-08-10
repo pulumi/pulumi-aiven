@@ -329,8 +329,8 @@ namespace Pulumi.Aiven
         /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
         /// service so name should be picked based on intended service usage rather than current attributes.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         [Input("staticIps")]
         private InputList<string>? _staticIps;

@@ -16,7 +16,6 @@ __all__ = ['PgArgs', 'Pg']
 class PgArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
-                 service_name: pulumi.Input[str],
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
@@ -26,6 +25,7 @@ class PgArgs:
                  plan: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['PgServiceIntegrationArgs']]]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
@@ -33,8 +33,6 @@ class PgArgs:
         The set of arguments for constructing a Pg resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-               service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
                created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
                provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
@@ -58,6 +56,8 @@ class PgArgs:
                as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
                servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['PgServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+               service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['PgTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
@@ -66,7 +66,6 @@ class PgArgs:
                much of the content can at least be restored from backup in case accidental deletion is done.
         """
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_name", service_name)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
         if disk_space is not None:
@@ -85,6 +84,8 @@ class PgArgs:
             pulumi.set(__self__, "project_vpc_id", project_vpc_id)
         if service_integrations is not None:
             pulumi.set(__self__, "service_integrations", service_integrations)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
         if static_ips is not None:
             pulumi.set(__self__, "static_ips", static_ips)
         if tags is not None:
@@ -104,19 +105,6 @@ class PgArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[str]:
-        """
-        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-        service so name should be picked based on intended service usage rather than current attributes.
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "service_name", value)
 
     @property
     @pulumi.getter(name="cloudName")
@@ -239,6 +227,19 @@ class PgArgs:
     @service_integrations.setter
     def service_integrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PgServiceIntegrationArgs']]]]):
         pulumi.set(self, "service_integrations", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
+        service so name should be picked based on intended service usage rather than current attributes.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
 
     @property
     @pulumi.getter(name="staticIps")
@@ -879,8 +880,6 @@ class Pg(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["project_vpc_id"] = project_vpc_id
             __props__.__dict__["service_integrations"] = service_integrations
-            if service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["static_ips"] = static_ips
             __props__.__dict__["tags"] = tags

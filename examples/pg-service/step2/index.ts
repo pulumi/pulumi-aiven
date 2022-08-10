@@ -14,12 +14,10 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as aiven from "@pulumi/aiven";
-import * as random from "@pulumi/random";
 
 const config = new pulumi.Config();
 const projectName = config.require("projectName");
 
-const randomName = new random.RandomPet("my-service-name");
 
 const pgUserConfig: aiven.types.input.ServicePgUserConfig = {
     adminUsername: 'master',
@@ -33,7 +31,6 @@ const service = new aiven.Service("my-new-service", {
         project: projectName,
         cloudName: 'google-us-east4',
         plan: 'business-4',
-        serviceName: randomName.id,
         serviceType: 'pg',
         pgUserConfig,
         maintenanceWindowDow: 'sunday',
