@@ -15,9 +15,17 @@ public final class ServiceIntegrationMirrormakerUserConfigArgs extends com.pulum
 
     public static final ServiceIntegrationMirrormakerUserConfigArgs Empty = new ServiceIntegrationMirrormakerUserConfigArgs();
 
+    /**
+     * Mirrormaker topic whitelist
+     * 
+     */
     @Import(name="mirrormakerWhitelist")
     private @Nullable Output<String> mirrormakerWhitelist;
 
+    /**
+     * @return Mirrormaker topic whitelist
+     * 
+     */
     public Optional<Output<String>> mirrormakerWhitelist() {
         return Optional.ofNullable(this.mirrormakerWhitelist);
     }
@@ -46,11 +54,23 @@ public final class ServiceIntegrationMirrormakerUserConfigArgs extends com.pulum
             $ = new ServiceIntegrationMirrormakerUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mirrormakerWhitelist Mirrormaker topic whitelist
+         * 
+         * @return builder
+         * 
+         */
         public Builder mirrormakerWhitelist(@Nullable Output<String> mirrormakerWhitelist) {
             $.mirrormakerWhitelist = mirrormakerWhitelist;
             return this;
         }
 
+        /**
+         * @param mirrormakerWhitelist Mirrormaker topic whitelist
+         * 
+         * @return builder
+         * 
+         */
         public Builder mirrormakerWhitelist(String mirrormakerWhitelist) {
             return mirrormakerWhitelist(Output.of(mirrormakerWhitelist));
         }

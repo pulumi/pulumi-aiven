@@ -12,28 +12,100 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAccountAuthenticationResult {
+    /**
+     * @return The unique id of the account.
+     * 
+     */
     private final String accountId;
+    /**
+     * @return Account authentication id
+     * 
+     */
     private final String authenticationId;
+    /**
+     * @return Team ID
+     * 
+     */
     private final String autoJoinTeamId;
+    /**
+     * @return Time of creation
+     * 
+     */
     private final String createTime;
+    /**
+     * @return Status of account authentication method. The default value is `false`.
+     * 
+     */
     private final Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return The name of the account authentication.
+     * 
+     */
     private final String name;
+    /**
+     * @return SAML Assertion Consumer Service URL
+     * 
+     */
     private final String samlAcsUrl;
+    /**
+     * @return SAML Certificate
+     * 
+     */
     private final String samlCertificate;
+    /**
+     * @return Digest algorithm. This is an advanced option that typically does not need to be set.
+     * 
+     */
     private final String samlDigestAlgorithm;
+    /**
+     * @return SAML Entity id
+     * 
+     */
     private final String samlEntityId;
+    /**
+     * @return Map IdP fields
+     * 
+     */
     private final List<GetAccountAuthenticationSamlFieldMapping> samlFieldMappings;
+    /**
+     * @return Set to &#39;true&#39; to enable IdP initiated login
+     * 
+     */
     private final Boolean samlIdpLoginAllowed;
+    /**
+     * @return SAML Idp URL
+     * 
+     */
     private final String samlIdpUrl;
+    /**
+     * @return SAML Metadata URL
+     * 
+     */
     private final String samlMetadataUrl;
+    /**
+     * @return Signature algorithm. This is an advanced option that typically does not need to be set.
+     * 
+     */
     private final String samlSignatureAlgorithm;
+    /**
+     * @return SAML server variant
+     * 
+     */
     private final String samlVariant;
+    /**
+     * @return The account authentication type. The possible values are `internal` and `saml`.
+     * 
+     */
     private final String type;
+    /**
+     * @return Time of last update
+     * 
+     */
     private final String updateTime;
 
     @CustomType.Constructor
@@ -78,18 +150,38 @@ public final class GetAccountAuthenticationResult {
         this.updateTime = updateTime;
     }
 
+    /**
+     * @return The unique id of the account.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
+    /**
+     * @return Account authentication id
+     * 
+     */
     public String authenticationId() {
         return this.authenticationId;
     }
+    /**
+     * @return Team ID
+     * 
+     */
     public String autoJoinTeamId() {
         return this.autoJoinTeamId;
     }
+    /**
+     * @return Time of creation
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return Status of account authentication method. The default value is `false`.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
@@ -100,42 +192,94 @@ public final class GetAccountAuthenticationResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the account authentication.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return SAML Assertion Consumer Service URL
+     * 
+     */
     public String samlAcsUrl() {
         return this.samlAcsUrl;
     }
+    /**
+     * @return SAML Certificate
+     * 
+     */
     public String samlCertificate() {
         return this.samlCertificate;
     }
+    /**
+     * @return Digest algorithm. This is an advanced option that typically does not need to be set.
+     * 
+     */
     public String samlDigestAlgorithm() {
         return this.samlDigestAlgorithm;
     }
+    /**
+     * @return SAML Entity id
+     * 
+     */
     public String samlEntityId() {
         return this.samlEntityId;
     }
+    /**
+     * @return Map IdP fields
+     * 
+     */
     public List<GetAccountAuthenticationSamlFieldMapping> samlFieldMappings() {
         return this.samlFieldMappings;
     }
+    /**
+     * @return Set to &#39;true&#39; to enable IdP initiated login
+     * 
+     */
     public Boolean samlIdpLoginAllowed() {
         return this.samlIdpLoginAllowed;
     }
+    /**
+     * @return SAML Idp URL
+     * 
+     */
     public String samlIdpUrl() {
         return this.samlIdpUrl;
     }
+    /**
+     * @return SAML Metadata URL
+     * 
+     */
     public String samlMetadataUrl() {
         return this.samlMetadataUrl;
     }
+    /**
+     * @return Signature algorithm. This is an advanced option that typically does not need to be set.
+     * 
+     */
     public String samlSignatureAlgorithm() {
         return this.samlSignatureAlgorithm;
     }
+    /**
+     * @return SAML server variant
+     * 
+     */
     public String samlVariant() {
         return this.samlVariant;
     }
+    /**
+     * @return The account authentication type. The possible values are `internal` and `saml`.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return Time of last update
+     * 
+     */
     public String updateTime() {
         return this.updateTime;
     }

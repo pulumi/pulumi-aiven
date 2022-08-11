@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class M3DbM3dbUserConfigRulesArgs : Pulumi.ResourceArgs
+    public sealed class M3DbM3dbUserConfigRulesArgs : global::Pulumi.ResourceArgs
     {
         [Input("mappings")]
         private InputList<Inputs.M3DbM3dbUserConfigRulesMappingArgs>? _mappings;
@@ -23,5 +23,6 @@ namespace Pulumi.Aiven.Inputs
         public M3DbM3dbUserConfigRulesArgs()
         {
         }
+        public static new M3DbM3dbUserConfigRulesArgs Empty => new M3DbM3dbUserConfigRulesArgs();
     }
 }

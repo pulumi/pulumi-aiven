@@ -12,37 +12,77 @@ public final class GetOpenSearchAclRulePlainArgs extends com.pulumi.resources.In
 
     public static final GetOpenSearchAclRulePlainArgs Empty = new GetOpenSearchAclRulePlainArgs();
 
+    /**
+     * The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="index", required=true)
     private String index;
 
+    /**
+     * @return The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String index() {
         return this.index;
     }
 
+    /**
+     * The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * 
+     */
     @Import(name="permission", required=true)
     private String permission;
 
+    /**
+     * @return The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * 
+     */
     public String permission() {
         return this.permission;
     }
 
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
 
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
 
+    /**
+     * The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="username", required=true)
     private String username;
 
+    /**
+     * @return The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String username() {
         return this.username;
     }
@@ -75,26 +115,56 @@ public final class GetOpenSearchAclRulePlainArgs extends com.pulumi.resources.In
             $ = new GetOpenSearchAclRulePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param index The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder index(String index) {
             $.index = index;
             return this;
         }
 
+        /**
+         * @param permission The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
+        /**
+         * @param username The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(String username) {
             $.username = username;
             return this;

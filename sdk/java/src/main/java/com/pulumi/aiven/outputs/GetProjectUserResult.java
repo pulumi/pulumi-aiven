@@ -10,14 +10,30 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectUserResult {
+    /**
+     * @return Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+     * 
+     */
     private final Boolean accepted;
+    /**
+     * @return Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return Project membership type. The possible values are `admin`, `developer` and `operator`.
+     * 
+     */
     private final String memberType;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
 
     @CustomType.Constructor
@@ -34,9 +50,17 @@ public final class GetProjectUserResult {
         this.project = project;
     }
 
+    /**
+     * @return Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+     * 
+     */
     public Boolean accepted() {
         return this.accepted;
     }
+    /**
+     * @return Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String email() {
         return this.email;
     }
@@ -47,9 +71,17 @@ public final class GetProjectUserResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Project membership type. The possible values are `admin`, `developer` and `operator`.
+     * 
+     */
     public String memberType() {
         return this.memberType;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }

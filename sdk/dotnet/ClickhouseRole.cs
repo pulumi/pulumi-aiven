@@ -15,31 +15,30 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bar = new Aiven.Clickhouse("bar", new()
     ///     {
-    ///         var bar = new Aiven.Clickhouse("bar", new Aiven.ClickhouseArgs
-    ///         {
-    ///             Project = "example-project",
-    ///             CloudName = "google-europe-west1",
-    ///             Plan = "startup-beta-8",
-    ///             ServiceName = "example-service",
-    ///             MaintenanceWindowDow = "monday",
-    ///             MaintenanceWindowTime = "10:00:00",
-    ///         });
-    ///         var foo = new Aiven.ClickhouseRole("foo", new Aiven.ClickhouseRoleArgs
-    ///         {
-    ///             ServiceName = bar.ServiceName,
-    ///             Project = bar.Project,
-    ///             Role = "writer",
-    ///         });
-    ///     }
+    ///         Project = "example-project",
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-beta-8",
+    ///         ServiceName = "example-service",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
+    ///     });
     /// 
-    /// }
+    ///     var foo = new Aiven.ClickhouseRole("foo", new()
+    ///     {
+    ///         ServiceName = bar.ServiceName,
+    ///         Project = bar.Project,
+    ///         Role = "writer",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,11 +48,10 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouseRole:ClickhouseRole")]
-    public partial class ClickhouseRole : Pulumi.CustomResource
+    public partial class ClickhouseRole : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -65,8 +63,7 @@ namespace Pulumi.Aiven
         public Output<string> Role { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -115,11 +112,10 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class ClickhouseRoleArgs : Pulumi.ResourceArgs
+    public sealed class ClickhouseRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -131,8 +127,7 @@ namespace Pulumi.Aiven
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -140,13 +135,13 @@ namespace Pulumi.Aiven
         public ClickhouseRoleArgs()
         {
         }
+        public static new ClickhouseRoleArgs Empty => new ClickhouseRoleArgs();
     }
 
-    public sealed class ClickhouseRoleState : Pulumi.ResourceArgs
+    public sealed class ClickhouseRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -158,8 +153,7 @@ namespace Pulumi.Aiven
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -167,5 +161,6 @@ namespace Pulumi.Aiven
         public ClickhouseRoleState()
         {
         }
+        public static new ClickhouseRoleState Empty => new ClickhouseRoleState();
     }
 }

@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class FlinkFlinkUserConfigPrivatelinkAccessArgs : Pulumi.ResourceArgs
+    public sealed class FlinkFlinkUserConfigPrivatelinkAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Flink server provided values
+        /// </summary>
         [Input("flink")]
         public Input<string>? Flink { get; set; }
 
@@ -21,5 +24,6 @@ namespace Pulumi.Aiven.Inputs
         public FlinkFlinkUserConfigPrivatelinkAccessArgs()
         {
         }
+        public static new FlinkFlinkUserConfigPrivatelinkAccessArgs Empty => new FlinkFlinkUserConfigPrivatelinkAccessArgs();
     }
 }

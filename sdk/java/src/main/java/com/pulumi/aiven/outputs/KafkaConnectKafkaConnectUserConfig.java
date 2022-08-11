@@ -16,11 +16,35 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaConnectKafkaConnectUserConfig {
+    /**
+     * @return IP filter
+     * 
+     */
     private final @Nullable List<String> ipFilters;
+    /**
+     * @return Kafka Connect configuration values
+     * 
+     */
     private final @Nullable KafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect;
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     private final @Nullable KafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     private final @Nullable KafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     private final @Nullable KafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
+    /**
+     * @return Static IP addresses
+     * 
+     */
     private final @Nullable String staticIps;
 
     @CustomType.Constructor
@@ -39,21 +63,45 @@ public final class KafkaConnectKafkaConnectUserConfig {
         this.staticIps = staticIps;
     }
 
+    /**
+     * @return IP filter
+     * 
+     */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Kafka Connect configuration values
+     * 
+     */
     public Optional<KafkaConnectKafkaConnectUserConfigKafkaConnect> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     public Optional<KafkaConnectKafkaConnectUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     public Optional<KafkaConnectKafkaConnectUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     public Optional<KafkaConnectKafkaConnectUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

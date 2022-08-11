@@ -15,19 +15,15 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var account1 = new Aiven.Account("account1", new Aiven.AccountArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var account1 = new Aiven.Account("account1");
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -37,7 +33,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/account:Account")]
-    public partial class Account : Pulumi.CustomResource
+    public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Account id
@@ -125,7 +121,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class AccountArgs : Pulumi.ResourceArgs
+    public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account name
@@ -142,9 +138,10 @@ namespace Pulumi.Aiven
         public AccountArgs()
         {
         }
+        public static new AccountArgs Empty => new AccountArgs();
     }
 
-    public sealed class AccountState : Pulumi.ResourceArgs
+    public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account id
@@ -191,5 +188,6 @@ namespace Pulumi.Aiven
         public AccountState()
         {
         }
+        public static new AccountState Empty => new AccountState();
     }
 }

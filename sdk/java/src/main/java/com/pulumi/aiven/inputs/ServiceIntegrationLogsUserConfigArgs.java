@@ -15,16 +15,32 @@ public final class ServiceIntegrationLogsUserConfigArgs extends com.pulumi.resou
 
     public static final ServiceIntegrationLogsUserConfigArgs Empty = new ServiceIntegrationLogsUserConfigArgs();
 
+    /**
+     * Elasticsearch index retention limit
+     * 
+     */
     @Import(name="elasticsearchIndexDaysMax")
     private @Nullable Output<String> elasticsearchIndexDaysMax;
 
+    /**
+     * @return Elasticsearch index retention limit
+     * 
+     */
     public Optional<Output<String>> elasticsearchIndexDaysMax() {
         return Optional.ofNullable(this.elasticsearchIndexDaysMax);
     }
 
+    /**
+     * Elasticsearch index prefix
+     * 
+     */
     @Import(name="elasticsearchIndexPrefix")
     private @Nullable Output<String> elasticsearchIndexPrefix;
 
+    /**
+     * @return Elasticsearch index prefix
+     * 
+     */
     public Optional<Output<String>> elasticsearchIndexPrefix() {
         return Optional.ofNullable(this.elasticsearchIndexPrefix);
     }
@@ -54,20 +70,44 @@ public final class ServiceIntegrationLogsUserConfigArgs extends com.pulumi.resou
             $ = new ServiceIntegrationLogsUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param elasticsearchIndexDaysMax Elasticsearch index retention limit
+         * 
+         * @return builder
+         * 
+         */
         public Builder elasticsearchIndexDaysMax(@Nullable Output<String> elasticsearchIndexDaysMax) {
             $.elasticsearchIndexDaysMax = elasticsearchIndexDaysMax;
             return this;
         }
 
+        /**
+         * @param elasticsearchIndexDaysMax Elasticsearch index retention limit
+         * 
+         * @return builder
+         * 
+         */
         public Builder elasticsearchIndexDaysMax(String elasticsearchIndexDaysMax) {
             return elasticsearchIndexDaysMax(Output.of(elasticsearchIndexDaysMax));
         }
 
+        /**
+         * @param elasticsearchIndexPrefix Elasticsearch index prefix
+         * 
+         * @return builder
+         * 
+         */
         public Builder elasticsearchIndexPrefix(@Nullable Output<String> elasticsearchIndexPrefix) {
             $.elasticsearchIndexPrefix = elasticsearchIndexPrefix;
             return this;
         }
 
+        /**
+         * @param elasticsearchIndexPrefix Elasticsearch index prefix
+         * 
+         * @return builder
+         * 
+         */
         public Builder elasticsearchIndexPrefix(String elasticsearchIndexPrefix) {
             return elasticsearchIndexPrefix(Output.of(elasticsearchIndexPrefix));
         }

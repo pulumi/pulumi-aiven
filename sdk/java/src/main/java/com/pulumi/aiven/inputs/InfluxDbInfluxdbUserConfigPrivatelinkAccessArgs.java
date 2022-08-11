@@ -15,9 +15,17 @@ public final class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs extends com.p
 
     public static final InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs Empty = new InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs();
 
+    /**
+     * InfluxDB server provided values
+     * 
+     */
     @Import(name="influxdb")
     private @Nullable Output<String> influxdb;
 
+    /**
+     * @return InfluxDB server provided values
+     * 
+     */
     public Optional<Output<String>> influxdb() {
         return Optional.ofNullable(this.influxdb);
     }
@@ -46,11 +54,23 @@ public final class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs extends com.p
             $ = new InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param influxdb InfluxDB server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder influxdb(@Nullable Output<String> influxdb) {
             $.influxdb = influxdb;
             return this;
         }
 
+        /**
+         * @param influxdb InfluxDB server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder influxdb(String influxdb) {
             return influxdb(Output.of(influxdb));
         }

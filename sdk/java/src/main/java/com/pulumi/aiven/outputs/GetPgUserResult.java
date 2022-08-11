@@ -10,18 +10,50 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPgUserResult {
+    /**
+     * @return Access certificate for the user
+     * 
+     */
     private final String accessCert;
+    /**
+     * @return Access certificate key for the user
+     * 
+     */
     private final String accessKey;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return The password of the PG User ( not applicable for all services ).
+     * 
+     */
     private final String password;
+    /**
+     * @return Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final Boolean pgAllowReplication;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
+    /**
+     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * 
+     */
     private final String type;
+    /**
+     * @return The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String username;
 
     @CustomType.Constructor
@@ -46,9 +78,17 @@ public final class GetPgUserResult {
         this.username = username;
     }
 
+    /**
+     * @return Access certificate for the user
+     * 
+     */
     public String accessCert() {
         return this.accessCert;
     }
+    /**
+     * @return Access certificate key for the user
+     * 
+     */
     public String accessKey() {
         return this.accessKey;
     }
@@ -59,21 +99,45 @@ public final class GetPgUserResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The password of the PG User ( not applicable for all services ).
+     * 
+     */
     public String password() {
         return this.password;
     }
+    /**
+     * @return Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Boolean pgAllowReplication() {
         return this.pgAllowReplication;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String username() {
         return this.username;
     }

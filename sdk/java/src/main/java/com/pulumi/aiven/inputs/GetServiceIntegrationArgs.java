@@ -13,30 +13,62 @@ public final class GetServiceIntegrationArgs extends com.pulumi.resources.Invoke
 
     public static final GetServiceIntegrationArgs Empty = new GetServiceIntegrationArgs();
 
+    /**
+     * Destination service for the integration (if any)
+     * 
+     */
     @Import(name="destinationServiceName", required=true)
     private Output<String> destinationServiceName;
 
+    /**
+     * @return Destination service for the integration (if any)
+     * 
+     */
     public Output<String> destinationServiceName() {
         return this.destinationServiceName;
     }
 
+    /**
+     * Type of the service integration
+     * 
+     */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
+    /**
+     * @return Type of the service integration
+     * 
+     */
     public Output<String> integrationType() {
         return this.integrationType;
     }
 
+    /**
+     * Project the integration belongs to
+     * 
+     */
     @Import(name="project", required=true)
     private Output<String> project;
 
+    /**
+     * @return Project the integration belongs to
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
 
+    /**
+     * Source service for the integration (if any)
+     * 
+     */
     @Import(name="sourceServiceName", required=true)
     private Output<String> sourceServiceName;
 
+    /**
+     * @return Source service for the integration (if any)
+     * 
+     */
     public Output<String> sourceServiceName() {
         return this.sourceServiceName;
     }
@@ -68,38 +100,86 @@ public final class GetServiceIntegrationArgs extends com.pulumi.resources.Invoke
             $ = new GetServiceIntegrationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param destinationServiceName Destination service for the integration (if any)
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationServiceName(Output<String> destinationServiceName) {
             $.destinationServiceName = destinationServiceName;
             return this;
         }
 
+        /**
+         * @param destinationServiceName Destination service for the integration (if any)
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationServiceName(String destinationServiceName) {
             return destinationServiceName(Output.of(destinationServiceName));
         }
 
+        /**
+         * @param integrationType Type of the service integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationType(Output<String> integrationType) {
             $.integrationType = integrationType;
             return this;
         }
 
+        /**
+         * @param integrationType Type of the service integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationType(String integrationType) {
             return integrationType(Output.of(integrationType));
         }
 
+        /**
+         * @param project Project the integration belongs to
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project Project the integration belongs to
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
+        /**
+         * @param sourceServiceName Source service for the integration (if any)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceServiceName(Output<String> sourceServiceName) {
             $.sourceServiceName = sourceServiceName;
             return this;
         }
 
+        /**
+         * @param sourceServiceName Source service for the integration (if any)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceServiceName(String sourceServiceName) {
             return sourceServiceName(Output.of(sourceServiceName));
         }

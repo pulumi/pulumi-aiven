@@ -15,9 +15,17 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
 
     public static final OpenSearchOpensearchUserConfigPublicAccessArgs Empty = new OpenSearchOpensearchUserConfigPublicAccessArgs();
 
+    /**
+     * Opensearch server provided values
+     * 
+     */
     @Import(name="opensearch")
     private @Nullable Output<String> opensearch;
 
+    /**
+     * @return Opensearch server provided values
+     * 
+     */
     public Optional<Output<String>> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
@@ -62,11 +70,23 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
             $ = new OpenSearchOpensearchUserConfigPublicAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param opensearch Opensearch server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder opensearch(@Nullable Output<String> opensearch) {
             $.opensearch = opensearch;
             return this;
         }
 
+        /**
+         * @param opensearch Opensearch server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder opensearch(String opensearch) {
             return opensearch(Output.of(opensearch));
         }

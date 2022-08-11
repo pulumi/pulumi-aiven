@@ -12,23 +12,47 @@ public final class GetKafkaTopicPlainArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetKafkaTopicPlainArgs Empty = new GetKafkaTopicPlainArgs();
 
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
 
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
 
+    /**
+     * The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="topicName", required=true)
     private String topicName;
 
+    /**
+     * @return The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String topicName() {
         return this.topicName;
     }
@@ -59,16 +83,34 @@ public final class GetKafkaTopicPlainArgs extends com.pulumi.resources.InvokeArg
             $ = new GetKafkaTopicPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
+        /**
+         * @param topicName The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder topicName(String topicName) {
             $.topicName = topicName;
             return this;

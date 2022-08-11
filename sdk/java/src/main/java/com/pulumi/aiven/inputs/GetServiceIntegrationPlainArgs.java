@@ -12,30 +12,62 @@ public final class GetServiceIntegrationPlainArgs extends com.pulumi.resources.I
 
     public static final GetServiceIntegrationPlainArgs Empty = new GetServiceIntegrationPlainArgs();
 
+    /**
+     * Destination service for the integration (if any)
+     * 
+     */
     @Import(name="destinationServiceName", required=true)
     private String destinationServiceName;
 
+    /**
+     * @return Destination service for the integration (if any)
+     * 
+     */
     public String destinationServiceName() {
         return this.destinationServiceName;
     }
 
+    /**
+     * Type of the service integration
+     * 
+     */
     @Import(name="integrationType", required=true)
     private String integrationType;
 
+    /**
+     * @return Type of the service integration
+     * 
+     */
     public String integrationType() {
         return this.integrationType;
     }
 
+    /**
+     * Project the integration belongs to
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return Project the integration belongs to
+     * 
+     */
     public String project() {
         return this.project;
     }
 
+    /**
+     * Source service for the integration (if any)
+     * 
+     */
     @Import(name="sourceServiceName", required=true)
     private String sourceServiceName;
 
+    /**
+     * @return Source service for the integration (if any)
+     * 
+     */
     public String sourceServiceName() {
         return this.sourceServiceName;
     }
@@ -67,21 +99,45 @@ public final class GetServiceIntegrationPlainArgs extends com.pulumi.resources.I
             $ = new GetServiceIntegrationPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param destinationServiceName Destination service for the integration (if any)
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationServiceName(String destinationServiceName) {
             $.destinationServiceName = destinationServiceName;
             return this;
         }
 
+        /**
+         * @param integrationType Type of the service integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationType(String integrationType) {
             $.integrationType = integrationType;
             return this;
         }
 
+        /**
+         * @param project Project the integration belongs to
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param sourceServiceName Source service for the integration (if any)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceServiceName(String sourceServiceName) {
             $.sourceServiceName = sourceServiceName;
             return this;

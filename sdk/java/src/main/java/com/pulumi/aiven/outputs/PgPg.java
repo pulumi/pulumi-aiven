@@ -12,19 +12,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PgPg {
+    /**
+     * @return Primary PostgreSQL database name
+     * 
+     */
     private final @Nullable String dbname;
+    /**
+     * @return PostgreSQL master node host IP or name
+     * 
+     */
     private final @Nullable String host;
+    /**
+     * @return Connection limit
+     * 
+     */
+    private final @Nullable Integer maxConnections;
+    /**
+     * @return PostgreSQL admin user password
+     * 
+     */
     private final @Nullable String password;
+    /**
+     * @return PostgreSQL port
+     * 
+     */
     private final @Nullable Integer port;
+    /**
+     * @return PostgreSQL replica URI for services with a replica
+     * 
+     */
     private final @Nullable String replicaUri;
+    /**
+     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * 
+     */
     private final @Nullable String sslmode;
+    /**
+     * @return PostgreSQL master connection URI
+     * 
+     */
     private final @Nullable String uri;
+    /**
+     * @return PostgreSQL admin user name
+     * 
+     */
     private final @Nullable String user;
 
     @CustomType.Constructor
     private PgPg(
         @CustomType.Parameter("dbname") @Nullable String dbname,
         @CustomType.Parameter("host") @Nullable String host,
+        @CustomType.Parameter("maxConnections") @Nullable Integer maxConnections,
         @CustomType.Parameter("password") @Nullable String password,
         @CustomType.Parameter("port") @Nullable Integer port,
         @CustomType.Parameter("replicaUri") @Nullable String replicaUri,
@@ -33,6 +71,7 @@ public final class PgPg {
         @CustomType.Parameter("user") @Nullable String user) {
         this.dbname = dbname;
         this.host = host;
+        this.maxConnections = maxConnections;
         this.password = password;
         this.port = port;
         this.replicaUri = replicaUri;
@@ -41,27 +80,66 @@ public final class PgPg {
         this.user = user;
     }
 
+    /**
+     * @return Primary PostgreSQL database name
+     * 
+     */
     public Optional<String> dbname() {
         return Optional.ofNullable(this.dbname);
     }
+    /**
+     * @return PostgreSQL master node host IP or name
+     * 
+     */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
+    /**
+     * @return Connection limit
+     * 
+     */
+    public Optional<Integer> maxConnections() {
+        return Optional.ofNullable(this.maxConnections);
+    }
+    /**
+     * @return PostgreSQL admin user password
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
+    /**
+     * @return PostgreSQL port
+     * 
+     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
+    /**
+     * @return PostgreSQL replica URI for services with a replica
+     * 
+     */
     public Optional<String> replicaUri() {
         return Optional.ofNullable(this.replicaUri);
     }
+    /**
+     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * 
+     */
     public Optional<String> sslmode() {
         return Optional.ofNullable(this.sslmode);
     }
+    /**
+     * @return PostgreSQL master connection URI
+     * 
+     */
     public Optional<String> uri() {
         return Optional.ofNullable(this.uri);
     }
+    /**
+     * @return PostgreSQL admin user name
+     * 
+     */
     public Optional<String> user() {
         return Optional.ofNullable(this.user);
     }
@@ -77,6 +155,7 @@ public final class PgPg {
     public static final class Builder {
         private @Nullable String dbname;
         private @Nullable String host;
+        private @Nullable Integer maxConnections;
         private @Nullable String password;
         private @Nullable Integer port;
         private @Nullable String replicaUri;
@@ -92,6 +171,7 @@ public final class PgPg {
     	      Objects.requireNonNull(defaults);
     	      this.dbname = defaults.dbname;
     	      this.host = defaults.host;
+    	      this.maxConnections = defaults.maxConnections;
     	      this.password = defaults.password;
     	      this.port = defaults.port;
     	      this.replicaUri = defaults.replicaUri;
@@ -106,6 +186,10 @@ public final class PgPg {
         }
         public Builder host(@Nullable String host) {
             this.host = host;
+            return this;
+        }
+        public Builder maxConnections(@Nullable Integer maxConnections) {
+            this.maxConnections = maxConnections;
             return this;
         }
         public Builder password(@Nullable String password) {
@@ -132,7 +216,7 @@ public final class PgPg {
             this.user = user;
             return this;
         }        public PgPg build() {
-            return new PgPg(dbname, host, password, port, replicaUri, sslmode, uri, user);
+            return new PgPg(dbname, host, maxConnections, password, port, replicaUri, sslmode, uri, user);
         }
     }
 }

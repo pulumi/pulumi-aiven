@@ -13,16 +13,32 @@ public final class GetAccountAuthenticationArgs extends com.pulumi.resources.Inv
 
     public static final GetAccountAuthenticationArgs Empty = new GetAccountAuthenticationArgs();
 
+    /**
+     * The unique id of the account.
+     * 
+     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
+    /**
+     * @return The unique id of the account.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
+    /**
+     * The name of the account authentication.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The name of the account authentication.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -52,20 +68,44 @@ public final class GetAccountAuthenticationArgs extends com.pulumi.resources.Inv
             $ = new GetAccountAuthenticationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId The unique id of the account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId The unique id of the account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param name The name of the account authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the account authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

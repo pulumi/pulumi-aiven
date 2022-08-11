@@ -20,72 +20,152 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
 
     public static final InfluxDbInfluxdbUserConfigArgs Empty = new InfluxDbInfluxdbUserConfigArgs();
 
+    /**
+     * Custom domain
+     * 
+     */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
+    /**
+     * @return Custom domain
+     * 
+     */
     public Optional<Output<String>> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
 
+    /**
+     * influxdb.conf configuration values
+     * 
+     */
     @Import(name="influxdb")
     private @Nullable Output<InfluxDbInfluxdbUserConfigInfluxdbArgs> influxdb;
 
+    /**
+     * @return influxdb.conf configuration values
+     * 
+     */
     public Optional<Output<InfluxDbInfluxdbUserConfigInfluxdbArgs>> influxdb() {
         return Optional.ofNullable(this.influxdb);
     }
 
+    /**
+     * IP filter
+     * 
+     */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
+    /**
+     * @return IP filter
+     * 
+     */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
+    /**
+     * Allow access to selected service ports from private networks
+     * 
+     */
     @Import(name="privateAccess")
     private @Nullable Output<InfluxDbInfluxdbUserConfigPrivateAccessArgs> privateAccess;
 
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     public Optional<Output<InfluxDbInfluxdbUserConfigPrivateAccessArgs>> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
 
+    /**
+     * Allow access to selected service components through Privatelink
+     * 
+     */
     @Import(name="privatelinkAccess")
     private @Nullable Output<InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     public Optional<Output<InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
 
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="projectToForkFrom")
     private @Nullable Output<String> projectToForkFrom;
 
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
 
+    /**
+     * Allow access to selected service ports from the public Internet
+     * 
+     */
     @Import(name="publicAccess")
     private @Nullable Output<InfluxDbInfluxdbUserConfigPublicAccessArgs> publicAccess;
 
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     public Optional<Output<InfluxDbInfluxdbUserConfigPublicAccessArgs>> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
 
+    /**
+     * Name of the basebackup to restore in forked service
+     * 
+     */
     @Import(name="recoveryBasebackupName")
     private @Nullable Output<String> recoveryBasebackupName;
 
+    /**
+     * @return Name of the basebackup to restore in forked service
+     * 
+     */
     public Optional<Output<String>> recoveryBasebackupName() {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
 
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
 
+    /**
+     * Static IP addresses
+     * 
+     */
     @Import(name="staticIps")
     private @Nullable Output<String> staticIps;
 
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<Output<String>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -123,96 +203,222 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
             $ = new InfluxDbInfluxdbUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param customDomain Custom domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDomain(@Nullable Output<String> customDomain) {
             $.customDomain = customDomain;
             return this;
         }
 
+        /**
+         * @param customDomain Custom domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDomain(String customDomain) {
             return customDomain(Output.of(customDomain));
         }
 
+        /**
+         * @param influxdb influxdb.conf configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder influxdb(@Nullable Output<InfluxDbInfluxdbUserConfigInfluxdbArgs> influxdb) {
             $.influxdb = influxdb;
             return this;
         }
 
+        /**
+         * @param influxdb influxdb.conf configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder influxdb(InfluxDbInfluxdbUserConfigInfluxdbArgs influxdb) {
             return influxdb(Output.of(influxdb));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(@Nullable Output<InfluxDbInfluxdbUserConfigPrivateAccessArgs> privateAccess) {
             $.privateAccess = privateAccess;
             return this;
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(InfluxDbInfluxdbUserConfigPrivateAccessArgs privateAccess) {
             return privateAccess(Output.of(privateAccess));
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(@Nullable Output<InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs> privatelinkAccess) {
             $.privatelinkAccess = privatelinkAccess;
             return this;
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs privatelinkAccess) {
             return privatelinkAccess(Output.of(privatelinkAccess));
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(@Nullable Output<String> projectToForkFrom) {
             $.projectToForkFrom = projectToForkFrom;
             return this;
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(String projectToForkFrom) {
             return projectToForkFrom(Output.of(projectToForkFrom));
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(@Nullable Output<InfluxDbInfluxdbUserConfigPublicAccessArgs> publicAccess) {
             $.publicAccess = publicAccess;
             return this;
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(InfluxDbInfluxdbUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
         }
 
+        /**
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service
+         * 
+         * @return builder
+         * 
+         */
         public Builder recoveryBasebackupName(@Nullable Output<String> recoveryBasebackupName) {
             $.recoveryBasebackupName = recoveryBasebackupName;
             return this;
         }
 
+        /**
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service
+         * 
+         * @return builder
+         * 
+         */
         public Builder recoveryBasebackupName(String recoveryBasebackupName) {
             return recoveryBasebackupName(Output.of(recoveryBasebackupName));
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(@Nullable Output<String> serviceToForkFrom) {
             $.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(String serviceToForkFrom) {
             return serviceToForkFrom(Output.of(serviceToForkFrom));
         }
 
+        /**
+         * @param staticIps Static IP addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(@Nullable Output<String> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
+        /**
+         * @param staticIps Static IP addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(String staticIps) {
             return staticIps(Output.of(staticIps));
         }

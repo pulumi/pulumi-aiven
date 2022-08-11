@@ -78,32 +78,28 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
         return this.connectionUri;
     }
     /**
-     * The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="databaseName", type=String.class, parameters={})
     private Output<String> databaseName;
 
     /**
-     * @return The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> databaseName() {
         return this.databaseName;
     }
     /**
-     * The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
-     * `transaction`.
+     * The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     @Export(name="poolMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> poolMode;
 
     /**
-     * @return The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
-     * `transaction`.
+     * @return The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     public Output<Optional<String>> poolMode() {
@@ -124,64 +120,56 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
         return this.poolName;
     }
     /**
-     * The number of connections the pool may create towards the backend server. This does not affect the number of incoming
-     * connections, which is always a much larger number. The default value is `10`.
+     * The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
      * 
      */
     @Export(name="poolSize", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> poolSize;
 
     /**
-     * @return The number of connections the pool may create towards the backend server. This does not affect the number of incoming
-     * connections, which is always a much larger number. The default value is `10`.
+     * @return The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
      * 
      */
     public Output<Optional<Integer>> poolSize() {
         return Codegen.optional(this.poolSize);
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", type=String.class, parameters={})
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * The name of the service user used to connect to the database. To set up proper dependencies please refer to this
-     * variable as a reference.
+     * The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Export(name="username", type=String.class, parameters={})
     private Output</* @Nullable */ String> username;
 
     /**
-     * @return The name of the service user used to connect to the database. To set up proper dependencies please refer to this
-     * variable as a reference.
+     * @return The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Output<Optional<String>> username() {

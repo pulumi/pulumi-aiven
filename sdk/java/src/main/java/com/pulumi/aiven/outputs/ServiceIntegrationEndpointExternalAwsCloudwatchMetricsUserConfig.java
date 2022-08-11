@@ -11,9 +11,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
+    /**
+     * @return AWS access key. Required permissions are cloudwatch:PutMetricData
+     * 
+     */
     private final @Nullable String accessKey;
+    /**
+     * @return AWS CloudWatch Metrics Namespace
+     * 
+     */
     private final @Nullable String namespace;
+    /**
+     * @return AWS region
+     * 
+     */
     private final @Nullable String region;
+    /**
+     * @return AWS secret key
+     * 
+     */
     private final @Nullable String secretKey;
 
     @CustomType.Constructor
@@ -28,15 +44,31 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         this.secretKey = secretKey;
     }
 
+    /**
+     * @return AWS access key. Required permissions are cloudwatch:PutMetricData
+     * 
+     */
     public Optional<String> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
+    /**
+     * @return AWS CloudWatch Metrics Namespace
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
+    /**
+     * @return AWS region
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    /**
+     * @return AWS secret key
+     * 
+     */
     public Optional<String> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }

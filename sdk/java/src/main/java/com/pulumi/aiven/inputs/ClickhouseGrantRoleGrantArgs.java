@@ -15,9 +15,17 @@ public final class ClickhouseGrantRoleGrantArgs extends com.pulumi.resources.Res
 
     public static final ClickhouseGrantRoleGrantArgs Empty = new ClickhouseGrantRoleGrantArgs();
 
+    /**
+     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="role")
     private @Nullable Output<String> role;
 
+    /**
+     * @return The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
@@ -46,11 +54,23 @@ public final class ClickhouseGrantRoleGrantArgs extends com.pulumi.resources.Res
             $ = new ClickhouseGrantRoleGrantArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param role The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(@Nullable Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }

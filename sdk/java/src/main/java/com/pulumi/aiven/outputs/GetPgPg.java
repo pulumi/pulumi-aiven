@@ -12,6 +12,7 @@ import java.util.Objects;
 public final class GetPgPg {
     private final String dbname;
     private final String host;
+    private final Integer maxConnections;
     private final String password;
     private final Integer port;
     private final String replicaUri;
@@ -23,6 +24,7 @@ public final class GetPgPg {
     private GetPgPg(
         @CustomType.Parameter("dbname") String dbname,
         @CustomType.Parameter("host") String host,
+        @CustomType.Parameter("maxConnections") Integer maxConnections,
         @CustomType.Parameter("password") String password,
         @CustomType.Parameter("port") Integer port,
         @CustomType.Parameter("replicaUri") String replicaUri,
@@ -31,6 +33,7 @@ public final class GetPgPg {
         @CustomType.Parameter("user") String user) {
         this.dbname = dbname;
         this.host = host;
+        this.maxConnections = maxConnections;
         this.password = password;
         this.port = port;
         this.replicaUri = replicaUri;
@@ -44,6 +47,9 @@ public final class GetPgPg {
     }
     public String host() {
         return this.host;
+    }
+    public Integer maxConnections() {
+        return this.maxConnections;
     }
     public String password() {
         return this.password;
@@ -75,6 +81,7 @@ public final class GetPgPg {
     public static final class Builder {
         private String dbname;
         private String host;
+        private Integer maxConnections;
         private String password;
         private Integer port;
         private String replicaUri;
@@ -90,6 +97,7 @@ public final class GetPgPg {
     	      Objects.requireNonNull(defaults);
     	      this.dbname = defaults.dbname;
     	      this.host = defaults.host;
+    	      this.maxConnections = defaults.maxConnections;
     	      this.password = defaults.password;
     	      this.port = defaults.port;
     	      this.replicaUri = defaults.replicaUri;
@@ -104,6 +112,10 @@ public final class GetPgPg {
         }
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
+            return this;
+        }
+        public Builder maxConnections(Integer maxConnections) {
+            this.maxConnections = Objects.requireNonNull(maxConnections);
             return this;
         }
         public Builder password(String password) {
@@ -130,7 +142,7 @@ public final class GetPgPg {
             this.user = Objects.requireNonNull(user);
             return this;
         }        public GetPgPg build() {
-            return new GetPgPg(dbname, host, password, port, replicaUri, sslmode, uri, user);
+            return new GetPgPg(dbname, host, maxConnections, password, port, replicaUri, sslmode, uri, user);
         }
     }
 }

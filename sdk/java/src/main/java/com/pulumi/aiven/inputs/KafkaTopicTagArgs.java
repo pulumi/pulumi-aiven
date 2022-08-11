@@ -15,16 +15,32 @@ public final class KafkaTopicTagArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final KafkaTopicTagArgs Empty = new KafkaTopicTagArgs();
 
+    /**
+     * Topic tag key. Maximum Length: `64`.
+     * 
+     */
     @Import(name="key", required=true)
     private Output<String> key;
 
+    /**
+     * @return Topic tag key. Maximum Length: `64`.
+     * 
+     */
     public Output<String> key() {
         return this.key;
     }
 
+    /**
+     * Topic tag value. Maximum Length: `256`.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return Topic tag value. Maximum Length: `256`.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -54,20 +70,44 @@ public final class KafkaTopicTagArgs extends com.pulumi.resources.ResourceArgs {
             $ = new KafkaTopicTagArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key Topic tag key. Maximum Length: `64`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key Topic tag key. Maximum Length: `64`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param value Topic tag value. Maximum Length: `256`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Topic tag value. Maximum Length: `256`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

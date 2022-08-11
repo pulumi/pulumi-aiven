@@ -21,114 +21,242 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
 
     public static final MySqlMysqlUserConfigArgs Empty = new MySqlMysqlUserConfigArgs();
 
+    /**
+     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+     * 
+     */
     @Import(name="adminPassword")
     private @Nullable Output<String> adminPassword;
 
+    /**
+     * @return Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> adminPassword() {
         return Optional.ofNullable(this.adminPassword);
     }
 
+    /**
+     * Custom username for admin user. This must be set only when a new service is being created.
+     * 
+     */
     @Import(name="adminUsername")
     private @Nullable Output<String> adminUsername;
 
+    /**
+     * @return Custom username for admin user. This must be set only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> adminUsername() {
         return Optional.ofNullable(this.adminUsername);
     }
 
+    /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     @Import(name="backupHour")
     private @Nullable Output<String> backupHour;
 
+    /**
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     public Optional<Output<String>> backupHour() {
         return Optional.ofNullable(this.backupHour);
     }
 
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     @Import(name="backupMinute")
     private @Nullable Output<String> backupMinute;
 
+    /**
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     public Optional<Output<String>> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
     }
 
+    /**
+     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+     * 
+     */
     @Import(name="binlogRetentionPeriod")
     private @Nullable Output<String> binlogRetentionPeriod;
 
+    /**
+     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+     * 
+     */
     public Optional<Output<String>> binlogRetentionPeriod() {
         return Optional.ofNullable(this.binlogRetentionPeriod);
     }
 
+    /**
+     * IP filter
+     * 
+     */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
+    /**
+     * @return IP filter
+     * 
+     */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
+    /**
+     * Migrate data from existing server
+     * 
+     */
     @Import(name="migration")
     private @Nullable Output<MySqlMysqlUserConfigMigrationArgs> migration;
 
+    /**
+     * @return Migrate data from existing server
+     * 
+     */
     public Optional<Output<MySqlMysqlUserConfigMigrationArgs>> migration() {
         return Optional.ofNullable(this.migration);
     }
 
+    /**
+     * mysql.conf configuration values
+     * 
+     */
     @Import(name="mysql")
     private @Nullable Output<MySqlMysqlUserConfigMysqlArgs> mysql;
 
+    /**
+     * @return mysql.conf configuration values
+     * 
+     */
     public Optional<Output<MySqlMysqlUserConfigMysqlArgs>> mysql() {
         return Optional.ofNullable(this.mysql);
     }
 
+    /**
+     * MySQL major version
+     * 
+     */
     @Import(name="mysqlVersion")
     private @Nullable Output<String> mysqlVersion;
 
+    /**
+     * @return MySQL major version
+     * 
+     */
     public Optional<Output<String>> mysqlVersion() {
         return Optional.ofNullable(this.mysqlVersion);
     }
 
+    /**
+     * Allow access to selected service ports from private networks
+     * 
+     */
     @Import(name="privateAccess")
     private @Nullable Output<MySqlMysqlUserConfigPrivateAccessArgs> privateAccess;
 
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     public Optional<Output<MySqlMysqlUserConfigPrivateAccessArgs>> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
 
+    /**
+     * Allow access to selected service components through Privatelink
+     * 
+     */
     @Import(name="privatelinkAccess")
     private @Nullable Output<MySqlMysqlUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     public Optional<Output<MySqlMysqlUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
 
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="projectToForkFrom")
     private @Nullable Output<String> projectToForkFrom;
 
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
 
+    /**
+     * Allow access to selected service ports from the public Internet
+     * 
+     */
     @Import(name="publicAccess")
     private @Nullable Output<MySqlMysqlUserConfigPublicAccessArgs> publicAccess;
 
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     public Optional<Output<MySqlMysqlUserConfigPublicAccessArgs>> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
 
+    /**
+     * Recovery target time when forking a service. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="recoveryTargetTime")
     private @Nullable Output<String> recoveryTargetTime;
 
+    /**
+     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> recoveryTargetTime() {
         return Optional.ofNullable(this.recoveryTargetTime);
     }
 
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
 
+    /**
+     * Static IP addresses
+     * 
+     */
     @Import(name="staticIps")
     private @Nullable Output<String> staticIps;
 
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<Output<String>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -172,150 +300,348 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
             $ = new MySqlMysqlUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param adminPassword Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adminPassword(@Nullable Output<String> adminPassword) {
             $.adminPassword = adminPassword;
             return this;
         }
 
+        /**
+         * @param adminPassword Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adminPassword(String adminPassword) {
             return adminPassword(Output.of(adminPassword));
         }
 
+        /**
+         * @param adminUsername Custom username for admin user. This must be set only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adminUsername(@Nullable Output<String> adminUsername) {
             $.adminUsername = adminUsername;
             return this;
         }
 
+        /**
+         * @param adminUsername Custom username for admin user. This must be set only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adminUsername(String adminUsername) {
             return adminUsername(Output.of(adminUsername));
         }
 
+        /**
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupHour(@Nullable Output<String> backupHour) {
             $.backupHour = backupHour;
             return this;
         }
 
+        /**
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupHour(String backupHour) {
             return backupHour(Output.of(backupHour));
         }
 
+        /**
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupMinute(@Nullable Output<String> backupMinute) {
             $.backupMinute = backupMinute;
             return this;
         }
 
+        /**
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupMinute(String backupMinute) {
             return backupMinute(Output.of(backupMinute));
         }
 
+        /**
+         * @param binlogRetentionPeriod The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+         * 
+         * @return builder
+         * 
+         */
         public Builder binlogRetentionPeriod(@Nullable Output<String> binlogRetentionPeriod) {
             $.binlogRetentionPeriod = binlogRetentionPeriod;
             return this;
         }
 
+        /**
+         * @param binlogRetentionPeriod The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+         * 
+         * @return builder
+         * 
+         */
         public Builder binlogRetentionPeriod(String binlogRetentionPeriod) {
             return binlogRetentionPeriod(Output.of(binlogRetentionPeriod));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
+        /**
+         * @param migration Migrate data from existing server
+         * 
+         * @return builder
+         * 
+         */
         public Builder migration(@Nullable Output<MySqlMysqlUserConfigMigrationArgs> migration) {
             $.migration = migration;
             return this;
         }
 
+        /**
+         * @param migration Migrate data from existing server
+         * 
+         * @return builder
+         * 
+         */
         public Builder migration(MySqlMysqlUserConfigMigrationArgs migration) {
             return migration(Output.of(migration));
         }
 
+        /**
+         * @param mysql mysql.conf configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysql(@Nullable Output<MySqlMysqlUserConfigMysqlArgs> mysql) {
             $.mysql = mysql;
             return this;
         }
 
+        /**
+         * @param mysql mysql.conf configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysql(MySqlMysqlUserConfigMysqlArgs mysql) {
             return mysql(Output.of(mysql));
         }
 
+        /**
+         * @param mysqlVersion MySQL major version
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysqlVersion(@Nullable Output<String> mysqlVersion) {
             $.mysqlVersion = mysqlVersion;
             return this;
         }
 
+        /**
+         * @param mysqlVersion MySQL major version
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysqlVersion(String mysqlVersion) {
             return mysqlVersion(Output.of(mysqlVersion));
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(@Nullable Output<MySqlMysqlUserConfigPrivateAccessArgs> privateAccess) {
             $.privateAccess = privateAccess;
             return this;
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(MySqlMysqlUserConfigPrivateAccessArgs privateAccess) {
             return privateAccess(Output.of(privateAccess));
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(@Nullable Output<MySqlMysqlUserConfigPrivatelinkAccessArgs> privatelinkAccess) {
             $.privatelinkAccess = privatelinkAccess;
             return this;
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(MySqlMysqlUserConfigPrivatelinkAccessArgs privatelinkAccess) {
             return privatelinkAccess(Output.of(privatelinkAccess));
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(@Nullable Output<String> projectToForkFrom) {
             $.projectToForkFrom = projectToForkFrom;
             return this;
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(String projectToForkFrom) {
             return projectToForkFrom(Output.of(projectToForkFrom));
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(@Nullable Output<MySqlMysqlUserConfigPublicAccessArgs> publicAccess) {
             $.publicAccess = publicAccess;
             return this;
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(MySqlMysqlUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
         }
 
+        /**
+         * @param recoveryTargetTime Recovery target time when forking a service. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recoveryTargetTime(@Nullable Output<String> recoveryTargetTime) {
             $.recoveryTargetTime = recoveryTargetTime;
             return this;
         }
 
+        /**
+         * @param recoveryTargetTime Recovery target time when forking a service. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recoveryTargetTime(String recoveryTargetTime) {
             return recoveryTargetTime(Output.of(recoveryTargetTime));
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(@Nullable Output<String> serviceToForkFrom) {
             $.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(String serviceToForkFrom) {
             return serviceToForkFrom(Output.of(serviceToForkFrom));
         }
 
+        /**
+         * @param staticIps Static IP addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(@Nullable Output<String> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
+        /**
+         * @param staticIps Static IP addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(String staticIps) {
             return staticIps(Output.of(staticIps));
         }

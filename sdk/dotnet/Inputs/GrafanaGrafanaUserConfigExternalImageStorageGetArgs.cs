@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GrafanaGrafanaUserConfigExternalImageStorageGetArgs : Pulumi.ResourceArgs
+    public sealed class GrafanaGrafanaUserConfigExternalImageStorageGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Aiven.Inputs
         public GrafanaGrafanaUserConfigExternalImageStorageGetArgs()
         {
         }
+        public static new GrafanaGrafanaUserConfigExternalImageStorageGetArgs Empty => new GrafanaGrafanaUserConfigExternalImageStorageGetArgs();
     }
 }

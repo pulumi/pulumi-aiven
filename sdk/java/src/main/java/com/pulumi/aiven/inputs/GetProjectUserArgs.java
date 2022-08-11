@@ -13,16 +13,32 @@ public final class GetProjectUserArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetProjectUserArgs Empty = new GetProjectUserArgs();
 
+    /**
+     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="email", required=true)
     private Output<String> email;
 
+    /**
+     * @return Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> email() {
         return this.email;
     }
 
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="project", required=true)
     private Output<String> project;
 
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -52,20 +68,44 @@ public final class GetProjectUserArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetProjectUserArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param email Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(Output<String> email) {
             $.email = email;
             return this;
         }
 
+        /**
+         * @param email Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(String email) {
             return email(Output.of(email));
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

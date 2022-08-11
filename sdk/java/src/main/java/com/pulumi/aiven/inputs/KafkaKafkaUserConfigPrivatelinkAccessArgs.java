@@ -22,9 +22,17 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
         return Optional.ofNullable(this.jolokia);
     }
 
+    /**
+     * Kafka server provided values
+     * 
+     */
     @Import(name="kafka")
     private @Nullable Output<String> kafka;
 
+    /**
+     * @return Kafka server provided values
+     * 
+     */
     public Optional<Output<String>> kafka() {
         return Optional.ofNullable(this.kafka);
     }
@@ -95,11 +103,23 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
             return jolokia(Output.of(jolokia));
         }
 
+        /**
+         * @param kafka Kafka server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafka(@Nullable Output<String> kafka) {
             $.kafka = kafka;
             return this;
         }
 
+        /**
+         * @param kafka Kafka server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafka(String kafka) {
             return kafka(Output.of(kafka));
         }

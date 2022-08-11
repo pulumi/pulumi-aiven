@@ -11,14 +11,50 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
+    /**
+     * @return Bootstrap servers
+     * 
+     */
     private final @Nullable String bootstrapServers;
+    /**
+     * @return The list of SASL mechanisms enabled in the Kafka server.
+     * 
+     */
     private final @Nullable String saslMechanism;
+    /**
+     * @return Password for SASL PLAIN mechanism in the Kafka server.
+     * 
+     */
     private final @Nullable String saslPlainPassword;
+    /**
+     * @return Username for SASL PLAIN mechanism in the Kafka server.
+     * 
+     */
     private final @Nullable String saslPlainUsername;
+    /**
+     * @return Security protocol
+     * 
+     */
     private final @Nullable String securityProtocol;
+    /**
+     * @return PEM-encoded CA certificate
+     * 
+     */
     private final @Nullable String sslCaCert;
+    /**
+     * @return PEM-encoded client certificate
+     * 
+     */
     private final @Nullable String sslClientCert;
+    /**
+     * @return PEM-encoded client key
+     * 
+     */
     private final @Nullable String sslClientKey;
+    /**
+     * @return The endpoint identification algorithm to validate server hostname using server certificate.
+     * 
+     */
     private final @Nullable String sslEndpointIdentificationAlgorithm;
 
     @CustomType.Constructor
@@ -43,30 +79,66 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
         this.sslEndpointIdentificationAlgorithm = sslEndpointIdentificationAlgorithm;
     }
 
+    /**
+     * @return Bootstrap servers
+     * 
+     */
     public Optional<String> bootstrapServers() {
         return Optional.ofNullable(this.bootstrapServers);
     }
+    /**
+     * @return The list of SASL mechanisms enabled in the Kafka server.
+     * 
+     */
     public Optional<String> saslMechanism() {
         return Optional.ofNullable(this.saslMechanism);
     }
+    /**
+     * @return Password for SASL PLAIN mechanism in the Kafka server.
+     * 
+     */
     public Optional<String> saslPlainPassword() {
         return Optional.ofNullable(this.saslPlainPassword);
     }
+    /**
+     * @return Username for SASL PLAIN mechanism in the Kafka server.
+     * 
+     */
     public Optional<String> saslPlainUsername() {
         return Optional.ofNullable(this.saslPlainUsername);
     }
+    /**
+     * @return Security protocol
+     * 
+     */
     public Optional<String> securityProtocol() {
         return Optional.ofNullable(this.securityProtocol);
     }
+    /**
+     * @return PEM-encoded CA certificate
+     * 
+     */
     public Optional<String> sslCaCert() {
         return Optional.ofNullable(this.sslCaCert);
     }
+    /**
+     * @return PEM-encoded client certificate
+     * 
+     */
     public Optional<String> sslClientCert() {
         return Optional.ofNullable(this.sslClientCert);
     }
+    /**
+     * @return PEM-encoded client key
+     * 
+     */
     public Optional<String> sslClientKey() {
         return Optional.ofNullable(this.sslClientKey);
     }
+    /**
+     * @return The endpoint identification algorithm to validate server hostname using server certificate.
+     * 
+     */
     public Optional<String> sslEndpointIdentificationAlgorithm() {
         return Optional.ofNullable(this.sslEndpointIdentificationAlgorithm);
     }

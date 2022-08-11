@@ -10,17 +10,45 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaSchemaResult {
+    /**
+     * @return Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
+     * 
+     */
     private final String compatibilityLevel;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Kafka Schema configuration should be a valid Avro Schema JSON format.
+     * 
+     */
     private final String schema;
+    /**
+     * @return Kafka Schema type JSON or AVRO
+     * 
+     */
     private final String schemaType;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
+    /**
+     * @return The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String subjectName;
+    /**
+     * @return Kafka Schema configuration version.
+     * 
+     */
     private final Integer version;
 
     @CustomType.Constructor
@@ -43,6 +71,10 @@ public final class GetKafkaSchemaResult {
         this.version = version;
     }
 
+    /**
+     * @return Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
+     * 
+     */
     public String compatibilityLevel() {
         return this.compatibilityLevel;
     }
@@ -53,21 +85,45 @@ public final class GetKafkaSchemaResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Kafka Schema configuration should be a valid Avro Schema JSON format.
+     * 
+     */
     public String schema() {
         return this.schema;
     }
+    /**
+     * @return Kafka Schema type JSON or AVRO
+     * 
+     */
     public String schemaType() {
         return this.schemaType;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String subjectName() {
         return this.subjectName;
     }
+    /**
+     * @return Kafka Schema configuration version.
+     * 
+     */
     public Integer version() {
         return this.version;
     }

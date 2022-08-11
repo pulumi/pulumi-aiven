@@ -70,186 +70,168 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/flinkJobTable:FlinkJobTable")
 public class FlinkJobTable extends com.pulumi.resources.CustomResource {
     /**
-     * The id of the service integration that is used with this table. It must have the service integration type `flink`. To
-     * set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so
-     * forces recreation of the resource.
+     * The id of the service integration that is used with this table. It must have the service integration type `flink`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="integrationId", type=String.class, parameters={})
     private Output<String> integrationId;
 
     /**
-     * @return The id of the service integration that is used with this table. It must have the service integration type `flink`. To
-     * set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so
-     * forces recreation of the resource.
+     * @return The id of the service integration that is used with this table. It must have the service integration type `flink`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> integrationId() {
         return this.integrationId;
     }
     /**
-     * Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or
-     * postgres service. This property cannot be changed, doing so forces recreation of the resource.
+     * Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or postgres service. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="jdbcTable", type=String.class, parameters={})
     private Output</* @Nullable */ String> jdbcTable;
 
     /**
-     * @return Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or
-     * postgres service. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or postgres service. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> jdbcTable() {
         return Codegen.optional(this.jdbcTable);
     }
     /**
-     * When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null.
-     * For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is
-     * found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values
-     * are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
+     * When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null. For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="kafkaConnectorType", type=String.class, parameters={})
     private Output</* @Nullable */ String> kafkaConnectorType;
 
     /**
-     * @return When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null.
-     * For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is
-     * found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values
-     * are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null. For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> kafkaConnectorType() {
         return Codegen.optional(this.kafkaConnectorType);
     }
     /**
-     * Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This
-     * property cannot be changed, doing so forces recreation of the resource.
+     * Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="kafkaKeyFields", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> kafkaKeyFields;
 
     /**
-     * @return Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This
-     * property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> kafkaKeyFields() {
         return Codegen.optional(this.kafkaKeyFields);
     }
     /**
-     * Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
-     * `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="kafkaKeyFormat", type=String.class, parameters={})
     private Output</* @Nullable */ String> kafkaKeyFormat;
 
     /**
-     * @return Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
-     * `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> kafkaKeyFormat() {
         return Codegen.optional(this.kafkaKeyFormat);
     }
     /**
-     * Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property
-     * cannot be changed, doing so forces recreation of the resource.
+     * Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="kafkaStartupMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> kafkaStartupMode;
 
     /**
-     * @return Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property
-     * cannot be changed, doing so forces recreation of the resource.
+     * @return Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> kafkaStartupMode() {
         return Codegen.optional(this.kafkaStartupMode);
     }
     /**
-     * Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka
-     * service. This property cannot be changed, doing so forces recreation of the resource.
+     * Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="kafkaTopic", type=String.class, parameters={})
     private Output</* @Nullable */ String> kafkaTopic;
 
     /**
-     * @return Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka
-     * service. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> kafkaTopic() {
         return Codegen.optional(this.kafkaTopic);
     }
     /**
-     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table
-     * schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message
-     * value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot
-     * be changed, doing so forces recreation of the resource.
+     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="kafkaValueFieldsInclude", type=String.class, parameters={})
     private Output</* @Nullable */ String> kafkaValueFieldsInclude;
 
     /**
-     * @return Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table
-     * schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message
-     * value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot
-     * be changed, doing so forces recreation of the resource.
+     * @return Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> kafkaValueFieldsInclude() {
         return Codegen.optional(this.kafkaValueFieldsInclude);
     }
     /**
-     * Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
-     * `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="kafkaValueFormat", type=String.class, parameters={})
     private Output</* @Nullable */ String> kafkaValueFormat;
 
     /**
-     * @return Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
-     * `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> kafkaValueFormat() {
         return Codegen.optional(this.kafkaValueFormat);
     }
     /**
-     * [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table
-     * creation. This property cannot be changed, doing so forces recreation of the resource.
+     * [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="likeOptions", type=String.class, parameters={})
     private Output</* @Nullable */ String> likeOptions;
 
     /**
-     * @return [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table
-     * creation. This property cannot be changed, doing so forces recreation of the resource.
+     * @return [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> likeOptions() {
         return Codegen.optional(this.likeOptions);
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * For an OpenSearch table, the OpenSearch index the table outputs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
+    @Export(name="opensearchIndex", type=String.class, parameters={})
+    private Output</* @Nullable */ String> opensearchIndex;
+
+    /**
+     * @return For an OpenSearch table, the OpenSearch index the table outputs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
+    public Output<Optional<String>> opensearchIndex() {
+        return Codegen.optional(this.opensearchIndex);
+    }
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -270,16 +252,14 @@ public class FlinkJobTable extends com.pulumi.resources.CustomResource {
         return this.schemaSql;
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", type=String.class, parameters={})
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {

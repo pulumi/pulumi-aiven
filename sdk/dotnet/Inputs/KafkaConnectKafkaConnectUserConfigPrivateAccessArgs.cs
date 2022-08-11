@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaConnectKafkaConnectUserConfigPrivateAccessArgs : Pulumi.ResourceArgs
+    public sealed class KafkaConnectKafkaConnectUserConfigPrivateAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Kafka Connect server provided values
+        /// </summary>
         [Input("kafkaConnect")]
         public Input<string>? KafkaConnect { get; set; }
 
@@ -21,5 +24,6 @@ namespace Pulumi.Aiven.Inputs
         public KafkaConnectKafkaConnectUserConfigPrivateAccessArgs()
         {
         }
+        public static new KafkaConnectKafkaConnectUserConfigPrivateAccessArgs Empty => new KafkaConnectKafkaConnectUserConfigPrivateAccessArgs();
     }
 }

@@ -63,16 +63,14 @@ public final class AwsVpcPeeringConnectionState extends com.pulumi.resources.Res
     }
 
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-     * recreation of the resource.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="awsVpcRegion")
     private @Nullable Output<String> awsVpcRegion;
 
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-     * recreation of the resource.
+     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> awsVpcRegion() {
@@ -218,8 +216,7 @@ public final class AwsVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param awsVpcRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-         * recreation of the resource.
+         * @param awsVpcRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -230,8 +227,7 @@ public final class AwsVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param awsVpcRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-         * recreation of the resource.
+         * @param awsVpcRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

@@ -44,6 +44,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         return Optional.ofNullable(this.clusterRoutingAllocationNodeConcurrentRecoveries);
     }
 
+    @Import(name="emailSenderName")
+    private @Nullable Output<String> emailSenderName;
+
+    public Optional<Output<String>> emailSenderName() {
+        return Optional.ofNullable(this.emailSenderName);
+    }
+
+    @Import(name="emailSenderPassword")
+    private @Nullable Output<String> emailSenderPassword;
+
+    public Optional<Output<String>> emailSenderPassword() {
+        return Optional.ofNullable(this.emailSenderPassword);
+    }
+
+    @Import(name="emailSenderUsername")
+    private @Nullable Output<String> emailSenderUsername;
+
+    public Optional<Output<String>> emailSenderUsername() {
+        return Optional.ofNullable(this.emailSenderUsername);
+    }
+
     @Import(name="httpMaxContentLength")
     private @Nullable Output<String> httpMaxContentLength;
 
@@ -219,6 +240,9 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.actionDestructiveRequiresName = $.actionDestructiveRequiresName;
         this.clusterMaxShardsPerNode = $.clusterMaxShardsPerNode;
         this.clusterRoutingAllocationNodeConcurrentRecoveries = $.clusterRoutingAllocationNodeConcurrentRecoveries;
+        this.emailSenderName = $.emailSenderName;
+        this.emailSenderPassword = $.emailSenderPassword;
+        this.emailSenderUsername = $.emailSenderUsername;
         this.httpMaxContentLength = $.httpMaxContentLength;
         this.httpMaxHeaderSize = $.httpMaxHeaderSize;
         this.httpMaxInitialLineLength = $.httpMaxInitialLineLength;
@@ -297,6 +321,33 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
 
         public Builder clusterRoutingAllocationNodeConcurrentRecoveries(String clusterRoutingAllocationNodeConcurrentRecoveries) {
             return clusterRoutingAllocationNodeConcurrentRecoveries(Output.of(clusterRoutingAllocationNodeConcurrentRecoveries));
+        }
+
+        public Builder emailSenderName(@Nullable Output<String> emailSenderName) {
+            $.emailSenderName = emailSenderName;
+            return this;
+        }
+
+        public Builder emailSenderName(String emailSenderName) {
+            return emailSenderName(Output.of(emailSenderName));
+        }
+
+        public Builder emailSenderPassword(@Nullable Output<String> emailSenderPassword) {
+            $.emailSenderPassword = emailSenderPassword;
+            return this;
+        }
+
+        public Builder emailSenderPassword(String emailSenderPassword) {
+            return emailSenderPassword(Output.of(emailSenderPassword));
+        }
+
+        public Builder emailSenderUsername(@Nullable Output<String> emailSenderUsername) {
+            $.emailSenderUsername = emailSenderUsername;
+            return this;
+        }
+
+        public Builder emailSenderUsername(String emailSenderUsername) {
+            return emailSenderUsername(Output.of(emailSenderUsername));
         }
 
         public Builder httpMaxContentLength(@Nullable Output<String> httpMaxContentLength) {

@@ -20,7 +20,9 @@ import (
 // ## Import
 //
 // ```sh
-//  $ pulumi import aiven:index/accountTeamProject:AccountTeamProject account_team_project1 account_id/team_id/project_name
+//
+//	$ pulumi import aiven:index/accountTeamProject:AccountTeamProject account_team_project1 account_id/team_id/project_name
+//
 // ```
 type AccountTeamProject struct {
 	pulumi.CustomResourceState
@@ -31,7 +33,7 @@ type AccountTeamProject struct {
 	ProjectName pulumi.StringPtrOutput `pulumi:"projectName"`
 	// An account team id
 	TeamId pulumi.StringOutput `pulumi:"teamId"`
-	// The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType pulumi.StringPtrOutput `pulumi:"teamType"`
 }
 
@@ -76,7 +78,7 @@ type accountTeamProjectState struct {
 	ProjectName *string `pulumi:"projectName"`
 	// An account team id
 	TeamId *string `pulumi:"teamId"`
-	// The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType *string `pulumi:"teamType"`
 }
 
@@ -87,7 +89,7 @@ type AccountTeamProjectState struct {
 	ProjectName pulumi.StringPtrInput
 	// An account team id
 	TeamId pulumi.StringPtrInput
-	// The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType pulumi.StringPtrInput
 }
 
@@ -102,7 +104,7 @@ type accountTeamProjectArgs struct {
 	ProjectName *string `pulumi:"projectName"`
 	// An account team id
 	TeamId string `pulumi:"teamId"`
-	// The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType *string `pulumi:"teamType"`
 }
 
@@ -114,7 +116,7 @@ type AccountTeamProjectArgs struct {
 	ProjectName pulumi.StringPtrInput
 	// An account team id
 	TeamId pulumi.StringInput
-	// The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
 	TeamType pulumi.StringPtrInput
 }
 
@@ -144,7 +146,7 @@ func (i *AccountTeamProject) ToAccountTeamProjectOutputWithContext(ctx context.C
 // AccountTeamProjectArrayInput is an input type that accepts AccountTeamProjectArray and AccountTeamProjectArrayOutput values.
 // You can construct a concrete instance of `AccountTeamProjectArrayInput` via:
 //
-//          AccountTeamProjectArray{ AccountTeamProjectArgs{...} }
+//	AccountTeamProjectArray{ AccountTeamProjectArgs{...} }
 type AccountTeamProjectArrayInput interface {
 	pulumi.Input
 
@@ -169,7 +171,7 @@ func (i AccountTeamProjectArray) ToAccountTeamProjectArrayOutputWithContext(ctx 
 // AccountTeamProjectMapInput is an input type that accepts AccountTeamProjectMap and AccountTeamProjectMapOutput values.
 // You can construct a concrete instance of `AccountTeamProjectMapInput` via:
 //
-//          AccountTeamProjectMap{ "key": AccountTeamProjectArgs{...} }
+//	AccountTeamProjectMap{ "key": AccountTeamProjectArgs{...} }
 type AccountTeamProjectMapInput interface {
 	pulumi.Input
 
@@ -220,7 +222,7 @@ func (o AccountTeamProjectOutput) TeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountTeamProject) pulumi.StringOutput { return v.TeamId }).(pulumi.StringOutput)
 }
 
-// The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
 func (o AccountTeamProjectOutput) TeamType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountTeamProject) pulumi.StringPtrOutput { return v.TeamType }).(pulumi.StringPtrOutput)
 }

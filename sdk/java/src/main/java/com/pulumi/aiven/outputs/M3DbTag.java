@@ -9,7 +9,15 @@ import java.util.Objects;
 
 @CustomType
 public final class M3DbTag {
+    /**
+     * @return Service tag key
+     * 
+     */
     private final String key;
+    /**
+     * @return Service tag value
+     * 
+     */
     private final String value;
 
     @CustomType.Constructor
@@ -20,9 +28,17 @@ public final class M3DbTag {
         this.value = value;
     }
 
+    /**
+     * @return Service tag key
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Service tag value
+     * 
+     */
     public String value() {
         return this.value;
     }

@@ -10,90 +10,173 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class PgPgUserConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class PgPgUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+        /// </summary>
         [Input("adminPassword")]
         public Input<string>? AdminPassword { get; set; }
 
+        /// <summary>
+        /// Custom username for admin user. This must be set only when a new service is being created.
+        /// </summary>
         [Input("adminUsername")]
         public Input<string>? AdminUsername { get; set; }
 
+        /// <summary>
+        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// </summary>
         [Input("backupHour")]
         public Input<string>? BackupHour { get; set; }
 
+        /// <summary>
+        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// </summary>
         [Input("backupMinute")]
         public Input<string>? BackupMinute { get; set; }
 
+        /// <summary>
+        /// Enable IPv6
+        /// </summary>
         [Input("enableIpv6")]
         public Input<string>? EnableIpv6 { get; set; }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// IP filter
+        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Migrate data from existing server
+        /// </summary>
         [Input("migration")]
         public Input<Inputs.PgPgUserConfigMigrationGetArgs>? Migration { get; set; }
 
+        /// <summary>
+        /// postgresql.conf configuration values
+        /// </summary>
         [Input("pg")]
         public Input<Inputs.PgPgUserConfigPgGetArgs>? Pg { get; set; }
 
+        /// <summary>
+        /// Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+        /// </summary>
         [Input("pgReadReplica")]
         public Input<string>? PgReadReplica { get; set; }
 
+        /// <summary>
+        /// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+        /// </summary>
         [Input("pgServiceToForkFrom")]
         public Input<string>? PgServiceToForkFrom { get; set; }
 
+        /// <summary>
+        /// Enable pg*stat*monitor extension if available for the current cluster
+        /// </summary>
+        [Input("pgStatMonitorEnable")]
+        public Input<string>? PgStatMonitorEnable { get; set; }
+
+        /// <summary>
+        /// PostgreSQL major version
+        /// </summary>
         [Input("pgVersion")]
         public Input<string>? PgVersion { get; set; }
 
+        /// <summary>
+        /// PGBouncer connection pooling settings
+        /// </summary>
         [Input("pgbouncer")]
         public Input<Inputs.PgPgUserConfigPgbouncerGetArgs>? Pgbouncer { get; set; }
 
+        /// <summary>
+        /// PGLookout settings
+        /// </summary>
         [Input("pglookout")]
         public Input<Inputs.PgPgUserConfigPglookoutGetArgs>? Pglookout { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.PgPgUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.PgPgUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
+        /// <summary>
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.PgPgUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Recovery target time when forking a service. This has effect only when a new service is being created.
+        /// </summary>
         [Input("recoveryTargetTime")]
         public Input<string>? RecoveryTargetTime { get; set; }
 
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
+        /// <summary>
+        /// shared*buffers*percentage
+        /// </summary>
         [Input("sharedBuffersPercentage")]
         public Input<string>? SharedBuffersPercentage { get; set; }
 
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 
+        /// <summary>
+        /// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        /// </summary>
         [Input("synchronousReplication")]
         public Input<string>? SynchronousReplication { get; set; }
 
+        /// <summary>
+        /// TimescaleDB extension configuration values
+        /// </summary>
         [Input("timescaledb")]
         public Input<Inputs.PgPgUserConfigTimescaledbGetArgs>? Timescaledb { get; set; }
 
+        /// <summary>
+        /// Variant of the PostgreSQL service, may affect the features that are exposed by default
+        /// </summary>
         [Input("variant")]
         public Input<string>? Variant { get; set; }
 
+        /// <summary>
+        /// work_mem
+        /// </summary>
         [Input("workMem")]
         public Input<string>? WorkMem { get; set; }
 
         public PgPgUserConfigGetArgs()
         {
         }
+        public static new PgPgUserConfigGetArgs Empty => new PgPgUserConfigGetArgs();
     }
 }

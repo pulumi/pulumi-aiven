@@ -22,25 +22,85 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceIntegrationEndpointResult {
+    /**
+     * @return Datadog specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationEndpointDatadogUserConfig> datadogUserConfigs;
+    /**
+     * @return Integration endpoint specific backend configuration
+     * 
+     */
     private final Map<String,String> endpointConfig;
+    /**
+     * @return Name of the service integration endpoint
+     * 
+     */
     private final String endpointName;
+    /**
+     * @return Type of the service integration endpoint
+     * 
+     */
     private final String endpointType;
+    /**
+     * @return external AWS CloudWatch Logs specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs;
+    /**
+     * @return External AWS cloudwatch mertrics specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
+    /**
+     * @return external elasticsearch specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs;
+    /**
+     * @return external Google Cloud Logginig specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfigs;
+    /**
+     * @return external Kafka specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs;
+    /**
+     * @return External schema registry specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return Jolokia specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfigs;
+    /**
+     * @return Project the service integration endpoint belongs to
+     * 
+     */
     private final String project;
+    /**
+     * @return Prometheus specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfigs;
+    /**
+     * @return rsyslog specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs;
+    /**
+     * @return Signalfx specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationEndpointSignalfxUserConfig> signalfxUserConfigs;
 
     @CustomType.Constructor
@@ -79,33 +139,73 @@ public final class GetServiceIntegrationEndpointResult {
         this.signalfxUserConfigs = signalfxUserConfigs;
     }
 
+    /**
+     * @return Datadog specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationEndpointDatadogUserConfig> datadogUserConfigs() {
         return this.datadogUserConfigs;
     }
+    /**
+     * @return Integration endpoint specific backend configuration
+     * 
+     */
     public Map<String,String> endpointConfig() {
         return this.endpointConfig;
     }
+    /**
+     * @return Name of the service integration endpoint
+     * 
+     */
     public String endpointName() {
         return this.endpointName;
     }
+    /**
+     * @return Type of the service integration endpoint
+     * 
+     */
     public String endpointType() {
         return this.endpointType;
     }
+    /**
+     * @return external AWS CloudWatch Logs specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs() {
         return this.externalAwsCloudwatchLogsUserConfigs;
     }
+    /**
+     * @return External AWS cloudwatch mertrics specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs() {
         return this.externalAwsCloudwatchMetricsUserConfigs;
     }
+    /**
+     * @return external elasticsearch specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs() {
         return this.externalElasticsearchLogsUserConfigs;
     }
+    /**
+     * @return external Google Cloud Logginig specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfigs() {
         return this.externalGoogleCloudLoggingUserConfigs;
     }
+    /**
+     * @return external Kafka specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs() {
         return this.externalKafkaUserConfigs;
     }
+    /**
+     * @return External schema registry specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs() {
         return this.externalSchemaRegistryUserConfigs;
     }
@@ -116,18 +216,38 @@ public final class GetServiceIntegrationEndpointResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Jolokia specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfigs() {
         return this.jolokiaUserConfigs;
     }
+    /**
+     * @return Project the service integration endpoint belongs to
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Prometheus specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfigs() {
         return this.prometheusUserConfigs;
     }
+    /**
+     * @return rsyslog specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs() {
         return this.rsyslogUserConfigs;
     }
+    /**
+     * @return Signalfx specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationEndpointSignalfxUserConfig> signalfxUserConfigs() {
         return this.signalfxUserConfigs;
     }

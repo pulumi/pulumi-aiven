@@ -12,16 +12,32 @@ public final class GetAccountAuthenticationPlainArgs extends com.pulumi.resource
 
     public static final GetAccountAuthenticationPlainArgs Empty = new GetAccountAuthenticationPlainArgs();
 
+    /**
+     * The unique id of the account.
+     * 
+     */
     @Import(name="accountId", required=true)
     private String accountId;
 
+    /**
+     * @return The unique id of the account.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
 
+    /**
+     * The name of the account authentication.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the account authentication.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -51,11 +67,23 @@ public final class GetAccountAuthenticationPlainArgs extends com.pulumi.resource
             $ = new GetAccountAuthenticationPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId The unique id of the account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param name The name of the account authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

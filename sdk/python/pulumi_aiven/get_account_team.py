@@ -44,11 +44,17 @@ class GetAccountTeamResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The unique account id
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        Time of creation
+        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -62,16 +68,25 @@ class GetAccountTeamResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The account team name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="teamId")
     def team_id(self) -> str:
+        """
+        The auto-generated unique account team id
+        """
         return pulumi.get(self, "team_id")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
+        """
+        Time of last update
+        """
         return pulumi.get(self, "update_time")
 
 
@@ -94,6 +109,10 @@ def get_account_team(account_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountTeamResult:
     """
     The Account Team data source provides information about the existing Account Team.
+
+
+    :param str account_id: The unique account id
+    :param str name: The account team name
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -116,5 +135,9 @@ def get_account_team_output(account_id: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountTeamResult]:
     """
     The Account Team data source provides information about the existing Account Team.
+
+
+    :param str account_id: The unique account id
+    :param str name: The account team name
     """
     ...

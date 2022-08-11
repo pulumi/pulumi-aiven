@@ -19,20 +19,18 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var account1 = Aiven.GetAccount.Invoke(new()
         ///     {
-        ///         var account1 = Output.Create(Aiven.GetAccount.InvokeAsync(new Aiven.GetAccountArgs
-        ///         {
-        ///             Name = "&lt;ACCOUNT_NAME&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;ACCOUNT_NAME&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var account1 = Aiven.GetAccount.Invoke(new()
         ///     {
-        ///         var account1 = Output.Create(Aiven.GetAccount.InvokeAsync(new Aiven.GetAccountArgs
-        ///         {
-        ///             Name = "&lt;ACCOUNT_NAME&gt;",
-        ///         }));
-        ///     }
+        ///         Name = "&lt;ACCOUNT_NAME&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,40 +67,69 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetAccountArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account name
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         public GetAccountArgs()
         {
         }
+        public static new GetAccountArgs Empty => new GetAccountArgs();
     }
 
-    public sealed class GetAccountInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account name
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         public GetAccountInvokeArgs()
         {
         }
+        public static new GetAccountInvokeArgs Empty => new GetAccountInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetAccountResult
     {
+        /// <summary>
+        /// Account id
+        /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// Time of creation
+        /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Account name
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Owner team id
+        /// </summary>
         public readonly string OwnerTeamId;
+        /// <summary>
+        /// Billing group id
+        /// </summary>
         public readonly string PrimaryBillingGroupId;
+        /// <summary>
+        /// Tenant id
+        /// </summary>
         public readonly string TenantId;
+        /// <summary>
+        /// Time of last update
+        /// </summary>
         public readonly string UpdateTime;
 
         [OutputConstructor]

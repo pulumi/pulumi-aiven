@@ -13,8 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaMirrorMakerKafkaMirrormakerUserConfig {
+    /**
+     * @return IP filter
+     * 
+     */
     private final @Nullable List<String> ipFilters;
+    /**
+     * @return Kafka MirrorMaker configuration values
+     * 
+     */
     private final @Nullable KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
+    /**
+     * @return Static IP addresses
+     * 
+     */
     private final @Nullable String staticIps;
 
     @CustomType.Constructor
@@ -27,12 +39,24 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfig {
         this.staticIps = staticIps;
     }
 
+    /**
+     * @return IP filter
+     * 
+     */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Kafka MirrorMaker configuration values
+     * 
+     */
     public Optional<KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker> kafkaMirrormaker() {
         return Optional.ofNullable(this.kafkaMirrormaker);
     }
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

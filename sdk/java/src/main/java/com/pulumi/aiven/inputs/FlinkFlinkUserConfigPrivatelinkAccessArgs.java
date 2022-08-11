@@ -15,9 +15,17 @@ public final class FlinkFlinkUserConfigPrivatelinkAccessArgs extends com.pulumi.
 
     public static final FlinkFlinkUserConfigPrivatelinkAccessArgs Empty = new FlinkFlinkUserConfigPrivatelinkAccessArgs();
 
+    /**
+     * Flink server provided values
+     * 
+     */
     @Import(name="flink")
     private @Nullable Output<String> flink;
 
+    /**
+     * @return Flink server provided values
+     * 
+     */
     public Optional<Output<String>> flink() {
         return Optional.ofNullable(this.flink);
     }
@@ -54,11 +62,23 @@ public final class FlinkFlinkUserConfigPrivatelinkAccessArgs extends com.pulumi.
             $ = new FlinkFlinkUserConfigPrivatelinkAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param flink Flink server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder flink(@Nullable Output<String> flink) {
             $.flink = flink;
             return this;
         }
 
+        /**
+         * @param flink Flink server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder flink(String flink) {
             return flink(Output.of(flink));
         }

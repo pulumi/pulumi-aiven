@@ -16,44 +16,92 @@ public final class FlinkJobTableUpsertKafkaArgs extends com.pulumi.resources.Res
 
     public static final FlinkJobTableUpsertKafkaArgs Empty = new FlinkJobTableUpsertKafkaArgs();
 
+    /**
+     * Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="keyFields")
     private @Nullable Output<List<String>> keyFields;
 
+    /**
+     * @return Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<Output<List<String>>> keyFields() {
         return Optional.ofNullable(this.keyFields);
     }
 
+    /**
+     * Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="keyFormat")
     private @Nullable Output<String> keyFormat;
 
+    /**
+     * @return Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<Output<String>> keyFormat() {
         return Optional.ofNullable(this.keyFormat);
     }
 
+    /**
+     * Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="scanStartupMode")
     private @Nullable Output<String> scanStartupMode;
 
+    /**
+     * @return Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<Output<String>> scanStartupMode() {
         return Optional.ofNullable(this.scanStartupMode);
     }
 
+    /**
+     * Topic name This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="topic")
     private @Nullable Output<String> topic;
 
+    /**
+     * @return Topic name This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<Output<String>> topic() {
         return Optional.ofNullable(this.topic);
     }
 
+    /**
+     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="valueFieldsInclude")
     private @Nullable Output<String> valueFieldsInclude;
 
+    /**
+     * @return Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<Output<String>> valueFieldsInclude() {
         return Optional.ofNullable(this.valueFieldsInclude);
     }
 
+    /**
+     * Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="valueFormat")
     private @Nullable Output<String> valueFormat;
 
+    /**
+     * @return Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<Output<String>> valueFormat() {
         return Optional.ofNullable(this.valueFormat);
     }
@@ -87,60 +135,138 @@ public final class FlinkJobTableUpsertKafkaArgs extends com.pulumi.resources.Res
             $ = new FlinkJobTableUpsertKafkaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param keyFields Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyFields(@Nullable Output<List<String>> keyFields) {
             $.keyFields = keyFields;
             return this;
         }
 
+        /**
+         * @param keyFields Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyFields(List<String> keyFields) {
             return keyFields(Output.of(keyFields));
         }
 
+        /**
+         * @param keyFields Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyFields(String... keyFields) {
             return keyFields(List.of(keyFields));
         }
 
+        /**
+         * @param keyFormat Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyFormat(@Nullable Output<String> keyFormat) {
             $.keyFormat = keyFormat;
             return this;
         }
 
+        /**
+         * @param keyFormat Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyFormat(String keyFormat) {
             return keyFormat(Output.of(keyFormat));
         }
 
+        /**
+         * @param scanStartupMode Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scanStartupMode(@Nullable Output<String> scanStartupMode) {
             $.scanStartupMode = scanStartupMode;
             return this;
         }
 
+        /**
+         * @param scanStartupMode Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scanStartupMode(String scanStartupMode) {
             return scanStartupMode(Output.of(scanStartupMode));
         }
 
+        /**
+         * @param topic Topic name This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder topic(@Nullable Output<String> topic) {
             $.topic = topic;
             return this;
         }
 
+        /**
+         * @param topic Topic name This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder topic(String topic) {
             return topic(Output.of(topic));
         }
 
+        /**
+         * @param valueFieldsInclude Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder valueFieldsInclude(@Nullable Output<String> valueFieldsInclude) {
             $.valueFieldsInclude = valueFieldsInclude;
             return this;
         }
 
+        /**
+         * @param valueFieldsInclude Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder valueFieldsInclude(String valueFieldsInclude) {
             return valueFieldsInclude(Output.of(valueFieldsInclude));
         }
 
+        /**
+         * @param valueFormat Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder valueFormat(@Nullable Output<String> valueFormat) {
             $.valueFormat = valueFormat;
             return this;
         }
 
+        /**
+         * @param valueFormat Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder valueFormat(String valueFormat) {
             return valueFormat(Output.of(valueFormat));
         }

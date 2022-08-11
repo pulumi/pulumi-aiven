@@ -74,7 +74,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    internal sealed class AivenResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class AivenResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public AivenResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

@@ -19,22 +19,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Aiven.GetGcpVpcPeeringConnection.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Aiven.GetGcpVpcPeeringConnection.InvokeAsync(new Aiven.GetGcpVpcPeeringConnectionArgs
-        ///         {
-        ///             VpcId = data.Aiven_project_vpc.Vpc.Id,
-        ///             GcpProjectId = "xxxx",
-        ///             PeerVpc = "xxxx",
-        ///         }));
-        ///     }
+        ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
+        ///         GcpProjectId = "xxxx",
+        ///         PeerVpc = "xxxx",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -50,22 +48,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Aiven.GetGcpVpcPeeringConnection.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Aiven.GetGcpVpcPeeringConnection.InvokeAsync(new Aiven.GetGcpVpcPeeringConnectionArgs
-        ///         {
-        ///             VpcId = data.Aiven_project_vpc.Vpc.Id,
-        ///             GcpProjectId = "xxxx",
-        ///             PeerVpc = "xxxx",
-        ///         }));
-        ///     }
+        ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
+        ///         GcpProjectId = "xxxx",
+        ///         PeerVpc = "xxxx",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,50 +71,85 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetGcpVpcPeeringConnectionArgs : Pulumi.InvokeArgs
+    public sealed class GetGcpVpcPeeringConnectionArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("gcpProjectId", required: true)]
         public string GcpProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("peerVpc", required: true)]
         public string PeerVpc { get; set; } = null!;
 
+        /// <summary>
+        /// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("vpcId", required: true)]
         public string VpcId { get; set; } = null!;
 
         public GetGcpVpcPeeringConnectionArgs()
         {
         }
+        public static new GetGcpVpcPeeringConnectionArgs Empty => new GetGcpVpcPeeringConnectionArgs();
     }
 
-    public sealed class GetGcpVpcPeeringConnectionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGcpVpcPeeringConnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("gcpProjectId", required: true)]
         public Input<string> GcpProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("peerVpc", required: true)]
         public Input<string> PeerVpc { get; set; } = null!;
 
+        /// <summary>
+        /// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
         public GetGcpVpcPeeringConnectionInvokeArgs()
         {
         }
+        public static new GetGcpVpcPeeringConnectionInvokeArgs Empty => new GetGcpVpcPeeringConnectionInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetGcpVpcPeeringConnectionResult
     {
+        /// <summary>
+        /// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string GcpProjectId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string PeerVpc;
+        /// <summary>
+        /// State of the peering connection
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// State-specific help or error information
+        /// </summary>
         public readonly ImmutableDictionary<string, object> StateInfo;
+        /// <summary>
+        /// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string VpcId;
 
         [OutputConstructor]

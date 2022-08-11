@@ -19,21 +19,19 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Aiven.GetAwsPrivatelink.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Aiven.GetAwsPrivatelink.InvokeAsync(new Aiven.GetAwsPrivatelinkArgs
-        ///         {
-        ///             Project = data.Aiven_project.Foo.Project,
-        ///             ServiceName = aiven_kafka.Bar.Service_name,
-        ///         }));
-        ///     }
+        ///         Project = data.Aiven_project.Foo.Project,
+        ///         ServiceName = aiven_kafka.Bar.Service_name,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -49,21 +47,19 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = Aiven.GetAwsPrivatelink.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(Aiven.GetAwsPrivatelink.InvokeAsync(new Aiven.GetAwsPrivatelinkArgs
-        ///         {
-        ///             Project = data.Aiven_project.Foo.Project,
-        ///             ServiceName = aiven_kafka.Bar.Service_name,
-        ///         }));
-        ///     }
+        ///         Project = data.Aiven_project.Foo.Project,
+        ///         ServiceName = aiven_kafka.Bar.Service_name,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -73,44 +69,73 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetAwsPrivatelinkArgs : Pulumi.InvokeArgs
+    public sealed class GetAwsPrivatelinkArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
         public GetAwsPrivatelinkArgs()
         {
         }
+        public static new GetAwsPrivatelinkArgs Empty => new GetAwsPrivatelinkArgs();
     }
 
-    public sealed class GetAwsPrivatelinkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAwsPrivatelinkInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         public GetAwsPrivatelinkInvokeArgs()
         {
         }
+        public static new GetAwsPrivatelinkInvokeArgs Empty => new GetAwsPrivatelinkInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetAwsPrivatelinkResult
     {
+        /// <summary>
+        /// AWS service ID
+        /// </summary>
         public readonly string AwsServiceId;
+        /// <summary>
+        /// AWS service name
+        /// </summary>
         public readonly string AwsServiceName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// List of allowed principals
+        /// </summary>
         public readonly ImmutableArray<string> Principals;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

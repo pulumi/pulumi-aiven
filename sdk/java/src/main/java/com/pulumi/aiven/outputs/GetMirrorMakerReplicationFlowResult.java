@@ -12,21 +12,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMirrorMakerReplicationFlowResult {
+    /**
+     * @return Emit heartbeats enabled. The default value is `false`.
+     * 
+     */
     private final Boolean emitHeartbeatsEnabled;
+    /**
+     * @return Enable of disable replication flows for a service.
+     * 
+     */
     private final Boolean enable;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+     * 
+     */
     private final String replicationPolicyClass;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
+    /**
+     * @return Source cluster alias. Maximum Length: `128`.
+     * 
+     */
     private final String sourceCluster;
+    /**
+     * @return Sync consumer group offsets. The default value is `false`.
+     * 
+     */
     private final Boolean syncGroupOffsetsEnabled;
+    /**
+     * @return Frequency of consumer group offset sync. The default value is `1`.
+     * 
+     */
     private final Integer syncGroupOffsetsIntervalSeconds;
+    /**
+     * @return Target cluster alias. Maximum Length: `128`.
+     * 
+     */
     private final String targetCluster;
+    /**
+     * @return List of topics and/or regular expressions to replicate
+     * 
+     */
     private final List<String> topics;
+    /**
+     * @return List of topics and/or regular expressions to not replicate.
+     * 
+     */
     private final List<String> topicsBlacklists;
 
     @CustomType.Constructor
@@ -57,9 +101,17 @@ public final class GetMirrorMakerReplicationFlowResult {
         this.topicsBlacklists = topicsBlacklists;
     }
 
+    /**
+     * @return Emit heartbeats enabled. The default value is `false`.
+     * 
+     */
     public Boolean emitHeartbeatsEnabled() {
         return this.emitHeartbeatsEnabled;
     }
+    /**
+     * @return Enable of disable replication flows for a service.
+     * 
+     */
     public Boolean enable() {
         return this.enable;
     }
@@ -70,30 +122,66 @@ public final class GetMirrorMakerReplicationFlowResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+     * 
+     */
     public String replicationPolicyClass() {
         return this.replicationPolicyClass;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return Source cluster alias. Maximum Length: `128`.
+     * 
+     */
     public String sourceCluster() {
         return this.sourceCluster;
     }
+    /**
+     * @return Sync consumer group offsets. The default value is `false`.
+     * 
+     */
     public Boolean syncGroupOffsetsEnabled() {
         return this.syncGroupOffsetsEnabled;
     }
+    /**
+     * @return Frequency of consumer group offset sync. The default value is `1`.
+     * 
+     */
     public Integer syncGroupOffsetsIntervalSeconds() {
         return this.syncGroupOffsetsIntervalSeconds;
     }
+    /**
+     * @return Target cluster alias. Maximum Length: `128`.
+     * 
+     */
     public String targetCluster() {
         return this.targetCluster;
     }
+    /**
+     * @return List of topics and/or regular expressions to replicate
+     * 
+     */
     public List<String> topics() {
         return this.topics;
     }
+    /**
+     * @return List of topics and/or regular expressions to not replicate.
+     * 
+     */
     public List<String> topicsBlacklists() {
         return this.topicsBlacklists;
     }

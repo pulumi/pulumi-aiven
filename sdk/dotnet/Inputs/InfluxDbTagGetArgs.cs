@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class InfluxDbTagGetArgs : Pulumi.ResourceArgs
+    public sealed class InfluxDbTagGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Service tag key
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// Service tag value
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
         public InfluxDbTagGetArgs()
         {
         }
+        public static new InfluxDbTagGetArgs Empty => new InfluxDbTagGetArgs();
     }
 }

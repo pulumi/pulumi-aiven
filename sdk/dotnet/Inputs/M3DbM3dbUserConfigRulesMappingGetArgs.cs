@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class M3DbM3dbUserConfigRulesMappingGetArgs : Pulumi.ResourceArgs
+    public sealed class M3DbM3dbUserConfigRulesMappingGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("aggregations")]
         private InputList<string>? _aggregations;
@@ -48,5 +48,6 @@ namespace Pulumi.Aiven.Inputs
         public M3DbM3dbUserConfigRulesMappingGetArgs()
         {
         }
+        public static new M3DbM3dbUserConfigRulesMappingGetArgs Empty => new M3DbM3dbUserConfigRulesMappingGetArgs();
     }
 }

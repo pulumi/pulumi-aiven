@@ -30,16 +30,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
     /**
-     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-     * please refer to this variable as a reference.
+     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-     * please refer to this variable as a reference.
+     * @return An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Output<Optional<String>> accountId() {
@@ -74,16 +72,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.availableCredits;
     }
     /**
-     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-     * as a reference.
+     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Export(name="billingGroup", type=String.class, parameters={})
     private Output</* @Nullable */ String> billingGroup;
 
     /**
-     * @return The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-     * as a reference.
+     * @return The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Output<Optional<String>> billingGroup() {
@@ -104,36 +100,28 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.caCert;
     }
     /**
-     * is the name of another project used to copy billing information and some other project attributes like technical
-     * contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-     * copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-     * project is created. To set up proper dependencies please refer to this variable as a reference.
+     * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Export(name="copyFromProject", type=String.class, parameters={})
     private Output</* @Nullable */ String> copyFromProject;
 
     /**
-     * @return is the name of another project used to copy billing information and some other project attributes like technical
-     * contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-     * copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-     * project is created. To set up proper dependencies please refer to this variable as a reference.
+     * @return is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Output<Optional<String>> copyFromProject() {
         return Codegen.optional(this.copyFromProject);
     }
     /**
-     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-     * created. This will not affect existing services.
+     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
      * 
      */
     @Export(name="defaultCloud", type=String.class, parameters={})
     private Output</* @Nullable */ String> defaultCloud;
 
     /**
-     * @return Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-     * created. This will not affect existing services.
+     * @return Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
      * 
      */
     public Output<Optional<String>> defaultCloud() {
@@ -168,16 +156,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.paymentMethod;
     }
     /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-     * without destroying and re-creating the project, including all sub-resources.
+     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-     * without destroying and re-creating the project, including all sub-resources.
+     * @return Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      * 
      */
     public Output<String> project() {
@@ -198,16 +184,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-     * instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
      * 
      */
     @Export(name="technicalEmails", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> technicalEmails;
 
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-     * instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
      * 
      */
     public Output<Optional<List<String>>> technicalEmails() {

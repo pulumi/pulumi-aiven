@@ -23,16 +23,12 @@ class VpcPeeringConnectionArgs:
                  peer_resource_group: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VpcPeeringConnection resource.
-        :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
-               resource.
-        :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-               resource.
+        :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
-               changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peer_azure_tenant_id: Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-               recreation of the resource.
+        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
         """
         pulumi.set(__self__, "peer_cloud_account", peer_cloud_account)
@@ -51,8 +47,7 @@ class VpcPeeringConnectionArgs:
     @pulumi.getter(name="peerCloudAccount")
     def peer_cloud_account(self) -> pulumi.Input[str]:
         """
-        AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
-        resource.
+        AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_cloud_account")
 
@@ -64,8 +59,7 @@ class VpcPeeringConnectionArgs:
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> pulumi.Input[str]:
         """
-        AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-        resource.
+        AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_vpc")
 
@@ -89,8 +83,7 @@ class VpcPeeringConnectionArgs:
     @pulumi.getter(name="peerAzureAppId")
     def peer_azure_app_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
-        changed, doing so forces recreation of the resource.
+        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_azure_app_id")
 
@@ -114,8 +107,7 @@ class VpcPeeringConnectionArgs:
     @pulumi.getter(name="peerRegion")
     def peer_region(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-        recreation of the resource.
+        AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_region")
 
@@ -151,16 +143,12 @@ class _VpcPeeringConnectionState:
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering VpcPeeringConnection resources.
-        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
-               changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peer_azure_tenant_id: Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
-               resource.
-        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-               recreation of the resource.
+        :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-               resource.
+        :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peering_connection_id: Cloud provider identifier for the peering connection if available
         :param pulumi.Input[str] state: State of the peering connection
         :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information
@@ -191,8 +179,7 @@ class _VpcPeeringConnectionState:
     @pulumi.getter(name="peerAzureAppId")
     def peer_azure_app_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
-        changed, doing so forces recreation of the resource.
+        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_azure_app_id")
 
@@ -216,8 +203,7 @@ class _VpcPeeringConnectionState:
     @pulumi.getter(name="peerCloudAccount")
     def peer_cloud_account(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
-        resource.
+        AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_cloud_account")
 
@@ -229,8 +215,7 @@ class _VpcPeeringConnectionState:
     @pulumi.getter(name="peerRegion")
     def peer_region(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-        recreation of the resource.
+        AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_region")
 
@@ -254,8 +239,7 @@ class _VpcPeeringConnectionState:
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-        resource.
+        AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_vpc")
 
@@ -336,16 +320,12 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
-               changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peer_azure_tenant_id: Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
-               resource.
-        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-               recreation of the resource.
+        :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-               resource.
+        :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
         """
         ...
@@ -437,16 +417,12 @@ class VpcPeeringConnection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
-               changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peer_azure_tenant_id: Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
-               resource.
-        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-               recreation of the resource.
+        :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-               resource.
+        :param pulumi.Input[str] peer_vpc: AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peering_connection_id: Cloud provider identifier for the peering connection if available
         :param pulumi.Input[str] state: State of the peering connection
         :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information
@@ -472,8 +448,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="peerAzureAppId")
     def peer_azure_app_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
-        changed, doing so forces recreation of the resource.
+        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_azure_app_id")
 
@@ -489,8 +464,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="peerCloudAccount")
     def peer_cloud_account(self) -> pulumi.Output[str]:
         """
-        AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
-        resource.
+        AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_cloud_account")
 
@@ -498,8 +472,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="peerRegion")
     def peer_region(self) -> pulumi.Output[Optional[str]]:
         """
-        AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-        recreation of the resource.
+        AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_region")
 
@@ -515,8 +488,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> pulumi.Output[str]:
         """
-        AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-        resource.
+        AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_vpc")
 

@@ -19,22 +19,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mytestpool = Aiven.GetConnectionPool.Invoke(new()
         ///     {
-        ///         var mytestpool = Output.Create(Aiven.GetConnectionPool.InvokeAsync(new Aiven.GetConnectionPoolArgs
-        ///         {
-        ///             Project = aiven_project.Myproject.Project,
-        ///             ServiceName = aiven_service.Myservice.Service_name,
-        ///             PoolName = "mypool",
-        ///         }));
-        ///     }
+        ///         Project = aiven_project.Myproject.Project,
+        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         PoolName = "mypool",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -50,22 +48,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mytestpool = Aiven.GetConnectionPool.Invoke(new()
         ///     {
-        ///         var mytestpool = Output.Create(Aiven.GetConnectionPool.InvokeAsync(new Aiven.GetConnectionPoolArgs
-        ///         {
-        ///             Project = aiven_project.Myproject.Project,
-        ///             ServiceName = aiven_service.Myservice.Service_name,
-        ///             PoolName = "mypool",
-        ///         }));
-        ///     }
+        ///         Project = aiven_project.Myproject.Project,
+        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         PoolName = "mypool",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,53 +71,97 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetConnectionPoolArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectionPoolArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("poolName", required: true)]
         public string PoolName { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
         public GetConnectionPoolArgs()
         {
         }
+        public static new GetConnectionPoolArgs Empty => new GetConnectionPoolArgs();
     }
 
-    public sealed class GetConnectionPoolInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectionPoolInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("poolName", required: true)]
         public Input<string> PoolName { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         public GetConnectionPoolInvokeArgs()
         {
         }
+        public static new GetConnectionPoolInvokeArgs Empty => new GetConnectionPoolInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetConnectionPoolResult
     {
+        /// <summary>
+        /// The URI for connecting to the pool
+        /// </summary>
         public readonly string ConnectionUri;
+        /// <summary>
+        /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string DatabaseName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        /// </summary>
         public readonly string PoolMode;
+        /// <summary>
+        /// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string PoolName;
+        /// <summary>
+        /// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        /// </summary>
         public readonly int PoolSize;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

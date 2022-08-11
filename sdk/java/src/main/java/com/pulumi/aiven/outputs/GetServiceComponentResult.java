@@ -13,19 +13,55 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceComponentResult {
+    /**
+     * @return Service component name
+     * 
+     */
     private final String component;
+    /**
+     * @return DNS name for connecting to the service component
+     * 
+     */
     private final String host;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * 
+     */
     private final @Nullable String kafkaAuthenticationMethod;
+    /**
+     * @return Port number for connecting to the service component
+     * 
+     */
     private final Integer port;
+    /**
+     * @return Project name
+     * 
+     */
     private final String project;
+    /**
+     * @return Network access route
+     * 
+     */
     private final @Nullable String route;
+    /**
+     * @return Service name
+     * 
+     */
     private final @Nullable String serviceName;
+    /**
+     * @return Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
+     * 
+     */
     private final @Nullable Boolean ssl;
+    /**
+     * @return DNS usage name
+     * 
+     */
     private final @Nullable String usage;
 
     @CustomType.Constructor
@@ -52,9 +88,17 @@ public final class GetServiceComponentResult {
         this.usage = usage;
     }
 
+    /**
+     * @return Service component name
+     * 
+     */
     public String component() {
         return this.component;
     }
+    /**
+     * @return DNS name for connecting to the service component
+     * 
+     */
     public String host() {
         return this.host;
     }
@@ -65,24 +109,52 @@ public final class GetServiceComponentResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * 
+     */
     public Optional<String> kafkaAuthenticationMethod() {
         return Optional.ofNullable(this.kafkaAuthenticationMethod);
     }
+    /**
+     * @return Port number for connecting to the service component
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return Project name
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Network access route
+     * 
+     */
     public Optional<String> route() {
         return Optional.ofNullable(this.route);
     }
+    /**
+     * @return Service name
+     * 
+     */
     public Optional<String> serviceName() {
         return Optional.ofNullable(this.serviceName);
     }
+    /**
+     * @return Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
+     * 
+     */
     public Optional<Boolean> ssl() {
         return Optional.ofNullable(this.ssl);
     }
+    /**
+     * @return DNS usage name
+     * 
+     */
     public Optional<String> usage() {
         return Optional.ofNullable(this.usage);
     }

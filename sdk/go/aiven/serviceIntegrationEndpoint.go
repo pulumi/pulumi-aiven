@@ -243,7 +243,7 @@ func (i *ServiceIntegrationEndpoint) ToServiceIntegrationEndpointOutputWithConte
 // ServiceIntegrationEndpointArrayInput is an input type that accepts ServiceIntegrationEndpointArray and ServiceIntegrationEndpointArrayOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointArrayInput` via:
 //
-//          ServiceIntegrationEndpointArray{ ServiceIntegrationEndpointArgs{...} }
+//	ServiceIntegrationEndpointArray{ ServiceIntegrationEndpointArgs{...} }
 type ServiceIntegrationEndpointArrayInput interface {
 	pulumi.Input
 
@@ -268,7 +268,7 @@ func (i ServiceIntegrationEndpointArray) ToServiceIntegrationEndpointArrayOutput
 // ServiceIntegrationEndpointMapInput is an input type that accepts ServiceIntegrationEndpointMap and ServiceIntegrationEndpointMapOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointMapInput` via:
 //
-//          ServiceIntegrationEndpointMap{ "key": ServiceIntegrationEndpointArgs{...} }
+//	ServiceIntegrationEndpointMap{ "key": ServiceIntegrationEndpointArgs{...} }
 type ServiceIntegrationEndpointMapInput interface {
 	pulumi.Input
 

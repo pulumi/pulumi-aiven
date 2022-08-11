@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PgPgUserConfigPrivateAccess {
+    /**
+     * @return PostgreSQL specific server provided values
+     * 
+     */
     private final @Nullable String pg;
     private final @Nullable String pgbouncer;
     private final @Nullable String prometheus;
@@ -25,6 +29,10 @@ public final class PgPgUserConfigPrivateAccess {
         this.prometheus = prometheus;
     }
 
+    /**
+     * @return PostgreSQL specific server provided values
+     * 
+     */
     public Optional<String> pg() {
         return Optional.ofNullable(this.pg);
     }

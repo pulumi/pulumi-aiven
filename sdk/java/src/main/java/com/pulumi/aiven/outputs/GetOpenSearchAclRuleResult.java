@@ -14,10 +14,30 @@ public final class GetOpenSearchAclRuleResult {
      * 
      */
     private final String id;
+    /**
+     * @return The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String index;
+    /**
+     * @return The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * 
+     */
     private final String permission;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
+    /**
+     * @return The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String username;
 
     @CustomType.Constructor
@@ -43,18 +63,38 @@ public final class GetOpenSearchAclRuleResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String index() {
         return this.index;
     }
+    /**
+     * @return The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * 
+     */
     public String permission() {
         return this.permission;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String username() {
         return this.username;
     }

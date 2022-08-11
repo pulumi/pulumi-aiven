@@ -15,34 +15,32 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var f1 = new Aiven.MirrorMakerReplicationFlow("f1", new()
     ///     {
-    ///         var f1 = new Aiven.MirrorMakerReplicationFlow("f1", new Aiven.MirrorMakerReplicationFlowArgs
+    ///         Project = aiven_project.Kafka_mm_project1.Project,
+    ///         ServiceName = aiven_service.Mm.Service_name,
+    ///         SourceCluster = aiven_service.Source.Service_name,
+    ///         TargetCluster = aiven_service.Target.Service_name,
+    ///         Enable = true,
+    ///         Topics = new[]
     ///         {
-    ///             Project = aiven_project.Kafka_mm_project1.Project,
-    ///             ServiceName = aiven_service.Mm.Service_name,
-    ///             SourceCluster = aiven_service.Source.Service_name,
-    ///             TargetCluster = aiven_service.Target.Service_name,
-    ///             Enable = true,
-    ///             Topics = 
-    ///             {
-    ///                 ".*",
-    ///             },
-    ///             TopicsBlacklists = 
-    ///             {
-    ///                 ".*[\\-\\.]internal",
-    ///                 ".*\\.replica",
-    ///                 "__.*",
-    ///             },
-    ///         });
-    ///     }
+    ///             ".*",
+    ///         },
+    ///         TopicsBlacklists = new[]
+    ///         {
+    ///             ".*[\\-\\.]internal",
+    ///             ".*\\.replica",
+    ///             "__.*",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +50,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow")]
-    public partial class MirrorMakerReplicationFlow : Pulumi.CustomResource
+    public partial class MirrorMakerReplicationFlow : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Emit heartbeats enabled. The default value is `false`.
@@ -67,23 +65,19 @@ namespace Pulumi.Aiven
         public Output<bool> Enable { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and
-        /// `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is
-        /// `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+        /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         /// </summary>
         [Output("replicationPolicyClass")]
         public Output<string?> ReplicationPolicyClass { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -168,7 +162,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class MirrorMakerReplicationFlowArgs : Pulumi.ResourceArgs
+    public sealed class MirrorMakerReplicationFlowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Emit heartbeats enabled. The default value is `false`.
@@ -183,23 +177,19 @@ namespace Pulumi.Aiven
         public Input<bool> Enable { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and
-        /// `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is
-        /// `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+        /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         /// </summary>
         [Input("replicationPolicyClass")]
         public Input<string>? ReplicationPolicyClass { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -255,9 +245,10 @@ namespace Pulumi.Aiven
         public MirrorMakerReplicationFlowArgs()
         {
         }
+        public static new MirrorMakerReplicationFlowArgs Empty => new MirrorMakerReplicationFlowArgs();
     }
 
-    public sealed class MirrorMakerReplicationFlowState : Pulumi.ResourceArgs
+    public sealed class MirrorMakerReplicationFlowState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Emit heartbeats enabled. The default value is `false`.
@@ -272,23 +263,19 @@ namespace Pulumi.Aiven
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and
-        /// `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is
-        /// `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+        /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         /// </summary>
         [Input("replicationPolicyClass")]
         public Input<string>? ReplicationPolicyClass { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -344,5 +331,6 @@ namespace Pulumi.Aiven
         public MirrorMakerReplicationFlowState()
         {
         }
+        public static new MirrorMakerReplicationFlowState Empty => new MirrorMakerReplicationFlowState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class M3DbComponentGetArgs : Pulumi.ResourceArgs
+    public sealed class M3DbComponentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("component")]
         public Input<string>? Component { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Aiven.Inputs
         public M3DbComponentGetArgs()
         {
         }
+        public static new M3DbComponentGetArgs Empty => new M3DbComponentGetArgs();
     }
 }

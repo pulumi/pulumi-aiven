@@ -12,11 +12,35 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FlinkJobTableUpsertKafka {
+    /**
+     * @return Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final @Nullable List<String> keyFields;
+    /**
+     * @return Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final @Nullable String keyFormat;
+    /**
+     * @return Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final @Nullable String scanStartupMode;
+    /**
+     * @return Topic name This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final @Nullable String topic;
+    /**
+     * @return Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final @Nullable String valueFieldsInclude;
+    /**
+     * @return Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final @Nullable String valueFormat;
 
     @CustomType.Constructor
@@ -35,21 +59,45 @@ public final class FlinkJobTableUpsertKafka {
         this.valueFormat = valueFormat;
     }
 
+    /**
+     * @return Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public List<String> keyFields() {
         return this.keyFields == null ? List.of() : this.keyFields;
     }
+    /**
+     * @return Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<String> keyFormat() {
         return Optional.ofNullable(this.keyFormat);
     }
+    /**
+     * @return Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<String> scanStartupMode() {
         return Optional.ofNullable(this.scanStartupMode);
     }
+    /**
+     * @return Topic name This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<String> topic() {
         return Optional.ofNullable(this.topic);
     }
+    /**
+     * @return Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<String> valueFieldsInclude() {
         return Optional.ofNullable(this.valueFieldsInclude);
     }
+    /**
+     * @return Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<String> valueFormat() {
         return Optional.ofNullable(this.valueFormat);
     }

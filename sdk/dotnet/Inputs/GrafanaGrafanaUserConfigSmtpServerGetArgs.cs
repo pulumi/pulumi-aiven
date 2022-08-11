@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GrafanaGrafanaUserConfigSmtpServerGetArgs : Pulumi.ResourceArgs
+    public sealed class GrafanaGrafanaUserConfigSmtpServerGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("fromAddress")]
         public Input<string>? FromAddress { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.Aiven.Inputs
         public GrafanaGrafanaUserConfigSmtpServerGetArgs()
         {
         }
+        public static new GrafanaGrafanaUserConfigSmtpServerGetArgs Empty => new GrafanaGrafanaUserConfigSmtpServerGetArgs();
     }
 }

@@ -16,58 +16,137 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PgPgArgs Empty = new PgPgArgs();
 
+    /**
+     * Primary PostgreSQL database name
+     * 
+     */
     @Import(name="dbname")
     private @Nullable Output<String> dbname;
 
+    /**
+     * @return Primary PostgreSQL database name
+     * 
+     */
     public Optional<Output<String>> dbname() {
         return Optional.ofNullable(this.dbname);
     }
 
+    /**
+     * PostgreSQL master node host IP or name
+     * 
+     */
     @Import(name="host")
     private @Nullable Output<String> host;
 
+    /**
+     * @return PostgreSQL master node host IP or name
+     * 
+     */
     public Optional<Output<String>> host() {
         return Optional.ofNullable(this.host);
     }
 
+    /**
+     * Connection limit
+     * 
+     */
+    @Import(name="maxConnections")
+    private @Nullable Output<Integer> maxConnections;
+
+    /**
+     * @return Connection limit
+     * 
+     */
+    public Optional<Output<Integer>> maxConnections() {
+        return Optional.ofNullable(this.maxConnections);
+    }
+
+    /**
+     * PostgreSQL admin user password
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return PostgreSQL admin user password
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * PostgreSQL port
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
+    /**
+     * @return PostgreSQL port
+     * 
+     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
 
+    /**
+     * PostgreSQL replica URI for services with a replica
+     * 
+     */
     @Import(name="replicaUri")
     private @Nullable Output<String> replicaUri;
 
+    /**
+     * @return PostgreSQL replica URI for services with a replica
+     * 
+     */
     public Optional<Output<String>> replicaUri() {
         return Optional.ofNullable(this.replicaUri);
     }
 
+    /**
+     * PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * 
+     */
     @Import(name="sslmode")
     private @Nullable Output<String> sslmode;
 
+    /**
+     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * 
+     */
     public Optional<Output<String>> sslmode() {
         return Optional.ofNullable(this.sslmode);
     }
 
+    /**
+     * PostgreSQL master connection URI
+     * 
+     */
     @Import(name="uri")
     private @Nullable Output<String> uri;
 
+    /**
+     * @return PostgreSQL master connection URI
+     * 
+     */
     public Optional<Output<String>> uri() {
         return Optional.ofNullable(this.uri);
     }
 
+    /**
+     * PostgreSQL admin user name
+     * 
+     */
     @Import(name="user")
     private @Nullable Output<String> user;
 
+    /**
+     * @return PostgreSQL admin user name
+     * 
+     */
     public Optional<Output<String>> user() {
         return Optional.ofNullable(this.user);
     }
@@ -77,6 +156,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     private PgPgArgs(PgPgArgs $) {
         this.dbname = $.dbname;
         this.host = $.host;
+        this.maxConnections = $.maxConnections;
         this.password = $.password;
         this.port = $.port;
         this.replicaUri = $.replicaUri;
@@ -103,74 +183,191 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
             $ = new PgPgArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dbname Primary PostgreSQL database name
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbname(@Nullable Output<String> dbname) {
             $.dbname = dbname;
             return this;
         }
 
+        /**
+         * @param dbname Primary PostgreSQL database name
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbname(String dbname) {
             return dbname(Output.of(dbname));
         }
 
+        /**
+         * @param host PostgreSQL master node host IP or name
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
 
+        /**
+         * @param host PostgreSQL master node host IP or name
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(String host) {
             return host(Output.of(host));
         }
 
+        /**
+         * @param maxConnections Connection limit
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxConnections(@Nullable Output<Integer> maxConnections) {
+            $.maxConnections = maxConnections;
+            return this;
+        }
+
+        /**
+         * @param maxConnections Connection limit
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxConnections(Integer maxConnections) {
+            return maxConnections(Output.of(maxConnections));
+        }
+
+        /**
+         * @param password PostgreSQL admin user password
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password PostgreSQL admin user password
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
+        /**
+         * @param port PostgreSQL port
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port PostgreSQL port
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param replicaUri PostgreSQL replica URI for services with a replica
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicaUri(@Nullable Output<String> replicaUri) {
             $.replicaUri = replicaUri;
             return this;
         }
 
+        /**
+         * @param replicaUri PostgreSQL replica URI for services with a replica
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicaUri(String replicaUri) {
             return replicaUri(Output.of(replicaUri));
         }
 
+        /**
+         * @param sslmode PostgreSQL sslmode setting (currently always &#34;require&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sslmode(@Nullable Output<String> sslmode) {
             $.sslmode = sslmode;
             return this;
         }
 
+        /**
+         * @param sslmode PostgreSQL sslmode setting (currently always &#34;require&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sslmode(String sslmode) {
             return sslmode(Output.of(sslmode));
         }
 
+        /**
+         * @param uri PostgreSQL master connection URI
+         * 
+         * @return builder
+         * 
+         */
         public Builder uri(@Nullable Output<String> uri) {
             $.uri = uri;
             return this;
         }
 
+        /**
+         * @param uri PostgreSQL master connection URI
+         * 
+         * @return builder
+         * 
+         */
         public Builder uri(String uri) {
             return uri(Output.of(uri));
         }
 
+        /**
+         * @param user PostgreSQL admin user name
+         * 
+         * @return builder
+         * 
+         */
         public Builder user(@Nullable Output<String> user) {
             $.user = user;
             return this;
         }
 
+        /**
+         * @param user PostgreSQL admin user name
+         * 
+         * @return builder
+         * 
+         */
         public Builder user(String user) {
             return user(Output.of(user));
         }

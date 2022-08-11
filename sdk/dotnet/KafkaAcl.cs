@@ -15,24 +15,22 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mytestacl = new Aiven.KafkaAcl("mytestacl", new()
     ///     {
-    ///         var mytestacl = new Aiven.KafkaAcl("mytestacl", new Aiven.KafkaAclArgs
-    ///         {
-    ///             Project = aiven_project.Myproject.Project,
-    ///             ServiceName = aiven_kafka.Myservice.Service_name,
-    ///             Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
-    ///             Permission = "admin",
-    ///             Username = "&lt;USERNAME_PATTERN&gt;",
-    ///         });
-    ///     }
+    ///         Project = aiven_project.Myproject.Project,
+    ///         ServiceName = aiven_kafka.Myservice.Service_name,
+    ///         Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+    ///         Permission = "admin",
+    ///         Username = "&lt;USERNAME_PATTERN&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaAcl:KafkaAcl")]
-    public partial class KafkaAcl : Pulumi.CustomResource
+    public partial class KafkaAcl : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Kafka ACL ID
@@ -51,22 +49,19 @@ namespace Pulumi.Aiven
         public Output<string> AclId { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be
-        /// changed, doing so forces recreation of the resource.
+        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("permission")]
         public Output<string> Permission { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -127,7 +122,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class KafkaAclArgs : Pulumi.ResourceArgs
+    public sealed class KafkaAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Kafka ACL ID
@@ -136,22 +131,19 @@ namespace Pulumi.Aiven
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be
-        /// changed, doing so forces recreation of the resource.
+        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -171,9 +163,10 @@ namespace Pulumi.Aiven
         public KafkaAclArgs()
         {
         }
+        public static new KafkaAclArgs Empty => new KafkaAclArgs();
     }
 
-    public sealed class KafkaAclState : Pulumi.ResourceArgs
+    public sealed class KafkaAclState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Kafka ACL ID
@@ -182,22 +175,19 @@ namespace Pulumi.Aiven
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be
-        /// changed, doing so forces recreation of the resource.
+        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -217,5 +207,6 @@ namespace Pulumi.Aiven
         public KafkaAclState()
         {
         }
+        public static new KafkaAclState Empty => new KafkaAclState();
     }
 }

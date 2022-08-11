@@ -10,30 +10,47 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class M3AggregatorM3aggregatorUserConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class M3AggregatorM3aggregatorUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Custom domain
+        /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// IP filter
+        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// M3 major version (deprecated, use m3aggregator_version)
+        /// </summary>
         [Input("m3Version")]
         public Input<string>? M3Version { get; set; }
 
+        /// <summary>
+        /// M3 major version (the minimum compatible version)
+        /// </summary>
         [Input("m3aggregatorVersion")]
         public Input<string>? M3aggregatorVersion { get; set; }
 
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 
         public M3AggregatorM3aggregatorUserConfigGetArgs()
         {
         }
+        public static new M3AggregatorM3aggregatorUserConfigGetArgs Empty => new M3AggregatorM3aggregatorUserConfigGetArgs();
     }
 }

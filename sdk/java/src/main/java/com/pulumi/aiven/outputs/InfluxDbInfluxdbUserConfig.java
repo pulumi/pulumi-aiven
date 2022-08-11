@@ -16,15 +16,55 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InfluxDbInfluxdbUserConfig {
+    /**
+     * @return Custom domain
+     * 
+     */
     private final @Nullable String customDomain;
+    /**
+     * @return influxdb.conf configuration values
+     * 
+     */
     private final @Nullable InfluxDbInfluxdbUserConfigInfluxdb influxdb;
+    /**
+     * @return IP filter
+     * 
+     */
     private final @Nullable List<String> ipFilters;
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     private final @Nullable InfluxDbInfluxdbUserConfigPrivateAccess privateAccess;
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     private final @Nullable InfluxDbInfluxdbUserConfigPrivatelinkAccess privatelinkAccess;
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String projectToForkFrom;
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     private final @Nullable InfluxDbInfluxdbUserConfigPublicAccess publicAccess;
+    /**
+     * @return Name of the basebackup to restore in forked service
+     * 
+     */
     private final @Nullable String recoveryBasebackupName;
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String serviceToForkFrom;
+    /**
+     * @return Static IP addresses
+     * 
+     */
     private final @Nullable String staticIps;
 
     @CustomType.Constructor
@@ -51,33 +91,73 @@ public final class InfluxDbInfluxdbUserConfig {
         this.staticIps = staticIps;
     }
 
+    /**
+     * @return Custom domain
+     * 
+     */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
+    /**
+     * @return influxdb.conf configuration values
+     * 
+     */
     public Optional<InfluxDbInfluxdbUserConfigInfluxdb> influxdb() {
         return Optional.ofNullable(this.influxdb);
     }
+    /**
+     * @return IP filter
+     * 
+     */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     public Optional<InfluxDbInfluxdbUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     public Optional<InfluxDbInfluxdbUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     public Optional<InfluxDbInfluxdbUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    /**
+     * @return Name of the basebackup to restore in forked service
+     * 
+     */
     public Optional<String> recoveryBasebackupName() {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

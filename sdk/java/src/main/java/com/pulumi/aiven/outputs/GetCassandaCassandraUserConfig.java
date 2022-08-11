@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCassandaCassandraUserConfig {
+    /**
+     * @return Cassandra server provided values
+     * 
+     */
     private final @Nullable GetCassandaCassandraUserConfigCassandra cassandra;
     private final @Nullable String cassandraVersion;
     private final @Nullable List<String> ipFilters;
@@ -23,6 +27,10 @@ public final class GetCassandaCassandraUserConfig {
     private final @Nullable String projectToForkFrom;
     private final @Nullable GetCassandaCassandraUserConfigPublicAccess publicAccess;
     private final @Nullable String serviceToForkFrom;
+    /**
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * 
+     */
     private final @Nullable String staticIps;
 
     @CustomType.Constructor
@@ -47,6 +55,10 @@ public final class GetCassandaCassandraUserConfig {
         this.staticIps = staticIps;
     }
 
+    /**
+     * @return Cassandra server provided values
+     * 
+     */
     public Optional<GetCassandaCassandraUserConfigCassandra> cassandra() {
         return Optional.ofNullable(this.cassandra);
     }
@@ -71,6 +83,10 @@ public final class GetCassandaCassandraUserConfig {
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
+    /**
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

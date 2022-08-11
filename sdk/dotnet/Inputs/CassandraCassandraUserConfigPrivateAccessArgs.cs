@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class CassandraCassandraUserConfigPrivateAccessArgs : Pulumi.ResourceArgs
+    public sealed class CassandraCassandraUserConfigPrivateAccessArgs : global::Pulumi.ResourceArgs
     {
         [Input("prometheus")]
         public Input<string>? Prometheus { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Aiven.Inputs
         public CassandraCassandraUserConfigPrivateAccessArgs()
         {
         }
+        public static new CassandraCassandraUserConfigPrivateAccessArgs Empty => new CassandraCassandraUserConfigPrivateAccessArgs();
     }
 }

@@ -15,51 +15,107 @@ public final class GetServiceComponentPlainArgs extends com.pulumi.resources.Inv
 
     public static final GetServiceComponentPlainArgs Empty = new GetServiceComponentPlainArgs();
 
+    /**
+     * Service component name
+     * 
+     */
     @Import(name="component", required=true)
     private String component;
 
+    /**
+     * @return Service component name
+     * 
+     */
     public String component() {
         return this.component;
     }
 
+    /**
+     * Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * 
+     */
     @Import(name="kafkaAuthenticationMethod")
     private @Nullable String kafkaAuthenticationMethod;
 
+    /**
+     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * 
+     */
     public Optional<String> kafkaAuthenticationMethod() {
         return Optional.ofNullable(this.kafkaAuthenticationMethod);
     }
 
+    /**
+     * Project name
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return Project name
+     * 
+     */
     public String project() {
         return this.project;
     }
 
+    /**
+     * Network access route
+     * 
+     */
     @Import(name="route")
     private @Nullable String route;
 
+    /**
+     * @return Network access route
+     * 
+     */
     public Optional<String> route() {
         return Optional.ofNullable(this.route);
     }
 
+    /**
+     * Service name
+     * 
+     */
     @Import(name="serviceName")
     private @Nullable String serviceName;
 
+    /**
+     * @return Service name
+     * 
+     */
     public Optional<String> serviceName() {
         return Optional.ofNullable(this.serviceName);
     }
 
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
+     * 
+     */
     @Import(name="ssl")
     private @Nullable Boolean ssl;
 
+    /**
+     * @return Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
+     * 
+     */
     public Optional<Boolean> ssl() {
         return Optional.ofNullable(this.ssl);
     }
 
+    /**
+     * DNS usage name
+     * 
+     */
     @Import(name="usage")
     private @Nullable String usage;
 
+    /**
+     * @return DNS usage name
+     * 
+     */
     public Optional<String> usage() {
         return Optional.ofNullable(this.usage);
     }
@@ -94,36 +150,78 @@ public final class GetServiceComponentPlainArgs extends com.pulumi.resources.Inv
             $ = new GetServiceComponentPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param component Service component name
+         * 
+         * @return builder
+         * 
+         */
         public Builder component(String component) {
             $.component = component;
             return this;
         }
 
+        /**
+         * @param kafkaAuthenticationMethod Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaAuthenticationMethod(@Nullable String kafkaAuthenticationMethod) {
             $.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
             return this;
         }
 
+        /**
+         * @param project Project name
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param route Network access route
+         * 
+         * @return builder
+         * 
+         */
         public Builder route(@Nullable String route) {
             $.route = route;
             return this;
         }
 
+        /**
+         * @param serviceName Service name
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(@Nullable String serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
+        /**
+         * @param ssl Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssl(@Nullable Boolean ssl) {
             $.ssl = ssl;
             return this;
         }
 
+        /**
+         * @param usage DNS usage name
+         * 
+         * @return builder
+         * 
+         */
         public Builder usage(@Nullable String usage) {
             $.usage = usage;
             return this;

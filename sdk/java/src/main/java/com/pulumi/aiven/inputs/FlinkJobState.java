@@ -32,16 +32,14 @@ public final class FlinkJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="jobName")
     private @Nullable Output<String> jobName;
 
     /**
-     * @return Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> jobName() {
@@ -49,16 +47,14 @@ public final class FlinkJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -66,16 +62,14 @@ public final class FlinkJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -113,16 +107,14 @@ public final class FlinkJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as
-     * a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="tableIds")
     private @Nullable Output<List<String>> tableIds;
 
     /**
-     * @return A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as
-     * a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> tableIds() {
@@ -181,8 +173,7 @@ public final class FlinkJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobName Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param jobName Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -193,8 +184,7 @@ public final class FlinkJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobName Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param jobName Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -204,8 +194,7 @@ public final class FlinkJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -216,8 +205,7 @@ public final class FlinkJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -227,8 +215,7 @@ public final class FlinkJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -239,8 +226,7 @@ public final class FlinkJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -292,8 +278,7 @@ public final class FlinkJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tableIds A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as
-         * a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param tableIds A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -304,8 +289,7 @@ public final class FlinkJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tableIds A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as
-         * a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param tableIds A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -315,8 +299,7 @@ public final class FlinkJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tableIds A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as
-         * a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param tableIds A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

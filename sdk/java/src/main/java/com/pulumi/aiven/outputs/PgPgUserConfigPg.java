@@ -32,6 +32,7 @@ public final class PgPgUserConfigPg {
     private final @Nullable String logErrorVerbosity;
     private final @Nullable String logLinePrefix;
     private final @Nullable String logMinDurationStatement;
+    private final @Nullable String logTempFiles;
     private final @Nullable String maxFilesPerProcess;
     private final @Nullable String maxLocksPerTransaction;
     private final @Nullable String maxLogicalReplicationWorkers;
@@ -81,6 +82,7 @@ public final class PgPgUserConfigPg {
         @CustomType.Parameter("logErrorVerbosity") @Nullable String logErrorVerbosity,
         @CustomType.Parameter("logLinePrefix") @Nullable String logLinePrefix,
         @CustomType.Parameter("logMinDurationStatement") @Nullable String logMinDurationStatement,
+        @CustomType.Parameter("logTempFiles") @Nullable String logTempFiles,
         @CustomType.Parameter("maxFilesPerProcess") @Nullable String maxFilesPerProcess,
         @CustomType.Parameter("maxLocksPerTransaction") @Nullable String maxLocksPerTransaction,
         @CustomType.Parameter("maxLogicalReplicationWorkers") @Nullable String maxLogicalReplicationWorkers,
@@ -127,6 +129,7 @@ public final class PgPgUserConfigPg {
         this.logErrorVerbosity = logErrorVerbosity;
         this.logLinePrefix = logLinePrefix;
         this.logMinDurationStatement = logMinDurationStatement;
+        this.logTempFiles = logTempFiles;
         this.maxFilesPerProcess = maxFilesPerProcess;
         this.maxLocksPerTransaction = maxLocksPerTransaction;
         this.maxLogicalReplicationWorkers = maxLogicalReplicationWorkers;
@@ -216,6 +219,9 @@ public final class PgPgUserConfigPg {
     }
     public Optional<String> logMinDurationStatement() {
         return Optional.ofNullable(this.logMinDurationStatement);
+    }
+    public Optional<String> logTempFiles() {
+        return Optional.ofNullable(this.logTempFiles);
     }
     public Optional<String> maxFilesPerProcess() {
         return Optional.ofNullable(this.maxFilesPerProcess);
@@ -323,6 +329,7 @@ public final class PgPgUserConfigPg {
         private @Nullable String logErrorVerbosity;
         private @Nullable String logLinePrefix;
         private @Nullable String logMinDurationStatement;
+        private @Nullable String logTempFiles;
         private @Nullable String maxFilesPerProcess;
         private @Nullable String maxLocksPerTransaction;
         private @Nullable String maxLogicalReplicationWorkers;
@@ -376,6 +383,7 @@ public final class PgPgUserConfigPg {
     	      this.logErrorVerbosity = defaults.logErrorVerbosity;
     	      this.logLinePrefix = defaults.logLinePrefix;
     	      this.logMinDurationStatement = defaults.logMinDurationStatement;
+    	      this.logTempFiles = defaults.logTempFiles;
     	      this.maxFilesPerProcess = defaults.maxFilesPerProcess;
     	      this.maxLocksPerTransaction = defaults.maxLocksPerTransaction;
     	      this.maxLogicalReplicationWorkers = defaults.maxLogicalReplicationWorkers;
@@ -487,6 +495,10 @@ public final class PgPgUserConfigPg {
             this.logMinDurationStatement = logMinDurationStatement;
             return this;
         }
+        public Builder logTempFiles(@Nullable String logTempFiles) {
+            this.logTempFiles = logTempFiles;
+            return this;
+        }
         public Builder maxFilesPerProcess(@Nullable String maxFilesPerProcess) {
             this.maxFilesPerProcess = maxFilesPerProcess;
             return this;
@@ -587,7 +599,7 @@ public final class PgPgUserConfigPg {
             this.walWriterDelay = walWriterDelay;
             return this;
         }        public PgPgUserConfigPg build() {
-            return new PgPgUserConfigPg(autovacuumAnalyzeScaleFactor, autovacuumAnalyzeThreshold, autovacuumFreezeMaxAge, autovacuumMaxWorkers, autovacuumNaptime, autovacuumVacuumCostDelay, autovacuumVacuumCostLimit, autovacuumVacuumScaleFactor, autovacuumVacuumThreshold, bgwriterDelay, bgwriterFlushAfter, bgwriterLruMaxpages, bgwriterLruMultiplier, deadlockTimeout, defaultToastCompression, idleInTransactionSessionTimeout, jit, logAutovacuumMinDuration, logErrorVerbosity, logLinePrefix, logMinDurationStatement, maxFilesPerProcess, maxLocksPerTransaction, maxLogicalReplicationWorkers, maxParallelWorkers, maxParallelWorkersPerGather, maxPredLocksPerTransaction, maxPreparedTransactions, maxReplicationSlots, maxSlotWalKeepSize, maxStackDepth, maxStandbyArchiveDelay, maxStandbyStreamingDelay, maxWalSenders, maxWorkerProcesses, pgPartmanBgwDotInterval, pgPartmanBgwDotRole, pgStatStatementsDotTrack, tempFileLimit, timezone, trackActivityQuerySize, trackCommitTimestamp, trackFunctions, trackIoTiming, walSenderTimeout, walWriterDelay);
+            return new PgPgUserConfigPg(autovacuumAnalyzeScaleFactor, autovacuumAnalyzeThreshold, autovacuumFreezeMaxAge, autovacuumMaxWorkers, autovacuumNaptime, autovacuumVacuumCostDelay, autovacuumVacuumCostLimit, autovacuumVacuumScaleFactor, autovacuumVacuumThreshold, bgwriterDelay, bgwriterFlushAfter, bgwriterLruMaxpages, bgwriterLruMultiplier, deadlockTimeout, defaultToastCompression, idleInTransactionSessionTimeout, jit, logAutovacuumMinDuration, logErrorVerbosity, logLinePrefix, logMinDurationStatement, logTempFiles, maxFilesPerProcess, maxLocksPerTransaction, maxLogicalReplicationWorkers, maxParallelWorkers, maxParallelWorkersPerGather, maxPredLocksPerTransaction, maxPreparedTransactions, maxReplicationSlots, maxSlotWalKeepSize, maxStackDepth, maxStandbyArchiveDelay, maxStandbyStreamingDelay, maxWalSenders, maxWorkerProcesses, pgPartmanBgwDotInterval, pgPartmanBgwDotRole, pgStatStatementsDotTrack, tempFileLimit, timezone, trackActivityQuerySize, trackCommitTimestamp, trackFunctions, trackIoTiming, walSenderTimeout, walWriterDelay);
         }
     }
 }

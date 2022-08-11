@@ -10,13 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GrafanaGrafanaUserConfigPrivateAccessGetArgs : Pulumi.ResourceArgs
+    public sealed class GrafanaGrafanaUserConfigPrivateAccessGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Grafana server provided values
+        /// </summary>
         [Input("grafana")]
         public Input<string>? Grafana { get; set; }
 
         public GrafanaGrafanaUserConfigPrivateAccessGetArgs()
         {
         }
+        public static new GrafanaGrafanaUserConfigPrivateAccessGetArgs Empty => new GrafanaGrafanaUserConfigPrivateAccessGetArgs();
     }
 }

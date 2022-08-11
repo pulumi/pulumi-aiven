@@ -15,27 +15,25 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new Aiven.M3dbUser("foo", new()
     ///     {
-    ///         var foo = new Aiven.M3dbUser("foo", new Aiven.M3dbUserArgs
-    ///         {
-    ///             ServiceName = aiven_m3db.Bar.Service_name,
-    ///             Project = "my-project",
-    ///             Username = "user-1",
-    ///             Password = "Test$1234",
-    ///         });
-    ///     }
+    ///         ServiceName = aiven_m3db.Bar.Service_name,
+    ///         Project = "my-project",
+    ///         Username = "user-1",
+    ///         Password = "Test$1234",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/m3dbUser:M3dbUser")]
-    public partial class M3dbUser : Pulumi.CustomResource
+    public partial class M3dbUser : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The password of the M3DB User.
@@ -44,15 +42,13 @@ namespace Pulumi.Aiven
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -64,8 +60,7 @@ namespace Pulumi.Aiven
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. This
-        /// property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -114,7 +109,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class M3dbUserArgs : Pulumi.ResourceArgs
+    public sealed class M3dbUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The password of the M3DB User.
@@ -123,22 +118,19 @@ namespace Pulumi.Aiven
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. This
-        /// property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -146,9 +138,10 @@ namespace Pulumi.Aiven
         public M3dbUserArgs()
         {
         }
+        public static new M3dbUserArgs Empty => new M3dbUserArgs();
     }
 
-    public sealed class M3dbUserState : Pulumi.ResourceArgs
+    public sealed class M3dbUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The password of the M3DB User.
@@ -157,15 +150,13 @@ namespace Pulumi.Aiven
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -177,8 +168,7 @@ namespace Pulumi.Aiven
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. This
-        /// property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -186,5 +176,6 @@ namespace Pulumi.Aiven
         public M3dbUserState()
         {
         }
+        public static new M3dbUserState Empty => new M3dbUserState();
     }
 }

@@ -10,25 +10,85 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBillingGroupResult {
+    /**
+     * @return Account id
+     * 
+     */
     private final String accountId;
+    /**
+     * @return Address lines
+     * 
+     */
     private final List<String> addressLines;
+    /**
+     * @return Billing currency
+     * 
+     */
     private final String billingCurrency;
+    /**
+     * @return Billing contact emails
+     * 
+     */
     private final List<String> billingEmails;
+    /**
+     * @return Billing extra text
+     * 
+     */
     private final String billingExtraText;
+    /**
+     * @return The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
     private final String billingGroupId;
+    /**
+     * @return Credit card id
+     * 
+     */
     private final String cardId;
+    /**
+     * @return City
+     * 
+     */
     private final String city;
+    /**
+     * @return Company name
+     * 
+     */
     private final String company;
+    /**
+     * @return ID of the billing group to copy from
+     * 
+     */
     private final String copyFromBillingGroup;
+    /**
+     * @return Country code
+     * 
+     */
     private final String countryCode;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return Billing Group name
+     * 
+     */
     private final String name;
+    /**
+     * @return State
+     * 
+     */
     private final String state;
+    /**
+     * @return VAT id
+     * 
+     */
     private final String vatId;
+    /**
+     * @return Zip Code
+     * 
+     */
     private final String zipCode;
 
     @CustomType.Constructor
@@ -67,36 +127,80 @@ public final class GetBillingGroupResult {
         this.zipCode = zipCode;
     }
 
+    /**
+     * @return Account id
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
+    /**
+     * @return Address lines
+     * 
+     */
     public List<String> addressLines() {
         return this.addressLines;
     }
+    /**
+     * @return Billing currency
+     * 
+     */
     public String billingCurrency() {
         return this.billingCurrency;
     }
+    /**
+     * @return Billing contact emails
+     * 
+     */
     public List<String> billingEmails() {
         return this.billingEmails;
     }
+    /**
+     * @return Billing extra text
+     * 
+     */
     public String billingExtraText() {
         return this.billingExtraText;
     }
+    /**
+     * @return The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
     public String billingGroupId() {
         return this.billingGroupId;
     }
+    /**
+     * @return Credit card id
+     * 
+     */
     public String cardId() {
         return this.cardId;
     }
+    /**
+     * @return City
+     * 
+     */
     public String city() {
         return this.city;
     }
+    /**
+     * @return Company name
+     * 
+     */
     public String company() {
         return this.company;
     }
+    /**
+     * @return ID of the billing group to copy from
+     * 
+     */
     public String copyFromBillingGroup() {
         return this.copyFromBillingGroup;
     }
+    /**
+     * @return Country code
+     * 
+     */
     public String countryCode() {
         return this.countryCode;
     }
@@ -107,15 +211,31 @@ public final class GetBillingGroupResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Billing Group name
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return State
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return VAT id
+     * 
+     */
     public String vatId() {
         return this.vatId;
     }
+    /**
+     * @return Zip Code
+     * 
+     */
     public String zipCode() {
         return this.zipCode;
     }

@@ -13,37 +13,77 @@ public final class GetKafkaSchemaRegistryAclArgs extends com.pulumi.resources.In
 
     public static final GetKafkaSchemaRegistryAclArgs Empty = new GetKafkaSchemaRegistryAclArgs();
 
+    /**
+     * Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
+    /**
+     * @return Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> permission() {
         return this.permission;
     }
 
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="project", required=true)
     private Output<String> project;
 
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
 
+    /**
+     * Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="resource", required=true)
     private Output<String> resource;
 
+    /**
+     * @return Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> resource() {
         return this.resource;
     }
 
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> serviceName() {
         return this.serviceName;
     }
 
+    /**
+     * Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="username", required=true)
     private Output<String> username;
 
+    /**
+     * @return Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> username() {
         return this.username;
     }
@@ -76,47 +116,107 @@ public final class GetKafkaSchemaRegistryAclArgs extends com.pulumi.resources.In
             $ = new GetKafkaSchemaRegistryAclArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param permission Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(Output<String> permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param permission Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             return permission(Output.of(permission));
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
+        /**
+         * @param resource Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resource(Output<String> resource) {
             $.resource = resource;
             return this;
         }
 
+        /**
+         * @param resource Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resource(String resource) {
             return resource(Output.of(resource));
         }
 
+        /**
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
+        /**
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
         }
 
+        /**
+         * @param username Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(Output<String> username) {
             $.username = username;
             return this;
         }
 
+        /**
+         * @param username Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(String username) {
             return username(Output.of(username));
         }

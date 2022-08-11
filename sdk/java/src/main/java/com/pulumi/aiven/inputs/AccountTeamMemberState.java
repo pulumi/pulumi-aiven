@@ -17,18 +17,14 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
     public static final AccountTeamMemberState Empty = new AccountTeamMemberState();
 
     /**
-     * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
-     * invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
-     * member of an account team.
+     * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
      * 
      */
     @Import(name="accepted")
     private @Nullable Output<Boolean> accepted;
 
     /**
-     * @return is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
-     * invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
-     * member of an account team.
+     * @return is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
      * 
      */
     public Optional<Output<Boolean>> accepted() {
@@ -96,16 +92,14 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
-     * team. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="userEmail")
     private @Nullable Output<String> userEmail;
 
     /**
-     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
-     * team. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> userEmail() {
@@ -142,9 +136,7 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accepted is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
-         * invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
-         * member of an account team.
+         * @param accepted is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
          * 
          * @return builder
          * 
@@ -155,9 +147,7 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accepted is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
-         * invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
-         * member of an account team.
+         * @param accepted is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
          * 
          * @return builder
          * 
@@ -251,8 +241,7 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
-         * team. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -263,8 +252,7 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
-         * team. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

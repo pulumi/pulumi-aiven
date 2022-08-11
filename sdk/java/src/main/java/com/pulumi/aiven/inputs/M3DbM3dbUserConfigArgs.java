@@ -21,93 +21,197 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
 
     public static final M3DbM3dbUserConfigArgs Empty = new M3DbM3dbUserConfigArgs();
 
+    /**
+     * Custom domain
+     * 
+     */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
+    /**
+     * @return Custom domain
+     * 
+     */
     public Optional<Output<String>> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
 
+    /**
+     * IP filter
+     * 
+     */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
+    /**
+     * @return IP filter
+     * 
+     */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
+    /**
+     * M3 limits
+     * 
+     */
     @Import(name="limits")
     private @Nullable Output<M3DbM3dbUserConfigLimitsArgs> limits;
 
+    /**
+     * @return M3 limits
+     * 
+     */
     public Optional<Output<M3DbM3dbUserConfigLimitsArgs>> limits() {
         return Optional.ofNullable(this.limits);
     }
 
+    /**
+     * M3 major version (deprecated, use m3db_version)
+     * 
+     */
     @Import(name="m3Version")
     private @Nullable Output<String> m3Version;
 
+    /**
+     * @return M3 major version (deprecated, use m3db_version)
+     * 
+     */
     public Optional<Output<String>> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
 
+    /**
+     * Enable Graphite ingestion using Carbon plaintext protocol
+     * 
+     */
     @Import(name="m3coordinatorEnableGraphiteCarbonIngest")
     private @Nullable Output<String> m3coordinatorEnableGraphiteCarbonIngest;
 
+    /**
+     * @return Enable Graphite ingestion using Carbon plaintext protocol
+     * 
+     */
     public Optional<Output<String>> m3coordinatorEnableGraphiteCarbonIngest() {
         return Optional.ofNullable(this.m3coordinatorEnableGraphiteCarbonIngest);
     }
 
+    /**
+     * M3 major version (the minimum compatible version)
+     * 
+     */
     @Import(name="m3dbVersion")
     private @Nullable Output<String> m3dbVersion;
 
+    /**
+     * @return M3 major version (the minimum compatible version)
+     * 
+     */
     public Optional<Output<String>> m3dbVersion() {
         return Optional.ofNullable(this.m3dbVersion);
     }
 
+    /**
+     * List of M3 namespaces
+     * 
+     */
     @Import(name="namespaces")
     private @Nullable Output<List<M3DbM3dbUserConfigNamespaceArgs>> namespaces;
 
+    /**
+     * @return List of M3 namespaces
+     * 
+     */
     public Optional<Output<List<M3DbM3dbUserConfigNamespaceArgs>>> namespaces() {
         return Optional.ofNullable(this.namespaces);
     }
 
+    /**
+     * Allow access to selected service ports from private networks
+     * 
+     */
     @Import(name="privateAccess")
     private @Nullable Output<M3DbM3dbUserConfigPrivateAccessArgs> privateAccess;
 
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     public Optional<Output<M3DbM3dbUserConfigPrivateAccessArgs>> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
 
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="projectToForkFrom")
     private @Nullable Output<String> projectToForkFrom;
 
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
 
+    /**
+     * Allow access to selected service ports from the public Internet
+     * 
+     */
     @Import(name="publicAccess")
     private @Nullable Output<M3DbM3dbUserConfigPublicAccessArgs> publicAccess;
 
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     public Optional<Output<M3DbM3dbUserConfigPublicAccessArgs>> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
 
+    /**
+     * M3 rules
+     * 
+     */
     @Import(name="rules")
     private @Nullable Output<M3DbM3dbUserConfigRulesArgs> rules;
 
+    /**
+     * @return M3 rules
+     * 
+     */
     public Optional<Output<M3DbM3dbUserConfigRulesArgs>> rules() {
         return Optional.ofNullable(this.rules);
     }
 
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
 
+    /**
+     * Static IP addresses
+     * 
+     */
     @Import(name="staticIps")
     private @Nullable Output<String> staticIps;
 
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<Output<String>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -148,127 +252,295 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
             $ = new M3DbM3dbUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param customDomain Custom domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDomain(@Nullable Output<String> customDomain) {
             $.customDomain = customDomain;
             return this;
         }
 
+        /**
+         * @param customDomain Custom domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDomain(String customDomain) {
             return customDomain(Output.of(customDomain));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
+        /**
+         * @param limits M3 limits
+         * 
+         * @return builder
+         * 
+         */
         public Builder limits(@Nullable Output<M3DbM3dbUserConfigLimitsArgs> limits) {
             $.limits = limits;
             return this;
         }
 
+        /**
+         * @param limits M3 limits
+         * 
+         * @return builder
+         * 
+         */
         public Builder limits(M3DbM3dbUserConfigLimitsArgs limits) {
             return limits(Output.of(limits));
         }
 
+        /**
+         * @param m3Version M3 major version (deprecated, use m3db_version)
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3Version(@Nullable Output<String> m3Version) {
             $.m3Version = m3Version;
             return this;
         }
 
+        /**
+         * @param m3Version M3 major version (deprecated, use m3db_version)
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3Version(String m3Version) {
             return m3Version(Output.of(m3Version));
         }
 
+        /**
+         * @param m3coordinatorEnableGraphiteCarbonIngest Enable Graphite ingestion using Carbon plaintext protocol
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3coordinatorEnableGraphiteCarbonIngest(@Nullable Output<String> m3coordinatorEnableGraphiteCarbonIngest) {
             $.m3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
             return this;
         }
 
+        /**
+         * @param m3coordinatorEnableGraphiteCarbonIngest Enable Graphite ingestion using Carbon plaintext protocol
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3coordinatorEnableGraphiteCarbonIngest(String m3coordinatorEnableGraphiteCarbonIngest) {
             return m3coordinatorEnableGraphiteCarbonIngest(Output.of(m3coordinatorEnableGraphiteCarbonIngest));
         }
 
+        /**
+         * @param m3dbVersion M3 major version (the minimum compatible version)
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3dbVersion(@Nullable Output<String> m3dbVersion) {
             $.m3dbVersion = m3dbVersion;
             return this;
         }
 
+        /**
+         * @param m3dbVersion M3 major version (the minimum compatible version)
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3dbVersion(String m3dbVersion) {
             return m3dbVersion(Output.of(m3dbVersion));
         }
 
+        /**
+         * @param namespaces List of M3 namespaces
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaces(@Nullable Output<List<M3DbM3dbUserConfigNamespaceArgs>> namespaces) {
             $.namespaces = namespaces;
             return this;
         }
 
+        /**
+         * @param namespaces List of M3 namespaces
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaces(List<M3DbM3dbUserConfigNamespaceArgs> namespaces) {
             return namespaces(Output.of(namespaces));
         }
 
+        /**
+         * @param namespaces List of M3 namespaces
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaces(M3DbM3dbUserConfigNamespaceArgs... namespaces) {
             return namespaces(List.of(namespaces));
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(@Nullable Output<M3DbM3dbUserConfigPrivateAccessArgs> privateAccess) {
             $.privateAccess = privateAccess;
             return this;
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(M3DbM3dbUserConfigPrivateAccessArgs privateAccess) {
             return privateAccess(Output.of(privateAccess));
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(@Nullable Output<String> projectToForkFrom) {
             $.projectToForkFrom = projectToForkFrom;
             return this;
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(String projectToForkFrom) {
             return projectToForkFrom(Output.of(projectToForkFrom));
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(@Nullable Output<M3DbM3dbUserConfigPublicAccessArgs> publicAccess) {
             $.publicAccess = publicAccess;
             return this;
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(M3DbM3dbUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
         }
 
+        /**
+         * @param rules M3 rules
+         * 
+         * @return builder
+         * 
+         */
         public Builder rules(@Nullable Output<M3DbM3dbUserConfigRulesArgs> rules) {
             $.rules = rules;
             return this;
         }
 
+        /**
+         * @param rules M3 rules
+         * 
+         * @return builder
+         * 
+         */
         public Builder rules(M3DbM3dbUserConfigRulesArgs rules) {
             return rules(Output.of(rules));
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(@Nullable Output<String> serviceToForkFrom) {
             $.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(String serviceToForkFrom) {
             return serviceToForkFrom(Output.of(serviceToForkFrom));
         }
 
+        /**
+         * @param staticIps Static IP addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(@Nullable Output<String> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
+        /**
+         * @param staticIps Static IP addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(String staticIps) {
             return staticIps(Output.of(staticIps));
         }

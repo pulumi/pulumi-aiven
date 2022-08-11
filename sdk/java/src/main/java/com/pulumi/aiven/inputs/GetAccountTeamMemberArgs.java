@@ -13,23 +13,47 @@ public final class GetAccountTeamMemberArgs extends com.pulumi.resources.InvokeA
 
     public static final GetAccountTeamMemberArgs Empty = new GetAccountTeamMemberArgs();
 
+    /**
+     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
+    /**
+     * @return The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
+    /**
+     * An account team id This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="teamId", required=true)
     private Output<String> teamId;
 
+    /**
+     * @return An account team id This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> teamId() {
         return this.teamId;
     }
 
+    /**
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="userEmail", required=true)
     private Output<String> userEmail;
 
+    /**
+     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> userEmail() {
         return this.userEmail;
     }
@@ -60,29 +84,65 @@ public final class GetAccountTeamMemberArgs extends com.pulumi.resources.InvokeA
             $ = new GetAccountTeamMemberArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId The unique account id This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId The unique account id This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param teamId An account team id This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder teamId(Output<String> teamId) {
             $.teamId = teamId;
             return this;
         }
 
+        /**
+         * @param teamId An account team id This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder teamId(String teamId) {
             return teamId(Output.of(teamId));
         }
 
+        /**
+         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userEmail(Output<String> userEmail) {
             $.userEmail = userEmail;
             return this;
         }
 
+        /**
+         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userEmail(String userEmail) {
             return userEmail(Output.of(userEmail));
         }

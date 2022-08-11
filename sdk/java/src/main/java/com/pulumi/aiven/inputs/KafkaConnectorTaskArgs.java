@@ -23,9 +23,17 @@ public final class KafkaConnectorTaskArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.connector);
     }
 
+    /**
+     * List of tasks of a connector.
+     * 
+     */
     @Import(name="task")
     private @Nullable Output<Integer> task;
 
+    /**
+     * @return List of tasks of a connector.
+     * 
+     */
     public Optional<Output<Integer>> task() {
         return Optional.ofNullable(this.task);
     }
@@ -64,11 +72,23 @@ public final class KafkaConnectorTaskArgs extends com.pulumi.resources.ResourceA
             return connector(Output.of(connector));
         }
 
+        /**
+         * @param task List of tasks of a connector.
+         * 
+         * @return builder
+         * 
+         */
         public Builder task(@Nullable Output<Integer> task) {
             $.task = task;
             return this;
         }
 
+        /**
+         * @param task List of tasks of a connector.
+         * 
+         * @return builder
+         * 
+         */
         public Builder task(Integer task) {
             return task(Output.of(task));
         }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class PgPgUserConfigPgbouncerGetArgs : Pulumi.ResourceArgs
+    public sealed class PgPgUserConfigPgbouncerGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("autodbIdleTimeout")]
         public Input<string>? AutodbIdleTimeout { get; set; }
@@ -47,5 +47,6 @@ namespace Pulumi.Aiven.Inputs
         public PgPgUserConfigPgbouncerGetArgs()
         {
         }
+        public static new PgPgUserConfigPgbouncerGetArgs Empty => new PgPgUserConfigPgbouncerGetArgs();
     }
 }

@@ -15,6 +15,13 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
 
     public static final M3DbM3dbUserConfigLimitsArgs Empty = new M3DbM3dbUserConfigLimitsArgs();
 
+    @Import(name="queryDocs")
+    private @Nullable Output<String> queryDocs;
+
+    public Optional<Output<String>> queryDocs() {
+        return Optional.ofNullable(this.queryDocs);
+    }
+
     @Import(name="queryRequireExhaustive")
     private @Nullable Output<String> queryRequireExhaustive;
 
@@ -32,6 +39,7 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
     private M3DbM3dbUserConfigLimitsArgs() {}
 
     private M3DbM3dbUserConfigLimitsArgs(M3DbM3dbUserConfigLimitsArgs $) {
+        this.queryDocs = $.queryDocs;
         this.queryRequireExhaustive = $.queryRequireExhaustive;
         this.querySeries = $.querySeries;
     }
@@ -52,6 +60,15 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
 
         public Builder(M3DbM3dbUserConfigLimitsArgs defaults) {
             $ = new M3DbM3dbUserConfigLimitsArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder queryDocs(@Nullable Output<String> queryDocs) {
+            $.queryDocs = queryDocs;
+            return this;
+        }
+
+        public Builder queryDocs(String queryDocs) {
+            return queryDocs(Output.of(queryDocs));
         }
 
         public Builder queryRequireExhaustive(@Nullable Output<String> queryRequireExhaustive) {

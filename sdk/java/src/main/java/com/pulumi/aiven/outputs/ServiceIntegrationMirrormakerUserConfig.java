@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationMirrormakerUserConfig {
+    /**
+     * @return Mirrormaker topic whitelist
+     * 
+     */
     private final @Nullable String mirrormakerWhitelist;
 
     @CustomType.Constructor
@@ -18,6 +22,10 @@ public final class ServiceIntegrationMirrormakerUserConfig {
         this.mirrormakerWhitelist = mirrormakerWhitelist;
     }
 
+    /**
+     * @return Mirrormaker topic whitelist
+     * 
+     */
     public Optional<String> mirrormakerWhitelist() {
         return Optional.ofNullable(this.mirrormakerWhitelist);
     }

@@ -16,7 +16,9 @@ import (
 // ## Import
 //
 // ```sh
-//  $ pulumi import aiven:index/accountTeam:AccountTeam account_team1 account_id/team_id
+//
+//	$ pulumi import aiven:index/accountTeam:AccountTeam account_team1 account_id/team_id
+//
 // ```
 type AccountTeam struct {
 	pulumi.CustomResourceState
@@ -135,7 +137,7 @@ func (i *AccountTeam) ToAccountTeamOutputWithContext(ctx context.Context) Accoun
 // AccountTeamArrayInput is an input type that accepts AccountTeamArray and AccountTeamArrayOutput values.
 // You can construct a concrete instance of `AccountTeamArrayInput` via:
 //
-//          AccountTeamArray{ AccountTeamArgs{...} }
+//	AccountTeamArray{ AccountTeamArgs{...} }
 type AccountTeamArrayInput interface {
 	pulumi.Input
 
@@ -160,7 +162,7 @@ func (i AccountTeamArray) ToAccountTeamArrayOutputWithContext(ctx context.Contex
 // AccountTeamMapInput is an input type that accepts AccountTeamMap and AccountTeamMapOutput values.
 // You can construct a concrete instance of `AccountTeamMapInput` via:
 //
-//          AccountTeamMap{ "key": AccountTeamArgs{...} }
+//	AccountTeamMap{ "key": AccountTeamArgs{...} }
 type AccountTeamMapInput interface {
 	pulumi.Input
 

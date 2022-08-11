@@ -10,36 +10,59 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationEndpointDatadogUserConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationEndpointDatadogUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Datadog API key
+        /// </summary>
         [Input("datadogApiKey")]
         public Input<string>? DatadogApiKey { get; set; }
 
         [Input("datadogTags")]
         private InputList<Inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTagGetArgs>? _datadogTags;
+
+        /// <summary>
+        /// Custom tags provided by user
+        /// </summary>
         public InputList<Inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTagGetArgs> DatadogTags
         {
             get => _datadogTags ?? (_datadogTags = new InputList<Inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTagGetArgs>());
             set => _datadogTags = value;
         }
 
+        /// <summary>
+        /// Disable consumer group metrics
+        /// </summary>
         [Input("disableConsumerStats")]
         public Input<string>? DisableConsumerStats { get; set; }
 
+        /// <summary>
+        /// Number of separate instances to fetch kafka consumer statistics with
+        /// </summary>
         [Input("kafkaConsumerCheckInstances")]
         public Input<string>? KafkaConsumerCheckInstances { get; set; }
 
+        /// <summary>
+        /// Number of seconds that datadog will wait to get consumer statistics from brokers
+        /// </summary>
         [Input("kafkaConsumerStatsTimeout")]
         public Input<string>? KafkaConsumerStatsTimeout { get; set; }
 
+        /// <summary>
+        /// Maximum number of partition contexts to send
+        /// </summary>
         [Input("maxPartitionContexts")]
         public Input<string>? MaxPartitionContexts { get; set; }
 
+        /// <summary>
+        /// Datadog intake site. Defaults to datadoghq.com
+        /// </summary>
         [Input("site")]
         public Input<string>? Site { get; set; }
 
         public ServiceIntegrationEndpointDatadogUserConfigGetArgs()
         {
         }
+        public static new ServiceIntegrationEndpointDatadogUserConfigGetArgs Empty => new ServiceIntegrationEndpointDatadogUserConfigGetArgs();
     }
 }

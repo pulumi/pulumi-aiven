@@ -16,37 +16,77 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
 
     public static final ClickhouseGrantPrivilegeGrantArgs Empty = new ClickhouseGrantPrivilegeGrantArgs();
 
+    /**
+     * The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="column")
     private @Nullable Output<String> column;
 
+    /**
+     * @return The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<Output<String>> column() {
         return Optional.ofNullable(this.column);
     }
 
+    /**
+     * The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="database", required=true)
     private Output<String> database;
 
+    /**
+     * @return The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> database() {
         return this.database;
     }
 
+    /**
+     * The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="privilege")
     private @Nullable Output<String> privilege;
 
+    /**
+     * @return The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<Output<String>> privilege() {
         return Optional.ofNullable(this.privilege);
     }
 
+    /**
+     * The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="table")
     private @Nullable Output<String> table;
 
+    /**
+     * @return The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<Output<String>> table() {
         return Optional.ofNullable(this.table);
     }
 
+    /**
+     * If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="withGrant")
     private @Nullable Output<Boolean> withGrant;
 
+    /**
+     * @return If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Optional<Output<Boolean>> withGrant() {
         return Optional.ofNullable(this.withGrant);
     }
@@ -79,47 +119,107 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
             $ = new ClickhouseGrantPrivilegeGrantArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param column The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder column(@Nullable Output<String> column) {
             $.column = column;
             return this;
         }
 
+        /**
+         * @param column The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder column(String column) {
             return column(Output.of(column));
         }
 
+        /**
+         * @param database The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder database(Output<String> database) {
             $.database = database;
             return this;
         }
 
+        /**
+         * @param database The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder database(String database) {
             return database(Output.of(database));
         }
 
+        /**
+         * @param privilege The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privilege(@Nullable Output<String> privilege) {
             $.privilege = privilege;
             return this;
         }
 
+        /**
+         * @param privilege The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privilege(String privilege) {
             return privilege(Output.of(privilege));
         }
 
+        /**
+         * @param table The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder table(@Nullable Output<String> table) {
             $.table = table;
             return this;
         }
 
+        /**
+         * @param table The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder table(String table) {
             return table(Output.of(table));
         }
 
+        /**
+         * @param withGrant If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder withGrant(@Nullable Output<Boolean> withGrant) {
             $.withGrant = withGrant;
             return this;
         }
 
+        /**
+         * @param withGrant If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder withGrant(Boolean withGrant) {
             return withGrant(Output.of(withGrant));
         }

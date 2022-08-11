@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs : global::Pulumi.ResourceArgs
     {
         [Input("configStorageTopic")]
         public Input<string>? ConfigStorageTopic { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Aiven.Inputs
         public ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs()
         {
         }
+        public static new ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs Empty => new ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs();
     }
 }

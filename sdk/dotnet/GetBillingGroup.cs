@@ -25,48 +25,101 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetBillingGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetBillingGroupArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
         [Input("billingGroupId", required: true)]
         public string BillingGroupId { get; set; } = null!;
 
         public GetBillingGroupArgs()
         {
         }
+        public static new GetBillingGroupArgs Empty => new GetBillingGroupArgs();
     }
 
-    public sealed class GetBillingGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBillingGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
         [Input("billingGroupId", required: true)]
         public Input<string> BillingGroupId { get; set; } = null!;
 
         public GetBillingGroupInvokeArgs()
         {
         }
+        public static new GetBillingGroupInvokeArgs Empty => new GetBillingGroupInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetBillingGroupResult
     {
+        /// <summary>
+        /// Account id
+        /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// Address lines
+        /// </summary>
         public readonly ImmutableArray<string> AddressLines;
+        /// <summary>
+        /// Billing currency
+        /// </summary>
         public readonly string BillingCurrency;
+        /// <summary>
+        /// Billing contact emails
+        /// </summary>
         public readonly ImmutableArray<string> BillingEmails;
+        /// <summary>
+        /// Billing extra text
+        /// </summary>
         public readonly string BillingExtraText;
+        /// <summary>
+        /// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+        /// </summary>
         public readonly string BillingGroupId;
+        /// <summary>
+        /// Credit card id
+        /// </summary>
         public readonly string CardId;
+        /// <summary>
+        /// City
+        /// </summary>
         public readonly string City;
+        /// <summary>
+        /// Company name
+        /// </summary>
         public readonly string Company;
+        /// <summary>
+        /// ID of the billing group to copy from
+        /// </summary>
         public readonly string CopyFromBillingGroup;
+        /// <summary>
+        /// Country code
+        /// </summary>
         public readonly string CountryCode;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Billing Group name
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// State
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// VAT id
+        /// </summary>
         public readonly string VatId;
+        /// <summary>
+        /// Zip Code
+        /// </summary>
         public readonly string ZipCode;
 
         [OutputConstructor]

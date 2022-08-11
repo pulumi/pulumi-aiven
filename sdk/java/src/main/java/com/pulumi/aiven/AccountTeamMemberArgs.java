@@ -44,16 +44,14 @@ public final class AccountTeamMemberArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
-     * team. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="userEmail", required=true)
     private Output<String> userEmail;
 
     /**
-     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
-     * team. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> userEmail() {
@@ -129,8 +127,7 @@ public final class AccountTeamMemberArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
-         * team. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -141,8 +138,7 @@ public final class AccountTeamMemberArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
-         * team. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

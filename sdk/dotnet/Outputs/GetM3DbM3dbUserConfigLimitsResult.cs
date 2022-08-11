@@ -13,15 +13,19 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetM3DbM3dbUserConfigLimitsResult
     {
+        public readonly string? QueryDocs;
         public readonly string? QueryRequireExhaustive;
         public readonly string? QuerySeries;
 
         [OutputConstructor]
         private GetM3DbM3dbUserConfigLimitsResult(
+            string? queryDocs,
+
             string? queryRequireExhaustive,
 
             string? querySeries)
         {
+            QueryDocs = queryDocs;
             QueryRequireExhaustive = queryRequireExhaustive;
             QuerySeries = querySeries;
         }

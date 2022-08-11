@@ -59,16 +59,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/projectUser:ProjectUser")
 public class ProjectUser extends com.pulumi.resources.CustomResource {
     /**
-     * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the
-     * target user and the actual membership is only created once the user accepts the invitation.
+     * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
      * 
      */
     @Export(name="accepted", type=Boolean.class, parameters={})
     private Output<Boolean> accepted;
 
     /**
-     * @return Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the
-     * target user and the actual membership is only created once the user accepts the invitation.
+     * @return Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
      * 
      */
     public Output<Boolean> accepted() {
@@ -103,16 +101,14 @@ public class ProjectUser extends com.pulumi.resources.CustomResource {
         return this.memberType;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> project() {

@@ -10,13 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationKafkaLogsUserConfigArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationKafkaLogsUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Topic name
+        /// </summary>
         [Input("kafkaTopic")]
         public Input<string>? KafkaTopic { get; set; }
 
         public ServiceIntegrationKafkaLogsUserConfigArgs()
         {
         }
+        public static new ServiceIntegrationKafkaLogsUserConfigArgs Empty => new ServiceIntegrationKafkaLogsUserConfigArgs();
     }
 }

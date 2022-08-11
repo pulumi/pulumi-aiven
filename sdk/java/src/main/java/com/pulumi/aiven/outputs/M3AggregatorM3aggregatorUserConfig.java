@@ -12,10 +12,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3AggregatorM3aggregatorUserConfig {
+    /**
+     * @return Custom domain
+     * 
+     */
     private final @Nullable String customDomain;
+    /**
+     * @return IP filter
+     * 
+     */
     private final @Nullable List<String> ipFilters;
+    /**
+     * @return M3 major version (deprecated, use m3aggregator_version)
+     * 
+     */
     private final @Nullable String m3Version;
+    /**
+     * @return M3 major version (the minimum compatible version)
+     * 
+     */
     private final @Nullable String m3aggregatorVersion;
+    /**
+     * @return Static IP addresses
+     * 
+     */
     private final @Nullable String staticIps;
 
     @CustomType.Constructor
@@ -32,18 +52,38 @@ public final class M3AggregatorM3aggregatorUserConfig {
         this.staticIps = staticIps;
     }
 
+    /**
+     * @return Custom domain
+     * 
+     */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
+    /**
+     * @return IP filter
+     * 
+     */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return M3 major version (deprecated, use m3aggregator_version)
+     * 
+     */
     public Optional<String> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
+    /**
+     * @return M3 major version (the minimum compatible version)
+     * 
+     */
     public Optional<String> m3aggregatorVersion() {
         return Optional.ofNullable(this.m3aggregatorVersion);
     }
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

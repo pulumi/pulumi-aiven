@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class CassandraTagArgs : Pulumi.ResourceArgs
+    public sealed class CassandraTagArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Service tag key
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// Service tag value
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
         public CassandraTagArgs()
         {
         }
+        public static new CassandraTagArgs Empty => new CassandraTagArgs();
     }
 }

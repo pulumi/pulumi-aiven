@@ -15,11 +15,35 @@ public final class GetClickhouseUserResult {
      * 
      */
     private final String id;
+    /**
+     * @return The password of the clickhouse user.
+     * 
+     */
     private final String password;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Indicates if a clickhouse user is required
+     * 
+     */
     private final Boolean required;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
+    /**
+     * @return The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String username;
+    /**
+     * @return UUID of the clickhouse user.
+     * 
+     */
     private final String uuid;
 
     @CustomType.Constructor
@@ -47,21 +71,45 @@ public final class GetClickhouseUserResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The password of the clickhouse user.
+     * 
+     */
     public String password() {
         return this.password;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Indicates if a clickhouse user is required
+     * 
+     */
     public Boolean required() {
         return this.required;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String username() {
         return this.username;
     }
+    /**
+     * @return UUID of the clickhouse user.
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }

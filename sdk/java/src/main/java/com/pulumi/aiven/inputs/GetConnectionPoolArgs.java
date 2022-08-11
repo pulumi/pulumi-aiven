@@ -13,23 +13,47 @@ public final class GetConnectionPoolArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetConnectionPoolArgs Empty = new GetConnectionPoolArgs();
 
+    /**
+     * The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="poolName", required=true)
     private Output<String> poolName;
 
+    /**
+     * @return The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> poolName() {
         return this.poolName;
     }
 
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="project", required=true)
     private Output<String> project;
 
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
 
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> serviceName() {
         return this.serviceName;
     }
@@ -60,29 +84,65 @@ public final class GetConnectionPoolArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetConnectionPoolArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param poolName The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolName(Output<String> poolName) {
             $.poolName = poolName;
             return this;
         }
 
+        /**
+         * @param poolName The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolName(String poolName) {
             return poolName(Output.of(poolName));
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
+        /**
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
+        /**
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
         }

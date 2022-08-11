@@ -10,34 +10,65 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class PgPgGetArgs : Pulumi.ResourceArgs
+    public sealed class PgPgGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Primary PostgreSQL database name
+        /// </summary>
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
 
+        /// <summary>
+        /// PostgreSQL master node host IP or name
+        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        /// <summary>
+        /// Connection limit
+        /// </summary>
+        [Input("maxConnections")]
+        public Input<int>? MaxConnections { get; set; }
+
+        /// <summary>
+        /// PostgreSQL admin user password
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
+        /// <summary>
+        /// PostgreSQL port
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
+        /// <summary>
+        /// PostgreSQL replica URI for services with a replica
+        /// </summary>
         [Input("replicaUri")]
         public Input<string>? ReplicaUri { get; set; }
 
+        /// <summary>
+        /// PostgreSQL sslmode setting (currently always "require")
+        /// </summary>
         [Input("sslmode")]
         public Input<string>? Sslmode { get; set; }
 
+        /// <summary>
+        /// PostgreSQL master connection URI
+        /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }
 
+        /// <summary>
+        /// PostgreSQL admin user name
+        /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
 
         public PgPgGetArgs()
         {
         }
+        public static new PgPgGetArgs Empty => new PgPgGetArgs();
     }
 }

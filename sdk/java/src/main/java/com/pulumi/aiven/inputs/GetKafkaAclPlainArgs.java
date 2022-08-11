@@ -12,37 +12,77 @@ public final class GetKafkaAclPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetKafkaAclPlainArgs Empty = new GetKafkaAclPlainArgs();
 
+    /**
+     * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="permission", required=true)
     private String permission;
 
+    /**
+     * @return Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String permission() {
         return this.permission;
     }
 
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
 
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
 
+    /**
+     * Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="topic", required=true)
     private String topic;
 
+    /**
+     * @return Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String topic() {
         return this.topic;
     }
 
+    /**
+     * Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="username", required=true)
     private String username;
 
+    /**
+     * @return Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String username() {
         return this.username;
     }
@@ -75,26 +115,56 @@ public final class GetKafkaAclPlainArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetKafkaAclPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param permission Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
+        /**
+         * @param topic Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder topic(String topic) {
             $.topic = topic;
             return this;
         }
 
+        /**
+         * @param username Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(String username) {
             $.username = username;
             return this;

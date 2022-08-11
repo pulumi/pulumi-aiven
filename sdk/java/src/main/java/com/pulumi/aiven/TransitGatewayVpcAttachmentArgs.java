@@ -15,16 +15,14 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
     public static final TransitGatewayVpcAttachmentArgs Empty = new TransitGatewayVpcAttachmentArgs();
 
     /**
-     * AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="peerCloudAccount", required=true)
     private Output<String> peerCloudAccount;
 
     /**
-     * @return AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * @return AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> peerCloudAccount() {
@@ -77,16 +75,14 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * @return The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> vpcId() {
@@ -122,8 +118,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the
-         * resource.
+         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -134,8 +129,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the
-         * resource.
+         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -218,8 +212,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param vpcId The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference.
-         * This property cannot be changed, doing so forces recreation of the resource.
+         * @param vpcId The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -230,8 +223,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param vpcId The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference.
-         * This property cannot be changed, doing so forces recreation of the resource.
+         * @param vpcId The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

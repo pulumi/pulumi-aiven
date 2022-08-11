@@ -12,9 +12,17 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetProjectPlainArgs Empty = new GetProjectPlainArgs();
 
+    /**
+     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * 
+     */
     public String project() {
         return this.project;
     }
@@ -43,6 +51,12 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetProjectPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param project Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;

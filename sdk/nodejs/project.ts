@@ -43,12 +43,11 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-     * please refer to this variable as a reference.
+     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
      */
     public readonly addAccountOwnersAdminAccess!: pulumi.Output<boolean | undefined>;
     /**
@@ -56,8 +55,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly availableCredits!: pulumi.Output<string>;
     /**
-     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-     * as a reference.
+     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
      */
     public readonly billingGroup!: pulumi.Output<string | undefined>;
     /**
@@ -65,15 +63,11 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly caCert!: pulumi.Output<string>;
     /**
-     * is the name of another project used to copy billing information and some other project attributes like technical
-     * contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-     * copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-     * project is created. To set up proper dependencies please refer to this variable as a reference.
+     * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
      */
     public readonly copyFromProject!: pulumi.Output<string | undefined>;
     /**
-     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-     * created. This will not affect existing services.
+     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
      */
     public readonly defaultCloud!: pulumi.Output<string | undefined>;
     /**
@@ -85,8 +79,7 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly paymentMethod!: pulumi.Output<string>;
     /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-     * without destroying and re-creating the project, including all sub-resources.
+     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -94,8 +87,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.ProjectTag[] | undefined>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-     * instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
      */
     public readonly technicalEmails!: pulumi.Output<string[] | undefined>;
     /**
@@ -158,12 +150,11 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-     * please refer to this variable as a reference.
+     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
      */
     addAccountOwnersAdminAccess?: pulumi.Input<boolean>;
     /**
@@ -171,8 +162,7 @@ export interface ProjectState {
      */
     availableCredits?: pulumi.Input<string>;
     /**
-     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-     * as a reference.
+     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
      */
     billingGroup?: pulumi.Input<string>;
     /**
@@ -180,15 +170,11 @@ export interface ProjectState {
      */
     caCert?: pulumi.Input<string>;
     /**
-     * is the name of another project used to copy billing information and some other project attributes like technical
-     * contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-     * copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-     * project is created. To set up proper dependencies please refer to this variable as a reference.
+     * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
      */
     copyFromProject?: pulumi.Input<string>;
     /**
-     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-     * created. This will not affect existing services.
+     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
      */
     defaultCloud?: pulumi.Input<string>;
     /**
@@ -200,8 +186,7 @@ export interface ProjectState {
      */
     paymentMethod?: pulumi.Input<string>;
     /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-     * without destroying and re-creating the project, including all sub-resources.
+     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      */
     project?: pulumi.Input<string>;
     /**
@@ -209,8 +194,7 @@ export interface ProjectState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ProjectTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-     * instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
      */
     technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -224,12 +208,11 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-     * please refer to this variable as a reference.
+     * An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
+     * If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
      */
     addAccountOwnersAdminAccess?: pulumi.Input<boolean>;
     /**
@@ -237,25 +220,19 @@ export interface ProjectArgs {
      */
     availableCredits?: pulumi.Input<string>;
     /**
-     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-     * as a reference.
+     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
      */
     billingGroup?: pulumi.Input<string>;
     /**
-     * is the name of another project used to copy billing information and some other project attributes like technical
-     * contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-     * copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-     * project is created. To set up proper dependencies please refer to this variable as a reference.
+     * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
      */
     copyFromProject?: pulumi.Input<string>;
     /**
-     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-     * created. This will not affect existing services.
+     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
      */
     defaultCloud?: pulumi.Input<string>;
     /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-     * without destroying and re-creating the project, including all sub-resources.
+     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      */
     project: pulumi.Input<string>;
     /**
@@ -263,8 +240,7 @@ export interface ProjectArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ProjectTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-     * instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
      */
     technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -19,23 +19,21 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var f1 = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
         ///     {
-        ///         var f1 = Output.Create(Aiven.GetMirrorMakerReplicationFlow.InvokeAsync(new Aiven.GetMirrorMakerReplicationFlowArgs
-        ///         {
-        ///             Project = aiven_project.Kafka_mm_project1.Project,
-        ///             ServiceName = aiven_service.Mm.Service_name,
-        ///             SourceCluster = aiven_service.Source.Service_name,
-        ///             TargetCluster = aiven_service.Target.Service_name,
-        ///         }));
-        ///     }
+        ///         Project = aiven_project.Kafka_mm_project1.Project,
+        ///         ServiceName = aiven_service.Mm.Service_name,
+        ///         SourceCluster = aiven_service.Source.Service_name,
+        ///         TargetCluster = aiven_service.Target.Service_name,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -51,23 +49,21 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var f1 = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
         ///     {
-        ///         var f1 = Output.Create(Aiven.GetMirrorMakerReplicationFlow.InvokeAsync(new Aiven.GetMirrorMakerReplicationFlowArgs
-        ///         {
-        ///             Project = aiven_project.Kafka_mm_project1.Project,
-        ///             ServiceName = aiven_service.Mm.Service_name,
-        ///             SourceCluster = aiven_service.Source.Service_name,
-        ///             TargetCluster = aiven_service.Target.Service_name,
-        ///         }));
-        ///     }
+        ///         Project = aiven_project.Kafka_mm_project1.Project,
+        ///         ServiceName = aiven_service.Mm.Service_name,
+        ///         SourceCluster = aiven_service.Source.Service_name,
+        ///         TargetCluster = aiven_service.Target.Service_name,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -77,62 +73,121 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetMirrorMakerReplicationFlowArgs : Pulumi.InvokeArgs
+    public sealed class GetMirrorMakerReplicationFlowArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Source cluster alias. Maximum Length: `128`.
+        /// </summary>
         [Input("sourceCluster", required: true)]
         public string SourceCluster { get; set; } = null!;
 
+        /// <summary>
+        /// Target cluster alias. Maximum Length: `128`.
+        /// </summary>
         [Input("targetCluster", required: true)]
         public string TargetCluster { get; set; } = null!;
 
         public GetMirrorMakerReplicationFlowArgs()
         {
         }
+        public static new GetMirrorMakerReplicationFlowArgs Empty => new GetMirrorMakerReplicationFlowArgs();
     }
 
-    public sealed class GetMirrorMakerReplicationFlowInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMirrorMakerReplicationFlowInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Source cluster alias. Maximum Length: `128`.
+        /// </summary>
         [Input("sourceCluster", required: true)]
         public Input<string> SourceCluster { get; set; } = null!;
 
+        /// <summary>
+        /// Target cluster alias. Maximum Length: `128`.
+        /// </summary>
         [Input("targetCluster", required: true)]
         public Input<string> TargetCluster { get; set; } = null!;
 
         public GetMirrorMakerReplicationFlowInvokeArgs()
         {
         }
+        public static new GetMirrorMakerReplicationFlowInvokeArgs Empty => new GetMirrorMakerReplicationFlowInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetMirrorMakerReplicationFlowResult
     {
+        /// <summary>
+        /// Emit heartbeats enabled. The default value is `false`.
+        /// </summary>
         public readonly bool EmitHeartbeatsEnabled;
+        /// <summary>
+        /// Enable of disable replication flows for a service.
+        /// </summary>
         public readonly bool Enable;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+        /// </summary>
         public readonly string ReplicationPolicyClass;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Source cluster alias. Maximum Length: `128`.
+        /// </summary>
         public readonly string SourceCluster;
+        /// <summary>
+        /// Sync consumer group offsets. The default value is `false`.
+        /// </summary>
         public readonly bool SyncGroupOffsetsEnabled;
+        /// <summary>
+        /// Frequency of consumer group offset sync. The default value is `1`.
+        /// </summary>
         public readonly int SyncGroupOffsetsIntervalSeconds;
+        /// <summary>
+        /// Target cluster alias. Maximum Length: `128`.
+        /// </summary>
         public readonly string TargetCluster;
+        /// <summary>
+        /// List of topics and/or regular expressions to replicate
+        /// </summary>
         public readonly ImmutableArray<string> Topics;
+        /// <summary>
+        /// List of topics and/or regular expressions to not replicate.
+        /// </summary>
         public readonly ImmutableArray<string> TopicsBlacklists;
 
         [OutputConstructor]

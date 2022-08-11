@@ -44,16 +44,14 @@ public final class AwsVpcPeeringConnectionArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-     * recreation of the resource.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="awsVpcRegion", required=true)
     private Output<String> awsVpcRegion;
 
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-     * recreation of the resource.
+     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> awsVpcRegion() {
@@ -145,8 +143,7 @@ public final class AwsVpcPeeringConnectionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param awsVpcRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-         * recreation of the resource.
+         * @param awsVpcRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -157,8 +154,7 @@ public final class AwsVpcPeeringConnectionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param awsVpcRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-         * recreation of the resource.
+         * @param awsVpcRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

@@ -15,37 +15,77 @@ public final class AccountAuthenticationSamlFieldMappingArgs extends com.pulumi.
 
     public static final AccountAuthenticationSamlFieldMappingArgs Empty = new AccountAuthenticationSamlFieldMappingArgs();
 
+    /**
+     * Field name for user email
+     * 
+     */
     @Import(name="email")
     private @Nullable Output<String> email;
 
+    /**
+     * @return Field name for user email
+     * 
+     */
     public Optional<Output<String>> email() {
         return Optional.ofNullable(this.email);
     }
 
+    /**
+     * Field name for user&#39;s first name
+     * 
+     */
     @Import(name="firstName")
     private @Nullable Output<String> firstName;
 
+    /**
+     * @return Field name for user&#39;s first name
+     * 
+     */
     public Optional<Output<String>> firstName() {
         return Optional.ofNullable(this.firstName);
     }
 
+    /**
+     * Field name for user&#39;s identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
+     * 
+     */
     @Import(name="identity")
     private @Nullable Output<String> identity;
 
+    /**
+     * @return Field name for user&#39;s identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
+     * 
+     */
     public Optional<Output<String>> identity() {
         return Optional.ofNullable(this.identity);
     }
 
+    /**
+     * Field name for user&#39;s last name
+     * 
+     */
     @Import(name="lastName")
     private @Nullable Output<String> lastName;
 
+    /**
+     * @return Field name for user&#39;s last name
+     * 
+     */
     public Optional<Output<String>> lastName() {
         return Optional.ofNullable(this.lastName);
     }
 
+    /**
+     * Field name for user&#39;s full name. If specified, first*name and last*name mappings are ignored
+     * 
+     */
     @Import(name="realName")
     private @Nullable Output<String> realName;
 
+    /**
+     * @return Field name for user&#39;s full name. If specified, first*name and last*name mappings are ignored
+     * 
+     */
     public Optional<Output<String>> realName() {
         return Optional.ofNullable(this.realName);
     }
@@ -78,47 +118,107 @@ public final class AccountAuthenticationSamlFieldMappingArgs extends com.pulumi.
             $ = new AccountAuthenticationSamlFieldMappingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param email Field name for user email
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(@Nullable Output<String> email) {
             $.email = email;
             return this;
         }
 
+        /**
+         * @param email Field name for user email
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(String email) {
             return email(Output.of(email));
         }
 
+        /**
+         * @param firstName Field name for user&#39;s first name
+         * 
+         * @return builder
+         * 
+         */
         public Builder firstName(@Nullable Output<String> firstName) {
             $.firstName = firstName;
             return this;
         }
 
+        /**
+         * @param firstName Field name for user&#39;s first name
+         * 
+         * @return builder
+         * 
+         */
         public Builder firstName(String firstName) {
             return firstName(Output.of(firstName));
         }
 
+        /**
+         * @param identity Field name for user&#39;s identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identity(@Nullable Output<String> identity) {
             $.identity = identity;
             return this;
         }
 
+        /**
+         * @param identity Field name for user&#39;s identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identity(String identity) {
             return identity(Output.of(identity));
         }
 
+        /**
+         * @param lastName Field name for user&#39;s last name
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastName(@Nullable Output<String> lastName) {
             $.lastName = lastName;
             return this;
         }
 
+        /**
+         * @param lastName Field name for user&#39;s last name
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastName(String lastName) {
             return lastName(Output.of(lastName));
         }
 
+        /**
+         * @param realName Field name for user&#39;s full name. If specified, first*name and last*name mappings are ignored
+         * 
+         * @return builder
+         * 
+         */
         public Builder realName(@Nullable Output<String> realName) {
             $.realName = realName;
             return this;
         }
 
+        /**
+         * @param realName Field name for user&#39;s full name. If specified, first*name and last*name mappings are ignored
+         * 
+         * @return builder
+         * 
+         */
         public Builder realName(String realName) {
             return realName(Output.of(realName));
         }

@@ -12,23 +12,47 @@ public final class GetAccountTeamMemberPlainArgs extends com.pulumi.resources.In
 
     public static final GetAccountTeamMemberPlainArgs Empty = new GetAccountTeamMemberPlainArgs();
 
+    /**
+     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="accountId", required=true)
     private String accountId;
 
+    /**
+     * @return The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
 
+    /**
+     * An account team id This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="teamId", required=true)
     private String teamId;
 
+    /**
+     * @return An account team id This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String teamId() {
         return this.teamId;
     }
 
+    /**
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="userEmail", required=true)
     private String userEmail;
 
+    /**
+     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String userEmail() {
         return this.userEmail;
     }
@@ -59,16 +83,34 @@ public final class GetAccountTeamMemberPlainArgs extends com.pulumi.resources.In
             $ = new GetAccountTeamMemberPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId The unique account id This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param teamId An account team id This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder teamId(String teamId) {
             $.teamId = teamId;
             return this;
         }
 
+        /**
+         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userEmail(String userEmail) {
             $.userEmail = userEmail;
             return this;

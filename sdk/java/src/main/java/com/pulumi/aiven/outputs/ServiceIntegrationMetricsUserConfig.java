@@ -12,10 +12,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationMetricsUserConfig {
+    /**
+     * @return Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to &#39;metrics&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * 
+     */
     private final @Nullable String database;
+    /**
+     * @return Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+     * 
+     */
     private final @Nullable String retentionDays;
+    /**
+     * @return Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to &#39;metrics_reader&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * 
+     */
     private final @Nullable String roUsername;
+    /**
+     * @return Configuration options for metrics where source service is MySQL
+     * 
+     */
     private final @Nullable ServiceIntegrationMetricsUserConfigSourceMysql sourceMysql;
+    /**
+     * @return Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to &#39;metrics_writer&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * 
+     */
     private final @Nullable String username;
 
     @CustomType.Constructor
@@ -32,18 +52,38 @@ public final class ServiceIntegrationMetricsUserConfig {
         this.username = username;
     }
 
+    /**
+     * @return Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to &#39;metrics&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * 
+     */
     public Optional<String> database() {
         return Optional.ofNullable(this.database);
     }
+    /**
+     * @return Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+     * 
+     */
     public Optional<String> retentionDays() {
         return Optional.ofNullable(this.retentionDays);
     }
+    /**
+     * @return Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to &#39;metrics_reader&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * 
+     */
     public Optional<String> roUsername() {
         return Optional.ofNullable(this.roUsername);
     }
+    /**
+     * @return Configuration options for metrics where source service is MySQL
+     * 
+     */
     public Optional<ServiceIntegrationMetricsUserConfigSourceMysql> sourceMysql() {
         return Optional.ofNullable(this.sourceMysql);
     }
+    /**
+     * @return Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to &#39;metrics_writer&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * 
+     */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }

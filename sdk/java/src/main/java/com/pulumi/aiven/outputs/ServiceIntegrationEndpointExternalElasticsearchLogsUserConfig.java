@@ -11,10 +11,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
+    /**
+     * @return PEM encoded CA certificate
+     * 
+     */
     private final @Nullable String ca;
+    /**
+     * @return Maximum number of days of logs to keep
+     * 
+     */
     private final @Nullable String indexDaysMax;
+    /**
+     * @return Elasticsearch index prefix
+     * 
+     */
     private final @Nullable String indexPrefix;
+    /**
+     * @return Elasticsearch request timeout limit
+     * 
+     */
     private final @Nullable String timeout;
+    /**
+     * @return Elasticsearch connection URL
+     * 
+     */
     private final @Nullable String url;
 
     @CustomType.Constructor
@@ -31,18 +51,38 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
         this.url = url;
     }
 
+    /**
+     * @return PEM encoded CA certificate
+     * 
+     */
     public Optional<String> ca() {
         return Optional.ofNullable(this.ca);
     }
+    /**
+     * @return Maximum number of days of logs to keep
+     * 
+     */
     public Optional<String> indexDaysMax() {
         return Optional.ofNullable(this.indexDaysMax);
     }
+    /**
+     * @return Elasticsearch index prefix
+     * 
+     */
     public Optional<String> indexPrefix() {
         return Optional.ofNullable(this.indexPrefix);
     }
+    /**
+     * @return Elasticsearch request timeout limit
+     * 
+     */
     public Optional<String> timeout() {
         return Optional.ofNullable(this.timeout);
     }
+    /**
+     * @return Elasticsearch connection URL
+     * 
+     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }

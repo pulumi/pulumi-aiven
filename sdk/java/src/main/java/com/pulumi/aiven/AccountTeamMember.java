@@ -33,18 +33,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/accountTeamMember:AccountTeamMember")
 public class AccountTeamMember extends com.pulumi.resources.CustomResource {
     /**
-     * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
-     * invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
-     * member of an account team.
+     * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
      * 
      */
     @Export(name="accepted", type=Boolean.class, parameters={})
     private Output<Boolean> accepted;
 
     /**
-     * @return is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
-     * invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
-     * member of an account team.
+     * @return is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
      * 
      */
     public Output<Boolean> accepted() {
@@ -107,16 +103,14 @@ public class AccountTeamMember extends com.pulumi.resources.CustomResource {
         return this.teamId;
     }
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
-     * team. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="userEmail", type=String.class, parameters={})
     private Output<String> userEmail;
 
     /**
-     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
-     * team. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> userEmail() {

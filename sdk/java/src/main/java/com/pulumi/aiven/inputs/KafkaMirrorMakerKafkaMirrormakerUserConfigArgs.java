@@ -17,23 +17,47 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
 
     public static final KafkaMirrorMakerKafkaMirrormakerUserConfigArgs Empty = new KafkaMirrorMakerKafkaMirrormakerUserConfigArgs();
 
+    /**
+     * IP filter
+     * 
+     */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
+    /**
+     * @return IP filter
+     * 
+     */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
+    /**
+     * Kafka MirrorMaker configuration values
+     * 
+     */
     @Import(name="kafkaMirrormaker")
     private @Nullable Output<KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs> kafkaMirrormaker;
 
+    /**
+     * @return Kafka MirrorMaker configuration values
+     * 
+     */
     public Optional<Output<KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs>> kafkaMirrormaker() {
         return Optional.ofNullable(this.kafkaMirrormaker);
     }
 
+    /**
+     * Static IP addresses
+     * 
+     */
     @Import(name="staticIps")
     private @Nullable Output<String> staticIps;
 
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<Output<String>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -64,33 +88,75 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
             $ = new KafkaMirrorMakerKafkaMirrormakerUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
+        /**
+         * @param kafkaMirrormaker Kafka MirrorMaker configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaMirrormaker(@Nullable Output<KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs> kafkaMirrormaker) {
             $.kafkaMirrormaker = kafkaMirrormaker;
             return this;
         }
 
+        /**
+         * @param kafkaMirrormaker Kafka MirrorMaker configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaMirrormaker(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs kafkaMirrormaker) {
             return kafkaMirrormaker(Output.of(kafkaMirrormaker));
         }
 
+        /**
+         * @param staticIps Static IP addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(@Nullable Output<String> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
+        /**
+         * @param staticIps Static IP addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(String staticIps) {
             return staticIps(Output.of(staticIps));
         }

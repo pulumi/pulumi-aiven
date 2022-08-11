@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
     /// {{codefile "shell" "examples/resources/aiven_service_integration/import.sh"}}
     /// </summary>
     [AivenResourceType("aiven:index/serviceIntegration:ServiceIntegration")]
-    public partial class ServiceIntegration : Pulumi.CustomResource
+    public partial class ServiceIntegration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Destination endpoint for the integration (if any)
@@ -152,7 +152,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class ServiceIntegrationArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Destination endpoint for the integration (if any)
@@ -229,9 +229,10 @@ namespace Pulumi.Aiven
         public ServiceIntegrationArgs()
         {
         }
+        public static new ServiceIntegrationArgs Empty => new ServiceIntegrationArgs();
     }
 
-    public sealed class ServiceIntegrationState : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Destination endpoint for the integration (if any)
@@ -314,5 +315,6 @@ namespace Pulumi.Aiven
         public ServiceIntegrationState()
         {
         }
+        public static new ServiceIntegrationState Empty => new ServiceIntegrationState();
     }
 }

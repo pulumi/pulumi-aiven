@@ -13,30 +13,62 @@ public final class GetMirrorMakerReplicationFlowArgs extends com.pulumi.resource
 
     public static final GetMirrorMakerReplicationFlowArgs Empty = new GetMirrorMakerReplicationFlowArgs();
 
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="project", required=true)
     private Output<String> project;
 
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
 
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> serviceName() {
         return this.serviceName;
     }
 
+    /**
+     * Source cluster alias. Maximum Length: `128`.
+     * 
+     */
     @Import(name="sourceCluster", required=true)
     private Output<String> sourceCluster;
 
+    /**
+     * @return Source cluster alias. Maximum Length: `128`.
+     * 
+     */
     public Output<String> sourceCluster() {
         return this.sourceCluster;
     }
 
+    /**
+     * Target cluster alias. Maximum Length: `128`.
+     * 
+     */
     @Import(name="targetCluster", required=true)
     private Output<String> targetCluster;
 
+    /**
+     * @return Target cluster alias. Maximum Length: `128`.
+     * 
+     */
     public Output<String> targetCluster() {
         return this.targetCluster;
     }
@@ -68,38 +100,86 @@ public final class GetMirrorMakerReplicationFlowArgs extends com.pulumi.resource
             $ = new GetMirrorMakerReplicationFlowArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
+        /**
+         * @param serviceName Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
+        /**
+         * @param serviceName Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
         }
 
+        /**
+         * @param sourceCluster Source cluster alias. Maximum Length: `128`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceCluster(Output<String> sourceCluster) {
             $.sourceCluster = sourceCluster;
             return this;
         }
 
+        /**
+         * @param sourceCluster Source cluster alias. Maximum Length: `128`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceCluster(String sourceCluster) {
             return sourceCluster(Output.of(sourceCluster));
         }
 
+        /**
+         * @param targetCluster Target cluster alias. Maximum Length: `128`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetCluster(Output<String> targetCluster) {
             $.targetCluster = targetCluster;
             return this;
         }
 
+        /**
+         * @param targetCluster Target cluster alias. Maximum Length: `128`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetCluster(String targetCluster) {
             return targetCluster(Output.of(targetCluster));
         }

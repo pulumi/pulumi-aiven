@@ -74,64 +74,56 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.databaseName;
     }
     /**
-     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be
-     * changed, doing so forces recreation of the resource.
+     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="lcCollate", type=String.class, parameters={})
     private Output</* @Nullable */ String> lcCollate;
 
     /**
-     * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be
-     * changed, doing so forces recreation of the resource.
+     * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> lcCollate() {
         return Codegen.optional(this.lcCollate);
     }
     /**
-     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot
-     * be changed, doing so forces recreation of the resource.
+     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="lcCtype", type=String.class, parameters={})
     private Output</* @Nullable */ String> lcCtype;
 
     /**
-     * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot
-     * be changed, doing so forces recreation of the resource.
+     * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> lcCtype() {
         return Codegen.optional(this.lcCtype);
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", type=String.class, parameters={})
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {

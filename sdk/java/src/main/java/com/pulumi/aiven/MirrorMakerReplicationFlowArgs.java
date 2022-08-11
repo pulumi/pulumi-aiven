@@ -49,16 +49,14 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -66,18 +64,14 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and
-     * `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is
-     * `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+     * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      * 
      */
     @Import(name="replicationPolicyClass")
     private @Nullable Output<String> replicationPolicyClass;
 
     /**
-     * @return Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and
-     * `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is
-     * `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+     * @return Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      * 
      */
     public Optional<Output<String>> replicationPolicyClass() {
@@ -85,16 +79,14 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -268,8 +260,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -280,8 +271,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -291,9 +281,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param replicationPolicyClass Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and
-         * `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is
-         * `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+         * @param replicationPolicyClass Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
          * 
          * @return builder
          * 
@@ -304,9 +292,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param replicationPolicyClass Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and
-         * `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is
-         * `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+         * @param replicationPolicyClass Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
          * 
          * @return builder
          * 
@@ -316,8 +302,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serviceName Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -328,8 +313,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serviceName Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

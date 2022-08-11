@@ -10,15 +10,35 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAwsPrivatelinkResult {
+    /**
+     * @return AWS service ID
+     * 
+     */
     private final String awsServiceId;
+    /**
+     * @return AWS service name
+     * 
+     */
     private final String awsServiceName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return List of allowed principals
+     * 
+     */
     private final List<String> principals;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
 
     @CustomType.Constructor
@@ -37,9 +57,17 @@ public final class GetAwsPrivatelinkResult {
         this.serviceName = serviceName;
     }
 
+    /**
+     * @return AWS service ID
+     * 
+     */
     public String awsServiceId() {
         return this.awsServiceId;
     }
+    /**
+     * @return AWS service name
+     * 
+     */
     public String awsServiceName() {
         return this.awsServiceName;
     }
@@ -50,12 +78,24 @@ public final class GetAwsPrivatelinkResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return List of allowed principals
+     * 
+     */
     public List<String> principals() {
         return this.principals;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }

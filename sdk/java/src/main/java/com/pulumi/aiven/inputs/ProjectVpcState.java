@@ -16,16 +16,14 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
     public static final ProjectVpcState Empty = new ProjectVpcState();
 
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional
-     * information. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="cloudName")
     private @Nullable Output<String> cloudName;
 
     /**
-     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional
-     * information. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> cloudName() {
@@ -48,16 +46,14 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -107,8 +103,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional
-         * information. This property cannot be changed, doing so forces recreation of the resource.
+         * @param cloudName Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -119,8 +114,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional
-         * information. This property cannot be changed, doing so forces recreation of the resource.
+         * @param cloudName Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -151,8 +145,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -163,8 +156,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

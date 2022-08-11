@@ -13,44 +13,92 @@ public final class GetAzureVpcPeeringConnectionArgs extends com.pulumi.resources
 
     public static final GetAzureVpcPeeringConnectionArgs Empty = new GetAzureVpcPeeringConnectionArgs();
 
+    /**
+     * Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="azureSubscriptionId", required=true)
     private Output<String> azureSubscriptionId;
 
+    /**
+     * @return Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> azureSubscriptionId() {
         return this.azureSubscriptionId;
     }
 
+    /**
+     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="peerAzureAppId", required=true)
     private Output<String> peerAzureAppId;
 
+    /**
+     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> peerAzureAppId() {
         return this.peerAzureAppId;
     }
 
+    /**
+     * Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="peerAzureTenantId", required=true)
     private Output<String> peerAzureTenantId;
 
+    /**
+     * @return Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> peerAzureTenantId() {
         return this.peerAzureTenantId;
     }
 
+    /**
+     * Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="peerResourceGroup", required=true)
     private Output<String> peerResourceGroup;
 
+    /**
+     * @return Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> peerResourceGroup() {
         return this.peerResourceGroup;
     }
 
+    /**
+     * Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="vnetName", required=true)
     private Output<String> vnetName;
 
+    /**
+     * @return Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> vnetName() {
         return this.vnetName;
     }
 
+    /**
+     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
+    /**
+     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> vpcId() {
         return this.vpcId;
     }
@@ -84,56 +132,128 @@ public final class GetAzureVpcPeeringConnectionArgs extends com.pulumi.resources
             $ = new GetAzureVpcPeeringConnectionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param azureSubscriptionId Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureSubscriptionId(Output<String> azureSubscriptionId) {
             $.azureSubscriptionId = azureSubscriptionId;
             return this;
         }
 
+        /**
+         * @param azureSubscriptionId Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureSubscriptionId(String azureSubscriptionId) {
             return azureSubscriptionId(Output.of(azureSubscriptionId));
         }
 
+        /**
+         * @param peerAzureAppId Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerAzureAppId(Output<String> peerAzureAppId) {
             $.peerAzureAppId = peerAzureAppId;
             return this;
         }
 
+        /**
+         * @param peerAzureAppId Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerAzureAppId(String peerAzureAppId) {
             return peerAzureAppId(Output.of(peerAzureAppId));
         }
 
+        /**
+         * @param peerAzureTenantId Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerAzureTenantId(Output<String> peerAzureTenantId) {
             $.peerAzureTenantId = peerAzureTenantId;
             return this;
         }
 
+        /**
+         * @param peerAzureTenantId Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerAzureTenantId(String peerAzureTenantId) {
             return peerAzureTenantId(Output.of(peerAzureTenantId));
         }
 
+        /**
+         * @param peerResourceGroup Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerResourceGroup(Output<String> peerResourceGroup) {
             $.peerResourceGroup = peerResourceGroup;
             return this;
         }
 
+        /**
+         * @param peerResourceGroup Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerResourceGroup(String peerResourceGroup) {
             return peerResourceGroup(Output.of(peerResourceGroup));
         }
 
+        /**
+         * @param vnetName Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vnetName(Output<String> vnetName) {
             $.vnetName = vnetName;
             return this;
         }
 
+        /**
+         * @param vnetName Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vnetName(String vnetName) {
             return vnetName(Output.of(vnetName));
         }
 
+        /**
+         * @param vpcId The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
+        /**
+         * @param vpcId The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }

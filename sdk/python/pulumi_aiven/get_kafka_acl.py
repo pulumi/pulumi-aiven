@@ -47,6 +47,9 @@ class GetKafkaAclResult:
     @property
     @pulumi.getter(name="aclId")
     def acl_id(self) -> str:
+        """
+        Kafka ACL ID
+        """
         return pulumi.get(self, "acl_id")
 
     @property
@@ -60,26 +63,41 @@ class GetKafkaAclResult:
     @property
     @pulumi.getter
     def permission(self) -> str:
+        """
+        Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def topic(self) -> str:
+        """
+        Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "topic")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "username")
 
 
@@ -119,6 +137,13 @@ def get_kafka_acl(permission: Optional[str] = None,
         permission="<PERMISSON>",
         username="<USERNAME_PATTERN>")
     ```
+
+
+    :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str topic: Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+    :param str username: Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['permission'] = permission
@@ -161,5 +186,12 @@ def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
         permission="<PERMISSON>",
         username="<USERNAME_PATTERN>")
     ```
+
+
+    :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str topic: Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+    :param str username: Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

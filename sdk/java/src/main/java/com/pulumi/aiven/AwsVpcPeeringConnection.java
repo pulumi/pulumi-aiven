@@ -102,16 +102,14 @@ public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource
         return this.awsVpcPeeringConnectionId;
     }
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-     * recreation of the resource.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="awsVpcRegion", type=String.class, parameters={})
     private Output<String> awsVpcRegion;
 
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-     * recreation of the resource.
+     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> awsVpcRegion() {

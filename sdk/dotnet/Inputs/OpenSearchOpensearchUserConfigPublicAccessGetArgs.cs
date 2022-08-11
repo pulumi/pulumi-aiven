@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class OpenSearchOpensearchUserConfigPublicAccessGetArgs : Pulumi.ResourceArgs
+    public sealed class OpenSearchOpensearchUserConfigPublicAccessGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Opensearch server provided values
+        /// </summary>
         [Input("opensearch")]
         public Input<string>? Opensearch { get; set; }
 
@@ -24,5 +27,6 @@ namespace Pulumi.Aiven.Inputs
         public OpenSearchOpensearchUserConfigPublicAccessGetArgs()
         {
         }
+        public static new OpenSearchOpensearchUserConfigPublicAccessGetArgs Empty => new OpenSearchOpensearchUserConfigPublicAccessGetArgs();
     }
 }

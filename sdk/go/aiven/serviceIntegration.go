@@ -235,7 +235,7 @@ func (i *ServiceIntegration) ToServiceIntegrationOutputWithContext(ctx context.C
 // ServiceIntegrationArrayInput is an input type that accepts ServiceIntegrationArray and ServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `ServiceIntegrationArrayInput` via:
 //
-//          ServiceIntegrationArray{ ServiceIntegrationArgs{...} }
+//	ServiceIntegrationArray{ ServiceIntegrationArgs{...} }
 type ServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -260,7 +260,7 @@ func (i ServiceIntegrationArray) ToServiceIntegrationArrayOutputWithContext(ctx 
 // ServiceIntegrationMapInput is an input type that accepts ServiceIntegrationMap and ServiceIntegrationMapOutput values.
 // You can construct a concrete instance of `ServiceIntegrationMapInput` via:
 //
-//          ServiceIntegrationMap{ "key": ServiceIntegrationArgs{...} }
+//	ServiceIntegrationMap{ "key": ServiceIntegrationArgs{...} }
 type ServiceIntegrationMapInput interface {
 	pulumi.Input
 

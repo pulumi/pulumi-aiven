@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class PgPgUserConfigMigrationGetArgs : Pulumi.ResourceArgs
+    public sealed class PgPgUserConfigMigrationGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.Aiven.Inputs
         public PgPgUserConfigMigrationGetArgs()
         {
         }
+        public static new PgPgUserConfigMigrationGetArgs Empty => new PgPgUserConfigMigrationGetArgs();
     }
 }

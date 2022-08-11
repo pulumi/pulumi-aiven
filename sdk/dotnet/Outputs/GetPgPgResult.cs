@@ -15,6 +15,7 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly string Dbname;
         public readonly string Host;
+        public readonly int MaxConnections;
         public readonly string Password;
         public readonly int Port;
         public readonly string ReplicaUri;
@@ -27,6 +28,8 @@ namespace Pulumi.Aiven.Outputs
             string dbname,
 
             string host,
+
+            int maxConnections,
 
             string password,
 
@@ -42,6 +45,7 @@ namespace Pulumi.Aiven.Outputs
         {
             Dbname = dbname;
             Host = host;
+            MaxConnections = maxConnections;
             Password = password;
             Port = port;
             ReplicaUri = replicaUri;

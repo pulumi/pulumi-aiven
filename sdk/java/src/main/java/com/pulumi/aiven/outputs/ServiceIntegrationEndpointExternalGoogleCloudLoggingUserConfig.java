@@ -11,8 +11,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
+    /**
+     * @return Google Cloud Logging log id
+     * 
+     */
     private final @Nullable String logId;
+    /**
+     * @return GCP project id.
+     * 
+     */
     private final @Nullable String projectId;
+    /**
+     * @return Google Service Account Credentials
+     * 
+     */
     private final @Nullable String serviceAccountCredentials;
 
     @CustomType.Constructor
@@ -25,12 +37,24 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         this.serviceAccountCredentials = serviceAccountCredentials;
     }
 
+    /**
+     * @return Google Cloud Logging log id
+     * 
+     */
     public Optional<String> logId() {
         return Optional.ofNullable(this.logId);
     }
+    /**
+     * @return GCP project id.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
+    /**
+     * @return Google Service Account Credentials
+     * 
+     */
     public Optional<String> serviceAccountCredentials() {
         return Optional.ofNullable(this.serviceAccountCredentials);
     }

@@ -10,19 +10,29 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Google Cloud Logging log id
+        /// </summary>
         [Input("logId")]
         public Input<string>? LogId { get; set; }
 
+        /// <summary>
+        /// GCP project id.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// Google Service Account Credentials
+        /// </summary>
         [Input("serviceAccountCredentials")]
         public Input<string>? ServiceAccountCredentials { get; set; }
 
         public ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigGetArgs()
         {
         }
+        public static new ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigGetArgs Empty => new ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigGetArgs();
     }
 }

@@ -47,6 +47,9 @@ class GetPgDatabaseResult:
     @property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> str:
+        """
+        The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "database_name")
 
     @property
@@ -60,21 +63,33 @@ class GetPgDatabaseResult:
     @property
     @pulumi.getter(name="lcCollate")
     def lc_collate(self) -> str:
+        """
+        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "lc_collate")
 
     @property
     @pulumi.getter(name="lcCtype")
     def lc_ctype(self) -> str:
+        """
+        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "lc_ctype")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "service_name")
 
     @property
@@ -115,6 +130,11 @@ def get_pg_database(database_name: Optional[str] = None,
         service_name=aiven_service["myservice"]["service_name"],
         database_name="<DATABASE_NAME>")
     ```
+
+
+    :param str database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['databaseName'] = database_name
@@ -151,5 +171,10 @@ def get_pg_database_output(database_name: Optional[pulumi.Input[str]] = None,
         service_name=aiven_service["myservice"]["service_name"],
         database_name="<DATABASE_NAME>")
     ```
+
+
+    :param str database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

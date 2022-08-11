@@ -11,23 +11,75 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceUserResult {
+    /**
+     * @return Access certificate for the user if applicable for the service in question
+     * 
+     */
     private final String accessCert;
+    /**
+     * @return Access certificate key for the user if applicable for the service in question
+     * 
+     */
     private final String accessKey;
+    /**
+     * @return Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+     * 
+     */
     private final String authentication;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return The password of the service user ( not applicable for all services ).
+     * 
+     */
     private final String password;
+    /**
+     * @return Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final Boolean pgAllowReplication;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Redis specific field, defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final List<String> redisAclCategories;
+    /**
+     * @return Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final List<String> redisAclChannels;
+    /**
+     * @return Redis specific field, defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final List<String> redisAclCommands;
+    /**
+     * @return Redis specific field, defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final List<String> redisAclKeys;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
+    /**
+     * @return Type of the user account. Tells wether the user is the primary account or a regular account.
+     * 
+     */
     private final String type;
+    /**
+     * @return The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String username;
 
     @CustomType.Constructor
@@ -62,12 +114,24 @@ public final class GetServiceUserResult {
         this.username = username;
     }
 
+    /**
+     * @return Access certificate for the user if applicable for the service in question
+     * 
+     */
     public String accessCert() {
         return this.accessCert;
     }
+    /**
+     * @return Access certificate key for the user if applicable for the service in question
+     * 
+     */
     public String accessKey() {
         return this.accessKey;
     }
+    /**
+     * @return Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+     * 
+     */
     public String authentication() {
         return this.authentication;
     }
@@ -78,33 +142,73 @@ public final class GetServiceUserResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The password of the service user ( not applicable for all services ).
+     * 
+     */
     public String password() {
         return this.password;
     }
+    /**
+     * @return Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Boolean pgAllowReplication() {
         return this.pgAllowReplication;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Redis specific field, defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public List<String> redisAclCategories() {
         return this.redisAclCategories;
     }
+    /**
+     * @return Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public List<String> redisAclChannels() {
         return this.redisAclChannels;
     }
+    /**
+     * @return Redis specific field, defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public List<String> redisAclCommands() {
         return this.redisAclCommands;
     }
+    /**
+     * @return Redis specific field, defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public List<String> redisAclKeys() {
         return this.redisAclKeys;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return Type of the user account. Tells wether the user is the primary account or a regular account.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String username() {
         return this.username;
     }

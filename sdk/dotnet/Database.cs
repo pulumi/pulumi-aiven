@@ -15,22 +15,20 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mydatabase = new Aiven.Database("mydatabase", new()
     ///     {
-    ///         var mydatabase = new Aiven.Database("mydatabase", new Aiven.DatabaseArgs
-    ///         {
-    ///             Project = aiven_project.Myproject.Project,
-    ///             ServiceName = aiven_service.Myservice.Service_name,
-    ///             DatabaseName = "&lt;DATABASE_NAME&gt;",
-    ///         });
-    ///     }
+    ///         Project = aiven_project.Myproject.Project,
+    ///         ServiceName = aiven_service.Myservice.Service_name,
+    ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +38,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/database:Database")]
-    public partial class Database : Pulumi.CustomResource
+    public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
@@ -49,29 +47,25 @@ namespace Pulumi.Aiven
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be
-        /// changed, doing so forces recreation of the resource.
+        /// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("lcCollate")]
         public Output<string?> LcCollate { get; private set; } = null!;
 
         /// <summary>
-        /// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot
-        /// be changed, doing so forces recreation of the resource.
+        /// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("lcCtype")]
         public Output<string?> LcCtype { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -127,7 +121,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class DatabaseArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
@@ -136,29 +130,25 @@ namespace Pulumi.Aiven
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be
-        /// changed, doing so forces recreation of the resource.
+        /// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("lcCollate")]
         public Input<string>? LcCollate { get; set; }
 
         /// <summary>
-        /// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot
-        /// be changed, doing so forces recreation of the resource.
+        /// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("lcCtype")]
         public Input<string>? LcCtype { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -173,9 +163,10 @@ namespace Pulumi.Aiven
         public DatabaseArgs()
         {
         }
+        public static new DatabaseArgs Empty => new DatabaseArgs();
     }
 
-    public sealed class DatabaseState : Pulumi.ResourceArgs
+    public sealed class DatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
@@ -184,29 +175,25 @@ namespace Pulumi.Aiven
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be
-        /// changed, doing so forces recreation of the resource.
+        /// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("lcCollate")]
         public Input<string>? LcCollate { get; set; }
 
         /// <summary>
-        /// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot
-        /// be changed, doing so forces recreation of the resource.
+        /// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("lcCtype")]
         public Input<string>? LcCtype { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -221,5 +208,6 @@ namespace Pulumi.Aiven
         public DatabaseState()
         {
         }
+        public static new DatabaseState Empty => new DatabaseState();
     }
 }

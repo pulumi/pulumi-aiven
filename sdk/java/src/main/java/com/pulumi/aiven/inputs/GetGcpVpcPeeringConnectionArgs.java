@@ -13,23 +13,47 @@ public final class GetGcpVpcPeeringConnectionArgs extends com.pulumi.resources.I
 
     public static final GetGcpVpcPeeringConnectionArgs Empty = new GetGcpVpcPeeringConnectionArgs();
 
+    /**
+     * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="gcpProjectId", required=true)
     private Output<String> gcpProjectId;
 
+    /**
+     * @return GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> gcpProjectId() {
         return this.gcpProjectId;
     }
 
+    /**
+     * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="peerVpc", required=true)
     private Output<String> peerVpc;
 
+    /**
+     * @return GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> peerVpc() {
         return this.peerVpc;
     }
 
+    /**
+     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
+    /**
+     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> vpcId() {
         return this.vpcId;
     }
@@ -60,29 +84,65 @@ public final class GetGcpVpcPeeringConnectionArgs extends com.pulumi.resources.I
             $ = new GetGcpVpcPeeringConnectionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gcpProjectId GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gcpProjectId(Output<String> gcpProjectId) {
             $.gcpProjectId = gcpProjectId;
             return this;
         }
 
+        /**
+         * @param gcpProjectId GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gcpProjectId(String gcpProjectId) {
             return gcpProjectId(Output.of(gcpProjectId));
         }
 
+        /**
+         * @param peerVpc GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerVpc(Output<String> peerVpc) {
             $.peerVpc = peerVpc;
             return this;
         }
 
+        /**
+         * @param peerVpc GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerVpc(String peerVpc) {
             return peerVpc(Output.of(peerVpc));
         }
 
+        /**
+         * @param vpcId The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
+        /**
+         * @param vpcId The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }

@@ -9,16 +9,40 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaSchemaRegistryAclResult {
+    /**
+     * @return Kafka Schema Registry ACL ID
+     * 
+     */
     private final String aclId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String permission;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String resource;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
+    /**
+     * @return Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String username;
 
     @CustomType.Constructor
@@ -39,6 +63,10 @@ public final class GetKafkaSchemaRegistryAclResult {
         this.username = username;
     }
 
+    /**
+     * @return Kafka Schema Registry ACL ID
+     * 
+     */
     public String aclId() {
         return this.aclId;
     }
@@ -49,18 +77,38 @@ public final class GetKafkaSchemaRegistryAclResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String permission() {
         return this.permission;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String resource() {
         return this.resource;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String username() {
         return this.username;
     }

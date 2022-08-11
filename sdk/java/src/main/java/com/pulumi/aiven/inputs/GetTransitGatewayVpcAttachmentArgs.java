@@ -13,23 +13,47 @@ public final class GetTransitGatewayVpcAttachmentArgs extends com.pulumi.resourc
 
     public static final GetTransitGatewayVpcAttachmentArgs Empty = new GetTransitGatewayVpcAttachmentArgs();
 
+    /**
+     * AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="peerCloudAccount", required=true)
     private Output<String> peerCloudAccount;
 
+    /**
+     * @return AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> peerCloudAccount() {
         return this.peerCloudAccount;
     }
 
+    /**
+     * Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="peerVpc", required=true)
     private Output<String> peerVpc;
 
+    /**
+     * @return Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> peerVpc() {
         return this.peerVpc;
     }
 
+    /**
+     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
+    /**
+     * @return The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> vpcId() {
         return this.vpcId;
     }
@@ -60,29 +84,65 @@ public final class GetTransitGatewayVpcAttachmentArgs extends com.pulumi.resourc
             $ = new GetTransitGatewayVpcAttachmentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerCloudAccount(Output<String> peerCloudAccount) {
             $.peerCloudAccount = peerCloudAccount;
             return this;
         }
 
+        /**
+         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerCloudAccount(String peerCloudAccount) {
             return peerCloudAccount(Output.of(peerCloudAccount));
         }
 
+        /**
+         * @param peerVpc Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerVpc(Output<String> peerVpc) {
             $.peerVpc = peerVpc;
             return this;
         }
 
+        /**
+         * @param peerVpc Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerVpc(String peerVpc) {
             return peerVpc(Output.of(peerVpc));
         }
 
+        /**
+         * @param vpcId The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
+        /**
+         * @param vpcId The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }

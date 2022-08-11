@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class PgPgUserConfigPrivatelinkAccessArgs : Pulumi.ResourceArgs
+    public sealed class PgPgUserConfigPrivatelinkAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// PostgreSQL specific server provided values
+        /// </summary>
         [Input("pg")]
         public Input<string>? Pg { get; set; }
 
@@ -24,5 +27,6 @@ namespace Pulumi.Aiven.Inputs
         public PgPgUserConfigPrivatelinkAccessArgs()
         {
         }
+        public static new PgPgUserConfigPrivatelinkAccessArgs Empty => new PgPgUserConfigPrivatelinkAccessArgs();
     }
 }

@@ -69,11 +69,17 @@ class GetServiceIntegrationResult:
     @property
     @pulumi.getter(name="destinationEndpointId")
     def destination_endpoint_id(self) -> str:
+        """
+        Destination endpoint for the integration (if any)
+        """
         return pulumi.get(self, "destination_endpoint_id")
 
     @property
     @pulumi.getter(name="destinationServiceName")
     def destination_service_name(self) -> str:
+        """
+        Destination service for the integration (if any)
+        """
         return pulumi.get(self, "destination_service_name")
 
     @property
@@ -87,56 +93,89 @@ class GetServiceIntegrationResult:
     @property
     @pulumi.getter(name="integrationId")
     def integration_id(self) -> str:
+        """
+        Service Integration Id at aiven
+        """
         return pulumi.get(self, "integration_id")
 
     @property
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
+        """
+        Type of the service integration
+        """
         return pulumi.get(self, "integration_type")
 
     @property
     @pulumi.getter(name="kafkaConnectUserConfigs")
     def kafka_connect_user_configs(self) -> Sequence['outputs.GetServiceIntegrationKafkaConnectUserConfigResult']:
+        """
+        Kafka Connect specific user configurable settings
+        """
         return pulumi.get(self, "kafka_connect_user_configs")
 
     @property
     @pulumi.getter(name="kafkaLogsUserConfigs")
     def kafka_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationKafkaLogsUserConfigResult']:
+        """
+        Kafka Logs specific user configurable settings
+        """
         return pulumi.get(self, "kafka_logs_user_configs")
 
     @property
     @pulumi.getter(name="kafkaMirrormakerUserConfigs")
     def kafka_mirrormaker_user_configs(self) -> Sequence['outputs.GetServiceIntegrationKafkaMirrormakerUserConfigResult']:
+        """
+        Mirrormaker 2 integration specific user configurable settings
+        """
         return pulumi.get(self, "kafka_mirrormaker_user_configs")
 
     @property
     @pulumi.getter(name="logsUserConfigs")
     def logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationLogsUserConfigResult']:
+        """
+        Log integration specific user configurable settings
+        """
         return pulumi.get(self, "logs_user_configs")
 
     @property
     @pulumi.getter(name="metricsUserConfigs")
     def metrics_user_configs(self) -> Sequence['outputs.GetServiceIntegrationMetricsUserConfigResult']:
+        """
+        Metrics specific user configurable settings
+        """
         return pulumi.get(self, "metrics_user_configs")
 
     @property
     @pulumi.getter(name="mirrormakerUserConfigs")
     def mirrormaker_user_configs(self) -> Sequence['outputs.GetServiceIntegrationMirrormakerUserConfigResult']:
+        """
+        Mirrormaker 1 integration specific user configurable settings
+        """
         return pulumi.get(self, "mirrormaker_user_configs")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Project the integration belongs to
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> str:
+        """
+        Source endpoint for the integration (if any)
+        """
         return pulumi.get(self, "source_endpoint_id")
 
     @property
     @pulumi.getter(name="sourceServiceName")
     def source_service_name(self) -> str:
+        """
+        Source service for the integration (if any)
+        """
         return pulumi.get(self, "source_service_name")
 
 
@@ -175,6 +214,12 @@ def get_service_integration(destination_service_name: Optional[str] = None,
     ## Example Usage
 
     {{tffile "examples/data-sources/aiven_service_integration/data-source.tf"}}
+
+
+    :param str destination_service_name: Destination service for the integration (if any)
+    :param str integration_type: Type of the service integration
+    :param str project: Project the integration belongs to
+    :param str source_service_name: Source service for the integration (if any)
     """
     __args__ = dict()
     __args__['destinationServiceName'] = destination_service_name
@@ -215,5 +260,11 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
     ## Example Usage
 
     {{tffile "examples/data-sources/aiven_service_integration/data-source.tf"}}
+
+
+    :param str destination_service_name: Destination service for the integration (if any)
+    :param str integration_type: Type of the service integration
+    :param str project: Project the integration belongs to
+    :param str source_service_name: Source service for the integration (if any)
     """
     ...

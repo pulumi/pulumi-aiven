@@ -12,16 +12,32 @@ public final class GetProjectUserPlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetProjectUserPlainArgs Empty = new GetProjectUserPlainArgs();
 
+    /**
+     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="email", required=true)
     private String email;
 
+    /**
+     * @return Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String email() {
         return this.email;
     }
 
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
@@ -51,11 +67,23 @@ public final class GetProjectUserPlainArgs extends com.pulumi.resources.InvokeAr
             $ = new GetProjectUserPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param email Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(String email) {
             $.email = email;
             return this;
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;

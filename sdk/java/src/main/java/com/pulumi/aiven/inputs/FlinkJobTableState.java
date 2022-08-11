@@ -18,18 +18,14 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
     public static final FlinkJobTableState Empty = new FlinkJobTableState();
 
     /**
-     * The id of the service integration that is used with this table. It must have the service integration type `flink`. To
-     * set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so
-     * forces recreation of the resource.
+     * The id of the service integration that is used with this table. It must have the service integration type `flink`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="integrationId")
     private @Nullable Output<String> integrationId;
 
     /**
-     * @return The id of the service integration that is used with this table. It must have the service integration type `flink`. To
-     * set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so
-     * forces recreation of the resource.
+     * @return The id of the service integration that is used with this table. It must have the service integration type `flink`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> integrationId() {
@@ -37,16 +33,14 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or
-     * postgres service. This property cannot be changed, doing so forces recreation of the resource.
+     * Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or postgres service. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="jdbcTable")
     private @Nullable Output<String> jdbcTable;
 
     /**
-     * @return Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or
-     * postgres service. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or postgres service. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> jdbcTable() {
@@ -54,20 +48,14 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null.
-     * For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is
-     * found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values
-     * are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
+     * When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null. For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="kafkaConnectorType")
     private @Nullable Output<String> kafkaConnectorType;
 
     /**
-     * @return When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null.
-     * For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is
-     * found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values
-     * are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null. For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> kafkaConnectorType() {
@@ -75,16 +63,14 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This
-     * property cannot be changed, doing so forces recreation of the resource.
+     * Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="kafkaKeyFields")
     private @Nullable Output<List<String>> kafkaKeyFields;
 
     /**
-     * @return Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This
-     * property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> kafkaKeyFields() {
@@ -92,16 +78,14 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
-     * `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="kafkaKeyFormat")
     private @Nullable Output<String> kafkaKeyFormat;
 
     /**
-     * @return Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
-     * `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> kafkaKeyFormat() {
@@ -109,16 +93,14 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property
-     * cannot be changed, doing so forces recreation of the resource.
+     * Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="kafkaStartupMode")
     private @Nullable Output<String> kafkaStartupMode;
 
     /**
-     * @return Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property
-     * cannot be changed, doing so forces recreation of the resource.
+     * @return Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> kafkaStartupMode() {
@@ -126,16 +108,14 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka
-     * service. This property cannot be changed, doing so forces recreation of the resource.
+     * Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="kafkaTopic")
     private @Nullable Output<String> kafkaTopic;
 
     /**
-     * @return Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka
-     * service. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> kafkaTopic() {
@@ -143,20 +123,14 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table
-     * schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message
-     * value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot
-     * be changed, doing so forces recreation of the resource.
+     * Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="kafkaValueFieldsInclude")
     private @Nullable Output<String> kafkaValueFieldsInclude;
 
     /**
-     * @return Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table
-     * schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message
-     * value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot
-     * be changed, doing so forces recreation of the resource.
+     * @return Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> kafkaValueFieldsInclude() {
@@ -164,16 +138,14 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
-     * `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="kafkaValueFormat")
     private @Nullable Output<String> kafkaValueFormat;
 
     /**
-     * @return Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
-     * `json`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> kafkaValueFormat() {
@@ -181,16 +153,14 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table
-     * creation. This property cannot be changed, doing so forces recreation of the resource.
+     * [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="likeOptions")
     private @Nullable Output<String> likeOptions;
 
     /**
-     * @return [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table
-     * creation. This property cannot be changed, doing so forces recreation of the resource.
+     * @return [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> likeOptions() {
@@ -198,16 +168,29 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * For an OpenSearch table, the OpenSearch index the table outputs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
+    @Import(name="opensearchIndex")
+    private @Nullable Output<String> opensearchIndex;
+
+    /**
+     * @return For an OpenSearch table, the OpenSearch index the table outputs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
+    public Optional<Output<String>> opensearchIndex() {
+        return Optional.ofNullable(this.opensearchIndex);
+    }
+
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -230,16 +213,14 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -304,6 +285,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         this.kafkaValueFieldsInclude = $.kafkaValueFieldsInclude;
         this.kafkaValueFormat = $.kafkaValueFormat;
         this.likeOptions = $.likeOptions;
+        this.opensearchIndex = $.opensearchIndex;
         this.project = $.project;
         this.schemaSql = $.schemaSql;
         this.serviceName = $.serviceName;
@@ -331,9 +313,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param integrationId The id of the service integration that is used with this table. It must have the service integration type `flink`. To
-         * set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so
-         * forces recreation of the resource.
+         * @param integrationId The id of the service integration that is used with this table. It must have the service integration type `flink`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -344,9 +324,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param integrationId The id of the service integration that is used with this table. It must have the service integration type `flink`. To
-         * set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so
-         * forces recreation of the resource.
+         * @param integrationId The id of the service integration that is used with this table. It must have the service integration type `flink`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -356,8 +334,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param jdbcTable Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or
-         * postgres service. This property cannot be changed, doing so forces recreation of the resource.
+         * @param jdbcTable Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or postgres service. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -368,8 +345,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param jdbcTable Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or
-         * postgres service. This property cannot be changed, doing so forces recreation of the resource.
+         * @param jdbcTable Name of the jdbc table that is to be connected to this table. Valid if the service integration id refers to a mysql or postgres service. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -379,10 +355,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaConnectorType When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null.
-         * For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is
-         * found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values
-         * are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param kafkaConnectorType When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null. For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -393,10 +366,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaConnectorType When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null.
-         * For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is
-         * found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values
-         * are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param kafkaConnectorType When used as a source, upsert Kafka connectors update values that use an existing key and delete values that are null. For sinks, the connector correspondingly writes update or delete messages in a compacted topic. If no matching key is found, the values are added as new entries. For more information, see the Apache Flink documentation The possible values are `kafka` and `upsert-kafka`. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -406,8 +376,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaKeyFields Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This
-         * property cannot be changed, doing so forces recreation of the resource.
+         * @param kafkaKeyFields Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -418,8 +387,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaKeyFields Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This
-         * property cannot be changed, doing so forces recreation of the resource.
+         * @param kafkaKeyFields Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -429,8 +397,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaKeyFields Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This
-         * property cannot be changed, doing so forces recreation of the resource.
+         * @param kafkaKeyFields Defines an explicit list of physical columns from the table schema that configure the data type for the key format. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -440,8 +407,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaKeyFormat Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
-         * `json`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param kafkaKeyFormat Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -452,8 +418,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaKeyFormat Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
-         * `json`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param kafkaKeyFormat Kafka Key Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -463,8 +428,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaStartupMode Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property
-         * cannot be changed, doing so forces recreation of the resource.
+         * @param kafkaStartupMode Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -475,8 +439,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaStartupMode Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property
-         * cannot be changed, doing so forces recreation of the resource.
+         * @param kafkaStartupMode Startup mode The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -486,8 +449,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaTopic Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka
-         * service. This property cannot be changed, doing so forces recreation of the resource.
+         * @param kafkaTopic Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -498,8 +460,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaTopic Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka
-         * service. This property cannot be changed, doing so forces recreation of the resource.
+         * @param kafkaTopic Name of the kafka topic that is to be connected to this table. Valid if the service integration id refers to a kafka service. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -509,10 +470,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaValueFieldsInclude Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table
-         * schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message
-         * value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot
-         * be changed, doing so forces recreation of the resource.
+         * @param kafkaValueFieldsInclude Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -523,10 +481,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaValueFieldsInclude Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table
-         * schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message
-         * value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot
-         * be changed, doing so forces recreation of the resource.
+         * @param kafkaValueFieldsInclude Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -536,8 +491,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaValueFormat Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
-         * `json`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param kafkaValueFormat Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -548,8 +502,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param kafkaValueFormat Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and
-         * `json`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param kafkaValueFormat Kafka Value Format The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -559,8 +512,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param likeOptions [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table
-         * creation. This property cannot be changed, doing so forces recreation of the resource.
+         * @param likeOptions [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -571,8 +523,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param likeOptions [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table
-         * creation. This property cannot be changed, doing so forces recreation of the resource.
+         * @param likeOptions [LIKE](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/create/#like) statement for table creation. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -582,8 +533,28 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param opensearchIndex For an OpenSearch table, the OpenSearch index the table outputs to. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder opensearchIndex(@Nullable Output<String> opensearchIndex) {
+            $.opensearchIndex = opensearchIndex;
+            return this;
+        }
+
+        /**
+         * @param opensearchIndex For an OpenSearch table, the OpenSearch index the table outputs to. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder opensearchIndex(String opensearchIndex) {
+            return opensearchIndex(Output.of(opensearchIndex));
+        }
+
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -594,8 +565,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -626,8 +596,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -638,8 +607,7 @@ public final class FlinkJobTableState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

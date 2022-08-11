@@ -27,9 +27,14 @@ public final class GetPgPgUserConfig {
     private final @Nullable String enableIpv6;
     private final @Nullable List<String> ipFilters;
     private final @Nullable GetPgPgUserConfigMigration migration;
+    /**
+     * @return PostgreSQL specific server provided values
+     * 
+     */
     private final @Nullable GetPgPgUserConfigPg pg;
     private final @Nullable String pgReadReplica;
     private final @Nullable String pgServiceToForkFrom;
+    private final @Nullable String pgStatMonitorEnable;
     private final @Nullable String pgVersion;
     private final @Nullable GetPgPgUserConfigPgbouncer pgbouncer;
     private final @Nullable GetPgPgUserConfigPglookout pglookout;
@@ -40,6 +45,10 @@ public final class GetPgPgUserConfig {
     private final @Nullable String recoveryTargetTime;
     private final @Nullable String serviceToForkFrom;
     private final @Nullable String sharedBuffersPercentage;
+    /**
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * 
+     */
     private final @Nullable String staticIps;
     private final @Nullable String synchronousReplication;
     private final @Nullable GetPgPgUserConfigTimescaledb timescaledb;
@@ -58,6 +67,7 @@ public final class GetPgPgUserConfig {
         @CustomType.Parameter("pg") @Nullable GetPgPgUserConfigPg pg,
         @CustomType.Parameter("pgReadReplica") @Nullable String pgReadReplica,
         @CustomType.Parameter("pgServiceToForkFrom") @Nullable String pgServiceToForkFrom,
+        @CustomType.Parameter("pgStatMonitorEnable") @Nullable String pgStatMonitorEnable,
         @CustomType.Parameter("pgVersion") @Nullable String pgVersion,
         @CustomType.Parameter("pgbouncer") @Nullable GetPgPgUserConfigPgbouncer pgbouncer,
         @CustomType.Parameter("pglookout") @Nullable GetPgPgUserConfigPglookout pglookout,
@@ -83,6 +93,7 @@ public final class GetPgPgUserConfig {
         this.pg = pg;
         this.pgReadReplica = pgReadReplica;
         this.pgServiceToForkFrom = pgServiceToForkFrom;
+        this.pgStatMonitorEnable = pgStatMonitorEnable;
         this.pgVersion = pgVersion;
         this.pgbouncer = pgbouncer;
         this.pglookout = pglookout;
@@ -121,6 +132,10 @@ public final class GetPgPgUserConfig {
     public Optional<GetPgPgUserConfigMigration> migration() {
         return Optional.ofNullable(this.migration);
     }
+    /**
+     * @return PostgreSQL specific server provided values
+     * 
+     */
     public Optional<GetPgPgUserConfigPg> pg() {
         return Optional.ofNullable(this.pg);
     }
@@ -129,6 +144,9 @@ public final class GetPgPgUserConfig {
     }
     public Optional<String> pgServiceToForkFrom() {
         return Optional.ofNullable(this.pgServiceToForkFrom);
+    }
+    public Optional<String> pgStatMonitorEnable() {
+        return Optional.ofNullable(this.pgStatMonitorEnable);
     }
     public Optional<String> pgVersion() {
         return Optional.ofNullable(this.pgVersion);
@@ -160,6 +178,10 @@ public final class GetPgPgUserConfig {
     public Optional<String> sharedBuffersPercentage() {
         return Optional.ofNullable(this.sharedBuffersPercentage);
     }
+    /**
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -195,6 +217,7 @@ public final class GetPgPgUserConfig {
         private @Nullable GetPgPgUserConfigPg pg;
         private @Nullable String pgReadReplica;
         private @Nullable String pgServiceToForkFrom;
+        private @Nullable String pgStatMonitorEnable;
         private @Nullable String pgVersion;
         private @Nullable GetPgPgUserConfigPgbouncer pgbouncer;
         private @Nullable GetPgPgUserConfigPglookout pglookout;
@@ -227,6 +250,7 @@ public final class GetPgPgUserConfig {
     	      this.pg = defaults.pg;
     	      this.pgReadReplica = defaults.pgReadReplica;
     	      this.pgServiceToForkFrom = defaults.pgServiceToForkFrom;
+    	      this.pgStatMonitorEnable = defaults.pgStatMonitorEnable;
     	      this.pgVersion = defaults.pgVersion;
     	      this.pgbouncer = defaults.pgbouncer;
     	      this.pglookout = defaults.pglookout;
@@ -285,6 +309,10 @@ public final class GetPgPgUserConfig {
         }
         public Builder pgServiceToForkFrom(@Nullable String pgServiceToForkFrom) {
             this.pgServiceToForkFrom = pgServiceToForkFrom;
+            return this;
+        }
+        public Builder pgStatMonitorEnable(@Nullable String pgStatMonitorEnable) {
+            this.pgStatMonitorEnable = pgStatMonitorEnable;
             return this;
         }
         public Builder pgVersion(@Nullable String pgVersion) {
@@ -347,7 +375,7 @@ public final class GetPgPgUserConfig {
             this.workMem = workMem;
             return this;
         }        public GetPgPgUserConfig build() {
-            return new GetPgPgUserConfig(adminPassword, adminUsername, backupHour, backupMinute, enableIpv6, ipFilters, migration, pg, pgReadReplica, pgServiceToForkFrom, pgVersion, pgbouncer, pglookout, privateAccess, privatelinkAccess, projectToForkFrom, publicAccess, recoveryTargetTime, serviceToForkFrom, sharedBuffersPercentage, staticIps, synchronousReplication, timescaledb, variant, workMem);
+            return new GetPgPgUserConfig(adminPassword, adminUsername, backupHour, backupMinute, enableIpv6, ipFilters, migration, pg, pgReadReplica, pgServiceToForkFrom, pgStatMonitorEnable, pgVersion, pgbouncer, pglookout, privateAccess, privatelinkAccess, projectToForkFrom, publicAccess, recoveryTargetTime, serviceToForkFrom, sharedBuffersPercentage, staticIps, synchronousReplication, timescaledb, variant, workMem);
         }
     }
 }

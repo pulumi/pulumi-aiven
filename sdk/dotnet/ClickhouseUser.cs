@@ -15,22 +15,20 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var ch_user = new Aiven.ClickhouseUser("ch-user", new()
     ///     {
-    ///         var ch_user = new Aiven.ClickhouseUser("ch-user", new Aiven.ClickhouseUserArgs
-    ///         {
-    ///             Project = aiven_project.Myproject.Project,
-    ///             ServiceName = aiven_clickhouse.Myservice.Service_name,
-    ///             Username = "&lt;USERNAME&gt;",
-    ///         });
-    ///     }
+    ///         Project = aiven_project.Myproject.Project,
+    ///         ServiceName = aiven_clickhouse.Myservice.Service_name,
+    ///         Username = "&lt;USERNAME&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +38,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouseUser:ClickhouseUser")]
-    public partial class ClickhouseUser : Pulumi.CustomResource
+    public partial class ClickhouseUser : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The password of the clickhouse user.
@@ -49,8 +47,7 @@ namespace Pulumi.Aiven
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -62,8 +59,7 @@ namespace Pulumi.Aiven
         public Output<bool> Required { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -124,18 +120,16 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class ClickhouseUserArgs : Pulumi.ResourceArgs
+    public sealed class ClickhouseUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -149,9 +143,10 @@ namespace Pulumi.Aiven
         public ClickhouseUserArgs()
         {
         }
+        public static new ClickhouseUserArgs Empty => new ClickhouseUserArgs();
     }
 
-    public sealed class ClickhouseUserState : Pulumi.ResourceArgs
+    public sealed class ClickhouseUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The password of the clickhouse user.
@@ -160,8 +155,7 @@ namespace Pulumi.Aiven
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -173,8 +167,7 @@ namespace Pulumi.Aiven
         public Input<bool>? Required { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -194,5 +187,6 @@ namespace Pulumi.Aiven
         public ClickhouseUserState()
         {
         }
+        public static new ClickhouseUserState Empty => new ClickhouseUserState();
     }
 }

@@ -9,16 +9,40 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaAclResult {
+    /**
+     * @return Kafka ACL ID
+     * 
+     */
     private final String aclId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String permission;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
+    /**
+     * @return Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String topic;
+    /**
+     * @return Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String username;
 
     @CustomType.Constructor
@@ -39,6 +63,10 @@ public final class GetKafkaAclResult {
         this.username = username;
     }
 
+    /**
+     * @return Kafka ACL ID
+     * 
+     */
     public String aclId() {
         return this.aclId;
     }
@@ -49,18 +77,38 @@ public final class GetKafkaAclResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String permission() {
         return this.permission;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String topic() {
         return this.topic;
     }
+    /**
+     * @return Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String username() {
         return this.username;
     }

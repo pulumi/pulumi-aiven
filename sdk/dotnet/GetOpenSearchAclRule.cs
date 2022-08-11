@@ -19,23 +19,21 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var osAclRule = Aiven.GetOpenSearchAclRule.Invoke(new()
         ///     {
-        ///         var osAclRule = Output.Create(Aiven.GetOpenSearchAclRule.InvokeAsync(new Aiven.GetOpenSearchAclRuleArgs
-        ///         {
-        ///             Project = aiven_opensearch_acl_config.Os_acls_config.Project,
-        ///             ServiceName = aiven_opensearch_acl_config.Os_acls_config.Service_name,
-        ///             Username = "&lt;USERNAME&gt;",
-        ///             Index = "&lt;INDEX&gt;",
-        ///         }));
-        ///     }
+        ///         Project = aiven_opensearch_acl_config.Os_acls_config.Project,
+        ///         ServiceName = aiven_opensearch_acl_config.Os_acls_config.Service_name,
+        ///         Username = "&lt;USERNAME&gt;",
+        ///         Index = "&lt;INDEX&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -51,23 +49,21 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var osAclRule = Aiven.GetOpenSearchAclRule.Invoke(new()
         ///     {
-        ///         var osAclRule = Output.Create(Aiven.GetOpenSearchAclRule.InvokeAsync(new Aiven.GetOpenSearchAclRuleArgs
-        ///         {
-        ///             Project = aiven_opensearch_acl_config.Os_acls_config.Project,
-        ///             ServiceName = aiven_opensearch_acl_config.Os_acls_config.Service_name,
-        ///             Username = "&lt;USERNAME&gt;",
-        ///             Index = "&lt;INDEX&gt;",
-        ///         }));
-        ///     }
+        ///         Project = aiven_opensearch_acl_config.Os_acls_config.Project,
+        ///         ServiceName = aiven_opensearch_acl_config.Os_acls_config.Service_name,
+        ///         Username = "&lt;USERNAME&gt;",
+        ///         Index = "&lt;INDEX&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -77,48 +73,80 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetOpenSearchAclRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetOpenSearchAclRuleArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("index", required: true)]
         public string Index { get; set; } = null!;
 
+        /// <summary>
+        /// The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        /// </summary>
         [Input("permission", required: true)]
         public string Permission { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
 
         public GetOpenSearchAclRuleArgs()
         {
         }
+        public static new GetOpenSearchAclRuleArgs Empty => new GetOpenSearchAclRuleArgs();
     }
 
-    public sealed class GetOpenSearchAclRuleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOpenSearchAclRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("index", required: true)]
         public Input<string> Index { get; set; } = null!;
 
+        /// <summary>
+        /// The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
         public GetOpenSearchAclRuleInvokeArgs()
         {
         }
+        public static new GetOpenSearchAclRuleInvokeArgs Empty => new GetOpenSearchAclRuleInvokeArgs();
     }
 
 
@@ -129,10 +157,25 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The index pattern for this ACL entry. Maximum Length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Index;
+        /// <summary>
+        /// The permissions for this ACL entry The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        /// </summary>
         public readonly string Permission;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// The username for the ACL entry Maximum Length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class PgPgUserConfigPglookoutGetArgs : Pulumi.ResourceArgs
+    public sealed class PgPgUserConfigPglookoutGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("maxFailoverReplicationTimeLag")]
         public Input<string>? MaxFailoverReplicationTimeLag { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Aiven.Inputs
         public PgPgUserConfigPglookoutGetArgs()
         {
         }
+        public static new PgPgUserConfigPglookoutGetArgs Empty => new PgPgUserConfigPglookoutGetArgs();
     }
 }

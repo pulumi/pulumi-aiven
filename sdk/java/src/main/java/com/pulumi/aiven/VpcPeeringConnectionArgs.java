@@ -16,16 +16,14 @@ public final class VpcPeeringConnectionArgs extends com.pulumi.resources.Resourc
     public static final VpcPeeringConnectionArgs Empty = new VpcPeeringConnectionArgs();
 
     /**
-     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
-     * changed, doing so forces recreation of the resource.
+     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="peerAzureAppId")
     private @Nullable Output<String> peerAzureAppId;
 
     /**
-     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
-     * changed, doing so forces recreation of the resource.
+     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> peerAzureAppId() {
@@ -48,16 +46,14 @@ public final class VpcPeeringConnectionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="peerCloudAccount", required=true)
     private Output<String> peerCloudAccount;
 
     /**
-     * @return AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * @return AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> peerCloudAccount() {
@@ -65,16 +61,14 @@ public final class VpcPeeringConnectionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-     * recreation of the resource.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="peerRegion")
     private @Nullable Output<String> peerRegion;
 
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-     * recreation of the resource.
+     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> peerRegion() {
@@ -97,16 +91,14 @@ public final class VpcPeeringConnectionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="peerVpc", required=true)
     private Output<String> peerVpc;
 
     /**
-     * @return AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * @return AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> peerVpc() {
@@ -159,8 +151,7 @@ public final class VpcPeeringConnectionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerAzureAppId Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
-         * changed, doing so forces recreation of the resource.
+         * @param peerAzureAppId Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -171,8 +162,7 @@ public final class VpcPeeringConnectionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerAzureAppId Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
-         * changed, doing so forces recreation of the resource.
+         * @param peerAzureAppId Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -203,8 +193,7 @@ public final class VpcPeeringConnectionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
-         * resource.
+         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -215,8 +204,7 @@ public final class VpcPeeringConnectionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
-         * resource.
+         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -226,8 +214,7 @@ public final class VpcPeeringConnectionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-         * recreation of the resource.
+         * @param peerRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -238,8 +225,7 @@ public final class VpcPeeringConnectionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-         * recreation of the resource.
+         * @param peerRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -270,8 +256,7 @@ public final class VpcPeeringConnectionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerVpc AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-         * resource.
+         * @param peerVpc AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -282,8 +267,7 @@ public final class VpcPeeringConnectionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param peerVpc AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-         * resource.
+         * @param peerVpc AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

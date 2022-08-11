@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class FlinkComponentGetArgs : Pulumi.ResourceArgs
+    public sealed class FlinkComponentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("component")]
         public Input<string>? Component { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Aiven.Inputs
         public FlinkComponentGetArgs()
         {
         }
+        public static new FlinkComponentGetArgs Empty => new FlinkComponentGetArgs();
     }
 }

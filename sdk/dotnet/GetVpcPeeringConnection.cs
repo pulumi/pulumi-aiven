@@ -19,22 +19,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mypeeringconnection = Aiven.GetVpcPeeringConnection.Invoke(new()
         ///     {
-        ///         var mypeeringconnection = Output.Create(Aiven.GetVpcPeeringConnection.InvokeAsync(new Aiven.GetVpcPeeringConnectionArgs
-        ///         {
-        ///             VpcId = aiven_project_vpc.Myvpc.Id,
-        ///             PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
-        ///             PeerVpc = "&lt;PEER_VPC_ID/NAME&gt;",
-        ///         }));
-        ///     }
+        ///         VpcId = aiven_project_vpc.Myvpc.Id,
+        ///         PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
+        ///         PeerVpc = "&lt;PEER_VPC_ID/NAME&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -50,22 +48,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mypeeringconnection = Aiven.GetVpcPeeringConnection.Invoke(new()
         ///     {
-        ///         var mypeeringconnection = Output.Create(Aiven.GetVpcPeeringConnection.InvokeAsync(new Aiven.GetVpcPeeringConnectionArgs
-        ///         {
-        ///             VpcId = aiven_project_vpc.Myvpc.Id,
-        ///             PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
-        ///             PeerVpc = "&lt;PEER_VPC_ID/NAME&gt;",
-        ///         }));
-        ///     }
+        ///         VpcId = aiven_project_vpc.Myvpc.Id,
+        ///         PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
+        ///         PeerVpc = "&lt;PEER_VPC_ID/NAME&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,36 +71,56 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetVpcPeeringConnectionArgs : Pulumi.InvokeArgs
+    public sealed class GetVpcPeeringConnectionArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("peerCloudAccount", required: true)]
         public string PeerCloudAccount { get; set; } = null!;
 
+        /// <summary>
+        /// AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("peerVpc", required: true)]
         public string PeerVpc { get; set; } = null!;
 
+        /// <summary>
+        /// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("vpcId", required: true)]
         public string VpcId { get; set; } = null!;
 
         public GetVpcPeeringConnectionArgs()
         {
         }
+        public static new GetVpcPeeringConnectionArgs Empty => new GetVpcPeeringConnectionArgs();
     }
 
-    public sealed class GetVpcPeeringConnectionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVpcPeeringConnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("peerCloudAccount", required: true)]
         public Input<string> PeerCloudAccount { get; set; } = null!;
 
+        /// <summary>
+        /// AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("peerVpc", required: true)]
         public Input<string> PeerVpc { get; set; } = null!;
 
+        /// <summary>
+        /// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
         public GetVpcPeeringConnectionInvokeArgs()
         {
         }
+        public static new GetVpcPeeringConnectionInvokeArgs Empty => new GetVpcPeeringConnectionInvokeArgs();
     }
 
 
@@ -115,15 +131,45 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string PeerAzureAppId;
+        /// <summary>
+        /// Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string PeerAzureTenantId;
+        /// <summary>
+        /// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string PeerCloudAccount;
+        /// <summary>
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string PeerRegion;
+        /// <summary>
+        /// Azure resource group name of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string PeerResourceGroup;
+        /// <summary>
+        /// AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string PeerVpc;
+        /// <summary>
+        /// Cloud provider identifier for the peering connection if available
+        /// </summary>
         public readonly string PeeringConnectionId;
+        /// <summary>
+        /// State of the peering connection
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// State-specific help or error information
+        /// </summary>
         public readonly ImmutableDictionary<string, object> StateInfo;
+        /// <summary>
+        /// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string VpcId;
 
         [OutputConstructor]

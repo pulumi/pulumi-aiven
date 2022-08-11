@@ -15,26 +15,25 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bybg1 = new Aiven.BillingGroup("bybg1", new()
     ///     {
-    ///         var bybg1 = new Aiven.BillingGroup("bybg1", new Aiven.BillingGroupArgs
-    ///         {
-    ///             BillingCurrency = "USD",
-    ///             VatId = "123ABC",
-    ///         });
-    ///         var pr1 = new Aiven.Project("pr1", new Aiven.ProjectArgs
-    ///         {
-    ///             ProjectName = "pr1",
-    ///             BillingGroup = bybg1.Id,
-    ///         });
-    ///     }
+    ///         BillingCurrency = "USD",
+    ///         VatId = "123ABC",
+    ///     });
     /// 
-    /// }
+    ///     var pr1 = new Aiven.Project("pr1", new()
+    ///     {
+    ///         ProjectName = "pr1",
+    ///         BillingGroup = bybg1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +43,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/billingGroup:BillingGroup")]
-    public partial class BillingGroup : Pulumi.CustomResource
+    public partial class BillingGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Account id
@@ -174,7 +173,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class BillingGroupArgs : Pulumi.ResourceArgs
+    public sealed class BillingGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account id
@@ -275,9 +274,10 @@ namespace Pulumi.Aiven
         public BillingGroupArgs()
         {
         }
+        public static new BillingGroupArgs Empty => new BillingGroupArgs();
     }
 
-    public sealed class BillingGroupState : Pulumi.ResourceArgs
+    public sealed class BillingGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account id
@@ -378,5 +378,6 @@ namespace Pulumi.Aiven
         public BillingGroupState()
         {
         }
+        public static new BillingGroupState Empty => new BillingGroupState();
     }
 }

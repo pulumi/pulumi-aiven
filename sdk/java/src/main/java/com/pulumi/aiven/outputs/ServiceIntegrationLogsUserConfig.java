@@ -11,7 +11,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationLogsUserConfig {
+    /**
+     * @return Elasticsearch index retention limit
+     * 
+     */
     private final @Nullable String elasticsearchIndexDaysMax;
+    /**
+     * @return Elasticsearch index prefix
+     * 
+     */
     private final @Nullable String elasticsearchIndexPrefix;
 
     @CustomType.Constructor
@@ -22,9 +30,17 @@ public final class ServiceIntegrationLogsUserConfig {
         this.elasticsearchIndexPrefix = elasticsearchIndexPrefix;
     }
 
+    /**
+     * @return Elasticsearch index retention limit
+     * 
+     */
     public Optional<String> elasticsearchIndexDaysMax() {
         return Optional.ofNullable(this.elasticsearchIndexDaysMax);
     }
+    /**
+     * @return Elasticsearch index prefix
+     * 
+     */
     public Optional<String> elasticsearchIndexPrefix() {
         return Optional.ofNullable(this.elasticsearchIndexPrefix);
     }

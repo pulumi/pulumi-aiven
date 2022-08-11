@@ -10,18 +10,50 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionPoolResult {
+    /**
+     * @return The URI for connecting to the pool
+     * 
+     */
     private final String connectionUri;
+    /**
+     * @return The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String databaseName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * 
+     */
     private final String poolMode;
+    /**
+     * @return The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String poolName;
+    /**
+     * @return The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+     * 
+     */
     private final Integer poolSize;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
+    /**
+     * @return The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
     private final String username;
 
     @CustomType.Constructor
@@ -46,9 +78,17 @@ public final class GetConnectionPoolResult {
         this.username = username;
     }
 
+    /**
+     * @return The URI for connecting to the pool
+     * 
+     */
     public String connectionUri() {
         return this.connectionUri;
     }
+    /**
+     * @return The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String databaseName() {
         return this.databaseName;
     }
@@ -59,21 +99,45 @@ public final class GetConnectionPoolResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * 
+     */
     public String poolMode() {
         return this.poolMode;
     }
+    /**
+     * @return The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String poolName() {
         return this.poolName;
     }
+    /**
+     * @return The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+     * 
+     */
     public Integer poolSize() {
         return this.poolSize;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+     * 
+     */
     public String username() {
         return this.username;
     }

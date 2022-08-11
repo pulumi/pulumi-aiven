@@ -28,29 +28,46 @@ func LookupServiceIntegration(ctx *pulumi.Context, args *LookupServiceIntegratio
 
 // A collection of arguments for invoking getServiceIntegration.
 type LookupServiceIntegrationArgs struct {
+	// Destination service for the integration (if any)
 	DestinationServiceName string `pulumi:"destinationServiceName"`
-	IntegrationType        string `pulumi:"integrationType"`
-	Project                string `pulumi:"project"`
-	SourceServiceName      string `pulumi:"sourceServiceName"`
+	// Type of the service integration
+	IntegrationType string `pulumi:"integrationType"`
+	// Project the integration belongs to
+	Project string `pulumi:"project"`
+	// Source service for the integration (if any)
+	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // A collection of values returned by getServiceIntegration.
 type LookupServiceIntegrationResult struct {
-	DestinationEndpointId  string `pulumi:"destinationEndpointId"`
+	// Destination endpoint for the integration (if any)
+	DestinationEndpointId string `pulumi:"destinationEndpointId"`
+	// Destination service for the integration (if any)
 	DestinationServiceName string `pulumi:"destinationServiceName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                          string                                            `pulumi:"id"`
-	IntegrationId               string                                            `pulumi:"integrationId"`
-	IntegrationType             string                                            `pulumi:"integrationType"`
-	KafkaConnectUserConfigs     []GetServiceIntegrationKafkaConnectUserConfig     `pulumi:"kafkaConnectUserConfigs"`
-	KafkaLogsUserConfigs        []GetServiceIntegrationKafkaLogsUserConfig        `pulumi:"kafkaLogsUserConfigs"`
+	Id string `pulumi:"id"`
+	// Service Integration Id at aiven
+	IntegrationId string `pulumi:"integrationId"`
+	// Type of the service integration
+	IntegrationType string `pulumi:"integrationType"`
+	// Kafka Connect specific user configurable settings
+	KafkaConnectUserConfigs []GetServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfigs"`
+	// Kafka Logs specific user configurable settings
+	KafkaLogsUserConfigs []GetServiceIntegrationKafkaLogsUserConfig `pulumi:"kafkaLogsUserConfigs"`
+	// Mirrormaker 2 integration specific user configurable settings
 	KafkaMirrormakerUserConfigs []GetServiceIntegrationKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfigs"`
-	LogsUserConfigs             []GetServiceIntegrationLogsUserConfig             `pulumi:"logsUserConfigs"`
-	MetricsUserConfigs          []GetServiceIntegrationMetricsUserConfig          `pulumi:"metricsUserConfigs"`
-	MirrormakerUserConfigs      []GetServiceIntegrationMirrormakerUserConfig      `pulumi:"mirrormakerUserConfigs"`
-	Project                     string                                            `pulumi:"project"`
-	SourceEndpointId            string                                            `pulumi:"sourceEndpointId"`
-	SourceServiceName           string                                            `pulumi:"sourceServiceName"`
+	// Log integration specific user configurable settings
+	LogsUserConfigs []GetServiceIntegrationLogsUserConfig `pulumi:"logsUserConfigs"`
+	// Metrics specific user configurable settings
+	MetricsUserConfigs []GetServiceIntegrationMetricsUserConfig `pulumi:"metricsUserConfigs"`
+	// Mirrormaker 1 integration specific user configurable settings
+	MirrormakerUserConfigs []GetServiceIntegrationMirrormakerUserConfig `pulumi:"mirrormakerUserConfigs"`
+	// Project the integration belongs to
+	Project string `pulumi:"project"`
+	// Source endpoint for the integration (if any)
+	SourceEndpointId string `pulumi:"sourceEndpointId"`
+	// Source service for the integration (if any)
+	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 func LookupServiceIntegrationOutput(ctx *pulumi.Context, args LookupServiceIntegrationOutputArgs, opts ...pulumi.InvokeOption) LookupServiceIntegrationResultOutput {
@@ -68,10 +85,14 @@ func LookupServiceIntegrationOutput(ctx *pulumi.Context, args LookupServiceInteg
 
 // A collection of arguments for invoking getServiceIntegration.
 type LookupServiceIntegrationOutputArgs struct {
+	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringInput `pulumi:"destinationServiceName"`
-	IntegrationType        pulumi.StringInput `pulumi:"integrationType"`
-	Project                pulumi.StringInput `pulumi:"project"`
-	SourceServiceName      pulumi.StringInput `pulumi:"sourceServiceName"`
+	// Type of the service integration
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Project the integration belongs to
+	Project pulumi.StringInput `pulumi:"project"`
+	// Source service for the integration (if any)
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
 func (LookupServiceIntegrationOutputArgs) ElementType() reflect.Type {
@@ -93,10 +114,12 @@ func (o LookupServiceIntegrationResultOutput) ToLookupServiceIntegrationResultOu
 	return o
 }
 
+// Destination endpoint for the integration (if any)
 func (o LookupServiceIntegrationResultOutput) DestinationEndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.DestinationEndpointId }).(pulumi.StringOutput)
 }
 
+// Destination service for the integration (if any)
 func (o LookupServiceIntegrationResultOutput) DestinationServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.DestinationServiceName }).(pulumi.StringOutput)
 }
@@ -106,56 +129,67 @@ func (o LookupServiceIntegrationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Service Integration Id at aiven
 func (o LookupServiceIntegrationResultOutput) IntegrationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.IntegrationId }).(pulumi.StringOutput)
 }
 
+// Type of the service integration
 func (o LookupServiceIntegrationResultOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Kafka Connect specific user configurable settings
 func (o LookupServiceIntegrationResultOutput) KafkaConnectUserConfigs() GetServiceIntegrationKafkaConnectUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationKafkaConnectUserConfig {
 		return v.KafkaConnectUserConfigs
 	}).(GetServiceIntegrationKafkaConnectUserConfigArrayOutput)
 }
 
+// Kafka Logs specific user configurable settings
 func (o LookupServiceIntegrationResultOutput) KafkaLogsUserConfigs() GetServiceIntegrationKafkaLogsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationKafkaLogsUserConfig {
 		return v.KafkaLogsUserConfigs
 	}).(GetServiceIntegrationKafkaLogsUserConfigArrayOutput)
 }
 
+// Mirrormaker 2 integration specific user configurable settings
 func (o LookupServiceIntegrationResultOutput) KafkaMirrormakerUserConfigs() GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationKafkaMirrormakerUserConfig {
 		return v.KafkaMirrormakerUserConfigs
 	}).(GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput)
 }
 
+// Log integration specific user configurable settings
 func (o LookupServiceIntegrationResultOutput) LogsUserConfigs() GetServiceIntegrationLogsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationLogsUserConfig { return v.LogsUserConfigs }).(GetServiceIntegrationLogsUserConfigArrayOutput)
 }
 
+// Metrics specific user configurable settings
 func (o LookupServiceIntegrationResultOutput) MetricsUserConfigs() GetServiceIntegrationMetricsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationMetricsUserConfig {
 		return v.MetricsUserConfigs
 	}).(GetServiceIntegrationMetricsUserConfigArrayOutput)
 }
 
+// Mirrormaker 1 integration specific user configurable settings
 func (o LookupServiceIntegrationResultOutput) MirrormakerUserConfigs() GetServiceIntegrationMirrormakerUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationMirrormakerUserConfig {
 		return v.MirrormakerUserConfigs
 	}).(GetServiceIntegrationMirrormakerUserConfigArrayOutput)
 }
 
+// Project the integration belongs to
 func (o LookupServiceIntegrationResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Source endpoint for the integration (if any)
 func (o LookupServiceIntegrationResultOutput) SourceEndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.SourceEndpointId }).(pulumi.StringOutput)
 }
 
+// Source service for the integration (if any)
 func (o LookupServiceIntegrationResultOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }

@@ -15,14 +15,50 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CassandraCassandraUserConfig {
+    /**
+     * @return cassandra configuration values
+     * 
+     */
     private final @Nullable CassandraCassandraUserConfigCassandra cassandra;
+    /**
+     * @return Cassandra major version
+     * 
+     */
     private final @Nullable String cassandraVersion;
+    /**
+     * @return IP filter
+     * 
+     */
     private final @Nullable List<String> ipFilters;
+    /**
+     * @return Migration mode for the sstableloader utility
+     * 
+     */
     private final @Nullable String migrateSstableloader;
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     private final @Nullable CassandraCassandraUserConfigPrivateAccess privateAccess;
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String projectToForkFrom;
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     private final @Nullable CassandraCassandraUserConfigPublicAccess publicAccess;
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String serviceToForkFrom;
+    /**
+     * @return Static IP addresses
+     * 
+     */
     private final @Nullable String staticIps;
 
     @CustomType.Constructor
@@ -47,30 +83,66 @@ public final class CassandraCassandraUserConfig {
         this.staticIps = staticIps;
     }
 
+    /**
+     * @return cassandra configuration values
+     * 
+     */
     public Optional<CassandraCassandraUserConfigCassandra> cassandra() {
         return Optional.ofNullable(this.cassandra);
     }
+    /**
+     * @return Cassandra major version
+     * 
+     */
     public Optional<String> cassandraVersion() {
         return Optional.ofNullable(this.cassandraVersion);
     }
+    /**
+     * @return IP filter
+     * 
+     */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Migration mode for the sstableloader utility
+     * 
+     */
     public Optional<String> migrateSstableloader() {
         return Optional.ofNullable(this.migrateSstableloader);
     }
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     public Optional<CassandraCassandraUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     public Optional<CassandraCassandraUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

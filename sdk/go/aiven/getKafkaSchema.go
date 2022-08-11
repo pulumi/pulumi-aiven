@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupKafkaSchemaConfiguration(ctx, &GetKafkaSchemaConfigurationArgs{
-// 			Project:     aiven_project.Kafka - schemas - project1.Project,
-// 			ServiceName: aiven_service.Kafka - service1.Service_name,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupKafkaSchemaConfiguration(ctx, &GetKafkaSchemaConfigurationArgs{
+//				Project:     aiven_project.Kafka - schemas - project1.Project,
+//				ServiceName: aiven_service.Kafka - service1.Service_name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupKafkaSchema(ctx *pulumi.Context, args *LookupKafkaSchemaArgs, opts ...pulumi.InvokeOption) (*LookupKafkaSchemaResult, error) {
 	var rv LookupKafkaSchemaResult
@@ -46,22 +49,32 @@ func LookupKafkaSchema(ctx *pulumi.Context, args *LookupKafkaSchemaArgs, opts ..
 
 // A collection of arguments for invoking getKafkaSchema.
 type LookupKafkaSchemaArgs struct {
-	Project     string `pulumi:"project"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
+	// The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
 	SubjectName string `pulumi:"subjectName"`
 }
 
 // A collection of values returned by getKafkaSchema.
 type LookupKafkaSchemaResult struct {
+	// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
 	CompatibilityLevel string `pulumi:"compatibilityLevel"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Project     string `pulumi:"project"`
-	Schema      string `pulumi:"schema"`
-	SchemaType  string `pulumi:"schemaType"`
+	Id string `pulumi:"id"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Kafka Schema configuration should be a valid Avro Schema JSON format.
+	Schema string `pulumi:"schema"`
+	// Kafka Schema type JSON or AVRO
+	SchemaType string `pulumi:"schemaType"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
+	// The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
 	SubjectName string `pulumi:"subjectName"`
-	Version     int    `pulumi:"version"`
+	// Kafka Schema configuration version.
+	Version int `pulumi:"version"`
 }
 
 func LookupKafkaSchemaOutput(ctx *pulumi.Context, args LookupKafkaSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaSchemaResultOutput {
@@ -79,8 +92,11 @@ func LookupKafkaSchemaOutput(ctx *pulumi.Context, args LookupKafkaSchemaOutputAr
 
 // A collection of arguments for invoking getKafkaSchema.
 type LookupKafkaSchemaOutputArgs struct {
-	Project     pulumi.StringInput `pulumi:"project"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
 	SubjectName pulumi.StringInput `pulumi:"subjectName"`
 }
 
@@ -103,6 +119,7 @@ func (o LookupKafkaSchemaResultOutput) ToLookupKafkaSchemaResultOutputWithContex
 	return o
 }
 
+// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
 func (o LookupKafkaSchemaResultOutput) CompatibilityLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaSchemaResult) string { return v.CompatibilityLevel }).(pulumi.StringOutput)
 }
@@ -112,26 +129,32 @@ func (o LookupKafkaSchemaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaSchemaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaSchemaResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaSchemaResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Kafka Schema configuration should be a valid Avro Schema JSON format.
 func (o LookupKafkaSchemaResultOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaSchemaResult) string { return v.Schema }).(pulumi.StringOutput)
 }
 
+// Kafka Schema type JSON or AVRO
 func (o LookupKafkaSchemaResultOutput) SchemaType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaSchemaResult) string { return v.SchemaType }).(pulumi.StringOutput)
 }
 
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaSchemaResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaSchemaResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaSchemaResultOutput) SubjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaSchemaResult) string { return v.SubjectName }).(pulumi.StringOutput)
 }
 
+// Kafka Schema configuration version.
 func (o LookupKafkaSchemaResultOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupKafkaSchemaResult) int { return v.Version }).(pulumi.IntOutput)
 }

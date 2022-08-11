@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMySqlMysqlUserConfigPublicAccess {
+    /**
+     * @return MySQL specific server provided values
+     * 
+     */
     private final @Nullable String mysql;
     private final @Nullable String mysqlx;
     private final @Nullable String prometheus;
@@ -25,6 +29,10 @@ public final class GetMySqlMysqlUserConfigPublicAccess {
         this.prometheus = prometheus;
     }
 
+    /**
+     * @return MySQL specific server provided values
+     * 
+     */
     public Optional<String> mysql() {
         return Optional.ofNullable(this.mysql);
     }

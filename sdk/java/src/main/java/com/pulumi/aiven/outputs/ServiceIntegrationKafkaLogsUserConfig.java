@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationKafkaLogsUserConfig {
+    /**
+     * @return Topic name
+     * 
+     */
     private final @Nullable String kafkaTopic;
 
     @CustomType.Constructor
@@ -18,6 +22,10 @@ public final class ServiceIntegrationKafkaLogsUserConfig {
         this.kafkaTopic = kafkaTopic;
     }
 
+    /**
+     * @return Topic name
+     * 
+     */
     public Optional<String> kafkaTopic() {
         return Optional.ofNullable(this.kafkaTopic);
     }

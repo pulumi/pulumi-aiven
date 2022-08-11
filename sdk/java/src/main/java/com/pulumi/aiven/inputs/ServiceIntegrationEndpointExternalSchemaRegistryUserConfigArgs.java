@@ -15,30 +15,62 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
 
     public static final ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs Empty = new ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs();
 
+    /**
+     * Authentication method
+     * 
+     */
     @Import(name="authentication")
     private @Nullable Output<String> authentication;
 
+    /**
+     * @return Authentication method
+     * 
+     */
     public Optional<Output<String>> authentication() {
         return Optional.ofNullable(this.authentication);
     }
 
+    /**
+     * Basic authentication password
+     * 
+     */
     @Import(name="basicAuthPassword")
     private @Nullable Output<String> basicAuthPassword;
 
+    /**
+     * @return Basic authentication password
+     * 
+     */
     public Optional<Output<String>> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
 
+    /**
+     * Basic authentication user name
+     * 
+     */
     @Import(name="basicAuthUsername")
     private @Nullable Output<String> basicAuthUsername;
 
+    /**
+     * @return Basic authentication user name
+     * 
+     */
     public Optional<Output<String>> basicAuthUsername() {
         return Optional.ofNullable(this.basicAuthUsername);
     }
 
+    /**
+     * Schema Registry URL
+     * 
+     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
+    /**
+     * @return Schema Registry URL
+     * 
+     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -70,38 +102,86 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
             $ = new ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param authentication Authentication method
+         * 
+         * @return builder
+         * 
+         */
         public Builder authentication(@Nullable Output<String> authentication) {
             $.authentication = authentication;
             return this;
         }
 
+        /**
+         * @param authentication Authentication method
+         * 
+         * @return builder
+         * 
+         */
         public Builder authentication(String authentication) {
             return authentication(Output.of(authentication));
         }
 
+        /**
+         * @param basicAuthPassword Basic authentication password
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthPassword(@Nullable Output<String> basicAuthPassword) {
             $.basicAuthPassword = basicAuthPassword;
             return this;
         }
 
+        /**
+         * @param basicAuthPassword Basic authentication password
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthPassword(String basicAuthPassword) {
             return basicAuthPassword(Output.of(basicAuthPassword));
         }
 
+        /**
+         * @param basicAuthUsername Basic authentication user name
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthUsername(@Nullable Output<String> basicAuthUsername) {
             $.basicAuthUsername = basicAuthUsername;
             return this;
         }
 
+        /**
+         * @param basicAuthUsername Basic authentication user name
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthUsername(String basicAuthUsername) {
             return basicAuthUsername(Output.of(basicAuthUsername));
         }
 
+        /**
+         * @param url Schema Registry URL
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url Schema Registry URL
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

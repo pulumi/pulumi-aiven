@@ -19,7 +19,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/accountAuthentication:AccountAuthentication")]
-    public partial class AccountAuthentication : Pulumi.CustomResource
+    public partial class AccountAuthentication : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The unique id of the account.
@@ -173,7 +173,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class AccountAuthenticationArgs : Pulumi.ResourceArgs
+    public sealed class AccountAuthenticationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique id of the account.
@@ -256,9 +256,10 @@ namespace Pulumi.Aiven
         public AccountAuthenticationArgs()
         {
         }
+        public static new AccountAuthenticationArgs Empty => new AccountAuthenticationArgs();
     }
 
-    public sealed class AccountAuthenticationState : Pulumi.ResourceArgs
+    public sealed class AccountAuthenticationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique id of the account.
@@ -371,5 +372,6 @@ namespace Pulumi.Aiven
         public AccountAuthenticationState()
         {
         }
+        public static new AccountAuthenticationState Empty => new AccountAuthenticationState();
     }
 }

@@ -19,22 +19,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var user = Aiven.GetRedisUser.Invoke(new()
         ///     {
-        ///         var user = Output.Create(Aiven.GetRedisUser.InvokeAsync(new Aiven.GetRedisUserArgs
-        ///         {
-        ///             Project = "my-project",
-        ///             ServiceName = "my-service",
-        ///             Username = "user1",
-        ///         }));
-        ///     }
+        ///         Project = "my-project",
+        ///         ServiceName = "my-service",
+        ///         Username = "user1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -50,22 +48,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var user = Aiven.GetRedisUser.Invoke(new()
         ///     {
-        ///         var user = Output.Create(Aiven.GetRedisUser.InvokeAsync(new Aiven.GetRedisUserArgs
-        ///         {
-        ///             Project = "my-project",
-        ///             ServiceName = "my-service",
-        ///             Username = "user1",
-        ///         }));
-        ///     }
+        ///         Project = "my-project",
+        ///         ServiceName = "my-service",
+        ///         Username = "user1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,36 +71,56 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetRedisUserArgs : Pulumi.InvokeArgs
+    public sealed class GetRedisUserArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
 
         public GetRedisUserArgs()
         {
         }
+        public static new GetRedisUserArgs Empty => new GetRedisUserArgs();
     }
 
-    public sealed class GetRedisUserInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRedisUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
         public GetRedisUserInvokeArgs()
         {
         }
+        public static new GetRedisUserInvokeArgs Empty => new GetRedisUserInvokeArgs();
     }
 
 
@@ -115,14 +131,41 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The password of the Redis User.
+        /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly ImmutableArray<string> RedisAclCategories;
+        /// <summary>
+        /// Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly ImmutableArray<string> RedisAclChannels;
+        /// <summary>
+        /// Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly ImmutableArray<string> RedisAclCommands;
+        /// <summary>
+        /// Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly ImmutableArray<string> RedisAclKeys;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

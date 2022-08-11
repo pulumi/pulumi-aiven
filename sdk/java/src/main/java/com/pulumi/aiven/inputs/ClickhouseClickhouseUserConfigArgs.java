@@ -16,23 +16,47 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
 
     public static final ClickhouseClickhouseUserConfigArgs Empty = new ClickhouseClickhouseUserConfigArgs();
 
+    /**
+     * IP filter
+     * 
+     */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
+    /**
+     * @return IP filter
+     * 
+     */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="projectToForkFrom")
     private @Nullable Output<String> projectToForkFrom;
 
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
 
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
@@ -63,33 +87,75 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
             $ = new ClickhouseClickhouseUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(@Nullable Output<String> projectToForkFrom) {
             $.projectToForkFrom = projectToForkFrom;
             return this;
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(String projectToForkFrom) {
             return projectToForkFrom(Output.of(projectToForkFrom));
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(@Nullable Output<String> serviceToForkFrom) {
             $.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(String serviceToForkFrom) {
             return serviceToForkFrom(Output.of(serviceToForkFrom));
         }

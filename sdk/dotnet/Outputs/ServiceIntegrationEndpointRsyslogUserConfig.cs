@@ -13,14 +13,41 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ServiceIntegrationEndpointRsyslogUserConfig
     {
+        /// <summary>
+        /// PEM encoded CA certificate
+        /// </summary>
         public readonly string? Ca;
+        /// <summary>
+        /// PEM encoded client certificate
+        /// </summary>
         public readonly string? Cert;
+        /// <summary>
+        /// message format
+        /// </summary>
         public readonly string? Format;
+        /// <summary>
+        /// PEM encoded client key
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// custom syslog message format
+        /// </summary>
         public readonly string? Logline;
+        /// <summary>
+        /// rsyslog server port
+        /// </summary>
         public readonly string? Port;
+        /// <summary>
+        /// Structured data block for log message
+        /// </summary>
         public readonly string? Sd;
+        /// <summary>
+        /// rsyslog server IP address or hostname
+        /// </summary>
         public readonly string? Server;
+        /// <summary>
+        /// Require TLS
+        /// </summary>
         public readonly string? Tls;
 
         [OutputConstructor]

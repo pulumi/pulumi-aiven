@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs : Pulumi.ResourceArgs
+    public sealed class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs : global::Pulumi.ResourceArgs
     {
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Aiven.Inputs
         public KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs()
         {
         }
+        public static new KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs Empty => new KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs();
     }
 }

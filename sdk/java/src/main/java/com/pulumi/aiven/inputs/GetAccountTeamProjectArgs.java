@@ -13,23 +13,47 @@ public final class GetAccountTeamProjectArgs extends com.pulumi.resources.Invoke
 
     public static final GetAccountTeamProjectArgs Empty = new GetAccountTeamProjectArgs();
 
+    /**
+     * The unique account id
+     * 
+     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
+    /**
+     * @return The unique account id
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
+    /**
+     * The name of an already existing project
+     * 
+     */
     @Import(name="projectName", required=true)
     private Output<String> projectName;
 
+    /**
+     * @return The name of an already existing project
+     * 
+     */
     public Output<String> projectName() {
         return this.projectName;
     }
 
+    /**
+     * An account team id
+     * 
+     */
     @Import(name="teamId", required=true)
     private Output<String> teamId;
 
+    /**
+     * @return An account team id
+     * 
+     */
     public Output<String> teamId() {
         return this.teamId;
     }
@@ -60,29 +84,65 @@ public final class GetAccountTeamProjectArgs extends com.pulumi.resources.Invoke
             $ = new GetAccountTeamProjectArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId The unique account id
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId The unique account id
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param projectName The name of an already existing project
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectName(Output<String> projectName) {
             $.projectName = projectName;
             return this;
         }
 
+        /**
+         * @param projectName The name of an already existing project
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectName(String projectName) {
             return projectName(Output.of(projectName));
         }
 
+        /**
+         * @param teamId An account team id
+         * 
+         * @return builder
+         * 
+         */
         public Builder teamId(Output<String> teamId) {
             $.teamId = teamId;
             return this;
         }
 
+        /**
+         * @param teamId An account team id
+         * 
+         * @return builder
+         * 
+         */
         public Builder teamId(String teamId) {
             return teamId(Output.of(teamId));
         }

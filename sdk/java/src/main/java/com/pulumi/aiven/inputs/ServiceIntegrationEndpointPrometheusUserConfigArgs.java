@@ -15,16 +15,32 @@ public final class ServiceIntegrationEndpointPrometheusUserConfigArgs extends co
 
     public static final ServiceIntegrationEndpointPrometheusUserConfigArgs Empty = new ServiceIntegrationEndpointPrometheusUserConfigArgs();
 
+    /**
+     * Prometheus basic authentication password
+     * 
+     */
     @Import(name="basicAuthPassword")
     private @Nullable Output<String> basicAuthPassword;
 
+    /**
+     * @return Prometheus basic authentication password
+     * 
+     */
     public Optional<Output<String>> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
 
+    /**
+     * Prometheus basic authentication username
+     * 
+     */
     @Import(name="basicAuthUsername")
     private @Nullable Output<String> basicAuthUsername;
 
+    /**
+     * @return Prometheus basic authentication username
+     * 
+     */
     public Optional<Output<String>> basicAuthUsername() {
         return Optional.ofNullable(this.basicAuthUsername);
     }
@@ -54,20 +70,44 @@ public final class ServiceIntegrationEndpointPrometheusUserConfigArgs extends co
             $ = new ServiceIntegrationEndpointPrometheusUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param basicAuthPassword Prometheus basic authentication password
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthPassword(@Nullable Output<String> basicAuthPassword) {
             $.basicAuthPassword = basicAuthPassword;
             return this;
         }
 
+        /**
+         * @param basicAuthPassword Prometheus basic authentication password
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthPassword(String basicAuthPassword) {
             return basicAuthPassword(Output.of(basicAuthPassword));
         }
 
+        /**
+         * @param basicAuthUsername Prometheus basic authentication username
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthUsername(@Nullable Output<String> basicAuthUsername) {
             $.basicAuthUsername = basicAuthUsername;
             return this;
         }
 
+        /**
+         * @param basicAuthUsername Prometheus basic authentication username
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthUsername(String basicAuthUsername) {
             return basicAuthUsername(Output.of(basicAuthUsername));
         }

@@ -13,11 +13,10 @@ namespace Pulumi.Aiven
     /// The aiven static_ip resource allows the creation and deletion of static ips. Please not that once a static ip is in the 'assigned' state it it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
     /// </summary>
     [AivenResourceType("aiven:index/staticIp:StaticIp")]
-    public partial class StaticIp : Pulumi.CustomResource
+    public partial class StaticIp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the
-        /// resource.
+        /// Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("cloudName")]
         public Output<string> CloudName { get; private set; } = null!;
@@ -29,8 +28,7 @@ namespace Pulumi.Aiven
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -97,18 +95,16 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class StaticIpArgs : Pulumi.ResourceArgs
+    public sealed class StaticIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the
-        /// resource.
+        /// Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("cloudName", required: true)]
         public Input<string> CloudName { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -116,13 +112,13 @@ namespace Pulumi.Aiven
         public StaticIpArgs()
         {
         }
+        public static new StaticIpArgs Empty => new StaticIpArgs();
     }
 
-    public sealed class StaticIpState : Pulumi.ResourceArgs
+    public sealed class StaticIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the
-        /// resource.
+        /// Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
@@ -134,8 +130,7 @@ namespace Pulumi.Aiven
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -161,5 +156,6 @@ namespace Pulumi.Aiven
         public StaticIpState()
         {
         }
+        public static new StaticIpState Empty => new StaticIpState();
     }
 }

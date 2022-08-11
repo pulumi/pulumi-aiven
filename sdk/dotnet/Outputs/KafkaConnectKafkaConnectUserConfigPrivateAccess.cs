@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaConnectKafkaConnectUserConfigPrivateAccess
     {
+        /// <summary>
+        /// Kafka Connect server provided values
+        /// </summary>
         public readonly string? KafkaConnect;
         public readonly string? Prometheus;
 

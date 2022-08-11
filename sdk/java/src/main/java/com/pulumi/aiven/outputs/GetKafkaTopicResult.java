@@ -14,18 +14,46 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaTopicResult {
+    /**
+     * @return Kafka topic configuration
+     * 
+     */
     private final List<GetKafkaTopicConfig> configs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return The number of partitions to create in the topic.
+     * 
+     */
     private final Integer partitions;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return The replication factor for the topic.
+     * 
+     */
     private final Integer replication;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
+    /**
+     * @return Kafka Topic tag.
+     * 
+     */
     private final List<GetKafkaTopicTag> tags;
     private final Boolean terminationProtection;
+    /**
+     * @return The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String topicName;
 
     @CustomType.Constructor
@@ -50,6 +78,10 @@ public final class GetKafkaTopicResult {
         this.topicName = topicName;
     }
 
+    /**
+     * @return Kafka topic configuration
+     * 
+     */
     public List<GetKafkaTopicConfig> configs() {
         return this.configs;
     }
@@ -60,24 +92,48 @@ public final class GetKafkaTopicResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The number of partitions to create in the topic.
+     * 
+     */
     public Integer partitions() {
         return this.partitions;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return The replication factor for the topic.
+     * 
+     */
     public Integer replication() {
         return this.replication;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return Kafka Topic tag.
+     * 
+     */
     public List<GetKafkaTopicTag> tags() {
         return this.tags;
     }
     public Boolean terminationProtection() {
         return this.terminationProtection;
     }
+    /**
+     * @return The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String topicName() {
         return this.topicName;
     }

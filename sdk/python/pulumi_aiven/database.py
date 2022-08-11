@@ -23,14 +23,10 @@ class DatabaseArgs:
         """
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[str] database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be
-               changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot
-               be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
@@ -60,8 +56,7 @@ class DatabaseArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -73,8 +68,7 @@ class DatabaseArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -86,8 +80,7 @@ class DatabaseArgs:
     @pulumi.getter(name="lcCollate")
     def lc_collate(self) -> Optional[pulumi.Input[str]]:
         """
-        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be
-        changed, doing so forces recreation of the resource.
+        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "lc_collate")
 
@@ -99,8 +92,7 @@ class DatabaseArgs:
     @pulumi.getter(name="lcCtype")
     def lc_ctype(self) -> Optional[pulumi.Input[str]]:
         """
-        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot
-        be changed, doing so forces recreation of the resource.
+        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "lc_ctype")
 
@@ -134,14 +126,10 @@ class _DatabaseState:
         """
         Input properties used for looking up and filtering Database resources.
         :param pulumi.Input[str] database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be
-               changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot
-               be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
@@ -174,8 +162,7 @@ class _DatabaseState:
     @pulumi.getter(name="lcCollate")
     def lc_collate(self) -> Optional[pulumi.Input[str]]:
         """
-        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be
-        changed, doing so forces recreation of the resource.
+        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "lc_collate")
 
@@ -187,8 +174,7 @@ class _DatabaseState:
     @pulumi.getter(name="lcCtype")
     def lc_ctype(self) -> Optional[pulumi.Input[str]]:
         """
-        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot
-        be changed, doing so forces recreation of the resource.
+        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "lc_ctype")
 
@@ -200,8 +186,7 @@ class _DatabaseState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -213,8 +198,7 @@ class _DatabaseState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -272,14 +256,10 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be
-               changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot
-               be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
@@ -376,14 +356,10 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be
-               changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot
-               be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
@@ -411,8 +387,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="lcCollate")
     def lc_collate(self) -> pulumi.Output[Optional[str]]:
         """
-        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be
-        changed, doing so forces recreation of the resource.
+        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "lc_collate")
 
@@ -420,8 +395,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="lcCtype")
     def lc_ctype(self) -> pulumi.Output[Optional[str]]:
         """
-        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot
-        be changed, doing so forces recreation of the resource.
+        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "lc_ctype")
 
@@ -429,8 +403,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -438,8 +411,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 

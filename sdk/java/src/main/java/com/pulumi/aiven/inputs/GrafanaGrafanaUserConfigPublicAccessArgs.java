@@ -15,9 +15,17 @@ public final class GrafanaGrafanaUserConfigPublicAccessArgs extends com.pulumi.r
 
     public static final GrafanaGrafanaUserConfigPublicAccessArgs Empty = new GrafanaGrafanaUserConfigPublicAccessArgs();
 
+    /**
+     * Grafana server provided values
+     * 
+     */
     @Import(name="grafana")
     private @Nullable Output<String> grafana;
 
+    /**
+     * @return Grafana server provided values
+     * 
+     */
     public Optional<Output<String>> grafana() {
         return Optional.ofNullable(this.grafana);
     }
@@ -46,11 +54,23 @@ public final class GrafanaGrafanaUserConfigPublicAccessArgs extends com.pulumi.r
             $ = new GrafanaGrafanaUserConfigPublicAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param grafana Grafana server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder grafana(@Nullable Output<String> grafana) {
             $.grafana = grafana;
             return this;
         }
 
+        /**
+         * @param grafana Grafana server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder grafana(String grafana) {
             return grafana(Output.of(grafana));
         }

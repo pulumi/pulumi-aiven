@@ -20,20 +20,80 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaKafkaUserConfig {
+    /**
+     * @return Custom domain
+     * 
+     */
     private final @Nullable String customDomain;
+    /**
+     * @return IP filter
+     * 
+     */
     private final @Nullable List<String> ipFilters;
+    /**
+     * @return Kafka broker configuration values
+     * 
+     */
     private final @Nullable KafkaKafkaUserConfigKafka kafka;
+    /**
+     * @return Kafka authentication methods
+     * 
+     */
     private final @Nullable KafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
+    /**
+     * @return Enable Kafka Connect service
+     * 
+     */
     private final @Nullable String kafkaConnect;
+    /**
+     * @return Kafka Connect configuration values
+     * 
+     */
     private final @Nullable KafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
+    /**
+     * @return Enable Kafka-REST service
+     * 
+     */
     private final @Nullable String kafkaRest;
+    /**
+     * @return Kafka REST configuration
+     * 
+     */
     private final @Nullable KafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
+    /**
+     * @return Kafka major version
+     * 
+     */
     private final @Nullable String kafkaVersion;
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     private final @Nullable KafkaKafkaUserConfigPrivateAccess privateAccess;
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     private final @Nullable KafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess;
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     private final @Nullable KafkaKafkaUserConfigPublicAccess publicAccess;
+    /**
+     * @return Enable Schema-Registry service
+     * 
+     */
     private final @Nullable String schemaRegistry;
+    /**
+     * @return Schema Registry configuration
+     * 
+     */
     private final @Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
+    /**
+     * @return Static IP addresses
+     * 
+     */
     private final @Nullable String staticIps;
 
     @CustomType.Constructor
@@ -70,48 +130,108 @@ public final class KafkaKafkaUserConfig {
         this.staticIps = staticIps;
     }
 
+    /**
+     * @return Custom domain
+     * 
+     */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
+    /**
+     * @return IP filter
+     * 
+     */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Kafka broker configuration values
+     * 
+     */
     public Optional<KafkaKafkaUserConfigKafka> kafka() {
         return Optional.ofNullable(this.kafka);
     }
+    /**
+     * @return Kafka authentication methods
+     * 
+     */
     public Optional<KafkaKafkaUserConfigKafkaAuthenticationMethods> kafkaAuthenticationMethods() {
         return Optional.ofNullable(this.kafkaAuthenticationMethods);
     }
+    /**
+     * @return Enable Kafka Connect service
+     * 
+     */
     public Optional<String> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
+    /**
+     * @return Kafka Connect configuration values
+     * 
+     */
     public Optional<KafkaKafkaUserConfigKafkaConnectConfig> kafkaConnectConfig() {
         return Optional.ofNullable(this.kafkaConnectConfig);
     }
+    /**
+     * @return Enable Kafka-REST service
+     * 
+     */
     public Optional<String> kafkaRest() {
         return Optional.ofNullable(this.kafkaRest);
     }
+    /**
+     * @return Kafka REST configuration
+     * 
+     */
     public Optional<KafkaKafkaUserConfigKafkaRestConfig> kafkaRestConfig() {
         return Optional.ofNullable(this.kafkaRestConfig);
     }
+    /**
+     * @return Kafka major version
+     * 
+     */
     public Optional<String> kafkaVersion() {
         return Optional.ofNullable(this.kafkaVersion);
     }
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     public Optional<KafkaKafkaUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     public Optional<KafkaKafkaUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     public Optional<KafkaKafkaUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    /**
+     * @return Enable Schema-Registry service
+     * 
+     */
     public Optional<String> schemaRegistry() {
         return Optional.ofNullable(this.schemaRegistry);
     }
+    /**
+     * @return Schema Registry configuration
+     * 
+     */
     public Optional<KafkaKafkaUserConfigSchemaRegistryConfig> schemaRegistryConfig() {
         return Optional.ofNullable(this.schemaRegistryConfig);
     }
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

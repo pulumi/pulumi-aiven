@@ -15,37 +15,77 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
 
     public static final ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs Empty = new ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs();
 
+    /**
+     * PEM encoded CA certificate
+     * 
+     */
     @Import(name="ca")
     private @Nullable Output<String> ca;
 
+    /**
+     * @return PEM encoded CA certificate
+     * 
+     */
     public Optional<Output<String>> ca() {
         return Optional.ofNullable(this.ca);
     }
 
+    /**
+     * Maximum number of days of logs to keep
+     * 
+     */
     @Import(name="indexDaysMax")
     private @Nullable Output<String> indexDaysMax;
 
+    /**
+     * @return Maximum number of days of logs to keep
+     * 
+     */
     public Optional<Output<String>> indexDaysMax() {
         return Optional.ofNullable(this.indexDaysMax);
     }
 
+    /**
+     * Elasticsearch index prefix
+     * 
+     */
     @Import(name="indexPrefix")
     private @Nullable Output<String> indexPrefix;
 
+    /**
+     * @return Elasticsearch index prefix
+     * 
+     */
     public Optional<Output<String>> indexPrefix() {
         return Optional.ofNullable(this.indexPrefix);
     }
 
+    /**
+     * Elasticsearch request timeout limit
+     * 
+     */
     @Import(name="timeout")
     private @Nullable Output<String> timeout;
 
+    /**
+     * @return Elasticsearch request timeout limit
+     * 
+     */
     public Optional<Output<String>> timeout() {
         return Optional.ofNullable(this.timeout);
     }
 
+    /**
+     * Elasticsearch connection URL
+     * 
+     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
+    /**
+     * @return Elasticsearch connection URL
+     * 
+     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -78,47 +118,107 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
             $ = new ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ca PEM encoded CA certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder ca(@Nullable Output<String> ca) {
             $.ca = ca;
             return this;
         }
 
+        /**
+         * @param ca PEM encoded CA certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder ca(String ca) {
             return ca(Output.of(ca));
         }
 
+        /**
+         * @param indexDaysMax Maximum number of days of logs to keep
+         * 
+         * @return builder
+         * 
+         */
         public Builder indexDaysMax(@Nullable Output<String> indexDaysMax) {
             $.indexDaysMax = indexDaysMax;
             return this;
         }
 
+        /**
+         * @param indexDaysMax Maximum number of days of logs to keep
+         * 
+         * @return builder
+         * 
+         */
         public Builder indexDaysMax(String indexDaysMax) {
             return indexDaysMax(Output.of(indexDaysMax));
         }
 
+        /**
+         * @param indexPrefix Elasticsearch index prefix
+         * 
+         * @return builder
+         * 
+         */
         public Builder indexPrefix(@Nullable Output<String> indexPrefix) {
             $.indexPrefix = indexPrefix;
             return this;
         }
 
+        /**
+         * @param indexPrefix Elasticsearch index prefix
+         * 
+         * @return builder
+         * 
+         */
         public Builder indexPrefix(String indexPrefix) {
             return indexPrefix(Output.of(indexPrefix));
         }
 
+        /**
+         * @param timeout Elasticsearch request timeout limit
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeout(@Nullable Output<String> timeout) {
             $.timeout = timeout;
             return this;
         }
 
+        /**
+         * @param timeout Elasticsearch request timeout limit
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeout(String timeout) {
             return timeout(Output.of(timeout));
         }
 
+        /**
+         * @param url Elasticsearch connection URL
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url Elasticsearch connection URL
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

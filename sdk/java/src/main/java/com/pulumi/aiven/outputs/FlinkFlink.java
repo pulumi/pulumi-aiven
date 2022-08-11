@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FlinkFlink {
+    /**
+     * @return Host and Port of a Flink server
+     * 
+     */
     private final @Nullable List<String> hostPorts;
 
     @CustomType.Constructor
@@ -18,6 +22,10 @@ public final class FlinkFlink {
         this.hostPorts = hostPorts;
     }
 
+    /**
+     * @return Host and Port of a Flink server
+     * 
+     */
     public List<String> hostPorts() {
         return this.hostPorts == null ? List.of() : this.hostPorts;
     }

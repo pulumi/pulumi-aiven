@@ -11,14 +11,50 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationEndpointRsyslogUserConfig {
+    /**
+     * @return PEM encoded CA certificate
+     * 
+     */
     private final @Nullable String ca;
+    /**
+     * @return PEM encoded client certificate
+     * 
+     */
     private final @Nullable String cert;
+    /**
+     * @return message format
+     * 
+     */
     private final @Nullable String format;
+    /**
+     * @return PEM encoded client key
+     * 
+     */
     private final @Nullable String key;
+    /**
+     * @return custom syslog message format
+     * 
+     */
     private final @Nullable String logline;
+    /**
+     * @return rsyslog server port
+     * 
+     */
     private final @Nullable String port;
+    /**
+     * @return Structured data block for log message
+     * 
+     */
     private final @Nullable String sd;
+    /**
+     * @return rsyslog server IP address or hostname
+     * 
+     */
     private final @Nullable String server;
+    /**
+     * @return Require TLS
+     * 
+     */
     private final @Nullable String tls;
 
     @CustomType.Constructor
@@ -43,30 +79,66 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
         this.tls = tls;
     }
 
+    /**
+     * @return PEM encoded CA certificate
+     * 
+     */
     public Optional<String> ca() {
         return Optional.ofNullable(this.ca);
     }
+    /**
+     * @return PEM encoded client certificate
+     * 
+     */
     public Optional<String> cert() {
         return Optional.ofNullable(this.cert);
     }
+    /**
+     * @return message format
+     * 
+     */
     public Optional<String> format() {
         return Optional.ofNullable(this.format);
     }
+    /**
+     * @return PEM encoded client key
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return custom syslog message format
+     * 
+     */
     public Optional<String> logline() {
         return Optional.ofNullable(this.logline);
     }
+    /**
+     * @return rsyslog server port
+     * 
+     */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
+    /**
+     * @return Structured data block for log message
+     * 
+     */
     public Optional<String> sd() {
         return Optional.ofNullable(this.sd);
     }
+    /**
+     * @return rsyslog server IP address or hostname
+     * 
+     */
     public Optional<String> server() {
         return Optional.ofNullable(this.server);
     }
+    /**
+     * @return Require TLS
+     * 
+     */
     public Optional<String> tls() {
         return Optional.ofNullable(this.tls);
     }

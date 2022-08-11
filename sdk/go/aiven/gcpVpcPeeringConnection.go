@@ -19,29 +19,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewGcpVpcPeeringConnection(ctx, "foo", &aiven.GcpVpcPeeringConnectionArgs{
-// 			VpcId:        pulumi.Any(data.Aiven_project_vpc.Vpc.Id),
-// 			GcpProjectId: pulumi.String("xxxx"),
-// 			PeerVpc:      pulumi.String("xxxx"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewGcpVpcPeeringConnection(ctx, "foo", &aiven.GcpVpcPeeringConnectionArgs{
+//				VpcId:        pulumi.Any(data.Aiven_project_vpc.Vpc.Id),
+//				GcpProjectId: pulumi.String("xxxx"),
+//				PeerVpc:      pulumi.String("xxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection foo project_name/vpc_id/gcp_project_id/peer_vpc
+//
+//	$ pulumi import aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection foo project_name/vpc_id/gcp_project_id/peer_vpc
+//
 // ```
 type GcpVpcPeeringConnection struct {
 	pulumi.CustomResourceState
@@ -170,7 +175,7 @@ func (i *GcpVpcPeeringConnection) ToGcpVpcPeeringConnectionOutputWithContext(ctx
 // GcpVpcPeeringConnectionArrayInput is an input type that accepts GcpVpcPeeringConnectionArray and GcpVpcPeeringConnectionArrayOutput values.
 // You can construct a concrete instance of `GcpVpcPeeringConnectionArrayInput` via:
 //
-//          GcpVpcPeeringConnectionArray{ GcpVpcPeeringConnectionArgs{...} }
+//	GcpVpcPeeringConnectionArray{ GcpVpcPeeringConnectionArgs{...} }
 type GcpVpcPeeringConnectionArrayInput interface {
 	pulumi.Input
 
@@ -195,7 +200,7 @@ func (i GcpVpcPeeringConnectionArray) ToGcpVpcPeeringConnectionArrayOutputWithCo
 // GcpVpcPeeringConnectionMapInput is an input type that accepts GcpVpcPeeringConnectionMap and GcpVpcPeeringConnectionMapOutput values.
 // You can construct a concrete instance of `GcpVpcPeeringConnectionMapInput` via:
 //
-//          GcpVpcPeeringConnectionMap{ "key": GcpVpcPeeringConnectionArgs{...} }
+//	GcpVpcPeeringConnectionMap{ "key": GcpVpcPeeringConnectionArgs{...} }
 type GcpVpcPeeringConnectionMapInput interface {
 	pulumi.Input
 

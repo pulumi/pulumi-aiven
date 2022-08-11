@@ -23,11 +23,9 @@ class AzureVpcPeeringConnectionArgs:
         """
         The set of arguments for constructing a AzureVpcPeeringConnection resource.
         :param pulumi.Input[str] azure_subscription_id: Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-               changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peer_azure_tenant_id: Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-               resource.
+        :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] vnet_name: Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
         """
@@ -54,8 +52,7 @@ class AzureVpcPeeringConnectionArgs:
     @pulumi.getter(name="peerAzureAppId")
     def peer_azure_app_id(self) -> pulumi.Input[str]:
         """
-        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-        changed, doing so forces recreation of the resource.
+        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_azure_app_id")
 
@@ -79,8 +76,7 @@ class AzureVpcPeeringConnectionArgs:
     @pulumi.getter(name="peerResourceGroup")
     def peer_resource_group(self) -> pulumi.Input[str]:
         """
-        Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-        resource.
+        Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_resource_group")
 
@@ -128,11 +124,9 @@ class _AzureVpcPeeringConnectionState:
         """
         Input properties used for looking up and filtering AzureVpcPeeringConnection resources.
         :param pulumi.Input[str] azure_subscription_id: Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-               changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peer_azure_tenant_id: Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-               resource.
+        :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peering_connection_id: Cloud provider identifier for the peering connection if available
         :param pulumi.Input[str] state: State of the peering connection
         :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information
@@ -174,8 +168,7 @@ class _AzureVpcPeeringConnectionState:
     @pulumi.getter(name="peerAzureAppId")
     def peer_azure_app_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-        changed, doing so forces recreation of the resource.
+        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_azure_app_id")
 
@@ -199,8 +192,7 @@ class _AzureVpcPeeringConnectionState:
     @pulumi.getter(name="peerResourceGroup")
     def peer_resource_group(self) -> Optional[pulumi.Input[str]]:
         """
-        Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-        resource.
+        Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_resource_group")
 
@@ -308,11 +300,9 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] azure_subscription_id: Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-               changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peer_azure_tenant_id: Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-               resource.
+        :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] vnet_name: Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
         """
@@ -424,11 +414,9 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] azure_subscription_id: Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-               changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] peer_azure_app_id: Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peer_azure_tenant_id: Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-               resource.
+        :param pulumi.Input[str] peer_resource_group: Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] peering_connection_id: Cloud provider identifier for the peering connection if available
         :param pulumi.Input[str] state: State of the peering connection
         :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information
@@ -462,8 +450,7 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="peerAzureAppId")
     def peer_azure_app_id(self) -> pulumi.Output[str]:
         """
-        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-        changed, doing so forces recreation of the resource.
+        Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_azure_app_id")
 
@@ -479,8 +466,7 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="peerResourceGroup")
     def peer_resource_group(self) -> pulumi.Output[str]:
         """
-        Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-        resource.
+        Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "peer_resource_group")
 

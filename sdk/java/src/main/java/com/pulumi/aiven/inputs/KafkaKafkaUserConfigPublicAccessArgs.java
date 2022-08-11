@@ -15,9 +15,17 @@ public final class KafkaKafkaUserConfigPublicAccessArgs extends com.pulumi.resou
 
     public static final KafkaKafkaUserConfigPublicAccessArgs Empty = new KafkaKafkaUserConfigPublicAccessArgs();
 
+    /**
+     * Kafka server provided values
+     * 
+     */
     @Import(name="kafka")
     private @Nullable Output<String> kafka;
 
+    /**
+     * @return Kafka server provided values
+     * 
+     */
     public Optional<Output<String>> kafka() {
         return Optional.ofNullable(this.kafka);
     }
@@ -78,11 +86,23 @@ public final class KafkaKafkaUserConfigPublicAccessArgs extends com.pulumi.resou
             $ = new KafkaKafkaUserConfigPublicAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param kafka Kafka server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafka(@Nullable Output<String> kafka) {
             $.kafka = kafka;
             return this;
         }
 
+        /**
+         * @param kafka Kafka server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafka(String kafka) {
             return kafka(Output.of(kafka));
         }

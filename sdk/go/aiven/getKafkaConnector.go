@@ -18,23 +18,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupKafkaConnector(ctx, &GetKafkaConnectorArgs{
-// 			Project:       aiven_project.Kafka - con - project1.Project,
-// 			ServiceName:   aiven_service.Kafka - service1.Service_name,
-// 			ConnectorName: "kafka-es-con1",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupKafkaConnector(ctx, &GetKafkaConnectorArgs{
+//				Project:       aiven_project.Kafka - con - project1.Project,
+//				ServiceName:   aiven_service.Kafka - service1.Service_name,
+//				ConnectorName: "kafka-es-con1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupKafkaConnector(ctx *pulumi.Context, args *LookupKafkaConnectorArgs, opts ...pulumi.InvokeOption) (*LookupKafkaConnectorResult, error) {
 	var rv LookupKafkaConnectorResult
@@ -47,26 +50,40 @@ func LookupKafkaConnector(ctx *pulumi.Context, args *LookupKafkaConnectorArgs, o
 
 // A collection of arguments for invoking getKafkaConnector.
 type LookupKafkaConnectorArgs struct {
+	// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
 	ConnectorName string `pulumi:"connectorName"`
-	Project       string `pulumi:"project"`
-	ServiceName   string `pulumi:"serviceName"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getKafkaConnector.
 type LookupKafkaConnectorResult struct {
-	Config        map[string]string `pulumi:"config"`
-	ConnectorName string            `pulumi:"connectorName"`
+	// The Kafka Connector configuration parameters.
+	Config map[string]string `pulumi:"config"`
+	// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+	ConnectorName string `pulumi:"connectorName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string                  `pulumi:"id"`
-	PluginAuthor  string                  `pulumi:"pluginAuthor"`
-	PluginClass   string                  `pulumi:"pluginClass"`
-	PluginDocUrl  string                  `pulumi:"pluginDocUrl"`
-	PluginTitle   string                  `pulumi:"pluginTitle"`
-	PluginType    string                  `pulumi:"pluginType"`
-	PluginVersion string                  `pulumi:"pluginVersion"`
-	Project       string                  `pulumi:"project"`
-	ServiceName   string                  `pulumi:"serviceName"`
-	Tasks         []GetKafkaConnectorTask `pulumi:"tasks"`
+	Id string `pulumi:"id"`
+	// The Kafka connector author.
+	PluginAuthor string `pulumi:"pluginAuthor"`
+	// The Kafka connector Java class.
+	PluginClass string `pulumi:"pluginClass"`
+	// The Kafka connector documentation URL.
+	PluginDocUrl string `pulumi:"pluginDocUrl"`
+	// The Kafka connector title.
+	PluginTitle string `pulumi:"pluginTitle"`
+	// The Kafka connector type.
+	PluginType string `pulumi:"pluginType"`
+	// The version of the kafka connector.
+	PluginVersion string `pulumi:"pluginVersion"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	ServiceName string `pulumi:"serviceName"`
+	// List of tasks of a connector.
+	Tasks []GetKafkaConnectorTask `pulumi:"tasks"`
 }
 
 func LookupKafkaConnectorOutput(ctx *pulumi.Context, args LookupKafkaConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaConnectorResultOutput {
@@ -84,9 +101,12 @@ func LookupKafkaConnectorOutput(ctx *pulumi.Context, args LookupKafkaConnectorOu
 
 // A collection of arguments for invoking getKafkaConnector.
 type LookupKafkaConnectorOutputArgs struct {
+	// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
 	ConnectorName pulumi.StringInput `pulumi:"connectorName"`
-	Project       pulumi.StringInput `pulumi:"project"`
-	ServiceName   pulumi.StringInput `pulumi:"serviceName"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupKafkaConnectorOutputArgs) ElementType() reflect.Type {
@@ -108,10 +128,12 @@ func (o LookupKafkaConnectorResultOutput) ToLookupKafkaConnectorResultOutputWith
 	return o
 }
 
+// The Kafka Connector configuration parameters.
 func (o LookupKafkaConnectorResultOutput) Config() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupKafkaConnectorResult) map[string]string { return v.Config }).(pulumi.StringMapOutput)
 }
 
+// The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaConnectorResultOutput) ConnectorName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.ConnectorName }).(pulumi.StringOutput)
 }
@@ -121,38 +143,47 @@ func (o LookupKafkaConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Kafka connector author.
 func (o LookupKafkaConnectorResultOutput) PluginAuthor() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.PluginAuthor }).(pulumi.StringOutput)
 }
 
+// The Kafka connector Java class.
 func (o LookupKafkaConnectorResultOutput) PluginClass() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.PluginClass }).(pulumi.StringOutput)
 }
 
+// The Kafka connector documentation URL.
 func (o LookupKafkaConnectorResultOutput) PluginDocUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.PluginDocUrl }).(pulumi.StringOutput)
 }
 
+// The Kafka connector title.
 func (o LookupKafkaConnectorResultOutput) PluginTitle() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.PluginTitle }).(pulumi.StringOutput)
 }
 
+// The Kafka connector type.
 func (o LookupKafkaConnectorResultOutput) PluginType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.PluginType }).(pulumi.StringOutput)
 }
 
+// The version of the kafka connector.
 func (o LookupKafkaConnectorResultOutput) PluginVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.PluginVersion }).(pulumi.StringOutput)
 }
 
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaConnectorResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaConnectorResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// List of tasks of a connector.
 func (o LookupKafkaConnectorResultOutput) Tasks() GetKafkaConnectorTaskArrayOutput {
 	return o.ApplyT(func(v LookupKafkaConnectorResult) []GetKafkaConnectorTask { return v.Tasks }).(GetKafkaConnectorTaskArrayOutput)
 }

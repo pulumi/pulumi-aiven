@@ -28,23 +28,15 @@ class ProjectArgs:
                  use_source_project_billing_group: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Project resource.
-        :param pulumi.Input[str] project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-               without destroying and re-creating the project, including all sub-resources.
-        :param pulumi.Input[str] account_id: An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-               please refer to this variable as a reference.
+        :param pulumi.Input[str] project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+        :param pulumi.Input[str] account_id: An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[bool] add_account_owners_admin_access: If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
         :param pulumi.Input[str] available_credits: The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-        :param pulumi.Input[str] billing_group: The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-               as a reference.
-        :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and some other project attributes like technical
-               contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-               copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-               project is created. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] default_cloud: Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-               created. This will not affect existing services.
+        :param pulumi.Input[str] billing_group: The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] default_cloud: Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]] tags: Tags are key-value pairs that allow you to categorize projects.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-               instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
         """
         pulumi.set(__self__, "project", project)
@@ -71,8 +63,7 @@ class ProjectArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-        without destroying and re-creating the project, including all sub-resources.
+        Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         """
         return pulumi.get(self, "project")
 
@@ -84,8 +75,7 @@ class ProjectArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-        please refer to this variable as a reference.
+        An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "account_id")
 
@@ -121,8 +111,7 @@ class ProjectArgs:
     @pulumi.getter(name="billingGroup")
     def billing_group(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-        as a reference.
+        The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "billing_group")
 
@@ -134,10 +123,7 @@ class ProjectArgs:
     @pulumi.getter(name="copyFromProject")
     def copy_from_project(self) -> Optional[pulumi.Input[str]]:
         """
-        is the name of another project used to copy billing information and some other project attributes like technical
-        contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-        copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-        project is created. To set up proper dependencies please refer to this variable as a reference.
+        is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "copy_from_project")
 
@@ -149,8 +135,7 @@ class ProjectArgs:
     @pulumi.getter(name="defaultCloud")
     def default_cloud(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-        created. This will not affect existing services.
+        Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         """
         return pulumi.get(self, "default_cloud")
 
@@ -174,8 +159,7 @@ class ProjectArgs:
     @pulumi.getter(name="technicalEmails")
     def technical_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         """
         return pulumi.get(self, "technical_emails")
 
@@ -214,26 +198,18 @@ class _ProjectState:
                  use_source_project_billing_group: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
-        :param pulumi.Input[str] account_id: An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-               please refer to this variable as a reference.
+        :param pulumi.Input[str] account_id: An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[bool] add_account_owners_admin_access: If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
         :param pulumi.Input[str] available_credits: The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-        :param pulumi.Input[str] billing_group: The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-               as a reference.
+        :param pulumi.Input[str] billing_group: The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] ca_cert: The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
-        :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and some other project attributes like technical
-               contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-               copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-               project is created. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] default_cloud: Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-               created. This will not affect existing services.
+        :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] default_cloud: Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         :param pulumi.Input[str] estimated_balance: The current accumulated bill for this project in the current billing period.
         :param pulumi.Input[str] payment_method: The method of invoicing used for payments for this project, e.g. `card`.
-        :param pulumi.Input[str] project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-               without destroying and re-creating the project, including all sub-resources.
+        :param pulumi.Input[str] project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]] tags: Tags are key-value pairs that allow you to categorize projects.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-               instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
         """
         if account_id is not None:
@@ -267,8 +243,7 @@ class _ProjectState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-        please refer to this variable as a reference.
+        An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "account_id")
 
@@ -304,8 +279,7 @@ class _ProjectState:
     @pulumi.getter(name="billingGroup")
     def billing_group(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-        as a reference.
+        The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "billing_group")
 
@@ -329,10 +303,7 @@ class _ProjectState:
     @pulumi.getter(name="copyFromProject")
     def copy_from_project(self) -> Optional[pulumi.Input[str]]:
         """
-        is the name of another project used to copy billing information and some other project attributes like technical
-        contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-        copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-        project is created. To set up proper dependencies please refer to this variable as a reference.
+        is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "copy_from_project")
 
@@ -344,8 +315,7 @@ class _ProjectState:
     @pulumi.getter(name="defaultCloud")
     def default_cloud(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-        created. This will not affect existing services.
+        Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         """
         return pulumi.get(self, "default_cloud")
 
@@ -381,8 +351,7 @@ class _ProjectState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-        without destroying and re-creating the project, including all sub-resources.
+        Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         """
         return pulumi.get(self, "project")
 
@@ -406,8 +375,7 @@ class _ProjectState:
     @pulumi.getter(name="technicalEmails")
     def technical_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         """
         return pulumi.get(self, "technical_emails")
 
@@ -455,23 +423,15 @@ class Project(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-               please refer to this variable as a reference.
+        :param pulumi.Input[str] account_id: An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[bool] add_account_owners_admin_access: If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
         :param pulumi.Input[str] available_credits: The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-        :param pulumi.Input[str] billing_group: The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-               as a reference.
-        :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and some other project attributes like technical
-               contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-               copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-               project is created. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] default_cloud: Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-               created. This will not affect existing services.
-        :param pulumi.Input[str] project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-               without destroying and re-creating the project, including all sub-resources.
+        :param pulumi.Input[str] billing_group: The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] default_cloud: Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+        :param pulumi.Input[str] project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize projects.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-               instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
         """
         ...
@@ -568,26 +528,18 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-               please refer to this variable as a reference.
+        :param pulumi.Input[str] account_id: An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[bool] add_account_owners_admin_access: If account_id is set, grant account owner team admin access to the new project. The default value is `true`.
         :param pulumi.Input[str] available_credits: The amount of platform credits available to the project. This could be your free trial or other promotional credits.
-        :param pulumi.Input[str] billing_group: The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-               as a reference.
+        :param pulumi.Input[str] billing_group: The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] ca_cert: The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
-        :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and some other project attributes like technical
-               contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-               copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-               project is created. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] default_cloud: Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-               created. This will not affect existing services.
+        :param pulumi.Input[str] copy_from_project: is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] default_cloud: Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         :param pulumi.Input[str] estimated_balance: The current accumulated bill for this project in the current billing period.
         :param pulumi.Input[str] payment_method: The method of invoicing used for payments for this project, e.g. `card`.
-        :param pulumi.Input[str] project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-               without destroying and re-creating the project, including all sub-resources.
+        :param pulumi.Input[str] project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize projects.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-               instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -613,8 +565,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-        please refer to this variable as a reference.
+        An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "account_id")
 
@@ -638,8 +589,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="billingGroup")
     def billing_group(self) -> pulumi.Output[Optional[str]]:
         """
-        The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-        as a reference.
+        The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "billing_group")
 
@@ -655,10 +605,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="copyFromProject")
     def copy_from_project(self) -> pulumi.Output[Optional[str]]:
         """
-        is the name of another project used to copy billing information and some other project attributes like technical
-        contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-        copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-        project is created. To set up proper dependencies please refer to this variable as a reference.
+        is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "copy_from_project")
 
@@ -666,8 +613,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="defaultCloud")
     def default_cloud(self) -> pulumi.Output[Optional[str]]:
         """
-        Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-        created. This will not affect existing services.
+        Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         """
         return pulumi.get(self, "default_cloud")
 
@@ -691,8 +637,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-        without destroying and re-creating the project, including all sub-resources.
+        Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         """
         return pulumi.get(self, "project")
 
@@ -708,8 +653,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="technicalEmails")
     def technical_emails(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         """
         return pulumi.get(self, "technical_emails")
 

@@ -31,16 +31,14 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
     /**
-     * @return Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * @return Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> permission() {
@@ -48,16 +46,14 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -65,16 +61,14 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of
-     * the resource.
+     * Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="resource", required=true)
     private Output<String> resource;
 
     /**
-     * @return Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of
-     * the resource.
+     * @return Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> resource() {
@@ -82,16 +76,14 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -164,8 +156,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param permission Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`.
-         * This property cannot be changed, doing so forces recreation of the resource.
+         * @param permission Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -176,8 +167,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param permission Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`.
-         * This property cannot be changed, doing so forces recreation of the resource.
+         * @param permission Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -187,8 +177,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -199,8 +188,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -210,8 +198,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resource Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of
-         * the resource.
+         * @param resource Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -222,8 +209,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resource Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of
-         * the resource.
+         * @param resource Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -233,8 +219,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -245,8 +230,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

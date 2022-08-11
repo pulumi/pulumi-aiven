@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaKafkaUserConfigPublicAccess {
+    /**
+     * @return Kafka server provided values
+     * 
+     */
     private final @Nullable String kafka;
     private final @Nullable String kafkaConnect;
     private final @Nullable String kafkaRest;
@@ -31,6 +35,10 @@ public final class GetKafkaKafkaUserConfigPublicAccess {
         this.schemaRegistry = schemaRegistry;
     }
 
+    /**
+     * @return Kafka server provided values
+     * 
+     */
     public Optional<String> kafka() {
         return Optional.ofNullable(this.kafka);
     }

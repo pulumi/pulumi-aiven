@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class OpenSearchOpensearchUserConfigIndexTemplateArgs : Pulumi.ResourceArgs
+    public sealed class OpenSearchOpensearchUserConfigIndexTemplateArgs : global::Pulumi.ResourceArgs
     {
         [Input("mappingNestedObjectsLimit")]
         public Input<string>? MappingNestedObjectsLimit { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Aiven.Inputs
         public OpenSearchOpensearchUserConfigIndexTemplateArgs()
         {
         }
+        public static new OpenSearchOpensearchUserConfigIndexTemplateArgs Empty => new OpenSearchOpensearchUserConfigIndexTemplateArgs();
     }
 }

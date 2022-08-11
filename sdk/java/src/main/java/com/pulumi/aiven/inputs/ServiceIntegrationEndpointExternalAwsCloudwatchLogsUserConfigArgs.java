@@ -15,30 +15,62 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
 
     public static final ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs Empty = new ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs();
 
+    /**
+     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
+     * 
+     */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
+    /**
+     * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
+     * 
+     */
     public Optional<Output<String>> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
 
+    /**
+     * AWS CloudWatch log group name
+     * 
+     */
     @Import(name="logGroupName")
     private @Nullable Output<String> logGroupName;
 
+    /**
+     * @return AWS CloudWatch log group name
+     * 
+     */
     public Optional<Output<String>> logGroupName() {
         return Optional.ofNullable(this.logGroupName);
     }
 
+    /**
+     * AWS region
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return AWS region
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * AWS secret key
+     * 
+     */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
+    /**
+     * @return AWS secret key
+     * 
+     */
     public Optional<Output<String>> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }
@@ -70,38 +102,86 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
             $ = new ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessKey AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(@Nullable Output<String> accessKey) {
             $.accessKey = accessKey;
             return this;
         }
 
+        /**
+         * @param accessKey AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(String accessKey) {
             return accessKey(Output.of(accessKey));
         }
 
+        /**
+         * @param logGroupName AWS CloudWatch log group name
+         * 
+         * @return builder
+         * 
+         */
         public Builder logGroupName(@Nullable Output<String> logGroupName) {
             $.logGroupName = logGroupName;
             return this;
         }
 
+        /**
+         * @param logGroupName AWS CloudWatch log group name
+         * 
+         * @return builder
+         * 
+         */
         public Builder logGroupName(String logGroupName) {
             return logGroupName(Output.of(logGroupName));
         }
 
+        /**
+         * @param region AWS region
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region AWS region
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
+        /**
+         * @param secretKey AWS secret key
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(@Nullable Output<String> secretKey) {
             $.secretKey = secretKey;
             return this;
         }
 
+        /**
+         * @param secretKey AWS secret key
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(String secretKey) {
             return secretKey(Output.of(secretKey));
         }

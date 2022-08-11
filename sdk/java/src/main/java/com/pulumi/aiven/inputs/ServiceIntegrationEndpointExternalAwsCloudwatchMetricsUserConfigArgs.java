@@ -15,30 +15,62 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
 
     public static final ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs Empty = new ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs();
 
+    /**
+     * AWS access key. Required permissions are cloudwatch:PutMetricData
+     * 
+     */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
+    /**
+     * @return AWS access key. Required permissions are cloudwatch:PutMetricData
+     * 
+     */
     public Optional<Output<String>> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
 
+    /**
+     * AWS CloudWatch Metrics Namespace
+     * 
+     */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
+    /**
+     * @return AWS CloudWatch Metrics Namespace
+     * 
+     */
     public Optional<Output<String>> namespace() {
         return Optional.ofNullable(this.namespace);
     }
 
+    /**
+     * AWS region
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return AWS region
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * AWS secret key
+     * 
+     */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
+    /**
+     * @return AWS secret key
+     * 
+     */
     public Optional<Output<String>> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }
@@ -70,38 +102,86 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
             $ = new ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessKey AWS access key. Required permissions are cloudwatch:PutMetricData
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(@Nullable Output<String> accessKey) {
             $.accessKey = accessKey;
             return this;
         }
 
+        /**
+         * @param accessKey AWS access key. Required permissions are cloudwatch:PutMetricData
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(String accessKey) {
             return accessKey(Output.of(accessKey));
         }
 
+        /**
+         * @param namespace AWS CloudWatch Metrics Namespace
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(@Nullable Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
+        /**
+         * @param namespace AWS CloudWatch Metrics Namespace
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }
 
+        /**
+         * @param region AWS region
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region AWS region
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
+        /**
+         * @param secretKey AWS secret key
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(@Nullable Output<String> secretKey) {
             $.secretKey = secretKey;
             return this;
         }
 
+        /**
+         * @param secretKey AWS secret key
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(String secretKey) {
             return secretKey(Output.of(secretKey));
         }

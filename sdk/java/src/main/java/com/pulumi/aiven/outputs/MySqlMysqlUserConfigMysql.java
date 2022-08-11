@@ -15,18 +15,24 @@ public final class MySqlMysqlUserConfigMysql {
     private final @Nullable String defaultTimeZone;
     private final @Nullable String groupConcatMaxLen;
     private final @Nullable String informationSchemaStatsExpiry;
+    private final @Nullable String innodbChangeBufferMaxSize;
+    private final @Nullable String innodbFlushNeighbors;
     private final @Nullable String innodbFtMinTokenSize;
     private final @Nullable String innodbFtServerStopwordTable;
     private final @Nullable String innodbLockWaitTimeout;
     private final @Nullable String innodbLogBufferSize;
     private final @Nullable String innodbOnlineAlterLogMaxSize;
     private final @Nullable String innodbPrintAllDeadlocks;
+    private final @Nullable String innodbReadIoThreads;
     private final @Nullable String innodbRollbackOnTimeout;
+    private final @Nullable String innodbThreadConcurrency;
+    private final @Nullable String innodbWriteIoThreads;
     private final @Nullable String interactiveTimeout;
     private final @Nullable String internalTmpMemStorageEngine;
     private final @Nullable String longQueryTime;
     private final @Nullable String maxAllowedPacket;
     private final @Nullable String maxHeapTableSize;
+    private final @Nullable String netBufferLength;
     private final @Nullable String netReadTimeout;
     private final @Nullable String netWriteTimeout;
     private final @Nullable String slowQueryLog;
@@ -42,18 +48,24 @@ public final class MySqlMysqlUserConfigMysql {
         @CustomType.Parameter("defaultTimeZone") @Nullable String defaultTimeZone,
         @CustomType.Parameter("groupConcatMaxLen") @Nullable String groupConcatMaxLen,
         @CustomType.Parameter("informationSchemaStatsExpiry") @Nullable String informationSchemaStatsExpiry,
+        @CustomType.Parameter("innodbChangeBufferMaxSize") @Nullable String innodbChangeBufferMaxSize,
+        @CustomType.Parameter("innodbFlushNeighbors") @Nullable String innodbFlushNeighbors,
         @CustomType.Parameter("innodbFtMinTokenSize") @Nullable String innodbFtMinTokenSize,
         @CustomType.Parameter("innodbFtServerStopwordTable") @Nullable String innodbFtServerStopwordTable,
         @CustomType.Parameter("innodbLockWaitTimeout") @Nullable String innodbLockWaitTimeout,
         @CustomType.Parameter("innodbLogBufferSize") @Nullable String innodbLogBufferSize,
         @CustomType.Parameter("innodbOnlineAlterLogMaxSize") @Nullable String innodbOnlineAlterLogMaxSize,
         @CustomType.Parameter("innodbPrintAllDeadlocks") @Nullable String innodbPrintAllDeadlocks,
+        @CustomType.Parameter("innodbReadIoThreads") @Nullable String innodbReadIoThreads,
         @CustomType.Parameter("innodbRollbackOnTimeout") @Nullable String innodbRollbackOnTimeout,
+        @CustomType.Parameter("innodbThreadConcurrency") @Nullable String innodbThreadConcurrency,
+        @CustomType.Parameter("innodbWriteIoThreads") @Nullable String innodbWriteIoThreads,
         @CustomType.Parameter("interactiveTimeout") @Nullable String interactiveTimeout,
         @CustomType.Parameter("internalTmpMemStorageEngine") @Nullable String internalTmpMemStorageEngine,
         @CustomType.Parameter("longQueryTime") @Nullable String longQueryTime,
         @CustomType.Parameter("maxAllowedPacket") @Nullable String maxAllowedPacket,
         @CustomType.Parameter("maxHeapTableSize") @Nullable String maxHeapTableSize,
+        @CustomType.Parameter("netBufferLength") @Nullable String netBufferLength,
         @CustomType.Parameter("netReadTimeout") @Nullable String netReadTimeout,
         @CustomType.Parameter("netWriteTimeout") @Nullable String netWriteTimeout,
         @CustomType.Parameter("slowQueryLog") @Nullable String slowQueryLog,
@@ -66,18 +78,24 @@ public final class MySqlMysqlUserConfigMysql {
         this.defaultTimeZone = defaultTimeZone;
         this.groupConcatMaxLen = groupConcatMaxLen;
         this.informationSchemaStatsExpiry = informationSchemaStatsExpiry;
+        this.innodbChangeBufferMaxSize = innodbChangeBufferMaxSize;
+        this.innodbFlushNeighbors = innodbFlushNeighbors;
         this.innodbFtMinTokenSize = innodbFtMinTokenSize;
         this.innodbFtServerStopwordTable = innodbFtServerStopwordTable;
         this.innodbLockWaitTimeout = innodbLockWaitTimeout;
         this.innodbLogBufferSize = innodbLogBufferSize;
         this.innodbOnlineAlterLogMaxSize = innodbOnlineAlterLogMaxSize;
         this.innodbPrintAllDeadlocks = innodbPrintAllDeadlocks;
+        this.innodbReadIoThreads = innodbReadIoThreads;
         this.innodbRollbackOnTimeout = innodbRollbackOnTimeout;
+        this.innodbThreadConcurrency = innodbThreadConcurrency;
+        this.innodbWriteIoThreads = innodbWriteIoThreads;
         this.interactiveTimeout = interactiveTimeout;
         this.internalTmpMemStorageEngine = internalTmpMemStorageEngine;
         this.longQueryTime = longQueryTime;
         this.maxAllowedPacket = maxAllowedPacket;
         this.maxHeapTableSize = maxHeapTableSize;
+        this.netBufferLength = netBufferLength;
         this.netReadTimeout = netReadTimeout;
         this.netWriteTimeout = netWriteTimeout;
         this.slowQueryLog = slowQueryLog;
@@ -100,6 +118,12 @@ public final class MySqlMysqlUserConfigMysql {
     public Optional<String> informationSchemaStatsExpiry() {
         return Optional.ofNullable(this.informationSchemaStatsExpiry);
     }
+    public Optional<String> innodbChangeBufferMaxSize() {
+        return Optional.ofNullable(this.innodbChangeBufferMaxSize);
+    }
+    public Optional<String> innodbFlushNeighbors() {
+        return Optional.ofNullable(this.innodbFlushNeighbors);
+    }
     public Optional<String> innodbFtMinTokenSize() {
         return Optional.ofNullable(this.innodbFtMinTokenSize);
     }
@@ -118,8 +142,17 @@ public final class MySqlMysqlUserConfigMysql {
     public Optional<String> innodbPrintAllDeadlocks() {
         return Optional.ofNullable(this.innodbPrintAllDeadlocks);
     }
+    public Optional<String> innodbReadIoThreads() {
+        return Optional.ofNullable(this.innodbReadIoThreads);
+    }
     public Optional<String> innodbRollbackOnTimeout() {
         return Optional.ofNullable(this.innodbRollbackOnTimeout);
+    }
+    public Optional<String> innodbThreadConcurrency() {
+        return Optional.ofNullable(this.innodbThreadConcurrency);
+    }
+    public Optional<String> innodbWriteIoThreads() {
+        return Optional.ofNullable(this.innodbWriteIoThreads);
     }
     public Optional<String> interactiveTimeout() {
         return Optional.ofNullable(this.interactiveTimeout);
@@ -135,6 +168,9 @@ public final class MySqlMysqlUserConfigMysql {
     }
     public Optional<String> maxHeapTableSize() {
         return Optional.ofNullable(this.maxHeapTableSize);
+    }
+    public Optional<String> netBufferLength() {
+        return Optional.ofNullable(this.netBufferLength);
     }
     public Optional<String> netReadTimeout() {
         return Optional.ofNullable(this.netReadTimeout);
@@ -174,18 +210,24 @@ public final class MySqlMysqlUserConfigMysql {
         private @Nullable String defaultTimeZone;
         private @Nullable String groupConcatMaxLen;
         private @Nullable String informationSchemaStatsExpiry;
+        private @Nullable String innodbChangeBufferMaxSize;
+        private @Nullable String innodbFlushNeighbors;
         private @Nullable String innodbFtMinTokenSize;
         private @Nullable String innodbFtServerStopwordTable;
         private @Nullable String innodbLockWaitTimeout;
         private @Nullable String innodbLogBufferSize;
         private @Nullable String innodbOnlineAlterLogMaxSize;
         private @Nullable String innodbPrintAllDeadlocks;
+        private @Nullable String innodbReadIoThreads;
         private @Nullable String innodbRollbackOnTimeout;
+        private @Nullable String innodbThreadConcurrency;
+        private @Nullable String innodbWriteIoThreads;
         private @Nullable String interactiveTimeout;
         private @Nullable String internalTmpMemStorageEngine;
         private @Nullable String longQueryTime;
         private @Nullable String maxAllowedPacket;
         private @Nullable String maxHeapTableSize;
+        private @Nullable String netBufferLength;
         private @Nullable String netReadTimeout;
         private @Nullable String netWriteTimeout;
         private @Nullable String slowQueryLog;
@@ -205,18 +247,24 @@ public final class MySqlMysqlUserConfigMysql {
     	      this.defaultTimeZone = defaults.defaultTimeZone;
     	      this.groupConcatMaxLen = defaults.groupConcatMaxLen;
     	      this.informationSchemaStatsExpiry = defaults.informationSchemaStatsExpiry;
+    	      this.innodbChangeBufferMaxSize = defaults.innodbChangeBufferMaxSize;
+    	      this.innodbFlushNeighbors = defaults.innodbFlushNeighbors;
     	      this.innodbFtMinTokenSize = defaults.innodbFtMinTokenSize;
     	      this.innodbFtServerStopwordTable = defaults.innodbFtServerStopwordTable;
     	      this.innodbLockWaitTimeout = defaults.innodbLockWaitTimeout;
     	      this.innodbLogBufferSize = defaults.innodbLogBufferSize;
     	      this.innodbOnlineAlterLogMaxSize = defaults.innodbOnlineAlterLogMaxSize;
     	      this.innodbPrintAllDeadlocks = defaults.innodbPrintAllDeadlocks;
+    	      this.innodbReadIoThreads = defaults.innodbReadIoThreads;
     	      this.innodbRollbackOnTimeout = defaults.innodbRollbackOnTimeout;
+    	      this.innodbThreadConcurrency = defaults.innodbThreadConcurrency;
+    	      this.innodbWriteIoThreads = defaults.innodbWriteIoThreads;
     	      this.interactiveTimeout = defaults.interactiveTimeout;
     	      this.internalTmpMemStorageEngine = defaults.internalTmpMemStorageEngine;
     	      this.longQueryTime = defaults.longQueryTime;
     	      this.maxAllowedPacket = defaults.maxAllowedPacket;
     	      this.maxHeapTableSize = defaults.maxHeapTableSize;
+    	      this.netBufferLength = defaults.netBufferLength;
     	      this.netReadTimeout = defaults.netReadTimeout;
     	      this.netWriteTimeout = defaults.netWriteTimeout;
     	      this.slowQueryLog = defaults.slowQueryLog;
@@ -243,6 +291,14 @@ public final class MySqlMysqlUserConfigMysql {
             this.informationSchemaStatsExpiry = informationSchemaStatsExpiry;
             return this;
         }
+        public Builder innodbChangeBufferMaxSize(@Nullable String innodbChangeBufferMaxSize) {
+            this.innodbChangeBufferMaxSize = innodbChangeBufferMaxSize;
+            return this;
+        }
+        public Builder innodbFlushNeighbors(@Nullable String innodbFlushNeighbors) {
+            this.innodbFlushNeighbors = innodbFlushNeighbors;
+            return this;
+        }
         public Builder innodbFtMinTokenSize(@Nullable String innodbFtMinTokenSize) {
             this.innodbFtMinTokenSize = innodbFtMinTokenSize;
             return this;
@@ -267,8 +323,20 @@ public final class MySqlMysqlUserConfigMysql {
             this.innodbPrintAllDeadlocks = innodbPrintAllDeadlocks;
             return this;
         }
+        public Builder innodbReadIoThreads(@Nullable String innodbReadIoThreads) {
+            this.innodbReadIoThreads = innodbReadIoThreads;
+            return this;
+        }
         public Builder innodbRollbackOnTimeout(@Nullable String innodbRollbackOnTimeout) {
             this.innodbRollbackOnTimeout = innodbRollbackOnTimeout;
+            return this;
+        }
+        public Builder innodbThreadConcurrency(@Nullable String innodbThreadConcurrency) {
+            this.innodbThreadConcurrency = innodbThreadConcurrency;
+            return this;
+        }
+        public Builder innodbWriteIoThreads(@Nullable String innodbWriteIoThreads) {
+            this.innodbWriteIoThreads = innodbWriteIoThreads;
             return this;
         }
         public Builder interactiveTimeout(@Nullable String interactiveTimeout) {
@@ -289,6 +357,10 @@ public final class MySqlMysqlUserConfigMysql {
         }
         public Builder maxHeapTableSize(@Nullable String maxHeapTableSize) {
             this.maxHeapTableSize = maxHeapTableSize;
+            return this;
+        }
+        public Builder netBufferLength(@Nullable String netBufferLength) {
+            this.netBufferLength = netBufferLength;
             return this;
         }
         public Builder netReadTimeout(@Nullable String netReadTimeout) {
@@ -323,7 +395,7 @@ public final class MySqlMysqlUserConfigMysql {
             this.waitTimeout = waitTimeout;
             return this;
         }        public MySqlMysqlUserConfigMysql build() {
-            return new MySqlMysqlUserConfigMysql(connectTimeout, defaultTimeZone, groupConcatMaxLen, informationSchemaStatsExpiry, innodbFtMinTokenSize, innodbFtServerStopwordTable, innodbLockWaitTimeout, innodbLogBufferSize, innodbOnlineAlterLogMaxSize, innodbPrintAllDeadlocks, innodbRollbackOnTimeout, interactiveTimeout, internalTmpMemStorageEngine, longQueryTime, maxAllowedPacket, maxHeapTableSize, netReadTimeout, netWriteTimeout, slowQueryLog, sortBufferSize, sqlMode, sqlRequirePrimaryKey, tmpTableSize, waitTimeout);
+            return new MySqlMysqlUserConfigMysql(connectTimeout, defaultTimeZone, groupConcatMaxLen, informationSchemaStatsExpiry, innodbChangeBufferMaxSize, innodbFlushNeighbors, innodbFtMinTokenSize, innodbFtServerStopwordTable, innodbLockWaitTimeout, innodbLogBufferSize, innodbOnlineAlterLogMaxSize, innodbPrintAllDeadlocks, innodbReadIoThreads, innodbRollbackOnTimeout, innodbThreadConcurrency, innodbWriteIoThreads, interactiveTimeout, internalTmpMemStorageEngine, longQueryTime, maxAllowedPacket, maxHeapTableSize, netBufferLength, netReadTimeout, netWriteTimeout, slowQueryLog, sortBufferSize, sqlMode, sqlRequirePrimaryKey, tmpTableSize, waitTimeout);
         }
     }
 }

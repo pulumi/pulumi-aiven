@@ -43,6 +43,20 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.informationSchemaStatsExpiry);
     }
 
+    @Import(name="innodbChangeBufferMaxSize")
+    private @Nullable Output<String> innodbChangeBufferMaxSize;
+
+    public Optional<Output<String>> innodbChangeBufferMaxSize() {
+        return Optional.ofNullable(this.innodbChangeBufferMaxSize);
+    }
+
+    @Import(name="innodbFlushNeighbors")
+    private @Nullable Output<String> innodbFlushNeighbors;
+
+    public Optional<Output<String>> innodbFlushNeighbors() {
+        return Optional.ofNullable(this.innodbFlushNeighbors);
+    }
+
     @Import(name="innodbFtMinTokenSize")
     private @Nullable Output<String> innodbFtMinTokenSize;
 
@@ -85,11 +99,32 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.innodbPrintAllDeadlocks);
     }
 
+    @Import(name="innodbReadIoThreads")
+    private @Nullable Output<String> innodbReadIoThreads;
+
+    public Optional<Output<String>> innodbReadIoThreads() {
+        return Optional.ofNullable(this.innodbReadIoThreads);
+    }
+
     @Import(name="innodbRollbackOnTimeout")
     private @Nullable Output<String> innodbRollbackOnTimeout;
 
     public Optional<Output<String>> innodbRollbackOnTimeout() {
         return Optional.ofNullable(this.innodbRollbackOnTimeout);
+    }
+
+    @Import(name="innodbThreadConcurrency")
+    private @Nullable Output<String> innodbThreadConcurrency;
+
+    public Optional<Output<String>> innodbThreadConcurrency() {
+        return Optional.ofNullable(this.innodbThreadConcurrency);
+    }
+
+    @Import(name="innodbWriteIoThreads")
+    private @Nullable Output<String> innodbWriteIoThreads;
+
+    public Optional<Output<String>> innodbWriteIoThreads() {
+        return Optional.ofNullable(this.innodbWriteIoThreads);
     }
 
     @Import(name="interactiveTimeout")
@@ -125,6 +160,13 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
 
     public Optional<Output<String>> maxHeapTableSize() {
         return Optional.ofNullable(this.maxHeapTableSize);
+    }
+
+    @Import(name="netBufferLength")
+    private @Nullable Output<String> netBufferLength;
+
+    public Optional<Output<String>> netBufferLength() {
+        return Optional.ofNullable(this.netBufferLength);
     }
 
     @Import(name="netReadTimeout")
@@ -190,18 +232,24 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         this.defaultTimeZone = $.defaultTimeZone;
         this.groupConcatMaxLen = $.groupConcatMaxLen;
         this.informationSchemaStatsExpiry = $.informationSchemaStatsExpiry;
+        this.innodbChangeBufferMaxSize = $.innodbChangeBufferMaxSize;
+        this.innodbFlushNeighbors = $.innodbFlushNeighbors;
         this.innodbFtMinTokenSize = $.innodbFtMinTokenSize;
         this.innodbFtServerStopwordTable = $.innodbFtServerStopwordTable;
         this.innodbLockWaitTimeout = $.innodbLockWaitTimeout;
         this.innodbLogBufferSize = $.innodbLogBufferSize;
         this.innodbOnlineAlterLogMaxSize = $.innodbOnlineAlterLogMaxSize;
         this.innodbPrintAllDeadlocks = $.innodbPrintAllDeadlocks;
+        this.innodbReadIoThreads = $.innodbReadIoThreads;
         this.innodbRollbackOnTimeout = $.innodbRollbackOnTimeout;
+        this.innodbThreadConcurrency = $.innodbThreadConcurrency;
+        this.innodbWriteIoThreads = $.innodbWriteIoThreads;
         this.interactiveTimeout = $.interactiveTimeout;
         this.internalTmpMemStorageEngine = $.internalTmpMemStorageEngine;
         this.longQueryTime = $.longQueryTime;
         this.maxAllowedPacket = $.maxAllowedPacket;
         this.maxHeapTableSize = $.maxHeapTableSize;
+        this.netBufferLength = $.netBufferLength;
         this.netReadTimeout = $.netReadTimeout;
         this.netWriteTimeout = $.netWriteTimeout;
         this.slowQueryLog = $.slowQueryLog;
@@ -266,6 +314,24 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
             return informationSchemaStatsExpiry(Output.of(informationSchemaStatsExpiry));
         }
 
+        public Builder innodbChangeBufferMaxSize(@Nullable Output<String> innodbChangeBufferMaxSize) {
+            $.innodbChangeBufferMaxSize = innodbChangeBufferMaxSize;
+            return this;
+        }
+
+        public Builder innodbChangeBufferMaxSize(String innodbChangeBufferMaxSize) {
+            return innodbChangeBufferMaxSize(Output.of(innodbChangeBufferMaxSize));
+        }
+
+        public Builder innodbFlushNeighbors(@Nullable Output<String> innodbFlushNeighbors) {
+            $.innodbFlushNeighbors = innodbFlushNeighbors;
+            return this;
+        }
+
+        public Builder innodbFlushNeighbors(String innodbFlushNeighbors) {
+            return innodbFlushNeighbors(Output.of(innodbFlushNeighbors));
+        }
+
         public Builder innodbFtMinTokenSize(@Nullable Output<String> innodbFtMinTokenSize) {
             $.innodbFtMinTokenSize = innodbFtMinTokenSize;
             return this;
@@ -320,6 +386,15 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
             return innodbPrintAllDeadlocks(Output.of(innodbPrintAllDeadlocks));
         }
 
+        public Builder innodbReadIoThreads(@Nullable Output<String> innodbReadIoThreads) {
+            $.innodbReadIoThreads = innodbReadIoThreads;
+            return this;
+        }
+
+        public Builder innodbReadIoThreads(String innodbReadIoThreads) {
+            return innodbReadIoThreads(Output.of(innodbReadIoThreads));
+        }
+
         public Builder innodbRollbackOnTimeout(@Nullable Output<String> innodbRollbackOnTimeout) {
             $.innodbRollbackOnTimeout = innodbRollbackOnTimeout;
             return this;
@@ -327,6 +402,24 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
 
         public Builder innodbRollbackOnTimeout(String innodbRollbackOnTimeout) {
             return innodbRollbackOnTimeout(Output.of(innodbRollbackOnTimeout));
+        }
+
+        public Builder innodbThreadConcurrency(@Nullable Output<String> innodbThreadConcurrency) {
+            $.innodbThreadConcurrency = innodbThreadConcurrency;
+            return this;
+        }
+
+        public Builder innodbThreadConcurrency(String innodbThreadConcurrency) {
+            return innodbThreadConcurrency(Output.of(innodbThreadConcurrency));
+        }
+
+        public Builder innodbWriteIoThreads(@Nullable Output<String> innodbWriteIoThreads) {
+            $.innodbWriteIoThreads = innodbWriteIoThreads;
+            return this;
+        }
+
+        public Builder innodbWriteIoThreads(String innodbWriteIoThreads) {
+            return innodbWriteIoThreads(Output.of(innodbWriteIoThreads));
         }
 
         public Builder interactiveTimeout(@Nullable Output<String> interactiveTimeout) {
@@ -372,6 +465,15 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
 
         public Builder maxHeapTableSize(String maxHeapTableSize) {
             return maxHeapTableSize(Output.of(maxHeapTableSize));
+        }
+
+        public Builder netBufferLength(@Nullable Output<String> netBufferLength) {
+            $.netBufferLength = netBufferLength;
+            return this;
+        }
+
+        public Builder netBufferLength(String netBufferLength) {
+            return netBufferLength(Output.of(netBufferLength));
         }
 
         public Builder netReadTimeout(@Nullable Output<String> netReadTimeout) {

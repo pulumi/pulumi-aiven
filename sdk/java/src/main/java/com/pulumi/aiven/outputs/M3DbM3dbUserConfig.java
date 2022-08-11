@@ -17,18 +17,70 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3DbM3dbUserConfig {
+    /**
+     * @return Custom domain
+     * 
+     */
     private final @Nullable String customDomain;
+    /**
+     * @return IP filter
+     * 
+     */
     private final @Nullable List<String> ipFilters;
+    /**
+     * @return M3 limits
+     * 
+     */
     private final @Nullable M3DbM3dbUserConfigLimits limits;
+    /**
+     * @return M3 major version (deprecated, use m3db_version)
+     * 
+     */
     private final @Nullable String m3Version;
+    /**
+     * @return Enable Graphite ingestion using Carbon plaintext protocol
+     * 
+     */
     private final @Nullable String m3coordinatorEnableGraphiteCarbonIngest;
+    /**
+     * @return M3 major version (the minimum compatible version)
+     * 
+     */
     private final @Nullable String m3dbVersion;
+    /**
+     * @return List of M3 namespaces
+     * 
+     */
     private final @Nullable List<M3DbM3dbUserConfigNamespace> namespaces;
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     private final @Nullable M3DbM3dbUserConfigPrivateAccess privateAccess;
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String projectToForkFrom;
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     private final @Nullable M3DbM3dbUserConfigPublicAccess publicAccess;
+    /**
+     * @return M3 rules
+     * 
+     */
     private final @Nullable M3DbM3dbUserConfigRules rules;
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String serviceToForkFrom;
+    /**
+     * @return Static IP addresses
+     * 
+     */
     private final @Nullable String staticIps;
 
     @CustomType.Constructor
@@ -61,42 +113,94 @@ public final class M3DbM3dbUserConfig {
         this.staticIps = staticIps;
     }
 
+    /**
+     * @return Custom domain
+     * 
+     */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
+    /**
+     * @return IP filter
+     * 
+     */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return M3 limits
+     * 
+     */
     public Optional<M3DbM3dbUserConfigLimits> limits() {
         return Optional.ofNullable(this.limits);
     }
+    /**
+     * @return M3 major version (deprecated, use m3db_version)
+     * 
+     */
     public Optional<String> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
+    /**
+     * @return Enable Graphite ingestion using Carbon plaintext protocol
+     * 
+     */
     public Optional<String> m3coordinatorEnableGraphiteCarbonIngest() {
         return Optional.ofNullable(this.m3coordinatorEnableGraphiteCarbonIngest);
     }
+    /**
+     * @return M3 major version (the minimum compatible version)
+     * 
+     */
     public Optional<String> m3dbVersion() {
         return Optional.ofNullable(this.m3dbVersion);
     }
+    /**
+     * @return List of M3 namespaces
+     * 
+     */
     public List<M3DbM3dbUserConfigNamespace> namespaces() {
         return this.namespaces == null ? List.of() : this.namespaces;
     }
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     public Optional<M3DbM3dbUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     public Optional<M3DbM3dbUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    /**
+     * @return M3 rules
+     * 
+     */
     public Optional<M3DbM3dbUserConfigRules> rules() {
         return Optional.ofNullable(this.rules);
     }
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

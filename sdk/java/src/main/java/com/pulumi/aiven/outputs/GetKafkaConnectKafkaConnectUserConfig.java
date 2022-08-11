@@ -17,10 +17,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetKafkaConnectKafkaConnectUserConfig {
     private final @Nullable List<String> ipFilters;
+    /**
+     * @return Kafka Connect server provided values
+     * 
+     */
     private final @Nullable GetKafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect;
     private final @Nullable GetKafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
     private final @Nullable GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
     private final @Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
+    /**
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * 
+     */
     private final @Nullable String staticIps;
 
     @CustomType.Constructor
@@ -42,6 +50,10 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Kafka Connect server provided values
+     * 
+     */
     public Optional<GetKafkaConnectKafkaConnectUserConfigKafkaConnect> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
@@ -54,6 +66,10 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     public Optional<GetKafkaConnectKafkaConnectUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    /**
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

@@ -19,29 +19,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewServiceUser(ctx, "myserviceuser", &aiven.ServiceUserArgs{
-// 			Project:     pulumi.Any(aiven_project.Myproject.Project),
-// 			ServiceName: pulumi.Any(aiven_service.Myservice.Service_name),
-// 			Username:    pulumi.String("<USERNAME>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewServiceUser(ctx, "myserviceuser", &aiven.ServiceUserArgs{
+//				Project:     pulumi.Any(aiven_project.Myproject.Project),
+//				ServiceName: pulumi.Any(aiven_service.Myservice.Service_name),
+//				Username:    pulumi.String("<USERNAME>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import aiven:index/serviceUser:ServiceUser myserviceuser project/service_name/username
+//
+//	$ pulumi import aiven:index/serviceUser:ServiceUser myserviceuser project/service_name/username
+//
 // ```
 type ServiceUser struct {
 	pulumi.CustomResourceState
@@ -50,35 +55,27 @@ type ServiceUser struct {
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
 	// Access certificate key for the user if applicable for the service in question
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+	// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringPtrOutput `pulumi:"authentication"`
 	// The password of the service user ( not applicable for all services ).
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces
-	// recreation of the resource.
+	// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
 	PgAllowReplication pulumi.BoolPtrOutput `pulumi:"pgAllowReplication"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Redis specific field, defines command category rules. The field is required with`redis_acl_commands` and
-	// `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclCategories pulumi.StringArrayOutput `pulumi:"redisAclCategories"`
-	// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces
-	// recreation of the resource.
+	// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclChannels pulumi.StringArrayOutput `pulumi:"redisAclChannels"`
-	// Redis specific field, defines rules for individual commands. The field is required with`redis_acl_categories` and
-	// `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclCommands pulumi.StringArrayOutput `pulumi:"redisAclCommands"`
-	// Redis specific field, defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`.
-	// This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclKeys pulumi.StringArrayOutput `pulumi:"redisAclKeys"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Type of the user account. Tells wether the user is the primary account or a regular account.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This
-	// property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -124,35 +121,27 @@ type serviceUserState struct {
 	AccessCert *string `pulumi:"accessCert"`
 	// Access certificate key for the user if applicable for the service in question
 	AccessKey *string `pulumi:"accessKey"`
-	// Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+	// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication *string `pulumi:"authentication"`
 	// The password of the service user ( not applicable for all services ).
 	Password *string `pulumi:"password"`
-	// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces
-	// recreation of the resource.
+	// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
 	PgAllowReplication *bool `pulumi:"pgAllowReplication"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Redis specific field, defines command category rules. The field is required with`redis_acl_commands` and
-	// `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
-	// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces
-	// recreation of the resource.
+	// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclChannels []string `pulumi:"redisAclChannels"`
-	// Redis specific field, defines rules for individual commands. The field is required with`redis_acl_categories` and
-	// `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclCommands []string `pulumi:"redisAclCommands"`
-	// Redis specific field, defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`.
-	// This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclKeys []string `pulumi:"redisAclKeys"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// Type of the user account. Tells wether the user is the primary account or a regular account.
 	Type *string `pulumi:"type"`
-	// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This
-	// property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
@@ -161,35 +150,27 @@ type ServiceUserState struct {
 	AccessCert pulumi.StringPtrInput
 	// Access certificate key for the user if applicable for the service in question
 	AccessKey pulumi.StringPtrInput
-	// Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+	// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringPtrInput
 	// The password of the service user ( not applicable for all services ).
 	Password pulumi.StringPtrInput
-	// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces
-	// recreation of the resource.
+	// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
 	PgAllowReplication pulumi.BoolPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Redis specific field, defines command category rules. The field is required with`redis_acl_commands` and
-	// `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclCategories pulumi.StringArrayInput
-	// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces
-	// recreation of the resource.
+	// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclChannels pulumi.StringArrayInput
-	// Redis specific field, defines rules for individual commands. The field is required with`redis_acl_categories` and
-	// `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclCommands pulumi.StringArrayInput
-	// Redis specific field, defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`.
-	// This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclKeys pulumi.StringArrayInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// Type of the user account. Tells wether the user is the primary account or a regular account.
 	Type pulumi.StringPtrInput
-	// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This
-	// property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -198,65 +179,49 @@ func (ServiceUserState) ElementType() reflect.Type {
 }
 
 type serviceUserArgs struct {
-	// Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+	// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication *string `pulumi:"authentication"`
 	// The password of the service user ( not applicable for all services ).
 	Password *string `pulumi:"password"`
-	// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces
-	// recreation of the resource.
+	// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
 	PgAllowReplication *bool `pulumi:"pgAllowReplication"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Redis specific field, defines command category rules. The field is required with`redis_acl_commands` and
-	// `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
-	// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces
-	// recreation of the resource.
+	// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclChannels []string `pulumi:"redisAclChannels"`
-	// Redis specific field, defines rules for individual commands. The field is required with`redis_acl_categories` and
-	// `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclCommands []string `pulumi:"redisAclCommands"`
-	// Redis specific field, defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`.
-	// This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclKeys []string `pulumi:"redisAclKeys"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This
-	// property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a ServiceUser resource.
 type ServiceUserArgs struct {
-	// Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+	// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringPtrInput
 	// The password of the service user ( not applicable for all services ).
 	Password pulumi.StringPtrInput
-	// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces
-	// recreation of the resource.
+	// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
 	PgAllowReplication pulumi.BoolPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Redis specific field, defines command category rules. The field is required with`redis_acl_commands` and
-	// `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclCategories pulumi.StringArrayInput
-	// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces
-	// recreation of the resource.
+	// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclChannels pulumi.StringArrayInput
-	// Redis specific field, defines rules for individual commands. The field is required with`redis_acl_categories` and
-	// `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclCommands pulumi.StringArrayInput
-	// Redis specific field, defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`.
-	// This property cannot be changed, doing so forces recreation of the resource.
+	// Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 	RedisAclKeys pulumi.StringArrayInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This
-	// property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -286,7 +251,7 @@ func (i *ServiceUser) ToServiceUserOutputWithContext(ctx context.Context) Servic
 // ServiceUserArrayInput is an input type that accepts ServiceUserArray and ServiceUserArrayOutput values.
 // You can construct a concrete instance of `ServiceUserArrayInput` via:
 //
-//          ServiceUserArray{ ServiceUserArgs{...} }
+//	ServiceUserArray{ ServiceUserArgs{...} }
 type ServiceUserArrayInput interface {
 	pulumi.Input
 
@@ -311,7 +276,7 @@ func (i ServiceUserArray) ToServiceUserArrayOutputWithContext(ctx context.Contex
 // ServiceUserMapInput is an input type that accepts ServiceUserMap and ServiceUserMapOutput values.
 // You can construct a concrete instance of `ServiceUserMapInput` via:
 //
-//          ServiceUserMap{ "key": ServiceUserArgs{...} }
+//	ServiceUserMap{ "key": ServiceUserArgs{...} }
 type ServiceUserMapInput interface {
 	pulumi.Input
 
@@ -357,7 +322,7 @@ func (o ServiceUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 func (o ServiceUserOutput) Authentication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceUser) pulumi.StringPtrOutput { return v.Authentication }).(pulumi.StringPtrOutput)
 }
@@ -367,44 +332,37 @@ func (o ServiceUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces
-// recreation of the resource.
+// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
 func (o ServiceUserOutput) PgAllowReplication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceUser) pulumi.BoolPtrOutput { return v.PgAllowReplication }).(pulumi.BoolPtrOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ServiceUserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Redis specific field, defines command category rules. The field is required with`redis_acl_commands` and
-// `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+// Redis specific field, defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 func (o ServiceUserOutput) RedisAclCategories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceUser) pulumi.StringArrayOutput { return v.RedisAclCategories }).(pulumi.StringArrayOutput)
 }
 
-// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces
-// recreation of the resource.
+// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
 func (o ServiceUserOutput) RedisAclChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceUser) pulumi.StringArrayOutput { return v.RedisAclChannels }).(pulumi.StringArrayOutput)
 }
 
-// Redis specific field, defines rules for individual commands. The field is required with`redis_acl_categories` and
-// `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+// Redis specific field, defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 func (o ServiceUserOutput) RedisAclCommands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceUser) pulumi.StringArrayOutput { return v.RedisAclCommands }).(pulumi.StringArrayOutput)
 }
 
-// Redis specific field, defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`.
-// This property cannot be changed, doing so forces recreation of the resource.
+// Redis specific field, defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
 func (o ServiceUserOutput) RedisAclKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceUser) pulumi.StringArrayOutput { return v.RedisAclKeys }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ServiceUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -414,8 +372,7 @@ func (o ServiceUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This
-// property cannot be changed, doing so forces recreation of the resource.
+// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ServiceUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

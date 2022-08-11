@@ -16,23 +16,47 @@ public final class ServiceIntegrationEndpointSignalfxUserConfigArgs extends com.
 
     public static final ServiceIntegrationEndpointSignalfxUserConfigArgs Empty = new ServiceIntegrationEndpointSignalfxUserConfigArgs();
 
+    /**
+     * list of metrics to send
+     * 
+     */
     @Import(name="enabledMetrics")
     private @Nullable Output<List<String>> enabledMetrics;
 
+    /**
+     * @return list of metrics to send
+     * 
+     */
     public Optional<Output<List<String>>> enabledMetrics() {
         return Optional.ofNullable(this.enabledMetrics);
     }
 
+    /**
+     * SignalFX API key
+     * 
+     */
     @Import(name="signalfxApiKey")
     private @Nullable Output<String> signalfxApiKey;
 
+    /**
+     * @return SignalFX API key
+     * 
+     */
     public Optional<Output<String>> signalfxApiKey() {
         return Optional.ofNullable(this.signalfxApiKey);
     }
 
+    /**
+     * SignalFX realm
+     * 
+     */
     @Import(name="signalfxRealm")
     private @Nullable Output<String> signalfxRealm;
 
+    /**
+     * @return SignalFX realm
+     * 
+     */
     public Optional<Output<String>> signalfxRealm() {
         return Optional.ofNullable(this.signalfxRealm);
     }
@@ -63,33 +87,75 @@ public final class ServiceIntegrationEndpointSignalfxUserConfigArgs extends com.
             $ = new ServiceIntegrationEndpointSignalfxUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabledMetrics list of metrics to send
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabledMetrics(@Nullable Output<List<String>> enabledMetrics) {
             $.enabledMetrics = enabledMetrics;
             return this;
         }
 
+        /**
+         * @param enabledMetrics list of metrics to send
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabledMetrics(List<String> enabledMetrics) {
             return enabledMetrics(Output.of(enabledMetrics));
         }
 
+        /**
+         * @param enabledMetrics list of metrics to send
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabledMetrics(String... enabledMetrics) {
             return enabledMetrics(List.of(enabledMetrics));
         }
 
+        /**
+         * @param signalfxApiKey SignalFX API key
+         * 
+         * @return builder
+         * 
+         */
         public Builder signalfxApiKey(@Nullable Output<String> signalfxApiKey) {
             $.signalfxApiKey = signalfxApiKey;
             return this;
         }
 
+        /**
+         * @param signalfxApiKey SignalFX API key
+         * 
+         * @return builder
+         * 
+         */
         public Builder signalfxApiKey(String signalfxApiKey) {
             return signalfxApiKey(Output.of(signalfxApiKey));
         }
 
+        /**
+         * @param signalfxRealm SignalFX realm
+         * 
+         * @return builder
+         * 
+         */
         public Builder signalfxRealm(@Nullable Output<String> signalfxRealm) {
             $.signalfxRealm = signalfxRealm;
             return this;
         }
 
+        /**
+         * @param signalfxRealm SignalFX realm
+         * 
+         * @return builder
+         * 
+         */
         public Builder signalfxRealm(String signalfxRealm) {
             return signalfxRealm(Output.of(signalfxRealm));
         }

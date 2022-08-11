@@ -62,11 +62,17 @@ class GetMirrorMakerReplicationFlowResult:
     @property
     @pulumi.getter(name="emitHeartbeatsEnabled")
     def emit_heartbeats_enabled(self) -> bool:
+        """
+        Emit heartbeats enabled. The default value is `false`.
+        """
         return pulumi.get(self, "emit_heartbeats_enabled")
 
     @property
     @pulumi.getter
     def enable(self) -> bool:
+        """
+        Enable of disable replication flows for a service.
+        """
         return pulumi.get(self, "enable")
 
     @property
@@ -80,46 +86,73 @@ class GetMirrorMakerReplicationFlowResult:
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="replicationPolicyClass")
     def replication_policy_class(self) -> str:
+        """
+        Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+        """
         return pulumi.get(self, "replication_policy_class")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="sourceCluster")
     def source_cluster(self) -> str:
+        """
+        Source cluster alias. Maximum Length: `128`.
+        """
         return pulumi.get(self, "source_cluster")
 
     @property
     @pulumi.getter(name="syncGroupOffsetsEnabled")
     def sync_group_offsets_enabled(self) -> bool:
+        """
+        Sync consumer group offsets. The default value is `false`.
+        """
         return pulumi.get(self, "sync_group_offsets_enabled")
 
     @property
     @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
     def sync_group_offsets_interval_seconds(self) -> int:
+        """
+        Frequency of consumer group offset sync. The default value is `1`.
+        """
         return pulumi.get(self, "sync_group_offsets_interval_seconds")
 
     @property
     @pulumi.getter(name="targetCluster")
     def target_cluster(self) -> str:
+        """
+        Target cluster alias. Maximum Length: `128`.
+        """
         return pulumi.get(self, "target_cluster")
 
     @property
     @pulumi.getter
     def topics(self) -> Sequence[str]:
+        """
+        List of topics and/or regular expressions to replicate
+        """
         return pulumi.get(self, "topics")
 
     @property
     @pulumi.getter(name="topicsBlacklists")
     def topics_blacklists(self) -> Sequence[str]:
+        """
+        List of topics and/or regular expressions to not replicate.
+        """
         return pulumi.get(self, "topics_blacklists")
 
 
@@ -162,6 +195,12 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
         source_cluster=aiven_service["source"]["service_name"],
         target_cluster=aiven_service["target"]["service_name"])
     ```
+
+
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str source_cluster: Source cluster alias. Maximum Length: `128`.
+    :param str target_cluster: Target cluster alias. Maximum Length: `128`.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -206,5 +245,11 @@ def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[str]
         source_cluster=aiven_service["source"]["service_name"],
         target_cluster=aiven_service["target"]["service_name"])
     ```
+
+
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str source_cluster: Source cluster alias. Maximum Length: `128`.
+    :param str target_cluster: Target cluster alias. Maximum Length: `128`.
     """
     ...

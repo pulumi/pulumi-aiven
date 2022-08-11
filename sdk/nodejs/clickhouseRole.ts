@@ -63,8 +63,7 @@ export class ClickhouseRole extends pulumi.CustomResource {
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -72,8 +71,7 @@ export class ClickhouseRole extends pulumi.CustomResource {
      */
     public readonly role!: pulumi.Output<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -118,8 +116,7 @@ export class ClickhouseRole extends pulumi.CustomResource {
  */
 export interface ClickhouseRoleState {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -127,8 +124,7 @@ export interface ClickhouseRoleState {
      */
     role?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -138,8 +134,7 @@ export interface ClickhouseRoleState {
  */
 export interface ClickhouseRoleArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
@@ -147,8 +142,7 @@ export interface ClickhouseRoleArgs {
      */
     role: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

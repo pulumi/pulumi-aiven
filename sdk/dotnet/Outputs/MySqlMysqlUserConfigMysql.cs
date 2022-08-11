@@ -17,18 +17,24 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? DefaultTimeZone;
         public readonly string? GroupConcatMaxLen;
         public readonly string? InformationSchemaStatsExpiry;
+        public readonly string? InnodbChangeBufferMaxSize;
+        public readonly string? InnodbFlushNeighbors;
         public readonly string? InnodbFtMinTokenSize;
         public readonly string? InnodbFtServerStopwordTable;
         public readonly string? InnodbLockWaitTimeout;
         public readonly string? InnodbLogBufferSize;
         public readonly string? InnodbOnlineAlterLogMaxSize;
         public readonly string? InnodbPrintAllDeadlocks;
+        public readonly string? InnodbReadIoThreads;
         public readonly string? InnodbRollbackOnTimeout;
+        public readonly string? InnodbThreadConcurrency;
+        public readonly string? InnodbWriteIoThreads;
         public readonly string? InteractiveTimeout;
         public readonly string? InternalTmpMemStorageEngine;
         public readonly string? LongQueryTime;
         public readonly string? MaxAllowedPacket;
         public readonly string? MaxHeapTableSize;
+        public readonly string? NetBufferLength;
         public readonly string? NetReadTimeout;
         public readonly string? NetWriteTimeout;
         public readonly string? SlowQueryLog;
@@ -48,6 +54,10 @@ namespace Pulumi.Aiven.Outputs
 
             string? informationSchemaStatsExpiry,
 
+            string? innodbChangeBufferMaxSize,
+
+            string? innodbFlushNeighbors,
+
             string? innodbFtMinTokenSize,
 
             string? innodbFtServerStopwordTable,
@@ -60,7 +70,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? innodbPrintAllDeadlocks,
 
+            string? innodbReadIoThreads,
+
             string? innodbRollbackOnTimeout,
+
+            string? innodbThreadConcurrency,
+
+            string? innodbWriteIoThreads,
 
             string? interactiveTimeout,
 
@@ -71,6 +87,8 @@ namespace Pulumi.Aiven.Outputs
             string? maxAllowedPacket,
 
             string? maxHeapTableSize,
+
+            string? netBufferLength,
 
             string? netReadTimeout,
 
@@ -92,18 +110,24 @@ namespace Pulumi.Aiven.Outputs
             DefaultTimeZone = defaultTimeZone;
             GroupConcatMaxLen = groupConcatMaxLen;
             InformationSchemaStatsExpiry = informationSchemaStatsExpiry;
+            InnodbChangeBufferMaxSize = innodbChangeBufferMaxSize;
+            InnodbFlushNeighbors = innodbFlushNeighbors;
             InnodbFtMinTokenSize = innodbFtMinTokenSize;
             InnodbFtServerStopwordTable = innodbFtServerStopwordTable;
             InnodbLockWaitTimeout = innodbLockWaitTimeout;
             InnodbLogBufferSize = innodbLogBufferSize;
             InnodbOnlineAlterLogMaxSize = innodbOnlineAlterLogMaxSize;
             InnodbPrintAllDeadlocks = innodbPrintAllDeadlocks;
+            InnodbReadIoThreads = innodbReadIoThreads;
             InnodbRollbackOnTimeout = innodbRollbackOnTimeout;
+            InnodbThreadConcurrency = innodbThreadConcurrency;
+            InnodbWriteIoThreads = innodbWriteIoThreads;
             InteractiveTimeout = interactiveTimeout;
             InternalTmpMemStorageEngine = internalTmpMemStorageEngine;
             LongQueryTime = longQueryTime;
             MaxAllowedPacket = maxAllowedPacket;
             MaxHeapTableSize = maxHeapTableSize;
+            NetBufferLength = netBufferLength;
             NetReadTimeout = netReadTimeout;
             NetWriteTimeout = netWriteTimeout;
             SlowQueryLog = slowQueryLog;

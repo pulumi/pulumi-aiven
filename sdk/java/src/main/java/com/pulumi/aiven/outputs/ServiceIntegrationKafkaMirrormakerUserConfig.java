@@ -12,7 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationKafkaMirrormakerUserConfig {
+    /**
+     * @return Kafka cluster alias
+     * 
+     */
     private final @Nullable String clusterAlias;
+    /**
+     * @return Kafka MirrorMaker configuration values
+     * 
+     */
     private final @Nullable ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
 
     @CustomType.Constructor
@@ -23,9 +31,17 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfig {
         this.kafkaMirrormaker = kafkaMirrormaker;
     }
 
+    /**
+     * @return Kafka cluster alias
+     * 
+     */
     public Optional<String> clusterAlias() {
         return Optional.ofNullable(this.clusterAlias);
     }
+    /**
+     * @return Kafka MirrorMaker configuration values
+     * 
+     */
     public Optional<ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker> kafkaMirrormaker() {
         return Optional.ofNullable(this.kafkaMirrormaker);
     }

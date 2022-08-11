@@ -27,247 +27,527 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
 
     public static final GrafanaGrafanaUserConfigArgs Empty = new GrafanaGrafanaUserConfigArgs();
 
+    /**
+     * Enable or disable Grafana alerting functionality
+     * 
+     */
     @Import(name="alertingEnabled")
     private @Nullable Output<String> alertingEnabled;
 
+    /**
+     * @return Enable or disable Grafana alerting functionality
+     * 
+     */
     public Optional<Output<String>> alertingEnabled() {
         return Optional.ofNullable(this.alertingEnabled);
     }
 
+    /**
+     * Default error or timeout setting for new alerting rules
+     * 
+     */
     @Import(name="alertingErrorOrTimeout")
     private @Nullable Output<String> alertingErrorOrTimeout;
 
+    /**
+     * @return Default error or timeout setting for new alerting rules
+     * 
+     */
     public Optional<Output<String>> alertingErrorOrTimeout() {
         return Optional.ofNullable(this.alertingErrorOrTimeout);
     }
 
+    /**
+     * Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+     * 
+     */
     @Import(name="alertingMaxAnnotationsToKeep")
     private @Nullable Output<String> alertingMaxAnnotationsToKeep;
 
+    /**
+     * @return Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+     * 
+     */
     public Optional<Output<String>> alertingMaxAnnotationsToKeep() {
         return Optional.ofNullable(this.alertingMaxAnnotationsToKeep);
     }
 
+    /**
+     * Default value for &#39;no data or null values&#39; for new alerting rules
+     * 
+     */
     @Import(name="alertingNodataOrNullvalues")
     private @Nullable Output<String> alertingNodataOrNullvalues;
 
+    /**
+     * @return Default value for &#39;no data or null values&#39; for new alerting rules
+     * 
+     */
     public Optional<Output<String>> alertingNodataOrNullvalues() {
         return Optional.ofNullable(this.alertingNodataOrNullvalues);
     }
 
+    /**
+     * Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
+     * 
+     */
     @Import(name="allowEmbedding")
     private @Nullable Output<String> allowEmbedding;
 
+    /**
+     * @return Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
+     * 
+     */
     public Optional<Output<String>> allowEmbedding() {
         return Optional.ofNullable(this.allowEmbedding);
     }
 
+    /**
+     * Azure AD OAuth integration
+     * 
+     */
     @Import(name="authAzuread")
     private @Nullable Output<GrafanaGrafanaUserConfigAuthAzureadArgs> authAzuread;
 
+    /**
+     * @return Azure AD OAuth integration
+     * 
+     */
     public Optional<Output<GrafanaGrafanaUserConfigAuthAzureadArgs>> authAzuread() {
         return Optional.ofNullable(this.authAzuread);
     }
 
+    /**
+     * Enable or disable basic authentication form, used by Grafana built-in login
+     * 
+     */
     @Import(name="authBasicEnabled")
     private @Nullable Output<String> authBasicEnabled;
 
+    /**
+     * @return Enable or disable basic authentication form, used by Grafana built-in login
+     * 
+     */
     public Optional<Output<String>> authBasicEnabled() {
         return Optional.ofNullable(this.authBasicEnabled);
     }
 
+    /**
+     * Generic OAuth integration
+     * 
+     */
     @Import(name="authGenericOauth")
     private @Nullable Output<GrafanaGrafanaUserConfigAuthGenericOauthArgs> authGenericOauth;
 
+    /**
+     * @return Generic OAuth integration
+     * 
+     */
     public Optional<Output<GrafanaGrafanaUserConfigAuthGenericOauthArgs>> authGenericOauth() {
         return Optional.ofNullable(this.authGenericOauth);
     }
 
+    /**
+     * Github Auth integration
+     * 
+     */
     @Import(name="authGithub")
     private @Nullable Output<GrafanaGrafanaUserConfigAuthGithubArgs> authGithub;
 
+    /**
+     * @return Github Auth integration
+     * 
+     */
     public Optional<Output<GrafanaGrafanaUserConfigAuthGithubArgs>> authGithub() {
         return Optional.ofNullable(this.authGithub);
     }
 
+    /**
+     * GitLab Auth integration
+     * 
+     */
     @Import(name="authGitlab")
     private @Nullable Output<GrafanaGrafanaUserConfigAuthGitlabArgs> authGitlab;
 
+    /**
+     * @return GitLab Auth integration
+     * 
+     */
     public Optional<Output<GrafanaGrafanaUserConfigAuthGitlabArgs>> authGitlab() {
         return Optional.ofNullable(this.authGitlab);
     }
 
+    /**
+     * Google Auth integration
+     * 
+     */
     @Import(name="authGoogle")
     private @Nullable Output<GrafanaGrafanaUserConfigAuthGoogleArgs> authGoogle;
 
+    /**
+     * @return Google Auth integration
+     * 
+     */
     public Optional<Output<GrafanaGrafanaUserConfigAuthGoogleArgs>> authGoogle() {
         return Optional.ofNullable(this.authGoogle);
     }
 
+    /**
+     * Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+     * 
+     */
     @Import(name="cookieSamesite")
     private @Nullable Output<String> cookieSamesite;
 
+    /**
+     * @return Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+     * 
+     */
     public Optional<Output<String>> cookieSamesite() {
         return Optional.ofNullable(this.cookieSamesite);
     }
 
+    /**
+     * Custom domain
+     * 
+     */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
+    /**
+     * @return Custom domain
+     * 
+     */
     public Optional<Output<String>> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
 
+    /**
+     * Minimum refresh interval
+     * 
+     */
     @Import(name="dashboardsMinRefreshInterval")
     private @Nullable Output<String> dashboardsMinRefreshInterval;
 
+    /**
+     * @return Minimum refresh interval
+     * 
+     */
     public Optional<Output<String>> dashboardsMinRefreshInterval() {
         return Optional.ofNullable(this.dashboardsMinRefreshInterval);
     }
 
+    /**
+     * Dashboard versions to keep per dashboard
+     * 
+     */
     @Import(name="dashboardsVersionsToKeep")
     private @Nullable Output<String> dashboardsVersionsToKeep;
 
+    /**
+     * @return Dashboard versions to keep per dashboard
+     * 
+     */
     public Optional<Output<String>> dashboardsVersionsToKeep() {
         return Optional.ofNullable(this.dashboardsVersionsToKeep);
     }
 
+    /**
+     * Send &#39;X-Grafana-User&#39; header to data source
+     * 
+     */
     @Import(name="dataproxySendUserHeader")
     private @Nullable Output<String> dataproxySendUserHeader;
 
+    /**
+     * @return Send &#39;X-Grafana-User&#39; header to data source
+     * 
+     */
     public Optional<Output<String>> dataproxySendUserHeader() {
         return Optional.ofNullable(this.dataproxySendUserHeader);
     }
 
+    /**
+     * Timeout for data proxy requests in seconds
+     * 
+     */
     @Import(name="dataproxyTimeout")
     private @Nullable Output<String> dataproxyTimeout;
 
+    /**
+     * @return Timeout for data proxy requests in seconds
+     * 
+     */
     public Optional<Output<String>> dataproxyTimeout() {
         return Optional.ofNullable(this.dataproxyTimeout);
     }
 
+    /**
+     * Grafana date format specifications
+     * 
+     */
     @Import(name="dateFormats")
     private @Nullable Output<GrafanaGrafanaUserConfigDateFormatsArgs> dateFormats;
 
+    /**
+     * @return Grafana date format specifications
+     * 
+     */
     public Optional<Output<GrafanaGrafanaUserConfigDateFormatsArgs>> dateFormats() {
         return Optional.ofNullable(this.dateFormats);
     }
 
+    /**
+     * Set to true to disable gravatar. Defaults to false (gravatar is enabled)
+     * 
+     */
     @Import(name="disableGravatar")
     private @Nullable Output<String> disableGravatar;
 
+    /**
+     * @return Set to true to disable gravatar. Defaults to false (gravatar is enabled)
+     * 
+     */
     public Optional<Output<String>> disableGravatar() {
         return Optional.ofNullable(this.disableGravatar);
     }
 
+    /**
+     * Editors can manage folders, teams and dashboards created by them
+     * 
+     */
     @Import(name="editorsCanAdmin")
     private @Nullable Output<String> editorsCanAdmin;
 
+    /**
+     * @return Editors can manage folders, teams and dashboards created by them
+     * 
+     */
     public Optional<Output<String>> editorsCanAdmin() {
         return Optional.ofNullable(this.editorsCanAdmin);
     }
 
+    /**
+     * External image store settings
+     * 
+     */
     @Import(name="externalImageStorage")
     private @Nullable Output<GrafanaGrafanaUserConfigExternalImageStorageArgs> externalImageStorage;
 
+    /**
+     * @return External image store settings
+     * 
+     */
     public Optional<Output<GrafanaGrafanaUserConfigExternalImageStorageArgs>> externalImageStorage() {
         return Optional.ofNullable(this.externalImageStorage);
     }
 
+    /**
+     * Google Analytics ID
+     * 
+     */
     @Import(name="googleAnalyticsUaId")
     private @Nullable Output<String> googleAnalyticsUaId;
 
+    /**
+     * @return Google Analytics ID
+     * 
+     */
     public Optional<Output<String>> googleAnalyticsUaId() {
         return Optional.ofNullable(this.googleAnalyticsUaId);
     }
 
+    /**
+     * IP filter
+     * 
+     */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
+    /**
+     * @return IP filter
+     * 
+     */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
+    /**
+     * Enable Grafana /metrics endpoint
+     * 
+     */
     @Import(name="metricsEnabled")
     private @Nullable Output<String> metricsEnabled;
 
+    /**
+     * @return Enable Grafana /metrics endpoint
+     * 
+     */
     public Optional<Output<String>> metricsEnabled() {
         return Optional.ofNullable(this.metricsEnabled);
     }
 
+    /**
+     * Allow access to selected service ports from private networks
+     * 
+     */
     @Import(name="privateAccess")
     private @Nullable Output<GrafanaGrafanaUserConfigPrivateAccessArgs> privateAccess;
 
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     public Optional<Output<GrafanaGrafanaUserConfigPrivateAccessArgs>> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
 
+    /**
+     * Allow access to selected service components through Privatelink
+     * 
+     */
     @Import(name="privatelinkAccess")
     private @Nullable Output<GrafanaGrafanaUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     public Optional<Output<GrafanaGrafanaUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
 
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="projectToForkFrom")
     private @Nullable Output<String> projectToForkFrom;
 
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
 
+    /**
+     * Allow access to selected service ports from the public Internet
+     * 
+     */
     @Import(name="publicAccess")
     private @Nullable Output<GrafanaGrafanaUserConfigPublicAccessArgs> publicAccess;
 
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     public Optional<Output<GrafanaGrafanaUserConfigPublicAccessArgs>> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
 
+    /**
+     * Name of the basebackup to restore in forked service
+     * 
+     */
     @Import(name="recoveryBasebackupName")
     private @Nullable Output<String> recoveryBasebackupName;
 
+    /**
+     * @return Name of the basebackup to restore in forked service
+     * 
+     */
     public Optional<Output<String>> recoveryBasebackupName() {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
 
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
 
+    /**
+     * SMTP server settings
+     * 
+     */
     @Import(name="smtpServer")
     private @Nullable Output<GrafanaGrafanaUserConfigSmtpServerArgs> smtpServer;
 
+    /**
+     * @return SMTP server settings
+     * 
+     */
     public Optional<Output<GrafanaGrafanaUserConfigSmtpServerArgs>> smtpServer() {
         return Optional.ofNullable(this.smtpServer);
     }
 
+    /**
+     * Static IP addresses
+     * 
+     */
     @Import(name="staticIps")
     private @Nullable Output<String> staticIps;
 
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<Output<String>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
 
+    /**
+     * Auto-assign new users on signup to main organization. Defaults to false
+     * 
+     */
     @Import(name="userAutoAssignOrg")
     private @Nullable Output<String> userAutoAssignOrg;
 
+    /**
+     * @return Auto-assign new users on signup to main organization. Defaults to false
+     * 
+     */
     public Optional<Output<String>> userAutoAssignOrg() {
         return Optional.ofNullable(this.userAutoAssignOrg);
     }
 
+    /**
+     * Set role for new signups. Defaults to Viewer
+     * 
+     */
     @Import(name="userAutoAssignOrgRole")
     private @Nullable Output<String> userAutoAssignOrgRole;
 
+    /**
+     * @return Set role for new signups. Defaults to Viewer
+     * 
+     */
     public Optional<Output<String>> userAutoAssignOrgRole() {
         return Optional.ofNullable(this.userAutoAssignOrgRole);
     }
 
+    /**
+     * Users with view-only permission can edit but not save dashboards
+     * 
+     */
     @Import(name="viewersCanEdit")
     private @Nullable Output<String> viewersCanEdit;
 
+    /**
+     * @return Users with view-only permission can edit but not save dashboards
+     * 
+     */
     public Optional<Output<String>> viewersCanEdit() {
         return Optional.ofNullable(this.viewersCanEdit);
     }
@@ -330,321 +610,747 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
             $ = new GrafanaGrafanaUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alertingEnabled Enable or disable Grafana alerting functionality
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertingEnabled(@Nullable Output<String> alertingEnabled) {
             $.alertingEnabled = alertingEnabled;
             return this;
         }
 
+        /**
+         * @param alertingEnabled Enable or disable Grafana alerting functionality
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertingEnabled(String alertingEnabled) {
             return alertingEnabled(Output.of(alertingEnabled));
         }
 
+        /**
+         * @param alertingErrorOrTimeout Default error or timeout setting for new alerting rules
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertingErrorOrTimeout(@Nullable Output<String> alertingErrorOrTimeout) {
             $.alertingErrorOrTimeout = alertingErrorOrTimeout;
             return this;
         }
 
+        /**
+         * @param alertingErrorOrTimeout Default error or timeout setting for new alerting rules
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertingErrorOrTimeout(String alertingErrorOrTimeout) {
             return alertingErrorOrTimeout(Output.of(alertingErrorOrTimeout));
         }
 
+        /**
+         * @param alertingMaxAnnotationsToKeep Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertingMaxAnnotationsToKeep(@Nullable Output<String> alertingMaxAnnotationsToKeep) {
             $.alertingMaxAnnotationsToKeep = alertingMaxAnnotationsToKeep;
             return this;
         }
 
+        /**
+         * @param alertingMaxAnnotationsToKeep Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertingMaxAnnotationsToKeep(String alertingMaxAnnotationsToKeep) {
             return alertingMaxAnnotationsToKeep(Output.of(alertingMaxAnnotationsToKeep));
         }
 
+        /**
+         * @param alertingNodataOrNullvalues Default value for &#39;no data or null values&#39; for new alerting rules
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertingNodataOrNullvalues(@Nullable Output<String> alertingNodataOrNullvalues) {
             $.alertingNodataOrNullvalues = alertingNodataOrNullvalues;
             return this;
         }
 
+        /**
+         * @param alertingNodataOrNullvalues Default value for &#39;no data or null values&#39; for new alerting rules
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertingNodataOrNullvalues(String alertingNodataOrNullvalues) {
             return alertingNodataOrNullvalues(Output.of(alertingNodataOrNullvalues));
         }
 
+        /**
+         * @param allowEmbedding Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowEmbedding(@Nullable Output<String> allowEmbedding) {
             $.allowEmbedding = allowEmbedding;
             return this;
         }
 
+        /**
+         * @param allowEmbedding Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowEmbedding(String allowEmbedding) {
             return allowEmbedding(Output.of(allowEmbedding));
         }
 
+        /**
+         * @param authAzuread Azure AD OAuth integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authAzuread(@Nullable Output<GrafanaGrafanaUserConfigAuthAzureadArgs> authAzuread) {
             $.authAzuread = authAzuread;
             return this;
         }
 
+        /**
+         * @param authAzuread Azure AD OAuth integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authAzuread(GrafanaGrafanaUserConfigAuthAzureadArgs authAzuread) {
             return authAzuread(Output.of(authAzuread));
         }
 
+        /**
+         * @param authBasicEnabled Enable or disable basic authentication form, used by Grafana built-in login
+         * 
+         * @return builder
+         * 
+         */
         public Builder authBasicEnabled(@Nullable Output<String> authBasicEnabled) {
             $.authBasicEnabled = authBasicEnabled;
             return this;
         }
 
+        /**
+         * @param authBasicEnabled Enable or disable basic authentication form, used by Grafana built-in login
+         * 
+         * @return builder
+         * 
+         */
         public Builder authBasicEnabled(String authBasicEnabled) {
             return authBasicEnabled(Output.of(authBasicEnabled));
         }
 
+        /**
+         * @param authGenericOauth Generic OAuth integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authGenericOauth(@Nullable Output<GrafanaGrafanaUserConfigAuthGenericOauthArgs> authGenericOauth) {
             $.authGenericOauth = authGenericOauth;
             return this;
         }
 
+        /**
+         * @param authGenericOauth Generic OAuth integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authGenericOauth(GrafanaGrafanaUserConfigAuthGenericOauthArgs authGenericOauth) {
             return authGenericOauth(Output.of(authGenericOauth));
         }
 
+        /**
+         * @param authGithub Github Auth integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authGithub(@Nullable Output<GrafanaGrafanaUserConfigAuthGithubArgs> authGithub) {
             $.authGithub = authGithub;
             return this;
         }
 
+        /**
+         * @param authGithub Github Auth integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authGithub(GrafanaGrafanaUserConfigAuthGithubArgs authGithub) {
             return authGithub(Output.of(authGithub));
         }
 
+        /**
+         * @param authGitlab GitLab Auth integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authGitlab(@Nullable Output<GrafanaGrafanaUserConfigAuthGitlabArgs> authGitlab) {
             $.authGitlab = authGitlab;
             return this;
         }
 
+        /**
+         * @param authGitlab GitLab Auth integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authGitlab(GrafanaGrafanaUserConfigAuthGitlabArgs authGitlab) {
             return authGitlab(Output.of(authGitlab));
         }
 
+        /**
+         * @param authGoogle Google Auth integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authGoogle(@Nullable Output<GrafanaGrafanaUserConfigAuthGoogleArgs> authGoogle) {
             $.authGoogle = authGoogle;
             return this;
         }
 
+        /**
+         * @param authGoogle Google Auth integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder authGoogle(GrafanaGrafanaUserConfigAuthGoogleArgs authGoogle) {
             return authGoogle(Output.of(authGoogle));
         }
 
+        /**
+         * @param cookieSamesite Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cookieSamesite(@Nullable Output<String> cookieSamesite) {
             $.cookieSamesite = cookieSamesite;
             return this;
         }
 
+        /**
+         * @param cookieSamesite Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cookieSamesite(String cookieSamesite) {
             return cookieSamesite(Output.of(cookieSamesite));
         }
 
+        /**
+         * @param customDomain Custom domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDomain(@Nullable Output<String> customDomain) {
             $.customDomain = customDomain;
             return this;
         }
 
+        /**
+         * @param customDomain Custom domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDomain(String customDomain) {
             return customDomain(Output.of(customDomain));
         }
 
+        /**
+         * @param dashboardsMinRefreshInterval Minimum refresh interval
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardsMinRefreshInterval(@Nullable Output<String> dashboardsMinRefreshInterval) {
             $.dashboardsMinRefreshInterval = dashboardsMinRefreshInterval;
             return this;
         }
 
+        /**
+         * @param dashboardsMinRefreshInterval Minimum refresh interval
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardsMinRefreshInterval(String dashboardsMinRefreshInterval) {
             return dashboardsMinRefreshInterval(Output.of(dashboardsMinRefreshInterval));
         }
 
+        /**
+         * @param dashboardsVersionsToKeep Dashboard versions to keep per dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardsVersionsToKeep(@Nullable Output<String> dashboardsVersionsToKeep) {
             $.dashboardsVersionsToKeep = dashboardsVersionsToKeep;
             return this;
         }
 
+        /**
+         * @param dashboardsVersionsToKeep Dashboard versions to keep per dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardsVersionsToKeep(String dashboardsVersionsToKeep) {
             return dashboardsVersionsToKeep(Output.of(dashboardsVersionsToKeep));
         }
 
+        /**
+         * @param dataproxySendUserHeader Send &#39;X-Grafana-User&#39; header to data source
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataproxySendUserHeader(@Nullable Output<String> dataproxySendUserHeader) {
             $.dataproxySendUserHeader = dataproxySendUserHeader;
             return this;
         }
 
+        /**
+         * @param dataproxySendUserHeader Send &#39;X-Grafana-User&#39; header to data source
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataproxySendUserHeader(String dataproxySendUserHeader) {
             return dataproxySendUserHeader(Output.of(dataproxySendUserHeader));
         }
 
+        /**
+         * @param dataproxyTimeout Timeout for data proxy requests in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataproxyTimeout(@Nullable Output<String> dataproxyTimeout) {
             $.dataproxyTimeout = dataproxyTimeout;
             return this;
         }
 
+        /**
+         * @param dataproxyTimeout Timeout for data proxy requests in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataproxyTimeout(String dataproxyTimeout) {
             return dataproxyTimeout(Output.of(dataproxyTimeout));
         }
 
+        /**
+         * @param dateFormats Grafana date format specifications
+         * 
+         * @return builder
+         * 
+         */
         public Builder dateFormats(@Nullable Output<GrafanaGrafanaUserConfigDateFormatsArgs> dateFormats) {
             $.dateFormats = dateFormats;
             return this;
         }
 
+        /**
+         * @param dateFormats Grafana date format specifications
+         * 
+         * @return builder
+         * 
+         */
         public Builder dateFormats(GrafanaGrafanaUserConfigDateFormatsArgs dateFormats) {
             return dateFormats(Output.of(dateFormats));
         }
 
+        /**
+         * @param disableGravatar Set to true to disable gravatar. Defaults to false (gravatar is enabled)
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableGravatar(@Nullable Output<String> disableGravatar) {
             $.disableGravatar = disableGravatar;
             return this;
         }
 
+        /**
+         * @param disableGravatar Set to true to disable gravatar. Defaults to false (gravatar is enabled)
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableGravatar(String disableGravatar) {
             return disableGravatar(Output.of(disableGravatar));
         }
 
+        /**
+         * @param editorsCanAdmin Editors can manage folders, teams and dashboards created by them
+         * 
+         * @return builder
+         * 
+         */
         public Builder editorsCanAdmin(@Nullable Output<String> editorsCanAdmin) {
             $.editorsCanAdmin = editorsCanAdmin;
             return this;
         }
 
+        /**
+         * @param editorsCanAdmin Editors can manage folders, teams and dashboards created by them
+         * 
+         * @return builder
+         * 
+         */
         public Builder editorsCanAdmin(String editorsCanAdmin) {
             return editorsCanAdmin(Output.of(editorsCanAdmin));
         }
 
+        /**
+         * @param externalImageStorage External image store settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalImageStorage(@Nullable Output<GrafanaGrafanaUserConfigExternalImageStorageArgs> externalImageStorage) {
             $.externalImageStorage = externalImageStorage;
             return this;
         }
 
+        /**
+         * @param externalImageStorage External image store settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalImageStorage(GrafanaGrafanaUserConfigExternalImageStorageArgs externalImageStorage) {
             return externalImageStorage(Output.of(externalImageStorage));
         }
 
+        /**
+         * @param googleAnalyticsUaId Google Analytics ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder googleAnalyticsUaId(@Nullable Output<String> googleAnalyticsUaId) {
             $.googleAnalyticsUaId = googleAnalyticsUaId;
             return this;
         }
 
+        /**
+         * @param googleAnalyticsUaId Google Analytics ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder googleAnalyticsUaId(String googleAnalyticsUaId) {
             return googleAnalyticsUaId(Output.of(googleAnalyticsUaId));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
+        /**
+         * @param metricsEnabled Enable Grafana /metrics endpoint
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricsEnabled(@Nullable Output<String> metricsEnabled) {
             $.metricsEnabled = metricsEnabled;
             return this;
         }
 
+        /**
+         * @param metricsEnabled Enable Grafana /metrics endpoint
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricsEnabled(String metricsEnabled) {
             return metricsEnabled(Output.of(metricsEnabled));
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(@Nullable Output<GrafanaGrafanaUserConfigPrivateAccessArgs> privateAccess) {
             $.privateAccess = privateAccess;
             return this;
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(GrafanaGrafanaUserConfigPrivateAccessArgs privateAccess) {
             return privateAccess(Output.of(privateAccess));
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(@Nullable Output<GrafanaGrafanaUserConfigPrivatelinkAccessArgs> privatelinkAccess) {
             $.privatelinkAccess = privatelinkAccess;
             return this;
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(GrafanaGrafanaUserConfigPrivatelinkAccessArgs privatelinkAccess) {
             return privatelinkAccess(Output.of(privatelinkAccess));
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(@Nullable Output<String> projectToForkFrom) {
             $.projectToForkFrom = projectToForkFrom;
             return this;
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(String projectToForkFrom) {
             return projectToForkFrom(Output.of(projectToForkFrom));
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(@Nullable Output<GrafanaGrafanaUserConfigPublicAccessArgs> publicAccess) {
             $.publicAccess = publicAccess;
             return this;
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(GrafanaGrafanaUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
         }
 
+        /**
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service
+         * 
+         * @return builder
+         * 
+         */
         public Builder recoveryBasebackupName(@Nullable Output<String> recoveryBasebackupName) {
             $.recoveryBasebackupName = recoveryBasebackupName;
             return this;
         }
 
+        /**
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service
+         * 
+         * @return builder
+         * 
+         */
         public Builder recoveryBasebackupName(String recoveryBasebackupName) {
             return recoveryBasebackupName(Output.of(recoveryBasebackupName));
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(@Nullable Output<String> serviceToForkFrom) {
             $.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(String serviceToForkFrom) {
             return serviceToForkFrom(Output.of(serviceToForkFrom));
         }
 
+        /**
+         * @param smtpServer SMTP server settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder smtpServer(@Nullable Output<GrafanaGrafanaUserConfigSmtpServerArgs> smtpServer) {
             $.smtpServer = smtpServer;
             return this;
         }
 
+        /**
+         * @param smtpServer SMTP server settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder smtpServer(GrafanaGrafanaUserConfigSmtpServerArgs smtpServer) {
             return smtpServer(Output.of(smtpServer));
         }
 
+        /**
+         * @param staticIps Static IP addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(@Nullable Output<String> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
+        /**
+         * @param staticIps Static IP addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(String staticIps) {
             return staticIps(Output.of(staticIps));
         }
 
+        /**
+         * @param userAutoAssignOrg Auto-assign new users on signup to main organization. Defaults to false
+         * 
+         * @return builder
+         * 
+         */
         public Builder userAutoAssignOrg(@Nullable Output<String> userAutoAssignOrg) {
             $.userAutoAssignOrg = userAutoAssignOrg;
             return this;
         }
 
+        /**
+         * @param userAutoAssignOrg Auto-assign new users on signup to main organization. Defaults to false
+         * 
+         * @return builder
+         * 
+         */
         public Builder userAutoAssignOrg(String userAutoAssignOrg) {
             return userAutoAssignOrg(Output.of(userAutoAssignOrg));
         }
 
+        /**
+         * @param userAutoAssignOrgRole Set role for new signups. Defaults to Viewer
+         * 
+         * @return builder
+         * 
+         */
         public Builder userAutoAssignOrgRole(@Nullable Output<String> userAutoAssignOrgRole) {
             $.userAutoAssignOrgRole = userAutoAssignOrgRole;
             return this;
         }
 
+        /**
+         * @param userAutoAssignOrgRole Set role for new signups. Defaults to Viewer
+         * 
+         * @return builder
+         * 
+         */
         public Builder userAutoAssignOrgRole(String userAutoAssignOrgRole) {
             return userAutoAssignOrgRole(Output.of(userAutoAssignOrgRole));
         }
 
+        /**
+         * @param viewersCanEdit Users with view-only permission can edit but not save dashboards
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewersCanEdit(@Nullable Output<String> viewersCanEdit) {
             $.viewersCanEdit = viewersCanEdit;
             return this;
         }
 
+        /**
+         * @param viewersCanEdit Users with view-only permission can edit but not save dashboards
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewersCanEdit(String viewersCanEdit) {
             return viewersCanEdit(Output.of(viewersCanEdit));
         }

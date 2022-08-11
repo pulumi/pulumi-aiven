@@ -9,15 +9,35 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAccountTeamResult {
+    /**
+     * @return The unique account id
+     * 
+     */
     private final String accountId;
+    /**
+     * @return Time of creation
+     * 
+     */
     private final String createTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return The account team name
+     * 
+     */
     private final String name;
+    /**
+     * @return The auto-generated unique account team id
+     * 
+     */
     private final String teamId;
+    /**
+     * @return Time of last update
+     * 
+     */
     private final String updateTime;
 
     @CustomType.Constructor
@@ -36,9 +56,17 @@ public final class GetAccountTeamResult {
         this.updateTime = updateTime;
     }
 
+    /**
+     * @return The unique account id
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
+    /**
+     * @return Time of creation
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
@@ -49,12 +77,24 @@ public final class GetAccountTeamResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The account team name
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The auto-generated unique account team id
+     * 
+     */
     public String teamId() {
         return this.teamId;
     }
+    /**
+     * @return Time of last update
+     * 
+     */
     public String updateTime() {
         return this.updateTime;
     }

@@ -13,16 +13,60 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FlinkFlinkUserConfig {
+    /**
+     * @return Flink execution.checkpointing.interval in milliseconds
+     * 
+     */
     private final @Nullable String executionCheckpointingIntervalMs;
+    /**
+     * @return Flink execution.checkpointing.timeout in milliseconds
+     * 
+     */
     private final @Nullable String executionCheckpointingTimeoutMs;
+    /**
+     * @return Flink major version
+     * 
+     */
     private final @Nullable String flinkVersion;
+    /**
+     * @return IP filter
+     * 
+     */
     private final @Nullable List<String> ipFilters;
+    /**
+     * @return Flink taskmanager.numberOfTaskSlots
+     * 
+     */
     private final @Nullable String numberOfTaskSlots;
+    /**
+     * @return Flink parallelism.default
+     * 
+     */
     private final @Nullable String parallelismDefault;
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     private final @Nullable FlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess;
+    /**
+     * @return Flink restart-strategy
+     * 
+     */
     private final @Nullable String restartStrategy;
+    /**
+     * @return Flink restart-strategy.failure-rate.delay in seconds
+     * 
+     */
     private final @Nullable String restartStrategyDelaySec;
+    /**
+     * @return Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+     * 
+     */
     private final @Nullable String restartStrategyFailureRateIntervalMin;
+    /**
+     * @return Flink restart-strategy.failure-rate.max-failures-per-interval
+     * 
+     */
     private final @Nullable String restartStrategyMaxFailures;
 
     @CustomType.Constructor
@@ -51,36 +95,80 @@ public final class FlinkFlinkUserConfig {
         this.restartStrategyMaxFailures = restartStrategyMaxFailures;
     }
 
+    /**
+     * @return Flink execution.checkpointing.interval in milliseconds
+     * 
+     */
     public Optional<String> executionCheckpointingIntervalMs() {
         return Optional.ofNullable(this.executionCheckpointingIntervalMs);
     }
+    /**
+     * @return Flink execution.checkpointing.timeout in milliseconds
+     * 
+     */
     public Optional<String> executionCheckpointingTimeoutMs() {
         return Optional.ofNullable(this.executionCheckpointingTimeoutMs);
     }
+    /**
+     * @return Flink major version
+     * 
+     */
     public Optional<String> flinkVersion() {
         return Optional.ofNullable(this.flinkVersion);
     }
+    /**
+     * @return IP filter
+     * 
+     */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Flink taskmanager.numberOfTaskSlots
+     * 
+     */
     public Optional<String> numberOfTaskSlots() {
         return Optional.ofNullable(this.numberOfTaskSlots);
     }
+    /**
+     * @return Flink parallelism.default
+     * 
+     */
     public Optional<String> parallelismDefault() {
         return Optional.ofNullable(this.parallelismDefault);
     }
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     public Optional<FlinkFlinkUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
+    /**
+     * @return Flink restart-strategy
+     * 
+     */
     public Optional<String> restartStrategy() {
         return Optional.ofNullable(this.restartStrategy);
     }
+    /**
+     * @return Flink restart-strategy.failure-rate.delay in seconds
+     * 
+     */
     public Optional<String> restartStrategyDelaySec() {
         return Optional.ofNullable(this.restartStrategyDelaySec);
     }
+    /**
+     * @return Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+     * 
+     */
     public Optional<String> restartStrategyFailureRateIntervalMin() {
         return Optional.ofNullable(this.restartStrategyFailureRateIntervalMin);
     }
+    /**
+     * @return Flink restart-strategy.failure-rate.max-failures-per-interval
+     * 
+     */
     public Optional<String> restartStrategyMaxFailures() {
         return Optional.ofNullable(this.restartStrategyMaxFailures);
     }

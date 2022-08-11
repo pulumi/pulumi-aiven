@@ -13,9 +13,17 @@ public final class GetAccountArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetAccountArgs Empty = new GetAccountArgs();
 
+    /**
+     * Account name
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Account name
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -44,11 +52,23 @@ public final class GetAccountArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetAccountArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Account name
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Account name
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

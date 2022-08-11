@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetKafkaKafkaUserConfigPrivatelinkAccess {
     private final @Nullable String jolokia;
+    /**
+     * @return Kafka server provided values
+     * 
+     */
     private final @Nullable String kafka;
     private final @Nullable String kafkaConnect;
     private final @Nullable String kafkaRest;
@@ -37,6 +41,10 @@ public final class GetKafkaKafkaUserConfigPrivatelinkAccess {
     public Optional<String> jolokia() {
         return Optional.ofNullable(this.jolokia);
     }
+    /**
+     * @return Kafka server provided values
+     * 
+     */
     public Optional<String> kafka() {
         return Optional.ofNullable(this.kafka);
     }

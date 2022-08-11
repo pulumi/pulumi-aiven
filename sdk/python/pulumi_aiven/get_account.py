@@ -50,11 +50,17 @@ class GetAccountResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        Account id
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        Time of creation
+        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -68,26 +74,41 @@ class GetAccountResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Account name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="ownerTeamId")
     def owner_team_id(self) -> str:
+        """
+        Owner team id
+        """
         return pulumi.get(self, "owner_team_id")
 
     @property
     @pulumi.getter(name="primaryBillingGroupId")
     def primary_billing_group_id(self) -> str:
+        """
+        Billing group id
+        """
         return pulumi.get(self, "primary_billing_group_id")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
+        """
+        Tenant id
+        """
         return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
+        """
+        Time of last update
+        """
         return pulumi.get(self, "update_time")
 
 
@@ -120,6 +141,9 @@ def get_account(name: Optional[str] = None,
 
     account1 = aiven.get_account(name="<ACCOUNT_NAME>")
     ```
+
+
+    :param str name: Account name
     """
     __args__ = dict()
     __args__['name'] = name
@@ -151,5 +175,8 @@ def get_account_output(name: Optional[pulumi.Input[str]] = None,
 
     account1 = aiven.get_account(name="<ACCOUNT_NAME>")
     ```
+
+
+    :param str name: Account name
     """
     ...

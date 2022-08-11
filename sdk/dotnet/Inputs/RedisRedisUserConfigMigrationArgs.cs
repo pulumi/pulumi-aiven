@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class RedisRedisUserConfigMigrationArgs : Pulumi.ResourceArgs
+    public sealed class RedisRedisUserConfigMigrationArgs : global::Pulumi.ResourceArgs
     {
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.Aiven.Inputs
         public RedisRedisUserConfigMigrationArgs()
         {
         }
+        public static new RedisRedisUserConfigMigrationArgs Empty => new RedisRedisUserConfigMigrationArgs();
     }
 }

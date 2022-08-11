@@ -19,42 +19,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewClickhouseUser(ctx, "ch-user", &aiven.ClickhouseUserArgs{
-// 			Project:     pulumi.Any(aiven_project.Myproject.Project),
-// 			ServiceName: pulumi.Any(aiven_clickhouse.Myservice.Service_name),
-// 			Username:    pulumi.String("<USERNAME>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewClickhouseUser(ctx, "ch-user", &aiven.ClickhouseUserArgs{
+//				Project:     pulumi.Any(aiven_project.Myproject.Project),
+//				ServiceName: pulumi.Any(aiven_clickhouse.Myservice.Service_name),
+//				Username:    pulumi.String("<USERNAME>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/id
+//
+//	$ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/id
+//
 // ```
 type ClickhouseUser struct {
 	pulumi.CustomResourceState
 
 	// The password of the clickhouse user.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Indicates if a clickhouse user is required
 	Required pulumi.BoolOutput `pulumi:"required"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
@@ -102,13 +105,11 @@ func GetClickhouseUser(ctx *pulumi.Context,
 type clickhouseUserState struct {
 	// The password of the clickhouse user.
 	Password *string `pulumi:"password"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// Indicates if a clickhouse user is required
 	Required *bool `pulumi:"required"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
 	Username *string `pulumi:"username"`
@@ -119,13 +120,11 @@ type clickhouseUserState struct {
 type ClickhouseUserState struct {
 	// The password of the clickhouse user.
 	Password pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// Indicates if a clickhouse user is required
 	Required pulumi.BoolPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringPtrInput
@@ -138,11 +137,9 @@ func (ClickhouseUserState) ElementType() reflect.Type {
 }
 
 type clickhouseUserArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
 	Username string `pulumi:"username"`
@@ -150,11 +147,9 @@ type clickhouseUserArgs struct {
 
 // The set of arguments for constructing a ClickhouseUser resource.
 type ClickhouseUserArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
 	Username pulumi.StringInput
@@ -186,7 +181,7 @@ func (i *ClickhouseUser) ToClickhouseUserOutputWithContext(ctx context.Context) 
 // ClickhouseUserArrayInput is an input type that accepts ClickhouseUserArray and ClickhouseUserArrayOutput values.
 // You can construct a concrete instance of `ClickhouseUserArrayInput` via:
 //
-//          ClickhouseUserArray{ ClickhouseUserArgs{...} }
+//	ClickhouseUserArray{ ClickhouseUserArgs{...} }
 type ClickhouseUserArrayInput interface {
 	pulumi.Input
 
@@ -211,7 +206,7 @@ func (i ClickhouseUserArray) ToClickhouseUserArrayOutputWithContext(ctx context.
 // ClickhouseUserMapInput is an input type that accepts ClickhouseUserMap and ClickhouseUserMapOutput values.
 // You can construct a concrete instance of `ClickhouseUserMapInput` via:
 //
-//          ClickhouseUserMap{ "key": ClickhouseUserArgs{...} }
+//	ClickhouseUserMap{ "key": ClickhouseUserArgs{...} }
 type ClickhouseUserMapInput interface {
 	pulumi.Input
 
@@ -252,8 +247,7 @@ func (o ClickhouseUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseUserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -263,8 +257,7 @@ func (o ClickhouseUserOutput) Required() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.BoolOutput { return v.Required }).(pulumi.BoolOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

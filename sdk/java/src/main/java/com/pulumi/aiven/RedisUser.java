@@ -69,96 +69,84 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
         return this.password;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
-     * cannot be changed, doing so forces recreation of the resource.
+     * Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="redisAclCategories", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> redisAclCategories;
 
     /**
-     * @return Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property
-     * cannot be changed, doing so forces recreation of the resource.
+     * @return Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> redisAclCategories() {
         return Codegen.optional(this.redisAclCategories);
     }
     /**
-     * Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="redisAclChannels", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> redisAclChannels;
 
     /**
-     * @return Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * @return Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> redisAclChannels() {
         return Codegen.optional(this.redisAclChannels);
     }
     /**
-     * Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
-     * property cannot be changed, doing so forces recreation of the resource.
+     * Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="redisAclCommands", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> redisAclCommands;
 
     /**
-     * @return Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This
-     * property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> redisAclCommands() {
         return Codegen.optional(this.redisAclCommands);
     }
     /**
-     * Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
-     * changed, doing so forces recreation of the resource.
+     * Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="redisAclKeys", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> redisAclKeys;
 
     /**
-     * @return Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be
-     * changed, doing so forces recreation of the resource.
+     * @return Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> redisAclKeys() {
         return Codegen.optional(this.redisAclKeys);
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", type=String.class, parameters={})
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -179,16 +167,14 @@ public class RedisUser extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
-     * property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="username", type=String.class, parameters={})
     private Output<String> username;
 
     /**
-     * @return The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This
-     * property cannot be changed, doing so forces recreation of the resource.
+     * @return The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> username() {

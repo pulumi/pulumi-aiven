@@ -13,16 +13,32 @@ public final class GetServiceIntegrationEndpointArgs extends com.pulumi.resource
 
     public static final GetServiceIntegrationEndpointArgs Empty = new GetServiceIntegrationEndpointArgs();
 
+    /**
+     * Name of the service integration endpoint
+     * 
+     */
     @Import(name="endpointName", required=true)
     private Output<String> endpointName;
 
+    /**
+     * @return Name of the service integration endpoint
+     * 
+     */
     public Output<String> endpointName() {
         return this.endpointName;
     }
 
+    /**
+     * Project the service integration endpoint belongs to
+     * 
+     */
     @Import(name="project", required=true)
     private Output<String> project;
 
+    /**
+     * @return Project the service integration endpoint belongs to
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -52,20 +68,44 @@ public final class GetServiceIntegrationEndpointArgs extends com.pulumi.resource
             $ = new GetServiceIntegrationEndpointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param endpointName Name of the service integration endpoint
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointName(Output<String> endpointName) {
             $.endpointName = endpointName;
             return this;
         }
 
+        /**
+         * @param endpointName Name of the service integration endpoint
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointName(String endpointName) {
             return endpointName(Output.of(endpointName));
         }
 
+        /**
+         * @param project Project the service integration endpoint belongs to
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project Project the service integration endpoint belongs to
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

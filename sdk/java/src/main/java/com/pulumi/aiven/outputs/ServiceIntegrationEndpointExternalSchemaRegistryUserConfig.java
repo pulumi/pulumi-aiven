@@ -11,9 +11,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
+    /**
+     * @return Authentication method
+     * 
+     */
     private final @Nullable String authentication;
+    /**
+     * @return Basic authentication password
+     * 
+     */
     private final @Nullable String basicAuthPassword;
+    /**
+     * @return Basic authentication user name
+     * 
+     */
     private final @Nullable String basicAuthUsername;
+    /**
+     * @return Schema Registry URL
+     * 
+     */
     private final @Nullable String url;
 
     @CustomType.Constructor
@@ -28,15 +44,31 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
         this.url = url;
     }
 
+    /**
+     * @return Authentication method
+     * 
+     */
     public Optional<String> authentication() {
         return Optional.ofNullable(this.authentication);
     }
+    /**
+     * @return Basic authentication password
+     * 
+     */
     public Optional<String> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
+    /**
+     * @return Basic authentication user name
+     * 
+     */
     public Optional<String> basicAuthUsername() {
         return Optional.ofNullable(this.basicAuthUsername);
     }
+    /**
+     * @return Schema Registry URL
+     * 
+     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }

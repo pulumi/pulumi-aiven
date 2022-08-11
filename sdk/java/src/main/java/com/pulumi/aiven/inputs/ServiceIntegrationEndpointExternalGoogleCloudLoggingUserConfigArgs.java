@@ -15,23 +15,47 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
 
     public static final ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs Empty = new ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs();
 
+    /**
+     * Google Cloud Logging log id
+     * 
+     */
     @Import(name="logId")
     private @Nullable Output<String> logId;
 
+    /**
+     * @return Google Cloud Logging log id
+     * 
+     */
     public Optional<Output<String>> logId() {
         return Optional.ofNullable(this.logId);
     }
 
+    /**
+     * GCP project id.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
+    /**
+     * @return GCP project id.
+     * 
+     */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * Google Service Account Credentials
+     * 
+     */
     @Import(name="serviceAccountCredentials")
     private @Nullable Output<String> serviceAccountCredentials;
 
+    /**
+     * @return Google Service Account Credentials
+     * 
+     */
     public Optional<Output<String>> serviceAccountCredentials() {
         return Optional.ofNullable(this.serviceAccountCredentials);
     }
@@ -62,29 +86,65 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
             $ = new ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param logId Google Cloud Logging log id
+         * 
+         * @return builder
+         * 
+         */
         public Builder logId(@Nullable Output<String> logId) {
             $.logId = logId;
             return this;
         }
 
+        /**
+         * @param logId Google Cloud Logging log id
+         * 
+         * @return builder
+         * 
+         */
         public Builder logId(String logId) {
             return logId(Output.of(logId));
         }
 
+        /**
+         * @param projectId GCP project id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param projectId GCP project id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }
 
+        /**
+         * @param serviceAccountCredentials Google Service Account Credentials
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceAccountCredentials(@Nullable Output<String> serviceAccountCredentials) {
             $.serviceAccountCredentials = serviceAccountCredentials;
             return this;
         }
 
+        /**
+         * @param serviceAccountCredentials Google Service Account Credentials
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceAccountCredentials(String serviceAccountCredentials) {
             return serviceAccountCredentials(Output.of(serviceAccountCredentials));
         }

@@ -35,7 +35,13 @@ export function getProjectUser(args: GetProjectUserArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getProjectUser.
  */
 export interface GetProjectUserArgs {
+    /**
+     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     */
     email: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: string;
 }
 
@@ -43,13 +49,25 @@ export interface GetProjectUserArgs {
  * A collection of values returned by getProjectUser.
  */
 export interface GetProjectUserResult {
+    /**
+     * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+     */
     readonly accepted: boolean;
+    /**
+     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly email: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Project membership type. The possible values are `admin`, `developer` and `operator`.
+     */
     readonly memberType: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
 }
 
@@ -61,6 +79,12 @@ export function getProjectUserOutput(args: GetProjectUserOutputArgs, opts?: pulu
  * A collection of arguments for invoking getProjectUser.
  */
 export interface GetProjectUserOutputArgs {
+    /**
+     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     */
     email: pulumi.Input<string>;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: pulumi.Input<string>;
 }

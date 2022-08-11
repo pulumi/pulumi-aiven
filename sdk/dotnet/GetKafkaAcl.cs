@@ -19,24 +19,22 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mytestacl = Aiven.GetKafkaAcl.Invoke(new()
         ///     {
-        ///         var mytestacl = Output.Create(Aiven.GetKafkaAcl.InvokeAsync(new Aiven.GetKafkaAclArgs
-        ///         {
-        ///             Project = aiven_project.Myproject.Project,
-        ///             ServiceName = aiven_service.Myservice.Service_name,
-        ///             Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
-        ///             Permission = "&lt;PERMISSON&gt;",
-        ///             Username = "&lt;USERNAME_PATTERN&gt;",
-        ///         }));
-        ///     }
+        ///         Project = aiven_project.Myproject.Project,
+        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+        ///         Permission = "&lt;PERMISSON&gt;",
+        ///         Username = "&lt;USERNAME_PATTERN&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -52,24 +50,22 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mytestacl = Aiven.GetKafkaAcl.Invoke(new()
         ///     {
-        ///         var mytestacl = Output.Create(Aiven.GetKafkaAcl.InvokeAsync(new Aiven.GetKafkaAclArgs
-        ///         {
-        ///             Project = aiven_project.Myproject.Project,
-        ///             ServiceName = aiven_service.Myservice.Service_name,
-        ///             Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
-        ///             Permission = "&lt;PERMISSON&gt;",
-        ///             Username = "&lt;USERNAME_PATTERN&gt;",
-        ///         }));
-        ///     }
+        ///         Project = aiven_project.Myproject.Project,
+        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+        ///         Permission = "&lt;PERMISSON&gt;",
+        ///         Username = "&lt;USERNAME_PATTERN&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -79,63 +75,113 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetKafkaAclArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaAclArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("permission", required: true)]
         public string Permission { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("topic", required: true)]
         public string Topic { get; set; } = null!;
 
+        /// <summary>
+        /// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
 
         public GetKafkaAclArgs()
         {
         }
+        public static new GetKafkaAclArgs Empty => new GetKafkaAclArgs();
     }
 
-    public sealed class GetKafkaAclInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaAclInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
 
+        /// <summary>
+        /// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
         public GetKafkaAclInvokeArgs()
         {
         }
+        public static new GetKafkaAclInvokeArgs Empty => new GetKafkaAclInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetKafkaAclResult
     {
+        /// <summary>
+        /// Kafka ACL ID
+        /// </summary>
         public readonly string AclId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Permission;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Topic;
+        /// <summary>
+        /// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

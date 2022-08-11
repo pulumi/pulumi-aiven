@@ -20,23 +20,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupDatabase(ctx, &GetDatabaseArgs{
-// 			Project:      aiven_project.Myproject.Project,
-// 			ServiceName:  aiven_service.Myservice.Service_name,
-// 			DatabaseName: "<DATABASE_NAME>",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupDatabase(ctx, &GetDatabaseArgs{
+//				Project:      aiven_project.Myproject.Project,
+//				ServiceName:  aiven_service.Myservice.Service_name,
+//				DatabaseName: "<DATABASE_NAME>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	var rv LookupDatabaseResult
@@ -49,19 +52,27 @@ func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulum
 
 // A collection of arguments for invoking getDatabase.
 type LookupDatabaseArgs struct {
+	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
-	Project      string `pulumi:"project"`
-	ServiceName  string `pulumi:"serviceName"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getDatabase.
 type LookupDatabaseResult struct {
+	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string `pulumi:"id"`
-	LcCollate             string `pulumi:"lcCollate"`
-	LcCtype               string `pulumi:"lcCtype"`
-	Project               string `pulumi:"project"`
+	Id string `pulumi:"id"`
+	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+	LcCollate string `pulumi:"lcCollate"`
+	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+	LcCtype string `pulumi:"lcCtype"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName           string `pulumi:"serviceName"`
 	TerminationProtection bool   `pulumi:"terminationProtection"`
 }
@@ -81,9 +92,12 @@ func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, op
 
 // A collection of arguments for invoking getDatabase.
 type LookupDatabaseOutputArgs struct {
+	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	Project      pulumi.StringInput `pulumi:"project"`
-	ServiceName  pulumi.StringInput `pulumi:"serviceName"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (LookupDatabaseOutputArgs) ElementType() reflect.Type {
@@ -105,6 +119,7 @@ func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutputWithContext(ctx 
 	return o
 }
 
+// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupDatabaseResultOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.DatabaseName }).(pulumi.StringOutput)
 }
@@ -114,18 +129,22 @@ func (o LookupDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupDatabaseResultOutput) LcCollate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.LcCollate }).(pulumi.StringOutput)
 }
 
+// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupDatabaseResultOutput) LcCtype() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.LcCtype }).(pulumi.StringOutput)
 }
 
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupDatabaseResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupDatabaseResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

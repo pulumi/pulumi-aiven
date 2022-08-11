@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FlinkFlinkUserConfigPrivatelinkAccess {
+    /**
+     * @return Flink server provided values
+     * 
+     */
     private final @Nullable String flink;
     private final @Nullable String prometheus;
 
@@ -22,6 +26,10 @@ public final class FlinkFlinkUserConfigPrivatelinkAccess {
         this.prometheus = prometheus;
     }
 
+    /**
+     * @return Flink server provided values
+     * 
+     */
     public Optional<String> flink() {
         return Optional.ofNullable(this.flink);
     }

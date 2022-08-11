@@ -32,18 +32,14 @@ public final class OpenSearchAclConfigState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
-     * ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
-     * indexes they have been granted access to. The default value is `true`.
+     * Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
      * 
      */
     @Import(name="extendedAcl")
     private @Nullable Output<Boolean> extendedAcl;
 
     /**
-     * @return Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
-     * ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
-     * indexes they have been granted access to. The default value is `true`.
+     * @return Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
      * 
      */
     public Optional<Output<Boolean>> extendedAcl() {
@@ -51,16 +47,14 @@ public final class OpenSearchAclConfigState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -68,16 +62,14 @@ public final class OpenSearchAclConfigState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -133,9 +125,7 @@ public final class OpenSearchAclConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param extendedAcl Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
-         * ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
-         * indexes they have been granted access to. The default value is `true`.
+         * @param extendedAcl Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
          * 
          * @return builder
          * 
@@ -146,9 +136,7 @@ public final class OpenSearchAclConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param extendedAcl Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
-         * ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
-         * indexes they have been granted access to. The default value is `true`.
+         * @param extendedAcl Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
          * 
          * @return builder
          * 
@@ -158,8 +146,7 @@ public final class OpenSearchAclConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -170,8 +157,7 @@ public final class OpenSearchAclConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -181,8 +167,7 @@ public final class OpenSearchAclConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -193,8 +178,7 @@ public final class OpenSearchAclConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

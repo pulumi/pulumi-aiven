@@ -10,17 +10,45 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAzurePrivatelinkResult {
+    /**
+     * @return Azure Privatelink service alias
+     * 
+     */
     private final String azureServiceAlias;
+    /**
+     * @return Azure Privatelink service ID
+     * 
+     */
     private final String azureServiceId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return Printable result of the Azure Privatelink request
+     * 
+     */
     private final String message;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
+    /**
+     * @return Privatelink resource state
+     * 
+     */
     private final String state;
+    /**
+     * @return A List of allowed Subscription IDs Maximum Length: `16`.
+     * 
+     */
     private final List<String> userSubscriptionIds;
 
     @CustomType.Constructor
@@ -43,9 +71,17 @@ public final class GetAzurePrivatelinkResult {
         this.userSubscriptionIds = userSubscriptionIds;
     }
 
+    /**
+     * @return Azure Privatelink service alias
+     * 
+     */
     public String azureServiceAlias() {
         return this.azureServiceAlias;
     }
+    /**
+     * @return Azure Privatelink service ID
+     * 
+     */
     public String azureServiceId() {
         return this.azureServiceId;
     }
@@ -56,18 +92,38 @@ public final class GetAzurePrivatelinkResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Printable result of the Azure Privatelink request
+     * 
+     */
     public String message() {
         return this.message;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return Privatelink resource state
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return A List of allowed Subscription IDs Maximum Length: `16`.
+     * 
+     */
     public List<String> userSubscriptionIds() {
         return this.userSubscriptionIds;
     }

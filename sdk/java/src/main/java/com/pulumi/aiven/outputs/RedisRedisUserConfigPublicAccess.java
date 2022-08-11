@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RedisRedisUserConfigPublicAccess {
     private final @Nullable String prometheus;
+    /**
+     * @return Redis server provided values
+     * 
+     */
     private final @Nullable String redis;
 
     @CustomType.Constructor
@@ -25,6 +29,10 @@ public final class RedisRedisUserConfigPublicAccess {
     public Optional<String> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
+    /**
+     * @return Redis server provided values
+     * 
+     */
     public Optional<String> redis() {
         return Optional.ofNullable(this.redis);
     }

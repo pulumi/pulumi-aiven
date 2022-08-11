@@ -9,14 +9,30 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAccountTeamProjectResult {
+    /**
+     * @return The unique account id
+     * 
+     */
     private final String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return The name of an already existing project
+     * 
+     */
     private final String projectName;
+    /**
+     * @return An account team id
+     * 
+     */
     private final String teamId;
+    /**
+     * @return The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+     * 
+     */
     private final String teamType;
 
     @CustomType.Constructor
@@ -33,6 +49,10 @@ public final class GetAccountTeamProjectResult {
         this.teamType = teamType;
     }
 
+    /**
+     * @return The unique account id
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
@@ -43,12 +63,24 @@ public final class GetAccountTeamProjectResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of an already existing project
+     * 
+     */
     public String projectName() {
         return this.projectName;
     }
+    /**
+     * @return An account team id
+     * 
+     */
     public String teamId() {
         return this.teamId;
     }
+    /**
+     * @return The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
+     * 
+     */
     public String teamType() {
         return this.teamType;
     }

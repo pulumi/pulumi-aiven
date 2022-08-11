@@ -16,16 +16,32 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigArgs extends com.
 
     public static final ServiceIntegrationKafkaMirrormakerUserConfigArgs Empty = new ServiceIntegrationKafkaMirrormakerUserConfigArgs();
 
+    /**
+     * Kafka cluster alias
+     * 
+     */
     @Import(name="clusterAlias")
     private @Nullable Output<String> clusterAlias;
 
+    /**
+     * @return Kafka cluster alias
+     * 
+     */
     public Optional<Output<String>> clusterAlias() {
         return Optional.ofNullable(this.clusterAlias);
     }
 
+    /**
+     * Kafka MirrorMaker configuration values
+     * 
+     */
     @Import(name="kafkaMirrormaker")
     private @Nullable Output<ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs> kafkaMirrormaker;
 
+    /**
+     * @return Kafka MirrorMaker configuration values
+     * 
+     */
     public Optional<Output<ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs>> kafkaMirrormaker() {
         return Optional.ofNullable(this.kafkaMirrormaker);
     }
@@ -55,20 +71,44 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigArgs extends com.
             $ = new ServiceIntegrationKafkaMirrormakerUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param clusterAlias Kafka cluster alias
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterAlias(@Nullable Output<String> clusterAlias) {
             $.clusterAlias = clusterAlias;
             return this;
         }
 
+        /**
+         * @param clusterAlias Kafka cluster alias
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterAlias(String clusterAlias) {
             return clusterAlias(Output.of(clusterAlias));
         }
 
+        /**
+         * @param kafkaMirrormaker Kafka MirrorMaker configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaMirrormaker(@Nullable Output<ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs> kafkaMirrormaker) {
             $.kafkaMirrormaker = kafkaMirrormaker;
             return this;
         }
 
+        /**
+         * @param kafkaMirrormaker Kafka MirrorMaker configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaMirrormaker(ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs kafkaMirrormaker) {
             return kafkaMirrormaker(Output.of(kafkaMirrormaker));
         }

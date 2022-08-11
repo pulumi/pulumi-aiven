@@ -16,6 +16,9 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
     private final @Nullable String actionDestructiveRequiresName;
     private final @Nullable String clusterMaxShardsPerNode;
     private final @Nullable String clusterRoutingAllocationNodeConcurrentRecoveries;
+    private final @Nullable String emailSenderName;
+    private final @Nullable String emailSenderPassword;
+    private final @Nullable String emailSenderUsername;
     private final @Nullable String httpMaxContentLength;
     private final @Nullable String httpMaxHeaderSize;
     private final @Nullable String httpMaxInitialLineLength;
@@ -47,6 +50,9 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         @CustomType.Parameter("actionDestructiveRequiresName") @Nullable String actionDestructiveRequiresName,
         @CustomType.Parameter("clusterMaxShardsPerNode") @Nullable String clusterMaxShardsPerNode,
         @CustomType.Parameter("clusterRoutingAllocationNodeConcurrentRecoveries") @Nullable String clusterRoutingAllocationNodeConcurrentRecoveries,
+        @CustomType.Parameter("emailSenderName") @Nullable String emailSenderName,
+        @CustomType.Parameter("emailSenderPassword") @Nullable String emailSenderPassword,
+        @CustomType.Parameter("emailSenderUsername") @Nullable String emailSenderUsername,
         @CustomType.Parameter("httpMaxContentLength") @Nullable String httpMaxContentLength,
         @CustomType.Parameter("httpMaxHeaderSize") @Nullable String httpMaxHeaderSize,
         @CustomType.Parameter("httpMaxInitialLineLength") @Nullable String httpMaxInitialLineLength,
@@ -75,6 +81,9 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         this.actionDestructiveRequiresName = actionDestructiveRequiresName;
         this.clusterMaxShardsPerNode = clusterMaxShardsPerNode;
         this.clusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
+        this.emailSenderName = emailSenderName;
+        this.emailSenderPassword = emailSenderPassword;
+        this.emailSenderUsername = emailSenderUsername;
         this.httpMaxContentLength = httpMaxContentLength;
         this.httpMaxHeaderSize = httpMaxHeaderSize;
         this.httpMaxInitialLineLength = httpMaxInitialLineLength;
@@ -112,6 +121,15 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
     }
     public Optional<String> clusterRoutingAllocationNodeConcurrentRecoveries() {
         return Optional.ofNullable(this.clusterRoutingAllocationNodeConcurrentRecoveries);
+    }
+    public Optional<String> emailSenderName() {
+        return Optional.ofNullable(this.emailSenderName);
+    }
+    public Optional<String> emailSenderPassword() {
+        return Optional.ofNullable(this.emailSenderPassword);
+    }
+    public Optional<String> emailSenderUsername() {
+        return Optional.ofNullable(this.emailSenderUsername);
     }
     public Optional<String> httpMaxContentLength() {
         return Optional.ofNullable(this.httpMaxContentLength);
@@ -199,6 +217,9 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         private @Nullable String actionDestructiveRequiresName;
         private @Nullable String clusterMaxShardsPerNode;
         private @Nullable String clusterRoutingAllocationNodeConcurrentRecoveries;
+        private @Nullable String emailSenderName;
+        private @Nullable String emailSenderPassword;
+        private @Nullable String emailSenderUsername;
         private @Nullable String httpMaxContentLength;
         private @Nullable String httpMaxHeaderSize;
         private @Nullable String httpMaxInitialLineLength;
@@ -234,6 +255,9 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
     	      this.actionDestructiveRequiresName = defaults.actionDestructiveRequiresName;
     	      this.clusterMaxShardsPerNode = defaults.clusterMaxShardsPerNode;
     	      this.clusterRoutingAllocationNodeConcurrentRecoveries = defaults.clusterRoutingAllocationNodeConcurrentRecoveries;
+    	      this.emailSenderName = defaults.emailSenderName;
+    	      this.emailSenderPassword = defaults.emailSenderPassword;
+    	      this.emailSenderUsername = defaults.emailSenderUsername;
     	      this.httpMaxContentLength = defaults.httpMaxContentLength;
     	      this.httpMaxHeaderSize = defaults.httpMaxHeaderSize;
     	      this.httpMaxInitialLineLength = defaults.httpMaxInitialLineLength;
@@ -274,6 +298,18 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         }
         public Builder clusterRoutingAllocationNodeConcurrentRecoveries(@Nullable String clusterRoutingAllocationNodeConcurrentRecoveries) {
             this.clusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
+            return this;
+        }
+        public Builder emailSenderName(@Nullable String emailSenderName) {
+            this.emailSenderName = emailSenderName;
+            return this;
+        }
+        public Builder emailSenderPassword(@Nullable String emailSenderPassword) {
+            this.emailSenderPassword = emailSenderPassword;
+            return this;
+        }
+        public Builder emailSenderUsername(@Nullable String emailSenderUsername) {
+            this.emailSenderUsername = emailSenderUsername;
             return this;
         }
         public Builder httpMaxContentLength(@Nullable String httpMaxContentLength) {
@@ -375,7 +411,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
             this.threadPoolWriteSize = threadPoolWriteSize;
             return this;
         }        public OpenSearchOpensearchUserConfigOpensearch build() {
-            return new OpenSearchOpensearchUserConfigOpensearch(actionAutoCreateIndexEnabled, actionDestructiveRequiresName, clusterMaxShardsPerNode, clusterRoutingAllocationNodeConcurrentRecoveries, httpMaxContentLength, httpMaxHeaderSize, httpMaxInitialLineLength, indicesFielddataCacheSize, indicesMemoryIndexBufferSize, indicesQueriesCacheSize, indicesQueryBoolMaxClauseCount, indicesRecoveryMaxBytesPerSec, indicesRecoveryMaxConcurrentFileChunks, overrideMainResponseVersion, reindexRemoteWhitelists, scriptMaxCompilationsRate, searchMaxBuckets, threadPoolAnalyzeQueueSize, threadPoolAnalyzeSize, threadPoolForceMergeSize, threadPoolGetQueueSize, threadPoolGetSize, threadPoolSearchQueueSize, threadPoolSearchSize, threadPoolSearchThrottledQueueSize, threadPoolSearchThrottledSize, threadPoolWriteQueueSize, threadPoolWriteSize);
+            return new OpenSearchOpensearchUserConfigOpensearch(actionAutoCreateIndexEnabled, actionDestructiveRequiresName, clusterMaxShardsPerNode, clusterRoutingAllocationNodeConcurrentRecoveries, emailSenderName, emailSenderPassword, emailSenderUsername, httpMaxContentLength, httpMaxHeaderSize, httpMaxInitialLineLength, indicesFielddataCacheSize, indicesMemoryIndexBufferSize, indicesQueriesCacheSize, indicesQueryBoolMaxClauseCount, indicesRecoveryMaxBytesPerSec, indicesRecoveryMaxConcurrentFileChunks, overrideMainResponseVersion, reindexRemoteWhitelists, scriptMaxCompilationsRate, searchMaxBuckets, threadPoolAnalyzeQueueSize, threadPoolAnalyzeSize, threadPoolForceMergeSize, threadPoolGetQueueSize, threadPoolGetSize, threadPoolSearchQueueSize, threadPoolSearchSize, threadPoolSearchThrottledQueueSize, threadPoolSearchThrottledSize, threadPoolWriteQueueSize, threadPoolWriteSize);
         }
     }
 }

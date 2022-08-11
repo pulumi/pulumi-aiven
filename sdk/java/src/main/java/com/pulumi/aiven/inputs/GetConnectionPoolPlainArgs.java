@@ -12,23 +12,47 @@ public final class GetConnectionPoolPlainArgs extends com.pulumi.resources.Invok
 
     public static final GetConnectionPoolPlainArgs Empty = new GetConnectionPoolPlainArgs();
 
+    /**
+     * The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="poolName", required=true)
     private String poolName;
 
+    /**
+     * @return The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String poolName() {
         return this.poolName;
     }
 
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
 
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
@@ -59,16 +83,34 @@ public final class GetConnectionPoolPlainArgs extends com.pulumi.resources.Invok
             $ = new GetConnectionPoolPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param poolName The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder poolName(String poolName) {
             $.poolName = poolName;
             return this;
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             $.serviceName = serviceName;
             return this;

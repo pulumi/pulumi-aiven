@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("consumerFetchMinBytes")]
         public Input<string>? ConsumerFetchMinBytes { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Aiven.Inputs
         public ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs()
         {
         }
+        public static new ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs Empty => new ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs();
     }
 }

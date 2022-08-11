@@ -13,16 +13,32 @@ public final class GetAccountTeamArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetAccountTeamArgs Empty = new GetAccountTeamArgs();
 
+    /**
+     * The unique account id
+     * 
+     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
+    /**
+     * @return The unique account id
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
+    /**
+     * The account team name
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The account team name
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -52,20 +68,44 @@ public final class GetAccountTeamArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetAccountTeamArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId The unique account id
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId The unique account id
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param name The account team name
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The account team name
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

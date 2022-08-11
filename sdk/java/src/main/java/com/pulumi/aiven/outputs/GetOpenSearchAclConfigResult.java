@@ -10,14 +10,30 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOpenSearchAclConfigResult {
+    /**
+     * @return Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * 
+     */
     private final Boolean enabled;
+    /**
+     * @return Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+     * 
+     */
     private final Boolean extendedAcl;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
 
     @CustomType.Constructor
@@ -34,9 +50,17 @@ public final class GetOpenSearchAclConfigResult {
         this.serviceName = serviceName;
     }
 
+    /**
+     * @return Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
+     * 
+     */
     public Boolean extendedAcl() {
         return this.extendedAcl;
     }
@@ -47,9 +71,17 @@ public final class GetOpenSearchAclConfigResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }

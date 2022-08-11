@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OpenSearchOpensearchUserConfigPrivateAccess {
+    /**
+     * @return Opensearch server provided values
+     * 
+     */
     private final @Nullable String opensearch;
     private final @Nullable String opensearchDashboards;
     private final @Nullable String prometheus;
@@ -25,6 +29,10 @@ public final class OpenSearchOpensearchUserConfigPrivateAccess {
         this.prometheus = prometheus;
     }
 
+    /**
+     * @return Opensearch server provided values
+     * 
+     */
     public Optional<String> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }

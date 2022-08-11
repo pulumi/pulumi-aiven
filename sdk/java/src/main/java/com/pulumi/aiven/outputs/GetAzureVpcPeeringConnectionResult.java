@@ -11,19 +11,55 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAzureVpcPeeringConnectionResult {
+    /**
+     * @return Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String azureSubscriptionId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String peerAzureAppId;
+    /**
+     * @return Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String peerAzureTenantId;
+    /**
+     * @return Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String peerResourceGroup;
+    /**
+     * @return Cloud provider identifier for the peering connection if available
+     * 
+     */
     private final String peeringConnectionId;
+    /**
+     * @return State of the peering connection
+     * 
+     */
     private final String state;
+    /**
+     * @return State-specific help or error information
+     * 
+     */
     private final Map<String,Object> stateInfo;
+    /**
+     * @return Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String vnetName;
+    /**
+     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String vpcId;
 
     @CustomType.Constructor
@@ -50,6 +86,10 @@ public final class GetAzureVpcPeeringConnectionResult {
         this.vpcId = vpcId;
     }
 
+    /**
+     * @return Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String azureSubscriptionId() {
         return this.azureSubscriptionId;
     }
@@ -60,27 +100,59 @@ public final class GetAzureVpcPeeringConnectionResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String peerAzureAppId() {
         return this.peerAzureAppId;
     }
+    /**
+     * @return Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String peerAzureTenantId() {
         return this.peerAzureTenantId;
     }
+    /**
+     * @return Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String peerResourceGroup() {
         return this.peerResourceGroup;
     }
+    /**
+     * @return Cloud provider identifier for the peering connection if available
+     * 
+     */
     public String peeringConnectionId() {
         return this.peeringConnectionId;
     }
+    /**
+     * @return State of the peering connection
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return State-specific help or error information
+     * 
+     */
     public Map<String,Object> stateInfo() {
         return this.stateInfo;
     }
+    /**
+     * @return Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String vnetName() {
         return this.vnetName;
     }
+    /**
+     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String vpcId() {
         return this.vpcId;
     }

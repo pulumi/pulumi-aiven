@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationLogsUserConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationLogsUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Elasticsearch index retention limit
+        /// </summary>
         [Input("elasticsearchIndexDaysMax")]
         public Input<string>? ElasticsearchIndexDaysMax { get; set; }
 
+        /// <summary>
+        /// Elasticsearch index prefix
+        /// </summary>
         [Input("elasticsearchIndexPrefix")]
         public Input<string>? ElasticsearchIndexPrefix { get; set; }
 
         public ServiceIntegrationLogsUserConfigGetArgs()
         {
         }
+        public static new ServiceIntegrationLogsUserConfigGetArgs Empty => new ServiceIntegrationLogsUserConfigGetArgs();
     }
 }

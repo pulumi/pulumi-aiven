@@ -10,13 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationKafkaConnectUserConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationKafkaConnectUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Kafka Connect service configuration values
+        /// </summary>
         [Input("kafkaConnect")]
         public Input<Inputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnectGetArgs>? KafkaConnect { get; set; }
 
         public ServiceIntegrationKafkaConnectUserConfigGetArgs()
         {
         }
+        public static new ServiceIntegrationKafkaConnectUserConfigGetArgs Empty => new ServiceIntegrationKafkaConnectUserConfigGetArgs();
     }
 }

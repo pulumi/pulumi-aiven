@@ -16,7 +16,9 @@ import (
 // ## Import
 //
 // ```sh
-//  $ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo account_id/authentication_id
+//
+//	$ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo account_id/authentication_id
+//
 // ```
 type AccountAuthentication struct {
 	pulumi.CustomResourceState
@@ -260,7 +262,7 @@ func (i *AccountAuthentication) ToAccountAuthenticationOutputWithContext(ctx con
 // AccountAuthenticationArrayInput is an input type that accepts AccountAuthenticationArray and AccountAuthenticationArrayOutput values.
 // You can construct a concrete instance of `AccountAuthenticationArrayInput` via:
 //
-//          AccountAuthenticationArray{ AccountAuthenticationArgs{...} }
+//	AccountAuthenticationArray{ AccountAuthenticationArgs{...} }
 type AccountAuthenticationArrayInput interface {
 	pulumi.Input
 
@@ -285,7 +287,7 @@ func (i AccountAuthenticationArray) ToAccountAuthenticationArrayOutputWithContex
 // AccountAuthenticationMapInput is an input type that accepts AccountAuthenticationMap and AccountAuthenticationMapOutput values.
 // You can construct a concrete instance of `AccountAuthenticationMapInput` via:
 //
-//          AccountAuthenticationMap{ "key": AccountAuthenticationArgs{...} }
+//	AccountAuthenticationMap{ "key": AccountAuthenticationArgs{...} }
 type AccountAuthenticationMapInput interface {
 	pulumi.Input
 

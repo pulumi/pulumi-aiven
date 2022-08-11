@@ -9,18 +9,50 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMysqlUserResult {
+    /**
+     * @return Access certificate for the user
+     * 
+     */
     private final String accessCert;
+    /**
+     * @return Access certificate key for the user
+     * 
+     */
     private final String accessKey;
+    /**
+     * @return Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+     * 
+     */
     private final String authentication;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return The password of the MySQL User ( not applicable for all services ).
+     * 
+     */
     private final String password;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
+    /**
+     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * 
+     */
     private final String type;
+    /**
+     * @return The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String username;
 
     @CustomType.Constructor
@@ -45,12 +77,24 @@ public final class GetMysqlUserResult {
         this.username = username;
     }
 
+    /**
+     * @return Access certificate for the user
+     * 
+     */
     public String accessCert() {
         return this.accessCert;
     }
+    /**
+     * @return Access certificate key for the user
+     * 
+     */
     public String accessKey() {
         return this.accessKey;
     }
+    /**
+     * @return Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+     * 
+     */
     public String authentication() {
         return this.authentication;
     }
@@ -61,18 +105,38 @@ public final class GetMysqlUserResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The password of the MySQL User ( not applicable for all services ).
+     * 
+     */
     public String password() {
         return this.password;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String username() {
         return this.username;
     }

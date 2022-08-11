@@ -25,63 +25,113 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetKafkaSchemaRegistryAclArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaSchemaRegistryAclArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("permission", required: true)]
         public string Permission { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("resource", required: true)]
         public string Resource { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
 
         public GetKafkaSchemaRegistryAclArgs()
         {
         }
+        public static new GetKafkaSchemaRegistryAclArgs Empty => new GetKafkaSchemaRegistryAclArgs();
     }
 
-    public sealed class GetKafkaSchemaRegistryAclInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaSchemaRegistryAclInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("resource", required: true)]
         public Input<string> Resource { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
         public GetKafkaSchemaRegistryAclInvokeArgs()
         {
         }
+        public static new GetKafkaSchemaRegistryAclInvokeArgs Empty => new GetKafkaSchemaRegistryAclInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetKafkaSchemaRegistryAclResult
     {
+        /// <summary>
+        /// Kafka Schema Registry ACL ID
+        /// </summary>
         public readonly string AclId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Permission;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Resource;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

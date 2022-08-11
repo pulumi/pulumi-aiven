@@ -39,8 +39,17 @@ export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getDatabase.
  */
 export interface GetDatabaseArgs {
+    /**
+     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+     */
     databaseName: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: string;
 }
 
@@ -48,14 +57,29 @@ export interface GetDatabaseArgs {
  * A collection of values returned by getDatabase.
  */
 export interface GetDatabaseResult {
+    /**
+     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly databaseName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly lcCollate: string;
+    /**
+     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly lcCtype: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
     readonly terminationProtection: boolean;
 }
@@ -68,7 +92,16 @@ export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getDatabase.
  */
 export interface GetDatabaseOutputArgs {
+    /**
+     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+     */
     databaseName: pulumi.Input<string>;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: pulumi.Input<string>;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: pulumi.Input<string>;
 }

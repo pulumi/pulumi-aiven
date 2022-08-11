@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class PgTagGetArgs : Pulumi.ResourceArgs
+    public sealed class PgTagGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Service tag key
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// Service tag value
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
         public PgTagGetArgs()
         {
         }
+        public static new PgTagGetArgs Empty => new PgTagGetArgs();
     }
 }

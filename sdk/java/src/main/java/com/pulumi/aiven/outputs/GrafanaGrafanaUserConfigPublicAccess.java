@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GrafanaGrafanaUserConfigPublicAccess {
+    /**
+     * @return Grafana server provided values
+     * 
+     */
     private final @Nullable String grafana;
 
     @CustomType.Constructor
@@ -18,6 +22,10 @@ public final class GrafanaGrafanaUserConfigPublicAccess {
         this.grafana = grafana;
     }
 
+    /**
+     * @return Grafana server provided values
+     * 
+     */
     public Optional<String> grafana() {
         return Optional.ofNullable(this.grafana);
     }

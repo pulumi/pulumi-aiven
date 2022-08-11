@@ -15,23 +15,47 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetProjectVpcArgs Empty = new GetProjectVpcArgs();
 
+    /**
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="cloudName", required=true)
     private Output<String> cloudName;
 
+    /**
+     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> cloudName() {
         return this.cloudName;
     }
 
+    /**
+     * ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     * 
+     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
+    /**
+     * @return ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     * 
+     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="project", required=true)
     private Output<String> project;
 
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -62,29 +86,65 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetProjectVpcArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cloudName Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudName(Output<String> cloudName) {
             $.cloudName = cloudName;
             return this;
         }
 
+        /**
+         * @param cloudName Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudName(String cloudName) {
             return cloudName(Output.of(cloudName));
         }
 
+        /**
+         * @param id ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

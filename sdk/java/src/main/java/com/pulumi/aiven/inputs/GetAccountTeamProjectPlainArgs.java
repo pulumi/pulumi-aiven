@@ -12,23 +12,47 @@ public final class GetAccountTeamProjectPlainArgs extends com.pulumi.resources.I
 
     public static final GetAccountTeamProjectPlainArgs Empty = new GetAccountTeamProjectPlainArgs();
 
+    /**
+     * The unique account id
+     * 
+     */
     @Import(name="accountId", required=true)
     private String accountId;
 
+    /**
+     * @return The unique account id
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
 
+    /**
+     * The name of an already existing project
+     * 
+     */
     @Import(name="projectName", required=true)
     private String projectName;
 
+    /**
+     * @return The name of an already existing project
+     * 
+     */
     public String projectName() {
         return this.projectName;
     }
 
+    /**
+     * An account team id
+     * 
+     */
     @Import(name="teamId", required=true)
     private String teamId;
 
+    /**
+     * @return An account team id
+     * 
+     */
     public String teamId() {
         return this.teamId;
     }
@@ -59,16 +83,34 @@ public final class GetAccountTeamProjectPlainArgs extends com.pulumi.resources.I
             $ = new GetAccountTeamProjectPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId The unique account id
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param projectName The name of an already existing project
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectName(String projectName) {
             $.projectName = projectName;
             return this;
         }
 
+        /**
+         * @param teamId An account team id
+         * 
+         * @return builder
+         * 
+         */
         public Builder teamId(String teamId) {
             $.teamId = teamId;
             return this;

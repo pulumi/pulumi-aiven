@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaConnectKafkaConnectUserConfigKafkaConnectGetArgs : Pulumi.ResourceArgs
+    public sealed class KafkaConnectKafkaConnectUserConfigKafkaConnectGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("connectorClientConfigOverridePolicy")]
         public Input<string>? ConnectorClientConfigOverridePolicy { get; set; }
@@ -51,5 +51,6 @@ namespace Pulumi.Aiven.Inputs
         public KafkaConnectKafkaConnectUserConfigKafkaConnectGetArgs()
         {
         }
+        public static new KafkaConnectKafkaConnectUserConfigKafkaConnectGetArgs Empty => new KafkaConnectKafkaConnectUserConfigKafkaConnectGetArgs();
     }
 }

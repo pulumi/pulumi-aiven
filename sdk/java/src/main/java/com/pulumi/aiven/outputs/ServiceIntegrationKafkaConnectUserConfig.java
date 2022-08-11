@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationKafkaConnectUserConfig {
+    /**
+     * @return Kafka Connect service configuration values
+     * 
+     */
     private final @Nullable ServiceIntegrationKafkaConnectUserConfigKafkaConnect kafkaConnect;
 
     @CustomType.Constructor
@@ -18,6 +22,10 @@ public final class ServiceIntegrationKafkaConnectUserConfig {
         this.kafkaConnect = kafkaConnect;
     }
 
+    /**
+     * @return Kafka Connect service configuration values
+     * 
+     */
     public Optional<ServiceIntegrationKafkaConnectUserConfigKafkaConnect> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }

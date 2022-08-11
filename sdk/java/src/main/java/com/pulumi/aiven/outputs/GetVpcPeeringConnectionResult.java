@@ -16,15 +16,55 @@ public final class GetVpcPeeringConnectionResult {
      * 
      */
     private final String id;
+    /**
+     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String peerAzureAppId;
+    /**
+     * @return Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String peerAzureTenantId;
+    /**
+     * @return AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String peerCloudAccount;
+    /**
+     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String peerRegion;
+    /**
+     * @return Azure resource group name of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String peerResourceGroup;
+    /**
+     * @return AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String peerVpc;
+    /**
+     * @return Cloud provider identifier for the peering connection if available
+     * 
+     */
     private final String peeringConnectionId;
+    /**
+     * @return State of the peering connection
+     * 
+     */
     private final String state;
+    /**
+     * @return State-specific help or error information
+     * 
+     */
     private final Map<String,Object> stateInfo;
+    /**
+     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String vpcId;
 
     @CustomType.Constructor
@@ -60,33 +100,73 @@ public final class GetVpcPeeringConnectionResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String peerAzureAppId() {
         return this.peerAzureAppId;
     }
+    /**
+     * @return Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String peerAzureTenantId() {
         return this.peerAzureTenantId;
     }
+    /**
+     * @return AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String peerCloudAccount() {
         return this.peerCloudAccount;
     }
+    /**
+     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String peerRegion() {
         return this.peerRegion;
     }
+    /**
+     * @return Azure resource group name of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String peerResourceGroup() {
         return this.peerResourceGroup;
     }
+    /**
+     * @return AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String peerVpc() {
         return this.peerVpc;
     }
+    /**
+     * @return Cloud provider identifier for the peering connection if available
+     * 
+     */
     public String peeringConnectionId() {
         return this.peeringConnectionId;
     }
+    /**
+     * @return State of the peering connection
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return State-specific help or error information
+     * 
+     */
     public Map<String,Object> stateInfo() {
         return this.stateInfo;
     }
+    /**
+     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String vpcId() {
         return this.vpcId;
     }

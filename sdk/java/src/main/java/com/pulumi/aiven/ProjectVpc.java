@@ -60,16 +60,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/projectVpc:ProjectVpc")
 public class ProjectVpc extends com.pulumi.resources.CustomResource {
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional
-     * information. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="cloudName", type=String.class, parameters={})
     private Output<String> cloudName;
 
     /**
-     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional
-     * information. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> cloudName() {
@@ -90,16 +88,14 @@ public class ProjectVpc extends com.pulumi.resources.CustomResource {
         return this.networkCidr;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> project() {

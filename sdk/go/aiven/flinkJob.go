@@ -19,51 +19,50 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewFlinkJob(ctx, "job", &aiven.FlinkJobArgs{
-// 			Project:     pulumi.Any(aiven_flink.Flink.Project),
-// 			ServiceName: pulumi.Any(aiven_flink.Flink.Service_name),
-// 			JobName:     pulumi.String("<JOB_NAME>"),
-// 			TableIds: pulumi.StringArray{
-// 				pulumi.Any(aiven_flink_table.Source.Table_id),
-// 				pulumi.Any(aiven_flink_table.Sink.Table_id),
-// 			},
-// 			Statement: pulumi.String(fmt.Sprintf("        INSERT INTO %v                                            \n        SELECT * FROM %v                                        \n        WHERE `cpu` > 50                                                                            \n", aiven_flink_table.Sink.Table_name, aiven_flink_table.Source.Table_name)),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewFlinkJob(ctx, "job", &aiven.FlinkJobArgs{
+//				Project:     pulumi.Any(aiven_flink.Flink.Project),
+//				ServiceName: pulumi.Any(aiven_flink.Flink.Service_name),
+//				JobName:     pulumi.String("<JOB_NAME>"),
+//				TableIds: pulumi.StringArray{
+//					pulumi.Any(aiven_flink_table.Source.Table_id),
+//					pulumi.Any(aiven_flink_table.Sink.Table_id),
+//				},
+//				Statement: pulumi.String(fmt.Sprintf("        INSERT INTO %v                                            \n        SELECT * FROM %v                                        \n        WHERE `cpu` > 50                                                                            \n", aiven_flink_table.Sink.Table_name, aiven_flink_table.Source.Table_name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type FlinkJob struct {
 	pulumi.CustomResourceState
 
 	// The Job ID of the flink job in the flink service.
 	JobId pulumi.StringOutput `pulumi:"jobId"`
-	// Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	JobName pulumi.StringOutput `pulumi:"jobName"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// The current state of the flink job in the flink service
 	State pulumi.StringOutput `pulumi:"state"`
 	// The SQL statement to define the job. This property cannot be changed, doing so forces recreation of the resource.
 	Statement pulumi.StringOutput `pulumi:"statement"`
-	// A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as
-	// a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	TableIds pulumi.StringArrayOutput `pulumi:"tableIds"`
 }
 
@@ -113,42 +112,34 @@ func GetFlinkJob(ctx *pulumi.Context,
 type flinkJobState struct {
 	// The Job ID of the flink job in the flink service.
 	JobId *string `pulumi:"jobId"`
-	// Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	JobName *string `pulumi:"jobName"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// The current state of the flink job in the flink service
 	State *string `pulumi:"state"`
 	// The SQL statement to define the job. This property cannot be changed, doing so forces recreation of the resource.
 	Statement *string `pulumi:"statement"`
-	// A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as
-	// a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	TableIds []string `pulumi:"tableIds"`
 }
 
 type FlinkJobState struct {
 	// The Job ID of the flink job in the flink service.
 	JobId pulumi.StringPtrInput
-	// Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	JobName pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// The current state of the flink job in the flink service
 	State pulumi.StringPtrInput
 	// The SQL statement to define the job. This property cannot be changed, doing so forces recreation of the resource.
 	Statement pulumi.StringPtrInput
-	// A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as
-	// a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	TableIds pulumi.StringArrayInput
 }
 
@@ -157,37 +148,29 @@ func (FlinkJobState) ElementType() reflect.Type {
 }
 
 type flinkJobArgs struct {
-	// Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	JobName string `pulumi:"jobName"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// The SQL statement to define the job. This property cannot be changed, doing so forces recreation of the resource.
 	Statement string `pulumi:"statement"`
-	// A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as
-	// a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	TableIds []string `pulumi:"tableIds"`
 }
 
 // The set of arguments for constructing a FlinkJob resource.
 type FlinkJobArgs struct {
-	// Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	JobName pulumi.StringInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// The SQL statement to define the job. This property cannot be changed, doing so forces recreation of the resource.
 	Statement pulumi.StringInput
-	// A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as
-	// a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	TableIds pulumi.StringArrayInput
 }
 
@@ -217,7 +200,7 @@ func (i *FlinkJob) ToFlinkJobOutputWithContext(ctx context.Context) FlinkJobOutp
 // FlinkJobArrayInput is an input type that accepts FlinkJobArray and FlinkJobArrayOutput values.
 // You can construct a concrete instance of `FlinkJobArrayInput` via:
 //
-//          FlinkJobArray{ FlinkJobArgs{...} }
+//	FlinkJobArray{ FlinkJobArgs{...} }
 type FlinkJobArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +225,7 @@ func (i FlinkJobArray) ToFlinkJobArrayOutputWithContext(ctx context.Context) Fli
 // FlinkJobMapInput is an input type that accepts FlinkJobMap and FlinkJobMapOutput values.
 // You can construct a concrete instance of `FlinkJobMapInput` via:
 //
-//          FlinkJobMap{ "key": FlinkJobArgs{...} }
+//	FlinkJobMap{ "key": FlinkJobArgs{...} }
 type FlinkJobMapInput interface {
 	pulumi.Input
 
@@ -283,20 +266,17 @@ func (o FlinkJobOutput) JobId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkJob) pulumi.StringOutput { return v.JobId }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this
-// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this job is submitted to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobOutput) JobName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkJob) pulumi.StringOutput { return v.JobName }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkJob) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkJob) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -311,8 +291,7 @@ func (o FlinkJobOutput) Statement() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkJob) pulumi.StringOutput { return v.Statement }).(pulumi.StringOutput)
 }
 
-// A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as
-// a reference. This property cannot be changed, doing so forces recreation of the resource.
+// A list of table ids that are required in the job runtime. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobOutput) TableIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FlinkJob) pulumi.StringArrayOutput { return v.TableIds }).(pulumi.StringArrayOutput)
 }

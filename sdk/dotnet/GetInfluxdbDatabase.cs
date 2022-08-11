@@ -25,48 +25,77 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetInfluxdbDatabaseArgs : Pulumi.InvokeArgs
+    public sealed class GetInfluxdbDatabaseArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("databaseName", required: true)]
         public string DatabaseName { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
         public GetInfluxdbDatabaseArgs()
         {
         }
+        public static new GetInfluxdbDatabaseArgs Empty => new GetInfluxdbDatabaseArgs();
     }
 
-    public sealed class GetInfluxdbDatabaseInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInfluxdbDatabaseInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         public GetInfluxdbDatabaseInvokeArgs()
         {
         }
+        public static new GetInfluxdbDatabaseInvokeArgs Empty => new GetInfluxdbDatabaseInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetInfluxdbDatabaseResult
     {
+        /// <summary>
+        /// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string DatabaseName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
         public readonly bool TerminationProtection;
 

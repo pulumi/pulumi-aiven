@@ -15,16 +15,32 @@ public final class ServiceIntegrationEndpointJolokiaUserConfigArgs extends com.p
 
     public static final ServiceIntegrationEndpointJolokiaUserConfigArgs Empty = new ServiceIntegrationEndpointJolokiaUserConfigArgs();
 
+    /**
+     * Jolokia basic authentication password
+     * 
+     */
     @Import(name="basicAuthPassword")
     private @Nullable Output<String> basicAuthPassword;
 
+    /**
+     * @return Jolokia basic authentication password
+     * 
+     */
     public Optional<Output<String>> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
 
+    /**
+     * Jolokia basic authentication username
+     * 
+     */
     @Import(name="basicAuthUsername")
     private @Nullable Output<String> basicAuthUsername;
 
+    /**
+     * @return Jolokia basic authentication username
+     * 
+     */
     public Optional<Output<String>> basicAuthUsername() {
         return Optional.ofNullable(this.basicAuthUsername);
     }
@@ -54,20 +70,44 @@ public final class ServiceIntegrationEndpointJolokiaUserConfigArgs extends com.p
             $ = new ServiceIntegrationEndpointJolokiaUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param basicAuthPassword Jolokia basic authentication password
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthPassword(@Nullable Output<String> basicAuthPassword) {
             $.basicAuthPassword = basicAuthPassword;
             return this;
         }
 
+        /**
+         * @param basicAuthPassword Jolokia basic authentication password
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthPassword(String basicAuthPassword) {
             return basicAuthPassword(Output.of(basicAuthPassword));
         }
 
+        /**
+         * @param basicAuthUsername Jolokia basic authentication username
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthUsername(@Nullable Output<String> basicAuthUsername) {
             $.basicAuthUsername = basicAuthUsername;
             return this;
         }
 
+        /**
+         * @param basicAuthUsername Jolokia basic authentication username
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthUsername(String basicAuthUsername) {
             return basicAuthUsername(Output.of(basicAuthUsername));
         }

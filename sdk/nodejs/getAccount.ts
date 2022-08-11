@@ -33,6 +33,9 @@ export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getAccount.
  */
 export interface GetAccountArgs {
+    /**
+     * Account name
+     */
     name: string;
 }
 
@@ -40,16 +43,37 @@ export interface GetAccountArgs {
  * A collection of values returned by getAccount.
  */
 export interface GetAccountResult {
+    /**
+     * Account id
+     */
     readonly accountId: string;
+    /**
+     * Time of creation
+     */
     readonly createTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Account name
+     */
     readonly name: string;
+    /**
+     * Owner team id
+     */
     readonly ownerTeamId: string;
+    /**
+     * Billing group id
+     */
     readonly primaryBillingGroupId: string;
+    /**
+     * Tenant id
+     */
     readonly tenantId: string;
+    /**
+     * Time of last update
+     */
     readonly updateTime: string;
 }
 
@@ -61,5 +85,8 @@ export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getAccount.
  */
 export interface GetAccountOutputArgs {
+    /**
+     * Account name
+     */
     name: pulumi.Input<string>;
 }

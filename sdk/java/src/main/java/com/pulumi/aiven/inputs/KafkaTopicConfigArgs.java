@@ -15,170 +15,362 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
 
     public static final KafkaTopicConfigArgs Empty = new KafkaTopicConfigArgs();
 
+    /**
+     * cleanup.policy value
+     * 
+     */
     @Import(name="cleanupPolicy")
     private @Nullable Output<String> cleanupPolicy;
 
+    /**
+     * @return cleanup.policy value
+     * 
+     */
     public Optional<Output<String>> cleanupPolicy() {
         return Optional.ofNullable(this.cleanupPolicy);
     }
 
+    /**
+     * compression.type value
+     * 
+     */
     @Import(name="compressionType")
     private @Nullable Output<String> compressionType;
 
+    /**
+     * @return compression.type value
+     * 
+     */
     public Optional<Output<String>> compressionType() {
         return Optional.ofNullable(this.compressionType);
     }
 
+    /**
+     * delete.retention.ms value
+     * 
+     */
     @Import(name="deleteRetentionMs")
     private @Nullable Output<String> deleteRetentionMs;
 
+    /**
+     * @return delete.retention.ms value
+     * 
+     */
     public Optional<Output<String>> deleteRetentionMs() {
         return Optional.ofNullable(this.deleteRetentionMs);
     }
 
+    /**
+     * file.delete.delay.ms value
+     * 
+     */
     @Import(name="fileDeleteDelayMs")
     private @Nullable Output<String> fileDeleteDelayMs;
 
+    /**
+     * @return file.delete.delay.ms value
+     * 
+     */
     public Optional<Output<String>> fileDeleteDelayMs() {
         return Optional.ofNullable(this.fileDeleteDelayMs);
     }
 
+    /**
+     * flush.messages value
+     * 
+     */
     @Import(name="flushMessages")
     private @Nullable Output<String> flushMessages;
 
+    /**
+     * @return flush.messages value
+     * 
+     */
     public Optional<Output<String>> flushMessages() {
         return Optional.ofNullable(this.flushMessages);
     }
 
+    /**
+     * flush.ms value
+     * 
+     */
     @Import(name="flushMs")
     private @Nullable Output<String> flushMs;
 
+    /**
+     * @return flush.ms value
+     * 
+     */
     public Optional<Output<String>> flushMs() {
         return Optional.ofNullable(this.flushMs);
     }
 
+    /**
+     * index.interval.bytes value
+     * 
+     */
     @Import(name="indexIntervalBytes")
     private @Nullable Output<String> indexIntervalBytes;
 
+    /**
+     * @return index.interval.bytes value
+     * 
+     */
     public Optional<Output<String>> indexIntervalBytes() {
         return Optional.ofNullable(this.indexIntervalBytes);
     }
 
+    /**
+     * max.compaction.lag.ms value
+     * 
+     */
     @Import(name="maxCompactionLagMs")
     private @Nullable Output<String> maxCompactionLagMs;
 
+    /**
+     * @return max.compaction.lag.ms value
+     * 
+     */
     public Optional<Output<String>> maxCompactionLagMs() {
         return Optional.ofNullable(this.maxCompactionLagMs);
     }
 
+    /**
+     * max.message.bytes value
+     * 
+     */
     @Import(name="maxMessageBytes")
     private @Nullable Output<String> maxMessageBytes;
 
+    /**
+     * @return max.message.bytes value
+     * 
+     */
     public Optional<Output<String>> maxMessageBytes() {
         return Optional.ofNullable(this.maxMessageBytes);
     }
 
+    /**
+     * message.downconversion.enable value
+     * 
+     */
     @Import(name="messageDownconversionEnable")
     private @Nullable Output<String> messageDownconversionEnable;
 
+    /**
+     * @return message.downconversion.enable value
+     * 
+     */
     public Optional<Output<String>> messageDownconversionEnable() {
         return Optional.ofNullable(this.messageDownconversionEnable);
     }
 
+    /**
+     * message.format.version value
+     * 
+     */
     @Import(name="messageFormatVersion")
     private @Nullable Output<String> messageFormatVersion;
 
+    /**
+     * @return message.format.version value
+     * 
+     */
     public Optional<Output<String>> messageFormatVersion() {
         return Optional.ofNullable(this.messageFormatVersion);
     }
 
+    /**
+     * message.timestamp.difference.max.ms value
+     * 
+     */
     @Import(name="messageTimestampDifferenceMaxMs")
     private @Nullable Output<String> messageTimestampDifferenceMaxMs;
 
+    /**
+     * @return message.timestamp.difference.max.ms value
+     * 
+     */
     public Optional<Output<String>> messageTimestampDifferenceMaxMs() {
         return Optional.ofNullable(this.messageTimestampDifferenceMaxMs);
     }
 
+    /**
+     * message.timestamp.type value
+     * 
+     */
     @Import(name="messageTimestampType")
     private @Nullable Output<String> messageTimestampType;
 
+    /**
+     * @return message.timestamp.type value
+     * 
+     */
     public Optional<Output<String>> messageTimestampType() {
         return Optional.ofNullable(this.messageTimestampType);
     }
 
+    /**
+     * min.cleanable.dirty.ratio value
+     * 
+     */
     @Import(name="minCleanableDirtyRatio")
     private @Nullable Output<String> minCleanableDirtyRatio;
 
+    /**
+     * @return min.cleanable.dirty.ratio value
+     * 
+     */
     public Optional<Output<String>> minCleanableDirtyRatio() {
         return Optional.ofNullable(this.minCleanableDirtyRatio);
     }
 
+    /**
+     * min.compaction.lag.ms value
+     * 
+     */
     @Import(name="minCompactionLagMs")
     private @Nullable Output<String> minCompactionLagMs;
 
+    /**
+     * @return min.compaction.lag.ms value
+     * 
+     */
     public Optional<Output<String>> minCompactionLagMs() {
         return Optional.ofNullable(this.minCompactionLagMs);
     }
 
+    /**
+     * min.insync.replicas value
+     * 
+     */
     @Import(name="minInsyncReplicas")
     private @Nullable Output<String> minInsyncReplicas;
 
+    /**
+     * @return min.insync.replicas value
+     * 
+     */
     public Optional<Output<String>> minInsyncReplicas() {
         return Optional.ofNullable(this.minInsyncReplicas);
     }
 
+    /**
+     * preallocate value
+     * 
+     */
     @Import(name="preallocate")
     private @Nullable Output<String> preallocate;
 
+    /**
+     * @return preallocate value
+     * 
+     */
     public Optional<Output<String>> preallocate() {
         return Optional.ofNullable(this.preallocate);
     }
 
+    /**
+     * retention.bytes value
+     * 
+     */
     @Import(name="retentionBytes")
     private @Nullable Output<String> retentionBytes;
 
+    /**
+     * @return retention.bytes value
+     * 
+     */
     public Optional<Output<String>> retentionBytes() {
         return Optional.ofNullable(this.retentionBytes);
     }
 
+    /**
+     * retention.ms value
+     * 
+     */
     @Import(name="retentionMs")
     private @Nullable Output<String> retentionMs;
 
+    /**
+     * @return retention.ms value
+     * 
+     */
     public Optional<Output<String>> retentionMs() {
         return Optional.ofNullable(this.retentionMs);
     }
 
+    /**
+     * segment.bytes value
+     * 
+     */
     @Import(name="segmentBytes")
     private @Nullable Output<String> segmentBytes;
 
+    /**
+     * @return segment.bytes value
+     * 
+     */
     public Optional<Output<String>> segmentBytes() {
         return Optional.ofNullable(this.segmentBytes);
     }
 
+    /**
+     * segment.index.bytes value
+     * 
+     */
     @Import(name="segmentIndexBytes")
     private @Nullable Output<String> segmentIndexBytes;
 
+    /**
+     * @return segment.index.bytes value
+     * 
+     */
     public Optional<Output<String>> segmentIndexBytes() {
         return Optional.ofNullable(this.segmentIndexBytes);
     }
 
+    /**
+     * segment.jitter.ms value
+     * 
+     */
     @Import(name="segmentJitterMs")
     private @Nullable Output<String> segmentJitterMs;
 
+    /**
+     * @return segment.jitter.ms value
+     * 
+     */
     public Optional<Output<String>> segmentJitterMs() {
         return Optional.ofNullable(this.segmentJitterMs);
     }
 
+    /**
+     * segment.ms value
+     * 
+     */
     @Import(name="segmentMs")
     private @Nullable Output<String> segmentMs;
 
+    /**
+     * @return segment.ms value
+     * 
+     */
     public Optional<Output<String>> segmentMs() {
         return Optional.ofNullable(this.segmentMs);
     }
 
+    /**
+     * unclean.leader.election.enable value
+     * 
+     */
     @Import(name="uncleanLeaderElectionEnable")
     private @Nullable Output<String> uncleanLeaderElectionEnable;
 
+    /**
+     * @return unclean.leader.election.enable value
+     * 
+     */
     public Optional<Output<String>> uncleanLeaderElectionEnable() {
         return Optional.ofNullable(this.uncleanLeaderElectionEnable);
     }
@@ -230,218 +422,506 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
             $ = new KafkaTopicConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cleanupPolicy cleanup.policy value
+         * 
+         * @return builder
+         * 
+         */
         public Builder cleanupPolicy(@Nullable Output<String> cleanupPolicy) {
             $.cleanupPolicy = cleanupPolicy;
             return this;
         }
 
+        /**
+         * @param cleanupPolicy cleanup.policy value
+         * 
+         * @return builder
+         * 
+         */
         public Builder cleanupPolicy(String cleanupPolicy) {
             return cleanupPolicy(Output.of(cleanupPolicy));
         }
 
+        /**
+         * @param compressionType compression.type value
+         * 
+         * @return builder
+         * 
+         */
         public Builder compressionType(@Nullable Output<String> compressionType) {
             $.compressionType = compressionType;
             return this;
         }
 
+        /**
+         * @param compressionType compression.type value
+         * 
+         * @return builder
+         * 
+         */
         public Builder compressionType(String compressionType) {
             return compressionType(Output.of(compressionType));
         }
 
+        /**
+         * @param deleteRetentionMs delete.retention.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteRetentionMs(@Nullable Output<String> deleteRetentionMs) {
             $.deleteRetentionMs = deleteRetentionMs;
             return this;
         }
 
+        /**
+         * @param deleteRetentionMs delete.retention.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteRetentionMs(String deleteRetentionMs) {
             return deleteRetentionMs(Output.of(deleteRetentionMs));
         }
 
+        /**
+         * @param fileDeleteDelayMs file.delete.delay.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileDeleteDelayMs(@Nullable Output<String> fileDeleteDelayMs) {
             $.fileDeleteDelayMs = fileDeleteDelayMs;
             return this;
         }
 
+        /**
+         * @param fileDeleteDelayMs file.delete.delay.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileDeleteDelayMs(String fileDeleteDelayMs) {
             return fileDeleteDelayMs(Output.of(fileDeleteDelayMs));
         }
 
+        /**
+         * @param flushMessages flush.messages value
+         * 
+         * @return builder
+         * 
+         */
         public Builder flushMessages(@Nullable Output<String> flushMessages) {
             $.flushMessages = flushMessages;
             return this;
         }
 
+        /**
+         * @param flushMessages flush.messages value
+         * 
+         * @return builder
+         * 
+         */
         public Builder flushMessages(String flushMessages) {
             return flushMessages(Output.of(flushMessages));
         }
 
+        /**
+         * @param flushMs flush.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder flushMs(@Nullable Output<String> flushMs) {
             $.flushMs = flushMs;
             return this;
         }
 
+        /**
+         * @param flushMs flush.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder flushMs(String flushMs) {
             return flushMs(Output.of(flushMs));
         }
 
+        /**
+         * @param indexIntervalBytes index.interval.bytes value
+         * 
+         * @return builder
+         * 
+         */
         public Builder indexIntervalBytes(@Nullable Output<String> indexIntervalBytes) {
             $.indexIntervalBytes = indexIntervalBytes;
             return this;
         }
 
+        /**
+         * @param indexIntervalBytes index.interval.bytes value
+         * 
+         * @return builder
+         * 
+         */
         public Builder indexIntervalBytes(String indexIntervalBytes) {
             return indexIntervalBytes(Output.of(indexIntervalBytes));
         }
 
+        /**
+         * @param maxCompactionLagMs max.compaction.lag.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxCompactionLagMs(@Nullable Output<String> maxCompactionLagMs) {
             $.maxCompactionLagMs = maxCompactionLagMs;
             return this;
         }
 
+        /**
+         * @param maxCompactionLagMs max.compaction.lag.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxCompactionLagMs(String maxCompactionLagMs) {
             return maxCompactionLagMs(Output.of(maxCompactionLagMs));
         }
 
+        /**
+         * @param maxMessageBytes max.message.bytes value
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxMessageBytes(@Nullable Output<String> maxMessageBytes) {
             $.maxMessageBytes = maxMessageBytes;
             return this;
         }
 
+        /**
+         * @param maxMessageBytes max.message.bytes value
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxMessageBytes(String maxMessageBytes) {
             return maxMessageBytes(Output.of(maxMessageBytes));
         }
 
+        /**
+         * @param messageDownconversionEnable message.downconversion.enable value
+         * 
+         * @return builder
+         * 
+         */
         public Builder messageDownconversionEnable(@Nullable Output<String> messageDownconversionEnable) {
             $.messageDownconversionEnable = messageDownconversionEnable;
             return this;
         }
 
+        /**
+         * @param messageDownconversionEnable message.downconversion.enable value
+         * 
+         * @return builder
+         * 
+         */
         public Builder messageDownconversionEnable(String messageDownconversionEnable) {
             return messageDownconversionEnable(Output.of(messageDownconversionEnable));
         }
 
+        /**
+         * @param messageFormatVersion message.format.version value
+         * 
+         * @return builder
+         * 
+         */
         public Builder messageFormatVersion(@Nullable Output<String> messageFormatVersion) {
             $.messageFormatVersion = messageFormatVersion;
             return this;
         }
 
+        /**
+         * @param messageFormatVersion message.format.version value
+         * 
+         * @return builder
+         * 
+         */
         public Builder messageFormatVersion(String messageFormatVersion) {
             return messageFormatVersion(Output.of(messageFormatVersion));
         }
 
+        /**
+         * @param messageTimestampDifferenceMaxMs message.timestamp.difference.max.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder messageTimestampDifferenceMaxMs(@Nullable Output<String> messageTimestampDifferenceMaxMs) {
             $.messageTimestampDifferenceMaxMs = messageTimestampDifferenceMaxMs;
             return this;
         }
 
+        /**
+         * @param messageTimestampDifferenceMaxMs message.timestamp.difference.max.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder messageTimestampDifferenceMaxMs(String messageTimestampDifferenceMaxMs) {
             return messageTimestampDifferenceMaxMs(Output.of(messageTimestampDifferenceMaxMs));
         }
 
+        /**
+         * @param messageTimestampType message.timestamp.type value
+         * 
+         * @return builder
+         * 
+         */
         public Builder messageTimestampType(@Nullable Output<String> messageTimestampType) {
             $.messageTimestampType = messageTimestampType;
             return this;
         }
 
+        /**
+         * @param messageTimestampType message.timestamp.type value
+         * 
+         * @return builder
+         * 
+         */
         public Builder messageTimestampType(String messageTimestampType) {
             return messageTimestampType(Output.of(messageTimestampType));
         }
 
+        /**
+         * @param minCleanableDirtyRatio min.cleanable.dirty.ratio value
+         * 
+         * @return builder
+         * 
+         */
         public Builder minCleanableDirtyRatio(@Nullable Output<String> minCleanableDirtyRatio) {
             $.minCleanableDirtyRatio = minCleanableDirtyRatio;
             return this;
         }
 
+        /**
+         * @param minCleanableDirtyRatio min.cleanable.dirty.ratio value
+         * 
+         * @return builder
+         * 
+         */
         public Builder minCleanableDirtyRatio(String minCleanableDirtyRatio) {
             return minCleanableDirtyRatio(Output.of(minCleanableDirtyRatio));
         }
 
+        /**
+         * @param minCompactionLagMs min.compaction.lag.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder minCompactionLagMs(@Nullable Output<String> minCompactionLagMs) {
             $.minCompactionLagMs = minCompactionLagMs;
             return this;
         }
 
+        /**
+         * @param minCompactionLagMs min.compaction.lag.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder minCompactionLagMs(String minCompactionLagMs) {
             return minCompactionLagMs(Output.of(minCompactionLagMs));
         }
 
+        /**
+         * @param minInsyncReplicas min.insync.replicas value
+         * 
+         * @return builder
+         * 
+         */
         public Builder minInsyncReplicas(@Nullable Output<String> minInsyncReplicas) {
             $.minInsyncReplicas = minInsyncReplicas;
             return this;
         }
 
+        /**
+         * @param minInsyncReplicas min.insync.replicas value
+         * 
+         * @return builder
+         * 
+         */
         public Builder minInsyncReplicas(String minInsyncReplicas) {
             return minInsyncReplicas(Output.of(minInsyncReplicas));
         }
 
+        /**
+         * @param preallocate preallocate value
+         * 
+         * @return builder
+         * 
+         */
         public Builder preallocate(@Nullable Output<String> preallocate) {
             $.preallocate = preallocate;
             return this;
         }
 
+        /**
+         * @param preallocate preallocate value
+         * 
+         * @return builder
+         * 
+         */
         public Builder preallocate(String preallocate) {
             return preallocate(Output.of(preallocate));
         }
 
+        /**
+         * @param retentionBytes retention.bytes value
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionBytes(@Nullable Output<String> retentionBytes) {
             $.retentionBytes = retentionBytes;
             return this;
         }
 
+        /**
+         * @param retentionBytes retention.bytes value
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionBytes(String retentionBytes) {
             return retentionBytes(Output.of(retentionBytes));
         }
 
+        /**
+         * @param retentionMs retention.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionMs(@Nullable Output<String> retentionMs) {
             $.retentionMs = retentionMs;
             return this;
         }
 
+        /**
+         * @param retentionMs retention.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionMs(String retentionMs) {
             return retentionMs(Output.of(retentionMs));
         }
 
+        /**
+         * @param segmentBytes segment.bytes value
+         * 
+         * @return builder
+         * 
+         */
         public Builder segmentBytes(@Nullable Output<String> segmentBytes) {
             $.segmentBytes = segmentBytes;
             return this;
         }
 
+        /**
+         * @param segmentBytes segment.bytes value
+         * 
+         * @return builder
+         * 
+         */
         public Builder segmentBytes(String segmentBytes) {
             return segmentBytes(Output.of(segmentBytes));
         }
 
+        /**
+         * @param segmentIndexBytes segment.index.bytes value
+         * 
+         * @return builder
+         * 
+         */
         public Builder segmentIndexBytes(@Nullable Output<String> segmentIndexBytes) {
             $.segmentIndexBytes = segmentIndexBytes;
             return this;
         }
 
+        /**
+         * @param segmentIndexBytes segment.index.bytes value
+         * 
+         * @return builder
+         * 
+         */
         public Builder segmentIndexBytes(String segmentIndexBytes) {
             return segmentIndexBytes(Output.of(segmentIndexBytes));
         }
 
+        /**
+         * @param segmentJitterMs segment.jitter.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder segmentJitterMs(@Nullable Output<String> segmentJitterMs) {
             $.segmentJitterMs = segmentJitterMs;
             return this;
         }
 
+        /**
+         * @param segmentJitterMs segment.jitter.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder segmentJitterMs(String segmentJitterMs) {
             return segmentJitterMs(Output.of(segmentJitterMs));
         }
 
+        /**
+         * @param segmentMs segment.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder segmentMs(@Nullable Output<String> segmentMs) {
             $.segmentMs = segmentMs;
             return this;
         }
 
+        /**
+         * @param segmentMs segment.ms value
+         * 
+         * @return builder
+         * 
+         */
         public Builder segmentMs(String segmentMs) {
             return segmentMs(Output.of(segmentMs));
         }
 
+        /**
+         * @param uncleanLeaderElectionEnable unclean.leader.election.enable value
+         * 
+         * @return builder
+         * 
+         */
         public Builder uncleanLeaderElectionEnable(@Nullable Output<String> uncleanLeaderElectionEnable) {
             $.uncleanLeaderElectionEnable = uncleanLeaderElectionEnable;
             return this;
         }
 
+        /**
+         * @param uncleanLeaderElectionEnable unclean.leader.election.enable value
+         * 
+         * @return builder
+         * 
+         */
         public Builder uncleanLeaderElectionEnable(String uncleanLeaderElectionEnable) {
             return uncleanLeaderElectionEnable(Output.of(uncleanLeaderElectionEnable));
         }

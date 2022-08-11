@@ -18,23 +18,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupGcpVpcPeeringConnection(ctx, &GetGcpVpcPeeringConnectionArgs{
-// 			VpcId:        data.Aiven_project_vpc.Vpc.Id,
-// 			GcpProjectId: "xxxx",
-// 			PeerVpc:      "xxxx",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupGcpVpcPeeringConnection(ctx, &GetGcpVpcPeeringConnectionArgs{
+//				VpcId:        data.Aiven_project_vpc.Vpc.Id,
+//				GcpProjectId: "xxxx",
+//				PeerVpc:      "xxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupGcpVpcPeeringConnection(ctx *pulumi.Context, args *LookupGcpVpcPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupGcpVpcPeeringConnectionResult, error) {
 	var rv LookupGcpVpcPeeringConnectionResult
@@ -47,20 +50,28 @@ func LookupGcpVpcPeeringConnection(ctx *pulumi.Context, args *LookupGcpVpcPeerin
 
 // A collection of arguments for invoking getGcpVpcPeeringConnection.
 type LookupGcpVpcPeeringConnectionArgs struct {
+	// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
 	GcpProjectId string `pulumi:"gcpProjectId"`
-	PeerVpc      string `pulumi:"peerVpc"`
-	VpcId        string `pulumi:"vpcId"`
+	// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+	PeerVpc string `pulumi:"peerVpc"`
+	// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+	VpcId string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getGcpVpcPeeringConnection.
 type LookupGcpVpcPeeringConnectionResult struct {
+	// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
 	GcpProjectId string `pulumi:"gcpProjectId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string                 `pulumi:"id"`
-	PeerVpc   string                 `pulumi:"peerVpc"`
-	State     string                 `pulumi:"state"`
+	Id string `pulumi:"id"`
+	// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+	PeerVpc string `pulumi:"peerVpc"`
+	// State of the peering connection
+	State string `pulumi:"state"`
+	// State-specific help or error information
 	StateInfo map[string]interface{} `pulumi:"stateInfo"`
-	VpcId     string                 `pulumi:"vpcId"`
+	// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+	VpcId string `pulumi:"vpcId"`
 }
 
 func LookupGcpVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupGcpVpcPeeringConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupGcpVpcPeeringConnectionResultOutput {
@@ -78,9 +89,12 @@ func LookupGcpVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupGcpVpcP
 
 // A collection of arguments for invoking getGcpVpcPeeringConnection.
 type LookupGcpVpcPeeringConnectionOutputArgs struct {
+	// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
 	GcpProjectId pulumi.StringInput `pulumi:"gcpProjectId"`
-	PeerVpc      pulumi.StringInput `pulumi:"peerVpc"`
-	VpcId        pulumi.StringInput `pulumi:"vpcId"`
+	// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+	PeerVpc pulumi.StringInput `pulumi:"peerVpc"`
+	// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
 func (LookupGcpVpcPeeringConnectionOutputArgs) ElementType() reflect.Type {
@@ -102,6 +116,7 @@ func (o LookupGcpVpcPeeringConnectionResultOutput) ToLookupGcpVpcPeeringConnecti
 	return o
 }
 
+// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupGcpVpcPeeringConnectionResultOutput) GcpProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpVpcPeeringConnectionResult) string { return v.GcpProjectId }).(pulumi.StringOutput)
 }
@@ -111,18 +126,22 @@ func (o LookupGcpVpcPeeringConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpVpcPeeringConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupGcpVpcPeeringConnectionResultOutput) PeerVpc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpVpcPeeringConnectionResult) string { return v.PeerVpc }).(pulumi.StringOutput)
 }
 
+// State of the peering connection
 func (o LookupGcpVpcPeeringConnectionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpVpcPeeringConnectionResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// State-specific help or error information
 func (o LookupGcpVpcPeeringConnectionResultOutput) StateInfo() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupGcpVpcPeeringConnectionResult) map[string]interface{} { return v.StateInfo }).(pulumi.MapOutput)
 }
 
+// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupGcpVpcPeeringConnectionResultOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpVpcPeeringConnectionResult) string { return v.VpcId }).(pulumi.StringOutput)
 }

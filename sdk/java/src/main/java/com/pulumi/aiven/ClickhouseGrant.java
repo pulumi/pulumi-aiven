@@ -128,32 +128,28 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.privilegeGrants);
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="role", type=String.class, parameters={})
     private Output</* @Nullable */ String> role;
 
     /**
-     * @return The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * @return The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> role() {
@@ -174,32 +170,28 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.roleGrants);
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", type=String.class, parameters={})
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="user", type=String.class, parameters={})
     private Output</* @Nullable */ String> user;
 
     /**
-     * @return The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * @return The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> user() {

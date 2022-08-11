@@ -24,8 +24,17 @@ export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulu
  * A collection of arguments for invoking getAccountTeamMember.
  */
 export interface GetAccountTeamMemberArgs {
+    /**
+     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     */
     accountId: string;
+    /**
+     * An account team id This property cannot be changed, doing so forces recreation of the resource.
+     */
     teamId: string;
+    /**
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     */
     userEmail: string;
 }
 
@@ -33,15 +42,33 @@ export interface GetAccountTeamMemberArgs {
  * A collection of values returned by getAccountTeamMember.
  */
 export interface GetAccountTeamMemberResult {
+    /**
+     * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
+     */
     readonly accepted: boolean;
+    /**
+     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly accountId: string;
+    /**
+     * Time of creation
+     */
     readonly createTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The email address that invited this user.
+     */
     readonly invitedByUserEmail: string;
+    /**
+     * An account team id This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly teamId: string;
+    /**
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly userEmail: string;
 }
 
@@ -53,7 +80,16 @@ export function getAccountTeamMemberOutput(args: GetAccountTeamMemberOutputArgs,
  * A collection of arguments for invoking getAccountTeamMember.
  */
 export interface GetAccountTeamMemberOutputArgs {
+    /**
+     * The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     */
     accountId: pulumi.Input<string>;
+    /**
+     * An account team id This property cannot be changed, doing so forces recreation of the resource.
+     */
     teamId: pulumi.Input<string>;
+    /**
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     */
     userEmail: pulumi.Input<string>;
 }

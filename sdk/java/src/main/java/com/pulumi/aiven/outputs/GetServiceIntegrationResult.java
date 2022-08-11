@@ -16,23 +16,75 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceIntegrationResult {
+    /**
+     * @return Destination endpoint for the integration (if any)
+     * 
+     */
     private final String destinationEndpointId;
+    /**
+     * @return Destination service for the integration (if any)
+     * 
+     */
     private final String destinationServiceName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return Service Integration Id at aiven
+     * 
+     */
     private final String integrationId;
+    /**
+     * @return Type of the service integration
+     * 
+     */
     private final String integrationType;
+    /**
+     * @return Kafka Connect specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfigs;
+    /**
+     * @return Kafka Logs specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfigs;
+    /**
+     * @return Mirrormaker 2 integration specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs;
+    /**
+     * @return Log integration specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationLogsUserConfig> logsUserConfigs;
+    /**
+     * @return Metrics specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs;
+    /**
+     * @return Mirrormaker 1 integration specific user configurable settings
+     * 
+     */
     private final List<GetServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfigs;
+    /**
+     * @return Project the integration belongs to
+     * 
+     */
     private final String project;
+    /**
+     * @return Source endpoint for the integration (if any)
+     * 
+     */
     private final String sourceEndpointId;
+    /**
+     * @return Source service for the integration (if any)
+     * 
+     */
     private final String sourceServiceName;
 
     @CustomType.Constructor
@@ -67,9 +119,17 @@ public final class GetServiceIntegrationResult {
         this.sourceServiceName = sourceServiceName;
     }
 
+    /**
+     * @return Destination endpoint for the integration (if any)
+     * 
+     */
     public String destinationEndpointId() {
         return this.destinationEndpointId;
     }
+    /**
+     * @return Destination service for the integration (if any)
+     * 
+     */
     public String destinationServiceName() {
         return this.destinationServiceName;
     }
@@ -80,36 +140,80 @@ public final class GetServiceIntegrationResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Service Integration Id at aiven
+     * 
+     */
     public String integrationId() {
         return this.integrationId;
     }
+    /**
+     * @return Type of the service integration
+     * 
+     */
     public String integrationType() {
         return this.integrationType;
     }
+    /**
+     * @return Kafka Connect specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfigs() {
         return this.kafkaConnectUserConfigs;
     }
+    /**
+     * @return Kafka Logs specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfigs() {
         return this.kafkaLogsUserConfigs;
     }
+    /**
+     * @return Mirrormaker 2 integration specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs() {
         return this.kafkaMirrormakerUserConfigs;
     }
+    /**
+     * @return Log integration specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationLogsUserConfig> logsUserConfigs() {
         return this.logsUserConfigs;
     }
+    /**
+     * @return Metrics specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs() {
         return this.metricsUserConfigs;
     }
+    /**
+     * @return Mirrormaker 1 integration specific user configurable settings
+     * 
+     */
     public List<GetServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfigs() {
         return this.mirrormakerUserConfigs;
     }
+    /**
+     * @return Project the integration belongs to
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Source endpoint for the integration (if any)
+     * 
+     */
     public String sourceEndpointId() {
         return this.sourceEndpointId;
     }
+    /**
+     * @return Source service for the integration (if any)
+     * 
+     */
     public String sourceServiceName() {
         return this.sourceServiceName;
     }

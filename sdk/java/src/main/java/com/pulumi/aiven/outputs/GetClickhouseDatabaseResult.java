@@ -15,8 +15,20 @@ public final class GetClickhouseDatabaseResult {
      * 
      */
     private final String id;
+    /**
+     * @return The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String name;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
     private final Boolean terminationProtection;
 
@@ -41,12 +53,24 @@ public final class GetClickhouseDatabaseResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }

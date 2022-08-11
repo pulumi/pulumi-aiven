@@ -15,9 +15,17 @@ public final class ServiceIntegrationKafkaConnectUserConfigArgs extends com.pulu
 
     public static final ServiceIntegrationKafkaConnectUserConfigArgs Empty = new ServiceIntegrationKafkaConnectUserConfigArgs();
 
+    /**
+     * Kafka Connect service configuration values
+     * 
+     */
     @Import(name="kafkaConnect")
     private @Nullable Output<ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs> kafkaConnect;
 
+    /**
+     * @return Kafka Connect service configuration values
+     * 
+     */
     public Optional<Output<ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs>> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
@@ -46,11 +54,23 @@ public final class ServiceIntegrationKafkaConnectUserConfigArgs extends com.pulu
             $ = new ServiceIntegrationKafkaConnectUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param kafkaConnect Kafka Connect service configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnect(@Nullable Output<ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs> kafkaConnect) {
             $.kafkaConnect = kafkaConnect;
             return this;
         }
 
+        /**
+         * @param kafkaConnect Kafka Connect service configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnect(ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs kafkaConnect) {
             return kafkaConnect(Output.of(kafkaConnect));
         }

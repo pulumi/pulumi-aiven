@@ -9,17 +9,45 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAccountResult {
+    /**
+     * @return Account id
+     * 
+     */
     private final String accountId;
+    /**
+     * @return Time of creation
+     * 
+     */
     private final String createTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return Account name
+     * 
+     */
     private final String name;
+    /**
+     * @return Owner team id
+     * 
+     */
     private final String ownerTeamId;
+    /**
+     * @return Billing group id
+     * 
+     */
     private final String primaryBillingGroupId;
+    /**
+     * @return Tenant id
+     * 
+     */
     private final String tenantId;
+    /**
+     * @return Time of last update
+     * 
+     */
     private final String updateTime;
 
     @CustomType.Constructor
@@ -42,9 +70,17 @@ public final class GetAccountResult {
         this.updateTime = updateTime;
     }
 
+    /**
+     * @return Account id
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
+    /**
+     * @return Time of creation
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
@@ -55,18 +91,38 @@ public final class GetAccountResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Account name
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Owner team id
+     * 
+     */
     public String ownerTeamId() {
         return this.ownerTeamId;
     }
+    /**
+     * @return Billing group id
+     * 
+     */
     public String primaryBillingGroupId() {
         return this.primaryBillingGroupId;
     }
+    /**
+     * @return Tenant id
+     * 
+     */
     public String tenantId() {
         return this.tenantId;
     }
+    /**
+     * @return Time of last update
+     * 
+     */
     public String updateTime() {
         return this.updateTime;
     }

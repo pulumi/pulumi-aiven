@@ -10,16 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class RedisRedisUserConfigPublicAccessGetArgs : Pulumi.ResourceArgs
+    public sealed class RedisRedisUserConfigPublicAccessGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("prometheus")]
         public Input<string>? Prometheus { get; set; }
 
+        /// <summary>
+        /// Redis server provided values
+        /// </summary>
         [Input("redis")]
         public Input<string>? Redis { get; set; }
 
         public RedisRedisUserConfigPublicAccessGetArgs()
         {
         }
+        public static new RedisRedisUserConfigPublicAccessGetArgs Empty => new RedisRedisUserConfigPublicAccessGetArgs();
     }
 }

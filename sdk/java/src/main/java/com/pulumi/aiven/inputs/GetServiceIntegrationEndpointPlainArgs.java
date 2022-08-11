@@ -12,16 +12,32 @@ public final class GetServiceIntegrationEndpointPlainArgs extends com.pulumi.res
 
     public static final GetServiceIntegrationEndpointPlainArgs Empty = new GetServiceIntegrationEndpointPlainArgs();
 
+    /**
+     * Name of the service integration endpoint
+     * 
+     */
     @Import(name="endpointName", required=true)
     private String endpointName;
 
+    /**
+     * @return Name of the service integration endpoint
+     * 
+     */
     public String endpointName() {
         return this.endpointName;
     }
 
+    /**
+     * Project the service integration endpoint belongs to
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return Project the service integration endpoint belongs to
+     * 
+     */
     public String project() {
         return this.project;
     }
@@ -51,11 +67,23 @@ public final class GetServiceIntegrationEndpointPlainArgs extends com.pulumi.res
             $ = new GetServiceIntegrationEndpointPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param endpointName Name of the service integration endpoint
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointName(String endpointName) {
             $.endpointName = endpointName;
             return this;
         }
 
+        /**
+         * @param project Project the service integration endpoint belongs to
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;

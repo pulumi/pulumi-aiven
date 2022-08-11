@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs : Pulumi.ResourceArgs
+    public sealed class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("emitCheckpointsEnabled")]
         public Input<string>? EmitCheckpointsEnabled { get; set; }
@@ -45,5 +45,6 @@ namespace Pulumi.Aiven.Inputs
         public KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs()
         {
         }
+        public static new KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs Empty => new KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs();
     }
 }

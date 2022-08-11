@@ -16,7 +16,7 @@ namespace Pulumi.Aiven
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [AivenResourceType("pulumi:providers:aiven")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// Aiven Authentication Token
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiToken", required: true)]
         private Input<string>? _apiToken;
@@ -75,5 +75,6 @@ namespace Pulumi.Aiven
         public ProviderArgs()
         {
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

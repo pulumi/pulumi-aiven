@@ -32,9 +32,21 @@ export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pu
  * A collection of arguments for invoking getServiceIntegration.
  */
 export interface GetServiceIntegrationArgs {
+    /**
+     * Destination service for the integration (if any)
+     */
     destinationServiceName: string;
+    /**
+     * Type of the service integration
+     */
     integrationType: string;
+    /**
+     * Project the integration belongs to
+     */
     project: string;
+    /**
+     * Source service for the integration (if any)
+     */
     sourceServiceName: string;
 }
 
@@ -42,22 +54,61 @@ export interface GetServiceIntegrationArgs {
  * A collection of values returned by getServiceIntegration.
  */
 export interface GetServiceIntegrationResult {
+    /**
+     * Destination endpoint for the integration (if any)
+     */
     readonly destinationEndpointId: string;
+    /**
+     * Destination service for the integration (if any)
+     */
     readonly destinationServiceName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Service Integration Id at aiven
+     */
     readonly integrationId: string;
+    /**
+     * Type of the service integration
+     */
     readonly integrationType: string;
+    /**
+     * Kafka Connect specific user configurable settings
+     */
     readonly kafkaConnectUserConfigs: outputs.GetServiceIntegrationKafkaConnectUserConfig[];
+    /**
+     * Kafka Logs specific user configurable settings
+     */
     readonly kafkaLogsUserConfigs: outputs.GetServiceIntegrationKafkaLogsUserConfig[];
+    /**
+     * Mirrormaker 2 integration specific user configurable settings
+     */
     readonly kafkaMirrormakerUserConfigs: outputs.GetServiceIntegrationKafkaMirrormakerUserConfig[];
+    /**
+     * Log integration specific user configurable settings
+     */
     readonly logsUserConfigs: outputs.GetServiceIntegrationLogsUserConfig[];
+    /**
+     * Metrics specific user configurable settings
+     */
     readonly metricsUserConfigs: outputs.GetServiceIntegrationMetricsUserConfig[];
+    /**
+     * Mirrormaker 1 integration specific user configurable settings
+     */
     readonly mirrormakerUserConfigs: outputs.GetServiceIntegrationMirrormakerUserConfig[];
+    /**
+     * Project the integration belongs to
+     */
     readonly project: string;
+    /**
+     * Source endpoint for the integration (if any)
+     */
     readonly sourceEndpointId: string;
+    /**
+     * Source service for the integration (if any)
+     */
     readonly sourceServiceName: string;
 }
 
@@ -69,8 +120,20 @@ export function getServiceIntegrationOutput(args: GetServiceIntegrationOutputArg
  * A collection of arguments for invoking getServiceIntegration.
  */
 export interface GetServiceIntegrationOutputArgs {
+    /**
+     * Destination service for the integration (if any)
+     */
     destinationServiceName: pulumi.Input<string>;
+    /**
+     * Type of the service integration
+     */
     integrationType: pulumi.Input<string>;
+    /**
+     * Project the integration belongs to
+     */
     project: pulumi.Input<string>;
+    /**
+     * Source service for the integration (if any)
+     */
     sourceServiceName: pulumi.Input<string>;
 }

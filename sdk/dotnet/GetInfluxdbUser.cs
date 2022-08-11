@@ -19,22 +19,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var user = Aiven.GetInfluxdbUser.Invoke(new()
         ///     {
-        ///         var user = Output.Create(Aiven.GetInfluxdbUser.InvokeAsync(new Aiven.GetInfluxdbUserArgs
-        ///         {
-        ///             Project = "my-project",
-        ///             ServiceName = "my-service",
-        ///             Username = "user1",
-        ///         }));
-        ///     }
+        ///         Project = "my-project",
+        ///         ServiceName = "my-service",
+        ///         Username = "user1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -50,22 +48,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var user = Aiven.GetInfluxdbUser.Invoke(new()
         ///     {
-        ///         var user = Output.Create(Aiven.GetInfluxdbUser.InvokeAsync(new Aiven.GetInfluxdbUserArgs
-        ///         {
-        ///             Project = "my-project",
-        ///             ServiceName = "my-service",
-        ///             Username = "user1",
-        ///         }));
-        ///     }
+        ///         Project = "my-project",
+        ///         ServiceName = "my-service",
+        ///         Username = "user1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,52 +71,93 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetInfluxdbUserArgs : Pulumi.InvokeArgs
+    public sealed class GetInfluxdbUserArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
 
         public GetInfluxdbUserArgs()
         {
         }
+        public static new GetInfluxdbUserArgs Empty => new GetInfluxdbUserArgs();
     }
 
-    public sealed class GetInfluxdbUserInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInfluxdbUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
         public GetInfluxdbUserInvokeArgs()
         {
         }
+        public static new GetInfluxdbUserInvokeArgs Empty => new GetInfluxdbUserInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetInfluxdbUserResult
     {
+        /// <summary>
+        /// Access certificate for the user if applicable for the service in question
+        /// </summary>
         public readonly string AccessCert;
+        /// <summary>
+        /// Access certificate key for the user if applicable for the service in question
+        /// </summary>
         public readonly string AccessKey;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The password of the InfluxDB User.
+        /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

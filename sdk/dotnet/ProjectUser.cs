@@ -15,22 +15,20 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mytestuser = new Aiven.ProjectUser("mytestuser", new()
     ///     {
-    ///         var mytestuser = new Aiven.ProjectUser("mytestuser", new Aiven.ProjectUserArgs
-    ///         {
-    ///             Project = aiven_project.Myproject.Project,
-    ///             Email = "john.doe@example.com",
-    ///             MemberType = "admin",
-    ///         });
-    ///     }
+    ///         Project = aiven_project.Myproject.Project,
+    ///         Email = "john.doe@example.com",
+    ///         MemberType = "admin",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,11 +38,10 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/projectUser:ProjectUser")]
-    public partial class ProjectUser : Pulumi.CustomResource
+    public partial class ProjectUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the
-        /// target user and the actual membership is only created once the user accepts the invitation.
+        /// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
         /// </summary>
         [Output("accepted")]
         public Output<bool> Accepted { get; private set; } = null!;
@@ -62,8 +59,7 @@ namespace Pulumi.Aiven
         public Output<string> MemberType { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -112,7 +108,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class ProjectUserArgs : Pulumi.ResourceArgs
+    public sealed class ProjectUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
@@ -127,8 +123,7 @@ namespace Pulumi.Aiven
         public Input<string> MemberType { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -136,13 +131,13 @@ namespace Pulumi.Aiven
         public ProjectUserArgs()
         {
         }
+        public static new ProjectUserArgs Empty => new ProjectUserArgs();
     }
 
-    public sealed class ProjectUserState : Pulumi.ResourceArgs
+    public sealed class ProjectUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the
-        /// target user and the actual membership is only created once the user accepts the invitation.
+        /// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
         /// </summary>
         [Input("accepted")]
         public Input<bool>? Accepted { get; set; }
@@ -160,8 +155,7 @@ namespace Pulumi.Aiven
         public Input<string>? MemberType { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -169,5 +163,6 @@ namespace Pulumi.Aiven
         public ProjectUserState()
         {
         }
+        public static new ProjectUserState Empty => new ProjectUserState();
     }
 }

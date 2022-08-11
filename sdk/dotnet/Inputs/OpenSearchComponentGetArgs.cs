@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class OpenSearchComponentGetArgs : Pulumi.ResourceArgs
+    public sealed class OpenSearchComponentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("component")]
         public Input<string>? Component { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Aiven.Inputs
         public OpenSearchComponentGetArgs()
         {
         }
+        public static new OpenSearchComponentGetArgs Empty => new OpenSearchComponentGetArgs();
     }
 }

@@ -24,8 +24,17 @@ export function getProjectVpc(args: GetProjectVpcArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getProjectVpc.
  */
 export interface GetProjectVpcArgs {
+    /**
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     */
     cloudName: string;
+    /**
+     * ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     */
     id?: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: string;
 }
 
@@ -33,10 +42,25 @@ export interface GetProjectVpcArgs {
  * A collection of values returned by getProjectVpc.
  */
 export interface GetProjectVpcResult {
+    /**
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly cloudName: string;
+    /**
+     * ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     */
     readonly id?: string;
+    /**
+     * Network address range used by the VPC like 192.168.0.0/24
+     */
     readonly networkCidr: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
+    /**
+     * State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+     */
     readonly state: string;
 }
 
@@ -48,7 +72,16 @@ export function getProjectVpcOutput(args: GetProjectVpcOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getProjectVpc.
  */
 export interface GetProjectVpcOutputArgs {
+    /**
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     */
     cloudName: pulumi.Input<string>;
+    /**
+     * ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: pulumi.Input<string>;
 }

@@ -13,7 +13,7 @@ namespace Pulumi.Aiven
     /// The Service Integration Endpoint resource allows the creation and management of Aiven Service Integration Endpoints.
     /// </summary>
     [AivenResourceType("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint")]
-    public partial class ServiceIntegrationEndpoint : Pulumi.CustomResource
+    public partial class ServiceIntegrationEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Datadog specific user configurable settings
@@ -149,7 +149,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class ServiceIntegrationEndpointArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Datadog specific user configurable settings
@@ -238,9 +238,10 @@ namespace Pulumi.Aiven
         public ServiceIntegrationEndpointArgs()
         {
         }
+        public static new ServiceIntegrationEndpointArgs Empty => new ServiceIntegrationEndpointArgs();
     }
 
-    public sealed class ServiceIntegrationEndpointState : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Datadog specific user configurable settings
@@ -341,5 +342,6 @@ namespace Pulumi.Aiven
         public ServiceIntegrationEndpointState()
         {
         }
+        public static new ServiceIntegrationEndpointState Empty => new ServiceIntegrationEndpointState();
     }
 }

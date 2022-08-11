@@ -29,16 +29,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/vpcPeeringConnection:VpcPeeringConnection")
 public class VpcPeeringConnection extends com.pulumi.resources.CustomResource {
     /**
-     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
-     * changed, doing so forces recreation of the resource.
+     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="peerAzureAppId", type=String.class, parameters={})
     private Output</* @Nullable */ String> peerAzureAppId;
 
     /**
-     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be
-     * changed, doing so forces recreation of the resource.
+     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> peerAzureAppId() {
@@ -59,32 +57,28 @@ public class VpcPeeringConnection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.peerAzureTenantId);
     }
     /**
-     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="peerCloudAccount", type=String.class, parameters={})
     private Output<String> peerCloudAccount;
 
     /**
-     * @return AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * @return AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> peerCloudAccount() {
         return this.peerCloudAccount;
     }
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-     * recreation of the resource.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="peerRegion", type=String.class, parameters={})
     private Output</* @Nullable */ String> peerRegion;
 
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-     * recreation of the resource.
+     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> peerRegion() {
@@ -105,16 +99,14 @@ public class VpcPeeringConnection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.peerResourceGroup);
     }
     /**
-     * AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="peerVpc", type=String.class, parameters={})
     private Output<String> peerVpc;
 
     /**
-     * @return AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * @return AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> peerVpc() {

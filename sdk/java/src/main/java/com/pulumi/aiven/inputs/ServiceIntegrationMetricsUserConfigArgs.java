@@ -16,37 +16,77 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
 
     public static final ServiceIntegrationMetricsUserConfigArgs Empty = new ServiceIntegrationMetricsUserConfigArgs();
 
+    /**
+     * Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to &#39;metrics&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * 
+     */
     @Import(name="database")
     private @Nullable Output<String> database;
 
+    /**
+     * @return Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to &#39;metrics&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * 
+     */
     public Optional<Output<String>> database() {
         return Optional.ofNullable(this.database);
     }
 
+    /**
+     * Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+     * 
+     */
     @Import(name="retentionDays")
     private @Nullable Output<String> retentionDays;
 
+    /**
+     * @return Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+     * 
+     */
     public Optional<Output<String>> retentionDays() {
         return Optional.ofNullable(this.retentionDays);
     }
 
+    /**
+     * Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to &#39;metrics_reader&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * 
+     */
     @Import(name="roUsername")
     private @Nullable Output<String> roUsername;
 
+    /**
+     * @return Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to &#39;metrics_reader&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * 
+     */
     public Optional<Output<String>> roUsername() {
         return Optional.ofNullable(this.roUsername);
     }
 
+    /**
+     * Configuration options for metrics where source service is MySQL
+     * 
+     */
     @Import(name="sourceMysql")
     private @Nullable Output<ServiceIntegrationMetricsUserConfigSourceMysqlArgs> sourceMysql;
 
+    /**
+     * @return Configuration options for metrics where source service is MySQL
+     * 
+     */
     public Optional<Output<ServiceIntegrationMetricsUserConfigSourceMysqlArgs>> sourceMysql() {
         return Optional.ofNullable(this.sourceMysql);
     }
 
+    /**
+     * Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to &#39;metrics_writer&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * 
+     */
     @Import(name="username")
     private @Nullable Output<String> username;
 
+    /**
+     * @return Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to &#39;metrics_writer&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * 
+     */
     public Optional<Output<String>> username() {
         return Optional.ofNullable(this.username);
     }
@@ -79,47 +119,107 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
             $ = new ServiceIntegrationMetricsUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param database Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to &#39;metrics&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder database(@Nullable Output<String> database) {
             $.database = database;
             return this;
         }
 
+        /**
+         * @param database Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to &#39;metrics&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder database(String database) {
             return database(Output.of(database));
         }
 
+        /**
+         * @param retentionDays Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionDays(@Nullable Output<String> retentionDays) {
             $.retentionDays = retentionDays;
             return this;
         }
 
+        /**
+         * @param retentionDays Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionDays(String retentionDays) {
             return retentionDays(Output.of(retentionDays));
         }
 
+        /**
+         * @param roUsername Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to &#39;metrics_reader&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder roUsername(@Nullable Output<String> roUsername) {
             $.roUsername = roUsername;
             return this;
         }
 
+        /**
+         * @param roUsername Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to &#39;metrics_reader&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder roUsername(String roUsername) {
             return roUsername(Output.of(roUsername));
         }
 
+        /**
+         * @param sourceMysql Configuration options for metrics where source service is MySQL
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceMysql(@Nullable Output<ServiceIntegrationMetricsUserConfigSourceMysqlArgs> sourceMysql) {
             $.sourceMysql = sourceMysql;
             return this;
         }
 
+        /**
+         * @param sourceMysql Configuration options for metrics where source service is MySQL
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceMysql(ServiceIntegrationMetricsUserConfigSourceMysqlArgs sourceMysql) {
             return sourceMysql(Output.of(sourceMysql));
         }
 
+        /**
+         * @param username Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to &#39;metrics_writer&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
 
+        /**
+         * @param username Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to &#39;metrics_writer&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(String username) {
             return username(Output.of(username));
         }

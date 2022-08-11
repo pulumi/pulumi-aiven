@@ -24,107 +24,227 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
 
     public static final KafkaKafkaUserConfigArgs Empty = new KafkaKafkaUserConfigArgs();
 
+    /**
+     * Custom domain
+     * 
+     */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
+    /**
+     * @return Custom domain
+     * 
+     */
     public Optional<Output<String>> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
 
+    /**
+     * IP filter
+     * 
+     */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
+    /**
+     * @return IP filter
+     * 
+     */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
+    /**
+     * Kafka broker configuration values
+     * 
+     */
     @Import(name="kafka")
     private @Nullable Output<KafkaKafkaUserConfigKafkaArgs> kafka;
 
+    /**
+     * @return Kafka broker configuration values
+     * 
+     */
     public Optional<Output<KafkaKafkaUserConfigKafkaArgs>> kafka() {
         return Optional.ofNullable(this.kafka);
     }
 
+    /**
+     * Kafka authentication methods
+     * 
+     */
     @Import(name="kafkaAuthenticationMethods")
     private @Nullable Output<KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs> kafkaAuthenticationMethods;
 
+    /**
+     * @return Kafka authentication methods
+     * 
+     */
     public Optional<Output<KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs>> kafkaAuthenticationMethods() {
         return Optional.ofNullable(this.kafkaAuthenticationMethods);
     }
 
+    /**
+     * Enable Kafka Connect service
+     * 
+     */
     @Import(name="kafkaConnect")
     private @Nullable Output<String> kafkaConnect;
 
+    /**
+     * @return Enable Kafka Connect service
+     * 
+     */
     public Optional<Output<String>> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
 
+    /**
+     * Kafka Connect configuration values
+     * 
+     */
     @Import(name="kafkaConnectConfig")
     private @Nullable Output<KafkaKafkaUserConfigKafkaConnectConfigArgs> kafkaConnectConfig;
 
+    /**
+     * @return Kafka Connect configuration values
+     * 
+     */
     public Optional<Output<KafkaKafkaUserConfigKafkaConnectConfigArgs>> kafkaConnectConfig() {
         return Optional.ofNullable(this.kafkaConnectConfig);
     }
 
+    /**
+     * Enable Kafka-REST service
+     * 
+     */
     @Import(name="kafkaRest")
     private @Nullable Output<String> kafkaRest;
 
+    /**
+     * @return Enable Kafka-REST service
+     * 
+     */
     public Optional<Output<String>> kafkaRest() {
         return Optional.ofNullable(this.kafkaRest);
     }
 
+    /**
+     * Kafka REST configuration
+     * 
+     */
     @Import(name="kafkaRestConfig")
     private @Nullable Output<KafkaKafkaUserConfigKafkaRestConfigArgs> kafkaRestConfig;
 
+    /**
+     * @return Kafka REST configuration
+     * 
+     */
     public Optional<Output<KafkaKafkaUserConfigKafkaRestConfigArgs>> kafkaRestConfig() {
         return Optional.ofNullable(this.kafkaRestConfig);
     }
 
+    /**
+     * Kafka major version
+     * 
+     */
     @Import(name="kafkaVersion")
     private @Nullable Output<String> kafkaVersion;
 
+    /**
+     * @return Kafka major version
+     * 
+     */
     public Optional<Output<String>> kafkaVersion() {
         return Optional.ofNullable(this.kafkaVersion);
     }
 
+    /**
+     * Allow access to selected service ports from private networks
+     * 
+     */
     @Import(name="privateAccess")
     private @Nullable Output<KafkaKafkaUserConfigPrivateAccessArgs> privateAccess;
 
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     public Optional<Output<KafkaKafkaUserConfigPrivateAccessArgs>> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
 
+    /**
+     * Allow access to selected service components through Privatelink
+     * 
+     */
     @Import(name="privatelinkAccess")
     private @Nullable Output<KafkaKafkaUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     public Optional<Output<KafkaKafkaUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
 
+    /**
+     * Allow access to selected service ports from the public Internet
+     * 
+     */
     @Import(name="publicAccess")
     private @Nullable Output<KafkaKafkaUserConfigPublicAccessArgs> publicAccess;
 
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     public Optional<Output<KafkaKafkaUserConfigPublicAccessArgs>> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
 
+    /**
+     * Enable Schema-Registry service
+     * 
+     */
     @Import(name="schemaRegistry")
     private @Nullable Output<String> schemaRegistry;
 
+    /**
+     * @return Enable Schema-Registry service
+     * 
+     */
     public Optional<Output<String>> schemaRegistry() {
         return Optional.ofNullable(this.schemaRegistry);
     }
 
+    /**
+     * Schema Registry configuration
+     * 
+     */
     @Import(name="schemaRegistryConfig")
     private @Nullable Output<KafkaKafkaUserConfigSchemaRegistryConfigArgs> schemaRegistryConfig;
 
+    /**
+     * @return Schema Registry configuration
+     * 
+     */
     public Optional<Output<KafkaKafkaUserConfigSchemaRegistryConfigArgs>> schemaRegistryConfig() {
         return Optional.ofNullable(this.schemaRegistryConfig);
     }
 
+    /**
+     * Static IP addresses
+     * 
+     */
     @Import(name="staticIps")
     private @Nullable Output<String> staticIps;
 
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<Output<String>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -167,141 +287,327 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
             $ = new KafkaKafkaUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param customDomain Custom domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDomain(@Nullable Output<String> customDomain) {
             $.customDomain = customDomain;
             return this;
         }
 
+        /**
+         * @param customDomain Custom domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDomain(String customDomain) {
             return customDomain(Output.of(customDomain));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
+        /**
+         * @param kafka Kafka broker configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafka(@Nullable Output<KafkaKafkaUserConfigKafkaArgs> kafka) {
             $.kafka = kafka;
             return this;
         }
 
+        /**
+         * @param kafka Kafka broker configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafka(KafkaKafkaUserConfigKafkaArgs kafka) {
             return kafka(Output.of(kafka));
         }
 
+        /**
+         * @param kafkaAuthenticationMethods Kafka authentication methods
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaAuthenticationMethods(@Nullable Output<KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs> kafkaAuthenticationMethods) {
             $.kafkaAuthenticationMethods = kafkaAuthenticationMethods;
             return this;
         }
 
+        /**
+         * @param kafkaAuthenticationMethods Kafka authentication methods
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaAuthenticationMethods(KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs kafkaAuthenticationMethods) {
             return kafkaAuthenticationMethods(Output.of(kafkaAuthenticationMethods));
         }
 
+        /**
+         * @param kafkaConnect Enable Kafka Connect service
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnect(@Nullable Output<String> kafkaConnect) {
             $.kafkaConnect = kafkaConnect;
             return this;
         }
 
+        /**
+         * @param kafkaConnect Enable Kafka Connect service
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnect(String kafkaConnect) {
             return kafkaConnect(Output.of(kafkaConnect));
         }
 
+        /**
+         * @param kafkaConnectConfig Kafka Connect configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnectConfig(@Nullable Output<KafkaKafkaUserConfigKafkaConnectConfigArgs> kafkaConnectConfig) {
             $.kafkaConnectConfig = kafkaConnectConfig;
             return this;
         }
 
+        /**
+         * @param kafkaConnectConfig Kafka Connect configuration values
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnectConfig(KafkaKafkaUserConfigKafkaConnectConfigArgs kafkaConnectConfig) {
             return kafkaConnectConfig(Output.of(kafkaConnectConfig));
         }
 
+        /**
+         * @param kafkaRest Enable Kafka-REST service
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaRest(@Nullable Output<String> kafkaRest) {
             $.kafkaRest = kafkaRest;
             return this;
         }
 
+        /**
+         * @param kafkaRest Enable Kafka-REST service
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaRest(String kafkaRest) {
             return kafkaRest(Output.of(kafkaRest));
         }
 
+        /**
+         * @param kafkaRestConfig Kafka REST configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaRestConfig(@Nullable Output<KafkaKafkaUserConfigKafkaRestConfigArgs> kafkaRestConfig) {
             $.kafkaRestConfig = kafkaRestConfig;
             return this;
         }
 
+        /**
+         * @param kafkaRestConfig Kafka REST configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaRestConfig(KafkaKafkaUserConfigKafkaRestConfigArgs kafkaRestConfig) {
             return kafkaRestConfig(Output.of(kafkaRestConfig));
         }
 
+        /**
+         * @param kafkaVersion Kafka major version
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaVersion(@Nullable Output<String> kafkaVersion) {
             $.kafkaVersion = kafkaVersion;
             return this;
         }
 
+        /**
+         * @param kafkaVersion Kafka major version
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaVersion(String kafkaVersion) {
             return kafkaVersion(Output.of(kafkaVersion));
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(@Nullable Output<KafkaKafkaUserConfigPrivateAccessArgs> privateAccess) {
             $.privateAccess = privateAccess;
             return this;
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(KafkaKafkaUserConfigPrivateAccessArgs privateAccess) {
             return privateAccess(Output.of(privateAccess));
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(@Nullable Output<KafkaKafkaUserConfigPrivatelinkAccessArgs> privatelinkAccess) {
             $.privatelinkAccess = privatelinkAccess;
             return this;
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(KafkaKafkaUserConfigPrivatelinkAccessArgs privatelinkAccess) {
             return privatelinkAccess(Output.of(privatelinkAccess));
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(@Nullable Output<KafkaKafkaUserConfigPublicAccessArgs> publicAccess) {
             $.publicAccess = publicAccess;
             return this;
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(KafkaKafkaUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
         }
 
+        /**
+         * @param schemaRegistry Enable Schema-Registry service
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaRegistry(@Nullable Output<String> schemaRegistry) {
             $.schemaRegistry = schemaRegistry;
             return this;
         }
 
+        /**
+         * @param schemaRegistry Enable Schema-Registry service
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaRegistry(String schemaRegistry) {
             return schemaRegistry(Output.of(schemaRegistry));
         }
 
+        /**
+         * @param schemaRegistryConfig Schema Registry configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaRegistryConfig(@Nullable Output<KafkaKafkaUserConfigSchemaRegistryConfigArgs> schemaRegistryConfig) {
             $.schemaRegistryConfig = schemaRegistryConfig;
             return this;
         }
 
+        /**
+         * @param schemaRegistryConfig Schema Registry configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaRegistryConfig(KafkaKafkaUserConfigSchemaRegistryConfigArgs schemaRegistryConfig) {
             return schemaRegistryConfig(Output.of(schemaRegistryConfig));
         }
 
+        /**
+         * @param staticIps Static IP addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(@Nullable Output<String> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
+        /**
+         * @param staticIps Static IP addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(String staticIps) {
             return staticIps(Output.of(staticIps));
         }

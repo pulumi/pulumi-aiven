@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationEndpointJolokiaUserConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationEndpointJolokiaUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Jolokia basic authentication password
+        /// </summary>
         [Input("basicAuthPassword")]
         public Input<string>? BasicAuthPassword { get; set; }
 
+        /// <summary>
+        /// Jolokia basic authentication username
+        /// </summary>
         [Input("basicAuthUsername")]
         public Input<string>? BasicAuthUsername { get; set; }
 
         public ServiceIntegrationEndpointJolokiaUserConfigGetArgs()
         {
         }
+        public static new ServiceIntegrationEndpointJolokiaUserConfigGetArgs Empty => new ServiceIntegrationEndpointJolokiaUserConfigGetArgs();
     }
 }

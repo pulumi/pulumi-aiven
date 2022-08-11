@@ -10,10 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaConnectKafkaConnectGetArgs : Pulumi.ResourceArgs
+    public sealed class KafkaConnectKafkaConnectGetArgs : global::Pulumi.ResourceArgs
     {
         public KafkaConnectKafkaConnectGetArgs()
         {
         }
+        public static new KafkaConnectKafkaConnectGetArgs Empty => new KafkaConnectKafkaConnectGetArgs();
     }
 }

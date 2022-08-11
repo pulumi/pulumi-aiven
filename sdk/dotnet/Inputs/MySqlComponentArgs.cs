@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class MySqlComponentArgs : Pulumi.ResourceArgs
+    public sealed class MySqlComponentArgs : global::Pulumi.ResourceArgs
     {
         [Input("component")]
         public Input<string>? Component { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Aiven.Inputs
         public MySqlComponentArgs()
         {
         }
+        public static new MySqlComponentArgs Empty => new MySqlComponentArgs();
     }
 }

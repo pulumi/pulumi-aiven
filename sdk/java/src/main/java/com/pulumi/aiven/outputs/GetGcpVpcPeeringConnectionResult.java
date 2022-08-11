@@ -11,15 +11,35 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGcpVpcPeeringConnectionResult {
+    /**
+     * @return GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String gcpProjectId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String peerVpc;
+    /**
+     * @return State of the peering connection
+     * 
+     */
     private final String state;
+    /**
+     * @return State-specific help or error information
+     * 
+     */
     private final Map<String,Object> stateInfo;
+    /**
+     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String vpcId;
 
     @CustomType.Constructor
@@ -38,6 +58,10 @@ public final class GetGcpVpcPeeringConnectionResult {
         this.vpcId = vpcId;
     }
 
+    /**
+     * @return GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String gcpProjectId() {
         return this.gcpProjectId;
     }
@@ -48,15 +72,31 @@ public final class GetGcpVpcPeeringConnectionResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String peerVpc() {
         return this.peerVpc;
     }
+    /**
+     * @return State of the peering connection
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return State-specific help or error information
+     * 
+     */
     public Map<String,Object> stateInfo() {
         return this.stateInfo;
     }
+    /**
+     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String vpcId() {
         return this.vpcId;
     }

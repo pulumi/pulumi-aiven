@@ -13,30 +13,62 @@ public final class GetAwsVpcPeeringConnectionArgs extends com.pulumi.resources.I
 
     public static final GetAwsVpcPeeringConnectionArgs Empty = new GetAwsVpcPeeringConnectionArgs();
 
+    /**
+     * AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="awsAccountId", required=true)
     private Output<String> awsAccountId;
 
+    /**
+     * @return AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> awsAccountId() {
         return this.awsAccountId;
     }
 
+    /**
+     * AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="awsVpcId", required=true)
     private Output<String> awsVpcId;
 
+    /**
+     * @return AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> awsVpcId() {
         return this.awsVpcId;
     }
 
+    /**
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="awsVpcRegion", required=true)
     private Output<String> awsVpcRegion;
 
+    /**
+     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> awsVpcRegion() {
         return this.awsVpcRegion;
     }
 
+    /**
+     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
+    /**
+     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public Output<String> vpcId() {
         return this.vpcId;
     }
@@ -68,38 +100,86 @@ public final class GetAwsVpcPeeringConnectionArgs extends com.pulumi.resources.I
             $ = new GetAwsVpcPeeringConnectionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param awsAccountId AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsAccountId(Output<String> awsAccountId) {
             $.awsAccountId = awsAccountId;
             return this;
         }
 
+        /**
+         * @param awsAccountId AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsAccountId(String awsAccountId) {
             return awsAccountId(Output.of(awsAccountId));
         }
 
+        /**
+         * @param awsVpcId AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsVpcId(Output<String> awsVpcId) {
             $.awsVpcId = awsVpcId;
             return this;
         }
 
+        /**
+         * @param awsVpcId AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsVpcId(String awsVpcId) {
             return awsVpcId(Output.of(awsVpcId));
         }
 
+        /**
+         * @param awsVpcRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsVpcRegion(Output<String> awsVpcRegion) {
             $.awsVpcRegion = awsVpcRegion;
             return this;
         }
 
+        /**
+         * @param awsVpcRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsVpcRegion(String awsVpcRegion) {
             return awsVpcRegion(Output.of(awsVpcRegion));
         }
 
+        /**
+         * @param vpcId The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
+        /**
+         * @param vpcId The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }

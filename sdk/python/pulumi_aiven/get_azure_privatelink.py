@@ -50,11 +50,17 @@ class GetAzurePrivatelinkResult:
     @property
     @pulumi.getter(name="azureServiceAlias")
     def azure_service_alias(self) -> str:
+        """
+        Azure Privatelink service alias
+        """
         return pulumi.get(self, "azure_service_alias")
 
     @property
     @pulumi.getter(name="azureServiceId")
     def azure_service_id(self) -> str:
+        """
+        Azure Privatelink service ID
+        """
         return pulumi.get(self, "azure_service_id")
 
     @property
@@ -68,26 +74,41 @@ class GetAzurePrivatelinkResult:
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        Printable result of the Azure Privatelink request
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        Privatelink resource state
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="userSubscriptionIds")
     def user_subscription_ids(self) -> Sequence[str]:
+        """
+        A List of allowed Subscription IDs Maximum Length: `16`.
+        """
         return pulumi.get(self, "user_subscription_ids")
 
 
@@ -122,6 +143,10 @@ def get_azure_privatelink(project: Optional[str] = None,
     foo = aiven.get_azure_privatelink(project=data["aiven_project"]["foo"]["project"],
         service_name=aiven_kafka["bar"]["service_name"])
     ```
+
+
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -156,5 +181,9 @@ def get_azure_privatelink_output(project: Optional[pulumi.Input[str]] = None,
     foo = aiven.get_azure_privatelink(project=data["aiven_project"]["foo"]["project"],
         service_name=aiven_kafka["bar"]["service_name"])
     ```
+
+
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

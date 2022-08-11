@@ -74,56 +74,89 @@ class GetBillingGroupResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        Account id
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="addressLines")
     def address_lines(self) -> Sequence[str]:
+        """
+        Address lines
+        """
         return pulumi.get(self, "address_lines")
 
     @property
     @pulumi.getter(name="billingCurrency")
     def billing_currency(self) -> str:
+        """
+        Billing currency
+        """
         return pulumi.get(self, "billing_currency")
 
     @property
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Sequence[str]:
+        """
+        Billing contact emails
+        """
         return pulumi.get(self, "billing_emails")
 
     @property
     @pulumi.getter(name="billingExtraText")
     def billing_extra_text(self) -> str:
+        """
+        Billing extra text
+        """
         return pulumi.get(self, "billing_extra_text")
 
     @property
     @pulumi.getter(name="billingGroupId")
     def billing_group_id(self) -> str:
+        """
+        The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+        """
         return pulumi.get(self, "billing_group_id")
 
     @property
     @pulumi.getter(name="cardId")
     def card_id(self) -> str:
+        """
+        Credit card id
+        """
         return pulumi.get(self, "card_id")
 
     @property
     @pulumi.getter
     def city(self) -> str:
+        """
+        City
+        """
         return pulumi.get(self, "city")
 
     @property
     @pulumi.getter
     def company(self) -> str:
+        """
+        Company name
+        """
         return pulumi.get(self, "company")
 
     @property
     @pulumi.getter(name="copyFromBillingGroup")
     def copy_from_billing_group(self) -> str:
+        """
+        ID of the billing group to copy from
+        """
         return pulumi.get(self, "copy_from_billing_group")
 
     @property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> str:
+        """
+        Country code
+        """
         return pulumi.get(self, "country_code")
 
     @property
@@ -137,21 +170,33 @@ class GetBillingGroupResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Billing Group name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        State
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="vatId")
     def vat_id(self) -> str:
+        """
+        VAT id
+        """
         return pulumi.get(self, "vat_id")
 
     @property
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> str:
+        """
+        Zip Code
+        """
         return pulumi.get(self, "zip_code")
 
 
@@ -183,6 +228,9 @@ def get_billing_group(billing_group_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBillingGroupResult:
     """
     The Billing Group data source provides information about the existing Aiven Account.
+
+
+    :param str billing_group_id: The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
     """
     __args__ = dict()
     __args__['billingGroupId'] = billing_group_id
@@ -213,5 +261,8 @@ def get_billing_group_output(billing_group_id: Optional[pulumi.Input[str]] = Non
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingGroupResult]:
     """
     The Billing Group data source provides information about the existing Aiven Account.
+
+
+    :param str billing_group_id: The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
     """
     ...

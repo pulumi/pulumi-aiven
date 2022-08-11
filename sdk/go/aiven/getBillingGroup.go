@@ -22,27 +22,43 @@ func LookupBillingGroup(ctx *pulumi.Context, args *LookupBillingGroupArgs, opts 
 
 // A collection of arguments for invoking getBillingGroup.
 type LookupBillingGroupArgs struct {
+	// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroupId string `pulumi:"billingGroupId"`
 }
 
 // A collection of values returned by getBillingGroup.
 type LookupBillingGroupResult struct {
-	AccountId            string   `pulumi:"accountId"`
-	AddressLines         []string `pulumi:"addressLines"`
-	BillingCurrency      string   `pulumi:"billingCurrency"`
-	BillingEmails        []string `pulumi:"billingEmails"`
-	BillingExtraText     string   `pulumi:"billingExtraText"`
-	BillingGroupId       string   `pulumi:"billingGroupId"`
-	CardId               string   `pulumi:"cardId"`
-	City                 string   `pulumi:"city"`
-	Company              string   `pulumi:"company"`
-	CopyFromBillingGroup string   `pulumi:"copyFromBillingGroup"`
-	CountryCode          string   `pulumi:"countryCode"`
+	// Account id
+	AccountId string `pulumi:"accountId"`
+	// Address lines
+	AddressLines []string `pulumi:"addressLines"`
+	// Billing currency
+	BillingCurrency string `pulumi:"billingCurrency"`
+	// Billing contact emails
+	BillingEmails []string `pulumi:"billingEmails"`
+	// Billing extra text
+	BillingExtraText string `pulumi:"billingExtraText"`
+	// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+	BillingGroupId string `pulumi:"billingGroupId"`
+	// Credit card id
+	CardId string `pulumi:"cardId"`
+	// City
+	City string `pulumi:"city"`
+	// Company name
+	Company string `pulumi:"company"`
+	// ID of the billing group to copy from
+	CopyFromBillingGroup string `pulumi:"copyFromBillingGroup"`
+	// Country code
+	CountryCode string `pulumi:"countryCode"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string `pulumi:"id"`
-	Name    string `pulumi:"name"`
-	State   string `pulumi:"state"`
-	VatId   string `pulumi:"vatId"`
+	Id string `pulumi:"id"`
+	// Billing Group name
+	Name string `pulumi:"name"`
+	// State
+	State string `pulumi:"state"`
+	// VAT id
+	VatId string `pulumi:"vatId"`
+	// Zip Code
 	ZipCode string `pulumi:"zipCode"`
 }
 
@@ -61,6 +77,7 @@ func LookupBillingGroupOutput(ctx *pulumi.Context, args LookupBillingGroupOutput
 
 // A collection of arguments for invoking getBillingGroup.
 type LookupBillingGroupOutputArgs struct {
+	// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroupId pulumi.StringInput `pulumi:"billingGroupId"`
 }
 
@@ -83,46 +100,57 @@ func (o LookupBillingGroupResultOutput) ToLookupBillingGroupResultOutputWithCont
 	return o
 }
 
+// Account id
 func (o LookupBillingGroupResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Address lines
 func (o LookupBillingGroupResultOutput) AddressLines() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) []string { return v.AddressLines }).(pulumi.StringArrayOutput)
 }
 
+// Billing currency
 func (o LookupBillingGroupResultOutput) BillingCurrency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.BillingCurrency }).(pulumi.StringOutput)
 }
 
+// Billing contact emails
 func (o LookupBillingGroupResultOutput) BillingEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) []string { return v.BillingEmails }).(pulumi.StringArrayOutput)
 }
 
+// Billing extra text
 func (o LookupBillingGroupResultOutput) BillingExtraText() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.BillingExtraText }).(pulumi.StringOutput)
 }
 
+// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
 func (o LookupBillingGroupResultOutput) BillingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.BillingGroupId }).(pulumi.StringOutput)
 }
 
+// Credit card id
 func (o LookupBillingGroupResultOutput) CardId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.CardId }).(pulumi.StringOutput)
 }
 
+// City
 func (o LookupBillingGroupResultOutput) City() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.City }).(pulumi.StringOutput)
 }
 
+// Company name
 func (o LookupBillingGroupResultOutput) Company() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.Company }).(pulumi.StringOutput)
 }
 
+// ID of the billing group to copy from
 func (o LookupBillingGroupResultOutput) CopyFromBillingGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.CopyFromBillingGroup }).(pulumi.StringOutput)
 }
 
+// Country code
 func (o LookupBillingGroupResultOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.CountryCode }).(pulumi.StringOutput)
 }
@@ -132,18 +160,22 @@ func (o LookupBillingGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Billing Group name
 func (o LookupBillingGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// State
 func (o LookupBillingGroupResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// VAT id
 func (o LookupBillingGroupResultOutput) VatId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.VatId }).(pulumi.StringOutput)
 }
 
+// Zip Code
 func (o LookupBillingGroupResultOutput) ZipCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.ZipCode }).(pulumi.StringOutput)
 }

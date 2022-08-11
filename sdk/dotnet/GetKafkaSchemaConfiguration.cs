@@ -19,22 +19,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Aiven.KafkaSchemaConfiguration("config", new()
         ///     {
-        ///         var config = new Aiven.KafkaSchemaConfiguration("config", new Aiven.KafkaSchemaConfigurationArgs
-        ///         {
-        ///             Project = aiven_project.Kafka_schemas_project1.Project,
-        ///             ServiceName = aiven_kafka.Kafka_service1.Service_name,
-        ///             CompatibilityLevel = "BACKWARD",
-        ///         });
-        ///     }
+        ///         Project = aiven_project.Kafka_schemas_project1.Project,
+        ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
+        ///         CompatibilityLevel = "BACKWARD",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -50,22 +48,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Aiven.KafkaSchemaConfiguration("config", new()
         ///     {
-        ///         var config = new Aiven.KafkaSchemaConfiguration("config", new Aiven.KafkaSchemaConfigurationArgs
-        ///         {
-        ///             Project = aiven_project.Kafka_schemas_project1.Project,
-        ///             ServiceName = aiven_kafka.Kafka_service1.Service_name,
-        ///             CompatibilityLevel = "BACKWARD",
-        ///         });
-        ///     }
+        ///         Project = aiven_project.Kafka_schemas_project1.Project,
+        ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
+        ///         CompatibilityLevel = "BACKWARD",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,46 +71,81 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetKafkaSchemaConfigurationArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaSchemaConfigurationArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
         public GetKafkaSchemaConfigurationArgs()
         {
         }
+        public static new GetKafkaSchemaConfigurationArgs Empty => new GetKafkaSchemaConfigurationArgs();
     }
 
-    public sealed class GetKafkaSchemaConfigurationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKafkaSchemaConfigurationInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         public GetKafkaSchemaConfigurationInvokeArgs()
         {
         }
+        public static new GetKafkaSchemaConfigurationInvokeArgs Empty => new GetKafkaSchemaConfigurationInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetKafkaSchemaConfigurationResult
     {
+        /// <summary>
+        /// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
+        /// </summary>
         public readonly string CompatibilityLevel;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Kafka Schema configuration should be a valid Avro Schema JSON format.
+        /// </summary>
         public readonly string Schema;
+        /// <summary>
+        /// Kafka Schema type JSON or AVRO
+        /// </summary>
         public readonly string SchemaType;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string SubjectName;
+        /// <summary>
+        /// Kafka Schema configuration version.
+        /// </summary>
         public readonly int Version;
 
         [OutputConstructor]

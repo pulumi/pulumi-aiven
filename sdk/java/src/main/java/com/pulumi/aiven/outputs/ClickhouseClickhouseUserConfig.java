@@ -12,8 +12,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClickhouseClickhouseUserConfig {
+    /**
+     * @return IP filter
+     * 
+     */
     private final @Nullable List<String> ipFilters;
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String projectToForkFrom;
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String serviceToForkFrom;
 
     @CustomType.Constructor
@@ -26,12 +38,24 @@ public final class ClickhouseClickhouseUserConfig {
         this.serviceToForkFrom = serviceToForkFrom;
     }
 
+    /**
+     * @return IP filter
+     * 
+     */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class CassandraComponentGetArgs : Pulumi.ResourceArgs
+    public sealed class CassandraComponentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("component")]
         public Input<string>? Component { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Aiven.Inputs
         public CassandraComponentGetArgs()
         {
         }
+        public static new CassandraComponentGetArgs Empty => new CassandraComponentGetArgs();
     }
 }

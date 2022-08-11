@@ -15,65 +15,137 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
 
     public static final ServiceIntegrationEndpointRsyslogUserConfigArgs Empty = new ServiceIntegrationEndpointRsyslogUserConfigArgs();
 
+    /**
+     * PEM encoded CA certificate
+     * 
+     */
     @Import(name="ca")
     private @Nullable Output<String> ca;
 
+    /**
+     * @return PEM encoded CA certificate
+     * 
+     */
     public Optional<Output<String>> ca() {
         return Optional.ofNullable(this.ca);
     }
 
+    /**
+     * PEM encoded client certificate
+     * 
+     */
     @Import(name="cert")
     private @Nullable Output<String> cert;
 
+    /**
+     * @return PEM encoded client certificate
+     * 
+     */
     public Optional<Output<String>> cert() {
         return Optional.ofNullable(this.cert);
     }
 
+    /**
+     * message format
+     * 
+     */
     @Import(name="format")
     private @Nullable Output<String> format;
 
+    /**
+     * @return message format
+     * 
+     */
     public Optional<Output<String>> format() {
         return Optional.ofNullable(this.format);
     }
 
+    /**
+     * PEM encoded client key
+     * 
+     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
+    /**
+     * @return PEM encoded client key
+     * 
+     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * custom syslog message format
+     * 
+     */
     @Import(name="logline")
     private @Nullable Output<String> logline;
 
+    /**
+     * @return custom syslog message format
+     * 
+     */
     public Optional<Output<String>> logline() {
         return Optional.ofNullable(this.logline);
     }
 
+    /**
+     * rsyslog server port
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<String> port;
 
+    /**
+     * @return rsyslog server port
+     * 
+     */
     public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
     }
 
+    /**
+     * Structured data block for log message
+     * 
+     */
     @Import(name="sd")
     private @Nullable Output<String> sd;
 
+    /**
+     * @return Structured data block for log message
+     * 
+     */
     public Optional<Output<String>> sd() {
         return Optional.ofNullable(this.sd);
     }
 
+    /**
+     * rsyslog server IP address or hostname
+     * 
+     */
     @Import(name="server")
     private @Nullable Output<String> server;
 
+    /**
+     * @return rsyslog server IP address or hostname
+     * 
+     */
     public Optional<Output<String>> server() {
         return Optional.ofNullable(this.server);
     }
 
+    /**
+     * Require TLS
+     * 
+     */
     @Import(name="tls")
     private @Nullable Output<String> tls;
 
+    /**
+     * @return Require TLS
+     * 
+     */
     public Optional<Output<String>> tls() {
         return Optional.ofNullable(this.tls);
     }
@@ -110,83 +182,191 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
             $ = new ServiceIntegrationEndpointRsyslogUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ca PEM encoded CA certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder ca(@Nullable Output<String> ca) {
             $.ca = ca;
             return this;
         }
 
+        /**
+         * @param ca PEM encoded CA certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder ca(String ca) {
             return ca(Output.of(ca));
         }
 
+        /**
+         * @param cert PEM encoded client certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(@Nullable Output<String> cert) {
             $.cert = cert;
             return this;
         }
 
+        /**
+         * @param cert PEM encoded client certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(String cert) {
             return cert(Output.of(cert));
         }
 
+        /**
+         * @param format message format
+         * 
+         * @return builder
+         * 
+         */
         public Builder format(@Nullable Output<String> format) {
             $.format = format;
             return this;
         }
 
+        /**
+         * @param format message format
+         * 
+         * @return builder
+         * 
+         */
         public Builder format(String format) {
             return format(Output.of(format));
         }
 
+        /**
+         * @param key PEM encoded client key
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key PEM encoded client key
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param logline custom syslog message format
+         * 
+         * @return builder
+         * 
+         */
         public Builder logline(@Nullable Output<String> logline) {
             $.logline = logline;
             return this;
         }
 
+        /**
+         * @param logline custom syslog message format
+         * 
+         * @return builder
+         * 
+         */
         public Builder logline(String logline) {
             return logline(Output.of(logline));
         }
 
+        /**
+         * @param port rsyslog server port
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<String> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port rsyslog server port
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(String port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param sd Structured data block for log message
+         * 
+         * @return builder
+         * 
+         */
         public Builder sd(@Nullable Output<String> sd) {
             $.sd = sd;
             return this;
         }
 
+        /**
+         * @param sd Structured data block for log message
+         * 
+         * @return builder
+         * 
+         */
         public Builder sd(String sd) {
             return sd(Output.of(sd));
         }
 
+        /**
+         * @param server rsyslog server IP address or hostname
+         * 
+         * @return builder
+         * 
+         */
         public Builder server(@Nullable Output<String> server) {
             $.server = server;
             return this;
         }
 
+        /**
+         * @param server rsyslog server IP address or hostname
+         * 
+         * @return builder
+         * 
+         */
         public Builder server(String server) {
             return server(Output.of(server));
         }
 
+        /**
+         * @param tls Require TLS
+         * 
+         * @return builder
+         * 
+         */
         public Builder tls(@Nullable Output<String> tls) {
             $.tls = tls;
             return this;
         }
 
+        /**
+         * @param tls Require TLS
+         * 
+         * @return builder
+         * 
+         */
         public Builder tls(String tls) {
             return tls(Output.of(tls));
         }

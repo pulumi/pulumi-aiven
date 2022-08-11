@@ -11,10 +11,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountAuthenticationSamlFieldMapping {
+    /**
+     * @return Field name for user email
+     * 
+     */
     private final @Nullable String email;
+    /**
+     * @return Field name for user&#39;s first name
+     * 
+     */
     private final @Nullable String firstName;
+    /**
+     * @return Field name for user&#39;s identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
+     * 
+     */
     private final @Nullable String identity;
+    /**
+     * @return Field name for user&#39;s last name
+     * 
+     */
     private final @Nullable String lastName;
+    /**
+     * @return Field name for user&#39;s full name. If specified, first*name and last*name mappings are ignored
+     * 
+     */
     private final @Nullable String realName;
 
     @CustomType.Constructor
@@ -31,18 +51,38 @@ public final class AccountAuthenticationSamlFieldMapping {
         this.realName = realName;
     }
 
+    /**
+     * @return Field name for user email
+     * 
+     */
     public Optional<String> email() {
         return Optional.ofNullable(this.email);
     }
+    /**
+     * @return Field name for user&#39;s first name
+     * 
+     */
     public Optional<String> firstName() {
         return Optional.ofNullable(this.firstName);
     }
+    /**
+     * @return Field name for user&#39;s identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
+     * 
+     */
     public Optional<String> identity() {
         return Optional.ofNullable(this.identity);
     }
+    /**
+     * @return Field name for user&#39;s last name
+     * 
+     */
     public Optional<String> lastName() {
         return Optional.ofNullable(this.lastName);
     }
+    /**
+     * @return Field name for user&#39;s full name. If specified, first*name and last*name mappings are ignored
+     * 
+     */
     public Optional<String> realName() {
         return Optional.ofNullable(this.realName);
     }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GrafanaComponentArgs : Pulumi.ResourceArgs
+    public sealed class GrafanaComponentArgs : global::Pulumi.ResourceArgs
     {
         [Input("component")]
         public Input<string>? Component { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Aiven.Inputs
         public GrafanaComponentArgs()
         {
         }
+        public static new GrafanaComponentArgs Empty => new GrafanaComponentArgs();
     }
 }

@@ -12,21 +12,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaConnectorResult {
+    /**
+     * @return The Kafka Connector configuration parameters.
+     * 
+     */
     private final Map<String,String> config;
+    /**
+     * @return The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String connectorName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return The Kafka connector author.
+     * 
+     */
     private final String pluginAuthor;
+    /**
+     * @return The Kafka connector Java class.
+     * 
+     */
     private final String pluginClass;
+    /**
+     * @return The Kafka connector documentation URL.
+     * 
+     */
     private final String pluginDocUrl;
+    /**
+     * @return The Kafka connector title.
+     * 
+     */
     private final String pluginTitle;
+    /**
+     * @return The Kafka connector type.
+     * 
+     */
     private final String pluginType;
+    /**
+     * @return The version of the kafka connector.
+     * 
+     */
     private final String pluginVersion;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String serviceName;
+    /**
+     * @return List of tasks of a connector.
+     * 
+     */
     private final List<GetKafkaConnectorTask> tasks;
 
     @CustomType.Constructor
@@ -57,9 +101,17 @@ public final class GetKafkaConnectorResult {
         this.tasks = tasks;
     }
 
+    /**
+     * @return The Kafka Connector configuration parameters.
+     * 
+     */
     public Map<String,String> config() {
         return this.config;
     }
+    /**
+     * @return The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String connectorName() {
         return this.connectorName;
     }
@@ -70,30 +122,66 @@ public final class GetKafkaConnectorResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The Kafka connector author.
+     * 
+     */
     public String pluginAuthor() {
         return this.pluginAuthor;
     }
+    /**
+     * @return The Kafka connector Java class.
+     * 
+     */
     public String pluginClass() {
         return this.pluginClass;
     }
+    /**
+     * @return The Kafka connector documentation URL.
+     * 
+     */
     public String pluginDocUrl() {
         return this.pluginDocUrl;
     }
+    /**
+     * @return The Kafka connector title.
+     * 
+     */
     public String pluginTitle() {
         return this.pluginTitle;
     }
+    /**
+     * @return The Kafka connector type.
+     * 
+     */
     public String pluginType() {
         return this.pluginType;
     }
+    /**
+     * @return The version of the kafka connector.
+     * 
+     */
     public String pluginVersion() {
         return this.pluginVersion;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return List of tasks of a connector.
+     * 
+     */
     public List<GetKafkaConnectorTask> tasks() {
         return this.tasks;
     }

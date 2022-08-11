@@ -15,9 +15,17 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
 
     public static final PgPgUserConfigPrivatelinkAccessArgs Empty = new PgPgUserConfigPrivatelinkAccessArgs();
 
+    /**
+     * PostgreSQL specific server provided values
+     * 
+     */
     @Import(name="pg")
     private @Nullable Output<String> pg;
 
+    /**
+     * @return PostgreSQL specific server provided values
+     * 
+     */
     public Optional<Output<String>> pg() {
         return Optional.ofNullable(this.pg);
     }
@@ -62,11 +70,23 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
             $ = new PgPgUserConfigPrivatelinkAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pg PostgreSQL specific server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder pg(@Nullable Output<String> pg) {
             $.pg = pg;
             return this;
         }
 
+        /**
+         * @param pg PostgreSQL specific server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder pg(String pg) {
             return pg(Output.of(pg));
         }

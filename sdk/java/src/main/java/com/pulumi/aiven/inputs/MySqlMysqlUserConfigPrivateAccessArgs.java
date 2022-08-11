@@ -15,9 +15,17 @@ public final class MySqlMysqlUserConfigPrivateAccessArgs extends com.pulumi.reso
 
     public static final MySqlMysqlUserConfigPrivateAccessArgs Empty = new MySqlMysqlUserConfigPrivateAccessArgs();
 
+    /**
+     * MySQL specific server provided values
+     * 
+     */
     @Import(name="mysql")
     private @Nullable Output<String> mysql;
 
+    /**
+     * @return MySQL specific server provided values
+     * 
+     */
     public Optional<Output<String>> mysql() {
         return Optional.ofNullable(this.mysql);
     }
@@ -62,11 +70,23 @@ public final class MySqlMysqlUserConfigPrivateAccessArgs extends com.pulumi.reso
             $ = new MySqlMysqlUserConfigPrivateAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mysql MySQL specific server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysql(@Nullable Output<String> mysql) {
             $.mysql = mysql;
             return this;
         }
 
+        /**
+         * @param mysql MySQL specific server provided values
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysql(String mysql) {
             return mysql(Output.of(mysql));
         }

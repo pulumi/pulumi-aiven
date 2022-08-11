@@ -19,22 +19,90 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OpenSearchOpensearchUserConfig {
+    /**
+     * @return Custom domain
+     * 
+     */
     private final @Nullable String customDomain;
+    /**
+     * @return Disable replication factor adjustment
+     * 
+     */
     private final @Nullable String disableReplicationFactorAdjustment;
+    /**
+     * @return Index patterns
+     * 
+     */
     private final @Nullable List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
+    /**
+     * @return Template settings for all new indexes
+     * 
+     */
     private final @Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
+    /**
+     * @return IP filter
+     * 
+     */
     private final @Nullable List<String> ipFilters;
+    /**
+     * @return Don&#39;t reset index.refresh_interval to the default value
+     * 
+     */
     private final @Nullable String keepIndexRefreshInterval;
+    /**
+     * @return Maximum index count
+     * 
+     */
     private final @Nullable String maxIndexCount;
+    /**
+     * @return OpenSearch settings
+     * 
+     */
     private final @Nullable OpenSearchOpensearchUserConfigOpensearch opensearch;
+    /**
+     * @return OpenSearch Dashboards settings
+     * 
+     */
     private final @Nullable OpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards;
+    /**
+     * @return OpenSearch major version
+     * 
+     */
     private final @Nullable String opensearchVersion;
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     private final @Nullable OpenSearchOpensearchUserConfigPrivateAccess privateAccess;
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     private final @Nullable OpenSearchOpensearchUserConfigPrivatelinkAccess privatelinkAccess;
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String projectToForkFrom;
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     private final @Nullable OpenSearchOpensearchUserConfigPublicAccess publicAccess;
+    /**
+     * @return Name of the basebackup to restore in forked service
+     * 
+     */
     private final @Nullable String recoveryBasebackupName;
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String serviceToForkFrom;
+    /**
+     * @return Static IP addresses
+     * 
+     */
     private final @Nullable String staticIps;
 
     @CustomType.Constructor
@@ -75,54 +143,122 @@ public final class OpenSearchOpensearchUserConfig {
         this.staticIps = staticIps;
     }
 
+    /**
+     * @return Custom domain
+     * 
+     */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
+    /**
+     * @return Disable replication factor adjustment
+     * 
+     */
     public Optional<String> disableReplicationFactorAdjustment() {
         return Optional.ofNullable(this.disableReplicationFactorAdjustment);
     }
+    /**
+     * @return Index patterns
+     * 
+     */
     public List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns() {
         return this.indexPatterns == null ? List.of() : this.indexPatterns;
     }
+    /**
+     * @return Template settings for all new indexes
+     * 
+     */
     public Optional<OpenSearchOpensearchUserConfigIndexTemplate> indexTemplate() {
         return Optional.ofNullable(this.indexTemplate);
     }
+    /**
+     * @return IP filter
+     * 
+     */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Don&#39;t reset index.refresh_interval to the default value
+     * 
+     */
     public Optional<String> keepIndexRefreshInterval() {
         return Optional.ofNullable(this.keepIndexRefreshInterval);
     }
+    /**
+     * @return Maximum index count
+     * 
+     */
     public Optional<String> maxIndexCount() {
         return Optional.ofNullable(this.maxIndexCount);
     }
+    /**
+     * @return OpenSearch settings
+     * 
+     */
     public Optional<OpenSearchOpensearchUserConfigOpensearch> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
+    /**
+     * @return OpenSearch Dashboards settings
+     * 
+     */
     public Optional<OpenSearchOpensearchUserConfigOpensearchDashboards> opensearchDashboards() {
         return Optional.ofNullable(this.opensearchDashboards);
     }
+    /**
+     * @return OpenSearch major version
+     * 
+     */
     public Optional<String> opensearchVersion() {
         return Optional.ofNullable(this.opensearchVersion);
     }
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     public Optional<OpenSearchOpensearchUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     public Optional<OpenSearchOpensearchUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     public Optional<OpenSearchOpensearchUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    /**
+     * @return Name of the basebackup to restore in forked service
+     * 
+     */
     public Optional<String> recoveryBasebackupName() {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

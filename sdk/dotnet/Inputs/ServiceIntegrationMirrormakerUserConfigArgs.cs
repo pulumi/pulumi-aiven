@@ -10,13 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationMirrormakerUserConfigArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationMirrormakerUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Mirrormaker topic whitelist
+        /// </summary>
         [Input("mirrormakerWhitelist")]
         public Input<string>? MirrormakerWhitelist { get; set; }
 
         public ServiceIntegrationMirrormakerUserConfigArgs()
         {
         }
+        public static new ServiceIntegrationMirrormakerUserConfigArgs Empty => new ServiceIntegrationMirrormakerUserConfigArgs();
     }
 }

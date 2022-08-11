@@ -77,16 +77,14 @@ public class AzureVpcPeeringConnection extends com.pulumi.resources.CustomResour
         return this.azureSubscriptionId;
     }
     /**
-     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-     * changed, doing so forces recreation of the resource.
+     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="peerAzureAppId", type=String.class, parameters={})
     private Output<String> peerAzureAppId;
 
     /**
-     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-     * changed, doing so forces recreation of the resource.
+     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> peerAzureAppId() {
@@ -107,16 +105,14 @@ public class AzureVpcPeeringConnection extends com.pulumi.resources.CustomResour
         return this.peerAzureTenantId;
     }
     /**
-     * Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="peerResourceGroup", type=String.class, parameters={})
     private Output<String> peerResourceGroup;
 
     /**
-     * @return Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * @return Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> peerResourceGroup() {

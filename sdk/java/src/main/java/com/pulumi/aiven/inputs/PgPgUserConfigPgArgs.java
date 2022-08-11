@@ -162,6 +162,13 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.logMinDurationStatement);
     }
 
+    @Import(name="logTempFiles")
+    private @Nullable Output<String> logTempFiles;
+
+    public Optional<Output<String>> logTempFiles() {
+        return Optional.ofNullable(this.logTempFiles);
+    }
+
     @Import(name="maxFilesPerProcess")
     private @Nullable Output<String> maxFilesPerProcess;
 
@@ -361,6 +368,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         this.logErrorVerbosity = $.logErrorVerbosity;
         this.logLinePrefix = $.logLinePrefix;
         this.logMinDurationStatement = $.logMinDurationStatement;
+        this.logTempFiles = $.logTempFiles;
         this.maxFilesPerProcess = $.maxFilesPerProcess;
         this.maxLocksPerTransaction = $.maxLocksPerTransaction;
         this.maxLogicalReplicationWorkers = $.maxLogicalReplicationWorkers;
@@ -593,6 +601,15 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
 
         public Builder logMinDurationStatement(String logMinDurationStatement) {
             return logMinDurationStatement(Output.of(logMinDurationStatement));
+        }
+
+        public Builder logTempFiles(@Nullable Output<String> logTempFiles) {
+            $.logTempFiles = logTempFiles;
+            return this;
+        }
+
+        public Builder logTempFiles(String logTempFiles) {
+            return logTempFiles(Output.of(logTempFiles));
         }
 
         public Builder maxFilesPerProcess(@Nullable Output<String> maxFilesPerProcess) {

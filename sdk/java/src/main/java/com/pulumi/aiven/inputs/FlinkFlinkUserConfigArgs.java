@@ -17,79 +17,167 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
 
     public static final FlinkFlinkUserConfigArgs Empty = new FlinkFlinkUserConfigArgs();
 
+    /**
+     * Flink execution.checkpointing.interval in milliseconds
+     * 
+     */
     @Import(name="executionCheckpointingIntervalMs")
     private @Nullable Output<String> executionCheckpointingIntervalMs;
 
+    /**
+     * @return Flink execution.checkpointing.interval in milliseconds
+     * 
+     */
     public Optional<Output<String>> executionCheckpointingIntervalMs() {
         return Optional.ofNullable(this.executionCheckpointingIntervalMs);
     }
 
+    /**
+     * Flink execution.checkpointing.timeout in milliseconds
+     * 
+     */
     @Import(name="executionCheckpointingTimeoutMs")
     private @Nullable Output<String> executionCheckpointingTimeoutMs;
 
+    /**
+     * @return Flink execution.checkpointing.timeout in milliseconds
+     * 
+     */
     public Optional<Output<String>> executionCheckpointingTimeoutMs() {
         return Optional.ofNullable(this.executionCheckpointingTimeoutMs);
     }
 
+    /**
+     * Flink major version
+     * 
+     */
     @Import(name="flinkVersion")
     private @Nullable Output<String> flinkVersion;
 
+    /**
+     * @return Flink major version
+     * 
+     */
     public Optional<Output<String>> flinkVersion() {
         return Optional.ofNullable(this.flinkVersion);
     }
 
+    /**
+     * IP filter
+     * 
+     */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
+    /**
+     * @return IP filter
+     * 
+     */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
+    /**
+     * Flink taskmanager.numberOfTaskSlots
+     * 
+     */
     @Import(name="numberOfTaskSlots")
     private @Nullable Output<String> numberOfTaskSlots;
 
+    /**
+     * @return Flink taskmanager.numberOfTaskSlots
+     * 
+     */
     public Optional<Output<String>> numberOfTaskSlots() {
         return Optional.ofNullable(this.numberOfTaskSlots);
     }
 
+    /**
+     * Flink parallelism.default
+     * 
+     */
     @Import(name="parallelismDefault")
     private @Nullable Output<String> parallelismDefault;
 
+    /**
+     * @return Flink parallelism.default
+     * 
+     */
     public Optional<Output<String>> parallelismDefault() {
         return Optional.ofNullable(this.parallelismDefault);
     }
 
+    /**
+     * Allow access to selected service components through Privatelink
+     * 
+     */
     @Import(name="privatelinkAccess")
     private @Nullable Output<FlinkFlinkUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     public Optional<Output<FlinkFlinkUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
 
+    /**
+     * Flink restart-strategy
+     * 
+     */
     @Import(name="restartStrategy")
     private @Nullable Output<String> restartStrategy;
 
+    /**
+     * @return Flink restart-strategy
+     * 
+     */
     public Optional<Output<String>> restartStrategy() {
         return Optional.ofNullable(this.restartStrategy);
     }
 
+    /**
+     * Flink restart-strategy.failure-rate.delay in seconds
+     * 
+     */
     @Import(name="restartStrategyDelaySec")
     private @Nullable Output<String> restartStrategyDelaySec;
 
+    /**
+     * @return Flink restart-strategy.failure-rate.delay in seconds
+     * 
+     */
     public Optional<Output<String>> restartStrategyDelaySec() {
         return Optional.ofNullable(this.restartStrategyDelaySec);
     }
 
+    /**
+     * Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+     * 
+     */
     @Import(name="restartStrategyFailureRateIntervalMin")
     private @Nullable Output<String> restartStrategyFailureRateIntervalMin;
 
+    /**
+     * @return Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+     * 
+     */
     public Optional<Output<String>> restartStrategyFailureRateIntervalMin() {
         return Optional.ofNullable(this.restartStrategyFailureRateIntervalMin);
     }
 
+    /**
+     * Flink restart-strategy.failure-rate.max-failures-per-interval
+     * 
+     */
     @Import(name="restartStrategyMaxFailures")
     private @Nullable Output<String> restartStrategyMaxFailures;
 
+    /**
+     * @return Flink restart-strategy.failure-rate.max-failures-per-interval
+     * 
+     */
     public Optional<Output<String>> restartStrategyMaxFailures() {
         return Optional.ofNullable(this.restartStrategyMaxFailures);
     }
@@ -128,105 +216,243 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
             $ = new FlinkFlinkUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param executionCheckpointingIntervalMs Flink execution.checkpointing.interval in milliseconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder executionCheckpointingIntervalMs(@Nullable Output<String> executionCheckpointingIntervalMs) {
             $.executionCheckpointingIntervalMs = executionCheckpointingIntervalMs;
             return this;
         }
 
+        /**
+         * @param executionCheckpointingIntervalMs Flink execution.checkpointing.interval in milliseconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder executionCheckpointingIntervalMs(String executionCheckpointingIntervalMs) {
             return executionCheckpointingIntervalMs(Output.of(executionCheckpointingIntervalMs));
         }
 
+        /**
+         * @param executionCheckpointingTimeoutMs Flink execution.checkpointing.timeout in milliseconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder executionCheckpointingTimeoutMs(@Nullable Output<String> executionCheckpointingTimeoutMs) {
             $.executionCheckpointingTimeoutMs = executionCheckpointingTimeoutMs;
             return this;
         }
 
+        /**
+         * @param executionCheckpointingTimeoutMs Flink execution.checkpointing.timeout in milliseconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder executionCheckpointingTimeoutMs(String executionCheckpointingTimeoutMs) {
             return executionCheckpointingTimeoutMs(Output.of(executionCheckpointingTimeoutMs));
         }
 
+        /**
+         * @param flinkVersion Flink major version
+         * 
+         * @return builder
+         * 
+         */
         public Builder flinkVersion(@Nullable Output<String> flinkVersion) {
             $.flinkVersion = flinkVersion;
             return this;
         }
 
+        /**
+         * @param flinkVersion Flink major version
+         * 
+         * @return builder
+         * 
+         */
         public Builder flinkVersion(String flinkVersion) {
             return flinkVersion(Output.of(flinkVersion));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
 
+        /**
+         * @param ipFilters IP filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
+        /**
+         * @param numberOfTaskSlots Flink taskmanager.numberOfTaskSlots
+         * 
+         * @return builder
+         * 
+         */
         public Builder numberOfTaskSlots(@Nullable Output<String> numberOfTaskSlots) {
             $.numberOfTaskSlots = numberOfTaskSlots;
             return this;
         }
 
+        /**
+         * @param numberOfTaskSlots Flink taskmanager.numberOfTaskSlots
+         * 
+         * @return builder
+         * 
+         */
         public Builder numberOfTaskSlots(String numberOfTaskSlots) {
             return numberOfTaskSlots(Output.of(numberOfTaskSlots));
         }
 
+        /**
+         * @param parallelismDefault Flink parallelism.default
+         * 
+         * @return builder
+         * 
+         */
         public Builder parallelismDefault(@Nullable Output<String> parallelismDefault) {
             $.parallelismDefault = parallelismDefault;
             return this;
         }
 
+        /**
+         * @param parallelismDefault Flink parallelism.default
+         * 
+         * @return builder
+         * 
+         */
         public Builder parallelismDefault(String parallelismDefault) {
             return parallelismDefault(Output.of(parallelismDefault));
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(@Nullable Output<FlinkFlinkUserConfigPrivatelinkAccessArgs> privatelinkAccess) {
             $.privatelinkAccess = privatelinkAccess;
             return this;
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(FlinkFlinkUserConfigPrivatelinkAccessArgs privatelinkAccess) {
             return privatelinkAccess(Output.of(privatelinkAccess));
         }
 
+        /**
+         * @param restartStrategy Flink restart-strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartStrategy(@Nullable Output<String> restartStrategy) {
             $.restartStrategy = restartStrategy;
             return this;
         }
 
+        /**
+         * @param restartStrategy Flink restart-strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartStrategy(String restartStrategy) {
             return restartStrategy(Output.of(restartStrategy));
         }
 
+        /**
+         * @param restartStrategyDelaySec Flink restart-strategy.failure-rate.delay in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartStrategyDelaySec(@Nullable Output<String> restartStrategyDelaySec) {
             $.restartStrategyDelaySec = restartStrategyDelaySec;
             return this;
         }
 
+        /**
+         * @param restartStrategyDelaySec Flink restart-strategy.failure-rate.delay in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartStrategyDelaySec(String restartStrategyDelaySec) {
             return restartStrategyDelaySec(Output.of(restartStrategyDelaySec));
         }
 
+        /**
+         * @param restartStrategyFailureRateIntervalMin Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartStrategyFailureRateIntervalMin(@Nullable Output<String> restartStrategyFailureRateIntervalMin) {
             $.restartStrategyFailureRateIntervalMin = restartStrategyFailureRateIntervalMin;
             return this;
         }
 
+        /**
+         * @param restartStrategyFailureRateIntervalMin Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartStrategyFailureRateIntervalMin(String restartStrategyFailureRateIntervalMin) {
             return restartStrategyFailureRateIntervalMin(Output.of(restartStrategyFailureRateIntervalMin));
         }
 
+        /**
+         * @param restartStrategyMaxFailures Flink restart-strategy.failure-rate.max-failures-per-interval
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartStrategyMaxFailures(@Nullable Output<String> restartStrategyMaxFailures) {
             $.restartStrategyMaxFailures = restartStrategyMaxFailures;
             return this;
         }
 
+        /**
+         * @param restartStrategyMaxFailures Flink restart-strategy.failure-rate.max-failures-per-interval
+         * 
+         * @return builder
+         * 
+         */
         public Builder restartStrategyMaxFailures(String restartStrategyMaxFailures) {
             return restartStrategyMaxFailures(Output.of(restartStrategyMaxFailures));
         }

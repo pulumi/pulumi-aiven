@@ -20,30 +20,135 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PgPgUserConfig {
+    /**
+     * @return Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+     * 
+     */
     private final @Nullable String adminPassword;
+    /**
+     * @return Custom username for admin user. This must be set only when a new service is being created.
+     * 
+     */
     private final @Nullable String adminUsername;
+    /**
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     private final @Nullable String backupHour;
+    /**
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     private final @Nullable String backupMinute;
+    /**
+     * @return Enable IPv6
+     * 
+     */
     private final @Nullable String enableIpv6;
+    /**
+     * @return IP filter
+     * 
+     */
     private final @Nullable List<String> ipFilters;
+    /**
+     * @return Migrate data from existing server
+     * 
+     */
     private final @Nullable PgPgUserConfigMigration migration;
+    /**
+     * @return postgresql.conf configuration values
+     * 
+     */
     private final @Nullable PgPgUserConfigPg pg;
+    /**
+     * @return Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+     * 
+     */
     private final @Nullable String pgReadReplica;
+    /**
+     * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String pgServiceToForkFrom;
+    /**
+     * @return Enable pg*stat*monitor extension if available for the current cluster
+     * 
+     */
+    private final @Nullable String pgStatMonitorEnable;
+    /**
+     * @return PostgreSQL major version
+     * 
+     */
     private final @Nullable String pgVersion;
+    /**
+     * @return PGBouncer connection pooling settings
+     * 
+     */
     private final @Nullable PgPgUserConfigPgbouncer pgbouncer;
+    /**
+     * @return PGLookout settings
+     * 
+     */
     private final @Nullable PgPgUserConfigPglookout pglookout;
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     private final @Nullable PgPgUserConfigPrivateAccess privateAccess;
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     private final @Nullable PgPgUserConfigPrivatelinkAccess privatelinkAccess;
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String projectToForkFrom;
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     private final @Nullable PgPgUserConfigPublicAccess publicAccess;
+    /**
+     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String recoveryTargetTime;
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     private final @Nullable String serviceToForkFrom;
+    /**
+     * @return shared*buffers*percentage
+     * 
+     */
     private final @Nullable String sharedBuffersPercentage;
+    /**
+     * @return Static IP addresses
+     * 
+     */
     private final @Nullable String staticIps;
+    /**
+     * @return Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * 
+     */
     private final @Nullable String synchronousReplication;
+    /**
+     * @return TimescaleDB extension configuration values
+     * 
+     */
     private final @Nullable PgPgUserConfigTimescaledb timescaledb;
+    /**
+     * @return Variant of the PostgreSQL service, may affect the features that are exposed by default
+     * 
+     */
     private final @Nullable String variant;
+    /**
+     * @return work_mem
+     * 
+     */
     private final @Nullable String workMem;
 
     @CustomType.Constructor
@@ -58,6 +163,7 @@ public final class PgPgUserConfig {
         @CustomType.Parameter("pg") @Nullable PgPgUserConfigPg pg,
         @CustomType.Parameter("pgReadReplica") @Nullable String pgReadReplica,
         @CustomType.Parameter("pgServiceToForkFrom") @Nullable String pgServiceToForkFrom,
+        @CustomType.Parameter("pgStatMonitorEnable") @Nullable String pgStatMonitorEnable,
         @CustomType.Parameter("pgVersion") @Nullable String pgVersion,
         @CustomType.Parameter("pgbouncer") @Nullable PgPgUserConfigPgbouncer pgbouncer,
         @CustomType.Parameter("pglookout") @Nullable PgPgUserConfigPglookout pglookout,
@@ -83,6 +189,7 @@ public final class PgPgUserConfig {
         this.pg = pg;
         this.pgReadReplica = pgReadReplica;
         this.pgServiceToForkFrom = pgServiceToForkFrom;
+        this.pgStatMonitorEnable = pgStatMonitorEnable;
         this.pgVersion = pgVersion;
         this.pgbouncer = pgbouncer;
         this.pglookout = pglookout;
@@ -100,78 +207,185 @@ public final class PgPgUserConfig {
         this.workMem = workMem;
     }
 
+    /**
+     * @return Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+     * 
+     */
     public Optional<String> adminPassword() {
         return Optional.ofNullable(this.adminPassword);
     }
+    /**
+     * @return Custom username for admin user. This must be set only when a new service is being created.
+     * 
+     */
     public Optional<String> adminUsername() {
         return Optional.ofNullable(this.adminUsername);
     }
+    /**
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     public Optional<String> backupHour() {
         return Optional.ofNullable(this.backupHour);
     }
+    /**
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     public Optional<String> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
     }
+    /**
+     * @return Enable IPv6
+     * 
+     */
     public Optional<String> enableIpv6() {
         return Optional.ofNullable(this.enableIpv6);
     }
+    /**
+     * @return IP filter
+     * 
+     */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Migrate data from existing server
+     * 
+     */
     public Optional<PgPgUserConfigMigration> migration() {
         return Optional.ofNullable(this.migration);
     }
+    /**
+     * @return postgresql.conf configuration values
+     * 
+     */
     public Optional<PgPgUserConfigPg> pg() {
         return Optional.ofNullable(this.pg);
     }
+    /**
+     * @return Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+     * 
+     */
     public Optional<String> pgReadReplica() {
         return Optional.ofNullable(this.pgReadReplica);
     }
+    /**
+     * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> pgServiceToForkFrom() {
         return Optional.ofNullable(this.pgServiceToForkFrom);
     }
+    /**
+     * @return Enable pg*stat*monitor extension if available for the current cluster
+     * 
+     */
+    public Optional<String> pgStatMonitorEnable() {
+        return Optional.ofNullable(this.pgStatMonitorEnable);
+    }
+    /**
+     * @return PostgreSQL major version
+     * 
+     */
     public Optional<String> pgVersion() {
         return Optional.ofNullable(this.pgVersion);
     }
+    /**
+     * @return PGBouncer connection pooling settings
+     * 
+     */
     public Optional<PgPgUserConfigPgbouncer> pgbouncer() {
         return Optional.ofNullable(this.pgbouncer);
     }
+    /**
+     * @return PGLookout settings
+     * 
+     */
     public Optional<PgPgUserConfigPglookout> pglookout() {
         return Optional.ofNullable(this.pglookout);
     }
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
     public Optional<PgPgUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
     public Optional<PgPgUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
     public Optional<PgPgUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    /**
+     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> recoveryTargetTime() {
         return Optional.ofNullable(this.recoveryTargetTime);
     }
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
+    /**
+     * @return shared*buffers*percentage
+     * 
+     */
     public Optional<String> sharedBuffersPercentage() {
         return Optional.ofNullable(this.sharedBuffersPercentage);
     }
+    /**
+     * @return Static IP addresses
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
+    /**
+     * @return Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * 
+     */
     public Optional<String> synchronousReplication() {
         return Optional.ofNullable(this.synchronousReplication);
     }
+    /**
+     * @return TimescaleDB extension configuration values
+     * 
+     */
     public Optional<PgPgUserConfigTimescaledb> timescaledb() {
         return Optional.ofNullable(this.timescaledb);
     }
+    /**
+     * @return Variant of the PostgreSQL service, may affect the features that are exposed by default
+     * 
+     */
     public Optional<String> variant() {
         return Optional.ofNullable(this.variant);
     }
+    /**
+     * @return work_mem
+     * 
+     */
     public Optional<String> workMem() {
         return Optional.ofNullable(this.workMem);
     }
@@ -195,6 +409,7 @@ public final class PgPgUserConfig {
         private @Nullable PgPgUserConfigPg pg;
         private @Nullable String pgReadReplica;
         private @Nullable String pgServiceToForkFrom;
+        private @Nullable String pgStatMonitorEnable;
         private @Nullable String pgVersion;
         private @Nullable PgPgUserConfigPgbouncer pgbouncer;
         private @Nullable PgPgUserConfigPglookout pglookout;
@@ -227,6 +442,7 @@ public final class PgPgUserConfig {
     	      this.pg = defaults.pg;
     	      this.pgReadReplica = defaults.pgReadReplica;
     	      this.pgServiceToForkFrom = defaults.pgServiceToForkFrom;
+    	      this.pgStatMonitorEnable = defaults.pgStatMonitorEnable;
     	      this.pgVersion = defaults.pgVersion;
     	      this.pgbouncer = defaults.pgbouncer;
     	      this.pglookout = defaults.pglookout;
@@ -285,6 +501,10 @@ public final class PgPgUserConfig {
         }
         public Builder pgServiceToForkFrom(@Nullable String pgServiceToForkFrom) {
             this.pgServiceToForkFrom = pgServiceToForkFrom;
+            return this;
+        }
+        public Builder pgStatMonitorEnable(@Nullable String pgStatMonitorEnable) {
+            this.pgStatMonitorEnable = pgStatMonitorEnable;
             return this;
         }
         public Builder pgVersion(@Nullable String pgVersion) {
@@ -347,7 +567,7 @@ public final class PgPgUserConfig {
             this.workMem = workMem;
             return this;
         }        public PgPgUserConfig build() {
-            return new PgPgUserConfig(adminPassword, adminUsername, backupHour, backupMinute, enableIpv6, ipFilters, migration, pg, pgReadReplica, pgServiceToForkFrom, pgVersion, pgbouncer, pglookout, privateAccess, privatelinkAccess, projectToForkFrom, publicAccess, recoveryTargetTime, serviceToForkFrom, sharedBuffersPercentage, staticIps, synchronousReplication, timescaledb, variant, workMem);
+            return new PgPgUserConfig(adminPassword, adminUsername, backupHour, backupMinute, enableIpv6, ipFilters, migration, pg, pgReadReplica, pgServiceToForkFrom, pgStatMonitorEnable, pgVersion, pgbouncer, pglookout, privateAccess, privatelinkAccess, projectToForkFrom, publicAccess, recoveryTargetTime, serviceToForkFrom, sharedBuffersPercentage, staticIps, synchronousReplication, timescaledb, variant, workMem);
         }
     }
 }

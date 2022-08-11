@@ -10,16 +10,40 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAccountTeamMemberResult {
+    /**
+     * @return is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
+     * 
+     */
     private final Boolean accepted;
+    /**
+     * @return The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String accountId;
+    /**
+     * @return Time of creation
+     * 
+     */
     private final String createTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private final String id;
+    /**
+     * @return The email address that invited this user.
+     * 
+     */
     private final String invitedByUserEmail;
+    /**
+     * @return An account team id This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String teamId;
+    /**
+     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String userEmail;
 
     @CustomType.Constructor
@@ -40,12 +64,24 @@ public final class GetAccountTeamMemberResult {
         this.userEmail = userEmail;
     }
 
+    /**
+     * @return is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
+     * 
+     */
     public Boolean accepted() {
         return this.accepted;
     }
+    /**
+     * @return The unique account id This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
+    /**
+     * @return Time of creation
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
@@ -56,12 +92,24 @@ public final class GetAccountTeamMemberResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The email address that invited this user.
+     * 
+     */
     public String invitedByUserEmail() {
         return this.invitedByUserEmail;
     }
+    /**
+     * @return An account team id This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String teamId() {
         return this.teamId;
     }
+    /**
+     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String userEmail() {
         return this.userEmail;
     }

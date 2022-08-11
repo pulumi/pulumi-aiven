@@ -29,16 +29,14 @@ public final class AzureVpcPeeringConnectionArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-     * changed, doing so forces recreation of the resource.
+     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="peerAzureAppId", required=true)
     private Output<String> peerAzureAppId;
 
     /**
-     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-     * changed, doing so forces recreation of the resource.
+     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> peerAzureAppId() {
@@ -61,16 +59,14 @@ public final class AzureVpcPeeringConnectionArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="peerResourceGroup", required=true)
     private Output<String> peerResourceGroup;
 
     /**
-     * @return Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * @return Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> peerResourceGroup() {
@@ -158,8 +154,7 @@ public final class AzureVpcPeeringConnectionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param peerAzureAppId Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-         * changed, doing so forces recreation of the resource.
+         * @param peerAzureAppId Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -170,8 +165,7 @@ public final class AzureVpcPeeringConnectionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param peerAzureAppId Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-         * changed, doing so forces recreation of the resource.
+         * @param peerAzureAppId Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -202,8 +196,7 @@ public final class AzureVpcPeeringConnectionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param peerResourceGroup Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-         * resource.
+         * @param peerResourceGroup Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -214,8 +207,7 @@ public final class AzureVpcPeeringConnectionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param peerResourceGroup Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-         * resource.
+         * @param peerResourceGroup Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

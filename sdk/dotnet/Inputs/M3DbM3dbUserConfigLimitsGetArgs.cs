@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class M3DbM3dbUserConfigLimitsGetArgs : Pulumi.ResourceArgs
+    public sealed class M3DbM3dbUserConfigLimitsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("queryDocs")]
+        public Input<string>? QueryDocs { get; set; }
+
         [Input("queryRequireExhaustive")]
         public Input<string>? QueryRequireExhaustive { get; set; }
 
@@ -21,5 +24,6 @@ namespace Pulumi.Aiven.Inputs
         public M3DbM3dbUserConfigLimitsGetArgs()
         {
         }
+        public static new M3DbM3dbUserConfigLimitsGetArgs Empty => new M3DbM3dbUserConfigLimitsGetArgs();
     }
 }

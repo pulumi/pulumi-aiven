@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class OpenSearchOpensearchUserConfigOpensearchGetArgs : Pulumi.ResourceArgs
+    public sealed class OpenSearchOpensearchUserConfigOpensearchGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("actionAutoCreateIndexEnabled")]
         public Input<string>? ActionAutoCreateIndexEnabled { get; set; }
@@ -23,6 +23,15 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("clusterRoutingAllocationNodeConcurrentRecoveries")]
         public Input<string>? ClusterRoutingAllocationNodeConcurrentRecoveries { get; set; }
+
+        [Input("emailSenderName")]
+        public Input<string>? EmailSenderName { get; set; }
+
+        [Input("emailSenderPassword")]
+        public Input<string>? EmailSenderPassword { get; set; }
+
+        [Input("emailSenderUsername")]
+        public Input<string>? EmailSenderUsername { get; set; }
 
         [Input("httpMaxContentLength")]
         public Input<string>? HttpMaxContentLength { get; set; }
@@ -104,5 +113,6 @@ namespace Pulumi.Aiven.Inputs
         public OpenSearchOpensearchUserConfigOpensearchGetArgs()
         {
         }
+        public static new OpenSearchOpensearchUserConfigOpensearchGetArgs Empty => new OpenSearchOpensearchUserConfigOpensearchGetArgs();
     }
 }

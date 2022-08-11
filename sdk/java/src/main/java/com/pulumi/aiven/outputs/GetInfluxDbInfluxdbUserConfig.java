@@ -17,6 +17,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInfluxDbInfluxdbUserConfig {
     private final @Nullable String customDomain;
+    /**
+     * @return InfluxDB server provided values
+     * 
+     */
     private final @Nullable GetInfluxDbInfluxdbUserConfigInfluxdb influxdb;
     private final @Nullable List<String> ipFilters;
     private final @Nullable GetInfluxDbInfluxdbUserConfigPrivateAccess privateAccess;
@@ -25,6 +29,10 @@ public final class GetInfluxDbInfluxdbUserConfig {
     private final @Nullable GetInfluxDbInfluxdbUserConfigPublicAccess publicAccess;
     private final @Nullable String recoveryBasebackupName;
     private final @Nullable String serviceToForkFrom;
+    /**
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * 
+     */
     private final @Nullable String staticIps;
 
     @CustomType.Constructor
@@ -54,6 +62,10 @@ public final class GetInfluxDbInfluxdbUserConfig {
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
+    /**
+     * @return InfluxDB server provided values
+     * 
+     */
     public Optional<GetInfluxDbInfluxdbUserConfigInfluxdb> influxdb() {
         return Optional.ofNullable(this.influxdb);
     }
@@ -78,6 +90,10 @@ public final class GetInfluxDbInfluxdbUserConfig {
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
+    /**
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

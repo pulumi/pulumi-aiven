@@ -11,10 +11,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectVpcResult {
+    /**
+     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String cloudName;
+    /**
+     * @return ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     * 
+     */
     private final @Nullable String id;
+    /**
+     * @return Network address range used by the VPC like 192.168.0.0/24
+     * 
+     */
     private final String networkCidr;
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     private final String project;
+    /**
+     * @return State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+     * 
+     */
     private final String state;
 
     @CustomType.Constructor
@@ -31,18 +51,38 @@ public final class GetProjectVpcResult {
         this.state = state;
     }
 
+    /**
+     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String cloudName() {
         return this.cloudName;
     }
+    /**
+     * @return ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return Network address range used by the VPC like 192.168.0.0/24
+     * 
+     */
     public String networkCidr() {
         return this.networkCidr;
     }
+    /**
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+     * 
+     */
     public String state() {
         return this.state;
     }

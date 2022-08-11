@@ -18,23 +18,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupInfluxdbUser(ctx, &GetInfluxdbUserArgs{
-// 			Project:     "my-project",
-// 			ServiceName: "my-service",
-// 			Username:    "user1",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupInfluxdbUser(ctx, &GetInfluxdbUserArgs{
+//				Project:     "my-project",
+//				ServiceName: "my-service",
+//				Username:    "user1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupInfluxdbUser(ctx *pulumi.Context, args *LookupInfluxdbUserArgs, opts ...pulumi.InvokeOption) (*LookupInfluxdbUserResult, error) {
 	var rv LookupInfluxdbUserResult
@@ -47,22 +50,32 @@ func LookupInfluxdbUser(ctx *pulumi.Context, args *LookupInfluxdbUserArgs, opts 
 
 // A collection of arguments for invoking getInfluxdbUser.
 type LookupInfluxdbUserArgs struct {
-	Project     string `pulumi:"project"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	Username    string `pulumi:"username"`
+	// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Username string `pulumi:"username"`
 }
 
 // A collection of values returned by getInfluxdbUser.
 type LookupInfluxdbUserResult struct {
+	// Access certificate for the user if applicable for the service in question
 	AccessCert string `pulumi:"accessCert"`
-	AccessKey  string `pulumi:"accessKey"`
+	// Access certificate key for the user if applicable for the service in question
+	AccessKey string `pulumi:"accessKey"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Password    string `pulumi:"password"`
-	Project     string `pulumi:"project"`
+	Id string `pulumi:"id"`
+	// The password of the InfluxDB User.
+	Password string `pulumi:"password"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	Type        string `pulumi:"type"`
-	Username    string `pulumi:"username"`
+	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	Type string `pulumi:"type"`
+	// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Username string `pulumi:"username"`
 }
 
 func LookupInfluxdbUserOutput(ctx *pulumi.Context, args LookupInfluxdbUserOutputArgs, opts ...pulumi.InvokeOption) LookupInfluxdbUserResultOutput {
@@ -80,9 +93,12 @@ func LookupInfluxdbUserOutput(ctx *pulumi.Context, args LookupInfluxdbUserOutput
 
 // A collection of arguments for invoking getInfluxdbUser.
 type LookupInfluxdbUserOutputArgs struct {
-	Project     pulumi.StringInput `pulumi:"project"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (LookupInfluxdbUserOutputArgs) ElementType() reflect.Type {
@@ -104,10 +120,12 @@ func (o LookupInfluxdbUserResultOutput) ToLookupInfluxdbUserResultOutputWithCont
 	return o
 }
 
+// Access certificate for the user if applicable for the service in question
 func (o LookupInfluxdbUserResultOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfluxdbUserResult) string { return v.AccessCert }).(pulumi.StringOutput)
 }
 
+// Access certificate key for the user if applicable for the service in question
 func (o LookupInfluxdbUserResultOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfluxdbUserResult) string { return v.AccessKey }).(pulumi.StringOutput)
 }
@@ -117,22 +135,27 @@ func (o LookupInfluxdbUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfluxdbUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The password of the InfluxDB User.
 func (o LookupInfluxdbUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfluxdbUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupInfluxdbUserResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfluxdbUserResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupInfluxdbUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfluxdbUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Type of the user account. Tells whether the user is the primary account or a regular account.
 func (o LookupInfluxdbUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfluxdbUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupInfluxdbUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfluxdbUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

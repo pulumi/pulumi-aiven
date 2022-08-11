@@ -12,23 +12,47 @@ public final class GetTransitGatewayVpcAttachmentPlainArgs extends com.pulumi.re
 
     public static final GetTransitGatewayVpcAttachmentPlainArgs Empty = new GetTransitGatewayVpcAttachmentPlainArgs();
 
+    /**
+     * AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="peerCloudAccount", required=true)
     private String peerCloudAccount;
 
+    /**
+     * @return AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String peerCloudAccount() {
         return this.peerCloudAccount;
     }
 
+    /**
+     * Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="peerVpc", required=true)
     private String peerVpc;
 
+    /**
+     * @return Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String peerVpc() {
         return this.peerVpc;
     }
 
+    /**
+     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     @Import(name="vpcId", required=true)
     private String vpcId;
 
+    /**
+     * @return The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * 
+     */
     public String vpcId() {
         return this.vpcId;
     }
@@ -59,16 +83,34 @@ public final class GetTransitGatewayVpcAttachmentPlainArgs extends com.pulumi.re
             $ = new GetTransitGatewayVpcAttachmentPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerCloudAccount(String peerCloudAccount) {
             $.peerCloudAccount = peerCloudAccount;
             return this;
         }
 
+        /**
+         * @param peerVpc Transit gateway ID This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerVpc(String peerVpc) {
             $.peerVpc = peerVpc;
             return this;
         }
 
+        /**
+         * @param vpcId The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(String vpcId) {
             $.vpcId = vpcId;
             return this;

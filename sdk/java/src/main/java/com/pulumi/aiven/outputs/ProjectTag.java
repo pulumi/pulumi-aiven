@@ -9,7 +9,15 @@ import java.util.Objects;
 
 @CustomType
 public final class ProjectTag {
+    /**
+     * @return Project tag key
+     * 
+     */
     private final String key;
+    /**
+     * @return Project tag value
+     * 
+     */
     private final String value;
 
     @CustomType.Constructor
@@ -20,9 +28,17 @@ public final class ProjectTag {
         this.value = value;
     }
 
+    /**
+     * @return Project tag key
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Project tag value
+     * 
+     */
     public String value() {
         return this.value;
     }

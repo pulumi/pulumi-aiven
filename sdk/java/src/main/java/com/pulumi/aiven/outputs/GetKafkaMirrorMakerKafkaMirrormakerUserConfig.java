@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     private final @Nullable List<String> ipFilters;
+    /**
+     * @return Kafka MirrorMaker 2 server provided values
+     * 
+     */
     private final @Nullable GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
+    /**
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * 
+     */
     private final @Nullable String staticIps;
 
     @CustomType.Constructor
@@ -30,9 +38,17 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Kafka MirrorMaker 2 server provided values
+     * 
+     */
     public Optional<GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker> kafkaMirrormaker() {
         return Optional.ofNullable(this.kafkaMirrormaker);
     }
+    /**
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * 
+     */
     public Optional<String> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
