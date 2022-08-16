@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class M3DbTag
     {
+        /// <summary>
+        /// Service tag key
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// Service tag value
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

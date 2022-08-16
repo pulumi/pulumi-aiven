@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ClickhouseComponentGetArgs : Pulumi.ResourceArgs
+    public sealed class ClickhouseComponentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("component")]
         public Input<string>? Component { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Aiven.Inputs
         public ClickhouseComponentGetArgs()
         {
         }
+        public static new ClickhouseComponentGetArgs Empty => new ClickhouseComponentGetArgs();
     }
 }

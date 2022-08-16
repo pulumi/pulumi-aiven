@@ -41,64 +41,129 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetServiceIntegrationArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Destination service for the integration (if any)
+        /// </summary>
         [Input("destinationServiceName", required: true)]
         public string DestinationServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Type of the service integration
+        /// </summary>
         [Input("integrationType", required: true)]
         public string IntegrationType { get; set; } = null!;
 
+        /// <summary>
+        /// Project the integration belongs to
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Source service for the integration (if any)
+        /// </summary>
         [Input("sourceServiceName", required: true)]
         public string SourceServiceName { get; set; } = null!;
 
         public GetServiceIntegrationArgs()
         {
         }
+        public static new GetServiceIntegrationArgs Empty => new GetServiceIntegrationArgs();
     }
 
-    public sealed class GetServiceIntegrationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceIntegrationInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Destination service for the integration (if any)
+        /// </summary>
         [Input("destinationServiceName", required: true)]
         public Input<string> DestinationServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// Type of the service integration
+        /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;
 
+        /// <summary>
+        /// Project the integration belongs to
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Source service for the integration (if any)
+        /// </summary>
         [Input("sourceServiceName", required: true)]
         public Input<string> SourceServiceName { get; set; } = null!;
 
         public GetServiceIntegrationInvokeArgs()
         {
         }
+        public static new GetServiceIntegrationInvokeArgs Empty => new GetServiceIntegrationInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetServiceIntegrationResult
     {
+        /// <summary>
+        /// Destination endpoint for the integration (if any)
+        /// </summary>
         public readonly string DestinationEndpointId;
+        /// <summary>
+        /// Destination service for the integration (if any)
+        /// </summary>
         public readonly string DestinationServiceName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Service Integration Id at aiven
+        /// </summary>
         public readonly string IntegrationId;
+        /// <summary>
+        /// Type of the service integration
+        /// </summary>
         public readonly string IntegrationType;
+        /// <summary>
+        /// Kafka Connect specific user configurable settings
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationKafkaConnectUserConfigResult> KafkaConnectUserConfigs;
+        /// <summary>
+        /// Kafka Logs specific user configurable settings
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationKafkaLogsUserConfigResult> KafkaLogsUserConfigs;
+        /// <summary>
+        /// Mirrormaker 2 integration specific user configurable settings
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationKafkaMirrormakerUserConfigResult> KafkaMirrormakerUserConfigs;
+        /// <summary>
+        /// Log integration specific user configurable settings
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationLogsUserConfigResult> LogsUserConfigs;
+        /// <summary>
+        /// Metrics specific user configurable settings
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationMetricsUserConfigResult> MetricsUserConfigs;
+        /// <summary>
+        /// Mirrormaker 1 integration specific user configurable settings
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationMirrormakerUserConfigResult> MirrormakerUserConfigs;
+        /// <summary>
+        /// Project the integration belongs to
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Source endpoint for the integration (if any)
+        /// </summary>
         public readonly string SourceEndpointId;
+        /// <summary>
+        /// Source service for the integration (if any)
+        /// </summary>
         public readonly string SourceServiceName;
 
         [OutputConstructor]

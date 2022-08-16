@@ -37,8 +37,17 @@ export function getVpcPeeringConnection(args: GetVpcPeeringConnectionArgs, opts?
  * A collection of arguments for invoking getVpcPeeringConnection.
  */
 export interface GetVpcPeeringConnectionArgs {
+    /**
+     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     */
     peerCloudAccount: string;
+    /**
+     * AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     */
     peerVpc: string;
+    /**
+     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     */
     vpcId: string;
 }
 
@@ -50,15 +59,45 @@ export interface GetVpcPeeringConnectionResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly peerAzureAppId: string;
+    /**
+     * Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly peerAzureTenantId: string;
+    /**
+     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly peerCloudAccount: string;
+    /**
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly peerRegion: string;
+    /**
+     * Azure resource group name of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly peerResourceGroup: string;
+    /**
+     * AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly peerVpc: string;
+    /**
+     * Cloud provider identifier for the peering connection if available
+     */
     readonly peeringConnectionId: string;
+    /**
+     * State of the peering connection
+     */
     readonly state: string;
+    /**
+     * State-specific help or error information
+     */
     readonly stateInfo: {[key: string]: any};
+    /**
+     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly vpcId: string;
 }
 
@@ -70,7 +109,16 @@ export function getVpcPeeringConnectionOutput(args: GetVpcPeeringConnectionOutpu
  * A collection of arguments for invoking getVpcPeeringConnection.
  */
 export interface GetVpcPeeringConnectionOutputArgs {
+    /**
+     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     */
     peerCloudAccount: pulumi.Input<string>;
+    /**
+     * AWS VPC ID or GCP VPC network name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     */
     peerVpc: pulumi.Input<string>;
+    /**
+     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     */
     vpcId: pulumi.Input<string>;
 }

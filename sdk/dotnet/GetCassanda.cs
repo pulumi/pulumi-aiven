@@ -20,21 +20,19 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var bar = Aiven.GetCassandra.Invoke(new()
         ///     {
-        ///         var bar = Output.Create(Aiven.GetCassandra.InvokeAsync(new Aiven.GetCassandraArgs
-        ///         {
-        ///             Project = data.Aiven_project.Foo.Project,
-        ///             ServiceName = "&lt;SERVICE_NAME&gt;",
-        ///         }));
-        ///     }
+        ///         Project = data.Aiven_project.Foo.Project,
+        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -50,21 +48,19 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var bar = Aiven.GetCassandra.Invoke(new()
         ///     {
-        ///         var bar = Output.Create(Aiven.GetCassandra.InvokeAsync(new Aiven.GetCassandraArgs
-        ///         {
-        ///             Project = data.Aiven_project.Foo.Project,
-        ///             ServiceName = "&lt;SERVICE_NAME&gt;",
-        ///         }));
-        ///     }
+        ///         Project = data.Aiven_project.Foo.Project,
+        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -74,65 +70,157 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetCassandaArgs : Pulumi.InvokeArgs
+    public sealed class GetCassandaArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
         public GetCassandaArgs()
         {
         }
+        public static new GetCassandaArgs Empty => new GetCassandaArgs();
     }
 
-    public sealed class GetCassandaInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCassandaInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         public GetCassandaInvokeArgs()
         {
         }
+        public static new GetCassandaInvokeArgs Empty => new GetCassandaInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetCassandaResult
     {
+        /// <summary>
+        /// Cassandra user configurable settings
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandaCassandraUserConfigResult> CassandraUserConfigs;
+        /// <summary>
+        /// Cassandra server provided values
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandaCassandraResult> Cassandras;
+        /// <summary>
+        /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        /// </summary>
         public readonly string CloudName;
+        /// <summary>
+        /// Service component information objects
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandaComponentResult> Components;
+        /// <summary>
+        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// </summary>
         public readonly string DiskSpace;
+        /// <summary>
+        /// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+        /// </summary>
         public readonly string DiskSpaceCap;
+        /// <summary>
+        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        /// </summary>
         public readonly string DiskSpaceDefault;
+        /// <summary>
+        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        /// </summary>
         public readonly string DiskSpaceStep;
+        /// <summary>
+        /// Disk space that service is currently using
+        /// </summary>
         public readonly string DiskSpaceUsed;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+        /// </summary>
         public readonly string MaintenanceWindowDow;
+        /// <summary>
+        /// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        /// </summary>
         public readonly string MaintenanceWindowTime;
+        /// <summary>
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// </summary>
         public readonly string Plan;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        /// </summary>
         public readonly string ProjectVpcId;
+        /// <summary>
+        /// The hostname of the service.
+        /// </summary>
         public readonly string ServiceHost;
+        /// <summary>
+        /// Service integrations to specify when creating a service. Not applied after initial service creation
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandaServiceIntegrationResult> ServiceIntegrations;
+        /// <summary>
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Password used for connecting to the service, if applicable
+        /// </summary>
         public readonly string ServicePassword;
+        /// <summary>
+        /// The port of the service
+        /// </summary>
         public readonly int ServicePort;
+        /// <summary>
+        /// Aiven internal service type code
+        /// </summary>
         public readonly string ServiceType;
+        /// <summary>
+        /// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+        /// </summary>
         public readonly string ServiceUri;
+        /// <summary>
+        /// Username used for connecting to the service, if applicable
+        /// </summary>
         public readonly string ServiceUsername;
+        /// <summary>
+        /// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// </summary>
         public readonly ImmutableArray<string> StaticIps;
+        /// <summary>
+        /// Tags are key-value pairs that allow you to categorize services.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandaTagResult> Tags;
+        /// <summary>
+        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+        /// </summary>
         public readonly bool TerminationProtection;
 
         [OutputConstructor]

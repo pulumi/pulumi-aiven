@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("blockDataExpiryDuration")]
         public Input<string>? BlockDataExpiryDuration { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Aiven.Inputs
         public M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsGetArgs()
         {
         }
+        public static new M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsGetArgs Empty => new M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsGetArgs();
     }
 }

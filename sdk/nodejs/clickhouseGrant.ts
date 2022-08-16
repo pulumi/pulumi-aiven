@@ -98,13 +98,11 @@ export class ClickhouseGrant extends pulumi.CustomResource {
      */
     public readonly privilegeGrants!: pulumi.Output<outputs.ClickhouseGrantPrivilegeGrant[] | undefined>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly role!: pulumi.Output<string | undefined>;
     /**
@@ -112,13 +110,11 @@ export class ClickhouseGrant extends pulumi.CustomResource {
      */
     public readonly roleGrants!: pulumi.Output<outputs.ClickhouseGrantRoleGrant[] | undefined>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly user!: pulumi.Output<string | undefined>;
 
@@ -170,13 +166,11 @@ export interface ClickhouseGrantState {
      */
     privilegeGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantPrivilegeGrant>[]>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     role?: pulumi.Input<string>;
     /**
@@ -184,13 +178,11 @@ export interface ClickhouseGrantState {
      */
     roleGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantRoleGrant>[]>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     user?: pulumi.Input<string>;
 }
@@ -204,13 +196,11 @@ export interface ClickhouseGrantArgs {
      */
     privilegeGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantPrivilegeGrant>[]>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     role?: pulumi.Input<string>;
     /**
@@ -218,13 +208,11 @@ export interface ClickhouseGrantArgs {
      */
     roleGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantRoleGrant>[]>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-     * This property cannot be changed, doing so forces recreation of the resource.
+     * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     user?: pulumi.Input<string>;
 }

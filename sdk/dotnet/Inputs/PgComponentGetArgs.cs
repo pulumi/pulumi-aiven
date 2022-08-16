@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class PgComponentGetArgs : Pulumi.ResourceArgs
+    public sealed class PgComponentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("component")]
         public Input<string>? Component { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Aiven.Inputs
         public PgComponentGetArgs()
         {
         }
+        public static new PgComponentGetArgs Empty => new PgComponentGetArgs();
     }
 }

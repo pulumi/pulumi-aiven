@@ -37,8 +37,17 @@ export function getGcpVpcPeeringConnection(args: GetGcpVpcPeeringConnectionArgs,
  * A collection of arguments for invoking getGcpVpcPeeringConnection.
  */
 export interface GetGcpVpcPeeringConnectionArgs {
+    /**
+     * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     */
     gcpProjectId: string;
+    /**
+     * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     */
     peerVpc: string;
+    /**
+     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     */
     vpcId: string;
 }
 
@@ -46,14 +55,29 @@ export interface GetGcpVpcPeeringConnectionArgs {
  * A collection of values returned by getGcpVpcPeeringConnection.
  */
 export interface GetGcpVpcPeeringConnectionResult {
+    /**
+     * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly gcpProjectId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly peerVpc: string;
+    /**
+     * State of the peering connection
+     */
     readonly state: string;
+    /**
+     * State-specific help or error information
+     */
     readonly stateInfo: {[key: string]: any};
+    /**
+     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly vpcId: string;
 }
 
@@ -65,7 +89,16 @@ export function getGcpVpcPeeringConnectionOutput(args: GetGcpVpcPeeringConnectio
  * A collection of arguments for invoking getGcpVpcPeeringConnection.
  */
 export interface GetGcpVpcPeeringConnectionOutputArgs {
+    /**
+     * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     */
     gcpProjectId: pulumi.Input<string>;
+    /**
+     * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     */
     peerVpc: pulumi.Input<string>;
+    /**
+     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     */
     vpcId: pulumi.Input<string>;
 }

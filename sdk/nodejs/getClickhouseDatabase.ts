@@ -37,8 +37,17 @@ export function getClickhouseDatabase(args: GetClickhouseDatabaseArgs, opts?: pu
  * A collection of arguments for invoking getClickhouseDatabase.
  */
 export interface GetClickhouseDatabaseArgs {
+    /**
+     * The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.
+     */
     name: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: string;
 }
 
@@ -50,8 +59,17 @@ export interface GetClickhouseDatabaseResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly name: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
     readonly terminationProtection: boolean;
 }
@@ -64,7 +82,16 @@ export function getClickhouseDatabaseOutput(args: GetClickhouseDatabaseOutputArg
  * A collection of arguments for invoking getClickhouseDatabase.
  */
 export interface GetClickhouseDatabaseOutputArgs {
+    /**
+     * The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.
+     */
     name: pulumi.Input<string>;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: pulumi.Input<string>;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: pulumi.Input<string>;
 }

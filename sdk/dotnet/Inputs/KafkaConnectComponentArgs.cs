@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaConnectComponentArgs : Pulumi.ResourceArgs
+    public sealed class KafkaConnectComponentArgs : global::Pulumi.ResourceArgs
     {
         [Input("component")]
         public Input<string>? Component { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Aiven.Inputs
         public KafkaConnectComponentArgs()
         {
         }
+        public static new KafkaConnectComponentArgs Empty => new KafkaConnectComponentArgs();
     }
 }

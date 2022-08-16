@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaKafkaUserConfigKafkaRestConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class KafkaKafkaUserConfigKafkaRestConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("consumerEnableAutoCommit")]
         public Input<string>? ConsumerEnableAutoCommit { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Aiven.Inputs
         public KafkaKafkaUserConfigKafkaRestConfigGetArgs()
         {
         }
+        public static new KafkaKafkaUserConfigKafkaRestConfigGetArgs Empty => new KafkaKafkaUserConfigKafkaRestConfigGetArgs();
     }
 }

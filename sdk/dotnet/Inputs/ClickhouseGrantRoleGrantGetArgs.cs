@@ -10,13 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ClickhouseGrantRoleGrantGetArgs : Pulumi.ResourceArgs
+    public sealed class ClickhouseGrantRoleGrantGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
         public ClickhouseGrantRoleGrantGetArgs()
         {
         }
+        public static new ClickhouseGrantRoleGrantGetArgs Empty => new ClickhouseGrantRoleGrantGetArgs();
     }
 }

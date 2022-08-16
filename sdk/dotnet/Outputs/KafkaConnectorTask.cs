@@ -14,6 +14,9 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaConnectorTask
     {
         public readonly string? Connector;
+        /// <summary>
+        /// List of tasks of a connector.
+        /// </summary>
         public readonly int? Task;
 
         [OutputConstructor]

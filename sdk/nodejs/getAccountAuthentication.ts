@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -23,7 +24,13 @@ export function getAccountAuthentication(args: GetAccountAuthenticationArgs, opt
  * A collection of arguments for invoking getAccountAuthentication.
  */
 export interface GetAccountAuthenticationArgs {
+    /**
+     * The unique id of the account.
+     */
     accountId: string;
+    /**
+     * The name of the account authentication.
+     */
     name: string;
 }
 
@@ -31,22 +38,81 @@ export interface GetAccountAuthenticationArgs {
  * A collection of values returned by getAccountAuthentication.
  */
 export interface GetAccountAuthenticationResult {
+    /**
+     * The unique id of the account.
+     */
     readonly accountId: string;
+    /**
+     * Account authentication id
+     */
     readonly authenticationId: string;
+    /**
+     * Team ID
+     */
     readonly autoJoinTeamId: string;
+    /**
+     * Time of creation
+     */
     readonly createTime: string;
+    /**
+     * Status of account authentication method. The default value is `false`.
+     */
     readonly enabled: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the account authentication.
+     */
     readonly name: string;
+    /**
+     * SAML Assertion Consumer Service URL
+     */
     readonly samlAcsUrl: string;
+    /**
+     * SAML Certificate
+     */
     readonly samlCertificate: string;
+    /**
+     * Digest algorithm. This is an advanced option that typically does not need to be set.
+     */
+    readonly samlDigestAlgorithm: string;
+    /**
+     * SAML Entity id
+     */
     readonly samlEntityId: string;
+    /**
+     * Map IdP fields
+     */
+    readonly samlFieldMappings: outputs.GetAccountAuthenticationSamlFieldMapping[];
+    /**
+     * Set to 'true' to enable IdP initiated login
+     */
+    readonly samlIdpLoginAllowed: boolean;
+    /**
+     * SAML Idp URL
+     */
     readonly samlIdpUrl: string;
+    /**
+     * SAML Metadata URL
+     */
     readonly samlMetadataUrl: string;
+    /**
+     * Signature algorithm. This is an advanced option that typically does not need to be set.
+     */
+    readonly samlSignatureAlgorithm: string;
+    /**
+     * SAML server variant
+     */
+    readonly samlVariant: string;
+    /**
+     * The account authentication type. The possible values are `internal` and `saml`.
+     */
     readonly type: string;
+    /**
+     * Time of last update
+     */
     readonly updateTime: string;
 }
 
@@ -58,6 +124,12 @@ export function getAccountAuthenticationOutput(args: GetAccountAuthenticationOut
  * A collection of arguments for invoking getAccountAuthentication.
  */
 export interface GetAccountAuthenticationOutputArgs {
+    /**
+     * The unique id of the account.
+     */
     accountId: pulumi.Input<string>;
+    /**
+     * The name of the account authentication.
+     */
     name: pulumi.Input<string>;
 }

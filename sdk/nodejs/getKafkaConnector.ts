@@ -38,8 +38,17 @@ export function getKafkaConnector(args: GetKafkaConnectorArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getKafkaConnector.
  */
 export interface GetKafkaConnectorArgs {
+    /**
+     * The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+     */
     connectorName: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: string;
 }
 
@@ -47,20 +56,53 @@ export interface GetKafkaConnectorArgs {
  * A collection of values returned by getKafkaConnector.
  */
 export interface GetKafkaConnectorResult {
+    /**
+     * The Kafka Connector configuration parameters.
+     */
     readonly config: {[key: string]: string};
+    /**
+     * The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly connectorName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The Kafka connector author.
+     */
     readonly pluginAuthor: string;
+    /**
+     * The Kafka connector Java class.
+     */
     readonly pluginClass: string;
+    /**
+     * The Kafka connector documentation URL.
+     */
     readonly pluginDocUrl: string;
+    /**
+     * The Kafka connector title.
+     */
     readonly pluginTitle: string;
+    /**
+     * The Kafka connector type.
+     */
     readonly pluginType: string;
+    /**
+     * The version of the kafka connector.
+     */
     readonly pluginVersion: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
+    /**
+     * List of tasks of a connector.
+     */
     readonly tasks: outputs.GetKafkaConnectorTask[];
 }
 
@@ -72,7 +114,16 @@ export function getKafkaConnectorOutput(args: GetKafkaConnectorOutputArgs, opts?
  * A collection of arguments for invoking getKafkaConnector.
  */
 export interface GetKafkaConnectorOutputArgs {
+    /**
+     * The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+     */
     connectorName: pulumi.Input<string>;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: pulumi.Input<string>;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: pulumi.Input<string>;
 }

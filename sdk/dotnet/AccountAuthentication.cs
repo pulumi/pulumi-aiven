@@ -19,7 +19,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/accountAuthentication:AccountAuthentication")]
-    public partial class AccountAuthentication : Pulumi.CustomResource
+    public partial class AccountAuthentication : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The unique id of the account.
@@ -70,10 +70,28 @@ namespace Pulumi.Aiven
         public Output<string?> SamlCertificate { get; private set; } = null!;
 
         /// <summary>
+        /// Digest algorithm. This is an advanced option that typically does not need to be set.
+        /// </summary>
+        [Output("samlDigestAlgorithm")]
+        public Output<string?> SamlDigestAlgorithm { get; private set; } = null!;
+
+        /// <summary>
         /// SAML Entity id
         /// </summary>
         [Output("samlEntityId")]
         public Output<string?> SamlEntityId { get; private set; } = null!;
+
+        /// <summary>
+        /// Map IdP fields
+        /// </summary>
+        [Output("samlFieldMapping")]
+        public Output<Outputs.AccountAuthenticationSamlFieldMapping?> SamlFieldMapping { get; private set; } = null!;
+
+        /// <summary>
+        /// Set to 'true' to enable IdP initiated login
+        /// </summary>
+        [Output("samlIdpLoginAllowed")]
+        public Output<bool?> SamlIdpLoginAllowed { get; private set; } = null!;
 
         /// <summary>
         /// SAML Idp URL
@@ -86,6 +104,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("samlMetadataUrl")]
         public Output<string> SamlMetadataUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Signature algorithm. This is an advanced option that typically does not need to be set.
+        /// </summary>
+        [Output("samlSignatureAlgorithm")]
+        public Output<string?> SamlSignatureAlgorithm { get; private set; } = null!;
+
+        /// <summary>
+        /// SAML server variant
+        /// </summary>
+        [Output("samlVariant")]
+        public Output<string?> SamlVariant { get; private set; } = null!;
 
         /// <summary>
         /// The account authentication type. The possible values are `internal` and `saml`.
@@ -143,7 +173,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class AccountAuthenticationArgs : Pulumi.ResourceArgs
+    public sealed class AccountAuthenticationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique id of the account.
@@ -176,16 +206,46 @@ namespace Pulumi.Aiven
         public Input<string>? SamlCertificate { get; set; }
 
         /// <summary>
+        /// Digest algorithm. This is an advanced option that typically does not need to be set.
+        /// </summary>
+        [Input("samlDigestAlgorithm")]
+        public Input<string>? SamlDigestAlgorithm { get; set; }
+
+        /// <summary>
         /// SAML Entity id
         /// </summary>
         [Input("samlEntityId")]
         public Input<string>? SamlEntityId { get; set; }
 
         /// <summary>
+        /// Map IdP fields
+        /// </summary>
+        [Input("samlFieldMapping")]
+        public Input<Inputs.AccountAuthenticationSamlFieldMappingArgs>? SamlFieldMapping { get; set; }
+
+        /// <summary>
+        /// Set to 'true' to enable IdP initiated login
+        /// </summary>
+        [Input("samlIdpLoginAllowed")]
+        public Input<bool>? SamlIdpLoginAllowed { get; set; }
+
+        /// <summary>
         /// SAML Idp URL
         /// </summary>
         [Input("samlIdpUrl")]
         public Input<string>? SamlIdpUrl { get; set; }
+
+        /// <summary>
+        /// Signature algorithm. This is an advanced option that typically does not need to be set.
+        /// </summary>
+        [Input("samlSignatureAlgorithm")]
+        public Input<string>? SamlSignatureAlgorithm { get; set; }
+
+        /// <summary>
+        /// SAML server variant
+        /// </summary>
+        [Input("samlVariant")]
+        public Input<string>? SamlVariant { get; set; }
 
         /// <summary>
         /// The account authentication type. The possible values are `internal` and `saml`.
@@ -196,9 +256,10 @@ namespace Pulumi.Aiven
         public AccountAuthenticationArgs()
         {
         }
+        public static new AccountAuthenticationArgs Empty => new AccountAuthenticationArgs();
     }
 
-    public sealed class AccountAuthenticationState : Pulumi.ResourceArgs
+    public sealed class AccountAuthenticationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique id of the account.
@@ -249,10 +310,28 @@ namespace Pulumi.Aiven
         public Input<string>? SamlCertificate { get; set; }
 
         /// <summary>
+        /// Digest algorithm. This is an advanced option that typically does not need to be set.
+        /// </summary>
+        [Input("samlDigestAlgorithm")]
+        public Input<string>? SamlDigestAlgorithm { get; set; }
+
+        /// <summary>
         /// SAML Entity id
         /// </summary>
         [Input("samlEntityId")]
         public Input<string>? SamlEntityId { get; set; }
+
+        /// <summary>
+        /// Map IdP fields
+        /// </summary>
+        [Input("samlFieldMapping")]
+        public Input<Inputs.AccountAuthenticationSamlFieldMappingGetArgs>? SamlFieldMapping { get; set; }
+
+        /// <summary>
+        /// Set to 'true' to enable IdP initiated login
+        /// </summary>
+        [Input("samlIdpLoginAllowed")]
+        public Input<bool>? SamlIdpLoginAllowed { get; set; }
 
         /// <summary>
         /// SAML Idp URL
@@ -265,6 +344,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("samlMetadataUrl")]
         public Input<string>? SamlMetadataUrl { get; set; }
+
+        /// <summary>
+        /// Signature algorithm. This is an advanced option that typically does not need to be set.
+        /// </summary>
+        [Input("samlSignatureAlgorithm")]
+        public Input<string>? SamlSignatureAlgorithm { get; set; }
+
+        /// <summary>
+        /// SAML server variant
+        /// </summary>
+        [Input("samlVariant")]
+        public Input<string>? SamlVariant { get; set; }
 
         /// <summary>
         /// The account authentication type. The possible values are `internal` and `saml`.
@@ -281,5 +372,6 @@ namespace Pulumi.Aiven
         public AccountAuthenticationState()
         {
         }
+        public static new AccountAuthenticationState Empty => new AccountAuthenticationState();
     }
 }

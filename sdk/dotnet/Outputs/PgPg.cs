@@ -13,13 +13,41 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class PgPg
     {
+        /// <summary>
+        /// Primary PostgreSQL database name
+        /// </summary>
         public readonly string? Dbname;
+        /// <summary>
+        /// PostgreSQL master node host IP or name
+        /// </summary>
         public readonly string? Host;
+        /// <summary>
+        /// Connection limit
+        /// </summary>
+        public readonly int? MaxConnections;
+        /// <summary>
+        /// PostgreSQL admin user password
+        /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// PostgreSQL port
+        /// </summary>
         public readonly int? Port;
+        /// <summary>
+        /// PostgreSQL replica URI for services with a replica
+        /// </summary>
         public readonly string? ReplicaUri;
+        /// <summary>
+        /// PostgreSQL sslmode setting (currently always "require")
+        /// </summary>
         public readonly string? Sslmode;
+        /// <summary>
+        /// PostgreSQL master connection URI
+        /// </summary>
         public readonly string? Uri;
+        /// <summary>
+        /// PostgreSQL admin user name
+        /// </summary>
         public readonly string? User;
 
         [OutputConstructor]
@@ -27,6 +55,8 @@ namespace Pulumi.Aiven.Outputs
             string? dbname,
 
             string? host,
+
+            int? maxConnections,
 
             string? password,
 
@@ -42,6 +72,7 @@ namespace Pulumi.Aiven.Outputs
         {
             Dbname = dbname;
             Host = host;
+            MaxConnections = maxConnections;
             Password = password;
             Port = port;
             ReplicaUri = replicaUri;

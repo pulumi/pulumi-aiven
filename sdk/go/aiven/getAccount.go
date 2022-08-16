@@ -18,21 +18,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupAccount(ctx, &GetAccountArgs{
-// 			Name: "<ACCOUNT_NAME>",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupAccount(ctx, &GetAccountArgs{
+//				Name: "<ACCOUNT_NAME>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
@@ -45,20 +48,28 @@ func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getAccount.
 type LookupAccountArgs struct {
+	// Account name
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getAccount.
 type LookupAccountResult struct {
-	AccountId  string `pulumi:"accountId"`
+	// Account id
+	AccountId string `pulumi:"accountId"`
+	// Time of creation
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string `pulumi:"id"`
-	Name                  string `pulumi:"name"`
-	OwnerTeamId           string `pulumi:"ownerTeamId"`
+	Id string `pulumi:"id"`
+	// Account name
+	Name string `pulumi:"name"`
+	// Owner team id
+	OwnerTeamId string `pulumi:"ownerTeamId"`
+	// Billing group id
 	PrimaryBillingGroupId string `pulumi:"primaryBillingGroupId"`
-	TenantId              string `pulumi:"tenantId"`
-	UpdateTime            string `pulumi:"updateTime"`
+	// Tenant id
+	TenantId string `pulumi:"tenantId"`
+	// Time of last update
+	UpdateTime string `pulumi:"updateTime"`
 }
 
 func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
@@ -76,6 +87,7 @@ func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts
 
 // A collection of arguments for invoking getAccount.
 type LookupAccountOutputArgs struct {
+	// Account name
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -98,10 +110,12 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx co
 	return o
 }
 
+// Account id
 func (o LookupAccountResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Time of creation
 func (o LookupAccountResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -111,22 +125,27 @@ func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Account name
 func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Owner team id
 func (o LookupAccountResultOutput) OwnerTeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.OwnerTeamId }).(pulumi.StringOutput)
 }
 
+// Billing group id
 func (o LookupAccountResultOutput) PrimaryBillingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.PrimaryBillingGroupId }).(pulumi.StringOutput)
 }
 
+// Tenant id
 func (o LookupAccountResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+// Time of last update
 func (o LookupAccountResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

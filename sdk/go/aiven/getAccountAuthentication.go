@@ -22,27 +22,52 @@ func LookupAccountAuthentication(ctx *pulumi.Context, args *LookupAccountAuthent
 
 // A collection of arguments for invoking getAccountAuthentication.
 type LookupAccountAuthenticationArgs struct {
+	// The unique id of the account.
 	AccountId string `pulumi:"accountId"`
-	Name      string `pulumi:"name"`
+	// The name of the account authentication.
+	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getAccountAuthentication.
 type LookupAccountAuthenticationResult struct {
-	AccountId        string `pulumi:"accountId"`
+	// The unique id of the account.
+	AccountId string `pulumi:"accountId"`
+	// Account authentication id
 	AuthenticationId string `pulumi:"authenticationId"`
-	AutoJoinTeamId   string `pulumi:"autoJoinTeamId"`
-	CreateTime       string `pulumi:"createTime"`
-	Enabled          bool   `pulumi:"enabled"`
+	// Team ID
+	AutoJoinTeamId string `pulumi:"autoJoinTeamId"`
+	// Time of creation
+	CreateTime string `pulumi:"createTime"`
+	// Status of account authentication method. The default value is `false`.
+	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string `pulumi:"id"`
-	Name            string `pulumi:"name"`
-	SamlAcsUrl      string `pulumi:"samlAcsUrl"`
+	Id string `pulumi:"id"`
+	// The name of the account authentication.
+	Name string `pulumi:"name"`
+	// SAML Assertion Consumer Service URL
+	SamlAcsUrl string `pulumi:"samlAcsUrl"`
+	// SAML Certificate
 	SamlCertificate string `pulumi:"samlCertificate"`
-	SamlEntityId    string `pulumi:"samlEntityId"`
-	SamlIdpUrl      string `pulumi:"samlIdpUrl"`
+	// Digest algorithm. This is an advanced option that typically does not need to be set.
+	SamlDigestAlgorithm string `pulumi:"samlDigestAlgorithm"`
+	// SAML Entity id
+	SamlEntityId string `pulumi:"samlEntityId"`
+	// Map IdP fields
+	SamlFieldMappings []GetAccountAuthenticationSamlFieldMapping `pulumi:"samlFieldMappings"`
+	// Set to 'true' to enable IdP initiated login
+	SamlIdpLoginAllowed bool `pulumi:"samlIdpLoginAllowed"`
+	// SAML Idp URL
+	SamlIdpUrl string `pulumi:"samlIdpUrl"`
+	// SAML Metadata URL
 	SamlMetadataUrl string `pulumi:"samlMetadataUrl"`
-	Type            string `pulumi:"type"`
-	UpdateTime      string `pulumi:"updateTime"`
+	// Signature algorithm. This is an advanced option that typically does not need to be set.
+	SamlSignatureAlgorithm string `pulumi:"samlSignatureAlgorithm"`
+	// SAML server variant
+	SamlVariant string `pulumi:"samlVariant"`
+	// The account authentication type. The possible values are `internal` and `saml`.
+	Type string `pulumi:"type"`
+	// Time of last update
+	UpdateTime string `pulumi:"updateTime"`
 }
 
 func LookupAccountAuthenticationOutput(ctx *pulumi.Context, args LookupAccountAuthenticationOutputArgs, opts ...pulumi.InvokeOption) LookupAccountAuthenticationResultOutput {
@@ -60,8 +85,10 @@ func LookupAccountAuthenticationOutput(ctx *pulumi.Context, args LookupAccountAu
 
 // A collection of arguments for invoking getAccountAuthentication.
 type LookupAccountAuthenticationOutputArgs struct {
+	// The unique id of the account.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	Name      pulumi.StringInput `pulumi:"name"`
+	// The name of the account authentication.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (LookupAccountAuthenticationOutputArgs) ElementType() reflect.Type {
@@ -83,22 +110,27 @@ func (o LookupAccountAuthenticationResultOutput) ToLookupAccountAuthenticationRe
 	return o
 }
 
+// The unique id of the account.
 func (o LookupAccountAuthenticationResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Account authentication id
 func (o LookupAccountAuthenticationResultOutput) AuthenticationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.AuthenticationId }).(pulumi.StringOutput)
 }
 
+// Team ID
 func (o LookupAccountAuthenticationResultOutput) AutoJoinTeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.AutoJoinTeamId }).(pulumi.StringOutput)
 }
 
+// Time of creation
 func (o LookupAccountAuthenticationResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Status of account authentication method. The default value is `false`.
 func (o LookupAccountAuthenticationResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -108,34 +140,69 @@ func (o LookupAccountAuthenticationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the account authentication.
 func (o LookupAccountAuthenticationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// SAML Assertion Consumer Service URL
 func (o LookupAccountAuthenticationResultOutput) SamlAcsUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlAcsUrl }).(pulumi.StringOutput)
 }
 
+// SAML Certificate
 func (o LookupAccountAuthenticationResultOutput) SamlCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlCertificate }).(pulumi.StringOutput)
 }
 
+// Digest algorithm. This is an advanced option that typically does not need to be set.
+func (o LookupAccountAuthenticationResultOutput) SamlDigestAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlDigestAlgorithm }).(pulumi.StringOutput)
+}
+
+// SAML Entity id
 func (o LookupAccountAuthenticationResultOutput) SamlEntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlEntityId }).(pulumi.StringOutput)
 }
 
+// Map IdP fields
+func (o LookupAccountAuthenticationResultOutput) SamlFieldMappings() GetAccountAuthenticationSamlFieldMappingArrayOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) []GetAccountAuthenticationSamlFieldMapping {
+		return v.SamlFieldMappings
+	}).(GetAccountAuthenticationSamlFieldMappingArrayOutput)
+}
+
+// Set to 'true' to enable IdP initiated login
+func (o LookupAccountAuthenticationResultOutput) SamlIdpLoginAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) bool { return v.SamlIdpLoginAllowed }).(pulumi.BoolOutput)
+}
+
+// SAML Idp URL
 func (o LookupAccountAuthenticationResultOutput) SamlIdpUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlIdpUrl }).(pulumi.StringOutput)
 }
 
+// SAML Metadata URL
 func (o LookupAccountAuthenticationResultOutput) SamlMetadataUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlMetadataUrl }).(pulumi.StringOutput)
 }
 
+// Signature algorithm. This is an advanced option that typically does not need to be set.
+func (o LookupAccountAuthenticationResultOutput) SamlSignatureAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlSignatureAlgorithm }).(pulumi.StringOutput)
+}
+
+// SAML server variant
+func (o LookupAccountAuthenticationResultOutput) SamlVariant() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.SamlVariant }).(pulumi.StringOutput)
+}
+
+// The account authentication type. The possible values are `internal` and `saml`.
 func (o LookupAccountAuthenticationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Time of last update
 func (o LookupAccountAuthenticationResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAuthenticationResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

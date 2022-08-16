@@ -19,22 +19,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var clickhouseDb = Aiven.GetClickhouseDatabase.Invoke(new()
         ///     {
-        ///         var clickhouseDb = Output.Create(Aiven.GetClickhouseDatabase.InvokeAsync(new Aiven.GetClickhouseDatabaseArgs
-        ///         {
-        ///             Project = aiven_clickhouse.Ch.Project,
-        ///             ServiceName = aiven_clickhouse.Ch.Service_name,
-        ///             Name = "my-ch-db",
-        ///         }));
-        ///     }
+        ///         Project = aiven_clickhouse.Ch.Project,
+        ///         ServiceName = aiven_clickhouse.Ch.Service_name,
+        ///         Name = "my-ch-db",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -50,22 +48,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var clickhouseDb = Aiven.GetClickhouseDatabase.Invoke(new()
         ///     {
-        ///         var clickhouseDb = Output.Create(Aiven.GetClickhouseDatabase.InvokeAsync(new Aiven.GetClickhouseDatabaseArgs
-        ///         {
-        ///             Project = aiven_clickhouse.Ch.Project,
-        ///             ServiceName = aiven_clickhouse.Ch.Service_name,
-        ///             Name = "my-ch-db",
-        ///         }));
-        ///     }
+        ///         Project = aiven_clickhouse.Ch.Project,
+        ///         ServiceName = aiven_clickhouse.Ch.Service_name,
+        ///         Name = "my-ch-db",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,36 +71,56 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetClickhouseDatabaseArgs : Pulumi.InvokeArgs
+    public sealed class GetClickhouseDatabaseArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
         public GetClickhouseDatabaseArgs()
         {
         }
+        public static new GetClickhouseDatabaseArgs Empty => new GetClickhouseDatabaseArgs();
     }
 
-    public sealed class GetClickhouseDatabaseInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClickhouseDatabaseInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         public GetClickhouseDatabaseInvokeArgs()
         {
         }
+        public static new GetClickhouseDatabaseInvokeArgs Empty => new GetClickhouseDatabaseInvokeArgs();
     }
 
 
@@ -115,8 +131,17 @@ namespace Pulumi.Aiven
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
         public readonly bool TerminationProtection;
 

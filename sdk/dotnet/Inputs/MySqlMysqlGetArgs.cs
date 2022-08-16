@@ -10,10 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class MySqlMysqlGetArgs : Pulumi.ResourceArgs
+    public sealed class MySqlMysqlGetArgs : global::Pulumi.ResourceArgs
     {
         public MySqlMysqlGetArgs()
         {
         }
+        public static new MySqlMysqlGetArgs Empty => new MySqlMysqlGetArgs();
     }
 }

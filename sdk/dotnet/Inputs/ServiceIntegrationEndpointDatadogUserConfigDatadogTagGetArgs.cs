@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationEndpointDatadogUserConfigDatadogTagGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationEndpointDatadogUserConfigDatadogTagGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Aiven.Inputs
         public ServiceIntegrationEndpointDatadogUserConfigDatadogTagGetArgs()
         {
         }
+        public static new ServiceIntegrationEndpointDatadogUserConfigDatadogTagGetArgs Empty => new ServiceIntegrationEndpointDatadogUserConfigDatadogTagGetArgs();
     }
 }

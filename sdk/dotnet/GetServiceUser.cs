@@ -19,22 +19,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myserviceuser = Aiven.GetServiceUser.Invoke(new()
         ///     {
-        ///         var myserviceuser = Output.Create(Aiven.GetServiceUser.InvokeAsync(new Aiven.GetServiceUserArgs
-        ///         {
-        ///             Project = aiven_project.Myproject.Project,
-        ///             ServiceName = aiven_service.Myservice.Service_name,
-        ///             Username = "&lt;USERNAME&gt;",
-        ///         }));
-        ///     }
+        ///         Project = aiven_project.Myproject.Project,
+        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         Username = "&lt;USERNAME&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -50,22 +48,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myserviceuser = Aiven.GetServiceUser.Invoke(new()
         ///     {
-        ///         var myserviceuser = Output.Create(Aiven.GetServiceUser.InvokeAsync(new Aiven.GetServiceUserArgs
-        ///         {
-        ///             Project = aiven_project.Myproject.Project,
-        ///             ServiceName = aiven_service.Myservice.Service_name,
-        ///             Username = "&lt;USERNAME&gt;",
-        ///         }));
-        ///     }
+        ///         Project = aiven_project.Myproject.Project,
+        ///         ServiceName = aiven_service.Myservice.Service_name,
+        ///         Username = "&lt;USERNAME&gt;",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,58 +71,117 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetServiceUserArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceUserArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
 
         public GetServiceUserArgs()
         {
         }
+        public static new GetServiceUserArgs Empty => new GetServiceUserArgs();
     }
 
-    public sealed class GetServiceUserInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
         public GetServiceUserInvokeArgs()
         {
         }
+        public static new GetServiceUserInvokeArgs Empty => new GetServiceUserInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetServiceUserResult
     {
+        /// <summary>
+        /// Access certificate for the user if applicable for the service in question
+        /// </summary>
         public readonly string AccessCert;
+        /// <summary>
+        /// Access certificate key for the user if applicable for the service in question
+        /// </summary>
         public readonly string AccessKey;
+        /// <summary>
+        /// Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+        /// </summary>
         public readonly string Authentication;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The password of the service user ( not applicable for all services ).
+        /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// Postgres specific field, defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly bool PgAllowReplication;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Redis specific field, defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly ImmutableArray<string> RedisAclCategories;
+        /// <summary>
+        /// Redis specific field, defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly ImmutableArray<string> RedisAclChannels;
+        /// <summary>
+        /// Redis specific field, defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly ImmutableArray<string> RedisAclCommands;
+        /// <summary>
+        /// Redis specific field, defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly ImmutableArray<string> RedisAclKeys;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Type of the user account. Tells wether the user is the primary account or a regular account.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The actual name of the service user. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

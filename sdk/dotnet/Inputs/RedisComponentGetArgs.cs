@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class RedisComponentGetArgs : Pulumi.ResourceArgs
+    public sealed class RedisComponentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("component")]
         public Input<string>? Component { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Aiven.Inputs
         public RedisComponentGetArgs()
         {
         }
+        public static new RedisComponentGetArgs Empty => new RedisComponentGetArgs();
     }
 }

@@ -15,27 +15,25 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new Aiven.MysqlUser("foo", new()
     ///     {
-    ///         var foo = new Aiven.MysqlUser("foo", new Aiven.MysqlUserArgs
-    ///         {
-    ///             ServiceName = aiven_mysql.Bar.Service_name,
-    ///             Project = "my-project",
-    ///             Username = "user-1",
-    ///             Password = "Test$1234",
-    ///         });
-    ///     }
+    ///         ServiceName = aiven_mysql.Bar.Service_name,
+    ///         Project = "my-project",
+    ///         Username = "user-1",
+    ///         Password = "Test$1234",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/mysqlUser:MysqlUser")]
-    public partial class MysqlUser : Pulumi.CustomResource
+    public partial class MysqlUser : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access certificate for the user
@@ -62,15 +60,13 @@ namespace Pulumi.Aiven
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -82,8 +78,7 @@ namespace Pulumi.Aiven
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This
-        /// property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -132,7 +127,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class MysqlUserArgs : Pulumi.ResourceArgs
+    public sealed class MysqlUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
@@ -147,22 +142,19 @@ namespace Pulumi.Aiven
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This
-        /// property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -170,9 +162,10 @@ namespace Pulumi.Aiven
         public MysqlUserArgs()
         {
         }
+        public static new MysqlUserArgs Empty => new MysqlUserArgs();
     }
 
-    public sealed class MysqlUserState : Pulumi.ResourceArgs
+    public sealed class MysqlUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access certificate for the user
@@ -199,15 +192,13 @@ namespace Pulumi.Aiven
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -219,8 +210,7 @@ namespace Pulumi.Aiven
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This
-        /// property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -228,5 +218,6 @@ namespace Pulumi.Aiven
         public MysqlUserState()
         {
         }
+        public static new MysqlUserState Empty => new MysqlUserState();
     }
 }

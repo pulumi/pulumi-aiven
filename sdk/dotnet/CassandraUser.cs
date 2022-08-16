@@ -15,27 +15,25 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new Aiven.CassandraUser("foo", new()
     ///     {
-    ///         var foo = new Aiven.CassandraUser("foo", new Aiven.CassandraUserArgs
-    ///         {
-    ///             ServiceName = aiven_cassandra.Bar.Service_name,
-    ///             Project = "my-project",
-    ///             Username = "user-1",
-    ///             Password = "Test$1234",
-    ///         });
-    ///     }
+    ///         ServiceName = aiven_cassandra.Bar.Service_name,
+    ///         Project = "my-project",
+    ///         Username = "user-1",
+    ///         Password = "Test$1234",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/cassandraUser:CassandraUser")]
-    public partial class CassandraUser : Pulumi.CustomResource
+    public partial class CassandraUser : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access certificate for the user if applicable for the service in question
@@ -56,15 +54,13 @@ namespace Pulumi.Aiven
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -76,8 +72,7 @@ namespace Pulumi.Aiven
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This
-        /// property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -126,7 +121,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class CassandraUserArgs : Pulumi.ResourceArgs
+    public sealed class CassandraUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The password of the Cassandra User.
@@ -135,22 +130,19 @@ namespace Pulumi.Aiven
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This
-        /// property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -158,9 +150,10 @@ namespace Pulumi.Aiven
         public CassandraUserArgs()
         {
         }
+        public static new CassandraUserArgs Empty => new CassandraUserArgs();
     }
 
-    public sealed class CassandraUserState : Pulumi.ResourceArgs
+    public sealed class CassandraUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access certificate for the user if applicable for the service in question
@@ -181,15 +174,13 @@ namespace Pulumi.Aiven
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -201,8 +192,7 @@ namespace Pulumi.Aiven
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This
-        /// property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -210,5 +200,6 @@ namespace Pulumi.Aiven
         public CassandraUserState()
         {
         }
+        public static new CassandraUserState Empty => new CassandraUserState();
     }
 }

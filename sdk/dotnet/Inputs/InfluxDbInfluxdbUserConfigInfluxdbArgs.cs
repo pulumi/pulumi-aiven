@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class InfluxDbInfluxdbUserConfigInfluxdbArgs : Pulumi.ResourceArgs
+    public sealed class InfluxDbInfluxdbUserConfigInfluxdbArgs : global::Pulumi.ResourceArgs
     {
         [Input("logQueriesAfter")]
         public Input<string>? LogQueriesAfter { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Aiven.Inputs
         public InfluxDbInfluxdbUserConfigInfluxdbArgs()
         {
         }
+        public static new InfluxDbInfluxdbUserConfigInfluxdbArgs Empty => new InfluxDbInfluxdbUserConfigInfluxdbArgs();
     }
 }

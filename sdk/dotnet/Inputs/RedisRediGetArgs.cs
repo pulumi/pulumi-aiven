@@ -10,10 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class RedisRediGetArgs : Pulumi.ResourceArgs
+    public sealed class RedisRediGetArgs : global::Pulumi.ResourceArgs
     {
         public RedisRediGetArgs()
         {
         }
+        public static new RedisRediGetArgs Empty => new RedisRediGetArgs();
     }
 }

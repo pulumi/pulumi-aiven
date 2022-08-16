@@ -25,52 +25,125 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetAccountAuthenticationArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountAuthenticationArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The unique id of the account.
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the account authentication.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         public GetAccountAuthenticationArgs()
         {
         }
+        public static new GetAccountAuthenticationArgs Empty => new GetAccountAuthenticationArgs();
     }
 
-    public sealed class GetAccountAuthenticationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountAuthenticationInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The unique id of the account.
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the account authentication.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         public GetAccountAuthenticationInvokeArgs()
         {
         }
+        public static new GetAccountAuthenticationInvokeArgs Empty => new GetAccountAuthenticationInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetAccountAuthenticationResult
     {
+        /// <summary>
+        /// The unique id of the account.
+        /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// Account authentication id
+        /// </summary>
         public readonly string AuthenticationId;
+        /// <summary>
+        /// Team ID
+        /// </summary>
         public readonly string AutoJoinTeamId;
+        /// <summary>
+        /// Time of creation
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// Status of account authentication method. The default value is `false`.
+        /// </summary>
         public readonly bool Enabled;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the account authentication.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// SAML Assertion Consumer Service URL
+        /// </summary>
         public readonly string SamlAcsUrl;
+        /// <summary>
+        /// SAML Certificate
+        /// </summary>
         public readonly string SamlCertificate;
+        /// <summary>
+        /// Digest algorithm. This is an advanced option that typically does not need to be set.
+        /// </summary>
+        public readonly string SamlDigestAlgorithm;
+        /// <summary>
+        /// SAML Entity id
+        /// </summary>
         public readonly string SamlEntityId;
+        /// <summary>
+        /// Map IdP fields
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAccountAuthenticationSamlFieldMappingResult> SamlFieldMappings;
+        /// <summary>
+        /// Set to 'true' to enable IdP initiated login
+        /// </summary>
+        public readonly bool SamlIdpLoginAllowed;
+        /// <summary>
+        /// SAML Idp URL
+        /// </summary>
         public readonly string SamlIdpUrl;
+        /// <summary>
+        /// SAML Metadata URL
+        /// </summary>
         public readonly string SamlMetadataUrl;
+        /// <summary>
+        /// Signature algorithm. This is an advanced option that typically does not need to be set.
+        /// </summary>
+        public readonly string SamlSignatureAlgorithm;
+        /// <summary>
+        /// SAML server variant
+        /// </summary>
+        public readonly string SamlVariant;
+        /// <summary>
+        /// The account authentication type. The possible values are `internal` and `saml`.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Time of last update
+        /// </summary>
         public readonly string UpdateTime;
 
         [OutputConstructor]
@@ -93,11 +166,21 @@ namespace Pulumi.Aiven
 
             string samlCertificate,
 
+            string samlDigestAlgorithm,
+
             string samlEntityId,
+
+            ImmutableArray<Outputs.GetAccountAuthenticationSamlFieldMappingResult> samlFieldMappings,
+
+            bool samlIdpLoginAllowed,
 
             string samlIdpUrl,
 
             string samlMetadataUrl,
+
+            string samlSignatureAlgorithm,
+
+            string samlVariant,
 
             string type,
 
@@ -112,9 +195,14 @@ namespace Pulumi.Aiven
             Name = name;
             SamlAcsUrl = samlAcsUrl;
             SamlCertificate = samlCertificate;
+            SamlDigestAlgorithm = samlDigestAlgorithm;
             SamlEntityId = samlEntityId;
+            SamlFieldMappings = samlFieldMappings;
+            SamlIdpLoginAllowed = samlIdpLoginAllowed;
             SamlIdpUrl = samlIdpUrl;
             SamlMetadataUrl = samlMetadataUrl;
+            SamlSignatureAlgorithm = samlSignatureAlgorithm;
+            SamlVariant = samlVariant;
             Type = type;
             UpdateTime = updateTime;
         }

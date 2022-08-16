@@ -15,26 +15,24 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mytestpool = new Aiven.ConnectionPool("mytestpool", new()
     ///     {
-    ///         var mytestpool = new Aiven.ConnectionPool("mytestpool", new Aiven.ConnectionPoolArgs
-    ///         {
-    ///             Project = aiven_project.Myproject.Project,
-    ///             ServiceName = aiven_service.Myservice.Service_name,
-    ///             DatabaseName = aiven_database.Mydatabase.Database_name,
-    ///             PoolMode = "transaction",
-    ///             PoolName = "mypool",
-    ///             PoolSize = 10,
-    ///             Username = aiven_service_user.Myserviceuser.Username,
-    ///         });
-    ///     }
+    ///         Project = aiven_project.Myproject.Project,
+    ///         ServiceName = aiven_service.Myservice.Service_name,
+    ///         DatabaseName = aiven_database.Mydatabase.Database_name,
+    ///         PoolMode = "transaction",
+    ///         PoolName = "mypool",
+    ///         PoolSize = 10,
+    ///         Username = aiven_service_user.Myserviceuser.Username,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/connectionPool:ConnectionPool")]
-    public partial class ConnectionPool : Pulumi.CustomResource
+    public partial class ConnectionPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The URI for connecting to the pool
@@ -53,15 +51,13 @@ namespace Pulumi.Aiven
         public Output<string> ConnectionUri { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("databaseName")]
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
-        /// `transaction`.
+        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         /// </summary>
         [Output("poolMode")]
         public Output<string?> PoolMode { get; private set; } = null!;
@@ -73,29 +69,25 @@ namespace Pulumi.Aiven
         public Output<string> PoolName { get; private set; } = null!;
 
         /// <summary>
-        /// The number of connections the pool may create towards the backend server. This does not affect the number of incoming
-        /// connections, which is always a much larger number. The default value is `10`.
+        /// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
         /// </summary>
         [Output("poolSize")]
         public Output<int?> PoolSize { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service user used to connect to the database. To set up proper dependencies please refer to this
-        /// variable as a reference.
+        /// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
@@ -144,18 +136,16 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class ConnectionPoolArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
-        /// `transaction`.
+        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         /// </summary>
         [Input("poolMode")]
         public Input<string>? PoolMode { get; set; }
@@ -167,29 +157,25 @@ namespace Pulumi.Aiven
         public Input<string> PoolName { get; set; } = null!;
 
         /// <summary>
-        /// The number of connections the pool may create towards the backend server. This does not affect the number of incoming
-        /// connections, which is always a much larger number. The default value is `10`.
+        /// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
         /// </summary>
         [Input("poolSize")]
         public Input<int>? PoolSize { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service user used to connect to the database. To set up proper dependencies please refer to this
-        /// variable as a reference.
+        /// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -197,9 +183,10 @@ namespace Pulumi.Aiven
         public ConnectionPoolArgs()
         {
         }
+        public static new ConnectionPoolArgs Empty => new ConnectionPoolArgs();
     }
 
-    public sealed class ConnectionPoolState : Pulumi.ResourceArgs
+    public sealed class ConnectionPoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URI for connecting to the pool
@@ -208,15 +195,13 @@ namespace Pulumi.Aiven
         public Input<string>? ConnectionUri { get; set; }
 
         /// <summary>
-        /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
-        /// `transaction`.
+        /// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         /// </summary>
         [Input("poolMode")]
         public Input<string>? PoolMode { get; set; }
@@ -228,29 +213,25 @@ namespace Pulumi.Aiven
         public Input<string>? PoolName { get; set; }
 
         /// <summary>
-        /// The number of connections the pool may create towards the backend server. This does not affect the number of incoming
-        /// connections, which is always a much larger number. The default value is `10`.
+        /// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
         /// </summary>
         [Input("poolSize")]
         public Input<int>? PoolSize { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The name of the service user used to connect to the database. To set up proper dependencies please refer to this
-        /// variable as a reference.
+        /// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -258,5 +239,6 @@ namespace Pulumi.Aiven
         public ConnectionPoolState()
         {
         }
+        public static new ConnectionPoolState Empty => new ConnectionPoolState();
     }
 }

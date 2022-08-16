@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class M3DbM3dbUserConfigNamespaceArgs : Pulumi.ResourceArgs
+    public sealed class M3DbM3dbUserConfigNamespaceArgs : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Aiven.Inputs
         public M3DbM3dbUserConfigNamespaceArgs()
         {
         }
+        public static new M3DbM3dbUserConfigNamespaceArgs Empty => new M3DbM3dbUserConfigNamespaceArgs();
     }
 }

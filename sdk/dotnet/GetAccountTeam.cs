@@ -25,44 +25,73 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetAccountTeamArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountTeamArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The unique account id
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// The account team name
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         public GetAccountTeamArgs()
         {
         }
+        public static new GetAccountTeamArgs Empty => new GetAccountTeamArgs();
     }
 
-    public sealed class GetAccountTeamInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountTeamInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The unique account id
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// The account team name
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         public GetAccountTeamInvokeArgs()
         {
         }
+        public static new GetAccountTeamInvokeArgs Empty => new GetAccountTeamInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetAccountTeamResult
     {
+        /// <summary>
+        /// The unique account id
+        /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// Time of creation
+        /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The account team name
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The auto-generated unique account team id
+        /// </summary>
         public readonly string TeamId;
+        /// <summary>
+        /// Time of last update
+        /// </summary>
         public readonly string UpdateTime;
 
         [OutputConstructor]

@@ -18,35 +18,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bybg1, err := aiven.NewBillingGroup(ctx, "bybg1", &aiven.BillingGroupArgs{
-// 			BillingCurrency: pulumi.String("USD"),
-// 			VatId:           pulumi.String("123ABC"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = aiven.NewProject(ctx, "pr1", &aiven.ProjectArgs{
-// 			Project:      pulumi.String("pr1"),
-// 			BillingGroup: bybg1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bybg1, err := aiven.NewBillingGroup(ctx, "bybg1", &aiven.BillingGroupArgs{
+//				BillingCurrency: pulumi.String("USD"),
+//				VatId:           pulumi.String("123ABC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewProject(ctx, "pr1", &aiven.ProjectArgs{
+//				Project:      pulumi.String("pr1"),
+//				BillingGroup: bybg1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+//
+//	$ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+//
 // ```
 type BillingGroup struct {
 	pulumi.CustomResourceState
@@ -264,7 +269,7 @@ func (i *BillingGroup) ToBillingGroupOutputWithContext(ctx context.Context) Bill
 // BillingGroupArrayInput is an input type that accepts BillingGroupArray and BillingGroupArrayOutput values.
 // You can construct a concrete instance of `BillingGroupArrayInput` via:
 //
-//          BillingGroupArray{ BillingGroupArgs{...} }
+//	BillingGroupArray{ BillingGroupArgs{...} }
 type BillingGroupArrayInput interface {
 	pulumi.Input
 
@@ -289,7 +294,7 @@ func (i BillingGroupArray) ToBillingGroupArrayOutputWithContext(ctx context.Cont
 // BillingGroupMapInput is an input type that accepts BillingGroupMap and BillingGroupMapOutput values.
 // You can construct a concrete instance of `BillingGroupMapInput` via:
 //
-//          BillingGroupMap{ "key": BillingGroupArgs{...} }
+//	BillingGroupMap{ "key": BillingGroupArgs{...} }
 type BillingGroupMapInput interface {
 	pulumi.Input
 

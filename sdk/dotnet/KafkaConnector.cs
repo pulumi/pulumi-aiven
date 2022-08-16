@@ -15,32 +15,30 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var kafka_os_con1 = new Aiven.KafkaConnector("kafka-os-con1", new()
     ///     {
-    ///         var kafka_os_con1 = new Aiven.KafkaConnector("kafka-os-con1", new Aiven.KafkaConnectorArgs
+    ///         Project = aiven_project.Kafka_con_project1.Project,
+    ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
+    ///         ConnectorName = "kafka-os-con1",
+    ///         Config = 
     ///         {
-    ///             Project = aiven_project.Kafka_con_project1.Project,
-    ///             ServiceName = aiven_kafka.Kafka_service1.Service_name,
-    ///             ConnectorName = "kafka-os-con1",
-    ///             Config = 
-    ///             {
-    ///                 { "topics", aiven_kafka_topic.Kafka_topic1.Topic_name },
-    ///                 { "connector.class", "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector" },
-    ///                 { "type.name", "os-connector" },
-    ///                 { "name", "kafka-os-con1" },
-    ///                 { "connection.url", aiven_elasticsearch.Os_service1.Service_uri },
-    ///                 { "connection.username", aiven_opensearch.Os_service1.Service_username },
-    ///                 { "connection.password", aiven_opensearch.Os_service1.Service_password },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "topics", aiven_kafka_topic.Kafka_topic1.Topic_name },
+    ///             { "connector.class", "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector" },
+    ///             { "type.name", "os-connector" },
+    ///             { "name", "kafka-os-con1" },
+    ///             { "connection.url", aiven_elasticsearch.Os_service1.Service_uri },
+    ///             { "connection.username", aiven_opensearch.Os_service1.Service_username },
+    ///             { "connection.password", aiven_opensearch.Os_service1.Service_password },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaConnector:KafkaConnector")]
-    public partial class KafkaConnector : Pulumi.CustomResource
+    public partial class KafkaConnector : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Kafka Connector configuration parameters.
@@ -101,15 +99,13 @@ namespace Pulumi.Aiven
         public Output<string> PluginVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -164,7 +160,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class KafkaConnectorArgs : Pulumi.ResourceArgs
+    public sealed class KafkaConnectorArgs : global::Pulumi.ResourceArgs
     {
         [Input("config", required: true)]
         private InputMap<string>? _config;
@@ -185,15 +181,13 @@ namespace Pulumi.Aiven
         public Input<string> ConnectorName { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -201,9 +195,10 @@ namespace Pulumi.Aiven
         public KafkaConnectorArgs()
         {
         }
+        public static new KafkaConnectorArgs Empty => new KafkaConnectorArgs();
     }
 
-    public sealed class KafkaConnectorState : Pulumi.ResourceArgs
+    public sealed class KafkaConnectorState : global::Pulumi.ResourceArgs
     {
         [Input("config")]
         private InputMap<string>? _config;
@@ -260,15 +255,13 @@ namespace Pulumi.Aiven
         public Input<string>? PluginVersion { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -288,5 +281,6 @@ namespace Pulumi.Aiven
         public KafkaConnectorState()
         {
         }
+        public static new KafkaConnectorState Empty => new KafkaConnectorState();
     }
 }

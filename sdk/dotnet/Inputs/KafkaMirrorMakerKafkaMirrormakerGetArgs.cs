@@ -10,10 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaMirrorMakerKafkaMirrormakerGetArgs : Pulumi.ResourceArgs
+    public sealed class KafkaMirrorMakerKafkaMirrormakerGetArgs : global::Pulumi.ResourceArgs
     {
         public KafkaMirrorMakerKafkaMirrormakerGetArgs()
         {
         }
+        public static new KafkaMirrorMakerKafkaMirrormakerGetArgs Empty => new KafkaMirrorMakerKafkaMirrormakerGetArgs();
     }
 }

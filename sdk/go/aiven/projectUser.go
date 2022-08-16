@@ -19,42 +19,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewProjectUser(ctx, "mytestuser", &aiven.ProjectUserArgs{
-// 			Project:    pulumi.Any(aiven_project.Myproject.Project),
-// 			Email:      pulumi.String("john.doe@example.com"),
-// 			MemberType: pulumi.String("admin"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewProjectUser(ctx, "mytestuser", &aiven.ProjectUserArgs{
+//				Project:    pulumi.Any(aiven_project.Myproject.Project),
+//				Email:      pulumi.String("john.doe@example.com"),
+//				MemberType: pulumi.String("admin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
+//
+//	$ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
+//
 // ```
 type ProjectUser struct {
 	pulumi.CustomResourceState
 
-	// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the
-	// target user and the actual membership is only created once the user accepts the invitation.
+	// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
 	Accepted pulumi.BoolOutput `pulumi:"accepted"`
 	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType pulumi.StringOutput `pulumi:"memberType"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
@@ -96,28 +99,24 @@ func GetProjectUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectUser resources.
 type projectUserState struct {
-	// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the
-	// target user and the actual membership is only created once the user accepts the invitation.
+	// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
 	Accepted *bool `pulumi:"accepted"`
 	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
 	Email *string `pulumi:"email"`
 	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType *string `pulumi:"memberType"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
 }
 
 type ProjectUserState struct {
-	// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the
-	// target user and the actual membership is only created once the user accepts the invitation.
+	// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
 	Accepted pulumi.BoolPtrInput
 	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
 	Email pulumi.StringPtrInput
 	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
 }
 
@@ -130,8 +129,7 @@ type projectUserArgs struct {
 	Email string `pulumi:"email"`
 	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType string `pulumi:"memberType"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
 }
 
@@ -141,8 +139,7 @@ type ProjectUserArgs struct {
 	Email pulumi.StringInput
 	// Project membership type. The possible values are `admin`, `developer` and `operator`.
 	MemberType pulumi.StringInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
 }
 
@@ -172,7 +169,7 @@ func (i *ProjectUser) ToProjectUserOutputWithContext(ctx context.Context) Projec
 // ProjectUserArrayInput is an input type that accepts ProjectUserArray and ProjectUserArrayOutput values.
 // You can construct a concrete instance of `ProjectUserArrayInput` via:
 //
-//          ProjectUserArray{ ProjectUserArgs{...} }
+//	ProjectUserArray{ ProjectUserArgs{...} }
 type ProjectUserArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +194,7 @@ func (i ProjectUserArray) ToProjectUserArrayOutputWithContext(ctx context.Contex
 // ProjectUserMapInput is an input type that accepts ProjectUserMap and ProjectUserMapOutput values.
 // You can construct a concrete instance of `ProjectUserMapInput` via:
 //
-//          ProjectUserMap{ "key": ProjectUserArgs{...} }
+//	ProjectUserMap{ "key": ProjectUserArgs{...} }
 type ProjectUserMapInput interface {
 	pulumi.Input
 
@@ -233,8 +230,7 @@ func (o ProjectUserOutput) ToProjectUserOutputWithContext(ctx context.Context) P
 	return o
 }
 
-// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the
-// target user and the actual membership is only created once the user accepts the invitation.
+// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
 func (o ProjectUserOutput) Accepted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectUser) pulumi.BoolOutput { return v.Accepted }).(pulumi.BoolOutput)
 }
@@ -249,8 +245,7 @@ func (o ProjectUserOutput) MemberType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectUser) pulumi.StringOutput { return v.MemberType }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ProjectUserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -15,25 +15,23 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new Aiven.AzureVpcPeeringConnection("foo", new()
     ///     {
-    ///         var foo = new Aiven.AzureVpcPeeringConnection("foo", new Aiven.AzureVpcPeeringConnectionArgs
-    ///         {
-    ///             VpcId = data.Aiven_project_vpc.Vpc.Id,
-    ///             AzureSubscriptionId = "xxxxxx",
-    ///             PeerResourceGroup = "my-pr1",
-    ///             VnetName = "my-vnet1",
-    ///             PeerAzureAppId = "xxxxxx",
-    ///             PeerAzureTenantId = "xxxxxx",
-    ///         });
-    ///     }
+    ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
+    ///         AzureSubscriptionId = "xxxxxx",
+    ///         PeerResourceGroup = "my-pr1",
+    ///         VnetName = "my-vnet1",
+    ///         PeerAzureAppId = "xxxxxx",
+    ///         PeerAzureTenantId = "xxxxxx",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection")]
-    public partial class AzureVpcPeeringConnection : Pulumi.CustomResource
+    public partial class AzureVpcPeeringConnection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -52,8 +50,7 @@ namespace Pulumi.Aiven
         public Output<string> AzureSubscriptionId { get; private set; } = null!;
 
         /// <summary>
-        /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-        /// changed, doing so forces recreation of the resource.
+        /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("peerAzureAppId")]
         public Output<string> PeerAzureAppId { get; private set; } = null!;
@@ -65,8 +62,7 @@ namespace Pulumi.Aiven
         public Output<string> PeerAzureTenantId { get; private set; } = null!;
 
         /// <summary>
-        /// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-        /// resource.
+        /// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("peerResourceGroup")]
         public Output<string> PeerResourceGroup { get; private set; } = null!;
@@ -145,7 +141,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class AzureVpcPeeringConnectionArgs : Pulumi.ResourceArgs
+    public sealed class AzureVpcPeeringConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -154,8 +150,7 @@ namespace Pulumi.Aiven
         public Input<string> AzureSubscriptionId { get; set; } = null!;
 
         /// <summary>
-        /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-        /// changed, doing so forces recreation of the resource.
+        /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerAzureAppId", required: true)]
         public Input<string> PeerAzureAppId { get; set; } = null!;
@@ -167,8 +162,7 @@ namespace Pulumi.Aiven
         public Input<string> PeerAzureTenantId { get; set; } = null!;
 
         /// <summary>
-        /// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-        /// resource.
+        /// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerResourceGroup", required: true)]
         public Input<string> PeerResourceGroup { get; set; } = null!;
@@ -188,9 +182,10 @@ namespace Pulumi.Aiven
         public AzureVpcPeeringConnectionArgs()
         {
         }
+        public static new AzureVpcPeeringConnectionArgs Empty => new AzureVpcPeeringConnectionArgs();
     }
 
-    public sealed class AzureVpcPeeringConnectionState : Pulumi.ResourceArgs
+    public sealed class AzureVpcPeeringConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -199,8 +194,7 @@ namespace Pulumi.Aiven
         public Input<string>? AzureSubscriptionId { get; set; }
 
         /// <summary>
-        /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be
-        /// changed, doing so forces recreation of the resource.
+        /// Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerAzureAppId")]
         public Input<string>? PeerAzureAppId { get; set; }
@@ -212,8 +206,7 @@ namespace Pulumi.Aiven
         public Input<string>? PeerAzureTenantId { get; set; }
 
         /// <summary>
-        /// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the
-        /// resource.
+        /// Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerResourceGroup")]
         public Input<string>? PeerResourceGroup { get; set; }
@@ -257,5 +250,6 @@ namespace Pulumi.Aiven
         public AzureVpcPeeringConnectionState()
         {
         }
+        public static new AzureVpcPeeringConnectionState Empty => new AzureVpcPeeringConnectionState();
     }
 }

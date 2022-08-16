@@ -23,7 +23,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/accountTeamProject:AccountTeamProject")]
-    public partial class AccountTeamProject : Pulumi.CustomResource
+    public partial class AccountTeamProject : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The unique account id
@@ -93,7 +93,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class AccountTeamProjectArgs : Pulumi.ResourceArgs
+    public sealed class AccountTeamProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique account id
@@ -122,9 +122,10 @@ namespace Pulumi.Aiven
         public AccountTeamProjectArgs()
         {
         }
+        public static new AccountTeamProjectArgs Empty => new AccountTeamProjectArgs();
     }
 
-    public sealed class AccountTeamProjectState : Pulumi.ResourceArgs
+    public sealed class AccountTeamProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique account id
@@ -153,5 +154,6 @@ namespace Pulumi.Aiven
         public AccountTeamProjectState()
         {
         }
+        public static new AccountTeamProjectState Empty => new AccountTeamProjectState();
     }
 }

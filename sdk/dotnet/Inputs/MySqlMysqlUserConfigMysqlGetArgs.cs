@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class MySqlMysqlUserConfigMysqlGetArgs : Pulumi.ResourceArgs
+    public sealed class MySqlMysqlUserConfigMysqlGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("connectTimeout")]
         public Input<string>? ConnectTimeout { get; set; }
@@ -23,6 +23,12 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("informationSchemaStatsExpiry")]
         public Input<string>? InformationSchemaStatsExpiry { get; set; }
+
+        [Input("innodbChangeBufferMaxSize")]
+        public Input<string>? InnodbChangeBufferMaxSize { get; set; }
+
+        [Input("innodbFlushNeighbors")]
+        public Input<string>? InnodbFlushNeighbors { get; set; }
 
         [Input("innodbFtMinTokenSize")]
         public Input<string>? InnodbFtMinTokenSize { get; set; }
@@ -42,8 +48,17 @@ namespace Pulumi.Aiven.Inputs
         [Input("innodbPrintAllDeadlocks")]
         public Input<string>? InnodbPrintAllDeadlocks { get; set; }
 
+        [Input("innodbReadIoThreads")]
+        public Input<string>? InnodbReadIoThreads { get; set; }
+
         [Input("innodbRollbackOnTimeout")]
         public Input<string>? InnodbRollbackOnTimeout { get; set; }
+
+        [Input("innodbThreadConcurrency")]
+        public Input<string>? InnodbThreadConcurrency { get; set; }
+
+        [Input("innodbWriteIoThreads")]
+        public Input<string>? InnodbWriteIoThreads { get; set; }
 
         [Input("interactiveTimeout")]
         public Input<string>? InteractiveTimeout { get; set; }
@@ -59,6 +74,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("maxHeapTableSize")]
         public Input<string>? MaxHeapTableSize { get; set; }
+
+        [Input("netBufferLength")]
+        public Input<string>? NetBufferLength { get; set; }
 
         [Input("netReadTimeout")]
         public Input<string>? NetReadTimeout { get; set; }
@@ -87,5 +105,6 @@ namespace Pulumi.Aiven.Inputs
         public MySqlMysqlUserConfigMysqlGetArgs()
         {
         }
+        public static new MySqlMysqlUserConfigMysqlGetArgs Empty => new MySqlMysqlUserConfigMysqlGetArgs();
     }
 }

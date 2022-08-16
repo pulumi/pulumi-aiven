@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaMirrorMakerComponentGetArgs : Pulumi.ResourceArgs
+    public sealed class KafkaMirrorMakerComponentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("component")]
         public Input<string>? Component { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Aiven.Inputs
         public KafkaMirrorMakerComponentGetArgs()
         {
         }
+        public static new KafkaMirrorMakerComponentGetArgs Empty => new KafkaMirrorMakerComponentGetArgs();
     }
 }

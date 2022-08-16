@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class MySqlMysqlUserConfigPublicAccessArgs : Pulumi.ResourceArgs
+    public sealed class MySqlMysqlUserConfigPublicAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// MySQL specific server provided values
+        /// </summary>
         [Input("mysql")]
         public Input<string>? Mysql { get; set; }
 
@@ -24,5 +27,6 @@ namespace Pulumi.Aiven.Inputs
         public MySqlMysqlUserConfigPublicAccessArgs()
         {
         }
+        public static new MySqlMysqlUserConfigPublicAccessArgs Empty => new MySqlMysqlUserConfigPublicAccessArgs();
     }
 }

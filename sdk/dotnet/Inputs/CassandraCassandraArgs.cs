@@ -10,10 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class CassandraCassandraArgs : Pulumi.ResourceArgs
+    public sealed class CassandraCassandraArgs : global::Pulumi.ResourceArgs
     {
         public CassandraCassandraArgs()
         {
         }
+        public static new CassandraCassandraArgs Empty => new CassandraCassandraArgs();
     }
 }

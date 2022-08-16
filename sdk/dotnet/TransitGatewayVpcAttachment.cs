@@ -15,27 +15,25 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var attachment = new Aiven.TransitGatewayVpcAttachment("attachment", new()
     ///     {
-    ///         var attachment = new Aiven.TransitGatewayVpcAttachment("attachment", new Aiven.TransitGatewayVpcAttachmentArgs
+    ///         VpcId = aiven_project_vpc.Bar.Id,
+    ///         PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
+    ///         PeerVpc = "google-project1",
+    ///         PeerRegion = "aws-eu-west-1",
+    ///         UserPeerNetworkCidrs = new[]
     ///         {
-    ///             VpcId = aiven_project_vpc.Bar.Id,
-    ///             PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
-    ///             PeerVpc = "google-project1",
-    ///             PeerRegion = "aws-eu-west-1",
-    ///             UserPeerNetworkCidrs = 
-    ///             {
-    ///                 "10.0.0.0/24",
-    ///             },
-    ///         });
-    ///     }
+    ///             "10.0.0.0/24",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,11 +43,10 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment")]
-    public partial class TransitGatewayVpcAttachment : Pulumi.CustomResource
+    public partial class TransitGatewayVpcAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the
-        /// resource.
+        /// AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("peerCloudAccount")]
         public Output<string> PeerCloudAccount { get; private set; } = null!;
@@ -91,8 +88,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> UserPeerNetworkCidrs { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference.
-        /// This property cannot be changed, doing so forces recreation of the resource.
+        /// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -141,11 +137,10 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class TransitGatewayVpcAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class TransitGatewayVpcAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the
-        /// resource.
+        /// AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerCloudAccount", required: true)]
         public Input<string> PeerCloudAccount { get; set; } = null!;
@@ -175,8 +170,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference.
-        /// This property cannot be changed, doing so forces recreation of the resource.
+        /// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -184,13 +178,13 @@ namespace Pulumi.Aiven
         public TransitGatewayVpcAttachmentArgs()
         {
         }
+        public static new TransitGatewayVpcAttachmentArgs Empty => new TransitGatewayVpcAttachmentArgs();
     }
 
-    public sealed class TransitGatewayVpcAttachmentState : Pulumi.ResourceArgs
+    public sealed class TransitGatewayVpcAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the
-        /// resource.
+        /// AWS account ID or GCP project ID of the peered VPC This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("peerCloudAccount")]
         public Input<string>? PeerCloudAccount { get; set; }
@@ -244,8 +238,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference.
-        /// This property cannot be changed, doing so forces recreation of the resource.
+        /// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -253,5 +246,6 @@ namespace Pulumi.Aiven
         public TransitGatewayVpcAttachmentState()
         {
         }
+        public static new TransitGatewayVpcAttachmentState Empty => new TransitGatewayVpcAttachmentState();
     }
 }

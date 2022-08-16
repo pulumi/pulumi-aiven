@@ -10,13 +10,226 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AccountAuthenticationSamlFieldMapping struct {
+	// Field name for user email
+	Email *string `pulumi:"email"`
+	// Field name for user's first name
+	FirstName *string `pulumi:"firstName"`
+	// Field name for user's identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
+	Identity *string `pulumi:"identity"`
+	// Field name for user's last name
+	LastName *string `pulumi:"lastName"`
+	// Field name for user's full name. If specified, first*name and last*name mappings are ignored
+	RealName *string `pulumi:"realName"`
+}
+
+// AccountAuthenticationSamlFieldMappingInput is an input type that accepts AccountAuthenticationSamlFieldMappingArgs and AccountAuthenticationSamlFieldMappingOutput values.
+// You can construct a concrete instance of `AccountAuthenticationSamlFieldMappingInput` via:
+//
+//	AccountAuthenticationSamlFieldMappingArgs{...}
+type AccountAuthenticationSamlFieldMappingInput interface {
+	pulumi.Input
+
+	ToAccountAuthenticationSamlFieldMappingOutput() AccountAuthenticationSamlFieldMappingOutput
+	ToAccountAuthenticationSamlFieldMappingOutputWithContext(context.Context) AccountAuthenticationSamlFieldMappingOutput
+}
+
+type AccountAuthenticationSamlFieldMappingArgs struct {
+	// Field name for user email
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// Field name for user's first name
+	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
+	// Field name for user's identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
+	Identity pulumi.StringPtrInput `pulumi:"identity"`
+	// Field name for user's last name
+	LastName pulumi.StringPtrInput `pulumi:"lastName"`
+	// Field name for user's full name. If specified, first*name and last*name mappings are ignored
+	RealName pulumi.StringPtrInput `pulumi:"realName"`
+}
+
+func (AccountAuthenticationSamlFieldMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (i AccountAuthenticationSamlFieldMappingArgs) ToAccountAuthenticationSamlFieldMappingOutput() AccountAuthenticationSamlFieldMappingOutput {
+	return i.ToAccountAuthenticationSamlFieldMappingOutputWithContext(context.Background())
+}
+
+func (i AccountAuthenticationSamlFieldMappingArgs) ToAccountAuthenticationSamlFieldMappingOutputWithContext(ctx context.Context) AccountAuthenticationSamlFieldMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationSamlFieldMappingOutput)
+}
+
+func (i AccountAuthenticationSamlFieldMappingArgs) ToAccountAuthenticationSamlFieldMappingPtrOutput() AccountAuthenticationSamlFieldMappingPtrOutput {
+	return i.ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(context.Background())
+}
+
+func (i AccountAuthenticationSamlFieldMappingArgs) ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(ctx context.Context) AccountAuthenticationSamlFieldMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationSamlFieldMappingOutput).ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(ctx)
+}
+
+// AccountAuthenticationSamlFieldMappingPtrInput is an input type that accepts AccountAuthenticationSamlFieldMappingArgs, AccountAuthenticationSamlFieldMappingPtr and AccountAuthenticationSamlFieldMappingPtrOutput values.
+// You can construct a concrete instance of `AccountAuthenticationSamlFieldMappingPtrInput` via:
+//
+//	        AccountAuthenticationSamlFieldMappingArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccountAuthenticationSamlFieldMappingPtrInput interface {
+	pulumi.Input
+
+	ToAccountAuthenticationSamlFieldMappingPtrOutput() AccountAuthenticationSamlFieldMappingPtrOutput
+	ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(context.Context) AccountAuthenticationSamlFieldMappingPtrOutput
+}
+
+type accountAuthenticationSamlFieldMappingPtrType AccountAuthenticationSamlFieldMappingArgs
+
+func AccountAuthenticationSamlFieldMappingPtr(v *AccountAuthenticationSamlFieldMappingArgs) AccountAuthenticationSamlFieldMappingPtrInput {
+	return (*accountAuthenticationSamlFieldMappingPtrType)(v)
+}
+
+func (*accountAuthenticationSamlFieldMappingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (i *accountAuthenticationSamlFieldMappingPtrType) ToAccountAuthenticationSamlFieldMappingPtrOutput() AccountAuthenticationSamlFieldMappingPtrOutput {
+	return i.ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(context.Background())
+}
+
+func (i *accountAuthenticationSamlFieldMappingPtrType) ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(ctx context.Context) AccountAuthenticationSamlFieldMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAuthenticationSamlFieldMappingPtrOutput)
+}
+
+type AccountAuthenticationSamlFieldMappingOutput struct{ *pulumi.OutputState }
+
+func (AccountAuthenticationSamlFieldMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (o AccountAuthenticationSamlFieldMappingOutput) ToAccountAuthenticationSamlFieldMappingOutput() AccountAuthenticationSamlFieldMappingOutput {
+	return o
+}
+
+func (o AccountAuthenticationSamlFieldMappingOutput) ToAccountAuthenticationSamlFieldMappingOutputWithContext(ctx context.Context) AccountAuthenticationSamlFieldMappingOutput {
+	return o
+}
+
+func (o AccountAuthenticationSamlFieldMappingOutput) ToAccountAuthenticationSamlFieldMappingPtrOutput() AccountAuthenticationSamlFieldMappingPtrOutput {
+	return o.ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(context.Background())
+}
+
+func (o AccountAuthenticationSamlFieldMappingOutput) ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(ctx context.Context) AccountAuthenticationSamlFieldMappingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountAuthenticationSamlFieldMapping) *AccountAuthenticationSamlFieldMapping {
+		return &v
+	}).(AccountAuthenticationSamlFieldMappingPtrOutput)
+}
+
+// Field name for user email
+func (o AccountAuthenticationSamlFieldMappingOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountAuthenticationSamlFieldMapping) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// Field name for user's first name
+func (o AccountAuthenticationSamlFieldMappingOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountAuthenticationSamlFieldMapping) *string { return v.FirstName }).(pulumi.StringPtrOutput)
+}
+
+// Field name for user's identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
+func (o AccountAuthenticationSamlFieldMappingOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountAuthenticationSamlFieldMapping) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+// Field name for user's last name
+func (o AccountAuthenticationSamlFieldMappingOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountAuthenticationSamlFieldMapping) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+// Field name for user's full name. If specified, first*name and last*name mappings are ignored
+func (o AccountAuthenticationSamlFieldMappingOutput) RealName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountAuthenticationSamlFieldMapping) *string { return v.RealName }).(pulumi.StringPtrOutput)
+}
+
+type AccountAuthenticationSamlFieldMappingPtrOutput struct{ *pulumi.OutputState }
+
+func (AccountAuthenticationSamlFieldMappingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) ToAccountAuthenticationSamlFieldMappingPtrOutput() AccountAuthenticationSamlFieldMappingPtrOutput {
+	return o
+}
+
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) ToAccountAuthenticationSamlFieldMappingPtrOutputWithContext(ctx context.Context) AccountAuthenticationSamlFieldMappingPtrOutput {
+	return o
+}
+
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) Elem() AccountAuthenticationSamlFieldMappingOutput {
+	return o.ApplyT(func(v *AccountAuthenticationSamlFieldMapping) AccountAuthenticationSamlFieldMapping {
+		if v != nil {
+			return *v
+		}
+		var ret AccountAuthenticationSamlFieldMapping
+		return ret
+	}).(AccountAuthenticationSamlFieldMappingOutput)
+}
+
+// Field name for user email
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthenticationSamlFieldMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field name for user's first name
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthenticationSamlFieldMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirstName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field name for user's identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthenticationSamlFieldMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field name for user's last name
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthenticationSamlFieldMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field name for user's full name. If specified, first*name and last*name mappings are ignored
+func (o AccountAuthenticationSamlFieldMappingPtrOutput) RealName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountAuthenticationSamlFieldMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RealName
+	}).(pulumi.StringPtrOutput)
+}
+
 type CassandraCassandra struct {
 }
 
 // CassandraCassandraInput is an input type that accepts CassandraCassandraArgs and CassandraCassandraOutput values.
 // You can construct a concrete instance of `CassandraCassandraInput` via:
 //
-//          CassandraCassandraArgs{...}
+//	CassandraCassandraArgs{...}
 type CassandraCassandraInput interface {
 	pulumi.Input
 
@@ -42,7 +255,7 @@ func (i CassandraCassandraArgs) ToCassandraCassandraOutputWithContext(ctx contex
 // CassandraCassandraArrayInput is an input type that accepts CassandraCassandraArray and CassandraCassandraArrayOutput values.
 // You can construct a concrete instance of `CassandraCassandraArrayInput` via:
 //
-//          CassandraCassandraArray{ CassandraCassandraArgs{...} }
+//	CassandraCassandraArray{ CassandraCassandraArgs{...} }
 type CassandraCassandraArrayInput interface {
 	pulumi.Input
 
@@ -99,21 +312,30 @@ func (o CassandraCassandraArrayOutput) Index(i pulumi.IntInput) CassandraCassand
 }
 
 type CassandraCassandraUserConfig struct {
-	Cassandra            *CassandraCassandraUserConfigCassandra     `pulumi:"cassandra"`
-	CassandraVersion     *string                                    `pulumi:"cassandraVersion"`
-	IpFilters            []string                                   `pulumi:"ipFilters"`
-	MigrateSstableloader *string                                    `pulumi:"migrateSstableloader"`
-	PrivateAccess        *CassandraCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
-	ProjectToForkFrom    *string                                    `pulumi:"projectToForkFrom"`
-	PublicAccess         *CassandraCassandraUserConfigPublicAccess  `pulumi:"publicAccess"`
-	ServiceToForkFrom    *string                                    `pulumi:"serviceToForkFrom"`
-	StaticIps            *string                                    `pulumi:"staticIps"`
+	// cassandra configuration values
+	Cassandra *CassandraCassandraUserConfigCassandra `pulumi:"cassandra"`
+	// Cassandra major version
+	CassandraVersion *string `pulumi:"cassandraVersion"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// Migration mode for the sstableloader utility
+	MigrateSstableloader *string `pulumi:"migrateSstableloader"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *CassandraCassandraUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *CassandraCassandraUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Static IP addresses
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // CassandraCassandraUserConfigInput is an input type that accepts CassandraCassandraUserConfigArgs and CassandraCassandraUserConfigOutput values.
 // You can construct a concrete instance of `CassandraCassandraUserConfigInput` via:
 //
-//          CassandraCassandraUserConfigArgs{...}
+//	CassandraCassandraUserConfigArgs{...}
 type CassandraCassandraUserConfigInput interface {
 	pulumi.Input
 
@@ -122,15 +344,24 @@ type CassandraCassandraUserConfigInput interface {
 }
 
 type CassandraCassandraUserConfigArgs struct {
-	Cassandra            CassandraCassandraUserConfigCassandraPtrInput     `pulumi:"cassandra"`
-	CassandraVersion     pulumi.StringPtrInput                             `pulumi:"cassandraVersion"`
-	IpFilters            pulumi.StringArrayInput                           `pulumi:"ipFilters"`
-	MigrateSstableloader pulumi.StringPtrInput                             `pulumi:"migrateSstableloader"`
-	PrivateAccess        CassandraCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	ProjectToForkFrom    pulumi.StringPtrInput                             `pulumi:"projectToForkFrom"`
-	PublicAccess         CassandraCassandraUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	ServiceToForkFrom    pulumi.StringPtrInput                             `pulumi:"serviceToForkFrom"`
-	StaticIps            pulumi.StringPtrInput                             `pulumi:"staticIps"`
+	// cassandra configuration values
+	Cassandra CassandraCassandraUserConfigCassandraPtrInput `pulumi:"cassandra"`
+	// Cassandra major version
+	CassandraVersion pulumi.StringPtrInput `pulumi:"cassandraVersion"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Migration mode for the sstableloader utility
+	MigrateSstableloader pulumi.StringPtrInput `pulumi:"migrateSstableloader"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess CassandraCassandraUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess CassandraCassandraUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Static IP addresses
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (CassandraCassandraUserConfigArgs) ElementType() reflect.Type {
@@ -156,11 +387,11 @@ func (i CassandraCassandraUserConfigArgs) ToCassandraCassandraUserConfigPtrOutpu
 // CassandraCassandraUserConfigPtrInput is an input type that accepts CassandraCassandraUserConfigArgs, CassandraCassandraUserConfigPtr and CassandraCassandraUserConfigPtrOutput values.
 // You can construct a concrete instance of `CassandraCassandraUserConfigPtrInput` via:
 //
-//          CassandraCassandraUserConfigArgs{...}
+//	        CassandraCassandraUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CassandraCassandraUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -210,40 +441,49 @@ func (o CassandraCassandraUserConfigOutput) ToCassandraCassandraUserConfigPtrOut
 	}).(CassandraCassandraUserConfigPtrOutput)
 }
 
+// cassandra configuration values
 func (o CassandraCassandraUserConfigOutput) Cassandra() CassandraCassandraUserConfigCassandraPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *CassandraCassandraUserConfigCassandra { return v.Cassandra }).(CassandraCassandraUserConfigCassandraPtrOutput)
 }
 
+// Cassandra major version
 func (o CassandraCassandraUserConfigOutput) CassandraVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.CassandraVersion }).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o CassandraCassandraUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Migration mode for the sstableloader utility
 func (o CassandraCassandraUserConfigOutput) MigrateSstableloader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.MigrateSstableloader }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o CassandraCassandraUserConfigOutput) PrivateAccess() CassandraCassandraUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *CassandraCassandraUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(CassandraCassandraUserConfigPrivateAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o CassandraCassandraUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o CassandraCassandraUserConfigOutput) PublicAccess() CassandraCassandraUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *CassandraCassandraUserConfigPublicAccess { return v.PublicAccess }).(CassandraCassandraUserConfigPublicAccessPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o CassandraCassandraUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o CassandraCassandraUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -272,6 +512,7 @@ func (o CassandraCassandraUserConfigPtrOutput) Elem() CassandraCassandraUserConf
 	}).(CassandraCassandraUserConfigOutput)
 }
 
+// cassandra configuration values
 func (o CassandraCassandraUserConfigPtrOutput) Cassandra() CassandraCassandraUserConfigCassandraPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *CassandraCassandraUserConfigCassandra {
 		if v == nil {
@@ -281,6 +522,7 @@ func (o CassandraCassandraUserConfigPtrOutput) Cassandra() CassandraCassandraUse
 	}).(CassandraCassandraUserConfigCassandraPtrOutput)
 }
 
+// Cassandra major version
 func (o CassandraCassandraUserConfigPtrOutput) CassandraVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
 		if v == nil {
@@ -290,6 +532,7 @@ func (o CassandraCassandraUserConfigPtrOutput) CassandraVersion() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o CassandraCassandraUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) []string {
 		if v == nil {
@@ -299,6 +542,7 @@ func (o CassandraCassandraUserConfigPtrOutput) IpFilters() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
+// Migration mode for the sstableloader utility
 func (o CassandraCassandraUserConfigPtrOutput) MigrateSstableloader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
 		if v == nil {
@@ -308,6 +552,7 @@ func (o CassandraCassandraUserConfigPtrOutput) MigrateSstableloader() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o CassandraCassandraUserConfigPtrOutput) PrivateAccess() CassandraCassandraUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *CassandraCassandraUserConfigPrivateAccess {
 		if v == nil {
@@ -317,6 +562,7 @@ func (o CassandraCassandraUserConfigPtrOutput) PrivateAccess() CassandraCassandr
 	}).(CassandraCassandraUserConfigPrivateAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o CassandraCassandraUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
 		if v == nil {
@@ -326,6 +572,7 @@ func (o CassandraCassandraUserConfigPtrOutput) ProjectToForkFrom() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o CassandraCassandraUserConfigPtrOutput) PublicAccess() CassandraCassandraUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *CassandraCassandraUserConfigPublicAccess {
 		if v == nil {
@@ -335,6 +582,7 @@ func (o CassandraCassandraUserConfigPtrOutput) PublicAccess() CassandraCassandra
 	}).(CassandraCassandraUserConfigPublicAccessPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o CassandraCassandraUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
 		if v == nil {
@@ -344,6 +592,7 @@ func (o CassandraCassandraUserConfigPtrOutput) ServiceToForkFrom() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o CassandraCassandraUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
 		if v == nil {
@@ -361,7 +610,7 @@ type CassandraCassandraUserConfigCassandra struct {
 // CassandraCassandraUserConfigCassandraInput is an input type that accepts CassandraCassandraUserConfigCassandraArgs and CassandraCassandraUserConfigCassandraOutput values.
 // You can construct a concrete instance of `CassandraCassandraUserConfigCassandraInput` via:
 //
-//          CassandraCassandraUserConfigCassandraArgs{...}
+//	CassandraCassandraUserConfigCassandraArgs{...}
 type CassandraCassandraUserConfigCassandraInput interface {
 	pulumi.Input
 
@@ -397,11 +646,11 @@ func (i CassandraCassandraUserConfigCassandraArgs) ToCassandraCassandraUserConfi
 // CassandraCassandraUserConfigCassandraPtrInput is an input type that accepts CassandraCassandraUserConfigCassandraArgs, CassandraCassandraUserConfigCassandraPtr and CassandraCassandraUserConfigCassandraPtrOutput values.
 // You can construct a concrete instance of `CassandraCassandraUserConfigCassandraPtrInput` via:
 //
-//          CassandraCassandraUserConfigCassandraArgs{...}
+//	        CassandraCassandraUserConfigCassandraArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CassandraCassandraUserConfigCassandraPtrInput interface {
 	pulumi.Input
 
@@ -508,7 +757,7 @@ type CassandraCassandraUserConfigPrivateAccess struct {
 // CassandraCassandraUserConfigPrivateAccessInput is an input type that accepts CassandraCassandraUserConfigPrivateAccessArgs and CassandraCassandraUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `CassandraCassandraUserConfigPrivateAccessInput` via:
 //
-//          CassandraCassandraUserConfigPrivateAccessArgs{...}
+//	CassandraCassandraUserConfigPrivateAccessArgs{...}
 type CassandraCassandraUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -543,11 +792,11 @@ func (i CassandraCassandraUserConfigPrivateAccessArgs) ToCassandraCassandraUserC
 // CassandraCassandraUserConfigPrivateAccessPtrInput is an input type that accepts CassandraCassandraUserConfigPrivateAccessArgs, CassandraCassandraUserConfigPrivateAccessPtr and CassandraCassandraUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `CassandraCassandraUserConfigPrivateAccessPtrInput` via:
 //
-//          CassandraCassandraUserConfigPrivateAccessArgs{...}
+//	        CassandraCassandraUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CassandraCassandraUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -641,7 +890,7 @@ type CassandraCassandraUserConfigPublicAccess struct {
 // CassandraCassandraUserConfigPublicAccessInput is an input type that accepts CassandraCassandraUserConfigPublicAccessArgs and CassandraCassandraUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `CassandraCassandraUserConfigPublicAccessInput` via:
 //
-//          CassandraCassandraUserConfigPublicAccessArgs{...}
+//	CassandraCassandraUserConfigPublicAccessArgs{...}
 type CassandraCassandraUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -676,11 +925,11 @@ func (i CassandraCassandraUserConfigPublicAccessArgs) ToCassandraCassandraUserCo
 // CassandraCassandraUserConfigPublicAccessPtrInput is an input type that accepts CassandraCassandraUserConfigPublicAccessArgs, CassandraCassandraUserConfigPublicAccessPtr and CassandraCassandraUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `CassandraCassandraUserConfigPublicAccessPtrInput` via:
 //
-//          CassandraCassandraUserConfigPublicAccessArgs{...}
+//	        CassandraCassandraUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CassandraCassandraUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -780,7 +1029,7 @@ type CassandraComponent struct {
 // CassandraComponentInput is an input type that accepts CassandraComponentArgs and CassandraComponentOutput values.
 // You can construct a concrete instance of `CassandraComponentInput` via:
 //
-//          CassandraComponentArgs{...}
+//	CassandraComponentArgs{...}
 type CassandraComponentInput interface {
 	pulumi.Input
 
@@ -813,7 +1062,7 @@ func (i CassandraComponentArgs) ToCassandraComponentOutputWithContext(ctx contex
 // CassandraComponentArrayInput is an input type that accepts CassandraComponentArray and CassandraComponentArrayOutput values.
 // You can construct a concrete instance of `CassandraComponentArrayInput` via:
 //
-//          CassandraComponentArray{ CassandraComponentArgs{...} }
+//	CassandraComponentArray{ CassandraComponentArgs{...} }
 type CassandraComponentArrayInput interface {
 	pulumi.Input
 
@@ -898,14 +1147,16 @@ func (o CassandraComponentArrayOutput) Index(i pulumi.IntInput) CassandraCompone
 }
 
 type CassandraServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // CassandraServiceIntegrationInput is an input type that accepts CassandraServiceIntegrationArgs and CassandraServiceIntegrationOutput values.
 // You can construct a concrete instance of `CassandraServiceIntegrationInput` via:
 //
-//          CassandraServiceIntegrationArgs{...}
+//	CassandraServiceIntegrationArgs{...}
 type CassandraServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -914,7 +1165,9 @@ type CassandraServiceIntegrationInput interface {
 }
 
 type CassandraServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -933,7 +1186,7 @@ func (i CassandraServiceIntegrationArgs) ToCassandraServiceIntegrationOutputWith
 // CassandraServiceIntegrationArrayInput is an input type that accepts CassandraServiceIntegrationArray and CassandraServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `CassandraServiceIntegrationArrayInput` via:
 //
-//          CassandraServiceIntegrationArray{ CassandraServiceIntegrationArgs{...} }
+//	CassandraServiceIntegrationArray{ CassandraServiceIntegrationArgs{...} }
 type CassandraServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -969,10 +1222,12 @@ func (o CassandraServiceIntegrationOutput) ToCassandraServiceIntegrationOutputWi
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o CassandraServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v CassandraServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o CassandraServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v CassandraServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -998,14 +1253,16 @@ func (o CassandraServiceIntegrationArrayOutput) Index(i pulumi.IntInput) Cassand
 }
 
 type CassandraTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // CassandraTagInput is an input type that accepts CassandraTagArgs and CassandraTagOutput values.
 // You can construct a concrete instance of `CassandraTagInput` via:
 //
-//          CassandraTagArgs{...}
+//	CassandraTagArgs{...}
 type CassandraTagInput interface {
 	pulumi.Input
 
@@ -1014,7 +1271,9 @@ type CassandraTagInput interface {
 }
 
 type CassandraTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1033,7 +1292,7 @@ func (i CassandraTagArgs) ToCassandraTagOutputWithContext(ctx context.Context) C
 // CassandraTagArrayInput is an input type that accepts CassandraTagArray and CassandraTagArrayOutput values.
 // You can construct a concrete instance of `CassandraTagArrayInput` via:
 //
-//          CassandraTagArray{ CassandraTagArgs{...} }
+//	CassandraTagArray{ CassandraTagArgs{...} }
 type CassandraTagArrayInput interface {
 	pulumi.Input
 
@@ -1069,10 +1328,12 @@ func (o CassandraTagOutput) ToCassandraTagOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Service tag key
 func (o CassandraTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v CassandraTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o CassandraTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v CassandraTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1103,7 +1364,7 @@ type ClickhouseClickhouse struct {
 // ClickhouseClickhouseInput is an input type that accepts ClickhouseClickhouseArgs and ClickhouseClickhouseOutput values.
 // You can construct a concrete instance of `ClickhouseClickhouseInput` via:
 //
-//          ClickhouseClickhouseArgs{...}
+//	ClickhouseClickhouseArgs{...}
 type ClickhouseClickhouseInput interface {
 	pulumi.Input
 
@@ -1129,7 +1390,7 @@ func (i ClickhouseClickhouseArgs) ToClickhouseClickhouseOutputWithContext(ctx co
 // ClickhouseClickhouseArrayInput is an input type that accepts ClickhouseClickhouseArray and ClickhouseClickhouseArrayOutput values.
 // You can construct a concrete instance of `ClickhouseClickhouseArrayInput` via:
 //
-//          ClickhouseClickhouseArray{ ClickhouseClickhouseArgs{...} }
+//	ClickhouseClickhouseArray{ ClickhouseClickhouseArgs{...} }
 type ClickhouseClickhouseArrayInput interface {
 	pulumi.Input
 
@@ -1186,15 +1447,18 @@ func (o ClickhouseClickhouseArrayOutput) Index(i pulumi.IntInput) ClickhouseClic
 }
 
 type ClickhouseClickhouseUserConfig struct {
-	IpFilters         []string `pulumi:"ipFilters"`
-	ProjectToForkFrom *string  `pulumi:"projectToForkFrom"`
-	ServiceToForkFrom *string  `pulumi:"serviceToForkFrom"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
 }
 
 // ClickhouseClickhouseUserConfigInput is an input type that accepts ClickhouseClickhouseUserConfigArgs and ClickhouseClickhouseUserConfigOutput values.
 // You can construct a concrete instance of `ClickhouseClickhouseUserConfigInput` via:
 //
-//          ClickhouseClickhouseUserConfigArgs{...}
+//	ClickhouseClickhouseUserConfigArgs{...}
 type ClickhouseClickhouseUserConfigInput interface {
 	pulumi.Input
 
@@ -1203,9 +1467,12 @@ type ClickhouseClickhouseUserConfigInput interface {
 }
 
 type ClickhouseClickhouseUserConfigArgs struct {
-	IpFilters         pulumi.StringArrayInput `pulumi:"ipFilters"`
-	ProjectToForkFrom pulumi.StringPtrInput   `pulumi:"projectToForkFrom"`
-	ServiceToForkFrom pulumi.StringPtrInput   `pulumi:"serviceToForkFrom"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
 }
 
 func (ClickhouseClickhouseUserConfigArgs) ElementType() reflect.Type {
@@ -1231,11 +1498,11 @@ func (i ClickhouseClickhouseUserConfigArgs) ToClickhouseClickhouseUserConfigPtrO
 // ClickhouseClickhouseUserConfigPtrInput is an input type that accepts ClickhouseClickhouseUserConfigArgs, ClickhouseClickhouseUserConfigPtr and ClickhouseClickhouseUserConfigPtrOutput values.
 // You can construct a concrete instance of `ClickhouseClickhouseUserConfigPtrInput` via:
 //
-//          ClickhouseClickhouseUserConfigArgs{...}
+//	        ClickhouseClickhouseUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClickhouseClickhouseUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -1285,14 +1552,17 @@ func (o ClickhouseClickhouseUserConfigOutput) ToClickhouseClickhouseUserConfigPt
 	}).(ClickhouseClickhouseUserConfigPtrOutput)
 }
 
+// IP filter
 func (o ClickhouseClickhouseUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o ClickhouseClickhouseUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o ClickhouseClickhouseUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseClickhouseUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
@@ -1321,6 +1591,7 @@ func (o ClickhouseClickhouseUserConfigPtrOutput) Elem() ClickhouseClickhouseUser
 	}).(ClickhouseClickhouseUserConfigOutput)
 }
 
+// IP filter
 func (o ClickhouseClickhouseUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) []string {
 		if v == nil {
@@ -1330,6 +1601,7 @@ func (o ClickhouseClickhouseUserConfigPtrOutput) IpFilters() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o ClickhouseClickhouseUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) *string {
 		if v == nil {
@@ -1339,6 +1611,7 @@ func (o ClickhouseClickhouseUserConfigPtrOutput) ProjectToForkFrom() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o ClickhouseClickhouseUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClickhouseClickhouseUserConfig) *string {
 		if v == nil {
@@ -1361,7 +1634,7 @@ type ClickhouseComponent struct {
 // ClickhouseComponentInput is an input type that accepts ClickhouseComponentArgs and ClickhouseComponentOutput values.
 // You can construct a concrete instance of `ClickhouseComponentInput` via:
 //
-//          ClickhouseComponentArgs{...}
+//	ClickhouseComponentArgs{...}
 type ClickhouseComponentInput interface {
 	pulumi.Input
 
@@ -1394,7 +1667,7 @@ func (i ClickhouseComponentArgs) ToClickhouseComponentOutputWithContext(ctx cont
 // ClickhouseComponentArrayInput is an input type that accepts ClickhouseComponentArray and ClickhouseComponentArrayOutput values.
 // You can construct a concrete instance of `ClickhouseComponentArrayInput` via:
 //
-//          ClickhouseComponentArray{ ClickhouseComponentArgs{...} }
+//	ClickhouseComponentArray{ ClickhouseComponentArgs{...} }
 type ClickhouseComponentArrayInput interface {
 	pulumi.Input
 
@@ -1479,17 +1752,22 @@ func (o ClickhouseComponentArrayOutput) Index(i pulumi.IntInput) ClickhouseCompo
 }
 
 type ClickhouseGrantPrivilegeGrant struct {
-	Column    *string `pulumi:"column"`
-	Database  string  `pulumi:"database"`
+	// The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+	Column *string `pulumi:"column"`
+	// The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Database string `pulumi:"database"`
+	// The privilege to grant, i.e. 'INSERT', 'SELECT', etc. This property cannot be changed, doing so forces recreation of the resource.
 	Privilege *string `pulumi:"privilege"`
-	Table     *string `pulumi:"table"`
-	WithGrant *bool   `pulumi:"withGrant"`
+	// The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+	Table *string `pulumi:"table"`
+	// If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+	WithGrant *bool `pulumi:"withGrant"`
 }
 
 // ClickhouseGrantPrivilegeGrantInput is an input type that accepts ClickhouseGrantPrivilegeGrantArgs and ClickhouseGrantPrivilegeGrantOutput values.
 // You can construct a concrete instance of `ClickhouseGrantPrivilegeGrantInput` via:
 //
-//          ClickhouseGrantPrivilegeGrantArgs{...}
+//	ClickhouseGrantPrivilegeGrantArgs{...}
 type ClickhouseGrantPrivilegeGrantInput interface {
 	pulumi.Input
 
@@ -1498,11 +1776,16 @@ type ClickhouseGrantPrivilegeGrantInput interface {
 }
 
 type ClickhouseGrantPrivilegeGrantArgs struct {
-	Column    pulumi.StringPtrInput `pulumi:"column"`
-	Database  pulumi.StringInput    `pulumi:"database"`
+	// The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Database pulumi.StringInput `pulumi:"database"`
+	// The privilege to grant, i.e. 'INSERT', 'SELECT', etc. This property cannot be changed, doing so forces recreation of the resource.
 	Privilege pulumi.StringPtrInput `pulumi:"privilege"`
-	Table     pulumi.StringPtrInput `pulumi:"table"`
-	WithGrant pulumi.BoolPtrInput   `pulumi:"withGrant"`
+	// The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+	Table pulumi.StringPtrInput `pulumi:"table"`
+	// If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
+	WithGrant pulumi.BoolPtrInput `pulumi:"withGrant"`
 }
 
 func (ClickhouseGrantPrivilegeGrantArgs) ElementType() reflect.Type {
@@ -1520,7 +1803,7 @@ func (i ClickhouseGrantPrivilegeGrantArgs) ToClickhouseGrantPrivilegeGrantOutput
 // ClickhouseGrantPrivilegeGrantArrayInput is an input type that accepts ClickhouseGrantPrivilegeGrantArray and ClickhouseGrantPrivilegeGrantArrayOutput values.
 // You can construct a concrete instance of `ClickhouseGrantPrivilegeGrantArrayInput` via:
 //
-//          ClickhouseGrantPrivilegeGrantArray{ ClickhouseGrantPrivilegeGrantArgs{...} }
+//	ClickhouseGrantPrivilegeGrantArray{ ClickhouseGrantPrivilegeGrantArgs{...} }
 type ClickhouseGrantPrivilegeGrantArrayInput interface {
 	pulumi.Input
 
@@ -1556,22 +1839,27 @@ func (o ClickhouseGrantPrivilegeGrantOutput) ToClickhouseGrantPrivilegeGrantOutp
 	return o
 }
 
+// The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseGrantPrivilegeGrantOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseGrantPrivilegeGrant) *string { return v.Column }).(pulumi.StringPtrOutput)
 }
 
+// The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseGrantPrivilegeGrantOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v ClickhouseGrantPrivilegeGrant) string { return v.Database }).(pulumi.StringOutput)
 }
 
+// The privilege to grant, i.e. 'INSERT', 'SELECT', etc. This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseGrantPrivilegeGrantOutput) Privilege() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseGrantPrivilegeGrant) *string { return v.Privilege }).(pulumi.StringPtrOutput)
 }
 
+// The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseGrantPrivilegeGrantOutput) Table() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseGrantPrivilegeGrant) *string { return v.Table }).(pulumi.StringPtrOutput)
 }
 
+// If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseGrantPrivilegeGrantOutput) WithGrant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClickhouseGrantPrivilegeGrant) *bool { return v.WithGrant }).(pulumi.BoolPtrOutput)
 }
@@ -1597,13 +1885,14 @@ func (o ClickhouseGrantPrivilegeGrantArrayOutput) Index(i pulumi.IntInput) Click
 }
 
 type ClickhouseGrantRoleGrant struct {
+	// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Role *string `pulumi:"role"`
 }
 
 // ClickhouseGrantRoleGrantInput is an input type that accepts ClickhouseGrantRoleGrantArgs and ClickhouseGrantRoleGrantOutput values.
 // You can construct a concrete instance of `ClickhouseGrantRoleGrantInput` via:
 //
-//          ClickhouseGrantRoleGrantArgs{...}
+//	ClickhouseGrantRoleGrantArgs{...}
 type ClickhouseGrantRoleGrantInput interface {
 	pulumi.Input
 
@@ -1612,6 +1901,7 @@ type ClickhouseGrantRoleGrantInput interface {
 }
 
 type ClickhouseGrantRoleGrantArgs struct {
+	// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -1630,7 +1920,7 @@ func (i ClickhouseGrantRoleGrantArgs) ToClickhouseGrantRoleGrantOutputWithContex
 // ClickhouseGrantRoleGrantArrayInput is an input type that accepts ClickhouseGrantRoleGrantArray and ClickhouseGrantRoleGrantArrayOutput values.
 // You can construct a concrete instance of `ClickhouseGrantRoleGrantArrayInput` via:
 //
-//          ClickhouseGrantRoleGrantArray{ ClickhouseGrantRoleGrantArgs{...} }
+//	ClickhouseGrantRoleGrantArray{ ClickhouseGrantRoleGrantArgs{...} }
 type ClickhouseGrantRoleGrantArrayInput interface {
 	pulumi.Input
 
@@ -1666,6 +1956,7 @@ func (o ClickhouseGrantRoleGrantOutput) ToClickhouseGrantRoleGrantOutputWithCont
 	return o
 }
 
+// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ClickhouseGrantRoleGrantOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClickhouseGrantRoleGrant) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -1691,14 +1982,16 @@ func (o ClickhouseGrantRoleGrantArrayOutput) Index(i pulumi.IntInput) Clickhouse
 }
 
 type ClickhouseServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // ClickhouseServiceIntegrationInput is an input type that accepts ClickhouseServiceIntegrationArgs and ClickhouseServiceIntegrationOutput values.
 // You can construct a concrete instance of `ClickhouseServiceIntegrationInput` via:
 //
-//          ClickhouseServiceIntegrationArgs{...}
+//	ClickhouseServiceIntegrationArgs{...}
 type ClickhouseServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -1707,7 +2000,9 @@ type ClickhouseServiceIntegrationInput interface {
 }
 
 type ClickhouseServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -1726,7 +2021,7 @@ func (i ClickhouseServiceIntegrationArgs) ToClickhouseServiceIntegrationOutputWi
 // ClickhouseServiceIntegrationArrayInput is an input type that accepts ClickhouseServiceIntegrationArray and ClickhouseServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `ClickhouseServiceIntegrationArrayInput` via:
 //
-//          ClickhouseServiceIntegrationArray{ ClickhouseServiceIntegrationArgs{...} }
+//	ClickhouseServiceIntegrationArray{ ClickhouseServiceIntegrationArgs{...} }
 type ClickhouseServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -1762,10 +2057,12 @@ func (o ClickhouseServiceIntegrationOutput) ToClickhouseServiceIntegrationOutput
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o ClickhouseServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClickhouseServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o ClickhouseServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClickhouseServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -1791,14 +2088,16 @@ func (o ClickhouseServiceIntegrationArrayOutput) Index(i pulumi.IntInput) Clickh
 }
 
 type ClickhouseTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // ClickhouseTagInput is an input type that accepts ClickhouseTagArgs and ClickhouseTagOutput values.
 // You can construct a concrete instance of `ClickhouseTagInput` via:
 //
-//          ClickhouseTagArgs{...}
+//	ClickhouseTagArgs{...}
 type ClickhouseTagInput interface {
 	pulumi.Input
 
@@ -1807,7 +2106,9 @@ type ClickhouseTagInput interface {
 }
 
 type ClickhouseTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1826,7 +2127,7 @@ func (i ClickhouseTagArgs) ToClickhouseTagOutputWithContext(ctx context.Context)
 // ClickhouseTagArrayInput is an input type that accepts ClickhouseTagArray and ClickhouseTagArrayOutput values.
 // You can construct a concrete instance of `ClickhouseTagArrayInput` via:
 //
-//          ClickhouseTagArray{ ClickhouseTagArgs{...} }
+//	ClickhouseTagArray{ ClickhouseTagArgs{...} }
 type ClickhouseTagArrayInput interface {
 	pulumi.Input
 
@@ -1862,10 +2163,12 @@ func (o ClickhouseTagOutput) ToClickhouseTagOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Service tag key
 func (o ClickhouseTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ClickhouseTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o ClickhouseTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ClickhouseTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1903,7 +2206,7 @@ type FlinkComponent struct {
 // FlinkComponentInput is an input type that accepts FlinkComponentArgs and FlinkComponentOutput values.
 // You can construct a concrete instance of `FlinkComponentInput` via:
 //
-//          FlinkComponentArgs{...}
+//	FlinkComponentArgs{...}
 type FlinkComponentInput interface {
 	pulumi.Input
 
@@ -1936,7 +2239,7 @@ func (i FlinkComponentArgs) ToFlinkComponentOutputWithContext(ctx context.Contex
 // FlinkComponentArrayInput is an input type that accepts FlinkComponentArray and FlinkComponentArrayOutput values.
 // You can construct a concrete instance of `FlinkComponentArrayInput` via:
 //
-//          FlinkComponentArray{ FlinkComponentArgs{...} }
+//	FlinkComponentArray{ FlinkComponentArgs{...} }
 type FlinkComponentArrayInput interface {
 	pulumi.Input
 
@@ -2021,13 +2324,14 @@ func (o FlinkComponentArrayOutput) Index(i pulumi.IntInput) FlinkComponentOutput
 }
 
 type FlinkFlink struct {
+	// Host and Port of a Flink server
 	HostPorts []string `pulumi:"hostPorts"`
 }
 
 // FlinkFlinkInput is an input type that accepts FlinkFlinkArgs and FlinkFlinkOutput values.
 // You can construct a concrete instance of `FlinkFlinkInput` via:
 //
-//          FlinkFlinkArgs{...}
+//	FlinkFlinkArgs{...}
 type FlinkFlinkInput interface {
 	pulumi.Input
 
@@ -2036,6 +2340,7 @@ type FlinkFlinkInput interface {
 }
 
 type FlinkFlinkArgs struct {
+	// Host and Port of a Flink server
 	HostPorts pulumi.StringArrayInput `pulumi:"hostPorts"`
 }
 
@@ -2062,11 +2367,11 @@ func (i FlinkFlinkArgs) ToFlinkFlinkPtrOutputWithContext(ctx context.Context) Fl
 // FlinkFlinkPtrInput is an input type that accepts FlinkFlinkArgs, FlinkFlinkPtr and FlinkFlinkPtrOutput values.
 // You can construct a concrete instance of `FlinkFlinkPtrInput` via:
 //
-//          FlinkFlinkArgs{...}
+//	        FlinkFlinkArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FlinkFlinkPtrInput interface {
 	pulumi.Input
 
@@ -2116,6 +2421,7 @@ func (o FlinkFlinkOutput) ToFlinkFlinkPtrOutputWithContext(ctx context.Context) 
 	}).(FlinkFlinkPtrOutput)
 }
 
+// Host and Port of a Flink server
 func (o FlinkFlinkOutput) HostPorts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FlinkFlink) []string { return v.HostPorts }).(pulumi.StringArrayOutput)
 }
@@ -2144,6 +2450,7 @@ func (o FlinkFlinkPtrOutput) Elem() FlinkFlinkOutput {
 	}).(FlinkFlinkOutput)
 }
 
+// Host and Port of a Flink server
 func (o FlinkFlinkPtrOutput) HostPorts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FlinkFlink) []string {
 		if v == nil {
@@ -2154,23 +2461,34 @@ func (o FlinkFlinkPtrOutput) HostPorts() pulumi.StringArrayOutput {
 }
 
 type FlinkFlinkUserConfig struct {
-	ExecutionCheckpointingIntervalMs      *string                                `pulumi:"executionCheckpointingIntervalMs"`
-	ExecutionCheckpointingTimeoutMs       *string                                `pulumi:"executionCheckpointingTimeoutMs"`
-	FlinkVersion                          *string                                `pulumi:"flinkVersion"`
-	IpFilters                             []string                               `pulumi:"ipFilters"`
-	NumberOfTaskSlots                     *string                                `pulumi:"numberOfTaskSlots"`
-	ParallelismDefault                    *string                                `pulumi:"parallelismDefault"`
-	PrivatelinkAccess                     *FlinkFlinkUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	RestartStrategy                       *string                                `pulumi:"restartStrategy"`
-	RestartStrategyDelaySec               *string                                `pulumi:"restartStrategyDelaySec"`
-	RestartStrategyFailureRateIntervalMin *string                                `pulumi:"restartStrategyFailureRateIntervalMin"`
-	RestartStrategyMaxFailures            *string                                `pulumi:"restartStrategyMaxFailures"`
+	// Flink execution.checkpointing.interval in milliseconds
+	ExecutionCheckpointingIntervalMs *string `pulumi:"executionCheckpointingIntervalMs"`
+	// Flink execution.checkpointing.timeout in milliseconds
+	ExecutionCheckpointingTimeoutMs *string `pulumi:"executionCheckpointingTimeoutMs"`
+	// Flink major version
+	FlinkVersion *string `pulumi:"flinkVersion"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// Flink taskmanager.numberOfTaskSlots
+	NumberOfTaskSlots *string `pulumi:"numberOfTaskSlots"`
+	// Flink parallelism.default
+	ParallelismDefault *string `pulumi:"parallelismDefault"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *FlinkFlinkUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Flink restart-strategy
+	RestartStrategy *string `pulumi:"restartStrategy"`
+	// Flink restart-strategy.failure-rate.delay in seconds
+	RestartStrategyDelaySec *string `pulumi:"restartStrategyDelaySec"`
+	// Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+	RestartStrategyFailureRateIntervalMin *string `pulumi:"restartStrategyFailureRateIntervalMin"`
+	// Flink restart-strategy.failure-rate.max-failures-per-interval
+	RestartStrategyMaxFailures *string `pulumi:"restartStrategyMaxFailures"`
 }
 
 // FlinkFlinkUserConfigInput is an input type that accepts FlinkFlinkUserConfigArgs and FlinkFlinkUserConfigOutput values.
 // You can construct a concrete instance of `FlinkFlinkUserConfigInput` via:
 //
-//          FlinkFlinkUserConfigArgs{...}
+//	FlinkFlinkUserConfigArgs{...}
 type FlinkFlinkUserConfigInput interface {
 	pulumi.Input
 
@@ -2179,17 +2497,28 @@ type FlinkFlinkUserConfigInput interface {
 }
 
 type FlinkFlinkUserConfigArgs struct {
-	ExecutionCheckpointingIntervalMs      pulumi.StringPtrInput                         `pulumi:"executionCheckpointingIntervalMs"`
-	ExecutionCheckpointingTimeoutMs       pulumi.StringPtrInput                         `pulumi:"executionCheckpointingTimeoutMs"`
-	FlinkVersion                          pulumi.StringPtrInput                         `pulumi:"flinkVersion"`
-	IpFilters                             pulumi.StringArrayInput                       `pulumi:"ipFilters"`
-	NumberOfTaskSlots                     pulumi.StringPtrInput                         `pulumi:"numberOfTaskSlots"`
-	ParallelismDefault                    pulumi.StringPtrInput                         `pulumi:"parallelismDefault"`
-	PrivatelinkAccess                     FlinkFlinkUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	RestartStrategy                       pulumi.StringPtrInput                         `pulumi:"restartStrategy"`
-	RestartStrategyDelaySec               pulumi.StringPtrInput                         `pulumi:"restartStrategyDelaySec"`
-	RestartStrategyFailureRateIntervalMin pulumi.StringPtrInput                         `pulumi:"restartStrategyFailureRateIntervalMin"`
-	RestartStrategyMaxFailures            pulumi.StringPtrInput                         `pulumi:"restartStrategyMaxFailures"`
+	// Flink execution.checkpointing.interval in milliseconds
+	ExecutionCheckpointingIntervalMs pulumi.StringPtrInput `pulumi:"executionCheckpointingIntervalMs"`
+	// Flink execution.checkpointing.timeout in milliseconds
+	ExecutionCheckpointingTimeoutMs pulumi.StringPtrInput `pulumi:"executionCheckpointingTimeoutMs"`
+	// Flink major version
+	FlinkVersion pulumi.StringPtrInput `pulumi:"flinkVersion"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Flink taskmanager.numberOfTaskSlots
+	NumberOfTaskSlots pulumi.StringPtrInput `pulumi:"numberOfTaskSlots"`
+	// Flink parallelism.default
+	ParallelismDefault pulumi.StringPtrInput `pulumi:"parallelismDefault"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess FlinkFlinkUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Flink restart-strategy
+	RestartStrategy pulumi.StringPtrInput `pulumi:"restartStrategy"`
+	// Flink restart-strategy.failure-rate.delay in seconds
+	RestartStrategyDelaySec pulumi.StringPtrInput `pulumi:"restartStrategyDelaySec"`
+	// Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+	RestartStrategyFailureRateIntervalMin pulumi.StringPtrInput `pulumi:"restartStrategyFailureRateIntervalMin"`
+	// Flink restart-strategy.failure-rate.max-failures-per-interval
+	RestartStrategyMaxFailures pulumi.StringPtrInput `pulumi:"restartStrategyMaxFailures"`
 }
 
 func (FlinkFlinkUserConfigArgs) ElementType() reflect.Type {
@@ -2215,11 +2544,11 @@ func (i FlinkFlinkUserConfigArgs) ToFlinkFlinkUserConfigPtrOutputWithContext(ctx
 // FlinkFlinkUserConfigPtrInput is an input type that accepts FlinkFlinkUserConfigArgs, FlinkFlinkUserConfigPtr and FlinkFlinkUserConfigPtrOutput values.
 // You can construct a concrete instance of `FlinkFlinkUserConfigPtrInput` via:
 //
-//          FlinkFlinkUserConfigArgs{...}
+//	        FlinkFlinkUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FlinkFlinkUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -2269,46 +2598,57 @@ func (o FlinkFlinkUserConfigOutput) ToFlinkFlinkUserConfigPtrOutputWithContext(c
 	}).(FlinkFlinkUserConfigPtrOutput)
 }
 
+// Flink execution.checkpointing.interval in milliseconds
 func (o FlinkFlinkUserConfigOutput) ExecutionCheckpointingIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.ExecutionCheckpointingIntervalMs }).(pulumi.StringPtrOutput)
 }
 
+// Flink execution.checkpointing.timeout in milliseconds
 func (o FlinkFlinkUserConfigOutput) ExecutionCheckpointingTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.ExecutionCheckpointingTimeoutMs }).(pulumi.StringPtrOutput)
 }
 
+// Flink major version
 func (o FlinkFlinkUserConfigOutput) FlinkVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.FlinkVersion }).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o FlinkFlinkUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Flink taskmanager.numberOfTaskSlots
 func (o FlinkFlinkUserConfigOutput) NumberOfTaskSlots() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.NumberOfTaskSlots }).(pulumi.StringPtrOutput)
 }
 
+// Flink parallelism.default
 func (o FlinkFlinkUserConfigOutput) ParallelismDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.ParallelismDefault }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o FlinkFlinkUserConfigOutput) PrivatelinkAccess() FlinkFlinkUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *FlinkFlinkUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(FlinkFlinkUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Flink restart-strategy
 func (o FlinkFlinkUserConfigOutput) RestartStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.RestartStrategy }).(pulumi.StringPtrOutput)
 }
 
+// Flink restart-strategy.failure-rate.delay in seconds
 func (o FlinkFlinkUserConfigOutput) RestartStrategyDelaySec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.RestartStrategyDelaySec }).(pulumi.StringPtrOutput)
 }
 
+// Flink restart-strategy.failure-rate.failure-rate-interval in minutes
 func (o FlinkFlinkUserConfigOutput) RestartStrategyFailureRateIntervalMin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.RestartStrategyFailureRateIntervalMin }).(pulumi.StringPtrOutput)
 }
 
+// Flink restart-strategy.failure-rate.max-failures-per-interval
 func (o FlinkFlinkUserConfigOutput) RestartStrategyMaxFailures() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfig) *string { return v.RestartStrategyMaxFailures }).(pulumi.StringPtrOutput)
 }
@@ -2337,6 +2677,7 @@ func (o FlinkFlinkUserConfigPtrOutput) Elem() FlinkFlinkUserConfigOutput {
 	}).(FlinkFlinkUserConfigOutput)
 }
 
+// Flink execution.checkpointing.interval in milliseconds
 func (o FlinkFlinkUserConfigPtrOutput) ExecutionCheckpointingIntervalMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2346,6 +2687,7 @@ func (o FlinkFlinkUserConfigPtrOutput) ExecutionCheckpointingIntervalMs() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Flink execution.checkpointing.timeout in milliseconds
 func (o FlinkFlinkUserConfigPtrOutput) ExecutionCheckpointingTimeoutMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2355,6 +2697,7 @@ func (o FlinkFlinkUserConfigPtrOutput) ExecutionCheckpointingTimeoutMs() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Flink major version
 func (o FlinkFlinkUserConfigPtrOutput) FlinkVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2364,6 +2707,7 @@ func (o FlinkFlinkUserConfigPtrOutput) FlinkVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o FlinkFlinkUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) []string {
 		if v == nil {
@@ -2373,6 +2717,7 @@ func (o FlinkFlinkUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Flink taskmanager.numberOfTaskSlots
 func (o FlinkFlinkUserConfigPtrOutput) NumberOfTaskSlots() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2382,6 +2727,7 @@ func (o FlinkFlinkUserConfigPtrOutput) NumberOfTaskSlots() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Flink parallelism.default
 func (o FlinkFlinkUserConfigPtrOutput) ParallelismDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2391,6 +2737,7 @@ func (o FlinkFlinkUserConfigPtrOutput) ParallelismDefault() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o FlinkFlinkUserConfigPtrOutput) PrivatelinkAccess() FlinkFlinkUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *FlinkFlinkUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -2400,6 +2747,7 @@ func (o FlinkFlinkUserConfigPtrOutput) PrivatelinkAccess() FlinkFlinkUserConfigP
 	}).(FlinkFlinkUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Flink restart-strategy
 func (o FlinkFlinkUserConfigPtrOutput) RestartStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2409,6 +2757,7 @@ func (o FlinkFlinkUserConfigPtrOutput) RestartStrategy() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Flink restart-strategy.failure-rate.delay in seconds
 func (o FlinkFlinkUserConfigPtrOutput) RestartStrategyDelaySec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2418,6 +2767,7 @@ func (o FlinkFlinkUserConfigPtrOutput) RestartStrategyDelaySec() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Flink restart-strategy.failure-rate.failure-rate-interval in minutes
 func (o FlinkFlinkUserConfigPtrOutput) RestartStrategyFailureRateIntervalMin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2427,6 +2777,7 @@ func (o FlinkFlinkUserConfigPtrOutput) RestartStrategyFailureRateIntervalMin() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// Flink restart-strategy.failure-rate.max-failures-per-interval
 func (o FlinkFlinkUserConfigPtrOutput) RestartStrategyMaxFailures() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfig) *string {
 		if v == nil {
@@ -2437,6 +2788,7 @@ func (o FlinkFlinkUserConfigPtrOutput) RestartStrategyMaxFailures() pulumi.Strin
 }
 
 type FlinkFlinkUserConfigPrivatelinkAccess struct {
+	// Flink server provided values
 	Flink      *string `pulumi:"flink"`
 	Prometheus *string `pulumi:"prometheus"`
 }
@@ -2444,7 +2796,7 @@ type FlinkFlinkUserConfigPrivatelinkAccess struct {
 // FlinkFlinkUserConfigPrivatelinkAccessInput is an input type that accepts FlinkFlinkUserConfigPrivatelinkAccessArgs and FlinkFlinkUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `FlinkFlinkUserConfigPrivatelinkAccessInput` via:
 //
-//          FlinkFlinkUserConfigPrivatelinkAccessArgs{...}
+//	FlinkFlinkUserConfigPrivatelinkAccessArgs{...}
 type FlinkFlinkUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -2453,6 +2805,7 @@ type FlinkFlinkUserConfigPrivatelinkAccessInput interface {
 }
 
 type FlinkFlinkUserConfigPrivatelinkAccessArgs struct {
+	// Flink server provided values
 	Flink      pulumi.StringPtrInput `pulumi:"flink"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -2480,11 +2833,11 @@ func (i FlinkFlinkUserConfigPrivatelinkAccessArgs) ToFlinkFlinkUserConfigPrivate
 // FlinkFlinkUserConfigPrivatelinkAccessPtrInput is an input type that accepts FlinkFlinkUserConfigPrivatelinkAccessArgs, FlinkFlinkUserConfigPrivatelinkAccessPtr and FlinkFlinkUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `FlinkFlinkUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          FlinkFlinkUserConfigPrivatelinkAccessArgs{...}
+//	        FlinkFlinkUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FlinkFlinkUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -2534,6 +2887,7 @@ func (o FlinkFlinkUserConfigPrivatelinkAccessOutput) ToFlinkFlinkUserConfigPriva
 	}).(FlinkFlinkUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Flink server provided values
 func (o FlinkFlinkUserConfigPrivatelinkAccessOutput) Flink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkFlinkUserConfigPrivatelinkAccess) *string { return v.Flink }).(pulumi.StringPtrOutput)
 }
@@ -2566,6 +2920,7 @@ func (o FlinkFlinkUserConfigPrivatelinkAccessPtrOutput) Elem() FlinkFlinkUserCon
 	}).(FlinkFlinkUserConfigPrivatelinkAccessOutput)
 }
 
+// Flink server provided values
 func (o FlinkFlinkUserConfigPrivatelinkAccessPtrOutput) Flink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkFlinkUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -2585,18 +2940,24 @@ func (o FlinkFlinkUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.Stri
 }
 
 type FlinkJobTableUpsertKafka struct {
-	KeyFields          []string `pulumi:"keyFields"`
-	KeyFormat          *string  `pulumi:"keyFormat"`
-	ScanStartupMode    *string  `pulumi:"scanStartupMode"`
-	Topic              *string  `pulumi:"topic"`
-	ValueFieldsInclude *string  `pulumi:"valueFieldsInclude"`
-	ValueFormat        *string  `pulumi:"valueFormat"`
+	// Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
+	KeyFields []string `pulumi:"keyFields"`
+	// Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+	KeyFormat *string `pulumi:"keyFormat"`
+	// Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+	ScanStartupMode *string `pulumi:"scanStartupMode"`
+	// Topic name This property cannot be changed, doing so forces recreation of the resource.
+	Topic *string `pulumi:"topic"`
+	// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+	ValueFieldsInclude *string `pulumi:"valueFieldsInclude"`
+	// Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+	ValueFormat *string `pulumi:"valueFormat"`
 }
 
 // FlinkJobTableUpsertKafkaInput is an input type that accepts FlinkJobTableUpsertKafkaArgs and FlinkJobTableUpsertKafkaOutput values.
 // You can construct a concrete instance of `FlinkJobTableUpsertKafkaInput` via:
 //
-//          FlinkJobTableUpsertKafkaArgs{...}
+//	FlinkJobTableUpsertKafkaArgs{...}
 type FlinkJobTableUpsertKafkaInput interface {
 	pulumi.Input
 
@@ -2605,12 +2966,18 @@ type FlinkJobTableUpsertKafkaInput interface {
 }
 
 type FlinkJobTableUpsertKafkaArgs struct {
-	KeyFields          pulumi.StringArrayInput `pulumi:"keyFields"`
-	KeyFormat          pulumi.StringPtrInput   `pulumi:"keyFormat"`
-	ScanStartupMode    pulumi.StringPtrInput   `pulumi:"scanStartupMode"`
-	Topic              pulumi.StringPtrInput   `pulumi:"topic"`
-	ValueFieldsInclude pulumi.StringPtrInput   `pulumi:"valueFieldsInclude"`
-	ValueFormat        pulumi.StringPtrInput   `pulumi:"valueFormat"`
+	// Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
+	KeyFields pulumi.StringArrayInput `pulumi:"keyFields"`
+	// Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+	KeyFormat pulumi.StringPtrInput `pulumi:"keyFormat"`
+	// Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
+	ScanStartupMode pulumi.StringPtrInput `pulumi:"scanStartupMode"`
+	// Topic name This property cannot be changed, doing so forces recreation of the resource.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+	// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
+	ValueFieldsInclude pulumi.StringPtrInput `pulumi:"valueFieldsInclude"`
+	// Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
+	ValueFormat pulumi.StringPtrInput `pulumi:"valueFormat"`
 }
 
 func (FlinkJobTableUpsertKafkaArgs) ElementType() reflect.Type {
@@ -2636,11 +3003,11 @@ func (i FlinkJobTableUpsertKafkaArgs) ToFlinkJobTableUpsertKafkaPtrOutputWithCon
 // FlinkJobTableUpsertKafkaPtrInput is an input type that accepts FlinkJobTableUpsertKafkaArgs, FlinkJobTableUpsertKafkaPtr and FlinkJobTableUpsertKafkaPtrOutput values.
 // You can construct a concrete instance of `FlinkJobTableUpsertKafkaPtrInput` via:
 //
-//          FlinkJobTableUpsertKafkaArgs{...}
+//	        FlinkJobTableUpsertKafkaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FlinkJobTableUpsertKafkaPtrInput interface {
 	pulumi.Input
 
@@ -2690,26 +3057,32 @@ func (o FlinkJobTableUpsertKafkaOutput) ToFlinkJobTableUpsertKafkaPtrOutputWithC
 	}).(FlinkJobTableUpsertKafkaPtrOutput)
 }
 
+// Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaOutput) KeyFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FlinkJobTableUpsertKafka) []string { return v.KeyFields }).(pulumi.StringArrayOutput)
 }
 
+// Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaOutput) KeyFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkJobTableUpsertKafka) *string { return v.KeyFormat }).(pulumi.StringPtrOutput)
 }
 
+// Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaOutput) ScanStartupMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkJobTableUpsertKafka) *string { return v.ScanStartupMode }).(pulumi.StringPtrOutput)
 }
 
+// Topic name This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkJobTableUpsertKafka) *string { return v.Topic }).(pulumi.StringPtrOutput)
 }
 
+// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaOutput) ValueFieldsInclude() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkJobTableUpsertKafka) *string { return v.ValueFieldsInclude }).(pulumi.StringPtrOutput)
 }
 
+// Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaOutput) ValueFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkJobTableUpsertKafka) *string { return v.ValueFormat }).(pulumi.StringPtrOutput)
 }
@@ -2738,6 +3111,7 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) Elem() FlinkJobTableUpsertKafkaOutput
 	}).(FlinkJobTableUpsertKafkaOutput)
 }
 
+// Defines the columns from the SQL schema of the data table that are considered keys in the Kafka messages. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaPtrOutput) KeyFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FlinkJobTableUpsertKafka) []string {
 		if v == nil {
@@ -2747,6 +3121,7 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) KeyFields() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// Sets the format that is used to convert the key part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaPtrOutput) KeyFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkJobTableUpsertKafka) *string {
 		if v == nil {
@@ -2756,6 +3131,7 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) KeyFormat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Controls the startup method for the Kafka consumer that Aiven for Apache Flink is using. The possible values are `earliest-offset`, `latest-offset`, `group-offsets` and `timestamp`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaPtrOutput) ScanStartupMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkJobTableUpsertKafka) *string {
 		if v == nil {
@@ -2765,6 +3141,7 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) ScanStartupMode() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Topic name This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaPtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkJobTableUpsertKafka) *string {
 		if v == nil {
@@ -2774,6 +3151,7 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) Topic() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Controls how key columns are handled in the message value. Select ALL to include the physical columns of the table schema in the message value. Select EXCEPT_KEY to exclude the physical columns of the table schema from the message value. This is the default for upsert Kafka connectors. The possible values are `[ALL EXCEPT_KEY]`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaPtrOutput) ValueFieldsInclude() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkJobTableUpsertKafka) *string {
 		if v == nil {
@@ -2783,6 +3161,7 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) ValueFieldsInclude() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sets the format that is used to convert the value part of Kafka messages. The possible values are `avro`, `avro-confluent`, `debezium-avro-confluent`, `debezium-json` and `json`. This property cannot be changed, doing so forces recreation of the resource.
 func (o FlinkJobTableUpsertKafkaPtrOutput) ValueFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkJobTableUpsertKafka) *string {
 		if v == nil {
@@ -2793,14 +3172,16 @@ func (o FlinkJobTableUpsertKafkaPtrOutput) ValueFormat() pulumi.StringPtrOutput 
 }
 
 type FlinkServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // FlinkServiceIntegrationInput is an input type that accepts FlinkServiceIntegrationArgs and FlinkServiceIntegrationOutput values.
 // You can construct a concrete instance of `FlinkServiceIntegrationInput` via:
 //
-//          FlinkServiceIntegrationArgs{...}
+//	FlinkServiceIntegrationArgs{...}
 type FlinkServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -2809,7 +3190,9 @@ type FlinkServiceIntegrationInput interface {
 }
 
 type FlinkServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -2828,7 +3211,7 @@ func (i FlinkServiceIntegrationArgs) ToFlinkServiceIntegrationOutputWithContext(
 // FlinkServiceIntegrationArrayInput is an input type that accepts FlinkServiceIntegrationArray and FlinkServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `FlinkServiceIntegrationArrayInput` via:
 //
-//          FlinkServiceIntegrationArray{ FlinkServiceIntegrationArgs{...} }
+//	FlinkServiceIntegrationArray{ FlinkServiceIntegrationArgs{...} }
 type FlinkServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -2864,10 +3247,12 @@ func (o FlinkServiceIntegrationOutput) ToFlinkServiceIntegrationOutputWithContex
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o FlinkServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v FlinkServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o FlinkServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v FlinkServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -2893,14 +3278,16 @@ func (o FlinkServiceIntegrationArrayOutput) Index(i pulumi.IntInput) FlinkServic
 }
 
 type FlinkTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // FlinkTagInput is an input type that accepts FlinkTagArgs and FlinkTagOutput values.
 // You can construct a concrete instance of `FlinkTagInput` via:
 //
-//          FlinkTagArgs{...}
+//	FlinkTagArgs{...}
 type FlinkTagInput interface {
 	pulumi.Input
 
@@ -2909,7 +3296,9 @@ type FlinkTagInput interface {
 }
 
 type FlinkTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -2928,7 +3317,7 @@ func (i FlinkTagArgs) ToFlinkTagOutputWithContext(ctx context.Context) FlinkTagO
 // FlinkTagArrayInput is an input type that accepts FlinkTagArray and FlinkTagArrayOutput values.
 // You can construct a concrete instance of `FlinkTagArrayInput` via:
 //
-//          FlinkTagArray{ FlinkTagArgs{...} }
+//	FlinkTagArray{ FlinkTagArgs{...} }
 type FlinkTagArrayInput interface {
 	pulumi.Input
 
@@ -2964,10 +3353,12 @@ func (o FlinkTagOutput) ToFlinkTagOutputWithContext(ctx context.Context) FlinkTa
 	return o
 }
 
+// Service tag key
 func (o FlinkTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v FlinkTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o FlinkTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v FlinkTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -3005,7 +3396,7 @@ type GrafanaComponent struct {
 // GrafanaComponentInput is an input type that accepts GrafanaComponentArgs and GrafanaComponentOutput values.
 // You can construct a concrete instance of `GrafanaComponentInput` via:
 //
-//          GrafanaComponentArgs{...}
+//	GrafanaComponentArgs{...}
 type GrafanaComponentInput interface {
 	pulumi.Input
 
@@ -3038,7 +3429,7 @@ func (i GrafanaComponentArgs) ToGrafanaComponentOutputWithContext(ctx context.Co
 // GrafanaComponentArrayInput is an input type that accepts GrafanaComponentArray and GrafanaComponentArrayOutput values.
 // You can construct a concrete instance of `GrafanaComponentArrayInput` via:
 //
-//          GrafanaComponentArray{ GrafanaComponentArgs{...} }
+//	GrafanaComponentArray{ GrafanaComponentArgs{...} }
 type GrafanaComponentArrayInput interface {
 	pulumi.Input
 
@@ -3128,7 +3519,7 @@ type GrafanaGrafana struct {
 // GrafanaGrafanaInput is an input type that accepts GrafanaGrafanaArgs and GrafanaGrafanaOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaInput` via:
 //
-//          GrafanaGrafanaArgs{...}
+//	GrafanaGrafanaArgs{...}
 type GrafanaGrafanaInput interface {
 	pulumi.Input
 
@@ -3154,7 +3545,7 @@ func (i GrafanaGrafanaArgs) ToGrafanaGrafanaOutputWithContext(ctx context.Contex
 // GrafanaGrafanaArrayInput is an input type that accepts GrafanaGrafanaArray and GrafanaGrafanaArrayOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaArrayInput` via:
 //
-//          GrafanaGrafanaArray{ GrafanaGrafanaArgs{...} }
+//	GrafanaGrafanaArray{ GrafanaGrafanaArgs{...} }
 type GrafanaGrafanaArrayInput interface {
 	pulumi.Input
 
@@ -3211,47 +3602,82 @@ func (o GrafanaGrafanaArrayOutput) Index(i pulumi.IntInput) GrafanaGrafanaOutput
 }
 
 type GrafanaGrafanaUserConfig struct {
-	AlertingEnabled              *string                                       `pulumi:"alertingEnabled"`
-	AlertingErrorOrTimeout       *string                                       `pulumi:"alertingErrorOrTimeout"`
-	AlertingMaxAnnotationsToKeep *string                                       `pulumi:"alertingMaxAnnotationsToKeep"`
-	AlertingNodataOrNullvalues   *string                                       `pulumi:"alertingNodataOrNullvalues"`
-	AllowEmbedding               *string                                       `pulumi:"allowEmbedding"`
-	AuthAzuread                  *GrafanaGrafanaUserConfigAuthAzuread          `pulumi:"authAzuread"`
-	AuthBasicEnabled             *string                                       `pulumi:"authBasicEnabled"`
-	AuthGenericOauth             *GrafanaGrafanaUserConfigAuthGenericOauth     `pulumi:"authGenericOauth"`
-	AuthGithub                   *GrafanaGrafanaUserConfigAuthGithub           `pulumi:"authGithub"`
-	AuthGitlab                   *GrafanaGrafanaUserConfigAuthGitlab           `pulumi:"authGitlab"`
-	AuthGoogle                   *GrafanaGrafanaUserConfigAuthGoogle           `pulumi:"authGoogle"`
-	CookieSamesite               *string                                       `pulumi:"cookieSamesite"`
-	CustomDomain                 *string                                       `pulumi:"customDomain"`
-	DashboardsMinRefreshInterval *string                                       `pulumi:"dashboardsMinRefreshInterval"`
-	DashboardsVersionsToKeep     *string                                       `pulumi:"dashboardsVersionsToKeep"`
-	DataproxySendUserHeader      *string                                       `pulumi:"dataproxySendUserHeader"`
-	DataproxyTimeout             *string                                       `pulumi:"dataproxyTimeout"`
-	DateFormats                  *GrafanaGrafanaUserConfigDateFormats          `pulumi:"dateFormats"`
-	DisableGravatar              *string                                       `pulumi:"disableGravatar"`
-	EditorsCanAdmin              *string                                       `pulumi:"editorsCanAdmin"`
-	ExternalImageStorage         *GrafanaGrafanaUserConfigExternalImageStorage `pulumi:"externalImageStorage"`
-	GoogleAnalyticsUaId          *string                                       `pulumi:"googleAnalyticsUaId"`
-	IpFilters                    []string                                      `pulumi:"ipFilters"`
-	MetricsEnabled               *string                                       `pulumi:"metricsEnabled"`
-	PrivateAccess                *GrafanaGrafanaUserConfigPrivateAccess        `pulumi:"privateAccess"`
-	PrivatelinkAccess            *GrafanaGrafanaUserConfigPrivatelinkAccess    `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom            *string                                       `pulumi:"projectToForkFrom"`
-	PublicAccess                 *GrafanaGrafanaUserConfigPublicAccess         `pulumi:"publicAccess"`
-	RecoveryBasebackupName       *string                                       `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom            *string                                       `pulumi:"serviceToForkFrom"`
-	SmtpServer                   *GrafanaGrafanaUserConfigSmtpServer           `pulumi:"smtpServer"`
-	StaticIps                    *string                                       `pulumi:"staticIps"`
-	UserAutoAssignOrg            *string                                       `pulumi:"userAutoAssignOrg"`
-	UserAutoAssignOrgRole        *string                                       `pulumi:"userAutoAssignOrgRole"`
-	ViewersCanEdit               *string                                       `pulumi:"viewersCanEdit"`
+	// Enable or disable Grafana alerting functionality
+	AlertingEnabled *string `pulumi:"alertingEnabled"`
+	// Default error or timeout setting for new alerting rules
+	AlertingErrorOrTimeout *string `pulumi:"alertingErrorOrTimeout"`
+	// Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+	AlertingMaxAnnotationsToKeep *string `pulumi:"alertingMaxAnnotationsToKeep"`
+	// Default value for 'no data or null values' for new alerting rules
+	AlertingNodataOrNullvalues *string `pulumi:"alertingNodataOrNullvalues"`
+	// Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
+	AllowEmbedding *string `pulumi:"allowEmbedding"`
+	// Azure AD OAuth integration
+	AuthAzuread *GrafanaGrafanaUserConfigAuthAzuread `pulumi:"authAzuread"`
+	// Enable or disable basic authentication form, used by Grafana built-in login
+	AuthBasicEnabled *string `pulumi:"authBasicEnabled"`
+	// Generic OAuth integration
+	AuthGenericOauth *GrafanaGrafanaUserConfigAuthGenericOauth `pulumi:"authGenericOauth"`
+	// Github Auth integration
+	AuthGithub *GrafanaGrafanaUserConfigAuthGithub `pulumi:"authGithub"`
+	// GitLab Auth integration
+	AuthGitlab *GrafanaGrafanaUserConfigAuthGitlab `pulumi:"authGitlab"`
+	// Google Auth integration
+	AuthGoogle *GrafanaGrafanaUserConfigAuthGoogle `pulumi:"authGoogle"`
+	// Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+	CookieSamesite *string `pulumi:"cookieSamesite"`
+	// Custom domain
+	CustomDomain *string `pulumi:"customDomain"`
+	// Minimum refresh interval
+	DashboardsMinRefreshInterval *string `pulumi:"dashboardsMinRefreshInterval"`
+	// Dashboard versions to keep per dashboard
+	DashboardsVersionsToKeep *string `pulumi:"dashboardsVersionsToKeep"`
+	// Send 'X-Grafana-User' header to data source
+	DataproxySendUserHeader *string `pulumi:"dataproxySendUserHeader"`
+	// Timeout for data proxy requests in seconds
+	DataproxyTimeout *string `pulumi:"dataproxyTimeout"`
+	// Grafana date format specifications
+	DateFormats *GrafanaGrafanaUserConfigDateFormats `pulumi:"dateFormats"`
+	// Set to true to disable gravatar. Defaults to false (gravatar is enabled)
+	DisableGravatar *string `pulumi:"disableGravatar"`
+	// Editors can manage folders, teams and dashboards created by them
+	EditorsCanAdmin *string `pulumi:"editorsCanAdmin"`
+	// External image store settings
+	ExternalImageStorage *GrafanaGrafanaUserConfigExternalImageStorage `pulumi:"externalImageStorage"`
+	// Google Analytics ID
+	GoogleAnalyticsUaId *string `pulumi:"googleAnalyticsUaId"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// Enable Grafana /metrics endpoint
+	MetricsEnabled *string `pulumi:"metricsEnabled"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *GrafanaGrafanaUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *GrafanaGrafanaUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GrafanaGrafanaUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// SMTP server settings
+	SmtpServer *GrafanaGrafanaUserConfigSmtpServer `pulumi:"smtpServer"`
+	// Static IP addresses
+	StaticIps *string `pulumi:"staticIps"`
+	// Auto-assign new users on signup to main organization. Defaults to false
+	UserAutoAssignOrg *string `pulumi:"userAutoAssignOrg"`
+	// Set role for new signups. Defaults to Viewer
+	UserAutoAssignOrgRole *string `pulumi:"userAutoAssignOrgRole"`
+	// Users with view-only permission can edit but not save dashboards
+	ViewersCanEdit *string `pulumi:"viewersCanEdit"`
 }
 
 // GrafanaGrafanaUserConfigInput is an input type that accepts GrafanaGrafanaUserConfigArgs and GrafanaGrafanaUserConfigOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigInput` via:
 //
-//          GrafanaGrafanaUserConfigArgs{...}
+//	GrafanaGrafanaUserConfigArgs{...}
 type GrafanaGrafanaUserConfigInput interface {
 	pulumi.Input
 
@@ -3260,41 +3686,76 @@ type GrafanaGrafanaUserConfigInput interface {
 }
 
 type GrafanaGrafanaUserConfigArgs struct {
-	AlertingEnabled              pulumi.StringPtrInput                                `pulumi:"alertingEnabled"`
-	AlertingErrorOrTimeout       pulumi.StringPtrInput                                `pulumi:"alertingErrorOrTimeout"`
-	AlertingMaxAnnotationsToKeep pulumi.StringPtrInput                                `pulumi:"alertingMaxAnnotationsToKeep"`
-	AlertingNodataOrNullvalues   pulumi.StringPtrInput                                `pulumi:"alertingNodataOrNullvalues"`
-	AllowEmbedding               pulumi.StringPtrInput                                `pulumi:"allowEmbedding"`
-	AuthAzuread                  GrafanaGrafanaUserConfigAuthAzureadPtrInput          `pulumi:"authAzuread"`
-	AuthBasicEnabled             pulumi.StringPtrInput                                `pulumi:"authBasicEnabled"`
-	AuthGenericOauth             GrafanaGrafanaUserConfigAuthGenericOauthPtrInput     `pulumi:"authGenericOauth"`
-	AuthGithub                   GrafanaGrafanaUserConfigAuthGithubPtrInput           `pulumi:"authGithub"`
-	AuthGitlab                   GrafanaGrafanaUserConfigAuthGitlabPtrInput           `pulumi:"authGitlab"`
-	AuthGoogle                   GrafanaGrafanaUserConfigAuthGooglePtrInput           `pulumi:"authGoogle"`
-	CookieSamesite               pulumi.StringPtrInput                                `pulumi:"cookieSamesite"`
-	CustomDomain                 pulumi.StringPtrInput                                `pulumi:"customDomain"`
-	DashboardsMinRefreshInterval pulumi.StringPtrInput                                `pulumi:"dashboardsMinRefreshInterval"`
-	DashboardsVersionsToKeep     pulumi.StringPtrInput                                `pulumi:"dashboardsVersionsToKeep"`
-	DataproxySendUserHeader      pulumi.StringPtrInput                                `pulumi:"dataproxySendUserHeader"`
-	DataproxyTimeout             pulumi.StringPtrInput                                `pulumi:"dataproxyTimeout"`
-	DateFormats                  GrafanaGrafanaUserConfigDateFormatsPtrInput          `pulumi:"dateFormats"`
-	DisableGravatar              pulumi.StringPtrInput                                `pulumi:"disableGravatar"`
-	EditorsCanAdmin              pulumi.StringPtrInput                                `pulumi:"editorsCanAdmin"`
-	ExternalImageStorage         GrafanaGrafanaUserConfigExternalImageStoragePtrInput `pulumi:"externalImageStorage"`
-	GoogleAnalyticsUaId          pulumi.StringPtrInput                                `pulumi:"googleAnalyticsUaId"`
-	IpFilters                    pulumi.StringArrayInput                              `pulumi:"ipFilters"`
-	MetricsEnabled               pulumi.StringPtrInput                                `pulumi:"metricsEnabled"`
-	PrivateAccess                GrafanaGrafanaUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
-	PrivatelinkAccess            GrafanaGrafanaUserConfigPrivatelinkAccessPtrInput    `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom            pulumi.StringPtrInput                                `pulumi:"projectToForkFrom"`
-	PublicAccess                 GrafanaGrafanaUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
-	RecoveryBasebackupName       pulumi.StringPtrInput                                `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom            pulumi.StringPtrInput                                `pulumi:"serviceToForkFrom"`
-	SmtpServer                   GrafanaGrafanaUserConfigSmtpServerPtrInput           `pulumi:"smtpServer"`
-	StaticIps                    pulumi.StringPtrInput                                `pulumi:"staticIps"`
-	UserAutoAssignOrg            pulumi.StringPtrInput                                `pulumi:"userAutoAssignOrg"`
-	UserAutoAssignOrgRole        pulumi.StringPtrInput                                `pulumi:"userAutoAssignOrgRole"`
-	ViewersCanEdit               pulumi.StringPtrInput                                `pulumi:"viewersCanEdit"`
+	// Enable or disable Grafana alerting functionality
+	AlertingEnabled pulumi.StringPtrInput `pulumi:"alertingEnabled"`
+	// Default error or timeout setting for new alerting rules
+	AlertingErrorOrTimeout pulumi.StringPtrInput `pulumi:"alertingErrorOrTimeout"`
+	// Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+	AlertingMaxAnnotationsToKeep pulumi.StringPtrInput `pulumi:"alertingMaxAnnotationsToKeep"`
+	// Default value for 'no data or null values' for new alerting rules
+	AlertingNodataOrNullvalues pulumi.StringPtrInput `pulumi:"alertingNodataOrNullvalues"`
+	// Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
+	AllowEmbedding pulumi.StringPtrInput `pulumi:"allowEmbedding"`
+	// Azure AD OAuth integration
+	AuthAzuread GrafanaGrafanaUserConfigAuthAzureadPtrInput `pulumi:"authAzuread"`
+	// Enable or disable basic authentication form, used by Grafana built-in login
+	AuthBasicEnabled pulumi.StringPtrInput `pulumi:"authBasicEnabled"`
+	// Generic OAuth integration
+	AuthGenericOauth GrafanaGrafanaUserConfigAuthGenericOauthPtrInput `pulumi:"authGenericOauth"`
+	// Github Auth integration
+	AuthGithub GrafanaGrafanaUserConfigAuthGithubPtrInput `pulumi:"authGithub"`
+	// GitLab Auth integration
+	AuthGitlab GrafanaGrafanaUserConfigAuthGitlabPtrInput `pulumi:"authGitlab"`
+	// Google Auth integration
+	AuthGoogle GrafanaGrafanaUserConfigAuthGooglePtrInput `pulumi:"authGoogle"`
+	// Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+	CookieSamesite pulumi.StringPtrInput `pulumi:"cookieSamesite"`
+	// Custom domain
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Minimum refresh interval
+	DashboardsMinRefreshInterval pulumi.StringPtrInput `pulumi:"dashboardsMinRefreshInterval"`
+	// Dashboard versions to keep per dashboard
+	DashboardsVersionsToKeep pulumi.StringPtrInput `pulumi:"dashboardsVersionsToKeep"`
+	// Send 'X-Grafana-User' header to data source
+	DataproxySendUserHeader pulumi.StringPtrInput `pulumi:"dataproxySendUserHeader"`
+	// Timeout for data proxy requests in seconds
+	DataproxyTimeout pulumi.StringPtrInput `pulumi:"dataproxyTimeout"`
+	// Grafana date format specifications
+	DateFormats GrafanaGrafanaUserConfigDateFormatsPtrInput `pulumi:"dateFormats"`
+	// Set to true to disable gravatar. Defaults to false (gravatar is enabled)
+	DisableGravatar pulumi.StringPtrInput `pulumi:"disableGravatar"`
+	// Editors can manage folders, teams and dashboards created by them
+	EditorsCanAdmin pulumi.StringPtrInput `pulumi:"editorsCanAdmin"`
+	// External image store settings
+	ExternalImageStorage GrafanaGrafanaUserConfigExternalImageStoragePtrInput `pulumi:"externalImageStorage"`
+	// Google Analytics ID
+	GoogleAnalyticsUaId pulumi.StringPtrInput `pulumi:"googleAnalyticsUaId"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Enable Grafana /metrics endpoint
+	MetricsEnabled pulumi.StringPtrInput `pulumi:"metricsEnabled"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess GrafanaGrafanaUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess GrafanaGrafanaUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GrafanaGrafanaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// SMTP server settings
+	SmtpServer GrafanaGrafanaUserConfigSmtpServerPtrInput `pulumi:"smtpServer"`
+	// Static IP addresses
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	// Auto-assign new users on signup to main organization. Defaults to false
+	UserAutoAssignOrg pulumi.StringPtrInput `pulumi:"userAutoAssignOrg"`
+	// Set role for new signups. Defaults to Viewer
+	UserAutoAssignOrgRole pulumi.StringPtrInput `pulumi:"userAutoAssignOrgRole"`
+	// Users with view-only permission can edit but not save dashboards
+	ViewersCanEdit pulumi.StringPtrInput `pulumi:"viewersCanEdit"`
 }
 
 func (GrafanaGrafanaUserConfigArgs) ElementType() reflect.Type {
@@ -3320,11 +3781,11 @@ func (i GrafanaGrafanaUserConfigArgs) ToGrafanaGrafanaUserConfigPtrOutputWithCon
 // GrafanaGrafanaUserConfigPtrInput is an input type that accepts GrafanaGrafanaUserConfigArgs, GrafanaGrafanaUserConfigPtr and GrafanaGrafanaUserConfigPtrOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigPtrInput` via:
 //
-//          GrafanaGrafanaUserConfigArgs{...}
+//	        GrafanaGrafanaUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrafanaGrafanaUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -3374,146 +3835,181 @@ func (o GrafanaGrafanaUserConfigOutput) ToGrafanaGrafanaUserConfigPtrOutputWithC
 	}).(GrafanaGrafanaUserConfigPtrOutput)
 }
 
+// Enable or disable Grafana alerting functionality
 func (o GrafanaGrafanaUserConfigOutput) AlertingEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AlertingEnabled }).(pulumi.StringPtrOutput)
 }
 
+// Default error or timeout setting for new alerting rules
 func (o GrafanaGrafanaUserConfigOutput) AlertingErrorOrTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AlertingErrorOrTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
 func (o GrafanaGrafanaUserConfigOutput) AlertingMaxAnnotationsToKeep() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AlertingMaxAnnotationsToKeep }).(pulumi.StringPtrOutput)
 }
 
+// Default value for 'no data or null values' for new alerting rules
 func (o GrafanaGrafanaUserConfigOutput) AlertingNodataOrNullvalues() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AlertingNodataOrNullvalues }).(pulumi.StringPtrOutput)
 }
 
+// Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
 func (o GrafanaGrafanaUserConfigOutput) AllowEmbedding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AllowEmbedding }).(pulumi.StringPtrOutput)
 }
 
+// Azure AD OAuth integration
 func (o GrafanaGrafanaUserConfigOutput) AuthAzuread() GrafanaGrafanaUserConfigAuthAzureadPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthAzuread { return v.AuthAzuread }).(GrafanaGrafanaUserConfigAuthAzureadPtrOutput)
 }
 
+// Enable or disable basic authentication form, used by Grafana built-in login
 func (o GrafanaGrafanaUserConfigOutput) AuthBasicEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.AuthBasicEnabled }).(pulumi.StringPtrOutput)
 }
 
+// Generic OAuth integration
 func (o GrafanaGrafanaUserConfigOutput) AuthGenericOauth() GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGenericOauth { return v.AuthGenericOauth }).(GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput)
 }
 
+// Github Auth integration
 func (o GrafanaGrafanaUserConfigOutput) AuthGithub() GrafanaGrafanaUserConfigAuthGithubPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGithub { return v.AuthGithub }).(GrafanaGrafanaUserConfigAuthGithubPtrOutput)
 }
 
+// GitLab Auth integration
 func (o GrafanaGrafanaUserConfigOutput) AuthGitlab() GrafanaGrafanaUserConfigAuthGitlabPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGitlab { return v.AuthGitlab }).(GrafanaGrafanaUserConfigAuthGitlabPtrOutput)
 }
 
+// Google Auth integration
 func (o GrafanaGrafanaUserConfigOutput) AuthGoogle() GrafanaGrafanaUserConfigAuthGooglePtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGoogle { return v.AuthGoogle }).(GrafanaGrafanaUserConfigAuthGooglePtrOutput)
 }
 
+// Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
 func (o GrafanaGrafanaUserConfigOutput) CookieSamesite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.CookieSamesite }).(pulumi.StringPtrOutput)
 }
 
+// Custom domain
 func (o GrafanaGrafanaUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// Minimum refresh interval
 func (o GrafanaGrafanaUserConfigOutput) DashboardsMinRefreshInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DashboardsMinRefreshInterval }).(pulumi.StringPtrOutput)
 }
 
+// Dashboard versions to keep per dashboard
 func (o GrafanaGrafanaUserConfigOutput) DashboardsVersionsToKeep() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DashboardsVersionsToKeep }).(pulumi.StringPtrOutput)
 }
 
+// Send 'X-Grafana-User' header to data source
 func (o GrafanaGrafanaUserConfigOutput) DataproxySendUserHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DataproxySendUserHeader }).(pulumi.StringPtrOutput)
 }
 
+// Timeout for data proxy requests in seconds
 func (o GrafanaGrafanaUserConfigOutput) DataproxyTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DataproxyTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Grafana date format specifications
 func (o GrafanaGrafanaUserConfigOutput) DateFormats() GrafanaGrafanaUserConfigDateFormatsPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigDateFormats { return v.DateFormats }).(GrafanaGrafanaUserConfigDateFormatsPtrOutput)
 }
 
+// Set to true to disable gravatar. Defaults to false (gravatar is enabled)
 func (o GrafanaGrafanaUserConfigOutput) DisableGravatar() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.DisableGravatar }).(pulumi.StringPtrOutput)
 }
 
+// Editors can manage folders, teams and dashboards created by them
 func (o GrafanaGrafanaUserConfigOutput) EditorsCanAdmin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.EditorsCanAdmin }).(pulumi.StringPtrOutput)
 }
 
+// External image store settings
 func (o GrafanaGrafanaUserConfigOutput) ExternalImageStorage() GrafanaGrafanaUserConfigExternalImageStoragePtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigExternalImageStorage {
 		return v.ExternalImageStorage
 	}).(GrafanaGrafanaUserConfigExternalImageStoragePtrOutput)
 }
 
+// Google Analytics ID
 func (o GrafanaGrafanaUserConfigOutput) GoogleAnalyticsUaId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.GoogleAnalyticsUaId }).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o GrafanaGrafanaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Enable Grafana /metrics endpoint
 func (o GrafanaGrafanaUserConfigOutput) MetricsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.MetricsEnabled }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o GrafanaGrafanaUserConfigOutput) PrivateAccess() GrafanaGrafanaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPrivateAccess { return v.PrivateAccess }).(GrafanaGrafanaUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o GrafanaGrafanaUserConfigOutput) PrivatelinkAccess() GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPrivatelinkAccess {
 		return v.PrivatelinkAccess
 	}).(GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o GrafanaGrafanaUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o GrafanaGrafanaUserConfigOutput) PublicAccess() GrafanaGrafanaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPublicAccess { return v.PublicAccess }).(GrafanaGrafanaUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
 func (o GrafanaGrafanaUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o GrafanaGrafanaUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// SMTP server settings
 func (o GrafanaGrafanaUserConfigOutput) SmtpServer() GrafanaGrafanaUserConfigSmtpServerPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigSmtpServer { return v.SmtpServer }).(GrafanaGrafanaUserConfigSmtpServerPtrOutput)
 }
 
+// Static IP addresses
 func (o GrafanaGrafanaUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
 
+// Auto-assign new users on signup to main organization. Defaults to false
 func (o GrafanaGrafanaUserConfigOutput) UserAutoAssignOrg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.UserAutoAssignOrg }).(pulumi.StringPtrOutput)
 }
 
+// Set role for new signups. Defaults to Viewer
 func (o GrafanaGrafanaUserConfigOutput) UserAutoAssignOrgRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.UserAutoAssignOrgRole }).(pulumi.StringPtrOutput)
 }
 
+// Users with view-only permission can edit but not save dashboards
 func (o GrafanaGrafanaUserConfigOutput) ViewersCanEdit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfig) *string { return v.ViewersCanEdit }).(pulumi.StringPtrOutput)
 }
@@ -3542,6 +4038,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) Elem() GrafanaGrafanaUserConfigOutput
 	}).(GrafanaGrafanaUserConfigOutput)
 }
 
+// Enable or disable Grafana alerting functionality
 func (o GrafanaGrafanaUserConfigPtrOutput) AlertingEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3551,6 +4048,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AlertingEnabled() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default error or timeout setting for new alerting rules
 func (o GrafanaGrafanaUserConfigPtrOutput) AlertingErrorOrTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3560,6 +4058,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AlertingErrorOrTimeout() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
 func (o GrafanaGrafanaUserConfigPtrOutput) AlertingMaxAnnotationsToKeep() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3569,6 +4068,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AlertingMaxAnnotationsToKeep() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default value for 'no data or null values' for new alerting rules
 func (o GrafanaGrafanaUserConfigPtrOutput) AlertingNodataOrNullvalues() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3578,6 +4078,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AlertingNodataOrNullvalues() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking
 func (o GrafanaGrafanaUserConfigPtrOutput) AllowEmbedding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3587,6 +4088,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AllowEmbedding() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Azure AD OAuth integration
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthAzuread() GrafanaGrafanaUserConfigAuthAzureadPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthAzuread {
 		if v == nil {
@@ -3596,6 +4098,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthAzuread() GrafanaGrafanaUserConfi
 	}).(GrafanaGrafanaUserConfigAuthAzureadPtrOutput)
 }
 
+// Enable or disable basic authentication form, used by Grafana built-in login
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthBasicEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3605,6 +4108,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthBasicEnabled() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Generic OAuth integration
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthGenericOauth() GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGenericOauth {
 		if v == nil {
@@ -3614,6 +4118,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthGenericOauth() GrafanaGrafanaUser
 	}).(GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput)
 }
 
+// Github Auth integration
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthGithub() GrafanaGrafanaUserConfigAuthGithubPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGithub {
 		if v == nil {
@@ -3623,6 +4128,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthGithub() GrafanaGrafanaUserConfig
 	}).(GrafanaGrafanaUserConfigAuthGithubPtrOutput)
 }
 
+// GitLab Auth integration
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthGitlab() GrafanaGrafanaUserConfigAuthGitlabPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGitlab {
 		if v == nil {
@@ -3632,6 +4138,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthGitlab() GrafanaGrafanaUserConfig
 	}).(GrafanaGrafanaUserConfigAuthGitlabPtrOutput)
 }
 
+// Google Auth integration
 func (o GrafanaGrafanaUserConfigPtrOutput) AuthGoogle() GrafanaGrafanaUserConfigAuthGooglePtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigAuthGoogle {
 		if v == nil {
@@ -3641,6 +4148,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) AuthGoogle() GrafanaGrafanaUserConfig
 	}).(GrafanaGrafanaUserConfigAuthGooglePtrOutput)
 }
 
+// Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
 func (o GrafanaGrafanaUserConfigPtrOutput) CookieSamesite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3650,6 +4158,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) CookieSamesite() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Custom domain
 func (o GrafanaGrafanaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3659,6 +4168,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Minimum refresh interval
 func (o GrafanaGrafanaUserConfigPtrOutput) DashboardsMinRefreshInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3668,6 +4178,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DashboardsMinRefreshInterval() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Dashboard versions to keep per dashboard
 func (o GrafanaGrafanaUserConfigPtrOutput) DashboardsVersionsToKeep() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3677,6 +4188,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DashboardsVersionsToKeep() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Send 'X-Grafana-User' header to data source
 func (o GrafanaGrafanaUserConfigPtrOutput) DataproxySendUserHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3686,6 +4198,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DataproxySendUserHeader() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Timeout for data proxy requests in seconds
 func (o GrafanaGrafanaUserConfigPtrOutput) DataproxyTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3695,6 +4208,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DataproxyTimeout() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Grafana date format specifications
 func (o GrafanaGrafanaUserConfigPtrOutput) DateFormats() GrafanaGrafanaUserConfigDateFormatsPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigDateFormats {
 		if v == nil {
@@ -3704,6 +4218,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DateFormats() GrafanaGrafanaUserConfi
 	}).(GrafanaGrafanaUserConfigDateFormatsPtrOutput)
 }
 
+// Set to true to disable gravatar. Defaults to false (gravatar is enabled)
 func (o GrafanaGrafanaUserConfigPtrOutput) DisableGravatar() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3713,6 +4228,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) DisableGravatar() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Editors can manage folders, teams and dashboards created by them
 func (o GrafanaGrafanaUserConfigPtrOutput) EditorsCanAdmin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3722,6 +4238,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) EditorsCanAdmin() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// External image store settings
 func (o GrafanaGrafanaUserConfigPtrOutput) ExternalImageStorage() GrafanaGrafanaUserConfigExternalImageStoragePtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigExternalImageStorage {
 		if v == nil {
@@ -3731,6 +4248,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) ExternalImageStorage() GrafanaGrafana
 	}).(GrafanaGrafanaUserConfigExternalImageStoragePtrOutput)
 }
 
+// Google Analytics ID
 func (o GrafanaGrafanaUserConfigPtrOutput) GoogleAnalyticsUaId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3740,6 +4258,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) GoogleAnalyticsUaId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o GrafanaGrafanaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) []string {
 		if v == nil {
@@ -3749,6 +4268,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// Enable Grafana /metrics endpoint
 func (o GrafanaGrafanaUserConfigPtrOutput) MetricsEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3758,6 +4278,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) MetricsEnabled() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o GrafanaGrafanaUserConfigPtrOutput) PrivateAccess() GrafanaGrafanaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPrivateAccess {
 		if v == nil {
@@ -3767,6 +4288,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) PrivateAccess() GrafanaGrafanaUserCon
 	}).(GrafanaGrafanaUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o GrafanaGrafanaUserConfigPtrOutput) PrivatelinkAccess() GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -3776,6 +4298,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) PrivatelinkAccess() GrafanaGrafanaUse
 	}).(GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o GrafanaGrafanaUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3785,6 +4308,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o GrafanaGrafanaUserConfigPtrOutput) PublicAccess() GrafanaGrafanaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigPublicAccess {
 		if v == nil {
@@ -3794,6 +4318,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) PublicAccess() GrafanaGrafanaUserConf
 	}).(GrafanaGrafanaUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
 func (o GrafanaGrafanaUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3803,6 +4328,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) RecoveryBasebackupName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o GrafanaGrafanaUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3812,6 +4338,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// SMTP server settings
 func (o GrafanaGrafanaUserConfigPtrOutput) SmtpServer() GrafanaGrafanaUserConfigSmtpServerPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *GrafanaGrafanaUserConfigSmtpServer {
 		if v == nil {
@@ -3821,6 +4348,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) SmtpServer() GrafanaGrafanaUserConfig
 	}).(GrafanaGrafanaUserConfigSmtpServerPtrOutput)
 }
 
+// Static IP addresses
 func (o GrafanaGrafanaUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3830,6 +4358,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Auto-assign new users on signup to main organization. Defaults to false
 func (o GrafanaGrafanaUserConfigPtrOutput) UserAutoAssignOrg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3839,6 +4368,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) UserAutoAssignOrg() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Set role for new signups. Defaults to Viewer
 func (o GrafanaGrafanaUserConfigPtrOutput) UserAutoAssignOrgRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3848,6 +4378,7 @@ func (o GrafanaGrafanaUserConfigPtrOutput) UserAutoAssignOrgRole() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Users with view-only permission can edit but not save dashboards
 func (o GrafanaGrafanaUserConfigPtrOutput) ViewersCanEdit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfig) *string {
 		if v == nil {
@@ -3870,7 +4401,7 @@ type GrafanaGrafanaUserConfigAuthAzuread struct {
 // GrafanaGrafanaUserConfigAuthAzureadInput is an input type that accepts GrafanaGrafanaUserConfigAuthAzureadArgs and GrafanaGrafanaUserConfigAuthAzureadOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigAuthAzureadInput` via:
 //
-//          GrafanaGrafanaUserConfigAuthAzureadArgs{...}
+//	GrafanaGrafanaUserConfigAuthAzureadArgs{...}
 type GrafanaGrafanaUserConfigAuthAzureadInput interface {
 	pulumi.Input
 
@@ -3911,11 +4442,11 @@ func (i GrafanaGrafanaUserConfigAuthAzureadArgs) ToGrafanaGrafanaUserConfigAuthA
 // GrafanaGrafanaUserConfigAuthAzureadPtrInput is an input type that accepts GrafanaGrafanaUserConfigAuthAzureadArgs, GrafanaGrafanaUserConfigAuthAzureadPtr and GrafanaGrafanaUserConfigAuthAzureadPtrOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigAuthAzureadPtrInput` via:
 //
-//          GrafanaGrafanaUserConfigAuthAzureadArgs{...}
+//	        GrafanaGrafanaUserConfigAuthAzureadArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrafanaGrafanaUserConfigAuthAzureadPtrInput interface {
 	pulumi.Input
 
@@ -4096,7 +4627,7 @@ type GrafanaGrafanaUserConfigAuthGenericOauth struct {
 // GrafanaGrafanaUserConfigAuthGenericOauthInput is an input type that accepts GrafanaGrafanaUserConfigAuthGenericOauthArgs and GrafanaGrafanaUserConfigAuthGenericOauthOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigAuthGenericOauthInput` via:
 //
-//          GrafanaGrafanaUserConfigAuthGenericOauthArgs{...}
+//	GrafanaGrafanaUserConfigAuthGenericOauthArgs{...}
 type GrafanaGrafanaUserConfigAuthGenericOauthInput interface {
 	pulumi.Input
 
@@ -4140,11 +4671,11 @@ func (i GrafanaGrafanaUserConfigAuthGenericOauthArgs) ToGrafanaGrafanaUserConfig
 // GrafanaGrafanaUserConfigAuthGenericOauthPtrInput is an input type that accepts GrafanaGrafanaUserConfigAuthGenericOauthArgs, GrafanaGrafanaUserConfigAuthGenericOauthPtr and GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigAuthGenericOauthPtrInput` via:
 //
-//          GrafanaGrafanaUserConfigAuthGenericOauthArgs{...}
+//	        GrafanaGrafanaUserConfigAuthGenericOauthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrafanaGrafanaUserConfigAuthGenericOauthPtrInput interface {
 	pulumi.Input
 
@@ -4359,7 +4890,7 @@ type GrafanaGrafanaUserConfigAuthGithub struct {
 // GrafanaGrafanaUserConfigAuthGithubInput is an input type that accepts GrafanaGrafanaUserConfigAuthGithubArgs and GrafanaGrafanaUserConfigAuthGithubOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigAuthGithubInput` via:
 //
-//          GrafanaGrafanaUserConfigAuthGithubArgs{...}
+//	GrafanaGrafanaUserConfigAuthGithubArgs{...}
 type GrafanaGrafanaUserConfigAuthGithubInput interface {
 	pulumi.Input
 
@@ -4398,11 +4929,11 @@ func (i GrafanaGrafanaUserConfigAuthGithubArgs) ToGrafanaGrafanaUserConfigAuthGi
 // GrafanaGrafanaUserConfigAuthGithubPtrInput is an input type that accepts GrafanaGrafanaUserConfigAuthGithubArgs, GrafanaGrafanaUserConfigAuthGithubPtr and GrafanaGrafanaUserConfigAuthGithubPtrOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigAuthGithubPtrInput` via:
 //
-//          GrafanaGrafanaUserConfigAuthGithubArgs{...}
+//	        GrafanaGrafanaUserConfigAuthGithubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrafanaGrafanaUserConfigAuthGithubPtrInput interface {
 	pulumi.Input
 
@@ -4554,7 +5085,7 @@ type GrafanaGrafanaUserConfigAuthGitlab struct {
 // GrafanaGrafanaUserConfigAuthGitlabInput is an input type that accepts GrafanaGrafanaUserConfigAuthGitlabArgs and GrafanaGrafanaUserConfigAuthGitlabOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigAuthGitlabInput` via:
 //
-//          GrafanaGrafanaUserConfigAuthGitlabArgs{...}
+//	GrafanaGrafanaUserConfigAuthGitlabArgs{...}
 type GrafanaGrafanaUserConfigAuthGitlabInput interface {
 	pulumi.Input
 
@@ -4595,11 +5126,11 @@ func (i GrafanaGrafanaUserConfigAuthGitlabArgs) ToGrafanaGrafanaUserConfigAuthGi
 // GrafanaGrafanaUserConfigAuthGitlabPtrInput is an input type that accepts GrafanaGrafanaUserConfigAuthGitlabArgs, GrafanaGrafanaUserConfigAuthGitlabPtr and GrafanaGrafanaUserConfigAuthGitlabPtrOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigAuthGitlabPtrInput` via:
 //
-//          GrafanaGrafanaUserConfigAuthGitlabArgs{...}
+//	        GrafanaGrafanaUserConfigAuthGitlabArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrafanaGrafanaUserConfigAuthGitlabPtrInput interface {
 	pulumi.Input
 
@@ -4774,7 +5305,7 @@ type GrafanaGrafanaUserConfigAuthGoogle struct {
 // GrafanaGrafanaUserConfigAuthGoogleInput is an input type that accepts GrafanaGrafanaUserConfigAuthGoogleArgs and GrafanaGrafanaUserConfigAuthGoogleOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigAuthGoogleInput` via:
 //
-//          GrafanaGrafanaUserConfigAuthGoogleArgs{...}
+//	GrafanaGrafanaUserConfigAuthGoogleArgs{...}
 type GrafanaGrafanaUserConfigAuthGoogleInput interface {
 	pulumi.Input
 
@@ -4812,11 +5343,11 @@ func (i GrafanaGrafanaUserConfigAuthGoogleArgs) ToGrafanaGrafanaUserConfigAuthGo
 // GrafanaGrafanaUserConfigAuthGooglePtrInput is an input type that accepts GrafanaGrafanaUserConfigAuthGoogleArgs, GrafanaGrafanaUserConfigAuthGooglePtr and GrafanaGrafanaUserConfigAuthGooglePtrOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigAuthGooglePtrInput` via:
 //
-//          GrafanaGrafanaUserConfigAuthGoogleArgs{...}
+//	        GrafanaGrafanaUserConfigAuthGoogleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrafanaGrafanaUserConfigAuthGooglePtrInput interface {
 	pulumi.Input
 
@@ -4956,7 +5487,7 @@ type GrafanaGrafanaUserConfigDateFormats struct {
 // GrafanaGrafanaUserConfigDateFormatsInput is an input type that accepts GrafanaGrafanaUserConfigDateFormatsArgs and GrafanaGrafanaUserConfigDateFormatsOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigDateFormatsInput` via:
 //
-//          GrafanaGrafanaUserConfigDateFormatsArgs{...}
+//	GrafanaGrafanaUserConfigDateFormatsArgs{...}
 type GrafanaGrafanaUserConfigDateFormatsInput interface {
 	pulumi.Input
 
@@ -4998,11 +5529,11 @@ func (i GrafanaGrafanaUserConfigDateFormatsArgs) ToGrafanaGrafanaUserConfigDateF
 // GrafanaGrafanaUserConfigDateFormatsPtrInput is an input type that accepts GrafanaGrafanaUserConfigDateFormatsArgs, GrafanaGrafanaUserConfigDateFormatsPtr and GrafanaGrafanaUserConfigDateFormatsPtrOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigDateFormatsPtrInput` via:
 //
-//          GrafanaGrafanaUserConfigDateFormatsArgs{...}
+//	        GrafanaGrafanaUserConfigDateFormatsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrafanaGrafanaUserConfigDateFormatsPtrInput interface {
 	pulumi.Input
 
@@ -5190,7 +5721,7 @@ type GrafanaGrafanaUserConfigExternalImageStorage struct {
 // GrafanaGrafanaUserConfigExternalImageStorageInput is an input type that accepts GrafanaGrafanaUserConfigExternalImageStorageArgs and GrafanaGrafanaUserConfigExternalImageStorageOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigExternalImageStorageInput` via:
 //
-//          GrafanaGrafanaUserConfigExternalImageStorageArgs{...}
+//	GrafanaGrafanaUserConfigExternalImageStorageArgs{...}
 type GrafanaGrafanaUserConfigExternalImageStorageInput interface {
 	pulumi.Input
 
@@ -5228,11 +5759,11 @@ func (i GrafanaGrafanaUserConfigExternalImageStorageArgs) ToGrafanaGrafanaUserCo
 // GrafanaGrafanaUserConfigExternalImageStoragePtrInput is an input type that accepts GrafanaGrafanaUserConfigExternalImageStorageArgs, GrafanaGrafanaUserConfigExternalImageStoragePtr and GrafanaGrafanaUserConfigExternalImageStoragePtrOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigExternalImageStoragePtrInput` via:
 //
-//          GrafanaGrafanaUserConfigExternalImageStorageArgs{...}
+//	        GrafanaGrafanaUserConfigExternalImageStorageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrafanaGrafanaUserConfigExternalImageStoragePtrInput interface {
 	pulumi.Input
 
@@ -5359,13 +5890,14 @@ func (o GrafanaGrafanaUserConfigExternalImageStoragePtrOutput) SecretKey() pulum
 }
 
 type GrafanaGrafanaUserConfigPrivateAccess struct {
+	// Grafana server provided values
 	Grafana *string `pulumi:"grafana"`
 }
 
 // GrafanaGrafanaUserConfigPrivateAccessInput is an input type that accepts GrafanaGrafanaUserConfigPrivateAccessArgs and GrafanaGrafanaUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigPrivateAccessInput` via:
 //
-//          GrafanaGrafanaUserConfigPrivateAccessArgs{...}
+//	GrafanaGrafanaUserConfigPrivateAccessArgs{...}
 type GrafanaGrafanaUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -5374,6 +5906,7 @@ type GrafanaGrafanaUserConfigPrivateAccessInput interface {
 }
 
 type GrafanaGrafanaUserConfigPrivateAccessArgs struct {
+	// Grafana server provided values
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -5400,11 +5933,11 @@ func (i GrafanaGrafanaUserConfigPrivateAccessArgs) ToGrafanaGrafanaUserConfigPri
 // GrafanaGrafanaUserConfigPrivateAccessPtrInput is an input type that accepts GrafanaGrafanaUserConfigPrivateAccessArgs, GrafanaGrafanaUserConfigPrivateAccessPtr and GrafanaGrafanaUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigPrivateAccessPtrInput` via:
 //
-//          GrafanaGrafanaUserConfigPrivateAccessArgs{...}
+//	        GrafanaGrafanaUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrafanaGrafanaUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -5454,6 +5987,7 @@ func (o GrafanaGrafanaUserConfigPrivateAccessOutput) ToGrafanaGrafanaUserConfigP
 	}).(GrafanaGrafanaUserConfigPrivateAccessPtrOutput)
 }
 
+// Grafana server provided values
 func (o GrafanaGrafanaUserConfigPrivateAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigPrivateAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -5482,6 +6016,7 @@ func (o GrafanaGrafanaUserConfigPrivateAccessPtrOutput) Elem() GrafanaGrafanaUse
 	}).(GrafanaGrafanaUserConfigPrivateAccessOutput)
 }
 
+// Grafana server provided values
 func (o GrafanaGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -5492,13 +6027,14 @@ func (o GrafanaGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.StringP
 }
 
 type GrafanaGrafanaUserConfigPrivatelinkAccess struct {
+	// Grafana server provided values
 	Grafana *string `pulumi:"grafana"`
 }
 
 // GrafanaGrafanaUserConfigPrivatelinkAccessInput is an input type that accepts GrafanaGrafanaUserConfigPrivatelinkAccessArgs and GrafanaGrafanaUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigPrivatelinkAccessInput` via:
 //
-//          GrafanaGrafanaUserConfigPrivatelinkAccessArgs{...}
+//	GrafanaGrafanaUserConfigPrivatelinkAccessArgs{...}
 type GrafanaGrafanaUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -5507,6 +6043,7 @@ type GrafanaGrafanaUserConfigPrivatelinkAccessInput interface {
 }
 
 type GrafanaGrafanaUserConfigPrivatelinkAccessArgs struct {
+	// Grafana server provided values
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -5533,11 +6070,11 @@ func (i GrafanaGrafanaUserConfigPrivatelinkAccessArgs) ToGrafanaGrafanaUserConfi
 // GrafanaGrafanaUserConfigPrivatelinkAccessPtrInput is an input type that accepts GrafanaGrafanaUserConfigPrivatelinkAccessArgs, GrafanaGrafanaUserConfigPrivatelinkAccessPtr and GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          GrafanaGrafanaUserConfigPrivatelinkAccessArgs{...}
+//	        GrafanaGrafanaUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrafanaGrafanaUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -5587,6 +6124,7 @@ func (o GrafanaGrafanaUserConfigPrivatelinkAccessOutput) ToGrafanaGrafanaUserCon
 	}).(GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Grafana server provided values
 func (o GrafanaGrafanaUserConfigPrivatelinkAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigPrivatelinkAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -5615,6 +6153,7 @@ func (o GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput) Elem() GrafanaGrafan
 	}).(GrafanaGrafanaUserConfigPrivatelinkAccessOutput)
 }
 
+// Grafana server provided values
 func (o GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -5625,13 +6164,14 @@ func (o GrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput) Grafana() pulumi.Str
 }
 
 type GrafanaGrafanaUserConfigPublicAccess struct {
+	// Grafana server provided values
 	Grafana *string `pulumi:"grafana"`
 }
 
 // GrafanaGrafanaUserConfigPublicAccessInput is an input type that accepts GrafanaGrafanaUserConfigPublicAccessArgs and GrafanaGrafanaUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigPublicAccessInput` via:
 //
-//          GrafanaGrafanaUserConfigPublicAccessArgs{...}
+//	GrafanaGrafanaUserConfigPublicAccessArgs{...}
 type GrafanaGrafanaUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -5640,6 +6180,7 @@ type GrafanaGrafanaUserConfigPublicAccessInput interface {
 }
 
 type GrafanaGrafanaUserConfigPublicAccessArgs struct {
+	// Grafana server provided values
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -5666,11 +6207,11 @@ func (i GrafanaGrafanaUserConfigPublicAccessArgs) ToGrafanaGrafanaUserConfigPubl
 // GrafanaGrafanaUserConfigPublicAccessPtrInput is an input type that accepts GrafanaGrafanaUserConfigPublicAccessArgs, GrafanaGrafanaUserConfigPublicAccessPtr and GrafanaGrafanaUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigPublicAccessPtrInput` via:
 //
-//          GrafanaGrafanaUserConfigPublicAccessArgs{...}
+//	        GrafanaGrafanaUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrafanaGrafanaUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -5720,6 +6261,7 @@ func (o GrafanaGrafanaUserConfigPublicAccessOutput) ToGrafanaGrafanaUserConfigPu
 	}).(GrafanaGrafanaUserConfigPublicAccessPtrOutput)
 }
 
+// Grafana server provided values
 func (o GrafanaGrafanaUserConfigPublicAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigPublicAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -5748,6 +6290,7 @@ func (o GrafanaGrafanaUserConfigPublicAccessPtrOutput) Elem() GrafanaGrafanaUser
 	}).(GrafanaGrafanaUserConfigPublicAccessOutput)
 }
 
+// Grafana server provided values
 func (o GrafanaGrafanaUserConfigPublicAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaGrafanaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -5771,7 +6314,7 @@ type GrafanaGrafanaUserConfigSmtpServer struct {
 // GrafanaGrafanaUserConfigSmtpServerInput is an input type that accepts GrafanaGrafanaUserConfigSmtpServerArgs and GrafanaGrafanaUserConfigSmtpServerOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigSmtpServerInput` via:
 //
-//          GrafanaGrafanaUserConfigSmtpServerArgs{...}
+//	GrafanaGrafanaUserConfigSmtpServerArgs{...}
 type GrafanaGrafanaUserConfigSmtpServerInput interface {
 	pulumi.Input
 
@@ -5813,11 +6356,11 @@ func (i GrafanaGrafanaUserConfigSmtpServerArgs) ToGrafanaGrafanaUserConfigSmtpSe
 // GrafanaGrafanaUserConfigSmtpServerPtrInput is an input type that accepts GrafanaGrafanaUserConfigSmtpServerArgs, GrafanaGrafanaUserConfigSmtpServerPtr and GrafanaGrafanaUserConfigSmtpServerPtrOutput values.
 // You can construct a concrete instance of `GrafanaGrafanaUserConfigSmtpServerPtrInput` via:
 //
-//          GrafanaGrafanaUserConfigSmtpServerArgs{...}
+//	        GrafanaGrafanaUserConfigSmtpServerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrafanaGrafanaUserConfigSmtpServerPtrInput interface {
 	pulumi.Input
 
@@ -5996,14 +6539,16 @@ func (o GrafanaGrafanaUserConfigSmtpServerPtrOutput) Username() pulumi.StringPtr
 }
 
 type GrafanaServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // GrafanaServiceIntegrationInput is an input type that accepts GrafanaServiceIntegrationArgs and GrafanaServiceIntegrationOutput values.
 // You can construct a concrete instance of `GrafanaServiceIntegrationInput` via:
 //
-//          GrafanaServiceIntegrationArgs{...}
+//	GrafanaServiceIntegrationArgs{...}
 type GrafanaServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -6012,7 +6557,9 @@ type GrafanaServiceIntegrationInput interface {
 }
 
 type GrafanaServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -6031,7 +6578,7 @@ func (i GrafanaServiceIntegrationArgs) ToGrafanaServiceIntegrationOutputWithCont
 // GrafanaServiceIntegrationArrayInput is an input type that accepts GrafanaServiceIntegrationArray and GrafanaServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GrafanaServiceIntegrationArrayInput` via:
 //
-//          GrafanaServiceIntegrationArray{ GrafanaServiceIntegrationArgs{...} }
+//	GrafanaServiceIntegrationArray{ GrafanaServiceIntegrationArgs{...} }
 type GrafanaServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -6067,10 +6614,12 @@ func (o GrafanaServiceIntegrationOutput) ToGrafanaServiceIntegrationOutputWithCo
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o GrafanaServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GrafanaServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o GrafanaServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GrafanaServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -6096,14 +6645,16 @@ func (o GrafanaServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GrafanaSe
 }
 
 type GrafanaTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // GrafanaTagInput is an input type that accepts GrafanaTagArgs and GrafanaTagOutput values.
 // You can construct a concrete instance of `GrafanaTagInput` via:
 //
-//          GrafanaTagArgs{...}
+//	GrafanaTagArgs{...}
 type GrafanaTagInput interface {
 	pulumi.Input
 
@@ -6112,7 +6663,9 @@ type GrafanaTagInput interface {
 }
 
 type GrafanaTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -6131,7 +6684,7 @@ func (i GrafanaTagArgs) ToGrafanaTagOutputWithContext(ctx context.Context) Grafa
 // GrafanaTagArrayInput is an input type that accepts GrafanaTagArray and GrafanaTagArrayOutput values.
 // You can construct a concrete instance of `GrafanaTagArrayInput` via:
 //
-//          GrafanaTagArray{ GrafanaTagArgs{...} }
+//	GrafanaTagArray{ GrafanaTagArgs{...} }
 type GrafanaTagArrayInput interface {
 	pulumi.Input
 
@@ -6167,10 +6720,12 @@ func (o GrafanaTagOutput) ToGrafanaTagOutputWithContext(ctx context.Context) Gra
 	return o
 }
 
+// Service tag key
 func (o GrafanaTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GrafanaTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o GrafanaTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GrafanaTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -6208,7 +6763,7 @@ type InfluxDbComponent struct {
 // InfluxDbComponentInput is an input type that accepts InfluxDbComponentArgs and InfluxDbComponentOutput values.
 // You can construct a concrete instance of `InfluxDbComponentInput` via:
 //
-//          InfluxDbComponentArgs{...}
+//	InfluxDbComponentArgs{...}
 type InfluxDbComponentInput interface {
 	pulumi.Input
 
@@ -6241,7 +6796,7 @@ func (i InfluxDbComponentArgs) ToInfluxDbComponentOutputWithContext(ctx context.
 // InfluxDbComponentArrayInput is an input type that accepts InfluxDbComponentArray and InfluxDbComponentArrayOutput values.
 // You can construct a concrete instance of `InfluxDbComponentArrayInput` via:
 //
-//          InfluxDbComponentArray{ InfluxDbComponentArgs{...} }
+//	InfluxDbComponentArray{ InfluxDbComponentArgs{...} }
 type InfluxDbComponentArrayInput interface {
 	pulumi.Input
 
@@ -6332,7 +6887,7 @@ type InfluxDbInfluxdb struct {
 // InfluxDbInfluxdbInput is an input type that accepts InfluxDbInfluxdbArgs and InfluxDbInfluxdbOutput values.
 // You can construct a concrete instance of `InfluxDbInfluxdbInput` via:
 //
-//          InfluxDbInfluxdbArgs{...}
+//	InfluxDbInfluxdbArgs{...}
 type InfluxDbInfluxdbInput interface {
 	pulumi.Input
 
@@ -6359,7 +6914,7 @@ func (i InfluxDbInfluxdbArgs) ToInfluxDbInfluxdbOutputWithContext(ctx context.Co
 // InfluxDbInfluxdbArrayInput is an input type that accepts InfluxDbInfluxdbArray and InfluxDbInfluxdbArrayOutput values.
 // You can construct a concrete instance of `InfluxDbInfluxdbArrayInput` via:
 //
-//          InfluxDbInfluxdbArray{ InfluxDbInfluxdbArgs{...} }
+//	InfluxDbInfluxdbArray{ InfluxDbInfluxdbArgs{...} }
 type InfluxDbInfluxdbArrayInput interface {
 	pulumi.Input
 
@@ -6420,22 +6975,32 @@ func (o InfluxDbInfluxdbArrayOutput) Index(i pulumi.IntInput) InfluxDbInfluxdbOu
 }
 
 type InfluxDbInfluxdbUserConfig struct {
-	CustomDomain           *string                                      `pulumi:"customDomain"`
-	Influxdb               *InfluxDbInfluxdbUserConfigInfluxdb          `pulumi:"influxdb"`
-	IpFilters              []string                                     `pulumi:"ipFilters"`
-	PrivateAccess          *InfluxDbInfluxdbUserConfigPrivateAccess     `pulumi:"privateAccess"`
-	PrivatelinkAccess      *InfluxDbInfluxdbUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom      *string                                      `pulumi:"projectToForkFrom"`
-	PublicAccess           *InfluxDbInfluxdbUserConfigPublicAccess      `pulumi:"publicAccess"`
-	RecoveryBasebackupName *string                                      `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom      *string                                      `pulumi:"serviceToForkFrom"`
-	StaticIps              *string                                      `pulumi:"staticIps"`
+	// Custom domain
+	CustomDomain *string `pulumi:"customDomain"`
+	// influxdb.conf configuration values
+	Influxdb *InfluxDbInfluxdbUserConfigInfluxdb `pulumi:"influxdb"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *InfluxDbInfluxdbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *InfluxDbInfluxdbUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *InfluxDbInfluxdbUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Static IP addresses
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // InfluxDbInfluxdbUserConfigInput is an input type that accepts InfluxDbInfluxdbUserConfigArgs and InfluxDbInfluxdbUserConfigOutput values.
 // You can construct a concrete instance of `InfluxDbInfluxdbUserConfigInput` via:
 //
-//          InfluxDbInfluxdbUserConfigArgs{...}
+//	InfluxDbInfluxdbUserConfigArgs{...}
 type InfluxDbInfluxdbUserConfigInput interface {
 	pulumi.Input
 
@@ -6444,16 +7009,26 @@ type InfluxDbInfluxdbUserConfigInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigArgs struct {
-	CustomDomain           pulumi.StringPtrInput                               `pulumi:"customDomain"`
-	Influxdb               InfluxDbInfluxdbUserConfigInfluxdbPtrInput          `pulumi:"influxdb"`
-	IpFilters              pulumi.StringArrayInput                             `pulumi:"ipFilters"`
-	PrivateAccess          InfluxDbInfluxdbUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
-	PrivatelinkAccess      InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom      pulumi.StringPtrInput                               `pulumi:"projectToForkFrom"`
-	PublicAccess           InfluxDbInfluxdbUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
-	RecoveryBasebackupName pulumi.StringPtrInput                               `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom      pulumi.StringPtrInput                               `pulumi:"serviceToForkFrom"`
-	StaticIps              pulumi.StringPtrInput                               `pulumi:"staticIps"`
+	// Custom domain
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// influxdb.conf configuration values
+	Influxdb InfluxDbInfluxdbUserConfigInfluxdbPtrInput `pulumi:"influxdb"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess InfluxDbInfluxdbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess InfluxDbInfluxdbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Static IP addresses
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (InfluxDbInfluxdbUserConfigArgs) ElementType() reflect.Type {
@@ -6479,11 +7054,11 @@ func (i InfluxDbInfluxdbUserConfigArgs) ToInfluxDbInfluxdbUserConfigPtrOutputWit
 // InfluxDbInfluxdbUserConfigPtrInput is an input type that accepts InfluxDbInfluxdbUserConfigArgs, InfluxDbInfluxdbUserConfigPtr and InfluxDbInfluxdbUserConfigPtrOutput values.
 // You can construct a concrete instance of `InfluxDbInfluxdbUserConfigPtrInput` via:
 //
-//          InfluxDbInfluxdbUserConfigArgs{...}
+//	        InfluxDbInfluxdbUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InfluxDbInfluxdbUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -6533,44 +7108,54 @@ func (o InfluxDbInfluxdbUserConfigOutput) ToInfluxDbInfluxdbUserConfigPtrOutputW
 	}).(InfluxDbInfluxdbUserConfigPtrOutput)
 }
 
+// Custom domain
 func (o InfluxDbInfluxdbUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// influxdb.conf configuration values
 func (o InfluxDbInfluxdbUserConfigOutput) Influxdb() InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigInfluxdb { return v.Influxdb }).(InfluxDbInfluxdbUserConfigInfluxdbPtrOutput)
 }
 
+// IP filter
 func (o InfluxDbInfluxdbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o InfluxDbInfluxdbUserConfigOutput) PrivateAccess() InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPrivateAccess { return v.PrivateAccess }).(InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o InfluxDbInfluxdbUserConfigOutput) PrivatelinkAccess() InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPrivatelinkAccess {
 		return v.PrivatelinkAccess
 	}).(InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o InfluxDbInfluxdbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o InfluxDbInfluxdbUserConfigOutput) PublicAccess() InfluxDbInfluxdbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPublicAccess { return v.PublicAccess }).(InfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
 func (o InfluxDbInfluxdbUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o InfluxDbInfluxdbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o InfluxDbInfluxdbUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -6599,6 +7184,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) Elem() InfluxDbInfluxdbUserConfigOu
 	}).(InfluxDbInfluxdbUserConfigOutput)
 }
 
+// Custom domain
 func (o InfluxDbInfluxdbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
 		if v == nil {
@@ -6608,6 +7194,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// influxdb.conf configuration values
 func (o InfluxDbInfluxdbUserConfigPtrOutput) Influxdb() InfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigInfluxdb {
 		if v == nil {
@@ -6617,6 +7204,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) Influxdb() InfluxDbInfluxdbUserConf
 	}).(InfluxDbInfluxdbUserConfigInfluxdbPtrOutput)
 }
 
+// IP filter
 func (o InfluxDbInfluxdbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) []string {
 		if v == nil {
@@ -6626,6 +7214,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o InfluxDbInfluxdbUserConfigPtrOutput) PrivateAccess() InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPrivateAccess {
 		if v == nil {
@@ -6635,6 +7224,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) PrivateAccess() InfluxDbInfluxdbUse
 	}).(InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o InfluxDbInfluxdbUserConfigPtrOutput) PrivatelinkAccess() InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -6644,6 +7234,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) PrivatelinkAccess() InfluxDbInfluxd
 	}).(InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o InfluxDbInfluxdbUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
 		if v == nil {
@@ -6653,6 +7244,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o InfluxDbInfluxdbUserConfigPtrOutput) PublicAccess() InfluxDbInfluxdbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *InfluxDbInfluxdbUserConfigPublicAccess {
 		if v == nil {
@@ -6662,6 +7254,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) PublicAccess() InfluxDbInfluxdbUser
 	}).(InfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
 func (o InfluxDbInfluxdbUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
 		if v == nil {
@@ -6671,6 +7264,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) RecoveryBasebackupName() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o InfluxDbInfluxdbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
 		if v == nil {
@@ -6680,6 +7274,7 @@ func (o InfluxDbInfluxdbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o InfluxDbInfluxdbUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfig) *string {
 		if v == nil {
@@ -6701,7 +7296,7 @@ type InfluxDbInfluxdbUserConfigInfluxdb struct {
 // InfluxDbInfluxdbUserConfigInfluxdbInput is an input type that accepts InfluxDbInfluxdbUserConfigInfluxdbArgs and InfluxDbInfluxdbUserConfigInfluxdbOutput values.
 // You can construct a concrete instance of `InfluxDbInfluxdbUserConfigInfluxdbInput` via:
 //
-//          InfluxDbInfluxdbUserConfigInfluxdbArgs{...}
+//	InfluxDbInfluxdbUserConfigInfluxdbArgs{...}
 type InfluxDbInfluxdbUserConfigInfluxdbInput interface {
 	pulumi.Input
 
@@ -6741,11 +7336,11 @@ func (i InfluxDbInfluxdbUserConfigInfluxdbArgs) ToInfluxDbInfluxdbUserConfigInfl
 // InfluxDbInfluxdbUserConfigInfluxdbPtrInput is an input type that accepts InfluxDbInfluxdbUserConfigInfluxdbArgs, InfluxDbInfluxdbUserConfigInfluxdbPtr and InfluxDbInfluxdbUserConfigInfluxdbPtrOutput values.
 // You can construct a concrete instance of `InfluxDbInfluxdbUserConfigInfluxdbPtrInput` via:
 //
-//          InfluxDbInfluxdbUserConfigInfluxdbArgs{...}
+//	        InfluxDbInfluxdbUserConfigInfluxdbArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InfluxDbInfluxdbUserConfigInfluxdbPtrInput interface {
 	pulumi.Input
 
@@ -6898,13 +7493,14 @@ func (o InfluxDbInfluxdbUserConfigInfluxdbPtrOutput) QueryTimeout() pulumi.Strin
 }
 
 type InfluxDbInfluxdbUserConfigPrivateAccess struct {
+	// InfluxDB server provided values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
 // InfluxDbInfluxdbUserConfigPrivateAccessInput is an input type that accepts InfluxDbInfluxdbUserConfigPrivateAccessArgs and InfluxDbInfluxdbUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `InfluxDbInfluxdbUserConfigPrivateAccessInput` via:
 //
-//          InfluxDbInfluxdbUserConfigPrivateAccessArgs{...}
+//	InfluxDbInfluxdbUserConfigPrivateAccessArgs{...}
 type InfluxDbInfluxdbUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -6913,6 +7509,7 @@ type InfluxDbInfluxdbUserConfigPrivateAccessInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigPrivateAccessArgs struct {
+	// InfluxDB server provided values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -6939,11 +7536,11 @@ func (i InfluxDbInfluxdbUserConfigPrivateAccessArgs) ToInfluxDbInfluxdbUserConfi
 // InfluxDbInfluxdbUserConfigPrivateAccessPtrInput is an input type that accepts InfluxDbInfluxdbUserConfigPrivateAccessArgs, InfluxDbInfluxdbUserConfigPrivateAccessPtr and InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `InfluxDbInfluxdbUserConfigPrivateAccessPtrInput` via:
 //
-//          InfluxDbInfluxdbUserConfigPrivateAccessArgs{...}
+//	        InfluxDbInfluxdbUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InfluxDbInfluxdbUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -6993,6 +7590,7 @@ func (o InfluxDbInfluxdbUserConfigPrivateAccessOutput) ToInfluxDbInfluxdbUserCon
 	}).(InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
+// InfluxDB server provided values
 func (o InfluxDbInfluxdbUserConfigPrivateAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigPrivateAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -7021,6 +7619,7 @@ func (o InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Elem() InfluxDbInfluxd
 	}).(InfluxDbInfluxdbUserConfigPrivateAccessOutput)
 }
 
+// InfluxDB server provided values
 func (o InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -7031,13 +7630,14 @@ func (o InfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.Stri
 }
 
 type InfluxDbInfluxdbUserConfigPrivatelinkAccess struct {
+	// InfluxDB server provided values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
 // InfluxDbInfluxdbUserConfigPrivatelinkAccessInput is an input type that accepts InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs and InfluxDbInfluxdbUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `InfluxDbInfluxdbUserConfigPrivatelinkAccessInput` via:
 //
-//          InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs{...}
+//	InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs{...}
 type InfluxDbInfluxdbUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -7046,6 +7646,7 @@ type InfluxDbInfluxdbUserConfigPrivatelinkAccessInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs struct {
+	// InfluxDB server provided values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -7072,11 +7673,11 @@ func (i InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs) ToInfluxDbInfluxdbUserC
 // InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrInput is an input type that accepts InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs, InfluxDbInfluxdbUserConfigPrivatelinkAccessPtr and InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs{...}
+//	        InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -7126,6 +7727,7 @@ func (o InfluxDbInfluxdbUserConfigPrivatelinkAccessOutput) ToInfluxDbInfluxdbUse
 	}).(InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// InfluxDB server provided values
 func (o InfluxDbInfluxdbUserConfigPrivatelinkAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigPrivatelinkAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -7154,6 +7756,7 @@ func (o InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput) Elem() InfluxDbInf
 	}).(InfluxDbInfluxdbUserConfigPrivatelinkAccessOutput)
 }
 
+// InfluxDB server provided values
 func (o InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -7164,13 +7767,14 @@ func (o InfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput) Influxdb() pulumi.
 }
 
 type InfluxDbInfluxdbUserConfigPublicAccess struct {
+	// InfluxDB server provided values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
 // InfluxDbInfluxdbUserConfigPublicAccessInput is an input type that accepts InfluxDbInfluxdbUserConfigPublicAccessArgs and InfluxDbInfluxdbUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `InfluxDbInfluxdbUserConfigPublicAccessInput` via:
 //
-//          InfluxDbInfluxdbUserConfigPublicAccessArgs{...}
+//	InfluxDbInfluxdbUserConfigPublicAccessArgs{...}
 type InfluxDbInfluxdbUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -7179,6 +7783,7 @@ type InfluxDbInfluxdbUserConfigPublicAccessInput interface {
 }
 
 type InfluxDbInfluxdbUserConfigPublicAccessArgs struct {
+	// InfluxDB server provided values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -7205,11 +7810,11 @@ func (i InfluxDbInfluxdbUserConfigPublicAccessArgs) ToInfluxDbInfluxdbUserConfig
 // InfluxDbInfluxdbUserConfigPublicAccessPtrInput is an input type that accepts InfluxDbInfluxdbUserConfigPublicAccessArgs, InfluxDbInfluxdbUserConfigPublicAccessPtr and InfluxDbInfluxdbUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `InfluxDbInfluxdbUserConfigPublicAccessPtrInput` via:
 //
-//          InfluxDbInfluxdbUserConfigPublicAccessArgs{...}
+//	        InfluxDbInfluxdbUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InfluxDbInfluxdbUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -7259,6 +7864,7 @@ func (o InfluxDbInfluxdbUserConfigPublicAccessOutput) ToInfluxDbInfluxdbUserConf
 	}).(InfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
+// InfluxDB server provided values
 func (o InfluxDbInfluxdbUserConfigPublicAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InfluxDbInfluxdbUserConfigPublicAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -7287,6 +7893,7 @@ func (o InfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Elem() InfluxDbInfluxdb
 	}).(InfluxDbInfluxdbUserConfigPublicAccessOutput)
 }
 
+// InfluxDB server provided values
 func (o InfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDbInfluxdbUserConfigPublicAccess) *string {
 		if v == nil {
@@ -7297,14 +7904,16 @@ func (o InfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.Strin
 }
 
 type InfluxDbServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // InfluxDbServiceIntegrationInput is an input type that accepts InfluxDbServiceIntegrationArgs and InfluxDbServiceIntegrationOutput values.
 // You can construct a concrete instance of `InfluxDbServiceIntegrationInput` via:
 //
-//          InfluxDbServiceIntegrationArgs{...}
+//	InfluxDbServiceIntegrationArgs{...}
 type InfluxDbServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -7313,7 +7922,9 @@ type InfluxDbServiceIntegrationInput interface {
 }
 
 type InfluxDbServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -7332,7 +7943,7 @@ func (i InfluxDbServiceIntegrationArgs) ToInfluxDbServiceIntegrationOutputWithCo
 // InfluxDbServiceIntegrationArrayInput is an input type that accepts InfluxDbServiceIntegrationArray and InfluxDbServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `InfluxDbServiceIntegrationArrayInput` via:
 //
-//          InfluxDbServiceIntegrationArray{ InfluxDbServiceIntegrationArgs{...} }
+//	InfluxDbServiceIntegrationArray{ InfluxDbServiceIntegrationArgs{...} }
 type InfluxDbServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -7368,10 +7979,12 @@ func (o InfluxDbServiceIntegrationOutput) ToInfluxDbServiceIntegrationOutputWith
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o InfluxDbServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v InfluxDbServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o InfluxDbServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v InfluxDbServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -7397,14 +8010,16 @@ func (o InfluxDbServiceIntegrationArrayOutput) Index(i pulumi.IntInput) InfluxDb
 }
 
 type InfluxDbTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // InfluxDbTagInput is an input type that accepts InfluxDbTagArgs and InfluxDbTagOutput values.
 // You can construct a concrete instance of `InfluxDbTagInput` via:
 //
-//          InfluxDbTagArgs{...}
+//	InfluxDbTagArgs{...}
 type InfluxDbTagInput interface {
 	pulumi.Input
 
@@ -7413,7 +8028,9 @@ type InfluxDbTagInput interface {
 }
 
 type InfluxDbTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -7432,7 +8049,7 @@ func (i InfluxDbTagArgs) ToInfluxDbTagOutputWithContext(ctx context.Context) Inf
 // InfluxDbTagArrayInput is an input type that accepts InfluxDbTagArray and InfluxDbTagArrayOutput values.
 // You can construct a concrete instance of `InfluxDbTagArrayInput` via:
 //
-//          InfluxDbTagArray{ InfluxDbTagArgs{...} }
+//	InfluxDbTagArray{ InfluxDbTagArgs{...} }
 type InfluxDbTagArrayInput interface {
 	pulumi.Input
 
@@ -7468,10 +8085,12 @@ func (o InfluxDbTagOutput) ToInfluxDbTagOutputWithContext(ctx context.Context) I
 	return o
 }
 
+// Service tag key
 func (o InfluxDbTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v InfluxDbTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o InfluxDbTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v InfluxDbTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -7509,7 +8128,7 @@ type KafkaComponent struct {
 // KafkaComponentInput is an input type that accepts KafkaComponentArgs and KafkaComponentOutput values.
 // You can construct a concrete instance of `KafkaComponentInput` via:
 //
-//          KafkaComponentArgs{...}
+//	KafkaComponentArgs{...}
 type KafkaComponentInput interface {
 	pulumi.Input
 
@@ -7542,7 +8161,7 @@ func (i KafkaComponentArgs) ToKafkaComponentOutputWithContext(ctx context.Contex
 // KafkaComponentArrayInput is an input type that accepts KafkaComponentArray and KafkaComponentArrayOutput values.
 // You can construct a concrete instance of `KafkaComponentArrayInput` via:
 //
-//          KafkaComponentArray{ KafkaComponentArgs{...} }
+//	KafkaComponentArray{ KafkaComponentArgs{...} }
 type KafkaComponentArrayInput interface {
 	pulumi.Input
 
@@ -7639,7 +8258,7 @@ type KafkaConnectComponent struct {
 // KafkaConnectComponentInput is an input type that accepts KafkaConnectComponentArgs and KafkaConnectComponentOutput values.
 // You can construct a concrete instance of `KafkaConnectComponentInput` via:
 //
-//          KafkaConnectComponentArgs{...}
+//	KafkaConnectComponentArgs{...}
 type KafkaConnectComponentInput interface {
 	pulumi.Input
 
@@ -7672,7 +8291,7 @@ func (i KafkaConnectComponentArgs) ToKafkaConnectComponentOutputWithContext(ctx 
 // KafkaConnectComponentArrayInput is an input type that accepts KafkaConnectComponentArray and KafkaConnectComponentArrayOutput values.
 // You can construct a concrete instance of `KafkaConnectComponentArrayInput` via:
 //
-//          KafkaConnectComponentArray{ KafkaConnectComponentArgs{...} }
+//	KafkaConnectComponentArray{ KafkaConnectComponentArgs{...} }
 type KafkaConnectComponentArrayInput interface {
 	pulumi.Input
 
@@ -7762,7 +8381,7 @@ type KafkaConnectKafkaConnect struct {
 // KafkaConnectKafkaConnectInput is an input type that accepts KafkaConnectKafkaConnectArgs and KafkaConnectKafkaConnectOutput values.
 // You can construct a concrete instance of `KafkaConnectKafkaConnectInput` via:
 //
-//          KafkaConnectKafkaConnectArgs{...}
+//	KafkaConnectKafkaConnectArgs{...}
 type KafkaConnectKafkaConnectInput interface {
 	pulumi.Input
 
@@ -7788,7 +8407,7 @@ func (i KafkaConnectKafkaConnectArgs) ToKafkaConnectKafkaConnectOutputWithContex
 // KafkaConnectKafkaConnectArrayInput is an input type that accepts KafkaConnectKafkaConnectArray and KafkaConnectKafkaConnectArrayOutput values.
 // You can construct a concrete instance of `KafkaConnectKafkaConnectArrayInput` via:
 //
-//          KafkaConnectKafkaConnectArray{ KafkaConnectKafkaConnectArgs{...} }
+//	KafkaConnectKafkaConnectArray{ KafkaConnectKafkaConnectArgs{...} }
 type KafkaConnectKafkaConnectArrayInput interface {
 	pulumi.Input
 
@@ -7845,18 +8464,24 @@ func (o KafkaConnectKafkaConnectArrayOutput) Index(i pulumi.IntInput) KafkaConne
 }
 
 type KafkaConnectKafkaConnectUserConfig struct {
-	IpFilters         []string                                             `pulumi:"ipFilters"`
-	KafkaConnect      *KafkaConnectKafkaConnectUserConfigKafkaConnect      `pulumi:"kafkaConnect"`
-	PrivateAccess     *KafkaConnectKafkaConnectUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// Kafka Connect configuration values
+	KafkaConnect *KafkaConnectKafkaConnectUserConfigKafkaConnect `pulumi:"kafkaConnect"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *KafkaConnectKafkaConnectUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
 	PrivatelinkAccess *KafkaConnectKafkaConnectUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	PublicAccess      *KafkaConnectKafkaConnectUserConfigPublicAccess      `pulumi:"publicAccess"`
-	StaticIps         *string                                              `pulumi:"staticIps"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *KafkaConnectKafkaConnectUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Static IP addresses
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // KafkaConnectKafkaConnectUserConfigInput is an input type that accepts KafkaConnectKafkaConnectUserConfigArgs and KafkaConnectKafkaConnectUserConfigOutput values.
 // You can construct a concrete instance of `KafkaConnectKafkaConnectUserConfigInput` via:
 //
-//          KafkaConnectKafkaConnectUserConfigArgs{...}
+//	KafkaConnectKafkaConnectUserConfigArgs{...}
 type KafkaConnectKafkaConnectUserConfigInput interface {
 	pulumi.Input
 
@@ -7865,12 +8490,18 @@ type KafkaConnectKafkaConnectUserConfigInput interface {
 }
 
 type KafkaConnectKafkaConnectUserConfigArgs struct {
-	IpFilters         pulumi.StringArrayInput                                     `pulumi:"ipFilters"`
-	KafkaConnect      KafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput      `pulumi:"kafkaConnect"`
-	PrivateAccess     KafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Kafka Connect configuration values
+	KafkaConnect KafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput `pulumi:"kafkaConnect"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess KafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
 	PrivatelinkAccess KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	PublicAccess      KafkaConnectKafkaConnectUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
-	StaticIps         pulumi.StringPtrInput                                       `pulumi:"staticIps"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess KafkaConnectKafkaConnectUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Static IP addresses
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (KafkaConnectKafkaConnectUserConfigArgs) ElementType() reflect.Type {
@@ -7896,11 +8527,11 @@ func (i KafkaConnectKafkaConnectUserConfigArgs) ToKafkaConnectKafkaConnectUserCo
 // KafkaConnectKafkaConnectUserConfigPtrInput is an input type that accepts KafkaConnectKafkaConnectUserConfigArgs, KafkaConnectKafkaConnectUserConfigPtr and KafkaConnectKafkaConnectUserConfigPtrOutput values.
 // You can construct a concrete instance of `KafkaConnectKafkaConnectUserConfigPtrInput` via:
 //
-//          KafkaConnectKafkaConnectUserConfigArgs{...}
+//	        KafkaConnectKafkaConnectUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaConnectKafkaConnectUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -7950,34 +8581,40 @@ func (o KafkaConnectKafkaConnectUserConfigOutput) ToKafkaConnectKafkaConnectUser
 	}).(KafkaConnectKafkaConnectUserConfigPtrOutput)
 }
 
+// IP filter
 func (o KafkaConnectKafkaConnectUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Kafka Connect configuration values
 func (o KafkaConnectKafkaConnectUserConfigOutput) KafkaConnect() KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigKafkaConnect {
 		return v.KafkaConnect
 	}).(KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o KafkaConnectKafkaConnectUserConfigOutput) PrivateAccess() KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o KafkaConnectKafkaConnectUserConfigOutput) PrivatelinkAccess() KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
 		return v.PrivatelinkAccess
 	}).(KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o KafkaConnectKafkaConnectUserConfigOutput) PublicAccess() KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPublicAccess {
 		return v.PublicAccess
 	}).(KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
 }
 
+// Static IP addresses
 func (o KafkaConnectKafkaConnectUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -8006,6 +8643,7 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) Elem() KafkaConnectKafkaCon
 	}).(KafkaConnectKafkaConnectUserConfigOutput)
 }
 
+// IP filter
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) []string {
 		if v == nil {
@@ -8015,6 +8653,7 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) IpFilters() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
+// Kafka Connect configuration values
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) KafkaConnect() KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigKafkaConnect {
 		if v == nil {
@@ -8024,6 +8663,7 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) KafkaConnect() KafkaConnect
 	}).(KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PrivateAccess() KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPrivateAccess {
 		if v == nil {
@@ -8033,6 +8673,7 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PrivateAccess() KafkaConnec
 	}).(KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PrivatelinkAccess() KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -8042,6 +8683,7 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PrivatelinkAccess() KafkaCo
 	}).(KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PublicAccess() KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *KafkaConnectKafkaConnectUserConfigPublicAccess {
 		if v == nil {
@@ -8051,6 +8693,7 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) PublicAccess() KafkaConnect
 	}).(KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
 }
 
+// Static IP addresses
 func (o KafkaConnectKafkaConnectUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) *string {
 		if v == nil {
@@ -8078,7 +8721,7 @@ type KafkaConnectKafkaConnectUserConfigKafkaConnect struct {
 // KafkaConnectKafkaConnectUserConfigKafkaConnectInput is an input type that accepts KafkaConnectKafkaConnectUserConfigKafkaConnectArgs and KafkaConnectKafkaConnectUserConfigKafkaConnectOutput values.
 // You can construct a concrete instance of `KafkaConnectKafkaConnectUserConfigKafkaConnectInput` via:
 //
-//          KafkaConnectKafkaConnectUserConfigKafkaConnectArgs{...}
+//	KafkaConnectKafkaConnectUserConfigKafkaConnectArgs{...}
 type KafkaConnectKafkaConnectUserConfigKafkaConnectInput interface {
 	pulumi.Input
 
@@ -8124,11 +8767,11 @@ func (i KafkaConnectKafkaConnectUserConfigKafkaConnectArgs) ToKafkaConnectKafkaC
 // KafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput is an input type that accepts KafkaConnectKafkaConnectUserConfigKafkaConnectArgs, KafkaConnectKafkaConnectUserConfigKafkaConnectPtr and KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput values.
 // You can construct a concrete instance of `KafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput` via:
 //
-//          KafkaConnectKafkaConnectUserConfigKafkaConnectArgs{...}
+//	        KafkaConnectKafkaConnectUserConfigKafkaConnectArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput interface {
 	pulumi.Input
 
@@ -8363,6 +9006,7 @@ func (o KafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) SessionTimeoutM
 }
 
 type KafkaConnectKafkaConnectUserConfigPrivateAccess struct {
+	// Kafka Connect server provided values
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -8370,7 +9014,7 @@ type KafkaConnectKafkaConnectUserConfigPrivateAccess struct {
 // KafkaConnectKafkaConnectUserConfigPrivateAccessInput is an input type that accepts KafkaConnectKafkaConnectUserConfigPrivateAccessArgs and KafkaConnectKafkaConnectUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `KafkaConnectKafkaConnectUserConfigPrivateAccessInput` via:
 //
-//          KafkaConnectKafkaConnectUserConfigPrivateAccessArgs{...}
+//	KafkaConnectKafkaConnectUserConfigPrivateAccessArgs{...}
 type KafkaConnectKafkaConnectUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -8379,6 +9023,7 @@ type KafkaConnectKafkaConnectUserConfigPrivateAccessInput interface {
 }
 
 type KafkaConnectKafkaConnectUserConfigPrivateAccessArgs struct {
+	// Kafka Connect server provided values
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -8406,11 +9051,11 @@ func (i KafkaConnectKafkaConnectUserConfigPrivateAccessArgs) ToKafkaConnectKafka
 // KafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput is an input type that accepts KafkaConnectKafkaConnectUserConfigPrivateAccessArgs, KafkaConnectKafkaConnectUserConfigPrivateAccessPtr and KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `KafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput` via:
 //
-//          KafkaConnectKafkaConnectUserConfigPrivateAccessArgs{...}
+//	        KafkaConnectKafkaConnectUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -8460,6 +9105,7 @@ func (o KafkaConnectKafkaConnectUserConfigPrivateAccessOutput) ToKafkaConnectKaf
 	}).(KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput)
 }
 
+// Kafka Connect server provided values
 func (o KafkaConnectKafkaConnectUserConfigPrivateAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigPrivateAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -8492,6 +9138,7 @@ func (o KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) Elem() KafkaCo
 	}).(KafkaConnectKafkaConnectUserConfigPrivateAccessOutput)
 }
 
+// Kafka Connect server provided values
 func (o KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -8511,7 +9158,8 @@ func (o KafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) Prometheus() p
 }
 
 type KafkaConnectKafkaConnectUserConfigPrivatelinkAccess struct {
-	Jolokia      *string `pulumi:"jolokia"`
+	Jolokia *string `pulumi:"jolokia"`
+	// Kafka Connect server provided values
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -8519,7 +9167,7 @@ type KafkaConnectKafkaConnectUserConfigPrivatelinkAccess struct {
 // KafkaConnectKafkaConnectUserConfigPrivatelinkAccessInput is an input type that accepts KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs and KafkaConnectKafkaConnectUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `KafkaConnectKafkaConnectUserConfigPrivatelinkAccessInput` via:
 //
-//          KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs{...}
+//	KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs{...}
 type KafkaConnectKafkaConnectUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -8528,7 +9176,8 @@ type KafkaConnectKafkaConnectUserConfigPrivatelinkAccessInput interface {
 }
 
 type KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs struct {
-	Jolokia      pulumi.StringPtrInput `pulumi:"jolokia"`
+	Jolokia pulumi.StringPtrInput `pulumi:"jolokia"`
+	// Kafka Connect server provided values
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -8556,11 +9205,11 @@ func (i KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs) ToKafkaConnectK
 // KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrInput is an input type that accepts KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs, KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtr and KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs{...}
+//	        KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -8614,6 +9263,7 @@ func (o KafkaConnectKafkaConnectUserConfigPrivatelinkAccessOutput) Jolokia() pul
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigPrivatelinkAccess) *string { return v.Jolokia }).(pulumi.StringPtrOutput)
 }
 
+// Kafka Connect server provided values
 func (o KafkaConnectKafkaConnectUserConfigPrivatelinkAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigPrivatelinkAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -8655,6 +9305,7 @@ func (o KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput) Jolokia() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Kafka Connect server provided values
 func (o KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -8674,6 +9325,7 @@ func (o KafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput) Prometheus
 }
 
 type KafkaConnectKafkaConnectUserConfigPublicAccess struct {
+	// Kafka Connect server provided values
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -8681,7 +9333,7 @@ type KafkaConnectKafkaConnectUserConfigPublicAccess struct {
 // KafkaConnectKafkaConnectUserConfigPublicAccessInput is an input type that accepts KafkaConnectKafkaConnectUserConfigPublicAccessArgs and KafkaConnectKafkaConnectUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `KafkaConnectKafkaConnectUserConfigPublicAccessInput` via:
 //
-//          KafkaConnectKafkaConnectUserConfigPublicAccessArgs{...}
+//	KafkaConnectKafkaConnectUserConfigPublicAccessArgs{...}
 type KafkaConnectKafkaConnectUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -8690,6 +9342,7 @@ type KafkaConnectKafkaConnectUserConfigPublicAccessInput interface {
 }
 
 type KafkaConnectKafkaConnectUserConfigPublicAccessArgs struct {
+	// Kafka Connect server provided values
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -8717,11 +9370,11 @@ func (i KafkaConnectKafkaConnectUserConfigPublicAccessArgs) ToKafkaConnectKafkaC
 // KafkaConnectKafkaConnectUserConfigPublicAccessPtrInput is an input type that accepts KafkaConnectKafkaConnectUserConfigPublicAccessArgs, KafkaConnectKafkaConnectUserConfigPublicAccessPtr and KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `KafkaConnectKafkaConnectUserConfigPublicAccessPtrInput` via:
 //
-//          KafkaConnectKafkaConnectUserConfigPublicAccessArgs{...}
+//	        KafkaConnectKafkaConnectUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaConnectKafkaConnectUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -8771,6 +9424,7 @@ func (o KafkaConnectKafkaConnectUserConfigPublicAccessOutput) ToKafkaConnectKafk
 	}).(KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
 }
 
+// Kafka Connect server provided values
 func (o KafkaConnectKafkaConnectUserConfigPublicAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -8803,6 +9457,7 @@ func (o KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) Elem() KafkaCon
 	}).(KafkaConnectKafkaConnectUserConfigPublicAccessOutput)
 }
 
+// Kafka Connect server provided values
 func (o KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfigPublicAccess) *string {
 		if v == nil {
@@ -8822,14 +9477,16 @@ func (o KafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) Prometheus() pu
 }
 
 type KafkaConnectServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // KafkaConnectServiceIntegrationInput is an input type that accepts KafkaConnectServiceIntegrationArgs and KafkaConnectServiceIntegrationOutput values.
 // You can construct a concrete instance of `KafkaConnectServiceIntegrationInput` via:
 //
-//          KafkaConnectServiceIntegrationArgs{...}
+//	KafkaConnectServiceIntegrationArgs{...}
 type KafkaConnectServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -8838,7 +9495,9 @@ type KafkaConnectServiceIntegrationInput interface {
 }
 
 type KafkaConnectServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -8857,7 +9516,7 @@ func (i KafkaConnectServiceIntegrationArgs) ToKafkaConnectServiceIntegrationOutp
 // KafkaConnectServiceIntegrationArrayInput is an input type that accepts KafkaConnectServiceIntegrationArray and KafkaConnectServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `KafkaConnectServiceIntegrationArrayInput` via:
 //
-//          KafkaConnectServiceIntegrationArray{ KafkaConnectServiceIntegrationArgs{...} }
+//	KafkaConnectServiceIntegrationArray{ KafkaConnectServiceIntegrationArgs{...} }
 type KafkaConnectServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -8893,10 +9552,12 @@ func (o KafkaConnectServiceIntegrationOutput) ToKafkaConnectServiceIntegrationOu
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o KafkaConnectServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaConnectServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o KafkaConnectServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaConnectServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -8922,14 +9583,16 @@ func (o KafkaConnectServiceIntegrationArrayOutput) Index(i pulumi.IntInput) Kafk
 }
 
 type KafkaConnectTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // KafkaConnectTagInput is an input type that accepts KafkaConnectTagArgs and KafkaConnectTagOutput values.
 // You can construct a concrete instance of `KafkaConnectTagInput` via:
 //
-//          KafkaConnectTagArgs{...}
+//	KafkaConnectTagArgs{...}
 type KafkaConnectTagInput interface {
 	pulumi.Input
 
@@ -8938,7 +9601,9 @@ type KafkaConnectTagInput interface {
 }
 
 type KafkaConnectTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -8957,7 +9622,7 @@ func (i KafkaConnectTagArgs) ToKafkaConnectTagOutputWithContext(ctx context.Cont
 // KafkaConnectTagArrayInput is an input type that accepts KafkaConnectTagArray and KafkaConnectTagArrayOutput values.
 // You can construct a concrete instance of `KafkaConnectTagArrayInput` via:
 //
-//          KafkaConnectTagArray{ KafkaConnectTagArgs{...} }
+//	KafkaConnectTagArray{ KafkaConnectTagArgs{...} }
 type KafkaConnectTagArrayInput interface {
 	pulumi.Input
 
@@ -8993,10 +9658,12 @@ func (o KafkaConnectTagOutput) ToKafkaConnectTagOutputWithContext(ctx context.Co
 	return o
 }
 
+// Service tag key
 func (o KafkaConnectTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaConnectTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o KafkaConnectTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaConnectTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -9023,13 +9690,14 @@ func (o KafkaConnectTagArrayOutput) Index(i pulumi.IntInput) KafkaConnectTagOutp
 
 type KafkaConnectorTask struct {
 	Connector *string `pulumi:"connector"`
-	Task      *int    `pulumi:"task"`
+	// List of tasks of a connector.
+	Task *int `pulumi:"task"`
 }
 
 // KafkaConnectorTaskInput is an input type that accepts KafkaConnectorTaskArgs and KafkaConnectorTaskOutput values.
 // You can construct a concrete instance of `KafkaConnectorTaskInput` via:
 //
-//          KafkaConnectorTaskArgs{...}
+//	KafkaConnectorTaskArgs{...}
 type KafkaConnectorTaskInput interface {
 	pulumi.Input
 
@@ -9039,7 +9707,8 @@ type KafkaConnectorTaskInput interface {
 
 type KafkaConnectorTaskArgs struct {
 	Connector pulumi.StringPtrInput `pulumi:"connector"`
-	Task      pulumi.IntPtrInput    `pulumi:"task"`
+	// List of tasks of a connector.
+	Task pulumi.IntPtrInput `pulumi:"task"`
 }
 
 func (KafkaConnectorTaskArgs) ElementType() reflect.Type {
@@ -9057,7 +9726,7 @@ func (i KafkaConnectorTaskArgs) ToKafkaConnectorTaskOutputWithContext(ctx contex
 // KafkaConnectorTaskArrayInput is an input type that accepts KafkaConnectorTaskArray and KafkaConnectorTaskArrayOutput values.
 // You can construct a concrete instance of `KafkaConnectorTaskArrayInput` via:
 //
-//          KafkaConnectorTaskArray{ KafkaConnectorTaskArgs{...} }
+//	KafkaConnectorTaskArray{ KafkaConnectorTaskArgs{...} }
 type KafkaConnectorTaskArrayInput interface {
 	pulumi.Input
 
@@ -9097,6 +9766,7 @@ func (o KafkaConnectorTaskOutput) Connector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectorTask) *string { return v.Connector }).(pulumi.StringPtrOutput)
 }
 
+// List of tasks of a connector.
 func (o KafkaConnectorTaskOutput) Task() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KafkaConnectorTask) *int { return v.Task }).(pulumi.IntPtrOutput)
 }
@@ -9122,17 +9792,22 @@ func (o KafkaConnectorTaskArrayOutput) Index(i pulumi.IntInput) KafkaConnectorTa
 }
 
 type KafkaKafka struct {
-	AccessCert        *string `pulumi:"accessCert"`
-	AccessKey         *string `pulumi:"accessKey"`
-	ConnectUri        *string `pulumi:"connectUri"`
-	RestUri           *string `pulumi:"restUri"`
+	// The Kafka client certificate
+	AccessCert *string `pulumi:"accessCert"`
+	// The Kafka client certificate key
+	AccessKey *string `pulumi:"accessKey"`
+	// The Kafka Connect URI, if any
+	ConnectUri *string `pulumi:"connectUri"`
+	// The Kafka REST URI, if any
+	RestUri *string `pulumi:"restUri"`
+	// The Schema Registry URI, if any
 	SchemaRegistryUri *string `pulumi:"schemaRegistryUri"`
 }
 
 // KafkaKafkaInput is an input type that accepts KafkaKafkaArgs and KafkaKafkaOutput values.
 // You can construct a concrete instance of `KafkaKafkaInput` via:
 //
-//          KafkaKafkaArgs{...}
+//	KafkaKafkaArgs{...}
 type KafkaKafkaInput interface {
 	pulumi.Input
 
@@ -9141,10 +9816,15 @@ type KafkaKafkaInput interface {
 }
 
 type KafkaKafkaArgs struct {
-	AccessCert        pulumi.StringPtrInput `pulumi:"accessCert"`
-	AccessKey         pulumi.StringPtrInput `pulumi:"accessKey"`
-	ConnectUri        pulumi.StringPtrInput `pulumi:"connectUri"`
-	RestUri           pulumi.StringPtrInput `pulumi:"restUri"`
+	// The Kafka client certificate
+	AccessCert pulumi.StringPtrInput `pulumi:"accessCert"`
+	// The Kafka client certificate key
+	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// The Kafka Connect URI, if any
+	ConnectUri pulumi.StringPtrInput `pulumi:"connectUri"`
+	// The Kafka REST URI, if any
+	RestUri pulumi.StringPtrInput `pulumi:"restUri"`
+	// The Schema Registry URI, if any
 	SchemaRegistryUri pulumi.StringPtrInput `pulumi:"schemaRegistryUri"`
 }
 
@@ -9171,11 +9851,11 @@ func (i KafkaKafkaArgs) ToKafkaKafkaPtrOutputWithContext(ctx context.Context) Ka
 // KafkaKafkaPtrInput is an input type that accepts KafkaKafkaArgs, KafkaKafkaPtr and KafkaKafkaPtrOutput values.
 // You can construct a concrete instance of `KafkaKafkaPtrInput` via:
 //
-//          KafkaKafkaArgs{...}
+//	        KafkaKafkaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaKafkaPtrInput interface {
 	pulumi.Input
 
@@ -9225,22 +9905,27 @@ func (o KafkaKafkaOutput) ToKafkaKafkaPtrOutputWithContext(ctx context.Context) 
 	}).(KafkaKafkaPtrOutput)
 }
 
+// The Kafka client certificate
 func (o KafkaKafkaOutput) AccessCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.AccessCert }).(pulumi.StringPtrOutput)
 }
 
+// The Kafka client certificate key
 func (o KafkaKafkaOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// The Kafka Connect URI, if any
 func (o KafkaKafkaOutput) ConnectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.ConnectUri }).(pulumi.StringPtrOutput)
 }
 
+// The Kafka REST URI, if any
 func (o KafkaKafkaOutput) RestUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.RestUri }).(pulumi.StringPtrOutput)
 }
 
+// The Schema Registry URI, if any
 func (o KafkaKafkaOutput) SchemaRegistryUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafka) *string { return v.SchemaRegistryUri }).(pulumi.StringPtrOutput)
 }
@@ -9269,6 +9954,7 @@ func (o KafkaKafkaPtrOutput) Elem() KafkaKafkaOutput {
 	}).(KafkaKafkaOutput)
 }
 
+// The Kafka client certificate
 func (o KafkaKafkaPtrOutput) AccessCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -9278,6 +9964,7 @@ func (o KafkaKafkaPtrOutput) AccessCert() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Kafka client certificate key
 func (o KafkaKafkaPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -9287,6 +9974,7 @@ func (o KafkaKafkaPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Kafka Connect URI, if any
 func (o KafkaKafkaPtrOutput) ConnectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -9296,6 +9984,7 @@ func (o KafkaKafkaPtrOutput) ConnectUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Kafka REST URI, if any
 func (o KafkaKafkaPtrOutput) RestUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -9305,6 +9994,7 @@ func (o KafkaKafkaPtrOutput) RestUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Schema Registry URI, if any
 func (o KafkaKafkaPtrOutput) SchemaRegistryUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafka) *string {
 		if v == nil {
@@ -9315,27 +10005,42 @@ func (o KafkaKafkaPtrOutput) SchemaRegistryUri() pulumi.StringPtrOutput {
 }
 
 type KafkaKafkaUserConfig struct {
-	CustomDomain               *string                                         `pulumi:"customDomain"`
-	IpFilters                  []string                                        `pulumi:"ipFilters"`
-	Kafka                      *KafkaKafkaUserConfigKafka                      `pulumi:"kafka"`
+	// Custom domain
+	CustomDomain *string `pulumi:"customDomain"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// Kafka broker configuration values
+	Kafka *KafkaKafkaUserConfigKafka `pulumi:"kafka"`
+	// Kafka authentication methods
 	KafkaAuthenticationMethods *KafkaKafkaUserConfigKafkaAuthenticationMethods `pulumi:"kafkaAuthenticationMethods"`
-	KafkaConnect               *string                                         `pulumi:"kafkaConnect"`
-	KafkaConnectConfig         *KafkaKafkaUserConfigKafkaConnectConfig         `pulumi:"kafkaConnectConfig"`
-	KafkaRest                  *string                                         `pulumi:"kafkaRest"`
-	KafkaRestConfig            *KafkaKafkaUserConfigKafkaRestConfig            `pulumi:"kafkaRestConfig"`
-	KafkaVersion               *string                                         `pulumi:"kafkaVersion"`
-	PrivateAccess              *KafkaKafkaUserConfigPrivateAccess              `pulumi:"privateAccess"`
-	PrivatelinkAccess          *KafkaKafkaUserConfigPrivatelinkAccess          `pulumi:"privatelinkAccess"`
-	PublicAccess               *KafkaKafkaUserConfigPublicAccess               `pulumi:"publicAccess"`
-	SchemaRegistry             *string                                         `pulumi:"schemaRegistry"`
-	SchemaRegistryConfig       *KafkaKafkaUserConfigSchemaRegistryConfig       `pulumi:"schemaRegistryConfig"`
-	StaticIps                  *string                                         `pulumi:"staticIps"`
+	// Enable Kafka Connect service
+	KafkaConnect *string `pulumi:"kafkaConnect"`
+	// Kafka Connect configuration values
+	KafkaConnectConfig *KafkaKafkaUserConfigKafkaConnectConfig `pulumi:"kafkaConnectConfig"`
+	// Enable Kafka-REST service
+	KafkaRest *string `pulumi:"kafkaRest"`
+	// Kafka REST configuration
+	KafkaRestConfig *KafkaKafkaUserConfigKafkaRestConfig `pulumi:"kafkaRestConfig"`
+	// Kafka major version
+	KafkaVersion *string `pulumi:"kafkaVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *KafkaKafkaUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *KafkaKafkaUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *KafkaKafkaUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Enable Schema-Registry service
+	SchemaRegistry *string `pulumi:"schemaRegistry"`
+	// Schema Registry configuration
+	SchemaRegistryConfig *KafkaKafkaUserConfigSchemaRegistryConfig `pulumi:"schemaRegistryConfig"`
+	// Static IP addresses
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // KafkaKafkaUserConfigInput is an input type that accepts KafkaKafkaUserConfigArgs and KafkaKafkaUserConfigOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigInput` via:
 //
-//          KafkaKafkaUserConfigArgs{...}
+//	KafkaKafkaUserConfigArgs{...}
 type KafkaKafkaUserConfigInput interface {
 	pulumi.Input
 
@@ -9344,21 +10049,36 @@ type KafkaKafkaUserConfigInput interface {
 }
 
 type KafkaKafkaUserConfigArgs struct {
-	CustomDomain               pulumi.StringPtrInput                                  `pulumi:"customDomain"`
-	IpFilters                  pulumi.StringArrayInput                                `pulumi:"ipFilters"`
-	Kafka                      KafkaKafkaUserConfigKafkaPtrInput                      `pulumi:"kafka"`
+	// Custom domain
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Kafka broker configuration values
+	Kafka KafkaKafkaUserConfigKafkaPtrInput `pulumi:"kafka"`
+	// Kafka authentication methods
 	KafkaAuthenticationMethods KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput `pulumi:"kafkaAuthenticationMethods"`
-	KafkaConnect               pulumi.StringPtrInput                                  `pulumi:"kafkaConnect"`
-	KafkaConnectConfig         KafkaKafkaUserConfigKafkaConnectConfigPtrInput         `pulumi:"kafkaConnectConfig"`
-	KafkaRest                  pulumi.StringPtrInput                                  `pulumi:"kafkaRest"`
-	KafkaRestConfig            KafkaKafkaUserConfigKafkaRestConfigPtrInput            `pulumi:"kafkaRestConfig"`
-	KafkaVersion               pulumi.StringPtrInput                                  `pulumi:"kafkaVersion"`
-	PrivateAccess              KafkaKafkaUserConfigPrivateAccessPtrInput              `pulumi:"privateAccess"`
-	PrivatelinkAccess          KafkaKafkaUserConfigPrivatelinkAccessPtrInput          `pulumi:"privatelinkAccess"`
-	PublicAccess               KafkaKafkaUserConfigPublicAccessPtrInput               `pulumi:"publicAccess"`
-	SchemaRegistry             pulumi.StringPtrInput                                  `pulumi:"schemaRegistry"`
-	SchemaRegistryConfig       KafkaKafkaUserConfigSchemaRegistryConfigPtrInput       `pulumi:"schemaRegistryConfig"`
-	StaticIps                  pulumi.StringPtrInput                                  `pulumi:"staticIps"`
+	// Enable Kafka Connect service
+	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
+	// Kafka Connect configuration values
+	KafkaConnectConfig KafkaKafkaUserConfigKafkaConnectConfigPtrInput `pulumi:"kafkaConnectConfig"`
+	// Enable Kafka-REST service
+	KafkaRest pulumi.StringPtrInput `pulumi:"kafkaRest"`
+	// Kafka REST configuration
+	KafkaRestConfig KafkaKafkaUserConfigKafkaRestConfigPtrInput `pulumi:"kafkaRestConfig"`
+	// Kafka major version
+	KafkaVersion pulumi.StringPtrInput `pulumi:"kafkaVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess KafkaKafkaUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess KafkaKafkaUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess KafkaKafkaUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Enable Schema-Registry service
+	SchemaRegistry pulumi.StringPtrInput `pulumi:"schemaRegistry"`
+	// Schema Registry configuration
+	SchemaRegistryConfig KafkaKafkaUserConfigSchemaRegistryConfigPtrInput `pulumi:"schemaRegistryConfig"`
+	// Static IP addresses
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (KafkaKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -9384,11 +10104,11 @@ func (i KafkaKafkaUserConfigArgs) ToKafkaKafkaUserConfigPtrOutputWithContext(ctx
 // KafkaKafkaUserConfigPtrInput is an input type that accepts KafkaKafkaUserConfigArgs, KafkaKafkaUserConfigPtr and KafkaKafkaUserConfigPtrOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigPtrInput` via:
 //
-//          KafkaKafkaUserConfigArgs{...}
+//	        KafkaKafkaUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaKafkaUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -9438,64 +10158,79 @@ func (o KafkaKafkaUserConfigOutput) ToKafkaKafkaUserConfigPtrOutputWithContext(c
 	}).(KafkaKafkaUserConfigPtrOutput)
 }
 
+// Custom domain
 func (o KafkaKafkaUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o KafkaKafkaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Kafka broker configuration values
 func (o KafkaKafkaUserConfigOutput) Kafka() KafkaKafkaUserConfigKafkaPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafka { return v.Kafka }).(KafkaKafkaUserConfigKafkaPtrOutput)
 }
 
+// Kafka authentication methods
 func (o KafkaKafkaUserConfigOutput) KafkaAuthenticationMethods() KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaAuthenticationMethods {
 		return v.KafkaAuthenticationMethods
 	}).(KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
+// Enable Kafka Connect service
 func (o KafkaKafkaUserConfigOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
 
+// Kafka Connect configuration values
 func (o KafkaKafkaUserConfigOutput) KafkaConnectConfig() KafkaKafkaUserConfigKafkaConnectConfigPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaConnectConfig { return v.KafkaConnectConfig }).(KafkaKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
+// Enable Kafka-REST service
 func (o KafkaKafkaUserConfigOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KafkaRest }).(pulumi.StringPtrOutput)
 }
 
+// Kafka REST configuration
 func (o KafkaKafkaUserConfigOutput) KafkaRestConfig() KafkaKafkaUserConfigKafkaRestConfigPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaRestConfig { return v.KafkaRestConfig }).(KafkaKafkaUserConfigKafkaRestConfigPtrOutput)
 }
 
+// Kafka major version
 func (o KafkaKafkaUserConfigOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KafkaVersion }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o KafkaKafkaUserConfigOutput) PrivateAccess() KafkaKafkaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigPrivateAccess { return v.PrivateAccess }).(KafkaKafkaUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o KafkaKafkaUserConfigOutput) PrivatelinkAccess() KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(KafkaKafkaUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o KafkaKafkaUserConfigOutput) PublicAccess() KafkaKafkaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigPublicAccess { return v.PublicAccess }).(KafkaKafkaUserConfigPublicAccessPtrOutput)
 }
 
+// Enable Schema-Registry service
 func (o KafkaKafkaUserConfigOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.SchemaRegistry }).(pulumi.StringPtrOutput)
 }
 
+// Schema Registry configuration
 func (o KafkaKafkaUserConfigOutput) SchemaRegistryConfig() KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigSchemaRegistryConfig { return v.SchemaRegistryConfig }).(KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
 }
 
+// Static IP addresses
 func (o KafkaKafkaUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -9524,6 +10259,7 @@ func (o KafkaKafkaUserConfigPtrOutput) Elem() KafkaKafkaUserConfigOutput {
 	}).(KafkaKafkaUserConfigOutput)
 }
 
+// Custom domain
 func (o KafkaKafkaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -9533,6 +10269,7 @@ func (o KafkaKafkaUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o KafkaKafkaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) []string {
 		if v == nil {
@@ -9542,6 +10279,7 @@ func (o KafkaKafkaUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Kafka broker configuration values
 func (o KafkaKafkaUserConfigPtrOutput) Kafka() KafkaKafkaUserConfigKafkaPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafka {
 		if v == nil {
@@ -9551,6 +10289,7 @@ func (o KafkaKafkaUserConfigPtrOutput) Kafka() KafkaKafkaUserConfigKafkaPtrOutpu
 	}).(KafkaKafkaUserConfigKafkaPtrOutput)
 }
 
+// Kafka authentication methods
 func (o KafkaKafkaUserConfigPtrOutput) KafkaAuthenticationMethods() KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaAuthenticationMethods {
 		if v == nil {
@@ -9560,6 +10299,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaAuthenticationMethods() KafkaKafkaUs
 	}).(KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput)
 }
 
+// Enable Kafka Connect service
 func (o KafkaKafkaUserConfigPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -9569,6 +10309,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Kafka Connect configuration values
 func (o KafkaKafkaUserConfigPtrOutput) KafkaConnectConfig() KafkaKafkaUserConfigKafkaConnectConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaConnectConfig {
 		if v == nil {
@@ -9578,6 +10319,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaConnectConfig() KafkaKafkaUserConfig
 	}).(KafkaKafkaUserConfigKafkaConnectConfigPtrOutput)
 }
 
+// Enable Kafka-REST service
 func (o KafkaKafkaUserConfigPtrOutput) KafkaRest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -9587,6 +10329,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaRest() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Kafka REST configuration
 func (o KafkaKafkaUserConfigPtrOutput) KafkaRestConfig() KafkaKafkaUserConfigKafkaRestConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaRestConfig {
 		if v == nil {
@@ -9596,6 +10339,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaRestConfig() KafkaKafkaUserConfigKaf
 	}).(KafkaKafkaUserConfigKafkaRestConfigPtrOutput)
 }
 
+// Kafka major version
 func (o KafkaKafkaUserConfigPtrOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -9605,6 +10349,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o KafkaKafkaUserConfigPtrOutput) PrivateAccess() KafkaKafkaUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigPrivateAccess {
 		if v == nil {
@@ -9614,6 +10359,7 @@ func (o KafkaKafkaUserConfigPtrOutput) PrivateAccess() KafkaKafkaUserConfigPriva
 	}).(KafkaKafkaUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o KafkaKafkaUserConfigPtrOutput) PrivatelinkAccess() KafkaKafkaUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -9623,6 +10369,7 @@ func (o KafkaKafkaUserConfigPtrOutput) PrivatelinkAccess() KafkaKafkaUserConfigP
 	}).(KafkaKafkaUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o KafkaKafkaUserConfigPtrOutput) PublicAccess() KafkaKafkaUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigPublicAccess {
 		if v == nil {
@@ -9632,6 +10379,7 @@ func (o KafkaKafkaUserConfigPtrOutput) PublicAccess() KafkaKafkaUserConfigPublic
 	}).(KafkaKafkaUserConfigPublicAccessPtrOutput)
 }
 
+// Enable Schema-Registry service
 func (o KafkaKafkaUserConfigPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -9641,6 +10389,7 @@ func (o KafkaKafkaUserConfigPtrOutput) SchemaRegistry() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Schema Registry configuration
 func (o KafkaKafkaUserConfigPtrOutput) SchemaRegistryConfig() KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *KafkaKafkaUserConfigSchemaRegistryConfig {
 		if v == nil {
@@ -9650,6 +10399,7 @@ func (o KafkaKafkaUserConfigPtrOutput) SchemaRegistryConfig() KafkaKafkaUserConf
 	}).(KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
 }
 
+// Static IP addresses
 func (o KafkaKafkaUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -9704,7 +10454,7 @@ type KafkaKafkaUserConfigKafka struct {
 // KafkaKafkaUserConfigKafkaInput is an input type that accepts KafkaKafkaUserConfigKafkaArgs and KafkaKafkaUserConfigKafkaOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigKafkaInput` via:
 //
-//          KafkaKafkaUserConfigKafkaArgs{...}
+//	KafkaKafkaUserConfigKafkaArgs{...}
 type KafkaKafkaUserConfigKafkaInput interface {
 	pulumi.Input
 
@@ -9777,11 +10527,11 @@ func (i KafkaKafkaUserConfigKafkaArgs) ToKafkaKafkaUserConfigKafkaPtrOutputWithC
 // KafkaKafkaUserConfigKafkaPtrInput is an input type that accepts KafkaKafkaUserConfigKafkaArgs, KafkaKafkaUserConfigKafkaPtr and KafkaKafkaUserConfigKafkaPtrOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigKafkaPtrInput` via:
 //
-//          KafkaKafkaUserConfigKafkaArgs{...}
+//	        KafkaKafkaUserConfigKafkaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaKafkaUserConfigKafkaPtrInput interface {
 	pulumi.Input
 
@@ -10372,7 +11122,7 @@ type KafkaKafkaUserConfigKafkaAuthenticationMethods struct {
 // KafkaKafkaUserConfigKafkaAuthenticationMethodsInput is an input type that accepts KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs and KafkaKafkaUserConfigKafkaAuthenticationMethodsOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigKafkaAuthenticationMethodsInput` via:
 //
-//          KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
+//	KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
 type KafkaKafkaUserConfigKafkaAuthenticationMethodsInput interface {
 	pulumi.Input
 
@@ -10408,11 +11158,11 @@ func (i KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs) ToKafkaKafkaUserConf
 // KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput is an input type that accepts KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs, KafkaKafkaUserConfigKafkaAuthenticationMethodsPtr and KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput` via:
 //
-//          KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
+//	        KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput interface {
 	pulumi.Input
 
@@ -10530,7 +11280,7 @@ type KafkaKafkaUserConfigKafkaConnectConfig struct {
 // KafkaKafkaUserConfigKafkaConnectConfigInput is an input type that accepts KafkaKafkaUserConfigKafkaConnectConfigArgs and KafkaKafkaUserConfigKafkaConnectConfigOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigKafkaConnectConfigInput` via:
 //
-//          KafkaKafkaUserConfigKafkaConnectConfigArgs{...}
+//	KafkaKafkaUserConfigKafkaConnectConfigArgs{...}
 type KafkaKafkaUserConfigKafkaConnectConfigInput interface {
 	pulumi.Input
 
@@ -10576,11 +11326,11 @@ func (i KafkaKafkaUserConfigKafkaConnectConfigArgs) ToKafkaKafkaUserConfigKafkaC
 // KafkaKafkaUserConfigKafkaConnectConfigPtrInput is an input type that accepts KafkaKafkaUserConfigKafkaConnectConfigArgs, KafkaKafkaUserConfigKafkaConnectConfigPtr and KafkaKafkaUserConfigKafkaConnectConfigPtrOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigKafkaConnectConfigPtrInput` via:
 //
-//          KafkaKafkaUserConfigKafkaConnectConfigArgs{...}
+//	        KafkaKafkaUserConfigKafkaConnectConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaKafkaUserConfigKafkaConnectConfigPtrInput interface {
 	pulumi.Input
 
@@ -10822,7 +11572,7 @@ type KafkaKafkaUserConfigKafkaRestConfig struct {
 // KafkaKafkaUserConfigKafkaRestConfigInput is an input type that accepts KafkaKafkaUserConfigKafkaRestConfigArgs and KafkaKafkaUserConfigKafkaRestConfigOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigKafkaRestConfigInput` via:
 //
-//          KafkaKafkaUserConfigKafkaRestConfigArgs{...}
+//	KafkaKafkaUserConfigKafkaRestConfigArgs{...}
 type KafkaKafkaUserConfigKafkaRestConfigInput interface {
 	pulumi.Input
 
@@ -10862,11 +11612,11 @@ func (i KafkaKafkaUserConfigKafkaRestConfigArgs) ToKafkaKafkaUserConfigKafkaRest
 // KafkaKafkaUserConfigKafkaRestConfigPtrInput is an input type that accepts KafkaKafkaUserConfigKafkaRestConfigArgs, KafkaKafkaUserConfigKafkaRestConfigPtr and KafkaKafkaUserConfigKafkaRestConfigPtrOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigKafkaRestConfigPtrInput` via:
 //
-//          KafkaKafkaUserConfigKafkaRestConfigArgs{...}
+//	        KafkaKafkaUserConfigKafkaRestConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaKafkaUserConfigKafkaRestConfigPtrInput interface {
 	pulumi.Input
 
@@ -11025,7 +11775,7 @@ type KafkaKafkaUserConfigPrivateAccess struct {
 // KafkaKafkaUserConfigPrivateAccessInput is an input type that accepts KafkaKafkaUserConfigPrivateAccessArgs and KafkaKafkaUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigPrivateAccessInput` via:
 //
-//          KafkaKafkaUserConfigPrivateAccessArgs{...}
+//	KafkaKafkaUserConfigPrivateAccessArgs{...}
 type KafkaKafkaUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -11060,11 +11810,11 @@ func (i KafkaKafkaUserConfigPrivateAccessArgs) ToKafkaKafkaUserConfigPrivateAcce
 // KafkaKafkaUserConfigPrivateAccessPtrInput is an input type that accepts KafkaKafkaUserConfigPrivateAccessArgs, KafkaKafkaUserConfigPrivateAccessPtr and KafkaKafkaUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigPrivateAccessPtrInput` via:
 //
-//          KafkaKafkaUserConfigPrivateAccessArgs{...}
+//	        KafkaKafkaUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaKafkaUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -11152,7 +11902,8 @@ func (o KafkaKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPt
 }
 
 type KafkaKafkaUserConfigPrivatelinkAccess struct {
-	Jolokia        *string `pulumi:"jolokia"`
+	Jolokia *string `pulumi:"jolokia"`
+	// Kafka server provided values
 	Kafka          *string `pulumi:"kafka"`
 	KafkaConnect   *string `pulumi:"kafkaConnect"`
 	KafkaRest      *string `pulumi:"kafkaRest"`
@@ -11163,7 +11914,7 @@ type KafkaKafkaUserConfigPrivatelinkAccess struct {
 // KafkaKafkaUserConfigPrivatelinkAccessInput is an input type that accepts KafkaKafkaUserConfigPrivatelinkAccessArgs and KafkaKafkaUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigPrivatelinkAccessInput` via:
 //
-//          KafkaKafkaUserConfigPrivatelinkAccessArgs{...}
+//	KafkaKafkaUserConfigPrivatelinkAccessArgs{...}
 type KafkaKafkaUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -11172,7 +11923,8 @@ type KafkaKafkaUserConfigPrivatelinkAccessInput interface {
 }
 
 type KafkaKafkaUserConfigPrivatelinkAccessArgs struct {
-	Jolokia        pulumi.StringPtrInput `pulumi:"jolokia"`
+	Jolokia pulumi.StringPtrInput `pulumi:"jolokia"`
+	// Kafka server provided values
 	Kafka          pulumi.StringPtrInput `pulumi:"kafka"`
 	KafkaConnect   pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	KafkaRest      pulumi.StringPtrInput `pulumi:"kafkaRest"`
@@ -11203,11 +11955,11 @@ func (i KafkaKafkaUserConfigPrivatelinkAccessArgs) ToKafkaKafkaUserConfigPrivate
 // KafkaKafkaUserConfigPrivatelinkAccessPtrInput is an input type that accepts KafkaKafkaUserConfigPrivatelinkAccessArgs, KafkaKafkaUserConfigPrivatelinkAccessPtr and KafkaKafkaUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          KafkaKafkaUserConfigPrivatelinkAccessArgs{...}
+//	        KafkaKafkaUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaKafkaUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -11261,6 +12013,7 @@ func (o KafkaKafkaUserConfigPrivatelinkAccessOutput) Jolokia() pulumi.StringPtrO
 	return o.ApplyT(func(v KafkaKafkaUserConfigPrivatelinkAccess) *string { return v.Jolokia }).(pulumi.StringPtrOutput)
 }
 
+// Kafka server provided values
 func (o KafkaKafkaUserConfigPrivatelinkAccessOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigPrivatelinkAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
 }
@@ -11314,6 +12067,7 @@ func (o KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) Jolokia() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Kafka server provided values
 func (o KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -11360,6 +12114,7 @@ func (o KafkaKafkaUserConfigPrivatelinkAccessPtrOutput) SchemaRegistry() pulumi.
 }
 
 type KafkaKafkaUserConfigPublicAccess struct {
+	// Kafka server provided values
 	Kafka          *string `pulumi:"kafka"`
 	KafkaConnect   *string `pulumi:"kafkaConnect"`
 	KafkaRest      *string `pulumi:"kafkaRest"`
@@ -11370,7 +12125,7 @@ type KafkaKafkaUserConfigPublicAccess struct {
 // KafkaKafkaUserConfigPublicAccessInput is an input type that accepts KafkaKafkaUserConfigPublicAccessArgs and KafkaKafkaUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigPublicAccessInput` via:
 //
-//          KafkaKafkaUserConfigPublicAccessArgs{...}
+//	KafkaKafkaUserConfigPublicAccessArgs{...}
 type KafkaKafkaUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -11379,6 +12134,7 @@ type KafkaKafkaUserConfigPublicAccessInput interface {
 }
 
 type KafkaKafkaUserConfigPublicAccessArgs struct {
+	// Kafka server provided values
 	Kafka          pulumi.StringPtrInput `pulumi:"kafka"`
 	KafkaConnect   pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	KafkaRest      pulumi.StringPtrInput `pulumi:"kafkaRest"`
@@ -11409,11 +12165,11 @@ func (i KafkaKafkaUserConfigPublicAccessArgs) ToKafkaKafkaUserConfigPublicAccess
 // KafkaKafkaUserConfigPublicAccessPtrInput is an input type that accepts KafkaKafkaUserConfigPublicAccessArgs, KafkaKafkaUserConfigPublicAccessPtr and KafkaKafkaUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigPublicAccessPtrInput` via:
 //
-//          KafkaKafkaUserConfigPublicAccessArgs{...}
+//	        KafkaKafkaUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaKafkaUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -11463,6 +12219,7 @@ func (o KafkaKafkaUserConfigPublicAccessOutput) ToKafkaKafkaUserConfigPublicAcce
 	}).(KafkaKafkaUserConfigPublicAccessPtrOutput)
 }
 
+// Kafka server provided values
 func (o KafkaKafkaUserConfigPublicAccessOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigPublicAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
 }
@@ -11507,6 +12264,7 @@ func (o KafkaKafkaUserConfigPublicAccessPtrOutput) Elem() KafkaKafkaUserConfigPu
 	}).(KafkaKafkaUserConfigPublicAccessOutput)
 }
 
+// Kafka server provided values
 func (o KafkaKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -11560,7 +12318,7 @@ type KafkaKafkaUserConfigSchemaRegistryConfig struct {
 // KafkaKafkaUserConfigSchemaRegistryConfigInput is an input type that accepts KafkaKafkaUserConfigSchemaRegistryConfigArgs and KafkaKafkaUserConfigSchemaRegistryConfigOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigSchemaRegistryConfigInput` via:
 //
-//          KafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
+//	KafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
 type KafkaKafkaUserConfigSchemaRegistryConfigInput interface {
 	pulumi.Input
 
@@ -11596,11 +12354,11 @@ func (i KafkaKafkaUserConfigSchemaRegistryConfigArgs) ToKafkaKafkaUserConfigSche
 // KafkaKafkaUserConfigSchemaRegistryConfigPtrInput is an input type that accepts KafkaKafkaUserConfigSchemaRegistryConfigArgs, KafkaKafkaUserConfigSchemaRegistryConfigPtr and KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput values.
 // You can construct a concrete instance of `KafkaKafkaUserConfigSchemaRegistryConfigPtrInput` via:
 //
-//          KafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
+//	        KafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaKafkaUserConfigSchemaRegistryConfigPtrInput interface {
 	pulumi.Input
 
@@ -11713,7 +12471,7 @@ type KafkaMirrorMakerComponent struct {
 // KafkaMirrorMakerComponentInput is an input type that accepts KafkaMirrorMakerComponentArgs and KafkaMirrorMakerComponentOutput values.
 // You can construct a concrete instance of `KafkaMirrorMakerComponentInput` via:
 //
-//          KafkaMirrorMakerComponentArgs{...}
+//	KafkaMirrorMakerComponentArgs{...}
 type KafkaMirrorMakerComponentInput interface {
 	pulumi.Input
 
@@ -11746,7 +12504,7 @@ func (i KafkaMirrorMakerComponentArgs) ToKafkaMirrorMakerComponentOutputWithCont
 // KafkaMirrorMakerComponentArrayInput is an input type that accepts KafkaMirrorMakerComponentArray and KafkaMirrorMakerComponentArrayOutput values.
 // You can construct a concrete instance of `KafkaMirrorMakerComponentArrayInput` via:
 //
-//          KafkaMirrorMakerComponentArray{ KafkaMirrorMakerComponentArgs{...} }
+//	KafkaMirrorMakerComponentArray{ KafkaMirrorMakerComponentArgs{...} }
 type KafkaMirrorMakerComponentArrayInput interface {
 	pulumi.Input
 
@@ -11836,7 +12594,7 @@ type KafkaMirrorMakerKafkaMirrormaker struct {
 // KafkaMirrorMakerKafkaMirrormakerInput is an input type that accepts KafkaMirrorMakerKafkaMirrormakerArgs and KafkaMirrorMakerKafkaMirrormakerOutput values.
 // You can construct a concrete instance of `KafkaMirrorMakerKafkaMirrormakerInput` via:
 //
-//          KafkaMirrorMakerKafkaMirrormakerArgs{...}
+//	KafkaMirrorMakerKafkaMirrormakerArgs{...}
 type KafkaMirrorMakerKafkaMirrormakerInput interface {
 	pulumi.Input
 
@@ -11862,7 +12620,7 @@ func (i KafkaMirrorMakerKafkaMirrormakerArgs) ToKafkaMirrorMakerKafkaMirrormaker
 // KafkaMirrorMakerKafkaMirrormakerArrayInput is an input type that accepts KafkaMirrorMakerKafkaMirrormakerArray and KafkaMirrorMakerKafkaMirrormakerArrayOutput values.
 // You can construct a concrete instance of `KafkaMirrorMakerKafkaMirrormakerArrayInput` via:
 //
-//          KafkaMirrorMakerKafkaMirrormakerArray{ KafkaMirrorMakerKafkaMirrormakerArgs{...} }
+//	KafkaMirrorMakerKafkaMirrormakerArray{ KafkaMirrorMakerKafkaMirrormakerArgs{...} }
 type KafkaMirrorMakerKafkaMirrormakerArrayInput interface {
 	pulumi.Input
 
@@ -11919,15 +12677,18 @@ func (o KafkaMirrorMakerKafkaMirrormakerArrayOutput) Index(i pulumi.IntInput) Ka
 }
 
 type KafkaMirrorMakerKafkaMirrormakerUserConfig struct {
-	IpFilters        []string                                                    `pulumi:"ipFilters"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// Kafka MirrorMaker configuration values
 	KafkaMirrormaker *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
-	StaticIps        *string                                                     `pulumi:"staticIps"`
+	// Static IP addresses
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // KafkaMirrorMakerKafkaMirrormakerUserConfigInput is an input type that accepts KafkaMirrorMakerKafkaMirrormakerUserConfigArgs and KafkaMirrorMakerKafkaMirrormakerUserConfigOutput values.
 // You can construct a concrete instance of `KafkaMirrorMakerKafkaMirrormakerUserConfigInput` via:
 //
-//          KafkaMirrorMakerKafkaMirrormakerUserConfigArgs{...}
+//	KafkaMirrorMakerKafkaMirrormakerUserConfigArgs{...}
 type KafkaMirrorMakerKafkaMirrormakerUserConfigInput interface {
 	pulumi.Input
 
@@ -11936,9 +12697,12 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfigInput interface {
 }
 
 type KafkaMirrorMakerKafkaMirrormakerUserConfigArgs struct {
-	IpFilters        pulumi.StringArrayInput                                            `pulumi:"ipFilters"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Kafka MirrorMaker configuration values
 	KafkaMirrormaker KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
-	StaticIps        pulumi.StringPtrInput                                              `pulumi:"staticIps"`
+	// Static IP addresses
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (KafkaMirrorMakerKafkaMirrormakerUserConfigArgs) ElementType() reflect.Type {
@@ -11964,11 +12728,11 @@ func (i KafkaMirrorMakerKafkaMirrormakerUserConfigArgs) ToKafkaMirrorMakerKafkaM
 // KafkaMirrorMakerKafkaMirrormakerUserConfigPtrInput is an input type that accepts KafkaMirrorMakerKafkaMirrormakerUserConfigArgs, KafkaMirrorMakerKafkaMirrormakerUserConfigPtr and KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput values.
 // You can construct a concrete instance of `KafkaMirrorMakerKafkaMirrormakerUserConfigPtrInput` via:
 //
-//          KafkaMirrorMakerKafkaMirrormakerUserConfigArgs{...}
+//	        KafkaMirrorMakerKafkaMirrormakerUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaMirrorMakerKafkaMirrormakerUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -12018,16 +12782,19 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) ToKafkaMirrorMakerKafk
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput)
 }
 
+// IP filter
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Kafka MirrorMaker configuration values
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfig) *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return v.KafkaMirrormaker
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
 }
 
+// Static IP addresses
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -12056,6 +12823,7 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) Elem() KafkaMirrorM
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigOutput)
 }
 
+// IP filter
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfig) []string {
 		if v == nil {
@@ -12065,6 +12833,7 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) IpFilters() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
+// Kafka MirrorMaker configuration values
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) KafkaMirrormaker() KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfig) *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		if v == nil {
@@ -12074,6 +12843,7 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) KafkaMirrormaker() 
 	}).(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
 }
 
+// Static IP addresses
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfig) *string {
 		if v == nil {
@@ -12099,7 +12869,7 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker struct {
 // KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs and KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
 // You can construct a concrete instance of `KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput` via:
 //
-//          KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//	KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
 type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
 	pulumi.Input
 
@@ -12143,11 +12913,11 @@ func (i KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToKafkaM
 // KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput is an input type that accepts KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs, KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtr and KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput values.
 // You can construct a concrete instance of `KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput` via:
 //
-//          KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//	        KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput interface {
 	pulumi.Input
 
@@ -12370,14 +13140,16 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Tas
 }
 
 type KafkaMirrorMakerServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // KafkaMirrorMakerServiceIntegrationInput is an input type that accepts KafkaMirrorMakerServiceIntegrationArgs and KafkaMirrorMakerServiceIntegrationOutput values.
 // You can construct a concrete instance of `KafkaMirrorMakerServiceIntegrationInput` via:
 //
-//          KafkaMirrorMakerServiceIntegrationArgs{...}
+//	KafkaMirrorMakerServiceIntegrationArgs{...}
 type KafkaMirrorMakerServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -12386,7 +13158,9 @@ type KafkaMirrorMakerServiceIntegrationInput interface {
 }
 
 type KafkaMirrorMakerServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -12405,7 +13179,7 @@ func (i KafkaMirrorMakerServiceIntegrationArgs) ToKafkaMirrorMakerServiceIntegra
 // KafkaMirrorMakerServiceIntegrationArrayInput is an input type that accepts KafkaMirrorMakerServiceIntegrationArray and KafkaMirrorMakerServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `KafkaMirrorMakerServiceIntegrationArrayInput` via:
 //
-//          KafkaMirrorMakerServiceIntegrationArray{ KafkaMirrorMakerServiceIntegrationArgs{...} }
+//	KafkaMirrorMakerServiceIntegrationArray{ KafkaMirrorMakerServiceIntegrationArgs{...} }
 type KafkaMirrorMakerServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -12441,10 +13215,12 @@ func (o KafkaMirrorMakerServiceIntegrationOutput) ToKafkaMirrorMakerServiceInteg
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o KafkaMirrorMakerServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o KafkaMirrorMakerServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -12470,14 +13246,16 @@ func (o KafkaMirrorMakerServiceIntegrationArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type KafkaMirrorMakerTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // KafkaMirrorMakerTagInput is an input type that accepts KafkaMirrorMakerTagArgs and KafkaMirrorMakerTagOutput values.
 // You can construct a concrete instance of `KafkaMirrorMakerTagInput` via:
 //
-//          KafkaMirrorMakerTagArgs{...}
+//	KafkaMirrorMakerTagArgs{...}
 type KafkaMirrorMakerTagInput interface {
 	pulumi.Input
 
@@ -12486,7 +13264,9 @@ type KafkaMirrorMakerTagInput interface {
 }
 
 type KafkaMirrorMakerTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -12505,7 +13285,7 @@ func (i KafkaMirrorMakerTagArgs) ToKafkaMirrorMakerTagOutputWithContext(ctx cont
 // KafkaMirrorMakerTagArrayInput is an input type that accepts KafkaMirrorMakerTagArray and KafkaMirrorMakerTagArrayOutput values.
 // You can construct a concrete instance of `KafkaMirrorMakerTagArrayInput` via:
 //
-//          KafkaMirrorMakerTagArray{ KafkaMirrorMakerTagArgs{...} }
+//	KafkaMirrorMakerTagArray{ KafkaMirrorMakerTagArgs{...} }
 type KafkaMirrorMakerTagArrayInput interface {
 	pulumi.Input
 
@@ -12541,10 +13321,12 @@ func (o KafkaMirrorMakerTagOutput) ToKafkaMirrorMakerTagOutputWithContext(ctx co
 	return o
 }
 
+// Service tag key
 func (o KafkaMirrorMakerTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o KafkaMirrorMakerTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -12570,14 +13352,16 @@ func (o KafkaMirrorMakerTagArrayOutput) Index(i pulumi.IntInput) KafkaMirrorMake
 }
 
 type KafkaServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // KafkaServiceIntegrationInput is an input type that accepts KafkaServiceIntegrationArgs and KafkaServiceIntegrationOutput values.
 // You can construct a concrete instance of `KafkaServiceIntegrationInput` via:
 //
-//          KafkaServiceIntegrationArgs{...}
+//	KafkaServiceIntegrationArgs{...}
 type KafkaServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -12586,7 +13370,9 @@ type KafkaServiceIntegrationInput interface {
 }
 
 type KafkaServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -12605,7 +13391,7 @@ func (i KafkaServiceIntegrationArgs) ToKafkaServiceIntegrationOutputWithContext(
 // KafkaServiceIntegrationArrayInput is an input type that accepts KafkaServiceIntegrationArray and KafkaServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `KafkaServiceIntegrationArrayInput` via:
 //
-//          KafkaServiceIntegrationArray{ KafkaServiceIntegrationArgs{...} }
+//	KafkaServiceIntegrationArray{ KafkaServiceIntegrationArgs{...} }
 type KafkaServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -12641,10 +13427,12 @@ func (o KafkaServiceIntegrationOutput) ToKafkaServiceIntegrationOutputWithContex
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o KafkaServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o KafkaServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -12670,14 +13458,16 @@ func (o KafkaServiceIntegrationArrayOutput) Index(i pulumi.IntInput) KafkaServic
 }
 
 type KafkaTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // KafkaTagInput is an input type that accepts KafkaTagArgs and KafkaTagOutput values.
 // You can construct a concrete instance of `KafkaTagInput` via:
 //
-//          KafkaTagArgs{...}
+//	KafkaTagArgs{...}
 type KafkaTagInput interface {
 	pulumi.Input
 
@@ -12686,7 +13476,9 @@ type KafkaTagInput interface {
 }
 
 type KafkaTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -12705,7 +13497,7 @@ func (i KafkaTagArgs) ToKafkaTagOutputWithContext(ctx context.Context) KafkaTagO
 // KafkaTagArrayInput is an input type that accepts KafkaTagArray and KafkaTagArrayOutput values.
 // You can construct a concrete instance of `KafkaTagArrayInput` via:
 //
-//          KafkaTagArray{ KafkaTagArgs{...} }
+//	KafkaTagArray{ KafkaTagArgs{...} }
 type KafkaTagArrayInput interface {
 	pulumi.Input
 
@@ -12741,10 +13533,12 @@ func (o KafkaTagOutput) ToKafkaTagOutputWithContext(ctx context.Context) KafkaTa
 	return o
 }
 
+// Service tag key
 func (o KafkaTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o KafkaTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -12770,36 +13564,60 @@ func (o KafkaTagArrayOutput) Index(i pulumi.IntInput) KafkaTagOutput {
 }
 
 type KafkaTopicConfig struct {
-	CleanupPolicy                   *string `pulumi:"cleanupPolicy"`
-	CompressionType                 *string `pulumi:"compressionType"`
-	DeleteRetentionMs               *string `pulumi:"deleteRetentionMs"`
-	FileDeleteDelayMs               *string `pulumi:"fileDeleteDelayMs"`
-	FlushMessages                   *string `pulumi:"flushMessages"`
-	FlushMs                         *string `pulumi:"flushMs"`
-	IndexIntervalBytes              *string `pulumi:"indexIntervalBytes"`
-	MaxCompactionLagMs              *string `pulumi:"maxCompactionLagMs"`
-	MaxMessageBytes                 *string `pulumi:"maxMessageBytes"`
-	MessageDownconversionEnable     *string `pulumi:"messageDownconversionEnable"`
-	MessageFormatVersion            *string `pulumi:"messageFormatVersion"`
+	// cleanup.policy value
+	CleanupPolicy *string `pulumi:"cleanupPolicy"`
+	// compression.type value
+	CompressionType *string `pulumi:"compressionType"`
+	// delete.retention.ms value
+	DeleteRetentionMs *string `pulumi:"deleteRetentionMs"`
+	// file.delete.delay.ms value
+	FileDeleteDelayMs *string `pulumi:"fileDeleteDelayMs"`
+	// flush.messages value
+	FlushMessages *string `pulumi:"flushMessages"`
+	// flush.ms value
+	FlushMs *string `pulumi:"flushMs"`
+	// index.interval.bytes value
+	IndexIntervalBytes *string `pulumi:"indexIntervalBytes"`
+	// max.compaction.lag.ms value
+	MaxCompactionLagMs *string `pulumi:"maxCompactionLagMs"`
+	// max.message.bytes value
+	MaxMessageBytes *string `pulumi:"maxMessageBytes"`
+	// message.downconversion.enable value
+	MessageDownconversionEnable *string `pulumi:"messageDownconversionEnable"`
+	// message.format.version value
+	MessageFormatVersion *string `pulumi:"messageFormatVersion"`
+	// message.timestamp.difference.max.ms value
 	MessageTimestampDifferenceMaxMs *string `pulumi:"messageTimestampDifferenceMaxMs"`
-	MessageTimestampType            *string `pulumi:"messageTimestampType"`
-	MinCleanableDirtyRatio          *string `pulumi:"minCleanableDirtyRatio"`
-	MinCompactionLagMs              *string `pulumi:"minCompactionLagMs"`
-	MinInsyncReplicas               *string `pulumi:"minInsyncReplicas"`
-	Preallocate                     *string `pulumi:"preallocate"`
-	RetentionBytes                  *string `pulumi:"retentionBytes"`
-	RetentionMs                     *string `pulumi:"retentionMs"`
-	SegmentBytes                    *string `pulumi:"segmentBytes"`
-	SegmentIndexBytes               *string `pulumi:"segmentIndexBytes"`
-	SegmentJitterMs                 *string `pulumi:"segmentJitterMs"`
-	SegmentMs                       *string `pulumi:"segmentMs"`
-	UncleanLeaderElectionEnable     *string `pulumi:"uncleanLeaderElectionEnable"`
+	// message.timestamp.type value
+	MessageTimestampType *string `pulumi:"messageTimestampType"`
+	// min.cleanable.dirty.ratio value
+	MinCleanableDirtyRatio *string `pulumi:"minCleanableDirtyRatio"`
+	// min.compaction.lag.ms value
+	MinCompactionLagMs *string `pulumi:"minCompactionLagMs"`
+	// min.insync.replicas value
+	MinInsyncReplicas *string `pulumi:"minInsyncReplicas"`
+	// preallocate value
+	Preallocate *string `pulumi:"preallocate"`
+	// retention.bytes value
+	RetentionBytes *string `pulumi:"retentionBytes"`
+	// retention.ms value
+	RetentionMs *string `pulumi:"retentionMs"`
+	// segment.bytes value
+	SegmentBytes *string `pulumi:"segmentBytes"`
+	// segment.index.bytes value
+	SegmentIndexBytes *string `pulumi:"segmentIndexBytes"`
+	// segment.jitter.ms value
+	SegmentJitterMs *string `pulumi:"segmentJitterMs"`
+	// segment.ms value
+	SegmentMs *string `pulumi:"segmentMs"`
+	// unclean.leader.election.enable value
+	UncleanLeaderElectionEnable *string `pulumi:"uncleanLeaderElectionEnable"`
 }
 
 // KafkaTopicConfigInput is an input type that accepts KafkaTopicConfigArgs and KafkaTopicConfigOutput values.
 // You can construct a concrete instance of `KafkaTopicConfigInput` via:
 //
-//          KafkaTopicConfigArgs{...}
+//	KafkaTopicConfigArgs{...}
 type KafkaTopicConfigInput interface {
 	pulumi.Input
 
@@ -12808,30 +13626,54 @@ type KafkaTopicConfigInput interface {
 }
 
 type KafkaTopicConfigArgs struct {
-	CleanupPolicy                   pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
-	CompressionType                 pulumi.StringPtrInput `pulumi:"compressionType"`
-	DeleteRetentionMs               pulumi.StringPtrInput `pulumi:"deleteRetentionMs"`
-	FileDeleteDelayMs               pulumi.StringPtrInput `pulumi:"fileDeleteDelayMs"`
-	FlushMessages                   pulumi.StringPtrInput `pulumi:"flushMessages"`
-	FlushMs                         pulumi.StringPtrInput `pulumi:"flushMs"`
-	IndexIntervalBytes              pulumi.StringPtrInput `pulumi:"indexIntervalBytes"`
-	MaxCompactionLagMs              pulumi.StringPtrInput `pulumi:"maxCompactionLagMs"`
-	MaxMessageBytes                 pulumi.StringPtrInput `pulumi:"maxMessageBytes"`
-	MessageDownconversionEnable     pulumi.StringPtrInput `pulumi:"messageDownconversionEnable"`
-	MessageFormatVersion            pulumi.StringPtrInput `pulumi:"messageFormatVersion"`
+	// cleanup.policy value
+	CleanupPolicy pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
+	// compression.type value
+	CompressionType pulumi.StringPtrInput `pulumi:"compressionType"`
+	// delete.retention.ms value
+	DeleteRetentionMs pulumi.StringPtrInput `pulumi:"deleteRetentionMs"`
+	// file.delete.delay.ms value
+	FileDeleteDelayMs pulumi.StringPtrInput `pulumi:"fileDeleteDelayMs"`
+	// flush.messages value
+	FlushMessages pulumi.StringPtrInput `pulumi:"flushMessages"`
+	// flush.ms value
+	FlushMs pulumi.StringPtrInput `pulumi:"flushMs"`
+	// index.interval.bytes value
+	IndexIntervalBytes pulumi.StringPtrInput `pulumi:"indexIntervalBytes"`
+	// max.compaction.lag.ms value
+	MaxCompactionLagMs pulumi.StringPtrInput `pulumi:"maxCompactionLagMs"`
+	// max.message.bytes value
+	MaxMessageBytes pulumi.StringPtrInput `pulumi:"maxMessageBytes"`
+	// message.downconversion.enable value
+	MessageDownconversionEnable pulumi.StringPtrInput `pulumi:"messageDownconversionEnable"`
+	// message.format.version value
+	MessageFormatVersion pulumi.StringPtrInput `pulumi:"messageFormatVersion"`
+	// message.timestamp.difference.max.ms value
 	MessageTimestampDifferenceMaxMs pulumi.StringPtrInput `pulumi:"messageTimestampDifferenceMaxMs"`
-	MessageTimestampType            pulumi.StringPtrInput `pulumi:"messageTimestampType"`
-	MinCleanableDirtyRatio          pulumi.StringPtrInput `pulumi:"minCleanableDirtyRatio"`
-	MinCompactionLagMs              pulumi.StringPtrInput `pulumi:"minCompactionLagMs"`
-	MinInsyncReplicas               pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
-	Preallocate                     pulumi.StringPtrInput `pulumi:"preallocate"`
-	RetentionBytes                  pulumi.StringPtrInput `pulumi:"retentionBytes"`
-	RetentionMs                     pulumi.StringPtrInput `pulumi:"retentionMs"`
-	SegmentBytes                    pulumi.StringPtrInput `pulumi:"segmentBytes"`
-	SegmentIndexBytes               pulumi.StringPtrInput `pulumi:"segmentIndexBytes"`
-	SegmentJitterMs                 pulumi.StringPtrInput `pulumi:"segmentJitterMs"`
-	SegmentMs                       pulumi.StringPtrInput `pulumi:"segmentMs"`
-	UncleanLeaderElectionEnable     pulumi.StringPtrInput `pulumi:"uncleanLeaderElectionEnable"`
+	// message.timestamp.type value
+	MessageTimestampType pulumi.StringPtrInput `pulumi:"messageTimestampType"`
+	// min.cleanable.dirty.ratio value
+	MinCleanableDirtyRatio pulumi.StringPtrInput `pulumi:"minCleanableDirtyRatio"`
+	// min.compaction.lag.ms value
+	MinCompactionLagMs pulumi.StringPtrInput `pulumi:"minCompactionLagMs"`
+	// min.insync.replicas value
+	MinInsyncReplicas pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
+	// preallocate value
+	Preallocate pulumi.StringPtrInput `pulumi:"preallocate"`
+	// retention.bytes value
+	RetentionBytes pulumi.StringPtrInput `pulumi:"retentionBytes"`
+	// retention.ms value
+	RetentionMs pulumi.StringPtrInput `pulumi:"retentionMs"`
+	// segment.bytes value
+	SegmentBytes pulumi.StringPtrInput `pulumi:"segmentBytes"`
+	// segment.index.bytes value
+	SegmentIndexBytes pulumi.StringPtrInput `pulumi:"segmentIndexBytes"`
+	// segment.jitter.ms value
+	SegmentJitterMs pulumi.StringPtrInput `pulumi:"segmentJitterMs"`
+	// segment.ms value
+	SegmentMs pulumi.StringPtrInput `pulumi:"segmentMs"`
+	// unclean.leader.election.enable value
+	UncleanLeaderElectionEnable pulumi.StringPtrInput `pulumi:"uncleanLeaderElectionEnable"`
 }
 
 func (KafkaTopicConfigArgs) ElementType() reflect.Type {
@@ -12857,11 +13699,11 @@ func (i KafkaTopicConfigArgs) ToKafkaTopicConfigPtrOutputWithContext(ctx context
 // KafkaTopicConfigPtrInput is an input type that accepts KafkaTopicConfigArgs, KafkaTopicConfigPtr and KafkaTopicConfigPtrOutput values.
 // You can construct a concrete instance of `KafkaTopicConfigPtrInput` via:
 //
-//          KafkaTopicConfigArgs{...}
+//	        KafkaTopicConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KafkaTopicConfigPtrInput interface {
 	pulumi.Input
 
@@ -12911,98 +13753,122 @@ func (o KafkaTopicConfigOutput) ToKafkaTopicConfigPtrOutputWithContext(ctx conte
 	}).(KafkaTopicConfigPtrOutput)
 }
 
+// cleanup.policy value
 func (o KafkaTopicConfigOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
 }
 
+// compression.type value
 func (o KafkaTopicConfigOutput) CompressionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.CompressionType }).(pulumi.StringPtrOutput)
 }
 
+// delete.retention.ms value
 func (o KafkaTopicConfigOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.DeleteRetentionMs }).(pulumi.StringPtrOutput)
 }
 
+// file.delete.delay.ms value
 func (o KafkaTopicConfigOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.FileDeleteDelayMs }).(pulumi.StringPtrOutput)
 }
 
+// flush.messages value
 func (o KafkaTopicConfigOutput) FlushMessages() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.FlushMessages }).(pulumi.StringPtrOutput)
 }
 
+// flush.ms value
 func (o KafkaTopicConfigOutput) FlushMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.FlushMs }).(pulumi.StringPtrOutput)
 }
 
+// index.interval.bytes value
 func (o KafkaTopicConfigOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.IndexIntervalBytes }).(pulumi.StringPtrOutput)
 }
 
+// max.compaction.lag.ms value
 func (o KafkaTopicConfigOutput) MaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MaxCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
+// max.message.bytes value
 func (o KafkaTopicConfigOutput) MaxMessageBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MaxMessageBytes }).(pulumi.StringPtrOutput)
 }
 
+// message.downconversion.enable value
 func (o KafkaTopicConfigOutput) MessageDownconversionEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MessageDownconversionEnable }).(pulumi.StringPtrOutput)
 }
 
+// message.format.version value
 func (o KafkaTopicConfigOutput) MessageFormatVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MessageFormatVersion }).(pulumi.StringPtrOutput)
 }
 
+// message.timestamp.difference.max.ms value
 func (o KafkaTopicConfigOutput) MessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MessageTimestampDifferenceMaxMs }).(pulumi.StringPtrOutput)
 }
 
+// message.timestamp.type value
 func (o KafkaTopicConfigOutput) MessageTimestampType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MessageTimestampType }).(pulumi.StringPtrOutput)
 }
 
+// min.cleanable.dirty.ratio value
 func (o KafkaTopicConfigOutput) MinCleanableDirtyRatio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MinCleanableDirtyRatio }).(pulumi.StringPtrOutput)
 }
 
+// min.compaction.lag.ms value
 func (o KafkaTopicConfigOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MinCompactionLagMs }).(pulumi.StringPtrOutput)
 }
 
+// min.insync.replicas value
 func (o KafkaTopicConfigOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MinInsyncReplicas }).(pulumi.StringPtrOutput)
 }
 
+// preallocate value
 func (o KafkaTopicConfigOutput) Preallocate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.Preallocate }).(pulumi.StringPtrOutput)
 }
 
+// retention.bytes value
 func (o KafkaTopicConfigOutput) RetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.RetentionBytes }).(pulumi.StringPtrOutput)
 }
 
+// retention.ms value
 func (o KafkaTopicConfigOutput) RetentionMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.RetentionMs }).(pulumi.StringPtrOutput)
 }
 
+// segment.bytes value
 func (o KafkaTopicConfigOutput) SegmentBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.SegmentBytes }).(pulumi.StringPtrOutput)
 }
 
+// segment.index.bytes value
 func (o KafkaTopicConfigOutput) SegmentIndexBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.SegmentIndexBytes }).(pulumi.StringPtrOutput)
 }
 
+// segment.jitter.ms value
 func (o KafkaTopicConfigOutput) SegmentJitterMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.SegmentJitterMs }).(pulumi.StringPtrOutput)
 }
 
+// segment.ms value
 func (o KafkaTopicConfigOutput) SegmentMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.SegmentMs }).(pulumi.StringPtrOutput)
 }
 
+// unclean.leader.election.enable value
 func (o KafkaTopicConfigOutput) UncleanLeaderElectionEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.UncleanLeaderElectionEnable }).(pulumi.StringPtrOutput)
 }
@@ -13031,6 +13897,7 @@ func (o KafkaTopicConfigPtrOutput) Elem() KafkaTopicConfigOutput {
 	}).(KafkaTopicConfigOutput)
 }
 
+// cleanup.policy value
 func (o KafkaTopicConfigPtrOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13040,6 +13907,7 @@ func (o KafkaTopicConfigPtrOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// compression.type value
 func (o KafkaTopicConfigPtrOutput) CompressionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13049,6 +13917,7 @@ func (o KafkaTopicConfigPtrOutput) CompressionType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// delete.retention.ms value
 func (o KafkaTopicConfigPtrOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13058,6 +13927,7 @@ func (o KafkaTopicConfigPtrOutput) DeleteRetentionMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// file.delete.delay.ms value
 func (o KafkaTopicConfigPtrOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13067,6 +13937,7 @@ func (o KafkaTopicConfigPtrOutput) FileDeleteDelayMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// flush.messages value
 func (o KafkaTopicConfigPtrOutput) FlushMessages() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13076,6 +13947,7 @@ func (o KafkaTopicConfigPtrOutput) FlushMessages() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// flush.ms value
 func (o KafkaTopicConfigPtrOutput) FlushMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13085,6 +13957,7 @@ func (o KafkaTopicConfigPtrOutput) FlushMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// index.interval.bytes value
 func (o KafkaTopicConfigPtrOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13094,6 +13967,7 @@ func (o KafkaTopicConfigPtrOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// max.compaction.lag.ms value
 func (o KafkaTopicConfigPtrOutput) MaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13103,6 +13977,7 @@ func (o KafkaTopicConfigPtrOutput) MaxCompactionLagMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// max.message.bytes value
 func (o KafkaTopicConfigPtrOutput) MaxMessageBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13112,6 +13987,7 @@ func (o KafkaTopicConfigPtrOutput) MaxMessageBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// message.downconversion.enable value
 func (o KafkaTopicConfigPtrOutput) MessageDownconversionEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13121,6 +13997,7 @@ func (o KafkaTopicConfigPtrOutput) MessageDownconversionEnable() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// message.format.version value
 func (o KafkaTopicConfigPtrOutput) MessageFormatVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13130,6 +14007,7 @@ func (o KafkaTopicConfigPtrOutput) MessageFormatVersion() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// message.timestamp.difference.max.ms value
 func (o KafkaTopicConfigPtrOutput) MessageTimestampDifferenceMaxMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13139,6 +14017,7 @@ func (o KafkaTopicConfigPtrOutput) MessageTimestampDifferenceMaxMs() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// message.timestamp.type value
 func (o KafkaTopicConfigPtrOutput) MessageTimestampType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13148,6 +14027,7 @@ func (o KafkaTopicConfigPtrOutput) MessageTimestampType() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// min.cleanable.dirty.ratio value
 func (o KafkaTopicConfigPtrOutput) MinCleanableDirtyRatio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13157,6 +14037,7 @@ func (o KafkaTopicConfigPtrOutput) MinCleanableDirtyRatio() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// min.compaction.lag.ms value
 func (o KafkaTopicConfigPtrOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13166,6 +14047,7 @@ func (o KafkaTopicConfigPtrOutput) MinCompactionLagMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// min.insync.replicas value
 func (o KafkaTopicConfigPtrOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13175,6 +14057,7 @@ func (o KafkaTopicConfigPtrOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// preallocate value
 func (o KafkaTopicConfigPtrOutput) Preallocate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13184,6 +14067,7 @@ func (o KafkaTopicConfigPtrOutput) Preallocate() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// retention.bytes value
 func (o KafkaTopicConfigPtrOutput) RetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13193,6 +14077,7 @@ func (o KafkaTopicConfigPtrOutput) RetentionBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// retention.ms value
 func (o KafkaTopicConfigPtrOutput) RetentionMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13202,6 +14087,7 @@ func (o KafkaTopicConfigPtrOutput) RetentionMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// segment.bytes value
 func (o KafkaTopicConfigPtrOutput) SegmentBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13211,6 +14097,7 @@ func (o KafkaTopicConfigPtrOutput) SegmentBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// segment.index.bytes value
 func (o KafkaTopicConfigPtrOutput) SegmentIndexBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13220,6 +14107,7 @@ func (o KafkaTopicConfigPtrOutput) SegmentIndexBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// segment.jitter.ms value
 func (o KafkaTopicConfigPtrOutput) SegmentJitterMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13229,6 +14117,7 @@ func (o KafkaTopicConfigPtrOutput) SegmentJitterMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// segment.ms value
 func (o KafkaTopicConfigPtrOutput) SegmentMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13238,6 +14127,7 @@ func (o KafkaTopicConfigPtrOutput) SegmentMs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// unclean.leader.election.enable value
 func (o KafkaTopicConfigPtrOutput) UncleanLeaderElectionEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -13248,14 +14138,16 @@ func (o KafkaTopicConfigPtrOutput) UncleanLeaderElectionEnable() pulumi.StringPt
 }
 
 type KafkaTopicTag struct {
-	Key   string  `pulumi:"key"`
+	// Topic tag key. Maximum Length: `64`.
+	Key string `pulumi:"key"`
+	// Topic tag value. Maximum Length: `256`.
 	Value *string `pulumi:"value"`
 }
 
 // KafkaTopicTagInput is an input type that accepts KafkaTopicTagArgs and KafkaTopicTagOutput values.
 // You can construct a concrete instance of `KafkaTopicTagInput` via:
 //
-//          KafkaTopicTagArgs{...}
+//	KafkaTopicTagArgs{...}
 type KafkaTopicTagInput interface {
 	pulumi.Input
 
@@ -13264,7 +14156,9 @@ type KafkaTopicTagInput interface {
 }
 
 type KafkaTopicTagArgs struct {
-	Key   pulumi.StringInput    `pulumi:"key"`
+	// Topic tag key. Maximum Length: `64`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Topic tag value. Maximum Length: `256`.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -13283,7 +14177,7 @@ func (i KafkaTopicTagArgs) ToKafkaTopicTagOutputWithContext(ctx context.Context)
 // KafkaTopicTagArrayInput is an input type that accepts KafkaTopicTagArray and KafkaTopicTagArrayOutput values.
 // You can construct a concrete instance of `KafkaTopicTagArrayInput` via:
 //
-//          KafkaTopicTagArray{ KafkaTopicTagArgs{...} }
+//	KafkaTopicTagArray{ KafkaTopicTagArgs{...} }
 type KafkaTopicTagArrayInput interface {
 	pulumi.Input
 
@@ -13319,10 +14213,12 @@ func (o KafkaTopicTagOutput) ToKafkaTopicTagOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Topic tag key. Maximum Length: `64`.
 func (o KafkaTopicTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KafkaTopicTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Topic tag value. Maximum Length: `256`.
 func (o KafkaTopicTagOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicTag) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -13360,7 +14256,7 @@ type M3AggregatorComponent struct {
 // M3AggregatorComponentInput is an input type that accepts M3AggregatorComponentArgs and M3AggregatorComponentOutput values.
 // You can construct a concrete instance of `M3AggregatorComponentInput` via:
 //
-//          M3AggregatorComponentArgs{...}
+//	M3AggregatorComponentArgs{...}
 type M3AggregatorComponentInput interface {
 	pulumi.Input
 
@@ -13393,7 +14289,7 @@ func (i M3AggregatorComponentArgs) ToM3AggregatorComponentOutputWithContext(ctx 
 // M3AggregatorComponentArrayInput is an input type that accepts M3AggregatorComponentArray and M3AggregatorComponentArrayOutput values.
 // You can construct a concrete instance of `M3AggregatorComponentArrayInput` via:
 //
-//          M3AggregatorComponentArray{ M3AggregatorComponentArgs{...} }
+//	M3AggregatorComponentArray{ M3AggregatorComponentArgs{...} }
 type M3AggregatorComponentArrayInput interface {
 	pulumi.Input
 
@@ -13483,7 +14379,7 @@ type M3AggregatorM3aggregator struct {
 // M3AggregatorM3aggregatorInput is an input type that accepts M3AggregatorM3aggregatorArgs and M3AggregatorM3aggregatorOutput values.
 // You can construct a concrete instance of `M3AggregatorM3aggregatorInput` via:
 //
-//          M3AggregatorM3aggregatorArgs{...}
+//	M3AggregatorM3aggregatorArgs{...}
 type M3AggregatorM3aggregatorInput interface {
 	pulumi.Input
 
@@ -13509,7 +14405,7 @@ func (i M3AggregatorM3aggregatorArgs) ToM3AggregatorM3aggregatorOutputWithContex
 // M3AggregatorM3aggregatorArrayInput is an input type that accepts M3AggregatorM3aggregatorArray and M3AggregatorM3aggregatorArrayOutput values.
 // You can construct a concrete instance of `M3AggregatorM3aggregatorArrayInput` via:
 //
-//          M3AggregatorM3aggregatorArray{ M3AggregatorM3aggregatorArgs{...} }
+//	M3AggregatorM3aggregatorArray{ M3AggregatorM3aggregatorArgs{...} }
 type M3AggregatorM3aggregatorArrayInput interface {
 	pulumi.Input
 
@@ -13566,17 +14462,22 @@ func (o M3AggregatorM3aggregatorArrayOutput) Index(i pulumi.IntInput) M3Aggregat
 }
 
 type M3AggregatorM3aggregatorUserConfig struct {
-	CustomDomain        *string  `pulumi:"customDomain"`
-	IpFilters           []string `pulumi:"ipFilters"`
-	M3Version           *string  `pulumi:"m3Version"`
-	M3aggregatorVersion *string  `pulumi:"m3aggregatorVersion"`
-	StaticIps           *string  `pulumi:"staticIps"`
+	// Custom domain
+	CustomDomain *string `pulumi:"customDomain"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// M3 major version (deprecated, use m3aggregator_version)
+	M3Version *string `pulumi:"m3Version"`
+	// M3 major version (the minimum compatible version)
+	M3aggregatorVersion *string `pulumi:"m3aggregatorVersion"`
+	// Static IP addresses
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // M3AggregatorM3aggregatorUserConfigInput is an input type that accepts M3AggregatorM3aggregatorUserConfigArgs and M3AggregatorM3aggregatorUserConfigOutput values.
 // You can construct a concrete instance of `M3AggregatorM3aggregatorUserConfigInput` via:
 //
-//          M3AggregatorM3aggregatorUserConfigArgs{...}
+//	M3AggregatorM3aggregatorUserConfigArgs{...}
 type M3AggregatorM3aggregatorUserConfigInput interface {
 	pulumi.Input
 
@@ -13585,11 +14486,16 @@ type M3AggregatorM3aggregatorUserConfigInput interface {
 }
 
 type M3AggregatorM3aggregatorUserConfigArgs struct {
-	CustomDomain        pulumi.StringPtrInput   `pulumi:"customDomain"`
-	IpFilters           pulumi.StringArrayInput `pulumi:"ipFilters"`
-	M3Version           pulumi.StringPtrInput   `pulumi:"m3Version"`
-	M3aggregatorVersion pulumi.StringPtrInput   `pulumi:"m3aggregatorVersion"`
-	StaticIps           pulumi.StringPtrInput   `pulumi:"staticIps"`
+	// Custom domain
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// M3 major version (deprecated, use m3aggregator_version)
+	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+	// M3 major version (the minimum compatible version)
+	M3aggregatorVersion pulumi.StringPtrInput `pulumi:"m3aggregatorVersion"`
+	// Static IP addresses
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (M3AggregatorM3aggregatorUserConfigArgs) ElementType() reflect.Type {
@@ -13615,11 +14521,11 @@ func (i M3AggregatorM3aggregatorUserConfigArgs) ToM3AggregatorM3aggregatorUserCo
 // M3AggregatorM3aggregatorUserConfigPtrInput is an input type that accepts M3AggregatorM3aggregatorUserConfigArgs, M3AggregatorM3aggregatorUserConfigPtr and M3AggregatorM3aggregatorUserConfigPtrOutput values.
 // You can construct a concrete instance of `M3AggregatorM3aggregatorUserConfigPtrInput` via:
 //
-//          M3AggregatorM3aggregatorUserConfigArgs{...}
+//	        M3AggregatorM3aggregatorUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type M3AggregatorM3aggregatorUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -13669,22 +14575,27 @@ func (o M3AggregatorM3aggregatorUserConfigOutput) ToM3AggregatorM3aggregatorUser
 	}).(M3AggregatorM3aggregatorUserConfigPtrOutput)
 }
 
+// Custom domain
 func (o M3AggregatorM3aggregatorUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o M3AggregatorM3aggregatorUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// M3 major version (deprecated, use m3aggregator_version)
 func (o M3AggregatorM3aggregatorUserConfigOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
 }
 
+// M3 major version (the minimum compatible version)
 func (o M3AggregatorM3aggregatorUserConfigOutput) M3aggregatorVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *string { return v.M3aggregatorVersion }).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o M3AggregatorM3aggregatorUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3AggregatorM3aggregatorUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -13713,6 +14624,7 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) Elem() M3AggregatorM3aggreg
 	}).(M3AggregatorM3aggregatorUserConfigOutput)
 }
 
+// Custom domain
 func (o M3AggregatorM3aggregatorUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) *string {
 		if v == nil {
@@ -13722,6 +14634,7 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) CustomDomain() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o M3AggregatorM3aggregatorUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) []string {
 		if v == nil {
@@ -13731,6 +14644,7 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) IpFilters() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
+// M3 major version (deprecated, use m3aggregator_version)
 func (o M3AggregatorM3aggregatorUserConfigPtrOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) *string {
 		if v == nil {
@@ -13740,6 +14654,7 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) M3Version() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// M3 major version (the minimum compatible version)
 func (o M3AggregatorM3aggregatorUserConfigPtrOutput) M3aggregatorVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) *string {
 		if v == nil {
@@ -13749,6 +14664,7 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) M3aggregatorVersion() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o M3AggregatorM3aggregatorUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3AggregatorM3aggregatorUserConfig) *string {
 		if v == nil {
@@ -13759,14 +14675,16 @@ func (o M3AggregatorM3aggregatorUserConfigPtrOutput) StaticIps() pulumi.StringPt
 }
 
 type M3AggregatorServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // M3AggregatorServiceIntegrationInput is an input type that accepts M3AggregatorServiceIntegrationArgs and M3AggregatorServiceIntegrationOutput values.
 // You can construct a concrete instance of `M3AggregatorServiceIntegrationInput` via:
 //
-//          M3AggregatorServiceIntegrationArgs{...}
+//	M3AggregatorServiceIntegrationArgs{...}
 type M3AggregatorServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -13775,7 +14693,9 @@ type M3AggregatorServiceIntegrationInput interface {
 }
 
 type M3AggregatorServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -13794,7 +14714,7 @@ func (i M3AggregatorServiceIntegrationArgs) ToM3AggregatorServiceIntegrationOutp
 // M3AggregatorServiceIntegrationArrayInput is an input type that accepts M3AggregatorServiceIntegrationArray and M3AggregatorServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `M3AggregatorServiceIntegrationArrayInput` via:
 //
-//          M3AggregatorServiceIntegrationArray{ M3AggregatorServiceIntegrationArgs{...} }
+//	M3AggregatorServiceIntegrationArray{ M3AggregatorServiceIntegrationArgs{...} }
 type M3AggregatorServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -13830,10 +14750,12 @@ func (o M3AggregatorServiceIntegrationOutput) ToM3AggregatorServiceIntegrationOu
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o M3AggregatorServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v M3AggregatorServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o M3AggregatorServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v M3AggregatorServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -13859,14 +14781,16 @@ func (o M3AggregatorServiceIntegrationArrayOutput) Index(i pulumi.IntInput) M3Ag
 }
 
 type M3AggregatorTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // M3AggregatorTagInput is an input type that accepts M3AggregatorTagArgs and M3AggregatorTagOutput values.
 // You can construct a concrete instance of `M3AggregatorTagInput` via:
 //
-//          M3AggregatorTagArgs{...}
+//	M3AggregatorTagArgs{...}
 type M3AggregatorTagInput interface {
 	pulumi.Input
 
@@ -13875,7 +14799,9 @@ type M3AggregatorTagInput interface {
 }
 
 type M3AggregatorTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -13894,7 +14820,7 @@ func (i M3AggregatorTagArgs) ToM3AggregatorTagOutputWithContext(ctx context.Cont
 // M3AggregatorTagArrayInput is an input type that accepts M3AggregatorTagArray and M3AggregatorTagArrayOutput values.
 // You can construct a concrete instance of `M3AggregatorTagArrayInput` via:
 //
-//          M3AggregatorTagArray{ M3AggregatorTagArgs{...} }
+//	M3AggregatorTagArray{ M3AggregatorTagArgs{...} }
 type M3AggregatorTagArrayInput interface {
 	pulumi.Input
 
@@ -13930,10 +14856,12 @@ func (o M3AggregatorTagOutput) ToM3AggregatorTagOutputWithContext(ctx context.Co
 	return o
 }
 
+// Service tag key
 func (o M3AggregatorTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v M3AggregatorTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o M3AggregatorTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v M3AggregatorTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -13971,7 +14899,7 @@ type M3DbComponent struct {
 // M3DbComponentInput is an input type that accepts M3DbComponentArgs and M3DbComponentOutput values.
 // You can construct a concrete instance of `M3DbComponentInput` via:
 //
-//          M3DbComponentArgs{...}
+//	M3DbComponentArgs{...}
 type M3DbComponentInput interface {
 	pulumi.Input
 
@@ -14004,7 +14932,7 @@ func (i M3DbComponentArgs) ToM3DbComponentOutputWithContext(ctx context.Context)
 // M3DbComponentArrayInput is an input type that accepts M3DbComponentArray and M3DbComponentArrayOutput values.
 // You can construct a concrete instance of `M3DbComponentArrayInput` via:
 //
-//          M3DbComponentArray{ M3DbComponentArgs{...} }
+//	M3DbComponentArray{ M3DbComponentArgs{...} }
 type M3DbComponentArrayInput interface {
 	pulumi.Input
 
@@ -14094,7 +15022,7 @@ type M3DbM3db struct {
 // M3DbM3dbInput is an input type that accepts M3DbM3dbArgs and M3DbM3dbOutput values.
 // You can construct a concrete instance of `M3DbM3dbInput` via:
 //
-//          M3DbM3dbArgs{...}
+//	M3DbM3dbArgs{...}
 type M3DbM3dbInput interface {
 	pulumi.Input
 
@@ -14120,7 +15048,7 @@ func (i M3DbM3dbArgs) ToM3DbM3dbOutputWithContext(ctx context.Context) M3DbM3dbO
 // M3DbM3dbArrayInput is an input type that accepts M3DbM3dbArray and M3DbM3dbArrayOutput values.
 // You can construct a concrete instance of `M3DbM3dbArrayInput` via:
 //
-//          M3DbM3dbArray{ M3DbM3dbArgs{...} }
+//	M3DbM3dbArray{ M3DbM3dbArgs{...} }
 type M3DbM3dbArrayInput interface {
 	pulumi.Input
 
@@ -14177,25 +15105,38 @@ func (o M3DbM3dbArrayOutput) Index(i pulumi.IntInput) M3DbM3dbOutput {
 }
 
 type M3DbM3dbUserConfig struct {
-	CustomDomain                            *string                          `pulumi:"customDomain"`
-	IpFilters                               []string                         `pulumi:"ipFilters"`
-	Limits                                  *M3DbM3dbUserConfigLimits        `pulumi:"limits"`
-	M3Version                               *string                          `pulumi:"m3Version"`
-	M3coordinatorEnableGraphiteCarbonIngest *string                          `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
-	M3dbVersion                             *string                          `pulumi:"m3dbVersion"`
-	Namespaces                              []M3DbM3dbUserConfigNamespace    `pulumi:"namespaces"`
-	PrivateAccess                           *M3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
-	ProjectToForkFrom                       *string                          `pulumi:"projectToForkFrom"`
-	PublicAccess                            *M3DbM3dbUserConfigPublicAccess  `pulumi:"publicAccess"`
-	Rules                                   *M3DbM3dbUserConfigRules         `pulumi:"rules"`
-	ServiceToForkFrom                       *string                          `pulumi:"serviceToForkFrom"`
-	StaticIps                               *string                          `pulumi:"staticIps"`
+	// Custom domain
+	CustomDomain *string `pulumi:"customDomain"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// M3 limits
+	Limits *M3DbM3dbUserConfigLimits `pulumi:"limits"`
+	// M3 major version (deprecated, use m3db_version)
+	M3Version *string `pulumi:"m3Version"`
+	// Enable Graphite ingestion using Carbon plaintext protocol
+	M3coordinatorEnableGraphiteCarbonIngest *string `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	// M3 major version (the minimum compatible version)
+	M3dbVersion *string `pulumi:"m3dbVersion"`
+	// List of M3 namespaces
+	Namespaces []M3DbM3dbUserConfigNamespace `pulumi:"namespaces"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *M3DbM3dbUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *M3DbM3dbUserConfigPublicAccess `pulumi:"publicAccess"`
+	// M3 rules
+	Rules *M3DbM3dbUserConfigRules `pulumi:"rules"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Static IP addresses
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // M3DbM3dbUserConfigInput is an input type that accepts M3DbM3dbUserConfigArgs and M3DbM3dbUserConfigOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigInput` via:
 //
-//          M3DbM3dbUserConfigArgs{...}
+//	M3DbM3dbUserConfigArgs{...}
 type M3DbM3dbUserConfigInput interface {
 	pulumi.Input
 
@@ -14204,19 +15145,32 @@ type M3DbM3dbUserConfigInput interface {
 }
 
 type M3DbM3dbUserConfigArgs struct {
-	CustomDomain                            pulumi.StringPtrInput                   `pulumi:"customDomain"`
-	IpFilters                               pulumi.StringArrayInput                 `pulumi:"ipFilters"`
-	Limits                                  M3DbM3dbUserConfigLimitsPtrInput        `pulumi:"limits"`
-	M3Version                               pulumi.StringPtrInput                   `pulumi:"m3Version"`
-	M3coordinatorEnableGraphiteCarbonIngest pulumi.StringPtrInput                   `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
-	M3dbVersion                             pulumi.StringPtrInput                   `pulumi:"m3dbVersion"`
-	Namespaces                              M3DbM3dbUserConfigNamespaceArrayInput   `pulumi:"namespaces"`
-	PrivateAccess                           M3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
-	ProjectToForkFrom                       pulumi.StringPtrInput                   `pulumi:"projectToForkFrom"`
-	PublicAccess                            M3DbM3dbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
-	Rules                                   M3DbM3dbUserConfigRulesPtrInput         `pulumi:"rules"`
-	ServiceToForkFrom                       pulumi.StringPtrInput                   `pulumi:"serviceToForkFrom"`
-	StaticIps                               pulumi.StringPtrInput                   `pulumi:"staticIps"`
+	// Custom domain
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// M3 limits
+	Limits M3DbM3dbUserConfigLimitsPtrInput `pulumi:"limits"`
+	// M3 major version (deprecated, use m3db_version)
+	M3Version pulumi.StringPtrInput `pulumi:"m3Version"`
+	// Enable Graphite ingestion using Carbon plaintext protocol
+	M3coordinatorEnableGraphiteCarbonIngest pulumi.StringPtrInput `pulumi:"m3coordinatorEnableGraphiteCarbonIngest"`
+	// M3 major version (the minimum compatible version)
+	M3dbVersion pulumi.StringPtrInput `pulumi:"m3dbVersion"`
+	// List of M3 namespaces
+	Namespaces M3DbM3dbUserConfigNamespaceArrayInput `pulumi:"namespaces"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess M3DbM3dbUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess M3DbM3dbUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// M3 rules
+	Rules M3DbM3dbUserConfigRulesPtrInput `pulumi:"rules"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Static IP addresses
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (M3DbM3dbUserConfigArgs) ElementType() reflect.Type {
@@ -14242,11 +15196,11 @@ func (i M3DbM3dbUserConfigArgs) ToM3DbM3dbUserConfigPtrOutputWithContext(ctx con
 // M3DbM3dbUserConfigPtrInput is an input type that accepts M3DbM3dbUserConfigArgs, M3DbM3dbUserConfigPtr and M3DbM3dbUserConfigPtrOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigPtrInput` via:
 //
-//          M3DbM3dbUserConfigArgs{...}
+//	        M3DbM3dbUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type M3DbM3dbUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -14296,54 +15250,67 @@ func (o M3DbM3dbUserConfigOutput) ToM3DbM3dbUserConfigPtrOutputWithContext(ctx c
 	}).(M3DbM3dbUserConfigPtrOutput)
 }
 
+// Custom domain
 func (o M3DbM3dbUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o M3DbM3dbUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// M3 limits
 func (o M3DbM3dbUserConfigOutput) Limits() M3DbM3dbUserConfigLimitsPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigLimits { return v.Limits }).(M3DbM3dbUserConfigLimitsPtrOutput)
 }
 
+// M3 major version (deprecated, use m3db_version)
 func (o M3DbM3dbUserConfigOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.M3Version }).(pulumi.StringPtrOutput)
 }
 
+// Enable Graphite ingestion using Carbon plaintext protocol
 func (o M3DbM3dbUserConfigOutput) M3coordinatorEnableGraphiteCarbonIngest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.M3coordinatorEnableGraphiteCarbonIngest }).(pulumi.StringPtrOutput)
 }
 
+// M3 major version (the minimum compatible version)
 func (o M3DbM3dbUserConfigOutput) M3dbVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.M3dbVersion }).(pulumi.StringPtrOutput)
 }
 
+// List of M3 namespaces
 func (o M3DbM3dbUserConfigOutput) Namespaces() M3DbM3dbUserConfigNamespaceArrayOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) []M3DbM3dbUserConfigNamespace { return v.Namespaces }).(M3DbM3dbUserConfigNamespaceArrayOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o M3DbM3dbUserConfigOutput) PrivateAccess() M3DbM3dbUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigPrivateAccess { return v.PrivateAccess }).(M3DbM3dbUserConfigPrivateAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o M3DbM3dbUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o M3DbM3dbUserConfigOutput) PublicAccess() M3DbM3dbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigPublicAccess { return v.PublicAccess }).(M3DbM3dbUserConfigPublicAccessPtrOutput)
 }
 
+// M3 rules
 func (o M3DbM3dbUserConfigOutput) Rules() M3DbM3dbUserConfigRulesPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *M3DbM3dbUserConfigRules { return v.Rules }).(M3DbM3dbUserConfigRulesPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o M3DbM3dbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o M3DbM3dbUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -14372,6 +15339,7 @@ func (o M3DbM3dbUserConfigPtrOutput) Elem() M3DbM3dbUserConfigOutput {
 	}).(M3DbM3dbUserConfigOutput)
 }
 
+// Custom domain
 func (o M3DbM3dbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -14381,6 +15349,7 @@ func (o M3DbM3dbUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o M3DbM3dbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) []string {
 		if v == nil {
@@ -14390,6 +15359,7 @@ func (o M3DbM3dbUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// M3 limits
 func (o M3DbM3dbUserConfigPtrOutput) Limits() M3DbM3dbUserConfigLimitsPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigLimits {
 		if v == nil {
@@ -14399,6 +15369,7 @@ func (o M3DbM3dbUserConfigPtrOutput) Limits() M3DbM3dbUserConfigLimitsPtrOutput 
 	}).(M3DbM3dbUserConfigLimitsPtrOutput)
 }
 
+// M3 major version (deprecated, use m3db_version)
 func (o M3DbM3dbUserConfigPtrOutput) M3Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -14408,6 +15379,7 @@ func (o M3DbM3dbUserConfigPtrOutput) M3Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable Graphite ingestion using Carbon plaintext protocol
 func (o M3DbM3dbUserConfigPtrOutput) M3coordinatorEnableGraphiteCarbonIngest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -14417,6 +15389,7 @@ func (o M3DbM3dbUserConfigPtrOutput) M3coordinatorEnableGraphiteCarbonIngest() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// M3 major version (the minimum compatible version)
 func (o M3DbM3dbUserConfigPtrOutput) M3dbVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -14426,6 +15399,7 @@ func (o M3DbM3dbUserConfigPtrOutput) M3dbVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of M3 namespaces
 func (o M3DbM3dbUserConfigPtrOutput) Namespaces() M3DbM3dbUserConfigNamespaceArrayOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) []M3DbM3dbUserConfigNamespace {
 		if v == nil {
@@ -14435,6 +15409,7 @@ func (o M3DbM3dbUserConfigPtrOutput) Namespaces() M3DbM3dbUserConfigNamespaceArr
 	}).(M3DbM3dbUserConfigNamespaceArrayOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o M3DbM3dbUserConfigPtrOutput) PrivateAccess() M3DbM3dbUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigPrivateAccess {
 		if v == nil {
@@ -14444,6 +15419,7 @@ func (o M3DbM3dbUserConfigPtrOutput) PrivateAccess() M3DbM3dbUserConfigPrivateAc
 	}).(M3DbM3dbUserConfigPrivateAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o M3DbM3dbUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -14453,6 +15429,7 @@ func (o M3DbM3dbUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o M3DbM3dbUserConfigPtrOutput) PublicAccess() M3DbM3dbUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigPublicAccess {
 		if v == nil {
@@ -14462,6 +15439,7 @@ func (o M3DbM3dbUserConfigPtrOutput) PublicAccess() M3DbM3dbUserConfigPublicAcce
 	}).(M3DbM3dbUserConfigPublicAccessPtrOutput)
 }
 
+// M3 rules
 func (o M3DbM3dbUserConfigPtrOutput) Rules() M3DbM3dbUserConfigRulesPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *M3DbM3dbUserConfigRules {
 		if v == nil {
@@ -14471,6 +15449,7 @@ func (o M3DbM3dbUserConfigPtrOutput) Rules() M3DbM3dbUserConfigRulesPtrOutput {
 	}).(M3DbM3dbUserConfigRulesPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o M3DbM3dbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -14480,6 +15459,7 @@ func (o M3DbM3dbUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o M3DbM3dbUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfig) *string {
 		if v == nil {
@@ -14490,6 +15470,7 @@ func (o M3DbM3dbUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 }
 
 type M3DbM3dbUserConfigLimits struct {
+	QueryDocs              *string `pulumi:"queryDocs"`
 	QueryRequireExhaustive *string `pulumi:"queryRequireExhaustive"`
 	QuerySeries            *string `pulumi:"querySeries"`
 }
@@ -14497,7 +15478,7 @@ type M3DbM3dbUserConfigLimits struct {
 // M3DbM3dbUserConfigLimitsInput is an input type that accepts M3DbM3dbUserConfigLimitsArgs and M3DbM3dbUserConfigLimitsOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigLimitsInput` via:
 //
-//          M3DbM3dbUserConfigLimitsArgs{...}
+//	M3DbM3dbUserConfigLimitsArgs{...}
 type M3DbM3dbUserConfigLimitsInput interface {
 	pulumi.Input
 
@@ -14506,6 +15487,7 @@ type M3DbM3dbUserConfigLimitsInput interface {
 }
 
 type M3DbM3dbUserConfigLimitsArgs struct {
+	QueryDocs              pulumi.StringPtrInput `pulumi:"queryDocs"`
 	QueryRequireExhaustive pulumi.StringPtrInput `pulumi:"queryRequireExhaustive"`
 	QuerySeries            pulumi.StringPtrInput `pulumi:"querySeries"`
 }
@@ -14533,11 +15515,11 @@ func (i M3DbM3dbUserConfigLimitsArgs) ToM3DbM3dbUserConfigLimitsPtrOutputWithCon
 // M3DbM3dbUserConfigLimitsPtrInput is an input type that accepts M3DbM3dbUserConfigLimitsArgs, M3DbM3dbUserConfigLimitsPtr and M3DbM3dbUserConfigLimitsPtrOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigLimitsPtrInput` via:
 //
-//          M3DbM3dbUserConfigLimitsArgs{...}
+//	        M3DbM3dbUserConfigLimitsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type M3DbM3dbUserConfigLimitsPtrInput interface {
 	pulumi.Input
 
@@ -14587,6 +15569,10 @@ func (o M3DbM3dbUserConfigLimitsOutput) ToM3DbM3dbUserConfigLimitsPtrOutputWithC
 	}).(M3DbM3dbUserConfigLimitsPtrOutput)
 }
 
+func (o M3DbM3dbUserConfigLimitsOutput) QueryDocs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v M3DbM3dbUserConfigLimits) *string { return v.QueryDocs }).(pulumi.StringPtrOutput)
+}
+
 func (o M3DbM3dbUserConfigLimitsOutput) QueryRequireExhaustive() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v M3DbM3dbUserConfigLimits) *string { return v.QueryRequireExhaustive }).(pulumi.StringPtrOutput)
 }
@@ -14619,6 +15605,15 @@ func (o M3DbM3dbUserConfigLimitsPtrOutput) Elem() M3DbM3dbUserConfigLimitsOutput
 	}).(M3DbM3dbUserConfigLimitsOutput)
 }
 
+func (o M3DbM3dbUserConfigLimitsPtrOutput) QueryDocs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *M3DbM3dbUserConfigLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryDocs
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o M3DbM3dbUserConfigLimitsPtrOutput) QueryRequireExhaustive() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3DbM3dbUserConfigLimits) *string {
 		if v == nil {
@@ -14647,7 +15642,7 @@ type M3DbM3dbUserConfigNamespace struct {
 // M3DbM3dbUserConfigNamespaceInput is an input type that accepts M3DbM3dbUserConfigNamespaceArgs and M3DbM3dbUserConfigNamespaceOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigNamespaceInput` via:
 //
-//          M3DbM3dbUserConfigNamespaceArgs{...}
+//	M3DbM3dbUserConfigNamespaceArgs{...}
 type M3DbM3dbUserConfigNamespaceInput interface {
 	pulumi.Input
 
@@ -14677,7 +15672,7 @@ func (i M3DbM3dbUserConfigNamespaceArgs) ToM3DbM3dbUserConfigNamespaceOutputWith
 // M3DbM3dbUserConfigNamespaceArrayInput is an input type that accepts M3DbM3dbUserConfigNamespaceArray and M3DbM3dbUserConfigNamespaceArrayOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigNamespaceArrayInput` via:
 //
-//          M3DbM3dbUserConfigNamespaceArray{ M3DbM3dbUserConfigNamespaceArgs{...} }
+//	M3DbM3dbUserConfigNamespaceArray{ M3DbM3dbUserConfigNamespaceArgs{...} }
 type M3DbM3dbUserConfigNamespaceArrayInput interface {
 	pulumi.Input
 
@@ -14758,7 +15753,7 @@ type M3DbM3dbUserConfigNamespaceOptions struct {
 // M3DbM3dbUserConfigNamespaceOptionsInput is an input type that accepts M3DbM3dbUserConfigNamespaceOptionsArgs and M3DbM3dbUserConfigNamespaceOptionsOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigNamespaceOptionsInput` via:
 //
-//          M3DbM3dbUserConfigNamespaceOptionsArgs{...}
+//	M3DbM3dbUserConfigNamespaceOptionsArgs{...}
 type M3DbM3dbUserConfigNamespaceOptionsInput interface {
 	pulumi.Input
 
@@ -14795,11 +15790,11 @@ func (i M3DbM3dbUserConfigNamespaceOptionsArgs) ToM3DbM3dbUserConfigNamespaceOpt
 // M3DbM3dbUserConfigNamespaceOptionsPtrInput is an input type that accepts M3DbM3dbUserConfigNamespaceOptionsArgs, M3DbM3dbUserConfigNamespaceOptionsPtr and M3DbM3dbUserConfigNamespaceOptionsPtrOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigNamespaceOptionsPtrInput` via:
 //
-//          M3DbM3dbUserConfigNamespaceOptionsArgs{...}
+//	        M3DbM3dbUserConfigNamespaceOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type M3DbM3dbUserConfigNamespaceOptionsPtrInput interface {
 	pulumi.Input
 
@@ -14925,7 +15920,7 @@ type M3DbM3dbUserConfigNamespaceOptionsRetentionOptions struct {
 // M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput is an input type that accepts M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs and M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput` via:
 //
-//          M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
+//	M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
 type M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput interface {
 	pulumi.Input
 
@@ -14964,11 +15959,11 @@ func (i M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToM3DbM3dbUserCo
 // M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput is an input type that accepts M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs, M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtr and M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput` via:
 //
-//          M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
+//	        M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput interface {
 	pulumi.Input
 
@@ -15114,7 +16109,7 @@ type M3DbM3dbUserConfigPrivateAccess struct {
 // M3DbM3dbUserConfigPrivateAccessInput is an input type that accepts M3DbM3dbUserConfigPrivateAccessArgs and M3DbM3dbUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigPrivateAccessInput` via:
 //
-//          M3DbM3dbUserConfigPrivateAccessArgs{...}
+//	M3DbM3dbUserConfigPrivateAccessArgs{...}
 type M3DbM3dbUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -15149,11 +16144,11 @@ func (i M3DbM3dbUserConfigPrivateAccessArgs) ToM3DbM3dbUserConfigPrivateAccessPt
 // M3DbM3dbUserConfigPrivateAccessPtrInput is an input type that accepts M3DbM3dbUserConfigPrivateAccessArgs, M3DbM3dbUserConfigPrivateAccessPtr and M3DbM3dbUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigPrivateAccessPtrInput` via:
 //
-//          M3DbM3dbUserConfigPrivateAccessArgs{...}
+//	        M3DbM3dbUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type M3DbM3dbUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -15247,7 +16242,7 @@ type M3DbM3dbUserConfigPublicAccess struct {
 // M3DbM3dbUserConfigPublicAccessInput is an input type that accepts M3DbM3dbUserConfigPublicAccessArgs and M3DbM3dbUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigPublicAccessInput` via:
 //
-//          M3DbM3dbUserConfigPublicAccessArgs{...}
+//	M3DbM3dbUserConfigPublicAccessArgs{...}
 type M3DbM3dbUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -15282,11 +16277,11 @@ func (i M3DbM3dbUserConfigPublicAccessArgs) ToM3DbM3dbUserConfigPublicAccessPtrO
 // M3DbM3dbUserConfigPublicAccessPtrInput is an input type that accepts M3DbM3dbUserConfigPublicAccessArgs, M3DbM3dbUserConfigPublicAccessPtr and M3DbM3dbUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigPublicAccessPtrInput` via:
 //
-//          M3DbM3dbUserConfigPublicAccessArgs{...}
+//	        M3DbM3dbUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type M3DbM3dbUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -15380,7 +16375,7 @@ type M3DbM3dbUserConfigRules struct {
 // M3DbM3dbUserConfigRulesInput is an input type that accepts M3DbM3dbUserConfigRulesArgs and M3DbM3dbUserConfigRulesOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigRulesInput` via:
 //
-//          M3DbM3dbUserConfigRulesArgs{...}
+//	M3DbM3dbUserConfigRulesArgs{...}
 type M3DbM3dbUserConfigRulesInput interface {
 	pulumi.Input
 
@@ -15415,11 +16410,11 @@ func (i M3DbM3dbUserConfigRulesArgs) ToM3DbM3dbUserConfigRulesPtrOutputWithConte
 // M3DbM3dbUserConfigRulesPtrInput is an input type that accepts M3DbM3dbUserConfigRulesArgs, M3DbM3dbUserConfigRulesPtr and M3DbM3dbUserConfigRulesPtrOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigRulesPtrInput` via:
 //
-//          M3DbM3dbUserConfigRulesArgs{...}
+//	        M3DbM3dbUserConfigRulesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type M3DbM3dbUserConfigRulesPtrInput interface {
 	pulumi.Input
 
@@ -15518,7 +16513,7 @@ type M3DbM3dbUserConfigRulesMapping struct {
 // M3DbM3dbUserConfigRulesMappingInput is an input type that accepts M3DbM3dbUserConfigRulesMappingArgs and M3DbM3dbUserConfigRulesMappingOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigRulesMappingInput` via:
 //
-//          M3DbM3dbUserConfigRulesMappingArgs{...}
+//	M3DbM3dbUserConfigRulesMappingArgs{...}
 type M3DbM3dbUserConfigRulesMappingInput interface {
 	pulumi.Input
 
@@ -15550,7 +16545,7 @@ func (i M3DbM3dbUserConfigRulesMappingArgs) ToM3DbM3dbUserConfigRulesMappingOutp
 // M3DbM3dbUserConfigRulesMappingArrayInput is an input type that accepts M3DbM3dbUserConfigRulesMappingArray and M3DbM3dbUserConfigRulesMappingArrayOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigRulesMappingArrayInput` via:
 //
-//          M3DbM3dbUserConfigRulesMappingArray{ M3DbM3dbUserConfigRulesMappingArgs{...} }
+//	M3DbM3dbUserConfigRulesMappingArray{ M3DbM3dbUserConfigRulesMappingArgs{...} }
 type M3DbM3dbUserConfigRulesMappingArrayInput interface {
 	pulumi.Input
 
@@ -15638,7 +16633,7 @@ type M3DbM3dbUserConfigRulesMappingTag struct {
 // M3DbM3dbUserConfigRulesMappingTagInput is an input type that accepts M3DbM3dbUserConfigRulesMappingTagArgs and M3DbM3dbUserConfigRulesMappingTagOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigRulesMappingTagInput` via:
 //
-//          M3DbM3dbUserConfigRulesMappingTagArgs{...}
+//	M3DbM3dbUserConfigRulesMappingTagArgs{...}
 type M3DbM3dbUserConfigRulesMappingTagInput interface {
 	pulumi.Input
 
@@ -15666,7 +16661,7 @@ func (i M3DbM3dbUserConfigRulesMappingTagArgs) ToM3DbM3dbUserConfigRulesMappingT
 // M3DbM3dbUserConfigRulesMappingTagArrayInput is an input type that accepts M3DbM3dbUserConfigRulesMappingTagArray and M3DbM3dbUserConfigRulesMappingTagArrayOutput values.
 // You can construct a concrete instance of `M3DbM3dbUserConfigRulesMappingTagArrayInput` via:
 //
-//          M3DbM3dbUserConfigRulesMappingTagArray{ M3DbM3dbUserConfigRulesMappingTagArgs{...} }
+//	M3DbM3dbUserConfigRulesMappingTagArray{ M3DbM3dbUserConfigRulesMappingTagArgs{...} }
 type M3DbM3dbUserConfigRulesMappingTagArrayInput interface {
 	pulumi.Input
 
@@ -15731,14 +16726,16 @@ func (o M3DbM3dbUserConfigRulesMappingTagArrayOutput) Index(i pulumi.IntInput) M
 }
 
 type M3DbServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // M3DbServiceIntegrationInput is an input type that accepts M3DbServiceIntegrationArgs and M3DbServiceIntegrationOutput values.
 // You can construct a concrete instance of `M3DbServiceIntegrationInput` via:
 //
-//          M3DbServiceIntegrationArgs{...}
+//	M3DbServiceIntegrationArgs{...}
 type M3DbServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -15747,7 +16744,9 @@ type M3DbServiceIntegrationInput interface {
 }
 
 type M3DbServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -15766,7 +16765,7 @@ func (i M3DbServiceIntegrationArgs) ToM3DbServiceIntegrationOutputWithContext(ct
 // M3DbServiceIntegrationArrayInput is an input type that accepts M3DbServiceIntegrationArray and M3DbServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `M3DbServiceIntegrationArrayInput` via:
 //
-//          M3DbServiceIntegrationArray{ M3DbServiceIntegrationArgs{...} }
+//	M3DbServiceIntegrationArray{ M3DbServiceIntegrationArgs{...} }
 type M3DbServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -15802,10 +16801,12 @@ func (o M3DbServiceIntegrationOutput) ToM3DbServiceIntegrationOutputWithContext(
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o M3DbServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v M3DbServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o M3DbServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v M3DbServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -15831,14 +16832,16 @@ func (o M3DbServiceIntegrationArrayOutput) Index(i pulumi.IntInput) M3DbServiceI
 }
 
 type M3DbTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // M3DbTagInput is an input type that accepts M3DbTagArgs and M3DbTagOutput values.
 // You can construct a concrete instance of `M3DbTagInput` via:
 //
-//          M3DbTagArgs{...}
+//	M3DbTagArgs{...}
 type M3DbTagInput interface {
 	pulumi.Input
 
@@ -15847,7 +16850,9 @@ type M3DbTagInput interface {
 }
 
 type M3DbTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -15866,7 +16871,7 @@ func (i M3DbTagArgs) ToM3DbTagOutputWithContext(ctx context.Context) M3DbTagOutp
 // M3DbTagArrayInput is an input type that accepts M3DbTagArray and M3DbTagArrayOutput values.
 // You can construct a concrete instance of `M3DbTagArrayInput` via:
 //
-//          M3DbTagArray{ M3DbTagArgs{...} }
+//	M3DbTagArray{ M3DbTagArgs{...} }
 type M3DbTagArrayInput interface {
 	pulumi.Input
 
@@ -15902,10 +16907,12 @@ func (o M3DbTagOutput) ToM3DbTagOutputWithContext(ctx context.Context) M3DbTagOu
 	return o
 }
 
+// Service tag key
 func (o M3DbTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v M3DbTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o M3DbTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v M3DbTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -15943,7 +16950,7 @@ type MySqlComponent struct {
 // MySqlComponentInput is an input type that accepts MySqlComponentArgs and MySqlComponentOutput values.
 // You can construct a concrete instance of `MySqlComponentInput` via:
 //
-//          MySqlComponentArgs{...}
+//	MySqlComponentArgs{...}
 type MySqlComponentInput interface {
 	pulumi.Input
 
@@ -15976,7 +16983,7 @@ func (i MySqlComponentArgs) ToMySqlComponentOutputWithContext(ctx context.Contex
 // MySqlComponentArrayInput is an input type that accepts MySqlComponentArray and MySqlComponentArrayOutput values.
 // You can construct a concrete instance of `MySqlComponentArrayInput` via:
 //
-//          MySqlComponentArray{ MySqlComponentArgs{...} }
+//	MySqlComponentArray{ MySqlComponentArgs{...} }
 type MySqlComponentArrayInput interface {
 	pulumi.Input
 
@@ -16066,7 +17073,7 @@ type MySqlMysql struct {
 // MySqlMysqlInput is an input type that accepts MySqlMysqlArgs and MySqlMysqlOutput values.
 // You can construct a concrete instance of `MySqlMysqlInput` via:
 //
-//          MySqlMysqlArgs{...}
+//	MySqlMysqlArgs{...}
 type MySqlMysqlInput interface {
 	pulumi.Input
 
@@ -16092,7 +17099,7 @@ func (i MySqlMysqlArgs) ToMySqlMysqlOutputWithContext(ctx context.Context) MySql
 // MySqlMysqlArrayInput is an input type that accepts MySqlMysqlArray and MySqlMysqlArrayOutput values.
 // You can construct a concrete instance of `MySqlMysqlArrayInput` via:
 //
-//          MySqlMysqlArray{ MySqlMysqlArgs{...} }
+//	MySqlMysqlArray{ MySqlMysqlArgs{...} }
 type MySqlMysqlArrayInput interface {
 	pulumi.Input
 
@@ -16149,28 +17156,44 @@ func (o MySqlMysqlArrayOutput) Index(i pulumi.IntInput) MySqlMysqlOutput {
 }
 
 type MySqlMysqlUserConfig struct {
-	AdminPassword         *string                                `pulumi:"adminPassword"`
-	AdminUsername         *string                                `pulumi:"adminUsername"`
-	BackupHour            *string                                `pulumi:"backupHour"`
-	BackupMinute          *string                                `pulumi:"backupMinute"`
-	BinlogRetentionPeriod *string                                `pulumi:"binlogRetentionPeriod"`
-	IpFilters             []string                               `pulumi:"ipFilters"`
-	Migration             *MySqlMysqlUserConfigMigration         `pulumi:"migration"`
-	Mysql                 *MySqlMysqlUserConfigMysql             `pulumi:"mysql"`
-	MysqlVersion          *string                                `pulumi:"mysqlVersion"`
-	PrivateAccess         *MySqlMysqlUserConfigPrivateAccess     `pulumi:"privateAccess"`
-	PrivatelinkAccess     *MySqlMysqlUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom     *string                                `pulumi:"projectToForkFrom"`
-	PublicAccess          *MySqlMysqlUserConfigPublicAccess      `pulumi:"publicAccess"`
-	RecoveryTargetTime    *string                                `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom     *string                                `pulumi:"serviceToForkFrom"`
-	StaticIps             *string                                `pulumi:"staticIps"`
+	// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+	AdminPassword *string `pulumi:"adminPassword"`
+	// Custom username for admin user. This must be set only when a new service is being created.
+	AdminUsername *string `pulumi:"adminUsername"`
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+	BackupHour *string `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+	BackupMinute *string `pulumi:"backupMinute"`
+	// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+	BinlogRetentionPeriod *string `pulumi:"binlogRetentionPeriod"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration *MySqlMysqlUserConfigMigration `pulumi:"migration"`
+	// mysql.conf configuration values
+	Mysql *MySqlMysqlUserConfigMysql `pulumi:"mysql"`
+	// MySQL major version
+	MysqlVersion *string `pulumi:"mysqlVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *MySqlMysqlUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *MySqlMysqlUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *MySqlMysqlUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect only when a new service is being created.
+	RecoveryTargetTime *string `pulumi:"recoveryTargetTime"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Static IP addresses
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // MySqlMysqlUserConfigInput is an input type that accepts MySqlMysqlUserConfigArgs and MySqlMysqlUserConfigOutput values.
 // You can construct a concrete instance of `MySqlMysqlUserConfigInput` via:
 //
-//          MySqlMysqlUserConfigArgs{...}
+//	MySqlMysqlUserConfigArgs{...}
 type MySqlMysqlUserConfigInput interface {
 	pulumi.Input
 
@@ -16179,22 +17202,38 @@ type MySqlMysqlUserConfigInput interface {
 }
 
 type MySqlMysqlUserConfigArgs struct {
-	AdminPassword         pulumi.StringPtrInput                         `pulumi:"adminPassword"`
-	AdminUsername         pulumi.StringPtrInput                         `pulumi:"adminUsername"`
-	BackupHour            pulumi.StringPtrInput                         `pulumi:"backupHour"`
-	BackupMinute          pulumi.StringPtrInput                         `pulumi:"backupMinute"`
-	BinlogRetentionPeriod pulumi.StringPtrInput                         `pulumi:"binlogRetentionPeriod"`
-	IpFilters             pulumi.StringArrayInput                       `pulumi:"ipFilters"`
-	Migration             MySqlMysqlUserConfigMigrationPtrInput         `pulumi:"migration"`
-	Mysql                 MySqlMysqlUserConfigMysqlPtrInput             `pulumi:"mysql"`
-	MysqlVersion          pulumi.StringPtrInput                         `pulumi:"mysqlVersion"`
-	PrivateAccess         MySqlMysqlUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
-	PrivatelinkAccess     MySqlMysqlUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom     pulumi.StringPtrInput                         `pulumi:"projectToForkFrom"`
-	PublicAccess          MySqlMysqlUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
-	RecoveryTargetTime    pulumi.StringPtrInput                         `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom     pulumi.StringPtrInput                         `pulumi:"serviceToForkFrom"`
-	StaticIps             pulumi.StringPtrInput                         `pulumi:"staticIps"`
+	// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// Custom username for admin user. This must be set only when a new service is being created.
+	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+	BackupHour pulumi.StringPtrInput `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+	BackupMinute pulumi.StringPtrInput `pulumi:"backupMinute"`
+	// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+	BinlogRetentionPeriod pulumi.StringPtrInput `pulumi:"binlogRetentionPeriod"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration MySqlMysqlUserConfigMigrationPtrInput `pulumi:"migration"`
+	// mysql.conf configuration values
+	Mysql MySqlMysqlUserConfigMysqlPtrInput `pulumi:"mysql"`
+	// MySQL major version
+	MysqlVersion pulumi.StringPtrInput `pulumi:"mysqlVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess MySqlMysqlUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess MySqlMysqlUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess MySqlMysqlUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect only when a new service is being created.
+	RecoveryTargetTime pulumi.StringPtrInput `pulumi:"recoveryTargetTime"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Static IP addresses
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (MySqlMysqlUserConfigArgs) ElementType() reflect.Type {
@@ -16220,11 +17259,11 @@ func (i MySqlMysqlUserConfigArgs) ToMySqlMysqlUserConfigPtrOutputWithContext(ctx
 // MySqlMysqlUserConfigPtrInput is an input type that accepts MySqlMysqlUserConfigArgs, MySqlMysqlUserConfigPtr and MySqlMysqlUserConfigPtrOutput values.
 // You can construct a concrete instance of `MySqlMysqlUserConfigPtrInput` via:
 //
-//          MySqlMysqlUserConfigArgs{...}
+//	        MySqlMysqlUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MySqlMysqlUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -16274,66 +17313,82 @@ func (o MySqlMysqlUserConfigOutput) ToMySqlMysqlUserConfigPtrOutputWithContext(c
 	}).(MySqlMysqlUserConfigPtrOutput)
 }
 
+// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
 func (o MySqlMysqlUserConfigOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// Custom username for admin user. This must be set only when a new service is being created.
 func (o MySqlMysqlUserConfigOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
+// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o MySqlMysqlUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.BackupHour }).(pulumi.StringPtrOutput)
 }
 
+// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o MySqlMysqlUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
+// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
 func (o MySqlMysqlUserConfigOutput) BinlogRetentionPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.BinlogRetentionPeriod }).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o MySqlMysqlUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Migrate data from existing server
 func (o MySqlMysqlUserConfigOutput) Migration() MySqlMysqlUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigMigration { return v.Migration }).(MySqlMysqlUserConfigMigrationPtrOutput)
 }
 
+// mysql.conf configuration values
 func (o MySqlMysqlUserConfigOutput) Mysql() MySqlMysqlUserConfigMysqlPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigMysql { return v.Mysql }).(MySqlMysqlUserConfigMysqlPtrOutput)
 }
 
+// MySQL major version
 func (o MySqlMysqlUserConfigOutput) MysqlVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.MysqlVersion }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o MySqlMysqlUserConfigOutput) PrivateAccess() MySqlMysqlUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigPrivateAccess { return v.PrivateAccess }).(MySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o MySqlMysqlUserConfigOutput) PrivatelinkAccess() MySqlMysqlUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(MySqlMysqlUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o MySqlMysqlUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o MySqlMysqlUserConfigOutput) PublicAccess() MySqlMysqlUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *MySqlMysqlUserConfigPublicAccess { return v.PublicAccess }).(MySqlMysqlUserConfigPublicAccessPtrOutput)
 }
 
+// Recovery target time when forking a service. This has effect only when a new service is being created.
 func (o MySqlMysqlUserConfigOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o MySqlMysqlUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o MySqlMysqlUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -16362,6 +17417,7 @@ func (o MySqlMysqlUserConfigPtrOutput) Elem() MySqlMysqlUserConfigOutput {
 	}).(MySqlMysqlUserConfigOutput)
 }
 
+// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -16371,6 +17427,7 @@ func (o MySqlMysqlUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Custom username for admin user. This must be set only when a new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -16380,6 +17437,7 @@ func (o MySqlMysqlUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o MySqlMysqlUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -16389,6 +17447,7 @@ func (o MySqlMysqlUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o MySqlMysqlUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -16398,6 +17457,7 @@ func (o MySqlMysqlUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
 func (o MySqlMysqlUserConfigPtrOutput) BinlogRetentionPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -16407,6 +17467,7 @@ func (o MySqlMysqlUserConfigPtrOutput) BinlogRetentionPeriod() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o MySqlMysqlUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) []string {
 		if v == nil {
@@ -16416,6 +17477,7 @@ func (o MySqlMysqlUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Migrate data from existing server
 func (o MySqlMysqlUserConfigPtrOutput) Migration() MySqlMysqlUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *MySqlMysqlUserConfigMigration {
 		if v == nil {
@@ -16425,6 +17487,7 @@ func (o MySqlMysqlUserConfigPtrOutput) Migration() MySqlMysqlUserConfigMigration
 	}).(MySqlMysqlUserConfigMigrationPtrOutput)
 }
 
+// mysql.conf configuration values
 func (o MySqlMysqlUserConfigPtrOutput) Mysql() MySqlMysqlUserConfigMysqlPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *MySqlMysqlUserConfigMysql {
 		if v == nil {
@@ -16434,6 +17497,7 @@ func (o MySqlMysqlUserConfigPtrOutput) Mysql() MySqlMysqlUserConfigMysqlPtrOutpu
 	}).(MySqlMysqlUserConfigMysqlPtrOutput)
 }
 
+// MySQL major version
 func (o MySqlMysqlUserConfigPtrOutput) MysqlVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -16443,6 +17507,7 @@ func (o MySqlMysqlUserConfigPtrOutput) MysqlVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o MySqlMysqlUserConfigPtrOutput) PrivateAccess() MySqlMysqlUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *MySqlMysqlUserConfigPrivateAccess {
 		if v == nil {
@@ -16452,6 +17517,7 @@ func (o MySqlMysqlUserConfigPtrOutput) PrivateAccess() MySqlMysqlUserConfigPriva
 	}).(MySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o MySqlMysqlUserConfigPtrOutput) PrivatelinkAccess() MySqlMysqlUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *MySqlMysqlUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -16461,6 +17527,7 @@ func (o MySqlMysqlUserConfigPtrOutput) PrivatelinkAccess() MySqlMysqlUserConfigP
 	}).(MySqlMysqlUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -16470,6 +17537,7 @@ func (o MySqlMysqlUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o MySqlMysqlUserConfigPtrOutput) PublicAccess() MySqlMysqlUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *MySqlMysqlUserConfigPublicAccess {
 		if v == nil {
@@ -16479,6 +17547,7 @@ func (o MySqlMysqlUserConfigPtrOutput) PublicAccess() MySqlMysqlUserConfigPublic
 	}).(MySqlMysqlUserConfigPublicAccessPtrOutput)
 }
 
+// Recovery target time when forking a service. This has effect only when a new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -16488,6 +17557,7 @@ func (o MySqlMysqlUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o MySqlMysqlUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -16497,6 +17567,7 @@ func (o MySqlMysqlUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o MySqlMysqlUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfig) *string {
 		if v == nil {
@@ -16520,7 +17591,7 @@ type MySqlMysqlUserConfigMigration struct {
 // MySqlMysqlUserConfigMigrationInput is an input type that accepts MySqlMysqlUserConfigMigrationArgs and MySqlMysqlUserConfigMigrationOutput values.
 // You can construct a concrete instance of `MySqlMysqlUserConfigMigrationInput` via:
 //
-//          MySqlMysqlUserConfigMigrationArgs{...}
+//	MySqlMysqlUserConfigMigrationArgs{...}
 type MySqlMysqlUserConfigMigrationInput interface {
 	pulumi.Input
 
@@ -16562,11 +17633,11 @@ func (i MySqlMysqlUserConfigMigrationArgs) ToMySqlMysqlUserConfigMigrationPtrOut
 // MySqlMysqlUserConfigMigrationPtrInput is an input type that accepts MySqlMysqlUserConfigMigrationArgs, MySqlMysqlUserConfigMigrationPtr and MySqlMysqlUserConfigMigrationPtrOutput values.
 // You can construct a concrete instance of `MySqlMysqlUserConfigMigrationPtrInput` via:
 //
-//          MySqlMysqlUserConfigMigrationArgs{...}
+//	        MySqlMysqlUserConfigMigrationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MySqlMysqlUserConfigMigrationPtrInput interface {
 	pulumi.Input
 
@@ -16749,18 +17820,24 @@ type MySqlMysqlUserConfigMysql struct {
 	DefaultTimeZone              *string `pulumi:"defaultTimeZone"`
 	GroupConcatMaxLen            *string `pulumi:"groupConcatMaxLen"`
 	InformationSchemaStatsExpiry *string `pulumi:"informationSchemaStatsExpiry"`
+	InnodbChangeBufferMaxSize    *string `pulumi:"innodbChangeBufferMaxSize"`
+	InnodbFlushNeighbors         *string `pulumi:"innodbFlushNeighbors"`
 	InnodbFtMinTokenSize         *string `pulumi:"innodbFtMinTokenSize"`
 	InnodbFtServerStopwordTable  *string `pulumi:"innodbFtServerStopwordTable"`
 	InnodbLockWaitTimeout        *string `pulumi:"innodbLockWaitTimeout"`
 	InnodbLogBufferSize          *string `pulumi:"innodbLogBufferSize"`
 	InnodbOnlineAlterLogMaxSize  *string `pulumi:"innodbOnlineAlterLogMaxSize"`
 	InnodbPrintAllDeadlocks      *string `pulumi:"innodbPrintAllDeadlocks"`
+	InnodbReadIoThreads          *string `pulumi:"innodbReadIoThreads"`
 	InnodbRollbackOnTimeout      *string `pulumi:"innodbRollbackOnTimeout"`
+	InnodbThreadConcurrency      *string `pulumi:"innodbThreadConcurrency"`
+	InnodbWriteIoThreads         *string `pulumi:"innodbWriteIoThreads"`
 	InteractiveTimeout           *string `pulumi:"interactiveTimeout"`
 	InternalTmpMemStorageEngine  *string `pulumi:"internalTmpMemStorageEngine"`
 	LongQueryTime                *string `pulumi:"longQueryTime"`
 	MaxAllowedPacket             *string `pulumi:"maxAllowedPacket"`
 	MaxHeapTableSize             *string `pulumi:"maxHeapTableSize"`
+	NetBufferLength              *string `pulumi:"netBufferLength"`
 	NetReadTimeout               *string `pulumi:"netReadTimeout"`
 	NetWriteTimeout              *string `pulumi:"netWriteTimeout"`
 	SlowQueryLog                 *string `pulumi:"slowQueryLog"`
@@ -16774,7 +17851,7 @@ type MySqlMysqlUserConfigMysql struct {
 // MySqlMysqlUserConfigMysqlInput is an input type that accepts MySqlMysqlUserConfigMysqlArgs and MySqlMysqlUserConfigMysqlOutput values.
 // You can construct a concrete instance of `MySqlMysqlUserConfigMysqlInput` via:
 //
-//          MySqlMysqlUserConfigMysqlArgs{...}
+//	MySqlMysqlUserConfigMysqlArgs{...}
 type MySqlMysqlUserConfigMysqlInput interface {
 	pulumi.Input
 
@@ -16787,18 +17864,24 @@ type MySqlMysqlUserConfigMysqlArgs struct {
 	DefaultTimeZone              pulumi.StringPtrInput `pulumi:"defaultTimeZone"`
 	GroupConcatMaxLen            pulumi.StringPtrInput `pulumi:"groupConcatMaxLen"`
 	InformationSchemaStatsExpiry pulumi.StringPtrInput `pulumi:"informationSchemaStatsExpiry"`
+	InnodbChangeBufferMaxSize    pulumi.StringPtrInput `pulumi:"innodbChangeBufferMaxSize"`
+	InnodbFlushNeighbors         pulumi.StringPtrInput `pulumi:"innodbFlushNeighbors"`
 	InnodbFtMinTokenSize         pulumi.StringPtrInput `pulumi:"innodbFtMinTokenSize"`
 	InnodbFtServerStopwordTable  pulumi.StringPtrInput `pulumi:"innodbFtServerStopwordTable"`
 	InnodbLockWaitTimeout        pulumi.StringPtrInput `pulumi:"innodbLockWaitTimeout"`
 	InnodbLogBufferSize          pulumi.StringPtrInput `pulumi:"innodbLogBufferSize"`
 	InnodbOnlineAlterLogMaxSize  pulumi.StringPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
 	InnodbPrintAllDeadlocks      pulumi.StringPtrInput `pulumi:"innodbPrintAllDeadlocks"`
+	InnodbReadIoThreads          pulumi.StringPtrInput `pulumi:"innodbReadIoThreads"`
 	InnodbRollbackOnTimeout      pulumi.StringPtrInput `pulumi:"innodbRollbackOnTimeout"`
+	InnodbThreadConcurrency      pulumi.StringPtrInput `pulumi:"innodbThreadConcurrency"`
+	InnodbWriteIoThreads         pulumi.StringPtrInput `pulumi:"innodbWriteIoThreads"`
 	InteractiveTimeout           pulumi.StringPtrInput `pulumi:"interactiveTimeout"`
 	InternalTmpMemStorageEngine  pulumi.StringPtrInput `pulumi:"internalTmpMemStorageEngine"`
 	LongQueryTime                pulumi.StringPtrInput `pulumi:"longQueryTime"`
 	MaxAllowedPacket             pulumi.StringPtrInput `pulumi:"maxAllowedPacket"`
 	MaxHeapTableSize             pulumi.StringPtrInput `pulumi:"maxHeapTableSize"`
+	NetBufferLength              pulumi.StringPtrInput `pulumi:"netBufferLength"`
 	NetReadTimeout               pulumi.StringPtrInput `pulumi:"netReadTimeout"`
 	NetWriteTimeout              pulumi.StringPtrInput `pulumi:"netWriteTimeout"`
 	SlowQueryLog                 pulumi.StringPtrInput `pulumi:"slowQueryLog"`
@@ -16832,11 +17915,11 @@ func (i MySqlMysqlUserConfigMysqlArgs) ToMySqlMysqlUserConfigMysqlPtrOutputWithC
 // MySqlMysqlUserConfigMysqlPtrInput is an input type that accepts MySqlMysqlUserConfigMysqlArgs, MySqlMysqlUserConfigMysqlPtr and MySqlMysqlUserConfigMysqlPtrOutput values.
 // You can construct a concrete instance of `MySqlMysqlUserConfigMysqlPtrInput` via:
 //
-//          MySqlMysqlUserConfigMysqlArgs{...}
+//	        MySqlMysqlUserConfigMysqlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MySqlMysqlUserConfigMysqlPtrInput interface {
 	pulumi.Input
 
@@ -16902,6 +17985,14 @@ func (o MySqlMysqlUserConfigMysqlOutput) InformationSchemaStatsExpiry() pulumi.S
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InformationSchemaStatsExpiry }).(pulumi.StringPtrOutput)
 }
 
+func (o MySqlMysqlUserConfigMysqlOutput) InnodbChangeBufferMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbChangeBufferMaxSize }).(pulumi.StringPtrOutput)
+}
+
+func (o MySqlMysqlUserConfigMysqlOutput) InnodbFlushNeighbors() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbFlushNeighbors }).(pulumi.StringPtrOutput)
+}
+
 func (o MySqlMysqlUserConfigMysqlOutput) InnodbFtMinTokenSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbFtMinTokenSize }).(pulumi.StringPtrOutput)
 }
@@ -16926,8 +18017,20 @@ func (o MySqlMysqlUserConfigMysqlOutput) InnodbPrintAllDeadlocks() pulumi.String
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbPrintAllDeadlocks }).(pulumi.StringPtrOutput)
 }
 
+func (o MySqlMysqlUserConfigMysqlOutput) InnodbReadIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbReadIoThreads }).(pulumi.StringPtrOutput)
+}
+
 func (o MySqlMysqlUserConfigMysqlOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbRollbackOnTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o MySqlMysqlUserConfigMysqlOutput) InnodbThreadConcurrency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbThreadConcurrency }).(pulumi.StringPtrOutput)
+}
+
+func (o MySqlMysqlUserConfigMysqlOutput) InnodbWriteIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.InnodbWriteIoThreads }).(pulumi.StringPtrOutput)
 }
 
 func (o MySqlMysqlUserConfigMysqlOutput) InteractiveTimeout() pulumi.StringPtrOutput {
@@ -16948,6 +18051,10 @@ func (o MySqlMysqlUserConfigMysqlOutput) MaxAllowedPacket() pulumi.StringPtrOutp
 
 func (o MySqlMysqlUserConfigMysqlOutput) MaxHeapTableSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.MaxHeapTableSize }).(pulumi.StringPtrOutput)
+}
+
+func (o MySqlMysqlUserConfigMysqlOutput) NetBufferLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *string { return v.NetBufferLength }).(pulumi.StringPtrOutput)
 }
 
 func (o MySqlMysqlUserConfigMysqlOutput) NetReadTimeout() pulumi.StringPtrOutput {
@@ -17042,6 +18149,24 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) InformationSchemaStatsExpiry() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbChangeBufferMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbChangeBufferMaxSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbFlushNeighbors() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbFlushNeighbors
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbFtMinTokenSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -17096,12 +18221,39 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbPrintAllDeadlocks() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbReadIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbReadIoThreads
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.InnodbRollbackOnTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbThreadConcurrency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbThreadConcurrency
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbWriteIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbWriteIoThreads
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17147,6 +18299,15 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) MaxHeapTableSize() pulumi.StringPtrO
 			return nil
 		}
 		return v.MaxHeapTableSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MySqlMysqlUserConfigMysqlPtrOutput) NetBufferLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetBufferLength
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17223,6 +18384,7 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.StringPtrOutput
 }
 
 type MySqlMysqlUserConfigPrivateAccess struct {
+	// MySQL specific server provided values
 	Mysql      *string `pulumi:"mysql"`
 	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -17231,7 +18393,7 @@ type MySqlMysqlUserConfigPrivateAccess struct {
 // MySqlMysqlUserConfigPrivateAccessInput is an input type that accepts MySqlMysqlUserConfigPrivateAccessArgs and MySqlMysqlUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `MySqlMysqlUserConfigPrivateAccessInput` via:
 //
-//          MySqlMysqlUserConfigPrivateAccessArgs{...}
+//	MySqlMysqlUserConfigPrivateAccessArgs{...}
 type MySqlMysqlUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -17240,6 +18402,7 @@ type MySqlMysqlUserConfigPrivateAccessInput interface {
 }
 
 type MySqlMysqlUserConfigPrivateAccessArgs struct {
+	// MySQL specific server provided values
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
 	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -17268,11 +18431,11 @@ func (i MySqlMysqlUserConfigPrivateAccessArgs) ToMySqlMysqlUserConfigPrivateAcce
 // MySqlMysqlUserConfigPrivateAccessPtrInput is an input type that accepts MySqlMysqlUserConfigPrivateAccessArgs, MySqlMysqlUserConfigPrivateAccessPtr and MySqlMysqlUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `MySqlMysqlUserConfigPrivateAccessPtrInput` via:
 //
-//          MySqlMysqlUserConfigPrivateAccessArgs{...}
+//	        MySqlMysqlUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MySqlMysqlUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -17322,6 +18485,7 @@ func (o MySqlMysqlUserConfigPrivateAccessOutput) ToMySqlMysqlUserConfigPrivateAc
 	}).(MySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
 
+// MySQL specific server provided values
 func (o MySqlMysqlUserConfigPrivateAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigPrivateAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
@@ -17358,6 +18522,7 @@ func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Elem() MySqlMysqlUserConfigP
 	}).(MySqlMysqlUserConfigPrivateAccessOutput)
 }
 
+// MySQL specific server provided values
 func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -17386,6 +18551,7 @@ func (o MySqlMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPt
 }
 
 type MySqlMysqlUserConfigPrivatelinkAccess struct {
+	// MySQL specific server provided values
 	Mysql      *string `pulumi:"mysql"`
 	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -17394,7 +18560,7 @@ type MySqlMysqlUserConfigPrivatelinkAccess struct {
 // MySqlMysqlUserConfigPrivatelinkAccessInput is an input type that accepts MySqlMysqlUserConfigPrivatelinkAccessArgs and MySqlMysqlUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `MySqlMysqlUserConfigPrivatelinkAccessInput` via:
 //
-//          MySqlMysqlUserConfigPrivatelinkAccessArgs{...}
+//	MySqlMysqlUserConfigPrivatelinkAccessArgs{...}
 type MySqlMysqlUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -17403,6 +18569,7 @@ type MySqlMysqlUserConfigPrivatelinkAccessInput interface {
 }
 
 type MySqlMysqlUserConfigPrivatelinkAccessArgs struct {
+	// MySQL specific server provided values
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
 	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -17431,11 +18598,11 @@ func (i MySqlMysqlUserConfigPrivatelinkAccessArgs) ToMySqlMysqlUserConfigPrivate
 // MySqlMysqlUserConfigPrivatelinkAccessPtrInput is an input type that accepts MySqlMysqlUserConfigPrivatelinkAccessArgs, MySqlMysqlUserConfigPrivatelinkAccessPtr and MySqlMysqlUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `MySqlMysqlUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          MySqlMysqlUserConfigPrivatelinkAccessArgs{...}
+//	        MySqlMysqlUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MySqlMysqlUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -17485,6 +18652,7 @@ func (o MySqlMysqlUserConfigPrivatelinkAccessOutput) ToMySqlMysqlUserConfigPriva
 	}).(MySqlMysqlUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// MySQL specific server provided values
 func (o MySqlMysqlUserConfigPrivatelinkAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigPrivatelinkAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
@@ -17521,6 +18689,7 @@ func (o MySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Elem() MySqlMysqlUserCon
 	}).(MySqlMysqlUserConfigPrivatelinkAccessOutput)
 }
 
+// MySQL specific server provided values
 func (o MySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -17549,6 +18718,7 @@ func (o MySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.Stri
 }
 
 type MySqlMysqlUserConfigPublicAccess struct {
+	// MySQL specific server provided values
 	Mysql      *string `pulumi:"mysql"`
 	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -17557,7 +18727,7 @@ type MySqlMysqlUserConfigPublicAccess struct {
 // MySqlMysqlUserConfigPublicAccessInput is an input type that accepts MySqlMysqlUserConfigPublicAccessArgs and MySqlMysqlUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `MySqlMysqlUserConfigPublicAccessInput` via:
 //
-//          MySqlMysqlUserConfigPublicAccessArgs{...}
+//	MySqlMysqlUserConfigPublicAccessArgs{...}
 type MySqlMysqlUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -17566,6 +18736,7 @@ type MySqlMysqlUserConfigPublicAccessInput interface {
 }
 
 type MySqlMysqlUserConfigPublicAccessArgs struct {
+	// MySQL specific server provided values
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
 	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -17594,11 +18765,11 @@ func (i MySqlMysqlUserConfigPublicAccessArgs) ToMySqlMysqlUserConfigPublicAccess
 // MySqlMysqlUserConfigPublicAccessPtrInput is an input type that accepts MySqlMysqlUserConfigPublicAccessArgs, MySqlMysqlUserConfigPublicAccessPtr and MySqlMysqlUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `MySqlMysqlUserConfigPublicAccessPtrInput` via:
 //
-//          MySqlMysqlUserConfigPublicAccessArgs{...}
+//	        MySqlMysqlUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MySqlMysqlUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -17648,6 +18819,7 @@ func (o MySqlMysqlUserConfigPublicAccessOutput) ToMySqlMysqlUserConfigPublicAcce
 	}).(MySqlMysqlUserConfigPublicAccessPtrOutput)
 }
 
+// MySQL specific server provided values
 func (o MySqlMysqlUserConfigPublicAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigPublicAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
@@ -17684,6 +18856,7 @@ func (o MySqlMysqlUserConfigPublicAccessPtrOutput) Elem() MySqlMysqlUserConfigPu
 	}).(MySqlMysqlUserConfigPublicAccessOutput)
 }
 
+// MySQL specific server provided values
 func (o MySqlMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigPublicAccess) *string {
 		if v == nil {
@@ -17712,14 +18885,16 @@ func (o MySqlMysqlUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtr
 }
 
 type MySqlServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // MySqlServiceIntegrationInput is an input type that accepts MySqlServiceIntegrationArgs and MySqlServiceIntegrationOutput values.
 // You can construct a concrete instance of `MySqlServiceIntegrationInput` via:
 //
-//          MySqlServiceIntegrationArgs{...}
+//	MySqlServiceIntegrationArgs{...}
 type MySqlServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -17728,7 +18903,9 @@ type MySqlServiceIntegrationInput interface {
 }
 
 type MySqlServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -17747,7 +18924,7 @@ func (i MySqlServiceIntegrationArgs) ToMySqlServiceIntegrationOutputWithContext(
 // MySqlServiceIntegrationArrayInput is an input type that accepts MySqlServiceIntegrationArray and MySqlServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `MySqlServiceIntegrationArrayInput` via:
 //
-//          MySqlServiceIntegrationArray{ MySqlServiceIntegrationArgs{...} }
+//	MySqlServiceIntegrationArray{ MySqlServiceIntegrationArgs{...} }
 type MySqlServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -17783,10 +18960,12 @@ func (o MySqlServiceIntegrationOutput) ToMySqlServiceIntegrationOutputWithContex
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o MySqlServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o MySqlServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -17812,14 +18991,16 @@ func (o MySqlServiceIntegrationArrayOutput) Index(i pulumi.IntInput) MySqlServic
 }
 
 type MySqlTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // MySqlTagInput is an input type that accepts MySqlTagArgs and MySqlTagOutput values.
 // You can construct a concrete instance of `MySqlTagInput` via:
 //
-//          MySqlTagArgs{...}
+//	MySqlTagArgs{...}
 type MySqlTagInput interface {
 	pulumi.Input
 
@@ -17828,7 +19009,9 @@ type MySqlTagInput interface {
 }
 
 type MySqlTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -17847,7 +19030,7 @@ func (i MySqlTagArgs) ToMySqlTagOutputWithContext(ctx context.Context) MySqlTagO
 // MySqlTagArrayInput is an input type that accepts MySqlTagArray and MySqlTagArrayOutput values.
 // You can construct a concrete instance of `MySqlTagArrayInput` via:
 //
-//          MySqlTagArray{ MySqlTagArgs{...} }
+//	MySqlTagArray{ MySqlTagArgs{...} }
 type MySqlTagArrayInput interface {
 	pulumi.Input
 
@@ -17883,10 +19066,12 @@ func (o MySqlTagOutput) ToMySqlTagOutputWithContext(ctx context.Context) MySqlTa
 	return o
 }
 
+// Service tag key
 func (o MySqlTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o MySqlTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -17924,7 +19109,7 @@ type OpenSearchComponent struct {
 // OpenSearchComponentInput is an input type that accepts OpenSearchComponentArgs and OpenSearchComponentOutput values.
 // You can construct a concrete instance of `OpenSearchComponentInput` via:
 //
-//          OpenSearchComponentArgs{...}
+//	OpenSearchComponentArgs{...}
 type OpenSearchComponentInput interface {
 	pulumi.Input
 
@@ -17957,7 +19142,7 @@ func (i OpenSearchComponentArgs) ToOpenSearchComponentOutputWithContext(ctx cont
 // OpenSearchComponentArrayInput is an input type that accepts OpenSearchComponentArray and OpenSearchComponentArrayOutput values.
 // You can construct a concrete instance of `OpenSearchComponentArrayInput` via:
 //
-//          OpenSearchComponentArray{ OpenSearchComponentArgs{...} }
+//	OpenSearchComponentArray{ OpenSearchComponentArgs{...} }
 type OpenSearchComponentArrayInput interface {
 	pulumi.Input
 
@@ -18048,7 +19233,7 @@ type OpenSearchOpensearch struct {
 // OpenSearchOpensearchInput is an input type that accepts OpenSearchOpensearchArgs and OpenSearchOpensearchOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchInput` via:
 //
-//          OpenSearchOpensearchArgs{...}
+//	OpenSearchOpensearchArgs{...}
 type OpenSearchOpensearchInput interface {
 	pulumi.Input
 
@@ -18075,7 +19260,7 @@ func (i OpenSearchOpensearchArgs) ToOpenSearchOpensearchOutputWithContext(ctx co
 // OpenSearchOpensearchArrayInput is an input type that accepts OpenSearchOpensearchArray and OpenSearchOpensearchArrayOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchArrayInput` via:
 //
-//          OpenSearchOpensearchArray{ OpenSearchOpensearchArgs{...} }
+//	OpenSearchOpensearchArray{ OpenSearchOpensearchArgs{...} }
 type OpenSearchOpensearchArrayInput interface {
 	pulumi.Input
 
@@ -18136,29 +19321,46 @@ func (o OpenSearchOpensearchArrayOutput) Index(i pulumi.IntInput) OpenSearchOpen
 }
 
 type OpenSearchOpensearchUserConfig struct {
-	CustomDomain                       *string                                             `pulumi:"customDomain"`
-	DisableReplicationFactorAdjustment *string                                             `pulumi:"disableReplicationFactorAdjustment"`
-	IndexPatterns                      []OpenSearchOpensearchUserConfigIndexPattern        `pulumi:"indexPatterns"`
-	IndexTemplate                      *OpenSearchOpensearchUserConfigIndexTemplate        `pulumi:"indexTemplate"`
-	IpFilters                          []string                                            `pulumi:"ipFilters"`
-	KeepIndexRefreshInterval           *string                                             `pulumi:"keepIndexRefreshInterval"`
-	MaxIndexCount                      *string                                             `pulumi:"maxIndexCount"`
-	Opensearch                         *OpenSearchOpensearchUserConfigOpensearch           `pulumi:"opensearch"`
-	OpensearchDashboards               *OpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
-	OpensearchVersion                  *string                                             `pulumi:"opensearchVersion"`
-	PrivateAccess                      *OpenSearchOpensearchUserConfigPrivateAccess        `pulumi:"privateAccess"`
-	PrivatelinkAccess                  *OpenSearchOpensearchUserConfigPrivatelinkAccess    `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom                  *string                                             `pulumi:"projectToForkFrom"`
-	PublicAccess                       *OpenSearchOpensearchUserConfigPublicAccess         `pulumi:"publicAccess"`
-	RecoveryBasebackupName             *string                                             `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom                  *string                                             `pulumi:"serviceToForkFrom"`
-	StaticIps                          *string                                             `pulumi:"staticIps"`
+	// Custom domain
+	CustomDomain *string `pulumi:"customDomain"`
+	// Disable replication factor adjustment
+	DisableReplicationFactorAdjustment *string `pulumi:"disableReplicationFactorAdjustment"`
+	// Index patterns
+	IndexPatterns []OpenSearchOpensearchUserConfigIndexPattern `pulumi:"indexPatterns"`
+	// Template settings for all new indexes
+	IndexTemplate *OpenSearchOpensearchUserConfigIndexTemplate `pulumi:"indexTemplate"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// Don't reset index.refresh_interval to the default value
+	KeepIndexRefreshInterval *string `pulumi:"keepIndexRefreshInterval"`
+	// Maximum index count
+	MaxIndexCount *string `pulumi:"maxIndexCount"`
+	// OpenSearch settings
+	Opensearch *OpenSearchOpensearchUserConfigOpensearch `pulumi:"opensearch"`
+	// OpenSearch Dashboards settings
+	OpensearchDashboards *OpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
+	// OpenSearch major version
+	OpensearchVersion *string `pulumi:"opensearchVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *OpenSearchOpensearchUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *OpenSearchOpensearchUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *OpenSearchOpensearchUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Static IP addresses
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // OpenSearchOpensearchUserConfigInput is an input type that accepts OpenSearchOpensearchUserConfigArgs and OpenSearchOpensearchUserConfigOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigInput` via:
 //
-//          OpenSearchOpensearchUserConfigArgs{...}
+//	OpenSearchOpensearchUserConfigArgs{...}
 type OpenSearchOpensearchUserConfigInput interface {
 	pulumi.Input
 
@@ -18167,23 +19369,40 @@ type OpenSearchOpensearchUserConfigInput interface {
 }
 
 type OpenSearchOpensearchUserConfigArgs struct {
-	CustomDomain                       pulumi.StringPtrInput                                      `pulumi:"customDomain"`
-	DisableReplicationFactorAdjustment pulumi.StringPtrInput                                      `pulumi:"disableReplicationFactorAdjustment"`
-	IndexPatterns                      OpenSearchOpensearchUserConfigIndexPatternArrayInput       `pulumi:"indexPatterns"`
-	IndexTemplate                      OpenSearchOpensearchUserConfigIndexTemplatePtrInput        `pulumi:"indexTemplate"`
-	IpFilters                          pulumi.StringArrayInput                                    `pulumi:"ipFilters"`
-	KeepIndexRefreshInterval           pulumi.StringPtrInput                                      `pulumi:"keepIndexRefreshInterval"`
-	MaxIndexCount                      pulumi.StringPtrInput                                      `pulumi:"maxIndexCount"`
-	Opensearch                         OpenSearchOpensearchUserConfigOpensearchPtrInput           `pulumi:"opensearch"`
-	OpensearchDashboards               OpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
-	OpensearchVersion                  pulumi.StringPtrInput                                      `pulumi:"opensearchVersion"`
-	PrivateAccess                      OpenSearchOpensearchUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
-	PrivatelinkAccess                  OpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput    `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom                  pulumi.StringPtrInput                                      `pulumi:"projectToForkFrom"`
-	PublicAccess                       OpenSearchOpensearchUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
-	RecoveryBasebackupName             pulumi.StringPtrInput                                      `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom                  pulumi.StringPtrInput                                      `pulumi:"serviceToForkFrom"`
-	StaticIps                          pulumi.StringPtrInput                                      `pulumi:"staticIps"`
+	// Custom domain
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Disable replication factor adjustment
+	DisableReplicationFactorAdjustment pulumi.StringPtrInput `pulumi:"disableReplicationFactorAdjustment"`
+	// Index patterns
+	IndexPatterns OpenSearchOpensearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
+	// Template settings for all new indexes
+	IndexTemplate OpenSearchOpensearchUserConfigIndexTemplatePtrInput `pulumi:"indexTemplate"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Don't reset index.refresh_interval to the default value
+	KeepIndexRefreshInterval pulumi.StringPtrInput `pulumi:"keepIndexRefreshInterval"`
+	// Maximum index count
+	MaxIndexCount pulumi.StringPtrInput `pulumi:"maxIndexCount"`
+	// OpenSearch settings
+	Opensearch OpenSearchOpensearchUserConfigOpensearchPtrInput `pulumi:"opensearch"`
+	// OpenSearch Dashboards settings
+	OpensearchDashboards OpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
+	// OpenSearch major version
+	OpensearchVersion pulumi.StringPtrInput `pulumi:"opensearchVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess OpenSearchOpensearchUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess OpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess OpenSearchOpensearchUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Static IP addresses
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (OpenSearchOpensearchUserConfigArgs) ElementType() reflect.Type {
@@ -18209,11 +19428,11 @@ func (i OpenSearchOpensearchUserConfigArgs) ToOpenSearchOpensearchUserConfigPtrO
 // OpenSearchOpensearchUserConfigPtrInput is an input type that accepts OpenSearchOpensearchUserConfigArgs, OpenSearchOpensearchUserConfigPtr and OpenSearchOpensearchUserConfigPtrOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigPtrInput` via:
 //
-//          OpenSearchOpensearchUserConfigArgs{...}
+//	        OpenSearchOpensearchUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OpenSearchOpensearchUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -18263,82 +19482,99 @@ func (o OpenSearchOpensearchUserConfigOutput) ToOpenSearchOpensearchUserConfigPt
 	}).(OpenSearchOpensearchUserConfigPtrOutput)
 }
 
+// Custom domain
 func (o OpenSearchOpensearchUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// Disable replication factor adjustment
 func (o OpenSearchOpensearchUserConfigOutput) DisableReplicationFactorAdjustment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.DisableReplicationFactorAdjustment }).(pulumi.StringPtrOutput)
 }
 
+// Index patterns
 func (o OpenSearchOpensearchUserConfigOutput) IndexPatterns() OpenSearchOpensearchUserConfigIndexPatternArrayOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) []OpenSearchOpensearchUserConfigIndexPattern {
 		return v.IndexPatterns
 	}).(OpenSearchOpensearchUserConfigIndexPatternArrayOutput)
 }
 
+// Template settings for all new indexes
 func (o OpenSearchOpensearchUserConfigOutput) IndexTemplate() OpenSearchOpensearchUserConfigIndexTemplatePtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigIndexTemplate {
 		return v.IndexTemplate
 	}).(OpenSearchOpensearchUserConfigIndexTemplatePtrOutput)
 }
 
+// IP filter
 func (o OpenSearchOpensearchUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Don't reset index.refresh_interval to the default value
 func (o OpenSearchOpensearchUserConfigOutput) KeepIndexRefreshInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.KeepIndexRefreshInterval }).(pulumi.StringPtrOutput)
 }
 
+// Maximum index count
 func (o OpenSearchOpensearchUserConfigOutput) MaxIndexCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.MaxIndexCount }).(pulumi.StringPtrOutput)
 }
 
+// OpenSearch settings
 func (o OpenSearchOpensearchUserConfigOutput) Opensearch() OpenSearchOpensearchUserConfigOpensearchPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigOpensearch { return v.Opensearch }).(OpenSearchOpensearchUserConfigOpensearchPtrOutput)
 }
 
+// OpenSearch Dashboards settings
 func (o OpenSearchOpensearchUserConfigOutput) OpensearchDashboards() OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigOpensearchDashboards {
 		return v.OpensearchDashboards
 	}).(OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
 }
 
+// OpenSearch major version
 func (o OpenSearchOpensearchUserConfigOutput) OpensearchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.OpensearchVersion }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o OpenSearchOpensearchUserConfigOutput) PrivateAccess() OpenSearchOpensearchUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigPrivateAccess {
 		return v.PrivateAccess
 	}).(OpenSearchOpensearchUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o OpenSearchOpensearchUserConfigOutput) PrivatelinkAccess() OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigPrivatelinkAccess {
 		return v.PrivatelinkAccess
 	}).(OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o OpenSearchOpensearchUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o OpenSearchOpensearchUserConfigOutput) PublicAccess() OpenSearchOpensearchUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigPublicAccess {
 		return v.PublicAccess
 	}).(OpenSearchOpensearchUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
 func (o OpenSearchOpensearchUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o OpenSearchOpensearchUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o OpenSearchOpensearchUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -18367,6 +19603,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) Elem() OpenSearchOpensearchUser
 	}).(OpenSearchOpensearchUserConfigOutput)
 }
 
+// Custom domain
 func (o OpenSearchOpensearchUserConfigPtrOutput) CustomDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -18376,6 +19613,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) CustomDomain() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Disable replication factor adjustment
 func (o OpenSearchOpensearchUserConfigPtrOutput) DisableReplicationFactorAdjustment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -18385,6 +19623,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) DisableReplicationFactorAdjustm
 	}).(pulumi.StringPtrOutput)
 }
 
+// Index patterns
 func (o OpenSearchOpensearchUserConfigPtrOutput) IndexPatterns() OpenSearchOpensearchUserConfigIndexPatternArrayOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) []OpenSearchOpensearchUserConfigIndexPattern {
 		if v == nil {
@@ -18394,6 +19633,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) IndexPatterns() OpenSearchOpens
 	}).(OpenSearchOpensearchUserConfigIndexPatternArrayOutput)
 }
 
+// Template settings for all new indexes
 func (o OpenSearchOpensearchUserConfigPtrOutput) IndexTemplate() OpenSearchOpensearchUserConfigIndexTemplatePtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigIndexTemplate {
 		if v == nil {
@@ -18403,6 +19643,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) IndexTemplate() OpenSearchOpens
 	}).(OpenSearchOpensearchUserConfigIndexTemplatePtrOutput)
 }
 
+// IP filter
 func (o OpenSearchOpensearchUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) []string {
 		if v == nil {
@@ -18412,6 +19653,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) IpFilters() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// Don't reset index.refresh_interval to the default value
 func (o OpenSearchOpensearchUserConfigPtrOutput) KeepIndexRefreshInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -18421,6 +19663,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) KeepIndexRefreshInterval() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum index count
 func (o OpenSearchOpensearchUserConfigPtrOutput) MaxIndexCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -18430,6 +19673,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) MaxIndexCount() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// OpenSearch settings
 func (o OpenSearchOpensearchUserConfigPtrOutput) Opensearch() OpenSearchOpensearchUserConfigOpensearchPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigOpensearch {
 		if v == nil {
@@ -18439,6 +19683,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) Opensearch() OpenSearchOpensear
 	}).(OpenSearchOpensearchUserConfigOpensearchPtrOutput)
 }
 
+// OpenSearch Dashboards settings
 func (o OpenSearchOpensearchUserConfigPtrOutput) OpensearchDashboards() OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigOpensearchDashboards {
 		if v == nil {
@@ -18448,6 +19693,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) OpensearchDashboards() OpenSear
 	}).(OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
 }
 
+// OpenSearch major version
 func (o OpenSearchOpensearchUserConfigPtrOutput) OpensearchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -18457,6 +19703,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) OpensearchVersion() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o OpenSearchOpensearchUserConfigPtrOutput) PrivateAccess() OpenSearchOpensearchUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigPrivateAccess {
 		if v == nil {
@@ -18466,6 +19713,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) PrivateAccess() OpenSearchOpens
 	}).(OpenSearchOpensearchUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o OpenSearchOpensearchUserConfigPtrOutput) PrivatelinkAccess() OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -18475,6 +19723,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) PrivatelinkAccess() OpenSearchO
 	}).(OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o OpenSearchOpensearchUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -18484,6 +19733,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) ProjectToForkFrom() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o OpenSearchOpensearchUserConfigPtrOutput) PublicAccess() OpenSearchOpensearchUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *OpenSearchOpensearchUserConfigPublicAccess {
 		if v == nil {
@@ -18493,6 +19743,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) PublicAccess() OpenSearchOpense
 	}).(OpenSearchOpensearchUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
 func (o OpenSearchOpensearchUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -18502,6 +19753,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) RecoveryBasebackupName() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o OpenSearchOpensearchUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -18511,6 +19763,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) ServiceToForkFrom() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o OpenSearchOpensearchUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -18529,7 +19782,7 @@ type OpenSearchOpensearchUserConfigIndexPattern struct {
 // OpenSearchOpensearchUserConfigIndexPatternInput is an input type that accepts OpenSearchOpensearchUserConfigIndexPatternArgs and OpenSearchOpensearchUserConfigIndexPatternOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigIndexPatternInput` via:
 //
-//          OpenSearchOpensearchUserConfigIndexPatternArgs{...}
+//	OpenSearchOpensearchUserConfigIndexPatternArgs{...}
 type OpenSearchOpensearchUserConfigIndexPatternInput interface {
 	pulumi.Input
 
@@ -18558,7 +19811,7 @@ func (i OpenSearchOpensearchUserConfigIndexPatternArgs) ToOpenSearchOpensearchUs
 // OpenSearchOpensearchUserConfigIndexPatternArrayInput is an input type that accepts OpenSearchOpensearchUserConfigIndexPatternArray and OpenSearchOpensearchUserConfigIndexPatternArrayOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigIndexPatternArrayInput` via:
 //
-//          OpenSearchOpensearchUserConfigIndexPatternArray{ OpenSearchOpensearchUserConfigIndexPatternArgs{...} }
+//	OpenSearchOpensearchUserConfigIndexPatternArray{ OpenSearchOpensearchUserConfigIndexPatternArgs{...} }
 type OpenSearchOpensearchUserConfigIndexPatternArrayInput interface {
 	pulumi.Input
 
@@ -18635,7 +19888,7 @@ type OpenSearchOpensearchUserConfigIndexTemplate struct {
 // OpenSearchOpensearchUserConfigIndexTemplateInput is an input type that accepts OpenSearchOpensearchUserConfigIndexTemplateArgs and OpenSearchOpensearchUserConfigIndexTemplateOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigIndexTemplateInput` via:
 //
-//          OpenSearchOpensearchUserConfigIndexTemplateArgs{...}
+//	OpenSearchOpensearchUserConfigIndexTemplateArgs{...}
 type OpenSearchOpensearchUserConfigIndexTemplateInput interface {
 	pulumi.Input
 
@@ -18672,11 +19925,11 @@ func (i OpenSearchOpensearchUserConfigIndexTemplateArgs) ToOpenSearchOpensearchU
 // OpenSearchOpensearchUserConfigIndexTemplatePtrInput is an input type that accepts OpenSearchOpensearchUserConfigIndexTemplateArgs, OpenSearchOpensearchUserConfigIndexTemplatePtr and OpenSearchOpensearchUserConfigIndexTemplatePtrOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigIndexTemplatePtrInput` via:
 //
-//          OpenSearchOpensearchUserConfigIndexTemplateArgs{...}
+//	        OpenSearchOpensearchUserConfigIndexTemplateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OpenSearchOpensearchUserConfigIndexTemplatePtrInput interface {
 	pulumi.Input
 
@@ -18794,6 +20047,9 @@ type OpenSearchOpensearchUserConfigOpensearch struct {
 	ActionDestructiveRequiresName                    *string  `pulumi:"actionDestructiveRequiresName"`
 	ClusterMaxShardsPerNode                          *string  `pulumi:"clusterMaxShardsPerNode"`
 	ClusterRoutingAllocationNodeConcurrentRecoveries *string  `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
+	EmailSenderName                                  *string  `pulumi:"emailSenderName"`
+	EmailSenderPassword                              *string  `pulumi:"emailSenderPassword"`
+	EmailSenderUsername                              *string  `pulumi:"emailSenderUsername"`
 	HttpMaxContentLength                             *string  `pulumi:"httpMaxContentLength"`
 	HttpMaxHeaderSize                                *string  `pulumi:"httpMaxHeaderSize"`
 	HttpMaxInitialLineLength                         *string  `pulumi:"httpMaxInitialLineLength"`
@@ -18823,7 +20079,7 @@ type OpenSearchOpensearchUserConfigOpensearch struct {
 // OpenSearchOpensearchUserConfigOpensearchInput is an input type that accepts OpenSearchOpensearchUserConfigOpensearchArgs and OpenSearchOpensearchUserConfigOpensearchOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigOpensearchInput` via:
 //
-//          OpenSearchOpensearchUserConfigOpensearchArgs{...}
+//	OpenSearchOpensearchUserConfigOpensearchArgs{...}
 type OpenSearchOpensearchUserConfigOpensearchInput interface {
 	pulumi.Input
 
@@ -18836,6 +20092,9 @@ type OpenSearchOpensearchUserConfigOpensearchArgs struct {
 	ActionDestructiveRequiresName                    pulumi.StringPtrInput   `pulumi:"actionDestructiveRequiresName"`
 	ClusterMaxShardsPerNode                          pulumi.StringPtrInput   `pulumi:"clusterMaxShardsPerNode"`
 	ClusterRoutingAllocationNodeConcurrentRecoveries pulumi.StringPtrInput   `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
+	EmailSenderName                                  pulumi.StringPtrInput   `pulumi:"emailSenderName"`
+	EmailSenderPassword                              pulumi.StringPtrInput   `pulumi:"emailSenderPassword"`
+	EmailSenderUsername                              pulumi.StringPtrInput   `pulumi:"emailSenderUsername"`
 	HttpMaxContentLength                             pulumi.StringPtrInput   `pulumi:"httpMaxContentLength"`
 	HttpMaxHeaderSize                                pulumi.StringPtrInput   `pulumi:"httpMaxHeaderSize"`
 	HttpMaxInitialLineLength                         pulumi.StringPtrInput   `pulumi:"httpMaxInitialLineLength"`
@@ -18885,11 +20144,11 @@ func (i OpenSearchOpensearchUserConfigOpensearchArgs) ToOpenSearchOpensearchUser
 // OpenSearchOpensearchUserConfigOpensearchPtrInput is an input type that accepts OpenSearchOpensearchUserConfigOpensearchArgs, OpenSearchOpensearchUserConfigOpensearchPtr and OpenSearchOpensearchUserConfigOpensearchPtrOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigOpensearchPtrInput` via:
 //
-//          OpenSearchOpensearchUserConfigOpensearchArgs{...}
+//	        OpenSearchOpensearchUserConfigOpensearchArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OpenSearchOpensearchUserConfigOpensearchPtrInput interface {
 	pulumi.Input
 
@@ -18955,6 +20214,18 @@ func (o OpenSearchOpensearchUserConfigOpensearchOutput) ClusterRoutingAllocation
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *string {
 		return v.ClusterRoutingAllocationNodeConcurrentRecoveries
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) EmailSenderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *string { return v.EmailSenderName }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) EmailSenderPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *string { return v.EmailSenderPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) EmailSenderUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *string { return v.EmailSenderUsername }).(pulumi.StringPtrOutput)
 }
 
 func (o OpenSearchOpensearchUserConfigOpensearchOutput) HttpMaxContentLength() pulumi.StringPtrOutput {
@@ -19112,6 +20383,33 @@ func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterRoutingAllocat
 			return nil
 		}
 		return v.ClusterRoutingAllocationNodeConcurrentRecoveries
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) EmailSenderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailSenderName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) EmailSenderPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailSenderPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) EmailSenderUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailSenderUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19340,7 +20638,7 @@ type OpenSearchOpensearchUserConfigOpensearchDashboards struct {
 // OpenSearchOpensearchUserConfigOpensearchDashboardsInput is an input type that accepts OpenSearchOpensearchUserConfigOpensearchDashboardsArgs and OpenSearchOpensearchUserConfigOpensearchDashboardsOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigOpensearchDashboardsInput` via:
 //
-//          OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{...}
+//	OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{...}
 type OpenSearchOpensearchUserConfigOpensearchDashboardsInput interface {
 	pulumi.Input
 
@@ -19377,11 +20675,11 @@ func (i OpenSearchOpensearchUserConfigOpensearchDashboardsArgs) ToOpenSearchOpen
 // OpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput is an input type that accepts OpenSearchOpensearchUserConfigOpensearchDashboardsArgs, OpenSearchOpensearchUserConfigOpensearchDashboardsPtr and OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput` via:
 //
-//          OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{...}
+//	        OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput interface {
 	pulumi.Input
 
@@ -19495,6 +20793,7 @@ func (o OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) OpensearchR
 }
 
 type OpenSearchOpensearchUserConfigPrivateAccess struct {
+	// Opensearch server provided values
 	Opensearch           *string `pulumi:"opensearch"`
 	OpensearchDashboards *string `pulumi:"opensearchDashboards"`
 	Prometheus           *string `pulumi:"prometheus"`
@@ -19503,7 +20802,7 @@ type OpenSearchOpensearchUserConfigPrivateAccess struct {
 // OpenSearchOpensearchUserConfigPrivateAccessInput is an input type that accepts OpenSearchOpensearchUserConfigPrivateAccessArgs and OpenSearchOpensearchUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigPrivateAccessInput` via:
 //
-//          OpenSearchOpensearchUserConfigPrivateAccessArgs{...}
+//	OpenSearchOpensearchUserConfigPrivateAccessArgs{...}
 type OpenSearchOpensearchUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -19512,6 +20811,7 @@ type OpenSearchOpensearchUserConfigPrivateAccessInput interface {
 }
 
 type OpenSearchOpensearchUserConfigPrivateAccessArgs struct {
+	// Opensearch server provided values
 	Opensearch           pulumi.StringPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.StringPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -19540,11 +20840,11 @@ func (i OpenSearchOpensearchUserConfigPrivateAccessArgs) ToOpenSearchOpensearchU
 // OpenSearchOpensearchUserConfigPrivateAccessPtrInput is an input type that accepts OpenSearchOpensearchUserConfigPrivateAccessArgs, OpenSearchOpensearchUserConfigPrivateAccessPtr and OpenSearchOpensearchUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigPrivateAccessPtrInput` via:
 //
-//          OpenSearchOpensearchUserConfigPrivateAccessArgs{...}
+//	        OpenSearchOpensearchUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OpenSearchOpensearchUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -19594,6 +20894,7 @@ func (o OpenSearchOpensearchUserConfigPrivateAccessOutput) ToOpenSearchOpensearc
 	}).(OpenSearchOpensearchUserConfigPrivateAccessPtrOutput)
 }
 
+// Opensearch server provided values
 func (o OpenSearchOpensearchUserConfigPrivateAccessOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigPrivateAccess) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
 }
@@ -19630,6 +20931,7 @@ func (o OpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Elem() OpenSearchO
 	}).(OpenSearchOpensearchUserConfigPrivateAccessOutput)
 }
 
+// Opensearch server provided values
 func (o OpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -19658,6 +20960,7 @@ func (o OpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Prometheus() pulum
 }
 
 type OpenSearchOpensearchUserConfigPrivatelinkAccess struct {
+	// Opensearch server provided values
 	Opensearch           *string `pulumi:"opensearch"`
 	OpensearchDashboards *string `pulumi:"opensearchDashboards"`
 	Prometheus           *string `pulumi:"prometheus"`
@@ -19666,7 +20969,7 @@ type OpenSearchOpensearchUserConfigPrivatelinkAccess struct {
 // OpenSearchOpensearchUserConfigPrivatelinkAccessInput is an input type that accepts OpenSearchOpensearchUserConfigPrivatelinkAccessArgs and OpenSearchOpensearchUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigPrivatelinkAccessInput` via:
 //
-//          OpenSearchOpensearchUserConfigPrivatelinkAccessArgs{...}
+//	OpenSearchOpensearchUserConfigPrivatelinkAccessArgs{...}
 type OpenSearchOpensearchUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -19675,6 +20978,7 @@ type OpenSearchOpensearchUserConfigPrivatelinkAccessInput interface {
 }
 
 type OpenSearchOpensearchUserConfigPrivatelinkAccessArgs struct {
+	// Opensearch server provided values
 	Opensearch           pulumi.StringPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.StringPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -19703,11 +21007,11 @@ func (i OpenSearchOpensearchUserConfigPrivatelinkAccessArgs) ToOpenSearchOpensea
 // OpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput is an input type that accepts OpenSearchOpensearchUserConfigPrivatelinkAccessArgs, OpenSearchOpensearchUserConfigPrivatelinkAccessPtr and OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          OpenSearchOpensearchUserConfigPrivatelinkAccessArgs{...}
+//	        OpenSearchOpensearchUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -19757,6 +21061,7 @@ func (o OpenSearchOpensearchUserConfigPrivatelinkAccessOutput) ToOpenSearchOpens
 	}).(OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Opensearch server provided values
 func (o OpenSearchOpensearchUserConfigPrivatelinkAccessOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigPrivatelinkAccess) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
 }
@@ -19793,6 +21098,7 @@ func (o OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Elem() OpenSea
 	}).(OpenSearchOpensearchUserConfigPrivatelinkAccessOutput)
 }
 
+// Opensearch server provided values
 func (o OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -19821,6 +21127,7 @@ func (o OpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Prometheus() p
 }
 
 type OpenSearchOpensearchUserConfigPublicAccess struct {
+	// Opensearch server provided values
 	Opensearch           *string `pulumi:"opensearch"`
 	OpensearchDashboards *string `pulumi:"opensearchDashboards"`
 	Prometheus           *string `pulumi:"prometheus"`
@@ -19829,7 +21136,7 @@ type OpenSearchOpensearchUserConfigPublicAccess struct {
 // OpenSearchOpensearchUserConfigPublicAccessInput is an input type that accepts OpenSearchOpensearchUserConfigPublicAccessArgs and OpenSearchOpensearchUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigPublicAccessInput` via:
 //
-//          OpenSearchOpensearchUserConfigPublicAccessArgs{...}
+//	OpenSearchOpensearchUserConfigPublicAccessArgs{...}
 type OpenSearchOpensearchUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -19838,6 +21145,7 @@ type OpenSearchOpensearchUserConfigPublicAccessInput interface {
 }
 
 type OpenSearchOpensearchUserConfigPublicAccessArgs struct {
+	// Opensearch server provided values
 	Opensearch           pulumi.StringPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.StringPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -19866,11 +21174,11 @@ func (i OpenSearchOpensearchUserConfigPublicAccessArgs) ToOpenSearchOpensearchUs
 // OpenSearchOpensearchUserConfigPublicAccessPtrInput is an input type that accepts OpenSearchOpensearchUserConfigPublicAccessArgs, OpenSearchOpensearchUserConfigPublicAccessPtr and OpenSearchOpensearchUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `OpenSearchOpensearchUserConfigPublicAccessPtrInput` via:
 //
-//          OpenSearchOpensearchUserConfigPublicAccessArgs{...}
+//	        OpenSearchOpensearchUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OpenSearchOpensearchUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -19920,6 +21228,7 @@ func (o OpenSearchOpensearchUserConfigPublicAccessOutput) ToOpenSearchOpensearch
 	}).(OpenSearchOpensearchUserConfigPublicAccessPtrOutput)
 }
 
+// Opensearch server provided values
 func (o OpenSearchOpensearchUserConfigPublicAccessOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigPublicAccess) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
 }
@@ -19956,6 +21265,7 @@ func (o OpenSearchOpensearchUserConfigPublicAccessPtrOutput) Elem() OpenSearchOp
 	}).(OpenSearchOpensearchUserConfigPublicAccessOutput)
 }
 
+// Opensearch server provided values
 func (o OpenSearchOpensearchUserConfigPublicAccessPtrOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigPublicAccess) *string {
 		if v == nil {
@@ -19984,14 +21294,16 @@ func (o OpenSearchOpensearchUserConfigPublicAccessPtrOutput) Prometheus() pulumi
 }
 
 type OpenSearchServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // OpenSearchServiceIntegrationInput is an input type that accepts OpenSearchServiceIntegrationArgs and OpenSearchServiceIntegrationOutput values.
 // You can construct a concrete instance of `OpenSearchServiceIntegrationInput` via:
 //
-//          OpenSearchServiceIntegrationArgs{...}
+//	OpenSearchServiceIntegrationArgs{...}
 type OpenSearchServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -20000,7 +21312,9 @@ type OpenSearchServiceIntegrationInput interface {
 }
 
 type OpenSearchServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -20019,7 +21333,7 @@ func (i OpenSearchServiceIntegrationArgs) ToOpenSearchServiceIntegrationOutputWi
 // OpenSearchServiceIntegrationArrayInput is an input type that accepts OpenSearchServiceIntegrationArray and OpenSearchServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `OpenSearchServiceIntegrationArrayInput` via:
 //
-//          OpenSearchServiceIntegrationArray{ OpenSearchServiceIntegrationArgs{...} }
+//	OpenSearchServiceIntegrationArray{ OpenSearchServiceIntegrationArgs{...} }
 type OpenSearchServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -20055,10 +21369,12 @@ func (o OpenSearchServiceIntegrationOutput) ToOpenSearchServiceIntegrationOutput
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o OpenSearchServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v OpenSearchServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o OpenSearchServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v OpenSearchServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -20084,14 +21400,16 @@ func (o OpenSearchServiceIntegrationArrayOutput) Index(i pulumi.IntInput) OpenSe
 }
 
 type OpenSearchTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // OpenSearchTagInput is an input type that accepts OpenSearchTagArgs and OpenSearchTagOutput values.
 // You can construct a concrete instance of `OpenSearchTagInput` via:
 //
-//          OpenSearchTagArgs{...}
+//	OpenSearchTagArgs{...}
 type OpenSearchTagInput interface {
 	pulumi.Input
 
@@ -20100,7 +21418,9 @@ type OpenSearchTagInput interface {
 }
 
 type OpenSearchTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -20119,7 +21439,7 @@ func (i OpenSearchTagArgs) ToOpenSearchTagOutputWithContext(ctx context.Context)
 // OpenSearchTagArrayInput is an input type that accepts OpenSearchTagArray and OpenSearchTagArrayOutput values.
 // You can construct a concrete instance of `OpenSearchTagArrayInput` via:
 //
-//          OpenSearchTagArray{ OpenSearchTagArgs{...} }
+//	OpenSearchTagArray{ OpenSearchTagArgs{...} }
 type OpenSearchTagArrayInput interface {
 	pulumi.Input
 
@@ -20155,10 +21475,12 @@ func (o OpenSearchTagOutput) ToOpenSearchTagOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Service tag key
 func (o OpenSearchTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v OpenSearchTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o OpenSearchTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OpenSearchTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -20196,7 +21518,7 @@ type PgComponent struct {
 // PgComponentInput is an input type that accepts PgComponentArgs and PgComponentOutput values.
 // You can construct a concrete instance of `PgComponentInput` via:
 //
-//          PgComponentArgs{...}
+//	PgComponentArgs{...}
 type PgComponentInput interface {
 	pulumi.Input
 
@@ -20229,7 +21551,7 @@ func (i PgComponentArgs) ToPgComponentOutputWithContext(ctx context.Context) PgC
 // PgComponentArrayInput is an input type that accepts PgComponentArray and PgComponentArrayOutput values.
 // You can construct a concrete instance of `PgComponentArrayInput` via:
 //
-//          PgComponentArray{ PgComponentArgs{...} }
+//	PgComponentArray{ PgComponentArgs{...} }
 type PgComponentArrayInput interface {
 	pulumi.Input
 
@@ -20314,20 +21636,30 @@ func (o PgComponentArrayOutput) Index(i pulumi.IntInput) PgComponentOutput {
 }
 
 type PgPg struct {
-	Dbname     *string `pulumi:"dbname"`
-	Host       *string `pulumi:"host"`
-	Password   *string `pulumi:"password"`
-	Port       *int    `pulumi:"port"`
+	// Primary PostgreSQL database name
+	Dbname *string `pulumi:"dbname"`
+	// PostgreSQL master node host IP or name
+	Host *string `pulumi:"host"`
+	// Connection limit
+	MaxConnections *int `pulumi:"maxConnections"`
+	// PostgreSQL admin user password
+	Password *string `pulumi:"password"`
+	// PostgreSQL port
+	Port *int `pulumi:"port"`
+	// PostgreSQL replica URI for services with a replica
 	ReplicaUri *string `pulumi:"replicaUri"`
-	Sslmode    *string `pulumi:"sslmode"`
-	Uri        *string `pulumi:"uri"`
-	User       *string `pulumi:"user"`
+	// PostgreSQL sslmode setting (currently always "require")
+	Sslmode *string `pulumi:"sslmode"`
+	// PostgreSQL master connection URI
+	Uri *string `pulumi:"uri"`
+	// PostgreSQL admin user name
+	User *string `pulumi:"user"`
 }
 
 // PgPgInput is an input type that accepts PgPgArgs and PgPgOutput values.
 // You can construct a concrete instance of `PgPgInput` via:
 //
-//          PgPgArgs{...}
+//	PgPgArgs{...}
 type PgPgInput interface {
 	pulumi.Input
 
@@ -20336,14 +21668,24 @@ type PgPgInput interface {
 }
 
 type PgPgArgs struct {
-	Dbname     pulumi.StringPtrInput `pulumi:"dbname"`
-	Host       pulumi.StringPtrInput `pulumi:"host"`
-	Password   pulumi.StringPtrInput `pulumi:"password"`
-	Port       pulumi.IntPtrInput    `pulumi:"port"`
+	// Primary PostgreSQL database name
+	Dbname pulumi.StringPtrInput `pulumi:"dbname"`
+	// PostgreSQL master node host IP or name
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Connection limit
+	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
+	// PostgreSQL admin user password
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// PostgreSQL port
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// PostgreSQL replica URI for services with a replica
 	ReplicaUri pulumi.StringPtrInput `pulumi:"replicaUri"`
-	Sslmode    pulumi.StringPtrInput `pulumi:"sslmode"`
-	Uri        pulumi.StringPtrInput `pulumi:"uri"`
-	User       pulumi.StringPtrInput `pulumi:"user"`
+	// PostgreSQL sslmode setting (currently always "require")
+	Sslmode pulumi.StringPtrInput `pulumi:"sslmode"`
+	// PostgreSQL master connection URI
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// PostgreSQL admin user name
+	User pulumi.StringPtrInput `pulumi:"user"`
 }
 
 func (PgPgArgs) ElementType() reflect.Type {
@@ -20369,11 +21711,11 @@ func (i PgPgArgs) ToPgPgPtrOutputWithContext(ctx context.Context) PgPgPtrOutput 
 // PgPgPtrInput is an input type that accepts PgPgArgs, PgPgPtr and PgPgPtrOutput values.
 // You can construct a concrete instance of `PgPgPtrInput` via:
 //
-//          PgPgArgs{...}
+//	        PgPgArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PgPgPtrInput interface {
 	pulumi.Input
 
@@ -20423,34 +21765,47 @@ func (o PgPgOutput) ToPgPgPtrOutputWithContext(ctx context.Context) PgPgPtrOutpu
 	}).(PgPgPtrOutput)
 }
 
+// Primary PostgreSQL database name
 func (o PgPgOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Dbname }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL master node host IP or name
 func (o PgPgOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// Connection limit
+func (o PgPgOutput) MaxConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PgPg) *int { return v.MaxConnections }).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL admin user password
 func (o PgPgOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL port
 func (o PgPgOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PgPg) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// PostgreSQL replica URI for services with a replica
 func (o PgPgOutput) ReplicaUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.ReplicaUri }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL sslmode setting (currently always "require")
 func (o PgPgOutput) Sslmode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Sslmode }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL master connection URI
 func (o PgPgOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL admin user name
 func (o PgPgOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPg) *string { return v.User }).(pulumi.StringPtrOutput)
 }
@@ -20479,6 +21834,7 @@ func (o PgPgPtrOutput) Elem() PgPgOutput {
 	}).(PgPgOutput)
 }
 
+// Primary PostgreSQL database name
 func (o PgPgPtrOutput) Dbname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -20488,6 +21844,7 @@ func (o PgPgPtrOutput) Dbname() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL master node host IP or name
 func (o PgPgPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -20497,6 +21854,17 @@ func (o PgPgPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Connection limit
+func (o PgPgPtrOutput) MaxConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PgPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConnections
+	}).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL admin user password
 func (o PgPgPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -20506,6 +21874,7 @@ func (o PgPgPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL port
 func (o PgPgPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PgPg) *int {
 		if v == nil {
@@ -20515,6 +21884,7 @@ func (o PgPgPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// PostgreSQL replica URI for services with a replica
 func (o PgPgPtrOutput) ReplicaUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -20524,6 +21894,7 @@ func (o PgPgPtrOutput) ReplicaUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL sslmode setting (currently always "require")
 func (o PgPgPtrOutput) Sslmode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -20533,6 +21904,7 @@ func (o PgPgPtrOutput) Sslmode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL master connection URI
 func (o PgPgPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -20542,6 +21914,7 @@ func (o PgPgPtrOutput) Uri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PostgreSQL admin user name
 func (o PgPgPtrOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPg) *string {
 		if v == nil {
@@ -20552,37 +21925,64 @@ func (o PgPgPtrOutput) User() pulumi.StringPtrOutput {
 }
 
 type PgPgUserConfig struct {
-	AdminPassword           *string                          `pulumi:"adminPassword"`
-	AdminUsername           *string                          `pulumi:"adminUsername"`
-	BackupHour              *string                          `pulumi:"backupHour"`
-	BackupMinute            *string                          `pulumi:"backupMinute"`
-	EnableIpv6              *string                          `pulumi:"enableIpv6"`
-	IpFilters               []string                         `pulumi:"ipFilters"`
-	Migration               *PgPgUserConfigMigration         `pulumi:"migration"`
-	Pg                      *PgPgUserConfigPg                `pulumi:"pg"`
-	PgReadReplica           *string                          `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom     *string                          `pulumi:"pgServiceToForkFrom"`
-	PgVersion               *string                          `pulumi:"pgVersion"`
-	Pgbouncer               *PgPgUserConfigPgbouncer         `pulumi:"pgbouncer"`
-	Pglookout               *PgPgUserConfigPglookout         `pulumi:"pglookout"`
-	PrivateAccess           *PgPgUserConfigPrivateAccess     `pulumi:"privateAccess"`
-	PrivatelinkAccess       *PgPgUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom       *string                          `pulumi:"projectToForkFrom"`
-	PublicAccess            *PgPgUserConfigPublicAccess      `pulumi:"publicAccess"`
-	RecoveryTargetTime      *string                          `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom       *string                          `pulumi:"serviceToForkFrom"`
-	SharedBuffersPercentage *string                          `pulumi:"sharedBuffersPercentage"`
-	StaticIps               *string                          `pulumi:"staticIps"`
-	SynchronousReplication  *string                          `pulumi:"synchronousReplication"`
-	Timescaledb             *PgPgUserConfigTimescaledb       `pulumi:"timescaledb"`
-	Variant                 *string                          `pulumi:"variant"`
-	WorkMem                 *string                          `pulumi:"workMem"`
+	// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+	AdminPassword *string `pulumi:"adminPassword"`
+	// Custom username for admin user. This must be set only when a new service is being created.
+	AdminUsername *string `pulumi:"adminUsername"`
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+	BackupHour *string `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+	BackupMinute *string `pulumi:"backupMinute"`
+	// Enable IPv6
+	EnableIpv6 *string `pulumi:"enableIpv6"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration *PgPgUserConfigMigration `pulumi:"migration"`
+	// postgresql.conf configuration values
+	Pg *PgPgUserConfigPg `pulumi:"pg"`
+	// Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
+	PgReadReplica *string `pulumi:"pgReadReplica"`
+	// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+	PgServiceToForkFrom *string `pulumi:"pgServiceToForkFrom"`
+	// Enable pg*stat*monitor extension if available for the current cluster
+	PgStatMonitorEnable *string `pulumi:"pgStatMonitorEnable"`
+	// PostgreSQL major version
+	PgVersion *string `pulumi:"pgVersion"`
+	// PGBouncer connection pooling settings
+	Pgbouncer *PgPgUserConfigPgbouncer `pulumi:"pgbouncer"`
+	// PGLookout settings
+	Pglookout *PgPgUserConfigPglookout `pulumi:"pglookout"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *PgPgUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *PgPgUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *PgPgUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect only when a new service is being created.
+	RecoveryTargetTime *string `pulumi:"recoveryTargetTime"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// shared*buffers*percentage
+	SharedBuffersPercentage *string `pulumi:"sharedBuffersPercentage"`
+	// Static IP addresses
+	StaticIps *string `pulumi:"staticIps"`
+	// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+	SynchronousReplication *string `pulumi:"synchronousReplication"`
+	// TimescaleDB extension configuration values
+	Timescaledb *PgPgUserConfigTimescaledb `pulumi:"timescaledb"`
+	// Variant of the PostgreSQL service, may affect the features that are exposed by default
+	Variant *string `pulumi:"variant"`
+	// work_mem
+	WorkMem *string `pulumi:"workMem"`
 }
 
 // PgPgUserConfigInput is an input type that accepts PgPgUserConfigArgs and PgPgUserConfigOutput values.
 // You can construct a concrete instance of `PgPgUserConfigInput` via:
 //
-//          PgPgUserConfigArgs{...}
+//	PgPgUserConfigArgs{...}
 type PgPgUserConfigInput interface {
 	pulumi.Input
 
@@ -20591,31 +21991,58 @@ type PgPgUserConfigInput interface {
 }
 
 type PgPgUserConfigArgs struct {
-	AdminPassword           pulumi.StringPtrInput                   `pulumi:"adminPassword"`
-	AdminUsername           pulumi.StringPtrInput                   `pulumi:"adminUsername"`
-	BackupHour              pulumi.StringPtrInput                   `pulumi:"backupHour"`
-	BackupMinute            pulumi.StringPtrInput                   `pulumi:"backupMinute"`
-	EnableIpv6              pulumi.StringPtrInput                   `pulumi:"enableIpv6"`
-	IpFilters               pulumi.StringArrayInput                 `pulumi:"ipFilters"`
-	Migration               PgPgUserConfigMigrationPtrInput         `pulumi:"migration"`
-	Pg                      PgPgUserConfigPgPtrInput                `pulumi:"pg"`
-	PgReadReplica           pulumi.StringPtrInput                   `pulumi:"pgReadReplica"`
-	PgServiceToForkFrom     pulumi.StringPtrInput                   `pulumi:"pgServiceToForkFrom"`
-	PgVersion               pulumi.StringPtrInput                   `pulumi:"pgVersion"`
-	Pgbouncer               PgPgUserConfigPgbouncerPtrInput         `pulumi:"pgbouncer"`
-	Pglookout               PgPgUserConfigPglookoutPtrInput         `pulumi:"pglookout"`
-	PrivateAccess           PgPgUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
-	PrivatelinkAccess       PgPgUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom       pulumi.StringPtrInput                   `pulumi:"projectToForkFrom"`
-	PublicAccess            PgPgUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
-	RecoveryTargetTime      pulumi.StringPtrInput                   `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom       pulumi.StringPtrInput                   `pulumi:"serviceToForkFrom"`
-	SharedBuffersPercentage pulumi.StringPtrInput                   `pulumi:"sharedBuffersPercentage"`
-	StaticIps               pulumi.StringPtrInput                   `pulumi:"staticIps"`
-	SynchronousReplication  pulumi.StringPtrInput                   `pulumi:"synchronousReplication"`
-	Timescaledb             PgPgUserConfigTimescaledbPtrInput       `pulumi:"timescaledb"`
-	Variant                 pulumi.StringPtrInput                   `pulumi:"variant"`
-	WorkMem                 pulumi.StringPtrInput                   `pulumi:"workMem"`
+	// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// Custom username for admin user. This must be set only when a new service is being created.
+	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+	BackupHour pulumi.StringPtrInput `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+	BackupMinute pulumi.StringPtrInput `pulumi:"backupMinute"`
+	// Enable IPv6
+	EnableIpv6 pulumi.StringPtrInput `pulumi:"enableIpv6"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration PgPgUserConfigMigrationPtrInput `pulumi:"migration"`
+	// postgresql.conf configuration values
+	Pg PgPgUserConfigPgPtrInput `pulumi:"pg"`
+	// Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
+	PgReadReplica pulumi.StringPtrInput `pulumi:"pgReadReplica"`
+	// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+	PgServiceToForkFrom pulumi.StringPtrInput `pulumi:"pgServiceToForkFrom"`
+	// Enable pg*stat*monitor extension if available for the current cluster
+	PgStatMonitorEnable pulumi.StringPtrInput `pulumi:"pgStatMonitorEnable"`
+	// PostgreSQL major version
+	PgVersion pulumi.StringPtrInput `pulumi:"pgVersion"`
+	// PGBouncer connection pooling settings
+	Pgbouncer PgPgUserConfigPgbouncerPtrInput `pulumi:"pgbouncer"`
+	// PGLookout settings
+	Pglookout PgPgUserConfigPglookoutPtrInput `pulumi:"pglookout"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess PgPgUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess PgPgUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess PgPgUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect only when a new service is being created.
+	RecoveryTargetTime pulumi.StringPtrInput `pulumi:"recoveryTargetTime"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// shared*buffers*percentage
+	SharedBuffersPercentage pulumi.StringPtrInput `pulumi:"sharedBuffersPercentage"`
+	// Static IP addresses
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
+	// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+	SynchronousReplication pulumi.StringPtrInput `pulumi:"synchronousReplication"`
+	// TimescaleDB extension configuration values
+	Timescaledb PgPgUserConfigTimescaledbPtrInput `pulumi:"timescaledb"`
+	// Variant of the PostgreSQL service, may affect the features that are exposed by default
+	Variant pulumi.StringPtrInput `pulumi:"variant"`
+	// work_mem
+	WorkMem pulumi.StringPtrInput `pulumi:"workMem"`
 }
 
 func (PgPgUserConfigArgs) ElementType() reflect.Type {
@@ -20641,11 +22068,11 @@ func (i PgPgUserConfigArgs) ToPgPgUserConfigPtrOutputWithContext(ctx context.Con
 // PgPgUserConfigPtrInput is an input type that accepts PgPgUserConfigArgs, PgPgUserConfigPtr and PgPgUserConfigPtrOutput values.
 // You can construct a concrete instance of `PgPgUserConfigPtrInput` via:
 //
-//          PgPgUserConfigArgs{...}
+//	        PgPgUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PgPgUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -20695,102 +22122,132 @@ func (o PgPgUserConfigOutput) ToPgPgUserConfigPtrOutputWithContext(ctx context.C
 	}).(PgPgUserConfigPtrOutput)
 }
 
+// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
 func (o PgPgUserConfigOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
 
+// Custom username for admin user. This must be set only when a new service is being created.
 func (o PgPgUserConfigOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
+// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o PgPgUserConfigOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.BackupHour }).(pulumi.StringPtrOutput)
 }
 
+// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o PgPgUserConfigOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.BackupMinute }).(pulumi.StringPtrOutput)
 }
 
+// Enable IPv6
 func (o PgPgUserConfigOutput) EnableIpv6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.EnableIpv6 }).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o PgPgUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PgPgUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Migrate data from existing server
 func (o PgPgUserConfigOutput) Migration() PgPgUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigMigration { return v.Migration }).(PgPgUserConfigMigrationPtrOutput)
 }
 
+// postgresql.conf configuration values
 func (o PgPgUserConfigOutput) Pg() PgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPg { return v.Pg }).(PgPgUserConfigPgPtrOutput)
 }
 
+// Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
 func (o PgPgUserConfigOutput) PgReadReplica() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.PgReadReplica }).(pulumi.StringPtrOutput)
 }
 
+// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
 func (o PgPgUserConfigOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.PgServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Enable pg*stat*monitor extension if available for the current cluster
+func (o PgPgUserConfigOutput) PgStatMonitorEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfig) *string { return v.PgStatMonitorEnable }).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL major version
 func (o PgPgUserConfigOutput) PgVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.PgVersion }).(pulumi.StringPtrOutput)
 }
 
+// PGBouncer connection pooling settings
 func (o PgPgUserConfigOutput) Pgbouncer() PgPgUserConfigPgbouncerPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPgbouncer { return v.Pgbouncer }).(PgPgUserConfigPgbouncerPtrOutput)
 }
 
+// PGLookout settings
 func (o PgPgUserConfigOutput) Pglookout() PgPgUserConfigPglookoutPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPglookout { return v.Pglookout }).(PgPgUserConfigPglookoutPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o PgPgUserConfigOutput) PrivateAccess() PgPgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPrivateAccess { return v.PrivateAccess }).(PgPgUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o PgPgUserConfigOutput) PrivatelinkAccess() PgPgUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(PgPgUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o PgPgUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o PgPgUserConfigOutput) PublicAccess() PgPgUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigPublicAccess { return v.PublicAccess }).(PgPgUserConfigPublicAccessPtrOutput)
 }
 
+// Recovery target time when forking a service. This has effect only when a new service is being created.
 func (o PgPgUserConfigOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o PgPgUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// shared*buffers*percentage
 func (o PgPgUserConfigOutput) SharedBuffersPercentage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.SharedBuffersPercentage }).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o PgPgUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
 
+// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
 func (o PgPgUserConfigOutput) SynchronousReplication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.SynchronousReplication }).(pulumi.StringPtrOutput)
 }
 
+// TimescaleDB extension configuration values
 func (o PgPgUserConfigOutput) Timescaledb() PgPgUserConfigTimescaledbPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigTimescaledb { return v.Timescaledb }).(PgPgUserConfigTimescaledbPtrOutput)
 }
 
+// Variant of the PostgreSQL service, may affect the features that are exposed by default
 func (o PgPgUserConfigOutput) Variant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.Variant }).(pulumi.StringPtrOutput)
 }
 
+// work_mem
 func (o PgPgUserConfigOutput) WorkMem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.WorkMem }).(pulumi.StringPtrOutput)
 }
@@ -20819,6 +22276,7 @@ func (o PgPgUserConfigPtrOutput) Elem() PgPgUserConfigOutput {
 	}).(PgPgUserConfigOutput)
 }
 
+// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -20828,6 +22286,7 @@ func (o PgPgUserConfigPtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Custom username for admin user. This must be set only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -20837,6 +22296,7 @@ func (o PgPgUserConfigPtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o PgPgUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -20846,6 +22306,7 @@ func (o PgPgUserConfigPtrOutput) BackupHour() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
 func (o PgPgUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -20855,6 +22316,7 @@ func (o PgPgUserConfigPtrOutput) BackupMinute() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable IPv6
 func (o PgPgUserConfigPtrOutput) EnableIpv6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -20864,6 +22326,7 @@ func (o PgPgUserConfigPtrOutput) EnableIpv6() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// IP filter
 func (o PgPgUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) []string {
 		if v == nil {
@@ -20873,6 +22336,7 @@ func (o PgPgUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Migrate data from existing server
 func (o PgPgUserConfigPtrOutput) Migration() PgPgUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigMigration {
 		if v == nil {
@@ -20882,6 +22346,7 @@ func (o PgPgUserConfigPtrOutput) Migration() PgPgUserConfigMigrationPtrOutput {
 	}).(PgPgUserConfigMigrationPtrOutput)
 }
 
+// postgresql.conf configuration values
 func (o PgPgUserConfigPtrOutput) Pg() PgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPg {
 		if v == nil {
@@ -20891,6 +22356,7 @@ func (o PgPgUserConfigPtrOutput) Pg() PgPgUserConfigPgPtrOutput {
 	}).(PgPgUserConfigPgPtrOutput)
 }
 
+// Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
 func (o PgPgUserConfigPtrOutput) PgReadReplica() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -20900,6 +22366,7 @@ func (o PgPgUserConfigPtrOutput) PgReadReplica() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -20909,6 +22376,17 @@ func (o PgPgUserConfigPtrOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable pg*stat*monitor extension if available for the current cluster
+func (o PgPgUserConfigPtrOutput) PgStatMonitorEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgStatMonitorEnable
+	}).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL major version
 func (o PgPgUserConfigPtrOutput) PgVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -20918,6 +22396,7 @@ func (o PgPgUserConfigPtrOutput) PgVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PGBouncer connection pooling settings
 func (o PgPgUserConfigPtrOutput) Pgbouncer() PgPgUserConfigPgbouncerPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPgbouncer {
 		if v == nil {
@@ -20927,6 +22406,7 @@ func (o PgPgUserConfigPtrOutput) Pgbouncer() PgPgUserConfigPgbouncerPtrOutput {
 	}).(PgPgUserConfigPgbouncerPtrOutput)
 }
 
+// PGLookout settings
 func (o PgPgUserConfigPtrOutput) Pglookout() PgPgUserConfigPglookoutPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPglookout {
 		if v == nil {
@@ -20936,6 +22416,7 @@ func (o PgPgUserConfigPtrOutput) Pglookout() PgPgUserConfigPglookoutPtrOutput {
 	}).(PgPgUserConfigPglookoutPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o PgPgUserConfigPtrOutput) PrivateAccess() PgPgUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPrivateAccess {
 		if v == nil {
@@ -20945,6 +22426,7 @@ func (o PgPgUserConfigPtrOutput) PrivateAccess() PgPgUserConfigPrivateAccessPtrO
 	}).(PgPgUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o PgPgUserConfigPtrOutput) PrivatelinkAccess() PgPgUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -20954,6 +22436,7 @@ func (o PgPgUserConfigPtrOutput) PrivatelinkAccess() PgPgUserConfigPrivatelinkAc
 	}).(PgPgUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -20963,6 +22446,7 @@ func (o PgPgUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o PgPgUserConfigPtrOutput) PublicAccess() PgPgUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigPublicAccess {
 		if v == nil {
@@ -20972,6 +22456,7 @@ func (o PgPgUserConfigPtrOutput) PublicAccess() PgPgUserConfigPublicAccessPtrOut
 	}).(PgPgUserConfigPublicAccessPtrOutput)
 }
 
+// Recovery target time when forking a service. This has effect only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -20981,6 +22466,7 @@ func (o PgPgUserConfigPtrOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o PgPgUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -20990,6 +22476,7 @@ func (o PgPgUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// shared*buffers*percentage
 func (o PgPgUserConfigPtrOutput) SharedBuffersPercentage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -20999,6 +22486,7 @@ func (o PgPgUserConfigPtrOutput) SharedBuffersPercentage() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o PgPgUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -21008,6 +22496,7 @@ func (o PgPgUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
 func (o PgPgUserConfigPtrOutput) SynchronousReplication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -21017,6 +22506,7 @@ func (o PgPgUserConfigPtrOutput) SynchronousReplication() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// TimescaleDB extension configuration values
 func (o PgPgUserConfigPtrOutput) Timescaledb() PgPgUserConfigTimescaledbPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *PgPgUserConfigTimescaledb {
 		if v == nil {
@@ -21026,6 +22516,7 @@ func (o PgPgUserConfigPtrOutput) Timescaledb() PgPgUserConfigTimescaledbPtrOutpu
 	}).(PgPgUserConfigTimescaledbPtrOutput)
 }
 
+// Variant of the PostgreSQL service, may affect the features that are exposed by default
 func (o PgPgUserConfigPtrOutput) Variant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -21035,6 +22526,7 @@ func (o PgPgUserConfigPtrOutput) Variant() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// work_mem
 func (o PgPgUserConfigPtrOutput) WorkMem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -21058,7 +22550,7 @@ type PgPgUserConfigMigration struct {
 // PgPgUserConfigMigrationInput is an input type that accepts PgPgUserConfigMigrationArgs and PgPgUserConfigMigrationOutput values.
 // You can construct a concrete instance of `PgPgUserConfigMigrationInput` via:
 //
-//          PgPgUserConfigMigrationArgs{...}
+//	PgPgUserConfigMigrationArgs{...}
 type PgPgUserConfigMigrationInput interface {
 	pulumi.Input
 
@@ -21100,11 +22592,11 @@ func (i PgPgUserConfigMigrationArgs) ToPgPgUserConfigMigrationPtrOutputWithConte
 // PgPgUserConfigMigrationPtrInput is an input type that accepts PgPgUserConfigMigrationArgs, PgPgUserConfigMigrationPtr and PgPgUserConfigMigrationPtrOutput values.
 // You can construct a concrete instance of `PgPgUserConfigMigrationPtrInput` via:
 //
-//          PgPgUserConfigMigrationArgs{...}
+//	        PgPgUserConfigMigrationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PgPgUserConfigMigrationPtrInput interface {
 	pulumi.Input
 
@@ -21304,6 +22796,7 @@ type PgPgUserConfigPg struct {
 	LogErrorVerbosity               *string `pulumi:"logErrorVerbosity"`
 	LogLinePrefix                   *string `pulumi:"logLinePrefix"`
 	LogMinDurationStatement         *string `pulumi:"logMinDurationStatement"`
+	LogTempFiles                    *string `pulumi:"logTempFiles"`
 	MaxFilesPerProcess              *string `pulumi:"maxFilesPerProcess"`
 	MaxLocksPerTransaction          *string `pulumi:"maxLocksPerTransaction"`
 	MaxLogicalReplicationWorkers    *string `pulumi:"maxLogicalReplicationWorkers"`
@@ -21334,7 +22827,7 @@ type PgPgUserConfigPg struct {
 // PgPgUserConfigPgInput is an input type that accepts PgPgUserConfigPgArgs and PgPgUserConfigPgOutput values.
 // You can construct a concrete instance of `PgPgUserConfigPgInput` via:
 //
-//          PgPgUserConfigPgArgs{...}
+//	PgPgUserConfigPgArgs{...}
 type PgPgUserConfigPgInput interface {
 	pulumi.Input
 
@@ -21364,6 +22857,7 @@ type PgPgUserConfigPgArgs struct {
 	LogErrorVerbosity               pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
 	LogLinePrefix                   pulumi.StringPtrInput `pulumi:"logLinePrefix"`
 	LogMinDurationStatement         pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
+	LogTempFiles                    pulumi.StringPtrInput `pulumi:"logTempFiles"`
 	MaxFilesPerProcess              pulumi.StringPtrInput `pulumi:"maxFilesPerProcess"`
 	MaxLocksPerTransaction          pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
 	MaxLogicalReplicationWorkers    pulumi.StringPtrInput `pulumi:"maxLogicalReplicationWorkers"`
@@ -21414,11 +22908,11 @@ func (i PgPgUserConfigPgArgs) ToPgPgUserConfigPgPtrOutputWithContext(ctx context
 // PgPgUserConfigPgPtrInput is an input type that accepts PgPgUserConfigPgArgs, PgPgUserConfigPgPtr and PgPgUserConfigPgPtrOutput values.
 // You can construct a concrete instance of `PgPgUserConfigPgPtrInput` via:
 //
-//          PgPgUserConfigPgArgs{...}
+//	        PgPgUserConfigPgArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PgPgUserConfigPgPtrInput interface {
 	pulumi.Input
 
@@ -21550,6 +23044,10 @@ func (o PgPgUserConfigPgOutput) LogLinePrefix() pulumi.StringPtrOutput {
 
 func (o PgPgUserConfigPgOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.LogMinDurationStatement }).(pulumi.StringPtrOutput)
+}
+
+func (o PgPgUserConfigPgOutput) LogTempFiles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PgPgUserConfigPg) *string { return v.LogTempFiles }).(pulumi.StringPtrOutput)
 }
 
 func (o PgPgUserConfigPgOutput) MaxFilesPerProcess() pulumi.StringPtrOutput {
@@ -21865,6 +23363,15 @@ func (o PgPgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o PgPgUserConfigPgPtrOutput) LogTempFiles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogTempFiles
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o PgPgUserConfigPgPtrOutput) MaxFilesPerProcess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPg) *string {
 		if v == nil {
@@ -22105,7 +23612,7 @@ type PgPgUserConfigPgbouncer struct {
 // PgPgUserConfigPgbouncerInput is an input type that accepts PgPgUserConfigPgbouncerArgs and PgPgUserConfigPgbouncerOutput values.
 // You can construct a concrete instance of `PgPgUserConfigPgbouncerInput` via:
 //
-//          PgPgUserConfigPgbouncerArgs{...}
+//	PgPgUserConfigPgbouncerArgs{...}
 type PgPgUserConfigPgbouncerInput interface {
 	pulumi.Input
 
@@ -22148,11 +23655,11 @@ func (i PgPgUserConfigPgbouncerArgs) ToPgPgUserConfigPgbouncerPtrOutputWithConte
 // PgPgUserConfigPgbouncerPtrInput is an input type that accepts PgPgUserConfigPgbouncerArgs, PgPgUserConfigPgbouncerPtr and PgPgUserConfigPgbouncerPtrOutput values.
 // You can construct a concrete instance of `PgPgUserConfigPgbouncerPtrInput` via:
 //
-//          PgPgUserConfigPgbouncerArgs{...}
+//	        PgPgUserConfigPgbouncerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PgPgUserConfigPgbouncerPtrInput interface {
 	pulumi.Input
 
@@ -22350,7 +23857,7 @@ type PgPgUserConfigPglookout struct {
 // PgPgUserConfigPglookoutInput is an input type that accepts PgPgUserConfigPglookoutArgs and PgPgUserConfigPglookoutOutput values.
 // You can construct a concrete instance of `PgPgUserConfigPglookoutInput` via:
 //
-//          PgPgUserConfigPglookoutArgs{...}
+//	PgPgUserConfigPglookoutArgs{...}
 type PgPgUserConfigPglookoutInput interface {
 	pulumi.Input
 
@@ -22385,11 +23892,11 @@ func (i PgPgUserConfigPglookoutArgs) ToPgPgUserConfigPglookoutPtrOutputWithConte
 // PgPgUserConfigPglookoutPtrInput is an input type that accepts PgPgUserConfigPglookoutArgs, PgPgUserConfigPglookoutPtr and PgPgUserConfigPglookoutPtrOutput values.
 // You can construct a concrete instance of `PgPgUserConfigPglookoutPtrInput` via:
 //
-//          PgPgUserConfigPglookoutArgs{...}
+//	        PgPgUserConfigPglookoutArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PgPgUserConfigPglookoutPtrInput interface {
 	pulumi.Input
 
@@ -22477,6 +23984,7 @@ func (o PgPgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pulumi
 }
 
 type PgPgUserConfigPrivateAccess struct {
+	// PostgreSQL specific server provided values
 	Pg         *string `pulumi:"pg"`
 	Pgbouncer  *string `pulumi:"pgbouncer"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -22485,7 +23993,7 @@ type PgPgUserConfigPrivateAccess struct {
 // PgPgUserConfigPrivateAccessInput is an input type that accepts PgPgUserConfigPrivateAccessArgs and PgPgUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `PgPgUserConfigPrivateAccessInput` via:
 //
-//          PgPgUserConfigPrivateAccessArgs{...}
+//	PgPgUserConfigPrivateAccessArgs{...}
 type PgPgUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -22494,6 +24002,7 @@ type PgPgUserConfigPrivateAccessInput interface {
 }
 
 type PgPgUserConfigPrivateAccessArgs struct {
+	// PostgreSQL specific server provided values
 	Pg         pulumi.StringPtrInput `pulumi:"pg"`
 	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -22522,11 +24031,11 @@ func (i PgPgUserConfigPrivateAccessArgs) ToPgPgUserConfigPrivateAccessPtrOutputW
 // PgPgUserConfigPrivateAccessPtrInput is an input type that accepts PgPgUserConfigPrivateAccessArgs, PgPgUserConfigPrivateAccessPtr and PgPgUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `PgPgUserConfigPrivateAccessPtrInput` via:
 //
-//          PgPgUserConfigPrivateAccessArgs{...}
+//	        PgPgUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PgPgUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -22576,6 +24085,7 @@ func (o PgPgUserConfigPrivateAccessOutput) ToPgPgUserConfigPrivateAccessPtrOutpu
 	}).(PgPgUserConfigPrivateAccessPtrOutput)
 }
 
+// PostgreSQL specific server provided values
 func (o PgPgUserConfigPrivateAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPrivateAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
@@ -22612,6 +24122,7 @@ func (o PgPgUserConfigPrivateAccessPtrOutput) Elem() PgPgUserConfigPrivateAccess
 	}).(PgPgUserConfigPrivateAccessOutput)
 }
 
+// PostgreSQL specific server provided values
 func (o PgPgUserConfigPrivateAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -22640,6 +24151,7 @@ func (o PgPgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOutpu
 }
 
 type PgPgUserConfigPrivatelinkAccess struct {
+	// PostgreSQL specific server provided values
 	Pg         *string `pulumi:"pg"`
 	Pgbouncer  *string `pulumi:"pgbouncer"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -22648,7 +24160,7 @@ type PgPgUserConfigPrivatelinkAccess struct {
 // PgPgUserConfigPrivatelinkAccessInput is an input type that accepts PgPgUserConfigPrivatelinkAccessArgs and PgPgUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `PgPgUserConfigPrivatelinkAccessInput` via:
 //
-//          PgPgUserConfigPrivatelinkAccessArgs{...}
+//	PgPgUserConfigPrivatelinkAccessArgs{...}
 type PgPgUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -22657,6 +24169,7 @@ type PgPgUserConfigPrivatelinkAccessInput interface {
 }
 
 type PgPgUserConfigPrivatelinkAccessArgs struct {
+	// PostgreSQL specific server provided values
 	Pg         pulumi.StringPtrInput `pulumi:"pg"`
 	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -22685,11 +24198,11 @@ func (i PgPgUserConfigPrivatelinkAccessArgs) ToPgPgUserConfigPrivatelinkAccessPt
 // PgPgUserConfigPrivatelinkAccessPtrInput is an input type that accepts PgPgUserConfigPrivatelinkAccessArgs, PgPgUserConfigPrivatelinkAccessPtr and PgPgUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `PgPgUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          PgPgUserConfigPrivatelinkAccessArgs{...}
+//	        PgPgUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PgPgUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -22739,6 +24252,7 @@ func (o PgPgUserConfigPrivatelinkAccessOutput) ToPgPgUserConfigPrivatelinkAccess
 	}).(PgPgUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// PostgreSQL specific server provided values
 func (o PgPgUserConfigPrivatelinkAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPrivatelinkAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
@@ -22775,6 +24289,7 @@ func (o PgPgUserConfigPrivatelinkAccessPtrOutput) Elem() PgPgUserConfigPrivateli
 	}).(PgPgUserConfigPrivatelinkAccessOutput)
 }
 
+// PostgreSQL specific server provided values
 func (o PgPgUserConfigPrivatelinkAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -22803,6 +24318,7 @@ func (o PgPgUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.StringPtrO
 }
 
 type PgPgUserConfigPublicAccess struct {
+	// PostgreSQL specific server provided values
 	Pg         *string `pulumi:"pg"`
 	Pgbouncer  *string `pulumi:"pgbouncer"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -22811,7 +24327,7 @@ type PgPgUserConfigPublicAccess struct {
 // PgPgUserConfigPublicAccessInput is an input type that accepts PgPgUserConfigPublicAccessArgs and PgPgUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `PgPgUserConfigPublicAccessInput` via:
 //
-//          PgPgUserConfigPublicAccessArgs{...}
+//	PgPgUserConfigPublicAccessArgs{...}
 type PgPgUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -22820,6 +24336,7 @@ type PgPgUserConfigPublicAccessInput interface {
 }
 
 type PgPgUserConfigPublicAccessArgs struct {
+	// PostgreSQL specific server provided values
 	Pg         pulumi.StringPtrInput `pulumi:"pg"`
 	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -22848,11 +24365,11 @@ func (i PgPgUserConfigPublicAccessArgs) ToPgPgUserConfigPublicAccessPtrOutputWit
 // PgPgUserConfigPublicAccessPtrInput is an input type that accepts PgPgUserConfigPublicAccessArgs, PgPgUserConfigPublicAccessPtr and PgPgUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `PgPgUserConfigPublicAccessPtrInput` via:
 //
-//          PgPgUserConfigPublicAccessArgs{...}
+//	        PgPgUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PgPgUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -22902,6 +24419,7 @@ func (o PgPgUserConfigPublicAccessOutput) ToPgPgUserConfigPublicAccessPtrOutputW
 	}).(PgPgUserConfigPublicAccessPtrOutput)
 }
 
+// PostgreSQL specific server provided values
 func (o PgPgUserConfigPublicAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfigPublicAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
@@ -22938,6 +24456,7 @@ func (o PgPgUserConfigPublicAccessPtrOutput) Elem() PgPgUserConfigPublicAccessOu
 	}).(PgPgUserConfigPublicAccessOutput)
 }
 
+// PostgreSQL specific server provided values
 func (o PgPgUserConfigPublicAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfigPublicAccess) *string {
 		if v == nil {
@@ -22972,7 +24491,7 @@ type PgPgUserConfigTimescaledb struct {
 // PgPgUserConfigTimescaledbInput is an input type that accepts PgPgUserConfigTimescaledbArgs and PgPgUserConfigTimescaledbOutput values.
 // You can construct a concrete instance of `PgPgUserConfigTimescaledbInput` via:
 //
-//          PgPgUserConfigTimescaledbArgs{...}
+//	PgPgUserConfigTimescaledbArgs{...}
 type PgPgUserConfigTimescaledbInput interface {
 	pulumi.Input
 
@@ -23007,11 +24526,11 @@ func (i PgPgUserConfigTimescaledbArgs) ToPgPgUserConfigTimescaledbPtrOutputWithC
 // PgPgUserConfigTimescaledbPtrInput is an input type that accepts PgPgUserConfigTimescaledbArgs, PgPgUserConfigTimescaledbPtr and PgPgUserConfigTimescaledbPtrOutput values.
 // You can construct a concrete instance of `PgPgUserConfigTimescaledbPtrInput` via:
 //
-//          PgPgUserConfigTimescaledbArgs{...}
+//	        PgPgUserConfigTimescaledbArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PgPgUserConfigTimescaledbPtrInput interface {
 	pulumi.Input
 
@@ -23099,14 +24618,16 @@ func (o PgPgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.String
 }
 
 type PgServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // PgServiceIntegrationInput is an input type that accepts PgServiceIntegrationArgs and PgServiceIntegrationOutput values.
 // You can construct a concrete instance of `PgServiceIntegrationInput` via:
 //
-//          PgServiceIntegrationArgs{...}
+//	PgServiceIntegrationArgs{...}
 type PgServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -23115,7 +24636,9 @@ type PgServiceIntegrationInput interface {
 }
 
 type PgServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -23134,7 +24657,7 @@ func (i PgServiceIntegrationArgs) ToPgServiceIntegrationOutputWithContext(ctx co
 // PgServiceIntegrationArrayInput is an input type that accepts PgServiceIntegrationArray and PgServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `PgServiceIntegrationArrayInput` via:
 //
-//          PgServiceIntegrationArray{ PgServiceIntegrationArgs{...} }
+//	PgServiceIntegrationArray{ PgServiceIntegrationArgs{...} }
 type PgServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -23170,10 +24693,12 @@ func (o PgServiceIntegrationOutput) ToPgServiceIntegrationOutputWithContext(ctx 
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o PgServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v PgServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o PgServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v PgServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -23199,14 +24724,16 @@ func (o PgServiceIntegrationArrayOutput) Index(i pulumi.IntInput) PgServiceInteg
 }
 
 type PgTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // PgTagInput is an input type that accepts PgTagArgs and PgTagOutput values.
 // You can construct a concrete instance of `PgTagInput` via:
 //
-//          PgTagArgs{...}
+//	PgTagArgs{...}
 type PgTagInput interface {
 	pulumi.Input
 
@@ -23215,7 +24742,9 @@ type PgTagInput interface {
 }
 
 type PgTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -23234,7 +24763,7 @@ func (i PgTagArgs) ToPgTagOutputWithContext(ctx context.Context) PgTagOutput {
 // PgTagArrayInput is an input type that accepts PgTagArray and PgTagArrayOutput values.
 // You can construct a concrete instance of `PgTagArrayInput` via:
 //
-//          PgTagArray{ PgTagArgs{...} }
+//	PgTagArray{ PgTagArgs{...} }
 type PgTagArrayInput interface {
 	pulumi.Input
 
@@ -23270,10 +24799,12 @@ func (o PgTagOutput) ToPgTagOutputWithContext(ctx context.Context) PgTagOutput {
 	return o
 }
 
+// Service tag key
 func (o PgTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v PgTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o PgTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v PgTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -23299,14 +24830,16 @@ func (o PgTagArrayOutput) Index(i pulumi.IntInput) PgTagOutput {
 }
 
 type ProjectTag struct {
-	Key   string `pulumi:"key"`
+	// Project tag key
+	Key string `pulumi:"key"`
+	// Project tag value
 	Value string `pulumi:"value"`
 }
 
 // ProjectTagInput is an input type that accepts ProjectTagArgs and ProjectTagOutput values.
 // You can construct a concrete instance of `ProjectTagInput` via:
 //
-//          ProjectTagArgs{...}
+//	ProjectTagArgs{...}
 type ProjectTagInput interface {
 	pulumi.Input
 
@@ -23315,7 +24848,9 @@ type ProjectTagInput interface {
 }
 
 type ProjectTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Project tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Project tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -23334,7 +24869,7 @@ func (i ProjectTagArgs) ToProjectTagOutputWithContext(ctx context.Context) Proje
 // ProjectTagArrayInput is an input type that accepts ProjectTagArray and ProjectTagArrayOutput values.
 // You can construct a concrete instance of `ProjectTagArrayInput` via:
 //
-//          ProjectTagArray{ ProjectTagArgs{...} }
+//	ProjectTagArray{ ProjectTagArgs{...} }
 type ProjectTagArrayInput interface {
 	pulumi.Input
 
@@ -23370,10 +24905,12 @@ func (o ProjectTagOutput) ToProjectTagOutputWithContext(ctx context.Context) Pro
 	return o
 }
 
+// Project tag key
 func (o ProjectTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Project tag value
 func (o ProjectTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -23411,7 +24948,7 @@ type RedisComponent struct {
 // RedisComponentInput is an input type that accepts RedisComponentArgs and RedisComponentOutput values.
 // You can construct a concrete instance of `RedisComponentInput` via:
 //
-//          RedisComponentArgs{...}
+//	RedisComponentArgs{...}
 type RedisComponentInput interface {
 	pulumi.Input
 
@@ -23444,7 +24981,7 @@ func (i RedisComponentArgs) ToRedisComponentOutputWithContext(ctx context.Contex
 // RedisComponentArrayInput is an input type that accepts RedisComponentArray and RedisComponentArrayOutput values.
 // You can construct a concrete instance of `RedisComponentArrayInput` via:
 //
-//          RedisComponentArray{ RedisComponentArgs{...} }
+//	RedisComponentArray{ RedisComponentArgs{...} }
 type RedisComponentArrayInput interface {
 	pulumi.Input
 
@@ -23534,7 +25071,7 @@ type RedisRedi struct {
 // RedisRediInput is an input type that accepts RedisRediArgs and RedisRediOutput values.
 // You can construct a concrete instance of `RedisRediInput` via:
 //
-//          RedisRediArgs{...}
+//	RedisRediArgs{...}
 type RedisRediInput interface {
 	pulumi.Input
 
@@ -23560,7 +25097,7 @@ func (i RedisRediArgs) ToRedisRediOutputWithContext(ctx context.Context) RedisRe
 // RedisRediArrayInput is an input type that accepts RedisRediArray and RedisRediArrayOutput values.
 // You can construct a concrete instance of `RedisRediArrayInput` via:
 //
-//          RedisRediArray{ RedisRediArgs{...} }
+//	RedisRediArray{ RedisRediArgs{...} }
 type RedisRediArrayInput interface {
 	pulumi.Input
 
@@ -23617,32 +25154,52 @@ func (o RedisRediArrayOutput) Index(i pulumi.IntInput) RedisRediOutput {
 }
 
 type RedisRedisUserConfig struct {
-	IpFilters                          []string                               `pulumi:"ipFilters"`
-	Migration                          *RedisRedisUserConfigMigration         `pulumi:"migration"`
-	PrivateAccess                      *RedisRedisUserConfigPrivateAccess     `pulumi:"privateAccess"`
-	PrivatelinkAccess                  *RedisRedisUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom                  *string                                `pulumi:"projectToForkFrom"`
-	PublicAccess                       *RedisRedisUserConfigPublicAccess      `pulumi:"publicAccess"`
-	RecoveryBasebackupName             *string                                `pulumi:"recoveryBasebackupName"`
-	RedisAclChannelsDefault            *string                                `pulumi:"redisAclChannelsDefault"`
-	RedisIoThreads                     *string                                `pulumi:"redisIoThreads"`
-	RedisLfuDecayTime                  *string                                `pulumi:"redisLfuDecayTime"`
-	RedisLfuLogFactor                  *string                                `pulumi:"redisLfuLogFactor"`
-	RedisMaxmemoryPolicy               *string                                `pulumi:"redisMaxmemoryPolicy"`
-	RedisNotifyKeyspaceEvents          *string                                `pulumi:"redisNotifyKeyspaceEvents"`
-	RedisNumberOfDatabases             *string                                `pulumi:"redisNumberOfDatabases"`
-	RedisPersistence                   *string                                `pulumi:"redisPersistence"`
-	RedisPubsubClientOutputBufferLimit *string                                `pulumi:"redisPubsubClientOutputBufferLimit"`
-	RedisSsl                           *string                                `pulumi:"redisSsl"`
-	RedisTimeout                       *string                                `pulumi:"redisTimeout"`
-	ServiceToForkFrom                  *string                                `pulumi:"serviceToForkFrom"`
-	StaticIps                          *string                                `pulumi:"staticIps"`
+	// IP filter
+	IpFilters []string `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration *RedisRedisUserConfigMigration `pulumi:"migration"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *RedisRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *RedisRedisUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *RedisRedisUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Default ACL for pub/sub channels used when Redis user is created
+	RedisAclChannelsDefault *string `pulumi:"redisAclChannelsDefault"`
+	// Redis IO thread count
+	RedisIoThreads *string `pulumi:"redisIoThreads"`
+	// LFU maxmemory-policy counter decay time in minutes
+	RedisLfuDecayTime *string `pulumi:"redisLfuDecayTime"`
+	// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
+	RedisLfuLogFactor *string `pulumi:"redisLfuLogFactor"`
+	// Redis maxmemory-policy
+	RedisMaxmemoryPolicy *string `pulumi:"redisMaxmemoryPolicy"`
+	// Set notify-keyspace-events option
+	RedisNotifyKeyspaceEvents *string `pulumi:"redisNotifyKeyspaceEvents"`
+	// Number of redis databases
+	RedisNumberOfDatabases *string `pulumi:"redisNumberOfDatabases"`
+	// Redis persistence
+	RedisPersistence *string `pulumi:"redisPersistence"`
+	// Pub/sub client output buffer hard limit in MB
+	RedisPubsubClientOutputBufferLimit *string `pulumi:"redisPubsubClientOutputBufferLimit"`
+	// Require SSL to access Redis
+	RedisSsl *string `pulumi:"redisSsl"`
+	// Redis idle connection timeout in seconds
+	RedisTimeout *string `pulumi:"redisTimeout"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Static IP addresses
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // RedisRedisUserConfigInput is an input type that accepts RedisRedisUserConfigArgs and RedisRedisUserConfigOutput values.
 // You can construct a concrete instance of `RedisRedisUserConfigInput` via:
 //
-//          RedisRedisUserConfigArgs{...}
+//	RedisRedisUserConfigArgs{...}
 type RedisRedisUserConfigInput interface {
 	pulumi.Input
 
@@ -23651,26 +25208,46 @@ type RedisRedisUserConfigInput interface {
 }
 
 type RedisRedisUserConfigArgs struct {
-	IpFilters                          pulumi.StringArrayInput                       `pulumi:"ipFilters"`
-	Migration                          RedisRedisUserConfigMigrationPtrInput         `pulumi:"migration"`
-	PrivateAccess                      RedisRedisUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
-	PrivatelinkAccess                  RedisRedisUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom                  pulumi.StringPtrInput                         `pulumi:"projectToForkFrom"`
-	PublicAccess                       RedisRedisUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
-	RecoveryBasebackupName             pulumi.StringPtrInput                         `pulumi:"recoveryBasebackupName"`
-	RedisAclChannelsDefault            pulumi.StringPtrInput                         `pulumi:"redisAclChannelsDefault"`
-	RedisIoThreads                     pulumi.StringPtrInput                         `pulumi:"redisIoThreads"`
-	RedisLfuDecayTime                  pulumi.StringPtrInput                         `pulumi:"redisLfuDecayTime"`
-	RedisLfuLogFactor                  pulumi.StringPtrInput                         `pulumi:"redisLfuLogFactor"`
-	RedisMaxmemoryPolicy               pulumi.StringPtrInput                         `pulumi:"redisMaxmemoryPolicy"`
-	RedisNotifyKeyspaceEvents          pulumi.StringPtrInput                         `pulumi:"redisNotifyKeyspaceEvents"`
-	RedisNumberOfDatabases             pulumi.StringPtrInput                         `pulumi:"redisNumberOfDatabases"`
-	RedisPersistence                   pulumi.StringPtrInput                         `pulumi:"redisPersistence"`
-	RedisPubsubClientOutputBufferLimit pulumi.StringPtrInput                         `pulumi:"redisPubsubClientOutputBufferLimit"`
-	RedisSsl                           pulumi.StringPtrInput                         `pulumi:"redisSsl"`
-	RedisTimeout                       pulumi.StringPtrInput                         `pulumi:"redisTimeout"`
-	ServiceToForkFrom                  pulumi.StringPtrInput                         `pulumi:"serviceToForkFrom"`
-	StaticIps                          pulumi.StringPtrInput                         `pulumi:"staticIps"`
+	// IP filter
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration RedisRedisUserConfigMigrationPtrInput `pulumi:"migration"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess RedisRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess RedisRedisUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess RedisRedisUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Default ACL for pub/sub channels used when Redis user is created
+	RedisAclChannelsDefault pulumi.StringPtrInput `pulumi:"redisAclChannelsDefault"`
+	// Redis IO thread count
+	RedisIoThreads pulumi.StringPtrInput `pulumi:"redisIoThreads"`
+	// LFU maxmemory-policy counter decay time in minutes
+	RedisLfuDecayTime pulumi.StringPtrInput `pulumi:"redisLfuDecayTime"`
+	// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
+	RedisLfuLogFactor pulumi.StringPtrInput `pulumi:"redisLfuLogFactor"`
+	// Redis maxmemory-policy
+	RedisMaxmemoryPolicy pulumi.StringPtrInput `pulumi:"redisMaxmemoryPolicy"`
+	// Set notify-keyspace-events option
+	RedisNotifyKeyspaceEvents pulumi.StringPtrInput `pulumi:"redisNotifyKeyspaceEvents"`
+	// Number of redis databases
+	RedisNumberOfDatabases pulumi.StringPtrInput `pulumi:"redisNumberOfDatabases"`
+	// Redis persistence
+	RedisPersistence pulumi.StringPtrInput `pulumi:"redisPersistence"`
+	// Pub/sub client output buffer hard limit in MB
+	RedisPubsubClientOutputBufferLimit pulumi.StringPtrInput `pulumi:"redisPubsubClientOutputBufferLimit"`
+	// Require SSL to access Redis
+	RedisSsl pulumi.StringPtrInput `pulumi:"redisSsl"`
+	// Redis idle connection timeout in seconds
+	RedisTimeout pulumi.StringPtrInput `pulumi:"redisTimeout"`
+	// Name of another service to fork from. This has effect only when a new service is being created.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Static IP addresses
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (RedisRedisUserConfigArgs) ElementType() reflect.Type {
@@ -23696,11 +25273,11 @@ func (i RedisRedisUserConfigArgs) ToRedisRedisUserConfigPtrOutputWithContext(ctx
 // RedisRedisUserConfigPtrInput is an input type that accepts RedisRedisUserConfigArgs, RedisRedisUserConfigPtr and RedisRedisUserConfigPtrOutput values.
 // You can construct a concrete instance of `RedisRedisUserConfigPtrInput` via:
 //
-//          RedisRedisUserConfigArgs{...}
+//	        RedisRedisUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RedisRedisUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -23750,82 +25327,102 @@ func (o RedisRedisUserConfigOutput) ToRedisRedisUserConfigPtrOutputWithContext(c
 	}).(RedisRedisUserConfigPtrOutput)
 }
 
+// IP filter
 func (o RedisRedisUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Migrate data from existing server
 func (o RedisRedisUserConfigOutput) Migration() RedisRedisUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigMigration { return v.Migration }).(RedisRedisUserConfigMigrationPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o RedisRedisUserConfigOutput) PrivateAccess() RedisRedisUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigPrivateAccess { return v.PrivateAccess }).(RedisRedisUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o RedisRedisUserConfigOutput) PrivatelinkAccess() RedisRedisUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(RedisRedisUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o RedisRedisUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o RedisRedisUserConfigOutput) PublicAccess() RedisRedisUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *RedisRedisUserConfigPublicAccess { return v.PublicAccess }).(RedisRedisUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
 func (o RedisRedisUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+// Default ACL for pub/sub channels used when Redis user is created
 func (o RedisRedisUserConfigOutput) RedisAclChannelsDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisAclChannelsDefault }).(pulumi.StringPtrOutput)
 }
 
+// Redis IO thread count
 func (o RedisRedisUserConfigOutput) RedisIoThreads() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisIoThreads }).(pulumi.StringPtrOutput)
 }
 
+// LFU maxmemory-policy counter decay time in minutes
 func (o RedisRedisUserConfigOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisLfuDecayTime }).(pulumi.StringPtrOutput)
 }
 
+// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
 func (o RedisRedisUserConfigOutput) RedisLfuLogFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisLfuLogFactor }).(pulumi.StringPtrOutput)
 }
 
+// Redis maxmemory-policy
 func (o RedisRedisUserConfigOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisMaxmemoryPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Set notify-keyspace-events option
 func (o RedisRedisUserConfigOutput) RedisNotifyKeyspaceEvents() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisNotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
 }
 
+// Number of redis databases
 func (o RedisRedisUserConfigOutput) RedisNumberOfDatabases() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisNumberOfDatabases }).(pulumi.StringPtrOutput)
 }
 
+// Redis persistence
 func (o RedisRedisUserConfigOutput) RedisPersistence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisPersistence }).(pulumi.StringPtrOutput)
 }
 
+// Pub/sub client output buffer hard limit in MB
 func (o RedisRedisUserConfigOutput) RedisPubsubClientOutputBufferLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisPubsubClientOutputBufferLimit }).(pulumi.StringPtrOutput)
 }
 
+// Require SSL to access Redis
 func (o RedisRedisUserConfigOutput) RedisSsl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisSsl }).(pulumi.StringPtrOutput)
 }
 
+// Redis idle connection timeout in seconds
 func (o RedisRedisUserConfigOutput) RedisTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o RedisRedisUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o RedisRedisUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -23854,6 +25451,7 @@ func (o RedisRedisUserConfigPtrOutput) Elem() RedisRedisUserConfigOutput {
 	}).(RedisRedisUserConfigOutput)
 }
 
+// IP filter
 func (o RedisRedisUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) []string {
 		if v == nil {
@@ -23863,6 +25461,7 @@ func (o RedisRedisUserConfigPtrOutput) IpFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Migrate data from existing server
 func (o RedisRedisUserConfigPtrOutput) Migration() RedisRedisUserConfigMigrationPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *RedisRedisUserConfigMigration {
 		if v == nil {
@@ -23872,6 +25471,7 @@ func (o RedisRedisUserConfigPtrOutput) Migration() RedisRedisUserConfigMigration
 	}).(RedisRedisUserConfigMigrationPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
 func (o RedisRedisUserConfigPtrOutput) PrivateAccess() RedisRedisUserConfigPrivateAccessPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *RedisRedisUserConfigPrivateAccess {
 		if v == nil {
@@ -23881,6 +25481,7 @@ func (o RedisRedisUserConfigPtrOutput) PrivateAccess() RedisRedisUserConfigPriva
 	}).(RedisRedisUserConfigPrivateAccessPtrOutput)
 }
 
+// Allow access to selected service components through Privatelink
 func (o RedisRedisUserConfigPtrOutput) PrivatelinkAccess() RedisRedisUserConfigPrivatelinkAccessPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *RedisRedisUserConfigPrivatelinkAccess {
 		if v == nil {
@@ -23890,6 +25491,7 @@ func (o RedisRedisUserConfigPtrOutput) PrivatelinkAccess() RedisRedisUserConfigP
 	}).(RedisRedisUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Name of another project to fork a service from. This has effect only when a new service is being created.
 func (o RedisRedisUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -23899,6 +25501,7 @@ func (o RedisRedisUserConfigPtrOutput) ProjectToForkFrom() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allow access to selected service ports from the public Internet
 func (o RedisRedisUserConfigPtrOutput) PublicAccess() RedisRedisUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *RedisRedisUserConfigPublicAccess {
 		if v == nil {
@@ -23908,6 +25511,7 @@ func (o RedisRedisUserConfigPtrOutput) PublicAccess() RedisRedisUserConfigPublic
 	}).(RedisRedisUserConfigPublicAccessPtrOutput)
 }
 
+// Name of the basebackup to restore in forked service
 func (o RedisRedisUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -23917,6 +25521,7 @@ func (o RedisRedisUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default ACL for pub/sub channels used when Redis user is created
 func (o RedisRedisUserConfigPtrOutput) RedisAclChannelsDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -23926,6 +25531,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisAclChannelsDefault() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis IO thread count
 func (o RedisRedisUserConfigPtrOutput) RedisIoThreads() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -23935,6 +25541,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisIoThreads() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// LFU maxmemory-policy counter decay time in minutes
 func (o RedisRedisUserConfigPtrOutput) RedisLfuDecayTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -23944,6 +25551,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisLfuDecayTime() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies
 func (o RedisRedisUserConfigPtrOutput) RedisLfuLogFactor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -23953,6 +25561,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisLfuLogFactor() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis maxmemory-policy
 func (o RedisRedisUserConfigPtrOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -23962,6 +25571,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Set notify-keyspace-events option
 func (o RedisRedisUserConfigPtrOutput) RedisNotifyKeyspaceEvents() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -23971,6 +25581,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisNotifyKeyspaceEvents() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of redis databases
 func (o RedisRedisUserConfigPtrOutput) RedisNumberOfDatabases() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -23980,6 +25591,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisNumberOfDatabases() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis persistence
 func (o RedisRedisUserConfigPtrOutput) RedisPersistence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -23989,6 +25601,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisPersistence() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Pub/sub client output buffer hard limit in MB
 func (o RedisRedisUserConfigPtrOutput) RedisPubsubClientOutputBufferLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -23998,6 +25611,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisPubsubClientOutputBufferLimit() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require SSL to access Redis
 func (o RedisRedisUserConfigPtrOutput) RedisSsl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -24007,6 +25621,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisSsl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis idle connection timeout in seconds
 func (o RedisRedisUserConfigPtrOutput) RedisTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -24016,6 +25631,7 @@ func (o RedisRedisUserConfigPtrOutput) RedisTimeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of another service to fork from. This has effect only when a new service is being created.
 func (o RedisRedisUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -24025,6 +25641,7 @@ func (o RedisRedisUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Static IP addresses
 func (o RedisRedisUserConfigPtrOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
 		if v == nil {
@@ -24048,7 +25665,7 @@ type RedisRedisUserConfigMigration struct {
 // RedisRedisUserConfigMigrationInput is an input type that accepts RedisRedisUserConfigMigrationArgs and RedisRedisUserConfigMigrationOutput values.
 // You can construct a concrete instance of `RedisRedisUserConfigMigrationInput` via:
 //
-//          RedisRedisUserConfigMigrationArgs{...}
+//	RedisRedisUserConfigMigrationArgs{...}
 type RedisRedisUserConfigMigrationInput interface {
 	pulumi.Input
 
@@ -24090,11 +25707,11 @@ func (i RedisRedisUserConfigMigrationArgs) ToRedisRedisUserConfigMigrationPtrOut
 // RedisRedisUserConfigMigrationPtrInput is an input type that accepts RedisRedisUserConfigMigrationArgs, RedisRedisUserConfigMigrationPtr and RedisRedisUserConfigMigrationPtrOutput values.
 // You can construct a concrete instance of `RedisRedisUserConfigMigrationPtrInput` via:
 //
-//          RedisRedisUserConfigMigrationArgs{...}
+//	        RedisRedisUserConfigMigrationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RedisRedisUserConfigMigrationPtrInput interface {
 	pulumi.Input
 
@@ -24274,13 +25891,14 @@ func (o RedisRedisUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutpu
 
 type RedisRedisUserConfigPrivateAccess struct {
 	Prometheus *string `pulumi:"prometheus"`
-	Redis      *string `pulumi:"redis"`
+	// Redis server provided values
+	Redis *string `pulumi:"redis"`
 }
 
 // RedisRedisUserConfigPrivateAccessInput is an input type that accepts RedisRedisUserConfigPrivateAccessArgs and RedisRedisUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `RedisRedisUserConfigPrivateAccessInput` via:
 //
-//          RedisRedisUserConfigPrivateAccessArgs{...}
+//	RedisRedisUserConfigPrivateAccessArgs{...}
 type RedisRedisUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -24290,7 +25908,8 @@ type RedisRedisUserConfigPrivateAccessInput interface {
 
 type RedisRedisUserConfigPrivateAccessArgs struct {
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	Redis      pulumi.StringPtrInput `pulumi:"redis"`
+	// Redis server provided values
+	Redis pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (RedisRedisUserConfigPrivateAccessArgs) ElementType() reflect.Type {
@@ -24316,11 +25935,11 @@ func (i RedisRedisUserConfigPrivateAccessArgs) ToRedisRedisUserConfigPrivateAcce
 // RedisRedisUserConfigPrivateAccessPtrInput is an input type that accepts RedisRedisUserConfigPrivateAccessArgs, RedisRedisUserConfigPrivateAccessPtr and RedisRedisUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `RedisRedisUserConfigPrivateAccessPtrInput` via:
 //
-//          RedisRedisUserConfigPrivateAccessArgs{...}
+//	        RedisRedisUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RedisRedisUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -24374,6 +25993,7 @@ func (o RedisRedisUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPtrOu
 	return o.ApplyT(func(v RedisRedisUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
+// Redis server provided values
 func (o RedisRedisUserConfigPrivateAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigPrivateAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -24411,6 +26031,7 @@ func (o RedisRedisUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis server provided values
 func (o RedisRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -24422,13 +26043,14 @@ func (o RedisRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrOutp
 
 type RedisRedisUserConfigPrivatelinkAccess struct {
 	Prometheus *string `pulumi:"prometheus"`
-	Redis      *string `pulumi:"redis"`
+	// Redis server provided values
+	Redis *string `pulumi:"redis"`
 }
 
 // RedisRedisUserConfigPrivatelinkAccessInput is an input type that accepts RedisRedisUserConfigPrivatelinkAccessArgs and RedisRedisUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `RedisRedisUserConfigPrivatelinkAccessInput` via:
 //
-//          RedisRedisUserConfigPrivatelinkAccessArgs{...}
+//	RedisRedisUserConfigPrivatelinkAccessArgs{...}
 type RedisRedisUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -24438,7 +26060,8 @@ type RedisRedisUserConfigPrivatelinkAccessInput interface {
 
 type RedisRedisUserConfigPrivatelinkAccessArgs struct {
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	Redis      pulumi.StringPtrInput `pulumi:"redis"`
+	// Redis server provided values
+	Redis pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (RedisRedisUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
@@ -24464,11 +26087,11 @@ func (i RedisRedisUserConfigPrivatelinkAccessArgs) ToRedisRedisUserConfigPrivate
 // RedisRedisUserConfigPrivatelinkAccessPtrInput is an input type that accepts RedisRedisUserConfigPrivatelinkAccessArgs, RedisRedisUserConfigPrivatelinkAccessPtr and RedisRedisUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `RedisRedisUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          RedisRedisUserConfigPrivatelinkAccessArgs{...}
+//	        RedisRedisUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RedisRedisUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -24522,6 +26145,7 @@ func (o RedisRedisUserConfigPrivatelinkAccessOutput) Prometheus() pulumi.StringP
 	return o.ApplyT(func(v RedisRedisUserConfigPrivatelinkAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
+// Redis server provided values
 func (o RedisRedisUserConfigPrivatelinkAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigPrivatelinkAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -24559,6 +26183,7 @@ func (o RedisRedisUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis server provided values
 func (o RedisRedisUserConfigPrivatelinkAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -24570,13 +26195,14 @@ func (o RedisRedisUserConfigPrivatelinkAccessPtrOutput) Redis() pulumi.StringPtr
 
 type RedisRedisUserConfigPublicAccess struct {
 	Prometheus *string `pulumi:"prometheus"`
-	Redis      *string `pulumi:"redis"`
+	// Redis server provided values
+	Redis *string `pulumi:"redis"`
 }
 
 // RedisRedisUserConfigPublicAccessInput is an input type that accepts RedisRedisUserConfigPublicAccessArgs and RedisRedisUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `RedisRedisUserConfigPublicAccessInput` via:
 //
-//          RedisRedisUserConfigPublicAccessArgs{...}
+//	RedisRedisUserConfigPublicAccessArgs{...}
 type RedisRedisUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -24586,7 +26212,8 @@ type RedisRedisUserConfigPublicAccessInput interface {
 
 type RedisRedisUserConfigPublicAccessArgs struct {
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	Redis      pulumi.StringPtrInput `pulumi:"redis"`
+	// Redis server provided values
+	Redis pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (RedisRedisUserConfigPublicAccessArgs) ElementType() reflect.Type {
@@ -24612,11 +26239,11 @@ func (i RedisRedisUserConfigPublicAccessArgs) ToRedisRedisUserConfigPublicAccess
 // RedisRedisUserConfigPublicAccessPtrInput is an input type that accepts RedisRedisUserConfigPublicAccessArgs, RedisRedisUserConfigPublicAccessPtr and RedisRedisUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `RedisRedisUserConfigPublicAccessPtrInput` via:
 //
-//          RedisRedisUserConfigPublicAccessArgs{...}
+//	        RedisRedisUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RedisRedisUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -24670,6 +26297,7 @@ func (o RedisRedisUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtrOut
 	return o.ApplyT(func(v RedisRedisUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
+// Redis server provided values
 func (o RedisRedisUserConfigPublicAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfigPublicAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -24707,6 +26335,7 @@ func (o RedisRedisUserConfigPublicAccessPtrOutput) Prometheus() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis server provided values
 func (o RedisRedisUserConfigPublicAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisRedisUserConfigPublicAccess) *string {
 		if v == nil {
@@ -24717,14 +26346,16 @@ func (o RedisRedisUserConfigPublicAccessPtrOutput) Redis() pulumi.StringPtrOutpu
 }
 
 type RedisServiceIntegration struct {
-	IntegrationType   string `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
 }
 
 // RedisServiceIntegrationInput is an input type that accepts RedisServiceIntegrationArgs and RedisServiceIntegrationOutput values.
 // You can construct a concrete instance of `RedisServiceIntegrationInput` via:
 //
-//          RedisServiceIntegrationArgs{...}
+//	RedisServiceIntegrationArgs{...}
 type RedisServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -24733,7 +26364,9 @@ type RedisServiceIntegrationInput interface {
 }
 
 type RedisServiceIntegrationArgs struct {
-	IntegrationType   pulumi.StringInput `pulumi:"integrationType"`
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
 }
 
@@ -24752,7 +26385,7 @@ func (i RedisServiceIntegrationArgs) ToRedisServiceIntegrationOutputWithContext(
 // RedisServiceIntegrationArrayInput is an input type that accepts RedisServiceIntegrationArray and RedisServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `RedisServiceIntegrationArrayInput` via:
 //
-//          RedisServiceIntegrationArray{ RedisServiceIntegrationArgs{...} }
+//	RedisServiceIntegrationArray{ RedisServiceIntegrationArgs{...} }
 type RedisServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -24788,10 +26421,12 @@ func (o RedisServiceIntegrationOutput) ToRedisServiceIntegrationOutputWithContex
 	return o
 }
 
+// Type of the service integration. The only supported value at the moment is `readReplica`
 func (o RedisServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v RedisServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
 
+// Name of the source service
 func (o RedisServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v RedisServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
 }
@@ -24817,14 +26452,16 @@ func (o RedisServiceIntegrationArrayOutput) Index(i pulumi.IntInput) RedisServic
 }
 
 type RedisTag struct {
-	Key   string `pulumi:"key"`
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
 	Value string `pulumi:"value"`
 }
 
 // RedisTagInput is an input type that accepts RedisTagArgs and RedisTagOutput values.
 // You can construct a concrete instance of `RedisTagInput` via:
 //
-//          RedisTagArgs{...}
+//	RedisTagArgs{...}
 type RedisTagInput interface {
 	pulumi.Input
 
@@ -24833,7 +26470,9 @@ type RedisTagInput interface {
 }
 
 type RedisTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -24852,7 +26491,7 @@ func (i RedisTagArgs) ToRedisTagOutputWithContext(ctx context.Context) RedisTagO
 // RedisTagArrayInput is an input type that accepts RedisTagArray and RedisTagArrayOutput values.
 // You can construct a concrete instance of `RedisTagArrayInput` via:
 //
-//          RedisTagArray{ RedisTagArgs{...} }
+//	RedisTagArray{ RedisTagArgs{...} }
 type RedisTagArrayInput interface {
 	pulumi.Input
 
@@ -24888,10 +26527,12 @@ func (o RedisTagOutput) ToRedisTagOutputWithContext(ctx context.Context) RedisTa
 	return o
 }
 
+// Service tag key
 func (o RedisTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v RedisTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Service tag value
 func (o RedisTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v RedisTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -24917,19 +26558,26 @@ func (o RedisTagArrayOutput) Index(i pulumi.IntInput) RedisTagOutput {
 }
 
 type ServiceIntegrationEndpointDatadogUserConfig struct {
-	DatadogApiKey               *string                                                 `pulumi:"datadogApiKey"`
-	DatadogTags                 []ServiceIntegrationEndpointDatadogUserConfigDatadogTag `pulumi:"datadogTags"`
-	DisableConsumerStats        *string                                                 `pulumi:"disableConsumerStats"`
-	KafkaConsumerCheckInstances *string                                                 `pulumi:"kafkaConsumerCheckInstances"`
-	KafkaConsumerStatsTimeout   *string                                                 `pulumi:"kafkaConsumerStatsTimeout"`
-	MaxPartitionContexts        *string                                                 `pulumi:"maxPartitionContexts"`
-	Site                        *string                                                 `pulumi:"site"`
+	// Datadog API key
+	DatadogApiKey *string `pulumi:"datadogApiKey"`
+	// Custom tags provided by user
+	DatadogTags []ServiceIntegrationEndpointDatadogUserConfigDatadogTag `pulumi:"datadogTags"`
+	// Disable consumer group metrics
+	DisableConsumerStats *string `pulumi:"disableConsumerStats"`
+	// Number of separate instances to fetch kafka consumer statistics with
+	KafkaConsumerCheckInstances *string `pulumi:"kafkaConsumerCheckInstances"`
+	// Number of seconds that datadog will wait to get consumer statistics from brokers
+	KafkaConsumerStatsTimeout *string `pulumi:"kafkaConsumerStatsTimeout"`
+	// Maximum number of partition contexts to send
+	MaxPartitionContexts *string `pulumi:"maxPartitionContexts"`
+	// Datadog intake site. Defaults to datadoghq.com
+	Site *string `pulumi:"site"`
 }
 
 // ServiceIntegrationEndpointDatadogUserConfigInput is an input type that accepts ServiceIntegrationEndpointDatadogUserConfigArgs and ServiceIntegrationEndpointDatadogUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointDatadogUserConfigInput` via:
 //
-//          ServiceIntegrationEndpointDatadogUserConfigArgs{...}
+//	ServiceIntegrationEndpointDatadogUserConfigArgs{...}
 type ServiceIntegrationEndpointDatadogUserConfigInput interface {
 	pulumi.Input
 
@@ -24938,13 +26586,20 @@ type ServiceIntegrationEndpointDatadogUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointDatadogUserConfigArgs struct {
-	DatadogApiKey               pulumi.StringPtrInput                                           `pulumi:"datadogApiKey"`
-	DatadogTags                 ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput `pulumi:"datadogTags"`
-	DisableConsumerStats        pulumi.StringPtrInput                                           `pulumi:"disableConsumerStats"`
-	KafkaConsumerCheckInstances pulumi.StringPtrInput                                           `pulumi:"kafkaConsumerCheckInstances"`
-	KafkaConsumerStatsTimeout   pulumi.StringPtrInput                                           `pulumi:"kafkaConsumerStatsTimeout"`
-	MaxPartitionContexts        pulumi.StringPtrInput                                           `pulumi:"maxPartitionContexts"`
-	Site                        pulumi.StringPtrInput                                           `pulumi:"site"`
+	// Datadog API key
+	DatadogApiKey pulumi.StringPtrInput `pulumi:"datadogApiKey"`
+	// Custom tags provided by user
+	DatadogTags ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput `pulumi:"datadogTags"`
+	// Disable consumer group metrics
+	DisableConsumerStats pulumi.StringPtrInput `pulumi:"disableConsumerStats"`
+	// Number of separate instances to fetch kafka consumer statistics with
+	KafkaConsumerCheckInstances pulumi.StringPtrInput `pulumi:"kafkaConsumerCheckInstances"`
+	// Number of seconds that datadog will wait to get consumer statistics from brokers
+	KafkaConsumerStatsTimeout pulumi.StringPtrInput `pulumi:"kafkaConsumerStatsTimeout"`
+	// Maximum number of partition contexts to send
+	MaxPartitionContexts pulumi.StringPtrInput `pulumi:"maxPartitionContexts"`
+	// Datadog intake site. Defaults to datadoghq.com
+	Site pulumi.StringPtrInput `pulumi:"site"`
 }
 
 func (ServiceIntegrationEndpointDatadogUserConfigArgs) ElementType() reflect.Type {
@@ -24970,11 +26625,11 @@ func (i ServiceIntegrationEndpointDatadogUserConfigArgs) ToServiceIntegrationEnd
 // ServiceIntegrationEndpointDatadogUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointDatadogUserConfigArgs, ServiceIntegrationEndpointDatadogUserConfigPtr and ServiceIntegrationEndpointDatadogUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointDatadogUserConfigPtrInput` via:
 //
-//          ServiceIntegrationEndpointDatadogUserConfigArgs{...}
+//	        ServiceIntegrationEndpointDatadogUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationEndpointDatadogUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -25024,32 +26679,39 @@ func (o ServiceIntegrationEndpointDatadogUserConfigOutput) ToServiceIntegrationE
 	}).(ServiceIntegrationEndpointDatadogUserConfigPtrOutput)
 }
 
+// Datadog API key
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) DatadogApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.DatadogApiKey }).(pulumi.StringPtrOutput)
 }
 
+// Custom tags provided by user
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) DatadogTags() ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) []ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
 		return v.DatadogTags
 	}).(ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput)
 }
 
+// Disable consumer group metrics
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) DisableConsumerStats() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.DisableConsumerStats }).(pulumi.StringPtrOutput)
 }
 
+// Number of separate instances to fetch kafka consumer statistics with
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) KafkaConsumerCheckInstances() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.KafkaConsumerCheckInstances }).(pulumi.StringPtrOutput)
 }
 
+// Number of seconds that datadog will wait to get consumer statistics from brokers
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) KafkaConsumerStatsTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.KafkaConsumerStatsTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of partition contexts to send
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) MaxPartitionContexts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.MaxPartitionContexts }).(pulumi.StringPtrOutput)
 }
 
+// Datadog intake site. Defaults to datadoghq.com
 func (o ServiceIntegrationEndpointDatadogUserConfigOutput) Site() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointDatadogUserConfig) *string { return v.Site }).(pulumi.StringPtrOutput)
 }
@@ -25078,6 +26740,7 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) Elem() ServiceInte
 	}).(ServiceIntegrationEndpointDatadogUserConfigOutput)
 }
 
+// Datadog API key
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DatadogApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
@@ -25087,6 +26750,7 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DatadogApiKey() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Custom tags provided by user
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DatadogTags() ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) []ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
 		if v == nil {
@@ -25096,6 +26760,7 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DatadogTags() Serv
 	}).(ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput)
 }
 
+// Disable consumer group metrics
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DisableConsumerStats() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
@@ -25105,6 +26770,7 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) DisableConsumerSta
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of separate instances to fetch kafka consumer statistics with
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) KafkaConsumerCheckInstances() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
@@ -25114,6 +26780,7 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) KafkaConsumerCheck
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of seconds that datadog will wait to get consumer statistics from brokers
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) KafkaConsumerStatsTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
@@ -25123,6 +26790,7 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) KafkaConsumerStats
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of partition contexts to send
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) MaxPartitionContexts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
@@ -25132,6 +26800,7 @@ func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) MaxPartitionContex
 	}).(pulumi.StringPtrOutput)
 }
 
+// Datadog intake site. Defaults to datadoghq.com
 func (o ServiceIntegrationEndpointDatadogUserConfigPtrOutput) Site() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointDatadogUserConfig) *string {
 		if v == nil {
@@ -25149,7 +26818,7 @@ type ServiceIntegrationEndpointDatadogUserConfigDatadogTag struct {
 // ServiceIntegrationEndpointDatadogUserConfigDatadogTagInput is an input type that accepts ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs and ServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointDatadogUserConfigDatadogTagInput` via:
 //
-//          ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...}
+//	ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...}
 type ServiceIntegrationEndpointDatadogUserConfigDatadogTagInput interface {
 	pulumi.Input
 
@@ -25177,7 +26846,7 @@ func (i ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs) ToServiceInte
 // ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput is an input type that accepts ServiceIntegrationEndpointDatadogUserConfigDatadogTagArray and ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput` via:
 //
-//          ServiceIntegrationEndpointDatadogUserConfigDatadogTagArray{ ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...} }
+//	ServiceIntegrationEndpointDatadogUserConfigDatadogTagArray{ ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...} }
 type ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput interface {
 	pulumi.Input
 
@@ -25242,16 +26911,20 @@ func (o ServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) Index(
 }
 
 type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig struct {
-	AccessKey    *string `pulumi:"accessKey"`
+	// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
+	AccessKey *string `pulumi:"accessKey"`
+	// AWS CloudWatch log group name
 	LogGroupName *string `pulumi:"logGroupName"`
-	Region       *string `pulumi:"region"`
-	SecretKey    *string `pulumi:"secretKey"`
+	// AWS region
+	Region *string `pulumi:"region"`
+	// AWS secret key
+	SecretKey *string `pulumi:"secretKey"`
 }
 
 // ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs and ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput` via:
 //
-//          ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{...}
+//	ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{...}
 type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput interface {
 	pulumi.Input
 
@@ -25260,10 +26933,14 @@ type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput interfac
 }
 
 type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs struct {
-	AccessKey    pulumi.StringPtrInput `pulumi:"accessKey"`
+	// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
+	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// AWS CloudWatch log group name
 	LogGroupName pulumi.StringPtrInput `pulumi:"logGroupName"`
-	Region       pulumi.StringPtrInput `pulumi:"region"`
-	SecretKey    pulumi.StringPtrInput `pulumi:"secretKey"`
+	// AWS region
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// AWS secret key
+	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
 }
 
 func (ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ElementType() reflect.Type {
@@ -25289,11 +26966,11 @@ func (i ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ToSer
 // ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs, ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtr and ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput` via:
 //
-//          ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{...}
+//	        ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -25343,18 +27020,22 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) ToS
 	}).(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput)
 }
 
+// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// AWS CloudWatch log group name
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) LogGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.LogGroupName }).(pulumi.StringPtrOutput)
 }
 
+// AWS region
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// AWS secret key
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
@@ -25383,6 +27064,7 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) 
 	}).(ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput)
 }
 
+// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
 		if v == nil {
@@ -25392,6 +27074,7 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+// AWS CloudWatch log group name
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) LogGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
 		if v == nil {
@@ -25401,6 +27084,7 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+// AWS region
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
 		if v == nil {
@@ -25410,6 +27094,7 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+// AWS secret key
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
 		if v == nil {
@@ -25420,16 +27105,20 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput) 
 }
 
 type ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig struct {
+	// AWS access key. Required permissions are cloudwatch:PutMetricData
 	AccessKey *string `pulumi:"accessKey"`
+	// AWS CloudWatch Metrics Namespace
 	Namespace *string `pulumi:"namespace"`
-	Region    *string `pulumi:"region"`
+	// AWS region
+	Region *string `pulumi:"region"`
+	// AWS secret key
 	SecretKey *string `pulumi:"secretKey"`
 }
 
 // ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs and ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput` via:
 //
-//          ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs{...}
+//	ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs{...}
 type ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput interface {
 	pulumi.Input
 
@@ -25438,9 +27127,13 @@ type ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput inter
 }
 
 type ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs struct {
+	// AWS access key. Required permissions are cloudwatch:PutMetricData
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// AWS CloudWatch Metrics Namespace
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	Region    pulumi.StringPtrInput `pulumi:"region"`
+	// AWS region
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// AWS secret key
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
 }
 
@@ -25467,11 +27160,11 @@ func (i ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs) To
 // ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs, ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtr and ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrInput` via:
 //
-//          ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs{...}
+//	        ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -25521,18 +27214,22 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) 
 	}).(ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput)
 }
 
+// AWS access key. Required permissions are cloudwatch:PutMetricData
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// AWS CloudWatch Metrics Namespace
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// AWS region
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// AWS secret key
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
@@ -25561,6 +27258,7 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutpu
 	}).(ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput)
 }
 
+// AWS access key. Required permissions are cloudwatch:PutMetricData
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string {
 		if v == nil {
@@ -25570,6 +27268,7 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// AWS CloudWatch Metrics Namespace
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string {
 		if v == nil {
@@ -25579,6 +27278,7 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// AWS region
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string {
 		if v == nil {
@@ -25588,6 +27288,7 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// AWS secret key
 func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) *string {
 		if v == nil {
@@ -25598,17 +27299,22 @@ func (o ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutpu
 }
 
 type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig struct {
-	Ca           *string `pulumi:"ca"`
+	// PEM encoded CA certificate
+	Ca *string `pulumi:"ca"`
+	// Maximum number of days of logs to keep
 	IndexDaysMax *string `pulumi:"indexDaysMax"`
-	IndexPrefix  *string `pulumi:"indexPrefix"`
-	Timeout      *string `pulumi:"timeout"`
-	Url          *string `pulumi:"url"`
+	// Elasticsearch index prefix
+	IndexPrefix *string `pulumi:"indexPrefix"`
+	// Elasticsearch request timeout limit
+	Timeout *string `pulumi:"timeout"`
+	// Elasticsearch connection URL
+	Url *string `pulumi:"url"`
 }
 
 // ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs and ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput` via:
 //
-//          ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...}
+//	ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...}
 type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput interface {
 	pulumi.Input
 
@@ -25617,11 +27323,16 @@ type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput interfac
 }
 
 type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs struct {
-	Ca           pulumi.StringPtrInput `pulumi:"ca"`
+	// PEM encoded CA certificate
+	Ca pulumi.StringPtrInput `pulumi:"ca"`
+	// Maximum number of days of logs to keep
 	IndexDaysMax pulumi.StringPtrInput `pulumi:"indexDaysMax"`
-	IndexPrefix  pulumi.StringPtrInput `pulumi:"indexPrefix"`
-	Timeout      pulumi.StringPtrInput `pulumi:"timeout"`
-	Url          pulumi.StringPtrInput `pulumi:"url"`
+	// Elasticsearch index prefix
+	IndexPrefix pulumi.StringPtrInput `pulumi:"indexPrefix"`
+	// Elasticsearch request timeout limit
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+	// Elasticsearch connection URL
+	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs) ElementType() reflect.Type {
@@ -25647,11 +27358,11 @@ func (i ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs) ToSer
 // ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs, ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtr and ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput` via:
 //
-//          ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...}
+//	        ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -25701,22 +27412,27 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) ToS
 	}).(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput)
 }
 
+// PEM encoded CA certificate
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Ca() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Ca }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of days of logs to keep
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) IndexDaysMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.IndexDaysMax }).(pulumi.StringPtrOutput)
 }
 
+// Elasticsearch index prefix
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) IndexPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.IndexPrefix }).(pulumi.StringPtrOutput)
 }
 
+// Elasticsearch request timeout limit
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
+// Elasticsearch connection URL
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -25745,6 +27461,7 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 	}).(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput)
 }
 
+// PEM encoded CA certificate
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) Ca() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
 		if v == nil {
@@ -25754,6 +27471,7 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of days of logs to keep
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) IndexDaysMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
 		if v == nil {
@@ -25763,6 +27481,7 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Elasticsearch index prefix
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) IndexPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
 		if v == nil {
@@ -25772,6 +27491,7 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Elasticsearch request timeout limit
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
 		if v == nil {
@@ -25781,6 +27501,7 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Elasticsearch connection URL
 func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string {
 		if v == nil {
@@ -25791,15 +27512,18 @@ func (o ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput) 
 }
 
 type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig struct {
-	LogId                     *string `pulumi:"logId"`
-	ProjectId                 *string `pulumi:"projectId"`
+	// Google Cloud Logging log id
+	LogId *string `pulumi:"logId"`
+	// GCP project id.
+	ProjectId *string `pulumi:"projectId"`
+	// Google Service Account Credentials
 	ServiceAccountCredentials *string `pulumi:"serviceAccountCredentials"`
 }
 
 // ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs and ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput` via:
 //
-//          ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{...}
+//	ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{...}
 type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput interface {
 	pulumi.Input
 
@@ -25808,8 +27532,11 @@ type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput interfa
 }
 
 type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs struct {
-	LogId                     pulumi.StringPtrInput `pulumi:"logId"`
-	ProjectId                 pulumi.StringPtrInput `pulumi:"projectId"`
+	// Google Cloud Logging log id
+	LogId pulumi.StringPtrInput `pulumi:"logId"`
+	// GCP project id.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Google Service Account Credentials
 	ServiceAccountCredentials pulumi.StringPtrInput `pulumi:"serviceAccountCredentials"`
 }
 
@@ -25836,11 +27563,11 @@ func (i ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) ToSe
 // ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs, ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtr and ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput` via:
 //
-//          ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{...}
+//	        ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -25890,14 +27617,17 @@ func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) To
 	}).(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
 }
 
+// Google Cloud Logging log id
 func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) LogId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string { return v.LogId }).(pulumi.StringPtrOutput)
 }
 
+// GCP project id.
 func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
+// Google Service Account Credentials
 func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ServiceAccountCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string {
 		return v.ServiceAccountCredentials
@@ -25928,6 +27658,7 @@ func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
 	}).(ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput)
 }
 
+// Google Cloud Logging log id
 func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput) LogId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string {
 		if v == nil {
@@ -25937,6 +27668,7 @@ func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
+// GCP project id.
 func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string {
 		if v == nil {
@@ -25946,6 +27678,7 @@ func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
+// Google Service Account Credentials
 func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput) ServiceAccountCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) *string {
 		if v == nil {
@@ -25956,21 +27689,30 @@ func (o ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput)
 }
 
 type ServiceIntegrationEndpointExternalKafkaUserConfig struct {
-	BootstrapServers                   *string `pulumi:"bootstrapServers"`
-	SaslMechanism                      *string `pulumi:"saslMechanism"`
-	SaslPlainPassword                  *string `pulumi:"saslPlainPassword"`
-	SaslPlainUsername                  *string `pulumi:"saslPlainUsername"`
-	SecurityProtocol                   *string `pulumi:"securityProtocol"`
-	SslCaCert                          *string `pulumi:"sslCaCert"`
-	SslClientCert                      *string `pulumi:"sslClientCert"`
-	SslClientKey                       *string `pulumi:"sslClientKey"`
+	// Bootstrap servers
+	BootstrapServers *string `pulumi:"bootstrapServers"`
+	// The list of SASL mechanisms enabled in the Kafka server.
+	SaslMechanism *string `pulumi:"saslMechanism"`
+	// Password for SASL PLAIN mechanism in the Kafka server.
+	SaslPlainPassword *string `pulumi:"saslPlainPassword"`
+	// Username for SASL PLAIN mechanism in the Kafka server.
+	SaslPlainUsername *string `pulumi:"saslPlainUsername"`
+	// Security protocol
+	SecurityProtocol *string `pulumi:"securityProtocol"`
+	// PEM-encoded CA certificate
+	SslCaCert *string `pulumi:"sslCaCert"`
+	// PEM-encoded client certificate
+	SslClientCert *string `pulumi:"sslClientCert"`
+	// PEM-encoded client key
+	SslClientKey *string `pulumi:"sslClientKey"`
+	// The endpoint identification algorithm to validate server hostname using server certificate.
 	SslEndpointIdentificationAlgorithm *string `pulumi:"sslEndpointIdentificationAlgorithm"`
 }
 
 // ServiceIntegrationEndpointExternalKafkaUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalKafkaUserConfigArgs and ServiceIntegrationEndpointExternalKafkaUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalKafkaUserConfigInput` via:
 //
-//          ServiceIntegrationEndpointExternalKafkaUserConfigArgs{...}
+//	ServiceIntegrationEndpointExternalKafkaUserConfigArgs{...}
 type ServiceIntegrationEndpointExternalKafkaUserConfigInput interface {
 	pulumi.Input
 
@@ -25979,14 +27721,23 @@ type ServiceIntegrationEndpointExternalKafkaUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointExternalKafkaUserConfigArgs struct {
-	BootstrapServers                   pulumi.StringPtrInput `pulumi:"bootstrapServers"`
-	SaslMechanism                      pulumi.StringPtrInput `pulumi:"saslMechanism"`
-	SaslPlainPassword                  pulumi.StringPtrInput `pulumi:"saslPlainPassword"`
-	SaslPlainUsername                  pulumi.StringPtrInput `pulumi:"saslPlainUsername"`
-	SecurityProtocol                   pulumi.StringPtrInput `pulumi:"securityProtocol"`
-	SslCaCert                          pulumi.StringPtrInput `pulumi:"sslCaCert"`
-	SslClientCert                      pulumi.StringPtrInput `pulumi:"sslClientCert"`
-	SslClientKey                       pulumi.StringPtrInput `pulumi:"sslClientKey"`
+	// Bootstrap servers
+	BootstrapServers pulumi.StringPtrInput `pulumi:"bootstrapServers"`
+	// The list of SASL mechanisms enabled in the Kafka server.
+	SaslMechanism pulumi.StringPtrInput `pulumi:"saslMechanism"`
+	// Password for SASL PLAIN mechanism in the Kafka server.
+	SaslPlainPassword pulumi.StringPtrInput `pulumi:"saslPlainPassword"`
+	// Username for SASL PLAIN mechanism in the Kafka server.
+	SaslPlainUsername pulumi.StringPtrInput `pulumi:"saslPlainUsername"`
+	// Security protocol
+	SecurityProtocol pulumi.StringPtrInput `pulumi:"securityProtocol"`
+	// PEM-encoded CA certificate
+	SslCaCert pulumi.StringPtrInput `pulumi:"sslCaCert"`
+	// PEM-encoded client certificate
+	SslClientCert pulumi.StringPtrInput `pulumi:"sslClientCert"`
+	// PEM-encoded client key
+	SslClientKey pulumi.StringPtrInput `pulumi:"sslClientKey"`
+	// The endpoint identification algorithm to validate server hostname using server certificate.
 	SslEndpointIdentificationAlgorithm pulumi.StringPtrInput `pulumi:"sslEndpointIdentificationAlgorithm"`
 }
 
@@ -26013,11 +27764,11 @@ func (i ServiceIntegrationEndpointExternalKafkaUserConfigArgs) ToServiceIntegrat
 // ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointExternalKafkaUserConfigArgs, ServiceIntegrationEndpointExternalKafkaUserConfigPtr and ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput` via:
 //
-//          ServiceIntegrationEndpointExternalKafkaUserConfigArgs{...}
+//	        ServiceIntegrationEndpointExternalKafkaUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -26067,38 +27818,47 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) ToServiceIntegr
 	}).(ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput)
 }
 
+// Bootstrap servers
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) BootstrapServers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.BootstrapServers }).(pulumi.StringPtrOutput)
 }
 
+// The list of SASL mechanisms enabled in the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslMechanism() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslMechanism }).(pulumi.StringPtrOutput)
 }
 
+// Password for SASL PLAIN mechanism in the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslPlainPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslPlainPassword }).(pulumi.StringPtrOutput)
 }
 
+// Username for SASL PLAIN mechanism in the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslPlainUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslPlainUsername }).(pulumi.StringPtrOutput)
 }
 
+// Security protocol
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SecurityProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SecurityProtocol }).(pulumi.StringPtrOutput)
 }
 
+// PEM-encoded CA certificate
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslCaCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslCaCert }).(pulumi.StringPtrOutput)
 }
 
+// PEM-encoded client certificate
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslClientCert }).(pulumi.StringPtrOutput)
 }
 
+// PEM-encoded client key
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslClientKey }).(pulumi.StringPtrOutput)
 }
 
+// The endpoint identification algorithm to validate server hostname using server certificate.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslEndpointIdentificationAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		return v.SslEndpointIdentificationAlgorithm
@@ -26129,6 +27889,7 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) Elem() Servi
 	}).(ServiceIntegrationEndpointExternalKafkaUserConfigOutput)
 }
 
+// Bootstrap servers
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) BootstrapServers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -26138,6 +27899,7 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) BootstrapSer
 	}).(pulumi.StringPtrOutput)
 }
 
+// The list of SASL mechanisms enabled in the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslMechanism() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -26147,6 +27909,7 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslMechanis
 	}).(pulumi.StringPtrOutput)
 }
 
+// Password for SASL PLAIN mechanism in the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslPlainPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -26156,6 +27919,7 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslPlainPas
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username for SASL PLAIN mechanism in the Kafka server.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslPlainUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -26165,6 +27929,7 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SaslPlainUse
 	}).(pulumi.StringPtrOutput)
 }
 
+// Security protocol
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -26174,6 +27939,7 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SecurityProt
 	}).(pulumi.StringPtrOutput)
 }
 
+// PEM-encoded CA certificate
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslCaCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -26183,6 +27949,7 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslCaCert() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// PEM-encoded client certificate
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -26192,6 +27959,7 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslClientCer
 	}).(pulumi.StringPtrOutput)
 }
 
+// PEM-encoded client key
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -26201,6 +27969,7 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslClientKey
 	}).(pulumi.StringPtrOutput)
 }
 
+// The endpoint identification algorithm to validate server hostname using server certificate.
 func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslEndpointIdentificationAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalKafkaUserConfig) *string {
 		if v == nil {
@@ -26211,16 +27980,20 @@ func (o ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput) SslEndpointI
 }
 
 type ServiceIntegrationEndpointExternalSchemaRegistryUserConfig struct {
-	Authentication    *string `pulumi:"authentication"`
+	// Authentication method
+	Authentication *string `pulumi:"authentication"`
+	// Basic authentication password
 	BasicAuthPassword *string `pulumi:"basicAuthPassword"`
+	// Basic authentication user name
 	BasicAuthUsername *string `pulumi:"basicAuthUsername"`
-	Url               *string `pulumi:"url"`
+	// Schema Registry URL
+	Url *string `pulumi:"url"`
 }
 
 // ServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput is an input type that accepts ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs and ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput` via:
 //
-//          ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{...}
+//	ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{...}
 type ServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput interface {
 	pulumi.Input
 
@@ -26229,10 +28002,14 @@ type ServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs struct {
-	Authentication    pulumi.StringPtrInput `pulumi:"authentication"`
+	// Authentication method
+	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
+	// Basic authentication password
 	BasicAuthPassword pulumi.StringPtrInput `pulumi:"basicAuthPassword"`
+	// Basic authentication user name
 	BasicAuthUsername pulumi.StringPtrInput `pulumi:"basicAuthUsername"`
-	Url               pulumi.StringPtrInput `pulumi:"url"`
+	// Schema Registry URL
+	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ElementType() reflect.Type {
@@ -26258,11 +28035,11 @@ func (i ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ToServic
 // ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs, ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtr and ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput` via:
 //
-//          ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{...}
+//	        ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -26312,18 +28089,22 @@ func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) ToServ
 	}).(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput)
 }
 
+// Authentication method
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) Authentication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.Authentication }).(pulumi.StringPtrOutput)
 }
 
+// Basic authentication password
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) BasicAuthPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.BasicAuthPassword }).(pulumi.StringPtrOutput)
 }
 
+// Basic authentication user name
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) BasicAuthUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.BasicAuthUsername }).(pulumi.StringPtrOutput)
 }
 
+// Schema Registry URL
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -26352,6 +28133,7 @@ func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Ele
 	}).(ServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput)
 }
 
+// Authentication method
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Authentication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
 		if v == nil {
@@ -26361,6 +28143,7 @@ func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Aut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Basic authentication password
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) BasicAuthPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
 		if v == nil {
@@ -26370,6 +28153,7 @@ func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Bas
 	}).(pulumi.StringPtrOutput)
 }
 
+// Basic authentication user name
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) BasicAuthUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
 		if v == nil {
@@ -26379,6 +28163,7 @@ func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Bas
 	}).(pulumi.StringPtrOutput)
 }
 
+// Schema Registry URL
 func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
 		if v == nil {
@@ -26389,14 +28174,16 @@ func (o ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput) Url
 }
 
 type ServiceIntegrationEndpointJolokiaUserConfig struct {
+	// Jolokia basic authentication password
 	BasicAuthPassword *string `pulumi:"basicAuthPassword"`
+	// Jolokia basic authentication username
 	BasicAuthUsername *string `pulumi:"basicAuthUsername"`
 }
 
 // ServiceIntegrationEndpointJolokiaUserConfigInput is an input type that accepts ServiceIntegrationEndpointJolokiaUserConfigArgs and ServiceIntegrationEndpointJolokiaUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointJolokiaUserConfigInput` via:
 //
-//          ServiceIntegrationEndpointJolokiaUserConfigArgs{...}
+//	ServiceIntegrationEndpointJolokiaUserConfigArgs{...}
 type ServiceIntegrationEndpointJolokiaUserConfigInput interface {
 	pulumi.Input
 
@@ -26405,7 +28192,9 @@ type ServiceIntegrationEndpointJolokiaUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointJolokiaUserConfigArgs struct {
+	// Jolokia basic authentication password
 	BasicAuthPassword pulumi.StringPtrInput `pulumi:"basicAuthPassword"`
+	// Jolokia basic authentication username
 	BasicAuthUsername pulumi.StringPtrInput `pulumi:"basicAuthUsername"`
 }
 
@@ -26432,11 +28221,11 @@ func (i ServiceIntegrationEndpointJolokiaUserConfigArgs) ToServiceIntegrationEnd
 // ServiceIntegrationEndpointJolokiaUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointJolokiaUserConfigArgs, ServiceIntegrationEndpointJolokiaUserConfigPtr and ServiceIntegrationEndpointJolokiaUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointJolokiaUserConfigPtrInput` via:
 //
-//          ServiceIntegrationEndpointJolokiaUserConfigArgs{...}
+//	        ServiceIntegrationEndpointJolokiaUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationEndpointJolokiaUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -26486,10 +28275,12 @@ func (o ServiceIntegrationEndpointJolokiaUserConfigOutput) ToServiceIntegrationE
 	}).(ServiceIntegrationEndpointJolokiaUserConfigPtrOutput)
 }
 
+// Jolokia basic authentication password
 func (o ServiceIntegrationEndpointJolokiaUserConfigOutput) BasicAuthPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointJolokiaUserConfig) *string { return v.BasicAuthPassword }).(pulumi.StringPtrOutput)
 }
 
+// Jolokia basic authentication username
 func (o ServiceIntegrationEndpointJolokiaUserConfigOutput) BasicAuthUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointJolokiaUserConfig) *string { return v.BasicAuthUsername }).(pulumi.StringPtrOutput)
 }
@@ -26518,6 +28309,7 @@ func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) Elem() ServiceInte
 	}).(ServiceIntegrationEndpointJolokiaUserConfigOutput)
 }
 
+// Jolokia basic authentication password
 func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) BasicAuthPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointJolokiaUserConfig) *string {
 		if v == nil {
@@ -26527,6 +28319,7 @@ func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) BasicAuthPassword(
 	}).(pulumi.StringPtrOutput)
 }
 
+// Jolokia basic authentication username
 func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) BasicAuthUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointJolokiaUserConfig) *string {
 		if v == nil {
@@ -26537,14 +28330,16 @@ func (o ServiceIntegrationEndpointJolokiaUserConfigPtrOutput) BasicAuthUsername(
 }
 
 type ServiceIntegrationEndpointPrometheusUserConfig struct {
+	// Prometheus basic authentication password
 	BasicAuthPassword *string `pulumi:"basicAuthPassword"`
+	// Prometheus basic authentication username
 	BasicAuthUsername *string `pulumi:"basicAuthUsername"`
 }
 
 // ServiceIntegrationEndpointPrometheusUserConfigInput is an input type that accepts ServiceIntegrationEndpointPrometheusUserConfigArgs and ServiceIntegrationEndpointPrometheusUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointPrometheusUserConfigInput` via:
 //
-//          ServiceIntegrationEndpointPrometheusUserConfigArgs{...}
+//	ServiceIntegrationEndpointPrometheusUserConfigArgs{...}
 type ServiceIntegrationEndpointPrometheusUserConfigInput interface {
 	pulumi.Input
 
@@ -26553,7 +28348,9 @@ type ServiceIntegrationEndpointPrometheusUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointPrometheusUserConfigArgs struct {
+	// Prometheus basic authentication password
 	BasicAuthPassword pulumi.StringPtrInput `pulumi:"basicAuthPassword"`
+	// Prometheus basic authentication username
 	BasicAuthUsername pulumi.StringPtrInput `pulumi:"basicAuthUsername"`
 }
 
@@ -26580,11 +28377,11 @@ func (i ServiceIntegrationEndpointPrometheusUserConfigArgs) ToServiceIntegration
 // ServiceIntegrationEndpointPrometheusUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointPrometheusUserConfigArgs, ServiceIntegrationEndpointPrometheusUserConfigPtr and ServiceIntegrationEndpointPrometheusUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointPrometheusUserConfigPtrInput` via:
 //
-//          ServiceIntegrationEndpointPrometheusUserConfigArgs{...}
+//	        ServiceIntegrationEndpointPrometheusUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationEndpointPrometheusUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -26634,10 +28431,12 @@ func (o ServiceIntegrationEndpointPrometheusUserConfigOutput) ToServiceIntegrati
 	}).(ServiceIntegrationEndpointPrometheusUserConfigPtrOutput)
 }
 
+// Prometheus basic authentication password
 func (o ServiceIntegrationEndpointPrometheusUserConfigOutput) BasicAuthPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointPrometheusUserConfig) *string { return v.BasicAuthPassword }).(pulumi.StringPtrOutput)
 }
 
+// Prometheus basic authentication username
 func (o ServiceIntegrationEndpointPrometheusUserConfigOutput) BasicAuthUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointPrometheusUserConfig) *string { return v.BasicAuthUsername }).(pulumi.StringPtrOutput)
 }
@@ -26666,6 +28465,7 @@ func (o ServiceIntegrationEndpointPrometheusUserConfigPtrOutput) Elem() ServiceI
 	}).(ServiceIntegrationEndpointPrometheusUserConfigOutput)
 }
 
+// Prometheus basic authentication password
 func (o ServiceIntegrationEndpointPrometheusUserConfigPtrOutput) BasicAuthPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointPrometheusUserConfig) *string {
 		if v == nil {
@@ -26675,6 +28475,7 @@ func (o ServiceIntegrationEndpointPrometheusUserConfigPtrOutput) BasicAuthPasswo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Prometheus basic authentication username
 func (o ServiceIntegrationEndpointPrometheusUserConfigPtrOutput) BasicAuthUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointPrometheusUserConfig) *string {
 		if v == nil {
@@ -26685,21 +28486,30 @@ func (o ServiceIntegrationEndpointPrometheusUserConfigPtrOutput) BasicAuthUserna
 }
 
 type ServiceIntegrationEndpointRsyslogUserConfig struct {
-	Ca      *string `pulumi:"ca"`
-	Cert    *string `pulumi:"cert"`
-	Format  *string `pulumi:"format"`
-	Key     *string `pulumi:"key"`
+	// PEM encoded CA certificate
+	Ca *string `pulumi:"ca"`
+	// PEM encoded client certificate
+	Cert *string `pulumi:"cert"`
+	// message format
+	Format *string `pulumi:"format"`
+	// PEM encoded client key
+	Key *string `pulumi:"key"`
+	// custom syslog message format
 	Logline *string `pulumi:"logline"`
-	Port    *string `pulumi:"port"`
-	Sd      *string `pulumi:"sd"`
-	Server  *string `pulumi:"server"`
-	Tls     *string `pulumi:"tls"`
+	// rsyslog server port
+	Port *string `pulumi:"port"`
+	// Structured data block for log message
+	Sd *string `pulumi:"sd"`
+	// rsyslog server IP address or hostname
+	Server *string `pulumi:"server"`
+	// Require TLS
+	Tls *string `pulumi:"tls"`
 }
 
 // ServiceIntegrationEndpointRsyslogUserConfigInput is an input type that accepts ServiceIntegrationEndpointRsyslogUserConfigArgs and ServiceIntegrationEndpointRsyslogUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointRsyslogUserConfigInput` via:
 //
-//          ServiceIntegrationEndpointRsyslogUserConfigArgs{...}
+//	ServiceIntegrationEndpointRsyslogUserConfigArgs{...}
 type ServiceIntegrationEndpointRsyslogUserConfigInput interface {
 	pulumi.Input
 
@@ -26708,15 +28518,24 @@ type ServiceIntegrationEndpointRsyslogUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointRsyslogUserConfigArgs struct {
-	Ca      pulumi.StringPtrInput `pulumi:"ca"`
-	Cert    pulumi.StringPtrInput `pulumi:"cert"`
-	Format  pulumi.StringPtrInput `pulumi:"format"`
-	Key     pulumi.StringPtrInput `pulumi:"key"`
+	// PEM encoded CA certificate
+	Ca pulumi.StringPtrInput `pulumi:"ca"`
+	// PEM encoded client certificate
+	Cert pulumi.StringPtrInput `pulumi:"cert"`
+	// message format
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// PEM encoded client key
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// custom syslog message format
 	Logline pulumi.StringPtrInput `pulumi:"logline"`
-	Port    pulumi.StringPtrInput `pulumi:"port"`
-	Sd      pulumi.StringPtrInput `pulumi:"sd"`
-	Server  pulumi.StringPtrInput `pulumi:"server"`
-	Tls     pulumi.StringPtrInput `pulumi:"tls"`
+	// rsyslog server port
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Structured data block for log message
+	Sd pulumi.StringPtrInput `pulumi:"sd"`
+	// rsyslog server IP address or hostname
+	Server pulumi.StringPtrInput `pulumi:"server"`
+	// Require TLS
+	Tls pulumi.StringPtrInput `pulumi:"tls"`
 }
 
 func (ServiceIntegrationEndpointRsyslogUserConfigArgs) ElementType() reflect.Type {
@@ -26742,11 +28561,11 @@ func (i ServiceIntegrationEndpointRsyslogUserConfigArgs) ToServiceIntegrationEnd
 // ServiceIntegrationEndpointRsyslogUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointRsyslogUserConfigArgs, ServiceIntegrationEndpointRsyslogUserConfigPtr and ServiceIntegrationEndpointRsyslogUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointRsyslogUserConfigPtrInput` via:
 //
-//          ServiceIntegrationEndpointRsyslogUserConfigArgs{...}
+//	        ServiceIntegrationEndpointRsyslogUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationEndpointRsyslogUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -26796,38 +28615,47 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) ToServiceIntegrationE
 	}).(ServiceIntegrationEndpointRsyslogUserConfigPtrOutput)
 }
 
+// PEM encoded CA certificate
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Ca() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Ca }).(pulumi.StringPtrOutput)
 }
 
+// PEM encoded client certificate
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Cert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Cert }).(pulumi.StringPtrOutput)
 }
 
+// message format
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// PEM encoded client key
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// custom syslog message format
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Logline() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Logline }).(pulumi.StringPtrOutput)
 }
 
+// rsyslog server port
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
+// Structured data block for log message
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Sd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Sd }).(pulumi.StringPtrOutput)
 }
 
+// rsyslog server IP address or hostname
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
 
+// Require TLS
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Tls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Tls }).(pulumi.StringPtrOutput)
 }
@@ -26856,6 +28684,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Elem() ServiceInte
 	}).(ServiceIntegrationEndpointRsyslogUserConfigOutput)
 }
 
+// PEM encoded CA certificate
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Ca() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -26865,6 +28694,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Ca() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// PEM encoded client certificate
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Cert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -26874,6 +28704,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Cert() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// message format
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -26883,6 +28714,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Format() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// PEM encoded client key
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -26892,6 +28724,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Key() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// custom syslog message format
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Logline() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -26901,6 +28734,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Logline() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// rsyslog server port
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -26910,6 +28744,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Port() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Structured data block for log message
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Sd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -26919,6 +28754,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Sd() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// rsyslog server IP address or hostname
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -26928,6 +28764,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Server() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Require TLS
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Tls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -26938,15 +28775,18 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Tls() pulumi.Strin
 }
 
 type ServiceIntegrationEndpointSignalfxUserConfig struct {
+	// list of metrics to send
 	EnabledMetrics []string `pulumi:"enabledMetrics"`
-	SignalfxApiKey *string  `pulumi:"signalfxApiKey"`
-	SignalfxRealm  *string  `pulumi:"signalfxRealm"`
+	// SignalFX API key
+	SignalfxApiKey *string `pulumi:"signalfxApiKey"`
+	// SignalFX realm
+	SignalfxRealm *string `pulumi:"signalfxRealm"`
 }
 
 // ServiceIntegrationEndpointSignalfxUserConfigInput is an input type that accepts ServiceIntegrationEndpointSignalfxUserConfigArgs and ServiceIntegrationEndpointSignalfxUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointSignalfxUserConfigInput` via:
 //
-//          ServiceIntegrationEndpointSignalfxUserConfigArgs{...}
+//	ServiceIntegrationEndpointSignalfxUserConfigArgs{...}
 type ServiceIntegrationEndpointSignalfxUserConfigInput interface {
 	pulumi.Input
 
@@ -26955,9 +28795,12 @@ type ServiceIntegrationEndpointSignalfxUserConfigInput interface {
 }
 
 type ServiceIntegrationEndpointSignalfxUserConfigArgs struct {
+	// list of metrics to send
 	EnabledMetrics pulumi.StringArrayInput `pulumi:"enabledMetrics"`
-	SignalfxApiKey pulumi.StringPtrInput   `pulumi:"signalfxApiKey"`
-	SignalfxRealm  pulumi.StringPtrInput   `pulumi:"signalfxRealm"`
+	// SignalFX API key
+	SignalfxApiKey pulumi.StringPtrInput `pulumi:"signalfxApiKey"`
+	// SignalFX realm
+	SignalfxRealm pulumi.StringPtrInput `pulumi:"signalfxRealm"`
 }
 
 func (ServiceIntegrationEndpointSignalfxUserConfigArgs) ElementType() reflect.Type {
@@ -26983,11 +28826,11 @@ func (i ServiceIntegrationEndpointSignalfxUserConfigArgs) ToServiceIntegrationEn
 // ServiceIntegrationEndpointSignalfxUserConfigPtrInput is an input type that accepts ServiceIntegrationEndpointSignalfxUserConfigArgs, ServiceIntegrationEndpointSignalfxUserConfigPtr and ServiceIntegrationEndpointSignalfxUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationEndpointSignalfxUserConfigPtrInput` via:
 //
-//          ServiceIntegrationEndpointSignalfxUserConfigArgs{...}
+//	        ServiceIntegrationEndpointSignalfxUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationEndpointSignalfxUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -27037,14 +28880,17 @@ func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) ToServiceIntegration
 	}).(ServiceIntegrationEndpointSignalfxUserConfigPtrOutput)
 }
 
+// list of metrics to send
 func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) EnabledMetrics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointSignalfxUserConfig) []string { return v.EnabledMetrics }).(pulumi.StringArrayOutput)
 }
 
+// SignalFX API key
 func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) SignalfxApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointSignalfxUserConfig) *string { return v.SignalfxApiKey }).(pulumi.StringPtrOutput)
 }
 
+// SignalFX realm
 func (o ServiceIntegrationEndpointSignalfxUserConfigOutput) SignalfxRealm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointSignalfxUserConfig) *string { return v.SignalfxRealm }).(pulumi.StringPtrOutput)
 }
@@ -27073,6 +28919,7 @@ func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) Elem() ServiceInt
 	}).(ServiceIntegrationEndpointSignalfxUserConfigOutput)
 }
 
+// list of metrics to send
 func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) EnabledMetrics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointSignalfxUserConfig) []string {
 		if v == nil {
@@ -27082,6 +28929,7 @@ func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) EnabledMetrics() 
 	}).(pulumi.StringArrayOutput)
 }
 
+// SignalFX API key
 func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) SignalfxApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointSignalfxUserConfig) *string {
 		if v == nil {
@@ -27091,6 +28939,7 @@ func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) SignalfxApiKey() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// SignalFX realm
 func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) SignalfxRealm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointSignalfxUserConfig) *string {
 		if v == nil {
@@ -27101,13 +28950,14 @@ func (o ServiceIntegrationEndpointSignalfxUserConfigPtrOutput) SignalfxRealm() p
 }
 
 type ServiceIntegrationKafkaConnectUserConfig struct {
+	// Kafka Connect service configuration values
 	KafkaConnect *ServiceIntegrationKafkaConnectUserConfigKafkaConnect `pulumi:"kafkaConnect"`
 }
 
 // ServiceIntegrationKafkaConnectUserConfigInput is an input type that accepts ServiceIntegrationKafkaConnectUserConfigArgs and ServiceIntegrationKafkaConnectUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaConnectUserConfigInput` via:
 //
-//          ServiceIntegrationKafkaConnectUserConfigArgs{...}
+//	ServiceIntegrationKafkaConnectUserConfigArgs{...}
 type ServiceIntegrationKafkaConnectUserConfigInput interface {
 	pulumi.Input
 
@@ -27116,6 +28966,7 @@ type ServiceIntegrationKafkaConnectUserConfigInput interface {
 }
 
 type ServiceIntegrationKafkaConnectUserConfigArgs struct {
+	// Kafka Connect service configuration values
 	KafkaConnect ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput `pulumi:"kafkaConnect"`
 }
 
@@ -27142,11 +28993,11 @@ func (i ServiceIntegrationKafkaConnectUserConfigArgs) ToServiceIntegrationKafkaC
 // ServiceIntegrationKafkaConnectUserConfigPtrInput is an input type that accepts ServiceIntegrationKafkaConnectUserConfigArgs, ServiceIntegrationKafkaConnectUserConfigPtr and ServiceIntegrationKafkaConnectUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaConnectUserConfigPtrInput` via:
 //
-//          ServiceIntegrationKafkaConnectUserConfigArgs{...}
+//	        ServiceIntegrationKafkaConnectUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationKafkaConnectUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -27196,6 +29047,7 @@ func (o ServiceIntegrationKafkaConnectUserConfigOutput) ToServiceIntegrationKafk
 	}).(ServiceIntegrationKafkaConnectUserConfigPtrOutput)
 }
 
+// Kafka Connect service configuration values
 func (o ServiceIntegrationKafkaConnectUserConfigOutput) KafkaConnect() ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationKafkaConnectUserConfig) *ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
 		return v.KafkaConnect
@@ -27226,6 +29078,7 @@ func (o ServiceIntegrationKafkaConnectUserConfigPtrOutput) Elem() ServiceIntegra
 	}).(ServiceIntegrationKafkaConnectUserConfigOutput)
 }
 
+// Kafka Connect service configuration values
 func (o ServiceIntegrationKafkaConnectUserConfigPtrOutput) KafkaConnect() ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationKafkaConnectUserConfig) *ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
 		if v == nil {
@@ -27245,7 +29098,7 @@ type ServiceIntegrationKafkaConnectUserConfigKafkaConnect struct {
 // ServiceIntegrationKafkaConnectUserConfigKafkaConnectInput is an input type that accepts ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs and ServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaConnectUserConfigKafkaConnectInput` via:
 //
-//          ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
+//	ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
 type ServiceIntegrationKafkaConnectUserConfigKafkaConnectInput interface {
 	pulumi.Input
 
@@ -27283,11 +29136,11 @@ func (i ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToServiceInteg
 // ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput is an input type that accepts ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs, ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtr and ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput` via:
 //
-//          ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
+//	        ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput interface {
 	pulumi.Input
 
@@ -27414,13 +29267,14 @@ func (o ServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) StatusSto
 }
 
 type ServiceIntegrationKafkaLogsUserConfig struct {
+	// Topic name
 	KafkaTopic *string `pulumi:"kafkaTopic"`
 }
 
 // ServiceIntegrationKafkaLogsUserConfigInput is an input type that accepts ServiceIntegrationKafkaLogsUserConfigArgs and ServiceIntegrationKafkaLogsUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaLogsUserConfigInput` via:
 //
-//          ServiceIntegrationKafkaLogsUserConfigArgs{...}
+//	ServiceIntegrationKafkaLogsUserConfigArgs{...}
 type ServiceIntegrationKafkaLogsUserConfigInput interface {
 	pulumi.Input
 
@@ -27429,6 +29283,7 @@ type ServiceIntegrationKafkaLogsUserConfigInput interface {
 }
 
 type ServiceIntegrationKafkaLogsUserConfigArgs struct {
+	// Topic name
 	KafkaTopic pulumi.StringPtrInput `pulumi:"kafkaTopic"`
 }
 
@@ -27455,11 +29310,11 @@ func (i ServiceIntegrationKafkaLogsUserConfigArgs) ToServiceIntegrationKafkaLogs
 // ServiceIntegrationKafkaLogsUserConfigPtrInput is an input type that accepts ServiceIntegrationKafkaLogsUserConfigArgs, ServiceIntegrationKafkaLogsUserConfigPtr and ServiceIntegrationKafkaLogsUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaLogsUserConfigPtrInput` via:
 //
-//          ServiceIntegrationKafkaLogsUserConfigArgs{...}
+//	        ServiceIntegrationKafkaLogsUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationKafkaLogsUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -27509,6 +29364,7 @@ func (o ServiceIntegrationKafkaLogsUserConfigOutput) ToServiceIntegrationKafkaLo
 	}).(ServiceIntegrationKafkaLogsUserConfigPtrOutput)
 }
 
+// Topic name
 func (o ServiceIntegrationKafkaLogsUserConfigOutput) KafkaTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationKafkaLogsUserConfig) *string { return v.KafkaTopic }).(pulumi.StringPtrOutput)
 }
@@ -27537,6 +29393,7 @@ func (o ServiceIntegrationKafkaLogsUserConfigPtrOutput) Elem() ServiceIntegratio
 	}).(ServiceIntegrationKafkaLogsUserConfigOutput)
 }
 
+// Topic name
 func (o ServiceIntegrationKafkaLogsUserConfigPtrOutput) KafkaTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationKafkaLogsUserConfig) *string {
 		if v == nil {
@@ -27547,14 +29404,16 @@ func (o ServiceIntegrationKafkaLogsUserConfigPtrOutput) KafkaTopic() pulumi.Stri
 }
 
 type ServiceIntegrationKafkaMirrormakerUserConfig struct {
-	ClusterAlias     *string                                                       `pulumi:"clusterAlias"`
+	// Kafka cluster alias
+	ClusterAlias *string `pulumi:"clusterAlias"`
+	// Kafka MirrorMaker configuration values
 	KafkaMirrormaker *ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
 }
 
 // ServiceIntegrationKafkaMirrormakerUserConfigInput is an input type that accepts ServiceIntegrationKafkaMirrormakerUserConfigArgs and ServiceIntegrationKafkaMirrormakerUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaMirrormakerUserConfigInput` via:
 //
-//          ServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
+//	ServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
 type ServiceIntegrationKafkaMirrormakerUserConfigInput interface {
 	pulumi.Input
 
@@ -27563,7 +29422,9 @@ type ServiceIntegrationKafkaMirrormakerUserConfigInput interface {
 }
 
 type ServiceIntegrationKafkaMirrormakerUserConfigArgs struct {
-	ClusterAlias     pulumi.StringPtrInput                                                `pulumi:"clusterAlias"`
+	// Kafka cluster alias
+	ClusterAlias pulumi.StringPtrInput `pulumi:"clusterAlias"`
+	// Kafka MirrorMaker configuration values
 	KafkaMirrormaker ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
 }
 
@@ -27590,11 +29451,11 @@ func (i ServiceIntegrationKafkaMirrormakerUserConfigArgs) ToServiceIntegrationKa
 // ServiceIntegrationKafkaMirrormakerUserConfigPtrInput is an input type that accepts ServiceIntegrationKafkaMirrormakerUserConfigArgs, ServiceIntegrationKafkaMirrormakerUserConfigPtr and ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaMirrormakerUserConfigPtrInput` via:
 //
-//          ServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
+//	        ServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationKafkaMirrormakerUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -27644,10 +29505,12 @@ func (o ServiceIntegrationKafkaMirrormakerUserConfigOutput) ToServiceIntegration
 	}).(ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput)
 }
 
+// Kafka cluster alias
 func (o ServiceIntegrationKafkaMirrormakerUserConfigOutput) ClusterAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationKafkaMirrormakerUserConfig) *string { return v.ClusterAlias }).(pulumi.StringPtrOutput)
 }
 
+// Kafka MirrorMaker configuration values
 func (o ServiceIntegrationKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationKafkaMirrormakerUserConfig) *ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return v.KafkaMirrormaker
@@ -27678,6 +29541,7 @@ func (o ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) Elem() ServiceInt
 	}).(ServiceIntegrationKafkaMirrormakerUserConfigOutput)
 }
 
+// Kafka cluster alias
 func (o ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) ClusterAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationKafkaMirrormakerUserConfig) *string {
 		if v == nil {
@@ -27687,6 +29551,7 @@ func (o ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) ClusterAlias() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Kafka MirrorMaker configuration values
 func (o ServiceIntegrationKafkaMirrormakerUserConfigPtrOutput) KafkaMirrormaker() ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationKafkaMirrormakerUserConfig) *ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
 		if v == nil {
@@ -27707,7 +29572,7 @@ type ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker struct {
 // ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs and ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput` via:
 //
-//          ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//	ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
 type ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
 	pulumi.Input
 
@@ -27746,11 +29611,11 @@ func (i ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToServ
 // ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput is an input type that accepts ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs, ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtr and ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput` via:
 //
-//          ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//	        ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput interface {
 	pulumi.Input
 
@@ -27900,14 +29765,16 @@ func (o ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) P
 }
 
 type ServiceIntegrationLogsUserConfig struct {
+	// Elasticsearch index retention limit
 	ElasticsearchIndexDaysMax *string `pulumi:"elasticsearchIndexDaysMax"`
-	ElasticsearchIndexPrefix  *string `pulumi:"elasticsearchIndexPrefix"`
+	// Elasticsearch index prefix
+	ElasticsearchIndexPrefix *string `pulumi:"elasticsearchIndexPrefix"`
 }
 
 // ServiceIntegrationLogsUserConfigInput is an input type that accepts ServiceIntegrationLogsUserConfigArgs and ServiceIntegrationLogsUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationLogsUserConfigInput` via:
 //
-//          ServiceIntegrationLogsUserConfigArgs{...}
+//	ServiceIntegrationLogsUserConfigArgs{...}
 type ServiceIntegrationLogsUserConfigInput interface {
 	pulumi.Input
 
@@ -27916,8 +29783,10 @@ type ServiceIntegrationLogsUserConfigInput interface {
 }
 
 type ServiceIntegrationLogsUserConfigArgs struct {
+	// Elasticsearch index retention limit
 	ElasticsearchIndexDaysMax pulumi.StringPtrInput `pulumi:"elasticsearchIndexDaysMax"`
-	ElasticsearchIndexPrefix  pulumi.StringPtrInput `pulumi:"elasticsearchIndexPrefix"`
+	// Elasticsearch index prefix
+	ElasticsearchIndexPrefix pulumi.StringPtrInput `pulumi:"elasticsearchIndexPrefix"`
 }
 
 func (ServiceIntegrationLogsUserConfigArgs) ElementType() reflect.Type {
@@ -27943,11 +29812,11 @@ func (i ServiceIntegrationLogsUserConfigArgs) ToServiceIntegrationLogsUserConfig
 // ServiceIntegrationLogsUserConfigPtrInput is an input type that accepts ServiceIntegrationLogsUserConfigArgs, ServiceIntegrationLogsUserConfigPtr and ServiceIntegrationLogsUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationLogsUserConfigPtrInput` via:
 //
-//          ServiceIntegrationLogsUserConfigArgs{...}
+//	        ServiceIntegrationLogsUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationLogsUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -27997,10 +29866,12 @@ func (o ServiceIntegrationLogsUserConfigOutput) ToServiceIntegrationLogsUserConf
 	}).(ServiceIntegrationLogsUserConfigPtrOutput)
 }
 
+// Elasticsearch index retention limit
 func (o ServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexDaysMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationLogsUserConfig) *string { return v.ElasticsearchIndexDaysMax }).(pulumi.StringPtrOutput)
 }
 
+// Elasticsearch index prefix
 func (o ServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationLogsUserConfig) *string { return v.ElasticsearchIndexPrefix }).(pulumi.StringPtrOutput)
 }
@@ -28029,6 +29900,7 @@ func (o ServiceIntegrationLogsUserConfigPtrOutput) Elem() ServiceIntegrationLogs
 	}).(ServiceIntegrationLogsUserConfigOutput)
 }
 
+// Elasticsearch index retention limit
 func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexDaysMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationLogsUserConfig) *string {
 		if v == nil {
@@ -28038,6 +29910,7 @@ func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexDaysMax() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// Elasticsearch index prefix
 func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationLogsUserConfig) *string {
 		if v == nil {
@@ -28048,17 +29921,22 @@ func (o ServiceIntegrationLogsUserConfigPtrOutput) ElasticsearchIndexPrefix() pu
 }
 
 type ServiceIntegrationMetricsUserConfig struct {
-	Database      *string                                         `pulumi:"database"`
-	RetentionDays *string                                         `pulumi:"retentionDays"`
-	RoUsername    *string                                         `pulumi:"roUsername"`
-	SourceMysql   *ServiceIntegrationMetricsUserConfigSourceMysql `pulumi:"sourceMysql"`
-	Username      *string                                         `pulumi:"username"`
+	// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+	Database *string `pulumi:"database"`
+	// Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+	RetentionDays *string `pulumi:"retentionDays"`
+	// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+	RoUsername *string `pulumi:"roUsername"`
+	// Configuration options for metrics where source service is MySQL
+	SourceMysql *ServiceIntegrationMetricsUserConfigSourceMysql `pulumi:"sourceMysql"`
+	// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+	Username *string `pulumi:"username"`
 }
 
 // ServiceIntegrationMetricsUserConfigInput is an input type that accepts ServiceIntegrationMetricsUserConfigArgs and ServiceIntegrationMetricsUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationMetricsUserConfigInput` via:
 //
-//          ServiceIntegrationMetricsUserConfigArgs{...}
+//	ServiceIntegrationMetricsUserConfigArgs{...}
 type ServiceIntegrationMetricsUserConfigInput interface {
 	pulumi.Input
 
@@ -28067,11 +29945,16 @@ type ServiceIntegrationMetricsUserConfigInput interface {
 }
 
 type ServiceIntegrationMetricsUserConfigArgs struct {
-	Database      pulumi.StringPtrInput                                  `pulumi:"database"`
-	RetentionDays pulumi.StringPtrInput                                  `pulumi:"retentionDays"`
-	RoUsername    pulumi.StringPtrInput                                  `pulumi:"roUsername"`
-	SourceMysql   ServiceIntegrationMetricsUserConfigSourceMysqlPtrInput `pulumi:"sourceMysql"`
-	Username      pulumi.StringPtrInput                                  `pulumi:"username"`
+	// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+	RetentionDays pulumi.StringPtrInput `pulumi:"retentionDays"`
+	// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+	RoUsername pulumi.StringPtrInput `pulumi:"roUsername"`
+	// Configuration options for metrics where source service is MySQL
+	SourceMysql ServiceIntegrationMetricsUserConfigSourceMysqlPtrInput `pulumi:"sourceMysql"`
+	// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ServiceIntegrationMetricsUserConfigArgs) ElementType() reflect.Type {
@@ -28097,11 +29980,11 @@ func (i ServiceIntegrationMetricsUserConfigArgs) ToServiceIntegrationMetricsUser
 // ServiceIntegrationMetricsUserConfigPtrInput is an input type that accepts ServiceIntegrationMetricsUserConfigArgs, ServiceIntegrationMetricsUserConfigPtr and ServiceIntegrationMetricsUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationMetricsUserConfigPtrInput` via:
 //
-//          ServiceIntegrationMetricsUserConfigArgs{...}
+//	        ServiceIntegrationMetricsUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationMetricsUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -28151,24 +30034,29 @@ func (o ServiceIntegrationMetricsUserConfigOutput) ToServiceIntegrationMetricsUs
 	}).(ServiceIntegrationMetricsUserConfigPtrOutput)
 }
 
+// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
 func (o ServiceIntegrationMetricsUserConfigOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
+// Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
 func (o ServiceIntegrationMetricsUserConfigOutput) RetentionDays() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *string { return v.RetentionDays }).(pulumi.StringPtrOutput)
 }
 
+// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
 func (o ServiceIntegrationMetricsUserConfigOutput) RoUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *string { return v.RoUsername }).(pulumi.StringPtrOutput)
 }
 
+// Configuration options for metrics where source service is MySQL
 func (o ServiceIntegrationMetricsUserConfigOutput) SourceMysql() ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *ServiceIntegrationMetricsUserConfigSourceMysql {
 		return v.SourceMysql
 	}).(ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
 }
 
+// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
 func (o ServiceIntegrationMetricsUserConfigOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationMetricsUserConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -28197,6 +30085,7 @@ func (o ServiceIntegrationMetricsUserConfigPtrOutput) Elem() ServiceIntegrationM
 	}).(ServiceIntegrationMetricsUserConfigOutput)
 }
 
+// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
 func (o ServiceIntegrationMetricsUserConfigPtrOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *string {
 		if v == nil {
@@ -28206,6 +30095,7 @@ func (o ServiceIntegrationMetricsUserConfigPtrOutput) Database() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
 func (o ServiceIntegrationMetricsUserConfigPtrOutput) RetentionDays() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *string {
 		if v == nil {
@@ -28215,6 +30105,7 @@ func (o ServiceIntegrationMetricsUserConfigPtrOutput) RetentionDays() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
 func (o ServiceIntegrationMetricsUserConfigPtrOutput) RoUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *string {
 		if v == nil {
@@ -28224,6 +30115,7 @@ func (o ServiceIntegrationMetricsUserConfigPtrOutput) RoUsername() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configuration options for metrics where source service is MySQL
 func (o ServiceIntegrationMetricsUserConfigPtrOutput) SourceMysql() ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *ServiceIntegrationMetricsUserConfigSourceMysql {
 		if v == nil {
@@ -28233,6 +30125,7 @@ func (o ServiceIntegrationMetricsUserConfigPtrOutput) SourceMysql() ServiceInteg
 	}).(ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
 }
 
+// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
 func (o ServiceIntegrationMetricsUserConfigPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationMetricsUserConfig) *string {
 		if v == nil {
@@ -28249,7 +30142,7 @@ type ServiceIntegrationMetricsUserConfigSourceMysql struct {
 // ServiceIntegrationMetricsUserConfigSourceMysqlInput is an input type that accepts ServiceIntegrationMetricsUserConfigSourceMysqlArgs and ServiceIntegrationMetricsUserConfigSourceMysqlOutput values.
 // You can construct a concrete instance of `ServiceIntegrationMetricsUserConfigSourceMysqlInput` via:
 //
-//          ServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
+//	ServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
 type ServiceIntegrationMetricsUserConfigSourceMysqlInput interface {
 	pulumi.Input
 
@@ -28284,11 +30177,11 @@ func (i ServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToServiceIntegration
 // ServiceIntegrationMetricsUserConfigSourceMysqlPtrInput is an input type that accepts ServiceIntegrationMetricsUserConfigSourceMysqlArgs, ServiceIntegrationMetricsUserConfigSourceMysqlPtr and ServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationMetricsUserConfigSourceMysqlPtrInput` via:
 //
-//          ServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
+//	        ServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationMetricsUserConfigSourceMysqlPtrInput interface {
 	pulumi.Input
 
@@ -28397,7 +30290,7 @@ type ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf struct {
 // ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput is an input type that accepts ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs and ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput values.
 // You can construct a concrete instance of `ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput` via:
 //
-//          ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
+//	ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
 type ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput interface {
 	pulumi.Input
 
@@ -28445,11 +30338,11 @@ func (i ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToServiceInt
 // ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput is an input type that accepts ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs, ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtr and ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput` via:
 //
-//          ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
+//	        ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput interface {
 	pulumi.Input
 
@@ -28716,13 +30609,14 @@ func (o ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) PerfEve
 }
 
 type ServiceIntegrationMirrormakerUserConfig struct {
+	// Mirrormaker topic whitelist
 	MirrormakerWhitelist *string `pulumi:"mirrormakerWhitelist"`
 }
 
 // ServiceIntegrationMirrormakerUserConfigInput is an input type that accepts ServiceIntegrationMirrormakerUserConfigArgs and ServiceIntegrationMirrormakerUserConfigOutput values.
 // You can construct a concrete instance of `ServiceIntegrationMirrormakerUserConfigInput` via:
 //
-//          ServiceIntegrationMirrormakerUserConfigArgs{...}
+//	ServiceIntegrationMirrormakerUserConfigArgs{...}
 type ServiceIntegrationMirrormakerUserConfigInput interface {
 	pulumi.Input
 
@@ -28731,6 +30625,7 @@ type ServiceIntegrationMirrormakerUserConfigInput interface {
 }
 
 type ServiceIntegrationMirrormakerUserConfigArgs struct {
+	// Mirrormaker topic whitelist
 	MirrormakerWhitelist pulumi.StringPtrInput `pulumi:"mirrormakerWhitelist"`
 }
 
@@ -28757,11 +30652,11 @@ func (i ServiceIntegrationMirrormakerUserConfigArgs) ToServiceIntegrationMirrorm
 // ServiceIntegrationMirrormakerUserConfigPtrInput is an input type that accepts ServiceIntegrationMirrormakerUserConfigArgs, ServiceIntegrationMirrormakerUserConfigPtr and ServiceIntegrationMirrormakerUserConfigPtrOutput values.
 // You can construct a concrete instance of `ServiceIntegrationMirrormakerUserConfigPtrInput` via:
 //
-//          ServiceIntegrationMirrormakerUserConfigArgs{...}
+//	        ServiceIntegrationMirrormakerUserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceIntegrationMirrormakerUserConfigPtrInput interface {
 	pulumi.Input
 
@@ -28811,6 +30706,7 @@ func (o ServiceIntegrationMirrormakerUserConfigOutput) ToServiceIntegrationMirro
 	}).(ServiceIntegrationMirrormakerUserConfigPtrOutput)
 }
 
+// Mirrormaker topic whitelist
 func (o ServiceIntegrationMirrormakerUserConfigOutput) MirrormakerWhitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationMirrormakerUserConfig) *string { return v.MirrormakerWhitelist }).(pulumi.StringPtrOutput)
 }
@@ -28839,6 +30735,7 @@ func (o ServiceIntegrationMirrormakerUserConfigPtrOutput) Elem() ServiceIntegrat
 	}).(ServiceIntegrationMirrormakerUserConfigOutput)
 }
 
+// Mirrormaker topic whitelist
 func (o ServiceIntegrationMirrormakerUserConfigPtrOutput) MirrormakerWhitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationMirrormakerUserConfig) *string {
 		if v == nil {
@@ -28848,13 +30745,131 @@ func (o ServiceIntegrationMirrormakerUserConfigPtrOutput) MirrormakerWhitelist()
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAccountAuthenticationSamlFieldMapping struct {
+	Email     *string `pulumi:"email"`
+	FirstName *string `pulumi:"firstName"`
+	Identity  *string `pulumi:"identity"`
+	LastName  *string `pulumi:"lastName"`
+	RealName  *string `pulumi:"realName"`
+}
+
+// GetAccountAuthenticationSamlFieldMappingInput is an input type that accepts GetAccountAuthenticationSamlFieldMappingArgs and GetAccountAuthenticationSamlFieldMappingOutput values.
+// You can construct a concrete instance of `GetAccountAuthenticationSamlFieldMappingInput` via:
+//
+//	GetAccountAuthenticationSamlFieldMappingArgs{...}
+type GetAccountAuthenticationSamlFieldMappingInput interface {
+	pulumi.Input
+
+	ToGetAccountAuthenticationSamlFieldMappingOutput() GetAccountAuthenticationSamlFieldMappingOutput
+	ToGetAccountAuthenticationSamlFieldMappingOutputWithContext(context.Context) GetAccountAuthenticationSamlFieldMappingOutput
+}
+
+type GetAccountAuthenticationSamlFieldMappingArgs struct {
+	Email     pulumi.StringPtrInput `pulumi:"email"`
+	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
+	Identity  pulumi.StringPtrInput `pulumi:"identity"`
+	LastName  pulumi.StringPtrInput `pulumi:"lastName"`
+	RealName  pulumi.StringPtrInput `pulumi:"realName"`
+}
+
+func (GetAccountAuthenticationSamlFieldMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (i GetAccountAuthenticationSamlFieldMappingArgs) ToGetAccountAuthenticationSamlFieldMappingOutput() GetAccountAuthenticationSamlFieldMappingOutput {
+	return i.ToGetAccountAuthenticationSamlFieldMappingOutputWithContext(context.Background())
+}
+
+func (i GetAccountAuthenticationSamlFieldMappingArgs) ToGetAccountAuthenticationSamlFieldMappingOutputWithContext(ctx context.Context) GetAccountAuthenticationSamlFieldMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAuthenticationSamlFieldMappingOutput)
+}
+
+// GetAccountAuthenticationSamlFieldMappingArrayInput is an input type that accepts GetAccountAuthenticationSamlFieldMappingArray and GetAccountAuthenticationSamlFieldMappingArrayOutput values.
+// You can construct a concrete instance of `GetAccountAuthenticationSamlFieldMappingArrayInput` via:
+//
+//	GetAccountAuthenticationSamlFieldMappingArray{ GetAccountAuthenticationSamlFieldMappingArgs{...} }
+type GetAccountAuthenticationSamlFieldMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetAccountAuthenticationSamlFieldMappingArrayOutput() GetAccountAuthenticationSamlFieldMappingArrayOutput
+	ToGetAccountAuthenticationSamlFieldMappingArrayOutputWithContext(context.Context) GetAccountAuthenticationSamlFieldMappingArrayOutput
+}
+
+type GetAccountAuthenticationSamlFieldMappingArray []GetAccountAuthenticationSamlFieldMappingInput
+
+func (GetAccountAuthenticationSamlFieldMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (i GetAccountAuthenticationSamlFieldMappingArray) ToGetAccountAuthenticationSamlFieldMappingArrayOutput() GetAccountAuthenticationSamlFieldMappingArrayOutput {
+	return i.ToGetAccountAuthenticationSamlFieldMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccountAuthenticationSamlFieldMappingArray) ToGetAccountAuthenticationSamlFieldMappingArrayOutputWithContext(ctx context.Context) GetAccountAuthenticationSamlFieldMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAuthenticationSamlFieldMappingArrayOutput)
+}
+
+type GetAccountAuthenticationSamlFieldMappingOutput struct{ *pulumi.OutputState }
+
+func (GetAccountAuthenticationSamlFieldMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) ToGetAccountAuthenticationSamlFieldMappingOutput() GetAccountAuthenticationSamlFieldMappingOutput {
+	return o
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) ToGetAccountAuthenticationSamlFieldMappingOutputWithContext(ctx context.Context) GetAccountAuthenticationSamlFieldMappingOutput {
+	return o
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAuthenticationSamlFieldMapping) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAuthenticationSamlFieldMapping) *string { return v.FirstName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAuthenticationSamlFieldMapping) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAuthenticationSamlFieldMapping) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingOutput) RealName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAuthenticationSamlFieldMapping) *string { return v.RealName }).(pulumi.StringPtrOutput)
+}
+
+type GetAccountAuthenticationSamlFieldMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccountAuthenticationSamlFieldMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountAuthenticationSamlFieldMapping)(nil)).Elem()
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingArrayOutput) ToGetAccountAuthenticationSamlFieldMappingArrayOutput() GetAccountAuthenticationSamlFieldMappingArrayOutput {
+	return o
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingArrayOutput) ToGetAccountAuthenticationSamlFieldMappingArrayOutputWithContext(ctx context.Context) GetAccountAuthenticationSamlFieldMappingArrayOutput {
+	return o
+}
+
+func (o GetAccountAuthenticationSamlFieldMappingArrayOutput) Index(i pulumi.IntInput) GetAccountAuthenticationSamlFieldMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountAuthenticationSamlFieldMapping {
+		return vs[0].([]GetAccountAuthenticationSamlFieldMapping)[vs[1].(int)]
+	}).(GetAccountAuthenticationSamlFieldMappingOutput)
+}
+
 type GetCassandaCassandra struct {
 }
 
 // GetCassandaCassandraInput is an input type that accepts GetCassandaCassandraArgs and GetCassandaCassandraOutput values.
 // You can construct a concrete instance of `GetCassandaCassandraInput` via:
 //
-//          GetCassandaCassandraArgs{...}
+//	GetCassandaCassandraArgs{...}
 type GetCassandaCassandraInput interface {
 	pulumi.Input
 
@@ -28880,7 +30895,7 @@ func (i GetCassandaCassandraArgs) ToGetCassandaCassandraOutputWithContext(ctx co
 // GetCassandaCassandraArrayInput is an input type that accepts GetCassandaCassandraArray and GetCassandaCassandraArrayOutput values.
 // You can construct a concrete instance of `GetCassandaCassandraArrayInput` via:
 //
-//          GetCassandaCassandraArray{ GetCassandaCassandraArgs{...} }
+//	GetCassandaCassandraArray{ GetCassandaCassandraArgs{...} }
 type GetCassandaCassandraArrayInput interface {
 	pulumi.Input
 
@@ -28937,6 +30952,7 @@ func (o GetCassandaCassandraArrayOutput) Index(i pulumi.IntInput) GetCassandaCas
 }
 
 type GetCassandaCassandraUserConfig struct {
+	// Cassandra server provided values
 	Cassandra            *GetCassandaCassandraUserConfigCassandra     `pulumi:"cassandra"`
 	CassandraVersion     *string                                      `pulumi:"cassandraVersion"`
 	IpFilters            []string                                     `pulumi:"ipFilters"`
@@ -28945,13 +30961,14 @@ type GetCassandaCassandraUserConfig struct {
 	ProjectToForkFrom    *string                                      `pulumi:"projectToForkFrom"`
 	PublicAccess         *GetCassandaCassandraUserConfigPublicAccess  `pulumi:"publicAccess"`
 	ServiceToForkFrom    *string                                      `pulumi:"serviceToForkFrom"`
-	StaticIps            *string                                      `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // GetCassandaCassandraUserConfigInput is an input type that accepts GetCassandaCassandraUserConfigArgs and GetCassandaCassandraUserConfigOutput values.
 // You can construct a concrete instance of `GetCassandaCassandraUserConfigInput` via:
 //
-//          GetCassandaCassandraUserConfigArgs{...}
+//	GetCassandaCassandraUserConfigArgs{...}
 type GetCassandaCassandraUserConfigInput interface {
 	pulumi.Input
 
@@ -28960,6 +30977,7 @@ type GetCassandaCassandraUserConfigInput interface {
 }
 
 type GetCassandaCassandraUserConfigArgs struct {
+	// Cassandra server provided values
 	Cassandra            GetCassandaCassandraUserConfigCassandraPtrInput     `pulumi:"cassandra"`
 	CassandraVersion     pulumi.StringPtrInput                               `pulumi:"cassandraVersion"`
 	IpFilters            pulumi.StringArrayInput                             `pulumi:"ipFilters"`
@@ -28968,7 +30986,8 @@ type GetCassandaCassandraUserConfigArgs struct {
 	ProjectToForkFrom    pulumi.StringPtrInput                               `pulumi:"projectToForkFrom"`
 	PublicAccess         GetCassandaCassandraUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	ServiceToForkFrom    pulumi.StringPtrInput                               `pulumi:"serviceToForkFrom"`
-	StaticIps            pulumi.StringPtrInput                               `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (GetCassandaCassandraUserConfigArgs) ElementType() reflect.Type {
@@ -28986,7 +31005,7 @@ func (i GetCassandaCassandraUserConfigArgs) ToGetCassandaCassandraUserConfigOutp
 // GetCassandaCassandraUserConfigArrayInput is an input type that accepts GetCassandaCassandraUserConfigArray and GetCassandaCassandraUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetCassandaCassandraUserConfigArrayInput` via:
 //
-//          GetCassandaCassandraUserConfigArray{ GetCassandaCassandraUserConfigArgs{...} }
+//	GetCassandaCassandraUserConfigArray{ GetCassandaCassandraUserConfigArgs{...} }
 type GetCassandaCassandraUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -29022,6 +31041,7 @@ func (o GetCassandaCassandraUserConfigOutput) ToGetCassandaCassandraUserConfigOu
 	return o
 }
 
+// Cassandra server provided values
 func (o GetCassandaCassandraUserConfigOutput) Cassandra() GetCassandaCassandraUserConfigCassandraPtrOutput {
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *GetCassandaCassandraUserConfigCassandra { return v.Cassandra }).(GetCassandaCassandraUserConfigCassandraPtrOutput)
 }
@@ -29058,6 +31078,7 @@ func (o GetCassandaCassandraUserConfigOutput) ServiceToForkFrom() pulumi.StringP
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetCassandaCassandraUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandaCassandraUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -29090,7 +31111,7 @@ type GetCassandaCassandraUserConfigCassandra struct {
 // GetCassandaCassandraUserConfigCassandraInput is an input type that accepts GetCassandaCassandraUserConfigCassandraArgs and GetCassandaCassandraUserConfigCassandraOutput values.
 // You can construct a concrete instance of `GetCassandaCassandraUserConfigCassandraInput` via:
 //
-//          GetCassandaCassandraUserConfigCassandraArgs{...}
+//	GetCassandaCassandraUserConfigCassandraArgs{...}
 type GetCassandaCassandraUserConfigCassandraInput interface {
 	pulumi.Input
 
@@ -29126,11 +31147,11 @@ func (i GetCassandaCassandraUserConfigCassandraArgs) ToGetCassandaCassandraUserC
 // GetCassandaCassandraUserConfigCassandraPtrInput is an input type that accepts GetCassandaCassandraUserConfigCassandraArgs, GetCassandaCassandraUserConfigCassandraPtr and GetCassandaCassandraUserConfigCassandraPtrOutput values.
 // You can construct a concrete instance of `GetCassandaCassandraUserConfigCassandraPtrInput` via:
 //
-//          GetCassandaCassandraUserConfigCassandraArgs{...}
+//	        GetCassandaCassandraUserConfigCassandraArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetCassandaCassandraUserConfigCassandraPtrInput interface {
 	pulumi.Input
 
@@ -29237,7 +31258,7 @@ type GetCassandaCassandraUserConfigPrivateAccess struct {
 // GetCassandaCassandraUserConfigPrivateAccessInput is an input type that accepts GetCassandaCassandraUserConfigPrivateAccessArgs and GetCassandaCassandraUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetCassandaCassandraUserConfigPrivateAccessInput` via:
 //
-//          GetCassandaCassandraUserConfigPrivateAccessArgs{...}
+//	GetCassandaCassandraUserConfigPrivateAccessArgs{...}
 type GetCassandaCassandraUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -29272,11 +31293,11 @@ func (i GetCassandaCassandraUserConfigPrivateAccessArgs) ToGetCassandaCassandraU
 // GetCassandaCassandraUserConfigPrivateAccessPtrInput is an input type that accepts GetCassandaCassandraUserConfigPrivateAccessArgs, GetCassandaCassandraUserConfigPrivateAccessPtr and GetCassandaCassandraUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetCassandaCassandraUserConfigPrivateAccessPtrInput` via:
 //
-//          GetCassandaCassandraUserConfigPrivateAccessArgs{...}
+//	        GetCassandaCassandraUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetCassandaCassandraUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -29370,7 +31391,7 @@ type GetCassandaCassandraUserConfigPublicAccess struct {
 // GetCassandaCassandraUserConfigPublicAccessInput is an input type that accepts GetCassandaCassandraUserConfigPublicAccessArgs and GetCassandaCassandraUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetCassandaCassandraUserConfigPublicAccessInput` via:
 //
-//          GetCassandaCassandraUserConfigPublicAccessArgs{...}
+//	GetCassandaCassandraUserConfigPublicAccessArgs{...}
 type GetCassandaCassandraUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -29405,11 +31426,11 @@ func (i GetCassandaCassandraUserConfigPublicAccessArgs) ToGetCassandaCassandraUs
 // GetCassandaCassandraUserConfigPublicAccessPtrInput is an input type that accepts GetCassandaCassandraUserConfigPublicAccessArgs, GetCassandaCassandraUserConfigPublicAccessPtr and GetCassandaCassandraUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetCassandaCassandraUserConfigPublicAccessPtrInput` via:
 //
-//          GetCassandaCassandraUserConfigPublicAccessArgs{...}
+//	        GetCassandaCassandraUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetCassandaCassandraUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -29509,7 +31530,7 @@ type GetCassandaComponent struct {
 // GetCassandaComponentInput is an input type that accepts GetCassandaComponentArgs and GetCassandaComponentOutput values.
 // You can construct a concrete instance of `GetCassandaComponentInput` via:
 //
-//          GetCassandaComponentArgs{...}
+//	GetCassandaComponentArgs{...}
 type GetCassandaComponentInput interface {
 	pulumi.Input
 
@@ -29542,7 +31563,7 @@ func (i GetCassandaComponentArgs) ToGetCassandaComponentOutputWithContext(ctx co
 // GetCassandaComponentArrayInput is an input type that accepts GetCassandaComponentArray and GetCassandaComponentArrayOutput values.
 // You can construct a concrete instance of `GetCassandaComponentArrayInput` via:
 //
-//          GetCassandaComponentArray{ GetCassandaComponentArgs{...} }
+//	GetCassandaComponentArray{ GetCassandaComponentArgs{...} }
 type GetCassandaComponentArrayInput interface {
 	pulumi.Input
 
@@ -29634,7 +31655,7 @@ type GetCassandaServiceIntegration struct {
 // GetCassandaServiceIntegrationInput is an input type that accepts GetCassandaServiceIntegrationArgs and GetCassandaServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetCassandaServiceIntegrationInput` via:
 //
-//          GetCassandaServiceIntegrationArgs{...}
+//	GetCassandaServiceIntegrationArgs{...}
 type GetCassandaServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -29662,7 +31683,7 @@ func (i GetCassandaServiceIntegrationArgs) ToGetCassandaServiceIntegrationOutput
 // GetCassandaServiceIntegrationArrayInput is an input type that accepts GetCassandaServiceIntegrationArray and GetCassandaServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetCassandaServiceIntegrationArrayInput` via:
 //
-//          GetCassandaServiceIntegrationArray{ GetCassandaServiceIntegrationArgs{...} }
+//	GetCassandaServiceIntegrationArray{ GetCassandaServiceIntegrationArgs{...} }
 type GetCassandaServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -29734,7 +31755,7 @@ type GetCassandaTag struct {
 // GetCassandaTagInput is an input type that accepts GetCassandaTagArgs and GetCassandaTagOutput values.
 // You can construct a concrete instance of `GetCassandaTagInput` via:
 //
-//          GetCassandaTagArgs{...}
+//	GetCassandaTagArgs{...}
 type GetCassandaTagInput interface {
 	pulumi.Input
 
@@ -29762,7 +31783,7 @@ func (i GetCassandaTagArgs) ToGetCassandaTagOutputWithContext(ctx context.Contex
 // GetCassandaTagArrayInput is an input type that accepts GetCassandaTagArray and GetCassandaTagArrayOutput values.
 // You can construct a concrete instance of `GetCassandaTagArrayInput` via:
 //
-//          GetCassandaTagArray{ GetCassandaTagArgs{...} }
+//	GetCassandaTagArray{ GetCassandaTagArgs{...} }
 type GetCassandaTagArrayInput interface {
 	pulumi.Input
 
@@ -29832,7 +31853,7 @@ type GetCassandraCassandra struct {
 // GetCassandraCassandraInput is an input type that accepts GetCassandraCassandraArgs and GetCassandraCassandraOutput values.
 // You can construct a concrete instance of `GetCassandraCassandraInput` via:
 //
-//          GetCassandraCassandraArgs{...}
+//	GetCassandraCassandraArgs{...}
 type GetCassandraCassandraInput interface {
 	pulumi.Input
 
@@ -29858,7 +31879,7 @@ func (i GetCassandraCassandraArgs) ToGetCassandraCassandraOutputWithContext(ctx 
 // GetCassandraCassandraArrayInput is an input type that accepts GetCassandraCassandraArray and GetCassandraCassandraArrayOutput values.
 // You can construct a concrete instance of `GetCassandraCassandraArrayInput` via:
 //
-//          GetCassandraCassandraArray{ GetCassandraCassandraArgs{...} }
+//	GetCassandraCassandraArray{ GetCassandraCassandraArgs{...} }
 type GetCassandraCassandraArrayInput interface {
 	pulumi.Input
 
@@ -29915,6 +31936,7 @@ func (o GetCassandraCassandraArrayOutput) Index(i pulumi.IntInput) GetCassandraC
 }
 
 type GetCassandraCassandraUserConfig struct {
+	// Cassandra server provided values
 	Cassandra            *GetCassandraCassandraUserConfigCassandra     `pulumi:"cassandra"`
 	CassandraVersion     *string                                       `pulumi:"cassandraVersion"`
 	IpFilters            []string                                      `pulumi:"ipFilters"`
@@ -29923,13 +31945,14 @@ type GetCassandraCassandraUserConfig struct {
 	ProjectToForkFrom    *string                                       `pulumi:"projectToForkFrom"`
 	PublicAccess         *GetCassandraCassandraUserConfigPublicAccess  `pulumi:"publicAccess"`
 	ServiceToForkFrom    *string                                       `pulumi:"serviceToForkFrom"`
-	StaticIps            *string                                       `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // GetCassandraCassandraUserConfigInput is an input type that accepts GetCassandraCassandraUserConfigArgs and GetCassandraCassandraUserConfigOutput values.
 // You can construct a concrete instance of `GetCassandraCassandraUserConfigInput` via:
 //
-//          GetCassandraCassandraUserConfigArgs{...}
+//	GetCassandraCassandraUserConfigArgs{...}
 type GetCassandraCassandraUserConfigInput interface {
 	pulumi.Input
 
@@ -29938,6 +31961,7 @@ type GetCassandraCassandraUserConfigInput interface {
 }
 
 type GetCassandraCassandraUserConfigArgs struct {
+	// Cassandra server provided values
 	Cassandra            GetCassandraCassandraUserConfigCassandraPtrInput     `pulumi:"cassandra"`
 	CassandraVersion     pulumi.StringPtrInput                                `pulumi:"cassandraVersion"`
 	IpFilters            pulumi.StringArrayInput                              `pulumi:"ipFilters"`
@@ -29946,7 +31970,8 @@ type GetCassandraCassandraUserConfigArgs struct {
 	ProjectToForkFrom    pulumi.StringPtrInput                                `pulumi:"projectToForkFrom"`
 	PublicAccess         GetCassandraCassandraUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	ServiceToForkFrom    pulumi.StringPtrInput                                `pulumi:"serviceToForkFrom"`
-	StaticIps            pulumi.StringPtrInput                                `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (GetCassandraCassandraUserConfigArgs) ElementType() reflect.Type {
@@ -29964,7 +31989,7 @@ func (i GetCassandraCassandraUserConfigArgs) ToGetCassandraCassandraUserConfigOu
 // GetCassandraCassandraUserConfigArrayInput is an input type that accepts GetCassandraCassandraUserConfigArray and GetCassandraCassandraUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetCassandraCassandraUserConfigArrayInput` via:
 //
-//          GetCassandraCassandraUserConfigArray{ GetCassandraCassandraUserConfigArgs{...} }
+//	GetCassandraCassandraUserConfigArray{ GetCassandraCassandraUserConfigArgs{...} }
 type GetCassandraCassandraUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -30000,6 +32025,7 @@ func (o GetCassandraCassandraUserConfigOutput) ToGetCassandraCassandraUserConfig
 	return o
 }
 
+// Cassandra server provided values
 func (o GetCassandraCassandraUserConfigOutput) Cassandra() GetCassandraCassandraUserConfigCassandraPtrOutput {
 	return o.ApplyT(func(v GetCassandraCassandraUserConfig) *GetCassandraCassandraUserConfigCassandra { return v.Cassandra }).(GetCassandraCassandraUserConfigCassandraPtrOutput)
 }
@@ -30036,6 +32062,7 @@ func (o GetCassandraCassandraUserConfigOutput) ServiceToForkFrom() pulumi.String
 	return o.ApplyT(func(v GetCassandraCassandraUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetCassandraCassandraUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCassandraCassandraUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -30068,7 +32095,7 @@ type GetCassandraCassandraUserConfigCassandra struct {
 // GetCassandraCassandraUserConfigCassandraInput is an input type that accepts GetCassandraCassandraUserConfigCassandraArgs and GetCassandraCassandraUserConfigCassandraOutput values.
 // You can construct a concrete instance of `GetCassandraCassandraUserConfigCassandraInput` via:
 //
-//          GetCassandraCassandraUserConfigCassandraArgs{...}
+//	GetCassandraCassandraUserConfigCassandraArgs{...}
 type GetCassandraCassandraUserConfigCassandraInput interface {
 	pulumi.Input
 
@@ -30104,11 +32131,11 @@ func (i GetCassandraCassandraUserConfigCassandraArgs) ToGetCassandraCassandraUse
 // GetCassandraCassandraUserConfigCassandraPtrInput is an input type that accepts GetCassandraCassandraUserConfigCassandraArgs, GetCassandraCassandraUserConfigCassandraPtr and GetCassandraCassandraUserConfigCassandraPtrOutput values.
 // You can construct a concrete instance of `GetCassandraCassandraUserConfigCassandraPtrInput` via:
 //
-//          GetCassandraCassandraUserConfigCassandraArgs{...}
+//	        GetCassandraCassandraUserConfigCassandraArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetCassandraCassandraUserConfigCassandraPtrInput interface {
 	pulumi.Input
 
@@ -30215,7 +32242,7 @@ type GetCassandraCassandraUserConfigPrivateAccess struct {
 // GetCassandraCassandraUserConfigPrivateAccessInput is an input type that accepts GetCassandraCassandraUserConfigPrivateAccessArgs and GetCassandraCassandraUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetCassandraCassandraUserConfigPrivateAccessInput` via:
 //
-//          GetCassandraCassandraUserConfigPrivateAccessArgs{...}
+//	GetCassandraCassandraUserConfigPrivateAccessArgs{...}
 type GetCassandraCassandraUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -30250,11 +32277,11 @@ func (i GetCassandraCassandraUserConfigPrivateAccessArgs) ToGetCassandraCassandr
 // GetCassandraCassandraUserConfigPrivateAccessPtrInput is an input type that accepts GetCassandraCassandraUserConfigPrivateAccessArgs, GetCassandraCassandraUserConfigPrivateAccessPtr and GetCassandraCassandraUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetCassandraCassandraUserConfigPrivateAccessPtrInput` via:
 //
-//          GetCassandraCassandraUserConfigPrivateAccessArgs{...}
+//	        GetCassandraCassandraUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetCassandraCassandraUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -30348,7 +32375,7 @@ type GetCassandraCassandraUserConfigPublicAccess struct {
 // GetCassandraCassandraUserConfigPublicAccessInput is an input type that accepts GetCassandraCassandraUserConfigPublicAccessArgs and GetCassandraCassandraUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetCassandraCassandraUserConfigPublicAccessInput` via:
 //
-//          GetCassandraCassandraUserConfigPublicAccessArgs{...}
+//	GetCassandraCassandraUserConfigPublicAccessArgs{...}
 type GetCassandraCassandraUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -30383,11 +32410,11 @@ func (i GetCassandraCassandraUserConfigPublicAccessArgs) ToGetCassandraCassandra
 // GetCassandraCassandraUserConfigPublicAccessPtrInput is an input type that accepts GetCassandraCassandraUserConfigPublicAccessArgs, GetCassandraCassandraUserConfigPublicAccessPtr and GetCassandraCassandraUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetCassandraCassandraUserConfigPublicAccessPtrInput` via:
 //
-//          GetCassandraCassandraUserConfigPublicAccessArgs{...}
+//	        GetCassandraCassandraUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetCassandraCassandraUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -30487,7 +32514,7 @@ type GetCassandraComponent struct {
 // GetCassandraComponentInput is an input type that accepts GetCassandraComponentArgs and GetCassandraComponentOutput values.
 // You can construct a concrete instance of `GetCassandraComponentInput` via:
 //
-//          GetCassandraComponentArgs{...}
+//	GetCassandraComponentArgs{...}
 type GetCassandraComponentInput interface {
 	pulumi.Input
 
@@ -30520,7 +32547,7 @@ func (i GetCassandraComponentArgs) ToGetCassandraComponentOutputWithContext(ctx 
 // GetCassandraComponentArrayInput is an input type that accepts GetCassandraComponentArray and GetCassandraComponentArrayOutput values.
 // You can construct a concrete instance of `GetCassandraComponentArrayInput` via:
 //
-//          GetCassandraComponentArray{ GetCassandraComponentArgs{...} }
+//	GetCassandraComponentArray{ GetCassandraComponentArgs{...} }
 type GetCassandraComponentArrayInput interface {
 	pulumi.Input
 
@@ -30612,7 +32639,7 @@ type GetCassandraServiceIntegration struct {
 // GetCassandraServiceIntegrationInput is an input type that accepts GetCassandraServiceIntegrationArgs and GetCassandraServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetCassandraServiceIntegrationInput` via:
 //
-//          GetCassandraServiceIntegrationArgs{...}
+//	GetCassandraServiceIntegrationArgs{...}
 type GetCassandraServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -30640,7 +32667,7 @@ func (i GetCassandraServiceIntegrationArgs) ToGetCassandraServiceIntegrationOutp
 // GetCassandraServiceIntegrationArrayInput is an input type that accepts GetCassandraServiceIntegrationArray and GetCassandraServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetCassandraServiceIntegrationArrayInput` via:
 //
-//          GetCassandraServiceIntegrationArray{ GetCassandraServiceIntegrationArgs{...} }
+//	GetCassandraServiceIntegrationArray{ GetCassandraServiceIntegrationArgs{...} }
 type GetCassandraServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -30712,7 +32739,7 @@ type GetCassandraTag struct {
 // GetCassandraTagInput is an input type that accepts GetCassandraTagArgs and GetCassandraTagOutput values.
 // You can construct a concrete instance of `GetCassandraTagInput` via:
 //
-//          GetCassandraTagArgs{...}
+//	GetCassandraTagArgs{...}
 type GetCassandraTagInput interface {
 	pulumi.Input
 
@@ -30740,7 +32767,7 @@ func (i GetCassandraTagArgs) ToGetCassandraTagOutputWithContext(ctx context.Cont
 // GetCassandraTagArrayInput is an input type that accepts GetCassandraTagArray and GetCassandraTagArrayOutput values.
 // You can construct a concrete instance of `GetCassandraTagArrayInput` via:
 //
-//          GetCassandraTagArray{ GetCassandraTagArgs{...} }
+//	GetCassandraTagArray{ GetCassandraTagArgs{...} }
 type GetCassandraTagArrayInput interface {
 	pulumi.Input
 
@@ -30810,7 +32837,7 @@ type GetClickhouseClickhouse struct {
 // GetClickhouseClickhouseInput is an input type that accepts GetClickhouseClickhouseArgs and GetClickhouseClickhouseOutput values.
 // You can construct a concrete instance of `GetClickhouseClickhouseInput` via:
 //
-//          GetClickhouseClickhouseArgs{...}
+//	GetClickhouseClickhouseArgs{...}
 type GetClickhouseClickhouseInput interface {
 	pulumi.Input
 
@@ -30836,7 +32863,7 @@ func (i GetClickhouseClickhouseArgs) ToGetClickhouseClickhouseOutputWithContext(
 // GetClickhouseClickhouseArrayInput is an input type that accepts GetClickhouseClickhouseArray and GetClickhouseClickhouseArrayOutput values.
 // You can construct a concrete instance of `GetClickhouseClickhouseArrayInput` via:
 //
-//          GetClickhouseClickhouseArray{ GetClickhouseClickhouseArgs{...} }
+//	GetClickhouseClickhouseArray{ GetClickhouseClickhouseArgs{...} }
 type GetClickhouseClickhouseArrayInput interface {
 	pulumi.Input
 
@@ -30901,7 +32928,7 @@ type GetClickhouseClickhouseUserConfig struct {
 // GetClickhouseClickhouseUserConfigInput is an input type that accepts GetClickhouseClickhouseUserConfigArgs and GetClickhouseClickhouseUserConfigOutput values.
 // You can construct a concrete instance of `GetClickhouseClickhouseUserConfigInput` via:
 //
-//          GetClickhouseClickhouseUserConfigArgs{...}
+//	GetClickhouseClickhouseUserConfigArgs{...}
 type GetClickhouseClickhouseUserConfigInput interface {
 	pulumi.Input
 
@@ -30930,7 +32957,7 @@ func (i GetClickhouseClickhouseUserConfigArgs) ToGetClickhouseClickhouseUserConf
 // GetClickhouseClickhouseUserConfigArrayInput is an input type that accepts GetClickhouseClickhouseUserConfigArray and GetClickhouseClickhouseUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetClickhouseClickhouseUserConfigArrayInput` via:
 //
-//          GetClickhouseClickhouseUserConfigArray{ GetClickhouseClickhouseUserConfigArgs{...} }
+//	GetClickhouseClickhouseUserConfigArray{ GetClickhouseClickhouseUserConfigArgs{...} }
 type GetClickhouseClickhouseUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -31011,7 +33038,7 @@ type GetClickhouseComponent struct {
 // GetClickhouseComponentInput is an input type that accepts GetClickhouseComponentArgs and GetClickhouseComponentOutput values.
 // You can construct a concrete instance of `GetClickhouseComponentInput` via:
 //
-//          GetClickhouseComponentArgs{...}
+//	GetClickhouseComponentArgs{...}
 type GetClickhouseComponentInput interface {
 	pulumi.Input
 
@@ -31044,7 +33071,7 @@ func (i GetClickhouseComponentArgs) ToGetClickhouseComponentOutputWithContext(ct
 // GetClickhouseComponentArrayInput is an input type that accepts GetClickhouseComponentArray and GetClickhouseComponentArrayOutput values.
 // You can construct a concrete instance of `GetClickhouseComponentArrayInput` via:
 //
-//          GetClickhouseComponentArray{ GetClickhouseComponentArgs{...} }
+//	GetClickhouseComponentArray{ GetClickhouseComponentArgs{...} }
 type GetClickhouseComponentArrayInput interface {
 	pulumi.Input
 
@@ -31136,7 +33163,7 @@ type GetClickhouseServiceIntegration struct {
 // GetClickhouseServiceIntegrationInput is an input type that accepts GetClickhouseServiceIntegrationArgs and GetClickhouseServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetClickhouseServiceIntegrationInput` via:
 //
-//          GetClickhouseServiceIntegrationArgs{...}
+//	GetClickhouseServiceIntegrationArgs{...}
 type GetClickhouseServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -31164,7 +33191,7 @@ func (i GetClickhouseServiceIntegrationArgs) ToGetClickhouseServiceIntegrationOu
 // GetClickhouseServiceIntegrationArrayInput is an input type that accepts GetClickhouseServiceIntegrationArray and GetClickhouseServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetClickhouseServiceIntegrationArrayInput` via:
 //
-//          GetClickhouseServiceIntegrationArray{ GetClickhouseServiceIntegrationArgs{...} }
+//	GetClickhouseServiceIntegrationArray{ GetClickhouseServiceIntegrationArgs{...} }
 type GetClickhouseServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -31236,7 +33263,7 @@ type GetClickhouseTag struct {
 // GetClickhouseTagInput is an input type that accepts GetClickhouseTagArgs and GetClickhouseTagOutput values.
 // You can construct a concrete instance of `GetClickhouseTagInput` via:
 //
-//          GetClickhouseTagArgs{...}
+//	GetClickhouseTagArgs{...}
 type GetClickhouseTagInput interface {
 	pulumi.Input
 
@@ -31264,7 +33291,7 @@ func (i GetClickhouseTagArgs) ToGetClickhouseTagOutputWithContext(ctx context.Co
 // GetClickhouseTagArrayInput is an input type that accepts GetClickhouseTagArray and GetClickhouseTagArrayOutput values.
 // You can construct a concrete instance of `GetClickhouseTagArrayInput` via:
 //
-//          GetClickhouseTagArray{ GetClickhouseTagArgs{...} }
+//	GetClickhouseTagArray{ GetClickhouseTagArgs{...} }
 type GetClickhouseTagArrayInput interface {
 	pulumi.Input
 
@@ -31341,7 +33368,7 @@ type GetFlinkComponent struct {
 // GetFlinkComponentInput is an input type that accepts GetFlinkComponentArgs and GetFlinkComponentOutput values.
 // You can construct a concrete instance of `GetFlinkComponentInput` via:
 //
-//          GetFlinkComponentArgs{...}
+//	GetFlinkComponentArgs{...}
 type GetFlinkComponentInput interface {
 	pulumi.Input
 
@@ -31374,7 +33401,7 @@ func (i GetFlinkComponentArgs) ToGetFlinkComponentOutputWithContext(ctx context.
 // GetFlinkComponentArrayInput is an input type that accepts GetFlinkComponentArray and GetFlinkComponentArrayOutput values.
 // You can construct a concrete instance of `GetFlinkComponentArrayInput` via:
 //
-//          GetFlinkComponentArray{ GetFlinkComponentArgs{...} }
+//	GetFlinkComponentArray{ GetFlinkComponentArgs{...} }
 type GetFlinkComponentArrayInput interface {
 	pulumi.Input
 
@@ -31465,7 +33492,7 @@ type GetFlinkFlink struct {
 // GetFlinkFlinkInput is an input type that accepts GetFlinkFlinkArgs and GetFlinkFlinkOutput values.
 // You can construct a concrete instance of `GetFlinkFlinkInput` via:
 //
-//          GetFlinkFlinkArgs{...}
+//	GetFlinkFlinkArgs{...}
 type GetFlinkFlinkInput interface {
 	pulumi.Input
 
@@ -31492,7 +33519,7 @@ func (i GetFlinkFlinkArgs) ToGetFlinkFlinkOutputWithContext(ctx context.Context)
 // GetFlinkFlinkArrayInput is an input type that accepts GetFlinkFlinkArray and GetFlinkFlinkArrayOutput values.
 // You can construct a concrete instance of `GetFlinkFlinkArrayInput` via:
 //
-//          GetFlinkFlinkArray{ GetFlinkFlinkArgs{...} }
+//	GetFlinkFlinkArray{ GetFlinkFlinkArgs{...} }
 type GetFlinkFlinkArrayInput interface {
 	pulumi.Input
 
@@ -31569,7 +33596,7 @@ type GetFlinkFlinkUserConfig struct {
 // GetFlinkFlinkUserConfigInput is an input type that accepts GetFlinkFlinkUserConfigArgs and GetFlinkFlinkUserConfigOutput values.
 // You can construct a concrete instance of `GetFlinkFlinkUserConfigInput` via:
 //
-//          GetFlinkFlinkUserConfigArgs{...}
+//	GetFlinkFlinkUserConfigArgs{...}
 type GetFlinkFlinkUserConfigInput interface {
 	pulumi.Input
 
@@ -31606,7 +33633,7 @@ func (i GetFlinkFlinkUserConfigArgs) ToGetFlinkFlinkUserConfigOutputWithContext(
 // GetFlinkFlinkUserConfigArrayInput is an input type that accepts GetFlinkFlinkUserConfigArray and GetFlinkFlinkUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetFlinkFlinkUserConfigArrayInput` via:
 //
-//          GetFlinkFlinkUserConfigArray{ GetFlinkFlinkUserConfigArgs{...} }
+//	GetFlinkFlinkUserConfigArray{ GetFlinkFlinkUserConfigArgs{...} }
 type GetFlinkFlinkUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -31707,6 +33734,7 @@ func (o GetFlinkFlinkUserConfigArrayOutput) Index(i pulumi.IntInput) GetFlinkFli
 }
 
 type GetFlinkFlinkUserConfigPrivatelinkAccess struct {
+	// Flink server provided values
 	Flink      *string `pulumi:"flink"`
 	Prometheus *string `pulumi:"prometheus"`
 }
@@ -31714,7 +33742,7 @@ type GetFlinkFlinkUserConfigPrivatelinkAccess struct {
 // GetFlinkFlinkUserConfigPrivatelinkAccessInput is an input type that accepts GetFlinkFlinkUserConfigPrivatelinkAccessArgs and GetFlinkFlinkUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `GetFlinkFlinkUserConfigPrivatelinkAccessInput` via:
 //
-//          GetFlinkFlinkUserConfigPrivatelinkAccessArgs{...}
+//	GetFlinkFlinkUserConfigPrivatelinkAccessArgs{...}
 type GetFlinkFlinkUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -31723,6 +33751,7 @@ type GetFlinkFlinkUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetFlinkFlinkUserConfigPrivatelinkAccessArgs struct {
+	// Flink server provided values
 	Flink      pulumi.StringPtrInput `pulumi:"flink"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -31750,11 +33779,11 @@ func (i GetFlinkFlinkUserConfigPrivatelinkAccessArgs) ToGetFlinkFlinkUserConfigP
 // GetFlinkFlinkUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetFlinkFlinkUserConfigPrivatelinkAccessArgs, GetFlinkFlinkUserConfigPrivatelinkAccessPtr and GetFlinkFlinkUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `GetFlinkFlinkUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          GetFlinkFlinkUserConfigPrivatelinkAccessArgs{...}
+//	        GetFlinkFlinkUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetFlinkFlinkUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -31804,6 +33833,7 @@ func (o GetFlinkFlinkUserConfigPrivatelinkAccessOutput) ToGetFlinkFlinkUserConfi
 	}).(GetFlinkFlinkUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Flink server provided values
 func (o GetFlinkFlinkUserConfigPrivatelinkAccessOutput) Flink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlinkFlinkUserConfigPrivatelinkAccess) *string { return v.Flink }).(pulumi.StringPtrOutput)
 }
@@ -31836,6 +33866,7 @@ func (o GetFlinkFlinkUserConfigPrivatelinkAccessPtrOutput) Elem() GetFlinkFlinkU
 	}).(GetFlinkFlinkUserConfigPrivatelinkAccessOutput)
 }
 
+// Flink server provided values
 func (o GetFlinkFlinkUserConfigPrivatelinkAccessPtrOutput) Flink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetFlinkFlinkUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -31862,7 +33893,7 @@ type GetFlinkServiceIntegration struct {
 // GetFlinkServiceIntegrationInput is an input type that accepts GetFlinkServiceIntegrationArgs and GetFlinkServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetFlinkServiceIntegrationInput` via:
 //
-//          GetFlinkServiceIntegrationArgs{...}
+//	GetFlinkServiceIntegrationArgs{...}
 type GetFlinkServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -31890,7 +33921,7 @@ func (i GetFlinkServiceIntegrationArgs) ToGetFlinkServiceIntegrationOutputWithCo
 // GetFlinkServiceIntegrationArrayInput is an input type that accepts GetFlinkServiceIntegrationArray and GetFlinkServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetFlinkServiceIntegrationArrayInput` via:
 //
-//          GetFlinkServiceIntegrationArray{ GetFlinkServiceIntegrationArgs{...} }
+//	GetFlinkServiceIntegrationArray{ GetFlinkServiceIntegrationArgs{...} }
 type GetFlinkServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -31962,7 +33993,7 @@ type GetFlinkTag struct {
 // GetFlinkTagInput is an input type that accepts GetFlinkTagArgs and GetFlinkTagOutput values.
 // You can construct a concrete instance of `GetFlinkTagInput` via:
 //
-//          GetFlinkTagArgs{...}
+//	GetFlinkTagArgs{...}
 type GetFlinkTagInput interface {
 	pulumi.Input
 
@@ -31990,7 +34021,7 @@ func (i GetFlinkTagArgs) ToGetFlinkTagOutputWithContext(ctx context.Context) Get
 // GetFlinkTagArrayInput is an input type that accepts GetFlinkTagArray and GetFlinkTagArrayOutput values.
 // You can construct a concrete instance of `GetFlinkTagArrayInput` via:
 //
-//          GetFlinkTagArray{ GetFlinkTagArgs{...} }
+//	GetFlinkTagArray{ GetFlinkTagArgs{...} }
 type GetFlinkTagArrayInput interface {
 	pulumi.Input
 
@@ -32067,7 +34098,7 @@ type GetGrafanaComponent struct {
 // GetGrafanaComponentInput is an input type that accepts GetGrafanaComponentArgs and GetGrafanaComponentOutput values.
 // You can construct a concrete instance of `GetGrafanaComponentInput` via:
 //
-//          GetGrafanaComponentArgs{...}
+//	GetGrafanaComponentArgs{...}
 type GetGrafanaComponentInput interface {
 	pulumi.Input
 
@@ -32100,7 +34131,7 @@ func (i GetGrafanaComponentArgs) ToGetGrafanaComponentOutputWithContext(ctx cont
 // GetGrafanaComponentArrayInput is an input type that accepts GetGrafanaComponentArray and GetGrafanaComponentArrayOutput values.
 // You can construct a concrete instance of `GetGrafanaComponentArrayInput` via:
 //
-//          GetGrafanaComponentArray{ GetGrafanaComponentArgs{...} }
+//	GetGrafanaComponentArray{ GetGrafanaComponentArgs{...} }
 type GetGrafanaComponentArrayInput interface {
 	pulumi.Input
 
@@ -32190,7 +34221,7 @@ type GetGrafanaGrafana struct {
 // GetGrafanaGrafanaInput is an input type that accepts GetGrafanaGrafanaArgs and GetGrafanaGrafanaOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaInput` via:
 //
-//          GetGrafanaGrafanaArgs{...}
+//	GetGrafanaGrafanaArgs{...}
 type GetGrafanaGrafanaInput interface {
 	pulumi.Input
 
@@ -32216,7 +34247,7 @@ func (i GetGrafanaGrafanaArgs) ToGetGrafanaGrafanaOutputWithContext(ctx context.
 // GetGrafanaGrafanaArrayInput is an input type that accepts GetGrafanaGrafanaArray and GetGrafanaGrafanaArrayOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaArrayInput` via:
 //
-//          GetGrafanaGrafanaArray{ GetGrafanaGrafanaArgs{...} }
+//	GetGrafanaGrafanaArray{ GetGrafanaGrafanaArgs{...} }
 type GetGrafanaGrafanaArrayInput interface {
 	pulumi.Input
 
@@ -32304,16 +34335,17 @@ type GetGrafanaGrafanaUserConfig struct {
 	RecoveryBasebackupName       *string                                          `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom            *string                                          `pulumi:"serviceToForkFrom"`
 	SmtpServer                   *GetGrafanaGrafanaUserConfigSmtpServer           `pulumi:"smtpServer"`
-	StaticIps                    *string                                          `pulumi:"staticIps"`
-	UserAutoAssignOrg            *string                                          `pulumi:"userAutoAssignOrg"`
-	UserAutoAssignOrgRole        *string                                          `pulumi:"userAutoAssignOrgRole"`
-	ViewersCanEdit               *string                                          `pulumi:"viewersCanEdit"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps             *string `pulumi:"staticIps"`
+	UserAutoAssignOrg     *string `pulumi:"userAutoAssignOrg"`
+	UserAutoAssignOrgRole *string `pulumi:"userAutoAssignOrgRole"`
+	ViewersCanEdit        *string `pulumi:"viewersCanEdit"`
 }
 
 // GetGrafanaGrafanaUserConfigInput is an input type that accepts GetGrafanaGrafanaUserConfigArgs and GetGrafanaGrafanaUserConfigOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigInput` via:
 //
-//          GetGrafanaGrafanaUserConfigArgs{...}
+//	GetGrafanaGrafanaUserConfigArgs{...}
 type GetGrafanaGrafanaUserConfigInput interface {
 	pulumi.Input
 
@@ -32353,10 +34385,11 @@ type GetGrafanaGrafanaUserConfigArgs struct {
 	RecoveryBasebackupName       pulumi.StringPtrInput                                   `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom            pulumi.StringPtrInput                                   `pulumi:"serviceToForkFrom"`
 	SmtpServer                   GetGrafanaGrafanaUserConfigSmtpServerPtrInput           `pulumi:"smtpServer"`
-	StaticIps                    pulumi.StringPtrInput                                   `pulumi:"staticIps"`
-	UserAutoAssignOrg            pulumi.StringPtrInput                                   `pulumi:"userAutoAssignOrg"`
-	UserAutoAssignOrgRole        pulumi.StringPtrInput                                   `pulumi:"userAutoAssignOrgRole"`
-	ViewersCanEdit               pulumi.StringPtrInput                                   `pulumi:"viewersCanEdit"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps             pulumi.StringPtrInput `pulumi:"staticIps"`
+	UserAutoAssignOrg     pulumi.StringPtrInput `pulumi:"userAutoAssignOrg"`
+	UserAutoAssignOrgRole pulumi.StringPtrInput `pulumi:"userAutoAssignOrgRole"`
+	ViewersCanEdit        pulumi.StringPtrInput `pulumi:"viewersCanEdit"`
 }
 
 func (GetGrafanaGrafanaUserConfigArgs) ElementType() reflect.Type {
@@ -32374,7 +34407,7 @@ func (i GetGrafanaGrafanaUserConfigArgs) ToGetGrafanaGrafanaUserConfigOutputWith
 // GetGrafanaGrafanaUserConfigArrayInput is an input type that accepts GetGrafanaGrafanaUserConfigArray and GetGrafanaGrafanaUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigArrayInput` via:
 //
-//          GetGrafanaGrafanaUserConfigArray{ GetGrafanaGrafanaUserConfigArgs{...} }
+//	GetGrafanaGrafanaUserConfigArray{ GetGrafanaGrafanaUserConfigArgs{...} }
 type GetGrafanaGrafanaUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -32540,6 +34573,7 @@ func (o GetGrafanaGrafanaUserConfigOutput) SmtpServer() GetGrafanaGrafanaUserCon
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *GetGrafanaGrafanaUserConfigSmtpServer { return v.SmtpServer }).(GetGrafanaGrafanaUserConfigSmtpServerPtrOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetGrafanaGrafanaUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -32589,7 +34623,7 @@ type GetGrafanaGrafanaUserConfigAuthAzuread struct {
 // GetGrafanaGrafanaUserConfigAuthAzureadInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthAzureadArgs and GetGrafanaGrafanaUserConfigAuthAzureadOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigAuthAzureadInput` via:
 //
-//          GetGrafanaGrafanaUserConfigAuthAzureadArgs{...}
+//	GetGrafanaGrafanaUserConfigAuthAzureadArgs{...}
 type GetGrafanaGrafanaUserConfigAuthAzureadInput interface {
 	pulumi.Input
 
@@ -32630,11 +34664,11 @@ func (i GetGrafanaGrafanaUserConfigAuthAzureadArgs) ToGetGrafanaGrafanaUserConfi
 // GetGrafanaGrafanaUserConfigAuthAzureadPtrInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthAzureadArgs, GetGrafanaGrafanaUserConfigAuthAzureadPtr and GetGrafanaGrafanaUserConfigAuthAzureadPtrOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigAuthAzureadPtrInput` via:
 //
-//          GetGrafanaGrafanaUserConfigAuthAzureadArgs{...}
+//	        GetGrafanaGrafanaUserConfigAuthAzureadArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetGrafanaGrafanaUserConfigAuthAzureadPtrInput interface {
 	pulumi.Input
 
@@ -32815,7 +34849,7 @@ type GetGrafanaGrafanaUserConfigAuthGenericOauth struct {
 // GetGrafanaGrafanaUserConfigAuthGenericOauthInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthGenericOauthArgs and GetGrafanaGrafanaUserConfigAuthGenericOauthOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigAuthGenericOauthInput` via:
 //
-//          GetGrafanaGrafanaUserConfigAuthGenericOauthArgs{...}
+//	GetGrafanaGrafanaUserConfigAuthGenericOauthArgs{...}
 type GetGrafanaGrafanaUserConfigAuthGenericOauthInput interface {
 	pulumi.Input
 
@@ -32859,11 +34893,11 @@ func (i GetGrafanaGrafanaUserConfigAuthGenericOauthArgs) ToGetGrafanaGrafanaUser
 // GetGrafanaGrafanaUserConfigAuthGenericOauthPtrInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthGenericOauthArgs, GetGrafanaGrafanaUserConfigAuthGenericOauthPtr and GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigAuthGenericOauthPtrInput` via:
 //
-//          GetGrafanaGrafanaUserConfigAuthGenericOauthArgs{...}
+//	        GetGrafanaGrafanaUserConfigAuthGenericOauthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetGrafanaGrafanaUserConfigAuthGenericOauthPtrInput interface {
 	pulumi.Input
 
@@ -33078,7 +35112,7 @@ type GetGrafanaGrafanaUserConfigAuthGithub struct {
 // GetGrafanaGrafanaUserConfigAuthGithubInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthGithubArgs and GetGrafanaGrafanaUserConfigAuthGithubOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigAuthGithubInput` via:
 //
-//          GetGrafanaGrafanaUserConfigAuthGithubArgs{...}
+//	GetGrafanaGrafanaUserConfigAuthGithubArgs{...}
 type GetGrafanaGrafanaUserConfigAuthGithubInput interface {
 	pulumi.Input
 
@@ -33117,11 +35151,11 @@ func (i GetGrafanaGrafanaUserConfigAuthGithubArgs) ToGetGrafanaGrafanaUserConfig
 // GetGrafanaGrafanaUserConfigAuthGithubPtrInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthGithubArgs, GetGrafanaGrafanaUserConfigAuthGithubPtr and GetGrafanaGrafanaUserConfigAuthGithubPtrOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigAuthGithubPtrInput` via:
 //
-//          GetGrafanaGrafanaUserConfigAuthGithubArgs{...}
+//	        GetGrafanaGrafanaUserConfigAuthGithubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetGrafanaGrafanaUserConfigAuthGithubPtrInput interface {
 	pulumi.Input
 
@@ -33273,7 +35307,7 @@ type GetGrafanaGrafanaUserConfigAuthGitlab struct {
 // GetGrafanaGrafanaUserConfigAuthGitlabInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthGitlabArgs and GetGrafanaGrafanaUserConfigAuthGitlabOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigAuthGitlabInput` via:
 //
-//          GetGrafanaGrafanaUserConfigAuthGitlabArgs{...}
+//	GetGrafanaGrafanaUserConfigAuthGitlabArgs{...}
 type GetGrafanaGrafanaUserConfigAuthGitlabInput interface {
 	pulumi.Input
 
@@ -33314,11 +35348,11 @@ func (i GetGrafanaGrafanaUserConfigAuthGitlabArgs) ToGetGrafanaGrafanaUserConfig
 // GetGrafanaGrafanaUserConfigAuthGitlabPtrInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthGitlabArgs, GetGrafanaGrafanaUserConfigAuthGitlabPtr and GetGrafanaGrafanaUserConfigAuthGitlabPtrOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigAuthGitlabPtrInput` via:
 //
-//          GetGrafanaGrafanaUserConfigAuthGitlabArgs{...}
+//	        GetGrafanaGrafanaUserConfigAuthGitlabArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetGrafanaGrafanaUserConfigAuthGitlabPtrInput interface {
 	pulumi.Input
 
@@ -33493,7 +35527,7 @@ type GetGrafanaGrafanaUserConfigAuthGoogle struct {
 // GetGrafanaGrafanaUserConfigAuthGoogleInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthGoogleArgs and GetGrafanaGrafanaUserConfigAuthGoogleOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigAuthGoogleInput` via:
 //
-//          GetGrafanaGrafanaUserConfigAuthGoogleArgs{...}
+//	GetGrafanaGrafanaUserConfigAuthGoogleArgs{...}
 type GetGrafanaGrafanaUserConfigAuthGoogleInput interface {
 	pulumi.Input
 
@@ -33531,11 +35565,11 @@ func (i GetGrafanaGrafanaUserConfigAuthGoogleArgs) ToGetGrafanaGrafanaUserConfig
 // GetGrafanaGrafanaUserConfigAuthGooglePtrInput is an input type that accepts GetGrafanaGrafanaUserConfigAuthGoogleArgs, GetGrafanaGrafanaUserConfigAuthGooglePtr and GetGrafanaGrafanaUserConfigAuthGooglePtrOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigAuthGooglePtrInput` via:
 //
-//          GetGrafanaGrafanaUserConfigAuthGoogleArgs{...}
+//	        GetGrafanaGrafanaUserConfigAuthGoogleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetGrafanaGrafanaUserConfigAuthGooglePtrInput interface {
 	pulumi.Input
 
@@ -33675,7 +35709,7 @@ type GetGrafanaGrafanaUserConfigDateFormats struct {
 // GetGrafanaGrafanaUserConfigDateFormatsInput is an input type that accepts GetGrafanaGrafanaUserConfigDateFormatsArgs and GetGrafanaGrafanaUserConfigDateFormatsOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigDateFormatsInput` via:
 //
-//          GetGrafanaGrafanaUserConfigDateFormatsArgs{...}
+//	GetGrafanaGrafanaUserConfigDateFormatsArgs{...}
 type GetGrafanaGrafanaUserConfigDateFormatsInput interface {
 	pulumi.Input
 
@@ -33717,11 +35751,11 @@ func (i GetGrafanaGrafanaUserConfigDateFormatsArgs) ToGetGrafanaGrafanaUserConfi
 // GetGrafanaGrafanaUserConfigDateFormatsPtrInput is an input type that accepts GetGrafanaGrafanaUserConfigDateFormatsArgs, GetGrafanaGrafanaUserConfigDateFormatsPtr and GetGrafanaGrafanaUserConfigDateFormatsPtrOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigDateFormatsPtrInput` via:
 //
-//          GetGrafanaGrafanaUserConfigDateFormatsArgs{...}
+//	        GetGrafanaGrafanaUserConfigDateFormatsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetGrafanaGrafanaUserConfigDateFormatsPtrInput interface {
 	pulumi.Input
 
@@ -33909,7 +35943,7 @@ type GetGrafanaGrafanaUserConfigExternalImageStorage struct {
 // GetGrafanaGrafanaUserConfigExternalImageStorageInput is an input type that accepts GetGrafanaGrafanaUserConfigExternalImageStorageArgs and GetGrafanaGrafanaUserConfigExternalImageStorageOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigExternalImageStorageInput` via:
 //
-//          GetGrafanaGrafanaUserConfigExternalImageStorageArgs{...}
+//	GetGrafanaGrafanaUserConfigExternalImageStorageArgs{...}
 type GetGrafanaGrafanaUserConfigExternalImageStorageInput interface {
 	pulumi.Input
 
@@ -33947,11 +35981,11 @@ func (i GetGrafanaGrafanaUserConfigExternalImageStorageArgs) ToGetGrafanaGrafana
 // GetGrafanaGrafanaUserConfigExternalImageStoragePtrInput is an input type that accepts GetGrafanaGrafanaUserConfigExternalImageStorageArgs, GetGrafanaGrafanaUserConfigExternalImageStoragePtr and GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigExternalImageStoragePtrInput` via:
 //
-//          GetGrafanaGrafanaUserConfigExternalImageStorageArgs{...}
+//	        GetGrafanaGrafanaUserConfigExternalImageStorageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetGrafanaGrafanaUserConfigExternalImageStoragePtrInput interface {
 	pulumi.Input
 
@@ -34078,13 +36112,14 @@ func (o GetGrafanaGrafanaUserConfigExternalImageStoragePtrOutput) SecretKey() pu
 }
 
 type GetGrafanaGrafanaUserConfigPrivateAccess struct {
+	// Grafana server provided values
 	Grafana *string `pulumi:"grafana"`
 }
 
 // GetGrafanaGrafanaUserConfigPrivateAccessInput is an input type that accepts GetGrafanaGrafanaUserConfigPrivateAccessArgs and GetGrafanaGrafanaUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigPrivateAccessInput` via:
 //
-//          GetGrafanaGrafanaUserConfigPrivateAccessArgs{...}
+//	GetGrafanaGrafanaUserConfigPrivateAccessArgs{...}
 type GetGrafanaGrafanaUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -34093,6 +36128,7 @@ type GetGrafanaGrafanaUserConfigPrivateAccessInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigPrivateAccessArgs struct {
+	// Grafana server provided values
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -34119,11 +36155,11 @@ func (i GetGrafanaGrafanaUserConfigPrivateAccessArgs) ToGetGrafanaGrafanaUserCon
 // GetGrafanaGrafanaUserConfigPrivateAccessPtrInput is an input type that accepts GetGrafanaGrafanaUserConfigPrivateAccessArgs, GetGrafanaGrafanaUserConfigPrivateAccessPtr and GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigPrivateAccessPtrInput` via:
 //
-//          GetGrafanaGrafanaUserConfigPrivateAccessArgs{...}
+//	        GetGrafanaGrafanaUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetGrafanaGrafanaUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -34173,6 +36209,7 @@ func (o GetGrafanaGrafanaUserConfigPrivateAccessOutput) ToGetGrafanaGrafanaUserC
 	}).(GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput)
 }
 
+// Grafana server provided values
 func (o GetGrafanaGrafanaUserConfigPrivateAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigPrivateAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -34201,6 +36238,7 @@ func (o GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput) Elem() GetGrafanaGraf
 	}).(GetGrafanaGrafanaUserConfigPrivateAccessOutput)
 }
 
+// Grafana server provided values
 func (o GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -34211,13 +36249,14 @@ func (o GetGrafanaGrafanaUserConfigPrivateAccessPtrOutput) Grafana() pulumi.Stri
 }
 
 type GetGrafanaGrafanaUserConfigPrivatelinkAccess struct {
+	// Grafana server provided values
 	Grafana *string `pulumi:"grafana"`
 }
 
 // GetGrafanaGrafanaUserConfigPrivatelinkAccessInput is an input type that accepts GetGrafanaGrafanaUserConfigPrivatelinkAccessArgs and GetGrafanaGrafanaUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigPrivatelinkAccessInput` via:
 //
-//          GetGrafanaGrafanaUserConfigPrivatelinkAccessArgs{...}
+//	GetGrafanaGrafanaUserConfigPrivatelinkAccessArgs{...}
 type GetGrafanaGrafanaUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -34226,6 +36265,7 @@ type GetGrafanaGrafanaUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigPrivatelinkAccessArgs struct {
+	// Grafana server provided values
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -34252,11 +36292,11 @@ func (i GetGrafanaGrafanaUserConfigPrivatelinkAccessArgs) ToGetGrafanaGrafanaUse
 // GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetGrafanaGrafanaUserConfigPrivatelinkAccessArgs, GetGrafanaGrafanaUserConfigPrivatelinkAccessPtr and GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          GetGrafanaGrafanaUserConfigPrivatelinkAccessArgs{...}
+//	        GetGrafanaGrafanaUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -34306,6 +36346,7 @@ func (o GetGrafanaGrafanaUserConfigPrivatelinkAccessOutput) ToGetGrafanaGrafanaU
 	}).(GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Grafana server provided values
 func (o GetGrafanaGrafanaUserConfigPrivatelinkAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigPrivatelinkAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -34334,6 +36375,7 @@ func (o GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput) Elem() GetGrafana
 	}).(GetGrafanaGrafanaUserConfigPrivatelinkAccessOutput)
 }
 
+// Grafana server provided values
 func (o GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -34344,13 +36386,14 @@ func (o GetGrafanaGrafanaUserConfigPrivatelinkAccessPtrOutput) Grafana() pulumi.
 }
 
 type GetGrafanaGrafanaUserConfigPublicAccess struct {
+	// Grafana server provided values
 	Grafana *string `pulumi:"grafana"`
 }
 
 // GetGrafanaGrafanaUserConfigPublicAccessInput is an input type that accepts GetGrafanaGrafanaUserConfigPublicAccessArgs and GetGrafanaGrafanaUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigPublicAccessInput` via:
 //
-//          GetGrafanaGrafanaUserConfigPublicAccessArgs{...}
+//	GetGrafanaGrafanaUserConfigPublicAccessArgs{...}
 type GetGrafanaGrafanaUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -34359,6 +36402,7 @@ type GetGrafanaGrafanaUserConfigPublicAccessInput interface {
 }
 
 type GetGrafanaGrafanaUserConfigPublicAccessArgs struct {
+	// Grafana server provided values
 	Grafana pulumi.StringPtrInput `pulumi:"grafana"`
 }
 
@@ -34385,11 +36429,11 @@ func (i GetGrafanaGrafanaUserConfigPublicAccessArgs) ToGetGrafanaGrafanaUserConf
 // GetGrafanaGrafanaUserConfigPublicAccessPtrInput is an input type that accepts GetGrafanaGrafanaUserConfigPublicAccessArgs, GetGrafanaGrafanaUserConfigPublicAccessPtr and GetGrafanaGrafanaUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigPublicAccessPtrInput` via:
 //
-//          GetGrafanaGrafanaUserConfigPublicAccessArgs{...}
+//	        GetGrafanaGrafanaUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetGrafanaGrafanaUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -34439,6 +36483,7 @@ func (o GetGrafanaGrafanaUserConfigPublicAccessOutput) ToGetGrafanaGrafanaUserCo
 	}).(GetGrafanaGrafanaUserConfigPublicAccessPtrOutput)
 }
 
+// Grafana server provided values
 func (o GetGrafanaGrafanaUserConfigPublicAccessOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigPublicAccess) *string { return v.Grafana }).(pulumi.StringPtrOutput)
 }
@@ -34467,6 +36512,7 @@ func (o GetGrafanaGrafanaUserConfigPublicAccessPtrOutput) Elem() GetGrafanaGrafa
 	}).(GetGrafanaGrafanaUserConfigPublicAccessOutput)
 }
 
+// Grafana server provided values
 func (o GetGrafanaGrafanaUserConfigPublicAccessPtrOutput) Grafana() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -34490,7 +36536,7 @@ type GetGrafanaGrafanaUserConfigSmtpServer struct {
 // GetGrafanaGrafanaUserConfigSmtpServerInput is an input type that accepts GetGrafanaGrafanaUserConfigSmtpServerArgs and GetGrafanaGrafanaUserConfigSmtpServerOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigSmtpServerInput` via:
 //
-//          GetGrafanaGrafanaUserConfigSmtpServerArgs{...}
+//	GetGrafanaGrafanaUserConfigSmtpServerArgs{...}
 type GetGrafanaGrafanaUserConfigSmtpServerInput interface {
 	pulumi.Input
 
@@ -34532,11 +36578,11 @@ func (i GetGrafanaGrafanaUserConfigSmtpServerArgs) ToGetGrafanaGrafanaUserConfig
 // GetGrafanaGrafanaUserConfigSmtpServerPtrInput is an input type that accepts GetGrafanaGrafanaUserConfigSmtpServerArgs, GetGrafanaGrafanaUserConfigSmtpServerPtr and GetGrafanaGrafanaUserConfigSmtpServerPtrOutput values.
 // You can construct a concrete instance of `GetGrafanaGrafanaUserConfigSmtpServerPtrInput` via:
 //
-//          GetGrafanaGrafanaUserConfigSmtpServerArgs{...}
+//	        GetGrafanaGrafanaUserConfigSmtpServerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetGrafanaGrafanaUserConfigSmtpServerPtrInput interface {
 	pulumi.Input
 
@@ -34722,7 +36768,7 @@ type GetGrafanaServiceIntegration struct {
 // GetGrafanaServiceIntegrationInput is an input type that accepts GetGrafanaServiceIntegrationArgs and GetGrafanaServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetGrafanaServiceIntegrationInput` via:
 //
-//          GetGrafanaServiceIntegrationArgs{...}
+//	GetGrafanaServiceIntegrationArgs{...}
 type GetGrafanaServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -34750,7 +36796,7 @@ func (i GetGrafanaServiceIntegrationArgs) ToGetGrafanaServiceIntegrationOutputWi
 // GetGrafanaServiceIntegrationArrayInput is an input type that accepts GetGrafanaServiceIntegrationArray and GetGrafanaServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetGrafanaServiceIntegrationArrayInput` via:
 //
-//          GetGrafanaServiceIntegrationArray{ GetGrafanaServiceIntegrationArgs{...} }
+//	GetGrafanaServiceIntegrationArray{ GetGrafanaServiceIntegrationArgs{...} }
 type GetGrafanaServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -34822,7 +36868,7 @@ type GetGrafanaTag struct {
 // GetGrafanaTagInput is an input type that accepts GetGrafanaTagArgs and GetGrafanaTagOutput values.
 // You can construct a concrete instance of `GetGrafanaTagInput` via:
 //
-//          GetGrafanaTagArgs{...}
+//	GetGrafanaTagArgs{...}
 type GetGrafanaTagInput interface {
 	pulumi.Input
 
@@ -34850,7 +36896,7 @@ func (i GetGrafanaTagArgs) ToGetGrafanaTagOutputWithContext(ctx context.Context)
 // GetGrafanaTagArrayInput is an input type that accepts GetGrafanaTagArray and GetGrafanaTagArrayOutput values.
 // You can construct a concrete instance of `GetGrafanaTagArrayInput` via:
 //
-//          GetGrafanaTagArray{ GetGrafanaTagArgs{...} }
+//	GetGrafanaTagArray{ GetGrafanaTagArgs{...} }
 type GetGrafanaTagArrayInput interface {
 	pulumi.Input
 
@@ -34927,7 +36973,7 @@ type GetInfluxDbComponent struct {
 // GetInfluxDbComponentInput is an input type that accepts GetInfluxDbComponentArgs and GetInfluxDbComponentOutput values.
 // You can construct a concrete instance of `GetInfluxDbComponentInput` via:
 //
-//          GetInfluxDbComponentArgs{...}
+//	GetInfluxDbComponentArgs{...}
 type GetInfluxDbComponentInput interface {
 	pulumi.Input
 
@@ -34960,7 +37006,7 @@ func (i GetInfluxDbComponentArgs) ToGetInfluxDbComponentOutputWithContext(ctx co
 // GetInfluxDbComponentArrayInput is an input type that accepts GetInfluxDbComponentArray and GetInfluxDbComponentArrayOutput values.
 // You can construct a concrete instance of `GetInfluxDbComponentArrayInput` via:
 //
-//          GetInfluxDbComponentArray{ GetInfluxDbComponentArgs{...} }
+//	GetInfluxDbComponentArray{ GetInfluxDbComponentArgs{...} }
 type GetInfluxDbComponentArrayInput interface {
 	pulumi.Input
 
@@ -35051,7 +37097,7 @@ type GetInfluxDbInfluxdb struct {
 // GetInfluxDbInfluxdbInput is an input type that accepts GetInfluxDbInfluxdbArgs and GetInfluxDbInfluxdbOutput values.
 // You can construct a concrete instance of `GetInfluxDbInfluxdbInput` via:
 //
-//          GetInfluxDbInfluxdbArgs{...}
+//	GetInfluxDbInfluxdbArgs{...}
 type GetInfluxDbInfluxdbInput interface {
 	pulumi.Input
 
@@ -35078,7 +37124,7 @@ func (i GetInfluxDbInfluxdbArgs) ToGetInfluxDbInfluxdbOutputWithContext(ctx cont
 // GetInfluxDbInfluxdbArrayInput is an input type that accepts GetInfluxDbInfluxdbArray and GetInfluxDbInfluxdbArrayOutput values.
 // You can construct a concrete instance of `GetInfluxDbInfluxdbArrayInput` via:
 //
-//          GetInfluxDbInfluxdbArray{ GetInfluxDbInfluxdbArgs{...} }
+//	GetInfluxDbInfluxdbArray{ GetInfluxDbInfluxdbArgs{...} }
 type GetInfluxDbInfluxdbArrayInput interface {
 	pulumi.Input
 
@@ -35139,7 +37185,8 @@ func (o GetInfluxDbInfluxdbArrayOutput) Index(i pulumi.IntInput) GetInfluxDbInfl
 }
 
 type GetInfluxDbInfluxdbUserConfig struct {
-	CustomDomain           *string                                         `pulumi:"customDomain"`
+	CustomDomain *string `pulumi:"customDomain"`
+	// InfluxDB server provided values
 	Influxdb               *GetInfluxDbInfluxdbUserConfigInfluxdb          `pulumi:"influxdb"`
 	IpFilters              []string                                        `pulumi:"ipFilters"`
 	PrivateAccess          *GetInfluxDbInfluxdbUserConfigPrivateAccess     `pulumi:"privateAccess"`
@@ -35148,13 +37195,14 @@ type GetInfluxDbInfluxdbUserConfig struct {
 	PublicAccess           *GetInfluxDbInfluxdbUserConfigPublicAccess      `pulumi:"publicAccess"`
 	RecoveryBasebackupName *string                                         `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom      *string                                         `pulumi:"serviceToForkFrom"`
-	StaticIps              *string                                         `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // GetInfluxDbInfluxdbUserConfigInput is an input type that accepts GetInfluxDbInfluxdbUserConfigArgs and GetInfluxDbInfluxdbUserConfigOutput values.
 // You can construct a concrete instance of `GetInfluxDbInfluxdbUserConfigInput` via:
 //
-//          GetInfluxDbInfluxdbUserConfigArgs{...}
+//	GetInfluxDbInfluxdbUserConfigArgs{...}
 type GetInfluxDbInfluxdbUserConfigInput interface {
 	pulumi.Input
 
@@ -35163,7 +37211,8 @@ type GetInfluxDbInfluxdbUserConfigInput interface {
 }
 
 type GetInfluxDbInfluxdbUserConfigArgs struct {
-	CustomDomain           pulumi.StringPtrInput                                  `pulumi:"customDomain"`
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// InfluxDB server provided values
 	Influxdb               GetInfluxDbInfluxdbUserConfigInfluxdbPtrInput          `pulumi:"influxdb"`
 	IpFilters              pulumi.StringArrayInput                                `pulumi:"ipFilters"`
 	PrivateAccess          GetInfluxDbInfluxdbUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
@@ -35172,7 +37221,8 @@ type GetInfluxDbInfluxdbUserConfigArgs struct {
 	PublicAccess           GetInfluxDbInfluxdbUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
 	RecoveryBasebackupName pulumi.StringPtrInput                                  `pulumi:"recoveryBasebackupName"`
 	ServiceToForkFrom      pulumi.StringPtrInput                                  `pulumi:"serviceToForkFrom"`
-	StaticIps              pulumi.StringPtrInput                                  `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (GetInfluxDbInfluxdbUserConfigArgs) ElementType() reflect.Type {
@@ -35190,7 +37240,7 @@ func (i GetInfluxDbInfluxdbUserConfigArgs) ToGetInfluxDbInfluxdbUserConfigOutput
 // GetInfluxDbInfluxdbUserConfigArrayInput is an input type that accepts GetInfluxDbInfluxdbUserConfigArray and GetInfluxDbInfluxdbUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetInfluxDbInfluxdbUserConfigArrayInput` via:
 //
-//          GetInfluxDbInfluxdbUserConfigArray{ GetInfluxDbInfluxdbUserConfigArgs{...} }
+//	GetInfluxDbInfluxdbUserConfigArray{ GetInfluxDbInfluxdbUserConfigArgs{...} }
 type GetInfluxDbInfluxdbUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -35230,6 +37280,7 @@ func (o GetInfluxDbInfluxdbUserConfigOutput) CustomDomain() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
 }
 
+// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigOutput) Influxdb() GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *GetInfluxDbInfluxdbUserConfigInfluxdb { return v.Influxdb }).(GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput)
 }
@@ -35268,6 +37319,7 @@ func (o GetInfluxDbInfluxdbUserConfigOutput) ServiceToForkFrom() pulumi.StringPt
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetInfluxDbInfluxdbUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -35304,7 +37356,7 @@ type GetInfluxDbInfluxdbUserConfigInfluxdb struct {
 // GetInfluxDbInfluxdbUserConfigInfluxdbInput is an input type that accepts GetInfluxDbInfluxdbUserConfigInfluxdbArgs and GetInfluxDbInfluxdbUserConfigInfluxdbOutput values.
 // You can construct a concrete instance of `GetInfluxDbInfluxdbUserConfigInfluxdbInput` via:
 //
-//          GetInfluxDbInfluxdbUserConfigInfluxdbArgs{...}
+//	GetInfluxDbInfluxdbUserConfigInfluxdbArgs{...}
 type GetInfluxDbInfluxdbUserConfigInfluxdbInput interface {
 	pulumi.Input
 
@@ -35344,11 +37396,11 @@ func (i GetInfluxDbInfluxdbUserConfigInfluxdbArgs) ToGetInfluxDbInfluxdbUserConf
 // GetInfluxDbInfluxdbUserConfigInfluxdbPtrInput is an input type that accepts GetInfluxDbInfluxdbUserConfigInfluxdbArgs, GetInfluxDbInfluxdbUserConfigInfluxdbPtr and GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput values.
 // You can construct a concrete instance of `GetInfluxDbInfluxdbUserConfigInfluxdbPtrInput` via:
 //
-//          GetInfluxDbInfluxdbUserConfigInfluxdbArgs{...}
+//	        GetInfluxDbInfluxdbUserConfigInfluxdbArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetInfluxDbInfluxdbUserConfigInfluxdbPtrInput interface {
 	pulumi.Input
 
@@ -35501,13 +37553,14 @@ func (o GetInfluxDbInfluxdbUserConfigInfluxdbPtrOutput) QueryTimeout() pulumi.St
 }
 
 type GetInfluxDbInfluxdbUserConfigPrivateAccess struct {
+	// InfluxDB server provided values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
 // GetInfluxDbInfluxdbUserConfigPrivateAccessInput is an input type that accepts GetInfluxDbInfluxdbUserConfigPrivateAccessArgs and GetInfluxDbInfluxdbUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetInfluxDbInfluxdbUserConfigPrivateAccessInput` via:
 //
-//          GetInfluxDbInfluxdbUserConfigPrivateAccessArgs{...}
+//	GetInfluxDbInfluxdbUserConfigPrivateAccessArgs{...}
 type GetInfluxDbInfluxdbUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -35516,6 +37569,7 @@ type GetInfluxDbInfluxdbUserConfigPrivateAccessInput interface {
 }
 
 type GetInfluxDbInfluxdbUserConfigPrivateAccessArgs struct {
+	// InfluxDB server provided values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -35542,11 +37596,11 @@ func (i GetInfluxDbInfluxdbUserConfigPrivateAccessArgs) ToGetInfluxDbInfluxdbUse
 // GetInfluxDbInfluxdbUserConfigPrivateAccessPtrInput is an input type that accepts GetInfluxDbInfluxdbUserConfigPrivateAccessArgs, GetInfluxDbInfluxdbUserConfigPrivateAccessPtr and GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetInfluxDbInfluxdbUserConfigPrivateAccessPtrInput` via:
 //
-//          GetInfluxDbInfluxdbUserConfigPrivateAccessArgs{...}
+//	        GetInfluxDbInfluxdbUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetInfluxDbInfluxdbUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -35596,6 +37650,7 @@ func (o GetInfluxDbInfluxdbUserConfigPrivateAccessOutput) ToGetInfluxDbInfluxdbU
 	}).(GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput)
 }
 
+// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigPrivateAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigPrivateAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -35624,6 +37679,7 @@ func (o GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Elem() GetInfluxDbI
 	}).(GetInfluxDbInfluxdbUserConfigPrivateAccessOutput)
 }
 
+// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -35634,13 +37690,14 @@ func (o GetInfluxDbInfluxdbUserConfigPrivateAccessPtrOutput) Influxdb() pulumi.S
 }
 
 type GetInfluxDbInfluxdbUserConfigPrivatelinkAccess struct {
+	// InfluxDB server provided values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
 // GetInfluxDbInfluxdbUserConfigPrivatelinkAccessInput is an input type that accepts GetInfluxDbInfluxdbUserConfigPrivatelinkAccessArgs and GetInfluxDbInfluxdbUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `GetInfluxDbInfluxdbUserConfigPrivatelinkAccessInput` via:
 //
-//          GetInfluxDbInfluxdbUserConfigPrivatelinkAccessArgs{...}
+//	GetInfluxDbInfluxdbUserConfigPrivatelinkAccessArgs{...}
 type GetInfluxDbInfluxdbUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -35649,6 +37706,7 @@ type GetInfluxDbInfluxdbUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetInfluxDbInfluxdbUserConfigPrivatelinkAccessArgs struct {
+	// InfluxDB server provided values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -35675,11 +37733,11 @@ func (i GetInfluxDbInfluxdbUserConfigPrivatelinkAccessArgs) ToGetInfluxDbInfluxd
 // GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetInfluxDbInfluxdbUserConfigPrivatelinkAccessArgs, GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtr and GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          GetInfluxDbInfluxdbUserConfigPrivatelinkAccessArgs{...}
+//	        GetInfluxDbInfluxdbUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -35729,6 +37787,7 @@ func (o GetInfluxDbInfluxdbUserConfigPrivatelinkAccessOutput) ToGetInfluxDbInflu
 	}).(GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigPrivatelinkAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigPrivatelinkAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -35757,6 +37816,7 @@ func (o GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput) Elem() GetInflu
 	}).(GetInfluxDbInfluxdbUserConfigPrivatelinkAccessOutput)
 }
 
+// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -35767,13 +37827,14 @@ func (o GetInfluxDbInfluxdbUserConfigPrivatelinkAccessPtrOutput) Influxdb() pulu
 }
 
 type GetInfluxDbInfluxdbUserConfigPublicAccess struct {
+	// InfluxDB server provided values
 	Influxdb *string `pulumi:"influxdb"`
 }
 
 // GetInfluxDbInfluxdbUserConfigPublicAccessInput is an input type that accepts GetInfluxDbInfluxdbUserConfigPublicAccessArgs and GetInfluxDbInfluxdbUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetInfluxDbInfluxdbUserConfigPublicAccessInput` via:
 //
-//          GetInfluxDbInfluxdbUserConfigPublicAccessArgs{...}
+//	GetInfluxDbInfluxdbUserConfigPublicAccessArgs{...}
 type GetInfluxDbInfluxdbUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -35782,6 +37843,7 @@ type GetInfluxDbInfluxdbUserConfigPublicAccessInput interface {
 }
 
 type GetInfluxDbInfluxdbUserConfigPublicAccessArgs struct {
+	// InfluxDB server provided values
 	Influxdb pulumi.StringPtrInput `pulumi:"influxdb"`
 }
 
@@ -35808,11 +37870,11 @@ func (i GetInfluxDbInfluxdbUserConfigPublicAccessArgs) ToGetInfluxDbInfluxdbUser
 // GetInfluxDbInfluxdbUserConfigPublicAccessPtrInput is an input type that accepts GetInfluxDbInfluxdbUserConfigPublicAccessArgs, GetInfluxDbInfluxdbUserConfigPublicAccessPtr and GetInfluxDbInfluxdbUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetInfluxDbInfluxdbUserConfigPublicAccessPtrInput` via:
 //
-//          GetInfluxDbInfluxdbUserConfigPublicAccessArgs{...}
+//	        GetInfluxDbInfluxdbUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetInfluxDbInfluxdbUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -35862,6 +37924,7 @@ func (o GetInfluxDbInfluxdbUserConfigPublicAccessOutput) ToGetInfluxDbInfluxdbUs
 	}).(GetInfluxDbInfluxdbUserConfigPublicAccessPtrOutput)
 }
 
+// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigPublicAccessOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInfluxDbInfluxdbUserConfigPublicAccess) *string { return v.Influxdb }).(pulumi.StringPtrOutput)
 }
@@ -35890,6 +37953,7 @@ func (o GetInfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Elem() GetInfluxDbIn
 	}).(GetInfluxDbInfluxdbUserConfigPublicAccessOutput)
 }
 
+// InfluxDB server provided values
 func (o GetInfluxDbInfluxdbUserConfigPublicAccessPtrOutput) Influxdb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetInfluxDbInfluxdbUserConfigPublicAccess) *string {
 		if v == nil {
@@ -35907,7 +37971,7 @@ type GetInfluxDbServiceIntegration struct {
 // GetInfluxDbServiceIntegrationInput is an input type that accepts GetInfluxDbServiceIntegrationArgs and GetInfluxDbServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetInfluxDbServiceIntegrationInput` via:
 //
-//          GetInfluxDbServiceIntegrationArgs{...}
+//	GetInfluxDbServiceIntegrationArgs{...}
 type GetInfluxDbServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -35935,7 +37999,7 @@ func (i GetInfluxDbServiceIntegrationArgs) ToGetInfluxDbServiceIntegrationOutput
 // GetInfluxDbServiceIntegrationArrayInput is an input type that accepts GetInfluxDbServiceIntegrationArray and GetInfluxDbServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetInfluxDbServiceIntegrationArrayInput` via:
 //
-//          GetInfluxDbServiceIntegrationArray{ GetInfluxDbServiceIntegrationArgs{...} }
+//	GetInfluxDbServiceIntegrationArray{ GetInfluxDbServiceIntegrationArgs{...} }
 type GetInfluxDbServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -36007,7 +38071,7 @@ type GetInfluxDbTag struct {
 // GetInfluxDbTagInput is an input type that accepts GetInfluxDbTagArgs and GetInfluxDbTagOutput values.
 // You can construct a concrete instance of `GetInfluxDbTagInput` via:
 //
-//          GetInfluxDbTagArgs{...}
+//	GetInfluxDbTagArgs{...}
 type GetInfluxDbTagInput interface {
 	pulumi.Input
 
@@ -36035,7 +38099,7 @@ func (i GetInfluxDbTagArgs) ToGetInfluxDbTagOutputWithContext(ctx context.Contex
 // GetInfluxDbTagArrayInput is an input type that accepts GetInfluxDbTagArray and GetInfluxDbTagArrayOutput values.
 // You can construct a concrete instance of `GetInfluxDbTagArrayInput` via:
 //
-//          GetInfluxDbTagArray{ GetInfluxDbTagArgs{...} }
+//	GetInfluxDbTagArray{ GetInfluxDbTagArgs{...} }
 type GetInfluxDbTagArrayInput interface {
 	pulumi.Input
 
@@ -36112,7 +38176,7 @@ type GetKafkaComponent struct {
 // GetKafkaComponentInput is an input type that accepts GetKafkaComponentArgs and GetKafkaComponentOutput values.
 // You can construct a concrete instance of `GetKafkaComponentInput` via:
 //
-//          GetKafkaComponentArgs{...}
+//	GetKafkaComponentArgs{...}
 type GetKafkaComponentInput interface {
 	pulumi.Input
 
@@ -36145,7 +38209,7 @@ func (i GetKafkaComponentArgs) ToGetKafkaComponentOutputWithContext(ctx context.
 // GetKafkaComponentArrayInput is an input type that accepts GetKafkaComponentArray and GetKafkaComponentArrayOutput values.
 // You can construct a concrete instance of `GetKafkaComponentArrayInput` via:
 //
-//          GetKafkaComponentArray{ GetKafkaComponentArgs{...} }
+//	GetKafkaComponentArray{ GetKafkaComponentArgs{...} }
 type GetKafkaComponentArrayInput interface {
 	pulumi.Input
 
@@ -36242,7 +38306,7 @@ type GetKafkaConnectComponent struct {
 // GetKafkaConnectComponentInput is an input type that accepts GetKafkaConnectComponentArgs and GetKafkaConnectComponentOutput values.
 // You can construct a concrete instance of `GetKafkaConnectComponentInput` via:
 //
-//          GetKafkaConnectComponentArgs{...}
+//	GetKafkaConnectComponentArgs{...}
 type GetKafkaConnectComponentInput interface {
 	pulumi.Input
 
@@ -36275,7 +38339,7 @@ func (i GetKafkaConnectComponentArgs) ToGetKafkaConnectComponentOutputWithContex
 // GetKafkaConnectComponentArrayInput is an input type that accepts GetKafkaConnectComponentArray and GetKafkaConnectComponentArrayOutput values.
 // You can construct a concrete instance of `GetKafkaConnectComponentArrayInput` via:
 //
-//          GetKafkaConnectComponentArray{ GetKafkaConnectComponentArgs{...} }
+//	GetKafkaConnectComponentArray{ GetKafkaConnectComponentArgs{...} }
 type GetKafkaConnectComponentArrayInput interface {
 	pulumi.Input
 
@@ -36365,7 +38429,7 @@ type GetKafkaConnectKafkaConnect struct {
 // GetKafkaConnectKafkaConnectInput is an input type that accepts GetKafkaConnectKafkaConnectArgs and GetKafkaConnectKafkaConnectOutput values.
 // You can construct a concrete instance of `GetKafkaConnectKafkaConnectInput` via:
 //
-//          GetKafkaConnectKafkaConnectArgs{...}
+//	GetKafkaConnectKafkaConnectArgs{...}
 type GetKafkaConnectKafkaConnectInput interface {
 	pulumi.Input
 
@@ -36391,7 +38455,7 @@ func (i GetKafkaConnectKafkaConnectArgs) ToGetKafkaConnectKafkaConnectOutputWith
 // GetKafkaConnectKafkaConnectArrayInput is an input type that accepts GetKafkaConnectKafkaConnectArray and GetKafkaConnectKafkaConnectArrayOutput values.
 // You can construct a concrete instance of `GetKafkaConnectKafkaConnectArrayInput` via:
 //
-//          GetKafkaConnectKafkaConnectArray{ GetKafkaConnectKafkaConnectArgs{...} }
+//	GetKafkaConnectKafkaConnectArray{ GetKafkaConnectKafkaConnectArgs{...} }
 type GetKafkaConnectKafkaConnectArrayInput interface {
 	pulumi.Input
 
@@ -36448,18 +38512,20 @@ func (o GetKafkaConnectKafkaConnectArrayOutput) Index(i pulumi.IntInput) GetKafk
 }
 
 type GetKafkaConnectKafkaConnectUserConfig struct {
-	IpFilters         []string                                                `pulumi:"ipFilters"`
+	IpFilters []string `pulumi:"ipFilters"`
+	// Kafka Connect server provided values
 	KafkaConnect      *GetKafkaConnectKafkaConnectUserConfigKafkaConnect      `pulumi:"kafkaConnect"`
 	PrivateAccess     *GetKafkaConnectKafkaConnectUserConfigPrivateAccess     `pulumi:"privateAccess"`
 	PrivatelinkAccess *GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
 	PublicAccess      *GetKafkaConnectKafkaConnectUserConfigPublicAccess      `pulumi:"publicAccess"`
-	StaticIps         *string                                                 `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // GetKafkaConnectKafkaConnectUserConfigInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigArgs and GetKafkaConnectKafkaConnectUserConfigOutput values.
 // You can construct a concrete instance of `GetKafkaConnectKafkaConnectUserConfigInput` via:
 //
-//          GetKafkaConnectKafkaConnectUserConfigArgs{...}
+//	GetKafkaConnectKafkaConnectUserConfigArgs{...}
 type GetKafkaConnectKafkaConnectUserConfigInput interface {
 	pulumi.Input
 
@@ -36468,12 +38534,14 @@ type GetKafkaConnectKafkaConnectUserConfigInput interface {
 }
 
 type GetKafkaConnectKafkaConnectUserConfigArgs struct {
-	IpFilters         pulumi.StringArrayInput                                        `pulumi:"ipFilters"`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Kafka Connect server provided values
 	KafkaConnect      GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput      `pulumi:"kafkaConnect"`
 	PrivateAccess     GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
 	PrivatelinkAccess GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
 	PublicAccess      GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
-	StaticIps         pulumi.StringPtrInput                                          `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (GetKafkaConnectKafkaConnectUserConfigArgs) ElementType() reflect.Type {
@@ -36491,7 +38559,7 @@ func (i GetKafkaConnectKafkaConnectUserConfigArgs) ToGetKafkaConnectKafkaConnect
 // GetKafkaConnectKafkaConnectUserConfigArrayInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigArray and GetKafkaConnectKafkaConnectUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetKafkaConnectKafkaConnectUserConfigArrayInput` via:
 //
-//          GetKafkaConnectKafkaConnectUserConfigArray{ GetKafkaConnectKafkaConnectUserConfigArgs{...} }
+//	GetKafkaConnectKafkaConnectUserConfigArray{ GetKafkaConnectKafkaConnectUserConfigArgs{...} }
 type GetKafkaConnectKafkaConnectUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -36531,6 +38599,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigOutput) IpFilters() pulumi.StringAr
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigOutput) KafkaConnect() GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) *GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
 		return v.KafkaConnect
@@ -36555,6 +38624,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigOutput) PublicAccess() GetKafkaConn
 	}).(GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetKafkaConnectKafkaConnectUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -36597,7 +38667,7 @@ type GetKafkaConnectKafkaConnectUserConfigKafkaConnect struct {
 // GetKafkaConnectKafkaConnectUserConfigKafkaConnectInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs and GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput values.
 // You can construct a concrete instance of `GetKafkaConnectKafkaConnectUserConfigKafkaConnectInput` via:
 //
-//          GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs{...}
+//	GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs{...}
 type GetKafkaConnectKafkaConnectUserConfigKafkaConnectInput interface {
 	pulumi.Input
 
@@ -36643,11 +38713,11 @@ func (i GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs) ToGetKafkaConnect
 // GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs, GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtr and GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput values.
 // You can construct a concrete instance of `GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput` via:
 //
-//          GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs{...}
+//	        GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrInput interface {
 	pulumi.Input
 
@@ -36882,6 +38952,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigKafkaConnectPtrOutput) SessionTimeo
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPrivateAccess struct {
+	// Kafka Connect server provided values
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -36889,7 +38960,7 @@ type GetKafkaConnectKafkaConnectUserConfigPrivateAccess struct {
 // GetKafkaConnectKafkaConnectUserConfigPrivateAccessInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs and GetKafkaConnectKafkaConnectUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetKafkaConnectKafkaConnectUserConfigPrivateAccessInput` via:
 //
-//          GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs{...}
+//	GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs{...}
 type GetKafkaConnectKafkaConnectUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -36898,6 +38969,7 @@ type GetKafkaConnectKafkaConnectUserConfigPrivateAccessInput interface {
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs struct {
+	// Kafka Connect server provided values
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -36925,11 +38997,11 @@ func (i GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs) ToGetKafkaConnec
 // GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs, GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtr and GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput` via:
 //
-//          GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs{...}
+//	        GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -36979,6 +39051,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessOutput) ToGetKafkaConn
 	}).(GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput)
 }
 
+// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigPrivateAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -37011,6 +39084,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) Elem() GetK
 	}).(GetKafkaConnectKafkaConnectUserConfigPrivateAccessOutput)
 }
 
+// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -37030,7 +39104,8 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivateAccessPtrOutput) Prometheus(
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess struct {
-	Jolokia      *string `pulumi:"jolokia"`
+	Jolokia *string `pulumi:"jolokia"`
+	// Kafka Connect server provided values
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -37038,7 +39113,7 @@ type GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess struct {
 // GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs and GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessInput` via:
 //
-//          GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs{...}
+//	GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs{...}
 type GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -37047,7 +39122,8 @@ type GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs struct {
-	Jolokia      pulumi.StringPtrInput `pulumi:"jolokia"`
+	Jolokia pulumi.StringPtrInput `pulumi:"jolokia"`
+	// Kafka Connect server provided values
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -37075,11 +39151,11 @@ func (i GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs) ToGetKafkaCo
 // GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs, GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtr and GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs{...}
+//	        GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -37133,6 +39209,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessOutput) Jolokia() 
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess) *string { return v.Jolokia }).(pulumi.StringPtrOutput)
 }
 
+// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -37174,6 +39251,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput) Jolokia
 	}).(pulumi.StringPtrOutput)
 }
 
+// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -37193,6 +39271,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessPtrOutput) Prometh
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPublicAccess struct {
+	// Kafka Connect server provided values
 	KafkaConnect *string `pulumi:"kafkaConnect"`
 	Prometheus   *string `pulumi:"prometheus"`
 }
@@ -37200,7 +39279,7 @@ type GetKafkaConnectKafkaConnectUserConfigPublicAccess struct {
 // GetKafkaConnectKafkaConnectUserConfigPublicAccessInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs and GetKafkaConnectKafkaConnectUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetKafkaConnectKafkaConnectUserConfigPublicAccessInput` via:
 //
-//          GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs{...}
+//	GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs{...}
 type GetKafkaConnectKafkaConnectUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -37209,6 +39288,7 @@ type GetKafkaConnectKafkaConnectUserConfigPublicAccessInput interface {
 }
 
 type GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs struct {
+	// Kafka Connect server provided values
 	KafkaConnect pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	Prometheus   pulumi.StringPtrInput `pulumi:"prometheus"`
 }
@@ -37236,11 +39316,11 @@ func (i GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs) ToGetKafkaConnect
 // GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs, GetKafkaConnectKafkaConnectUserConfigPublicAccessPtr and GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrInput` via:
 //
-//          GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs{...}
+//	        GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -37290,6 +39370,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigPublicAccessOutput) ToGetKafkaConne
 	}).(GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput)
 }
 
+// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigPublicAccessOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigPublicAccess) *string { return v.KafkaConnect }).(pulumi.StringPtrOutput)
 }
@@ -37322,6 +39403,7 @@ func (o GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) Elem() GetKa
 	}).(GetKafkaConnectKafkaConnectUserConfigPublicAccessOutput)
 }
 
+// Kafka Connect server provided values
 func (o GetKafkaConnectKafkaConnectUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaConnectKafkaConnectUserConfigPublicAccess) *string {
 		if v == nil {
@@ -37348,7 +39430,7 @@ type GetKafkaConnectServiceIntegration struct {
 // GetKafkaConnectServiceIntegrationInput is an input type that accepts GetKafkaConnectServiceIntegrationArgs and GetKafkaConnectServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetKafkaConnectServiceIntegrationInput` via:
 //
-//          GetKafkaConnectServiceIntegrationArgs{...}
+//	GetKafkaConnectServiceIntegrationArgs{...}
 type GetKafkaConnectServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -37376,7 +39458,7 @@ func (i GetKafkaConnectServiceIntegrationArgs) ToGetKafkaConnectServiceIntegrati
 // GetKafkaConnectServiceIntegrationArrayInput is an input type that accepts GetKafkaConnectServiceIntegrationArray and GetKafkaConnectServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetKafkaConnectServiceIntegrationArrayInput` via:
 //
-//          GetKafkaConnectServiceIntegrationArray{ GetKafkaConnectServiceIntegrationArgs{...} }
+//	GetKafkaConnectServiceIntegrationArray{ GetKafkaConnectServiceIntegrationArgs{...} }
 type GetKafkaConnectServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -37448,7 +39530,7 @@ type GetKafkaConnectTag struct {
 // GetKafkaConnectTagInput is an input type that accepts GetKafkaConnectTagArgs and GetKafkaConnectTagOutput values.
 // You can construct a concrete instance of `GetKafkaConnectTagInput` via:
 //
-//          GetKafkaConnectTagArgs{...}
+//	GetKafkaConnectTagArgs{...}
 type GetKafkaConnectTagInput interface {
 	pulumi.Input
 
@@ -37476,7 +39558,7 @@ func (i GetKafkaConnectTagArgs) ToGetKafkaConnectTagOutputWithContext(ctx contex
 // GetKafkaConnectTagArrayInput is an input type that accepts GetKafkaConnectTagArray and GetKafkaConnectTagArrayOutput values.
 // You can construct a concrete instance of `GetKafkaConnectTagArrayInput` via:
 //
-//          GetKafkaConnectTagArray{ GetKafkaConnectTagArgs{...} }
+//	GetKafkaConnectTagArray{ GetKafkaConnectTagArgs{...} }
 type GetKafkaConnectTagArrayInput interface {
 	pulumi.Input
 
@@ -37542,13 +39624,14 @@ func (o GetKafkaConnectTagArrayOutput) Index(i pulumi.IntInput) GetKafkaConnectT
 
 type GetKafkaConnectorTask struct {
 	Connector string `pulumi:"connector"`
-	Task      int    `pulumi:"task"`
+	// List of tasks of a connector.
+	Task int `pulumi:"task"`
 }
 
 // GetKafkaConnectorTaskInput is an input type that accepts GetKafkaConnectorTaskArgs and GetKafkaConnectorTaskOutput values.
 // You can construct a concrete instance of `GetKafkaConnectorTaskInput` via:
 //
-//          GetKafkaConnectorTaskArgs{...}
+//	GetKafkaConnectorTaskArgs{...}
 type GetKafkaConnectorTaskInput interface {
 	pulumi.Input
 
@@ -37558,7 +39641,8 @@ type GetKafkaConnectorTaskInput interface {
 
 type GetKafkaConnectorTaskArgs struct {
 	Connector pulumi.StringInput `pulumi:"connector"`
-	Task      pulumi.IntInput    `pulumi:"task"`
+	// List of tasks of a connector.
+	Task pulumi.IntInput `pulumi:"task"`
 }
 
 func (GetKafkaConnectorTaskArgs) ElementType() reflect.Type {
@@ -37576,7 +39660,7 @@ func (i GetKafkaConnectorTaskArgs) ToGetKafkaConnectorTaskOutputWithContext(ctx 
 // GetKafkaConnectorTaskArrayInput is an input type that accepts GetKafkaConnectorTaskArray and GetKafkaConnectorTaskArrayOutput values.
 // You can construct a concrete instance of `GetKafkaConnectorTaskArrayInput` via:
 //
-//          GetKafkaConnectorTaskArray{ GetKafkaConnectorTaskArgs{...} }
+//	GetKafkaConnectorTaskArray{ GetKafkaConnectorTaskArgs{...} }
 type GetKafkaConnectorTaskArrayInput interface {
 	pulumi.Input
 
@@ -37616,6 +39700,7 @@ func (o GetKafkaConnectorTaskOutput) Connector() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaConnectorTask) string { return v.Connector }).(pulumi.StringOutput)
 }
 
+// List of tasks of a connector.
 func (o GetKafkaConnectorTaskOutput) Task() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKafkaConnectorTask) int { return v.Task }).(pulumi.IntOutput)
 }
@@ -37651,7 +39736,7 @@ type GetKafkaKafka struct {
 // GetKafkaKafkaInput is an input type that accepts GetKafkaKafkaArgs and GetKafkaKafkaOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaInput` via:
 //
-//          GetKafkaKafkaArgs{...}
+//	GetKafkaKafkaArgs{...}
 type GetKafkaKafkaInput interface {
 	pulumi.Input
 
@@ -37682,7 +39767,7 @@ func (i GetKafkaKafkaArgs) ToGetKafkaKafkaOutputWithContext(ctx context.Context)
 // GetKafkaKafkaArrayInput is an input type that accepts GetKafkaKafkaArray and GetKafkaKafkaArrayOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaArrayInput` via:
 //
-//          GetKafkaKafkaArray{ GetKafkaKafkaArgs{...} }
+//	GetKafkaKafkaArray{ GetKafkaKafkaArgs{...} }
 type GetKafkaKafkaArrayInput interface {
 	pulumi.Input
 
@@ -37759,8 +39844,9 @@ func (o GetKafkaKafkaArrayOutput) Index(i pulumi.IntInput) GetKafkaKafkaOutput {
 }
 
 type GetKafkaKafkaUserConfig struct {
-	CustomDomain               *string                                            `pulumi:"customDomain"`
-	IpFilters                  []string                                           `pulumi:"ipFilters"`
+	CustomDomain *string  `pulumi:"customDomain"`
+	IpFilters    []string `pulumi:"ipFilters"`
+	// Kafka server provided values
 	Kafka                      *GetKafkaKafkaUserConfigKafka                      `pulumi:"kafka"`
 	KafkaAuthenticationMethods *GetKafkaKafkaUserConfigKafkaAuthenticationMethods `pulumi:"kafkaAuthenticationMethods"`
 	KafkaConnect               *string                                            `pulumi:"kafkaConnect"`
@@ -37773,13 +39859,14 @@ type GetKafkaKafkaUserConfig struct {
 	PublicAccess               *GetKafkaKafkaUserConfigPublicAccess               `pulumi:"publicAccess"`
 	SchemaRegistry             *string                                            `pulumi:"schemaRegistry"`
 	SchemaRegistryConfig       *GetKafkaKafkaUserConfigSchemaRegistryConfig       `pulumi:"schemaRegistryConfig"`
-	StaticIps                  *string                                            `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // GetKafkaKafkaUserConfigInput is an input type that accepts GetKafkaKafkaUserConfigArgs and GetKafkaKafkaUserConfigOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigInput` via:
 //
-//          GetKafkaKafkaUserConfigArgs{...}
+//	GetKafkaKafkaUserConfigArgs{...}
 type GetKafkaKafkaUserConfigInput interface {
 	pulumi.Input
 
@@ -37788,8 +39875,9 @@ type GetKafkaKafkaUserConfigInput interface {
 }
 
 type GetKafkaKafkaUserConfigArgs struct {
-	CustomDomain               pulumi.StringPtrInput                                     `pulumi:"customDomain"`
-	IpFilters                  pulumi.StringArrayInput                                   `pulumi:"ipFilters"`
+	CustomDomain pulumi.StringPtrInput   `pulumi:"customDomain"`
+	IpFilters    pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Kafka server provided values
 	Kafka                      GetKafkaKafkaUserConfigKafkaPtrInput                      `pulumi:"kafka"`
 	KafkaAuthenticationMethods GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput `pulumi:"kafkaAuthenticationMethods"`
 	KafkaConnect               pulumi.StringPtrInput                                     `pulumi:"kafkaConnect"`
@@ -37802,7 +39890,8 @@ type GetKafkaKafkaUserConfigArgs struct {
 	PublicAccess               GetKafkaKafkaUserConfigPublicAccessPtrInput               `pulumi:"publicAccess"`
 	SchemaRegistry             pulumi.StringPtrInput                                     `pulumi:"schemaRegistry"`
 	SchemaRegistryConfig       GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput       `pulumi:"schemaRegistryConfig"`
-	StaticIps                  pulumi.StringPtrInput                                     `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (GetKafkaKafkaUserConfigArgs) ElementType() reflect.Type {
@@ -37820,7 +39909,7 @@ func (i GetKafkaKafkaUserConfigArgs) ToGetKafkaKafkaUserConfigOutputWithContext(
 // GetKafkaKafkaUserConfigArrayInput is an input type that accepts GetKafkaKafkaUserConfigArray and GetKafkaKafkaUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigArrayInput` via:
 //
-//          GetKafkaKafkaUserConfigArray{ GetKafkaKafkaUserConfigArgs{...} }
+//	GetKafkaKafkaUserConfigArray{ GetKafkaKafkaUserConfigArgs{...} }
 type GetKafkaKafkaUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -37864,6 +39953,7 @@ func (o GetKafkaKafkaUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Kafka server provided values
 func (o GetKafkaKafkaUserConfigOutput) Kafka() GetKafkaKafkaUserConfigKafkaPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *GetKafkaKafkaUserConfigKafka { return v.Kafka }).(GetKafkaKafkaUserConfigKafkaPtrOutput)
 }
@@ -37918,6 +40008,7 @@ func (o GetKafkaKafkaUserConfigOutput) SchemaRegistryConfig() GetKafkaKafkaUserC
 	}).(GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetKafkaKafkaUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -37987,7 +40078,7 @@ type GetKafkaKafkaUserConfigKafka struct {
 // GetKafkaKafkaUserConfigKafkaInput is an input type that accepts GetKafkaKafkaUserConfigKafkaArgs and GetKafkaKafkaUserConfigKafkaOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigKafkaInput` via:
 //
-//          GetKafkaKafkaUserConfigKafkaArgs{...}
+//	GetKafkaKafkaUserConfigKafkaArgs{...}
 type GetKafkaKafkaUserConfigKafkaInput interface {
 	pulumi.Input
 
@@ -38060,11 +40151,11 @@ func (i GetKafkaKafkaUserConfigKafkaArgs) ToGetKafkaKafkaUserConfigKafkaPtrOutpu
 // GetKafkaKafkaUserConfigKafkaPtrInput is an input type that accepts GetKafkaKafkaUserConfigKafkaArgs, GetKafkaKafkaUserConfigKafkaPtr and GetKafkaKafkaUserConfigKafkaPtrOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigKafkaPtrInput` via:
 //
-//          GetKafkaKafkaUserConfigKafkaArgs{...}
+//	        GetKafkaKafkaUserConfigKafkaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetKafkaKafkaUserConfigKafkaPtrInput interface {
 	pulumi.Input
 
@@ -38655,7 +40746,7 @@ type GetKafkaKafkaUserConfigKafkaAuthenticationMethods struct {
 // GetKafkaKafkaUserConfigKafkaAuthenticationMethodsInput is an input type that accepts GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs and GetKafkaKafkaUserConfigKafkaAuthenticationMethodsOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigKafkaAuthenticationMethodsInput` via:
 //
-//          GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
+//	GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
 type GetKafkaKafkaUserConfigKafkaAuthenticationMethodsInput interface {
 	pulumi.Input
 
@@ -38691,11 +40782,11 @@ func (i GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs) ToGetKafkaKafkaUs
 // GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput is an input type that accepts GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs, GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtr and GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput` via:
 //
-//          GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
+//	        GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetKafkaKafkaUserConfigKafkaAuthenticationMethodsPtrInput interface {
 	pulumi.Input
 
@@ -38813,7 +40904,7 @@ type GetKafkaKafkaUserConfigKafkaConnectConfig struct {
 // GetKafkaKafkaUserConfigKafkaConnectConfigInput is an input type that accepts GetKafkaKafkaUserConfigKafkaConnectConfigArgs and GetKafkaKafkaUserConfigKafkaConnectConfigOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigKafkaConnectConfigInput` via:
 //
-//          GetKafkaKafkaUserConfigKafkaConnectConfigArgs{...}
+//	GetKafkaKafkaUserConfigKafkaConnectConfigArgs{...}
 type GetKafkaKafkaUserConfigKafkaConnectConfigInput interface {
 	pulumi.Input
 
@@ -38859,11 +40950,11 @@ func (i GetKafkaKafkaUserConfigKafkaConnectConfigArgs) ToGetKafkaKafkaUserConfig
 // GetKafkaKafkaUserConfigKafkaConnectConfigPtrInput is an input type that accepts GetKafkaKafkaUserConfigKafkaConnectConfigArgs, GetKafkaKafkaUserConfigKafkaConnectConfigPtr and GetKafkaKafkaUserConfigKafkaConnectConfigPtrOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigKafkaConnectConfigPtrInput` via:
 //
-//          GetKafkaKafkaUserConfigKafkaConnectConfigArgs{...}
+//	        GetKafkaKafkaUserConfigKafkaConnectConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetKafkaKafkaUserConfigKafkaConnectConfigPtrInput interface {
 	pulumi.Input
 
@@ -39107,7 +41198,7 @@ type GetKafkaKafkaUserConfigKafkaRestConfig struct {
 // GetKafkaKafkaUserConfigKafkaRestConfigInput is an input type that accepts GetKafkaKafkaUserConfigKafkaRestConfigArgs and GetKafkaKafkaUserConfigKafkaRestConfigOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigKafkaRestConfigInput` via:
 //
-//          GetKafkaKafkaUserConfigKafkaRestConfigArgs{...}
+//	GetKafkaKafkaUserConfigKafkaRestConfigArgs{...}
 type GetKafkaKafkaUserConfigKafkaRestConfigInput interface {
 	pulumi.Input
 
@@ -39147,11 +41238,11 @@ func (i GetKafkaKafkaUserConfigKafkaRestConfigArgs) ToGetKafkaKafkaUserConfigKaf
 // GetKafkaKafkaUserConfigKafkaRestConfigPtrInput is an input type that accepts GetKafkaKafkaUserConfigKafkaRestConfigArgs, GetKafkaKafkaUserConfigKafkaRestConfigPtr and GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigKafkaRestConfigPtrInput` via:
 //
-//          GetKafkaKafkaUserConfigKafkaRestConfigArgs{...}
+//	        GetKafkaKafkaUserConfigKafkaRestConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetKafkaKafkaUserConfigKafkaRestConfigPtrInput interface {
 	pulumi.Input
 
@@ -39310,7 +41401,7 @@ type GetKafkaKafkaUserConfigPrivateAccess struct {
 // GetKafkaKafkaUserConfigPrivateAccessInput is an input type that accepts GetKafkaKafkaUserConfigPrivateAccessArgs and GetKafkaKafkaUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigPrivateAccessInput` via:
 //
-//          GetKafkaKafkaUserConfigPrivateAccessArgs{...}
+//	GetKafkaKafkaUserConfigPrivateAccessArgs{...}
 type GetKafkaKafkaUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -39345,11 +41436,11 @@ func (i GetKafkaKafkaUserConfigPrivateAccessArgs) ToGetKafkaKafkaUserConfigPriva
 // GetKafkaKafkaUserConfigPrivateAccessPtrInput is an input type that accepts GetKafkaKafkaUserConfigPrivateAccessArgs, GetKafkaKafkaUserConfigPrivateAccessPtr and GetKafkaKafkaUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigPrivateAccessPtrInput` via:
 //
-//          GetKafkaKafkaUserConfigPrivateAccessArgs{...}
+//	        GetKafkaKafkaUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetKafkaKafkaUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -39437,7 +41528,8 @@ func (o GetKafkaKafkaUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.Strin
 }
 
 type GetKafkaKafkaUserConfigPrivatelinkAccess struct {
-	Jolokia        *string `pulumi:"jolokia"`
+	Jolokia *string `pulumi:"jolokia"`
+	// Kafka server provided values
 	Kafka          *string `pulumi:"kafka"`
 	KafkaConnect   *string `pulumi:"kafkaConnect"`
 	KafkaRest      *string `pulumi:"kafkaRest"`
@@ -39448,7 +41540,7 @@ type GetKafkaKafkaUserConfigPrivatelinkAccess struct {
 // GetKafkaKafkaUserConfigPrivatelinkAccessInput is an input type that accepts GetKafkaKafkaUserConfigPrivatelinkAccessArgs and GetKafkaKafkaUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigPrivatelinkAccessInput` via:
 //
-//          GetKafkaKafkaUserConfigPrivatelinkAccessArgs{...}
+//	GetKafkaKafkaUserConfigPrivatelinkAccessArgs{...}
 type GetKafkaKafkaUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -39457,7 +41549,8 @@ type GetKafkaKafkaUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetKafkaKafkaUserConfigPrivatelinkAccessArgs struct {
-	Jolokia        pulumi.StringPtrInput `pulumi:"jolokia"`
+	Jolokia pulumi.StringPtrInput `pulumi:"jolokia"`
+	// Kafka server provided values
 	Kafka          pulumi.StringPtrInput `pulumi:"kafka"`
 	KafkaConnect   pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	KafkaRest      pulumi.StringPtrInput `pulumi:"kafkaRest"`
@@ -39488,11 +41581,11 @@ func (i GetKafkaKafkaUserConfigPrivatelinkAccessArgs) ToGetKafkaKafkaUserConfigP
 // GetKafkaKafkaUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetKafkaKafkaUserConfigPrivatelinkAccessArgs, GetKafkaKafkaUserConfigPrivatelinkAccessPtr and GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          GetKafkaKafkaUserConfigPrivatelinkAccessArgs{...}
+//	        GetKafkaKafkaUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetKafkaKafkaUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -39546,6 +41639,7 @@ func (o GetKafkaKafkaUserConfigPrivatelinkAccessOutput) Jolokia() pulumi.StringP
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPrivatelinkAccess) *string { return v.Jolokia }).(pulumi.StringPtrOutput)
 }
 
+// Kafka server provided values
 func (o GetKafkaKafkaUserConfigPrivatelinkAccessOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPrivatelinkAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
 }
@@ -39599,6 +41693,7 @@ func (o GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) Jolokia() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Kafka server provided values
 func (o GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -39645,6 +41740,7 @@ func (o GetKafkaKafkaUserConfigPrivatelinkAccessPtrOutput) SchemaRegistry() pulu
 }
 
 type GetKafkaKafkaUserConfigPublicAccess struct {
+	// Kafka server provided values
 	Kafka          *string `pulumi:"kafka"`
 	KafkaConnect   *string `pulumi:"kafkaConnect"`
 	KafkaRest      *string `pulumi:"kafkaRest"`
@@ -39655,7 +41751,7 @@ type GetKafkaKafkaUserConfigPublicAccess struct {
 // GetKafkaKafkaUserConfigPublicAccessInput is an input type that accepts GetKafkaKafkaUserConfigPublicAccessArgs and GetKafkaKafkaUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigPublicAccessInput` via:
 //
-//          GetKafkaKafkaUserConfigPublicAccessArgs{...}
+//	GetKafkaKafkaUserConfigPublicAccessArgs{...}
 type GetKafkaKafkaUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -39664,6 +41760,7 @@ type GetKafkaKafkaUserConfigPublicAccessInput interface {
 }
 
 type GetKafkaKafkaUserConfigPublicAccessArgs struct {
+	// Kafka server provided values
 	Kafka          pulumi.StringPtrInput `pulumi:"kafka"`
 	KafkaConnect   pulumi.StringPtrInput `pulumi:"kafkaConnect"`
 	KafkaRest      pulumi.StringPtrInput `pulumi:"kafkaRest"`
@@ -39694,11 +41791,11 @@ func (i GetKafkaKafkaUserConfigPublicAccessArgs) ToGetKafkaKafkaUserConfigPublic
 // GetKafkaKafkaUserConfigPublicAccessPtrInput is an input type that accepts GetKafkaKafkaUserConfigPublicAccessArgs, GetKafkaKafkaUserConfigPublicAccessPtr and GetKafkaKafkaUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigPublicAccessPtrInput` via:
 //
-//          GetKafkaKafkaUserConfigPublicAccessArgs{...}
+//	        GetKafkaKafkaUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetKafkaKafkaUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -39748,6 +41845,7 @@ func (o GetKafkaKafkaUserConfigPublicAccessOutput) ToGetKafkaKafkaUserConfigPubl
 	}).(GetKafkaKafkaUserConfigPublicAccessPtrOutput)
 }
 
+// Kafka server provided values
 func (o GetKafkaKafkaUserConfigPublicAccessOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *string { return v.Kafka }).(pulumi.StringPtrOutput)
 }
@@ -39792,6 +41890,7 @@ func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Elem() GetKafkaKafkaUserCo
 	}).(GetKafkaKafkaUserConfigPublicAccessOutput)
 }
 
+// Kafka server provided values
 func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *string {
 		if v == nil {
@@ -39845,7 +41944,7 @@ type GetKafkaKafkaUserConfigSchemaRegistryConfig struct {
 // GetKafkaKafkaUserConfigSchemaRegistryConfigInput is an input type that accepts GetKafkaKafkaUserConfigSchemaRegistryConfigArgs and GetKafkaKafkaUserConfigSchemaRegistryConfigOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigSchemaRegistryConfigInput` via:
 //
-//          GetKafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
+//	GetKafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
 type GetKafkaKafkaUserConfigSchemaRegistryConfigInput interface {
 	pulumi.Input
 
@@ -39881,11 +41980,11 @@ func (i GetKafkaKafkaUserConfigSchemaRegistryConfigArgs) ToGetKafkaKafkaUserConf
 // GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput is an input type that accepts GetKafkaKafkaUserConfigSchemaRegistryConfigArgs, GetKafkaKafkaUserConfigSchemaRegistryConfigPtr and GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput values.
 // You can construct a concrete instance of `GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput` via:
 //
-//          GetKafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
+//	        GetKafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput interface {
 	pulumi.Input
 
@@ -39998,7 +42097,7 @@ type GetKafkaMirrorMakerComponent struct {
 // GetKafkaMirrorMakerComponentInput is an input type that accepts GetKafkaMirrorMakerComponentArgs and GetKafkaMirrorMakerComponentOutput values.
 // You can construct a concrete instance of `GetKafkaMirrorMakerComponentInput` via:
 //
-//          GetKafkaMirrorMakerComponentArgs{...}
+//	GetKafkaMirrorMakerComponentArgs{...}
 type GetKafkaMirrorMakerComponentInput interface {
 	pulumi.Input
 
@@ -40031,7 +42130,7 @@ func (i GetKafkaMirrorMakerComponentArgs) ToGetKafkaMirrorMakerComponentOutputWi
 // GetKafkaMirrorMakerComponentArrayInput is an input type that accepts GetKafkaMirrorMakerComponentArray and GetKafkaMirrorMakerComponentArrayOutput values.
 // You can construct a concrete instance of `GetKafkaMirrorMakerComponentArrayInput` via:
 //
-//          GetKafkaMirrorMakerComponentArray{ GetKafkaMirrorMakerComponentArgs{...} }
+//	GetKafkaMirrorMakerComponentArray{ GetKafkaMirrorMakerComponentArgs{...} }
 type GetKafkaMirrorMakerComponentArrayInput interface {
 	pulumi.Input
 
@@ -40121,7 +42220,7 @@ type GetKafkaMirrorMakerKafkaMirrormaker struct {
 // GetKafkaMirrorMakerKafkaMirrormakerInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerArgs and GetKafkaMirrorMakerKafkaMirrormakerOutput values.
 // You can construct a concrete instance of `GetKafkaMirrorMakerKafkaMirrormakerInput` via:
 //
-//          GetKafkaMirrorMakerKafkaMirrormakerArgs{...}
+//	GetKafkaMirrorMakerKafkaMirrormakerArgs{...}
 type GetKafkaMirrorMakerKafkaMirrormakerInput interface {
 	pulumi.Input
 
@@ -40147,7 +42246,7 @@ func (i GetKafkaMirrorMakerKafkaMirrormakerArgs) ToGetKafkaMirrorMakerKafkaMirro
 // GetKafkaMirrorMakerKafkaMirrormakerArrayInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerArray and GetKafkaMirrorMakerKafkaMirrormakerArrayOutput values.
 // You can construct a concrete instance of `GetKafkaMirrorMakerKafkaMirrormakerArrayInput` via:
 //
-//          GetKafkaMirrorMakerKafkaMirrormakerArray{ GetKafkaMirrorMakerKafkaMirrormakerArgs{...} }
+//	GetKafkaMirrorMakerKafkaMirrormakerArray{ GetKafkaMirrorMakerKafkaMirrormakerArgs{...} }
 type GetKafkaMirrorMakerKafkaMirrormakerArrayInput interface {
 	pulumi.Input
 
@@ -40204,15 +42303,17 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfig struct {
-	IpFilters        []string                                                       `pulumi:"ipFilters"`
+	IpFilters []string `pulumi:"ipFilters"`
+	// Kafka MirrorMaker 2 server provided values
 	KafkaMirrormaker *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
-	StaticIps        *string                                                        `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs and GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput values.
 // You can construct a concrete instance of `GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput` via:
 //
-//          GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs{...}
+//	GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs{...}
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput interface {
 	pulumi.Input
 
@@ -40221,9 +42322,11 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput interface {
 }
 
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs struct {
-	IpFilters        pulumi.StringArrayInput                                               `pulumi:"ipFilters"`
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Kafka MirrorMaker 2 server provided values
 	KafkaMirrormaker GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
-	StaticIps        pulumi.StringPtrInput                                                 `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs) ElementType() reflect.Type {
@@ -40241,7 +42344,7 @@ func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs) ToGetKafkaMirrorMaker
 // GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerUserConfigArray and GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayInput` via:
 //
-//          GetKafkaMirrorMakerKafkaMirrormakerUserConfigArray{ GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs{...} }
+//	GetKafkaMirrorMakerKafkaMirrormakerUserConfigArray{ GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs{...} }
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -40281,12 +42384,14 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilters() pulumi.
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Kafka MirrorMaker 2 server provided values
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 		return v.KafkaMirrormaker
 	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -40327,7 +42432,7 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker struct {
 // GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs and GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
 // You can construct a concrete instance of `GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput` via:
 //
-//          GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//	GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
 	pulumi.Input
 
@@ -40371,11 +42476,11 @@ func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGet
 // GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs, GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtr and GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput values.
 // You can construct a concrete instance of `GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput` via:
 //
-//          GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//	        GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput interface {
 	pulumi.Input
 
@@ -40605,7 +42710,7 @@ type GetKafkaMirrorMakerServiceIntegration struct {
 // GetKafkaMirrorMakerServiceIntegrationInput is an input type that accepts GetKafkaMirrorMakerServiceIntegrationArgs and GetKafkaMirrorMakerServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetKafkaMirrorMakerServiceIntegrationInput` via:
 //
-//          GetKafkaMirrorMakerServiceIntegrationArgs{...}
+//	GetKafkaMirrorMakerServiceIntegrationArgs{...}
 type GetKafkaMirrorMakerServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -40633,7 +42738,7 @@ func (i GetKafkaMirrorMakerServiceIntegrationArgs) ToGetKafkaMirrorMakerServiceI
 // GetKafkaMirrorMakerServiceIntegrationArrayInput is an input type that accepts GetKafkaMirrorMakerServiceIntegrationArray and GetKafkaMirrorMakerServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetKafkaMirrorMakerServiceIntegrationArrayInput` via:
 //
-//          GetKafkaMirrorMakerServiceIntegrationArray{ GetKafkaMirrorMakerServiceIntegrationArgs{...} }
+//	GetKafkaMirrorMakerServiceIntegrationArray{ GetKafkaMirrorMakerServiceIntegrationArgs{...} }
 type GetKafkaMirrorMakerServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -40705,7 +42810,7 @@ type GetKafkaMirrorMakerTag struct {
 // GetKafkaMirrorMakerTagInput is an input type that accepts GetKafkaMirrorMakerTagArgs and GetKafkaMirrorMakerTagOutput values.
 // You can construct a concrete instance of `GetKafkaMirrorMakerTagInput` via:
 //
-//          GetKafkaMirrorMakerTagArgs{...}
+//	GetKafkaMirrorMakerTagArgs{...}
 type GetKafkaMirrorMakerTagInput interface {
 	pulumi.Input
 
@@ -40733,7 +42838,7 @@ func (i GetKafkaMirrorMakerTagArgs) ToGetKafkaMirrorMakerTagOutputWithContext(ct
 // GetKafkaMirrorMakerTagArrayInput is an input type that accepts GetKafkaMirrorMakerTagArray and GetKafkaMirrorMakerTagArrayOutput values.
 // You can construct a concrete instance of `GetKafkaMirrorMakerTagArrayInput` via:
 //
-//          GetKafkaMirrorMakerTagArray{ GetKafkaMirrorMakerTagArgs{...} }
+//	GetKafkaMirrorMakerTagArray{ GetKafkaMirrorMakerTagArgs{...} }
 type GetKafkaMirrorMakerTagArrayInput interface {
 	pulumi.Input
 
@@ -40805,7 +42910,7 @@ type GetKafkaServiceIntegration struct {
 // GetKafkaServiceIntegrationInput is an input type that accepts GetKafkaServiceIntegrationArgs and GetKafkaServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetKafkaServiceIntegrationInput` via:
 //
-//          GetKafkaServiceIntegrationArgs{...}
+//	GetKafkaServiceIntegrationArgs{...}
 type GetKafkaServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -40833,7 +42938,7 @@ func (i GetKafkaServiceIntegrationArgs) ToGetKafkaServiceIntegrationOutputWithCo
 // GetKafkaServiceIntegrationArrayInput is an input type that accepts GetKafkaServiceIntegrationArray and GetKafkaServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetKafkaServiceIntegrationArrayInput` via:
 //
-//          GetKafkaServiceIntegrationArray{ GetKafkaServiceIntegrationArgs{...} }
+//	GetKafkaServiceIntegrationArray{ GetKafkaServiceIntegrationArgs{...} }
 type GetKafkaServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -40905,7 +43010,7 @@ type GetKafkaTag struct {
 // GetKafkaTagInput is an input type that accepts GetKafkaTagArgs and GetKafkaTagOutput values.
 // You can construct a concrete instance of `GetKafkaTagInput` via:
 //
-//          GetKafkaTagArgs{...}
+//	GetKafkaTagArgs{...}
 type GetKafkaTagInput interface {
 	pulumi.Input
 
@@ -40933,7 +43038,7 @@ func (i GetKafkaTagArgs) ToGetKafkaTagOutputWithContext(ctx context.Context) Get
 // GetKafkaTagArrayInput is an input type that accepts GetKafkaTagArray and GetKafkaTagArrayOutput values.
 // You can construct a concrete instance of `GetKafkaTagArrayInput` via:
 //
-//          GetKafkaTagArray{ GetKafkaTagArgs{...} }
+//	GetKafkaTagArray{ GetKafkaTagArgs{...} }
 type GetKafkaTagArrayInput interface {
 	pulumi.Input
 
@@ -41027,7 +43132,7 @@ type GetKafkaTopicConfig struct {
 // GetKafkaTopicConfigInput is an input type that accepts GetKafkaTopicConfigArgs and GetKafkaTopicConfigOutput values.
 // You can construct a concrete instance of `GetKafkaTopicConfigInput` via:
 //
-//          GetKafkaTopicConfigArgs{...}
+//	GetKafkaTopicConfigArgs{...}
 type GetKafkaTopicConfigInput interface {
 	pulumi.Input
 
@@ -41077,7 +43182,7 @@ func (i GetKafkaTopicConfigArgs) ToGetKafkaTopicConfigOutputWithContext(ctx cont
 // GetKafkaTopicConfigArrayInput is an input type that accepts GetKafkaTopicConfigArray and GetKafkaTopicConfigArrayOutput values.
 // You can construct a concrete instance of `GetKafkaTopicConfigArrayInput` via:
 //
-//          GetKafkaTopicConfigArray{ GetKafkaTopicConfigArgs{...} }
+//	GetKafkaTopicConfigArray{ GetKafkaTopicConfigArgs{...} }
 type GetKafkaTopicConfigArrayInput interface {
 	pulumi.Input
 
@@ -41237,7 +43342,7 @@ type GetKafkaTopicTag struct {
 // GetKafkaTopicTagInput is an input type that accepts GetKafkaTopicTagArgs and GetKafkaTopicTagOutput values.
 // You can construct a concrete instance of `GetKafkaTopicTagInput` via:
 //
-//          GetKafkaTopicTagArgs{...}
+//	GetKafkaTopicTagArgs{...}
 type GetKafkaTopicTagInput interface {
 	pulumi.Input
 
@@ -41265,7 +43370,7 @@ func (i GetKafkaTopicTagArgs) ToGetKafkaTopicTagOutputWithContext(ctx context.Co
 // GetKafkaTopicTagArrayInput is an input type that accepts GetKafkaTopicTagArray and GetKafkaTopicTagArrayOutput values.
 // You can construct a concrete instance of `GetKafkaTopicTagArrayInput` via:
 //
-//          GetKafkaTopicTagArray{ GetKafkaTopicTagArgs{...} }
+//	GetKafkaTopicTagArray{ GetKafkaTopicTagArgs{...} }
 type GetKafkaTopicTagArrayInput interface {
 	pulumi.Input
 
@@ -41342,7 +43447,7 @@ type GetM3AggregatorComponent struct {
 // GetM3AggregatorComponentInput is an input type that accepts GetM3AggregatorComponentArgs and GetM3AggregatorComponentOutput values.
 // You can construct a concrete instance of `GetM3AggregatorComponentInput` via:
 //
-//          GetM3AggregatorComponentArgs{...}
+//	GetM3AggregatorComponentArgs{...}
 type GetM3AggregatorComponentInput interface {
 	pulumi.Input
 
@@ -41375,7 +43480,7 @@ func (i GetM3AggregatorComponentArgs) ToGetM3AggregatorComponentOutputWithContex
 // GetM3AggregatorComponentArrayInput is an input type that accepts GetM3AggregatorComponentArray and GetM3AggregatorComponentArrayOutput values.
 // You can construct a concrete instance of `GetM3AggregatorComponentArrayInput` via:
 //
-//          GetM3AggregatorComponentArray{ GetM3AggregatorComponentArgs{...} }
+//	GetM3AggregatorComponentArray{ GetM3AggregatorComponentArgs{...} }
 type GetM3AggregatorComponentArrayInput interface {
 	pulumi.Input
 
@@ -41465,7 +43570,7 @@ type GetM3AggregatorM3aggregator struct {
 // GetM3AggregatorM3aggregatorInput is an input type that accepts GetM3AggregatorM3aggregatorArgs and GetM3AggregatorM3aggregatorOutput values.
 // You can construct a concrete instance of `GetM3AggregatorM3aggregatorInput` via:
 //
-//          GetM3AggregatorM3aggregatorArgs{...}
+//	GetM3AggregatorM3aggregatorArgs{...}
 type GetM3AggregatorM3aggregatorInput interface {
 	pulumi.Input
 
@@ -41491,7 +43596,7 @@ func (i GetM3AggregatorM3aggregatorArgs) ToGetM3AggregatorM3aggregatorOutputWith
 // GetM3AggregatorM3aggregatorArrayInput is an input type that accepts GetM3AggregatorM3aggregatorArray and GetM3AggregatorM3aggregatorArrayOutput values.
 // You can construct a concrete instance of `GetM3AggregatorM3aggregatorArrayInput` via:
 //
-//          GetM3AggregatorM3aggregatorArray{ GetM3AggregatorM3aggregatorArgs{...} }
+//	GetM3AggregatorM3aggregatorArray{ GetM3AggregatorM3aggregatorArgs{...} }
 type GetM3AggregatorM3aggregatorArrayInput interface {
 	pulumi.Input
 
@@ -41552,13 +43657,14 @@ type GetM3AggregatorM3aggregatorUserConfig struct {
 	IpFilters           []string `pulumi:"ipFilters"`
 	M3Version           *string  `pulumi:"m3Version"`
 	M3aggregatorVersion *string  `pulumi:"m3aggregatorVersion"`
-	StaticIps           *string  `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // GetM3AggregatorM3aggregatorUserConfigInput is an input type that accepts GetM3AggregatorM3aggregatorUserConfigArgs and GetM3AggregatorM3aggregatorUserConfigOutput values.
 // You can construct a concrete instance of `GetM3AggregatorM3aggregatorUserConfigInput` via:
 //
-//          GetM3AggregatorM3aggregatorUserConfigArgs{...}
+//	GetM3AggregatorM3aggregatorUserConfigArgs{...}
 type GetM3AggregatorM3aggregatorUserConfigInput interface {
 	pulumi.Input
 
@@ -41571,7 +43677,8 @@ type GetM3AggregatorM3aggregatorUserConfigArgs struct {
 	IpFilters           pulumi.StringArrayInput `pulumi:"ipFilters"`
 	M3Version           pulumi.StringPtrInput   `pulumi:"m3Version"`
 	M3aggregatorVersion pulumi.StringPtrInput   `pulumi:"m3aggregatorVersion"`
-	StaticIps           pulumi.StringPtrInput   `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (GetM3AggregatorM3aggregatorUserConfigArgs) ElementType() reflect.Type {
@@ -41589,7 +43696,7 @@ func (i GetM3AggregatorM3aggregatorUserConfigArgs) ToGetM3AggregatorM3aggregator
 // GetM3AggregatorM3aggregatorUserConfigArrayInput is an input type that accepts GetM3AggregatorM3aggregatorUserConfigArray and GetM3AggregatorM3aggregatorUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetM3AggregatorM3aggregatorUserConfigArrayInput` via:
 //
-//          GetM3AggregatorM3aggregatorUserConfigArray{ GetM3AggregatorM3aggregatorUserConfigArgs{...} }
+//	GetM3AggregatorM3aggregatorUserConfigArray{ GetM3AggregatorM3aggregatorUserConfigArgs{...} }
 type GetM3AggregatorM3aggregatorUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -41641,6 +43748,7 @@ func (o GetM3AggregatorM3aggregatorUserConfigOutput) M3aggregatorVersion() pulum
 	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *string { return v.M3aggregatorVersion }).(pulumi.StringPtrOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetM3AggregatorM3aggregatorUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetM3AggregatorM3aggregatorUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -41673,7 +43781,7 @@ type GetM3AggregatorServiceIntegration struct {
 // GetM3AggregatorServiceIntegrationInput is an input type that accepts GetM3AggregatorServiceIntegrationArgs and GetM3AggregatorServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetM3AggregatorServiceIntegrationInput` via:
 //
-//          GetM3AggregatorServiceIntegrationArgs{...}
+//	GetM3AggregatorServiceIntegrationArgs{...}
 type GetM3AggregatorServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -41701,7 +43809,7 @@ func (i GetM3AggregatorServiceIntegrationArgs) ToGetM3AggregatorServiceIntegrati
 // GetM3AggregatorServiceIntegrationArrayInput is an input type that accepts GetM3AggregatorServiceIntegrationArray and GetM3AggregatorServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetM3AggregatorServiceIntegrationArrayInput` via:
 //
-//          GetM3AggregatorServiceIntegrationArray{ GetM3AggregatorServiceIntegrationArgs{...} }
+//	GetM3AggregatorServiceIntegrationArray{ GetM3AggregatorServiceIntegrationArgs{...} }
 type GetM3AggregatorServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -41773,7 +43881,7 @@ type GetM3AggregatorTag struct {
 // GetM3AggregatorTagInput is an input type that accepts GetM3AggregatorTagArgs and GetM3AggregatorTagOutput values.
 // You can construct a concrete instance of `GetM3AggregatorTagInput` via:
 //
-//          GetM3AggregatorTagArgs{...}
+//	GetM3AggregatorTagArgs{...}
 type GetM3AggregatorTagInput interface {
 	pulumi.Input
 
@@ -41801,7 +43909,7 @@ func (i GetM3AggregatorTagArgs) ToGetM3AggregatorTagOutputWithContext(ctx contex
 // GetM3AggregatorTagArrayInput is an input type that accepts GetM3AggregatorTagArray and GetM3AggregatorTagArrayOutput values.
 // You can construct a concrete instance of `GetM3AggregatorTagArrayInput` via:
 //
-//          GetM3AggregatorTagArray{ GetM3AggregatorTagArgs{...} }
+//	GetM3AggregatorTagArray{ GetM3AggregatorTagArgs{...} }
 type GetM3AggregatorTagArrayInput interface {
 	pulumi.Input
 
@@ -41878,7 +43986,7 @@ type GetM3DbComponent struct {
 // GetM3DbComponentInput is an input type that accepts GetM3DbComponentArgs and GetM3DbComponentOutput values.
 // You can construct a concrete instance of `GetM3DbComponentInput` via:
 //
-//          GetM3DbComponentArgs{...}
+//	GetM3DbComponentArgs{...}
 type GetM3DbComponentInput interface {
 	pulumi.Input
 
@@ -41911,7 +44019,7 @@ func (i GetM3DbComponentArgs) ToGetM3DbComponentOutputWithContext(ctx context.Co
 // GetM3DbComponentArrayInput is an input type that accepts GetM3DbComponentArray and GetM3DbComponentArrayOutput values.
 // You can construct a concrete instance of `GetM3DbComponentArrayInput` via:
 //
-//          GetM3DbComponentArray{ GetM3DbComponentArgs{...} }
+//	GetM3DbComponentArray{ GetM3DbComponentArgs{...} }
 type GetM3DbComponentArrayInput interface {
 	pulumi.Input
 
@@ -42001,7 +44109,7 @@ type GetM3DbM3db struct {
 // GetM3DbM3dbInput is an input type that accepts GetM3DbM3dbArgs and GetM3DbM3dbOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbInput` via:
 //
-//          GetM3DbM3dbArgs{...}
+//	GetM3DbM3dbArgs{...}
 type GetM3DbM3dbInput interface {
 	pulumi.Input
 
@@ -42027,7 +44135,7 @@ func (i GetM3DbM3dbArgs) ToGetM3DbM3dbOutputWithContext(ctx context.Context) Get
 // GetM3DbM3dbArrayInput is an input type that accepts GetM3DbM3dbArray and GetM3DbM3dbArrayOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbArrayInput` via:
 //
-//          GetM3DbM3dbArray{ GetM3DbM3dbArgs{...} }
+//	GetM3DbM3dbArray{ GetM3DbM3dbArgs{...} }
 type GetM3DbM3dbArrayInput interface {
 	pulumi.Input
 
@@ -42096,13 +44204,14 @@ type GetM3DbM3dbUserConfig struct {
 	PublicAccess                            *GetM3DbM3dbUserConfigPublicAccess  `pulumi:"publicAccess"`
 	Rules                                   *GetM3DbM3dbUserConfigRules         `pulumi:"rules"`
 	ServiceToForkFrom                       *string                             `pulumi:"serviceToForkFrom"`
-	StaticIps                               *string                             `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // GetM3DbM3dbUserConfigInput is an input type that accepts GetM3DbM3dbUserConfigArgs and GetM3DbM3dbUserConfigOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigInput` via:
 //
-//          GetM3DbM3dbUserConfigArgs{...}
+//	GetM3DbM3dbUserConfigArgs{...}
 type GetM3DbM3dbUserConfigInput interface {
 	pulumi.Input
 
@@ -42123,7 +44232,8 @@ type GetM3DbM3dbUserConfigArgs struct {
 	PublicAccess                            GetM3DbM3dbUserConfigPublicAccessPtrInput  `pulumi:"publicAccess"`
 	Rules                                   GetM3DbM3dbUserConfigRulesPtrInput         `pulumi:"rules"`
 	ServiceToForkFrom                       pulumi.StringPtrInput                      `pulumi:"serviceToForkFrom"`
-	StaticIps                               pulumi.StringPtrInput                      `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (GetM3DbM3dbUserConfigArgs) ElementType() reflect.Type {
@@ -42141,7 +44251,7 @@ func (i GetM3DbM3dbUserConfigArgs) ToGetM3DbM3dbUserConfigOutputWithContext(ctx 
 // GetM3DbM3dbUserConfigArrayInput is an input type that accepts GetM3DbM3dbUserConfigArray and GetM3DbM3dbUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigArrayInput` via:
 //
-//          GetM3DbM3dbUserConfigArray{ GetM3DbM3dbUserConfigArgs{...} }
+//	GetM3DbM3dbUserConfigArray{ GetM3DbM3dbUserConfigArgs{...} }
 type GetM3DbM3dbUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -42225,6 +44335,7 @@ func (o GetM3DbM3dbUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetM3DbM3dbUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -42250,6 +44361,7 @@ func (o GetM3DbM3dbUserConfigArrayOutput) Index(i pulumi.IntInput) GetM3DbM3dbUs
 }
 
 type GetM3DbM3dbUserConfigLimits struct {
+	QueryDocs              *string `pulumi:"queryDocs"`
 	QueryRequireExhaustive *string `pulumi:"queryRequireExhaustive"`
 	QuerySeries            *string `pulumi:"querySeries"`
 }
@@ -42257,7 +44369,7 @@ type GetM3DbM3dbUserConfigLimits struct {
 // GetM3DbM3dbUserConfigLimitsInput is an input type that accepts GetM3DbM3dbUserConfigLimitsArgs and GetM3DbM3dbUserConfigLimitsOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigLimitsInput` via:
 //
-//          GetM3DbM3dbUserConfigLimitsArgs{...}
+//	GetM3DbM3dbUserConfigLimitsArgs{...}
 type GetM3DbM3dbUserConfigLimitsInput interface {
 	pulumi.Input
 
@@ -42266,6 +44378,7 @@ type GetM3DbM3dbUserConfigLimitsInput interface {
 }
 
 type GetM3DbM3dbUserConfigLimitsArgs struct {
+	QueryDocs              pulumi.StringPtrInput `pulumi:"queryDocs"`
 	QueryRequireExhaustive pulumi.StringPtrInput `pulumi:"queryRequireExhaustive"`
 	QuerySeries            pulumi.StringPtrInput `pulumi:"querySeries"`
 }
@@ -42293,11 +44406,11 @@ func (i GetM3DbM3dbUserConfigLimitsArgs) ToGetM3DbM3dbUserConfigLimitsPtrOutputW
 // GetM3DbM3dbUserConfigLimitsPtrInput is an input type that accepts GetM3DbM3dbUserConfigLimitsArgs, GetM3DbM3dbUserConfigLimitsPtr and GetM3DbM3dbUserConfigLimitsPtrOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigLimitsPtrInput` via:
 //
-//          GetM3DbM3dbUserConfigLimitsArgs{...}
+//	        GetM3DbM3dbUserConfigLimitsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetM3DbM3dbUserConfigLimitsPtrInput interface {
 	pulumi.Input
 
@@ -42347,6 +44460,10 @@ func (o GetM3DbM3dbUserConfigLimitsOutput) ToGetM3DbM3dbUserConfigLimitsPtrOutpu
 	}).(GetM3DbM3dbUserConfigLimitsPtrOutput)
 }
 
+func (o GetM3DbM3dbUserConfigLimitsOutput) QueryDocs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetM3DbM3dbUserConfigLimits) *string { return v.QueryDocs }).(pulumi.StringPtrOutput)
+}
+
 func (o GetM3DbM3dbUserConfigLimitsOutput) QueryRequireExhaustive() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetM3DbM3dbUserConfigLimits) *string { return v.QueryRequireExhaustive }).(pulumi.StringPtrOutput)
 }
@@ -42379,6 +44496,15 @@ func (o GetM3DbM3dbUserConfigLimitsPtrOutput) Elem() GetM3DbM3dbUserConfigLimits
 	}).(GetM3DbM3dbUserConfigLimitsOutput)
 }
 
+func (o GetM3DbM3dbUserConfigLimitsPtrOutput) QueryDocs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryDocs
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetM3DbM3dbUserConfigLimitsPtrOutput) QueryRequireExhaustive() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetM3DbM3dbUserConfigLimits) *string {
 		if v == nil {
@@ -42407,7 +44533,7 @@ type GetM3DbM3dbUserConfigNamespace struct {
 // GetM3DbM3dbUserConfigNamespaceInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceArgs and GetM3DbM3dbUserConfigNamespaceOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceInput` via:
 //
-//          GetM3DbM3dbUserConfigNamespaceArgs{...}
+//	GetM3DbM3dbUserConfigNamespaceArgs{...}
 type GetM3DbM3dbUserConfigNamespaceInput interface {
 	pulumi.Input
 
@@ -42437,7 +44563,7 @@ func (i GetM3DbM3dbUserConfigNamespaceArgs) ToGetM3DbM3dbUserConfigNamespaceOutp
 // GetM3DbM3dbUserConfigNamespaceArrayInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceArray and GetM3DbM3dbUserConfigNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceArrayInput` via:
 //
-//          GetM3DbM3dbUserConfigNamespaceArray{ GetM3DbM3dbUserConfigNamespaceArgs{...} }
+//	GetM3DbM3dbUserConfigNamespaceArray{ GetM3DbM3dbUserConfigNamespaceArgs{...} }
 type GetM3DbM3dbUserConfigNamespaceArrayInput interface {
 	pulumi.Input
 
@@ -42518,7 +44644,7 @@ type GetM3DbM3dbUserConfigNamespaceOptions struct {
 // GetM3DbM3dbUserConfigNamespaceOptionsInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceOptionsArgs and GetM3DbM3dbUserConfigNamespaceOptionsOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceOptionsInput` via:
 //
-//          GetM3DbM3dbUserConfigNamespaceOptionsArgs{...}
+//	GetM3DbM3dbUserConfigNamespaceOptionsArgs{...}
 type GetM3DbM3dbUserConfigNamespaceOptionsInput interface {
 	pulumi.Input
 
@@ -42555,11 +44681,11 @@ func (i GetM3DbM3dbUserConfigNamespaceOptionsArgs) ToGetM3DbM3dbUserConfigNamesp
 // GetM3DbM3dbUserConfigNamespaceOptionsPtrInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceOptionsArgs, GetM3DbM3dbUserConfigNamespaceOptionsPtr and GetM3DbM3dbUserConfigNamespaceOptionsPtrOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceOptionsPtrInput` via:
 //
-//          GetM3DbM3dbUserConfigNamespaceOptionsArgs{...}
+//	        GetM3DbM3dbUserConfigNamespaceOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetM3DbM3dbUserConfigNamespaceOptionsPtrInput interface {
 	pulumi.Input
 
@@ -42685,7 +44811,7 @@ type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions struct {
 // GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs and GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput` via:
 //
-//          GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
+//	GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
 type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsInput interface {
 	pulumi.Input
 
@@ -42724,11 +44850,11 @@ func (i GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs) ToGetM3DbM3db
 // GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput is an input type that accepts GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs, GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtr and GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput` via:
 //
-//          GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
+//	        GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsPtrInput interface {
 	pulumi.Input
 
@@ -42878,7 +45004,7 @@ type GetM3DbM3dbUserConfigPrivateAccess struct {
 // GetM3DbM3dbUserConfigPrivateAccessInput is an input type that accepts GetM3DbM3dbUserConfigPrivateAccessArgs and GetM3DbM3dbUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigPrivateAccessInput` via:
 //
-//          GetM3DbM3dbUserConfigPrivateAccessArgs{...}
+//	GetM3DbM3dbUserConfigPrivateAccessArgs{...}
 type GetM3DbM3dbUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -42913,11 +45039,11 @@ func (i GetM3DbM3dbUserConfigPrivateAccessArgs) ToGetM3DbM3dbUserConfigPrivateAc
 // GetM3DbM3dbUserConfigPrivateAccessPtrInput is an input type that accepts GetM3DbM3dbUserConfigPrivateAccessArgs, GetM3DbM3dbUserConfigPrivateAccessPtr and GetM3DbM3dbUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigPrivateAccessPtrInput` via:
 //
-//          GetM3DbM3dbUserConfigPrivateAccessArgs{...}
+//	        GetM3DbM3dbUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetM3DbM3dbUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -43011,7 +45137,7 @@ type GetM3DbM3dbUserConfigPublicAccess struct {
 // GetM3DbM3dbUserConfigPublicAccessInput is an input type that accepts GetM3DbM3dbUserConfigPublicAccessArgs and GetM3DbM3dbUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigPublicAccessInput` via:
 //
-//          GetM3DbM3dbUserConfigPublicAccessArgs{...}
+//	GetM3DbM3dbUserConfigPublicAccessArgs{...}
 type GetM3DbM3dbUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -43046,11 +45172,11 @@ func (i GetM3DbM3dbUserConfigPublicAccessArgs) ToGetM3DbM3dbUserConfigPublicAcce
 // GetM3DbM3dbUserConfigPublicAccessPtrInput is an input type that accepts GetM3DbM3dbUserConfigPublicAccessArgs, GetM3DbM3dbUserConfigPublicAccessPtr and GetM3DbM3dbUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigPublicAccessPtrInput` via:
 //
-//          GetM3DbM3dbUserConfigPublicAccessArgs{...}
+//	        GetM3DbM3dbUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetM3DbM3dbUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -43144,7 +45270,7 @@ type GetM3DbM3dbUserConfigRules struct {
 // GetM3DbM3dbUserConfigRulesInput is an input type that accepts GetM3DbM3dbUserConfigRulesArgs and GetM3DbM3dbUserConfigRulesOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesInput` via:
 //
-//          GetM3DbM3dbUserConfigRulesArgs{...}
+//	GetM3DbM3dbUserConfigRulesArgs{...}
 type GetM3DbM3dbUserConfigRulesInput interface {
 	pulumi.Input
 
@@ -43179,11 +45305,11 @@ func (i GetM3DbM3dbUserConfigRulesArgs) ToGetM3DbM3dbUserConfigRulesPtrOutputWit
 // GetM3DbM3dbUserConfigRulesPtrInput is an input type that accepts GetM3DbM3dbUserConfigRulesArgs, GetM3DbM3dbUserConfigRulesPtr and GetM3DbM3dbUserConfigRulesPtrOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesPtrInput` via:
 //
-//          GetM3DbM3dbUserConfigRulesArgs{...}
+//	        GetM3DbM3dbUserConfigRulesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetM3DbM3dbUserConfigRulesPtrInput interface {
 	pulumi.Input
 
@@ -43282,7 +45408,7 @@ type GetM3DbM3dbUserConfigRulesMapping struct {
 // GetM3DbM3dbUserConfigRulesMappingInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingArgs and GetM3DbM3dbUserConfigRulesMappingOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingInput` via:
 //
-//          GetM3DbM3dbUserConfigRulesMappingArgs{...}
+//	GetM3DbM3dbUserConfigRulesMappingArgs{...}
 type GetM3DbM3dbUserConfigRulesMappingInput interface {
 	pulumi.Input
 
@@ -43314,7 +45440,7 @@ func (i GetM3DbM3dbUserConfigRulesMappingArgs) ToGetM3DbM3dbUserConfigRulesMappi
 // GetM3DbM3dbUserConfigRulesMappingArrayInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingArray and GetM3DbM3dbUserConfigRulesMappingArrayOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingArrayInput` via:
 //
-//          GetM3DbM3dbUserConfigRulesMappingArray{ GetM3DbM3dbUserConfigRulesMappingArgs{...} }
+//	GetM3DbM3dbUserConfigRulesMappingArray{ GetM3DbM3dbUserConfigRulesMappingArgs{...} }
 type GetM3DbM3dbUserConfigRulesMappingArrayInput interface {
 	pulumi.Input
 
@@ -43402,7 +45528,7 @@ type GetM3DbM3dbUserConfigRulesMappingTag struct {
 // GetM3DbM3dbUserConfigRulesMappingTagInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingTagArgs and GetM3DbM3dbUserConfigRulesMappingTagOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingTagInput` via:
 //
-//          GetM3DbM3dbUserConfigRulesMappingTagArgs{...}
+//	GetM3DbM3dbUserConfigRulesMappingTagArgs{...}
 type GetM3DbM3dbUserConfigRulesMappingTagInput interface {
 	pulumi.Input
 
@@ -43430,7 +45556,7 @@ func (i GetM3DbM3dbUserConfigRulesMappingTagArgs) ToGetM3DbM3dbUserConfigRulesMa
 // GetM3DbM3dbUserConfigRulesMappingTagArrayInput is an input type that accepts GetM3DbM3dbUserConfigRulesMappingTagArray and GetM3DbM3dbUserConfigRulesMappingTagArrayOutput values.
 // You can construct a concrete instance of `GetM3DbM3dbUserConfigRulesMappingTagArrayInput` via:
 //
-//          GetM3DbM3dbUserConfigRulesMappingTagArray{ GetM3DbM3dbUserConfigRulesMappingTagArgs{...} }
+//	GetM3DbM3dbUserConfigRulesMappingTagArray{ GetM3DbM3dbUserConfigRulesMappingTagArgs{...} }
 type GetM3DbM3dbUserConfigRulesMappingTagArrayInput interface {
 	pulumi.Input
 
@@ -43502,7 +45628,7 @@ type GetM3DbServiceIntegration struct {
 // GetM3DbServiceIntegrationInput is an input type that accepts GetM3DbServiceIntegrationArgs and GetM3DbServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetM3DbServiceIntegrationInput` via:
 //
-//          GetM3DbServiceIntegrationArgs{...}
+//	GetM3DbServiceIntegrationArgs{...}
 type GetM3DbServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -43530,7 +45656,7 @@ func (i GetM3DbServiceIntegrationArgs) ToGetM3DbServiceIntegrationOutputWithCont
 // GetM3DbServiceIntegrationArrayInput is an input type that accepts GetM3DbServiceIntegrationArray and GetM3DbServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetM3DbServiceIntegrationArrayInput` via:
 //
-//          GetM3DbServiceIntegrationArray{ GetM3DbServiceIntegrationArgs{...} }
+//	GetM3DbServiceIntegrationArray{ GetM3DbServiceIntegrationArgs{...} }
 type GetM3DbServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -43602,7 +45728,7 @@ type GetM3DbTag struct {
 // GetM3DbTagInput is an input type that accepts GetM3DbTagArgs and GetM3DbTagOutput values.
 // You can construct a concrete instance of `GetM3DbTagInput` via:
 //
-//          GetM3DbTagArgs{...}
+//	GetM3DbTagArgs{...}
 type GetM3DbTagInput interface {
 	pulumi.Input
 
@@ -43630,7 +45756,7 @@ func (i GetM3DbTagArgs) ToGetM3DbTagOutputWithContext(ctx context.Context) GetM3
 // GetM3DbTagArrayInput is an input type that accepts GetM3DbTagArray and GetM3DbTagArrayOutput values.
 // You can construct a concrete instance of `GetM3DbTagArrayInput` via:
 //
-//          GetM3DbTagArray{ GetM3DbTagArgs{...} }
+//	GetM3DbTagArray{ GetM3DbTagArgs{...} }
 type GetM3DbTagArrayInput interface {
 	pulumi.Input
 
@@ -43707,7 +45833,7 @@ type GetMySqlComponent struct {
 // GetMySqlComponentInput is an input type that accepts GetMySqlComponentArgs and GetMySqlComponentOutput values.
 // You can construct a concrete instance of `GetMySqlComponentInput` via:
 //
-//          GetMySqlComponentArgs{...}
+//	GetMySqlComponentArgs{...}
 type GetMySqlComponentInput interface {
 	pulumi.Input
 
@@ -43740,7 +45866,7 @@ func (i GetMySqlComponentArgs) ToGetMySqlComponentOutputWithContext(ctx context.
 // GetMySqlComponentArrayInput is an input type that accepts GetMySqlComponentArray and GetMySqlComponentArrayOutput values.
 // You can construct a concrete instance of `GetMySqlComponentArrayInput` via:
 //
-//          GetMySqlComponentArray{ GetMySqlComponentArgs{...} }
+//	GetMySqlComponentArray{ GetMySqlComponentArgs{...} }
 type GetMySqlComponentArrayInput interface {
 	pulumi.Input
 
@@ -43830,7 +45956,7 @@ type GetMySqlMysql struct {
 // GetMySqlMysqlInput is an input type that accepts GetMySqlMysqlArgs and GetMySqlMysqlOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlInput` via:
 //
-//          GetMySqlMysqlArgs{...}
+//	GetMySqlMysqlArgs{...}
 type GetMySqlMysqlInput interface {
 	pulumi.Input
 
@@ -43856,7 +45982,7 @@ func (i GetMySqlMysqlArgs) ToGetMySqlMysqlOutputWithContext(ctx context.Context)
 // GetMySqlMysqlArrayInput is an input type that accepts GetMySqlMysqlArray and GetMySqlMysqlArrayOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlArrayInput` via:
 //
-//          GetMySqlMysqlArray{ GetMySqlMysqlArgs{...} }
+//	GetMySqlMysqlArray{ GetMySqlMysqlArgs{...} }
 type GetMySqlMysqlArrayInput interface {
 	pulumi.Input
 
@@ -43913,28 +46039,30 @@ func (o GetMySqlMysqlArrayOutput) Index(i pulumi.IntInput) GetMySqlMysqlOutput {
 }
 
 type GetMySqlMysqlUserConfig struct {
-	AdminPassword         *string                                   `pulumi:"adminPassword"`
-	AdminUsername         *string                                   `pulumi:"adminUsername"`
-	BackupHour            *string                                   `pulumi:"backupHour"`
-	BackupMinute          *string                                   `pulumi:"backupMinute"`
-	BinlogRetentionPeriod *string                                   `pulumi:"binlogRetentionPeriod"`
-	IpFilters             []string                                  `pulumi:"ipFilters"`
-	Migration             *GetMySqlMysqlUserConfigMigration         `pulumi:"migration"`
-	Mysql                 *GetMySqlMysqlUserConfigMysql             `pulumi:"mysql"`
-	MysqlVersion          *string                                   `pulumi:"mysqlVersion"`
-	PrivateAccess         *GetMySqlMysqlUserConfigPrivateAccess     `pulumi:"privateAccess"`
-	PrivatelinkAccess     *GetMySqlMysqlUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom     *string                                   `pulumi:"projectToForkFrom"`
-	PublicAccess          *GetMySqlMysqlUserConfigPublicAccess      `pulumi:"publicAccess"`
-	RecoveryTargetTime    *string                                   `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom     *string                                   `pulumi:"serviceToForkFrom"`
-	StaticIps             *string                                   `pulumi:"staticIps"`
+	AdminPassword         *string                           `pulumi:"adminPassword"`
+	AdminUsername         *string                           `pulumi:"adminUsername"`
+	BackupHour            *string                           `pulumi:"backupHour"`
+	BackupMinute          *string                           `pulumi:"backupMinute"`
+	BinlogRetentionPeriod *string                           `pulumi:"binlogRetentionPeriod"`
+	IpFilters             []string                          `pulumi:"ipFilters"`
+	Migration             *GetMySqlMysqlUserConfigMigration `pulumi:"migration"`
+	// MySQL specific server provided values
+	Mysql              *GetMySqlMysqlUserConfigMysql             `pulumi:"mysql"`
+	MysqlVersion       *string                                   `pulumi:"mysqlVersion"`
+	PrivateAccess      *GetMySqlMysqlUserConfigPrivateAccess     `pulumi:"privateAccess"`
+	PrivatelinkAccess  *GetMySqlMysqlUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom  *string                                   `pulumi:"projectToForkFrom"`
+	PublicAccess       *GetMySqlMysqlUserConfigPublicAccess      `pulumi:"publicAccess"`
+	RecoveryTargetTime *string                                   `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom  *string                                   `pulumi:"serviceToForkFrom"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // GetMySqlMysqlUserConfigInput is an input type that accepts GetMySqlMysqlUserConfigArgs and GetMySqlMysqlUserConfigOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlUserConfigInput` via:
 //
-//          GetMySqlMysqlUserConfigArgs{...}
+//	GetMySqlMysqlUserConfigArgs{...}
 type GetMySqlMysqlUserConfigInput interface {
 	pulumi.Input
 
@@ -43943,22 +46071,24 @@ type GetMySqlMysqlUserConfigInput interface {
 }
 
 type GetMySqlMysqlUserConfigArgs struct {
-	AdminPassword         pulumi.StringPtrInput                            `pulumi:"adminPassword"`
-	AdminUsername         pulumi.StringPtrInput                            `pulumi:"adminUsername"`
-	BackupHour            pulumi.StringPtrInput                            `pulumi:"backupHour"`
-	BackupMinute          pulumi.StringPtrInput                            `pulumi:"backupMinute"`
-	BinlogRetentionPeriod pulumi.StringPtrInput                            `pulumi:"binlogRetentionPeriod"`
-	IpFilters             pulumi.StringArrayInput                          `pulumi:"ipFilters"`
-	Migration             GetMySqlMysqlUserConfigMigrationPtrInput         `pulumi:"migration"`
-	Mysql                 GetMySqlMysqlUserConfigMysqlPtrInput             `pulumi:"mysql"`
-	MysqlVersion          pulumi.StringPtrInput                            `pulumi:"mysqlVersion"`
-	PrivateAccess         GetMySqlMysqlUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
-	PrivatelinkAccess     GetMySqlMysqlUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom     pulumi.StringPtrInput                            `pulumi:"projectToForkFrom"`
-	PublicAccess          GetMySqlMysqlUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
-	RecoveryTargetTime    pulumi.StringPtrInput                            `pulumi:"recoveryTargetTime"`
-	ServiceToForkFrom     pulumi.StringPtrInput                            `pulumi:"serviceToForkFrom"`
-	StaticIps             pulumi.StringPtrInput                            `pulumi:"staticIps"`
+	AdminPassword         pulumi.StringPtrInput                    `pulumi:"adminPassword"`
+	AdminUsername         pulumi.StringPtrInput                    `pulumi:"adminUsername"`
+	BackupHour            pulumi.StringPtrInput                    `pulumi:"backupHour"`
+	BackupMinute          pulumi.StringPtrInput                    `pulumi:"backupMinute"`
+	BinlogRetentionPeriod pulumi.StringPtrInput                    `pulumi:"binlogRetentionPeriod"`
+	IpFilters             pulumi.StringArrayInput                  `pulumi:"ipFilters"`
+	Migration             GetMySqlMysqlUserConfigMigrationPtrInput `pulumi:"migration"`
+	// MySQL specific server provided values
+	Mysql              GetMySqlMysqlUserConfigMysqlPtrInput             `pulumi:"mysql"`
+	MysqlVersion       pulumi.StringPtrInput                            `pulumi:"mysqlVersion"`
+	PrivateAccess      GetMySqlMysqlUserConfigPrivateAccessPtrInput     `pulumi:"privateAccess"`
+	PrivatelinkAccess  GetMySqlMysqlUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom  pulumi.StringPtrInput                            `pulumi:"projectToForkFrom"`
+	PublicAccess       GetMySqlMysqlUserConfigPublicAccessPtrInput      `pulumi:"publicAccess"`
+	RecoveryTargetTime pulumi.StringPtrInput                            `pulumi:"recoveryTargetTime"`
+	ServiceToForkFrom  pulumi.StringPtrInput                            `pulumi:"serviceToForkFrom"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (GetMySqlMysqlUserConfigArgs) ElementType() reflect.Type {
@@ -43976,7 +46106,7 @@ func (i GetMySqlMysqlUserConfigArgs) ToGetMySqlMysqlUserConfigOutputWithContext(
 // GetMySqlMysqlUserConfigArrayInput is an input type that accepts GetMySqlMysqlUserConfigArray and GetMySqlMysqlUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlUserConfigArrayInput` via:
 //
-//          GetMySqlMysqlUserConfigArray{ GetMySqlMysqlUserConfigArgs{...} }
+//	GetMySqlMysqlUserConfigArray{ GetMySqlMysqlUserConfigArgs{...} }
 type GetMySqlMysqlUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -44040,6 +46170,7 @@ func (o GetMySqlMysqlUserConfigOutput) Migration() GetMySqlMysqlUserConfigMigrat
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigMigration { return v.Migration }).(GetMySqlMysqlUserConfigMigrationPtrOutput)
 }
 
+// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigOutput) Mysql() GetMySqlMysqlUserConfigMysqlPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigMysql { return v.Mysql }).(GetMySqlMysqlUserConfigMysqlPtrOutput)
 }
@@ -44072,6 +46203,7 @@ func (o GetMySqlMysqlUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetMySqlMysqlUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -44110,7 +46242,7 @@ type GetMySqlMysqlUserConfigMigration struct {
 // GetMySqlMysqlUserConfigMigrationInput is an input type that accepts GetMySqlMysqlUserConfigMigrationArgs and GetMySqlMysqlUserConfigMigrationOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlUserConfigMigrationInput` via:
 //
-//          GetMySqlMysqlUserConfigMigrationArgs{...}
+//	GetMySqlMysqlUserConfigMigrationArgs{...}
 type GetMySqlMysqlUserConfigMigrationInput interface {
 	pulumi.Input
 
@@ -44152,11 +46284,11 @@ func (i GetMySqlMysqlUserConfigMigrationArgs) ToGetMySqlMysqlUserConfigMigration
 // GetMySqlMysqlUserConfigMigrationPtrInput is an input type that accepts GetMySqlMysqlUserConfigMigrationArgs, GetMySqlMysqlUserConfigMigrationPtr and GetMySqlMysqlUserConfigMigrationPtrOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlUserConfigMigrationPtrInput` via:
 //
-//          GetMySqlMysqlUserConfigMigrationArgs{...}
+//	        GetMySqlMysqlUserConfigMigrationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetMySqlMysqlUserConfigMigrationPtrInput interface {
 	pulumi.Input
 
@@ -44339,18 +46471,24 @@ type GetMySqlMysqlUserConfigMysql struct {
 	DefaultTimeZone              *string `pulumi:"defaultTimeZone"`
 	GroupConcatMaxLen            *string `pulumi:"groupConcatMaxLen"`
 	InformationSchemaStatsExpiry *string `pulumi:"informationSchemaStatsExpiry"`
+	InnodbChangeBufferMaxSize    *string `pulumi:"innodbChangeBufferMaxSize"`
+	InnodbFlushNeighbors         *string `pulumi:"innodbFlushNeighbors"`
 	InnodbFtMinTokenSize         *string `pulumi:"innodbFtMinTokenSize"`
 	InnodbFtServerStopwordTable  *string `pulumi:"innodbFtServerStopwordTable"`
 	InnodbLockWaitTimeout        *string `pulumi:"innodbLockWaitTimeout"`
 	InnodbLogBufferSize          *string `pulumi:"innodbLogBufferSize"`
 	InnodbOnlineAlterLogMaxSize  *string `pulumi:"innodbOnlineAlterLogMaxSize"`
 	InnodbPrintAllDeadlocks      *string `pulumi:"innodbPrintAllDeadlocks"`
+	InnodbReadIoThreads          *string `pulumi:"innodbReadIoThreads"`
 	InnodbRollbackOnTimeout      *string `pulumi:"innodbRollbackOnTimeout"`
+	InnodbThreadConcurrency      *string `pulumi:"innodbThreadConcurrency"`
+	InnodbWriteIoThreads         *string `pulumi:"innodbWriteIoThreads"`
 	InteractiveTimeout           *string `pulumi:"interactiveTimeout"`
 	InternalTmpMemStorageEngine  *string `pulumi:"internalTmpMemStorageEngine"`
 	LongQueryTime                *string `pulumi:"longQueryTime"`
 	MaxAllowedPacket             *string `pulumi:"maxAllowedPacket"`
 	MaxHeapTableSize             *string `pulumi:"maxHeapTableSize"`
+	NetBufferLength              *string `pulumi:"netBufferLength"`
 	NetReadTimeout               *string `pulumi:"netReadTimeout"`
 	NetWriteTimeout              *string `pulumi:"netWriteTimeout"`
 	SlowQueryLog                 *string `pulumi:"slowQueryLog"`
@@ -44364,7 +46502,7 @@ type GetMySqlMysqlUserConfigMysql struct {
 // GetMySqlMysqlUserConfigMysqlInput is an input type that accepts GetMySqlMysqlUserConfigMysqlArgs and GetMySqlMysqlUserConfigMysqlOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlUserConfigMysqlInput` via:
 //
-//          GetMySqlMysqlUserConfigMysqlArgs{...}
+//	GetMySqlMysqlUserConfigMysqlArgs{...}
 type GetMySqlMysqlUserConfigMysqlInput interface {
 	pulumi.Input
 
@@ -44377,18 +46515,24 @@ type GetMySqlMysqlUserConfigMysqlArgs struct {
 	DefaultTimeZone              pulumi.StringPtrInput `pulumi:"defaultTimeZone"`
 	GroupConcatMaxLen            pulumi.StringPtrInput `pulumi:"groupConcatMaxLen"`
 	InformationSchemaStatsExpiry pulumi.StringPtrInput `pulumi:"informationSchemaStatsExpiry"`
+	InnodbChangeBufferMaxSize    pulumi.StringPtrInput `pulumi:"innodbChangeBufferMaxSize"`
+	InnodbFlushNeighbors         pulumi.StringPtrInput `pulumi:"innodbFlushNeighbors"`
 	InnodbFtMinTokenSize         pulumi.StringPtrInput `pulumi:"innodbFtMinTokenSize"`
 	InnodbFtServerStopwordTable  pulumi.StringPtrInput `pulumi:"innodbFtServerStopwordTable"`
 	InnodbLockWaitTimeout        pulumi.StringPtrInput `pulumi:"innodbLockWaitTimeout"`
 	InnodbLogBufferSize          pulumi.StringPtrInput `pulumi:"innodbLogBufferSize"`
 	InnodbOnlineAlterLogMaxSize  pulumi.StringPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
 	InnodbPrintAllDeadlocks      pulumi.StringPtrInput `pulumi:"innodbPrintAllDeadlocks"`
+	InnodbReadIoThreads          pulumi.StringPtrInput `pulumi:"innodbReadIoThreads"`
 	InnodbRollbackOnTimeout      pulumi.StringPtrInput `pulumi:"innodbRollbackOnTimeout"`
+	InnodbThreadConcurrency      pulumi.StringPtrInput `pulumi:"innodbThreadConcurrency"`
+	InnodbWriteIoThreads         pulumi.StringPtrInput `pulumi:"innodbWriteIoThreads"`
 	InteractiveTimeout           pulumi.StringPtrInput `pulumi:"interactiveTimeout"`
 	InternalTmpMemStorageEngine  pulumi.StringPtrInput `pulumi:"internalTmpMemStorageEngine"`
 	LongQueryTime                pulumi.StringPtrInput `pulumi:"longQueryTime"`
 	MaxAllowedPacket             pulumi.StringPtrInput `pulumi:"maxAllowedPacket"`
 	MaxHeapTableSize             pulumi.StringPtrInput `pulumi:"maxHeapTableSize"`
+	NetBufferLength              pulumi.StringPtrInput `pulumi:"netBufferLength"`
 	NetReadTimeout               pulumi.StringPtrInput `pulumi:"netReadTimeout"`
 	NetWriteTimeout              pulumi.StringPtrInput `pulumi:"netWriteTimeout"`
 	SlowQueryLog                 pulumi.StringPtrInput `pulumi:"slowQueryLog"`
@@ -44422,11 +46566,11 @@ func (i GetMySqlMysqlUserConfigMysqlArgs) ToGetMySqlMysqlUserConfigMysqlPtrOutpu
 // GetMySqlMysqlUserConfigMysqlPtrInput is an input type that accepts GetMySqlMysqlUserConfigMysqlArgs, GetMySqlMysqlUserConfigMysqlPtr and GetMySqlMysqlUserConfigMysqlPtrOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlUserConfigMysqlPtrInput` via:
 //
-//          GetMySqlMysqlUserConfigMysqlArgs{...}
+//	        GetMySqlMysqlUserConfigMysqlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetMySqlMysqlUserConfigMysqlPtrInput interface {
 	pulumi.Input
 
@@ -44492,6 +46636,14 @@ func (o GetMySqlMysqlUserConfigMysqlOutput) InformationSchemaStatsExpiry() pulum
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InformationSchemaStatsExpiry }).(pulumi.StringPtrOutput)
 }
 
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbChangeBufferMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbChangeBufferMaxSize }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbFlushNeighbors() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbFlushNeighbors }).(pulumi.StringPtrOutput)
+}
+
 func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbFtMinTokenSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbFtMinTokenSize }).(pulumi.StringPtrOutput)
 }
@@ -44516,8 +46668,20 @@ func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbPrintAllDeadlocks() pulumi.Str
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbPrintAllDeadlocks }).(pulumi.StringPtrOutput)
 }
 
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbReadIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbReadIoThreads }).(pulumi.StringPtrOutput)
+}
+
 func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbRollbackOnTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbThreadConcurrency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbThreadConcurrency }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbWriteIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbWriteIoThreads }).(pulumi.StringPtrOutput)
 }
 
 func (o GetMySqlMysqlUserConfigMysqlOutput) InteractiveTimeout() pulumi.StringPtrOutput {
@@ -44538,6 +46702,10 @@ func (o GetMySqlMysqlUserConfigMysqlOutput) MaxAllowedPacket() pulumi.StringPtrO
 
 func (o GetMySqlMysqlUserConfigMysqlOutput) MaxHeapTableSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.MaxHeapTableSize }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMySqlMysqlUserConfigMysqlOutput) NetBufferLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.NetBufferLength }).(pulumi.StringPtrOutput)
 }
 
 func (o GetMySqlMysqlUserConfigMysqlOutput) NetReadTimeout() pulumi.StringPtrOutput {
@@ -44632,6 +46800,24 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InformationSchemaStatsExpiry() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbChangeBufferMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbChangeBufferMaxSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbFlushNeighbors() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbFlushNeighbors
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbFtMinTokenSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
@@ -44686,12 +46872,39 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbPrintAllDeadlocks() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbReadIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbReadIoThreads
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbRollbackOnTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
 		if v == nil {
 			return nil
 		}
 		return v.InnodbRollbackOnTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbThreadConcurrency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbThreadConcurrency
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbWriteIoThreads() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbWriteIoThreads
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -44737,6 +46950,15 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) MaxHeapTableSize() pulumi.StringP
 			return nil
 		}
 		return v.MaxHeapTableSize
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) NetBufferLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetBufferLength
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -44813,6 +47035,7 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.StringPtrOut
 }
 
 type GetMySqlMysqlUserConfigPrivateAccess struct {
+	// MySQL specific server provided values
 	Mysql      *string `pulumi:"mysql"`
 	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -44821,7 +47044,7 @@ type GetMySqlMysqlUserConfigPrivateAccess struct {
 // GetMySqlMysqlUserConfigPrivateAccessInput is an input type that accepts GetMySqlMysqlUserConfigPrivateAccessArgs and GetMySqlMysqlUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlUserConfigPrivateAccessInput` via:
 //
-//          GetMySqlMysqlUserConfigPrivateAccessArgs{...}
+//	GetMySqlMysqlUserConfigPrivateAccessArgs{...}
 type GetMySqlMysqlUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -44830,6 +47053,7 @@ type GetMySqlMysqlUserConfigPrivateAccessInput interface {
 }
 
 type GetMySqlMysqlUserConfigPrivateAccessArgs struct {
+	// MySQL specific server provided values
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
 	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -44858,11 +47082,11 @@ func (i GetMySqlMysqlUserConfigPrivateAccessArgs) ToGetMySqlMysqlUserConfigPriva
 // GetMySqlMysqlUserConfigPrivateAccessPtrInput is an input type that accepts GetMySqlMysqlUserConfigPrivateAccessArgs, GetMySqlMysqlUserConfigPrivateAccessPtr and GetMySqlMysqlUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlUserConfigPrivateAccessPtrInput` via:
 //
-//          GetMySqlMysqlUserConfigPrivateAccessArgs{...}
+//	        GetMySqlMysqlUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetMySqlMysqlUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -44912,6 +47136,7 @@ func (o GetMySqlMysqlUserConfigPrivateAccessOutput) ToGetMySqlMysqlUserConfigPri
 	}).(GetMySqlMysqlUserConfigPrivateAccessPtrOutput)
 }
 
+// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigPrivateAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivateAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
@@ -44948,6 +47173,7 @@ func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Elem() GetMySqlMysqlUserC
 	}).(GetMySqlMysqlUserConfigPrivateAccessOutput)
 }
 
+// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -44976,6 +47202,7 @@ func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.Strin
 }
 
 type GetMySqlMysqlUserConfigPrivatelinkAccess struct {
+	// MySQL specific server provided values
 	Mysql      *string `pulumi:"mysql"`
 	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -44984,7 +47211,7 @@ type GetMySqlMysqlUserConfigPrivatelinkAccess struct {
 // GetMySqlMysqlUserConfigPrivatelinkAccessInput is an input type that accepts GetMySqlMysqlUserConfigPrivatelinkAccessArgs and GetMySqlMysqlUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlUserConfigPrivatelinkAccessInput` via:
 //
-//          GetMySqlMysqlUserConfigPrivatelinkAccessArgs{...}
+//	GetMySqlMysqlUserConfigPrivatelinkAccessArgs{...}
 type GetMySqlMysqlUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -44993,6 +47220,7 @@ type GetMySqlMysqlUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetMySqlMysqlUserConfigPrivatelinkAccessArgs struct {
+	// MySQL specific server provided values
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
 	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -45021,11 +47249,11 @@ func (i GetMySqlMysqlUserConfigPrivatelinkAccessArgs) ToGetMySqlMysqlUserConfigP
 // GetMySqlMysqlUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetMySqlMysqlUserConfigPrivatelinkAccessArgs, GetMySqlMysqlUserConfigPrivatelinkAccessPtr and GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          GetMySqlMysqlUserConfigPrivatelinkAccessArgs{...}
+//	        GetMySqlMysqlUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetMySqlMysqlUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -45075,6 +47303,7 @@ func (o GetMySqlMysqlUserConfigPrivatelinkAccessOutput) ToGetMySqlMysqlUserConfi
 	}).(GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigPrivatelinkAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivatelinkAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
@@ -45111,6 +47340,7 @@ func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Elem() GetMySqlMysqlU
 	}).(GetMySqlMysqlUserConfigPrivatelinkAccessOutput)
 }
 
+// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -45139,6 +47369,7 @@ func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.S
 }
 
 type GetMySqlMysqlUserConfigPublicAccess struct {
+	// MySQL specific server provided values
 	Mysql      *string `pulumi:"mysql"`
 	Mysqlx     *string `pulumi:"mysqlx"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -45147,7 +47378,7 @@ type GetMySqlMysqlUserConfigPublicAccess struct {
 // GetMySqlMysqlUserConfigPublicAccessInput is an input type that accepts GetMySqlMysqlUserConfigPublicAccessArgs and GetMySqlMysqlUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlUserConfigPublicAccessInput` via:
 //
-//          GetMySqlMysqlUserConfigPublicAccessArgs{...}
+//	GetMySqlMysqlUserConfigPublicAccessArgs{...}
 type GetMySqlMysqlUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -45156,6 +47387,7 @@ type GetMySqlMysqlUserConfigPublicAccessInput interface {
 }
 
 type GetMySqlMysqlUserConfigPublicAccessArgs struct {
+	// MySQL specific server provided values
 	Mysql      pulumi.StringPtrInput `pulumi:"mysql"`
 	Mysqlx     pulumi.StringPtrInput `pulumi:"mysqlx"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -45184,11 +47416,11 @@ func (i GetMySqlMysqlUserConfigPublicAccessArgs) ToGetMySqlMysqlUserConfigPublic
 // GetMySqlMysqlUserConfigPublicAccessPtrInput is an input type that accepts GetMySqlMysqlUserConfigPublicAccessArgs, GetMySqlMysqlUserConfigPublicAccessPtr and GetMySqlMysqlUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetMySqlMysqlUserConfigPublicAccessPtrInput` via:
 //
-//          GetMySqlMysqlUserConfigPublicAccessArgs{...}
+//	        GetMySqlMysqlUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetMySqlMysqlUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -45238,6 +47470,7 @@ func (o GetMySqlMysqlUserConfigPublicAccessOutput) ToGetMySqlMysqlUserConfigPubl
 	}).(GetMySqlMysqlUserConfigPublicAccessPtrOutput)
 }
 
+// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigPublicAccessOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigPublicAccess) *string { return v.Mysql }).(pulumi.StringPtrOutput)
 }
@@ -45274,6 +47507,7 @@ func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Elem() GetMySqlMysqlUserCo
 	}).(GetMySqlMysqlUserConfigPublicAccessOutput)
 }
 
+// MySQL specific server provided values
 func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPublicAccess) *string {
 		if v == nil {
@@ -45309,7 +47543,7 @@ type GetMySqlServiceIntegration struct {
 // GetMySqlServiceIntegrationInput is an input type that accepts GetMySqlServiceIntegrationArgs and GetMySqlServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetMySqlServiceIntegrationInput` via:
 //
-//          GetMySqlServiceIntegrationArgs{...}
+//	GetMySqlServiceIntegrationArgs{...}
 type GetMySqlServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -45337,7 +47571,7 @@ func (i GetMySqlServiceIntegrationArgs) ToGetMySqlServiceIntegrationOutputWithCo
 // GetMySqlServiceIntegrationArrayInput is an input type that accepts GetMySqlServiceIntegrationArray and GetMySqlServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetMySqlServiceIntegrationArrayInput` via:
 //
-//          GetMySqlServiceIntegrationArray{ GetMySqlServiceIntegrationArgs{...} }
+//	GetMySqlServiceIntegrationArray{ GetMySqlServiceIntegrationArgs{...} }
 type GetMySqlServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -45409,7 +47643,7 @@ type GetMySqlTag struct {
 // GetMySqlTagInput is an input type that accepts GetMySqlTagArgs and GetMySqlTagOutput values.
 // You can construct a concrete instance of `GetMySqlTagInput` via:
 //
-//          GetMySqlTagArgs{...}
+//	GetMySqlTagArgs{...}
 type GetMySqlTagInput interface {
 	pulumi.Input
 
@@ -45437,7 +47671,7 @@ func (i GetMySqlTagArgs) ToGetMySqlTagOutputWithContext(ctx context.Context) Get
 // GetMySqlTagArrayInput is an input type that accepts GetMySqlTagArray and GetMySqlTagArrayOutput values.
 // You can construct a concrete instance of `GetMySqlTagArrayInput` via:
 //
-//          GetMySqlTagArray{ GetMySqlTagArgs{...} }
+//	GetMySqlTagArray{ GetMySqlTagArgs{...} }
 type GetMySqlTagArrayInput interface {
 	pulumi.Input
 
@@ -45514,7 +47748,7 @@ type GetOpenSearchComponent struct {
 // GetOpenSearchComponentInput is an input type that accepts GetOpenSearchComponentArgs and GetOpenSearchComponentOutput values.
 // You can construct a concrete instance of `GetOpenSearchComponentInput` via:
 //
-//          GetOpenSearchComponentArgs{...}
+//	GetOpenSearchComponentArgs{...}
 type GetOpenSearchComponentInput interface {
 	pulumi.Input
 
@@ -45547,7 +47781,7 @@ func (i GetOpenSearchComponentArgs) ToGetOpenSearchComponentOutputWithContext(ct
 // GetOpenSearchComponentArrayInput is an input type that accepts GetOpenSearchComponentArray and GetOpenSearchComponentArrayOutput values.
 // You can construct a concrete instance of `GetOpenSearchComponentArrayInput` via:
 //
-//          GetOpenSearchComponentArray{ GetOpenSearchComponentArgs{...} }
+//	GetOpenSearchComponentArray{ GetOpenSearchComponentArgs{...} }
 type GetOpenSearchComponentArrayInput interface {
 	pulumi.Input
 
@@ -45638,7 +47872,7 @@ type GetOpenSearchOpensearch struct {
 // GetOpenSearchOpensearchInput is an input type that accepts GetOpenSearchOpensearchArgs and GetOpenSearchOpensearchOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchInput` via:
 //
-//          GetOpenSearchOpensearchArgs{...}
+//	GetOpenSearchOpensearchArgs{...}
 type GetOpenSearchOpensearchInput interface {
 	pulumi.Input
 
@@ -45665,7 +47899,7 @@ func (i GetOpenSearchOpensearchArgs) ToGetOpenSearchOpensearchOutputWithContext(
 // GetOpenSearchOpensearchArrayInput is an input type that accepts GetOpenSearchOpensearchArray and GetOpenSearchOpensearchArrayOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchArrayInput` via:
 //
-//          GetOpenSearchOpensearchArray{ GetOpenSearchOpensearchArgs{...} }
+//	GetOpenSearchOpensearchArray{ GetOpenSearchOpensearchArgs{...} }
 type GetOpenSearchOpensearchArrayInput interface {
 	pulumi.Input
 
@@ -45726,29 +47960,31 @@ func (o GetOpenSearchOpensearchArrayOutput) Index(i pulumi.IntInput) GetOpenSear
 }
 
 type GetOpenSearchOpensearchUserConfig struct {
-	CustomDomain                       *string                                                `pulumi:"customDomain"`
-	DisableReplicationFactorAdjustment *string                                                `pulumi:"disableReplicationFactorAdjustment"`
-	IndexPatterns                      []GetOpenSearchOpensearchUserConfigIndexPattern        `pulumi:"indexPatterns"`
-	IndexTemplate                      *GetOpenSearchOpensearchUserConfigIndexTemplate        `pulumi:"indexTemplate"`
-	IpFilters                          []string                                               `pulumi:"ipFilters"`
-	KeepIndexRefreshInterval           *string                                                `pulumi:"keepIndexRefreshInterval"`
-	MaxIndexCount                      *string                                                `pulumi:"maxIndexCount"`
-	Opensearch                         *GetOpenSearchOpensearchUserConfigOpensearch           `pulumi:"opensearch"`
-	OpensearchDashboards               *GetOpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
-	OpensearchVersion                  *string                                                `pulumi:"opensearchVersion"`
-	PrivateAccess                      *GetOpenSearchOpensearchUserConfigPrivateAccess        `pulumi:"privateAccess"`
-	PrivatelinkAccess                  *GetOpenSearchOpensearchUserConfigPrivatelinkAccess    `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom                  *string                                                `pulumi:"projectToForkFrom"`
-	PublicAccess                       *GetOpenSearchOpensearchUserConfigPublicAccess         `pulumi:"publicAccess"`
-	RecoveryBasebackupName             *string                                                `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom                  *string                                                `pulumi:"serviceToForkFrom"`
-	StaticIps                          *string                                                `pulumi:"staticIps"`
+	CustomDomain                       *string                                         `pulumi:"customDomain"`
+	DisableReplicationFactorAdjustment *string                                         `pulumi:"disableReplicationFactorAdjustment"`
+	IndexPatterns                      []GetOpenSearchOpensearchUserConfigIndexPattern `pulumi:"indexPatterns"`
+	IndexTemplate                      *GetOpenSearchOpensearchUserConfigIndexTemplate `pulumi:"indexTemplate"`
+	IpFilters                          []string                                        `pulumi:"ipFilters"`
+	KeepIndexRefreshInterval           *string                                         `pulumi:"keepIndexRefreshInterval"`
+	MaxIndexCount                      *string                                         `pulumi:"maxIndexCount"`
+	// Opensearch server provided values
+	Opensearch             *GetOpenSearchOpensearchUserConfigOpensearch           `pulumi:"opensearch"`
+	OpensearchDashboards   *GetOpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
+	OpensearchVersion      *string                                                `pulumi:"opensearchVersion"`
+	PrivateAccess          *GetOpenSearchOpensearchUserConfigPrivateAccess        `pulumi:"privateAccess"`
+	PrivatelinkAccess      *GetOpenSearchOpensearchUserConfigPrivatelinkAccess    `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom      *string                                                `pulumi:"projectToForkFrom"`
+	PublicAccess           *GetOpenSearchOpensearchUserConfigPublicAccess         `pulumi:"publicAccess"`
+	RecoveryBasebackupName *string                                                `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom      *string                                                `pulumi:"serviceToForkFrom"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // GetOpenSearchOpensearchUserConfigInput is an input type that accepts GetOpenSearchOpensearchUserConfigArgs and GetOpenSearchOpensearchUserConfigOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigArgs{...}
+//	GetOpenSearchOpensearchUserConfigArgs{...}
 type GetOpenSearchOpensearchUserConfigInput interface {
 	pulumi.Input
 
@@ -45757,23 +47993,25 @@ type GetOpenSearchOpensearchUserConfigInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigArgs struct {
-	CustomDomain                       pulumi.StringPtrInput                                         `pulumi:"customDomain"`
-	DisableReplicationFactorAdjustment pulumi.StringPtrInput                                         `pulumi:"disableReplicationFactorAdjustment"`
-	IndexPatterns                      GetOpenSearchOpensearchUserConfigIndexPatternArrayInput       `pulumi:"indexPatterns"`
-	IndexTemplate                      GetOpenSearchOpensearchUserConfigIndexTemplatePtrInput        `pulumi:"indexTemplate"`
-	IpFilters                          pulumi.StringArrayInput                                       `pulumi:"ipFilters"`
-	KeepIndexRefreshInterval           pulumi.StringPtrInput                                         `pulumi:"keepIndexRefreshInterval"`
-	MaxIndexCount                      pulumi.StringPtrInput                                         `pulumi:"maxIndexCount"`
-	Opensearch                         GetOpenSearchOpensearchUserConfigOpensearchPtrInput           `pulumi:"opensearch"`
-	OpensearchDashboards               GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
-	OpensearchVersion                  pulumi.StringPtrInput                                         `pulumi:"opensearchVersion"`
-	PrivateAccess                      GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
-	PrivatelinkAccess                  GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput    `pulumi:"privatelinkAccess"`
-	ProjectToForkFrom                  pulumi.StringPtrInput                                         `pulumi:"projectToForkFrom"`
-	PublicAccess                       GetOpenSearchOpensearchUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
-	RecoveryBasebackupName             pulumi.StringPtrInput                                         `pulumi:"recoveryBasebackupName"`
-	ServiceToForkFrom                  pulumi.StringPtrInput                                         `pulumi:"serviceToForkFrom"`
-	StaticIps                          pulumi.StringPtrInput                                         `pulumi:"staticIps"`
+	CustomDomain                       pulumi.StringPtrInput                                   `pulumi:"customDomain"`
+	DisableReplicationFactorAdjustment pulumi.StringPtrInput                                   `pulumi:"disableReplicationFactorAdjustment"`
+	IndexPatterns                      GetOpenSearchOpensearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
+	IndexTemplate                      GetOpenSearchOpensearchUserConfigIndexTemplatePtrInput  `pulumi:"indexTemplate"`
+	IpFilters                          pulumi.StringArrayInput                                 `pulumi:"ipFilters"`
+	KeepIndexRefreshInterval           pulumi.StringPtrInput                                   `pulumi:"keepIndexRefreshInterval"`
+	MaxIndexCount                      pulumi.StringPtrInput                                   `pulumi:"maxIndexCount"`
+	// Opensearch server provided values
+	Opensearch             GetOpenSearchOpensearchUserConfigOpensearchPtrInput           `pulumi:"opensearch"`
+	OpensearchDashboards   GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
+	OpensearchVersion      pulumi.StringPtrInput                                         `pulumi:"opensearchVersion"`
+	PrivateAccess          GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput        `pulumi:"privateAccess"`
+	PrivatelinkAccess      GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput    `pulumi:"privatelinkAccess"`
+	ProjectToForkFrom      pulumi.StringPtrInput                                         `pulumi:"projectToForkFrom"`
+	PublicAccess           GetOpenSearchOpensearchUserConfigPublicAccessPtrInput         `pulumi:"publicAccess"`
+	RecoveryBasebackupName pulumi.StringPtrInput                                         `pulumi:"recoveryBasebackupName"`
+	ServiceToForkFrom      pulumi.StringPtrInput                                         `pulumi:"serviceToForkFrom"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (GetOpenSearchOpensearchUserConfigArgs) ElementType() reflect.Type {
@@ -45791,7 +48029,7 @@ func (i GetOpenSearchOpensearchUserConfigArgs) ToGetOpenSearchOpensearchUserConf
 // GetOpenSearchOpensearchUserConfigArrayInput is an input type that accepts GetOpenSearchOpensearchUserConfigArray and GetOpenSearchOpensearchUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigArrayInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigArray{ GetOpenSearchOpensearchUserConfigArgs{...} }
+//	GetOpenSearchOpensearchUserConfigArray{ GetOpenSearchOpensearchUserConfigArgs{...} }
 type GetOpenSearchOpensearchUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -45859,6 +48097,7 @@ func (o GetOpenSearchOpensearchUserConfigOutput) MaxIndexCount() pulumi.StringPt
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.MaxIndexCount }).(pulumi.StringPtrOutput)
 }
 
+// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigOutput) Opensearch() GetOpenSearchOpensearchUserConfigOpensearchPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigOpensearch {
 		return v.Opensearch
@@ -45905,6 +48144,7 @@ func (o GetOpenSearchOpensearchUserConfigOutput) ServiceToForkFrom() pulumi.Stri
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetOpenSearchOpensearchUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -45938,7 +48178,7 @@ type GetOpenSearchOpensearchUserConfigIndexPattern struct {
 // GetOpenSearchOpensearchUserConfigIndexPatternInput is an input type that accepts GetOpenSearchOpensearchUserConfigIndexPatternArgs and GetOpenSearchOpensearchUserConfigIndexPatternOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigIndexPatternInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigIndexPatternArgs{...}
+//	GetOpenSearchOpensearchUserConfigIndexPatternArgs{...}
 type GetOpenSearchOpensearchUserConfigIndexPatternInput interface {
 	pulumi.Input
 
@@ -45967,7 +48207,7 @@ func (i GetOpenSearchOpensearchUserConfigIndexPatternArgs) ToGetOpenSearchOpense
 // GetOpenSearchOpensearchUserConfigIndexPatternArrayInput is an input type that accepts GetOpenSearchOpensearchUserConfigIndexPatternArray and GetOpenSearchOpensearchUserConfigIndexPatternArrayOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigIndexPatternArrayInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigIndexPatternArray{ GetOpenSearchOpensearchUserConfigIndexPatternArgs{...} }
+//	GetOpenSearchOpensearchUserConfigIndexPatternArray{ GetOpenSearchOpensearchUserConfigIndexPatternArgs{...} }
 type GetOpenSearchOpensearchUserConfigIndexPatternArrayInput interface {
 	pulumi.Input
 
@@ -46044,7 +48284,7 @@ type GetOpenSearchOpensearchUserConfigIndexTemplate struct {
 // GetOpenSearchOpensearchUserConfigIndexTemplateInput is an input type that accepts GetOpenSearchOpensearchUserConfigIndexTemplateArgs and GetOpenSearchOpensearchUserConfigIndexTemplateOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigIndexTemplateInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigIndexTemplateArgs{...}
+//	GetOpenSearchOpensearchUserConfigIndexTemplateArgs{...}
 type GetOpenSearchOpensearchUserConfigIndexTemplateInput interface {
 	pulumi.Input
 
@@ -46081,11 +48321,11 @@ func (i GetOpenSearchOpensearchUserConfigIndexTemplateArgs) ToGetOpenSearchOpens
 // GetOpenSearchOpensearchUserConfigIndexTemplatePtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigIndexTemplateArgs, GetOpenSearchOpensearchUserConfigIndexTemplatePtr and GetOpenSearchOpensearchUserConfigIndexTemplatePtrOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigIndexTemplatePtrInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigIndexTemplateArgs{...}
+//	        GetOpenSearchOpensearchUserConfigIndexTemplateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetOpenSearchOpensearchUserConfigIndexTemplatePtrInput interface {
 	pulumi.Input
 
@@ -46203,6 +48443,9 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	ActionDestructiveRequiresName                    *string  `pulumi:"actionDestructiveRequiresName"`
 	ClusterMaxShardsPerNode                          *string  `pulumi:"clusterMaxShardsPerNode"`
 	ClusterRoutingAllocationNodeConcurrentRecoveries *string  `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
+	EmailSenderName                                  *string  `pulumi:"emailSenderName"`
+	EmailSenderPassword                              *string  `pulumi:"emailSenderPassword"`
+	EmailSenderUsername                              *string  `pulumi:"emailSenderUsername"`
 	HttpMaxContentLength                             *string  `pulumi:"httpMaxContentLength"`
 	HttpMaxHeaderSize                                *string  `pulumi:"httpMaxHeaderSize"`
 	HttpMaxInitialLineLength                         *string  `pulumi:"httpMaxInitialLineLength"`
@@ -46232,7 +48475,7 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 // GetOpenSearchOpensearchUserConfigOpensearchInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchArgs and GetOpenSearchOpensearchUserConfigOpensearchOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigOpensearchArgs{...}
+//	GetOpenSearchOpensearchUserConfigOpensearchArgs{...}
 type GetOpenSearchOpensearchUserConfigOpensearchInput interface {
 	pulumi.Input
 
@@ -46245,6 +48488,9 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	ActionDestructiveRequiresName                    pulumi.StringPtrInput   `pulumi:"actionDestructiveRequiresName"`
 	ClusterMaxShardsPerNode                          pulumi.StringPtrInput   `pulumi:"clusterMaxShardsPerNode"`
 	ClusterRoutingAllocationNodeConcurrentRecoveries pulumi.StringPtrInput   `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
+	EmailSenderName                                  pulumi.StringPtrInput   `pulumi:"emailSenderName"`
+	EmailSenderPassword                              pulumi.StringPtrInput   `pulumi:"emailSenderPassword"`
+	EmailSenderUsername                              pulumi.StringPtrInput   `pulumi:"emailSenderUsername"`
 	HttpMaxContentLength                             pulumi.StringPtrInput   `pulumi:"httpMaxContentLength"`
 	HttpMaxHeaderSize                                pulumi.StringPtrInput   `pulumi:"httpMaxHeaderSize"`
 	HttpMaxInitialLineLength                         pulumi.StringPtrInput   `pulumi:"httpMaxInitialLineLength"`
@@ -46294,11 +48540,11 @@ func (i GetOpenSearchOpensearchUserConfigOpensearchArgs) ToGetOpenSearchOpensear
 // GetOpenSearchOpensearchUserConfigOpensearchPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchArgs, GetOpenSearchOpensearchUserConfigOpensearchPtr and GetOpenSearchOpensearchUserConfigOpensearchPtrOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchPtrInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigOpensearchArgs{...}
+//	        GetOpenSearchOpensearchUserConfigOpensearchArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetOpenSearchOpensearchUserConfigOpensearchPtrInput interface {
 	pulumi.Input
 
@@ -46364,6 +48610,18 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ClusterRoutingAllocat
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *string {
 		return v.ClusterRoutingAllocationNodeConcurrentRecoveries
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EmailSenderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *string { return v.EmailSenderName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EmailSenderPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *string { return v.EmailSenderPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EmailSenderUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *string { return v.EmailSenderUsername }).(pulumi.StringPtrOutput)
 }
 
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) HttpMaxContentLength() pulumi.StringPtrOutput {
@@ -46523,6 +48781,33 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterRoutingAllo
 			return nil
 		}
 		return v.ClusterRoutingAllocationNodeConcurrentRecoveries
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) EmailSenderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailSenderName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) EmailSenderPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailSenderPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) EmailSenderUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailSenderUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -46751,7 +49036,7 @@ type GetOpenSearchOpensearchUserConfigOpensearchDashboards struct {
 // GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs and GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{...}
+//	GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{...}
 type GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput interface {
 	pulumi.Input
 
@@ -46788,11 +49073,11 @@ func (i GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) ToGetOpenSear
 // GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs, GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtr and GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{...}
+//	        GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput interface {
 	pulumi.Input
 
@@ -46908,6 +49193,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) Opensear
 }
 
 type GetOpenSearchOpensearchUserConfigPrivateAccess struct {
+	// Opensearch server provided values
 	Opensearch           *string `pulumi:"opensearch"`
 	OpensearchDashboards *string `pulumi:"opensearchDashboards"`
 	Prometheus           *string `pulumi:"prometheus"`
@@ -46916,7 +49202,7 @@ type GetOpenSearchOpensearchUserConfigPrivateAccess struct {
 // GetOpenSearchOpensearchUserConfigPrivateAccessInput is an input type that accepts GetOpenSearchOpensearchUserConfigPrivateAccessArgs and GetOpenSearchOpensearchUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigPrivateAccessInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigPrivateAccessArgs{...}
+//	GetOpenSearchOpensearchUserConfigPrivateAccessArgs{...}
 type GetOpenSearchOpensearchUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -46925,6 +49211,7 @@ type GetOpenSearchOpensearchUserConfigPrivateAccessInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigPrivateAccessArgs struct {
+	// Opensearch server provided values
 	Opensearch           pulumi.StringPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.StringPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -46953,11 +49240,11 @@ func (i GetOpenSearchOpensearchUserConfigPrivateAccessArgs) ToGetOpenSearchOpens
 // GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigPrivateAccessArgs, GetOpenSearchOpensearchUserConfigPrivateAccessPtr and GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigPrivateAccessArgs{...}
+//	        GetOpenSearchOpensearchUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -47007,6 +49294,7 @@ func (o GetOpenSearchOpensearchUserConfigPrivateAccessOutput) ToGetOpenSearchOpe
 	}).(GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput)
 }
 
+// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPrivateAccessOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPrivateAccess) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
 }
@@ -47043,6 +49331,7 @@ func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Elem() GetOpenS
 	}).(GetOpenSearchOpensearchUserConfigPrivateAccessOutput)
 }
 
+// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -47071,6 +49360,7 @@ func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Prometheus() pu
 }
 
 type GetOpenSearchOpensearchUserConfigPrivatelinkAccess struct {
+	// Opensearch server provided values
 	Opensearch           *string `pulumi:"opensearch"`
 	OpensearchDashboards *string `pulumi:"opensearchDashboards"`
 	Prometheus           *string `pulumi:"prometheus"`
@@ -47079,7 +49369,7 @@ type GetOpenSearchOpensearchUserConfigPrivatelinkAccess struct {
 // GetOpenSearchOpensearchUserConfigPrivatelinkAccessInput is an input type that accepts GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs and GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigPrivatelinkAccessInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs{...}
+//	GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs{...}
 type GetOpenSearchOpensearchUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -47088,6 +49378,7 @@ type GetOpenSearchOpensearchUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs struct {
+	// Opensearch server provided values
 	Opensearch           pulumi.StringPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.StringPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -47116,11 +49407,11 @@ func (i GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs) ToGetOpenSearchO
 // GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs, GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtr and GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs{...}
+//	        GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -47170,6 +49461,7 @@ func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) ToGetOpenSearc
 	}).(GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPrivatelinkAccess) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
 }
@@ -47206,6 +49498,7 @@ func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Elem() GetO
 	}).(GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput)
 }
 
+// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -47234,6 +49527,7 @@ func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Prometheus(
 }
 
 type GetOpenSearchOpensearchUserConfigPublicAccess struct {
+	// Opensearch server provided values
 	Opensearch           *string `pulumi:"opensearch"`
 	OpensearchDashboards *string `pulumi:"opensearchDashboards"`
 	Prometheus           *string `pulumi:"prometheus"`
@@ -47242,7 +49536,7 @@ type GetOpenSearchOpensearchUserConfigPublicAccess struct {
 // GetOpenSearchOpensearchUserConfigPublicAccessInput is an input type that accepts GetOpenSearchOpensearchUserConfigPublicAccessArgs and GetOpenSearchOpensearchUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigPublicAccessInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigPublicAccessArgs{...}
+//	GetOpenSearchOpensearchUserConfigPublicAccessArgs{...}
 type GetOpenSearchOpensearchUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -47251,6 +49545,7 @@ type GetOpenSearchOpensearchUserConfigPublicAccessInput interface {
 }
 
 type GetOpenSearchOpensearchUserConfigPublicAccessArgs struct {
+	// Opensearch server provided values
 	Opensearch           pulumi.StringPtrInput `pulumi:"opensearch"`
 	OpensearchDashboards pulumi.StringPtrInput `pulumi:"opensearchDashboards"`
 	Prometheus           pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -47279,11 +49574,11 @@ func (i GetOpenSearchOpensearchUserConfigPublicAccessArgs) ToGetOpenSearchOpense
 // GetOpenSearchOpensearchUserConfigPublicAccessPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigPublicAccessArgs, GetOpenSearchOpensearchUserConfigPublicAccessPtr and GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigPublicAccessPtrInput` via:
 //
-//          GetOpenSearchOpensearchUserConfigPublicAccessArgs{...}
+//	        GetOpenSearchOpensearchUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetOpenSearchOpensearchUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -47333,6 +49628,7 @@ func (o GetOpenSearchOpensearchUserConfigPublicAccessOutput) ToGetOpenSearchOpen
 	}).(GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput)
 }
 
+// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPublicAccessOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPublicAccess) *string { return v.Opensearch }).(pulumi.StringPtrOutput)
 }
@@ -47369,6 +49665,7 @@ func (o GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) Elem() GetOpenSe
 	}).(GetOpenSearchOpensearchUserConfigPublicAccessOutput)
 }
 
+// Opensearch server provided values
 func (o GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) Opensearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPublicAccess) *string {
 		if v == nil {
@@ -47404,7 +49701,7 @@ type GetOpenSearchServiceIntegration struct {
 // GetOpenSearchServiceIntegrationInput is an input type that accepts GetOpenSearchServiceIntegrationArgs and GetOpenSearchServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetOpenSearchServiceIntegrationInput` via:
 //
-//          GetOpenSearchServiceIntegrationArgs{...}
+//	GetOpenSearchServiceIntegrationArgs{...}
 type GetOpenSearchServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -47432,7 +49729,7 @@ func (i GetOpenSearchServiceIntegrationArgs) ToGetOpenSearchServiceIntegrationOu
 // GetOpenSearchServiceIntegrationArrayInput is an input type that accepts GetOpenSearchServiceIntegrationArray and GetOpenSearchServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetOpenSearchServiceIntegrationArrayInput` via:
 //
-//          GetOpenSearchServiceIntegrationArray{ GetOpenSearchServiceIntegrationArgs{...} }
+//	GetOpenSearchServiceIntegrationArray{ GetOpenSearchServiceIntegrationArgs{...} }
 type GetOpenSearchServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -47504,7 +49801,7 @@ type GetOpenSearchTag struct {
 // GetOpenSearchTagInput is an input type that accepts GetOpenSearchTagArgs and GetOpenSearchTagOutput values.
 // You can construct a concrete instance of `GetOpenSearchTagInput` via:
 //
-//          GetOpenSearchTagArgs{...}
+//	GetOpenSearchTagArgs{...}
 type GetOpenSearchTagInput interface {
 	pulumi.Input
 
@@ -47532,7 +49829,7 @@ func (i GetOpenSearchTagArgs) ToGetOpenSearchTagOutputWithContext(ctx context.Co
 // GetOpenSearchTagArrayInput is an input type that accepts GetOpenSearchTagArray and GetOpenSearchTagArrayOutput values.
 // You can construct a concrete instance of `GetOpenSearchTagArrayInput` via:
 //
-//          GetOpenSearchTagArray{ GetOpenSearchTagArgs{...} }
+//	GetOpenSearchTagArray{ GetOpenSearchTagArgs{...} }
 type GetOpenSearchTagArrayInput interface {
 	pulumi.Input
 
@@ -47609,7 +49906,7 @@ type GetPgComponent struct {
 // GetPgComponentInput is an input type that accepts GetPgComponentArgs and GetPgComponentOutput values.
 // You can construct a concrete instance of `GetPgComponentInput` via:
 //
-//          GetPgComponentArgs{...}
+//	GetPgComponentArgs{...}
 type GetPgComponentInput interface {
 	pulumi.Input
 
@@ -47642,7 +49939,7 @@ func (i GetPgComponentArgs) ToGetPgComponentOutputWithContext(ctx context.Contex
 // GetPgComponentArrayInput is an input type that accepts GetPgComponentArray and GetPgComponentArrayOutput values.
 // You can construct a concrete instance of `GetPgComponentArrayInput` via:
 //
-//          GetPgComponentArray{ GetPgComponentArgs{...} }
+//	GetPgComponentArray{ GetPgComponentArgs{...} }
 type GetPgComponentArrayInput interface {
 	pulumi.Input
 
@@ -47727,20 +50024,21 @@ func (o GetPgComponentArrayOutput) Index(i pulumi.IntInput) GetPgComponentOutput
 }
 
 type GetPgPg struct {
-	Dbname     string `pulumi:"dbname"`
-	Host       string `pulumi:"host"`
-	Password   string `pulumi:"password"`
-	Port       int    `pulumi:"port"`
-	ReplicaUri string `pulumi:"replicaUri"`
-	Sslmode    string `pulumi:"sslmode"`
-	Uri        string `pulumi:"uri"`
-	User       string `pulumi:"user"`
+	Dbname         string `pulumi:"dbname"`
+	Host           string `pulumi:"host"`
+	MaxConnections int    `pulumi:"maxConnections"`
+	Password       string `pulumi:"password"`
+	Port           int    `pulumi:"port"`
+	ReplicaUri     string `pulumi:"replicaUri"`
+	Sslmode        string `pulumi:"sslmode"`
+	Uri            string `pulumi:"uri"`
+	User           string `pulumi:"user"`
 }
 
 // GetPgPgInput is an input type that accepts GetPgPgArgs and GetPgPgOutput values.
 // You can construct a concrete instance of `GetPgPgInput` via:
 //
-//          GetPgPgArgs{...}
+//	GetPgPgArgs{...}
 type GetPgPgInput interface {
 	pulumi.Input
 
@@ -47749,14 +50047,15 @@ type GetPgPgInput interface {
 }
 
 type GetPgPgArgs struct {
-	Dbname     pulumi.StringInput `pulumi:"dbname"`
-	Host       pulumi.StringInput `pulumi:"host"`
-	Password   pulumi.StringInput `pulumi:"password"`
-	Port       pulumi.IntInput    `pulumi:"port"`
-	ReplicaUri pulumi.StringInput `pulumi:"replicaUri"`
-	Sslmode    pulumi.StringInput `pulumi:"sslmode"`
-	Uri        pulumi.StringInput `pulumi:"uri"`
-	User       pulumi.StringInput `pulumi:"user"`
+	Dbname         pulumi.StringInput `pulumi:"dbname"`
+	Host           pulumi.StringInput `pulumi:"host"`
+	MaxConnections pulumi.IntInput    `pulumi:"maxConnections"`
+	Password       pulumi.StringInput `pulumi:"password"`
+	Port           pulumi.IntInput    `pulumi:"port"`
+	ReplicaUri     pulumi.StringInput `pulumi:"replicaUri"`
+	Sslmode        pulumi.StringInput `pulumi:"sslmode"`
+	Uri            pulumi.StringInput `pulumi:"uri"`
+	User           pulumi.StringInput `pulumi:"user"`
 }
 
 func (GetPgPgArgs) ElementType() reflect.Type {
@@ -47774,7 +50073,7 @@ func (i GetPgPgArgs) ToGetPgPgOutputWithContext(ctx context.Context) GetPgPgOutp
 // GetPgPgArrayInput is an input type that accepts GetPgPgArray and GetPgPgArrayOutput values.
 // You can construct a concrete instance of `GetPgPgArrayInput` via:
 //
-//          GetPgPgArray{ GetPgPgArgs{...} }
+//	GetPgPgArray{ GetPgPgArgs{...} }
 type GetPgPgArrayInput interface {
 	pulumi.Input
 
@@ -47816,6 +50115,10 @@ func (o GetPgPgOutput) Dbname() pulumi.StringOutput {
 
 func (o GetPgPgOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgPg) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetPgPgOutput) MaxConnections() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPgPg) int { return v.MaxConnections }).(pulumi.IntOutput)
 }
 
 func (o GetPgPgOutput) Password() pulumi.StringOutput {
@@ -47863,16 +50166,18 @@ func (o GetPgPgArrayOutput) Index(i pulumi.IntInput) GetPgPgOutput {
 }
 
 type GetPgPgUserConfig struct {
-	AdminPassword           *string                             `pulumi:"adminPassword"`
-	AdminUsername           *string                             `pulumi:"adminUsername"`
-	BackupHour              *string                             `pulumi:"backupHour"`
-	BackupMinute            *string                             `pulumi:"backupMinute"`
-	EnableIpv6              *string                             `pulumi:"enableIpv6"`
-	IpFilters               []string                            `pulumi:"ipFilters"`
-	Migration               *GetPgPgUserConfigMigration         `pulumi:"migration"`
+	AdminPassword *string                     `pulumi:"adminPassword"`
+	AdminUsername *string                     `pulumi:"adminUsername"`
+	BackupHour    *string                     `pulumi:"backupHour"`
+	BackupMinute  *string                     `pulumi:"backupMinute"`
+	EnableIpv6    *string                     `pulumi:"enableIpv6"`
+	IpFilters     []string                    `pulumi:"ipFilters"`
+	Migration     *GetPgPgUserConfigMigration `pulumi:"migration"`
+	// PostgreSQL specific server provided values
 	Pg                      *GetPgPgUserConfigPg                `pulumi:"pg"`
 	PgReadReplica           *string                             `pulumi:"pgReadReplica"`
 	PgServiceToForkFrom     *string                             `pulumi:"pgServiceToForkFrom"`
+	PgStatMonitorEnable     *string                             `pulumi:"pgStatMonitorEnable"`
 	PgVersion               *string                             `pulumi:"pgVersion"`
 	Pgbouncer               *GetPgPgUserConfigPgbouncer         `pulumi:"pgbouncer"`
 	Pglookout               *GetPgPgUserConfigPglookout         `pulumi:"pglookout"`
@@ -47883,17 +50188,18 @@ type GetPgPgUserConfig struct {
 	RecoveryTargetTime      *string                             `pulumi:"recoveryTargetTime"`
 	ServiceToForkFrom       *string                             `pulumi:"serviceToForkFrom"`
 	SharedBuffersPercentage *string                             `pulumi:"sharedBuffersPercentage"`
-	StaticIps               *string                             `pulumi:"staticIps"`
-	SynchronousReplication  *string                             `pulumi:"synchronousReplication"`
-	Timescaledb             *GetPgPgUserConfigTimescaledb       `pulumi:"timescaledb"`
-	Variant                 *string                             `pulumi:"variant"`
-	WorkMem                 *string                             `pulumi:"workMem"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps              *string                       `pulumi:"staticIps"`
+	SynchronousReplication *string                       `pulumi:"synchronousReplication"`
+	Timescaledb            *GetPgPgUserConfigTimescaledb `pulumi:"timescaledb"`
+	Variant                *string                       `pulumi:"variant"`
+	WorkMem                *string                       `pulumi:"workMem"`
 }
 
 // GetPgPgUserConfigInput is an input type that accepts GetPgPgUserConfigArgs and GetPgPgUserConfigOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigInput` via:
 //
-//          GetPgPgUserConfigArgs{...}
+//	GetPgPgUserConfigArgs{...}
 type GetPgPgUserConfigInput interface {
 	pulumi.Input
 
@@ -47902,16 +50208,18 @@ type GetPgPgUserConfigInput interface {
 }
 
 type GetPgPgUserConfigArgs struct {
-	AdminPassword           pulumi.StringPtrInput                      `pulumi:"adminPassword"`
-	AdminUsername           pulumi.StringPtrInput                      `pulumi:"adminUsername"`
-	BackupHour              pulumi.StringPtrInput                      `pulumi:"backupHour"`
-	BackupMinute            pulumi.StringPtrInput                      `pulumi:"backupMinute"`
-	EnableIpv6              pulumi.StringPtrInput                      `pulumi:"enableIpv6"`
-	IpFilters               pulumi.StringArrayInput                    `pulumi:"ipFilters"`
-	Migration               GetPgPgUserConfigMigrationPtrInput         `pulumi:"migration"`
+	AdminPassword pulumi.StringPtrInput              `pulumi:"adminPassword"`
+	AdminUsername pulumi.StringPtrInput              `pulumi:"adminUsername"`
+	BackupHour    pulumi.StringPtrInput              `pulumi:"backupHour"`
+	BackupMinute  pulumi.StringPtrInput              `pulumi:"backupMinute"`
+	EnableIpv6    pulumi.StringPtrInput              `pulumi:"enableIpv6"`
+	IpFilters     pulumi.StringArrayInput            `pulumi:"ipFilters"`
+	Migration     GetPgPgUserConfigMigrationPtrInput `pulumi:"migration"`
+	// PostgreSQL specific server provided values
 	Pg                      GetPgPgUserConfigPgPtrInput                `pulumi:"pg"`
 	PgReadReplica           pulumi.StringPtrInput                      `pulumi:"pgReadReplica"`
 	PgServiceToForkFrom     pulumi.StringPtrInput                      `pulumi:"pgServiceToForkFrom"`
+	PgStatMonitorEnable     pulumi.StringPtrInput                      `pulumi:"pgStatMonitorEnable"`
 	PgVersion               pulumi.StringPtrInput                      `pulumi:"pgVersion"`
 	Pgbouncer               GetPgPgUserConfigPgbouncerPtrInput         `pulumi:"pgbouncer"`
 	Pglookout               GetPgPgUserConfigPglookoutPtrInput         `pulumi:"pglookout"`
@@ -47922,11 +50230,12 @@ type GetPgPgUserConfigArgs struct {
 	RecoveryTargetTime      pulumi.StringPtrInput                      `pulumi:"recoveryTargetTime"`
 	ServiceToForkFrom       pulumi.StringPtrInput                      `pulumi:"serviceToForkFrom"`
 	SharedBuffersPercentage pulumi.StringPtrInput                      `pulumi:"sharedBuffersPercentage"`
-	StaticIps               pulumi.StringPtrInput                      `pulumi:"staticIps"`
-	SynchronousReplication  pulumi.StringPtrInput                      `pulumi:"synchronousReplication"`
-	Timescaledb             GetPgPgUserConfigTimescaledbPtrInput       `pulumi:"timescaledb"`
-	Variant                 pulumi.StringPtrInput                      `pulumi:"variant"`
-	WorkMem                 pulumi.StringPtrInput                      `pulumi:"workMem"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps              pulumi.StringPtrInput                `pulumi:"staticIps"`
+	SynchronousReplication pulumi.StringPtrInput                `pulumi:"synchronousReplication"`
+	Timescaledb            GetPgPgUserConfigTimescaledbPtrInput `pulumi:"timescaledb"`
+	Variant                pulumi.StringPtrInput                `pulumi:"variant"`
+	WorkMem                pulumi.StringPtrInput                `pulumi:"workMem"`
 }
 
 func (GetPgPgUserConfigArgs) ElementType() reflect.Type {
@@ -47944,7 +50253,7 @@ func (i GetPgPgUserConfigArgs) ToGetPgPgUserConfigOutputWithContext(ctx context.
 // GetPgPgUserConfigArrayInput is an input type that accepts GetPgPgUserConfigArray and GetPgPgUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigArrayInput` via:
 //
-//          GetPgPgUserConfigArray{ GetPgPgUserConfigArgs{...} }
+//	GetPgPgUserConfigArray{ GetPgPgUserConfigArgs{...} }
 type GetPgPgUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -48008,6 +50317,7 @@ func (o GetPgPgUserConfigOutput) Migration() GetPgPgUserConfigMigrationPtrOutput
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigMigration { return v.Migration }).(GetPgPgUserConfigMigrationPtrOutput)
 }
 
+// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigOutput) Pg() GetPgPgUserConfigPgPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigPg { return v.Pg }).(GetPgPgUserConfigPgPtrOutput)
 }
@@ -48018,6 +50328,10 @@ func (o GetPgPgUserConfigOutput) PgReadReplica() pulumi.StringPtrOutput {
 
 func (o GetPgPgUserConfigOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.PgServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigOutput) PgStatMonitorEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.PgStatMonitorEnable }).(pulumi.StringPtrOutput)
 }
 
 func (o GetPgPgUserConfigOutput) PgVersion() pulumi.StringPtrOutput {
@@ -48060,6 +50374,7 @@ func (o GetPgPgUserConfigOutput) SharedBuffersPercentage() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.SharedBuffersPercentage }).(pulumi.StringPtrOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetPgPgUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -48114,7 +50429,7 @@ type GetPgPgUserConfigMigration struct {
 // GetPgPgUserConfigMigrationInput is an input type that accepts GetPgPgUserConfigMigrationArgs and GetPgPgUserConfigMigrationOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigMigrationInput` via:
 //
-//          GetPgPgUserConfigMigrationArgs{...}
+//	GetPgPgUserConfigMigrationArgs{...}
 type GetPgPgUserConfigMigrationInput interface {
 	pulumi.Input
 
@@ -48156,11 +50471,11 @@ func (i GetPgPgUserConfigMigrationArgs) ToGetPgPgUserConfigMigrationPtrOutputWit
 // GetPgPgUserConfigMigrationPtrInput is an input type that accepts GetPgPgUserConfigMigrationArgs, GetPgPgUserConfigMigrationPtr and GetPgPgUserConfigMigrationPtrOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigMigrationPtrInput` via:
 //
-//          GetPgPgUserConfigMigrationArgs{...}
+//	        GetPgPgUserConfigMigrationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetPgPgUserConfigMigrationPtrInput interface {
 	pulumi.Input
 
@@ -48360,6 +50675,7 @@ type GetPgPgUserConfigPg struct {
 	LogErrorVerbosity               *string `pulumi:"logErrorVerbosity"`
 	LogLinePrefix                   *string `pulumi:"logLinePrefix"`
 	LogMinDurationStatement         *string `pulumi:"logMinDurationStatement"`
+	LogTempFiles                    *string `pulumi:"logTempFiles"`
 	MaxFilesPerProcess              *string `pulumi:"maxFilesPerProcess"`
 	MaxLocksPerTransaction          *string `pulumi:"maxLocksPerTransaction"`
 	MaxLogicalReplicationWorkers    *string `pulumi:"maxLogicalReplicationWorkers"`
@@ -48390,7 +50706,7 @@ type GetPgPgUserConfigPg struct {
 // GetPgPgUserConfigPgInput is an input type that accepts GetPgPgUserConfigPgArgs and GetPgPgUserConfigPgOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigPgInput` via:
 //
-//          GetPgPgUserConfigPgArgs{...}
+//	GetPgPgUserConfigPgArgs{...}
 type GetPgPgUserConfigPgInput interface {
 	pulumi.Input
 
@@ -48420,6 +50736,7 @@ type GetPgPgUserConfigPgArgs struct {
 	LogErrorVerbosity               pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
 	LogLinePrefix                   pulumi.StringPtrInput `pulumi:"logLinePrefix"`
 	LogMinDurationStatement         pulumi.StringPtrInput `pulumi:"logMinDurationStatement"`
+	LogTempFiles                    pulumi.StringPtrInput `pulumi:"logTempFiles"`
 	MaxFilesPerProcess              pulumi.StringPtrInput `pulumi:"maxFilesPerProcess"`
 	MaxLocksPerTransaction          pulumi.StringPtrInput `pulumi:"maxLocksPerTransaction"`
 	MaxLogicalReplicationWorkers    pulumi.StringPtrInput `pulumi:"maxLogicalReplicationWorkers"`
@@ -48470,11 +50787,11 @@ func (i GetPgPgUserConfigPgArgs) ToGetPgPgUserConfigPgPtrOutputWithContext(ctx c
 // GetPgPgUserConfigPgPtrInput is an input type that accepts GetPgPgUserConfigPgArgs, GetPgPgUserConfigPgPtr and GetPgPgUserConfigPgPtrOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigPgPtrInput` via:
 //
-//          GetPgPgUserConfigPgArgs{...}
+//	        GetPgPgUserConfigPgArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetPgPgUserConfigPgPtrInput interface {
 	pulumi.Input
 
@@ -48606,6 +50923,10 @@ func (o GetPgPgUserConfigPgOutput) LogLinePrefix() pulumi.StringPtrOutput {
 
 func (o GetPgPgUserConfigPgOutput) LogMinDurationStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.LogMinDurationStatement }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPgPgUserConfigPgOutput) LogTempFiles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.LogTempFiles }).(pulumi.StringPtrOutput)
 }
 
 func (o GetPgPgUserConfigPgOutput) MaxFilesPerProcess() pulumi.StringPtrOutput {
@@ -48921,6 +51242,15 @@ func (o GetPgPgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetPgPgUserConfigPgPtrOutput) LogTempFiles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogTempFiles
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetPgPgUserConfigPgPtrOutput) MaxFilesPerProcess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
 		if v == nil {
@@ -49161,7 +51491,7 @@ type GetPgPgUserConfigPgbouncer struct {
 // GetPgPgUserConfigPgbouncerInput is an input type that accepts GetPgPgUserConfigPgbouncerArgs and GetPgPgUserConfigPgbouncerOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigPgbouncerInput` via:
 //
-//          GetPgPgUserConfigPgbouncerArgs{...}
+//	GetPgPgUserConfigPgbouncerArgs{...}
 type GetPgPgUserConfigPgbouncerInput interface {
 	pulumi.Input
 
@@ -49204,11 +51534,11 @@ func (i GetPgPgUserConfigPgbouncerArgs) ToGetPgPgUserConfigPgbouncerPtrOutputWit
 // GetPgPgUserConfigPgbouncerPtrInput is an input type that accepts GetPgPgUserConfigPgbouncerArgs, GetPgPgUserConfigPgbouncerPtr and GetPgPgUserConfigPgbouncerPtrOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigPgbouncerPtrInput` via:
 //
-//          GetPgPgUserConfigPgbouncerArgs{...}
+//	        GetPgPgUserConfigPgbouncerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetPgPgUserConfigPgbouncerPtrInput interface {
 	pulumi.Input
 
@@ -49406,7 +51736,7 @@ type GetPgPgUserConfigPglookout struct {
 // GetPgPgUserConfigPglookoutInput is an input type that accepts GetPgPgUserConfigPglookoutArgs and GetPgPgUserConfigPglookoutOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigPglookoutInput` via:
 //
-//          GetPgPgUserConfigPglookoutArgs{...}
+//	GetPgPgUserConfigPglookoutArgs{...}
 type GetPgPgUserConfigPglookoutInput interface {
 	pulumi.Input
 
@@ -49441,11 +51771,11 @@ func (i GetPgPgUserConfigPglookoutArgs) ToGetPgPgUserConfigPglookoutPtrOutputWit
 // GetPgPgUserConfigPglookoutPtrInput is an input type that accepts GetPgPgUserConfigPglookoutArgs, GetPgPgUserConfigPglookoutPtr and GetPgPgUserConfigPglookoutPtrOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigPglookoutPtrInput` via:
 //
-//          GetPgPgUserConfigPglookoutArgs{...}
+//	        GetPgPgUserConfigPglookoutArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetPgPgUserConfigPglookoutPtrInput interface {
 	pulumi.Input
 
@@ -49533,6 +51863,7 @@ func (o GetPgPgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pul
 }
 
 type GetPgPgUserConfigPrivateAccess struct {
+	// PostgreSQL specific server provided values
 	Pg         *string `pulumi:"pg"`
 	Pgbouncer  *string `pulumi:"pgbouncer"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -49541,7 +51872,7 @@ type GetPgPgUserConfigPrivateAccess struct {
 // GetPgPgUserConfigPrivateAccessInput is an input type that accepts GetPgPgUserConfigPrivateAccessArgs and GetPgPgUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigPrivateAccessInput` via:
 //
-//          GetPgPgUserConfigPrivateAccessArgs{...}
+//	GetPgPgUserConfigPrivateAccessArgs{...}
 type GetPgPgUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -49550,6 +51881,7 @@ type GetPgPgUserConfigPrivateAccessInput interface {
 }
 
 type GetPgPgUserConfigPrivateAccessArgs struct {
+	// PostgreSQL specific server provided values
 	Pg         pulumi.StringPtrInput `pulumi:"pg"`
 	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -49578,11 +51910,11 @@ func (i GetPgPgUserConfigPrivateAccessArgs) ToGetPgPgUserConfigPrivateAccessPtrO
 // GetPgPgUserConfigPrivateAccessPtrInput is an input type that accepts GetPgPgUserConfigPrivateAccessArgs, GetPgPgUserConfigPrivateAccessPtr and GetPgPgUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigPrivateAccessPtrInput` via:
 //
-//          GetPgPgUserConfigPrivateAccessArgs{...}
+//	        GetPgPgUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetPgPgUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -49632,6 +51964,7 @@ func (o GetPgPgUserConfigPrivateAccessOutput) ToGetPgPgUserConfigPrivateAccessPt
 	}).(GetPgPgUserConfigPrivateAccessPtrOutput)
 }
 
+// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigPrivateAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPrivateAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
@@ -49668,6 +52001,7 @@ func (o GetPgPgUserConfigPrivateAccessPtrOutput) Elem() GetPgPgUserConfigPrivate
 	}).(GetPgPgUserConfigPrivateAccessOutput)
 }
 
+// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigPrivateAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -49696,6 +52030,7 @@ func (o GetPgPgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.StringPtrOu
 }
 
 type GetPgPgUserConfigPrivatelinkAccess struct {
+	// PostgreSQL specific server provided values
 	Pg         *string `pulumi:"pg"`
 	Pgbouncer  *string `pulumi:"pgbouncer"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -49704,7 +52039,7 @@ type GetPgPgUserConfigPrivatelinkAccess struct {
 // GetPgPgUserConfigPrivatelinkAccessInput is an input type that accepts GetPgPgUserConfigPrivatelinkAccessArgs and GetPgPgUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigPrivatelinkAccessInput` via:
 //
-//          GetPgPgUserConfigPrivatelinkAccessArgs{...}
+//	GetPgPgUserConfigPrivatelinkAccessArgs{...}
 type GetPgPgUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -49713,6 +52048,7 @@ type GetPgPgUserConfigPrivatelinkAccessInput interface {
 }
 
 type GetPgPgUserConfigPrivatelinkAccessArgs struct {
+	// PostgreSQL specific server provided values
 	Pg         pulumi.StringPtrInput `pulumi:"pg"`
 	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -49741,11 +52077,11 @@ func (i GetPgPgUserConfigPrivatelinkAccessArgs) ToGetPgPgUserConfigPrivatelinkAc
 // GetPgPgUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetPgPgUserConfigPrivatelinkAccessArgs, GetPgPgUserConfigPrivatelinkAccessPtr and GetPgPgUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          GetPgPgUserConfigPrivatelinkAccessArgs{...}
+//	        GetPgPgUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetPgPgUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -49795,6 +52131,7 @@ func (o GetPgPgUserConfigPrivatelinkAccessOutput) ToGetPgPgUserConfigPrivatelink
 	}).(GetPgPgUserConfigPrivatelinkAccessPtrOutput)
 }
 
+// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigPrivatelinkAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPrivatelinkAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
@@ -49831,6 +52168,7 @@ func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) Elem() GetPgPgUserConfigPri
 	}).(GetPgPgUserConfigPrivatelinkAccessOutput)
 }
 
+// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -49859,6 +52197,7 @@ func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.StringP
 }
 
 type GetPgPgUserConfigPublicAccess struct {
+	// PostgreSQL specific server provided values
 	Pg         *string `pulumi:"pg"`
 	Pgbouncer  *string `pulumi:"pgbouncer"`
 	Prometheus *string `pulumi:"prometheus"`
@@ -49867,7 +52206,7 @@ type GetPgPgUserConfigPublicAccess struct {
 // GetPgPgUserConfigPublicAccessInput is an input type that accepts GetPgPgUserConfigPublicAccessArgs and GetPgPgUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigPublicAccessInput` via:
 //
-//          GetPgPgUserConfigPublicAccessArgs{...}
+//	GetPgPgUserConfigPublicAccessArgs{...}
 type GetPgPgUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -49876,6 +52215,7 @@ type GetPgPgUserConfigPublicAccessInput interface {
 }
 
 type GetPgPgUserConfigPublicAccessArgs struct {
+	// PostgreSQL specific server provided values
 	Pg         pulumi.StringPtrInput `pulumi:"pg"`
 	Pgbouncer  pulumi.StringPtrInput `pulumi:"pgbouncer"`
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
@@ -49904,11 +52244,11 @@ func (i GetPgPgUserConfigPublicAccessArgs) ToGetPgPgUserConfigPublicAccessPtrOut
 // GetPgPgUserConfigPublicAccessPtrInput is an input type that accepts GetPgPgUserConfigPublicAccessArgs, GetPgPgUserConfigPublicAccessPtr and GetPgPgUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigPublicAccessPtrInput` via:
 //
-//          GetPgPgUserConfigPublicAccessArgs{...}
+//	        GetPgPgUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetPgPgUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -49958,6 +52298,7 @@ func (o GetPgPgUserConfigPublicAccessOutput) ToGetPgPgUserConfigPublicAccessPtrO
 	}).(GetPgPgUserConfigPublicAccessPtrOutput)
 }
 
+// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigPublicAccessOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPublicAccess) *string { return v.Pg }).(pulumi.StringPtrOutput)
 }
@@ -49994,6 +52335,7 @@ func (o GetPgPgUserConfigPublicAccessPtrOutput) Elem() GetPgPgUserConfigPublicAc
 	}).(GetPgPgUserConfigPublicAccessOutput)
 }
 
+// PostgreSQL specific server provided values
 func (o GetPgPgUserConfigPublicAccessPtrOutput) Pg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPublicAccess) *string {
 		if v == nil {
@@ -50028,7 +52370,7 @@ type GetPgPgUserConfigTimescaledb struct {
 // GetPgPgUserConfigTimescaledbInput is an input type that accepts GetPgPgUserConfigTimescaledbArgs and GetPgPgUserConfigTimescaledbOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigTimescaledbInput` via:
 //
-//          GetPgPgUserConfigTimescaledbArgs{...}
+//	GetPgPgUserConfigTimescaledbArgs{...}
 type GetPgPgUserConfigTimescaledbInput interface {
 	pulumi.Input
 
@@ -50063,11 +52405,11 @@ func (i GetPgPgUserConfigTimescaledbArgs) ToGetPgPgUserConfigTimescaledbPtrOutpu
 // GetPgPgUserConfigTimescaledbPtrInput is an input type that accepts GetPgPgUserConfigTimescaledbArgs, GetPgPgUserConfigTimescaledbPtr and GetPgPgUserConfigTimescaledbPtrOutput values.
 // You can construct a concrete instance of `GetPgPgUserConfigTimescaledbPtrInput` via:
 //
-//          GetPgPgUserConfigTimescaledbArgs{...}
+//	        GetPgPgUserConfigTimescaledbArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetPgPgUserConfigTimescaledbPtrInput interface {
 	pulumi.Input
 
@@ -50162,7 +52504,7 @@ type GetPgServiceIntegration struct {
 // GetPgServiceIntegrationInput is an input type that accepts GetPgServiceIntegrationArgs and GetPgServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetPgServiceIntegrationInput` via:
 //
-//          GetPgServiceIntegrationArgs{...}
+//	GetPgServiceIntegrationArgs{...}
 type GetPgServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -50190,7 +52532,7 @@ func (i GetPgServiceIntegrationArgs) ToGetPgServiceIntegrationOutputWithContext(
 // GetPgServiceIntegrationArrayInput is an input type that accepts GetPgServiceIntegrationArray and GetPgServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetPgServiceIntegrationArrayInput` via:
 //
-//          GetPgServiceIntegrationArray{ GetPgServiceIntegrationArgs{...} }
+//	GetPgServiceIntegrationArray{ GetPgServiceIntegrationArgs{...} }
 type GetPgServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -50262,7 +52604,7 @@ type GetPgTag struct {
 // GetPgTagInput is an input type that accepts GetPgTagArgs and GetPgTagOutput values.
 // You can construct a concrete instance of `GetPgTagInput` via:
 //
-//          GetPgTagArgs{...}
+//	GetPgTagArgs{...}
 type GetPgTagInput interface {
 	pulumi.Input
 
@@ -50290,7 +52632,7 @@ func (i GetPgTagArgs) ToGetPgTagOutputWithContext(ctx context.Context) GetPgTagO
 // GetPgTagArrayInput is an input type that accepts GetPgTagArray and GetPgTagArrayOutput values.
 // You can construct a concrete instance of `GetPgTagArrayInput` via:
 //
-//          GetPgTagArray{ GetPgTagArgs{...} }
+//	GetPgTagArray{ GetPgTagArgs{...} }
 type GetPgTagArrayInput interface {
 	pulumi.Input
 
@@ -50362,7 +52704,7 @@ type GetProjectTag struct {
 // GetProjectTagInput is an input type that accepts GetProjectTagArgs and GetProjectTagOutput values.
 // You can construct a concrete instance of `GetProjectTagInput` via:
 //
-//          GetProjectTagArgs{...}
+//	GetProjectTagArgs{...}
 type GetProjectTagInput interface {
 	pulumi.Input
 
@@ -50390,7 +52732,7 @@ func (i GetProjectTagArgs) ToGetProjectTagOutputWithContext(ctx context.Context)
 // GetProjectTagArrayInput is an input type that accepts GetProjectTagArray and GetProjectTagArrayOutput values.
 // You can construct a concrete instance of `GetProjectTagArrayInput` via:
 //
-//          GetProjectTagArray{ GetProjectTagArgs{...} }
+//	GetProjectTagArray{ GetProjectTagArgs{...} }
 type GetProjectTagArrayInput interface {
 	pulumi.Input
 
@@ -50467,7 +52809,7 @@ type GetRedisComponent struct {
 // GetRedisComponentInput is an input type that accepts GetRedisComponentArgs and GetRedisComponentOutput values.
 // You can construct a concrete instance of `GetRedisComponentInput` via:
 //
-//          GetRedisComponentArgs{...}
+//	GetRedisComponentArgs{...}
 type GetRedisComponentInput interface {
 	pulumi.Input
 
@@ -50500,7 +52842,7 @@ func (i GetRedisComponentArgs) ToGetRedisComponentOutputWithContext(ctx context.
 // GetRedisComponentArrayInput is an input type that accepts GetRedisComponentArray and GetRedisComponentArrayOutput values.
 // You can construct a concrete instance of `GetRedisComponentArrayInput` via:
 //
-//          GetRedisComponentArray{ GetRedisComponentArgs{...} }
+//	GetRedisComponentArray{ GetRedisComponentArgs{...} }
 type GetRedisComponentArrayInput interface {
 	pulumi.Input
 
@@ -50590,7 +52932,7 @@ type GetRedisRedi struct {
 // GetRedisRediInput is an input type that accepts GetRedisRediArgs and GetRedisRediOutput values.
 // You can construct a concrete instance of `GetRedisRediInput` via:
 //
-//          GetRedisRediArgs{...}
+//	GetRedisRediArgs{...}
 type GetRedisRediInput interface {
 	pulumi.Input
 
@@ -50616,7 +52958,7 @@ func (i GetRedisRediArgs) ToGetRedisRediOutputWithContext(ctx context.Context) G
 // GetRedisRediArrayInput is an input type that accepts GetRedisRediArray and GetRedisRediArrayOutput values.
 // You can construct a concrete instance of `GetRedisRediArrayInput` via:
 //
-//          GetRedisRediArray{ GetRedisRediArgs{...} }
+//	GetRedisRediArray{ GetRedisRediArgs{...} }
 type GetRedisRediArrayInput interface {
 	pulumi.Input
 
@@ -50692,13 +53034,14 @@ type GetRedisRedisUserConfig struct {
 	RedisSsl                           *string                                   `pulumi:"redisSsl"`
 	RedisTimeout                       *string                                   `pulumi:"redisTimeout"`
 	ServiceToForkFrom                  *string                                   `pulumi:"serviceToForkFrom"`
-	StaticIps                          *string                                   `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps *string `pulumi:"staticIps"`
 }
 
 // GetRedisRedisUserConfigInput is an input type that accepts GetRedisRedisUserConfigArgs and GetRedisRedisUserConfigOutput values.
 // You can construct a concrete instance of `GetRedisRedisUserConfigInput` via:
 //
-//          GetRedisRedisUserConfigArgs{...}
+//	GetRedisRedisUserConfigArgs{...}
 type GetRedisRedisUserConfigInput interface {
 	pulumi.Input
 
@@ -50726,7 +53069,8 @@ type GetRedisRedisUserConfigArgs struct {
 	RedisSsl                           pulumi.StringPtrInput                            `pulumi:"redisSsl"`
 	RedisTimeout                       pulumi.StringPtrInput                            `pulumi:"redisTimeout"`
 	ServiceToForkFrom                  pulumi.StringPtrInput                            `pulumi:"serviceToForkFrom"`
-	StaticIps                          pulumi.StringPtrInput                            `pulumi:"staticIps"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps pulumi.StringPtrInput `pulumi:"staticIps"`
 }
 
 func (GetRedisRedisUserConfigArgs) ElementType() reflect.Type {
@@ -50744,7 +53088,7 @@ func (i GetRedisRedisUserConfigArgs) ToGetRedisRedisUserConfigOutputWithContext(
 // GetRedisRedisUserConfigArrayInput is an input type that accepts GetRedisRedisUserConfigArray and GetRedisRedisUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetRedisRedisUserConfigArrayInput` via:
 //
-//          GetRedisRedisUserConfigArray{ GetRedisRedisUserConfigArgs{...} }
+//	GetRedisRedisUserConfigArray{ GetRedisRedisUserConfigArgs{...} }
 type GetRedisRedisUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -50856,6 +53200,7 @@ func (o GetRedisRedisUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o GetRedisRedisUserConfigOutput) StaticIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.StaticIps }).(pulumi.StringPtrOutput)
 }
@@ -50894,7 +53239,7 @@ type GetRedisRedisUserConfigMigration struct {
 // GetRedisRedisUserConfigMigrationInput is an input type that accepts GetRedisRedisUserConfigMigrationArgs and GetRedisRedisUserConfigMigrationOutput values.
 // You can construct a concrete instance of `GetRedisRedisUserConfigMigrationInput` via:
 //
-//          GetRedisRedisUserConfigMigrationArgs{...}
+//	GetRedisRedisUserConfigMigrationArgs{...}
 type GetRedisRedisUserConfigMigrationInput interface {
 	pulumi.Input
 
@@ -50936,11 +53281,11 @@ func (i GetRedisRedisUserConfigMigrationArgs) ToGetRedisRedisUserConfigMigration
 // GetRedisRedisUserConfigMigrationPtrInput is an input type that accepts GetRedisRedisUserConfigMigrationArgs, GetRedisRedisUserConfigMigrationPtr and GetRedisRedisUserConfigMigrationPtrOutput values.
 // You can construct a concrete instance of `GetRedisRedisUserConfigMigrationPtrInput` via:
 //
-//          GetRedisRedisUserConfigMigrationArgs{...}
+//	        GetRedisRedisUserConfigMigrationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetRedisRedisUserConfigMigrationPtrInput interface {
 	pulumi.Input
 
@@ -51120,13 +53465,14 @@ func (o GetRedisRedisUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOu
 
 type GetRedisRedisUserConfigPrivateAccess struct {
 	Prometheus *string `pulumi:"prometheus"`
-	Redis      *string `pulumi:"redis"`
+	// Redis server provided values
+	Redis *string `pulumi:"redis"`
 }
 
 // GetRedisRedisUserConfigPrivateAccessInput is an input type that accepts GetRedisRedisUserConfigPrivateAccessArgs and GetRedisRedisUserConfigPrivateAccessOutput values.
 // You can construct a concrete instance of `GetRedisRedisUserConfigPrivateAccessInput` via:
 //
-//          GetRedisRedisUserConfigPrivateAccessArgs{...}
+//	GetRedisRedisUserConfigPrivateAccessArgs{...}
 type GetRedisRedisUserConfigPrivateAccessInput interface {
 	pulumi.Input
 
@@ -51136,7 +53482,8 @@ type GetRedisRedisUserConfigPrivateAccessInput interface {
 
 type GetRedisRedisUserConfigPrivateAccessArgs struct {
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	Redis      pulumi.StringPtrInput `pulumi:"redis"`
+	// Redis server provided values
+	Redis pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (GetRedisRedisUserConfigPrivateAccessArgs) ElementType() reflect.Type {
@@ -51162,11 +53509,11 @@ func (i GetRedisRedisUserConfigPrivateAccessArgs) ToGetRedisRedisUserConfigPriva
 // GetRedisRedisUserConfigPrivateAccessPtrInput is an input type that accepts GetRedisRedisUserConfigPrivateAccessArgs, GetRedisRedisUserConfigPrivateAccessPtr and GetRedisRedisUserConfigPrivateAccessPtrOutput values.
 // You can construct a concrete instance of `GetRedisRedisUserConfigPrivateAccessPtrInput` via:
 //
-//          GetRedisRedisUserConfigPrivateAccessArgs{...}
+//	        GetRedisRedisUserConfigPrivateAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetRedisRedisUserConfigPrivateAccessPtrInput interface {
 	pulumi.Input
 
@@ -51220,6 +53567,7 @@ func (o GetRedisRedisUserConfigPrivateAccessOutput) Prometheus() pulumi.StringPt
 	return o.ApplyT(func(v GetRedisRedisUserConfigPrivateAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
+// Redis server provided values
 func (o GetRedisRedisUserConfigPrivateAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigPrivateAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -51257,6 +53605,7 @@ func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis server provided values
 func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigPrivateAccess) *string {
 		if v == nil {
@@ -51268,13 +53617,14 @@ func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.StringPtrO
 
 type GetRedisRedisUserConfigPrivatelinkAccess struct {
 	Prometheus *string `pulumi:"prometheus"`
-	Redis      *string `pulumi:"redis"`
+	// Redis server provided values
+	Redis *string `pulumi:"redis"`
 }
 
 // GetRedisRedisUserConfigPrivatelinkAccessInput is an input type that accepts GetRedisRedisUserConfigPrivatelinkAccessArgs and GetRedisRedisUserConfigPrivatelinkAccessOutput values.
 // You can construct a concrete instance of `GetRedisRedisUserConfigPrivatelinkAccessInput` via:
 //
-//          GetRedisRedisUserConfigPrivatelinkAccessArgs{...}
+//	GetRedisRedisUserConfigPrivatelinkAccessArgs{...}
 type GetRedisRedisUserConfigPrivatelinkAccessInput interface {
 	pulumi.Input
 
@@ -51284,7 +53634,8 @@ type GetRedisRedisUserConfigPrivatelinkAccessInput interface {
 
 type GetRedisRedisUserConfigPrivatelinkAccessArgs struct {
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	Redis      pulumi.StringPtrInput `pulumi:"redis"`
+	// Redis server provided values
+	Redis pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (GetRedisRedisUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
@@ -51310,11 +53661,11 @@ func (i GetRedisRedisUserConfigPrivatelinkAccessArgs) ToGetRedisRedisUserConfigP
 // GetRedisRedisUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetRedisRedisUserConfigPrivatelinkAccessArgs, GetRedisRedisUserConfigPrivatelinkAccessPtr and GetRedisRedisUserConfigPrivatelinkAccessPtrOutput values.
 // You can construct a concrete instance of `GetRedisRedisUserConfigPrivatelinkAccessPtrInput` via:
 //
-//          GetRedisRedisUserConfigPrivatelinkAccessArgs{...}
+//	        GetRedisRedisUserConfigPrivatelinkAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetRedisRedisUserConfigPrivatelinkAccessPtrInput interface {
 	pulumi.Input
 
@@ -51368,6 +53719,7 @@ func (o GetRedisRedisUserConfigPrivatelinkAccessOutput) Prometheus() pulumi.Stri
 	return o.ApplyT(func(v GetRedisRedisUserConfigPrivatelinkAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
+// Redis server provided values
 func (o GetRedisRedisUserConfigPrivatelinkAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigPrivatelinkAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -51405,6 +53757,7 @@ func (o GetRedisRedisUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis server provided values
 func (o GetRedisRedisUserConfigPrivatelinkAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigPrivatelinkAccess) *string {
 		if v == nil {
@@ -51416,13 +53769,14 @@ func (o GetRedisRedisUserConfigPrivatelinkAccessPtrOutput) Redis() pulumi.String
 
 type GetRedisRedisUserConfigPublicAccess struct {
 	Prometheus *string `pulumi:"prometheus"`
-	Redis      *string `pulumi:"redis"`
+	// Redis server provided values
+	Redis *string `pulumi:"redis"`
 }
 
 // GetRedisRedisUserConfigPublicAccessInput is an input type that accepts GetRedisRedisUserConfigPublicAccessArgs and GetRedisRedisUserConfigPublicAccessOutput values.
 // You can construct a concrete instance of `GetRedisRedisUserConfigPublicAccessInput` via:
 //
-//          GetRedisRedisUserConfigPublicAccessArgs{...}
+//	GetRedisRedisUserConfigPublicAccessArgs{...}
 type GetRedisRedisUserConfigPublicAccessInput interface {
 	pulumi.Input
 
@@ -51432,7 +53786,8 @@ type GetRedisRedisUserConfigPublicAccessInput interface {
 
 type GetRedisRedisUserConfigPublicAccessArgs struct {
 	Prometheus pulumi.StringPtrInput `pulumi:"prometheus"`
-	Redis      pulumi.StringPtrInput `pulumi:"redis"`
+	// Redis server provided values
+	Redis pulumi.StringPtrInput `pulumi:"redis"`
 }
 
 func (GetRedisRedisUserConfigPublicAccessArgs) ElementType() reflect.Type {
@@ -51458,11 +53813,11 @@ func (i GetRedisRedisUserConfigPublicAccessArgs) ToGetRedisRedisUserConfigPublic
 // GetRedisRedisUserConfigPublicAccessPtrInput is an input type that accepts GetRedisRedisUserConfigPublicAccessArgs, GetRedisRedisUserConfigPublicAccessPtr and GetRedisRedisUserConfigPublicAccessPtrOutput values.
 // You can construct a concrete instance of `GetRedisRedisUserConfigPublicAccessPtrInput` via:
 //
-//          GetRedisRedisUserConfigPublicAccessArgs{...}
+//	        GetRedisRedisUserConfigPublicAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetRedisRedisUserConfigPublicAccessPtrInput interface {
 	pulumi.Input
 
@@ -51516,6 +53871,7 @@ func (o GetRedisRedisUserConfigPublicAccessOutput) Prometheus() pulumi.StringPtr
 	return o.ApplyT(func(v GetRedisRedisUserConfigPublicAccess) *string { return v.Prometheus }).(pulumi.StringPtrOutput)
 }
 
+// Redis server provided values
 func (o GetRedisRedisUserConfigPublicAccessOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfigPublicAccess) *string { return v.Redis }).(pulumi.StringPtrOutput)
 }
@@ -51553,6 +53909,7 @@ func (o GetRedisRedisUserConfigPublicAccessPtrOutput) Prometheus() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Redis server provided values
 func (o GetRedisRedisUserConfigPublicAccessPtrOutput) Redis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRedisRedisUserConfigPublicAccess) *string {
 		if v == nil {
@@ -51570,7 +53927,7 @@ type GetRedisServiceIntegration struct {
 // GetRedisServiceIntegrationInput is an input type that accepts GetRedisServiceIntegrationArgs and GetRedisServiceIntegrationOutput values.
 // You can construct a concrete instance of `GetRedisServiceIntegrationInput` via:
 //
-//          GetRedisServiceIntegrationArgs{...}
+//	GetRedisServiceIntegrationArgs{...}
 type GetRedisServiceIntegrationInput interface {
 	pulumi.Input
 
@@ -51598,7 +53955,7 @@ func (i GetRedisServiceIntegrationArgs) ToGetRedisServiceIntegrationOutputWithCo
 // GetRedisServiceIntegrationArrayInput is an input type that accepts GetRedisServiceIntegrationArray and GetRedisServiceIntegrationArrayOutput values.
 // You can construct a concrete instance of `GetRedisServiceIntegrationArrayInput` via:
 //
-//          GetRedisServiceIntegrationArray{ GetRedisServiceIntegrationArgs{...} }
+//	GetRedisServiceIntegrationArray{ GetRedisServiceIntegrationArgs{...} }
 type GetRedisServiceIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -51670,7 +54027,7 @@ type GetRedisTag struct {
 // GetRedisTagInput is an input type that accepts GetRedisTagArgs and GetRedisTagOutput values.
 // You can construct a concrete instance of `GetRedisTagInput` via:
 //
-//          GetRedisTagArgs{...}
+//	GetRedisTagArgs{...}
 type GetRedisTagInput interface {
 	pulumi.Input
 
@@ -51698,7 +54055,7 @@ func (i GetRedisTagArgs) ToGetRedisTagOutputWithContext(ctx context.Context) Get
 // GetRedisTagArrayInput is an input type that accepts GetRedisTagArray and GetRedisTagArrayOutput values.
 // You can construct a concrete instance of `GetRedisTagArrayInput` via:
 //
-//          GetRedisTagArray{ GetRedisTagArgs{...} }
+//	GetRedisTagArray{ GetRedisTagArgs{...} }
 type GetRedisTagArrayInput interface {
 	pulumi.Input
 
@@ -51775,7 +54132,7 @@ type GetServiceIntegrationEndpointDatadogUserConfig struct {
 // GetServiceIntegrationEndpointDatadogUserConfigInput is an input type that accepts GetServiceIntegrationEndpointDatadogUserConfigArgs and GetServiceIntegrationEndpointDatadogUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointDatadogUserConfigInput` via:
 //
-//          GetServiceIntegrationEndpointDatadogUserConfigArgs{...}
+//	GetServiceIntegrationEndpointDatadogUserConfigArgs{...}
 type GetServiceIntegrationEndpointDatadogUserConfigInput interface {
 	pulumi.Input
 
@@ -51808,7 +54165,7 @@ func (i GetServiceIntegrationEndpointDatadogUserConfigArgs) ToGetServiceIntegrat
 // GetServiceIntegrationEndpointDatadogUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointDatadogUserConfigArray and GetServiceIntegrationEndpointDatadogUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointDatadogUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationEndpointDatadogUserConfigArray{ GetServiceIntegrationEndpointDatadogUserConfigArgs{...} }
+//	GetServiceIntegrationEndpointDatadogUserConfigArray{ GetServiceIntegrationEndpointDatadogUserConfigArgs{...} }
 type GetServiceIntegrationEndpointDatadogUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -51902,7 +54259,7 @@ type GetServiceIntegrationEndpointDatadogUserConfigDatadogTag struct {
 // GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInput is an input type that accepts GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs and GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInput` via:
 //
-//          GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...}
+//	GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...}
 type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInput interface {
 	pulumi.Input
 
@@ -51930,7 +54287,7 @@ func (i GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs) ToGetServi
 // GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput is an input type that accepts GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray and GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput` via:
 //
-//          GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray{ GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...} }
+//	GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray{ GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...} }
 type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput interface {
 	pulumi.Input
 
@@ -52004,7 +54361,7 @@ type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig struct {
 // GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs and GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput` via:
 //
-//          GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{...}
+//	GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{...}
 type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput interface {
 	pulumi.Input
 
@@ -52034,7 +54391,7 @@ func (i GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) To
 // GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArray and GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArray{ GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{...} }
+//	GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArray{ GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{...} }
 type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -52118,7 +54475,7 @@ type GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig struct 
 // GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs and GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput` via:
 //
-//          GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs{...}
+//	GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs{...}
 type GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput interface {
 	pulumi.Input
 
@@ -52148,7 +54505,7 @@ func (i GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs)
 // GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray and GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray{ GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs{...} }
+//	GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray{ GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs{...} }
 type GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -52237,7 +54594,7 @@ type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig struct {
 // GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs and GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput` via:
 //
-//          GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...}
+//	GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...}
 type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput interface {
 	pulumi.Input
 
@@ -52268,7 +54625,7 @@ func (i GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs) To
 // GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArray and GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArray{ GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...} }
+//	GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArray{ GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...} }
 type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -52355,7 +54712,7 @@ type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig struct {
 // GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs and GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput` via:
 //
-//          GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{...}
+//	GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{...}
 type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput interface {
 	pulumi.Input
 
@@ -52384,7 +54741,7 @@ func (i GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) T
 // GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArray and GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArray{ GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{...} }
+//	GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArray{ GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{...} }
 type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -52469,7 +54826,7 @@ type GetServiceIntegrationEndpointExternalKafkaUserConfig struct {
 // GetServiceIntegrationEndpointExternalKafkaUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalKafkaUserConfigArgs and GetServiceIntegrationEndpointExternalKafkaUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointExternalKafkaUserConfigInput` via:
 //
-//          GetServiceIntegrationEndpointExternalKafkaUserConfigArgs{...}
+//	GetServiceIntegrationEndpointExternalKafkaUserConfigArgs{...}
 type GetServiceIntegrationEndpointExternalKafkaUserConfigInput interface {
 	pulumi.Input
 
@@ -52504,7 +54861,7 @@ func (i GetServiceIntegrationEndpointExternalKafkaUserConfigArgs) ToGetServiceIn
 // GetServiceIntegrationEndpointExternalKafkaUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalKafkaUserConfigArray and GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointExternalKafkaUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationEndpointExternalKafkaUserConfigArray{ GetServiceIntegrationEndpointExternalKafkaUserConfigArgs{...} }
+//	GetServiceIntegrationEndpointExternalKafkaUserConfigArray{ GetServiceIntegrationEndpointExternalKafkaUserConfigArgs{...} }
 type GetServiceIntegrationEndpointExternalKafkaUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -52608,7 +54965,7 @@ type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig struct {
 // GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs and GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput` via:
 //
-//          GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{...}
+//	GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{...}
 type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput interface {
 	pulumi.Input
 
@@ -52638,7 +54995,7 @@ func (i GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ToGet
 // GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArray and GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArray{ GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{...} }
+//	GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArray{ GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{...} }
 type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -52722,7 +55079,7 @@ type GetServiceIntegrationEndpointJolokiaUserConfig struct {
 // GetServiceIntegrationEndpointJolokiaUserConfigInput is an input type that accepts GetServiceIntegrationEndpointJolokiaUserConfigArgs and GetServiceIntegrationEndpointJolokiaUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointJolokiaUserConfigInput` via:
 //
-//          GetServiceIntegrationEndpointJolokiaUserConfigArgs{...}
+//	GetServiceIntegrationEndpointJolokiaUserConfigArgs{...}
 type GetServiceIntegrationEndpointJolokiaUserConfigInput interface {
 	pulumi.Input
 
@@ -52750,7 +55107,7 @@ func (i GetServiceIntegrationEndpointJolokiaUserConfigArgs) ToGetServiceIntegrat
 // GetServiceIntegrationEndpointJolokiaUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointJolokiaUserConfigArray and GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointJolokiaUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationEndpointJolokiaUserConfigArray{ GetServiceIntegrationEndpointJolokiaUserConfigArgs{...} }
+//	GetServiceIntegrationEndpointJolokiaUserConfigArray{ GetServiceIntegrationEndpointJolokiaUserConfigArgs{...} }
 type GetServiceIntegrationEndpointJolokiaUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -52822,7 +55179,7 @@ type GetServiceIntegrationEndpointPrometheusUserConfig struct {
 // GetServiceIntegrationEndpointPrometheusUserConfigInput is an input type that accepts GetServiceIntegrationEndpointPrometheusUserConfigArgs and GetServiceIntegrationEndpointPrometheusUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointPrometheusUserConfigInput` via:
 //
-//          GetServiceIntegrationEndpointPrometheusUserConfigArgs{...}
+//	GetServiceIntegrationEndpointPrometheusUserConfigArgs{...}
 type GetServiceIntegrationEndpointPrometheusUserConfigInput interface {
 	pulumi.Input
 
@@ -52850,7 +55207,7 @@ func (i GetServiceIntegrationEndpointPrometheusUserConfigArgs) ToGetServiceInteg
 // GetServiceIntegrationEndpointPrometheusUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointPrometheusUserConfigArray and GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointPrometheusUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationEndpointPrometheusUserConfigArray{ GetServiceIntegrationEndpointPrometheusUserConfigArgs{...} }
+//	GetServiceIntegrationEndpointPrometheusUserConfigArray{ GetServiceIntegrationEndpointPrometheusUserConfigArgs{...} }
 type GetServiceIntegrationEndpointPrometheusUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -52929,7 +55286,7 @@ type GetServiceIntegrationEndpointRsyslogUserConfig struct {
 // GetServiceIntegrationEndpointRsyslogUserConfigInput is an input type that accepts GetServiceIntegrationEndpointRsyslogUserConfigArgs and GetServiceIntegrationEndpointRsyslogUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointRsyslogUserConfigInput` via:
 //
-//          GetServiceIntegrationEndpointRsyslogUserConfigArgs{...}
+//	GetServiceIntegrationEndpointRsyslogUserConfigArgs{...}
 type GetServiceIntegrationEndpointRsyslogUserConfigInput interface {
 	pulumi.Input
 
@@ -52964,7 +55321,7 @@ func (i GetServiceIntegrationEndpointRsyslogUserConfigArgs) ToGetServiceIntegrat
 // GetServiceIntegrationEndpointRsyslogUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointRsyslogUserConfigArray and GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointRsyslogUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationEndpointRsyslogUserConfigArray{ GetServiceIntegrationEndpointRsyslogUserConfigArgs{...} }
+//	GetServiceIntegrationEndpointRsyslogUserConfigArray{ GetServiceIntegrationEndpointRsyslogUserConfigArgs{...} }
 type GetServiceIntegrationEndpointRsyslogUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -53065,7 +55422,7 @@ type GetServiceIntegrationEndpointSignalfxUserConfig struct {
 // GetServiceIntegrationEndpointSignalfxUserConfigInput is an input type that accepts GetServiceIntegrationEndpointSignalfxUserConfigArgs and GetServiceIntegrationEndpointSignalfxUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointSignalfxUserConfigInput` via:
 //
-//          GetServiceIntegrationEndpointSignalfxUserConfigArgs{...}
+//	GetServiceIntegrationEndpointSignalfxUserConfigArgs{...}
 type GetServiceIntegrationEndpointSignalfxUserConfigInput interface {
 	pulumi.Input
 
@@ -53094,7 +55451,7 @@ func (i GetServiceIntegrationEndpointSignalfxUserConfigArgs) ToGetServiceIntegra
 // GetServiceIntegrationEndpointSignalfxUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointSignalfxUserConfigArray and GetServiceIntegrationEndpointSignalfxUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationEndpointSignalfxUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationEndpointSignalfxUserConfigArray{ GetServiceIntegrationEndpointSignalfxUserConfigArgs{...} }
+//	GetServiceIntegrationEndpointSignalfxUserConfigArray{ GetServiceIntegrationEndpointSignalfxUserConfigArgs{...} }
 type GetServiceIntegrationEndpointSignalfxUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -53169,7 +55526,7 @@ type GetServiceIntegrationKafkaConnectUserConfig struct {
 // GetServiceIntegrationKafkaConnectUserConfigInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigArgs and GetServiceIntegrationKafkaConnectUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigInput` via:
 //
-//          GetServiceIntegrationKafkaConnectUserConfigArgs{...}
+//	GetServiceIntegrationKafkaConnectUserConfigArgs{...}
 type GetServiceIntegrationKafkaConnectUserConfigInput interface {
 	pulumi.Input
 
@@ -53196,7 +55553,7 @@ func (i GetServiceIntegrationKafkaConnectUserConfigArgs) ToGetServiceIntegration
 // GetServiceIntegrationKafkaConnectUserConfigArrayInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigArray and GetServiceIntegrationKafkaConnectUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationKafkaConnectUserConfigArray{ GetServiceIntegrationKafkaConnectUserConfigArgs{...} }
+//	GetServiceIntegrationKafkaConnectUserConfigArray{ GetServiceIntegrationKafkaConnectUserConfigArgs{...} }
 type GetServiceIntegrationKafkaConnectUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -53268,7 +55625,7 @@ type GetServiceIntegrationKafkaConnectUserConfigKafkaConnect struct {
 // GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs and GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput` via:
 //
-//          GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
+//	GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
 type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput interface {
 	pulumi.Input
 
@@ -53306,11 +55663,11 @@ func (i GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToGetServic
 // GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs, GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtr and GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput` via:
 //
-//          GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
+//	        GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput interface {
 	pulumi.Input
 
@@ -53443,7 +55800,7 @@ type GetServiceIntegrationKafkaLogsUserConfig struct {
 // GetServiceIntegrationKafkaLogsUserConfigInput is an input type that accepts GetServiceIntegrationKafkaLogsUserConfigArgs and GetServiceIntegrationKafkaLogsUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaLogsUserConfigInput` via:
 //
-//          GetServiceIntegrationKafkaLogsUserConfigArgs{...}
+//	GetServiceIntegrationKafkaLogsUserConfigArgs{...}
 type GetServiceIntegrationKafkaLogsUserConfigInput interface {
 	pulumi.Input
 
@@ -53470,7 +55827,7 @@ func (i GetServiceIntegrationKafkaLogsUserConfigArgs) ToGetServiceIntegrationKaf
 // GetServiceIntegrationKafkaLogsUserConfigArrayInput is an input type that accepts GetServiceIntegrationKafkaLogsUserConfigArray and GetServiceIntegrationKafkaLogsUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaLogsUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationKafkaLogsUserConfigArray{ GetServiceIntegrationKafkaLogsUserConfigArgs{...} }
+//	GetServiceIntegrationKafkaLogsUserConfigArray{ GetServiceIntegrationKafkaLogsUserConfigArgs{...} }
 type GetServiceIntegrationKafkaLogsUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -53538,7 +55895,7 @@ type GetServiceIntegrationKafkaMirrormakerUserConfig struct {
 // GetServiceIntegrationKafkaMirrormakerUserConfigInput is an input type that accepts GetServiceIntegrationKafkaMirrormakerUserConfigArgs and GetServiceIntegrationKafkaMirrormakerUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaMirrormakerUserConfigInput` via:
 //
-//          GetServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
+//	GetServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
 type GetServiceIntegrationKafkaMirrormakerUserConfigInput interface {
 	pulumi.Input
 
@@ -53566,7 +55923,7 @@ func (i GetServiceIntegrationKafkaMirrormakerUserConfigArgs) ToGetServiceIntegra
 // GetServiceIntegrationKafkaMirrormakerUserConfigArrayInput is an input type that accepts GetServiceIntegrationKafkaMirrormakerUserConfigArray and GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaMirrormakerUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationKafkaMirrormakerUserConfigArray{ GetServiceIntegrationKafkaMirrormakerUserConfigArgs{...} }
+//	GetServiceIntegrationKafkaMirrormakerUserConfigArray{ GetServiceIntegrationKafkaMirrormakerUserConfigArgs{...} }
 type GetServiceIntegrationKafkaMirrormakerUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -53643,7 +56000,7 @@ type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker struct {
 // GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs and GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput` via:
 //
-//          GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//	GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
 type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
 	pulumi.Input
 
@@ -53682,11 +56039,11 @@ func (i GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToG
 // GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput is an input type that accepts GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs, GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtr and GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput` via:
 //
-//          GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//	        GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput interface {
 	pulumi.Input
 
@@ -53843,7 +56200,7 @@ type GetServiceIntegrationLogsUserConfig struct {
 // GetServiceIntegrationLogsUserConfigInput is an input type that accepts GetServiceIntegrationLogsUserConfigArgs and GetServiceIntegrationLogsUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationLogsUserConfigInput` via:
 //
-//          GetServiceIntegrationLogsUserConfigArgs{...}
+//	GetServiceIntegrationLogsUserConfigArgs{...}
 type GetServiceIntegrationLogsUserConfigInput interface {
 	pulumi.Input
 
@@ -53871,7 +56228,7 @@ func (i GetServiceIntegrationLogsUserConfigArgs) ToGetServiceIntegrationLogsUser
 // GetServiceIntegrationLogsUserConfigArrayInput is an input type that accepts GetServiceIntegrationLogsUserConfigArray and GetServiceIntegrationLogsUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationLogsUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationLogsUserConfigArray{ GetServiceIntegrationLogsUserConfigArgs{...} }
+//	GetServiceIntegrationLogsUserConfigArray{ GetServiceIntegrationLogsUserConfigArgs{...} }
 type GetServiceIntegrationLogsUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -53946,7 +56303,7 @@ type GetServiceIntegrationMetricsUserConfig struct {
 // GetServiceIntegrationMetricsUserConfigInput is an input type that accepts GetServiceIntegrationMetricsUserConfigArgs and GetServiceIntegrationMetricsUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigInput` via:
 //
-//          GetServiceIntegrationMetricsUserConfigArgs{...}
+//	GetServiceIntegrationMetricsUserConfigArgs{...}
 type GetServiceIntegrationMetricsUserConfigInput interface {
 	pulumi.Input
 
@@ -53977,7 +56334,7 @@ func (i GetServiceIntegrationMetricsUserConfigArgs) ToGetServiceIntegrationMetri
 // GetServiceIntegrationMetricsUserConfigArrayInput is an input type that accepts GetServiceIntegrationMetricsUserConfigArray and GetServiceIntegrationMetricsUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationMetricsUserConfigArray{ GetServiceIntegrationMetricsUserConfigArgs{...} }
+//	GetServiceIntegrationMetricsUserConfigArray{ GetServiceIntegrationMetricsUserConfigArgs{...} }
 type GetServiceIntegrationMetricsUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -54062,7 +56419,7 @@ type GetServiceIntegrationMetricsUserConfigSourceMysql struct {
 // GetServiceIntegrationMetricsUserConfigSourceMysqlInput is an input type that accepts GetServiceIntegrationMetricsUserConfigSourceMysqlArgs and GetServiceIntegrationMetricsUserConfigSourceMysqlOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigSourceMysqlInput` via:
 //
-//          GetServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
+//	GetServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
 type GetServiceIntegrationMetricsUserConfigSourceMysqlInput interface {
 	pulumi.Input
 
@@ -54097,11 +56454,11 @@ func (i GetServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToGetServiceInteg
 // GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput is an input type that accepts GetServiceIntegrationMetricsUserConfigSourceMysqlArgs, GetServiceIntegrationMetricsUserConfigSourceMysqlPtr and GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput` via:
 //
-//          GetServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
+//	        GetServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput interface {
 	pulumi.Input
 
@@ -54210,7 +56567,7 @@ type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf struct {
 // GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput is an input type that accepts GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs and GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput` via:
 //
-//          GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
+//	GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
 type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput interface {
 	pulumi.Input
 
@@ -54258,11 +56615,11 @@ func (i GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToGetServ
 // GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput is an input type that accepts GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs, GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtr and GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput` via:
 //
-//          GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
+//	        GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput interface {
 	pulumi.Input
 
@@ -54541,7 +56898,7 @@ type GetServiceIntegrationMirrormakerUserConfig struct {
 // GetServiceIntegrationMirrormakerUserConfigInput is an input type that accepts GetServiceIntegrationMirrormakerUserConfigArgs and GetServiceIntegrationMirrormakerUserConfigOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationMirrormakerUserConfigInput` via:
 //
-//          GetServiceIntegrationMirrormakerUserConfigArgs{...}
+//	GetServiceIntegrationMirrormakerUserConfigArgs{...}
 type GetServiceIntegrationMirrormakerUserConfigInput interface {
 	pulumi.Input
 
@@ -54568,7 +56925,7 @@ func (i GetServiceIntegrationMirrormakerUserConfigArgs) ToGetServiceIntegrationM
 // GetServiceIntegrationMirrormakerUserConfigArrayInput is an input type that accepts GetServiceIntegrationMirrormakerUserConfigArray and GetServiceIntegrationMirrormakerUserConfigArrayOutput values.
 // You can construct a concrete instance of `GetServiceIntegrationMirrormakerUserConfigArrayInput` via:
 //
-//          GetServiceIntegrationMirrormakerUserConfigArray{ GetServiceIntegrationMirrormakerUserConfigArgs{...} }
+//	GetServiceIntegrationMirrormakerUserConfigArray{ GetServiceIntegrationMirrormakerUserConfigArgs{...} }
 type GetServiceIntegrationMirrormakerUserConfigArrayInput interface {
 	pulumi.Input
 
@@ -54629,6 +56986,8 @@ func (o GetServiceIntegrationMirrormakerUserConfigArrayOutput) Index(i pulumi.In
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationSamlFieldMappingInput)(nil)).Elem(), AccountAuthenticationSamlFieldMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationSamlFieldMappingPtrInput)(nil)).Elem(), AccountAuthenticationSamlFieldMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CassandraCassandraInput)(nil)).Elem(), CassandraCassandraArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CassandraCassandraArrayInput)(nil)).Elem(), CassandraCassandraArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CassandraCassandraUserConfigInput)(nil)).Elem(), CassandraCassandraUserConfigArgs{})
@@ -54957,6 +57316,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput)(nil)).Elem(), ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationMirrormakerUserConfigInput)(nil)).Elem(), ServiceIntegrationMirrormakerUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationMirrormakerUserConfigPtrInput)(nil)).Elem(), ServiceIntegrationMirrormakerUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAuthenticationSamlFieldMappingInput)(nil)).Elem(), GetAccountAuthenticationSamlFieldMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAuthenticationSamlFieldMappingArrayInput)(nil)).Elem(), GetAccountAuthenticationSamlFieldMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandaCassandraInput)(nil)).Elem(), GetCassandaCassandraArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandaCassandraArrayInput)(nil)).Elem(), GetCassandaCassandraArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCassandaCassandraUserConfigInput)(nil)).Elem(), GetCassandaCassandraUserConfigArgs{})
@@ -55295,6 +57656,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput)(nil)).Elem(), GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationMirrormakerUserConfigInput)(nil)).Elem(), GetServiceIntegrationMirrormakerUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationMirrormakerUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationMirrormakerUserConfigArray{})
+	pulumi.RegisterOutputType(AccountAuthenticationSamlFieldMappingOutput{})
+	pulumi.RegisterOutputType(AccountAuthenticationSamlFieldMappingPtrOutput{})
 	pulumi.RegisterOutputType(CassandraCassandraOutput{})
 	pulumi.RegisterOutputType(CassandraCassandraArrayOutput{})
 	pulumi.RegisterOutputType(CassandraCassandraUserConfigOutput{})
@@ -55623,6 +57986,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationMirrormakerUserConfigOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationMirrormakerUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetAccountAuthenticationSamlFieldMappingOutput{})
+	pulumi.RegisterOutputType(GetAccountAuthenticationSamlFieldMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetCassandaCassandraOutput{})
 	pulumi.RegisterOutputType(GetCassandaCassandraArrayOutput{})
 	pulumi.RegisterOutputType(GetCassandaCassandraUserConfigOutput{})

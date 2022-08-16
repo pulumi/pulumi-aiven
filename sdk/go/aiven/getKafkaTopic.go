@@ -18,23 +18,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupKafkaTopic(ctx, &GetKafkaTopicArgs{
-// 			Project:     aiven_project.Myproject.Project,
-// 			ServiceName: aiven_service.Myservice.Service_name,
-// 			TopicName:   "<TOPIC_NAME>",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupKafkaTopic(ctx, &GetKafkaTopicArgs{
+//				Project:     aiven_project.Myproject.Project,
+//				ServiceName: aiven_service.Myservice.Service_name,
+//				TopicName:   "<TOPIC_NAME>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupKafkaTopic(ctx *pulumi.Context, args *LookupKafkaTopicArgs, opts ...pulumi.InvokeOption) (*LookupKafkaTopicResult, error) {
 	var rv LookupKafkaTopicResult
@@ -47,23 +50,33 @@ func LookupKafkaTopic(ctx *pulumi.Context, args *LookupKafkaTopicArgs, opts ...p
 
 // A collection of arguments for invoking getKafkaTopic.
 type LookupKafkaTopicArgs struct {
-	Project     string `pulumi:"project"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	TopicName   string `pulumi:"topicName"`
+	// The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+	TopicName string `pulumi:"topicName"`
 }
 
 // A collection of values returned by getKafkaTopic.
 type LookupKafkaTopicResult struct {
+	// Kafka topic configuration
 	Configs []GetKafkaTopicConfig `pulumi:"configs"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string             `pulumi:"id"`
-	Partitions            int                `pulumi:"partitions"`
-	Project               string             `pulumi:"project"`
-	Replication           int                `pulumi:"replication"`
-	ServiceName           string             `pulumi:"serviceName"`
+	Id string `pulumi:"id"`
+	// The number of partitions to create in the topic.
+	Partitions int `pulumi:"partitions"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// The replication factor for the topic.
+	Replication int `pulumi:"replication"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	ServiceName string `pulumi:"serviceName"`
+	// Kafka Topic tag.
 	Tags                  []GetKafkaTopicTag `pulumi:"tags"`
 	TerminationProtection bool               `pulumi:"terminationProtection"`
-	TopicName             string             `pulumi:"topicName"`
+	// The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+	TopicName string `pulumi:"topicName"`
 }
 
 func LookupKafkaTopicOutput(ctx *pulumi.Context, args LookupKafkaTopicOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaTopicResultOutput {
@@ -81,9 +94,12 @@ func LookupKafkaTopicOutput(ctx *pulumi.Context, args LookupKafkaTopicOutputArgs
 
 // A collection of arguments for invoking getKafkaTopic.
 type LookupKafkaTopicOutputArgs struct {
-	Project     pulumi.StringInput `pulumi:"project"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	TopicName   pulumi.StringInput `pulumi:"topicName"`
+	// The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
 func (LookupKafkaTopicOutputArgs) ElementType() reflect.Type {
@@ -105,6 +121,7 @@ func (o LookupKafkaTopicResultOutput) ToLookupKafkaTopicResultOutputWithContext(
 	return o
 }
 
+// Kafka topic configuration
 func (o LookupKafkaTopicResultOutput) Configs() GetKafkaTopicConfigArrayOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) []GetKafkaTopicConfig { return v.Configs }).(GetKafkaTopicConfigArrayOutput)
 }
@@ -114,22 +131,27 @@ func (o LookupKafkaTopicResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The number of partitions to create in the topic.
 func (o LookupKafkaTopicResultOutput) Partitions() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) int { return v.Partitions }).(pulumi.IntOutput)
 }
 
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaTopicResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The replication factor for the topic.
 func (o LookupKafkaTopicResultOutput) Replication() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) int { return v.Replication }).(pulumi.IntOutput)
 }
 
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaTopicResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Kafka Topic tag.
 func (o LookupKafkaTopicResultOutput) Tags() GetKafkaTopicTagArrayOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) []GetKafkaTopicTag { return v.Tags }).(GetKafkaTopicTagArrayOutput)
 }
@@ -138,6 +160,7 @@ func (o LookupKafkaTopicResultOutput) TerminationProtection() pulumi.BoolOutput 
 	return o.ApplyT(func(v LookupKafkaTopicResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
 }
 
+// The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupKafkaTopicResultOutput) TopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.TopicName }).(pulumi.StringOutput)
 }

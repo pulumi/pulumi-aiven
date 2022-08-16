@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class PgPgUserConfigTimescaledbGetArgs : Pulumi.ResourceArgs
+    public sealed class PgPgUserConfigTimescaledbGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("maxBackgroundWorkers")]
         public Input<string>? MaxBackgroundWorkers { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Aiven.Inputs
         public PgPgUserConfigTimescaledbGetArgs()
         {
         }
+        public static new PgPgUserConfigTimescaledbGetArgs Empty => new PgPgUserConfigTimescaledbGetArgs();
     }
 }

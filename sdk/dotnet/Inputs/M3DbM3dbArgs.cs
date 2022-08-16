@@ -10,10 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class M3DbM3dbArgs : Pulumi.ResourceArgs
+    public sealed class M3DbM3dbArgs : global::Pulumi.ResourceArgs
     {
         public M3DbM3dbArgs()
         {
         }
+        public static new M3DbM3dbArgs Empty => new M3DbM3dbArgs();
     }
 }

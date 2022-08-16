@@ -33,6 +33,9 @@ export function getBillingGroup(args: GetBillingGroupArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getBillingGroup.
  */
 export interface GetBillingGroupArgs {
+    /**
+     * The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     */
     billingGroupId: string;
 }
 
@@ -40,24 +43,69 @@ export interface GetBillingGroupArgs {
  * A collection of values returned by getBillingGroup.
  */
 export interface GetBillingGroupResult {
+    /**
+     * Account id
+     */
     readonly accountId: string;
+    /**
+     * Address lines
+     */
     readonly addressLines: string[];
+    /**
+     * Billing currency
+     */
     readonly billingCurrency: string;
+    /**
+     * Billing contact emails
+     */
     readonly billingEmails: string[];
+    /**
+     * Billing extra text
+     */
     readonly billingExtraText: string;
+    /**
+     * The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     */
     readonly billingGroupId: string;
+    /**
+     * Credit card id
+     */
     readonly cardId: string;
+    /**
+     * City
+     */
     readonly city: string;
+    /**
+     * Company name
+     */
     readonly company: string;
+    /**
+     * ID of the billing group to copy from
+     */
     readonly copyFromBillingGroup: string;
+    /**
+     * Country code
+     */
     readonly countryCode: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Billing Group name
+     */
     readonly name: string;
+    /**
+     * State
+     */
     readonly state: string;
+    /**
+     * VAT id
+     */
     readonly vatId: string;
+    /**
+     * Zip Code
+     */
     readonly zipCode: string;
 }
 
@@ -69,5 +117,8 @@ export function getBillingGroupOutput(args: GetBillingGroupOutputArgs, opts?: pu
  * A collection of arguments for invoking getBillingGroup.
  */
 export interface GetBillingGroupOutputArgs {
+    /**
+     * The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     */
     billingGroupId: pulumi.Input<string>;
 }

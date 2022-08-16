@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("gatherEventWaits")]
         public Input<string>? GatherEventWaits { get; set; }
@@ -57,5 +57,6 @@ namespace Pulumi.Aiven.Inputs
         public ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafGetArgs()
         {
         }
+        public static new ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafGetArgs Empty => new ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafGetArgs();
     }
 }

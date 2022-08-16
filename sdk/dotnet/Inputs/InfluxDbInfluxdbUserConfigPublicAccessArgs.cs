@@ -10,13 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class InfluxDbInfluxdbUserConfigPublicAccessArgs : Pulumi.ResourceArgs
+    public sealed class InfluxDbInfluxdbUserConfigPublicAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// InfluxDB server provided values
+        /// </summary>
         [Input("influxdb")]
         public Input<string>? Influxdb { get; set; }
 
         public InfluxDbInfluxdbUserConfigPublicAccessArgs()
         {
         }
+        public static new InfluxDbInfluxdbUserConfigPublicAccessArgs Empty => new InfluxDbInfluxdbUserConfigPublicAccessArgs();
     }
 }

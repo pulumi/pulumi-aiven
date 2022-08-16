@@ -10,48 +10,83 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class FlinkFlinkUserConfigArgs : Pulumi.ResourceArgs
+    public sealed class FlinkFlinkUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Flink execution.checkpointing.interval in milliseconds
+        /// </summary>
         [Input("executionCheckpointingIntervalMs")]
         public Input<string>? ExecutionCheckpointingIntervalMs { get; set; }
 
+        /// <summary>
+        /// Flink execution.checkpointing.timeout in milliseconds
+        /// </summary>
         [Input("executionCheckpointingTimeoutMs")]
         public Input<string>? ExecutionCheckpointingTimeoutMs { get; set; }
 
+        /// <summary>
+        /// Flink major version
+        /// </summary>
         [Input("flinkVersion")]
         public Input<string>? FlinkVersion { get; set; }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// IP filter
+        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Flink taskmanager.numberOfTaskSlots
+        /// </summary>
         [Input("numberOfTaskSlots")]
         public Input<string>? NumberOfTaskSlots { get; set; }
 
+        /// <summary>
+        /// Flink parallelism.default
+        /// </summary>
         [Input("parallelismDefault")]
         public Input<string>? ParallelismDefault { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.FlinkFlinkUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }
 
+        /// <summary>
+        /// Flink restart-strategy
+        /// </summary>
         [Input("restartStrategy")]
         public Input<string>? RestartStrategy { get; set; }
 
+        /// <summary>
+        /// Flink restart-strategy.failure-rate.delay in seconds
+        /// </summary>
         [Input("restartStrategyDelaySec")]
         public Input<string>? RestartStrategyDelaySec { get; set; }
 
+        /// <summary>
+        /// Flink restart-strategy.failure-rate.failure-rate-interval in minutes
+        /// </summary>
         [Input("restartStrategyFailureRateIntervalMin")]
         public Input<string>? RestartStrategyFailureRateIntervalMin { get; set; }
 
+        /// <summary>
+        /// Flink restart-strategy.failure-rate.max-failures-per-interval
+        /// </summary>
         [Input("restartStrategyMaxFailures")]
         public Input<string>? RestartStrategyMaxFailures { get; set; }
 
         public FlinkFlinkUserConfigArgs()
         {
         }
+        public static new FlinkFlinkUserConfigArgs Empty => new FlinkFlinkUserConfigArgs();
     }
 }

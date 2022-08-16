@@ -10,37 +10,65 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationEndpointRsyslogUserConfigArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationEndpointRsyslogUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// PEM encoded CA certificate
+        /// </summary>
         [Input("ca")]
         public Input<string>? Ca { get; set; }
 
+        /// <summary>
+        /// PEM encoded client certificate
+        /// </summary>
         [Input("cert")]
         public Input<string>? Cert { get; set; }
 
+        /// <summary>
+        /// message format
+        /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
 
+        /// <summary>
+        /// PEM encoded client key
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// custom syslog message format
+        /// </summary>
         [Input("logline")]
         public Input<string>? Logline { get; set; }
 
+        /// <summary>
+        /// rsyslog server port
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
+        /// <summary>
+        /// Structured data block for log message
+        /// </summary>
         [Input("sd")]
         public Input<string>? Sd { get; set; }
 
+        /// <summary>
+        /// rsyslog server IP address or hostname
+        /// </summary>
         [Input("server")]
         public Input<string>? Server { get; set; }
 
+        /// <summary>
+        /// Require TLS
+        /// </summary>
         [Input("tls")]
         public Input<string>? Tls { get; set; }
 
         public ServiceIntegrationEndpointRsyslogUserConfigArgs()
         {
         }
+        public static new ServiceIntegrationEndpointRsyslogUserConfigArgs Empty => new ServiceIntegrationEndpointRsyslogUserConfigArgs();
     }
 }

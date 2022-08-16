@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GrafanaGrafanaUserConfigAuthAzureadGetArgs : Pulumi.ResourceArgs
+    public sealed class GrafanaGrafanaUserConfigAuthAzureadGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowSignUp")]
         public Input<string>? AllowSignUp { get; set; }
@@ -46,5 +46,6 @@ namespace Pulumi.Aiven.Inputs
         public GrafanaGrafanaUserConfigAuthAzureadGetArgs()
         {
         }
+        public static new GrafanaGrafanaUserConfigAuthAzureadGetArgs Empty => new GrafanaGrafanaUserConfigAuthAzureadGetArgs();
     }
 }

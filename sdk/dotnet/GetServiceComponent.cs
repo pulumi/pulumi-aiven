@@ -41,78 +41,149 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetServiceComponentArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceComponentArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Service component name
+        /// </summary>
         [Input("component", required: true)]
         public string Component { get; set; } = null!;
 
+        /// <summary>
+        /// Kafka authentication method. This is a value specific to the 'kafka' service component
+        /// </summary>
         [Input("kafkaAuthenticationMethod")]
         public string? KafkaAuthenticationMethod { get; set; }
 
+        /// <summary>
+        /// Project name
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Network access route
+        /// </summary>
         [Input("route")]
         public string? Route { get; set; }
 
+        /// <summary>
+        /// Service name
+        /// </summary>
         [Input("serviceName")]
         public string? ServiceName { get; set; }
 
+        /// <summary>
+        /// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
+        /// </summary>
         [Input("ssl")]
         public bool? Ssl { get; set; }
 
+        /// <summary>
+        /// DNS usage name
+        /// </summary>
         [Input("usage")]
         public string? Usage { get; set; }
 
         public GetServiceComponentArgs()
         {
         }
+        public static new GetServiceComponentArgs Empty => new GetServiceComponentArgs();
     }
 
-    public sealed class GetServiceComponentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceComponentInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Service component name
+        /// </summary>
         [Input("component", required: true)]
         public Input<string> Component { get; set; } = null!;
 
+        /// <summary>
+        /// Kafka authentication method. This is a value specific to the 'kafka' service component
+        /// </summary>
         [Input("kafkaAuthenticationMethod")]
         public Input<string>? KafkaAuthenticationMethod { get; set; }
 
+        /// <summary>
+        /// Project name
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Network access route
+        /// </summary>
         [Input("route")]
         public Input<string>? Route { get; set; }
 
+        /// <summary>
+        /// Service name
+        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        /// <summary>
+        /// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
+        /// </summary>
         [Input("ssl")]
         public Input<bool>? Ssl { get; set; }
 
+        /// <summary>
+        /// DNS usage name
+        /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }
 
         public GetServiceComponentInvokeArgs()
         {
         }
+        public static new GetServiceComponentInvokeArgs Empty => new GetServiceComponentInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetServiceComponentResult
     {
+        /// <summary>
+        /// Service component name
+        /// </summary>
         public readonly string Component;
+        /// <summary>
+        /// DNS name for connecting to the service component
+        /// </summary>
         public readonly string Host;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Kafka authentication method. This is a value specific to the 'kafka' service component
+        /// </summary>
         public readonly string? KafkaAuthenticationMethod;
+        /// <summary>
+        /// Port number for connecting to the service component
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// Project name
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Network access route
+        /// </summary>
         public readonly string? Route;
+        /// <summary>
+        /// Service name
+        /// </summary>
         public readonly string? ServiceName;
+        /// <summary>
+        /// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
+        /// </summary>
         public readonly bool? Ssl;
+        /// <summary>
+        /// DNS usage name
+        /// </summary>
         public readonly string? Usage;
 
         [OutputConstructor]

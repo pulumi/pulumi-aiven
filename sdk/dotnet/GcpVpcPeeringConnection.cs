@@ -15,22 +15,20 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new Aiven.GcpVpcPeeringConnection("foo", new()
     ///     {
-    ///         var foo = new Aiven.GcpVpcPeeringConnection("foo", new Aiven.GcpVpcPeeringConnectionArgs
-    ///         {
-    ///             VpcId = data.Aiven_project_vpc.Vpc.Id,
-    ///             GcpProjectId = "xxxx",
-    ///             PeerVpc = "xxxx",
-    ///         });
-    ///     }
+    ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
+    ///         GcpProjectId = "xxxx",
+    ///         PeerVpc = "xxxx",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +38,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection")]
-    public partial class GcpVpcPeeringConnection : Pulumi.CustomResource
+    public partial class GcpVpcPeeringConnection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -116,7 +114,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class GcpVpcPeeringConnectionArgs : Pulumi.ResourceArgs
+    public sealed class GcpVpcPeeringConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -139,9 +137,10 @@ namespace Pulumi.Aiven
         public GcpVpcPeeringConnectionArgs()
         {
         }
+        public static new GcpVpcPeeringConnectionArgs Empty => new GcpVpcPeeringConnectionArgs();
     }
 
-    public sealed class GcpVpcPeeringConnectionState : Pulumi.ResourceArgs
+    public sealed class GcpVpcPeeringConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -182,5 +181,6 @@ namespace Pulumi.Aiven
         public GcpVpcPeeringConnectionState()
         {
         }
+        public static new GcpVpcPeeringConnectionState Empty => new GcpVpcPeeringConnectionState();
     }
 }

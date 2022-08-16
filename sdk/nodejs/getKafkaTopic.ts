@@ -38,8 +38,17 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getKafkaTopic.
  */
 export interface GetKafkaTopicArgs {
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: string;
+    /**
+     * The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+     */
     topicName: string;
 }
 
@@ -47,17 +56,38 @@ export interface GetKafkaTopicArgs {
  * A collection of values returned by getKafkaTopic.
  */
 export interface GetKafkaTopicResult {
+    /**
+     * Kafka topic configuration
+     */
     readonly configs: outputs.GetKafkaTopicConfig[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The number of partitions to create in the topic.
+     */
     readonly partitions: number;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
+    /**
+     * The replication factor for the topic.
+     */
     readonly replication: number;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
+    /**
+     * Kafka Topic tag.
+     */
     readonly tags: outputs.GetKafkaTopicTag[];
     readonly terminationProtection: boolean;
+    /**
+     * The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly topicName: string;
 }
 
@@ -69,7 +99,16 @@ export function getKafkaTopicOutput(args: GetKafkaTopicOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getKafkaTopic.
  */
 export interface GetKafkaTopicOutputArgs {
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: pulumi.Input<string>;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: pulumi.Input<string>;
+    /**
+     * The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+     */
     topicName: pulumi.Input<string>;
 }

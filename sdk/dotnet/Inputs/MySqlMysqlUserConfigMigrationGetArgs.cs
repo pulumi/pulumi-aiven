@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class MySqlMysqlUserConfigMigrationGetArgs : Pulumi.ResourceArgs
+    public sealed class MySqlMysqlUserConfigMigrationGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.Aiven.Inputs
         public MySqlMysqlUserConfigMigrationGetArgs()
         {
         }
+        public static new MySqlMysqlUserConfigMigrationGetArgs Empty => new MySqlMysqlUserConfigMigrationGetArgs();
     }
 }

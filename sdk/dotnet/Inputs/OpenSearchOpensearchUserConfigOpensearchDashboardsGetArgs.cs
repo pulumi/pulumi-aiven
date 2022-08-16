@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class OpenSearchOpensearchUserConfigOpensearchDashboardsGetArgs : Pulumi.ResourceArgs
+    public sealed class OpenSearchOpensearchUserConfigOpensearchDashboardsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("enabled")]
         public Input<string>? Enabled { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Aiven.Inputs
         public OpenSearchOpensearchUserConfigOpensearchDashboardsGetArgs()
         {
         }
+        public static new OpenSearchOpensearchUserConfigOpensearchDashboardsGetArgs Empty => new OpenSearchOpensearchUserConfigOpensearchDashboardsGetArgs();
     }
 }

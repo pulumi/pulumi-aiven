@@ -10,25 +10,41 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// PEM encoded CA certificate
+        /// </summary>
         [Input("ca")]
         public Input<string>? Ca { get; set; }
 
+        /// <summary>
+        /// Maximum number of days of logs to keep
+        /// </summary>
         [Input("indexDaysMax")]
         public Input<string>? IndexDaysMax { get; set; }
 
+        /// <summary>
+        /// Elasticsearch index prefix
+        /// </summary>
         [Input("indexPrefix")]
         public Input<string>? IndexPrefix { get; set; }
 
+        /// <summary>
+        /// Elasticsearch request timeout limit
+        /// </summary>
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }
 
+        /// <summary>
+        /// Elasticsearch connection URL
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
         public ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigGetArgs()
         {
         }
+        public static new ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigGetArgs Empty => new ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigGetArgs();
     }
 }

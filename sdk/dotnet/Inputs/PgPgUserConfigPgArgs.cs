@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class PgPgUserConfigPgArgs : Pulumi.ResourceArgs
+    public sealed class PgPgUserConfigPgArgs : global::Pulumi.ResourceArgs
     {
         [Input("autovacuumAnalyzeScaleFactor")]
         public Input<string>? AutovacuumAnalyzeScaleFactor { get; set; }
@@ -74,6 +74,9 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("logMinDurationStatement")]
         public Input<string>? LogMinDurationStatement { get; set; }
+
+        [Input("logTempFiles")]
+        public Input<string>? LogTempFiles { get; set; }
 
         [Input("maxFilesPerProcess")]
         public Input<string>? MaxFilesPerProcess { get; set; }
@@ -153,5 +156,6 @@ namespace Pulumi.Aiven.Inputs
         public PgPgUserConfigPgArgs()
         {
         }
+        public static new PgPgUserConfigPgArgs Empty => new PgPgUserConfigPgArgs();
     }
 }

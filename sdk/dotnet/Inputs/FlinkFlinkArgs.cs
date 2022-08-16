@@ -10,10 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class FlinkFlinkArgs : Pulumi.ResourceArgs
+    public sealed class FlinkFlinkArgs : global::Pulumi.ResourceArgs
     {
         [Input("hostPorts")]
         private InputList<string>? _hostPorts;
+
+        /// <summary>
+        /// Host and Port of a Flink server
+        /// </summary>
         public InputList<string> HostPorts
         {
             get => _hostPorts ?? (_hostPorts = new InputList<string>());
@@ -23,5 +27,6 @@ namespace Pulumi.Aiven.Inputs
         public FlinkFlinkArgs()
         {
         }
+        public static new FlinkFlinkArgs Empty => new FlinkFlinkArgs();
     }
 }

@@ -25,12 +25,10 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/accountTeamMember:AccountTeamMember")]
-    public partial class AccountTeamMember : Pulumi.CustomResource
+    public partial class AccountTeamMember : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
-        /// invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
-        /// member of an account team.
+        /// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
         /// </summary>
         [Output("accepted")]
         public Output<bool> Accepted { get; private set; } = null!;
@@ -60,8 +58,7 @@ namespace Pulumi.Aiven
         public Output<string> TeamId { get; private set; } = null!;
 
         /// <summary>
-        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
-        /// team. This property cannot be changed, doing so forces recreation of the resource.
+        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("userEmail")]
         public Output<string> UserEmail { get; private set; } = null!;
@@ -110,7 +107,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class AccountTeamMemberArgs : Pulumi.ResourceArgs
+    public sealed class AccountTeamMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique account id This property cannot be changed, doing so forces recreation of the resource.
@@ -125,8 +122,7 @@ namespace Pulumi.Aiven
         public Input<string> TeamId { get; set; } = null!;
 
         /// <summary>
-        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
-        /// team. This property cannot be changed, doing so forces recreation of the resource.
+        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("userEmail", required: true)]
         public Input<string> UserEmail { get; set; } = null!;
@@ -134,14 +130,13 @@ namespace Pulumi.Aiven
         public AccountTeamMemberArgs()
         {
         }
+        public static new AccountTeamMemberArgs Empty => new AccountTeamMemberArgs();
     }
 
-    public sealed class AccountTeamMemberState : Pulumi.ResourceArgs
+    public sealed class AccountTeamMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the
-        /// invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a
-        /// member of an account team.
+        /// is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
         /// </summary>
         [Input("accepted")]
         public Input<bool>? Accepted { get; set; }
@@ -171,8 +166,7 @@ namespace Pulumi.Aiven
         public Input<string>? TeamId { get; set; }
 
         /// <summary>
-        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a
-        /// team. This property cannot be changed, doing so forces recreation of the resource.
+        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("userEmail")]
         public Input<string>? UserEmail { get; set; }
@@ -180,5 +174,6 @@ namespace Pulumi.Aiven
         public AccountTeamMemberState()
         {
         }
+        public static new AccountTeamMemberState Empty => new AccountTeamMemberState();
     }
 }

@@ -18,21 +18,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupProject(ctx, &GetProjectArgs{
-// 			Project: "<PROJECT_NAME>",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupProject(ctx, &GetProjectArgs{
+//				Project: "<PROJECT_NAME>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
@@ -45,26 +48,40 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getProject.
 type LookupProjectArgs struct {
+	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project string `pulumi:"project"`
 }
 
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
-	AccountId                   string `pulumi:"accountId"`
-	AddAccountOwnersAdminAccess bool   `pulumi:"addAccountOwnersAdminAccess"`
-	AvailableCredits            string `pulumi:"availableCredits"`
-	BillingGroup                string `pulumi:"billingGroup"`
-	CaCert                      string `pulumi:"caCert"`
-	CopyFromProject             string `pulumi:"copyFromProject"`
-	DefaultCloud                string `pulumi:"defaultCloud"`
-	EstimatedBalance            string `pulumi:"estimatedBalance"`
+	// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	AccountId string `pulumi:"accountId"`
+	// If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
+	AddAccountOwnersAdminAccess bool `pulumi:"addAccountOwnersAdminAccess"`
+	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+	AvailableCredits string `pulumi:"availableCredits"`
+	// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+	BillingGroup string `pulumi:"billingGroup"`
+	// The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+	CaCert string `pulumi:"caCert"`
+	// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+	CopyFromProject string `pulumi:"copyFromProject"`
+	// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+	DefaultCloud string `pulumi:"defaultCloud"`
+	// The current accumulated bill for this project in the current billing period.
+	EstimatedBalance string `pulumi:"estimatedBalance"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                           string          `pulumi:"id"`
-	PaymentMethod                string          `pulumi:"paymentMethod"`
-	Project                      string          `pulumi:"project"`
-	Tags                         []GetProjectTag `pulumi:"tags"`
-	TechnicalEmails              []string        `pulumi:"technicalEmails"`
-	UseSourceProjectBillingGroup bool            `pulumi:"useSourceProjectBillingGroup"`
+	Id string `pulumi:"id"`
+	// The method of invoicing used for payments for this project, e.g. `card`.
+	PaymentMethod string `pulumi:"paymentMethod"`
+	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+	Project string `pulumi:"project"`
+	// Tags are key-value pairs that allow you to categorize projects.
+	Tags []GetProjectTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+	TechnicalEmails []string `pulumi:"technicalEmails"`
+	// Use the same billing group that is used in source project.
+	UseSourceProjectBillingGroup bool `pulumi:"useSourceProjectBillingGroup"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -82,6 +99,7 @@ func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts
 
 // A collection of arguments for invoking getProject.
 type LookupProjectOutputArgs struct {
+	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
@@ -104,34 +122,42 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx co
 	return o
 }
 
+// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
 func (o LookupProjectResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// If accountId is set, grant account owner team admin access to the new project. The default value is `true`.
 func (o LookupProjectResultOutput) AddAccountOwnersAdminAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.AddAccountOwnersAdminAccess }).(pulumi.BoolOutput)
 }
 
+// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
 func (o LookupProjectResultOutput) AvailableCredits() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.AvailableCredits }).(pulumi.StringOutput)
 }
 
+// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
 func (o LookupProjectResultOutput) BillingGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.BillingGroup }).(pulumi.StringOutput)
 }
 
+// The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
 func (o LookupProjectResultOutput) CaCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.CaCert }).(pulumi.StringOutput)
 }
 
+// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
 func (o LookupProjectResultOutput) CopyFromProject() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.CopyFromProject }).(pulumi.StringOutput)
 }
 
+// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
 func (o LookupProjectResultOutput) DefaultCloud() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.DefaultCloud }).(pulumi.StringOutput)
 }
 
+// The current accumulated bill for this project in the current billing period.
 func (o LookupProjectResultOutput) EstimatedBalance() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.EstimatedBalance }).(pulumi.StringOutput)
 }
@@ -141,22 +167,27 @@ func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The method of invoicing used for payments for this project, e.g. `card`.
 func (o LookupProjectResultOutput) PaymentMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.PaymentMethod }).(pulumi.StringOutput)
 }
 
+// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 func (o LookupProjectResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Tags are key-value pairs that allow you to categorize projects.
 func (o LookupProjectResultOutput) Tags() GetProjectTagArrayOutput {
 	return o.ApplyT(func(v LookupProjectResult) []GetProjectTag { return v.Tags }).(GetProjectTagArrayOutput)
 }
 
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
 func (o LookupProjectResultOutput) TechnicalEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupProjectResult) []string { return v.TechnicalEmails }).(pulumi.StringArrayOutput)
 }
 
+// Use the same billing group that is used in source project.
 func (o LookupProjectResultOutput) UseSourceProjectBillingGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.UseSourceProjectBillingGroup }).(pulumi.BoolOutput)
 }

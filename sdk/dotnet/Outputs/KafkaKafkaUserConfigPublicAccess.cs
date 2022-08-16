@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaKafkaUserConfigPublicAccess
     {
+        /// <summary>
+        /// Kafka server provided values
+        /// </summary>
         public readonly string? Kafka;
         public readonly string? KafkaConnect;
         public readonly string? KafkaRest;

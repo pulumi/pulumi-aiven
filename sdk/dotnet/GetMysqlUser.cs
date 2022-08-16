@@ -19,22 +19,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var user = Aiven.GetMysqlUser.Invoke(new()
         ///     {
-        ///         var user = Output.Create(Aiven.GetMysqlUser.InvokeAsync(new Aiven.GetMysqlUserArgs
-        ///         {
-        ///             Project = "my-project",
-        ///             ServiceName = "my-service",
-        ///             Username = "user1",
-        ///         }));
-        ///     }
+        ///         Project = "my-project",
+        ///         ServiceName = "my-service",
+        ///         Username = "user1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -50,22 +48,20 @@ namespace Pulumi.Aiven
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aiven = Pulumi.Aiven;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var user = Aiven.GetMysqlUser.Invoke(new()
         ///     {
-        ///         var user = Output.Create(Aiven.GetMysqlUser.InvokeAsync(new Aiven.GetMysqlUserArgs
-        ///         {
-        ///             Project = "my-project",
-        ///             ServiceName = "my-service",
-        ///             Username = "user1",
-        ///         }));
-        ///     }
+        ///         Project = "my-project",
+        ///         ServiceName = "my-service",
+        ///         Username = "user1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,53 +71,97 @@ namespace Pulumi.Aiven
     }
 
 
-    public sealed class GetMysqlUserArgs : Pulumi.InvokeArgs
+    public sealed class GetMysqlUserArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
 
         public GetMysqlUserArgs()
         {
         }
+        public static new GetMysqlUserArgs Empty => new GetMysqlUserArgs();
     }
 
-    public sealed class GetMysqlUserInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMysqlUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        /// <summary>
+        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
         public GetMysqlUserInvokeArgs()
         {
         }
+        public static new GetMysqlUserInvokeArgs Empty => new GetMysqlUserInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetMysqlUserResult
     {
+        /// <summary>
+        /// Access certificate for the user
+        /// </summary>
         public readonly string AccessCert;
+        /// <summary>
+        /// Access certificate key for the user
+        /// </summary>
         public readonly string AccessKey;
+        /// <summary>
+        /// Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+        /// </summary>
         public readonly string Authentication;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The password of the MySQL User ( not applicable for all services ).
+        /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

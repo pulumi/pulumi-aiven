@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class OpenSearchOpensearchUserConfigIndexPatternGetArgs : Pulumi.ResourceArgs
+    public sealed class OpenSearchOpensearchUserConfigIndexPatternGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("maxIndexCount")]
         public Input<string>? MaxIndexCount { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Aiven.Inputs
         public OpenSearchOpensearchUserConfigIndexPatternGetArgs()
         {
         }
+        public static new OpenSearchOpensearchUserConfigIndexPatternGetArgs Empty => new OpenSearchOpensearchUserConfigIndexPatternGetArgs();
     }
 }

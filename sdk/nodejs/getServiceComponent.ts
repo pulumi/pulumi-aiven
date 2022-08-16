@@ -34,12 +34,33 @@ export function getServiceComponent(args: GetServiceComponentArgs, opts?: pulumi
  * A collection of arguments for invoking getServiceComponent.
  */
 export interface GetServiceComponentArgs {
+    /**
+     * Service component name
+     */
     component: string;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
     kafkaAuthenticationMethod?: string;
+    /**
+     * Project name
+     */
     project: string;
+    /**
+     * Network access route
+     */
     route?: string;
+    /**
+     * Service name
+     */
     serviceName?: string;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
+     */
     ssl?: boolean;
+    /**
+     * DNS usage name
+     */
     usage?: string;
 }
 
@@ -47,18 +68,45 @@ export interface GetServiceComponentArgs {
  * A collection of values returned by getServiceComponent.
  */
 export interface GetServiceComponentResult {
+    /**
+     * Service component name
+     */
     readonly component: string;
+    /**
+     * DNS name for connecting to the service component
+     */
     readonly host: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
     readonly kafkaAuthenticationMethod?: string;
+    /**
+     * Port number for connecting to the service component
+     */
     readonly port: number;
+    /**
+     * Project name
+     */
     readonly project: string;
+    /**
+     * Network access route
+     */
     readonly route?: string;
+    /**
+     * Service name
+     */
     readonly serviceName?: string;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
+     */
     readonly ssl?: boolean;
+    /**
+     * DNS usage name
+     */
     readonly usage?: string;
 }
 
@@ -70,11 +118,32 @@ export function getServiceComponentOutput(args: GetServiceComponentOutputArgs, o
  * A collection of arguments for invoking getServiceComponent.
  */
 export interface GetServiceComponentOutputArgs {
+    /**
+     * Service component name
+     */
     component: pulumi.Input<string>;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Project name
+     */
     project: pulumi.Input<string>;
+    /**
+     * Network access route
+     */
     route?: pulumi.Input<string>;
+    /**
+     * Service name
+     */
     serviceName?: pulumi.Input<string>;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
+     */
     ssl?: pulumi.Input<boolean>;
+    /**
+     * DNS usage name
+     */
     usage?: pulumi.Input<string>;
 }

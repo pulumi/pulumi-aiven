@@ -10,10 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GrafanaGrafanaArgs : Pulumi.ResourceArgs
+    public sealed class GrafanaGrafanaArgs : global::Pulumi.ResourceArgs
     {
         public GrafanaGrafanaArgs()
         {
         }
+        public static new GrafanaGrafanaArgs Empty => new GrafanaGrafanaArgs();
     }
 }

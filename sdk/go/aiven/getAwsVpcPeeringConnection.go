@@ -18,23 +18,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupAwsVpcPeeringConnection(ctx, &GetAwsVpcPeeringConnectionArgs{
-// 			VpcId:        data.Aiven_project_vpc.Vpc.Id,
-// 			AwsAccountId: "XXXXX",
-// 			AwsVpcId:     "XXXXX",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupAwsVpcPeeringConnection(ctx, &GetAwsVpcPeeringConnectionArgs{
+//				VpcId:        data.Aiven_project_vpc.Vpc.Id,
+//				AwsAccountId: "XXXXX",
+//				AwsVpcId:     "XXXXX",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupAwsVpcPeeringConnection(ctx *pulumi.Context, args *LookupAwsVpcPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupAwsVpcPeeringConnectionResult, error) {
 	var rv LookupAwsVpcPeeringConnectionResult
@@ -47,23 +50,34 @@ func LookupAwsVpcPeeringConnection(ctx *pulumi.Context, args *LookupAwsVpcPeerin
 
 // A collection of arguments for invoking getAwsVpcPeeringConnection.
 type LookupAwsVpcPeeringConnectionArgs struct {
+	// AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
 	AwsAccountId string `pulumi:"awsAccountId"`
-	AwsVpcId     string `pulumi:"awsVpcId"`
+	// AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+	AwsVpcId string `pulumi:"awsVpcId"`
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
 	AwsVpcRegion string `pulumi:"awsVpcRegion"`
-	VpcId        string `pulumi:"vpcId"`
+	// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+	VpcId string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getAwsVpcPeeringConnection.
 type LookupAwsVpcPeeringConnectionResult struct {
-	AwsAccountId              string `pulumi:"awsAccountId"`
-	AwsVpcId                  string `pulumi:"awsVpcId"`
+	// AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+	AwsAccountId string `pulumi:"awsAccountId"`
+	// AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+	AwsVpcId string `pulumi:"awsVpcId"`
+	// AWS VPC peering connection ID
 	AwsVpcPeeringConnectionId string `pulumi:"awsVpcPeeringConnectionId"`
-	AwsVpcRegion              string `pulumi:"awsVpcRegion"`
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+	AwsVpcRegion string `pulumi:"awsVpcRegion"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string                 `pulumi:"id"`
-	State     string                 `pulumi:"state"`
+	Id string `pulumi:"id"`
+	// State of the peering connection
+	State string `pulumi:"state"`
+	// State-specific help or error information
 	StateInfo map[string]interface{} `pulumi:"stateInfo"`
-	VpcId     string                 `pulumi:"vpcId"`
+	// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+	VpcId string `pulumi:"vpcId"`
 }
 
 func LookupAwsVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupAwsVpcPeeringConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupAwsVpcPeeringConnectionResultOutput {
@@ -81,10 +95,14 @@ func LookupAwsVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupAwsVpcP
 
 // A collection of arguments for invoking getAwsVpcPeeringConnection.
 type LookupAwsVpcPeeringConnectionOutputArgs struct {
+	// AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
 	AwsAccountId pulumi.StringInput `pulumi:"awsAccountId"`
-	AwsVpcId     pulumi.StringInput `pulumi:"awsVpcId"`
+	// AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+	AwsVpcId pulumi.StringInput `pulumi:"awsVpcId"`
+	// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
 	AwsVpcRegion pulumi.StringInput `pulumi:"awsVpcRegion"`
-	VpcId        pulumi.StringInput `pulumi:"vpcId"`
+	// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
 func (LookupAwsVpcPeeringConnectionOutputArgs) ElementType() reflect.Type {
@@ -106,18 +124,22 @@ func (o LookupAwsVpcPeeringConnectionResultOutput) ToLookupAwsVpcPeeringConnecti
 	return o
 }
 
+// AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupAwsVpcPeeringConnectionResultOutput) AwsAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsVpcPeeringConnectionResult) string { return v.AwsAccountId }).(pulumi.StringOutput)
 }
 
+// AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupAwsVpcPeeringConnectionResultOutput) AwsVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsVpcPeeringConnectionResult) string { return v.AwsVpcId }).(pulumi.StringOutput)
 }
 
+// AWS VPC peering connection ID
 func (o LookupAwsVpcPeeringConnectionResultOutput) AwsVpcPeeringConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsVpcPeeringConnectionResult) string { return v.AwsVpcPeeringConnectionId }).(pulumi.StringOutput)
 }
 
+// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupAwsVpcPeeringConnectionResultOutput) AwsVpcRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsVpcPeeringConnectionResult) string { return v.AwsVpcRegion }).(pulumi.StringOutput)
 }
@@ -127,14 +149,17 @@ func (o LookupAwsVpcPeeringConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsVpcPeeringConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// State of the peering connection
 func (o LookupAwsVpcPeeringConnectionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsVpcPeeringConnectionResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// State-specific help or error information
 func (o LookupAwsVpcPeeringConnectionResultOutput) StateInfo() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupAwsVpcPeeringConnectionResult) map[string]interface{} { return v.StateInfo }).(pulumi.MapOutput)
 }
 
+// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupAwsVpcPeeringConnectionResultOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsVpcPeeringConnectionResult) string { return v.VpcId }).(pulumi.StringOutput)
 }

@@ -23,7 +23,13 @@ export function getAccountTeam(args: GetAccountTeamArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getAccountTeam.
  */
 export interface GetAccountTeamArgs {
+    /**
+     * The unique account id
+     */
     accountId: string;
+    /**
+     * The account team name
+     */
     name: string;
 }
 
@@ -31,14 +37,29 @@ export interface GetAccountTeamArgs {
  * A collection of values returned by getAccountTeam.
  */
 export interface GetAccountTeamResult {
+    /**
+     * The unique account id
+     */
     readonly accountId: string;
+    /**
+     * Time of creation
+     */
     readonly createTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The account team name
+     */
     readonly name: string;
+    /**
+     * The auto-generated unique account team id
+     */
     readonly teamId: string;
+    /**
+     * Time of last update
+     */
     readonly updateTime: string;
 }
 
@@ -50,6 +71,12 @@ export function getAccountTeamOutput(args: GetAccountTeamOutputArgs, opts?: pulu
  * A collection of arguments for invoking getAccountTeam.
  */
 export interface GetAccountTeamOutputArgs {
+    /**
+     * The unique account id
+     */
     accountId: pulumi.Input<string>;
+    /**
+     * The account team name
+     */
     name: pulumi.Input<string>;
 }

@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationEndpointPrometheusUserConfigArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationEndpointPrometheusUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Prometheus basic authentication password
+        /// </summary>
         [Input("basicAuthPassword")]
         public Input<string>? BasicAuthPassword { get; set; }
 
+        /// <summary>
+        /// Prometheus basic authentication username
+        /// </summary>
         [Input("basicAuthUsername")]
         public Input<string>? BasicAuthUsername { get; set; }
 
         public ServiceIntegrationEndpointPrometheusUserConfigArgs()
         {
         }
+        public static new ServiceIntegrationEndpointPrometheusUserConfigArgs Empty => new ServiceIntegrationEndpointPrometheusUserConfigArgs();
     }
 }

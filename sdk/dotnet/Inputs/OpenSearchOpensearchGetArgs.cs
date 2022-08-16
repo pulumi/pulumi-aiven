@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class OpenSearchOpensearchGetArgs : Pulumi.ResourceArgs
+    public sealed class OpenSearchOpensearchGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("opensearchDashboardsUri")]
         public Input<string>? OpensearchDashboardsUri { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Aiven.Inputs
         public OpenSearchOpensearchGetArgs()
         {
         }
+        public static new OpenSearchOpensearchGetArgs Empty => new OpenSearchOpensearchGetArgs();
     }
 }

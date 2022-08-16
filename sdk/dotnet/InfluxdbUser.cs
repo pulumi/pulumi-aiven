@@ -15,27 +15,25 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new Aiven.InfluxdbUser("foo", new()
     ///     {
-    ///         var foo = new Aiven.InfluxdbUser("foo", new Aiven.InfluxdbUserArgs
-    ///         {
-    ///             ServiceName = aiven_influxdb.Bar.Service_name,
-    ///             Project = "my-project",
-    ///             Username = "user-1",
-    ///             Password = "Test$1234",
-    ///         });
-    ///     }
+    ///         ServiceName = aiven_influxdb.Bar.Service_name,
+    ///         Project = "my-project",
+    ///         Username = "user-1",
+    ///         Password = "Test$1234",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/influxdbUser:InfluxdbUser")]
-    public partial class InfluxdbUser : Pulumi.CustomResource
+    public partial class InfluxdbUser : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access certificate for the user if applicable for the service in question
@@ -56,15 +54,13 @@ namespace Pulumi.Aiven
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -76,8 +72,7 @@ namespace Pulumi.Aiven
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This
-        /// property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -126,7 +121,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class InfluxdbUserArgs : Pulumi.ResourceArgs
+    public sealed class InfluxdbUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The password of the InfluxDB User.
@@ -135,22 +130,19 @@ namespace Pulumi.Aiven
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This
-        /// property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -158,9 +150,10 @@ namespace Pulumi.Aiven
         public InfluxdbUserArgs()
         {
         }
+        public static new InfluxdbUserArgs Empty => new InfluxdbUserArgs();
     }
 
-    public sealed class InfluxdbUserState : Pulumi.ResourceArgs
+    public sealed class InfluxdbUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access certificate for the user if applicable for the service in question
@@ -181,15 +174,13 @@ namespace Pulumi.Aiven
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -201,8 +192,7 @@ namespace Pulumi.Aiven
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This
-        /// property cannot be changed, doing so forces recreation of the resource.
+        /// The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -210,5 +200,6 @@ namespace Pulumi.Aiven
         public InfluxdbUserState()
         {
         }
+        public static new InfluxdbUserState Empty => new InfluxdbUserState();
     }
 }

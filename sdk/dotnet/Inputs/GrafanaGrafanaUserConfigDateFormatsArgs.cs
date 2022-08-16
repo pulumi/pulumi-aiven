@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GrafanaGrafanaUserConfigDateFormatsArgs : Pulumi.ResourceArgs
+    public sealed class GrafanaGrafanaUserConfigDateFormatsArgs : global::Pulumi.ResourceArgs
     {
         [Input("defaultTimezone")]
         public Input<string>? DefaultTimezone { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.Aiven.Inputs
         public GrafanaGrafanaUserConfigDateFormatsArgs()
         {
         }
+        public static new GrafanaGrafanaUserConfigDateFormatsArgs Empty => new GrafanaGrafanaUserConfigDateFormatsArgs();
     }
 }

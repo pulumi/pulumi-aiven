@@ -15,22 +15,20 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new Aiven.AwsVpcPeeringConnection("foo", new()
     ///     {
-    ///         var foo = new Aiven.AwsVpcPeeringConnection("foo", new Aiven.AwsVpcPeeringConnectionArgs
-    ///         {
-    ///             VpcId = data.Aiven_project_vpc.Vpc.Id,
-    ///             AwsAccountId = "XXXXX",
-    ///             AwsVpcId = "XXXXX",
-    ///         });
-    ///     }
+    ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
+    ///         AwsAccountId = "XXXXX",
+    ///         AwsVpcId = "XXXXX",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +38,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection")]
-    public partial class AwsVpcPeeringConnection : Pulumi.CustomResource
+    public partial class AwsVpcPeeringConnection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -61,8 +59,7 @@ namespace Pulumi.Aiven
         public Output<string> AwsVpcPeeringConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-        /// recreation of the resource.
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("awsVpcRegion")]
         public Output<string> AwsVpcRegion { get; private set; } = null!;
@@ -129,7 +126,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class AwsVpcPeeringConnectionArgs : Pulumi.ResourceArgs
+    public sealed class AwsVpcPeeringConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -144,8 +141,7 @@ namespace Pulumi.Aiven
         public Input<string> AwsVpcId { get; set; } = null!;
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-        /// recreation of the resource.
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("awsVpcRegion", required: true)]
         public Input<string> AwsVpcRegion { get; set; } = null!;
@@ -159,9 +155,10 @@ namespace Pulumi.Aiven
         public AwsVpcPeeringConnectionArgs()
         {
         }
+        public static new AwsVpcPeeringConnectionArgs Empty => new AwsVpcPeeringConnectionArgs();
     }
 
-    public sealed class AwsVpcPeeringConnectionState : Pulumi.ResourceArgs
+    public sealed class AwsVpcPeeringConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -182,8 +179,7 @@ namespace Pulumi.Aiven
         public Input<string>? AwsVpcPeeringConnectionId { get; set; }
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces
-        /// recreation of the resource.
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("awsVpcRegion")]
         public Input<string>? AwsVpcRegion { get; set; }
@@ -215,5 +211,6 @@ namespace Pulumi.Aiven
         public AwsVpcPeeringConnectionState()
         {
         }
+        public static new AwsVpcPeeringConnectionState Empty => new AwsVpcPeeringConnectionState();
     }
 }

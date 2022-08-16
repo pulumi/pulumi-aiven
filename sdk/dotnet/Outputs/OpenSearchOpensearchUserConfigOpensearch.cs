@@ -17,6 +17,9 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ActionDestructiveRequiresName;
         public readonly string? ClusterMaxShardsPerNode;
         public readonly string? ClusterRoutingAllocationNodeConcurrentRecoveries;
+        public readonly string? EmailSenderName;
+        public readonly string? EmailSenderPassword;
+        public readonly string? EmailSenderUsername;
         public readonly string? HttpMaxContentLength;
         public readonly string? HttpMaxHeaderSize;
         public readonly string? HttpMaxInitialLineLength;
@@ -51,6 +54,12 @@ namespace Pulumi.Aiven.Outputs
             string? clusterMaxShardsPerNode,
 
             string? clusterRoutingAllocationNodeConcurrentRecoveries,
+
+            string? emailSenderName,
+
+            string? emailSenderPassword,
+
+            string? emailSenderUsername,
 
             string? httpMaxContentLength,
 
@@ -104,6 +113,9 @@ namespace Pulumi.Aiven.Outputs
             ActionDestructiveRequiresName = actionDestructiveRequiresName;
             ClusterMaxShardsPerNode = clusterMaxShardsPerNode;
             ClusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
+            EmailSenderName = emailSenderName;
+            EmailSenderPassword = emailSenderPassword;
+            EmailSenderUsername = emailSenderUsername;
             HttpMaxContentLength = httpMaxContentLength;
             HttpMaxHeaderSize = httpMaxHeaderSize;
             HttpMaxInitialLineLength = httpMaxInitialLineLength;

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaKafkaUserConfigKafkaGetArgs : Pulumi.ResourceArgs
+    public sealed class KafkaKafkaUserConfigKafkaGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoCreateTopicsEnable")]
         public Input<string>? AutoCreateTopicsEnable { get; set; }
@@ -132,5 +132,6 @@ namespace Pulumi.Aiven.Inputs
         public KafkaKafkaUserConfigKafkaGetArgs()
         {
         }
+        public static new KafkaKafkaUserConfigKafkaGetArgs Empty => new KafkaKafkaUserConfigKafkaGetArgs();
     }
 }

@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class FlinkFlink
     {
+        /// <summary>
+        /// Host and Port of a Flink server
+        /// </summary>
         public readonly ImmutableArray<string> HostPorts;
 
         [OutputConstructor]

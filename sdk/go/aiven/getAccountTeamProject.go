@@ -22,19 +22,26 @@ func LookupAccountTeamProject(ctx *pulumi.Context, args *LookupAccountTeamProjec
 
 // A collection of arguments for invoking getAccountTeamProject.
 type LookupAccountTeamProjectArgs struct {
-	AccountId   string `pulumi:"accountId"`
+	// The unique account id
+	AccountId string `pulumi:"accountId"`
+	// The name of an already existing project
 	ProjectName string `pulumi:"projectName"`
-	TeamId      string `pulumi:"teamId"`
+	// An account team id
+	TeamId string `pulumi:"teamId"`
 }
 
 // A collection of values returned by getAccountTeamProject.
 type LookupAccountTeamProjectResult struct {
+	// The unique account id
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The name of an already existing project
 	ProjectName string `pulumi:"projectName"`
-	TeamId      string `pulumi:"teamId"`
-	TeamType    string `pulumi:"teamType"`
+	// An account team id
+	TeamId string `pulumi:"teamId"`
+	// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
+	TeamType string `pulumi:"teamType"`
 }
 
 func LookupAccountTeamProjectOutput(ctx *pulumi.Context, args LookupAccountTeamProjectOutputArgs, opts ...pulumi.InvokeOption) LookupAccountTeamProjectResultOutput {
@@ -52,9 +59,12 @@ func LookupAccountTeamProjectOutput(ctx *pulumi.Context, args LookupAccountTeamP
 
 // A collection of arguments for invoking getAccountTeamProject.
 type LookupAccountTeamProjectOutputArgs struct {
-	AccountId   pulumi.StringInput `pulumi:"accountId"`
+	// The unique account id
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The name of an already existing project
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
-	TeamId      pulumi.StringInput `pulumi:"teamId"`
+	// An account team id
+	TeamId pulumi.StringInput `pulumi:"teamId"`
 }
 
 func (LookupAccountTeamProjectOutputArgs) ElementType() reflect.Type {
@@ -76,6 +86,7 @@ func (o LookupAccountTeamProjectResultOutput) ToLookupAccountTeamProjectResultOu
 	return o
 }
 
+// The unique account id
 func (o LookupAccountTeamProjectResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamProjectResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -85,14 +96,17 @@ func (o LookupAccountTeamProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of an already existing project
 func (o LookupAccountTeamProjectResultOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamProjectResult) string { return v.ProjectName }).(pulumi.StringOutput)
 }
 
+// An account team id
 func (o LookupAccountTeamProjectResultOutput) TeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamProjectResult) string { return v.TeamId }).(pulumi.StringOutput)
 }
 
+// The Account team project type The possible values are `admin`, `developer`, `operator` and `readOnly`.
 func (o LookupAccountTeamProjectResultOutput) TeamType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamProjectResult) string { return v.TeamType }).(pulumi.StringOutput)
 }

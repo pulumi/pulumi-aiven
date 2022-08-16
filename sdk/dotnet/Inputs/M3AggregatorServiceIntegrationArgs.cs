@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class M3AggregatorServiceIntegrationArgs : Pulumi.ResourceArgs
+    public sealed class M3AggregatorServiceIntegrationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Type of the service integration. The only supported value at the moment is `read_replica`
+        /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the source service
+        /// </summary>
         [Input("sourceServiceName", required: true)]
         public Input<string> SourceServiceName { get; set; } = null!;
 
         public M3AggregatorServiceIntegrationArgs()
         {
         }
+        public static new M3AggregatorServiceIntegrationArgs Empty => new M3AggregatorServiceIntegrationArgs();
     }
 }

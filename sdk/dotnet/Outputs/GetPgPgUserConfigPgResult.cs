@@ -34,6 +34,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? LogErrorVerbosity;
         public readonly string? LogLinePrefix;
         public readonly string? LogMinDurationStatement;
+        public readonly string? LogTempFiles;
         public readonly string? MaxFilesPerProcess;
         public readonly string? MaxLocksPerTransaction;
         public readonly string? MaxLogicalReplicationWorkers;
@@ -103,6 +104,8 @@ namespace Pulumi.Aiven.Outputs
             string? logLinePrefix,
 
             string? logMinDurationStatement,
+
+            string? logTempFiles,
 
             string? maxFilesPerProcess,
 
@@ -175,6 +178,7 @@ namespace Pulumi.Aiven.Outputs
             LogErrorVerbosity = logErrorVerbosity;
             LogLinePrefix = logLinePrefix;
             LogMinDurationStatement = logMinDurationStatement;
+            LogTempFiles = logTempFiles;
             MaxFilesPerProcess = maxFilesPerProcess;
             MaxLocksPerTransaction = maxLocksPerTransaction;
             MaxLogicalReplicationWorkers = maxLogicalReplicationWorkers;

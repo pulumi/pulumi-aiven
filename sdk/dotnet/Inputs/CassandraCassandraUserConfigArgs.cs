@@ -10,42 +10,71 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class CassandraCassandraUserConfigArgs : Pulumi.ResourceArgs
+    public sealed class CassandraCassandraUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// cassandra configuration values
+        /// </summary>
         [Input("cassandra")]
         public Input<Inputs.CassandraCassandraUserConfigCassandraArgs>? Cassandra { get; set; }
 
+        /// <summary>
+        /// Cassandra major version
+        /// </summary>
         [Input("cassandraVersion")]
         public Input<string>? CassandraVersion { get; set; }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// IP filter
+        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Migration mode for the sstableloader utility
+        /// </summary>
         [Input("migrateSstableloader")]
         public Input<string>? MigrateSstableloader { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.CassandraCassandraUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.CassandraCassandraUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 
         public CassandraCassandraUserConfigArgs()
         {
         }
+        public static new CassandraCassandraUserConfigArgs Empty => new CassandraCassandraUserConfigArgs();
     }
 }

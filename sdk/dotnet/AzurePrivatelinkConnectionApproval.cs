@@ -19,7 +19,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval")]
-    public partial class AzurePrivatelinkConnectionApproval : Pulumi.CustomResource
+    public partial class AzurePrivatelinkConnectionApproval : global::Pulumi.CustomResource
     {
         /// <summary>
         /// IP address of Azure private endpoint
@@ -34,15 +34,13 @@ namespace Pulumi.Aiven
         public Output<string> PrivatelinkConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -97,7 +95,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class AzurePrivatelinkConnectionApprovalArgs : Pulumi.ResourceArgs
+    public sealed class AzurePrivatelinkConnectionApprovalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IP address of Azure private endpoint
@@ -106,15 +104,13 @@ namespace Pulumi.Aiven
         public Input<string>? EndpointIpAddress { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -122,9 +118,10 @@ namespace Pulumi.Aiven
         public AzurePrivatelinkConnectionApprovalArgs()
         {
         }
+        public static new AzurePrivatelinkConnectionApprovalArgs Empty => new AzurePrivatelinkConnectionApprovalArgs();
     }
 
-    public sealed class AzurePrivatelinkConnectionApprovalState : Pulumi.ResourceArgs
+    public sealed class AzurePrivatelinkConnectionApprovalState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IP address of Azure private endpoint
@@ -139,15 +136,13 @@ namespace Pulumi.Aiven
         public Input<string>? PrivatelinkConnectionId { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -161,5 +156,6 @@ namespace Pulumi.Aiven
         public AzurePrivatelinkConnectionApprovalState()
         {
         }
+        public static new AzurePrivatelinkConnectionApprovalState Empty => new AzurePrivatelinkConnectionApprovalState();
     }
 }

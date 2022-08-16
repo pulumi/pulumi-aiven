@@ -10,22 +10,35 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// AWS access key. Required permissions are cloudwatch:PutMetricData
+        /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
+        /// <summary>
+        /// AWS CloudWatch Metrics Namespace
+        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
+        /// <summary>
+        /// AWS region
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// AWS secret key
+        /// </summary>
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
 
         public ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs()
         {
         }
+        public static new ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs Empty => new ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs();
     }
 }

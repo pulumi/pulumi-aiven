@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaKafkaUserConfigSchemaRegistryConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class KafkaKafkaUserConfigSchemaRegistryConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("leaderEligibility")]
         public Input<string>? LeaderEligibility { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Aiven.Inputs
         public KafkaKafkaUserConfigSchemaRegistryConfigGetArgs()
         {
         }
+        public static new KafkaKafkaUserConfigSchemaRegistryConfigGetArgs Empty => new KafkaKafkaUserConfigSchemaRegistryConfigGetArgs();
     }
 }

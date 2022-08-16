@@ -19,11 +19,10 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/project:Project")]
-    public partial class Project : Pulumi.CustomResource
+    public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-        /// please refer to this variable as a reference.
+        /// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -41,8 +40,7 @@ namespace Pulumi.Aiven
         public Output<string> AvailableCredits { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-        /// as a reference.
+        /// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Output("billingGroup")]
         public Output<string?> BillingGroup { get; private set; } = null!;
@@ -54,17 +52,13 @@ namespace Pulumi.Aiven
         public Output<string> CaCert { get; private set; } = null!;
 
         /// <summary>
-        /// is the name of another project used to copy billing information and some other project attributes like technical
-        /// contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-        /// copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-        /// project is created. To set up proper dependencies please refer to this variable as a reference.
+        /// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Output("copyFromProject")]
         public Output<string?> CopyFromProject { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-        /// created. This will not affect existing services.
+        /// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         /// </summary>
         [Output("defaultCloud")]
         public Output<string?> DefaultCloud { get; private set; } = null!;
@@ -82,8 +76,7 @@ namespace Pulumi.Aiven
         public Output<string> PaymentMethod { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-        /// without destroying and re-creating the project, including all sub-resources.
+        /// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         /// </summary>
         [Output("project")]
         public Output<string> ProjectName { get; private set; } = null!;
@@ -95,8 +88,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.ProjectTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        /// instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         /// </summary>
         [Output("technicalEmails")]
         public Output<ImmutableArray<string>> TechnicalEmails { get; private set; } = null!;
@@ -151,11 +143,10 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class ProjectArgs : Pulumi.ResourceArgs
+    public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-        /// please refer to this variable as a reference.
+        /// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -173,31 +164,25 @@ namespace Pulumi.Aiven
         public Input<string>? AvailableCredits { get; set; }
 
         /// <summary>
-        /// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-        /// as a reference.
+        /// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("billingGroup")]
         public Input<string>? BillingGroup { get; set; }
 
         /// <summary>
-        /// is the name of another project used to copy billing information and some other project attributes like technical
-        /// contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-        /// copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-        /// project is created. To set up proper dependencies please refer to this variable as a reference.
+        /// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("copyFromProject")]
         public Input<string>? CopyFromProject { get; set; }
 
         /// <summary>
-        /// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-        /// created. This will not affect existing services.
+        /// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         /// </summary>
         [Input("defaultCloud")]
         public Input<string>? DefaultCloud { get; set; }
 
         /// <summary>
-        /// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-        /// without destroying and re-creating the project, including all sub-resources.
+        /// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
@@ -218,8 +203,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _technicalEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        /// instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         /// </summary>
         public InputList<string> TechnicalEmails
         {
@@ -236,13 +220,13 @@ namespace Pulumi.Aiven
         public ProjectArgs()
         {
         }
+        public static new ProjectArgs Empty => new ProjectArgs();
     }
 
-    public sealed class ProjectState : Pulumi.ResourceArgs
+    public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies
-        /// please refer to this variable as a reference.
+        /// An optional property to link a project to already an existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -260,8 +244,7 @@ namespace Pulumi.Aiven
         public Input<string>? AvailableCredits { get; set; }
 
         /// <summary>
-        /// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable
-        /// as a reference.
+        /// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("billingGroup")]
         public Input<string>? BillingGroup { get; set; }
@@ -273,17 +256,13 @@ namespace Pulumi.Aiven
         public Input<string>? CaCert { get; set; }
 
         /// <summary>
-        /// is the name of another project used to copy billing information and some other project attributes like technical
-        /// contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be
-        /// copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the
-        /// project is created. To set up proper dependencies please refer to this variable as a reference.
+        /// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("copyFromProject")]
         public Input<string>? CopyFromProject { get; set; }
 
         /// <summary>
-        /// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is
-        /// created. This will not affect existing services.
+        /// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
         /// </summary>
         [Input("defaultCloud")]
         public Input<string>? DefaultCloud { get; set; }
@@ -301,8 +280,7 @@ namespace Pulumi.Aiven
         public Input<string>? PaymentMethod { get; set; }
 
         /// <summary>
-        /// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later
-        /// without destroying and re-creating the project, including all sub-resources.
+        /// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         /// </summary>
         [Input("project")]
         public Input<string>? ProjectName { get; set; }
@@ -323,8 +301,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _technicalEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        /// instability. It is good practice to keep this up-to-date to be aware of any potential issues with your project.
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
         /// </summary>
         public InputList<string> TechnicalEmails
         {
@@ -341,5 +318,6 @@ namespace Pulumi.Aiven
         public ProjectState()
         {
         }
+        public static new ProjectState Empty => new ProjectState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class InfluxDbInfluxdbArgs : Pulumi.ResourceArgs
+    public sealed class InfluxDbInfluxdbArgs : global::Pulumi.ResourceArgs
     {
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Aiven.Inputs
         public InfluxDbInfluxdbArgs()
         {
         }
+        public static new InfluxDbInfluxdbArgs Empty => new InfluxDbInfluxdbArgs();
     }
 }

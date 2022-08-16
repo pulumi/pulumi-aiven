@@ -10,16 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaConnectorTaskGetArgs : Pulumi.ResourceArgs
+    public sealed class KafkaConnectorTaskGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("connector")]
         public Input<string>? Connector { get; set; }
 
+        /// <summary>
+        /// List of tasks of a connector.
+        /// </summary>
         [Input("task")]
         public Input<int>? Task { get; set; }
 
         public KafkaConnectorTaskGetArgs()
         {
         }
+        public static new KafkaConnectorTaskGetArgs Empty => new KafkaConnectorTaskGetArgs();
     }
 }

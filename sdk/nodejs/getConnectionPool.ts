@@ -37,8 +37,17 @@ export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getConnectionPool.
  */
 export interface GetConnectionPoolArgs {
+    /**
+     * The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     */
     poolName: string;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: string;
 }
 
@@ -46,17 +55,41 @@ export interface GetConnectionPoolArgs {
  * A collection of values returned by getConnectionPool.
  */
 export interface GetConnectionPoolResult {
+    /**
+     * The URI for connecting to the pool
+     */
     readonly connectionUri: string;
+    /**
+     * The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly databaseName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     */
     readonly poolMode: string;
+    /**
+     * The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly poolName: string;
+    /**
+     * The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+     */
     readonly poolSize: number;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly project: string;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     readonly serviceName: string;
+    /**
+     * The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+     */
     readonly username: string;
 }
 
@@ -68,7 +101,16 @@ export function getConnectionPoolOutput(args: GetConnectionPoolOutputArgs, opts?
  * A collection of arguments for invoking getConnectionPool.
  */
 export interface GetConnectionPoolOutputArgs {
+    /**
+     * The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     */
     poolName: pulumi.Input<string>;
+    /**
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     project: pulumi.Input<string>;
+    /**
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     */
     serviceName: pulumi.Input<string>;
 }

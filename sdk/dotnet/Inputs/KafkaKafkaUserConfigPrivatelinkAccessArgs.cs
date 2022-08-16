@@ -10,11 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaKafkaUserConfigPrivatelinkAccessArgs : Pulumi.ResourceArgs
+    public sealed class KafkaKafkaUserConfigPrivatelinkAccessArgs : global::Pulumi.ResourceArgs
     {
         [Input("jolokia")]
         public Input<string>? Jolokia { get; set; }
 
+        /// <summary>
+        /// Kafka server provided values
+        /// </summary>
         [Input("kafka")]
         public Input<string>? Kafka { get; set; }
 
@@ -33,5 +36,6 @@ namespace Pulumi.Aiven.Inputs
         public KafkaKafkaUserConfigPrivatelinkAccessArgs()
         {
         }
+        public static new KafkaKafkaUserConfigPrivatelinkAccessArgs Empty => new KafkaKafkaUserConfigPrivatelinkAccessArgs();
     }
 }

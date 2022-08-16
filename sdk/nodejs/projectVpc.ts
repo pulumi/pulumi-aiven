@@ -42,8 +42,7 @@ export class ProjectVpc extends pulumi.CustomResource {
     }
 
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional
-     * information. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly cloudName!: pulumi.Output<string>;
     /**
@@ -51,8 +50,7 @@ export class ProjectVpc extends pulumi.CustomResource {
      */
     public readonly networkCidr!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -103,8 +101,7 @@ export class ProjectVpc extends pulumi.CustomResource {
  */
 export interface ProjectVpcState {
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional
-     * information. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      */
     cloudName?: pulumi.Input<string>;
     /**
@@ -112,8 +109,7 @@ export interface ProjectVpcState {
      */
     networkCidr?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -127,8 +123,7 @@ export interface ProjectVpcState {
  */
 export interface ProjectVpcArgs {
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional
-     * information. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
      */
     cloudName: pulumi.Input<string>;
     /**
@@ -136,8 +131,7 @@ export interface ProjectVpcArgs {
      */
     networkCidr: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
 }

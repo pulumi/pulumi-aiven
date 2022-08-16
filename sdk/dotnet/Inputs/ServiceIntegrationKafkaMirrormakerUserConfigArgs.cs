@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ServiceIntegrationKafkaMirrormakerUserConfigArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIntegrationKafkaMirrormakerUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Kafka cluster alias
+        /// </summary>
         [Input("clusterAlias")]
         public Input<string>? ClusterAlias { get; set; }
 
+        /// <summary>
+        /// Kafka MirrorMaker configuration values
+        /// </summary>
         [Input("kafkaMirrormaker")]
         public Input<Inputs.ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs>? KafkaMirrormaker { get; set; }
 
         public ServiceIntegrationKafkaMirrormakerUserConfigArgs()
         {
         }
+        public static new ServiceIntegrationKafkaMirrormakerUserConfigArgs Empty => new ServiceIntegrationKafkaMirrormakerUserConfigArgs();
     }
 }

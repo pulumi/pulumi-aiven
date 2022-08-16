@@ -15,42 +15,43 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fooProject = Aiven.GetProject.Invoke(new()
     ///     {
-    ///         var fooProject = Output.Create(Aiven.GetProject.InvokeAsync(new Aiven.GetProjectArgs
-    ///         {
-    ///             Project = "example_project",
-    ///         }));
-    ///         var bar = new Aiven.OpenSearch("bar", new Aiven.OpenSearchArgs
-    ///         {
-    ///             Project = fooProject.Apply(fooProject =&gt; fooProject.Project),
-    ///             CloudName = "google-europe-west1",
-    ///             Plan = "startup-4",
-    ///             ServiceName = "example_service_name",
-    ///             MaintenanceWindowDow = "monday",
-    ///             MaintenanceWindowTime = "10:00:00",
-    ///         });
-    ///         var fooServiceUser = new Aiven.ServiceUser("fooServiceUser", new Aiven.ServiceUserArgs
-    ///         {
-    ///             ServiceName = bar.ServiceName,
-    ///             Project = fooProject.Apply(fooProject =&gt; fooProject.Project),
-    ///             Username = "user-example",
-    ///         });
-    ///         var fooOpenSearchAclConfig = new Aiven.OpenSearchAclConfig("fooOpenSearchAclConfig", new Aiven.OpenSearchAclConfigArgs
-    ///         {
-    ///             Project = fooProject.Apply(fooProject =&gt; fooProject.Project),
-    ///             ServiceName = bar.ServiceName,
-    ///             Enabled = true,
-    ///             ExtendedAcl = false,
-    ///         });
-    ///     }
+    ///         Project = "example_project",
+    ///     });
     /// 
-    /// }
+    ///     var bar = new Aiven.OpenSearch("bar", new()
+    ///     {
+    ///         Project = fooProject.Apply(getProjectResult =&gt; getProjectResult.Project),
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-4",
+    ///         ServiceName = "example_service_name",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
+    ///     });
+    /// 
+    ///     var fooServiceUser = new Aiven.ServiceUser("fooServiceUser", new()
+    ///     {
+    ///         ServiceName = bar.ServiceName,
+    ///         Project = fooProject.Apply(getProjectResult =&gt; getProjectResult.Project),
+    ///         Username = "user-example",
+    ///     });
+    /// 
+    ///     var fooOpenSearchAclConfig = new Aiven.OpenSearchAclConfig("fooOpenSearchAclConfig", new()
+    ///     {
+    ///         Project = fooProject.Apply(getProjectResult =&gt; getProjectResult.Project),
+    ///         ServiceName = bar.ServiceName,
+    ///         Enabled = true,
+    ///         ExtendedAcl = false,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +61,7 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/openSearchAclConfig:OpenSearchAclConfig")]
-    public partial class OpenSearchAclConfig : Pulumi.CustomResource
+    public partial class OpenSearchAclConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
@@ -69,23 +70,19 @@ namespace Pulumi.Aiven
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
-        /// ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
-        /// indexes they have been granted access to. The default value is `true`.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         /// </summary>
         [Output("extendedAcl")]
         public Output<bool?> ExtendedAcl { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -134,7 +131,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class OpenSearchAclConfigArgs : Pulumi.ResourceArgs
+    public sealed class OpenSearchAclConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
@@ -143,23 +140,19 @@ namespace Pulumi.Aiven
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
-        /// ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
-        /// indexes they have been granted access to. The default value is `true`.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         /// </summary>
         [Input("extendedAcl")]
         public Input<bool>? ExtendedAcl { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -167,9 +160,10 @@ namespace Pulumi.Aiven
         public OpenSearchAclConfigArgs()
         {
         }
+        public static new OpenSearchAclConfigArgs Empty => new OpenSearchAclConfigArgs();
     }
 
-    public sealed class OpenSearchAclConfigState : Pulumi.ResourceArgs
+    public sealed class OpenSearchAclConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
@@ -178,23 +172,19 @@ namespace Pulumi.Aiven
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the
-        /// ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target
-        /// indexes they have been granted access to. The default value is `true`.
+        /// Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
         /// </summary>
         [Input("extendedAcl")]
         public Input<bool>? ExtendedAcl { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -202,5 +192,6 @@ namespace Pulumi.Aiven
         public OpenSearchAclConfigState()
         {
         }
+        public static new OpenSearchAclConfigState Empty => new OpenSearchAclConfigState();
     }
 }

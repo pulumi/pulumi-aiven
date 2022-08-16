@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class ClickhouseServiceIntegration
     {
+        /// <summary>
+        /// Type of the service integration. The only supported value at the moment is `read_replica`
+        /// </summary>
         public readonly string IntegrationType;
+        /// <summary>
+        /// Name of the source service
+        /// </summary>
         public readonly string SourceServiceName;
 
         [OutputConstructor]

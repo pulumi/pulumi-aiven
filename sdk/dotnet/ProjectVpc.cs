@@ -19,11 +19,10 @@ namespace Pulumi.Aiven
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/projectVpc:ProjectVpc")]
-    public partial class ProjectVpc : Pulumi.CustomResource
+    public partial class ProjectVpc : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional
-        /// information. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("cloudName")]
         public Output<string> CloudName { get; private set; } = null!;
@@ -35,8 +34,7 @@ namespace Pulumi.Aiven
         public Output<string> NetworkCidr { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -91,11 +89,10 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class ProjectVpcArgs : Pulumi.ResourceArgs
+    public sealed class ProjectVpcArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional
-        /// information. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("cloudName", required: true)]
         public Input<string> CloudName { get; set; } = null!;
@@ -107,8 +104,7 @@ namespace Pulumi.Aiven
         public Input<string> NetworkCidr { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -116,13 +112,13 @@ namespace Pulumi.Aiven
         public ProjectVpcArgs()
         {
         }
+        public static new ProjectVpcArgs Empty => new ProjectVpcArgs();
     }
 
-    public sealed class ProjectVpcState : Pulumi.ResourceArgs
+    public sealed class ProjectVpcState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional
-        /// information. This property cannot be changed, doing so forces recreation of the resource.
+        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
@@ -134,8 +130,7 @@ namespace Pulumi.Aiven
         public Input<string>? NetworkCidr { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -149,5 +144,6 @@ namespace Pulumi.Aiven
         public ProjectVpcState()
         {
         }
+        public static new ProjectVpcState Empty => new ProjectVpcState();
     }
 }

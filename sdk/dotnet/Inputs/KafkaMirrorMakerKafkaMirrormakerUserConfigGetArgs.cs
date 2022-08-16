@@ -10,24 +10,35 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaMirrorMakerKafkaMirrormakerUserConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class KafkaMirrorMakerKafkaMirrormakerUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// IP filter
+        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Kafka MirrorMaker configuration values
+        /// </summary>
         [Input("kafkaMirrormaker")]
         public Input<Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs>? KafkaMirrormaker { get; set; }
 
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 
         public KafkaMirrorMakerKafkaMirrormakerUserConfigGetArgs()
         {
         }
+        public static new KafkaMirrorMakerKafkaMirrormakerUserConfigGetArgs Empty => new KafkaMirrorMakerKafkaMirrormakerUserConfigGetArgs();
     }
 }

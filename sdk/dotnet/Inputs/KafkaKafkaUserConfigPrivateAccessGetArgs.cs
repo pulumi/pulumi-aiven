@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class KafkaKafkaUserConfigPrivateAccessGetArgs : Pulumi.ResourceArgs
+    public sealed class KafkaKafkaUserConfigPrivateAccessGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("prometheus")]
         public Input<string>? Prometheus { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Aiven.Inputs
         public KafkaKafkaUserConfigPrivateAccessGetArgs()
         {
         }
+        public static new KafkaKafkaUserConfigPrivateAccessGetArgs Empty => new KafkaKafkaUserConfigPrivateAccessGetArgs();
     }
 }

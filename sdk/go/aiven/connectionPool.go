@@ -19,58 +19,57 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.NewConnectionPool(ctx, "mytestpool", &aiven.ConnectionPoolArgs{
-// 			Project:      pulumi.Any(aiven_project.Myproject.Project),
-// 			ServiceName:  pulumi.Any(aiven_service.Myservice.Service_name),
-// 			DatabaseName: pulumi.Any(aiven_database.Mydatabase.Database_name),
-// 			PoolMode:     pulumi.String("transaction"),
-// 			PoolName:     pulumi.String("mypool"),
-// 			PoolSize:     pulumi.Int(10),
-// 			Username:     pulumi.Any(aiven_service_user.Myserviceuser.Username),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewConnectionPool(ctx, "mytestpool", &aiven.ConnectionPoolArgs{
+//				Project:      pulumi.Any(aiven_project.Myproject.Project),
+//				ServiceName:  pulumi.Any(aiven_service.Myservice.Service_name),
+//				DatabaseName: pulumi.Any(aiven_database.Mydatabase.Database_name),
+//				PoolMode:     pulumi.String("transaction"),
+//				PoolName:     pulumi.String("mypool"),
+//				PoolSize:     pulumi.Int(10),
+//				Username:     pulumi.Any(aiven_service_user.Myserviceuser.Username),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
 // ```sh
-//  $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
+//
+//	$ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
+//
 // ```
 type ConnectionPool struct {
 	pulumi.CustomResourceState
 
 	// The URI for connecting to the pool
 	ConnectionUri pulumi.StringOutput `pulumi:"connectionUri"`
-	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
-	// `transaction`.
+	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 	PoolMode pulumi.StringPtrOutput `pulumi:"poolMode"`
 	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
 	PoolName pulumi.StringOutput `pulumi:"poolName"`
-	// The number of connections the pool may create towards the backend server. This does not affect the number of incoming
-	// connections, which is always a much larger number. The default value is `10`.
+	// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
 	PoolSize pulumi.IntPtrOutput `pulumi:"poolSize"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this
-	// variable as a reference.
+	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
 
@@ -117,50 +116,38 @@ func GetConnectionPool(ctx *pulumi.Context,
 type connectionPoolState struct {
 	// The URI for connecting to the pool
 	ConnectionUri *string `pulumi:"connectionUri"`
-	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName *string `pulumi:"databaseName"`
-	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
-	// `transaction`.
+	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 	PoolMode *string `pulumi:"poolMode"`
 	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
 	PoolName *string `pulumi:"poolName"`
-	// The number of connections the pool may create towards the backend server. This does not affect the number of incoming
-	// connections, which is always a much larger number. The default value is `10`.
+	// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
 	PoolSize *int `pulumi:"poolSize"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this
-	// variable as a reference.
+	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
 	Username *string `pulumi:"username"`
 }
 
 type ConnectionPoolState struct {
 	// The URI for connecting to the pool
 	ConnectionUri pulumi.StringPtrInput
-	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName pulumi.StringPtrInput
-	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
-	// `transaction`.
+	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 	PoolMode pulumi.StringPtrInput
 	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
 	PoolName pulumi.StringPtrInput
-	// The number of connections the pool may create towards the backend server. This does not affect the number of incoming
-	// connections, which is always a much larger number. The default value is `10`.
+	// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
 	PoolSize pulumi.IntPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this
-	// variable as a reference.
+	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
 	Username pulumi.StringPtrInput
 }
 
@@ -169,49 +156,37 @@ func (ConnectionPoolState) ElementType() reflect.Type {
 }
 
 type connectionPoolArgs struct {
-	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
-	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
-	// `transaction`.
+	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 	PoolMode *string `pulumi:"poolMode"`
 	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
 	PoolName string `pulumi:"poolName"`
-	// The number of connections the pool may create towards the backend server. This does not affect the number of incoming
-	// connections, which is always a much larger number. The default value is `10`.
+	// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
 	PoolSize *int `pulumi:"poolSize"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this
-	// variable as a reference.
+	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
 	Username *string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a ConnectionPool resource.
 type ConnectionPoolArgs struct {
-	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	DatabaseName pulumi.StringInput
-	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
-	// `transaction`.
+	// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 	PoolMode pulumi.StringPtrInput
 	// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
 	PoolName pulumi.StringInput
-	// The number of connections the pool may create towards the backend server. This does not affect the number of incoming
-	// connections, which is always a much larger number. The default value is `10`.
+	// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
 	PoolSize pulumi.IntPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this
-	// variable as a reference.
+	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
 	Username pulumi.StringPtrInput
 }
 
@@ -241,7 +216,7 @@ func (i *ConnectionPool) ToConnectionPoolOutputWithContext(ctx context.Context) 
 // ConnectionPoolArrayInput is an input type that accepts ConnectionPoolArray and ConnectionPoolArrayOutput values.
 // You can construct a concrete instance of `ConnectionPoolArrayInput` via:
 //
-//          ConnectionPoolArray{ ConnectionPoolArgs{...} }
+//	ConnectionPoolArray{ ConnectionPoolArgs{...} }
 type ConnectionPoolArrayInput interface {
 	pulumi.Input
 
@@ -266,7 +241,7 @@ func (i ConnectionPoolArray) ToConnectionPoolArrayOutputWithContext(ctx context.
 // ConnectionPoolMapInput is an input type that accepts ConnectionPoolMap and ConnectionPoolMapOutput values.
 // You can construct a concrete instance of `ConnectionPoolMapInput` via:
 //
-//          ConnectionPoolMap{ "key": ConnectionPoolArgs{...} }
+//	ConnectionPoolMap{ "key": ConnectionPoolArgs{...} }
 type ConnectionPoolMapInput interface {
 	pulumi.Input
 
@@ -307,14 +282,12 @@ func (o ConnectionPoolOutput) ConnectionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
-// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a
-// reference. This property cannot be changed, doing so forces recreation of the resource.
+// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ConnectionPoolOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is
-// `transaction`.
+// The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 func (o ConnectionPoolOutput) PoolMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringPtrOutput { return v.PoolMode }).(pulumi.StringPtrOutput)
 }
@@ -324,26 +297,22 @@ func (o ConnectionPoolOutput) PoolName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.PoolName }).(pulumi.StringOutput)
 }
 
-// The number of connections the pool may create towards the backend server. This does not affect the number of incoming
-// connections, which is always a much larger number. The default value is `10`.
+// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
 func (o ConnectionPoolOutput) PoolSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.IntPtrOutput { return v.PoolSize }).(pulumi.IntPtrOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ConnectionPoolOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o ConnectionPoolOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The name of the service user used to connect to the database. To set up proper dependencies please refer to this
-// variable as a reference.
+// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
 func (o ConnectionPoolOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }

@@ -19,78 +19,81 @@ namespace Pulumi.Aiven
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aiven = Pulumi.Aiven;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var clickhouse = new Aiven.Clickhouse("clickhouse", new()
     ///     {
-    ///         var clickhouse = new Aiven.Clickhouse("clickhouse", new Aiven.ClickhouseArgs
-    ///         {
-    ///             Project = @var.Aiven_project_name,
-    ///             CloudName = "google-europe-west1",
-    ///             Plan = "startup-8",
-    ///             ServiceName = "exapmle-clickhouse",
-    ///         });
-    ///         var demodb = new Aiven.ClickhouseDatabase("demodb", new Aiven.ClickhouseDatabaseArgs
-    ///         {
-    ///             Project = clickhouse.Project,
-    ///             ServiceName = clickhouse.ServiceName,
-    ///         });
-    ///         var demoClickhouseRole = new Aiven.ClickhouseRole("demoClickhouseRole", new Aiven.ClickhouseRoleArgs
-    ///         {
-    ///             Project = clickhouse.Project,
-    ///             ServiceName = clickhouse.ServiceName,
-    ///             Role = "demo-role",
-    ///         });
-    ///         var demo_role_grant = new Aiven.ClickhouseGrant("demo-role-grant", new Aiven.ClickhouseGrantArgs
-    ///         {
-    ///             Project = clickhouse.Project,
-    ///             ServiceName = clickhouse.ServiceName,
-    ///             Role = demoClickhouseRole.Role,
-    ///             PrivilegeGrants = 
-    ///             {
-    ///                 new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs
-    ///                 {
-    ///                     Privilege = "INSERT",
-    ///                     Database = demodb.Name,
-    ///                     Table = "*",
-    ///                 },
-    ///                 new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs
-    ///                 {
-    ///                     Privilege = "SELECT",
-    ///                     Database = demodb.Name,
-    ///                     Table = "*",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var demoClickhouseUser = new Aiven.ClickhouseUser("demoClickhouseUser", new Aiven.ClickhouseUserArgs
-    ///         {
-    ///             Project = clickhouse.Project,
-    ///             ServiceName = clickhouse.ServiceName,
-    ///             Username = "demo-user",
-    ///         });
-    ///         var demo_user_grant = new Aiven.ClickhouseGrant("demo-user-grant", new Aiven.ClickhouseGrantArgs
-    ///         {
-    ///             Project = clickhouse.Project,
-    ///             ServiceName = clickhouse.ServiceName,
-    ///             User = demoClickhouseUser.Username,
-    ///             RoleGrants = 
-    ///             {
-    ///                 new Aiven.Inputs.ClickhouseGrantRoleGrantArgs
-    ///                 {
-    ///                     Role = demoClickhouseRole.Role,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Project = @var.Aiven_project_name,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-8",
+    ///         ServiceName = "exapmle-clickhouse",
+    ///     });
     /// 
-    /// }
+    ///     var demodb = new Aiven.ClickhouseDatabase("demodb", new()
+    ///     {
+    ///         Project = clickhouse.Project,
+    ///         ServiceName = clickhouse.ServiceName,
+    ///     });
+    /// 
+    ///     var demoClickhouseRole = new Aiven.ClickhouseRole("demoClickhouseRole", new()
+    ///     {
+    ///         Project = clickhouse.Project,
+    ///         ServiceName = clickhouse.ServiceName,
+    ///         Role = "demo-role",
+    ///     });
+    /// 
+    ///     var demo_role_grant = new Aiven.ClickhouseGrant("demo-role-grant", new()
+    ///     {
+    ///         Project = clickhouse.Project,
+    ///         ServiceName = clickhouse.ServiceName,
+    ///         Role = demoClickhouseRole.Role,
+    ///         PrivilegeGrants = new[]
+    ///         {
+    ///             new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs
+    ///             {
+    ///                 Privilege = "INSERT",
+    ///                 Database = demodb.Name,
+    ///                 Table = "*",
+    ///             },
+    ///             new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs
+    ///             {
+    ///                 Privilege = "SELECT",
+    ///                 Database = demodb.Name,
+    ///                 Table = "*",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var demoClickhouseUser = new Aiven.ClickhouseUser("demoClickhouseUser", new()
+    ///     {
+    ///         Project = clickhouse.Project,
+    ///         ServiceName = clickhouse.ServiceName,
+    ///         Username = "demo-user",
+    ///     });
+    /// 
+    ///     var demo_user_grant = new Aiven.ClickhouseGrant("demo-user-grant", new()
+    ///     {
+    ///         Project = clickhouse.Project,
+    ///         ServiceName = clickhouse.ServiceName,
+    ///         User = demoClickhouseUser.Username,
+    ///         RoleGrants = new[]
+    ///         {
+    ///             new Aiven.Inputs.ClickhouseGrantRoleGrantArgs
+    ///             {
+    ///                 Role = demoClickhouseRole.Role,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouseGrant:ClickhouseGrant")]
-    public partial class ClickhouseGrant : Pulumi.CustomResource
+    public partial class ClickhouseGrant : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
@@ -99,15 +102,13 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.ClickhouseGrantPrivilegeGrant>> PrivilegeGrants { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-        /// This property cannot be changed, doing so forces recreation of the resource.
+        /// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
@@ -119,15 +120,13 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.ClickhouseGrantRoleGrant>> RoleGrants { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-        /// This property cannot be changed, doing so forces recreation of the resource.
+        /// The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("user")]
         public Output<string?> User { get; private set; } = null!;
@@ -176,7 +175,7 @@ namespace Pulumi.Aiven
         }
     }
 
-    public sealed class ClickhouseGrantArgs : Pulumi.ResourceArgs
+    public sealed class ClickhouseGrantArgs : global::Pulumi.ResourceArgs
     {
         [Input("privilegeGrants")]
         private InputList<Inputs.ClickhouseGrantPrivilegeGrantArgs>? _privilegeGrants;
@@ -191,15 +190,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-        /// This property cannot be changed, doing so forces recreation of the resource.
+        /// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -217,15 +214,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-        /// This property cannot be changed, doing so forces recreation of the resource.
+        /// The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
@@ -233,9 +228,10 @@ namespace Pulumi.Aiven
         public ClickhouseGrantArgs()
         {
         }
+        public static new ClickhouseGrantArgs Empty => new ClickhouseGrantArgs();
     }
 
-    public sealed class ClickhouseGrantState : Pulumi.ResourceArgs
+    public sealed class ClickhouseGrantState : global::Pulumi.ResourceArgs
     {
         [Input("privilegeGrants")]
         private InputList<Inputs.ClickhouseGrantPrivilegeGrantGetArgs>? _privilegeGrants;
@@ -250,15 +246,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-        /// This property cannot be changed, doing so forces recreation of the resource.
+        /// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -276,15 +270,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference.
-        /// This property cannot be changed, doing so forces recreation of the resource.
+        /// The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
@@ -292,5 +284,6 @@ namespace Pulumi.Aiven
         public ClickhouseGrantState()
         {
         }
+        public static new ClickhouseGrantState Empty => new ClickhouseGrantState();
     }
 }

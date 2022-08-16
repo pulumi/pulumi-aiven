@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v5/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aiven.LookupCassandra(ctx, &GetCassandraArgs{
-// 			Project:     data.Aiven_project.Foo.Project,
-// 			ServiceName: "<SERVICE_NAME>",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupCassandra(ctx, &GetCassandraArgs{
+//				Project:     data.Aiven_project.Foo.Project,
+//				ServiceName: "<SERVICE_NAME>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupCassandra(ctx *pulumi.Context, args *LookupCassandraArgs, opts ...pulumi.InvokeOption) (*LookupCassandraResult, error) {
 	var rv LookupCassandraResult
@@ -46,40 +49,68 @@ func LookupCassandra(ctx *pulumi.Context, args *LookupCassandraArgs, opts ...pul
 
 // A collection of arguments for invoking getCassandra.
 type LookupCassandraArgs struct {
-	Project     string `pulumi:"project"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getCassandra.
 type LookupCassandraResult struct {
+	// Cassandra user configurable settings
 	CassandraUserConfigs []GetCassandraCassandraUserConfig `pulumi:"cassandraUserConfigs"`
-	Cassandras           []GetCassandraCassandra           `pulumi:"cassandras"`
-	CloudName            string                            `pulumi:"cloudName"`
-	Components           []GetCassandraComponent           `pulumi:"components"`
-	DiskSpace            string                            `pulumi:"diskSpace"`
-	DiskSpaceCap         string                            `pulumi:"diskSpaceCap"`
-	DiskSpaceDefault     string                            `pulumi:"diskSpaceDefault"`
-	DiskSpaceStep        string                            `pulumi:"diskSpaceStep"`
-	DiskSpaceUsed        string                            `pulumi:"diskSpaceUsed"`
+	// Cassandra server provided values
+	Cassandras []GetCassandraCassandra `pulumi:"cassandras"`
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	CloudName string `pulumi:"cloudName"`
+	// Service component information objects
+	Components []GetCassandraComponent `pulumi:"components"`
+	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	DiskSpace string `pulumi:"diskSpace"`
+	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
+	DiskSpaceCap string `pulumi:"diskSpaceCap"`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
+	DiskSpaceDefault string `pulumi:"diskSpaceDefault"`
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
+	DiskSpaceStep string `pulumi:"diskSpaceStep"`
+	// Disk space that service is currently using
+	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string                           `pulumi:"id"`
-	MaintenanceWindowDow  string                           `pulumi:"maintenanceWindowDow"`
-	MaintenanceWindowTime string                           `pulumi:"maintenanceWindowTime"`
-	Plan                  string                           `pulumi:"plan"`
-	Project               string                           `pulumi:"project"`
-	ProjectVpcId          string                           `pulumi:"projectVpcId"`
-	ServiceHost           string                           `pulumi:"serviceHost"`
-	ServiceIntegrations   []GetCassandraServiceIntegration `pulumi:"serviceIntegrations"`
-	ServiceName           string                           `pulumi:"serviceName"`
-	ServicePassword       string                           `pulumi:"servicePassword"`
-	ServicePort           int                              `pulumi:"servicePort"`
-	ServiceType           string                           `pulumi:"serviceType"`
-	ServiceUri            string                           `pulumi:"serviceUri"`
-	ServiceUsername       string                           `pulumi:"serviceUsername"`
-	State                 string                           `pulumi:"state"`
-	StaticIps             []string                         `pulumi:"staticIps"`
-	Tags                  []GetCassandraTag                `pulumi:"tags"`
-	TerminationProtection bool                             `pulumi:"terminationProtection"`
+	Id string `pulumi:"id"`
+	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
+	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
+	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	Plan string `pulumi:"plan"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	ProjectVpcId string `pulumi:"projectVpcId"`
+	// The hostname of the service.
+	ServiceHost string `pulumi:"serviceHost"`
+	// Service integrations to specify when creating a service. Not applied after initial service creation
+	ServiceIntegrations []GetCassandraServiceIntegration `pulumi:"serviceIntegrations"`
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+	ServiceName string `pulumi:"serviceName"`
+	// Password used for connecting to the service, if applicable
+	ServicePassword string `pulumi:"servicePassword"`
+	// The port of the service
+	ServicePort int `pulumi:"servicePort"`
+	// Aiven internal service type code
+	ServiceType string `pulumi:"serviceType"`
+	// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
+	ServiceUri string `pulumi:"serviceUri"`
+	// Username used for connecting to the service, if applicable
+	ServiceUsername string `pulumi:"serviceUsername"`
+	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
+	State string `pulumi:"state"`
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	StaticIps []string `pulumi:"staticIps"`
+	// Tags are key-value pairs that allow you to categorize services.
+	Tags []GetCassandraTag `pulumi:"tags"`
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
+	TerminationProtection bool `pulumi:"terminationProtection"`
 }
 
 func LookupCassandraOutput(ctx *pulumi.Context, args LookupCassandraOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraResultOutput {
@@ -97,7 +128,9 @@ func LookupCassandraOutput(ctx *pulumi.Context, args LookupCassandraOutputArgs, 
 
 // A collection of arguments for invoking getCassandra.
 type LookupCassandraOutputArgs struct {
-	Project     pulumi.StringInput `pulumi:"project"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -120,38 +153,47 @@ func (o LookupCassandraResultOutput) ToLookupCassandraResultOutputWithContext(ct
 	return o
 }
 
+// Cassandra user configurable settings
 func (o LookupCassandraResultOutput) CassandraUserConfigs() GetCassandraCassandraUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupCassandraResult) []GetCassandraCassandraUserConfig { return v.CassandraUserConfigs }).(GetCassandraCassandraUserConfigArrayOutput)
 }
 
+// Cassandra server provided values
 func (o LookupCassandraResultOutput) Cassandras() GetCassandraCassandraArrayOutput {
 	return o.ApplyT(func(v LookupCassandraResult) []GetCassandraCassandra { return v.Cassandras }).(GetCassandraCassandraArrayOutput)
 }
 
+// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 func (o LookupCassandraResultOutput) CloudName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.CloudName }).(pulumi.StringOutput)
 }
 
+// Service component information objects
 func (o LookupCassandraResultOutput) Components() GetCassandraComponentArrayOutput {
 	return o.ApplyT(func(v LookupCassandraResult) []GetCassandraComponent { return v.Components }).(GetCassandraComponentArrayOutput)
 }
 
+// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
 func (o LookupCassandraResultOutput) DiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.DiskSpace }).(pulumi.StringOutput)
 }
 
+// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 func (o LookupCassandraResultOutput) DiskSpaceCap() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.DiskSpaceCap }).(pulumi.StringOutput)
 }
 
+// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
 func (o LookupCassandraResultOutput) DiskSpaceDefault() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.DiskSpaceDefault }).(pulumi.StringOutput)
 }
 
+// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 func (o LookupCassandraResultOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
 
+// Disk space that service is currently using
 func (o LookupCassandraResultOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
@@ -161,70 +203,87 @@ func (o LookupCassandraResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 func (o LookupCassandraResultOutput) MaintenanceWindowDow() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.MaintenanceWindowDow }).(pulumi.StringOutput)
 }
 
+// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 func (o LookupCassandraResultOutput) MaintenanceWindowTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.MaintenanceWindowTime }).(pulumi.StringOutput)
 }
 
+// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 func (o LookupCassandraResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupCassandraResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 func (o LookupCassandraResultOutput) ProjectVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.ProjectVpcId }).(pulumi.StringOutput)
 }
 
+// The hostname of the service.
 func (o LookupCassandraResultOutput) ServiceHost() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.ServiceHost }).(pulumi.StringOutput)
 }
 
+// Service integrations to specify when creating a service. Not applied after initial service creation
 func (o LookupCassandraResultOutput) ServiceIntegrations() GetCassandraServiceIntegrationArrayOutput {
 	return o.ApplyT(func(v LookupCassandraResult) []GetCassandraServiceIntegration { return v.ServiceIntegrations }).(GetCassandraServiceIntegrationArrayOutput)
 }
 
+// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 func (o LookupCassandraResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// Password used for connecting to the service, if applicable
 func (o LookupCassandraResultOutput) ServicePassword() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.ServicePassword }).(pulumi.StringOutput)
 }
 
+// The port of the service
 func (o LookupCassandraResultOutput) ServicePort() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupCassandraResult) int { return v.ServicePort }).(pulumi.IntOutput)
 }
 
+// Aiven internal service type code
 func (o LookupCassandraResultOutput) ServiceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.ServiceType }).(pulumi.StringOutput)
 }
 
+// URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
 func (o LookupCassandraResultOutput) ServiceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.ServiceUri }).(pulumi.StringOutput)
 }
 
+// Username used for connecting to the service, if applicable
 func (o LookupCassandraResultOutput) ServiceUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.ServiceUsername }).(pulumi.StringOutput)
 }
 
+// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 func (o LookupCassandraResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o LookupCassandraResultOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCassandraResult) []string { return v.StaticIps }).(pulumi.StringArrayOutput)
 }
 
+// Tags are key-value pairs that allow you to categorize services.
 func (o LookupCassandraResultOutput) Tags() GetCassandraTagArrayOutput {
 	return o.ApplyT(func(v LookupCassandraResult) []GetCassandraTag { return v.Tags }).(GetCassandraTagArrayOutput)
 }
 
+// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 func (o LookupCassandraResultOutput) TerminationProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupCassandraResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
 }

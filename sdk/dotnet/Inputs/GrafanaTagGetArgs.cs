@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class GrafanaTagGetArgs : Pulumi.ResourceArgs
+    public sealed class GrafanaTagGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Service tag key
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// Service tag value
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
         public GrafanaTagGetArgs()
         {
         }
+        public static new GrafanaTagGetArgs Empty => new GrafanaTagGetArgs();
     }
 }

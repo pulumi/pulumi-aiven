@@ -36,8 +36,7 @@ export class StaticIp extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly cloudName!: pulumi.Output<string>;
     /**
@@ -45,8 +44,7 @@ export class StaticIp extends pulumi.CustomResource {
      */
     public /*out*/ readonly ipAddress!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -106,8 +104,7 @@ export class StaticIp extends pulumi.CustomResource {
  */
 export interface StaticIpState {
     /**
-     * Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
      */
     cloudName?: pulumi.Input<string>;
     /**
@@ -115,8 +112,7 @@ export interface StaticIpState {
      */
     ipAddress?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -138,13 +134,11 @@ export interface StaticIpState {
  */
 export interface StaticIpArgs {
     /**
-     * Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the
-     * resource.
+     * Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
      */
     cloudName: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      */
     project: pulumi.Input<string>;
 }

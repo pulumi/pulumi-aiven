@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class M3DbM3dbUserConfigNamespaceOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class M3DbM3dbUserConfigNamespaceOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("retentionOptions")]
         public Input<Inputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsGetArgs>? RetentionOptions { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Aiven.Inputs
         public M3DbM3dbUserConfigNamespaceOptionsGetArgs()
         {
         }
+        public static new M3DbM3dbUserConfigNamespaceOptionsGetArgs Empty => new M3DbM3dbUserConfigNamespaceOptionsGetArgs();
     }
 }

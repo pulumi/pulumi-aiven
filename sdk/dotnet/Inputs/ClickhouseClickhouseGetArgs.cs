@@ -10,10 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class ClickhouseClickhouseGetArgs : Pulumi.ResourceArgs
+    public sealed class ClickhouseClickhouseGetArgs : global::Pulumi.ResourceArgs
     {
         public ClickhouseClickhouseGetArgs()
         {
         }
+        public static new ClickhouseClickhouseGetArgs Empty => new ClickhouseClickhouseGetArgs();
     }
 }

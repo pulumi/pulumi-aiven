@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetMySqlMysqlUserConfigPrivatelinkAccessResult
     {
+        /// <summary>
+        /// MySQL specific server provided values
+        /// </summary>
         public readonly string? Mysql;
         public readonly string? Mysqlx;
         public readonly string? Prometheus;

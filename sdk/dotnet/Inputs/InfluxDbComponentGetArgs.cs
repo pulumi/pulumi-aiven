@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class InfluxDbComponentGetArgs : Pulumi.ResourceArgs
+    public sealed class InfluxDbComponentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("component")]
         public Input<string>? Component { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Aiven.Inputs
         public InfluxDbComponentGetArgs()
         {
         }
+        public static new InfluxDbComponentGetArgs Empty => new InfluxDbComponentGetArgs();
     }
 }

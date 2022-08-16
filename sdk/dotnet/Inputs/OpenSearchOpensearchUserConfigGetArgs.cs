@@ -10,71 +10,125 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class OpenSearchOpensearchUserConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class OpenSearchOpensearchUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Custom domain
+        /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
 
+        /// <summary>
+        /// Disable replication factor adjustment
+        /// </summary>
         [Input("disableReplicationFactorAdjustment")]
         public Input<string>? DisableReplicationFactorAdjustment { get; set; }
 
         [Input("indexPatterns")]
         private InputList<Inputs.OpenSearchOpensearchUserConfigIndexPatternGetArgs>? _indexPatterns;
+
+        /// <summary>
+        /// Index patterns
+        /// </summary>
         public InputList<Inputs.OpenSearchOpensearchUserConfigIndexPatternGetArgs> IndexPatterns
         {
             get => _indexPatterns ?? (_indexPatterns = new InputList<Inputs.OpenSearchOpensearchUserConfigIndexPatternGetArgs>());
             set => _indexPatterns = value;
         }
 
+        /// <summary>
+        /// Template settings for all new indexes
+        /// </summary>
         [Input("indexTemplate")]
         public Input<Inputs.OpenSearchOpensearchUserConfigIndexTemplateGetArgs>? IndexTemplate { get; set; }
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// IP filter
+        /// </summary>
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Don't reset index.refresh_interval to the default value
+        /// </summary>
         [Input("keepIndexRefreshInterval")]
         public Input<string>? KeepIndexRefreshInterval { get; set; }
 
+        /// <summary>
+        /// Maximum index count
+        /// </summary>
         [Input("maxIndexCount")]
         public Input<string>? MaxIndexCount { get; set; }
 
+        /// <summary>
+        /// OpenSearch settings
+        /// </summary>
         [Input("opensearch")]
         public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchGetArgs>? Opensearch { get; set; }
 
+        /// <summary>
+        /// OpenSearch Dashboards settings
+        /// </summary>
         [Input("opensearchDashboards")]
         public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsGetArgs>? OpensearchDashboards { get; set; }
 
+        /// <summary>
+        /// OpenSearch major version
+        /// </summary>
         [Input("opensearchVersion")]
         public Input<string>? OpensearchVersion { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.OpenSearchOpensearchUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.OpenSearchOpensearchUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
+        /// <summary>
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.OpenSearchOpensearchUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Name of the basebackup to restore in forked service
+        /// </summary>
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
 
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
+        /// <summary>
+        /// Static IP addresses
+        /// </summary>
         [Input("staticIps")]
         public Input<string>? StaticIps { get; set; }
 
         public OpenSearchOpensearchUserConfigGetArgs()
         {
         }
+        public static new OpenSearchOpensearchUserConfigGetArgs Empty => new OpenSearchOpensearchUserConfigGetArgs();
     }
 }

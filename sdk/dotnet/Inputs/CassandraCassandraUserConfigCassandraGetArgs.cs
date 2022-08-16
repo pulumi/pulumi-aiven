@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class CassandraCassandraUserConfigCassandraGetArgs : Pulumi.ResourceArgs
+    public sealed class CassandraCassandraUserConfigCassandraGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("batchSizeFailThresholdInKb")]
         public Input<string>? BatchSizeFailThresholdInKb { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Aiven.Inputs
         public CassandraCassandraUserConfigCassandraGetArgs()
         {
         }
+        public static new CassandraCassandraUserConfigCassandraGetArgs Empty => new CassandraCassandraUserConfigCassandraGetArgs();
     }
 }

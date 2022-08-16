@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven.Inputs
 {
 
-    public sealed class M3DbM3dbUserConfigPrivateAccessGetArgs : Pulumi.ResourceArgs
+    public sealed class M3DbM3dbUserConfigPrivateAccessGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("m3coordinator")]
         public Input<string>? M3coordinator { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Aiven.Inputs
         public M3DbM3dbUserConfigPrivateAccessGetArgs()
         {
         }
+        public static new M3DbM3dbUserConfigPrivateAccessGetArgs Empty => new M3DbM3dbUserConfigPrivateAccessGetArgs();
     }
 }
