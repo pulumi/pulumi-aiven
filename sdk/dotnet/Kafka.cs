@@ -61,6 +61,12 @@ namespace Pulumi.Aiven
     public partial class Kafka : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// </summary>
+        [Output("additionalDiskSpace")]
+        public Output<string?> AdditionalDiskSpace { get; private set; } = null!;
+
+        /// <summary>
         /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         /// </summary>
         [Output("cloudName")]
@@ -79,7 +85,7 @@ namespace Pulumi.Aiven
         public Output<bool?> DefaultAcl { get; private set; } = null!;
 
         /// <summary>
-        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         [Output("diskSpace")]
         public Output<string?> DiskSpace { get; private set; } = null!;
@@ -275,6 +281,12 @@ namespace Pulumi.Aiven
     public sealed class KafkaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// </summary>
+        [Input("additionalDiskSpace")]
+        public Input<string>? AdditionalDiskSpace { get; set; }
+
+        /// <summary>
         /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         /// </summary>
         [Input("cloudName")]
@@ -287,7 +299,7 @@ namespace Pulumi.Aiven
         public Input<bool>? DefaultAcl { get; set; }
 
         /// <summary>
-        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
@@ -397,6 +409,12 @@ namespace Pulumi.Aiven
     public sealed class KafkaState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// </summary>
+        [Input("additionalDiskSpace")]
+        public Input<string>? AdditionalDiskSpace { get; set; }
+
+        /// <summary>
         /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         /// </summary>
         [Input("cloudName")]
@@ -421,7 +439,7 @@ namespace Pulumi.Aiven
         public Input<bool>? DefaultAcl { get; set; }
 
         /// <summary>
-        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }

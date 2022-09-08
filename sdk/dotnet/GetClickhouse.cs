@@ -114,6 +114,10 @@ namespace Pulumi.Aiven
     public sealed class GetClickhouseResult
     {
         /// <summary>
+        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// </summary>
+        public readonly string AdditionalDiskSpace;
+        /// <summary>
         /// Clickhouse user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClickhouseClickhouseUserConfigResult> ClickhouseUserConfigs;
@@ -130,7 +134,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClickhouseComponentResult> Components;
         /// <summary>
-        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         public readonly string DiskSpace;
         /// <summary>
@@ -224,6 +228,8 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetClickhouseResult(
+            string additionalDiskSpace,
+
             ImmutableArray<Outputs.GetClickhouseClickhouseUserConfigResult> clickhouseUserConfigs,
 
             ImmutableArray<Outputs.GetClickhouseClickhouseResult> clickhouses,
@@ -278,6 +284,7 @@ namespace Pulumi.Aiven
 
             bool terminationProtection)
         {
+            AdditionalDiskSpace = additionalDiskSpace;
             ClickhouseUserConfigs = clickhouseUserConfigs;
             Clickhouses = clickhouses;
             CloudName = cloudName;

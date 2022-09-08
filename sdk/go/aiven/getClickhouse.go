@@ -57,6 +57,8 @@ type LookupClickhouseArgs struct {
 
 // A collection of values returned by getClickhouse.
 type LookupClickhouseResult struct {
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	AdditionalDiskSpace string `pulumi:"additionalDiskSpace"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfigs []GetClickhouseClickhouseUserConfig `pulumi:"clickhouseUserConfigs"`
 	// Clickhouse server provided values
@@ -65,7 +67,7 @@ type LookupClickhouseResult struct {
 	CloudName string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []GetClickhouseComponent `pulumi:"components"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap string `pulumi:"diskSpaceCap"`
@@ -153,6 +155,11 @@ func (o LookupClickhouseResultOutput) ToLookupClickhouseResultOutputWithContext(
 	return o
 }
 
+// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+func (o LookupClickhouseResultOutput) AdditionalDiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClickhouseResult) string { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
+}
+
 // Clickhouse user configurable settings
 func (o LookupClickhouseResultOutput) ClickhouseUserConfigs() GetClickhouseClickhouseUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupClickhouseResult) []GetClickhouseClickhouseUserConfig { return v.ClickhouseUserConfigs }).(GetClickhouseClickhouseUserConfigArrayOutput)
@@ -173,7 +180,7 @@ func (o LookupClickhouseResultOutput) Components() GetClickhouseComponentArrayOu
 	return o.ApplyT(func(v LookupClickhouseResult) []GetClickhouseComponent { return v.Components }).(GetClickhouseComponentArrayOutput)
 }
 
-// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 func (o LookupClickhouseResultOutput) DiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseResult) string { return v.DiskSpace }).(pulumi.StringOutput)
 }

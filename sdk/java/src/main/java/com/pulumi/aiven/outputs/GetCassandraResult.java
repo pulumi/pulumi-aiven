@@ -18,6 +18,11 @@ import java.util.Objects;
 @CustomType
 public final class GetCassandraResult {
     /**
+     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    private final String additionalDiskSpace;
+    /**
      * @return Cassandra user configurable settings
      * 
      */
@@ -38,7 +43,7 @@ public final class GetCassandraResult {
      */
     private final List<GetCassandraComponent> components;
     /**
-     * @return The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     private final String diskSpace;
@@ -155,6 +160,7 @@ public final class GetCassandraResult {
 
     @CustomType.Constructor
     private GetCassandraResult(
+        @CustomType.Parameter("additionalDiskSpace") String additionalDiskSpace,
         @CustomType.Parameter("cassandraUserConfigs") List<GetCassandraCassandraUserConfig> cassandraUserConfigs,
         @CustomType.Parameter("cassandras") List<GetCassandraCassandra> cassandras,
         @CustomType.Parameter("cloudName") String cloudName,
@@ -182,6 +188,7 @@ public final class GetCassandraResult {
         @CustomType.Parameter("staticIps") List<String> staticIps,
         @CustomType.Parameter("tags") List<GetCassandraTag> tags,
         @CustomType.Parameter("terminationProtection") Boolean terminationProtection) {
+        this.additionalDiskSpace = additionalDiskSpace;
         this.cassandraUserConfigs = cassandraUserConfigs;
         this.cassandras = cassandras;
         this.cloudName = cloudName;
@@ -212,6 +219,13 @@ public final class GetCassandraResult {
     }
 
     /**
+     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    public String additionalDiskSpace() {
+        return this.additionalDiskSpace;
+    }
+    /**
      * @return Cassandra user configurable settings
      * 
      */
@@ -240,7 +254,7 @@ public final class GetCassandraResult {
         return this.components;
     }
     /**
-     * @return The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     public String diskSpace() {
@@ -410,6 +424,7 @@ public final class GetCassandraResult {
     }
 
     public static final class Builder {
+        private String additionalDiskSpace;
         private List<GetCassandraCassandraUserConfig> cassandraUserConfigs;
         private List<GetCassandraCassandra> cassandras;
         private String cloudName;
@@ -444,6 +459,7 @@ public final class GetCassandraResult {
 
         public Builder(GetCassandraResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalDiskSpace = defaults.additionalDiskSpace;
     	      this.cassandraUserConfigs = defaults.cassandraUserConfigs;
     	      this.cassandras = defaults.cassandras;
     	      this.cloudName = defaults.cloudName;
@@ -473,6 +489,10 @@ public final class GetCassandraResult {
     	      this.terminationProtection = defaults.terminationProtection;
         }
 
+        public Builder additionalDiskSpace(String additionalDiskSpace) {
+            this.additionalDiskSpace = Objects.requireNonNull(additionalDiskSpace);
+            return this;
+        }
         public Builder cassandraUserConfigs(List<GetCassandraCassandraUserConfig> cassandraUserConfigs) {
             this.cassandraUserConfigs = Objects.requireNonNull(cassandraUserConfigs);
             return this;
@@ -599,7 +619,7 @@ public final class GetCassandraResult {
             this.terminationProtection = Objects.requireNonNull(terminationProtection);
             return this;
         }        public GetCassandraResult build() {
-            return new GetCassandraResult(cassandraUserConfigs, cassandras, cloudName, components, diskSpace, diskSpaceCap, diskSpaceDefault, diskSpaceStep, diskSpaceUsed, id, maintenanceWindowDow, maintenanceWindowTime, plan, project, projectVpcId, serviceHost, serviceIntegrations, serviceName, servicePassword, servicePort, serviceType, serviceUri, serviceUsername, state, staticIps, tags, terminationProtection);
+            return new GetCassandraResult(additionalDiskSpace, cassandraUserConfigs, cassandras, cloudName, components, diskSpace, diskSpaceCap, diskSpaceDefault, diskSpaceStep, diskSpaceUsed, id, maintenanceWindowDow, maintenanceWindowTime, plan, project, projectVpcId, serviceHost, serviceIntegrations, serviceName, servicePassword, servicePort, serviceType, serviceUri, serviceUsername, state, staticIps, tags, terminationProtection);
         }
     }
 }

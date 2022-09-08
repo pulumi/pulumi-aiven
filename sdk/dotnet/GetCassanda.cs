@@ -115,6 +115,10 @@ namespace Pulumi.Aiven
     public sealed class GetCassandaResult
     {
         /// <summary>
+        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// </summary>
+        public readonly string AdditionalDiskSpace;
+        /// <summary>
         /// Cassandra user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandaCassandraUserConfigResult> CassandraUserConfigs;
@@ -131,7 +135,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandaComponentResult> Components;
         /// <summary>
-        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         public readonly string DiskSpace;
         /// <summary>
@@ -225,6 +229,8 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetCassandaResult(
+            string additionalDiskSpace,
+
             ImmutableArray<Outputs.GetCassandaCassandraUserConfigResult> cassandraUserConfigs,
 
             ImmutableArray<Outputs.GetCassandaCassandraResult> cassandras,
@@ -279,6 +285,7 @@ namespace Pulumi.Aiven
 
             bool terminationProtection)
         {
+            AdditionalDiskSpace = additionalDiskSpace;
             CassandraUserConfigs = cassandraUserConfigs;
             Cassandras = cassandras;
             CloudName = cloudName;

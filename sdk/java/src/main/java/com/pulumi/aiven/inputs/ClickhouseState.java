@@ -24,6 +24,21 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
     public static final ClickhouseState Empty = new ClickhouseState();
 
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    @Import(name="additionalDiskSpace")
+    private @Nullable Output<String> additionalDiskSpace;
+
+    /**
+     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    public Optional<Output<String>> additionalDiskSpace() {
+        return Optional.ofNullable(this.additionalDiskSpace);
+    }
+
+    /**
      * Clickhouse user configurable settings
      * 
      */
@@ -84,14 +99,14 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     @Import(name="diskSpace")
     private @Nullable Output<String> diskSpace;
 
     /**
-     * @return The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     public Optional<Output<String>> diskSpace() {
@@ -416,6 +431,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
     private ClickhouseState() {}
 
     private ClickhouseState(ClickhouseState $) {
+        this.additionalDiskSpace = $.additionalDiskSpace;
         this.clickhouseUserConfig = $.clickhouseUserConfig;
         this.clickhouses = $.clickhouses;
         this.cloudName = $.cloudName;
@@ -460,6 +476,27 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClickhouseState defaults) {
             $ = new ClickhouseState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalDiskSpace Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalDiskSpace(@Nullable Output<String> additionalDiskSpace) {
+            $.additionalDiskSpace = additionalDiskSpace;
+            return this;
+        }
+
+        /**
+         * @param additionalDiskSpace Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalDiskSpace(String additionalDiskSpace) {
+            return additionalDiskSpace(Output.of(additionalDiskSpace));
         }
 
         /**
@@ -567,7 +604,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpace The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
          * 
          * @return builder
          * 
@@ -578,7 +615,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpace The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
          * 
          * @return builder
          * 

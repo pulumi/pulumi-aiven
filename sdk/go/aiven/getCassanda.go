@@ -59,6 +59,8 @@ type GetCassandaArgs struct {
 
 // A collection of values returned by getCassanda.
 type GetCassandaResult struct {
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	AdditionalDiskSpace string `pulumi:"additionalDiskSpace"`
 	// Cassandra user configurable settings
 	CassandraUserConfigs []GetCassandaCassandraUserConfig `pulumi:"cassandraUserConfigs"`
 	// Cassandra server provided values
@@ -67,7 +69,7 @@ type GetCassandaResult struct {
 	CloudName string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []GetCassandaComponent `pulumi:"components"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap string `pulumi:"diskSpaceCap"`
@@ -155,6 +157,11 @@ func (o GetCassandaResultOutput) ToGetCassandaResultOutputWithContext(ctx contex
 	return o
 }
 
+// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+func (o GetCassandaResultOutput) AdditionalDiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCassandaResult) string { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
+}
+
 // Cassandra user configurable settings
 func (o GetCassandaResultOutput) CassandraUserConfigs() GetCassandaCassandraUserConfigArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []GetCassandaCassandraUserConfig { return v.CassandraUserConfigs }).(GetCassandaCassandraUserConfigArrayOutput)
@@ -175,7 +182,7 @@ func (o GetCassandaResultOutput) Components() GetCassandaComponentArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []GetCassandaComponent { return v.Components }).(GetCassandaComponentArrayOutput)
 }
 
-// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 func (o GetCassandaResultOutput) DiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.DiskSpace }).(pulumi.StringOutput)
 }

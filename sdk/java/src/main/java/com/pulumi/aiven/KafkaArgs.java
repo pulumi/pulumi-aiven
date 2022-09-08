@@ -22,6 +22,21 @@ public final class KafkaArgs extends com.pulumi.resources.ResourceArgs {
     public static final KafkaArgs Empty = new KafkaArgs();
 
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    @Import(name="additionalDiskSpace")
+    private @Nullable Output<String> additionalDiskSpace;
+
+    /**
+     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    public Optional<Output<String>> additionalDiskSpace() {
+        return Optional.ofNullable(this.additionalDiskSpace);
+    }
+
+    /**
      * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      * 
      */
@@ -52,14 +67,14 @@ public final class KafkaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     @Import(name="diskSpace")
     private @Nullable Output<String> diskSpace;
 
     /**
-     * @return The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     public Optional<Output<String>> diskSpace() {
@@ -264,6 +279,7 @@ public final class KafkaArgs extends com.pulumi.resources.ResourceArgs {
     private KafkaArgs() {}
 
     private KafkaArgs(KafkaArgs $) {
+        this.additionalDiskSpace = $.additionalDiskSpace;
         this.cloudName = $.cloudName;
         this.defaultAcl = $.defaultAcl;
         this.diskSpace = $.diskSpace;
@@ -298,6 +314,27 @@ public final class KafkaArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(KafkaArgs defaults) {
             $ = new KafkaArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalDiskSpace Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalDiskSpace(@Nullable Output<String> additionalDiskSpace) {
+            $.additionalDiskSpace = additionalDiskSpace;
+            return this;
+        }
+
+        /**
+         * @param additionalDiskSpace Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalDiskSpace(String additionalDiskSpace) {
+            return additionalDiskSpace(Output.of(additionalDiskSpace));
         }
 
         /**
@@ -343,7 +380,7 @@ public final class KafkaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpace The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
          * 
          * @return builder
          * 
@@ -354,7 +391,7 @@ public final class KafkaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskSpace The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+         * @param diskSpace Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
          * 
          * @return builder
          * 

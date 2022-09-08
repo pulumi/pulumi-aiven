@@ -65,6 +65,10 @@ export class Cassandra extends pulumi.CustomResource {
     }
 
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     */
+    public readonly additionalDiskSpace!: pulumi.Output<string | undefined>;
+    /**
      * Cassandra user configurable settings
      */
     public readonly cassandraUserConfig!: pulumi.Output<outputs.CassandraCassandraUserConfig | undefined>;
@@ -81,7 +85,7 @@ export class Cassandra extends pulumi.CustomResource {
      */
     public /*out*/ readonly components!: pulumi.Output<outputs.CassandraComponent[]>;
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     public readonly diskSpace!: pulumi.Output<string | undefined>;
     /**
@@ -182,6 +186,7 @@ export class Cassandra extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CassandraState | undefined;
+            resourceInputs["additionalDiskSpace"] = state ? state.additionalDiskSpace : undefined;
             resourceInputs["cassandraUserConfig"] = state ? state.cassandraUserConfig : undefined;
             resourceInputs["cassandras"] = state ? state.cassandras : undefined;
             resourceInputs["cloudName"] = state ? state.cloudName : undefined;
@@ -216,6 +221,7 @@ export class Cassandra extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
+            resourceInputs["additionalDiskSpace"] = args ? args.additionalDiskSpace : undefined;
             resourceInputs["cassandraUserConfig"] = args ? args.cassandraUserConfig : undefined;
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
@@ -253,6 +259,10 @@ export class Cassandra extends pulumi.CustomResource {
  */
 export interface CassandraState {
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     */
+    additionalDiskSpace?: pulumi.Input<string>;
+    /**
      * Cassandra user configurable settings
      */
     cassandraUserConfig?: pulumi.Input<inputs.CassandraCassandraUserConfig>;
@@ -269,7 +279,7 @@ export interface CassandraState {
      */
     components?: pulumi.Input<pulumi.Input<inputs.CassandraComponent>[]>;
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -363,6 +373,10 @@ export interface CassandraState {
  */
 export interface CassandraArgs {
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     */
+    additionalDiskSpace?: pulumi.Input<string>;
+    /**
      * Cassandra user configurable settings
      */
     cassandraUserConfig?: pulumi.Input<inputs.CassandraCassandraUserConfig>;
@@ -371,7 +385,7 @@ export interface CassandraArgs {
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     diskSpace?: pulumi.Input<string>;
     /**

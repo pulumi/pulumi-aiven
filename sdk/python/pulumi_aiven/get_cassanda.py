@@ -24,7 +24,10 @@ class GetCassandaResult:
     """
     A collection of values returned by getCassanda.
     """
-    def __init__(__self__, cassandra_user_configs=None, cassandras=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, cassandra_user_configs=None, cassandras=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, termination_protection=None):
+        if additional_disk_space and not isinstance(additional_disk_space, str):
+            raise TypeError("Expected argument 'additional_disk_space' to be a str")
+        pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if cassandra_user_configs and not isinstance(cassandra_user_configs, list):
             raise TypeError("Expected argument 'cassandra_user_configs' to be a list")
         pulumi.set(__self__, "cassandra_user_configs", cassandra_user_configs)
@@ -108,6 +111,14 @@ class GetCassandaResult:
         pulumi.set(__self__, "termination_protection", termination_protection)
 
     @property
+    @pulumi.getter(name="additionalDiskSpace")
+    def additional_disk_space(self) -> str:
+        """
+        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        """
+        return pulumi.get(self, "additional_disk_space")
+
+    @property
     @pulumi.getter(name="cassandraUserConfigs")
     def cassandra_user_configs(self) -> Sequence['outputs.GetCassandaCassandraUserConfigResult']:
         """
@@ -143,7 +154,7 @@ class GetCassandaResult:
     @pulumi.getter(name="diskSpace")
     def disk_space(self) -> str:
         """
-        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
         return pulumi.get(self, "disk_space")
 
@@ -330,6 +341,7 @@ class AwaitableGetCassandaResult(GetCassandaResult):
         if False:
             yield self
         return GetCassandaResult(
+            additional_disk_space=self.additional_disk_space,
             cassandra_user_configs=self.cassandra_user_configs,
             cassandras=self.cassandras,
             cloud_name=self.cloud_name,
@@ -387,6 +399,7 @@ def get_cassanda(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getCassanda:getCassanda', __args__, opts=opts, typ=GetCassandaResult).value
 
     return AwaitableGetCassandaResult(
+        additional_disk_space=__ret__.additional_disk_space,
         cassandra_user_configs=__ret__.cassandra_user_configs,
         cassandras=__ret__.cassandras,
         cloud_name=__ret__.cloud_name,

@@ -22,7 +22,10 @@ class GetKafkaResult:
     """
     A collection of values returned by getKafka.
     """
-    def __init__(__self__, cloud_name=None, components=None, default_acl=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, kafka_user_configs=None, kafkas=None, karapace=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, default_acl=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, kafka_user_configs=None, kafkas=None, karapace=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, termination_protection=None):
+        if additional_disk_space and not isinstance(additional_disk_space, str):
+            raise TypeError("Expected argument 'additional_disk_space' to be a str")
+        pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
         pulumi.set(__self__, "cloud_name", cloud_name)
@@ -112,6 +115,14 @@ class GetKafkaResult:
         pulumi.set(__self__, "termination_protection", termination_protection)
 
     @property
+    @pulumi.getter(name="additionalDiskSpace")
+    def additional_disk_space(self) -> str:
+        """
+        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        """
+        return pulumi.get(self, "additional_disk_space")
+
+    @property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> str:
         """
@@ -139,7 +150,7 @@ class GetKafkaResult:
     @pulumi.getter(name="diskSpace")
     def disk_space(self) -> str:
         """
-        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
         return pulumi.get(self, "disk_space")
 
@@ -350,6 +361,7 @@ class AwaitableGetKafkaResult(GetKafkaResult):
         if False:
             yield self
         return GetKafkaResult(
+            additional_disk_space=self.additional_disk_space,
             cloud_name=self.cloud_name,
             components=self.components,
             default_acl=self.default_acl,
@@ -408,6 +420,7 @@ def get_kafka(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafka:getKafka', __args__, opts=opts, typ=GetKafkaResult).value
 
     return AwaitableGetKafkaResult(
+        additional_disk_space=__ret__.additional_disk_space,
         cloud_name=__ret__.cloud_name,
         components=__ret__.components,
         default_acl=__ret__.default_acl,

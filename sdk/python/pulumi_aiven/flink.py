@@ -18,6 +18,7 @@ class FlinkArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  service_name: pulumi.Input[str],
+                 additional_disk_space: Optional[pulumi.Input[str]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
                  flink: Optional[pulumi.Input['FlinkFlinkArgs']] = None,
@@ -34,8 +35,9 @@ class FlinkArgs:
         The set of arguments for constructing a Flink resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input['FlinkFlinkArgs'] flink: Flink server provided values
         :param pulumi.Input['FlinkFlinkUserConfigArgs'] flink_user_config: Flink user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -49,6 +51,8 @@ class FlinkArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
+        if additional_disk_space is not None:
+            pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
         if disk_space is not None:
@@ -99,6 +103,18 @@ class FlinkArgs:
         pulumi.set(self, "service_name", value)
 
     @property
+    @pulumi.getter(name="additionalDiskSpace")
+    def additional_disk_space(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        """
+        return pulumi.get(self, "additional_disk_space")
+
+    @additional_disk_space.setter
+    def additional_disk_space(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "additional_disk_space", value)
+
+    @property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -114,7 +130,7 @@ class FlinkArgs:
     @pulumi.getter(name="diskSpace")
     def disk_space(self) -> Optional[pulumi.Input[str]]:
         """
-        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
         return pulumi.get(self, "disk_space")
 
@@ -246,6 +262,7 @@ class FlinkArgs:
 @pulumi.input_type
 class _FlinkState:
     def __init__(__self__, *,
+                 additional_disk_space: Optional[pulumi.Input[str]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  components: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkComponentArgs']]]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
@@ -274,9 +291,10 @@ class _FlinkState:
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Flink resources.
+        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input['FlinkComponentArgs']]] components: Service component information objects
-        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
         :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
@@ -301,6 +319,8 @@ class _FlinkState:
         :param pulumi.Input[Sequence[pulumi.Input['FlinkTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
+        if additional_disk_space is not None:
+            pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
         if components is not None:
@@ -355,6 +375,18 @@ class _FlinkState:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
     @property
+    @pulumi.getter(name="additionalDiskSpace")
+    def additional_disk_space(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        """
+        return pulumi.get(self, "additional_disk_space")
+
+    @additional_disk_space.setter
+    def additional_disk_space(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "additional_disk_space", value)
+
+    @property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -382,7 +414,7 @@ class _FlinkState:
     @pulumi.getter(name="diskSpace")
     def disk_space(self) -> Optional[pulumi.Input[str]]:
         """
-        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
         return pulumi.get(self, "disk_space")
 
@@ -672,6 +704,7 @@ class Flink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_disk_space: Optional[pulumi.Input[str]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
                  flink: Optional[pulumi.Input[pulumi.InputType['FlinkFlinkArgs']]] = None,
@@ -716,8 +749,9 @@ class Flink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[pulumi.InputType['FlinkFlinkArgs']] flink: Flink server provided values
         :param pulumi.Input[pulumi.InputType['FlinkFlinkUserConfigArgs']] flink_user_config: Flink user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -779,6 +813,7 @@ class Flink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_disk_space: Optional[pulumi.Input[str]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
                  flink: Optional[pulumi.Input[pulumi.InputType['FlinkFlinkArgs']]] = None,
@@ -802,6 +837,7 @@ class Flink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FlinkArgs.__new__(FlinkArgs)
 
+            __props__.__dict__["additional_disk_space"] = additional_disk_space
             __props__.__dict__["cloud_name"] = cloud_name
             __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["flink"] = flink
@@ -842,6 +878,7 @@ class Flink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            additional_disk_space: Optional[pulumi.Input[str]] = None,
             cloud_name: Optional[pulumi.Input[str]] = None,
             components: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkComponentArgs']]]]] = None,
             disk_space: Optional[pulumi.Input[str]] = None,
@@ -875,9 +912,10 @@ class Flink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkComponentArgs']]]] components: Service component information objects
-        :param pulumi.Input[str] disk_space: The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
         :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
@@ -906,6 +944,7 @@ class Flink(pulumi.CustomResource):
 
         __props__ = _FlinkState.__new__(_FlinkState)
 
+        __props__.__dict__["additional_disk_space"] = additional_disk_space
         __props__.__dict__["cloud_name"] = cloud_name
         __props__.__dict__["components"] = components
         __props__.__dict__["disk_space"] = disk_space
@@ -935,6 +974,14 @@ class Flink(pulumi.CustomResource):
         return Flink(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="additionalDiskSpace")
+    def additional_disk_space(self) -> pulumi.Output[Optional[str]]:
+        """
+        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        """
+        return pulumi.get(self, "additional_disk_space")
+
+    @property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Output[Optional[str]]:
         """
@@ -954,7 +1001,7 @@ class Flink(pulumi.CustomResource):
     @pulumi.getter(name="diskSpace")
     def disk_space(self) -> pulumi.Output[Optional[str]]:
         """
-        The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
         return pulumi.get(self, "disk_space")
 

@@ -60,6 +60,8 @@ import (
 type Cassandra struct {
 	pulumi.CustomResourceState
 
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
 	// Cassandra user configurable settings
 	CassandraUserConfig CassandraCassandraUserConfigPtrOutput `pulumi:"cassandraUserConfig"`
 	// Cassandra server provided values
@@ -68,7 +70,7 @@ type Cassandra struct {
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components CassandraComponentArrayOutput `pulumi:"components"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -149,6 +151,8 @@ func GetCassandra(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cassandra resources.
 type cassandraState struct {
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Cassandra user configurable settings
 	CassandraUserConfig *CassandraCassandraUserConfig `pulumi:"cassandraUserConfig"`
 	// Cassandra server provided values
@@ -157,7 +161,7 @@ type cassandraState struct {
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []CassandraComponent `pulumi:"components"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -204,6 +208,8 @@ type cassandraState struct {
 }
 
 type CassandraState struct {
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	AdditionalDiskSpace pulumi.StringPtrInput
 	// Cassandra user configurable settings
 	CassandraUserConfig CassandraCassandraUserConfigPtrInput
 	// Cassandra server provided values
@@ -212,7 +218,7 @@ type CassandraState struct {
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components CassandraComponentArrayInput
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -263,11 +269,13 @@ func (CassandraState) ElementType() reflect.Type {
 }
 
 type cassandraArgs struct {
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Cassandra user configurable settings
 	CassandraUserConfig *CassandraCassandraUserConfig `pulumi:"cassandraUserConfig"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -293,11 +301,13 @@ type cassandraArgs struct {
 
 // The set of arguments for constructing a Cassandra resource.
 type CassandraArgs struct {
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	AdditionalDiskSpace pulumi.StringPtrInput
 	// Cassandra user configurable settings
 	CassandraUserConfig CassandraCassandraUserConfigPtrInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -408,6 +418,11 @@ func (o CassandraOutput) ToCassandraOutputWithContext(ctx context.Context) Cassa
 	return o
 }
 
+// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+func (o CassandraOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cassandra) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
+}
+
 // Cassandra user configurable settings
 func (o CassandraOutput) CassandraUserConfig() CassandraCassandraUserConfigPtrOutput {
 	return o.ApplyT(func(v *Cassandra) CassandraCassandraUserConfigPtrOutput { return v.CassandraUserConfig }).(CassandraCassandraUserConfigPtrOutput)
@@ -428,7 +443,7 @@ func (o CassandraOutput) Components() CassandraComponentArrayOutput {
 	return o.ApplyT(func(v *Cassandra) CassandraComponentArrayOutput { return v.Components }).(CassandraComponentArrayOutput)
 }
 
-// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 func (o CassandraOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cassandra) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }

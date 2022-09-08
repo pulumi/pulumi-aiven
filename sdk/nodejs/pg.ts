@@ -43,6 +43,10 @@ export class Pg extends pulumi.CustomResource {
     }
 
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     */
+    public readonly additionalDiskSpace!: pulumi.Output<string | undefined>;
+    /**
      * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
     public readonly cloudName!: pulumi.Output<string | undefined>;
@@ -51,7 +55,7 @@ export class Pg extends pulumi.CustomResource {
      */
     public /*out*/ readonly components!: pulumi.Output<outputs.PgComponent[]>;
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     public readonly diskSpace!: pulumi.Output<string | undefined>;
     /**
@@ -160,6 +164,7 @@ export class Pg extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PgState | undefined;
+            resourceInputs["additionalDiskSpace"] = state ? state.additionalDiskSpace : undefined;
             resourceInputs["cloudName"] = state ? state.cloudName : undefined;
             resourceInputs["components"] = state ? state.components : undefined;
             resourceInputs["diskSpace"] = state ? state.diskSpace : undefined;
@@ -191,6 +196,7 @@ export class Pg extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            resourceInputs["additionalDiskSpace"] = args ? args.additionalDiskSpace : undefined;
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
@@ -228,6 +234,10 @@ export class Pg extends pulumi.CustomResource {
  */
 export interface PgState {
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     */
+    additionalDiskSpace?: pulumi.Input<string>;
+    /**
      * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
     cloudName?: pulumi.Input<string>;
@@ -236,7 +246,7 @@ export interface PgState {
      */
     components?: pulumi.Input<pulumi.Input<inputs.PgComponent>[]>;
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -338,11 +348,15 @@ export interface PgState {
  */
 export interface PgArgs {
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     */
+    additionalDiskSpace?: pulumi.Input<string>;
+    /**
      * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     diskSpace?: pulumi.Input<string>;
     /**
