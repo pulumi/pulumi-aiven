@@ -78,6 +78,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/cassandra:Cassandra")
 public class Cassandra extends com.pulumi.resources.CustomResource {
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    @Export(name="additionalDiskSpace", type=String.class, parameters={})
+    private Output</* @Nullable */ String> additionalDiskSpace;
+
+    /**
+     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    public Output<Optional<String>> additionalDiskSpace() {
+        return Codegen.optional(this.additionalDiskSpace);
+    }
+    /**
      * Cassandra user configurable settings
      * 
      */
@@ -134,14 +148,14 @@ public class Cassandra extends com.pulumi.resources.CustomResource {
         return this.components;
     }
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     @Export(name="diskSpace", type=String.class, parameters={})
     private Output</* @Nullable */ String> diskSpace;
 
     /**
-     * @return The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     public Output<Optional<String>> diskSpace() {

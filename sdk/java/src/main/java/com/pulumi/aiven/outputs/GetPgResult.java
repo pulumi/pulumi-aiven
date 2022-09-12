@@ -18,6 +18,11 @@ import java.util.Objects;
 @CustomType
 public final class GetPgResult {
     /**
+     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    private final String additionalDiskSpace;
+    /**
      * @return Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      * 
      */
@@ -28,7 +33,7 @@ public final class GetPgResult {
      */
     private final List<GetPgComponent> components;
     /**
-     * @return The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     private final String diskSpace;
@@ -155,6 +160,7 @@ public final class GetPgResult {
 
     @CustomType.Constructor
     private GetPgResult(
+        @CustomType.Parameter("additionalDiskSpace") String additionalDiskSpace,
         @CustomType.Parameter("cloudName") String cloudName,
         @CustomType.Parameter("components") List<GetPgComponent> components,
         @CustomType.Parameter("diskSpace") String diskSpace,
@@ -182,6 +188,7 @@ public final class GetPgResult {
         @CustomType.Parameter("staticIps") List<String> staticIps,
         @CustomType.Parameter("tags") List<GetPgTag> tags,
         @CustomType.Parameter("terminationProtection") Boolean terminationProtection) {
+        this.additionalDiskSpace = additionalDiskSpace;
         this.cloudName = cloudName;
         this.components = components;
         this.diskSpace = diskSpace;
@@ -212,6 +219,13 @@ public final class GetPgResult {
     }
 
     /**
+     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    public String additionalDiskSpace() {
+        return this.additionalDiskSpace;
+    }
+    /**
      * @return Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      * 
      */
@@ -226,7 +240,7 @@ public final class GetPgResult {
         return this.components;
     }
     /**
-     * @return The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     public String diskSpace() {
@@ -410,6 +424,7 @@ public final class GetPgResult {
     }
 
     public static final class Builder {
+        private String additionalDiskSpace;
         private String cloudName;
         private List<GetPgComponent> components;
         private String diskSpace;
@@ -444,6 +459,7 @@ public final class GetPgResult {
 
         public Builder(GetPgResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalDiskSpace = defaults.additionalDiskSpace;
     	      this.cloudName = defaults.cloudName;
     	      this.components = defaults.components;
     	      this.diskSpace = defaults.diskSpace;
@@ -473,6 +489,10 @@ public final class GetPgResult {
     	      this.terminationProtection = defaults.terminationProtection;
         }
 
+        public Builder additionalDiskSpace(String additionalDiskSpace) {
+            this.additionalDiskSpace = Objects.requireNonNull(additionalDiskSpace);
+            return this;
+        }
         public Builder cloudName(String cloudName) {
             this.cloudName = Objects.requireNonNull(cloudName);
             return this;
@@ -599,7 +619,7 @@ public final class GetPgResult {
             this.terminationProtection = Objects.requireNonNull(terminationProtection);
             return this;
         }        public GetPgResult build() {
-            return new GetPgResult(cloudName, components, diskSpace, diskSpaceCap, diskSpaceDefault, diskSpaceStep, diskSpaceUsed, id, maintenanceWindowDow, maintenanceWindowTime, pgUserConfigs, pgs, plan, project, projectVpcId, serviceHost, serviceIntegrations, serviceName, servicePassword, servicePort, serviceType, serviceUri, serviceUsername, state, staticIps, tags, terminationProtection);
+            return new GetPgResult(additionalDiskSpace, cloudName, components, diskSpace, diskSpaceCap, diskSpaceDefault, diskSpaceStep, diskSpaceUsed, id, maintenanceWindowDow, maintenanceWindowTime, pgUserConfigs, pgs, plan, project, projectVpcId, serviceHost, serviceIntegrations, serviceName, servicePassword, servicePort, serviceType, serviceUri, serviceUsername, state, staticIps, tags, terminationProtection);
         }
     }
 }

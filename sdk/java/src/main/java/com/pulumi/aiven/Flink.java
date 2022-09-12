@@ -74,6 +74,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/flink:Flink")
 public class Flink extends com.pulumi.resources.CustomResource {
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    @Export(name="additionalDiskSpace", type=String.class, parameters={})
+    private Output</* @Nullable */ String> additionalDiskSpace;
+
+    /**
+     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    public Output<Optional<String>> additionalDiskSpace() {
+        return Codegen.optional(this.additionalDiskSpace);
+    }
+    /**
      * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      * 
      */
@@ -102,14 +116,14 @@ public class Flink extends com.pulumi.resources.CustomResource {
         return this.components;
     }
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     @Export(name="diskSpace", type=String.class, parameters={})
     private Output</* @Nullable */ String> diskSpace;
 
     /**
-     * @return The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     public Output<Optional<String>> diskSpace() {

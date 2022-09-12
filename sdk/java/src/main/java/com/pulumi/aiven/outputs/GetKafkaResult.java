@@ -18,6 +18,11 @@ import java.util.Objects;
 @CustomType
 public final class GetKafkaResult {
     /**
+     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    private final String additionalDiskSpace;
+    /**
      * @return Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      * 
      */
@@ -33,7 +38,7 @@ public final class GetKafkaResult {
      */
     private final Boolean defaultAcl;
     /**
-     * @return The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     private final String diskSpace;
@@ -165,6 +170,7 @@ public final class GetKafkaResult {
 
     @CustomType.Constructor
     private GetKafkaResult(
+        @CustomType.Parameter("additionalDiskSpace") String additionalDiskSpace,
         @CustomType.Parameter("cloudName") String cloudName,
         @CustomType.Parameter("components") List<GetKafkaComponent> components,
         @CustomType.Parameter("defaultAcl") Boolean defaultAcl,
@@ -194,6 +200,7 @@ public final class GetKafkaResult {
         @CustomType.Parameter("staticIps") List<String> staticIps,
         @CustomType.Parameter("tags") List<GetKafkaTag> tags,
         @CustomType.Parameter("terminationProtection") Boolean terminationProtection) {
+        this.additionalDiskSpace = additionalDiskSpace;
         this.cloudName = cloudName;
         this.components = components;
         this.defaultAcl = defaultAcl;
@@ -226,6 +233,13 @@ public final class GetKafkaResult {
     }
 
     /**
+     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    public String additionalDiskSpace() {
+        return this.additionalDiskSpace;
+    }
+    /**
      * @return Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      * 
      */
@@ -247,7 +261,7 @@ public final class GetKafkaResult {
         return this.defaultAcl;
     }
     /**
-     * @return The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     public String diskSpace() {
@@ -438,6 +452,7 @@ public final class GetKafkaResult {
     }
 
     public static final class Builder {
+        private String additionalDiskSpace;
         private String cloudName;
         private List<GetKafkaComponent> components;
         private Boolean defaultAcl;
@@ -474,6 +489,7 @@ public final class GetKafkaResult {
 
         public Builder(GetKafkaResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalDiskSpace = defaults.additionalDiskSpace;
     	      this.cloudName = defaults.cloudName;
     	      this.components = defaults.components;
     	      this.defaultAcl = defaults.defaultAcl;
@@ -505,6 +521,10 @@ public final class GetKafkaResult {
     	      this.terminationProtection = defaults.terminationProtection;
         }
 
+        public Builder additionalDiskSpace(String additionalDiskSpace) {
+            this.additionalDiskSpace = Objects.requireNonNull(additionalDiskSpace);
+            return this;
+        }
         public Builder cloudName(String cloudName) {
             this.cloudName = Objects.requireNonNull(cloudName);
             return this;
@@ -639,7 +659,7 @@ public final class GetKafkaResult {
             this.terminationProtection = Objects.requireNonNull(terminationProtection);
             return this;
         }        public GetKafkaResult build() {
-            return new GetKafkaResult(cloudName, components, defaultAcl, diskSpace, diskSpaceCap, diskSpaceDefault, diskSpaceStep, diskSpaceUsed, id, kafkaUserConfigs, kafkas, karapace, maintenanceWindowDow, maintenanceWindowTime, plan, project, projectVpcId, serviceHost, serviceIntegrations, serviceName, servicePassword, servicePort, serviceType, serviceUri, serviceUsername, state, staticIps, tags, terminationProtection);
+            return new GetKafkaResult(additionalDiskSpace, cloudName, components, defaultAcl, diskSpace, diskSpaceCap, diskSpaceDefault, diskSpaceStep, diskSpaceUsed, id, kafkaUserConfigs, kafkas, karapace, maintenanceWindowDow, maintenanceWindowTime, plan, project, projectVpcId, serviceHost, serviceIntegrations, serviceName, servicePassword, servicePort, serviceType, serviceUri, serviceUsername, state, staticIps, tags, terminationProtection);
         }
     }
 }

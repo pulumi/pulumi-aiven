@@ -53,6 +53,10 @@ export interface GetCassandaArgs {
  */
 export interface GetCassandaResult {
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     */
+    readonly additionalDiskSpace: string;
+    /**
      * Cassandra user configurable settings
      */
     readonly cassandraUserConfigs: outputs.GetCassandaCassandraUserConfig[];
@@ -69,7 +73,7 @@ export interface GetCassandaResult {
      */
     readonly components: outputs.GetCassandaComponent[];
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     readonly diskSpace: string;
     /**

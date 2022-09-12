@@ -18,6 +18,11 @@ import java.util.Objects;
 @CustomType
 public final class GetClickhouseResult {
     /**
+     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    private final String additionalDiskSpace;
+    /**
      * @return Clickhouse user configurable settings
      * 
      */
@@ -38,7 +43,7 @@ public final class GetClickhouseResult {
      */
     private final List<GetClickhouseComponent> components;
     /**
-     * @return The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     private final String diskSpace;
@@ -155,6 +160,7 @@ public final class GetClickhouseResult {
 
     @CustomType.Constructor
     private GetClickhouseResult(
+        @CustomType.Parameter("additionalDiskSpace") String additionalDiskSpace,
         @CustomType.Parameter("clickhouseUserConfigs") List<GetClickhouseClickhouseUserConfig> clickhouseUserConfigs,
         @CustomType.Parameter("clickhouses") List<GetClickhouseClickhouse> clickhouses,
         @CustomType.Parameter("cloudName") String cloudName,
@@ -182,6 +188,7 @@ public final class GetClickhouseResult {
         @CustomType.Parameter("staticIps") List<String> staticIps,
         @CustomType.Parameter("tags") List<GetClickhouseTag> tags,
         @CustomType.Parameter("terminationProtection") Boolean terminationProtection) {
+        this.additionalDiskSpace = additionalDiskSpace;
         this.clickhouseUserConfigs = clickhouseUserConfigs;
         this.clickhouses = clickhouses;
         this.cloudName = cloudName;
@@ -212,6 +219,13 @@ public final class GetClickhouseResult {
     }
 
     /**
+     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * 
+     */
+    public String additionalDiskSpace() {
+        return this.additionalDiskSpace;
+    }
+    /**
      * @return Clickhouse user configurable settings
      * 
      */
@@ -240,7 +254,7 @@ public final class GetClickhouseResult {
         return this.components;
     }
     /**
-     * @return The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     public String diskSpace() {
@@ -410,6 +424,7 @@ public final class GetClickhouseResult {
     }
 
     public static final class Builder {
+        private String additionalDiskSpace;
         private List<GetClickhouseClickhouseUserConfig> clickhouseUserConfigs;
         private List<GetClickhouseClickhouse> clickhouses;
         private String cloudName;
@@ -444,6 +459,7 @@ public final class GetClickhouseResult {
 
         public Builder(GetClickhouseResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalDiskSpace = defaults.additionalDiskSpace;
     	      this.clickhouseUserConfigs = defaults.clickhouseUserConfigs;
     	      this.clickhouses = defaults.clickhouses;
     	      this.cloudName = defaults.cloudName;
@@ -473,6 +489,10 @@ public final class GetClickhouseResult {
     	      this.terminationProtection = defaults.terminationProtection;
         }
 
+        public Builder additionalDiskSpace(String additionalDiskSpace) {
+            this.additionalDiskSpace = Objects.requireNonNull(additionalDiskSpace);
+            return this;
+        }
         public Builder clickhouseUserConfigs(List<GetClickhouseClickhouseUserConfig> clickhouseUserConfigs) {
             this.clickhouseUserConfigs = Objects.requireNonNull(clickhouseUserConfigs);
             return this;
@@ -599,7 +619,7 @@ public final class GetClickhouseResult {
             this.terminationProtection = Objects.requireNonNull(terminationProtection);
             return this;
         }        public GetClickhouseResult build() {
-            return new GetClickhouseResult(clickhouseUserConfigs, clickhouses, cloudName, components, diskSpace, diskSpaceCap, diskSpaceDefault, diskSpaceStep, diskSpaceUsed, id, maintenanceWindowDow, maintenanceWindowTime, plan, project, projectVpcId, serviceHost, serviceIntegrations, serviceName, servicePassword, servicePort, serviceType, serviceUri, serviceUsername, state, staticIps, tags, terminationProtection);
+            return new GetClickhouseResult(additionalDiskSpace, clickhouseUserConfigs, clickhouses, cloudName, components, diskSpace, diskSpaceCap, diskSpaceDefault, diskSpaceStep, diskSpaceUsed, id, maintenanceWindowDow, maintenanceWindowTime, plan, project, projectVpcId, serviceHost, serviceIntegrations, serviceName, servicePassword, servicePort, serviceType, serviceUri, serviceUsername, state, staticIps, tags, terminationProtection);
         }
     }
 }

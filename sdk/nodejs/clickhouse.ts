@@ -59,6 +59,10 @@ export class Clickhouse extends pulumi.CustomResource {
     }
 
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     */
+    public readonly additionalDiskSpace!: pulumi.Output<string | undefined>;
+    /**
      * Clickhouse user configurable settings
      */
     public readonly clickhouseUserConfig!: pulumi.Output<outputs.ClickhouseClickhouseUserConfig | undefined>;
@@ -75,7 +79,7 @@ export class Clickhouse extends pulumi.CustomResource {
      */
     public /*out*/ readonly components!: pulumi.Output<outputs.ClickhouseComponent[]>;
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     public readonly diskSpace!: pulumi.Output<string | undefined>;
     /**
@@ -176,6 +180,7 @@ export class Clickhouse extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClickhouseState | undefined;
+            resourceInputs["additionalDiskSpace"] = state ? state.additionalDiskSpace : undefined;
             resourceInputs["clickhouseUserConfig"] = state ? state.clickhouseUserConfig : undefined;
             resourceInputs["clickhouses"] = state ? state.clickhouses : undefined;
             resourceInputs["cloudName"] = state ? state.cloudName : undefined;
@@ -210,6 +215,7 @@ export class Clickhouse extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
+            resourceInputs["additionalDiskSpace"] = args ? args.additionalDiskSpace : undefined;
             resourceInputs["clickhouseUserConfig"] = args ? args.clickhouseUserConfig : undefined;
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
@@ -247,6 +253,10 @@ export class Clickhouse extends pulumi.CustomResource {
  */
 export interface ClickhouseState {
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     */
+    additionalDiskSpace?: pulumi.Input<string>;
+    /**
      * Clickhouse user configurable settings
      */
     clickhouseUserConfig?: pulumi.Input<inputs.ClickhouseClickhouseUserConfig>;
@@ -263,7 +273,7 @@ export interface ClickhouseState {
      */
     components?: pulumi.Input<pulumi.Input<inputs.ClickhouseComponent>[]>;
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -357,6 +367,10 @@ export interface ClickhouseState {
  */
 export interface ClickhouseArgs {
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     */
+    additionalDiskSpace?: pulumi.Input<string>;
+    /**
      * Clickhouse user configurable settings
      */
     clickhouseUserConfig?: pulumi.Input<inputs.ClickhouseClickhouseUserConfig>;
@@ -365,7 +379,7 @@ export interface ClickhouseArgs {
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     diskSpace?: pulumi.Input<string>;
     /**

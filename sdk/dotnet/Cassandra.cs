@@ -52,6 +52,12 @@ namespace Pulumi.Aiven
     public partial class Cassandra : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// </summary>
+        [Output("additionalDiskSpace")]
+        public Output<string?> AdditionalDiskSpace { get; private set; } = null!;
+
+        /// <summary>
         /// Cassandra user configurable settings
         /// </summary>
         [Output("cassandraUserConfig")]
@@ -76,7 +82,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.CassandraComponent>> Components { get; private set; } = null!;
 
         /// <summary>
-        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         [Output("diskSpace")]
         public Output<string?> DiskSpace { get; private set; } = null!;
@@ -254,6 +260,12 @@ namespace Pulumi.Aiven
     public sealed class CassandraArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// </summary>
+        [Input("additionalDiskSpace")]
+        public Input<string>? AdditionalDiskSpace { get; set; }
+
+        /// <summary>
         /// Cassandra user configurable settings
         /// </summary>
         [Input("cassandraUserConfig")]
@@ -266,7 +278,7 @@ namespace Pulumi.Aiven
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
@@ -358,6 +370,12 @@ namespace Pulumi.Aiven
     public sealed class CassandraState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// </summary>
+        [Input("additionalDiskSpace")]
+        public Input<string>? AdditionalDiskSpace { get; set; }
+
+        /// <summary>
         /// Cassandra user configurable settings
         /// </summary>
         [Input("cassandraUserConfig")]
@@ -394,7 +412,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }

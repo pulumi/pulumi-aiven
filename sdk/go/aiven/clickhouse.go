@@ -54,6 +54,8 @@ import (
 type Clickhouse struct {
 	pulumi.CustomResourceState
 
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrOutput `pulumi:"clickhouseUserConfig"`
 	// Clickhouse server provided values
@@ -62,7 +64,7 @@ type Clickhouse struct {
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components ClickhouseComponentArrayOutput `pulumi:"components"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -143,6 +145,8 @@ func GetClickhouse(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Clickhouse resources.
 type clickhouseState struct {
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig *ClickhouseClickhouseUserConfig `pulumi:"clickhouseUserConfig"`
 	// Clickhouse server provided values
@@ -151,7 +155,7 @@ type clickhouseState struct {
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []ClickhouseComponent `pulumi:"components"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -198,6 +202,8 @@ type clickhouseState struct {
 }
 
 type ClickhouseState struct {
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	AdditionalDiskSpace pulumi.StringPtrInput
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrInput
 	// Clickhouse server provided values
@@ -206,7 +212,7 @@ type ClickhouseState struct {
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components ClickhouseComponentArrayInput
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -257,11 +263,13 @@ func (ClickhouseState) ElementType() reflect.Type {
 }
 
 type clickhouseArgs struct {
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig *ClickhouseClickhouseUserConfig `pulumi:"clickhouseUserConfig"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -287,11 +295,13 @@ type clickhouseArgs struct {
 
 // The set of arguments for constructing a Clickhouse resource.
 type ClickhouseArgs struct {
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	AdditionalDiskSpace pulumi.StringPtrInput
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace pulumi.StringPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -402,6 +412,11 @@ func (o ClickhouseOutput) ToClickhouseOutputWithContext(ctx context.Context) Cli
 	return o
 }
 
+// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+func (o ClickhouseOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Clickhouse) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
+}
+
 // Clickhouse user configurable settings
 func (o ClickhouseOutput) ClickhouseUserConfig() ClickhouseClickhouseUserConfigPtrOutput {
 	return o.ApplyT(func(v *Clickhouse) ClickhouseClickhouseUserConfigPtrOutput { return v.ClickhouseUserConfig }).(ClickhouseClickhouseUserConfigPtrOutput)
@@ -422,7 +437,7 @@ func (o ClickhouseOutput) Components() ClickhouseComponentArrayOutput {
 	return o.ApplyT(func(v *Clickhouse) ClickhouseComponentArrayOutput { return v.Components }).(ClickhouseComponentArrayOutput)
 }
 
-// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 func (o ClickhouseOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Clickhouse) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }

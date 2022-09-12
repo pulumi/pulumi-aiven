@@ -51,6 +51,10 @@ export interface GetClickhouseArgs {
  */
 export interface GetClickhouseResult {
     /**
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     */
+    readonly additionalDiskSpace: string;
+    /**
      * Clickhouse user configurable settings
      */
     readonly clickhouseUserConfigs: outputs.GetClickhouseClickhouseUserConfig[];
@@ -67,7 +71,7 @@ export interface GetClickhouseResult {
      */
     readonly components: outputs.GetClickhouseComponent[];
     /**
-     * The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     readonly diskSpace: string;
     /**

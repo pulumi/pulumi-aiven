@@ -57,11 +57,13 @@ type LookupM3DbArgs struct {
 
 // A collection of values returned by getM3Db.
 type LookupM3DbResult struct {
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	AdditionalDiskSpace string `pulumi:"additionalDiskSpace"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []GetM3DbComponent `pulumi:"components"`
-	// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap string `pulumi:"diskSpaceCap"`
@@ -153,6 +155,11 @@ func (o LookupM3DbResultOutput) ToLookupM3DbResultOutputWithContext(ctx context.
 	return o
 }
 
+// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+func (o LookupM3DbResultOutput) AdditionalDiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupM3DbResult) string { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
+}
+
 // Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 func (o LookupM3DbResultOutput) CloudName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3DbResult) string { return v.CloudName }).(pulumi.StringOutput)
@@ -163,7 +170,7 @@ func (o LookupM3DbResultOutput) Components() GetM3DbComponentArrayOutput {
 	return o.ApplyT(func(v LookupM3DbResult) []GetM3DbComponent { return v.Components }).(GetM3DbComponentArrayOutput)
 }
 
-// The disk space of the service, possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
+// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 func (o LookupM3DbResultOutput) DiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3DbResult) string { return v.DiskSpace }).(pulumi.StringOutput)
 }
