@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaKafkaUserConfigSchemaRegistryConfig {
-    private final @Nullable String leaderEligibility;
-    private final @Nullable String topicName;
+    private @Nullable String leaderEligibility;
+    private @Nullable String topicName;
 
-    @CustomType.Constructor
-    private KafkaKafkaUserConfigSchemaRegistryConfig(
-        @CustomType.Parameter("leaderEligibility") @Nullable String leaderEligibility,
-        @CustomType.Parameter("topicName") @Nullable String topicName) {
-        this.leaderEligibility = leaderEligibility;
-        this.topicName = topicName;
-    }
-
+    private KafkaKafkaUserConfigSchemaRegistryConfig() {}
     public Optional<String> leaderEligibility() {
         return Optional.ofNullable(this.leaderEligibility);
     }
@@ -36,30 +29,32 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfig {
     public static Builder builder(KafkaKafkaUserConfigSchemaRegistryConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String leaderEligibility;
         private @Nullable String topicName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KafkaKafkaUserConfigSchemaRegistryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.leaderEligibility = defaults.leaderEligibility;
     	      this.topicName = defaults.topicName;
         }
 
+        @CustomType.Setter
         public Builder leaderEligibility(@Nullable String leaderEligibility) {
             this.leaderEligibility = leaderEligibility;
             return this;
         }
+        @CustomType.Setter
         public Builder topicName(@Nullable String topicName) {
             this.topicName = topicName;
             return this;
-        }        public KafkaKafkaUserConfigSchemaRegistryConfig build() {
-            return new KafkaKafkaUserConfigSchemaRegistryConfig(leaderEligibility, topicName);
+        }
+        public KafkaKafkaUserConfigSchemaRegistryConfig build() {
+            final var o = new KafkaKafkaUserConfigSchemaRegistryConfig();
+            o.leaderEligibility = leaderEligibility;
+            o.topicName = topicName;
+            return o;
         }
     }
 }

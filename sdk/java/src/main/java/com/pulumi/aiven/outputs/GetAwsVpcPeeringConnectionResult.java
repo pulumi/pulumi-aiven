@@ -15,63 +15,44 @@ public final class GetAwsVpcPeeringConnectionResult {
      * @return AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String awsAccountId;
+    private String awsAccountId;
     /**
      * @return AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String awsVpcId;
+    private String awsVpcId;
     /**
      * @return AWS VPC peering connection ID
      * 
      */
-    private final String awsVpcPeeringConnectionId;
+    private String awsVpcPeeringConnectionId;
     /**
      * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String awsVpcRegion;
+    private String awsVpcRegion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return State of the peering connection
      * 
      */
-    private final String state;
+    private String state;
     /**
      * @return State-specific help or error information
      * 
      */
-    private final Map<String,Object> stateInfo;
+    private Map<String,Object> stateInfo;
     /**
      * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private GetAwsVpcPeeringConnectionResult(
-        @CustomType.Parameter("awsAccountId") String awsAccountId,
-        @CustomType.Parameter("awsVpcId") String awsVpcId,
-        @CustomType.Parameter("awsVpcPeeringConnectionId") String awsVpcPeeringConnectionId,
-        @CustomType.Parameter("awsVpcRegion") String awsVpcRegion,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("stateInfo") Map<String,Object> stateInfo,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.awsAccountId = awsAccountId;
-        this.awsVpcId = awsVpcId;
-        this.awsVpcPeeringConnectionId = awsVpcPeeringConnectionId;
-        this.awsVpcRegion = awsVpcRegion;
-        this.id = id;
-        this.state = state;
-        this.stateInfo = stateInfo;
-        this.vpcId = vpcId;
-    }
-
+    private GetAwsVpcPeeringConnectionResult() {}
     /**
      * @return AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
@@ -136,7 +117,7 @@ public final class GetAwsVpcPeeringConnectionResult {
     public static Builder builder(GetAwsVpcPeeringConnectionResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String awsAccountId;
         private String awsVpcId;
@@ -146,11 +127,7 @@ public final class GetAwsVpcPeeringConnectionResult {
         private String state;
         private Map<String,Object> stateInfo;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAwsVpcPeeringConnectionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsAccountId = defaults.awsAccountId;
@@ -163,39 +140,57 @@ public final class GetAwsVpcPeeringConnectionResult {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder awsAccountId(String awsAccountId) {
             this.awsAccountId = Objects.requireNonNull(awsAccountId);
             return this;
         }
+        @CustomType.Setter
         public Builder awsVpcId(String awsVpcId) {
             this.awsVpcId = Objects.requireNonNull(awsVpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder awsVpcPeeringConnectionId(String awsVpcPeeringConnectionId) {
             this.awsVpcPeeringConnectionId = Objects.requireNonNull(awsVpcPeeringConnectionId);
             return this;
         }
+        @CustomType.Setter
         public Builder awsVpcRegion(String awsVpcRegion) {
             this.awsVpcRegion = Objects.requireNonNull(awsVpcRegion);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder stateInfo(Map<String,Object> stateInfo) {
             this.stateInfo = Objects.requireNonNull(stateInfo);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public GetAwsVpcPeeringConnectionResult build() {
-            return new GetAwsVpcPeeringConnectionResult(awsAccountId, awsVpcId, awsVpcPeeringConnectionId, awsVpcRegion, id, state, stateInfo, vpcId);
+        }
+        public GetAwsVpcPeeringConnectionResult build() {
+            final var o = new GetAwsVpcPeeringConnectionResult();
+            o.awsAccountId = awsAccountId;
+            o.awsVpcId = awsVpcId;
+            o.awsVpcPeeringConnectionId = awsVpcPeeringConnectionId;
+            o.awsVpcRegion = awsVpcRegion;
+            o.id = id;
+            o.state = state;
+            o.stateInfo = stateInfo;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

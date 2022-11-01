@@ -11,29 +11,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInfluxDbInfluxdbUserConfigInfluxdb {
-    private final @Nullable String logQueriesAfter;
-    private final @Nullable String maxConnectionLimit;
-    private final @Nullable String maxRowLimit;
-    private final @Nullable String maxSelectBuckets;
-    private final @Nullable String maxSelectPoint;
-    private final @Nullable String queryTimeout;
+    private @Nullable String logQueriesAfter;
+    private @Nullable String maxConnectionLimit;
+    private @Nullable String maxRowLimit;
+    private @Nullable String maxSelectBuckets;
+    private @Nullable String maxSelectPoint;
+    private @Nullable String queryTimeout;
 
-    @CustomType.Constructor
-    private GetInfluxDbInfluxdbUserConfigInfluxdb(
-        @CustomType.Parameter("logQueriesAfter") @Nullable String logQueriesAfter,
-        @CustomType.Parameter("maxConnectionLimit") @Nullable String maxConnectionLimit,
-        @CustomType.Parameter("maxRowLimit") @Nullable String maxRowLimit,
-        @CustomType.Parameter("maxSelectBuckets") @Nullable String maxSelectBuckets,
-        @CustomType.Parameter("maxSelectPoint") @Nullable String maxSelectPoint,
-        @CustomType.Parameter("queryTimeout") @Nullable String queryTimeout) {
-        this.logQueriesAfter = logQueriesAfter;
-        this.maxConnectionLimit = maxConnectionLimit;
-        this.maxRowLimit = maxRowLimit;
-        this.maxSelectBuckets = maxSelectBuckets;
-        this.maxSelectPoint = maxSelectPoint;
-        this.queryTimeout = queryTimeout;
-    }
-
+    private GetInfluxDbInfluxdbUserConfigInfluxdb() {}
     public Optional<String> logQueriesAfter() {
         return Optional.ofNullable(this.logQueriesAfter);
     }
@@ -60,7 +45,7 @@ public final class GetInfluxDbInfluxdbUserConfigInfluxdb {
     public static Builder builder(GetInfluxDbInfluxdbUserConfigInfluxdb defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String logQueriesAfter;
         private @Nullable String maxConnectionLimit;
@@ -68,11 +53,7 @@ public final class GetInfluxDbInfluxdbUserConfigInfluxdb {
         private @Nullable String maxSelectBuckets;
         private @Nullable String maxSelectPoint;
         private @Nullable String queryTimeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInfluxDbInfluxdbUserConfigInfluxdb defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.logQueriesAfter = defaults.logQueriesAfter;
@@ -83,31 +64,45 @@ public final class GetInfluxDbInfluxdbUserConfigInfluxdb {
     	      this.queryTimeout = defaults.queryTimeout;
         }
 
+        @CustomType.Setter
         public Builder logQueriesAfter(@Nullable String logQueriesAfter) {
             this.logQueriesAfter = logQueriesAfter;
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnectionLimit(@Nullable String maxConnectionLimit) {
             this.maxConnectionLimit = maxConnectionLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder maxRowLimit(@Nullable String maxRowLimit) {
             this.maxRowLimit = maxRowLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder maxSelectBuckets(@Nullable String maxSelectBuckets) {
             this.maxSelectBuckets = maxSelectBuckets;
             return this;
         }
+        @CustomType.Setter
         public Builder maxSelectPoint(@Nullable String maxSelectPoint) {
             this.maxSelectPoint = maxSelectPoint;
             return this;
         }
+        @CustomType.Setter
         public Builder queryTimeout(@Nullable String queryTimeout) {
             this.queryTimeout = queryTimeout;
             return this;
-        }        public GetInfluxDbInfluxdbUserConfigInfluxdb build() {
-            return new GetInfluxDbInfluxdbUserConfigInfluxdb(logQueriesAfter, maxConnectionLimit, maxRowLimit, maxSelectBuckets, maxSelectPoint, queryTimeout);
+        }
+        public GetInfluxDbInfluxdbUserConfigInfluxdb build() {
+            final var o = new GetInfluxDbInfluxdbUserConfigInfluxdb();
+            o.logQueriesAfter = logQueriesAfter;
+            o.maxConnectionLimit = maxConnectionLimit;
+            o.maxRowLimit = maxRowLimit;
+            o.maxSelectBuckets = maxSelectBuckets;
+            o.maxSelectPoint = maxSelectPoint;
+            o.queryTimeout = queryTimeout;
+            return o;
         }
     }
 }

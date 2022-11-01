@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationKafkaLogsUserConfig {
-    private final @Nullable String kafkaTopic;
+    private @Nullable String kafkaTopic;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationKafkaLogsUserConfig(@CustomType.Parameter("kafkaTopic") @Nullable String kafkaTopic) {
-        this.kafkaTopic = kafkaTopic;
-    }
-
+    private GetServiceIntegrationKafkaLogsUserConfig() {}
     public Optional<String> kafkaTopic() {
         return Optional.ofNullable(this.kafkaTopic);
     }
@@ -29,24 +25,24 @@ public final class GetServiceIntegrationKafkaLogsUserConfig {
     public static Builder builder(GetServiceIntegrationKafkaLogsUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String kafkaTopic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationKafkaLogsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kafkaTopic = defaults.kafkaTopic;
         }
 
+        @CustomType.Setter
         public Builder kafkaTopic(@Nullable String kafkaTopic) {
             this.kafkaTopic = kafkaTopic;
             return this;
-        }        public GetServiceIntegrationKafkaLogsUserConfig build() {
-            return new GetServiceIntegrationKafkaLogsUserConfig(kafkaTopic);
+        }
+        public GetServiceIntegrationKafkaLogsUserConfig build() {
+            final var o = new GetServiceIntegrationKafkaLogsUserConfig();
+            o.kafkaTopic = kafkaTopic;
+            return o;
         }
     }
 }

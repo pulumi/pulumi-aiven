@@ -13,21 +13,14 @@ public final class M3AggregatorTag {
      * @return Service tag key
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Service tag value
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private M3AggregatorTag(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private M3AggregatorTag() {}
     /**
      * @return Service tag key
      * 
@@ -50,30 +43,32 @@ public final class M3AggregatorTag {
     public static Builder builder(M3AggregatorTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(M3AggregatorTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public M3AggregatorTag build() {
-            return new M3AggregatorTag(key, value);
+        }
+        public M3AggregatorTag build() {
+            final var o = new M3AggregatorTag();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

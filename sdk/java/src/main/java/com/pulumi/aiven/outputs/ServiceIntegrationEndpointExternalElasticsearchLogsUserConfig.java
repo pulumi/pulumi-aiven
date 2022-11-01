@@ -15,42 +15,29 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
      * @return PEM encoded CA certificate
      * 
      */
-    private final @Nullable String ca;
+    private @Nullable String ca;
     /**
      * @return Maximum number of days of logs to keep
      * 
      */
-    private final @Nullable String indexDaysMax;
+    private @Nullable String indexDaysMax;
     /**
      * @return Elasticsearch index prefix
      * 
      */
-    private final @Nullable String indexPrefix;
+    private @Nullable String indexPrefix;
     /**
      * @return Elasticsearch request timeout limit
      * 
      */
-    private final @Nullable String timeout;
+    private @Nullable String timeout;
     /**
      * @return Elasticsearch connection URL
      * 
      */
-    private final @Nullable String url;
+    private @Nullable String url;
 
-    @CustomType.Constructor
-    private ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig(
-        @CustomType.Parameter("ca") @Nullable String ca,
-        @CustomType.Parameter("indexDaysMax") @Nullable String indexDaysMax,
-        @CustomType.Parameter("indexPrefix") @Nullable String indexPrefix,
-        @CustomType.Parameter("timeout") @Nullable String timeout,
-        @CustomType.Parameter("url") @Nullable String url) {
-        this.ca = ca;
-        this.indexDaysMax = indexDaysMax;
-        this.indexPrefix = indexPrefix;
-        this.timeout = timeout;
-        this.url = url;
-    }
-
+    private ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig() {}
     /**
      * @return PEM encoded CA certificate
      * 
@@ -94,18 +81,14 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
     public static Builder builder(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ca;
         private @Nullable String indexDaysMax;
         private @Nullable String indexPrefix;
         private @Nullable String timeout;
         private @Nullable String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ca = defaults.ca;
@@ -115,27 +98,39 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder ca(@Nullable String ca) {
             this.ca = ca;
             return this;
         }
+        @CustomType.Setter
         public Builder indexDaysMax(@Nullable String indexDaysMax) {
             this.indexDaysMax = indexDaysMax;
             return this;
         }
+        @CustomType.Setter
         public Builder indexPrefix(@Nullable String indexPrefix) {
             this.indexPrefix = indexPrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
             this.timeout = timeout;
             return this;
         }
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
-        }        public ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig build() {
-            return new ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig(ca, indexDaysMax, indexPrefix, timeout, url);
+        }
+        public ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig build() {
+            final var o = new ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig();
+            o.ca = ca;
+            o.indexDaysMax = indexDaysMax;
+            o.indexPrefix = indexPrefix;
+            o.timeout = timeout;
+            o.url = url;
+            return o;
         }
     }
 }

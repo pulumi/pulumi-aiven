@@ -11,26 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
-    private final @Nullable String consumerFetchMinBytes;
-    private final @Nullable String producerBatchSize;
-    private final @Nullable String producerBufferMemory;
-    private final @Nullable String producerLingerMs;
-    private final @Nullable String producerMaxRequestSize;
+    private @Nullable String consumerFetchMinBytes;
+    private @Nullable String producerBatchSize;
+    private @Nullable String producerBufferMemory;
+    private @Nullable String producerLingerMs;
+    private @Nullable String producerMaxRequestSize;
 
-    @CustomType.Constructor
-    private ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(
-        @CustomType.Parameter("consumerFetchMinBytes") @Nullable String consumerFetchMinBytes,
-        @CustomType.Parameter("producerBatchSize") @Nullable String producerBatchSize,
-        @CustomType.Parameter("producerBufferMemory") @Nullable String producerBufferMemory,
-        @CustomType.Parameter("producerLingerMs") @Nullable String producerLingerMs,
-        @CustomType.Parameter("producerMaxRequestSize") @Nullable String producerMaxRequestSize) {
-        this.consumerFetchMinBytes = consumerFetchMinBytes;
-        this.producerBatchSize = producerBatchSize;
-        this.producerBufferMemory = producerBufferMemory;
-        this.producerLingerMs = producerLingerMs;
-        this.producerMaxRequestSize = producerMaxRequestSize;
-    }
-
+    private ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker() {}
     public Optional<String> consumerFetchMinBytes() {
         return Optional.ofNullable(this.consumerFetchMinBytes);
     }
@@ -54,18 +41,14 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
     public static Builder builder(ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String consumerFetchMinBytes;
         private @Nullable String producerBatchSize;
         private @Nullable String producerBufferMemory;
         private @Nullable String producerLingerMs;
         private @Nullable String producerMaxRequestSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumerFetchMinBytes = defaults.consumerFetchMinBytes;
@@ -75,27 +58,39 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
     	      this.producerMaxRequestSize = defaults.producerMaxRequestSize;
         }
 
+        @CustomType.Setter
         public Builder consumerFetchMinBytes(@Nullable String consumerFetchMinBytes) {
             this.consumerFetchMinBytes = consumerFetchMinBytes;
             return this;
         }
+        @CustomType.Setter
         public Builder producerBatchSize(@Nullable String producerBatchSize) {
             this.producerBatchSize = producerBatchSize;
             return this;
         }
+        @CustomType.Setter
         public Builder producerBufferMemory(@Nullable String producerBufferMemory) {
             this.producerBufferMemory = producerBufferMemory;
             return this;
         }
+        @CustomType.Setter
         public Builder producerLingerMs(@Nullable String producerLingerMs) {
             this.producerLingerMs = producerLingerMs;
             return this;
         }
+        @CustomType.Setter
         public Builder producerMaxRequestSize(@Nullable String producerMaxRequestSize) {
             this.producerMaxRequestSize = producerMaxRequestSize;
             return this;
-        }        public ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker build() {
-            return new ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(consumerFetchMinBytes, producerBatchSize, producerBufferMemory, producerLingerMs, producerMaxRequestSize);
+        }
+        public ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker build() {
+            final var o = new ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker();
+            o.consumerFetchMinBytes = consumerFetchMinBytes;
+            o.producerBatchSize = producerBatchSize;
+            o.producerBufferMemory = producerBufferMemory;
+            o.producerLingerMs = producerLingerMs;
+            o.producerMaxRequestSize = producerMaxRequestSize;
+            return o;
         }
     }
 }

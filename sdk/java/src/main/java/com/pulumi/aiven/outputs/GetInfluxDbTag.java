@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInfluxDbTag {
-    private final String key;
-    private final String value;
+    private String key;
+    private String value;
 
-    @CustomType.Constructor
-    private GetInfluxDbTag(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private GetInfluxDbTag() {}
     public String key() {
         return this.key;
     }
@@ -34,30 +27,32 @@ public final class GetInfluxDbTag {
     public static Builder builder(GetInfluxDbTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInfluxDbTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetInfluxDbTag build() {
-            return new GetInfluxDbTag(key, value);
+        }
+        public GetInfluxDbTag build() {
+            final var o = new GetInfluxDbTag();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

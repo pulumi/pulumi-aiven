@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OpenSearchOpensearchUserConfigIndexTemplate {
-    private final @Nullable String mappingNestedObjectsLimit;
-    private final @Nullable String numberOfReplicas;
-    private final @Nullable String numberOfShards;
+    private @Nullable String mappingNestedObjectsLimit;
+    private @Nullable String numberOfReplicas;
+    private @Nullable String numberOfShards;
 
-    @CustomType.Constructor
-    private OpenSearchOpensearchUserConfigIndexTemplate(
-        @CustomType.Parameter("mappingNestedObjectsLimit") @Nullable String mappingNestedObjectsLimit,
-        @CustomType.Parameter("numberOfReplicas") @Nullable String numberOfReplicas,
-        @CustomType.Parameter("numberOfShards") @Nullable String numberOfShards) {
-        this.mappingNestedObjectsLimit = mappingNestedObjectsLimit;
-        this.numberOfReplicas = numberOfReplicas;
-        this.numberOfShards = numberOfShards;
-    }
-
+    private OpenSearchOpensearchUserConfigIndexTemplate() {}
     public Optional<String> mappingNestedObjectsLimit() {
         return Optional.ofNullable(this.mappingNestedObjectsLimit);
     }
@@ -42,16 +33,12 @@ public final class OpenSearchOpensearchUserConfigIndexTemplate {
     public static Builder builder(OpenSearchOpensearchUserConfigIndexTemplate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String mappingNestedObjectsLimit;
         private @Nullable String numberOfReplicas;
         private @Nullable String numberOfShards;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OpenSearchOpensearchUserConfigIndexTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mappingNestedObjectsLimit = defaults.mappingNestedObjectsLimit;
@@ -59,19 +46,27 @@ public final class OpenSearchOpensearchUserConfigIndexTemplate {
     	      this.numberOfShards = defaults.numberOfShards;
         }
 
+        @CustomType.Setter
         public Builder mappingNestedObjectsLimit(@Nullable String mappingNestedObjectsLimit) {
             this.mappingNestedObjectsLimit = mappingNestedObjectsLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder numberOfReplicas(@Nullable String numberOfReplicas) {
             this.numberOfReplicas = numberOfReplicas;
             return this;
         }
+        @CustomType.Setter
         public Builder numberOfShards(@Nullable String numberOfShards) {
             this.numberOfShards = numberOfShards;
             return this;
-        }        public OpenSearchOpensearchUserConfigIndexTemplate build() {
-            return new OpenSearchOpensearchUserConfigIndexTemplate(mappingNestedObjectsLimit, numberOfReplicas, numberOfShards);
+        }
+        public OpenSearchOpensearchUserConfigIndexTemplate build() {
+            final var o = new OpenSearchOpensearchUserConfigIndexTemplate();
+            o.mappingNestedObjectsLimit = mappingNestedObjectsLimit;
+            o.numberOfReplicas = numberOfReplicas;
+            o.numberOfShards = numberOfShards;
+            return o;
         }
     }
 }

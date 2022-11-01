@@ -11,21 +11,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RedisRedisUserConfigPublicAccess {
-    private final @Nullable String prometheus;
+    private @Nullable String prometheus;
     /**
      * @return Redis server provided values
      * 
      */
-    private final @Nullable String redis;
+    private @Nullable String redis;
 
-    @CustomType.Constructor
-    private RedisRedisUserConfigPublicAccess(
-        @CustomType.Parameter("prometheus") @Nullable String prometheus,
-        @CustomType.Parameter("redis") @Nullable String redis) {
-        this.prometheus = prometheus;
-        this.redis = redis;
-    }
-
+    private RedisRedisUserConfigPublicAccess() {}
     public Optional<String> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -44,30 +37,32 @@ public final class RedisRedisUserConfigPublicAccess {
     public static Builder builder(RedisRedisUserConfigPublicAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String prometheus;
         private @Nullable String redis;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RedisRedisUserConfigPublicAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.prometheus = defaults.prometheus;
     	      this.redis = defaults.redis;
         }
 
+        @CustomType.Setter
         public Builder prometheus(@Nullable String prometheus) {
             this.prometheus = prometheus;
             return this;
         }
+        @CustomType.Setter
         public Builder redis(@Nullable String redis) {
             this.redis = redis;
             return this;
-        }        public RedisRedisUserConfigPublicAccess build() {
-            return new RedisRedisUserConfigPublicAccess(prometheus, redis);
+        }
+        public RedisRedisUserConfigPublicAccess build() {
+            final var o = new RedisRedisUserConfigPublicAccess();
+            o.prometheus = prometheus;
+            o.redis = redis;
+            return o;
         }
     }
 }

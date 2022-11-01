@@ -16,37 +16,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaConnectKafkaConnectUserConfig {
-    private final @Nullable List<String> ipFilters;
+    private @Nullable List<String> ipFilters;
     /**
      * @return Kafka Connect server provided values
      * 
      */
-    private final @Nullable GetKafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect;
-    private final @Nullable GetKafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
-    private final @Nullable GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
-    private final @Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
+    private @Nullable GetKafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect;
+    private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
+    private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
+    private @Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private final @Nullable String staticIps;
+    private @Nullable String staticIps;
 
-    @CustomType.Constructor
-    private GetKafkaConnectKafkaConnectUserConfig(
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("kafkaConnect") @Nullable GetKafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect,
-        @CustomType.Parameter("privateAccess") @Nullable GetKafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess,
-        @CustomType.Parameter("privatelinkAccess") @Nullable GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess,
-        @CustomType.Parameter("publicAccess") @Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess,
-        @CustomType.Parameter("staticIps") @Nullable String staticIps) {
-        this.ipFilters = ipFilters;
-        this.kafkaConnect = kafkaConnect;
-        this.privateAccess = privateAccess;
-        this.privatelinkAccess = privatelinkAccess;
-        this.publicAccess = publicAccess;
-        this.staticIps = staticIps;
-    }
-
+    private GetKafkaConnectKafkaConnectUserConfig() {}
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -81,7 +66,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     public static Builder builder(GetKafkaConnectKafkaConnectUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> ipFilters;
         private @Nullable GetKafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect;
@@ -89,11 +74,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
         private @Nullable String staticIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaConnectKafkaConnectUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipFilters = defaults.ipFilters;
@@ -104,6 +85,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -111,27 +93,40 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder kafkaConnect(@Nullable GetKafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect) {
             this.kafkaConnect = kafkaConnect;
             return this;
         }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable GetKafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess) {
             this.privateAccess = privateAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess) {
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccess(@Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess) {
             this.publicAccess = publicAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
-        }        public GetKafkaConnectKafkaConnectUserConfig build() {
-            return new GetKafkaConnectKafkaConnectUserConfig(ipFilters, kafkaConnect, privateAccess, privatelinkAccess, publicAccess, staticIps);
+        }
+        public GetKafkaConnectKafkaConnectUserConfig build() {
+            final var o = new GetKafkaConnectKafkaConnectUserConfig();
+            o.ipFilters = ipFilters;
+            o.kafkaConnect = kafkaConnect;
+            o.privateAccess = privateAccess;
+            o.privatelinkAccess = privatelinkAccess;
+            o.publicAccess = publicAccess;
+            o.staticIps = staticIps;
+            return o;
         }
     }
 }

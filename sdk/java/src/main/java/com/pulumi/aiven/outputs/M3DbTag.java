@@ -13,21 +13,14 @@ public final class M3DbTag {
      * @return Service tag key
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Service tag value
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private M3DbTag(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private M3DbTag() {}
     /**
      * @return Service tag key
      * 
@@ -50,30 +43,32 @@ public final class M3DbTag {
     public static Builder builder(M3DbTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(M3DbTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public M3DbTag build() {
-            return new M3DbTag(key, value);
+        }
+        public M3DbTag build() {
+            final var o = new M3DbTag();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

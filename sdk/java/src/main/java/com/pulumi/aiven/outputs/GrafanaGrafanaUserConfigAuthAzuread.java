@@ -12,32 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GrafanaGrafanaUserConfigAuthAzuread {
-    private final @Nullable String allowSignUp;
-    private final @Nullable List<String> allowedDomains;
-    private final @Nullable List<String> allowedGroups;
-    private final @Nullable String authUrl;
-    private final @Nullable String clientId;
-    private final @Nullable String clientSecret;
-    private final @Nullable String tokenUrl;
+    private @Nullable String allowSignUp;
+    private @Nullable List<String> allowedDomains;
+    private @Nullable List<String> allowedGroups;
+    private @Nullable String authUrl;
+    private @Nullable String clientId;
+    private @Nullable String clientSecret;
+    private @Nullable String tokenUrl;
 
-    @CustomType.Constructor
-    private GrafanaGrafanaUserConfigAuthAzuread(
-        @CustomType.Parameter("allowSignUp") @Nullable String allowSignUp,
-        @CustomType.Parameter("allowedDomains") @Nullable List<String> allowedDomains,
-        @CustomType.Parameter("allowedGroups") @Nullable List<String> allowedGroups,
-        @CustomType.Parameter("authUrl") @Nullable String authUrl,
-        @CustomType.Parameter("clientId") @Nullable String clientId,
-        @CustomType.Parameter("clientSecret") @Nullable String clientSecret,
-        @CustomType.Parameter("tokenUrl") @Nullable String tokenUrl) {
-        this.allowSignUp = allowSignUp;
-        this.allowedDomains = allowedDomains;
-        this.allowedGroups = allowedGroups;
-        this.authUrl = authUrl;
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
-        this.tokenUrl = tokenUrl;
-    }
-
+    private GrafanaGrafanaUserConfigAuthAzuread() {}
     public Optional<String> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
@@ -67,7 +50,7 @@ public final class GrafanaGrafanaUserConfigAuthAzuread {
     public static Builder builder(GrafanaGrafanaUserConfigAuthAzuread defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String allowSignUp;
         private @Nullable List<String> allowedDomains;
@@ -76,11 +59,7 @@ public final class GrafanaGrafanaUserConfigAuthAzuread {
         private @Nullable String clientId;
         private @Nullable String clientSecret;
         private @Nullable String tokenUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GrafanaGrafanaUserConfigAuthAzuread defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowSignUp = defaults.allowSignUp;
@@ -92,10 +71,12 @@ public final class GrafanaGrafanaUserConfigAuthAzuread {
     	      this.tokenUrl = defaults.tokenUrl;
         }
 
+        @CustomType.Setter
         public Builder allowSignUp(@Nullable String allowSignUp) {
             this.allowSignUp = allowSignUp;
             return this;
         }
+        @CustomType.Setter
         public Builder allowedDomains(@Nullable List<String> allowedDomains) {
             this.allowedDomains = allowedDomains;
             return this;
@@ -103,6 +84,7 @@ public final class GrafanaGrafanaUserConfigAuthAzuread {
         public Builder allowedDomains(String... allowedDomains) {
             return allowedDomains(List.of(allowedDomains));
         }
+        @CustomType.Setter
         public Builder allowedGroups(@Nullable List<String> allowedGroups) {
             this.allowedGroups = allowedGroups;
             return this;
@@ -110,23 +92,36 @@ public final class GrafanaGrafanaUserConfigAuthAzuread {
         public Builder allowedGroups(String... allowedGroups) {
             return allowedGroups(List.of(allowedGroups));
         }
+        @CustomType.Setter
         public Builder authUrl(@Nullable String authUrl) {
             this.authUrl = authUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
             this.clientId = clientId;
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecret(@Nullable String clientSecret) {
             this.clientSecret = clientSecret;
             return this;
         }
+        @CustomType.Setter
         public Builder tokenUrl(@Nullable String tokenUrl) {
             this.tokenUrl = tokenUrl;
             return this;
-        }        public GrafanaGrafanaUserConfigAuthAzuread build() {
-            return new GrafanaGrafanaUserConfigAuthAzuread(allowSignUp, allowedDomains, allowedGroups, authUrl, clientId, clientSecret, tokenUrl);
+        }
+        public GrafanaGrafanaUserConfigAuthAzuread build() {
+            final var o = new GrafanaGrafanaUserConfigAuthAzuread();
+            o.allowSignUp = allowSignUp;
+            o.allowedDomains = allowedDomains;
+            o.allowedGroups = allowedGroups;
+            o.authUrl = authUrl;
+            o.clientId = clientId;
+            o.clientSecret = clientSecret;
+            o.tokenUrl = tokenUrl;
+            return o;
         }
     }
 }

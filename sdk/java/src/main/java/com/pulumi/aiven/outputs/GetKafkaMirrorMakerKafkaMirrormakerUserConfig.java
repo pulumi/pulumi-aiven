@@ -13,28 +13,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
-    private final @Nullable List<String> ipFilters;
+    private @Nullable List<String> ipFilters;
     /**
      * @return Kafka MirrorMaker 2 server provided values
      * 
      */
-    private final @Nullable GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
+    private @Nullable GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private final @Nullable String staticIps;
+    private @Nullable String staticIps;
 
-    @CustomType.Constructor
-    private GetKafkaMirrorMakerKafkaMirrormakerUserConfig(
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("kafkaMirrormaker") @Nullable GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker,
-        @CustomType.Parameter("staticIps") @Nullable String staticIps) {
-        this.ipFilters = ipFilters;
-        this.kafkaMirrormaker = kafkaMirrormaker;
-        this.staticIps = staticIps;
-    }
-
+    private GetKafkaMirrorMakerKafkaMirrormakerUserConfig() {}
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -60,16 +51,12 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     public static Builder builder(GetKafkaMirrorMakerKafkaMirrormakerUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> ipFilters;
         private @Nullable GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
         private @Nullable String staticIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaMirrorMakerKafkaMirrormakerUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipFilters = defaults.ipFilters;
@@ -77,6 +64,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -84,15 +72,22 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder kafkaMirrormaker(@Nullable GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker) {
             this.kafkaMirrormaker = kafkaMirrormaker;
             return this;
         }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
-        }        public GetKafkaMirrorMakerKafkaMirrormakerUserConfig build() {
-            return new GetKafkaMirrorMakerKafkaMirrormakerUserConfig(ipFilters, kafkaMirrormaker, staticIps);
+        }
+        public GetKafkaMirrorMakerKafkaMirrormakerUserConfig build() {
+            final var o = new GetKafkaMirrorMakerKafkaMirrormakerUserConfig();
+            o.ipFilters = ipFilters;
+            o.kafkaMirrormaker = kafkaMirrormaker;
+            o.staticIps = staticIps;
+            return o;
         }
     }
 }

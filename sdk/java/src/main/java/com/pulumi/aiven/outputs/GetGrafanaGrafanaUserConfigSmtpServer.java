@@ -11,35 +11,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfigSmtpServer {
-    private final @Nullable String fromAddress;
-    private final @Nullable String fromName;
-    private final @Nullable String host;
-    private final @Nullable String password;
-    private final @Nullable String port;
-    private final @Nullable String skipVerify;
-    private final @Nullable String starttlsPolicy;
-    private final @Nullable String username;
+    private @Nullable String fromAddress;
+    private @Nullable String fromName;
+    private @Nullable String host;
+    private @Nullable String password;
+    private @Nullable String port;
+    private @Nullable String skipVerify;
+    private @Nullable String starttlsPolicy;
+    private @Nullable String username;
 
-    @CustomType.Constructor
-    private GetGrafanaGrafanaUserConfigSmtpServer(
-        @CustomType.Parameter("fromAddress") @Nullable String fromAddress,
-        @CustomType.Parameter("fromName") @Nullable String fromName,
-        @CustomType.Parameter("host") @Nullable String host,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("port") @Nullable String port,
-        @CustomType.Parameter("skipVerify") @Nullable String skipVerify,
-        @CustomType.Parameter("starttlsPolicy") @Nullable String starttlsPolicy,
-        @CustomType.Parameter("username") @Nullable String username) {
-        this.fromAddress = fromAddress;
-        this.fromName = fromName;
-        this.host = host;
-        this.password = password;
-        this.port = port;
-        this.skipVerify = skipVerify;
-        this.starttlsPolicy = starttlsPolicy;
-        this.username = username;
-    }
-
+    private GetGrafanaGrafanaUserConfigSmtpServer() {}
     public Optional<String> fromAddress() {
         return Optional.ofNullable(this.fromAddress);
     }
@@ -72,7 +53,7 @@ public final class GetGrafanaGrafanaUserConfigSmtpServer {
     public static Builder builder(GetGrafanaGrafanaUserConfigSmtpServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String fromAddress;
         private @Nullable String fromName;
@@ -82,11 +63,7 @@ public final class GetGrafanaGrafanaUserConfigSmtpServer {
         private @Nullable String skipVerify;
         private @Nullable String starttlsPolicy;
         private @Nullable String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGrafanaGrafanaUserConfigSmtpServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fromAddress = defaults.fromAddress;
@@ -99,39 +76,57 @@ public final class GetGrafanaGrafanaUserConfigSmtpServer {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder fromAddress(@Nullable String fromAddress) {
             this.fromAddress = fromAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder fromName(@Nullable String fromName) {
             this.fromName = fromName;
             return this;
         }
+        @CustomType.Setter
         public Builder host(@Nullable String host) {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable String port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder skipVerify(@Nullable String skipVerify) {
             this.skipVerify = skipVerify;
             return this;
         }
+        @CustomType.Setter
         public Builder starttlsPolicy(@Nullable String starttlsPolicy) {
             this.starttlsPolicy = starttlsPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
-        }        public GetGrafanaGrafanaUserConfigSmtpServer build() {
-            return new GetGrafanaGrafanaUserConfigSmtpServer(fromAddress, fromName, host, password, port, skipVerify, starttlsPolicy, username);
+        }
+        public GetGrafanaGrafanaUserConfigSmtpServer build() {
+            final var o = new GetGrafanaGrafanaUserConfigSmtpServer();
+            o.fromAddress = fromAddress;
+            o.fromName = fromName;
+            o.host = host;
+            o.password = password;
+            o.port = port;
+            o.skipVerify = skipVerify;
+            o.starttlsPolicy = starttlsPolicy;
+            o.username = username;
+            return o;
         }
     }
 }

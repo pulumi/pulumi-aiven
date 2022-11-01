@@ -15,17 +15,10 @@ public final class GetKafkaConnectKafkaConnectUserConfigPublicAccess {
      * @return Kafka Connect server provided values
      * 
      */
-    private final @Nullable String kafkaConnect;
-    private final @Nullable String prometheus;
+    private @Nullable String kafkaConnect;
+    private @Nullable String prometheus;
 
-    @CustomType.Constructor
-    private GetKafkaConnectKafkaConnectUserConfigPublicAccess(
-        @CustomType.Parameter("kafkaConnect") @Nullable String kafkaConnect,
-        @CustomType.Parameter("prometheus") @Nullable String prometheus) {
-        this.kafkaConnect = kafkaConnect;
-        this.prometheus = prometheus;
-    }
-
+    private GetKafkaConnectKafkaConnectUserConfigPublicAccess() {}
     /**
      * @return Kafka Connect server provided values
      * 
@@ -44,30 +37,32 @@ public final class GetKafkaConnectKafkaConnectUserConfigPublicAccess {
     public static Builder builder(GetKafkaConnectKafkaConnectUserConfigPublicAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String kafkaConnect;
         private @Nullable String prometheus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaConnectKafkaConnectUserConfigPublicAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kafkaConnect = defaults.kafkaConnect;
     	      this.prometheus = defaults.prometheus;
         }
 
+        @CustomType.Setter
         public Builder kafkaConnect(@Nullable String kafkaConnect) {
             this.kafkaConnect = kafkaConnect;
             return this;
         }
+        @CustomType.Setter
         public Builder prometheus(@Nullable String prometheus) {
             this.prometheus = prometheus;
             return this;
-        }        public GetKafkaConnectKafkaConnectUserConfigPublicAccess build() {
-            return new GetKafkaConnectKafkaConnectUserConfigPublicAccess(kafkaConnect, prometheus);
+        }
+        public GetKafkaConnectKafkaConnectUserConfigPublicAccess build() {
+            final var o = new GetKafkaConnectKafkaConnectUserConfigPublicAccess();
+            o.kafkaConnect = kafkaConnect;
+            o.prometheus = prometheus;
+            return o;
         }
     }
 }

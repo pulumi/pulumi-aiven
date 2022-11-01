@@ -11,47 +11,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
-    private final @Nullable String connectorClientConfigOverridePolicy;
-    private final @Nullable String consumerAutoOffsetReset;
-    private final @Nullable String consumerFetchMaxBytes;
-    private final @Nullable String consumerIsolationLevel;
-    private final @Nullable String consumerMaxPartitionFetchBytes;
-    private final @Nullable String consumerMaxPollIntervalMs;
-    private final @Nullable String consumerMaxPollRecords;
-    private final @Nullable String offsetFlushIntervalMs;
-    private final @Nullable String offsetFlushTimeoutMs;
-    private final @Nullable String producerCompressionType;
-    private final @Nullable String producerMaxRequestSize;
-    private final @Nullable String sessionTimeoutMs;
+    private @Nullable String connectorClientConfigOverridePolicy;
+    private @Nullable String consumerAutoOffsetReset;
+    private @Nullable String consumerFetchMaxBytes;
+    private @Nullable String consumerIsolationLevel;
+    private @Nullable String consumerMaxPartitionFetchBytes;
+    private @Nullable String consumerMaxPollIntervalMs;
+    private @Nullable String consumerMaxPollRecords;
+    private @Nullable String offsetFlushIntervalMs;
+    private @Nullable String offsetFlushTimeoutMs;
+    private @Nullable String producerCompressionType;
+    private @Nullable String producerMaxRequestSize;
+    private @Nullable String sessionTimeoutMs;
 
-    @CustomType.Constructor
-    private GetKafkaConnectKafkaConnectUserConfigKafkaConnect(
-        @CustomType.Parameter("connectorClientConfigOverridePolicy") @Nullable String connectorClientConfigOverridePolicy,
-        @CustomType.Parameter("consumerAutoOffsetReset") @Nullable String consumerAutoOffsetReset,
-        @CustomType.Parameter("consumerFetchMaxBytes") @Nullable String consumerFetchMaxBytes,
-        @CustomType.Parameter("consumerIsolationLevel") @Nullable String consumerIsolationLevel,
-        @CustomType.Parameter("consumerMaxPartitionFetchBytes") @Nullable String consumerMaxPartitionFetchBytes,
-        @CustomType.Parameter("consumerMaxPollIntervalMs") @Nullable String consumerMaxPollIntervalMs,
-        @CustomType.Parameter("consumerMaxPollRecords") @Nullable String consumerMaxPollRecords,
-        @CustomType.Parameter("offsetFlushIntervalMs") @Nullable String offsetFlushIntervalMs,
-        @CustomType.Parameter("offsetFlushTimeoutMs") @Nullable String offsetFlushTimeoutMs,
-        @CustomType.Parameter("producerCompressionType") @Nullable String producerCompressionType,
-        @CustomType.Parameter("producerMaxRequestSize") @Nullable String producerMaxRequestSize,
-        @CustomType.Parameter("sessionTimeoutMs") @Nullable String sessionTimeoutMs) {
-        this.connectorClientConfigOverridePolicy = connectorClientConfigOverridePolicy;
-        this.consumerAutoOffsetReset = consumerAutoOffsetReset;
-        this.consumerFetchMaxBytes = consumerFetchMaxBytes;
-        this.consumerIsolationLevel = consumerIsolationLevel;
-        this.consumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
-        this.consumerMaxPollIntervalMs = consumerMaxPollIntervalMs;
-        this.consumerMaxPollRecords = consumerMaxPollRecords;
-        this.offsetFlushIntervalMs = offsetFlushIntervalMs;
-        this.offsetFlushTimeoutMs = offsetFlushTimeoutMs;
-        this.producerCompressionType = producerCompressionType;
-        this.producerMaxRequestSize = producerMaxRequestSize;
-        this.sessionTimeoutMs = sessionTimeoutMs;
-    }
-
+    private GetKafkaConnectKafkaConnectUserConfigKafkaConnect() {}
     public Optional<String> connectorClientConfigOverridePolicy() {
         return Optional.ofNullable(this.connectorClientConfigOverridePolicy);
     }
@@ -96,7 +69,7 @@ public final class GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
     public static Builder builder(GetKafkaConnectKafkaConnectUserConfigKafkaConnect defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectorClientConfigOverridePolicy;
         private @Nullable String consumerAutoOffsetReset;
@@ -110,11 +83,7 @@ public final class GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
         private @Nullable String producerCompressionType;
         private @Nullable String producerMaxRequestSize;
         private @Nullable String sessionTimeoutMs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaConnectKafkaConnectUserConfigKafkaConnect defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectorClientConfigOverridePolicy = defaults.connectorClientConfigOverridePolicy;
@@ -131,55 +100,81 @@ public final class GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
     	      this.sessionTimeoutMs = defaults.sessionTimeoutMs;
         }
 
+        @CustomType.Setter
         public Builder connectorClientConfigOverridePolicy(@Nullable String connectorClientConfigOverridePolicy) {
             this.connectorClientConfigOverridePolicy = connectorClientConfigOverridePolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder consumerAutoOffsetReset(@Nullable String consumerAutoOffsetReset) {
             this.consumerAutoOffsetReset = consumerAutoOffsetReset;
             return this;
         }
+        @CustomType.Setter
         public Builder consumerFetchMaxBytes(@Nullable String consumerFetchMaxBytes) {
             this.consumerFetchMaxBytes = consumerFetchMaxBytes;
             return this;
         }
+        @CustomType.Setter
         public Builder consumerIsolationLevel(@Nullable String consumerIsolationLevel) {
             this.consumerIsolationLevel = consumerIsolationLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder consumerMaxPartitionFetchBytes(@Nullable String consumerMaxPartitionFetchBytes) {
             this.consumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
             return this;
         }
+        @CustomType.Setter
         public Builder consumerMaxPollIntervalMs(@Nullable String consumerMaxPollIntervalMs) {
             this.consumerMaxPollIntervalMs = consumerMaxPollIntervalMs;
             return this;
         }
+        @CustomType.Setter
         public Builder consumerMaxPollRecords(@Nullable String consumerMaxPollRecords) {
             this.consumerMaxPollRecords = consumerMaxPollRecords;
             return this;
         }
+        @CustomType.Setter
         public Builder offsetFlushIntervalMs(@Nullable String offsetFlushIntervalMs) {
             this.offsetFlushIntervalMs = offsetFlushIntervalMs;
             return this;
         }
+        @CustomType.Setter
         public Builder offsetFlushTimeoutMs(@Nullable String offsetFlushTimeoutMs) {
             this.offsetFlushTimeoutMs = offsetFlushTimeoutMs;
             return this;
         }
+        @CustomType.Setter
         public Builder producerCompressionType(@Nullable String producerCompressionType) {
             this.producerCompressionType = producerCompressionType;
             return this;
         }
+        @CustomType.Setter
         public Builder producerMaxRequestSize(@Nullable String producerMaxRequestSize) {
             this.producerMaxRequestSize = producerMaxRequestSize;
             return this;
         }
+        @CustomType.Setter
         public Builder sessionTimeoutMs(@Nullable String sessionTimeoutMs) {
             this.sessionTimeoutMs = sessionTimeoutMs;
             return this;
-        }        public GetKafkaConnectKafkaConnectUserConfigKafkaConnect build() {
-            return new GetKafkaConnectKafkaConnectUserConfigKafkaConnect(connectorClientConfigOverridePolicy, consumerAutoOffsetReset, consumerFetchMaxBytes, consumerIsolationLevel, consumerMaxPartitionFetchBytes, consumerMaxPollIntervalMs, consumerMaxPollRecords, offsetFlushIntervalMs, offsetFlushTimeoutMs, producerCompressionType, producerMaxRequestSize, sessionTimeoutMs);
+        }
+        public GetKafkaConnectKafkaConnectUserConfigKafkaConnect build() {
+            final var o = new GetKafkaConnectKafkaConnectUserConfigKafkaConnect();
+            o.connectorClientConfigOverridePolicy = connectorClientConfigOverridePolicy;
+            o.consumerAutoOffsetReset = consumerAutoOffsetReset;
+            o.consumerFetchMaxBytes = consumerFetchMaxBytes;
+            o.consumerIsolationLevel = consumerIsolationLevel;
+            o.consumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
+            o.consumerMaxPollIntervalMs = consumerMaxPollIntervalMs;
+            o.consumerMaxPollRecords = consumerMaxPollRecords;
+            o.offsetFlushIntervalMs = offsetFlushIntervalMs;
+            o.offsetFlushTimeoutMs = offsetFlushTimeoutMs;
+            o.producerCompressionType = producerCompressionType;
+            o.producerMaxRequestSize = producerMaxRequestSize;
+            o.sessionTimeoutMs = sessionTimeoutMs;
+            return o;
         }
     }
 }

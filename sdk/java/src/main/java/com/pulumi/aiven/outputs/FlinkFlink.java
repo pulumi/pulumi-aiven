@@ -15,13 +15,9 @@ public final class FlinkFlink {
      * @return Host and Port of a Flink server
      * 
      */
-    private final @Nullable List<String> hostPorts;
+    private @Nullable List<String> hostPorts;
 
-    @CustomType.Constructor
-    private FlinkFlink(@CustomType.Parameter("hostPorts") @Nullable List<String> hostPorts) {
-        this.hostPorts = hostPorts;
-    }
-
+    private FlinkFlink() {}
     /**
      * @return Host and Port of a Flink server
      * 
@@ -37,27 +33,27 @@ public final class FlinkFlink {
     public static Builder builder(FlinkFlink defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> hostPorts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlinkFlink defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostPorts = defaults.hostPorts;
         }
 
+        @CustomType.Setter
         public Builder hostPorts(@Nullable List<String> hostPorts) {
             this.hostPorts = hostPorts;
             return this;
         }
         public Builder hostPorts(String... hostPorts) {
             return hostPorts(List.of(hostPorts));
-        }        public FlinkFlink build() {
-            return new FlinkFlink(hostPorts);
+        }
+        public FlinkFlink build() {
+            final var o = new FlinkFlink();
+            o.hostPorts = hostPorts;
+            return o;
         }
     }
 }

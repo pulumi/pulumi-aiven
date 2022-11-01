@@ -15,17 +15,10 @@ public final class GetFlinkFlinkUserConfigPrivatelinkAccess {
      * @return Flink server provided values
      * 
      */
-    private final @Nullable String flink;
-    private final @Nullable String prometheus;
+    private @Nullable String flink;
+    private @Nullable String prometheus;
 
-    @CustomType.Constructor
-    private GetFlinkFlinkUserConfigPrivatelinkAccess(
-        @CustomType.Parameter("flink") @Nullable String flink,
-        @CustomType.Parameter("prometheus") @Nullable String prometheus) {
-        this.flink = flink;
-        this.prometheus = prometheus;
-    }
-
+    private GetFlinkFlinkUserConfigPrivatelinkAccess() {}
     /**
      * @return Flink server provided values
      * 
@@ -44,30 +37,32 @@ public final class GetFlinkFlinkUserConfigPrivatelinkAccess {
     public static Builder builder(GetFlinkFlinkUserConfigPrivatelinkAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String flink;
         private @Nullable String prometheus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFlinkFlinkUserConfigPrivatelinkAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.flink = defaults.flink;
     	      this.prometheus = defaults.prometheus;
         }
 
+        @CustomType.Setter
         public Builder flink(@Nullable String flink) {
             this.flink = flink;
             return this;
         }
+        @CustomType.Setter
         public Builder prometheus(@Nullable String prometheus) {
             this.prometheus = prometheus;
             return this;
-        }        public GetFlinkFlinkUserConfigPrivatelinkAccess build() {
-            return new GetFlinkFlinkUserConfigPrivatelinkAccess(flink, prometheus);
+        }
+        public GetFlinkFlinkUserConfigPrivatelinkAccess build() {
+            final var o = new GetFlinkFlinkUserConfigPrivatelinkAccess();
+            o.flink = flink;
+            o.prometheus = prometheus;
+            return o;
         }
     }
 }

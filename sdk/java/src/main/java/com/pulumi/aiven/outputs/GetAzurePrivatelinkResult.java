@@ -14,63 +14,44 @@ public final class GetAzurePrivatelinkResult {
      * @return Azure Privatelink service alias
      * 
      */
-    private final String azureServiceAlias;
+    private String azureServiceAlias;
     /**
      * @return Azure Privatelink service ID
      * 
      */
-    private final String azureServiceId;
+    private String azureServiceId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Printable result of the Azure Privatelink request
      * 
      */
-    private final String message;
+    private String message;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
     /**
      * @return Privatelink resource state
      * 
      */
-    private final String state;
+    private String state;
     /**
      * @return A List of allowed Subscription IDs Maximum Length: `16`.
      * 
      */
-    private final List<String> userSubscriptionIds;
+    private List<String> userSubscriptionIds;
 
-    @CustomType.Constructor
-    private GetAzurePrivatelinkResult(
-        @CustomType.Parameter("azureServiceAlias") String azureServiceAlias,
-        @CustomType.Parameter("azureServiceId") String azureServiceId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("message") String message,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("userSubscriptionIds") List<String> userSubscriptionIds) {
-        this.azureServiceAlias = azureServiceAlias;
-        this.azureServiceId = azureServiceId;
-        this.id = id;
-        this.message = message;
-        this.project = project;
-        this.serviceName = serviceName;
-        this.state = state;
-        this.userSubscriptionIds = userSubscriptionIds;
-    }
-
+    private GetAzurePrivatelinkResult() {}
     /**
      * @return Azure Privatelink service alias
      * 
@@ -135,7 +116,7 @@ public final class GetAzurePrivatelinkResult {
     public static Builder builder(GetAzurePrivatelinkResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String azureServiceAlias;
         private String azureServiceId;
@@ -145,11 +126,7 @@ public final class GetAzurePrivatelinkResult {
         private String serviceName;
         private String state;
         private List<String> userSubscriptionIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAzurePrivatelinkResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.azureServiceAlias = defaults.azureServiceAlias;
@@ -162,42 +139,60 @@ public final class GetAzurePrivatelinkResult {
     	      this.userSubscriptionIds = defaults.userSubscriptionIds;
         }
 
+        @CustomType.Setter
         public Builder azureServiceAlias(String azureServiceAlias) {
             this.azureServiceAlias = Objects.requireNonNull(azureServiceAlias);
             return this;
         }
+        @CustomType.Setter
         public Builder azureServiceId(String azureServiceId) {
             this.azureServiceId = Objects.requireNonNull(azureServiceId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder message(String message) {
             this.message = Objects.requireNonNull(message);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder userSubscriptionIds(List<String> userSubscriptionIds) {
             this.userSubscriptionIds = Objects.requireNonNull(userSubscriptionIds);
             return this;
         }
         public Builder userSubscriptionIds(String... userSubscriptionIds) {
             return userSubscriptionIds(List.of(userSubscriptionIds));
-        }        public GetAzurePrivatelinkResult build() {
-            return new GetAzurePrivatelinkResult(azureServiceAlias, azureServiceId, id, message, project, serviceName, state, userSubscriptionIds);
+        }
+        public GetAzurePrivatelinkResult build() {
+            final var o = new GetAzurePrivatelinkResult();
+            o.azureServiceAlias = azureServiceAlias;
+            o.azureServiceId = azureServiceId;
+            o.id = id;
+            o.message = message;
+            o.project = project;
+            o.serviceName = serviceName;
+            o.state = state;
+            o.userSubscriptionIds = userSubscriptionIds;
+            return o;
         }
     }
 }

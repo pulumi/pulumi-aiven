@@ -15,20 +15,11 @@ public final class GetPgPgUserConfigPrivateAccess {
      * @return PostgreSQL specific server provided values
      * 
      */
-    private final @Nullable String pg;
-    private final @Nullable String pgbouncer;
-    private final @Nullable String prometheus;
+    private @Nullable String pg;
+    private @Nullable String pgbouncer;
+    private @Nullable String prometheus;
 
-    @CustomType.Constructor
-    private GetPgPgUserConfigPrivateAccess(
-        @CustomType.Parameter("pg") @Nullable String pg,
-        @CustomType.Parameter("pgbouncer") @Nullable String pgbouncer,
-        @CustomType.Parameter("prometheus") @Nullable String prometheus) {
-        this.pg = pg;
-        this.pgbouncer = pgbouncer;
-        this.prometheus = prometheus;
-    }
-
+    private GetPgPgUserConfigPrivateAccess() {}
     /**
      * @return PostgreSQL specific server provided values
      * 
@@ -50,16 +41,12 @@ public final class GetPgPgUserConfigPrivateAccess {
     public static Builder builder(GetPgPgUserConfigPrivateAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String pg;
         private @Nullable String pgbouncer;
         private @Nullable String prometheus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPgPgUserConfigPrivateAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pg = defaults.pg;
@@ -67,19 +54,27 @@ public final class GetPgPgUserConfigPrivateAccess {
     	      this.prometheus = defaults.prometheus;
         }
 
+        @CustomType.Setter
         public Builder pg(@Nullable String pg) {
             this.pg = pg;
             return this;
         }
+        @CustomType.Setter
         public Builder pgbouncer(@Nullable String pgbouncer) {
             this.pgbouncer = pgbouncer;
             return this;
         }
+        @CustomType.Setter
         public Builder prometheus(@Nullable String prometheus) {
             this.prometheus = prometheus;
             return this;
-        }        public GetPgPgUserConfigPrivateAccess build() {
-            return new GetPgPgUserConfigPrivateAccess(pg, pgbouncer, prometheus);
+        }
+        public GetPgPgUserConfigPrivateAccess build() {
+            final var o = new GetPgPgUserConfigPrivateAccess();
+            o.pg = pg;
+            o.pgbouncer = pgbouncer;
+            o.prometheus = prometheus;
+            return o;
         }
     }
 }

@@ -14,52 +14,35 @@ public final class GetDatabaseResult {
      * @return The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String databaseName;
+    private String databaseName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String lcCollate;
+    private String lcCollate;
     /**
      * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String lcCtype;
+    private String lcCtype;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
-    private final Boolean terminationProtection;
+    private String serviceName;
+    private Boolean terminationProtection;
 
-    @CustomType.Constructor
-    private GetDatabaseResult(
-        @CustomType.Parameter("databaseName") String databaseName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lcCollate") String lcCollate,
-        @CustomType.Parameter("lcCtype") String lcCtype,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("terminationProtection") Boolean terminationProtection) {
-        this.databaseName = databaseName;
-        this.id = id;
-        this.lcCollate = lcCollate;
-        this.lcCtype = lcCtype;
-        this.project = project;
-        this.serviceName = serviceName;
-        this.terminationProtection = terminationProtection;
-    }
-
+    private GetDatabaseResult() {}
     /**
      * @return The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
      * 
@@ -113,7 +96,7 @@ public final class GetDatabaseResult {
     public static Builder builder(GetDatabaseResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String databaseName;
         private String id;
@@ -122,11 +105,7 @@ public final class GetDatabaseResult {
         private String project;
         private String serviceName;
         private Boolean terminationProtection;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databaseName = defaults.databaseName;
@@ -138,35 +117,51 @@ public final class GetDatabaseResult {
     	      this.terminationProtection = defaults.terminationProtection;
         }
 
+        @CustomType.Setter
         public Builder databaseName(String databaseName) {
             this.databaseName = Objects.requireNonNull(databaseName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lcCollate(String lcCollate) {
             this.lcCollate = Objects.requireNonNull(lcCollate);
             return this;
         }
+        @CustomType.Setter
         public Builder lcCtype(String lcCtype) {
             this.lcCtype = Objects.requireNonNull(lcCtype);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder terminationProtection(Boolean terminationProtection) {
             this.terminationProtection = Objects.requireNonNull(terminationProtection);
             return this;
-        }        public GetDatabaseResult build() {
-            return new GetDatabaseResult(databaseName, id, lcCollate, lcCtype, project, serviceName, terminationProtection);
+        }
+        public GetDatabaseResult build() {
+            final var o = new GetDatabaseResult();
+            o.databaseName = databaseName;
+            o.id = id;
+            o.lcCollate = lcCollate;
+            o.lcCtype = lcCtype;
+            o.project = project;
+            o.serviceName = serviceName;
+            o.terminationProtection = terminationProtection;
+            return o;
         }
     }
 }

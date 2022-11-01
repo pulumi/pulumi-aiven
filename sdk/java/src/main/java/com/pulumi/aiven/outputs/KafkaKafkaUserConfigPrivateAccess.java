@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaKafkaUserConfigPrivateAccess {
-    private final @Nullable String prometheus;
+    private @Nullable String prometheus;
 
-    @CustomType.Constructor
-    private KafkaKafkaUserConfigPrivateAccess(@CustomType.Parameter("prometheus") @Nullable String prometheus) {
-        this.prometheus = prometheus;
-    }
-
+    private KafkaKafkaUserConfigPrivateAccess() {}
     public Optional<String> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -29,24 +25,24 @@ public final class KafkaKafkaUserConfigPrivateAccess {
     public static Builder builder(KafkaKafkaUserConfigPrivateAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String prometheus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KafkaKafkaUserConfigPrivateAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.prometheus = defaults.prometheus;
         }
 
+        @CustomType.Setter
         public Builder prometheus(@Nullable String prometheus) {
             this.prometheus = prometheus;
             return this;
-        }        public KafkaKafkaUserConfigPrivateAccess build() {
-            return new KafkaKafkaUserConfigPrivateAccess(prometheus);
+        }
+        public KafkaKafkaUserConfigPrivateAccess build() {
+            final var o = new KafkaKafkaUserConfigPrivateAccess();
+            o.prometheus = prometheus;
+            return o;
         }
     }
 }

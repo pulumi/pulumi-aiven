@@ -15,70 +15,49 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
      * @return Bootstrap servers
      * 
      */
-    private final @Nullable String bootstrapServers;
+    private @Nullable String bootstrapServers;
     /**
      * @return The list of SASL mechanisms enabled in the Kafka server.
      * 
      */
-    private final @Nullable String saslMechanism;
+    private @Nullable String saslMechanism;
     /**
      * @return Password for SASL PLAIN mechanism in the Kafka server.
      * 
      */
-    private final @Nullable String saslPlainPassword;
+    private @Nullable String saslPlainPassword;
     /**
      * @return Username for SASL PLAIN mechanism in the Kafka server.
      * 
      */
-    private final @Nullable String saslPlainUsername;
+    private @Nullable String saslPlainUsername;
     /**
      * @return Security protocol
      * 
      */
-    private final @Nullable String securityProtocol;
+    private @Nullable String securityProtocol;
     /**
      * @return PEM-encoded CA certificate
      * 
      */
-    private final @Nullable String sslCaCert;
+    private @Nullable String sslCaCert;
     /**
      * @return PEM-encoded client certificate
      * 
      */
-    private final @Nullable String sslClientCert;
+    private @Nullable String sslClientCert;
     /**
      * @return PEM-encoded client key
      * 
      */
-    private final @Nullable String sslClientKey;
+    private @Nullable String sslClientKey;
     /**
      * @return The endpoint identification algorithm to validate server hostname using server certificate.
      * 
      */
-    private final @Nullable String sslEndpointIdentificationAlgorithm;
+    private @Nullable String sslEndpointIdentificationAlgorithm;
 
-    @CustomType.Constructor
-    private ServiceIntegrationEndpointExternalKafkaUserConfig(
-        @CustomType.Parameter("bootstrapServers") @Nullable String bootstrapServers,
-        @CustomType.Parameter("saslMechanism") @Nullable String saslMechanism,
-        @CustomType.Parameter("saslPlainPassword") @Nullable String saslPlainPassword,
-        @CustomType.Parameter("saslPlainUsername") @Nullable String saslPlainUsername,
-        @CustomType.Parameter("securityProtocol") @Nullable String securityProtocol,
-        @CustomType.Parameter("sslCaCert") @Nullable String sslCaCert,
-        @CustomType.Parameter("sslClientCert") @Nullable String sslClientCert,
-        @CustomType.Parameter("sslClientKey") @Nullable String sslClientKey,
-        @CustomType.Parameter("sslEndpointIdentificationAlgorithm") @Nullable String sslEndpointIdentificationAlgorithm) {
-        this.bootstrapServers = bootstrapServers;
-        this.saslMechanism = saslMechanism;
-        this.saslPlainPassword = saslPlainPassword;
-        this.saslPlainUsername = saslPlainUsername;
-        this.securityProtocol = securityProtocol;
-        this.sslCaCert = sslCaCert;
-        this.sslClientCert = sslClientCert;
-        this.sslClientKey = sslClientKey;
-        this.sslEndpointIdentificationAlgorithm = sslEndpointIdentificationAlgorithm;
-    }
-
+    private ServiceIntegrationEndpointExternalKafkaUserConfig() {}
     /**
      * @return Bootstrap servers
      * 
@@ -150,7 +129,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
     public static Builder builder(ServiceIntegrationEndpointExternalKafkaUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bootstrapServers;
         private @Nullable String saslMechanism;
@@ -161,11 +140,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
         private @Nullable String sslClientCert;
         private @Nullable String sslClientKey;
         private @Nullable String sslEndpointIdentificationAlgorithm;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationEndpointExternalKafkaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bootstrapServers = defaults.bootstrapServers;
@@ -179,43 +154,63 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
     	      this.sslEndpointIdentificationAlgorithm = defaults.sslEndpointIdentificationAlgorithm;
         }
 
+        @CustomType.Setter
         public Builder bootstrapServers(@Nullable String bootstrapServers) {
             this.bootstrapServers = bootstrapServers;
             return this;
         }
+        @CustomType.Setter
         public Builder saslMechanism(@Nullable String saslMechanism) {
             this.saslMechanism = saslMechanism;
             return this;
         }
+        @CustomType.Setter
         public Builder saslPlainPassword(@Nullable String saslPlainPassword) {
             this.saslPlainPassword = saslPlainPassword;
             return this;
         }
+        @CustomType.Setter
         public Builder saslPlainUsername(@Nullable String saslPlainUsername) {
             this.saslPlainUsername = saslPlainUsername;
             return this;
         }
+        @CustomType.Setter
         public Builder securityProtocol(@Nullable String securityProtocol) {
             this.securityProtocol = securityProtocol;
             return this;
         }
+        @CustomType.Setter
         public Builder sslCaCert(@Nullable String sslCaCert) {
             this.sslCaCert = sslCaCert;
             return this;
         }
+        @CustomType.Setter
         public Builder sslClientCert(@Nullable String sslClientCert) {
             this.sslClientCert = sslClientCert;
             return this;
         }
+        @CustomType.Setter
         public Builder sslClientKey(@Nullable String sslClientKey) {
             this.sslClientKey = sslClientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder sslEndpointIdentificationAlgorithm(@Nullable String sslEndpointIdentificationAlgorithm) {
             this.sslEndpointIdentificationAlgorithm = sslEndpointIdentificationAlgorithm;
             return this;
-        }        public ServiceIntegrationEndpointExternalKafkaUserConfig build() {
-            return new ServiceIntegrationEndpointExternalKafkaUserConfig(bootstrapServers, saslMechanism, saslPlainPassword, saslPlainUsername, securityProtocol, sslCaCert, sslClientCert, sslClientKey, sslEndpointIdentificationAlgorithm);
+        }
+        public ServiceIntegrationEndpointExternalKafkaUserConfig build() {
+            final var o = new ServiceIntegrationEndpointExternalKafkaUserConfig();
+            o.bootstrapServers = bootstrapServers;
+            o.saslMechanism = saslMechanism;
+            o.saslPlainPassword = saslPlainPassword;
+            o.saslPlainUsername = saslPlainUsername;
+            o.securityProtocol = securityProtocol;
+            o.sslCaCert = sslCaCert;
+            o.sslClientCert = sslClientCert;
+            o.sslClientKey = sslClientKey;
+            o.sslEndpointIdentificationAlgorithm = sslEndpointIdentificationAlgorithm;
+            return o;
         }
     }
 }

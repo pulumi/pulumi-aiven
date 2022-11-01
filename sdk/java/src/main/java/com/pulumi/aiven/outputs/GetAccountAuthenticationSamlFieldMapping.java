@@ -11,26 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountAuthenticationSamlFieldMapping {
-    private final @Nullable String email;
-    private final @Nullable String firstName;
-    private final @Nullable String identity;
-    private final @Nullable String lastName;
-    private final @Nullable String realName;
+    private @Nullable String email;
+    private @Nullable String firstName;
+    private @Nullable String identity;
+    private @Nullable String lastName;
+    private @Nullable String realName;
 
-    @CustomType.Constructor
-    private GetAccountAuthenticationSamlFieldMapping(
-        @CustomType.Parameter("email") @Nullable String email,
-        @CustomType.Parameter("firstName") @Nullable String firstName,
-        @CustomType.Parameter("identity") @Nullable String identity,
-        @CustomType.Parameter("lastName") @Nullable String lastName,
-        @CustomType.Parameter("realName") @Nullable String realName) {
-        this.email = email;
-        this.firstName = firstName;
-        this.identity = identity;
-        this.lastName = lastName;
-        this.realName = realName;
-    }
-
+    private GetAccountAuthenticationSamlFieldMapping() {}
     public Optional<String> email() {
         return Optional.ofNullable(this.email);
     }
@@ -54,18 +41,14 @@ public final class GetAccountAuthenticationSamlFieldMapping {
     public static Builder builder(GetAccountAuthenticationSamlFieldMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String email;
         private @Nullable String firstName;
         private @Nullable String identity;
         private @Nullable String lastName;
         private @Nullable String realName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountAuthenticationSamlFieldMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
@@ -75,27 +58,39 @@ public final class GetAccountAuthenticationSamlFieldMapping {
     	      this.realName = defaults.realName;
         }
 
+        @CustomType.Setter
         public Builder email(@Nullable String email) {
             this.email = email;
             return this;
         }
+        @CustomType.Setter
         public Builder firstName(@Nullable String firstName) {
             this.firstName = firstName;
             return this;
         }
+        @CustomType.Setter
         public Builder identity(@Nullable String identity) {
             this.identity = identity;
             return this;
         }
+        @CustomType.Setter
         public Builder lastName(@Nullable String lastName) {
             this.lastName = lastName;
             return this;
         }
+        @CustomType.Setter
         public Builder realName(@Nullable String realName) {
             this.realName = realName;
             return this;
-        }        public GetAccountAuthenticationSamlFieldMapping build() {
-            return new GetAccountAuthenticationSamlFieldMapping(email, firstName, identity, lastName, realName);
+        }
+        public GetAccountAuthenticationSamlFieldMapping build() {
+            final var o = new GetAccountAuthenticationSamlFieldMapping();
+            o.email = email;
+            o.firstName = firstName;
+            o.identity = identity;
+            o.lastName = lastName;
+            o.realName = realName;
+            return o;
         }
     }
 }

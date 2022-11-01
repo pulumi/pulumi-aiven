@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CassandraCassandraUserConfigPrivateAccess {
-    private final @Nullable String prometheus;
+    private @Nullable String prometheus;
 
-    @CustomType.Constructor
-    private CassandraCassandraUserConfigPrivateAccess(@CustomType.Parameter("prometheus") @Nullable String prometheus) {
-        this.prometheus = prometheus;
-    }
-
+    private CassandraCassandraUserConfigPrivateAccess() {}
     public Optional<String> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -29,24 +25,24 @@ public final class CassandraCassandraUserConfigPrivateAccess {
     public static Builder builder(CassandraCassandraUserConfigPrivateAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String prometheus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CassandraCassandraUserConfigPrivateAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.prometheus = defaults.prometheus;
         }
 
+        @CustomType.Setter
         public Builder prometheus(@Nullable String prometheus) {
             this.prometheus = prometheus;
             return this;
-        }        public CassandraCassandraUserConfigPrivateAccess build() {
-            return new CassandraCassandraUserConfigPrivateAccess(prometheus);
+        }
+        public CassandraCassandraUserConfigPrivateAccess build() {
+            final var o = new CassandraCassandraUserConfigPrivateAccess();
+            o.prometheus = prometheus;
+            return o;
         }
     }
 }

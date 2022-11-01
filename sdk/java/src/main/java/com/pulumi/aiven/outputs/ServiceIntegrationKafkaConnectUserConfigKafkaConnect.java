@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
-    private final @Nullable String configStorageTopic;
-    private final @Nullable String groupId;
-    private final @Nullable String offsetStorageTopic;
-    private final @Nullable String statusStorageTopic;
+    private @Nullable String configStorageTopic;
+    private @Nullable String groupId;
+    private @Nullable String offsetStorageTopic;
+    private @Nullable String statusStorageTopic;
 
-    @CustomType.Constructor
-    private ServiceIntegrationKafkaConnectUserConfigKafkaConnect(
-        @CustomType.Parameter("configStorageTopic") @Nullable String configStorageTopic,
-        @CustomType.Parameter("groupId") @Nullable String groupId,
-        @CustomType.Parameter("offsetStorageTopic") @Nullable String offsetStorageTopic,
-        @CustomType.Parameter("statusStorageTopic") @Nullable String statusStorageTopic) {
-        this.configStorageTopic = configStorageTopic;
-        this.groupId = groupId;
-        this.offsetStorageTopic = offsetStorageTopic;
-        this.statusStorageTopic = statusStorageTopic;
-    }
-
+    private ServiceIntegrationKafkaConnectUserConfigKafkaConnect() {}
     public Optional<String> configStorageTopic() {
         return Optional.ofNullable(this.configStorageTopic);
     }
@@ -48,17 +37,13 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
     public static Builder builder(ServiceIntegrationKafkaConnectUserConfigKafkaConnect defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String configStorageTopic;
         private @Nullable String groupId;
         private @Nullable String offsetStorageTopic;
         private @Nullable String statusStorageTopic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationKafkaConnectUserConfigKafkaConnect defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configStorageTopic = defaults.configStorageTopic;
@@ -67,23 +52,33 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
     	      this.statusStorageTopic = defaults.statusStorageTopic;
         }
 
+        @CustomType.Setter
         public Builder configStorageTopic(@Nullable String configStorageTopic) {
             this.configStorageTopic = configStorageTopic;
             return this;
         }
+        @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
             this.groupId = groupId;
             return this;
         }
+        @CustomType.Setter
         public Builder offsetStorageTopic(@Nullable String offsetStorageTopic) {
             this.offsetStorageTopic = offsetStorageTopic;
             return this;
         }
+        @CustomType.Setter
         public Builder statusStorageTopic(@Nullable String statusStorageTopic) {
             this.statusStorageTopic = statusStorageTopic;
             return this;
-        }        public ServiceIntegrationKafkaConnectUserConfigKafkaConnect build() {
-            return new ServiceIntegrationKafkaConnectUserConfigKafkaConnect(configStorageTopic, groupId, offsetStorageTopic, statusStorageTopic);
+        }
+        public ServiceIntegrationKafkaConnectUserConfigKafkaConnect build() {
+            final var o = new ServiceIntegrationKafkaConnectUserConfigKafkaConnect();
+            o.configStorageTopic = configStorageTopic;
+            o.groupId = groupId;
+            o.offsetStorageTopic = offsetStorageTopic;
+            o.statusStorageTopic = statusStorageTopic;
+            return o;
         }
     }
 }

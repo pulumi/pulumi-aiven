@@ -26,119 +26,84 @@ public final class GetServiceIntegrationEndpointResult {
      * @return Datadog specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationEndpointDatadogUserConfig> datadogUserConfigs;
+    private List<GetServiceIntegrationEndpointDatadogUserConfig> datadogUserConfigs;
     /**
      * @return Integration endpoint specific backend configuration
      * 
      */
-    private final Map<String,String> endpointConfig;
+    private Map<String,String> endpointConfig;
     /**
      * @return Name of the service integration endpoint
      * 
      */
-    private final String endpointName;
+    private String endpointName;
     /**
      * @return Type of the service integration endpoint
      * 
      */
-    private final String endpointType;
+    private String endpointType;
     /**
      * @return external AWS CloudWatch Logs specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs;
+    private List<GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs;
     /**
      * @return External AWS cloudwatch mertrics specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
+    private List<GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
     /**
      * @return external elasticsearch specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs;
+    private List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs;
     /**
      * @return external Google Cloud Logginig specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfigs;
+    private List<GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfigs;
     /**
      * @return external Kafka specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs;
+    private List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs;
     /**
      * @return External schema registry specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs;
+    private List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Jolokia specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfigs;
+    private List<GetServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfigs;
     /**
      * @return Project the service integration endpoint belongs to
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Prometheus specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfigs;
+    private List<GetServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfigs;
     /**
      * @return rsyslog specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs;
+    private List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs;
     /**
      * @return Signalfx specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationEndpointSignalfxUserConfig> signalfxUserConfigs;
+    private List<GetServiceIntegrationEndpointSignalfxUserConfig> signalfxUserConfigs;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationEndpointResult(
-        @CustomType.Parameter("datadogUserConfigs") List<GetServiceIntegrationEndpointDatadogUserConfig> datadogUserConfigs,
-        @CustomType.Parameter("endpointConfig") Map<String,String> endpointConfig,
-        @CustomType.Parameter("endpointName") String endpointName,
-        @CustomType.Parameter("endpointType") String endpointType,
-        @CustomType.Parameter("externalAwsCloudwatchLogsUserConfigs") List<GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs,
-        @CustomType.Parameter("externalAwsCloudwatchMetricsUserConfigs") List<GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs,
-        @CustomType.Parameter("externalElasticsearchLogsUserConfigs") List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs,
-        @CustomType.Parameter("externalGoogleCloudLoggingUserConfigs") List<GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfigs,
-        @CustomType.Parameter("externalKafkaUserConfigs") List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs,
-        @CustomType.Parameter("externalSchemaRegistryUserConfigs") List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("jolokiaUserConfigs") List<GetServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfigs,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("prometheusUserConfigs") List<GetServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfigs,
-        @CustomType.Parameter("rsyslogUserConfigs") List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs,
-        @CustomType.Parameter("signalfxUserConfigs") List<GetServiceIntegrationEndpointSignalfxUserConfig> signalfxUserConfigs) {
-        this.datadogUserConfigs = datadogUserConfigs;
-        this.endpointConfig = endpointConfig;
-        this.endpointName = endpointName;
-        this.endpointType = endpointType;
-        this.externalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
-        this.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
-        this.externalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
-        this.externalGoogleCloudLoggingUserConfigs = externalGoogleCloudLoggingUserConfigs;
-        this.externalKafkaUserConfigs = externalKafkaUserConfigs;
-        this.externalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;
-        this.id = id;
-        this.jolokiaUserConfigs = jolokiaUserConfigs;
-        this.project = project;
-        this.prometheusUserConfigs = prometheusUserConfigs;
-        this.rsyslogUserConfigs = rsyslogUserConfigs;
-        this.signalfxUserConfigs = signalfxUserConfigs;
-    }
-
+    private GetServiceIntegrationEndpointResult() {}
     /**
      * @return Datadog specific user configurable settings
      * 
@@ -259,7 +224,7 @@ public final class GetServiceIntegrationEndpointResult {
     public static Builder builder(GetServiceIntegrationEndpointResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetServiceIntegrationEndpointDatadogUserConfig> datadogUserConfigs;
         private Map<String,String> endpointConfig;
@@ -277,11 +242,7 @@ public final class GetServiceIntegrationEndpointResult {
         private List<GetServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfigs;
         private List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs;
         private List<GetServiceIntegrationEndpointSignalfxUserConfig> signalfxUserConfigs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationEndpointResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datadogUserConfigs = defaults.datadogUserConfigs;
@@ -302,6 +263,7 @@ public final class GetServiceIntegrationEndpointResult {
     	      this.signalfxUserConfigs = defaults.signalfxUserConfigs;
         }
 
+        @CustomType.Setter
         public Builder datadogUserConfigs(List<GetServiceIntegrationEndpointDatadogUserConfig> datadogUserConfigs) {
             this.datadogUserConfigs = Objects.requireNonNull(datadogUserConfigs);
             return this;
@@ -309,18 +271,22 @@ public final class GetServiceIntegrationEndpointResult {
         public Builder datadogUserConfigs(GetServiceIntegrationEndpointDatadogUserConfig... datadogUserConfigs) {
             return datadogUserConfigs(List.of(datadogUserConfigs));
         }
+        @CustomType.Setter
         public Builder endpointConfig(Map<String,String> endpointConfig) {
             this.endpointConfig = Objects.requireNonNull(endpointConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointName(String endpointName) {
             this.endpointName = Objects.requireNonNull(endpointName);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointType(String endpointType) {
             this.endpointType = Objects.requireNonNull(endpointType);
             return this;
         }
+        @CustomType.Setter
         public Builder externalAwsCloudwatchLogsUserConfigs(List<GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs) {
             this.externalAwsCloudwatchLogsUserConfigs = Objects.requireNonNull(externalAwsCloudwatchLogsUserConfigs);
             return this;
@@ -328,6 +294,7 @@ public final class GetServiceIntegrationEndpointResult {
         public Builder externalAwsCloudwatchLogsUserConfigs(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig... externalAwsCloudwatchLogsUserConfigs) {
             return externalAwsCloudwatchLogsUserConfigs(List.of(externalAwsCloudwatchLogsUserConfigs));
         }
+        @CustomType.Setter
         public Builder externalAwsCloudwatchMetricsUserConfigs(List<GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs) {
             this.externalAwsCloudwatchMetricsUserConfigs = Objects.requireNonNull(externalAwsCloudwatchMetricsUserConfigs);
             return this;
@@ -335,6 +302,7 @@ public final class GetServiceIntegrationEndpointResult {
         public Builder externalAwsCloudwatchMetricsUserConfigs(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig... externalAwsCloudwatchMetricsUserConfigs) {
             return externalAwsCloudwatchMetricsUserConfigs(List.of(externalAwsCloudwatchMetricsUserConfigs));
         }
+        @CustomType.Setter
         public Builder externalElasticsearchLogsUserConfigs(List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs) {
             this.externalElasticsearchLogsUserConfigs = Objects.requireNonNull(externalElasticsearchLogsUserConfigs);
             return this;
@@ -342,6 +310,7 @@ public final class GetServiceIntegrationEndpointResult {
         public Builder externalElasticsearchLogsUserConfigs(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig... externalElasticsearchLogsUserConfigs) {
             return externalElasticsearchLogsUserConfigs(List.of(externalElasticsearchLogsUserConfigs));
         }
+        @CustomType.Setter
         public Builder externalGoogleCloudLoggingUserConfigs(List<GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfigs) {
             this.externalGoogleCloudLoggingUserConfigs = Objects.requireNonNull(externalGoogleCloudLoggingUserConfigs);
             return this;
@@ -349,6 +318,7 @@ public final class GetServiceIntegrationEndpointResult {
         public Builder externalGoogleCloudLoggingUserConfigs(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig... externalGoogleCloudLoggingUserConfigs) {
             return externalGoogleCloudLoggingUserConfigs(List.of(externalGoogleCloudLoggingUserConfigs));
         }
+        @CustomType.Setter
         public Builder externalKafkaUserConfigs(List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs) {
             this.externalKafkaUserConfigs = Objects.requireNonNull(externalKafkaUserConfigs);
             return this;
@@ -356,6 +326,7 @@ public final class GetServiceIntegrationEndpointResult {
         public Builder externalKafkaUserConfigs(GetServiceIntegrationEndpointExternalKafkaUserConfig... externalKafkaUserConfigs) {
             return externalKafkaUserConfigs(List.of(externalKafkaUserConfigs));
         }
+        @CustomType.Setter
         public Builder externalSchemaRegistryUserConfigs(List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs) {
             this.externalSchemaRegistryUserConfigs = Objects.requireNonNull(externalSchemaRegistryUserConfigs);
             return this;
@@ -363,10 +334,12 @@ public final class GetServiceIntegrationEndpointResult {
         public Builder externalSchemaRegistryUserConfigs(GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig... externalSchemaRegistryUserConfigs) {
             return externalSchemaRegistryUserConfigs(List.of(externalSchemaRegistryUserConfigs));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder jolokiaUserConfigs(List<GetServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfigs) {
             this.jolokiaUserConfigs = Objects.requireNonNull(jolokiaUserConfigs);
             return this;
@@ -374,10 +347,12 @@ public final class GetServiceIntegrationEndpointResult {
         public Builder jolokiaUserConfigs(GetServiceIntegrationEndpointJolokiaUserConfig... jolokiaUserConfigs) {
             return jolokiaUserConfigs(List.of(jolokiaUserConfigs));
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder prometheusUserConfigs(List<GetServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfigs) {
             this.prometheusUserConfigs = Objects.requireNonNull(prometheusUserConfigs);
             return this;
@@ -385,6 +360,7 @@ public final class GetServiceIntegrationEndpointResult {
         public Builder prometheusUserConfigs(GetServiceIntegrationEndpointPrometheusUserConfig... prometheusUserConfigs) {
             return prometheusUserConfigs(List.of(prometheusUserConfigs));
         }
+        @CustomType.Setter
         public Builder rsyslogUserConfigs(List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs) {
             this.rsyslogUserConfigs = Objects.requireNonNull(rsyslogUserConfigs);
             return this;
@@ -392,14 +368,33 @@ public final class GetServiceIntegrationEndpointResult {
         public Builder rsyslogUserConfigs(GetServiceIntegrationEndpointRsyslogUserConfig... rsyslogUserConfigs) {
             return rsyslogUserConfigs(List.of(rsyslogUserConfigs));
         }
+        @CustomType.Setter
         public Builder signalfxUserConfigs(List<GetServiceIntegrationEndpointSignalfxUserConfig> signalfxUserConfigs) {
             this.signalfxUserConfigs = Objects.requireNonNull(signalfxUserConfigs);
             return this;
         }
         public Builder signalfxUserConfigs(GetServiceIntegrationEndpointSignalfxUserConfig... signalfxUserConfigs) {
             return signalfxUserConfigs(List.of(signalfxUserConfigs));
-        }        public GetServiceIntegrationEndpointResult build() {
-            return new GetServiceIntegrationEndpointResult(datadogUserConfigs, endpointConfig, endpointName, endpointType, externalAwsCloudwatchLogsUserConfigs, externalAwsCloudwatchMetricsUserConfigs, externalElasticsearchLogsUserConfigs, externalGoogleCloudLoggingUserConfigs, externalKafkaUserConfigs, externalSchemaRegistryUserConfigs, id, jolokiaUserConfigs, project, prometheusUserConfigs, rsyslogUserConfigs, signalfxUserConfigs);
+        }
+        public GetServiceIntegrationEndpointResult build() {
+            final var o = new GetServiceIntegrationEndpointResult();
+            o.datadogUserConfigs = datadogUserConfigs;
+            o.endpointConfig = endpointConfig;
+            o.endpointName = endpointName;
+            o.endpointType = endpointType;
+            o.externalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
+            o.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
+            o.externalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
+            o.externalGoogleCloudLoggingUserConfigs = externalGoogleCloudLoggingUserConfigs;
+            o.externalKafkaUserConfigs = externalKafkaUserConfigs;
+            o.externalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;
+            o.id = id;
+            o.jolokiaUserConfigs = jolokiaUserConfigs;
+            o.project = project;
+            o.prometheusUserConfigs = prometheusUserConfigs;
+            o.rsyslogUserConfigs = rsyslogUserConfigs;
+            o.signalfxUserConfigs = signalfxUserConfigs;
+            return o;
         }
     }
 }

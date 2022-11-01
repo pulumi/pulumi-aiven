@@ -12,30 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3AggregatorM3aggregatorUserConfig {
-    private final @Nullable String customDomain;
-    private final @Nullable List<String> ipFilters;
-    private final @Nullable String m3Version;
-    private final @Nullable String m3aggregatorVersion;
+    private @Nullable String customDomain;
+    private @Nullable List<String> ipFilters;
+    private @Nullable String m3Version;
+    private @Nullable String m3aggregatorVersion;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private final @Nullable String staticIps;
+    private @Nullable String staticIps;
 
-    @CustomType.Constructor
-    private GetM3AggregatorM3aggregatorUserConfig(
-        @CustomType.Parameter("customDomain") @Nullable String customDomain,
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("m3Version") @Nullable String m3Version,
-        @CustomType.Parameter("m3aggregatorVersion") @Nullable String m3aggregatorVersion,
-        @CustomType.Parameter("staticIps") @Nullable String staticIps) {
-        this.customDomain = customDomain;
-        this.ipFilters = ipFilters;
-        this.m3Version = m3Version;
-        this.m3aggregatorVersion = m3aggregatorVersion;
-        this.staticIps = staticIps;
-    }
-
+    private GetM3AggregatorM3aggregatorUserConfig() {}
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
@@ -63,18 +50,14 @@ public final class GetM3AggregatorM3aggregatorUserConfig {
     public static Builder builder(GetM3AggregatorM3aggregatorUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String customDomain;
         private @Nullable List<String> ipFilters;
         private @Nullable String m3Version;
         private @Nullable String m3aggregatorVersion;
         private @Nullable String staticIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetM3AggregatorM3aggregatorUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customDomain = defaults.customDomain;
@@ -84,10 +67,12 @@ public final class GetM3AggregatorM3aggregatorUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
             this.customDomain = customDomain;
             return this;
         }
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -95,19 +80,29 @@ public final class GetM3AggregatorM3aggregatorUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder m3Version(@Nullable String m3Version) {
             this.m3Version = m3Version;
             return this;
         }
+        @CustomType.Setter
         public Builder m3aggregatorVersion(@Nullable String m3aggregatorVersion) {
             this.m3aggregatorVersion = m3aggregatorVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
-        }        public GetM3AggregatorM3aggregatorUserConfig build() {
-            return new GetM3AggregatorM3aggregatorUserConfig(customDomain, ipFilters, m3Version, m3aggregatorVersion, staticIps);
+        }
+        public GetM3AggregatorM3aggregatorUserConfig build() {
+            final var o = new GetM3AggregatorM3aggregatorUserConfig();
+            o.customDomain = customDomain;
+            o.ipFilters = ipFilters;
+            o.m3Version = m3Version;
+            o.m3aggregatorVersion = m3aggregatorVersion;
+            o.staticIps = staticIps;
+            return o;
         }
     }
 }

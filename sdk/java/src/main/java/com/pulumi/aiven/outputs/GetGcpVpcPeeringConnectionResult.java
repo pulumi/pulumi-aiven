@@ -15,49 +15,34 @@ public final class GetGcpVpcPeeringConnectionResult {
      * @return GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String gcpProjectId;
+    private String gcpProjectId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String peerVpc;
+    private String peerVpc;
     /**
      * @return State of the peering connection
      * 
      */
-    private final String state;
+    private String state;
     /**
      * @return State-specific help or error information
      * 
      */
-    private final Map<String,Object> stateInfo;
+    private Map<String,Object> stateInfo;
     /**
      * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private GetGcpVpcPeeringConnectionResult(
-        @CustomType.Parameter("gcpProjectId") String gcpProjectId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("peerVpc") String peerVpc,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("stateInfo") Map<String,Object> stateInfo,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.gcpProjectId = gcpProjectId;
-        this.id = id;
-        this.peerVpc = peerVpc;
-        this.state = state;
-        this.stateInfo = stateInfo;
-        this.vpcId = vpcId;
-    }
-
+    private GetGcpVpcPeeringConnectionResult() {}
     /**
      * @return GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
      * 
@@ -108,7 +93,7 @@ public final class GetGcpVpcPeeringConnectionResult {
     public static Builder builder(GetGcpVpcPeeringConnectionResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String gcpProjectId;
         private String id;
@@ -116,11 +101,7 @@ public final class GetGcpVpcPeeringConnectionResult {
         private String state;
         private Map<String,Object> stateInfo;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGcpVpcPeeringConnectionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gcpProjectId = defaults.gcpProjectId;
@@ -131,31 +112,45 @@ public final class GetGcpVpcPeeringConnectionResult {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder gcpProjectId(String gcpProjectId) {
             this.gcpProjectId = Objects.requireNonNull(gcpProjectId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder peerVpc(String peerVpc) {
             this.peerVpc = Objects.requireNonNull(peerVpc);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder stateInfo(Map<String,Object> stateInfo) {
             this.stateInfo = Objects.requireNonNull(stateInfo);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public GetGcpVpcPeeringConnectionResult build() {
-            return new GetGcpVpcPeeringConnectionResult(gcpProjectId, id, peerVpc, state, stateInfo, vpcId);
+        }
+        public GetGcpVpcPeeringConnectionResult build() {
+            final var o = new GetGcpVpcPeeringConnectionResult();
+            o.gcpProjectId = gcpProjectId;
+            o.id = id;
+            o.peerVpc = peerVpc;
+            o.state = state;
+            o.stateInfo = stateInfo;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

@@ -20,64 +20,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaKafkaUserConfig {
-    private final @Nullable String customDomain;
-    private final @Nullable List<String> ipFilters;
+    private @Nullable String customDomain;
+    private @Nullable List<String> ipFilters;
     /**
      * @return Kafka server provided values
      * 
      */
-    private final @Nullable GetKafkaKafkaUserConfigKafka kafka;
-    private final @Nullable GetKafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
-    private final @Nullable String kafkaConnect;
-    private final @Nullable GetKafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
-    private final @Nullable String kafkaRest;
-    private final @Nullable GetKafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
-    private final @Nullable String kafkaVersion;
-    private final @Nullable GetKafkaKafkaUserConfigPrivateAccess privateAccess;
-    private final @Nullable GetKafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess;
-    private final @Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess;
-    private final @Nullable String schemaRegistry;
-    private final @Nullable GetKafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
+    private @Nullable GetKafkaKafkaUserConfigKafka kafka;
+    private @Nullable GetKafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
+    private @Nullable String kafkaConnect;
+    private @Nullable GetKafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
+    private @Nullable String kafkaRest;
+    private @Nullable GetKafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
+    private @Nullable String kafkaVersion;
+    private @Nullable GetKafkaKafkaUserConfigPrivateAccess privateAccess;
+    private @Nullable GetKafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess;
+    private @Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess;
+    private @Nullable String schemaRegistry;
+    private @Nullable GetKafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private final @Nullable String staticIps;
+    private @Nullable String staticIps;
 
-    @CustomType.Constructor
-    private GetKafkaKafkaUserConfig(
-        @CustomType.Parameter("customDomain") @Nullable String customDomain,
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("kafka") @Nullable GetKafkaKafkaUserConfigKafka kafka,
-        @CustomType.Parameter("kafkaAuthenticationMethods") @Nullable GetKafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods,
-        @CustomType.Parameter("kafkaConnect") @Nullable String kafkaConnect,
-        @CustomType.Parameter("kafkaConnectConfig") @Nullable GetKafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig,
-        @CustomType.Parameter("kafkaRest") @Nullable String kafkaRest,
-        @CustomType.Parameter("kafkaRestConfig") @Nullable GetKafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig,
-        @CustomType.Parameter("kafkaVersion") @Nullable String kafkaVersion,
-        @CustomType.Parameter("privateAccess") @Nullable GetKafkaKafkaUserConfigPrivateAccess privateAccess,
-        @CustomType.Parameter("privatelinkAccess") @Nullable GetKafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess,
-        @CustomType.Parameter("publicAccess") @Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess,
-        @CustomType.Parameter("schemaRegistry") @Nullable String schemaRegistry,
-        @CustomType.Parameter("schemaRegistryConfig") @Nullable GetKafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig,
-        @CustomType.Parameter("staticIps") @Nullable String staticIps) {
-        this.customDomain = customDomain;
-        this.ipFilters = ipFilters;
-        this.kafka = kafka;
-        this.kafkaAuthenticationMethods = kafkaAuthenticationMethods;
-        this.kafkaConnect = kafkaConnect;
-        this.kafkaConnectConfig = kafkaConnectConfig;
-        this.kafkaRest = kafkaRest;
-        this.kafkaRestConfig = kafkaRestConfig;
-        this.kafkaVersion = kafkaVersion;
-        this.privateAccess = privateAccess;
-        this.privatelinkAccess = privatelinkAccess;
-        this.publicAccess = publicAccess;
-        this.schemaRegistry = schemaRegistry;
-        this.schemaRegistryConfig = schemaRegistryConfig;
-        this.staticIps = staticIps;
-    }
-
+    private GetKafkaKafkaUserConfig() {}
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
@@ -139,7 +106,7 @@ public final class GetKafkaKafkaUserConfig {
     public static Builder builder(GetKafkaKafkaUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String customDomain;
         private @Nullable List<String> ipFilters;
@@ -156,11 +123,7 @@ public final class GetKafkaKafkaUserConfig {
         private @Nullable String schemaRegistry;
         private @Nullable GetKafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
         private @Nullable String staticIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaKafkaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customDomain = defaults.customDomain;
@@ -180,10 +143,12 @@ public final class GetKafkaKafkaUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
             this.customDomain = customDomain;
             return this;
         }
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -191,59 +156,89 @@ public final class GetKafkaKafkaUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder kafka(@Nullable GetKafkaKafkaUserConfigKafka kafka) {
             this.kafka = kafka;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaAuthenticationMethods(@Nullable GetKafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods) {
             this.kafkaAuthenticationMethods = kafkaAuthenticationMethods;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaConnect(@Nullable String kafkaConnect) {
             this.kafkaConnect = kafkaConnect;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaConnectConfig(@Nullable GetKafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig) {
             this.kafkaConnectConfig = kafkaConnectConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaRest(@Nullable String kafkaRest) {
             this.kafkaRest = kafkaRest;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaRestConfig(@Nullable GetKafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig) {
             this.kafkaRestConfig = kafkaRestConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaVersion(@Nullable String kafkaVersion) {
             this.kafkaVersion = kafkaVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable GetKafkaKafkaUserConfigPrivateAccess privateAccess) {
             this.privateAccess = privateAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetKafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess) {
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccess(@Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess) {
             this.publicAccess = publicAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder schemaRegistry(@Nullable String schemaRegistry) {
             this.schemaRegistry = schemaRegistry;
             return this;
         }
+        @CustomType.Setter
         public Builder schemaRegistryConfig(@Nullable GetKafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig) {
             this.schemaRegistryConfig = schemaRegistryConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
-        }        public GetKafkaKafkaUserConfig build() {
-            return new GetKafkaKafkaUserConfig(customDomain, ipFilters, kafka, kafkaAuthenticationMethods, kafkaConnect, kafkaConnectConfig, kafkaRest, kafkaRestConfig, kafkaVersion, privateAccess, privatelinkAccess, publicAccess, schemaRegistry, schemaRegistryConfig, staticIps);
+        }
+        public GetKafkaKafkaUserConfig build() {
+            final var o = new GetKafkaKafkaUserConfig();
+            o.customDomain = customDomain;
+            o.ipFilters = ipFilters;
+            o.kafka = kafka;
+            o.kafkaAuthenticationMethods = kafkaAuthenticationMethods;
+            o.kafkaConnect = kafkaConnect;
+            o.kafkaConnectConfig = kafkaConnectConfig;
+            o.kafkaRest = kafkaRest;
+            o.kafkaRestConfig = kafkaRestConfig;
+            o.kafkaVersion = kafkaVersion;
+            o.privateAccess = privateAccess;
+            o.privatelinkAccess = privatelinkAccess;
+            o.publicAccess = publicAccess;
+            o.schemaRegistry = schemaRegistry;
+            o.schemaRegistryConfig = schemaRegistryConfig;
+            o.staticIps = staticIps;
+            return o;
         }
     }
 }

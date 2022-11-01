@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
-    private final @Nullable String logId;
-    private final @Nullable String projectId;
-    private final @Nullable String serviceAccountCredentials;
+    private @Nullable String logId;
+    private @Nullable String projectId;
+    private @Nullable String serviceAccountCredentials;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig(
-        @CustomType.Parameter("logId") @Nullable String logId,
-        @CustomType.Parameter("projectId") @Nullable String projectId,
-        @CustomType.Parameter("serviceAccountCredentials") @Nullable String serviceAccountCredentials) {
-        this.logId = logId;
-        this.projectId = projectId;
-        this.serviceAccountCredentials = serviceAccountCredentials;
-    }
-
+    private GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig() {}
     public Optional<String> logId() {
         return Optional.ofNullable(this.logId);
     }
@@ -42,16 +33,12 @@ public final class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserCo
     public static Builder builder(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String logId;
         private @Nullable String projectId;
         private @Nullable String serviceAccountCredentials;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.logId = defaults.logId;
@@ -59,19 +46,27 @@ public final class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserCo
     	      this.serviceAccountCredentials = defaults.serviceAccountCredentials;
         }
 
+        @CustomType.Setter
         public Builder logId(@Nullable String logId) {
             this.logId = logId;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccountCredentials(@Nullable String serviceAccountCredentials) {
             this.serviceAccountCredentials = serviceAccountCredentials;
             return this;
-        }        public GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig build() {
-            return new GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig(logId, projectId, serviceAccountCredentials);
+        }
+        public GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig build() {
+            final var o = new GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig();
+            o.logId = logId;
+            o.projectId = projectId;
+            o.serviceAccountCredentials = serviceAccountCredentials;
+            return o;
         }
     }
 }

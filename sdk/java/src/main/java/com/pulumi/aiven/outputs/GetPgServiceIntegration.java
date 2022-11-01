@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPgServiceIntegration {
-    private final String integrationType;
-    private final String sourceServiceName;
+    private String integrationType;
+    private String sourceServiceName;
 
-    @CustomType.Constructor
-    private GetPgServiceIntegration(
-        @CustomType.Parameter("integrationType") String integrationType,
-        @CustomType.Parameter("sourceServiceName") String sourceServiceName) {
-        this.integrationType = integrationType;
-        this.sourceServiceName = sourceServiceName;
-    }
-
+    private GetPgServiceIntegration() {}
     public String integrationType() {
         return this.integrationType;
     }
@@ -34,30 +27,32 @@ public final class GetPgServiceIntegration {
     public static Builder builder(GetPgServiceIntegration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String integrationType;
         private String sourceServiceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPgServiceIntegration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.integrationType = defaults.integrationType;
     	      this.sourceServiceName = defaults.sourceServiceName;
         }
 
+        @CustomType.Setter
         public Builder integrationType(String integrationType) {
             this.integrationType = Objects.requireNonNull(integrationType);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceServiceName(String sourceServiceName) {
             this.sourceServiceName = Objects.requireNonNull(sourceServiceName);
             return this;
-        }        public GetPgServiceIntegration build() {
-            return new GetPgServiceIntegration(integrationType, sourceServiceName);
+        }
+        public GetPgServiceIntegration build() {
+            final var o = new GetPgServiceIntegration();
+            o.integrationType = integrationType;
+            o.sourceServiceName = sourceServiceName;
+            return o;
         }
     }
 }

@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OpenSearchOpensearch {
-    private final @Nullable String opensearchDashboardsUri;
+    private @Nullable String opensearchDashboardsUri;
 
-    @CustomType.Constructor
-    private OpenSearchOpensearch(@CustomType.Parameter("opensearchDashboardsUri") @Nullable String opensearchDashboardsUri) {
-        this.opensearchDashboardsUri = opensearchDashboardsUri;
-    }
-
+    private OpenSearchOpensearch() {}
     public Optional<String> opensearchDashboardsUri() {
         return Optional.ofNullable(this.opensearchDashboardsUri);
     }
@@ -29,24 +25,24 @@ public final class OpenSearchOpensearch {
     public static Builder builder(OpenSearchOpensearch defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String opensearchDashboardsUri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OpenSearchOpensearch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.opensearchDashboardsUri = defaults.opensearchDashboardsUri;
         }
 
+        @CustomType.Setter
         public Builder opensearchDashboardsUri(@Nullable String opensearchDashboardsUri) {
             this.opensearchDashboardsUri = opensearchDashboardsUri;
             return this;
-        }        public OpenSearchOpensearch build() {
-            return new OpenSearchOpensearch(opensearchDashboardsUri);
+        }
+        public OpenSearchOpensearch build() {
+            final var o = new OpenSearchOpensearch();
+            o.opensearchDashboardsUri = opensearchDashboardsUri;
+            return o;
         }
     }
 }

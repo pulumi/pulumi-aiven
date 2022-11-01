@@ -20,105 +20,74 @@ public final class GetServiceIntegrationResult {
      * @return Destination endpoint for the integration (if any)
      * 
      */
-    private final String destinationEndpointId;
+    private String destinationEndpointId;
     /**
      * @return Destination service for the integration (if any)
      * 
      */
-    private final String destinationServiceName;
+    private String destinationServiceName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Service Integration Id at aiven
      * 
      */
-    private final String integrationId;
+    private String integrationId;
     /**
      * @return Type of the service integration
      * 
      */
-    private final String integrationType;
+    private String integrationType;
     /**
      * @return Kafka Connect specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfigs;
+    private List<GetServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfigs;
     /**
      * @return Kafka Logs specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfigs;
+    private List<GetServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfigs;
     /**
      * @return Mirrormaker 2 integration specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs;
+    private List<GetServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs;
     /**
      * @return Log integration specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationLogsUserConfig> logsUserConfigs;
+    private List<GetServiceIntegrationLogsUserConfig> logsUserConfigs;
     /**
      * @return Metrics specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs;
+    private List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs;
     /**
      * @return Mirrormaker 1 integration specific user configurable settings
      * 
      */
-    private final List<GetServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfigs;
+    private List<GetServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfigs;
     /**
      * @return Project the integration belongs to
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Source endpoint for the integration (if any)
      * 
      */
-    private final String sourceEndpointId;
+    private String sourceEndpointId;
     /**
      * @return Source service for the integration (if any)
      * 
      */
-    private final String sourceServiceName;
+    private String sourceServiceName;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationResult(
-        @CustomType.Parameter("destinationEndpointId") String destinationEndpointId,
-        @CustomType.Parameter("destinationServiceName") String destinationServiceName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("integrationId") String integrationId,
-        @CustomType.Parameter("integrationType") String integrationType,
-        @CustomType.Parameter("kafkaConnectUserConfigs") List<GetServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfigs,
-        @CustomType.Parameter("kafkaLogsUserConfigs") List<GetServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfigs,
-        @CustomType.Parameter("kafkaMirrormakerUserConfigs") List<GetServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs,
-        @CustomType.Parameter("logsUserConfigs") List<GetServiceIntegrationLogsUserConfig> logsUserConfigs,
-        @CustomType.Parameter("metricsUserConfigs") List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs,
-        @CustomType.Parameter("mirrormakerUserConfigs") List<GetServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfigs,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("sourceEndpointId") String sourceEndpointId,
-        @CustomType.Parameter("sourceServiceName") String sourceServiceName) {
-        this.destinationEndpointId = destinationEndpointId;
-        this.destinationServiceName = destinationServiceName;
-        this.id = id;
-        this.integrationId = integrationId;
-        this.integrationType = integrationType;
-        this.kafkaConnectUserConfigs = kafkaConnectUserConfigs;
-        this.kafkaLogsUserConfigs = kafkaLogsUserConfigs;
-        this.kafkaMirrormakerUserConfigs = kafkaMirrormakerUserConfigs;
-        this.logsUserConfigs = logsUserConfigs;
-        this.metricsUserConfigs = metricsUserConfigs;
-        this.mirrormakerUserConfigs = mirrormakerUserConfigs;
-        this.project = project;
-        this.sourceEndpointId = sourceEndpointId;
-        this.sourceServiceName = sourceServiceName;
-    }
-
+    private GetServiceIntegrationResult() {}
     /**
      * @return Destination endpoint for the integration (if any)
      * 
@@ -225,7 +194,7 @@ public final class GetServiceIntegrationResult {
     public static Builder builder(GetServiceIntegrationResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String destinationEndpointId;
         private String destinationServiceName;
@@ -241,11 +210,7 @@ public final class GetServiceIntegrationResult {
         private String project;
         private String sourceEndpointId;
         private String sourceServiceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destinationEndpointId = defaults.destinationEndpointId;
@@ -264,26 +229,32 @@ public final class GetServiceIntegrationResult {
     	      this.sourceServiceName = defaults.sourceServiceName;
         }
 
+        @CustomType.Setter
         public Builder destinationEndpointId(String destinationEndpointId) {
             this.destinationEndpointId = Objects.requireNonNull(destinationEndpointId);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationServiceName(String destinationServiceName) {
             this.destinationServiceName = Objects.requireNonNull(destinationServiceName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder integrationId(String integrationId) {
             this.integrationId = Objects.requireNonNull(integrationId);
             return this;
         }
+        @CustomType.Setter
         public Builder integrationType(String integrationType) {
             this.integrationType = Objects.requireNonNull(integrationType);
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaConnectUserConfigs(List<GetServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfigs) {
             this.kafkaConnectUserConfigs = Objects.requireNonNull(kafkaConnectUserConfigs);
             return this;
@@ -291,6 +262,7 @@ public final class GetServiceIntegrationResult {
         public Builder kafkaConnectUserConfigs(GetServiceIntegrationKafkaConnectUserConfig... kafkaConnectUserConfigs) {
             return kafkaConnectUserConfigs(List.of(kafkaConnectUserConfigs));
         }
+        @CustomType.Setter
         public Builder kafkaLogsUserConfigs(List<GetServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfigs) {
             this.kafkaLogsUserConfigs = Objects.requireNonNull(kafkaLogsUserConfigs);
             return this;
@@ -298,6 +270,7 @@ public final class GetServiceIntegrationResult {
         public Builder kafkaLogsUserConfigs(GetServiceIntegrationKafkaLogsUserConfig... kafkaLogsUserConfigs) {
             return kafkaLogsUserConfigs(List.of(kafkaLogsUserConfigs));
         }
+        @CustomType.Setter
         public Builder kafkaMirrormakerUserConfigs(List<GetServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs) {
             this.kafkaMirrormakerUserConfigs = Objects.requireNonNull(kafkaMirrormakerUserConfigs);
             return this;
@@ -305,6 +278,7 @@ public final class GetServiceIntegrationResult {
         public Builder kafkaMirrormakerUserConfigs(GetServiceIntegrationKafkaMirrormakerUserConfig... kafkaMirrormakerUserConfigs) {
             return kafkaMirrormakerUserConfigs(List.of(kafkaMirrormakerUserConfigs));
         }
+        @CustomType.Setter
         public Builder logsUserConfigs(List<GetServiceIntegrationLogsUserConfig> logsUserConfigs) {
             this.logsUserConfigs = Objects.requireNonNull(logsUserConfigs);
             return this;
@@ -312,6 +286,7 @@ public final class GetServiceIntegrationResult {
         public Builder logsUserConfigs(GetServiceIntegrationLogsUserConfig... logsUserConfigs) {
             return logsUserConfigs(List.of(logsUserConfigs));
         }
+        @CustomType.Setter
         public Builder metricsUserConfigs(List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs) {
             this.metricsUserConfigs = Objects.requireNonNull(metricsUserConfigs);
             return this;
@@ -319,6 +294,7 @@ public final class GetServiceIntegrationResult {
         public Builder metricsUserConfigs(GetServiceIntegrationMetricsUserConfig... metricsUserConfigs) {
             return metricsUserConfigs(List.of(metricsUserConfigs));
         }
+        @CustomType.Setter
         public Builder mirrormakerUserConfigs(List<GetServiceIntegrationMirrormakerUserConfig> mirrormakerUserConfigs) {
             this.mirrormakerUserConfigs = Objects.requireNonNull(mirrormakerUserConfigs);
             return this;
@@ -326,19 +302,38 @@ public final class GetServiceIntegrationResult {
         public Builder mirrormakerUserConfigs(GetServiceIntegrationMirrormakerUserConfig... mirrormakerUserConfigs) {
             return mirrormakerUserConfigs(List.of(mirrormakerUserConfigs));
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceEndpointId(String sourceEndpointId) {
             this.sourceEndpointId = Objects.requireNonNull(sourceEndpointId);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceServiceName(String sourceServiceName) {
             this.sourceServiceName = Objects.requireNonNull(sourceServiceName);
             return this;
-        }        public GetServiceIntegrationResult build() {
-            return new GetServiceIntegrationResult(destinationEndpointId, destinationServiceName, id, integrationId, integrationType, kafkaConnectUserConfigs, kafkaLogsUserConfigs, kafkaMirrormakerUserConfigs, logsUserConfigs, metricsUserConfigs, mirrormakerUserConfigs, project, sourceEndpointId, sourceServiceName);
+        }
+        public GetServiceIntegrationResult build() {
+            final var o = new GetServiceIntegrationResult();
+            o.destinationEndpointId = destinationEndpointId;
+            o.destinationServiceName = destinationServiceName;
+            o.id = id;
+            o.integrationId = integrationId;
+            o.integrationType = integrationType;
+            o.kafkaConnectUserConfigs = kafkaConnectUserConfigs;
+            o.kafkaLogsUserConfigs = kafkaLogsUserConfigs;
+            o.kafkaMirrormakerUserConfigs = kafkaMirrormakerUserConfigs;
+            o.logsUserConfigs = logsUserConfigs;
+            o.metricsUserConfigs = metricsUserConfigs;
+            o.mirrormakerUserConfigs = mirrormakerUserConfigs;
+            o.project = project;
+            o.sourceEndpointId = sourceEndpointId;
+            o.sourceServiceName = sourceServiceName;
+            return o;
         }
     }
 }

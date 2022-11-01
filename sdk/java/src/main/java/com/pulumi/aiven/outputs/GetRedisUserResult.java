@@ -14,77 +14,54 @@ public final class GetRedisUserResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The password of the Redis User.
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final List<String> redisAclCategories;
+    private List<String> redisAclCategories;
     /**
      * @return Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final List<String> redisAclChannels;
+    private List<String> redisAclChannels;
     /**
      * @return Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final List<String> redisAclCommands;
+    private List<String> redisAclCommands;
     /**
      * @return Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final List<String> redisAclKeys;
+    private List<String> redisAclKeys;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
     /**
      * @return Type of the user account. Tells whether the user is the primary account or a regular account.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private GetRedisUserResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("redisAclCategories") List<String> redisAclCategories,
-        @CustomType.Parameter("redisAclChannels") List<String> redisAclChannels,
-        @CustomType.Parameter("redisAclCommands") List<String> redisAclCommands,
-        @CustomType.Parameter("redisAclKeys") List<String> redisAclKeys,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("username") String username) {
-        this.id = id;
-        this.password = password;
-        this.project = project;
-        this.redisAclCategories = redisAclCategories;
-        this.redisAclChannels = redisAclChannels;
-        this.redisAclCommands = redisAclCommands;
-        this.redisAclKeys = redisAclKeys;
-        this.serviceName = serviceName;
-        this.type = type;
-        this.username = username;
-    }
-
+    private GetRedisUserResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -163,7 +140,7 @@ public final class GetRedisUserResult {
     public static Builder builder(GetRedisUserResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String password;
@@ -175,11 +152,7 @@ public final class GetRedisUserResult {
         private String serviceName;
         private String type;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRedisUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -194,18 +167,22 @@ public final class GetRedisUserResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder redisAclCategories(List<String> redisAclCategories) {
             this.redisAclCategories = Objects.requireNonNull(redisAclCategories);
             return this;
@@ -213,6 +190,7 @@ public final class GetRedisUserResult {
         public Builder redisAclCategories(String... redisAclCategories) {
             return redisAclCategories(List.of(redisAclCategories));
         }
+        @CustomType.Setter
         public Builder redisAclChannels(List<String> redisAclChannels) {
             this.redisAclChannels = Objects.requireNonNull(redisAclChannels);
             return this;
@@ -220,6 +198,7 @@ public final class GetRedisUserResult {
         public Builder redisAclChannels(String... redisAclChannels) {
             return redisAclChannels(List.of(redisAclChannels));
         }
+        @CustomType.Setter
         public Builder redisAclCommands(List<String> redisAclCommands) {
             this.redisAclCommands = Objects.requireNonNull(redisAclCommands);
             return this;
@@ -227,6 +206,7 @@ public final class GetRedisUserResult {
         public Builder redisAclCommands(String... redisAclCommands) {
             return redisAclCommands(List.of(redisAclCommands));
         }
+        @CustomType.Setter
         public Builder redisAclKeys(List<String> redisAclKeys) {
             this.redisAclKeys = Objects.requireNonNull(redisAclKeys);
             return this;
@@ -234,19 +214,34 @@ public final class GetRedisUserResult {
         public Builder redisAclKeys(String... redisAclKeys) {
             return redisAclKeys(List.of(redisAclKeys));
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public GetRedisUserResult build() {
-            return new GetRedisUserResult(id, password, project, redisAclCategories, redisAclChannels, redisAclCommands, redisAclKeys, serviceName, type, username);
+        }
+        public GetRedisUserResult build() {
+            final var o = new GetRedisUserResult();
+            o.id = id;
+            o.password = password;
+            o.project = project;
+            o.redisAclCategories = redisAclCategories;
+            o.redisAclChannels = redisAclChannels;
+            o.redisAclCommands = redisAclCommands;
+            o.redisAclKeys = redisAclKeys;
+            o.serviceName = serviceName;
+            o.type = type;
+            o.username = username;
+            return o;
         }
     }
 }

@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGrafanaServiceIntegration {
-    private final String integrationType;
-    private final String sourceServiceName;
+    private String integrationType;
+    private String sourceServiceName;
 
-    @CustomType.Constructor
-    private GetGrafanaServiceIntegration(
-        @CustomType.Parameter("integrationType") String integrationType,
-        @CustomType.Parameter("sourceServiceName") String sourceServiceName) {
-        this.integrationType = integrationType;
-        this.sourceServiceName = sourceServiceName;
-    }
-
+    private GetGrafanaServiceIntegration() {}
     public String integrationType() {
         return this.integrationType;
     }
@@ -34,30 +27,32 @@ public final class GetGrafanaServiceIntegration {
     public static Builder builder(GetGrafanaServiceIntegration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String integrationType;
         private String sourceServiceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGrafanaServiceIntegration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.integrationType = defaults.integrationType;
     	      this.sourceServiceName = defaults.sourceServiceName;
         }
 
+        @CustomType.Setter
         public Builder integrationType(String integrationType) {
             this.integrationType = Objects.requireNonNull(integrationType);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceServiceName(String sourceServiceName) {
             this.sourceServiceName = Objects.requireNonNull(sourceServiceName);
             return this;
-        }        public GetGrafanaServiceIntegration build() {
-            return new GetGrafanaServiceIntegration(integrationType, sourceServiceName);
+        }
+        public GetGrafanaServiceIntegration build() {
+            final var o = new GetGrafanaServiceIntegration();
+            o.integrationType = integrationType;
+            o.sourceServiceName = sourceServiceName;
+            return o;
         }
     }
 }

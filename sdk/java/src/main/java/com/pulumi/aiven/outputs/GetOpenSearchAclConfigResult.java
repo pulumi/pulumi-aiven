@@ -14,42 +14,29 @@ public final class GetOpenSearchAclConfigResult {
      * @return Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return Index rules can be applied in a limited fashion to the _mget, _msearch and _bulk APIs (and only those) by enabling the ExtendedAcl option for the service. When it is enabled, users can use these APIs as long as all operations only target indexes they have been granted access to. The default value is `true`.
      * 
      */
-    private final Boolean extendedAcl;
+    private Boolean extendedAcl;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
 
-    @CustomType.Constructor
-    private GetOpenSearchAclConfigResult(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("extendedAcl") Boolean extendedAcl,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("serviceName") String serviceName) {
-        this.enabled = enabled;
-        this.extendedAcl = extendedAcl;
-        this.id = id;
-        this.project = project;
-        this.serviceName = serviceName;
-    }
-
+    private GetOpenSearchAclConfigResult() {}
     /**
      * @return Enable Opensearch ACLs. When disabled authenticated service users have unrestricted access. The default value is `true`.
      * 
@@ -93,18 +80,14 @@ public final class GetOpenSearchAclConfigResult {
     public static Builder builder(GetOpenSearchAclConfigResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private Boolean extendedAcl;
         private String id;
         private String project;
         private String serviceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOpenSearchAclConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -114,27 +97,39 @@ public final class GetOpenSearchAclConfigResult {
     	      this.serviceName = defaults.serviceName;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder extendedAcl(Boolean extendedAcl) {
             this.extendedAcl = Objects.requireNonNull(extendedAcl);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
-        }        public GetOpenSearchAclConfigResult build() {
-            return new GetOpenSearchAclConfigResult(enabled, extendedAcl, id, project, serviceName);
+        }
+        public GetOpenSearchAclConfigResult build() {
+            final var o = new GetOpenSearchAclConfigResult();
+            o.enabled = enabled;
+            o.extendedAcl = extendedAcl;
+            o.id = id;
+            o.project = project;
+            o.serviceName = serviceName;
+            return o;
         }
     }
 }

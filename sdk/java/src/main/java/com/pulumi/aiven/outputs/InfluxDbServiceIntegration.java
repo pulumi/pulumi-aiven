@@ -13,21 +13,14 @@ public final class InfluxDbServiceIntegration {
      * @return Type of the service integration. The only supported value at the moment is `read_replica`
      * 
      */
-    private final String integrationType;
+    private String integrationType;
     /**
      * @return Name of the source service
      * 
      */
-    private final String sourceServiceName;
+    private String sourceServiceName;
 
-    @CustomType.Constructor
-    private InfluxDbServiceIntegration(
-        @CustomType.Parameter("integrationType") String integrationType,
-        @CustomType.Parameter("sourceServiceName") String sourceServiceName) {
-        this.integrationType = integrationType;
-        this.sourceServiceName = sourceServiceName;
-    }
-
+    private InfluxDbServiceIntegration() {}
     /**
      * @return Type of the service integration. The only supported value at the moment is `read_replica`
      * 
@@ -50,30 +43,32 @@ public final class InfluxDbServiceIntegration {
     public static Builder builder(InfluxDbServiceIntegration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String integrationType;
         private String sourceServiceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InfluxDbServiceIntegration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.integrationType = defaults.integrationType;
     	      this.sourceServiceName = defaults.sourceServiceName;
         }
 
+        @CustomType.Setter
         public Builder integrationType(String integrationType) {
             this.integrationType = Objects.requireNonNull(integrationType);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceServiceName(String sourceServiceName) {
             this.sourceServiceName = Objects.requireNonNull(sourceServiceName);
             return this;
-        }        public InfluxDbServiceIntegration build() {
-            return new InfluxDbServiceIntegration(integrationType, sourceServiceName);
+        }
+        public InfluxDbServiceIntegration build() {
+            final var o = new InfluxDbServiceIntegration();
+            o.integrationType = integrationType;
+            o.sourceServiceName = sourceServiceName;
+            return o;
         }
     }
 }

@@ -16,42 +16,29 @@ public final class ClickhouseGrantPrivilegeGrant {
      * @return The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final @Nullable String column;
+    private @Nullable String column;
     /**
      * @return The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String database;
+    private String database;
     /**
      * @return The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final @Nullable String privilege;
+    private @Nullable String privilege;
     /**
      * @return The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final @Nullable String table;
+    private @Nullable String table;
     /**
      * @return If true then the grantee gets the ability to grant the privileges he received too This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final @Nullable Boolean withGrant;
+    private @Nullable Boolean withGrant;
 
-    @CustomType.Constructor
-    private ClickhouseGrantPrivilegeGrant(
-        @CustomType.Parameter("column") @Nullable String column,
-        @CustomType.Parameter("database") String database,
-        @CustomType.Parameter("privilege") @Nullable String privilege,
-        @CustomType.Parameter("table") @Nullable String table,
-        @CustomType.Parameter("withGrant") @Nullable Boolean withGrant) {
-        this.column = column;
-        this.database = database;
-        this.privilege = privilege;
-        this.table = table;
-        this.withGrant = withGrant;
-    }
-
+    private ClickhouseGrantPrivilegeGrant() {}
     /**
      * @return The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
      * 
@@ -95,18 +82,14 @@ public final class ClickhouseGrantPrivilegeGrant {
     public static Builder builder(ClickhouseGrantPrivilegeGrant defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String column;
         private String database;
         private @Nullable String privilege;
         private @Nullable String table;
         private @Nullable Boolean withGrant;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClickhouseGrantPrivilegeGrant defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.column = defaults.column;
@@ -116,27 +99,39 @@ public final class ClickhouseGrantPrivilegeGrant {
     	      this.withGrant = defaults.withGrant;
         }
 
+        @CustomType.Setter
         public Builder column(@Nullable String column) {
             this.column = column;
             return this;
         }
+        @CustomType.Setter
         public Builder database(String database) {
             this.database = Objects.requireNonNull(database);
             return this;
         }
+        @CustomType.Setter
         public Builder privilege(@Nullable String privilege) {
             this.privilege = privilege;
             return this;
         }
+        @CustomType.Setter
         public Builder table(@Nullable String table) {
             this.table = table;
             return this;
         }
+        @CustomType.Setter
         public Builder withGrant(@Nullable Boolean withGrant) {
             this.withGrant = withGrant;
             return this;
-        }        public ClickhouseGrantPrivilegeGrant build() {
-            return new ClickhouseGrantPrivilegeGrant(column, database, privilege, table, withGrant);
+        }
+        public ClickhouseGrantPrivilegeGrant build() {
+            final var o = new ClickhouseGrantPrivilegeGrant();
+            o.column = column;
+            o.database = database;
+            o.privilege = privilege;
+            o.table = table;
+            o.withGrant = withGrant;
+            return o;
         }
     }
 }

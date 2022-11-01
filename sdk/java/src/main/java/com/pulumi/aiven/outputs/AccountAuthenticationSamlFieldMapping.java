@@ -15,42 +15,29 @@ public final class AccountAuthenticationSamlFieldMapping {
      * @return Field name for user email
      * 
      */
-    private final @Nullable String email;
+    private @Nullable String email;
     /**
      * @return Field name for user&#39;s first name
      * 
      */
-    private final @Nullable String firstName;
+    private @Nullable String firstName;
     /**
      * @return Field name for user&#39;s identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
      * 
      */
-    private final @Nullable String identity;
+    private @Nullable String identity;
     /**
      * @return Field name for user&#39;s last name
      * 
      */
-    private final @Nullable String lastName;
+    private @Nullable String lastName;
     /**
      * @return Field name for user&#39;s full name. If specified, first*name and last*name mappings are ignored
      * 
      */
-    private final @Nullable String realName;
+    private @Nullable String realName;
 
-    @CustomType.Constructor
-    private AccountAuthenticationSamlFieldMapping(
-        @CustomType.Parameter("email") @Nullable String email,
-        @CustomType.Parameter("firstName") @Nullable String firstName,
-        @CustomType.Parameter("identity") @Nullable String identity,
-        @CustomType.Parameter("lastName") @Nullable String lastName,
-        @CustomType.Parameter("realName") @Nullable String realName) {
-        this.email = email;
-        this.firstName = firstName;
-        this.identity = identity;
-        this.lastName = lastName;
-        this.realName = realName;
-    }
-
+    private AccountAuthenticationSamlFieldMapping() {}
     /**
      * @return Field name for user email
      * 
@@ -94,18 +81,14 @@ public final class AccountAuthenticationSamlFieldMapping {
     public static Builder builder(AccountAuthenticationSamlFieldMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String email;
         private @Nullable String firstName;
         private @Nullable String identity;
         private @Nullable String lastName;
         private @Nullable String realName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AccountAuthenticationSamlFieldMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
@@ -115,27 +98,39 @@ public final class AccountAuthenticationSamlFieldMapping {
     	      this.realName = defaults.realName;
         }
 
+        @CustomType.Setter
         public Builder email(@Nullable String email) {
             this.email = email;
             return this;
         }
+        @CustomType.Setter
         public Builder firstName(@Nullable String firstName) {
             this.firstName = firstName;
             return this;
         }
+        @CustomType.Setter
         public Builder identity(@Nullable String identity) {
             this.identity = identity;
             return this;
         }
+        @CustomType.Setter
         public Builder lastName(@Nullable String lastName) {
             this.lastName = lastName;
             return this;
         }
+        @CustomType.Setter
         public Builder realName(@Nullable String realName) {
             this.realName = realName;
             return this;
-        }        public AccountAuthenticationSamlFieldMapping build() {
-            return new AccountAuthenticationSamlFieldMapping(email, firstName, identity, lastName, realName);
+        }
+        public AccountAuthenticationSamlFieldMapping build() {
+            final var o = new AccountAuthenticationSamlFieldMapping();
+            o.email = email;
+            o.firstName = firstName;
+            o.identity = identity;
+            o.lastName = lastName;
+            o.realName = realName;
+            return o;
         }
     }
 }

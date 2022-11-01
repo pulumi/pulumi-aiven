@@ -14,70 +14,49 @@ public final class GetPgUserResult {
      * @return Access certificate for the user
      * 
      */
-    private final String accessCert;
+    private String accessCert;
     /**
      * @return Access certificate key for the user
      * 
      */
-    private final String accessKey;
+    private String accessKey;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The password of the PG User ( not applicable for all services ).
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return Defines whether replication is allowed. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final Boolean pgAllowReplication;
+    private Boolean pgAllowReplication;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
     /**
      * @return Type of the user account. Tells whether the user is the primary account or a regular account.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private GetPgUserResult(
-        @CustomType.Parameter("accessCert") String accessCert,
-        @CustomType.Parameter("accessKey") String accessKey,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("pgAllowReplication") Boolean pgAllowReplication,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("username") String username) {
-        this.accessCert = accessCert;
-        this.accessKey = accessKey;
-        this.id = id;
-        this.password = password;
-        this.pgAllowReplication = pgAllowReplication;
-        this.project = project;
-        this.serviceName = serviceName;
-        this.type = type;
-        this.username = username;
-    }
-
+    private GetPgUserResult() {}
     /**
      * @return Access certificate for the user
      * 
@@ -149,7 +128,7 @@ public final class GetPgUserResult {
     public static Builder builder(GetPgUserResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessCert;
         private String accessKey;
@@ -160,11 +139,7 @@ public final class GetPgUserResult {
         private String serviceName;
         private String type;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPgUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessCert = defaults.accessCert;
@@ -178,43 +153,63 @@ public final class GetPgUserResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder accessCert(String accessCert) {
             this.accessCert = Objects.requireNonNull(accessCert);
             return this;
         }
+        @CustomType.Setter
         public Builder accessKey(String accessKey) {
             this.accessKey = Objects.requireNonNull(accessKey);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder pgAllowReplication(Boolean pgAllowReplication) {
             this.pgAllowReplication = Objects.requireNonNull(pgAllowReplication);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public GetPgUserResult build() {
-            return new GetPgUserResult(accessCert, accessKey, id, password, pgAllowReplication, project, serviceName, type, username);
+        }
+        public GetPgUserResult build() {
+            final var o = new GetPgUserResult();
+            o.accessCert = accessCert;
+            o.accessKey = accessKey;
+            o.id = id;
+            o.password = password;
+            o.pgAllowReplication = pgAllowReplication;
+            o.project = project;
+            o.serviceName = serviceName;
+            o.type = type;
+            o.username = username;
+            return o;
         }
     }
 }

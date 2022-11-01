@@ -14,63 +14,44 @@ public final class GetKafkaSchemaResult {
      * @return Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
      * 
      */
-    private final String compatibilityLevel;
+    private String compatibilityLevel;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Kafka Schema configuration should be a valid Avro Schema JSON format.
      * 
      */
-    private final String schema;
+    private String schema;
     /**
      * @return Kafka Schema type JSON or AVRO
      * 
      */
-    private final String schemaType;
+    private String schemaType;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
     /**
      * @return The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String subjectName;
+    private String subjectName;
     /**
      * @return Kafka Schema configuration version.
      * 
      */
-    private final Integer version;
+    private Integer version;
 
-    @CustomType.Constructor
-    private GetKafkaSchemaResult(
-        @CustomType.Parameter("compatibilityLevel") String compatibilityLevel,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("schema") String schema,
-        @CustomType.Parameter("schemaType") String schemaType,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("subjectName") String subjectName,
-        @CustomType.Parameter("version") Integer version) {
-        this.compatibilityLevel = compatibilityLevel;
-        this.id = id;
-        this.project = project;
-        this.schema = schema;
-        this.schemaType = schemaType;
-        this.serviceName = serviceName;
-        this.subjectName = subjectName;
-        this.version = version;
-    }
-
+    private GetKafkaSchemaResult() {}
     /**
      * @return Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
      * 
@@ -135,7 +116,7 @@ public final class GetKafkaSchemaResult {
     public static Builder builder(GetKafkaSchemaResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String compatibilityLevel;
         private String id;
@@ -145,11 +126,7 @@ public final class GetKafkaSchemaResult {
         private String serviceName;
         private String subjectName;
         private Integer version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaSchemaResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.compatibilityLevel = defaults.compatibilityLevel;
@@ -162,39 +139,57 @@ public final class GetKafkaSchemaResult {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder compatibilityLevel(String compatibilityLevel) {
             this.compatibilityLevel = Objects.requireNonNull(compatibilityLevel);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder schema(String schema) {
             this.schema = Objects.requireNonNull(schema);
             return this;
         }
+        @CustomType.Setter
         public Builder schemaType(String schemaType) {
             this.schemaType = Objects.requireNonNull(schemaType);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder subjectName(String subjectName) {
             this.subjectName = Objects.requireNonNull(subjectName);
             return this;
         }
+        @CustomType.Setter
         public Builder version(Integer version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetKafkaSchemaResult build() {
-            return new GetKafkaSchemaResult(compatibilityLevel, id, project, schema, schemaType, serviceName, subjectName, version);
+        }
+        public GetKafkaSchemaResult build() {
+            final var o = new GetKafkaSchemaResult();
+            o.compatibilityLevel = compatibilityLevel;
+            o.id = id;
+            o.project = project;
+            o.schema = schema;
+            o.schemaType = schemaType;
+            o.serviceName = serviceName;
+            o.subjectName = subjectName;
+            o.version = version;
+            return o;
         }
     }
 }

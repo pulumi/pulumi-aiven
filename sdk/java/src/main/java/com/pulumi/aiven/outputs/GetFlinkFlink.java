@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFlinkFlink {
-    private final List<String> hostPorts;
+    private List<String> hostPorts;
 
-    @CustomType.Constructor
-    private GetFlinkFlink(@CustomType.Parameter("hostPorts") List<String> hostPorts) {
-        this.hostPorts = hostPorts;
-    }
-
+    private GetFlinkFlink() {}
     public List<String> hostPorts() {
         return this.hostPorts;
     }
@@ -28,27 +24,27 @@ public final class GetFlinkFlink {
     public static Builder builder(GetFlinkFlink defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> hostPorts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFlinkFlink defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostPorts = defaults.hostPorts;
         }
 
+        @CustomType.Setter
         public Builder hostPorts(List<String> hostPorts) {
             this.hostPorts = Objects.requireNonNull(hostPorts);
             return this;
         }
         public Builder hostPorts(String... hostPorts) {
             return hostPorts(List.of(hostPorts));
-        }        public GetFlinkFlink build() {
-            return new GetFlinkFlink(hostPorts);
+        }
+        public GetFlinkFlink build() {
+            final var o = new GetFlinkFlink();
+            o.hostPorts = hostPorts;
+            return o;
         }
     }
 }

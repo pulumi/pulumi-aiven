@@ -17,77 +17,54 @@ public final class GetServiceComponentResult {
      * @return Service component name
      * 
      */
-    private final String component;
+    private String component;
     /**
      * @return DNS name for connecting to the service component
      * 
      */
-    private final String host;
+    private String host;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
      * 
      */
-    private final @Nullable String kafkaAuthenticationMethod;
+    private @Nullable String kafkaAuthenticationMethod;
     /**
      * @return Port number for connecting to the service component
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return Project name
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Network access route
      * 
      */
-    private final @Nullable String route;
+    private @Nullable String route;
     /**
      * @return Service name
      * 
      */
-    private final @Nullable String serviceName;
+    private @Nullable String serviceName;
     /**
      * @return Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
      * 
      */
-    private final @Nullable Boolean ssl;
+    private @Nullable Boolean ssl;
     /**
      * @return DNS usage name
      * 
      */
-    private final @Nullable String usage;
+    private @Nullable String usage;
 
-    @CustomType.Constructor
-    private GetServiceComponentResult(
-        @CustomType.Parameter("component") String component,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("kafkaAuthenticationMethod") @Nullable String kafkaAuthenticationMethod,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("route") @Nullable String route,
-        @CustomType.Parameter("serviceName") @Nullable String serviceName,
-        @CustomType.Parameter("ssl") @Nullable Boolean ssl,
-        @CustomType.Parameter("usage") @Nullable String usage) {
-        this.component = component;
-        this.host = host;
-        this.id = id;
-        this.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
-        this.port = port;
-        this.project = project;
-        this.route = route;
-        this.serviceName = serviceName;
-        this.ssl = ssl;
-        this.usage = usage;
-    }
-
+    private GetServiceComponentResult() {}
     /**
      * @return Service component name
      * 
@@ -166,7 +143,7 @@ public final class GetServiceComponentResult {
     public static Builder builder(GetServiceComponentResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String component;
         private String host;
@@ -178,11 +155,7 @@ public final class GetServiceComponentResult {
         private @Nullable String serviceName;
         private @Nullable Boolean ssl;
         private @Nullable String usage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceComponentResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.component = defaults.component;
@@ -197,47 +170,69 @@ public final class GetServiceComponentResult {
     	      this.usage = defaults.usage;
         }
 
+        @CustomType.Setter
         public Builder component(String component) {
             this.component = Objects.requireNonNull(component);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaAuthenticationMethod(@Nullable String kafkaAuthenticationMethod) {
             this.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder route(@Nullable String route) {
             this.route = route;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
             this.serviceName = serviceName;
             return this;
         }
+        @CustomType.Setter
         public Builder ssl(@Nullable Boolean ssl) {
             this.ssl = ssl;
             return this;
         }
+        @CustomType.Setter
         public Builder usage(@Nullable String usage) {
             this.usage = usage;
             return this;
-        }        public GetServiceComponentResult build() {
-            return new GetServiceComponentResult(component, host, id, kafkaAuthenticationMethod, port, project, route, serviceName, ssl, usage);
+        }
+        public GetServiceComponentResult build() {
+            final var o = new GetServiceComponentResult();
+            o.component = component;
+            o.host = host;
+            o.id = id;
+            o.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            o.port = port;
+            o.project = project;
+            o.route = route;
+            o.serviceName = serviceName;
+            o.ssl = ssl;
+            o.usage = usage;
+            return o;
         }
     }
 }

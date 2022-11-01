@@ -11,24 +11,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
-    private final @Nullable String jolokia;
+    private @Nullable String jolokia;
     /**
      * @return Kafka Connect server provided values
      * 
      */
-    private final @Nullable String kafkaConnect;
-    private final @Nullable String prometheus;
+    private @Nullable String kafkaConnect;
+    private @Nullable String prometheus;
 
-    @CustomType.Constructor
-    private KafkaConnectKafkaConnectUserConfigPrivatelinkAccess(
-        @CustomType.Parameter("jolokia") @Nullable String jolokia,
-        @CustomType.Parameter("kafkaConnect") @Nullable String kafkaConnect,
-        @CustomType.Parameter("prometheus") @Nullable String prometheus) {
-        this.jolokia = jolokia;
-        this.kafkaConnect = kafkaConnect;
-        this.prometheus = prometheus;
-    }
-
+    private KafkaConnectKafkaConnectUserConfigPrivatelinkAccess() {}
     public Optional<String> jolokia() {
         return Optional.ofNullable(this.jolokia);
     }
@@ -50,16 +41,12 @@ public final class KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
     public static Builder builder(KafkaConnectKafkaConnectUserConfigPrivatelinkAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String jolokia;
         private @Nullable String kafkaConnect;
         private @Nullable String prometheus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KafkaConnectKafkaConnectUserConfigPrivatelinkAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jolokia = defaults.jolokia;
@@ -67,19 +54,27 @@ public final class KafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
     	      this.prometheus = defaults.prometheus;
         }
 
+        @CustomType.Setter
         public Builder jolokia(@Nullable String jolokia) {
             this.jolokia = jolokia;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaConnect(@Nullable String kafkaConnect) {
             this.kafkaConnect = kafkaConnect;
             return this;
         }
+        @CustomType.Setter
         public Builder prometheus(@Nullable String prometheus) {
             this.prometheus = prometheus;
             return this;
-        }        public KafkaConnectKafkaConnectUserConfigPrivatelinkAccess build() {
-            return new KafkaConnectKafkaConnectUserConfigPrivatelinkAccess(jolokia, kafkaConnect, prometheus);
+        }
+        public KafkaConnectKafkaConnectUserConfigPrivatelinkAccess build() {
+            final var o = new KafkaConnectKafkaConnectUserConfigPrivatelinkAccess();
+            o.jolokia = jolokia;
+            o.kafkaConnect = kafkaConnect;
+            o.prometheus = prometheus;
+            return o;
         }
     }
 }

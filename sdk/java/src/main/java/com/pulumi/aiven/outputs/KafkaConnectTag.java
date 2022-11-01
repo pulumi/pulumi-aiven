@@ -13,21 +13,14 @@ public final class KafkaConnectTag {
      * @return Service tag key
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Service tag value
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private KafkaConnectTag(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private KafkaConnectTag() {}
     /**
      * @return Service tag key
      * 
@@ -50,30 +43,32 @@ public final class KafkaConnectTag {
     public static Builder builder(KafkaConnectTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KafkaConnectTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public KafkaConnectTag build() {
-            return new KafkaConnectTag(key, value);
+        }
+        public KafkaConnectTag build() {
+            final var o = new KafkaConnectTag();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

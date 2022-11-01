@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointPrometheusUserConfig {
-    private final @Nullable String basicAuthPassword;
-    private final @Nullable String basicAuthUsername;
+    private @Nullable String basicAuthPassword;
+    private @Nullable String basicAuthUsername;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationEndpointPrometheusUserConfig(
-        @CustomType.Parameter("basicAuthPassword") @Nullable String basicAuthPassword,
-        @CustomType.Parameter("basicAuthUsername") @Nullable String basicAuthUsername) {
-        this.basicAuthPassword = basicAuthPassword;
-        this.basicAuthUsername = basicAuthUsername;
-    }
-
+    private GetServiceIntegrationEndpointPrometheusUserConfig() {}
     public Optional<String> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
@@ -36,30 +29,32 @@ public final class GetServiceIntegrationEndpointPrometheusUserConfig {
     public static Builder builder(GetServiceIntegrationEndpointPrometheusUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String basicAuthPassword;
         private @Nullable String basicAuthUsername;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationEndpointPrometheusUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.basicAuthPassword = defaults.basicAuthPassword;
     	      this.basicAuthUsername = defaults.basicAuthUsername;
         }
 
+        @CustomType.Setter
         public Builder basicAuthPassword(@Nullable String basicAuthPassword) {
             this.basicAuthPassword = basicAuthPassword;
             return this;
         }
+        @CustomType.Setter
         public Builder basicAuthUsername(@Nullable String basicAuthUsername) {
             this.basicAuthUsername = basicAuthUsername;
             return this;
-        }        public GetServiceIntegrationEndpointPrometheusUserConfig build() {
-            return new GetServiceIntegrationEndpointPrometheusUserConfig(basicAuthPassword, basicAuthUsername);
+        }
+        public GetServiceIntegrationEndpointPrometheusUserConfig build() {
+            final var o = new GetServiceIntegrationEndpointPrometheusUserConfig();
+            o.basicAuthPassword = basicAuthPassword;
+            o.basicAuthUsername = basicAuthUsername;
+            return o;
         }
     }
 }

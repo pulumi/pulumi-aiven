@@ -24,112 +24,79 @@ public final class KafkaKafkaUserConfig {
      * @return Custom domain
      * 
      */
-    private final @Nullable String customDomain;
+    private @Nullable String customDomain;
     /**
      * @return IP filter
      * 
      */
-    private final @Nullable List<String> ipFilters;
+    private @Nullable List<String> ipFilters;
     /**
      * @return Kafka broker configuration values
      * 
      */
-    private final @Nullable KafkaKafkaUserConfigKafka kafka;
+    private @Nullable KafkaKafkaUserConfigKafka kafka;
     /**
      * @return Kafka authentication methods
      * 
      */
-    private final @Nullable KafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
+    private @Nullable KafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
     /**
      * @return Enable Kafka Connect service
      * 
      */
-    private final @Nullable String kafkaConnect;
+    private @Nullable String kafkaConnect;
     /**
      * @return Kafka Connect configuration values
      * 
      */
-    private final @Nullable KafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
+    private @Nullable KafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
     /**
      * @return Enable Kafka-REST service
      * 
      */
-    private final @Nullable String kafkaRest;
+    private @Nullable String kafkaRest;
     /**
      * @return Kafka REST configuration
      * 
      */
-    private final @Nullable KafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
+    private @Nullable KafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
     /**
      * @return Kafka major version
      * 
      */
-    private final @Nullable String kafkaVersion;
+    private @Nullable String kafkaVersion;
     /**
      * @return Allow access to selected service ports from private networks
      * 
      */
-    private final @Nullable KafkaKafkaUserConfigPrivateAccess privateAccess;
+    private @Nullable KafkaKafkaUserConfigPrivateAccess privateAccess;
     /**
      * @return Allow access to selected service components through Privatelink
      * 
      */
-    private final @Nullable KafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess;
+    private @Nullable KafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess;
     /**
      * @return Allow access to selected service ports from the public Internet
      * 
      */
-    private final @Nullable KafkaKafkaUserConfigPublicAccess publicAccess;
+    private @Nullable KafkaKafkaUserConfigPublicAccess publicAccess;
     /**
      * @return Enable Schema-Registry service
      * 
      */
-    private final @Nullable String schemaRegistry;
+    private @Nullable String schemaRegistry;
     /**
      * @return Schema Registry configuration
      * 
      */
-    private final @Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
+    private @Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
     /**
      * @return Static IP addresses
      * 
      */
-    private final @Nullable String staticIps;
+    private @Nullable String staticIps;
 
-    @CustomType.Constructor
-    private KafkaKafkaUserConfig(
-        @CustomType.Parameter("customDomain") @Nullable String customDomain,
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("kafka") @Nullable KafkaKafkaUserConfigKafka kafka,
-        @CustomType.Parameter("kafkaAuthenticationMethods") @Nullable KafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods,
-        @CustomType.Parameter("kafkaConnect") @Nullable String kafkaConnect,
-        @CustomType.Parameter("kafkaConnectConfig") @Nullable KafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig,
-        @CustomType.Parameter("kafkaRest") @Nullable String kafkaRest,
-        @CustomType.Parameter("kafkaRestConfig") @Nullable KafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig,
-        @CustomType.Parameter("kafkaVersion") @Nullable String kafkaVersion,
-        @CustomType.Parameter("privateAccess") @Nullable KafkaKafkaUserConfigPrivateAccess privateAccess,
-        @CustomType.Parameter("privatelinkAccess") @Nullable KafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess,
-        @CustomType.Parameter("publicAccess") @Nullable KafkaKafkaUserConfigPublicAccess publicAccess,
-        @CustomType.Parameter("schemaRegistry") @Nullable String schemaRegistry,
-        @CustomType.Parameter("schemaRegistryConfig") @Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig,
-        @CustomType.Parameter("staticIps") @Nullable String staticIps) {
-        this.customDomain = customDomain;
-        this.ipFilters = ipFilters;
-        this.kafka = kafka;
-        this.kafkaAuthenticationMethods = kafkaAuthenticationMethods;
-        this.kafkaConnect = kafkaConnect;
-        this.kafkaConnectConfig = kafkaConnectConfig;
-        this.kafkaRest = kafkaRest;
-        this.kafkaRestConfig = kafkaRestConfig;
-        this.kafkaVersion = kafkaVersion;
-        this.privateAccess = privateAccess;
-        this.privatelinkAccess = privatelinkAccess;
-        this.publicAccess = publicAccess;
-        this.schemaRegistry = schemaRegistry;
-        this.schemaRegistryConfig = schemaRegistryConfig;
-        this.staticIps = staticIps;
-    }
-
+    private KafkaKafkaUserConfig() {}
     /**
      * @return Custom domain
      * 
@@ -243,7 +210,7 @@ public final class KafkaKafkaUserConfig {
     public static Builder builder(KafkaKafkaUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String customDomain;
         private @Nullable List<String> ipFilters;
@@ -260,11 +227,7 @@ public final class KafkaKafkaUserConfig {
         private @Nullable String schemaRegistry;
         private @Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
         private @Nullable String staticIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KafkaKafkaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customDomain = defaults.customDomain;
@@ -284,10 +247,12 @@ public final class KafkaKafkaUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
             this.customDomain = customDomain;
             return this;
         }
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -295,59 +260,89 @@ public final class KafkaKafkaUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder kafka(@Nullable KafkaKafkaUserConfigKafka kafka) {
             this.kafka = kafka;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaAuthenticationMethods(@Nullable KafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods) {
             this.kafkaAuthenticationMethods = kafkaAuthenticationMethods;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaConnect(@Nullable String kafkaConnect) {
             this.kafkaConnect = kafkaConnect;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaConnectConfig(@Nullable KafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig) {
             this.kafkaConnectConfig = kafkaConnectConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaRest(@Nullable String kafkaRest) {
             this.kafkaRest = kafkaRest;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaRestConfig(@Nullable KafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig) {
             this.kafkaRestConfig = kafkaRestConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaVersion(@Nullable String kafkaVersion) {
             this.kafkaVersion = kafkaVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable KafkaKafkaUserConfigPrivateAccess privateAccess) {
             this.privateAccess = privateAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder privatelinkAccess(@Nullable KafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess) {
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccess(@Nullable KafkaKafkaUserConfigPublicAccess publicAccess) {
             this.publicAccess = publicAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder schemaRegistry(@Nullable String schemaRegistry) {
             this.schemaRegistry = schemaRegistry;
             return this;
         }
+        @CustomType.Setter
         public Builder schemaRegistryConfig(@Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig) {
             this.schemaRegistryConfig = schemaRegistryConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
-        }        public KafkaKafkaUserConfig build() {
-            return new KafkaKafkaUserConfig(customDomain, ipFilters, kafka, kafkaAuthenticationMethods, kafkaConnect, kafkaConnectConfig, kafkaRest, kafkaRestConfig, kafkaVersion, privateAccess, privatelinkAccess, publicAccess, schemaRegistry, schemaRegistryConfig, staticIps);
+        }
+        public KafkaKafkaUserConfig build() {
+            final var o = new KafkaKafkaUserConfig();
+            o.customDomain = customDomain;
+            o.ipFilters = ipFilters;
+            o.kafka = kafka;
+            o.kafkaAuthenticationMethods = kafkaAuthenticationMethods;
+            o.kafkaConnect = kafkaConnect;
+            o.kafkaConnectConfig = kafkaConnectConfig;
+            o.kafkaRest = kafkaRest;
+            o.kafkaRestConfig = kafkaRestConfig;
+            o.kafkaVersion = kafkaVersion;
+            o.privateAccess = privateAccess;
+            o.privatelinkAccess = privatelinkAccess;
+            o.publicAccess = publicAccess;
+            o.schemaRegistry = schemaRegistry;
+            o.schemaRegistryConfig = schemaRegistryConfig;
+            o.staticIps = staticIps;
+            return o;
         }
     }
 }

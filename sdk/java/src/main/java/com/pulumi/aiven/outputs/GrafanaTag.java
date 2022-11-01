@@ -13,21 +13,14 @@ public final class GrafanaTag {
      * @return Service tag key
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Service tag value
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GrafanaTag(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private GrafanaTag() {}
     /**
      * @return Service tag key
      * 
@@ -50,30 +43,32 @@ public final class GrafanaTag {
     public static Builder builder(GrafanaTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GrafanaTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GrafanaTag build() {
-            return new GrafanaTag(key, value);
+        }
+        public GrafanaTag build() {
+            final var o = new GrafanaTag();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

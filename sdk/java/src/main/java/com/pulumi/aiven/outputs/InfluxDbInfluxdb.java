@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InfluxDbInfluxdb {
-    private final @Nullable String databaseName;
+    private @Nullable String databaseName;
 
-    @CustomType.Constructor
-    private InfluxDbInfluxdb(@CustomType.Parameter("databaseName") @Nullable String databaseName) {
-        this.databaseName = databaseName;
-    }
-
+    private InfluxDbInfluxdb() {}
     public Optional<String> databaseName() {
         return Optional.ofNullable(this.databaseName);
     }
@@ -29,24 +25,24 @@ public final class InfluxDbInfluxdb {
     public static Builder builder(InfluxDbInfluxdb defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String databaseName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InfluxDbInfluxdb defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databaseName = defaults.databaseName;
         }
 
+        @CustomType.Setter
         public Builder databaseName(@Nullable String databaseName) {
             this.databaseName = databaseName;
             return this;
-        }        public InfluxDbInfluxdb build() {
-            return new InfluxDbInfluxdb(databaseName);
+        }
+        public InfluxDbInfluxdb build() {
+            final var o = new InfluxDbInfluxdb();
+            o.databaseName = databaseName;
+            return o;
         }
     }
 }

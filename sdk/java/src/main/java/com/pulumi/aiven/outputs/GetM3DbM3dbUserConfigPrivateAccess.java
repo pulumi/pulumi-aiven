@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigPrivateAccess {
-    private final @Nullable String m3coordinator;
+    private @Nullable String m3coordinator;
 
-    @CustomType.Constructor
-    private GetM3DbM3dbUserConfigPrivateAccess(@CustomType.Parameter("m3coordinator") @Nullable String m3coordinator) {
-        this.m3coordinator = m3coordinator;
-    }
-
+    private GetM3DbM3dbUserConfigPrivateAccess() {}
     public Optional<String> m3coordinator() {
         return Optional.ofNullable(this.m3coordinator);
     }
@@ -29,24 +25,24 @@ public final class GetM3DbM3dbUserConfigPrivateAccess {
     public static Builder builder(GetM3DbM3dbUserConfigPrivateAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String m3coordinator;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetM3DbM3dbUserConfigPrivateAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.m3coordinator = defaults.m3coordinator;
         }
 
+        @CustomType.Setter
         public Builder m3coordinator(@Nullable String m3coordinator) {
             this.m3coordinator = m3coordinator;
             return this;
-        }        public GetM3DbM3dbUserConfigPrivateAccess build() {
-            return new GetM3DbM3dbUserConfigPrivateAccess(m3coordinator);
+        }
+        public GetM3DbM3dbUserConfigPrivateAccess build() {
+            final var o = new GetM3DbM3dbUserConfigPrivateAccess();
+            o.m3coordinator = m3coordinator;
+            return o;
         }
     }
 }

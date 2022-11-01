@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
-    private final @Nullable String accessKey;
-    private final @Nullable String logGroupName;
-    private final @Nullable String region;
-    private final @Nullable String secretKey;
+    private @Nullable String accessKey;
+    private @Nullable String logGroupName;
+    private @Nullable String region;
+    private @Nullable String secretKey;
 
-    @CustomType.Constructor
-    private GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig(
-        @CustomType.Parameter("accessKey") @Nullable String accessKey,
-        @CustomType.Parameter("logGroupName") @Nullable String logGroupName,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("secretKey") @Nullable String secretKey) {
-        this.accessKey = accessKey;
-        this.logGroupName = logGroupName;
-        this.region = region;
-        this.secretKey = secretKey;
-    }
-
+    private GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig() {}
     public Optional<String> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
@@ -48,17 +37,13 @@ public final class GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserCon
     public static Builder builder(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessKey;
         private @Nullable String logGroupName;
         private @Nullable String region;
         private @Nullable String secretKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -67,23 +52,33 @@ public final class GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserCon
     	      this.secretKey = defaults.secretKey;
         }
 
+        @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
             this.accessKey = accessKey;
             return this;
         }
+        @CustomType.Setter
         public Builder logGroupName(@Nullable String logGroupName) {
             this.logGroupName = logGroupName;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(@Nullable String secretKey) {
             this.secretKey = secretKey;
             return this;
-        }        public GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig build() {
-            return new GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig(accessKey, logGroupName, region, secretKey);
+        }
+        public GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig build() {
+            final var o = new GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig();
+            o.accessKey = accessKey;
+            o.logGroupName = logGroupName;
+            o.region = region;
+            o.secretKey = secretKey;
+            return o;
         }
     }
 }

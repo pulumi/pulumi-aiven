@@ -8,10 +8,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaMirrorMakerKafkaMirrormaker {
-    @CustomType.Constructor
-    private GetKafkaMirrorMakerKafkaMirrormaker() {
-    }
-
+    private GetKafkaMirrorMakerKafkaMirrormaker() {}
 
     public static Builder builder() {
         return new Builder();
@@ -20,18 +17,16 @@ public final class GetKafkaMirrorMakerKafkaMirrormaker {
     public static Builder builder(GetKafkaMirrorMakerKafkaMirrormaker defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaMirrorMakerKafkaMirrormaker defaults) {
     	      Objects.requireNonNull(defaults);
         }
+
         public GetKafkaMirrorMakerKafkaMirrormaker build() {
-            return new GetKafkaMirrorMakerKafkaMirrormaker();
+            final var o = new GetKafkaMirrorMakerKafkaMirrormaker();
+            return o;
         }
     }
 }

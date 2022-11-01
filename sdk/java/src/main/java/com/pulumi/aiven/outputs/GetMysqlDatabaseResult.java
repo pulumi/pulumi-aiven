@@ -14,38 +14,25 @@ public final class GetMysqlDatabaseResult {
      * @return The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String databaseName;
+    private String databaseName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
-    private final Boolean terminationProtection;
+    private String serviceName;
+    private Boolean terminationProtection;
 
-    @CustomType.Constructor
-    private GetMysqlDatabaseResult(
-        @CustomType.Parameter("databaseName") String databaseName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("terminationProtection") Boolean terminationProtection) {
-        this.databaseName = databaseName;
-        this.id = id;
-        this.project = project;
-        this.serviceName = serviceName;
-        this.terminationProtection = terminationProtection;
-    }
-
+    private GetMysqlDatabaseResult() {}
     /**
      * @return The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
      * 
@@ -85,18 +72,14 @@ public final class GetMysqlDatabaseResult {
     public static Builder builder(GetMysqlDatabaseResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String databaseName;
         private String id;
         private String project;
         private String serviceName;
         private Boolean terminationProtection;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMysqlDatabaseResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databaseName = defaults.databaseName;
@@ -106,27 +89,39 @@ public final class GetMysqlDatabaseResult {
     	      this.terminationProtection = defaults.terminationProtection;
         }
 
+        @CustomType.Setter
         public Builder databaseName(String databaseName) {
             this.databaseName = Objects.requireNonNull(databaseName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder terminationProtection(Boolean terminationProtection) {
             this.terminationProtection = Objects.requireNonNull(terminationProtection);
             return this;
-        }        public GetMysqlDatabaseResult build() {
-            return new GetMysqlDatabaseResult(databaseName, id, project, serviceName, terminationProtection);
+        }
+        public GetMysqlDatabaseResult build() {
+            final var o = new GetMysqlDatabaseResult();
+            o.databaseName = databaseName;
+            o.id = id;
+            o.project = project;
+            o.serviceName = serviceName;
+            o.terminationProtection = terminationProtection;
+            return o;
         }
     }
 }

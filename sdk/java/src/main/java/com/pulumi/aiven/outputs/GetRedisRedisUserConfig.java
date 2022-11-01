@@ -16,75 +16,32 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRedisRedisUserConfig {
-    private final @Nullable List<String> ipFilters;
-    private final @Nullable GetRedisRedisUserConfigMigration migration;
-    private final @Nullable GetRedisRedisUserConfigPrivateAccess privateAccess;
-    private final @Nullable GetRedisRedisUserConfigPrivatelinkAccess privatelinkAccess;
-    private final @Nullable String projectToForkFrom;
-    private final @Nullable GetRedisRedisUserConfigPublicAccess publicAccess;
-    private final @Nullable String recoveryBasebackupName;
-    private final @Nullable String redisAclChannelsDefault;
-    private final @Nullable String redisIoThreads;
-    private final @Nullable String redisLfuDecayTime;
-    private final @Nullable String redisLfuLogFactor;
-    private final @Nullable String redisMaxmemoryPolicy;
-    private final @Nullable String redisNotifyKeyspaceEvents;
-    private final @Nullable String redisNumberOfDatabases;
-    private final @Nullable String redisPersistence;
-    private final @Nullable String redisPubsubClientOutputBufferLimit;
-    private final @Nullable String redisSsl;
-    private final @Nullable String redisTimeout;
-    private final @Nullable String serviceToForkFrom;
+    private @Nullable List<String> ipFilters;
+    private @Nullable GetRedisRedisUserConfigMigration migration;
+    private @Nullable GetRedisRedisUserConfigPrivateAccess privateAccess;
+    private @Nullable GetRedisRedisUserConfigPrivatelinkAccess privatelinkAccess;
+    private @Nullable String projectToForkFrom;
+    private @Nullable GetRedisRedisUserConfigPublicAccess publicAccess;
+    private @Nullable String recoveryBasebackupName;
+    private @Nullable String redisAclChannelsDefault;
+    private @Nullable String redisIoThreads;
+    private @Nullable String redisLfuDecayTime;
+    private @Nullable String redisLfuLogFactor;
+    private @Nullable String redisMaxmemoryPolicy;
+    private @Nullable String redisNotifyKeyspaceEvents;
+    private @Nullable String redisNumberOfDatabases;
+    private @Nullable String redisPersistence;
+    private @Nullable String redisPubsubClientOutputBufferLimit;
+    private @Nullable String redisSsl;
+    private @Nullable String redisTimeout;
+    private @Nullable String serviceToForkFrom;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private final @Nullable String staticIps;
+    private @Nullable String staticIps;
 
-    @CustomType.Constructor
-    private GetRedisRedisUserConfig(
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("migration") @Nullable GetRedisRedisUserConfigMigration migration,
-        @CustomType.Parameter("privateAccess") @Nullable GetRedisRedisUserConfigPrivateAccess privateAccess,
-        @CustomType.Parameter("privatelinkAccess") @Nullable GetRedisRedisUserConfigPrivatelinkAccess privatelinkAccess,
-        @CustomType.Parameter("projectToForkFrom") @Nullable String projectToForkFrom,
-        @CustomType.Parameter("publicAccess") @Nullable GetRedisRedisUserConfigPublicAccess publicAccess,
-        @CustomType.Parameter("recoveryBasebackupName") @Nullable String recoveryBasebackupName,
-        @CustomType.Parameter("redisAclChannelsDefault") @Nullable String redisAclChannelsDefault,
-        @CustomType.Parameter("redisIoThreads") @Nullable String redisIoThreads,
-        @CustomType.Parameter("redisLfuDecayTime") @Nullable String redisLfuDecayTime,
-        @CustomType.Parameter("redisLfuLogFactor") @Nullable String redisLfuLogFactor,
-        @CustomType.Parameter("redisMaxmemoryPolicy") @Nullable String redisMaxmemoryPolicy,
-        @CustomType.Parameter("redisNotifyKeyspaceEvents") @Nullable String redisNotifyKeyspaceEvents,
-        @CustomType.Parameter("redisNumberOfDatabases") @Nullable String redisNumberOfDatabases,
-        @CustomType.Parameter("redisPersistence") @Nullable String redisPersistence,
-        @CustomType.Parameter("redisPubsubClientOutputBufferLimit") @Nullable String redisPubsubClientOutputBufferLimit,
-        @CustomType.Parameter("redisSsl") @Nullable String redisSsl,
-        @CustomType.Parameter("redisTimeout") @Nullable String redisTimeout,
-        @CustomType.Parameter("serviceToForkFrom") @Nullable String serviceToForkFrom,
-        @CustomType.Parameter("staticIps") @Nullable String staticIps) {
-        this.ipFilters = ipFilters;
-        this.migration = migration;
-        this.privateAccess = privateAccess;
-        this.privatelinkAccess = privatelinkAccess;
-        this.projectToForkFrom = projectToForkFrom;
-        this.publicAccess = publicAccess;
-        this.recoveryBasebackupName = recoveryBasebackupName;
-        this.redisAclChannelsDefault = redisAclChannelsDefault;
-        this.redisIoThreads = redisIoThreads;
-        this.redisLfuDecayTime = redisLfuDecayTime;
-        this.redisLfuLogFactor = redisLfuLogFactor;
-        this.redisMaxmemoryPolicy = redisMaxmemoryPolicy;
-        this.redisNotifyKeyspaceEvents = redisNotifyKeyspaceEvents;
-        this.redisNumberOfDatabases = redisNumberOfDatabases;
-        this.redisPersistence = redisPersistence;
-        this.redisPubsubClientOutputBufferLimit = redisPubsubClientOutputBufferLimit;
-        this.redisSsl = redisSsl;
-        this.redisTimeout = redisTimeout;
-        this.serviceToForkFrom = serviceToForkFrom;
-        this.staticIps = staticIps;
-    }
-
+    private GetRedisRedisUserConfig() {}
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -157,7 +114,7 @@ public final class GetRedisRedisUserConfig {
     public static Builder builder(GetRedisRedisUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> ipFilters;
         private @Nullable GetRedisRedisUserConfigMigration migration;
@@ -179,11 +136,7 @@ public final class GetRedisRedisUserConfig {
         private @Nullable String redisTimeout;
         private @Nullable String serviceToForkFrom;
         private @Nullable String staticIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRedisRedisUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipFilters = defaults.ipFilters;
@@ -208,6 +161,7 @@ public final class GetRedisRedisUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -215,83 +169,124 @@ public final class GetRedisRedisUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder migration(@Nullable GetRedisRedisUserConfigMigration migration) {
             this.migration = migration;
             return this;
         }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable GetRedisRedisUserConfigPrivateAccess privateAccess) {
             this.privateAccess = privateAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetRedisRedisUserConfigPrivatelinkAccess privatelinkAccess) {
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccess(@Nullable GetRedisRedisUserConfigPublicAccess publicAccess) {
             this.publicAccess = publicAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder recoveryBasebackupName(@Nullable String recoveryBasebackupName) {
             this.recoveryBasebackupName = recoveryBasebackupName;
             return this;
         }
+        @CustomType.Setter
         public Builder redisAclChannelsDefault(@Nullable String redisAclChannelsDefault) {
             this.redisAclChannelsDefault = redisAclChannelsDefault;
             return this;
         }
+        @CustomType.Setter
         public Builder redisIoThreads(@Nullable String redisIoThreads) {
             this.redisIoThreads = redisIoThreads;
             return this;
         }
+        @CustomType.Setter
         public Builder redisLfuDecayTime(@Nullable String redisLfuDecayTime) {
             this.redisLfuDecayTime = redisLfuDecayTime;
             return this;
         }
+        @CustomType.Setter
         public Builder redisLfuLogFactor(@Nullable String redisLfuLogFactor) {
             this.redisLfuLogFactor = redisLfuLogFactor;
             return this;
         }
+        @CustomType.Setter
         public Builder redisMaxmemoryPolicy(@Nullable String redisMaxmemoryPolicy) {
             this.redisMaxmemoryPolicy = redisMaxmemoryPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder redisNotifyKeyspaceEvents(@Nullable String redisNotifyKeyspaceEvents) {
             this.redisNotifyKeyspaceEvents = redisNotifyKeyspaceEvents;
             return this;
         }
+        @CustomType.Setter
         public Builder redisNumberOfDatabases(@Nullable String redisNumberOfDatabases) {
             this.redisNumberOfDatabases = redisNumberOfDatabases;
             return this;
         }
+        @CustomType.Setter
         public Builder redisPersistence(@Nullable String redisPersistence) {
             this.redisPersistence = redisPersistence;
             return this;
         }
+        @CustomType.Setter
         public Builder redisPubsubClientOutputBufferLimit(@Nullable String redisPubsubClientOutputBufferLimit) {
             this.redisPubsubClientOutputBufferLimit = redisPubsubClientOutputBufferLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder redisSsl(@Nullable String redisSsl) {
             this.redisSsl = redisSsl;
             return this;
         }
+        @CustomType.Setter
         public Builder redisTimeout(@Nullable String redisTimeout) {
             this.redisTimeout = redisTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
-        }        public GetRedisRedisUserConfig build() {
-            return new GetRedisRedisUserConfig(ipFilters, migration, privateAccess, privatelinkAccess, projectToForkFrom, publicAccess, recoveryBasebackupName, redisAclChannelsDefault, redisIoThreads, redisLfuDecayTime, redisLfuLogFactor, redisMaxmemoryPolicy, redisNotifyKeyspaceEvents, redisNumberOfDatabases, redisPersistence, redisPubsubClientOutputBufferLimit, redisSsl, redisTimeout, serviceToForkFrom, staticIps);
+        }
+        public GetRedisRedisUserConfig build() {
+            final var o = new GetRedisRedisUserConfig();
+            o.ipFilters = ipFilters;
+            o.migration = migration;
+            o.privateAccess = privateAccess;
+            o.privatelinkAccess = privatelinkAccess;
+            o.projectToForkFrom = projectToForkFrom;
+            o.publicAccess = publicAccess;
+            o.recoveryBasebackupName = recoveryBasebackupName;
+            o.redisAclChannelsDefault = redisAclChannelsDefault;
+            o.redisIoThreads = redisIoThreads;
+            o.redisLfuDecayTime = redisLfuDecayTime;
+            o.redisLfuLogFactor = redisLfuLogFactor;
+            o.redisMaxmemoryPolicy = redisMaxmemoryPolicy;
+            o.redisNotifyKeyspaceEvents = redisNotifyKeyspaceEvents;
+            o.redisNumberOfDatabases = redisNumberOfDatabases;
+            o.redisPersistence = redisPersistence;
+            o.redisPubsubClientOutputBufferLimit = redisPubsubClientOutputBufferLimit;
+            o.redisSsl = redisSsl;
+            o.redisTimeout = redisTimeout;
+            o.serviceToForkFrom = serviceToForkFrom;
+            o.staticIps = staticIps;
+            return o;
         }
     }
 }

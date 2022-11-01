@@ -16,28 +16,19 @@ public final class ClickhouseClickhouseUserConfig {
      * @return IP filter
      * 
      */
-    private final @Nullable List<String> ipFilters;
+    private @Nullable List<String> ipFilters;
     /**
      * @return Name of another project to fork a service from. This has effect only when a new service is being created.
      * 
      */
-    private final @Nullable String projectToForkFrom;
+    private @Nullable String projectToForkFrom;
     /**
      * @return Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
-    private final @Nullable String serviceToForkFrom;
+    private @Nullable String serviceToForkFrom;
 
-    @CustomType.Constructor
-    private ClickhouseClickhouseUserConfig(
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("projectToForkFrom") @Nullable String projectToForkFrom,
-        @CustomType.Parameter("serviceToForkFrom") @Nullable String serviceToForkFrom) {
-        this.ipFilters = ipFilters;
-        this.projectToForkFrom = projectToForkFrom;
-        this.serviceToForkFrom = serviceToForkFrom;
-    }
-
+    private ClickhouseClickhouseUserConfig() {}
     /**
      * @return IP filter
      * 
@@ -67,16 +58,12 @@ public final class ClickhouseClickhouseUserConfig {
     public static Builder builder(ClickhouseClickhouseUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> ipFilters;
         private @Nullable String projectToForkFrom;
         private @Nullable String serviceToForkFrom;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClickhouseClickhouseUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipFilters = defaults.ipFilters;
@@ -84,6 +71,7 @@ public final class ClickhouseClickhouseUserConfig {
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
         }
 
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -91,15 +79,22 @@ public final class ClickhouseClickhouseUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
-        }        public ClickhouseClickhouseUserConfig build() {
-            return new ClickhouseClickhouseUserConfig(ipFilters, projectToForkFrom, serviceToForkFrom);
+        }
+        public ClickhouseClickhouseUserConfig build() {
+            final var o = new ClickhouseClickhouseUserConfig();
+            o.ipFilters = ipFilters;
+            o.projectToForkFrom = projectToForkFrom;
+            o.serviceToForkFrom = serviceToForkFrom;
+            return o;
         }
     }
 }

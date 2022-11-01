@@ -15,13 +15,9 @@ public final class GrafanaGrafanaUserConfigPublicAccess {
      * @return Grafana server provided values
      * 
      */
-    private final @Nullable String grafana;
+    private @Nullable String grafana;
 
-    @CustomType.Constructor
-    private GrafanaGrafanaUserConfigPublicAccess(@CustomType.Parameter("grafana") @Nullable String grafana) {
-        this.grafana = grafana;
-    }
-
+    private GrafanaGrafanaUserConfigPublicAccess() {}
     /**
      * @return Grafana server provided values
      * 
@@ -37,24 +33,24 @@ public final class GrafanaGrafanaUserConfigPublicAccess {
     public static Builder builder(GrafanaGrafanaUserConfigPublicAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String grafana;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GrafanaGrafanaUserConfigPublicAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.grafana = defaults.grafana;
         }
 
+        @CustomType.Setter
         public Builder grafana(@Nullable String grafana) {
             this.grafana = grafana;
             return this;
-        }        public GrafanaGrafanaUserConfigPublicAccess build() {
-            return new GrafanaGrafanaUserConfigPublicAccess(grafana);
+        }
+        public GrafanaGrafanaUserConfigPublicAccess build() {
+            final var o = new GrafanaGrafanaUserConfigPublicAccess();
+            o.grafana = grafana;
+            return o;
         }
     }
 }

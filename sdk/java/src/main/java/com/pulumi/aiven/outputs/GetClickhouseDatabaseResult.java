@@ -14,38 +14,25 @@ public final class GetClickhouseDatabaseResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
-    private final Boolean terminationProtection;
+    private String serviceName;
+    private Boolean terminationProtection;
 
-    @CustomType.Constructor
-    private GetClickhouseDatabaseResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("terminationProtection") Boolean terminationProtection) {
-        this.id = id;
-        this.name = name;
-        this.project = project;
-        this.serviceName = serviceName;
-        this.terminationProtection = terminationProtection;
-    }
-
+    private GetClickhouseDatabaseResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -85,18 +72,14 @@ public final class GetClickhouseDatabaseResult {
     public static Builder builder(GetClickhouseDatabaseResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String name;
         private String project;
         private String serviceName;
         private Boolean terminationProtection;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClickhouseDatabaseResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -106,27 +89,39 @@ public final class GetClickhouseDatabaseResult {
     	      this.terminationProtection = defaults.terminationProtection;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder terminationProtection(Boolean terminationProtection) {
             this.terminationProtection = Objects.requireNonNull(terminationProtection);
             return this;
-        }        public GetClickhouseDatabaseResult build() {
-            return new GetClickhouseDatabaseResult(id, name, project, serviceName, terminationProtection);
+        }
+        public GetClickhouseDatabaseResult build() {
+            final var o = new GetClickhouseDatabaseResult();
+            o.id = id;
+            o.name = name;
+            o.project = project;
+            o.serviceName = serviceName;
+            o.terminationProtection = terminationProtection;
+            return o;
         }
     }
 }

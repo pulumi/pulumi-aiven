@@ -14,56 +14,39 @@ public final class GetAccountTeamMemberResult {
      * @return is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
      * 
      */
-    private final Boolean accepted;
+    private Boolean accepted;
     /**
      * @return The unique account id This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return Time of creation
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The email address that invited this user.
      * 
      */
-    private final String invitedByUserEmail;
+    private String invitedByUserEmail;
     /**
      * @return An account team id This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String teamId;
+    private String teamId;
     /**
      * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String userEmail;
+    private String userEmail;
 
-    @CustomType.Constructor
-    private GetAccountTeamMemberResult(
-        @CustomType.Parameter("accepted") Boolean accepted,
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("invitedByUserEmail") String invitedByUserEmail,
-        @CustomType.Parameter("teamId") String teamId,
-        @CustomType.Parameter("userEmail") String userEmail) {
-        this.accepted = accepted;
-        this.accountId = accountId;
-        this.createTime = createTime;
-        this.id = id;
-        this.invitedByUserEmail = invitedByUserEmail;
-        this.teamId = teamId;
-        this.userEmail = userEmail;
-    }
-
+    private GetAccountTeamMemberResult() {}
     /**
      * @return is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
      * 
@@ -121,7 +104,7 @@ public final class GetAccountTeamMemberResult {
     public static Builder builder(GetAccountTeamMemberResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean accepted;
         private String accountId;
@@ -130,11 +113,7 @@ public final class GetAccountTeamMemberResult {
         private String invitedByUserEmail;
         private String teamId;
         private String userEmail;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountTeamMemberResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accepted = defaults.accepted;
@@ -146,35 +125,51 @@ public final class GetAccountTeamMemberResult {
     	      this.userEmail = defaults.userEmail;
         }
 
+        @CustomType.Setter
         public Builder accepted(Boolean accepted) {
             this.accepted = Objects.requireNonNull(accepted);
             return this;
         }
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder invitedByUserEmail(String invitedByUserEmail) {
             this.invitedByUserEmail = Objects.requireNonNull(invitedByUserEmail);
             return this;
         }
+        @CustomType.Setter
         public Builder teamId(String teamId) {
             this.teamId = Objects.requireNonNull(teamId);
             return this;
         }
+        @CustomType.Setter
         public Builder userEmail(String userEmail) {
             this.userEmail = Objects.requireNonNull(userEmail);
             return this;
-        }        public GetAccountTeamMemberResult build() {
-            return new GetAccountTeamMemberResult(accepted, accountId, createTime, id, invitedByUserEmail, teamId, userEmail);
+        }
+        public GetAccountTeamMemberResult build() {
+            final var o = new GetAccountTeamMemberResult();
+            o.accepted = accepted;
+            o.accountId = accountId;
+            o.createTime = createTime;
+            o.id = id;
+            o.invitedByUserEmail = invitedByUserEmail;
+            o.teamId = teamId;
+            o.userEmail = userEmail;
+            return o;
         }
     }
 }

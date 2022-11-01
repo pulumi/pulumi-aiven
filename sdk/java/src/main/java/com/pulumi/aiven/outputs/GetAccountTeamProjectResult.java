@@ -13,42 +13,29 @@ public final class GetAccountTeamProjectResult {
      * @return The unique account id
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of an already existing project
      * 
      */
-    private final String projectName;
+    private String projectName;
     /**
      * @return An account team id
      * 
      */
-    private final String teamId;
+    private String teamId;
     /**
      * @return The Account team project type The possible values are `admin`, `developer`, `operator` and `read_only`.
      * 
      */
-    private final String teamType;
+    private String teamType;
 
-    @CustomType.Constructor
-    private GetAccountTeamProjectResult(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("projectName") String projectName,
-        @CustomType.Parameter("teamId") String teamId,
-        @CustomType.Parameter("teamType") String teamType) {
-        this.accountId = accountId;
-        this.id = id;
-        this.projectName = projectName;
-        this.teamId = teamId;
-        this.teamType = teamType;
-    }
-
+    private GetAccountTeamProjectResult() {}
     /**
      * @return The unique account id
      * 
@@ -92,18 +79,14 @@ public final class GetAccountTeamProjectResult {
     public static Builder builder(GetAccountTeamProjectResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private String id;
         private String projectName;
         private String teamId;
         private String teamType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountTeamProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -113,27 +96,39 @@ public final class GetAccountTeamProjectResult {
     	      this.teamType = defaults.teamType;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder projectName(String projectName) {
             this.projectName = Objects.requireNonNull(projectName);
             return this;
         }
+        @CustomType.Setter
         public Builder teamId(String teamId) {
             this.teamId = Objects.requireNonNull(teamId);
             return this;
         }
+        @CustomType.Setter
         public Builder teamType(String teamType) {
             this.teamType = Objects.requireNonNull(teamType);
             return this;
-        }        public GetAccountTeamProjectResult build() {
-            return new GetAccountTeamProjectResult(accountId, id, projectName, teamId, teamType);
+        }
+        public GetAccountTeamProjectResult build() {
+            final var o = new GetAccountTeamProjectResult();
+            o.accountId = accountId;
+            o.id = id;
+            o.projectName = projectName;
+            o.teamId = teamId;
+            o.teamType = teamType;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class ClickhouseGrantRoleGrant {
      * @return The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final @Nullable String role;
+    private @Nullable String role;
 
-    @CustomType.Constructor
-    private ClickhouseGrantRoleGrant(@CustomType.Parameter("role") @Nullable String role) {
-        this.role = role;
-    }
-
+    private ClickhouseGrantRoleGrant() {}
     /**
      * @return The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
@@ -37,24 +33,24 @@ public final class ClickhouseGrantRoleGrant {
     public static Builder builder(ClickhouseGrantRoleGrant defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String role;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClickhouseGrantRoleGrant defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.role = defaults.role;
         }
 
+        @CustomType.Setter
         public Builder role(@Nullable String role) {
             this.role = role;
             return this;
-        }        public ClickhouseGrantRoleGrant build() {
-            return new ClickhouseGrantRoleGrant(role);
+        }
+        public ClickhouseGrantRoleGrant build() {
+            final var o = new ClickhouseGrantRoleGrant();
+            o.role = role;
+            return o;
         }
     }
 }

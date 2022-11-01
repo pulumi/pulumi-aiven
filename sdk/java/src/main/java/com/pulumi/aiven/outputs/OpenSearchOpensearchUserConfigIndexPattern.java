@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OpenSearchOpensearchUserConfigIndexPattern {
-    private final @Nullable String maxIndexCount;
-    private final @Nullable String pattern;
-    private final @Nullable String sortingAlgorithm;
+    private @Nullable String maxIndexCount;
+    private @Nullable String pattern;
+    private @Nullable String sortingAlgorithm;
 
-    @CustomType.Constructor
-    private OpenSearchOpensearchUserConfigIndexPattern(
-        @CustomType.Parameter("maxIndexCount") @Nullable String maxIndexCount,
-        @CustomType.Parameter("pattern") @Nullable String pattern,
-        @CustomType.Parameter("sortingAlgorithm") @Nullable String sortingAlgorithm) {
-        this.maxIndexCount = maxIndexCount;
-        this.pattern = pattern;
-        this.sortingAlgorithm = sortingAlgorithm;
-    }
-
+    private OpenSearchOpensearchUserConfigIndexPattern() {}
     public Optional<String> maxIndexCount() {
         return Optional.ofNullable(this.maxIndexCount);
     }
@@ -42,16 +33,12 @@ public final class OpenSearchOpensearchUserConfigIndexPattern {
     public static Builder builder(OpenSearchOpensearchUserConfigIndexPattern defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String maxIndexCount;
         private @Nullable String pattern;
         private @Nullable String sortingAlgorithm;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OpenSearchOpensearchUserConfigIndexPattern defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxIndexCount = defaults.maxIndexCount;
@@ -59,19 +46,27 @@ public final class OpenSearchOpensearchUserConfigIndexPattern {
     	      this.sortingAlgorithm = defaults.sortingAlgorithm;
         }
 
+        @CustomType.Setter
         public Builder maxIndexCount(@Nullable String maxIndexCount) {
             this.maxIndexCount = maxIndexCount;
             return this;
         }
+        @CustomType.Setter
         public Builder pattern(@Nullable String pattern) {
             this.pattern = pattern;
             return this;
         }
+        @CustomType.Setter
         public Builder sortingAlgorithm(@Nullable String sortingAlgorithm) {
             this.sortingAlgorithm = sortingAlgorithm;
             return this;
-        }        public OpenSearchOpensearchUserConfigIndexPattern build() {
-            return new OpenSearchOpensearchUserConfigIndexPattern(maxIndexCount, pattern, sortingAlgorithm);
+        }
+        public OpenSearchOpensearchUserConfigIndexPattern build() {
+            final var o = new OpenSearchOpensearchUserConfigIndexPattern();
+            o.maxIndexCount = maxIndexCount;
+            o.pattern = pattern;
+            o.sortingAlgorithm = sortingAlgorithm;
+            return o;
         }
     }
 }

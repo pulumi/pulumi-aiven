@@ -21,98 +21,69 @@ public final class M3DbM3dbUserConfig {
      * @return Custom domain
      * 
      */
-    private final @Nullable String customDomain;
+    private @Nullable String customDomain;
     /**
      * @return IP filter
      * 
      */
-    private final @Nullable List<String> ipFilters;
+    private @Nullable List<String> ipFilters;
     /**
      * @return M3 limits
      * 
      */
-    private final @Nullable M3DbM3dbUserConfigLimits limits;
+    private @Nullable M3DbM3dbUserConfigLimits limits;
     /**
      * @return M3 major version (deprecated, use m3db_version)
      * 
      */
-    private final @Nullable String m3Version;
+    private @Nullable String m3Version;
     /**
      * @return Enable Graphite ingestion using Carbon plaintext protocol
      * 
      */
-    private final @Nullable String m3coordinatorEnableGraphiteCarbonIngest;
+    private @Nullable String m3coordinatorEnableGraphiteCarbonIngest;
     /**
      * @return M3 major version (the minimum compatible version)
      * 
      */
-    private final @Nullable String m3dbVersion;
+    private @Nullable String m3dbVersion;
     /**
      * @return List of M3 namespaces
      * 
      */
-    private final @Nullable List<M3DbM3dbUserConfigNamespace> namespaces;
+    private @Nullable List<M3DbM3dbUserConfigNamespace> namespaces;
     /**
      * @return Allow access to selected service ports from private networks
      * 
      */
-    private final @Nullable M3DbM3dbUserConfigPrivateAccess privateAccess;
+    private @Nullable M3DbM3dbUserConfigPrivateAccess privateAccess;
     /**
      * @return Name of another project to fork a service from. This has effect only when a new service is being created.
      * 
      */
-    private final @Nullable String projectToForkFrom;
+    private @Nullable String projectToForkFrom;
     /**
      * @return Allow access to selected service ports from the public Internet
      * 
      */
-    private final @Nullable M3DbM3dbUserConfigPublicAccess publicAccess;
+    private @Nullable M3DbM3dbUserConfigPublicAccess publicAccess;
     /**
      * @return M3 rules
      * 
      */
-    private final @Nullable M3DbM3dbUserConfigRules rules;
+    private @Nullable M3DbM3dbUserConfigRules rules;
     /**
      * @return Name of another service to fork from. This has effect only when a new service is being created.
      * 
      */
-    private final @Nullable String serviceToForkFrom;
+    private @Nullable String serviceToForkFrom;
     /**
      * @return Static IP addresses
      * 
      */
-    private final @Nullable String staticIps;
+    private @Nullable String staticIps;
 
-    @CustomType.Constructor
-    private M3DbM3dbUserConfig(
-        @CustomType.Parameter("customDomain") @Nullable String customDomain,
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("limits") @Nullable M3DbM3dbUserConfigLimits limits,
-        @CustomType.Parameter("m3Version") @Nullable String m3Version,
-        @CustomType.Parameter("m3coordinatorEnableGraphiteCarbonIngest") @Nullable String m3coordinatorEnableGraphiteCarbonIngest,
-        @CustomType.Parameter("m3dbVersion") @Nullable String m3dbVersion,
-        @CustomType.Parameter("namespaces") @Nullable List<M3DbM3dbUserConfigNamespace> namespaces,
-        @CustomType.Parameter("privateAccess") @Nullable M3DbM3dbUserConfigPrivateAccess privateAccess,
-        @CustomType.Parameter("projectToForkFrom") @Nullable String projectToForkFrom,
-        @CustomType.Parameter("publicAccess") @Nullable M3DbM3dbUserConfigPublicAccess publicAccess,
-        @CustomType.Parameter("rules") @Nullable M3DbM3dbUserConfigRules rules,
-        @CustomType.Parameter("serviceToForkFrom") @Nullable String serviceToForkFrom,
-        @CustomType.Parameter("staticIps") @Nullable String staticIps) {
-        this.customDomain = customDomain;
-        this.ipFilters = ipFilters;
-        this.limits = limits;
-        this.m3Version = m3Version;
-        this.m3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
-        this.m3dbVersion = m3dbVersion;
-        this.namespaces = namespaces;
-        this.privateAccess = privateAccess;
-        this.projectToForkFrom = projectToForkFrom;
-        this.publicAccess = publicAccess;
-        this.rules = rules;
-        this.serviceToForkFrom = serviceToForkFrom;
-        this.staticIps = staticIps;
-    }
-
+    private M3DbM3dbUserConfig() {}
     /**
      * @return Custom domain
      * 
@@ -212,7 +183,7 @@ public final class M3DbM3dbUserConfig {
     public static Builder builder(M3DbM3dbUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String customDomain;
         private @Nullable List<String> ipFilters;
@@ -227,11 +198,7 @@ public final class M3DbM3dbUserConfig {
         private @Nullable M3DbM3dbUserConfigRules rules;
         private @Nullable String serviceToForkFrom;
         private @Nullable String staticIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(M3DbM3dbUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customDomain = defaults.customDomain;
@@ -249,10 +216,12 @@ public final class M3DbM3dbUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
             this.customDomain = customDomain;
             return this;
         }
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -260,22 +229,27 @@ public final class M3DbM3dbUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder limits(@Nullable M3DbM3dbUserConfigLimits limits) {
             this.limits = limits;
             return this;
         }
+        @CustomType.Setter
         public Builder m3Version(@Nullable String m3Version) {
             this.m3Version = m3Version;
             return this;
         }
+        @CustomType.Setter
         public Builder m3coordinatorEnableGraphiteCarbonIngest(@Nullable String m3coordinatorEnableGraphiteCarbonIngest) {
             this.m3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
             return this;
         }
+        @CustomType.Setter
         public Builder m3dbVersion(@Nullable String m3dbVersion) {
             this.m3dbVersion = m3dbVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder namespaces(@Nullable List<M3DbM3dbUserConfigNamespace> namespaces) {
             this.namespaces = namespaces;
             return this;
@@ -283,31 +257,52 @@ public final class M3DbM3dbUserConfig {
         public Builder namespaces(M3DbM3dbUserConfigNamespace... namespaces) {
             return namespaces(List.of(namespaces));
         }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable M3DbM3dbUserConfigPrivateAccess privateAccess) {
             this.privateAccess = privateAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccess(@Nullable M3DbM3dbUserConfigPublicAccess publicAccess) {
             this.publicAccess = publicAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder rules(@Nullable M3DbM3dbUserConfigRules rules) {
             this.rules = rules;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
-        }        public M3DbM3dbUserConfig build() {
-            return new M3DbM3dbUserConfig(customDomain, ipFilters, limits, m3Version, m3coordinatorEnableGraphiteCarbonIngest, m3dbVersion, namespaces, privateAccess, projectToForkFrom, publicAccess, rules, serviceToForkFrom, staticIps);
+        }
+        public M3DbM3dbUserConfig build() {
+            final var o = new M3DbM3dbUserConfig();
+            o.customDomain = customDomain;
+            o.ipFilters = ipFilters;
+            o.limits = limits;
+            o.m3Version = m3Version;
+            o.m3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
+            o.m3dbVersion = m3dbVersion;
+            o.namespaces = namespaces;
+            o.privateAccess = privateAccess;
+            o.projectToForkFrom = projectToForkFrom;
+            o.publicAccess = publicAccess;
+            o.rules = rules;
+            o.serviceToForkFrom = serviceToForkFrom;
+            o.staticIps = staticIps;
+            return o;
         }
     }
 }

@@ -12,32 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GrafanaGrafanaUserConfigAuthGitlab {
-    private final @Nullable String allowSignUp;
-    private final @Nullable List<String> allowedGroups;
-    private final @Nullable String apiUrl;
-    private final @Nullable String authUrl;
-    private final @Nullable String clientId;
-    private final @Nullable String clientSecret;
-    private final @Nullable String tokenUrl;
+    private @Nullable String allowSignUp;
+    private @Nullable List<String> allowedGroups;
+    private @Nullable String apiUrl;
+    private @Nullable String authUrl;
+    private @Nullable String clientId;
+    private @Nullable String clientSecret;
+    private @Nullable String tokenUrl;
 
-    @CustomType.Constructor
-    private GrafanaGrafanaUserConfigAuthGitlab(
-        @CustomType.Parameter("allowSignUp") @Nullable String allowSignUp,
-        @CustomType.Parameter("allowedGroups") @Nullable List<String> allowedGroups,
-        @CustomType.Parameter("apiUrl") @Nullable String apiUrl,
-        @CustomType.Parameter("authUrl") @Nullable String authUrl,
-        @CustomType.Parameter("clientId") @Nullable String clientId,
-        @CustomType.Parameter("clientSecret") @Nullable String clientSecret,
-        @CustomType.Parameter("tokenUrl") @Nullable String tokenUrl) {
-        this.allowSignUp = allowSignUp;
-        this.allowedGroups = allowedGroups;
-        this.apiUrl = apiUrl;
-        this.authUrl = authUrl;
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
-        this.tokenUrl = tokenUrl;
-    }
-
+    private GrafanaGrafanaUserConfigAuthGitlab() {}
     public Optional<String> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
@@ -67,7 +50,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlab {
     public static Builder builder(GrafanaGrafanaUserConfigAuthGitlab defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String allowSignUp;
         private @Nullable List<String> allowedGroups;
@@ -76,11 +59,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlab {
         private @Nullable String clientId;
         private @Nullable String clientSecret;
         private @Nullable String tokenUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GrafanaGrafanaUserConfigAuthGitlab defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowSignUp = defaults.allowSignUp;
@@ -92,10 +71,12 @@ public final class GrafanaGrafanaUserConfigAuthGitlab {
     	      this.tokenUrl = defaults.tokenUrl;
         }
 
+        @CustomType.Setter
         public Builder allowSignUp(@Nullable String allowSignUp) {
             this.allowSignUp = allowSignUp;
             return this;
         }
+        @CustomType.Setter
         public Builder allowedGroups(@Nullable List<String> allowedGroups) {
             this.allowedGroups = allowedGroups;
             return this;
@@ -103,27 +84,41 @@ public final class GrafanaGrafanaUserConfigAuthGitlab {
         public Builder allowedGroups(String... allowedGroups) {
             return allowedGroups(List.of(allowedGroups));
         }
+        @CustomType.Setter
         public Builder apiUrl(@Nullable String apiUrl) {
             this.apiUrl = apiUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder authUrl(@Nullable String authUrl) {
             this.authUrl = authUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
             this.clientId = clientId;
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecret(@Nullable String clientSecret) {
             this.clientSecret = clientSecret;
             return this;
         }
+        @CustomType.Setter
         public Builder tokenUrl(@Nullable String tokenUrl) {
             this.tokenUrl = tokenUrl;
             return this;
-        }        public GrafanaGrafanaUserConfigAuthGitlab build() {
-            return new GrafanaGrafanaUserConfigAuthGitlab(allowSignUp, allowedGroups, apiUrl, authUrl, clientId, clientSecret, tokenUrl);
+        }
+        public GrafanaGrafanaUserConfigAuthGitlab build() {
+            final var o = new GrafanaGrafanaUserConfigAuthGitlab();
+            o.allowSignUp = allowSignUp;
+            o.allowedGroups = allowedGroups;
+            o.apiUrl = apiUrl;
+            o.authUrl = authUrl;
+            o.clientId = clientId;
+            o.clientSecret = clientSecret;
+            o.tokenUrl = tokenUrl;
+            return o;
         }
     }
 }

@@ -19,70 +19,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOpenSearchOpensearchUserConfig {
-    private final @Nullable String customDomain;
-    private final @Nullable String disableReplicationFactorAdjustment;
-    private final @Nullable List<GetOpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
-    private final @Nullable GetOpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
-    private final @Nullable List<String> ipFilters;
-    private final @Nullable String keepIndexRefreshInterval;
-    private final @Nullable String maxIndexCount;
+    private @Nullable String customDomain;
+    private @Nullable String disableReplicationFactorAdjustment;
+    private @Nullable List<GetOpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
+    private @Nullable GetOpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
+    private @Nullable List<String> ipFilters;
+    private @Nullable String keepIndexRefreshInterval;
+    private @Nullable String maxIndexCount;
     /**
      * @return Opensearch server provided values
      * 
      */
-    private final @Nullable GetOpenSearchOpensearchUserConfigOpensearch opensearch;
-    private final @Nullable GetOpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards;
-    private final @Nullable String opensearchVersion;
-    private final @Nullable GetOpenSearchOpensearchUserConfigPrivateAccess privateAccess;
-    private final @Nullable GetOpenSearchOpensearchUserConfigPrivatelinkAccess privatelinkAccess;
-    private final @Nullable String projectToForkFrom;
-    private final @Nullable GetOpenSearchOpensearchUserConfigPublicAccess publicAccess;
-    private final @Nullable String recoveryBasebackupName;
-    private final @Nullable String serviceToForkFrom;
+    private @Nullable GetOpenSearchOpensearchUserConfigOpensearch opensearch;
+    private @Nullable GetOpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards;
+    private @Nullable String opensearchVersion;
+    private @Nullable GetOpenSearchOpensearchUserConfigPrivateAccess privateAccess;
+    private @Nullable GetOpenSearchOpensearchUserConfigPrivatelinkAccess privatelinkAccess;
+    private @Nullable String projectToForkFrom;
+    private @Nullable GetOpenSearchOpensearchUserConfigPublicAccess publicAccess;
+    private @Nullable String recoveryBasebackupName;
+    private @Nullable String serviceToForkFrom;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
-    private final @Nullable String staticIps;
+    private @Nullable String staticIps;
 
-    @CustomType.Constructor
-    private GetOpenSearchOpensearchUserConfig(
-        @CustomType.Parameter("customDomain") @Nullable String customDomain,
-        @CustomType.Parameter("disableReplicationFactorAdjustment") @Nullable String disableReplicationFactorAdjustment,
-        @CustomType.Parameter("indexPatterns") @Nullable List<GetOpenSearchOpensearchUserConfigIndexPattern> indexPatterns,
-        @CustomType.Parameter("indexTemplate") @Nullable GetOpenSearchOpensearchUserConfigIndexTemplate indexTemplate,
-        @CustomType.Parameter("ipFilters") @Nullable List<String> ipFilters,
-        @CustomType.Parameter("keepIndexRefreshInterval") @Nullable String keepIndexRefreshInterval,
-        @CustomType.Parameter("maxIndexCount") @Nullable String maxIndexCount,
-        @CustomType.Parameter("opensearch") @Nullable GetOpenSearchOpensearchUserConfigOpensearch opensearch,
-        @CustomType.Parameter("opensearchDashboards") @Nullable GetOpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards,
-        @CustomType.Parameter("opensearchVersion") @Nullable String opensearchVersion,
-        @CustomType.Parameter("privateAccess") @Nullable GetOpenSearchOpensearchUserConfigPrivateAccess privateAccess,
-        @CustomType.Parameter("privatelinkAccess") @Nullable GetOpenSearchOpensearchUserConfigPrivatelinkAccess privatelinkAccess,
-        @CustomType.Parameter("projectToForkFrom") @Nullable String projectToForkFrom,
-        @CustomType.Parameter("publicAccess") @Nullable GetOpenSearchOpensearchUserConfigPublicAccess publicAccess,
-        @CustomType.Parameter("recoveryBasebackupName") @Nullable String recoveryBasebackupName,
-        @CustomType.Parameter("serviceToForkFrom") @Nullable String serviceToForkFrom,
-        @CustomType.Parameter("staticIps") @Nullable String staticIps) {
-        this.customDomain = customDomain;
-        this.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
-        this.indexPatterns = indexPatterns;
-        this.indexTemplate = indexTemplate;
-        this.ipFilters = ipFilters;
-        this.keepIndexRefreshInterval = keepIndexRefreshInterval;
-        this.maxIndexCount = maxIndexCount;
-        this.opensearch = opensearch;
-        this.opensearchDashboards = opensearchDashboards;
-        this.opensearchVersion = opensearchVersion;
-        this.privateAccess = privateAccess;
-        this.privatelinkAccess = privatelinkAccess;
-        this.projectToForkFrom = projectToForkFrom;
-        this.publicAccess = publicAccess;
-        this.recoveryBasebackupName = recoveryBasebackupName;
-        this.serviceToForkFrom = serviceToForkFrom;
-        this.staticIps = staticIps;
-    }
-
+    private GetOpenSearchOpensearchUserConfig() {}
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
@@ -150,7 +113,7 @@ public final class GetOpenSearchOpensearchUserConfig {
     public static Builder builder(GetOpenSearchOpensearchUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String customDomain;
         private @Nullable String disableReplicationFactorAdjustment;
@@ -169,11 +132,7 @@ public final class GetOpenSearchOpensearchUserConfig {
         private @Nullable String recoveryBasebackupName;
         private @Nullable String serviceToForkFrom;
         private @Nullable String staticIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOpenSearchOpensearchUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customDomain = defaults.customDomain;
@@ -195,14 +154,17 @@ public final class GetOpenSearchOpensearchUserConfig {
     	      this.staticIps = defaults.staticIps;
         }
 
+        @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
             this.customDomain = customDomain;
             return this;
         }
+        @CustomType.Setter
         public Builder disableReplicationFactorAdjustment(@Nullable String disableReplicationFactorAdjustment) {
             this.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
             return this;
         }
+        @CustomType.Setter
         public Builder indexPatterns(@Nullable List<GetOpenSearchOpensearchUserConfigIndexPattern> indexPatterns) {
             this.indexPatterns = indexPatterns;
             return this;
@@ -210,10 +172,12 @@ public final class GetOpenSearchOpensearchUserConfig {
         public Builder indexPatterns(GetOpenSearchOpensearchUserConfigIndexPattern... indexPatterns) {
             return indexPatterns(List.of(indexPatterns));
         }
+        @CustomType.Setter
         public Builder indexTemplate(@Nullable GetOpenSearchOpensearchUserConfigIndexTemplate indexTemplate) {
             this.indexTemplate = indexTemplate;
             return this;
         }
+        @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
             this.ipFilters = ipFilters;
             return this;
@@ -221,55 +185,86 @@ public final class GetOpenSearchOpensearchUserConfig {
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
+        @CustomType.Setter
         public Builder keepIndexRefreshInterval(@Nullable String keepIndexRefreshInterval) {
             this.keepIndexRefreshInterval = keepIndexRefreshInterval;
             return this;
         }
+        @CustomType.Setter
         public Builder maxIndexCount(@Nullable String maxIndexCount) {
             this.maxIndexCount = maxIndexCount;
             return this;
         }
+        @CustomType.Setter
         public Builder opensearch(@Nullable GetOpenSearchOpensearchUserConfigOpensearch opensearch) {
             this.opensearch = opensearch;
             return this;
         }
+        @CustomType.Setter
         public Builder opensearchDashboards(@Nullable GetOpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards) {
             this.opensearchDashboards = opensearchDashboards;
             return this;
         }
+        @CustomType.Setter
         public Builder opensearchVersion(@Nullable String opensearchVersion) {
             this.opensearchVersion = opensearchVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable GetOpenSearchOpensearchUserConfigPrivateAccess privateAccess) {
             this.privateAccess = privateAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetOpenSearchOpensearchUserConfigPrivatelinkAccess privatelinkAccess) {
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccess(@Nullable GetOpenSearchOpensearchUserConfigPublicAccess publicAccess) {
             this.publicAccess = publicAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder recoveryBasebackupName(@Nullable String recoveryBasebackupName) {
             this.recoveryBasebackupName = recoveryBasebackupName;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder staticIps(@Nullable String staticIps) {
             this.staticIps = staticIps;
             return this;
-        }        public GetOpenSearchOpensearchUserConfig build() {
-            return new GetOpenSearchOpensearchUserConfig(customDomain, disableReplicationFactorAdjustment, indexPatterns, indexTemplate, ipFilters, keepIndexRefreshInterval, maxIndexCount, opensearch, opensearchDashboards, opensearchVersion, privateAccess, privatelinkAccess, projectToForkFrom, publicAccess, recoveryBasebackupName, serviceToForkFrom, staticIps);
+        }
+        public GetOpenSearchOpensearchUserConfig build() {
+            final var o = new GetOpenSearchOpensearchUserConfig();
+            o.customDomain = customDomain;
+            o.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
+            o.indexPatterns = indexPatterns;
+            o.indexTemplate = indexTemplate;
+            o.ipFilters = ipFilters;
+            o.keepIndexRefreshInterval = keepIndexRefreshInterval;
+            o.maxIndexCount = maxIndexCount;
+            o.opensearch = opensearch;
+            o.opensearchDashboards = opensearchDashboards;
+            o.opensearchVersion = opensearchVersion;
+            o.privateAccess = privateAccess;
+            o.privatelinkAccess = privatelinkAccess;
+            o.projectToForkFrom = projectToForkFrom;
+            o.publicAccess = publicAccess;
+            o.recoveryBasebackupName = recoveryBasebackupName;
+            o.serviceToForkFrom = serviceToForkFrom;
+            o.staticIps = staticIps;
+            return o;
         }
     }
 }

@@ -15,42 +15,29 @@ public final class KafkaKafka {
      * @return The Kafka client certificate
      * 
      */
-    private final @Nullable String accessCert;
+    private @Nullable String accessCert;
     /**
      * @return The Kafka client certificate key
      * 
      */
-    private final @Nullable String accessKey;
+    private @Nullable String accessKey;
     /**
      * @return The Kafka Connect URI, if any
      * 
      */
-    private final @Nullable String connectUri;
+    private @Nullable String connectUri;
     /**
      * @return The Kafka REST URI, if any
      * 
      */
-    private final @Nullable String restUri;
+    private @Nullable String restUri;
     /**
      * @return The Schema Registry URI, if any
      * 
      */
-    private final @Nullable String schemaRegistryUri;
+    private @Nullable String schemaRegistryUri;
 
-    @CustomType.Constructor
-    private KafkaKafka(
-        @CustomType.Parameter("accessCert") @Nullable String accessCert,
-        @CustomType.Parameter("accessKey") @Nullable String accessKey,
-        @CustomType.Parameter("connectUri") @Nullable String connectUri,
-        @CustomType.Parameter("restUri") @Nullable String restUri,
-        @CustomType.Parameter("schemaRegistryUri") @Nullable String schemaRegistryUri) {
-        this.accessCert = accessCert;
-        this.accessKey = accessKey;
-        this.connectUri = connectUri;
-        this.restUri = restUri;
-        this.schemaRegistryUri = schemaRegistryUri;
-    }
-
+    private KafkaKafka() {}
     /**
      * @return The Kafka client certificate
      * 
@@ -94,18 +81,14 @@ public final class KafkaKafka {
     public static Builder builder(KafkaKafka defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessCert;
         private @Nullable String accessKey;
         private @Nullable String connectUri;
         private @Nullable String restUri;
         private @Nullable String schemaRegistryUri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KafkaKafka defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessCert = defaults.accessCert;
@@ -115,27 +98,39 @@ public final class KafkaKafka {
     	      this.schemaRegistryUri = defaults.schemaRegistryUri;
         }
 
+        @CustomType.Setter
         public Builder accessCert(@Nullable String accessCert) {
             this.accessCert = accessCert;
             return this;
         }
+        @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
             this.accessKey = accessKey;
             return this;
         }
+        @CustomType.Setter
         public Builder connectUri(@Nullable String connectUri) {
             this.connectUri = connectUri;
             return this;
         }
+        @CustomType.Setter
         public Builder restUri(@Nullable String restUri) {
             this.restUri = restUri;
             return this;
         }
+        @CustomType.Setter
         public Builder schemaRegistryUri(@Nullable String schemaRegistryUri) {
             this.schemaRegistryUri = schemaRegistryUri;
             return this;
-        }        public KafkaKafka build() {
-            return new KafkaKafka(accessCert, accessKey, connectUri, restUri, schemaRegistryUri);
+        }
+        public KafkaKafka build() {
+            final var o = new KafkaKafka();
+            o.accessCert = accessCert;
+            o.accessKey = accessKey;
+            o.connectUri = connectUri;
+            o.restUri = restUri;
+            o.schemaRegistryUri = schemaRegistryUri;
+            return o;
         }
     }
 }

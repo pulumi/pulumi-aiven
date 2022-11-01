@@ -11,29 +11,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaKafkaUserConfigKafkaRestConfig {
-    private final @Nullable String consumerEnableAutoCommit;
-    private final @Nullable String consumerRequestMaxBytes;
-    private final @Nullable String consumerRequestTimeoutMs;
-    private final @Nullable String producerAcks;
-    private final @Nullable String producerLingerMs;
-    private final @Nullable String simpleconsumerPoolSizeMax;
+    private @Nullable String consumerEnableAutoCommit;
+    private @Nullable String consumerRequestMaxBytes;
+    private @Nullable String consumerRequestTimeoutMs;
+    private @Nullable String producerAcks;
+    private @Nullable String producerLingerMs;
+    private @Nullable String simpleconsumerPoolSizeMax;
 
-    @CustomType.Constructor
-    private KafkaKafkaUserConfigKafkaRestConfig(
-        @CustomType.Parameter("consumerEnableAutoCommit") @Nullable String consumerEnableAutoCommit,
-        @CustomType.Parameter("consumerRequestMaxBytes") @Nullable String consumerRequestMaxBytes,
-        @CustomType.Parameter("consumerRequestTimeoutMs") @Nullable String consumerRequestTimeoutMs,
-        @CustomType.Parameter("producerAcks") @Nullable String producerAcks,
-        @CustomType.Parameter("producerLingerMs") @Nullable String producerLingerMs,
-        @CustomType.Parameter("simpleconsumerPoolSizeMax") @Nullable String simpleconsumerPoolSizeMax) {
-        this.consumerEnableAutoCommit = consumerEnableAutoCommit;
-        this.consumerRequestMaxBytes = consumerRequestMaxBytes;
-        this.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
-        this.producerAcks = producerAcks;
-        this.producerLingerMs = producerLingerMs;
-        this.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
-    }
-
+    private KafkaKafkaUserConfigKafkaRestConfig() {}
     public Optional<String> consumerEnableAutoCommit() {
         return Optional.ofNullable(this.consumerEnableAutoCommit);
     }
@@ -60,7 +45,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
     public static Builder builder(KafkaKafkaUserConfigKafkaRestConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String consumerEnableAutoCommit;
         private @Nullable String consumerRequestMaxBytes;
@@ -68,11 +53,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
         private @Nullable String producerAcks;
         private @Nullable String producerLingerMs;
         private @Nullable String simpleconsumerPoolSizeMax;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KafkaKafkaUserConfigKafkaRestConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumerEnableAutoCommit = defaults.consumerEnableAutoCommit;
@@ -83,31 +64,45 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
     	      this.simpleconsumerPoolSizeMax = defaults.simpleconsumerPoolSizeMax;
         }
 
+        @CustomType.Setter
         public Builder consumerEnableAutoCommit(@Nullable String consumerEnableAutoCommit) {
             this.consumerEnableAutoCommit = consumerEnableAutoCommit;
             return this;
         }
+        @CustomType.Setter
         public Builder consumerRequestMaxBytes(@Nullable String consumerRequestMaxBytes) {
             this.consumerRequestMaxBytes = consumerRequestMaxBytes;
             return this;
         }
+        @CustomType.Setter
         public Builder consumerRequestTimeoutMs(@Nullable String consumerRequestTimeoutMs) {
             this.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
             return this;
         }
+        @CustomType.Setter
         public Builder producerAcks(@Nullable String producerAcks) {
             this.producerAcks = producerAcks;
             return this;
         }
+        @CustomType.Setter
         public Builder producerLingerMs(@Nullable String producerLingerMs) {
             this.producerLingerMs = producerLingerMs;
             return this;
         }
+        @CustomType.Setter
         public Builder simpleconsumerPoolSizeMax(@Nullable String simpleconsumerPoolSizeMax) {
             this.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
             return this;
-        }        public KafkaKafkaUserConfigKafkaRestConfig build() {
-            return new KafkaKafkaUserConfigKafkaRestConfig(consumerEnableAutoCommit, consumerRequestMaxBytes, consumerRequestTimeoutMs, producerAcks, producerLingerMs, simpleconsumerPoolSizeMax);
+        }
+        public KafkaKafkaUserConfigKafkaRestConfig build() {
+            final var o = new KafkaKafkaUserConfigKafkaRestConfig();
+            o.consumerEnableAutoCommit = consumerEnableAutoCommit;
+            o.consumerRequestMaxBytes = consumerRequestMaxBytes;
+            o.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
+            o.producerAcks = producerAcks;
+            o.producerLingerMs = producerLingerMs;
+            o.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
+            return o;
         }
     }
 }

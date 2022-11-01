@@ -12,41 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
-    private final @Nullable String allowSignUp;
-    private final @Nullable List<String> allowedDomains;
-    private final @Nullable List<String> allowedOrganizations;
-    private final @Nullable String apiUrl;
-    private final @Nullable String authUrl;
-    private final @Nullable String clientId;
-    private final @Nullable String clientSecret;
-    private final @Nullable String name;
-    private final @Nullable List<String> scopes;
-    private final @Nullable String tokenUrl;
+    private @Nullable String allowSignUp;
+    private @Nullable List<String> allowedDomains;
+    private @Nullable List<String> allowedOrganizations;
+    private @Nullable String apiUrl;
+    private @Nullable String authUrl;
+    private @Nullable String clientId;
+    private @Nullable String clientSecret;
+    private @Nullable String name;
+    private @Nullable List<String> scopes;
+    private @Nullable String tokenUrl;
 
-    @CustomType.Constructor
-    private GetGrafanaGrafanaUserConfigAuthGenericOauth(
-        @CustomType.Parameter("allowSignUp") @Nullable String allowSignUp,
-        @CustomType.Parameter("allowedDomains") @Nullable List<String> allowedDomains,
-        @CustomType.Parameter("allowedOrganizations") @Nullable List<String> allowedOrganizations,
-        @CustomType.Parameter("apiUrl") @Nullable String apiUrl,
-        @CustomType.Parameter("authUrl") @Nullable String authUrl,
-        @CustomType.Parameter("clientId") @Nullable String clientId,
-        @CustomType.Parameter("clientSecret") @Nullable String clientSecret,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("scopes") @Nullable List<String> scopes,
-        @CustomType.Parameter("tokenUrl") @Nullable String tokenUrl) {
-        this.allowSignUp = allowSignUp;
-        this.allowedDomains = allowedDomains;
-        this.allowedOrganizations = allowedOrganizations;
-        this.apiUrl = apiUrl;
-        this.authUrl = authUrl;
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
-        this.name = name;
-        this.scopes = scopes;
-        this.tokenUrl = tokenUrl;
-    }
-
+    private GetGrafanaGrafanaUserConfigAuthGenericOauth() {}
     public Optional<String> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
@@ -85,7 +62,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
     public static Builder builder(GetGrafanaGrafanaUserConfigAuthGenericOauth defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String allowSignUp;
         private @Nullable List<String> allowedDomains;
@@ -97,11 +74,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
         private @Nullable String name;
         private @Nullable List<String> scopes;
         private @Nullable String tokenUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGrafanaGrafanaUserConfigAuthGenericOauth defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowSignUp = defaults.allowSignUp;
@@ -116,10 +89,12 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
     	      this.tokenUrl = defaults.tokenUrl;
         }
 
+        @CustomType.Setter
         public Builder allowSignUp(@Nullable String allowSignUp) {
             this.allowSignUp = allowSignUp;
             return this;
         }
+        @CustomType.Setter
         public Builder allowedDomains(@Nullable List<String> allowedDomains) {
             this.allowedDomains = allowedDomains;
             return this;
@@ -127,6 +102,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
         public Builder allowedDomains(String... allowedDomains) {
             return allowedDomains(List.of(allowedDomains));
         }
+        @CustomType.Setter
         public Builder allowedOrganizations(@Nullable List<String> allowedOrganizations) {
             this.allowedOrganizations = allowedOrganizations;
             return this;
@@ -134,26 +110,32 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
         public Builder allowedOrganizations(String... allowedOrganizations) {
             return allowedOrganizations(List.of(allowedOrganizations));
         }
+        @CustomType.Setter
         public Builder apiUrl(@Nullable String apiUrl) {
             this.apiUrl = apiUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder authUrl(@Nullable String authUrl) {
             this.authUrl = authUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
             this.clientId = clientId;
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecret(@Nullable String clientSecret) {
             this.clientSecret = clientSecret;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder scopes(@Nullable List<String> scopes) {
             this.scopes = scopes;
             return this;
@@ -161,11 +143,24 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
         }
+        @CustomType.Setter
         public Builder tokenUrl(@Nullable String tokenUrl) {
             this.tokenUrl = tokenUrl;
             return this;
-        }        public GetGrafanaGrafanaUserConfigAuthGenericOauth build() {
-            return new GetGrafanaGrafanaUserConfigAuthGenericOauth(allowSignUp, allowedDomains, allowedOrganizations, apiUrl, authUrl, clientId, clientSecret, name, scopes, tokenUrl);
+        }
+        public GetGrafanaGrafanaUserConfigAuthGenericOauth build() {
+            final var o = new GetGrafanaGrafanaUserConfigAuthGenericOauth();
+            o.allowSignUp = allowSignUp;
+            o.allowedDomains = allowedDomains;
+            o.allowedOrganizations = allowedOrganizations;
+            o.apiUrl = apiUrl;
+            o.authUrl = authUrl;
+            o.clientId = clientId;
+            o.clientSecret = clientSecret;
+            o.name = name;
+            o.scopes = scopes;
+            o.tokenUrl = tokenUrl;
+            return o;
         }
     }
 }

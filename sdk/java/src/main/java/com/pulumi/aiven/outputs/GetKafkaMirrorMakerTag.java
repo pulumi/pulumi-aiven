@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaMirrorMakerTag {
-    private final String key;
-    private final String value;
+    private String key;
+    private String value;
 
-    @CustomType.Constructor
-    private GetKafkaMirrorMakerTag(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private GetKafkaMirrorMakerTag() {}
     public String key() {
         return this.key;
     }
@@ -34,30 +27,32 @@ public final class GetKafkaMirrorMakerTag {
     public static Builder builder(GetKafkaMirrorMakerTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaMirrorMakerTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetKafkaMirrorMakerTag build() {
-            return new GetKafkaMirrorMakerTag(key, value);
+        }
+        public GetKafkaMirrorMakerTag build() {
+            final var o = new GetKafkaMirrorMakerTag();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

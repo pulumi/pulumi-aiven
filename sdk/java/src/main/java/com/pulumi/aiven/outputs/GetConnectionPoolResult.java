@@ -14,70 +14,49 @@ public final class GetConnectionPoolResult {
      * @return The URI for connecting to the pool
      * 
      */
-    private final String connectionUri;
+    private String connectionUri;
     /**
      * @return The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String databaseName;
+    private String databaseName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The mode the pool operates in The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
-    private final String poolMode;
+    private String poolMode;
     /**
      * @return The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String poolName;
+    private String poolName;
     /**
      * @return The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
      * 
      */
-    private final Integer poolSize;
+    private Integer poolSize;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
     /**
      * @return The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private GetConnectionPoolResult(
-        @CustomType.Parameter("connectionUri") String connectionUri,
-        @CustomType.Parameter("databaseName") String databaseName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("poolMode") String poolMode,
-        @CustomType.Parameter("poolName") String poolName,
-        @CustomType.Parameter("poolSize") Integer poolSize,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("username") String username) {
-        this.connectionUri = connectionUri;
-        this.databaseName = databaseName;
-        this.id = id;
-        this.poolMode = poolMode;
-        this.poolName = poolName;
-        this.poolSize = poolSize;
-        this.project = project;
-        this.serviceName = serviceName;
-        this.username = username;
-    }
-
+    private GetConnectionPoolResult() {}
     /**
      * @return The URI for connecting to the pool
      * 
@@ -149,7 +128,7 @@ public final class GetConnectionPoolResult {
     public static Builder builder(GetConnectionPoolResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String connectionUri;
         private String databaseName;
@@ -160,11 +139,7 @@ public final class GetConnectionPoolResult {
         private String project;
         private String serviceName;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetConnectionPoolResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionUri = defaults.connectionUri;
@@ -178,43 +153,63 @@ public final class GetConnectionPoolResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder connectionUri(String connectionUri) {
             this.connectionUri = Objects.requireNonNull(connectionUri);
             return this;
         }
+        @CustomType.Setter
         public Builder databaseName(String databaseName) {
             this.databaseName = Objects.requireNonNull(databaseName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder poolMode(String poolMode) {
             this.poolMode = Objects.requireNonNull(poolMode);
             return this;
         }
+        @CustomType.Setter
         public Builder poolName(String poolName) {
             this.poolName = Objects.requireNonNull(poolName);
             return this;
         }
+        @CustomType.Setter
         public Builder poolSize(Integer poolSize) {
             this.poolSize = Objects.requireNonNull(poolSize);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public GetConnectionPoolResult build() {
-            return new GetConnectionPoolResult(connectionUri, databaseName, id, poolMode, poolName, poolSize, project, serviceName, username);
+        }
+        public GetConnectionPoolResult build() {
+            final var o = new GetConnectionPoolResult();
+            o.connectionUri = connectionUri;
+            o.databaseName = databaseName;
+            o.id = id;
+            o.poolMode = poolMode;
+            o.poolName = poolName;
+            o.poolSize = poolSize;
+            o.project = project;
+            o.serviceName = serviceName;
+            o.username = username;
+            return o;
         }
     }
 }

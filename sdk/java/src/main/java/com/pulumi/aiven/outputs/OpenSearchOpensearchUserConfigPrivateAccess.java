@@ -15,20 +15,11 @@ public final class OpenSearchOpensearchUserConfigPrivateAccess {
      * @return Opensearch server provided values
      * 
      */
-    private final @Nullable String opensearch;
-    private final @Nullable String opensearchDashboards;
-    private final @Nullable String prometheus;
+    private @Nullable String opensearch;
+    private @Nullable String opensearchDashboards;
+    private @Nullable String prometheus;
 
-    @CustomType.Constructor
-    private OpenSearchOpensearchUserConfigPrivateAccess(
-        @CustomType.Parameter("opensearch") @Nullable String opensearch,
-        @CustomType.Parameter("opensearchDashboards") @Nullable String opensearchDashboards,
-        @CustomType.Parameter("prometheus") @Nullable String prometheus) {
-        this.opensearch = opensearch;
-        this.opensearchDashboards = opensearchDashboards;
-        this.prometheus = prometheus;
-    }
-
+    private OpenSearchOpensearchUserConfigPrivateAccess() {}
     /**
      * @return Opensearch server provided values
      * 
@@ -50,16 +41,12 @@ public final class OpenSearchOpensearchUserConfigPrivateAccess {
     public static Builder builder(OpenSearchOpensearchUserConfigPrivateAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String opensearch;
         private @Nullable String opensearchDashboards;
         private @Nullable String prometheus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OpenSearchOpensearchUserConfigPrivateAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.opensearch = defaults.opensearch;
@@ -67,19 +54,27 @@ public final class OpenSearchOpensearchUserConfigPrivateAccess {
     	      this.prometheus = defaults.prometheus;
         }
 
+        @CustomType.Setter
         public Builder opensearch(@Nullable String opensearch) {
             this.opensearch = opensearch;
             return this;
         }
+        @CustomType.Setter
         public Builder opensearchDashboards(@Nullable String opensearchDashboards) {
             this.opensearchDashboards = opensearchDashboards;
             return this;
         }
+        @CustomType.Setter
         public Builder prometheus(@Nullable String prometheus) {
             this.prometheus = prometheus;
             return this;
-        }        public OpenSearchOpensearchUserConfigPrivateAccess build() {
-            return new OpenSearchOpensearchUserConfigPrivateAccess(opensearch, opensearchDashboards, prometheus);
+        }
+        public OpenSearchOpensearchUserConfigPrivateAccess build() {
+            final var o = new OpenSearchOpensearchUserConfigPrivateAccess();
+            o.opensearch = opensearch;
+            o.opensearchDashboards = opensearchDashboards;
+            o.prometheus = prometheus;
+            return o;
         }
     }
 }

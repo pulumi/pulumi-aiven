@@ -14,56 +14,39 @@ public final class GetClickhouseUserResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The password of the clickhouse user.
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Indicates if a clickhouse user is required
      * 
      */
-    private final Boolean required;
+    private Boolean required;
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
     /**
      * @return The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    private final String username;
+    private String username;
     /**
      * @return UUID of the clickhouse user.
      * 
      */
-    private final String uuid;
+    private String uuid;
 
-    @CustomType.Constructor
-    private GetClickhouseUserResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("required") Boolean required,
-        @CustomType.Parameter("serviceName") String serviceName,
-        @CustomType.Parameter("username") String username,
-        @CustomType.Parameter("uuid") String uuid) {
-        this.id = id;
-        this.password = password;
-        this.project = project;
-        this.required = required;
-        this.serviceName = serviceName;
-        this.username = username;
-        this.uuid = uuid;
-    }
-
+    private GetClickhouseUserResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -121,7 +104,7 @@ public final class GetClickhouseUserResult {
     public static Builder builder(GetClickhouseUserResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String password;
@@ -130,11 +113,7 @@ public final class GetClickhouseUserResult {
         private String serviceName;
         private String username;
         private String uuid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClickhouseUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -146,35 +125,51 @@ public final class GetClickhouseUserResult {
     	      this.uuid = defaults.uuid;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder required(Boolean required) {
             this.required = Objects.requireNonNull(required);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
         }
+        @CustomType.Setter
         public Builder uuid(String uuid) {
             this.uuid = Objects.requireNonNull(uuid);
             return this;
-        }        public GetClickhouseUserResult build() {
-            return new GetClickhouseUserResult(id, password, project, required, serviceName, username, uuid);
+        }
+        public GetClickhouseUserResult build() {
+            final var o = new GetClickhouseUserResult();
+            o.id = id;
+            o.password = password;
+            o.project = project;
+            o.required = required;
+            o.serviceName = serviceName;
+            o.username = username;
+            o.uuid = uuid;
+            return o;
         }
     }
 }

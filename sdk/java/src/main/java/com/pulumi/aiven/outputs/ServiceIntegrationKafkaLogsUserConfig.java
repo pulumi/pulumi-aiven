@@ -15,13 +15,9 @@ public final class ServiceIntegrationKafkaLogsUserConfig {
      * @return Topic name
      * 
      */
-    private final @Nullable String kafkaTopic;
+    private @Nullable String kafkaTopic;
 
-    @CustomType.Constructor
-    private ServiceIntegrationKafkaLogsUserConfig(@CustomType.Parameter("kafkaTopic") @Nullable String kafkaTopic) {
-        this.kafkaTopic = kafkaTopic;
-    }
-
+    private ServiceIntegrationKafkaLogsUserConfig() {}
     /**
      * @return Topic name
      * 
@@ -37,24 +33,24 @@ public final class ServiceIntegrationKafkaLogsUserConfig {
     public static Builder builder(ServiceIntegrationKafkaLogsUserConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String kafkaTopic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceIntegrationKafkaLogsUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kafkaTopic = defaults.kafkaTopic;
         }
 
+        @CustomType.Setter
         public Builder kafkaTopic(@Nullable String kafkaTopic) {
             this.kafkaTopic = kafkaTopic;
             return this;
-        }        public ServiceIntegrationKafkaLogsUserConfig build() {
-            return new ServiceIntegrationKafkaLogsUserConfig(kafkaTopic);
+        }
+        public ServiceIntegrationKafkaLogsUserConfig build() {
+            final var o = new ServiceIntegrationKafkaLogsUserConfig();
+            o.kafkaTopic = kafkaTopic;
+            return o;
         }
     }
 }

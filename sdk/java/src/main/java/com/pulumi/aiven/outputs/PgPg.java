@@ -16,70 +16,49 @@ public final class PgPg {
      * @return Primary PostgreSQL database name
      * 
      */
-    private final @Nullable String dbname;
+    private @Nullable String dbname;
     /**
      * @return PostgreSQL master node host IP or name
      * 
      */
-    private final @Nullable String host;
+    private @Nullable String host;
     /**
      * @return Connection limit
      * 
      */
-    private final @Nullable Integer maxConnections;
+    private @Nullable Integer maxConnections;
     /**
      * @return PostgreSQL admin user password
      * 
      */
-    private final @Nullable String password;
+    private @Nullable String password;
     /**
      * @return PostgreSQL port
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
     /**
      * @return PostgreSQL replica URI for services with a replica
      * 
      */
-    private final @Nullable String replicaUri;
+    private @Nullable String replicaUri;
     /**
      * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
      * 
      */
-    private final @Nullable String sslmode;
+    private @Nullable String sslmode;
     /**
      * @return PostgreSQL master connection URI
      * 
      */
-    private final @Nullable String uri;
+    private @Nullable String uri;
     /**
      * @return PostgreSQL admin user name
      * 
      */
-    private final @Nullable String user;
+    private @Nullable String user;
 
-    @CustomType.Constructor
-    private PgPg(
-        @CustomType.Parameter("dbname") @Nullable String dbname,
-        @CustomType.Parameter("host") @Nullable String host,
-        @CustomType.Parameter("maxConnections") @Nullable Integer maxConnections,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("port") @Nullable Integer port,
-        @CustomType.Parameter("replicaUri") @Nullable String replicaUri,
-        @CustomType.Parameter("sslmode") @Nullable String sslmode,
-        @CustomType.Parameter("uri") @Nullable String uri,
-        @CustomType.Parameter("user") @Nullable String user) {
-        this.dbname = dbname;
-        this.host = host;
-        this.maxConnections = maxConnections;
-        this.password = password;
-        this.port = port;
-        this.replicaUri = replicaUri;
-        this.sslmode = sslmode;
-        this.uri = uri;
-        this.user = user;
-    }
-
+    private PgPg() {}
     /**
      * @return Primary PostgreSQL database name
      * 
@@ -151,7 +130,7 @@ public final class PgPg {
     public static Builder builder(PgPg defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String dbname;
         private @Nullable String host;
@@ -162,11 +141,7 @@ public final class PgPg {
         private @Nullable String sslmode;
         private @Nullable String uri;
         private @Nullable String user;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PgPg defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbname = defaults.dbname;
@@ -180,43 +155,63 @@ public final class PgPg {
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
         public Builder dbname(@Nullable String dbname) {
             this.dbname = dbname;
             return this;
         }
+        @CustomType.Setter
         public Builder host(@Nullable String host) {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnections(@Nullable Integer maxConnections) {
             this.maxConnections = maxConnections;
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder replicaUri(@Nullable String replicaUri) {
             this.replicaUri = replicaUri;
             return this;
         }
+        @CustomType.Setter
         public Builder sslmode(@Nullable String sslmode) {
             this.sslmode = sslmode;
             return this;
         }
+        @CustomType.Setter
         public Builder uri(@Nullable String uri) {
             this.uri = uri;
             return this;
         }
+        @CustomType.Setter
         public Builder user(@Nullable String user) {
             this.user = user;
             return this;
-        }        public PgPg build() {
-            return new PgPg(dbname, host, maxConnections, password, port, replicaUri, sslmode, uri, user);
+        }
+        public PgPg build() {
+            final var o = new PgPg();
+            o.dbname = dbname;
+            o.host = host;
+            o.maxConnections = maxConnections;
+            o.password = password;
+            o.port = port;
+            o.replicaUri = replicaUri;
+            o.sslmode = sslmode;
+            o.uri = uri;
+            o.user = user;
+            return o;
         }
     }
 }

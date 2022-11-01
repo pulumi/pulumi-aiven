@@ -13,32 +13,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RedisComponent {
-    private final @Nullable String component;
-    private final @Nullable String host;
-    private final @Nullable String kafkaAuthenticationMethod;
-    private final @Nullable Integer port;
-    private final @Nullable String route;
-    private final @Nullable Boolean ssl;
-    private final @Nullable String usage;
+    private @Nullable String component;
+    private @Nullable String host;
+    private @Nullable String kafkaAuthenticationMethod;
+    private @Nullable Integer port;
+    private @Nullable String route;
+    private @Nullable Boolean ssl;
+    private @Nullable String usage;
 
-    @CustomType.Constructor
-    private RedisComponent(
-        @CustomType.Parameter("component") @Nullable String component,
-        @CustomType.Parameter("host") @Nullable String host,
-        @CustomType.Parameter("kafkaAuthenticationMethod") @Nullable String kafkaAuthenticationMethod,
-        @CustomType.Parameter("port") @Nullable Integer port,
-        @CustomType.Parameter("route") @Nullable String route,
-        @CustomType.Parameter("ssl") @Nullable Boolean ssl,
-        @CustomType.Parameter("usage") @Nullable String usage) {
-        this.component = component;
-        this.host = host;
-        this.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
-        this.port = port;
-        this.route = route;
-        this.ssl = ssl;
-        this.usage = usage;
-    }
-
+    private RedisComponent() {}
     public Optional<String> component() {
         return Optional.ofNullable(this.component);
     }
@@ -68,7 +51,7 @@ public final class RedisComponent {
     public static Builder builder(RedisComponent defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String component;
         private @Nullable String host;
@@ -77,11 +60,7 @@ public final class RedisComponent {
         private @Nullable String route;
         private @Nullable Boolean ssl;
         private @Nullable String usage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RedisComponent defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.component = defaults.component;
@@ -93,35 +72,51 @@ public final class RedisComponent {
     	      this.usage = defaults.usage;
         }
 
+        @CustomType.Setter
         public Builder component(@Nullable String component) {
             this.component = component;
             return this;
         }
+        @CustomType.Setter
         public Builder host(@Nullable String host) {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
         public Builder kafkaAuthenticationMethod(@Nullable String kafkaAuthenticationMethod) {
             this.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder route(@Nullable String route) {
             this.route = route;
             return this;
         }
+        @CustomType.Setter
         public Builder ssl(@Nullable Boolean ssl) {
             this.ssl = ssl;
             return this;
         }
+        @CustomType.Setter
         public Builder usage(@Nullable String usage) {
             this.usage = usage;
             return this;
-        }        public RedisComponent build() {
-            return new RedisComponent(component, host, kafkaAuthenticationMethod, port, route, ssl, usage);
+        }
+        public RedisComponent build() {
+            final var o = new RedisComponent();
+            o.component = component;
+            o.host = host;
+            o.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            o.port = port;
+            o.route = route;
+            o.ssl = ssl;
+            o.usage = usage;
+            return o;
         }
     }
 }

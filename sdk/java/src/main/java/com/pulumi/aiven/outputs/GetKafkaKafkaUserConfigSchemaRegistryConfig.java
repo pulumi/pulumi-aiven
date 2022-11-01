@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaKafkaUserConfigSchemaRegistryConfig {
-    private final @Nullable String leaderEligibility;
-    private final @Nullable String topicName;
+    private @Nullable String leaderEligibility;
+    private @Nullable String topicName;
 
-    @CustomType.Constructor
-    private GetKafkaKafkaUserConfigSchemaRegistryConfig(
-        @CustomType.Parameter("leaderEligibility") @Nullable String leaderEligibility,
-        @CustomType.Parameter("topicName") @Nullable String topicName) {
-        this.leaderEligibility = leaderEligibility;
-        this.topicName = topicName;
-    }
-
+    private GetKafkaKafkaUserConfigSchemaRegistryConfig() {}
     public Optional<String> leaderEligibility() {
         return Optional.ofNullable(this.leaderEligibility);
     }
@@ -36,30 +29,32 @@ public final class GetKafkaKafkaUserConfigSchemaRegistryConfig {
     public static Builder builder(GetKafkaKafkaUserConfigSchemaRegistryConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String leaderEligibility;
         private @Nullable String topicName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKafkaKafkaUserConfigSchemaRegistryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.leaderEligibility = defaults.leaderEligibility;
     	      this.topicName = defaults.topicName;
         }
 
+        @CustomType.Setter
         public Builder leaderEligibility(@Nullable String leaderEligibility) {
             this.leaderEligibility = leaderEligibility;
             return this;
         }
+        @CustomType.Setter
         public Builder topicName(@Nullable String topicName) {
             this.topicName = topicName;
             return this;
-        }        public GetKafkaKafkaUserConfigSchemaRegistryConfig build() {
-            return new GetKafkaKafkaUserConfigSchemaRegistryConfig(leaderEligibility, topicName);
+        }
+        public GetKafkaKafkaUserConfigSchemaRegistryConfig build() {
+            final var o = new GetKafkaKafkaUserConfigSchemaRegistryConfig();
+            o.leaderEligibility = leaderEligibility;
+            o.topicName = topicName;
+            return o;
         }
     }
 }
